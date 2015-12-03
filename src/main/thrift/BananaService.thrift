@@ -1,16 +1,14 @@
 namespace java  tech.aroma.banana.thrift
 namespace cocoa BananaService_
 
+include "Banana.thrift"
+//include "Endpoint.thrift"
+
 typedef i32 int
 typedef i64 long
 typedef i64 timestamp
 
-/**
- * Determines how Severe a Call or
- */
-enum Severity
+service BananaService
 {
-    INFORMATIONAL = 1,
-    WARNING = 2,
-    ERROR = 3
+
 }
