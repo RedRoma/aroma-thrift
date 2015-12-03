@@ -9,8 +9,8 @@ var Q = thrift.Q;
 
 
 var ttypes = module.exports = {};
-ttypes.Severity = {
+ttypes.Urgency = {
   'INFORMATIONAL' : 1,
   'WARNING' : 2,
-  'ERROR' : 3
+  'FATAL' : 3
 };

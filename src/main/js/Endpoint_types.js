@@ -325,9 +325,13 @@ HealthPokeRequest.prototype.write = function(output) {
 
 HealthPokeResponse = function(args) {
   this.message = null;
+  this.healthy = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
+    }
+    if (args.healthy !== undefined && args.healthy !== null) {
+      this.healthy = args.healthy;
     }
   }
 };
@@ -352,9 +356,13 @@ HealthPokeResponse.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.healthy = input.readBool().value;
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -369,6 +377,11 @@ HealthPokeResponse.prototype.write = function(output) {
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.healthy !== null && this.healthy !== undefined) {
+    output.writeFieldBegin('healthy', Thrift.Type.BOOL, 2);
+    output.writeBool(this.healthy);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

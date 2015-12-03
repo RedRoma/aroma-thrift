@@ -1,5 +1,6 @@
 namespace java  tech.aroma.banana.thrift.exceptions
 namespace cocoa BananaException_
+namespace cpp   tech.aroma.banana.thrift.exceptions
 
 include "Banana.thrift"
 

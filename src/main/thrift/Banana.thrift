@@ -1,5 +1,6 @@
 namespace java  tech.aroma.banana.thrift
 namespace cocoa Banana_
+namespace cpp   tech.aroma.banana.thrift
 
 typedef i32 int
 typedef i64 long
@@ -13,9 +14,9 @@ typedef i64 timestamp
 /**
  * Determines how Severe a Call or
  */
-enum Severity
+enum Urgency
 {
     INFORMATIONAL = 1,
     WARNING = 2,
-    ERROR = 3
+    FATAL = 3
 }

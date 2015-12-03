@@ -50,6 +50,8 @@
         <thrift.dest.dir.doc>${project.basedir}/src/main/doc</thrift.dest.dir.doc>
         <thrift.dest.dir.js>${project.basedir}/src/main/js</thrift.dest.dir.js>
         <thrift.dest.dir.node>${project.basedir}/src/main/nodejs</thrift.dest.dir.node>
+        <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
+
 
     </properties>
 
@@ -82,11 +84,13 @@
                                 <mkdir dir="${thrift.dest.dir.doc}" />
                                 <mkdir dir="${thrift.dest.dir.js}" />
                                 <mkdir dir="${thrift.dest.dir.node}" />
+                                <mkdir dir="${thrift.dest.dir.cpp}" />
 
                                 <delete includeemptydirs="true">
                                     <fileset dir="${thrift.dest.dir.doc}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.js}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.node}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.cpp}" includes="**/*"/>
                                 </delete>
 
 
@@ -105,6 +109,8 @@
                                     <arg value="js"/>
                                     <arg value="--gen"/>
                                     <arg value="js:node"/>
+                                    <arg value="--gen"/>
+                                    <arg value="cpp"/>
                                     <srcfile/>
                                     <fileset refid="thrift.src.files"/>
                                 </apply>
@@ -120,8 +126,13 @@
                                 <move todir="${thrift.dest.dir.js}">
                                     <fileset dir="${thrift.dest.dir}/gen-js" />
                                 </move>
+
                                 <move todir="${thrift.dest.dir.node}">
                                     <fileset dir="${thrift.dest.dir}/gen-nodejs" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.cpp}">
+                                    <fileset dir="${thrift.dest.dir}/gen-cpp" />
                                 </move>
 
                             </target>
