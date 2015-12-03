@@ -196,9 +196,16 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
 </ul>
 </td>
-<td><a href="#Typedef_int">int</a><br/>
+<td><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
+<a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
+<a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
+<a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
+<a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
 </td>
@@ -214,6 +221,26 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
 </div>
-<hr/><h2 id="Services">Services</h2>
+<div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
+</div>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-</div></body></html>
+<div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
+<pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
+</pre></div></div></body></html>

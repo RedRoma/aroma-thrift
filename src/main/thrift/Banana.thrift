@@ -4,7 +4,10 @@ namespace cocoa Banana_
 typedef i32 int
 typedef i64 long
 
-
+/**
+ * A Timestamp is defined as Unix Time, otherwise known as
+ * Milliseconds since epoch.
+ */
 typedef i64 timestamp
 
 /**

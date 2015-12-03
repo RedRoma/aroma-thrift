@@ -5,3 +5,59 @@
 //
 
 
+RegisterHealthCheckRequest = function(args) {
+};
+RegisterHealthCheckRequest.prototype = {};
+RegisterHealthCheckRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterHealthCheckRequest.prototype.write = function(output) {
+  output.writeStructBegin('RegisterHealthCheckRequest');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegisterHealthCheckResponse = function(args) {
+};
+RegisterHealthCheckResponse.prototype = {};
+RegisterHealthCheckResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterHealthCheckResponse.prototype.write = function(output) {
+  output.writeStructBegin('RegisterHealthCheckResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
