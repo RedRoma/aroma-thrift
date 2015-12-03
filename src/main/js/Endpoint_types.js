@@ -5,11 +5,140 @@
 //
 
 
-Endpoint = function(args) {
-  this.port = null;
+TcpEndpoint = function(args) {
+  this.hostname = null;
+  this.port = 80;
   if (args) {
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field hostname is unset!');
+    }
     if (args.port !== undefined && args.port !== null) {
       this.port = args.port;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field port is unset!');
+    }
+  }
+};
+TcpEndpoint.prototype = {};
+TcpEndpoint.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.port = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+TcpEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('TcpEndpoint');
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 1);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.port !== null && this.port !== undefined) {
+    output.writeFieldBegin('port', Thrift.Type.I32, 2);
+    output.writeI32(this.port);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HttpEndpoint = function(args) {
+  this.url = null;
+  if (args) {
+    if (args.url !== undefined && args.url !== null) {
+      this.url = args.url;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field url is unset!');
+    }
+  }
+};
+HttpEndpoint.prototype = {};
+HttpEndpoint.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.url = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+HttpEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('HttpEndpoint');
+  if (this.url !== null && this.url !== undefined) {
+    output.writeFieldBegin('url', Thrift.Type.STRING, 1);
+    output.writeString(this.url);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Endpoint = function(args) {
+  this.tcp = null;
+  this.http = null;
+  if (args) {
+    if (args.tcp !== undefined && args.tcp !== null) {
+      this.tcp = new TcpEndpoint(args.tcp);
+    }
+    if (args.http !== undefined && args.http !== null) {
+      this.http = new HttpEndpoint(args.http);
     }
   }
 };
@@ -28,15 +157,21 @@ Endpoint.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.port = input.readI32().value;
+      if (ftype == Thrift.Type.STRUCT) {
+        this.tcp = new TcpEndpoint();
+        this.tcp.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.http = new HttpEndpoint();
+        this.http.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -48,9 +183,14 @@ Endpoint.prototype.read = function(input) {
 
 Endpoint.prototype.write = function(output) {
   output.writeStructBegin('Endpoint');
-  if (this.port !== null && this.port !== undefined) {
-    output.writeFieldBegin('port', Thrift.Type.I32, 1);
-    output.writeI32(this.port);
+  if (this.tcp !== null && this.tcp !== undefined) {
+    output.writeFieldBegin('tcp', Thrift.Type.STRUCT, 1);
+    this.tcp.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.http !== null && this.http !== undefined) {
+    output.writeFieldBegin('http', Thrift.Type.STRUCT, 2);
+    this.http.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

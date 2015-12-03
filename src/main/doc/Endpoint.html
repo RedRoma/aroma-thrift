@@ -196,6 +196,8 @@ code { line-height: 20px; }
 <tr>
 <td>Endpoint</td><td></td>
 <td><a href="#Struct_Endpoint">Endpoint</a><br/>
+<a href="#Struct_HttpEndpoint">HttpEndpoint</a><br/>
+<a href="#Struct_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_int">int</a><br/>
 </td>
 <td></code></td>
@@ -205,7 +207,15 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code>i32</code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_Endpoint">Struct: Endpoint</h3>
+<div class="definition"><h3 id="Struct_TcpEndpoint">Struct: TcpEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>port</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>hostname</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>port</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td><code>80</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HttpEndpoint">Struct: HttpEndpoint</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Endpoint">Union: Endpoint</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>tcp</td><td><code><a href="#Struct_TcpEndpoint">TcpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>http</td><td><code><a href="#Struct_HttpEndpoint">HttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>
