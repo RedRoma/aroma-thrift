@@ -7,10 +7,10 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
-var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
-var Endpoint_ttypes = require('./Endpoint_types')
-var Exceptions_ttypes = require('./Exceptions_types')
-
 
 var ttypes = module.exports = {};
+ttypes.Severity = {
+  'INFORMATIONAL' : 1,
+  'WARNING' : 2,
+  'ERROR' : 3
+};

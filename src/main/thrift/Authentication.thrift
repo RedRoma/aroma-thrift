@@ -1,5 +1,5 @@
-namespace java  tech.aroma.banana.thrift
-namespace cocoa Banana_
+namespace java  tech.aroma.banana.thrift.authentication
+namespace cocoa BananaAuthentication_
 
 typedef i32 int
 typedef i64 long
