@@ -75,7 +75,7 @@ TcpEndpoint.prototype.write = function(output) {
   return;
 };
 
-HttpEndpoint = function(args) {
+ThriftHttpEndpoint = function(args) {
   this.url = null;
   if (args) {
     if (args.url !== undefined && args.url !== null) {
@@ -85,8 +85,8 @@ HttpEndpoint = function(args) {
     }
   }
 };
-HttpEndpoint.prototype = {};
-HttpEndpoint.prototype.read = function(input) {
+ThriftHttpEndpoint.prototype = {};
+ThriftHttpEndpoint.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -118,8 +118,63 @@ HttpEndpoint.prototype.read = function(input) {
   return;
 };
 
-HttpEndpoint.prototype.write = function(output) {
-  output.writeStructBegin('HttpEndpoint');
+ThriftHttpEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('ThriftHttpEndpoint');
+  if (this.url !== null && this.url !== undefined) {
+    output.writeFieldBegin('url', Thrift.Type.STRING, 1);
+    output.writeString(this.url);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RestHttpEndpoint = function(args) {
+  this.url = null;
+  if (args) {
+    if (args.url !== undefined && args.url !== null) {
+      this.url = args.url;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field url is unset!');
+    }
+  }
+};
+RestHttpEndpoint.prototype = {};
+RestHttpEndpoint.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.url = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RestHttpEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('RestHttpEndpoint');
   if (this.url !== null && this.url !== undefined) {
     output.writeFieldBegin('url', Thrift.Type.STRING, 1);
     output.writeString(this.url);
@@ -132,13 +187,17 @@ HttpEndpoint.prototype.write = function(output) {
 
 Endpoint = function(args) {
   this.tcp = null;
-  this.http = null;
+  this.thriftHttp = null;
+  this.restHttp = null;
   if (args) {
     if (args.tcp !== undefined && args.tcp !== null) {
       this.tcp = new TcpEndpoint(args.tcp);
     }
-    if (args.http !== undefined && args.http !== null) {
-      this.http = new HttpEndpoint(args.http);
+    if (args.thriftHttp !== undefined && args.thriftHttp !== null) {
+      this.thriftHttp = new ThriftHttpEndpoint(args.thriftHttp);
+    }
+    if (args.restHttp !== undefined && args.restHttp !== null) {
+      this.restHttp = new RestHttpEndpoint(args.restHttp);
     }
   }
 };
@@ -166,8 +225,16 @@ Endpoint.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.http = new HttpEndpoint();
-        this.http.read(input);
+        this.thriftHttp = new ThriftHttpEndpoint();
+        this.thriftHttp.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.restHttp = new RestHttpEndpoint();
+        this.restHttp.read(input);
       } else {
         input.skip(ftype);
       }
@@ -188,9 +255,120 @@ Endpoint.prototype.write = function(output) {
     this.tcp.write(output);
     output.writeFieldEnd();
   }
-  if (this.http !== null && this.http !== undefined) {
-    output.writeFieldBegin('http', Thrift.Type.STRUCT, 2);
-    this.http.write(output);
+  if (this.thriftHttp !== null && this.thriftHttp !== undefined) {
+    output.writeFieldBegin('thriftHttp', Thrift.Type.STRUCT, 2);
+    this.thriftHttp.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.restHttp !== null && this.restHttp !== undefined) {
+    output.writeFieldBegin('restHttp', Thrift.Type.STRUCT, 3);
+    this.restHttp.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HealthPokeRequest = function(args) {
+  this.serviceName = null;
+  if (args) {
+    if (args.serviceName !== undefined && args.serviceName !== null) {
+      this.serviceName = args.serviceName;
+    }
+  }
+};
+HealthPokeRequest.prototype = {};
+HealthPokeRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.serviceName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+HealthPokeRequest.prototype.write = function(output) {
+  output.writeStructBegin('HealthPokeRequest');
+  if (this.serviceName !== null && this.serviceName !== undefined) {
+    output.writeFieldBegin('serviceName', Thrift.Type.STRING, 1);
+    output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HealthPokeResponse = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+HealthPokeResponse.prototype = {};
+HealthPokeResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+HealthPokeResponse.prototype.write = function(output) {
+  output.writeStructBegin('HealthPokeResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

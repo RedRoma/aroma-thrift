@@ -194,10 +194,18 @@ code { line-height: 20px; }
 <h1>Thrift module: Endpoint</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>Endpoint</td><td></td>
+<td>Endpoint</td><td><a href="#Svc_ServiceEndpoint">ServiceEndpoint</a><br/>
+<ul>
+<li><a href="#Fn_ServiceEndpoint_healthPoke">healthPoke</a></li>
+</ul>
+</td>
 <td><a href="#Struct_Endpoint">Endpoint</a><br/>
-<a href="#Struct_HttpEndpoint">HttpEndpoint</a><br/>
+<a href="#Struct_HealthPokeRequest">HealthPokeRequest</a><br/>
+<a href="#Struct_HealthPokeResponse">HealthPokeResponse</a><br/>
+<a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="#Struct_RestHttpEndpoint">RestHttpEndpoint</a><br/>
 <a href="#Struct_TcpEndpoint">TcpEndpoint</a><br/>
+<a href="#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a><br/>
 <a href="#Typedef_int">int</a><br/>
 </td>
 <td></code></td>
@@ -206,16 +214,34 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i32</code></p>
 </div>
+<div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
+</div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_TcpEndpoint">Struct: TcpEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>hostname</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 <tr><td>2</td><td>port</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td><code>80</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_HttpEndpoint">Struct: HttpEndpoint</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_ThriftHttpEndpoint">Struct: ThriftHttpEndpoint</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RestHttpEndpoint">Struct: RestHttpEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Endpoint">Union: Endpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tcp</td><td><code><a href="#Struct_TcpEndpoint">TcpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>http</td><td><code><a href="#Struct_HttpEndpoint">HttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div></div></body></html>
+<tr><td>2</td><td>thriftHttp</td><td><code><a href="#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>restHttp</td><td><code><a href="#Struct_RestHttpEndpoint">RestHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HealthPokeResponse">Struct: HealthPokeResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><hr/><h2 id="Services">Services</h2>
+<h3 id="Svc_ServiceEndpoint">Service: ServiceEndpoint</h3>
+<div class="definition"><h4 id="Fn_ServiceEndpoint_healthPoke">Function: ServiceEndpoint.healthPoke</h4>
+<pre><code><a href="#Struct_HealthPokeResponse">HealthPokeResponse</a></code> healthPoke(<code><a href="#Struct_HealthPokeRequest">HealthPokeRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
+</pre></div></div></body></html>
