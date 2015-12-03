@@ -1,4 +1,4 @@
-namespace java  tech.aroma.banana.thrift
+namespace java  tech.aroma.banana.thrift.service
 namespace cocoa BananaService_
 
 include "Banana.thrift"

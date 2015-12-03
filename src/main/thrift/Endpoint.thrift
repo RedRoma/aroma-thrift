@@ -1,5 +1,5 @@
-namespace java  tech.aroma.banana.thrift
-namespace cocoa BananaService_
+namespace java  tech.aroma.banana.thrift.endpoint
+namespace cocoa BananaEndpoint_
 
 include "Banana.thrift"
 
