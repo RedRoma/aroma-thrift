@@ -22,8 +22,8 @@ namespace tech { namespace aroma { namespace banana { namespace thrift {
 struct Urgency {
   enum type {
     INFORMATIONAL = 1,
-    WARNING = 2,
-    FATAL = 3
+    PRESSING = 2,
+    CRITICAL = 3
   };
 };
 
@@ -34,6 +34,260 @@ typedef int32_t int;
 typedef int64_t long;
 
 typedef int64_t timestamp;
+
+class Message;
+
+class Call;
+
+class Text;
+
+class Service;
+
+class Developer;
+
+typedef struct _Message__isset {
+  _Message__isset() : body(false), urgency(true) {}
+  bool body :1;
+  bool urgency :1;
+} _Message__isset;
+
+class Message {
+ public:
+
+  Message(const Message&);
+  Message& operator=(const Message&);
+  Message() : body(), urgency((Urgency::type)2) {
+    urgency = (Urgency::type)2;
+
+  }
+
+  virtual ~Message() throw();
+  std::string body;
+  Urgency::type urgency;
+
+  _Message__isset __isset;
+
+  void __set_body(const std::string& val);
+
+  void __set_urgency(const Urgency::type val);
+
+  bool operator == (const Message & rhs) const
+  {
+    if (!(body == rhs.body))
+      return false;
+    if (!(urgency == rhs.urgency))
+      return false;
+    return true;
+  }
+  bool operator != (const Message &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Message & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Message &a, Message &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Message& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class Call {
+ public:
+
+  Call(const Call&);
+  Call& operator=(const Call&);
+  Call() {
+  }
+
+  virtual ~Call() throw();
+
+  bool operator == (const Call & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const Call &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Call & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Call &a, Call &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Call& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class Text {
+ public:
+
+  Text(const Text&);
+  Text& operator=(const Text&);
+  Text() {
+  }
+
+  virtual ~Text() throw();
+
+  bool operator == (const Text & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const Text &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Text & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Text &a, Text &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Text& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Service__isset {
+  _Service__isset() : owner(false), timeOfRegistration(false), name(false) {}
+  bool owner :1;
+  bool timeOfRegistration :1;
+  bool name :1;
+} _Service__isset;
+
+class Service {
+ public:
+
+  Service(const Service&);
+  Service& operator=(const Service&);
+  Service() : owner(), timeOfRegistration(0), name() {
+  }
+
+  virtual ~Service() throw();
+  std::string owner;
+  timestamp timeOfRegistration;
+  std::string name;
+
+  _Service__isset __isset;
+
+  void __set_owner(const std::string& val);
+
+  void __set_timeOfRegistration(const timestamp val);
+
+  void __set_name(const std::string& val);
+
+  bool operator == (const Service & rhs) const
+  {
+    if (!(owner == rhs.owner))
+      return false;
+    if (!(timeOfRegistration == rhs.timeOfRegistration))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    return true;
+  }
+  bool operator != (const Service &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Service & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Service &a, Service &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Service& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Developer__isset {
+  _Developer__isset() : email(false), name(false), username(false) {}
+  bool email :1;
+  bool name :1;
+  bool username :1;
+} _Developer__isset;
+
+class Developer {
+ public:
+
+  Developer(const Developer&);
+  Developer& operator=(const Developer&);
+  Developer() : email(), name(), username() {
+  }
+
+  virtual ~Developer() throw();
+  std::string email;
+  std::string name;
+  std::string username;
+
+  _Developer__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_username(const std::string& val);
+
+  bool operator == (const Developer & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (__isset.name != rhs.__isset.name)
+      return false;
+    else if (__isset.name && !(name == rhs.name))
+      return false;
+    if (__isset.username != rhs.__isset.username)
+      return false;
+    else if (__isset.username && !(username == rhs.username))
+      return false;
+    return true;
+  }
+  bool operator != (const Developer &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Developer & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Developer &a, Developer &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 }}}} // namespace
 

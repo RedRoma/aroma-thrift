@@ -17,6 +17,37 @@ typedef i64 timestamp
 enum Urgency
 {
     INFORMATIONAL = 1,
-    WARNING = 2,
-    FATAL = 3
+    PRESSING = 2,
+    CRITICAL = 3
+}
+
+
+struct Message
+{
+    1: string body
+    2: Urgency urgency = Urgency.PRESSING
+}
+
+struct Call
+{
+
+}
+
+struct Text
+{
+
+}
+
+struct Service
+{
+    1: string owner;
+    2: timestamp timeOfRegistration;
+    3: string name;
+}
+
+struct Developer
+{
+    1: string email;
+    2: optional string name;
+    3: optional string username;
 }

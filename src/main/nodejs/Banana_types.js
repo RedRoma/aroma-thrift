@@ -11,6 +11,292 @@ var Q = thrift.Q;
 var ttypes = module.exports = {};
 ttypes.Urgency = {
   'INFORMATIONAL' : 1,
-  'WARNING' : 2,
-  'FATAL' : 3
+  'PRESSING' : 2,
+  'CRITICAL' : 3
 };
+Message = module.exports.Message = function(args) {
+  this.body = null;
+  this.urgency = 2;
+  if (args) {
+    if (args.body !== undefined && args.body !== null) {
+      this.body = args.body;
+    }
+    if (args.urgency !== undefined && args.urgency !== null) {
+      this.urgency = args.urgency;
+    }
+  }
+};
+Message.prototype = {};
+Message.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.body = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.urgency = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Message.prototype.write = function(output) {
+  output.writeStructBegin('Message');
+  if (this.body !== null && this.body !== undefined) {
+    output.writeFieldBegin('body', Thrift.Type.STRING, 1);
+    output.writeString(this.body);
+    output.writeFieldEnd();
+  }
+  if (this.urgency !== null && this.urgency !== undefined) {
+    output.writeFieldBegin('urgency', Thrift.Type.I32, 2);
+    output.writeI32(this.urgency);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Call = module.exports.Call = function(args) {
+};
+Call.prototype = {};
+Call.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Call.prototype.write = function(output) {
+  output.writeStructBegin('Call');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Text = module.exports.Text = function(args) {
+};
+Text.prototype = {};
+Text.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Text.prototype.write = function(output) {
+  output.writeStructBegin('Text');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Service = module.exports.Service = function(args) {
+  this.owner = null;
+  this.timeOfRegistration = null;
+  this.name = null;
+  if (args) {
+    if (args.owner !== undefined && args.owner !== null) {
+      this.owner = args.owner;
+    }
+    if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
+      this.timeOfRegistration = args.timeOfRegistration;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+  }
+};
+Service.prototype = {};
+Service.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.owner = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfRegistration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Service.prototype.write = function(output) {
+  output.writeStructBegin('Service');
+  if (this.owner !== null && this.owner !== undefined) {
+    output.writeFieldBegin('owner', Thrift.Type.STRING, 1);
+    output.writeString(this.owner);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfRegistration !== null && this.timeOfRegistration !== undefined) {
+    output.writeFieldBegin('timeOfRegistration', Thrift.Type.I64, 2);
+    output.writeI64(this.timeOfRegistration);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Developer = module.exports.Developer = function(args) {
+  this.email = null;
+  this.name = null;
+  this.username = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+  }
+};
+Developer.prototype = {};
+Developer.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Developer.prototype.write = function(output) {
+  output.writeStructBegin('Developer');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+

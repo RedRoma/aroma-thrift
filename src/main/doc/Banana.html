@@ -195,7 +195,12 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Banana</td><td></td>
-<td><a href="#Enum_Urgency">Urgency</a><br/>
+<td><a href="#Struct_Call">Call</a><br/>
+<a href="#Struct_Developer">Developer</a><br/>
+<a href="#Struct_Message">Message</a><br/>
+<a href="#Struct_Service">Service</a><br/>
+<a href="#Struct_Text">Text</a><br/>
+<a href="#Enum_Urgency">Urgency</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -208,9 +213,9 @@ Determines how Severe a Call or
 <br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>INFORMATIONAL</code></td><td><code>1</code></td><td>
 </td></tr>
-<tr><td><code>WARNING</code></td><td><code>2</code></td><td>
+<tr><td><code>PRESSING</code></td><td><code>2</code></td><td>
 </td></tr>
-<tr><td><code>FATAL</code></td><td><code>3</code></td><td>
+<tr><td><code>CRITICAL</code></td><td><code>3</code></td><td>
 </td></tr>
 </table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
@@ -225,4 +230,23 @@ Determines how Severe a Call or
 A Timestamp is defined as Unix Time, otherwise known as
 Milliseconds since epoch.
 <br/></div>
-</div></body></html>
+<hr/><h2 id="Structs">Data structures</h2>
+<div class="definition"><h3 id="Struct_Message">Struct: Message</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>body</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.PRESSING">Urgency.PRESSING</a></code></code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Call">Struct: Call</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_Text">Struct: Text</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_Service">Struct: Service</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>owner</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Developer">Struct: Developer</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div></div></body></html>
