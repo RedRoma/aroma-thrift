@@ -12,7 +12,7 @@ typedef i64 long
 typedef i64 timestamp
 
 /**
- * Determines how Severe a Call or
+ * Determines how Important or Severe a Message is.
  */
 enum Urgency
 {
