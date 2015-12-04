@@ -6,12 +6,12 @@
  */
 #include "Notifications_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
 const NotificationsConstants g_Notifications_constants;
 
 NotificationsConstants::NotificationsConstants() {
 }
 
-}}}}} // namespace
+}}}} // namespace
 

@@ -9,7 +9,7 @@
 
 #include "Endpoint_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 class EndpointConstants {
  public:
@@ -19,6 +19,6 @@ class EndpointConstants {
 
 extern const EndpointConstants g_Endpoint_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

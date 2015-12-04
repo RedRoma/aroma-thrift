@@ -9,7 +9,7 @@
 
 #include "BananaService_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
 class BananaServiceConstants {
  public:
@@ -23,6 +23,6 @@ class BananaServiceConstants {
 
 extern const BananaServiceConstants g_BananaService_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

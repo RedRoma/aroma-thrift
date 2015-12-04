@@ -1,6 +1,6 @@
 namespace java  tech.aroma.banana.thrift.exceptions
 namespace cocoa BananaException_
-namespace cpp   tech.aroma.banana.thrift.exceptions
+namespace cpp   aroma.banana.thrift.exceptions
 
 /*
  * Defined in this File are the Banana Service Exceptions

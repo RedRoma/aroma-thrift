@@ -1,5 +1,6 @@
 namespace java  tech.aroma.banana.thrift.authentication
 namespace cocoa BananaAuthentication_
+namespace cpp   aroma.banana.thrift.authentication
 
 include "Banana.thrift"
 

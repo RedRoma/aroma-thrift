@@ -1,6 +1,6 @@
 namespace java  tech.aroma.banana.thrift.channels
 namespace cocoa BananaChannels_
-namespace cpp   tech.aroma.banana.thrift.channels
+namespace cpp   aroma.banana.thrift.channels
 
 /*
  * Defined in this File are the various Channels that

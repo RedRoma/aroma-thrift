@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace exceptions {
+namespace aroma { namespace banana { namespace thrift { namespace exceptions {
 
 
 InvalidArgumentException::~InvalidArgumentException() throw() {
@@ -692,4 +692,4 @@ const char* OperationFailedException::what() const throw() {
   }
 }
 
-}}}}} // namespace
+}}}} // namespace

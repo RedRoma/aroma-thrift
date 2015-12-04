@@ -6,7 +6,7 @@
  */
 #include "CustomBananaChannel.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace banana { namespace thrift { namespace channels {
 
 
 CustomBananaChannel_receiveMessage_args::~CustomBananaChannel_receiveMessage_args() throw() {
@@ -191,5 +191,5 @@ void CustomBananaChannelConcurrentClient::send_receiveMessage(const ReceiveMessa
   sentry.commit();
 }
 
-}}}}} // namespace
+}}}} // namespace
 

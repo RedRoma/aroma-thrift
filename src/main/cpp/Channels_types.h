@@ -20,13 +20,13 @@
 #include "Exceptions_types.h"
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace banana { namespace thrift { namespace channels {
 
-typedef  ::tech::aroma::banana::thrift::int int;
+typedef  ::aroma::banana::thrift::int int;
 
-typedef  ::tech::aroma::banana::thrift::long long;
+typedef  ::aroma::banana::thrift::long long;
 
-typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
+typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 class SlackChannel;
 
@@ -224,11 +224,11 @@ class CustomChannel {
   }
 
   virtual ~CustomChannel() throw();
-   ::tech::aroma::banana::thrift::endpoint::Endpoint endpoint;
+   ::aroma::banana::thrift::endpoint::Endpoint endpoint;
 
   _CustomChannel__isset __isset;
 
-  void __set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val);
+  void __set_endpoint(const  ::aroma::banana::thrift::endpoint::Endpoint& val);
 
   bool operator == (const CustomChannel & rhs) const
   {
@@ -334,11 +334,11 @@ class ReceiveMessageRequest {
   }
 
   virtual ~ReceiveMessageRequest() throw();
-   ::tech::aroma::banana::thrift::Message message;
+   ::aroma::banana::thrift::Message message;
 
   _ReceiveMessageRequest__isset __isset;
 
-  void __set_message(const  ::tech::aroma::banana::thrift::Message& val);
+  void __set_message(const  ::aroma::banana::thrift::Message& val);
 
   bool operator == (const ReceiveMessageRequest & rhs) const
   {
@@ -366,6 +366,6 @@ inline std::ostream& operator<<(std::ostream& out, const ReceiveMessageRequest& 
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

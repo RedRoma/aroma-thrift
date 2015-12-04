@@ -9,7 +9,7 @@
 
 #include "Notifications_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
 class NotificationsConstants {
  public:
@@ -19,6 +19,6 @@ class NotificationsConstants {
 
 extern const NotificationsConstants g_Notifications_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

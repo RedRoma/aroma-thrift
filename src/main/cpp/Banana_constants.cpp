@@ -6,12 +6,12 @@
  */
 #include "Banana_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift {
+namespace aroma { namespace banana { namespace thrift {
 
 const BananaConstants g_Banana_constants;
 
 BananaConstants::BananaConstants() {
 }
 
-}}}} // namespace
+}}} // namespace
 

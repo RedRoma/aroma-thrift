@@ -1,6 +1,6 @@
 namespace java  tech.aroma.banana.thrift.service
 namespace cocoa BananaService_
-namespace cpp   tech.aroma.banana.thrift.service
+namespace cpp   aroma.banana.thrift.service
 
 /*
  * Defined in this File is the Banana Service API and all of the operations
@@ -17,6 +17,9 @@ include "Notifications.thrift"
 /*
  * These Typedefs are like import statements
  * so  we don't have to type as much.
+ * 
+ * Operations tagged with @developer are designed to be used by Humans.
+ * Operations tagged with @service are designed to be used by Computers.
  */
 
 typedef Banana.int int;
@@ -94,7 +97,6 @@ struct SubscribeToServiceRequest
     3: optional string organization;
     4: optional bool shared = false;
     5: DeveloperToken developerToken;
-    
 }
 
 struct SubscribeToServiceResponse

@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "Endpoint_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -299,6 +299,6 @@ class ServiceEndpointConcurrentClient : virtual public ServiceEndpointIf {
   #pragma warning( pop )
 #endif
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

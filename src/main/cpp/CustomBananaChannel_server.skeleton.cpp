@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::tech::aroma::banana::thrift::channels;
+using namespace  ::aroma::banana::thrift::channels;
 
 class CustomBananaChannelHandler : virtual public CustomBananaChannelIf {
  public:

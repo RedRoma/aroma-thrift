@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-
+namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
 int _kRoleValues[] = {
   Role::DEV,
@@ -836,4 +836,4 @@ void OauthToken::printTo(std::ostream& out) const {
   out << ")";
 }
 
-
+}}}} // namespace

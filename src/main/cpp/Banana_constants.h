@@ -9,7 +9,7 @@
 
 #include "Banana_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift {
+namespace aroma { namespace banana { namespace thrift {
 
 class BananaConstants {
  public:
@@ -19,6 +19,6 @@ class BananaConstants {
 
 extern const BananaConstants g_Banana_constants;
 
-}}}} // namespace
+}}} // namespace
 
 #endif

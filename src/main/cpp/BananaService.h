@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "BananaService_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -1355,6 +1355,6 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   #pragma warning( pop )
 #endif
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

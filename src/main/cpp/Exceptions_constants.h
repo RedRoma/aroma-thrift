@@ -9,7 +9,7 @@
 
 #include "Exceptions_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace exceptions {
+namespace aroma { namespace banana { namespace thrift { namespace exceptions {
 
 class ExceptionsConstants {
  public:
@@ -19,6 +19,6 @@ class ExceptionsConstants {
 
 extern const ExceptionsConstants g_Exceptions_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

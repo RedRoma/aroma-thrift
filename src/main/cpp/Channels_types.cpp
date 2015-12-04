@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace banana { namespace thrift { namespace channels {
 
 
 SlackChannel::~SlackChannel() throw() {
@@ -378,7 +378,7 @@ CustomChannel::~CustomChannel() throw() {
 }
 
 
-void CustomChannel::__set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val) {
+void CustomChannel::__set_endpoint(const  ::aroma::banana::thrift::endpoint::Endpoint& val) {
   this->endpoint = val;
 }
 
@@ -610,7 +610,7 @@ ReceiveMessageRequest::~ReceiveMessageRequest() throw() {
 }
 
 
-void ReceiveMessageRequest::__set_message(const  ::tech::aroma::banana::thrift::Message& val) {
+void ReceiveMessageRequest::__set_message(const  ::aroma::banana::thrift::Message& val) {
   this->message = val;
 }
 
@@ -691,4 +691,4 @@ void ReceiveMessageRequest::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

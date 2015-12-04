@@ -18,7 +18,7 @@
 #include "Banana_types.h"
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace exceptions {
+namespace aroma { namespace banana { namespace thrift { namespace exceptions {
 
 class InvalidArgumentException;
 
@@ -370,6 +370,6 @@ inline std::ostream& operator<<(std::ostream& out, const OperationFailedExceptio
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

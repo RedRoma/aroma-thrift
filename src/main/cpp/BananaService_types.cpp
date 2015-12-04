@@ -11,14 +11,14 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
 
 SignInRequest::~SignInRequest() throw() {
 }
 
 
-void SignInRequest::__set_oathToken(const  ::OauthToken& val) {
+void SignInRequest::__set_oathToken(const  ::aroma::banana::thrift::authentication::OauthToken& val) {
   this->oathToken = val;
 }
 
@@ -700,7 +700,7 @@ void SubscribeToServiceResponse::__set_message(const std::string& val) {
   this->message = val;
 }
 
-void SubscribeToServiceResponse::__set_channel(const  ::tech::aroma::banana::thrift::channels::BananaChannel& val) {
+void SubscribeToServiceResponse::__set_channel(const  ::aroma::banana::thrift::channels::BananaChannel& val) {
   this->channel = val;
 }
 
@@ -1000,7 +1000,7 @@ void RenewServiceTokenRequest::__set_serviceToken(const ServiceToken& val) {
   this->serviceToken = val;
 }
 
-void RenewServiceTokenRequest::__set_timePeriod(const  ::tech::aroma::banana::thrift::TimePeriod& val) {
+void RenewServiceTokenRequest::__set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val) {
   this->timePeriod = val;
 }
 
@@ -2103,7 +2103,7 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast38;
           xfer += iprot->readI32(ecast38);
-          this->urgency = ( ::tech::aroma::banana::thrift::Urgency::type)ecast38;
+          this->urgency = ( ::aroma::banana::thrift::Urgency::type)ecast38;
           this->__isset.urgency = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -2259,4 +2259,4 @@ void SendMessageResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

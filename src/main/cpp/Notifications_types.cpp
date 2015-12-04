@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
 
 HealthCheckFailed::~HealthCheckFailed() throw() {
@@ -358,7 +358,7 @@ ServiceSentMessage::~ServiceSentMessage() throw() {
 }
 
 
-void ServiceSentMessage::__set_message(const  ::tech::aroma::banana::thrift::Message& val) {
+void ServiceSentMessage::__set_message(const  ::aroma::banana::thrift::Message& val) {
   this->message = val;
 }
 
@@ -631,4 +631,4 @@ void Notification::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

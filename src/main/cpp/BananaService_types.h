@@ -23,41 +23,41 @@
 #include "Notifications_types.h"
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
-typedef  ::tech::aroma::banana::thrift::int int;
+typedef  ::aroma::banana::thrift::int int;
 
-typedef  ::tech::aroma::banana::thrift::long long;
+typedef  ::aroma::banana::thrift::long long;
 
-typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
+typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::DeveloperToken DeveloperToken;
+typedef class  ::aroma::banana::thrift::authentication::DeveloperToken DeveloperToken;
 
-typedef class  ::ServiceToken ServiceToken;
+typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
-typedef class  ::Service Service;
+typedef class  ::aroma::banana::thrift::authentication::Service Service;
 
-typedef class  ::tech::aroma::banana::thrift::Dimension Dimension;
+typedef class  ::aroma::banana::thrift::Dimension Dimension;
 
-typedef class  ::tech::aroma::banana::thrift::Image Image;
+typedef class  ::aroma::banana::thrift::Image Image;
 
-typedef  ::tech::aroma::banana::thrift::Urgency::type Urgency;
+typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
-typedef class  ::tech::aroma::banana::thrift::endpoint::Endpoint Endpoint;
+typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
 
-typedef class  ::tech::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
+typedef class  ::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
+typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException;
+typedef class  ::aroma::banana::thrift::exceptions::ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
+typedef class  ::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class SignInRequest;
 
@@ -116,12 +116,12 @@ class SignInRequest {
   }
 
   virtual ~SignInRequest() throw();
-   ::OauthToken oathToken;
+   ::aroma::banana::thrift::authentication::OauthToken oathToken;
   std::string username;
 
   _SignInRequest__isset __isset;
 
-  void __set_oathToken(const  ::OauthToken& val);
+  void __set_oathToken(const  ::aroma::banana::thrift::authentication::OauthToken& val);
 
   void __set_username(const std::string& val);
 
@@ -427,13 +427,13 @@ class SubscribeToServiceResponse {
 
   virtual ~SubscribeToServiceResponse() throw();
   std::string message;
-   ::tech::aroma::banana::thrift::channels::BananaChannel channel;
+   ::aroma::banana::thrift::channels::BananaChannel channel;
 
   _SubscribeToServiceResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_channel(const  ::tech::aroma::banana::thrift::channels::BananaChannel& val);
+  void __set_channel(const  ::aroma::banana::thrift::channels::BananaChannel& val);
 
   bool operator == (const SubscribeToServiceResponse & rhs) const
   {
@@ -580,14 +580,14 @@ class RenewServiceTokenRequest {
 
   virtual ~RenewServiceTokenRequest() throw();
   ServiceToken serviceToken;
-   ::tech::aroma::banana::thrift::TimePeriod timePeriod;
+   ::aroma::banana::thrift::TimePeriod timePeriod;
   DeveloperToken developerToken;
 
   _RenewServiceTokenRequest__isset __isset;
 
   void __set_serviceToken(const ServiceToken& val);
 
-  void __set_timePeriod(const  ::tech::aroma::banana::thrift::TimePeriod& val);
+  void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
 
   void __set_developerToken(const DeveloperToken& val);
 
@@ -1102,8 +1102,8 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() : message(), urgency(( ::tech::aroma::banana::thrift::Urgency::type)2) {
-    urgency = ( ::tech::aroma::banana::thrift::Urgency::type)2;
+  SendMessageRequest() : message(), urgency(( ::aroma::banana::thrift::Urgency::type)2) {
+    urgency = ( ::aroma::banana::thrift::Urgency::type)2;
 
   }
 
@@ -1196,6 +1196,6 @@ inline std::ostream& operator<<(std::ostream& out, const SendMessageResponse& ob
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

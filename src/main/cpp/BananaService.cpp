@@ -6,7 +6,7 @@
  */
 #include "BananaService.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
 
 BananaService_signIn_args::~BananaService_signIn_args() throw() {
@@ -3772,5 +3772,5 @@ void BananaServiceConcurrentClient::send_sendMessageAsync(const SendMessageReque
   sentry.commit();
 }
 
-}}}}} // namespace
+}}}} // namespace
 

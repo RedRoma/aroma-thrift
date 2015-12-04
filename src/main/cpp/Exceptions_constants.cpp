@@ -6,12 +6,12 @@
  */
 #include "Exceptions_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace exceptions {
+namespace aroma { namespace banana { namespace thrift { namespace exceptions {
 
 const ExceptionsConstants g_Exceptions_constants;
 
 ExceptionsConstants::ExceptionsConstants() {
 }
 
-}}}}} // namespace
+}}}} // namespace
 

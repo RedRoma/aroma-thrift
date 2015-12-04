@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift {
+namespace aroma { namespace banana { namespace thrift {
 
 int _kUrgencyValues[] = {
   Urgency::INFORMATIONAL,
@@ -567,4 +567,4 @@ void Image::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}} // namespace

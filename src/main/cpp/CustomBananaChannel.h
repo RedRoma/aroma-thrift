@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "Channels_types.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace banana { namespace thrift { namespace channels {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -233,6 +233,6 @@ class CustomBananaChannelConcurrentClient : virtual public CustomBananaChannelIf
   #pragma warning( pop )
 #endif
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

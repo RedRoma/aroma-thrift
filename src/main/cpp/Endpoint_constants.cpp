@@ -6,12 +6,12 @@
  */
 #include "Endpoint_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 const EndpointConstants g_Endpoint_constants;
 
 EndpointConstants::EndpointConstants() {
 }
 
-}}}}} // namespace
+}}}} // namespace
 

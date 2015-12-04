@@ -17,7 +17,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift {
+namespace aroma { namespace banana { namespace thrift {
 
 struct Urgency {
   enum type {
@@ -284,6 +284,6 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

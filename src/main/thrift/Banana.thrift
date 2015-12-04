@@ -1,6 +1,6 @@
 namespace java  tech.aroma.banana.thrift
 namespace cocoa Banana_
-namespace cpp   tech.aroma.banana.thrift
+namespace cpp   aroma.banana.thrift
 
 typedef i32 int
 typedef i64 long

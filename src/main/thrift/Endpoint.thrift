@@ -1,6 +1,6 @@
 namespace java  tech.aroma.banana.thrift.endpoint
 namespace cocoa BananaEndpoint_
-namespace cpp   tech.aroma.banana.thrift.endpoint
+namespace cpp   aroma.banana.thrift.endpoint
 
 /*
  * Defined in this File are names and verbs about Service Endpoints

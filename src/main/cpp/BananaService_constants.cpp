@@ -6,28 +6,28 @@
  */
 #include "BananaService_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace service {
 
 const BananaServiceConstants g_BananaService_constants;
 
 BananaServiceConstants::BananaServiceConstants() {
   PRODUCTION_ENDPOINT.hostname = "banana-service.aroma.tech";
-   ::tech::aroma::banana::thrift::endpoint::int tmp43;
+   ::aroma::banana::thrift::endpoint::int tmp43;
   tmp43 = 7001;
 
   PRODUCTION_ENDPOINT.port = tmp43;
 
   BETA_ENDPOINT.hostname = "banana-service-beta.aroma.tech";
-   ::tech::aroma::banana::thrift::endpoint::int tmp44;
+   ::aroma::banana::thrift::endpoint::int tmp44;
   tmp44 = 7001;
 
   BETA_ENDPOINT.port = tmp44;
 
-   ::tech::aroma::banana::thrift::int tmp45;
+   ::aroma::banana::thrift::int tmp45;
   tmp45 = 500;
 
   MAX_ICON_DIMENSION.width = tmp45;
-   ::tech::aroma::banana::thrift::int tmp46;
+   ::aroma::banana::thrift::int tmp46;
   tmp46 = 500;
 
   MAX_ICON_DIMENSION.height = tmp46;
@@ -36,5 +36,5 @@ BananaServiceConstants::BananaServiceConstants() {
 
 }
 
-}}}}} // namespace
+}}}} // namespace
 

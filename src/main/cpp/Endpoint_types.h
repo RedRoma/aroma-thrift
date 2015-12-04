@@ -20,11 +20,11 @@
 #include "Exceptions_types.h"
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
-typedef  ::tech::aroma::banana::thrift::int int;
+typedef  ::aroma::banana::thrift::int int;
 
-typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
 class TcpEndpoint;
 
@@ -237,13 +237,13 @@ class HealthPokeRequest {
 
   virtual ~HealthPokeRequest() throw();
   std::string serviceName;
-   ::ServiceToken serviceToken;
+   ::aroma::banana::thrift::authentication::ServiceToken serviceToken;
 
   _HealthPokeRequest__isset __isset;
 
   void __set_serviceName(const std::string& val);
 
-  void __set_serviceToken(const  ::ServiceToken& val);
+  void __set_serviceToken(const  ::aroma::banana::thrift::authentication::ServiceToken& val);
 
   bool operator == (const HealthPokeRequest & rhs) const
   {
@@ -325,6 +325,6 @@ inline std::ostream& operator<<(std::ostream& out, const HealthPokeResponse& obj
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

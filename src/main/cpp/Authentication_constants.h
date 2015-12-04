@@ -9,7 +9,7 @@
 
 #include "Authentication_types.h"
 
-
+namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
 class AuthenticationConstants {
  public:
@@ -19,6 +19,6 @@ class AuthenticationConstants {
 
 extern const AuthenticationConstants g_Authentication_constants;
 
-
+}}}} // namespace
 
 #endif

@@ -19,19 +19,19 @@
 #include "Banana_types.h"
 
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
-typedef  ::tech::aroma::banana::thrift::int int;
+typedef  ::aroma::banana::thrift::int int;
 
-typedef  ::tech::aroma::banana::thrift::long long;
+typedef  ::aroma::banana::thrift::long long;
 
-typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
+typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::Developer Developer;
+typedef class  ::aroma::banana::thrift::authentication::Developer Developer;
 
-typedef class  ::Service Service;
+typedef class  ::aroma::banana::thrift::authentication::Service Service;
 
-typedef class  ::ServiceToken ServiceToken;
+typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
 class HealthCheckFailed;
 
@@ -239,11 +239,11 @@ class ServiceSentMessage {
   }
 
   virtual ~ServiceSentMessage() throw();
-   ::tech::aroma::banana::thrift::Message message;
+   ::aroma::banana::thrift::Message message;
 
   _ServiceSentMessage__isset __isset;
 
-  void __set_message(const  ::tech::aroma::banana::thrift::Message& val);
+  void __set_message(const  ::aroma::banana::thrift::Message& val);
 
   bool operator == (const ServiceSentMessage & rhs) const
   {
@@ -369,6 +369,6 @@ inline std::ostream& operator<<(std::ostream& out, const Notification& obj)
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

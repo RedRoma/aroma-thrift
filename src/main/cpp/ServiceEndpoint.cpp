@@ -6,7 +6,7 @@
  */
 #include "ServiceEndpoint.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 
 ServiceEndpoint_healthPoke_args::~ServiceEndpoint_healthPoke_args() throw() {
@@ -447,5 +447,5 @@ void ServiceEndpointConcurrentClient::recv_healthPoke(HealthPokeResponse& _retur
   } // end while(true)
 }
 
-}}}}} // namespace
+}}}} // namespace
 

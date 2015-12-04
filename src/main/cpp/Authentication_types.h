@@ -18,7 +18,7 @@
 #include "Banana_types.h"
 
 
-
+namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
 struct Role {
   enum type {
@@ -29,11 +29,11 @@ struct Role {
 
 extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
 
-typedef  ::tech::aroma::banana::thrift::int int;
+typedef  ::aroma::banana::thrift::int int;
 
-typedef  ::tech::aroma::banana::thrift::long long;
+typedef  ::aroma::banana::thrift::long long;
 
-typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
+typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 class Developer;
 
@@ -418,6 +418,6 @@ inline std::ostream& operator<<(std::ostream& out, const OauthToken& obj)
   return out;
 }
 
-
+}}}} // namespace
 
 #endif

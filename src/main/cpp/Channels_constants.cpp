@@ -6,12 +6,12 @@
  */
 #include "Channels_constants.h"
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace banana { namespace thrift { namespace channels {
 
 const ChannelsConstants g_Channels_constants;
 
 ChannelsConstants::ChannelsConstants() {
 }
 
-}}}}} // namespace
+}}}} // namespace
 

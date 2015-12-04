@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 
 TcpEndpoint::~TcpEndpoint() throw() {
@@ -429,7 +429,7 @@ void HealthPokeRequest::__set_serviceName(const std::string& val) {
   this->serviceName = val;
 }
 
-void HealthPokeRequest::__set_serviceToken(const  ::ServiceToken& val) {
+void HealthPokeRequest::__set_serviceToken(const  ::aroma::banana::thrift::authentication::ServiceToken& val) {
   this->serviceToken = val;
 }
 
@@ -632,4 +632,4 @@ void HealthPokeResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace
