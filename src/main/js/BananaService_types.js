@@ -190,6 +190,7 @@ SubscribeToServiceRequest = function(args) {
   this.token = null;
   this.serviceName = null;
   this.organization = null;
+  this.shared = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = args.token;
@@ -199,6 +200,9 @@ SubscribeToServiceRequest = function(args) {
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
+    }
+    if (args.shared !== undefined && args.shared !== null) {
+      this.shared = args.shared;
     }
   }
 };
@@ -237,6 +241,13 @@ SubscribeToServiceRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.BOOL) {
+        this.shared = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -263,6 +274,11 @@ SubscribeToServiceRequest.prototype.write = function(output) {
     output.writeString(this.organization);
     output.writeFieldEnd();
   }
+  if (this.shared !== null && this.shared !== undefined) {
+    output.writeFieldBegin('shared', Thrift.Type.BOOL, 4);
+    output.writeBool(this.shared);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -270,9 +286,13 @@ SubscribeToServiceRequest.prototype.write = function(output) {
 
 SubscribeToServiceResponse = function(args) {
   this.message = null;
+  this.channel = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
     }
   }
 };
@@ -297,9 +317,14 @@ SubscribeToServiceResponse.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -314,6 +339,11 @@ SubscribeToServiceResponse.prototype.write = function(output) {
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

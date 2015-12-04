@@ -189,43 +189,29 @@ table { empty-cells: show; }
 code { line-height: 20px; }
 .table-bordered th, .table-bordered td { border-bottom: 1px solid #DDDDDD; }
 --></style>
-<title>Thrift module: BananaService</title></head><body>
+<title>Thrift module: Channels</title></head><body>
 <div class="container-fluid">
-<h1>Thrift module: BananaService</h1>
+<h1>Thrift module: Channels</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
+<td>Channels</td><td><a href="#Svc_CustomBananaChannel">CustomBananaChannel</a><br/>
 <ul>
-<li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
-<li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
-<li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
+<li><a href="#Fn_CustomBananaChannel_receiveMessage">receiveMessage</a></li>
 </ul>
 </td>
-<td><a href="#Typedef_Dimension">Dimension</a><br/>
-<a href="#Typedef_Image">Image</a><br/>
-<a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
-<a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
-<a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a><br/>
-<a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a><br/>
-<a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
-<a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
-<a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
-<a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a><br/>
-<a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
+<td><a href="#Struct_BananaChannel">BananaChannel</a><br/>
+<a href="#Struct_CustomChannel">CustomChannel</a><br/>
+<a href="#Struct_Email">Email</a><br/>
+<a href="#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a><br/>
+<a href="#Struct_SlackChannel">SlackChannel</a><br/>
+<a href="#Struct_SlackUsername">SlackUsername</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
 </td>
-<td><code><a href="#Const_MAX_ICON_DIMENSION">MAX_ICON_DIMENSION</a></code><br/>
-<code><a href="#Const_MAX_ICON_SIZE_IN_KILOBYTES">MAX_ICON_SIZE_IN_KILOBYTES</a></code><br/>
-</code></td>
+<td></code></td>
 </tr></table>
-<hr/><h2 id="Constants">Constants</h2>
-<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="#Typedef_Dimension">Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
-<br/></blockquote></td></tr><tr id="Const_MAX_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>40</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with a Service.
-<br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i32</code></p>
 </div>
@@ -234,61 +220,39 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Dimension">Typedef: Dimension</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
-</div>
+A Timestamp is defined as Unix Time, otherwise known as
+Milliseconds since epoch.
+<br/></div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_ProvisionServiceRequest">Struct: ProvisionServiceRequest</h3>
+<div class="definition"><h3 id="Struct_SlackChannel">Struct: SlackChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>programmingLanguage</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>5</td><td>icon</td><td><code><a href="#Typedef_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ProvisionServiceResponse">Struct: ProvisionServiceResponse</h3>
+<tr><td>1</td><td>domainName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channelName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>slackToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SlackUsername">Struct: SlackUsername</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>bananaToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SubscribeToServiceRequest">Struct: SubscribeToServiceRequest</h3>
+<tr><td>1</td><td>domainName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>slackToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Email">Struct: Email</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>shared</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SubscribeToServiceResponse">Struct: SubscribeToServiceResponse</h3>
+<tr><td>1</td><td>emailAddress</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>subject</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Banana Service - Message Received"</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CustomChannel">Struct: CustomChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>channel</td><td><code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
+<tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td>This endpoint will be hit with a message each time.
+</td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_BananaChannel">Union: BananaChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
+<tr><td>1</td><td>slackChannel</td><td><code><a href="#Struct_SlackChannel">SlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>slackUsername</td><td><code><a href="#Struct_SlackUsername">SlackUsername</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>email</td><td><code><a href="#Struct_Email">Email</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>customChannel</td><td><code><a href="#Struct_CustomChannel">CustomChannel</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ReceiveMessageRequest">Struct: ReceiveMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
-<h3 id="Svc_BananaService">Service: BananaService</h3>
-<div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
-<pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
-<pre><code><a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a></code> subscribeToService(<code><a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
-<pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
+<h3 id="Svc_CustomBananaChannel">Service: CustomBananaChannel</h3>
+<div class="definition"><h4 id="Fn_CustomBananaChannel_receiveMessage">Function: CustomBananaChannel.receiveMessage</h4>
+<pre><code>void</code> receiveMessage(<code><a href="#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a></code> request)
 </pre></div></div></body></html>

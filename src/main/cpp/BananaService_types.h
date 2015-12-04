@@ -17,6 +17,7 @@
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
 #include "Banana_types.h"
+#include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
 
@@ -180,10 +181,11 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRespons
 }
 
 typedef struct _SubscribeToServiceRequest__isset {
-  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false) {}
+  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false), shared(true) {}
   bool token :1;
   bool serviceName :1;
   bool organization :1;
+  bool shared :1;
 } _SubscribeToServiceRequest__isset;
 
 class SubscribeToServiceRequest {
@@ -191,13 +193,14 @@ class SubscribeToServiceRequest {
 
   SubscribeToServiceRequest(const SubscribeToServiceRequest&);
   SubscribeToServiceRequest& operator=(const SubscribeToServiceRequest&);
-  SubscribeToServiceRequest() : token(), serviceName(), organization() {
+  SubscribeToServiceRequest() : token(), serviceName(), organization(), shared(false) {
   }
 
   virtual ~SubscribeToServiceRequest() throw();
   std::string token;
   std::string serviceName;
   std::string organization;
+  bool shared;
 
   _SubscribeToServiceRequest__isset __isset;
 
@@ -206,6 +209,8 @@ class SubscribeToServiceRequest {
   void __set_serviceName(const std::string& val);
 
   void __set_organization(const std::string& val);
+
+  void __set_shared(const bool val);
 
   bool operator == (const SubscribeToServiceRequest & rhs) const
   {
@@ -216,6 +221,10 @@ class SubscribeToServiceRequest {
     if (__isset.organization != rhs.__isset.organization)
       return false;
     else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    if (__isset.shared != rhs.__isset.shared)
+      return false;
+    else if (__isset.shared && !(shared == rhs.shared))
       return false;
     return true;
   }
@@ -240,8 +249,9 @@ inline std::ostream& operator<<(std::ostream& out, const SubscribeToServiceReque
 }
 
 typedef struct _SubscribeToServiceResponse__isset {
-  _SubscribeToServiceResponse__isset() : message(false) {}
+  _SubscribeToServiceResponse__isset() : message(false), channel(false) {}
   bool message :1;
+  bool channel :1;
 } _SubscribeToServiceResponse__isset;
 
 class SubscribeToServiceResponse {
@@ -254,14 +264,19 @@ class SubscribeToServiceResponse {
 
   virtual ~SubscribeToServiceResponse() throw();
   std::string message;
+   ::tech::aroma::banana::thrift::channels::BananaChannel channel;
 
   _SubscribeToServiceResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
+  void __set_channel(const  ::tech::aroma::banana::thrift::channels::BananaChannel& val);
+
   bool operator == (const SubscribeToServiceResponse & rhs) const
   {
     if (!(message == rhs.message))
+      return false;
+    if (!(channel == rhs.channel))
       return false;
     return true;
   }

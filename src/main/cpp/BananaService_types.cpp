@@ -307,6 +307,11 @@ void SubscribeToServiceRequest::__set_organization(const std::string& val) {
 __isset.organization = true;
 }
 
+void SubscribeToServiceRequest::__set_shared(const bool val) {
+  this->shared = val;
+__isset.shared = true;
+}
+
 uint32_t SubscribeToServiceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -352,6 +357,14 @@ uint32_t SubscribeToServiceRequest::read(::apache::thrift::protocol::TProtocol* 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->shared);
+          this->__isset.shared = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -382,6 +395,11 @@ uint32_t SubscribeToServiceRequest::write(::apache::thrift::protocol::TProtocol*
     xfer += oprot->writeString(this->organization);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.shared) {
+    xfer += oprot->writeFieldBegin("shared", ::apache::thrift::protocol::T_BOOL, 4);
+    xfer += oprot->writeBool(this->shared);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -392,6 +410,7 @@ void swap(SubscribeToServiceRequest &a, SubscribeToServiceRequest &b) {
   swap(a.token, b.token);
   swap(a.serviceName, b.serviceName);
   swap(a.organization, b.organization);
+  swap(a.shared, b.shared);
   swap(a.__isset, b.__isset);
 }
 
@@ -399,12 +418,14 @@ SubscribeToServiceRequest::SubscribeToServiceRequest(const SubscribeToServiceReq
   token = other4.token;
   serviceName = other4.serviceName;
   organization = other4.organization;
+  shared = other4.shared;
   __isset = other4.__isset;
 }
 SubscribeToServiceRequest& SubscribeToServiceRequest::operator=(const SubscribeToServiceRequest& other5) {
   token = other5.token;
   serviceName = other5.serviceName;
   organization = other5.organization;
+  shared = other5.shared;
   __isset = other5.__isset;
   return *this;
 }
@@ -414,6 +435,7 @@ void SubscribeToServiceRequest::printTo(std::ostream& out) const {
   out << "token=" << to_string(token);
   out << ", " << "serviceName=" << to_string(serviceName);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ", " << "shared="; (__isset.shared ? (out << to_string(shared)) : (out << "<null>"));
   out << ")";
 }
 
@@ -424,6 +446,10 @@ SubscribeToServiceResponse::~SubscribeToServiceResponse() throw() {
 
 void SubscribeToServiceResponse::__set_message(const std::string& val) {
   this->message = val;
+}
+
+void SubscribeToServiceResponse::__set_channel(const  ::tech::aroma::banana::thrift::channels::BananaChannel& val) {
+  this->channel = val;
 }
 
 uint32_t SubscribeToServiceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -455,6 +481,14 @@ uint32_t SubscribeToServiceResponse::read(::apache::thrift::protocol::TProtocol*
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->channel.read(iprot);
+          this->__isset.channel = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -476,6 +510,10 @@ uint32_t SubscribeToServiceResponse::write(::apache::thrift::protocol::TProtocol
   xfer += oprot->writeString(this->message);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("channel", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->channel.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -484,15 +522,18 @@ uint32_t SubscribeToServiceResponse::write(::apache::thrift::protocol::TProtocol
 void swap(SubscribeToServiceResponse &a, SubscribeToServiceResponse &b) {
   using ::std::swap;
   swap(a.message, b.message);
+  swap(a.channel, b.channel);
   swap(a.__isset, b.__isset);
 }
 
 SubscribeToServiceResponse::SubscribeToServiceResponse(const SubscribeToServiceResponse& other6) {
   message = other6.message;
+  channel = other6.channel;
   __isset = other6.__isset;
 }
 SubscribeToServiceResponse& SubscribeToServiceResponse::operator=(const SubscribeToServiceResponse& other7) {
   message = other7.message;
+  channel = other7.channel;
   __isset = other7.__isset;
   return *this;
 }
@@ -500,6 +541,7 @@ void SubscribeToServiceResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SubscribeToServiceResponse(";
   out << "message=" << to_string(message);
+  out << ", " << "channel=" << to_string(channel);
   out << ")";
 }
 

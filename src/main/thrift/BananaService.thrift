@@ -9,12 +9,19 @@ namespace cpp   tech.aroma.banana.thrift.service
 
 include "Authentication.thrift"
 include "Banana.thrift"
+include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
 typedef i32 int
 typedef i64 long
 typedef i64 timestamp
+
+
+/*
+ * These Typedefs are like import statements
+ * so  we don't have to type as much.
+ */
 
 //Struct Typedefs
 typedef Banana.Dimension Dimension
@@ -52,11 +59,14 @@ struct SubscribeToServiceRequest
     1: string token;
     2: string serviceName;
     3: optional string organization;
+    4: optional bool shared = false;
+    
 }
 
 struct SubscribeToServiceResponse
 {
     1: string message;
+    2: Channels.BananaChannel channel;
 }
 
 

@@ -20,6 +20,7 @@
 
 #import "Authentication.h"
 #import "Banana.h"
+#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 
@@ -628,11 +629,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.shared = NO;
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization shared: (BOOL) shared
 {
   self = [super init];
   __token = [token retain_stub];
@@ -641,6 +644,8 @@
   __serviceName_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
+  __shared = shared;
+  __shared_isset = YES;
   return self;
 }
 
@@ -662,6 +667,11 @@
     __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
     __organization_isset = YES;
   }
+  if ([decoder containsValueForKey: @"shared"])
+  {
+    __shared = [decoder decodeBoolForKey: @"shared"];
+    __shared_isset = YES;
+  }
   return self;
 }
 
@@ -678,6 +688,10 @@
   if (__organization_isset)
   {
     [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__shared_isset)
+  {
+    [encoder encodeBool: __shared forKey: @"shared"];
   }
 }
 
@@ -698,6 +712,11 @@
   if (__organization_isset)
   {
     hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __shared_isset ? 2654435761 : 0;
+  if (__shared_isset)
+  {
+    hash = (hash * 31) ^ [@(__shared) hash];
   }
   return hash;
 }
@@ -721,6 +740,10 @@
   }
   if ((__organization_isset != other->__organization_isset) ||
       (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+    return NO;
+  }
+  if ((__shared_isset != other->__shared_isset) ||
+      (__shared_isset && (__shared != other->__shared))) {
     return NO;
   }
   return YES;
@@ -797,6 +820,23 @@
   __organization_isset = NO;
 }
 
+- (BOOL) shared {
+  return __shared;
+}
+
+- (void) setShared: (BOOL) shared {
+  __shared = shared;
+  __shared_isset = YES;
+}
+
+- (BOOL) sharedIsSet {
+  return __shared_isset;
+}
+
+- (void) unsetShared {
+  __shared_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -836,6 +876,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setShared: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -868,6 +916,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__shared_isset) {
+    [outProtocol writeFieldBeginWithName: @"shared" type: TType_BOOL fieldID: 4];
+    [outProtocol writeBool: __shared];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -884,6 +937,8 @@
   [ms appendFormat: @"\"%@\"", __serviceName];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",shared:"];
+  [ms appendFormat: @"%i", __shared];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -900,11 +955,13 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message
+- (id) initWithMessage: (NSString *) message channel: (BananaChannels_BananaChannel *) channel
 {
   self = [super init];
   __message = [message retain_stub];
   __message_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
   return self;
 }
 
@@ -916,6 +973,11 @@
     __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
     __message_isset = YES;
   }
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
   return self;
 }
 
@@ -924,6 +986,10 @@
   if (__message_isset)
   {
     [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
   }
 }
 
@@ -934,6 +1000,11 @@
   if (__message_isset)
   {
     hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
   }
   return hash;
 }
@@ -951,12 +1022,17 @@
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
   }
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__message release_stub];
+  [__channel release_stub];
   [super dealloc_stub];
 }
 
@@ -979,6 +1055,27 @@
   [__message release_stub];
   __message = nil;
   __message_isset = NO;
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1004,6 +1101,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1022,6 +1129,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1034,6 +1148,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SubscribeToServiceResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -20,6 +20,7 @@
 
 #import "Authentication.h"
 #import "Banana.h"
+#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 
@@ -142,20 +143,23 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
   NSString * __token;
   NSString * __serviceName;
   NSString * __organization;
+  BOOL __shared;
 
   BOOL __token_isset;
   BOOL __serviceName_isset;
   BOOL __organization_isset;
+  BOOL __shared_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
 @property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, getter=shared, setter=setShared:) BOOL shared;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization;
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization shared: (BOOL) shared;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -180,20 +184,29 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 #endif
 - (BOOL) organizationIsSet;
 
+#if !__has_feature(objc_arc)
+- (BOOL) shared;
+- (void) setShared: (BOOL) shared;
+#endif
+- (BOOL) sharedIsSet;
+
 @end
 
 @interface BananaService_SubscribeToServiceResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
+  BananaChannels_BananaChannel * __channel;
 
   BOOL __message_isset;
+  BOOL __channel_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaChannels_BananaChannel * channel;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message;
+- (id) initWithMessage: (NSString *) message channel: (BananaChannels_BananaChannel *) channel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -205,6 +218,12 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaChannels_BananaChannel *) channel;
+- (void) setChannel: (BananaChannels_BananaChannel *) channel;
+#endif
+- (BOOL) channelIsSet;
 
 @end
 
