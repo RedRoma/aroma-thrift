@@ -37,6 +37,10 @@ typedef int64_t timestamp;
 
 class Developer;
 
+class ServiceToken;
+
+class DeveloperToken;
+
 typedef struct _Developer__isset {
   _Developer__isset() : email(false), name(false), username(false), role(false) {}
   bool email :1;
@@ -100,6 +104,140 @@ class Developer {
 void swap(Developer &a, Developer &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ServiceToken__isset {
+  _ServiceToken__isset() : id(false), serviceName(false), organization(false), timeOfExpiration(false) {}
+  bool id :1;
+  bool serviceName :1;
+  bool organization :1;
+  bool timeOfExpiration :1;
+} _ServiceToken__isset;
+
+class ServiceToken {
+ public:
+
+  ServiceToken(const ServiceToken&);
+  ServiceToken& operator=(const ServiceToken&);
+  ServiceToken() : id(), serviceName(), organization(), timeOfExpiration(0) {
+  }
+
+  virtual ~ServiceToken() throw();
+  std::string id;
+  std::string serviceName;
+  std::string organization;
+  timestamp timeOfExpiration;
+
+  _ServiceToken__isset __isset;
+
+  void __set_id(const std::string& val);
+
+  void __set_serviceName(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  void __set_timeOfExpiration(const timestamp val);
+
+  bool operator == (const ServiceToken & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(serviceName == rhs.serviceName))
+      return false;
+    if (__isset.organization != rhs.__isset.organization)
+      return false;
+    else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    return true;
+  }
+  bool operator != (const ServiceToken &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ServiceToken & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ServiceToken &a, ServiceToken &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ServiceToken& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeveloperToken__isset {
+  _DeveloperToken__isset() : id(false), oathProvider(true), timeOfExpiration(false), organization(false) {}
+  bool id :1;
+  bool oathProvider :1;
+  bool timeOfExpiration :1;
+  bool organization :1;
+} _DeveloperToken__isset;
+
+class DeveloperToken {
+ public:
+
+  DeveloperToken(const DeveloperToken&);
+  DeveloperToken& operator=(const DeveloperToken&);
+  DeveloperToken() : id(), oathProvider("github"), timeOfExpiration(0), organization() {
+  }
+
+  virtual ~DeveloperToken() throw();
+  std::string id;
+  std::string oathProvider;
+  timestamp timeOfExpiration;
+  std::string organization;
+
+  _DeveloperToken__isset __isset;
+
+  void __set_id(const std::string& val);
+
+  void __set_oathProvider(const std::string& val);
+
+  void __set_timeOfExpiration(const timestamp val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const DeveloperToken & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (__isset.oathProvider != rhs.__isset.oathProvider)
+      return false;
+    else if (__isset.oathProvider && !(oathProvider == rhs.oathProvider))
+      return false;
+    if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    if (__isset.organization != rhs.__isset.organization)
+      return false;
+    else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const DeveloperToken &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeveloperToken & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeveloperToken &a, DeveloperToken &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeveloperToken& obj)
 {
   obj.printTo(out);
   return out;

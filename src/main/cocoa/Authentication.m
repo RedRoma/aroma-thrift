@@ -342,6 +342,648 @@
 
 @end
 
+@implementation BananaAuthentication_ServiceToken
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithId: (NSString *) id serviceName: (NSString *) serviceName organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration
+{
+  self = [super init];
+  __id = [id retain_stub];
+  __id_isset = YES;
+  __serviceName = [serviceName retain_stub];
+  __serviceName_isset = YES;
+  __organization = [organization retain_stub];
+  __organization_isset = YES;
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"id"])
+  {
+    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
+    __id_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"serviceName"])
+  {
+    __serviceName = [[decoder decodeObjectForKey: @"serviceName"] retain_stub];
+    __serviceName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organization"])
+  {
+    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
+    __organization_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfExpiration"])
+  {
+    __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
+    __timeOfExpiration_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__id_isset)
+  {
+    [encoder encodeObject: __id forKey: @"id"];
+  }
+  if (__serviceName_isset)
+  {
+    [encoder encodeObject: __serviceName forKey: @"serviceName"];
+  }
+  if (__organization_isset)
+  {
+    [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__timeOfExpiration_isset)
+  {
+    [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
+  if (__id_isset)
+  {
+    hash = (hash * 31) ^ [__id hash];
+  }
+  hash = (hash * 31) ^ __serviceName_isset ? 2654435761 : 0;
+  if (__serviceName_isset)
+  {
+    hash = (hash * 31) ^ [__serviceName hash];
+  }
+  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
+  if (__organization_isset)
+  {
+    hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
+  if (__timeOfExpiration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfExpiration) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_ServiceToken class]]) {
+    return NO;
+  }
+  BananaAuthentication_ServiceToken *other = (BananaAuthentication_ServiceToken *)anObject;
+  if ((__id_isset != other->__id_isset) ||
+      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+    return NO;
+  }
+  if ((__serviceName_isset != other->__serviceName_isset) ||
+      (__serviceName_isset && ((__serviceName || other->__serviceName) && ![__serviceName isEqual:other->__serviceName]))) {
+    return NO;
+  }
+  if ((__organization_isset != other->__organization_isset) ||
+      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+    return NO;
+  }
+  if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
+      (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__id release_stub];
+  [__serviceName release_stub];
+  [__organization release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) id {
+  return [[__id retain_stub] autorelease_stub];
+}
+
+- (void) setId: (NSString *) id {
+  [id retain_stub];
+  [__id release_stub];
+  __id = id;
+  __id_isset = YES;
+}
+
+- (BOOL) idIsSet {
+  return __id_isset;
+}
+
+- (void) unsetId {
+  [__id release_stub];
+  __id = nil;
+  __id_isset = NO;
+}
+
+- (NSString *) serviceName {
+  return [[__serviceName retain_stub] autorelease_stub];
+}
+
+- (void) setServiceName: (NSString *) serviceName {
+  [serviceName retain_stub];
+  [__serviceName release_stub];
+  __serviceName = serviceName;
+  __serviceName_isset = YES;
+}
+
+- (BOOL) serviceNameIsSet {
+  return __serviceName_isset;
+}
+
+- (void) unsetServiceName {
+  [__serviceName release_stub];
+  __serviceName = nil;
+  __serviceName_isset = NO;
+}
+
+- (NSString *) organization {
+  return [[__organization retain_stub] autorelease_stub];
+}
+
+- (void) setOrganization: (NSString *) organization {
+  [organization retain_stub];
+  [__organization release_stub];
+  __organization = organization;
+  __organization_isset = YES;
+}
+
+- (BOOL) organizationIsSet {
+  return __organization_isset;
+}
+
+- (void) unsetOrganization {
+  [__organization release_stub];
+  __organization = nil;
+  __organization_isset = NO;
+}
+
+- (int64_t) timeOfExpiration {
+  return __timeOfExpiration;
+}
+
+- (void) setTimeOfExpiration: (int64_t) timeOfExpiration {
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+}
+
+- (BOOL) timeOfExpirationIsSet {
+  return __timeOfExpiration_isset;
+}
+
+- (void) unsetTimeOfExpiration {
+  __timeOfExpiration_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setServiceName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ServiceToken"];
+  if (__id_isset) {
+    if (__id != nil) {
+      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __id];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__serviceName_isset) {
+    if (__serviceName != nil) {
+      [outProtocol writeFieldBeginWithName: @"serviceName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __serviceName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organization_isset) {
+    if (__organization != nil) {
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfExpiration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfExpiration];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ServiceToken("];
+  [ms appendString: @"id:"];
+  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @",serviceName:"];
+  [ms appendFormat: @"\"%@\"", __serviceName];
+  [ms appendString: @",organization:"];
+  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",timeOfExpiration:"];
+  [ms appendFormat: @"%qi", __timeOfExpiration];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_DeveloperToken
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.oathProvider = @"github";
+
+#endif
+  return self;
+}
+
+- (id) initWithId: (NSString *) id oathProvider: (NSString *) oathProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization
+{
+  self = [super init];
+  __id = [id retain_stub];
+  __id_isset = YES;
+  __oathProvider = [oathProvider retain_stub];
+  __oathProvider_isset = YES;
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+  __organization = [organization retain_stub];
+  __organization_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"id"])
+  {
+    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
+    __id_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"oathProvider"])
+  {
+    __oathProvider = [[decoder decodeObjectForKey: @"oathProvider"] retain_stub];
+    __oathProvider_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfExpiration"])
+  {
+    __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
+    __timeOfExpiration_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organization"])
+  {
+    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
+    __organization_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__id_isset)
+  {
+    [encoder encodeObject: __id forKey: @"id"];
+  }
+  if (__oathProvider_isset)
+  {
+    [encoder encodeObject: __oathProvider forKey: @"oathProvider"];
+  }
+  if (__timeOfExpiration_isset)
+  {
+    [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
+  }
+  if (__organization_isset)
+  {
+    [encoder encodeObject: __organization forKey: @"organization"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
+  if (__id_isset)
+  {
+    hash = (hash * 31) ^ [__id hash];
+  }
+  hash = (hash * 31) ^ __oathProvider_isset ? 2654435761 : 0;
+  if (__oathProvider_isset)
+  {
+    hash = (hash * 31) ^ [__oathProvider hash];
+  }
+  hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
+  if (__timeOfExpiration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfExpiration) hash];
+  }
+  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
+  if (__organization_isset)
+  {
+    hash = (hash * 31) ^ [__organization hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_DeveloperToken class]]) {
+    return NO;
+  }
+  BananaAuthentication_DeveloperToken *other = (BananaAuthentication_DeveloperToken *)anObject;
+  if ((__id_isset != other->__id_isset) ||
+      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+    return NO;
+  }
+  if ((__oathProvider_isset != other->__oathProvider_isset) ||
+      (__oathProvider_isset && ((__oathProvider || other->__oathProvider) && ![__oathProvider isEqual:other->__oathProvider]))) {
+    return NO;
+  }
+  if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
+      (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
+    return NO;
+  }
+  if ((__organization_isset != other->__organization_isset) ||
+      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__id release_stub];
+  [__oathProvider release_stub];
+  [__organization release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) id {
+  return [[__id retain_stub] autorelease_stub];
+}
+
+- (void) setId: (NSString *) id {
+  [id retain_stub];
+  [__id release_stub];
+  __id = id;
+  __id_isset = YES;
+}
+
+- (BOOL) idIsSet {
+  return __id_isset;
+}
+
+- (void) unsetId {
+  [__id release_stub];
+  __id = nil;
+  __id_isset = NO;
+}
+
+- (NSString *) oathProvider {
+  return [[__oathProvider retain_stub] autorelease_stub];
+}
+
+- (void) setOathProvider: (NSString *) oathProvider {
+  [oathProvider retain_stub];
+  [__oathProvider release_stub];
+  __oathProvider = oathProvider;
+  __oathProvider_isset = YES;
+}
+
+- (BOOL) oathProviderIsSet {
+  return __oathProvider_isset;
+}
+
+- (void) unsetOathProvider {
+  [__oathProvider release_stub];
+  __oathProvider = nil;
+  __oathProvider_isset = NO;
+}
+
+- (int64_t) timeOfExpiration {
+  return __timeOfExpiration;
+}
+
+- (void) setTimeOfExpiration: (int64_t) timeOfExpiration {
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+}
+
+- (BOOL) timeOfExpirationIsSet {
+  return __timeOfExpiration_isset;
+}
+
+- (void) unsetTimeOfExpiration {
+  __timeOfExpiration_isset = NO;
+}
+
+- (NSString *) organization {
+  return [[__organization retain_stub] autorelease_stub];
+}
+
+- (void) setOrganization: (NSString *) organization {
+  [organization retain_stub];
+  [__organization release_stub];
+  __organization = organization;
+  __organization_isset = YES;
+}
+
+- (BOOL) organizationIsSet {
+  return __organization_isset;
+}
+
+- (void) unsetOrganization {
+  [__organization release_stub];
+  __organization = nil;
+  __organization_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOathProvider: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeveloperToken"];
+  if (__id_isset) {
+    if (__id != nil) {
+      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __id];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__oathProvider_isset) {
+    if (__oathProvider != nil) {
+      [outProtocol writeFieldBeginWithName: @"oathProvider" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __oathProvider];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfExpiration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 3];
+    [outProtocol writeI64: __timeOfExpiration];
+    [outProtocol writeFieldEnd];
+  }
+  if (__organization_isset) {
+    if (__organization != nil) {
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_DeveloperToken("];
+  [ms appendString: @"id:"];
+  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @",oathProvider:"];
+  [ms appendFormat: @"\"%@\"", __oathProvider];
+  [ms appendString: @",timeOfExpiration:"];
+  [ms appendFormat: @"%qi", __timeOfExpiration];
+  [ms appendString: @",organization:"];
+  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 
 @implementation BananaAuthentication_AuthenticationConstants
 + (void) initialize {

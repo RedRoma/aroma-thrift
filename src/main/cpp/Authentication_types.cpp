@@ -176,3 +176,301 @@ void Developer::printTo(std::ostream& out) const {
 }
 
 
+ServiceToken::~ServiceToken() throw() {
+}
+
+
+void ServiceToken::__set_id(const std::string& val) {
+  this->id = val;
+}
+
+void ServiceToken::__set_serviceName(const std::string& val) {
+  this->serviceName = val;
+}
+
+void ServiceToken::__set_organization(const std::string& val) {
+  this->organization = val;
+__isset.organization = true;
+}
+
+void ServiceToken::__set_timeOfExpiration(const timestamp val) {
+  this->timeOfExpiration = val;
+}
+
+uint32_t ServiceToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->serviceName);
+          this->__isset.serviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organization);
+          this->__isset.organization = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfExpiration);
+          this->__isset.timeOfExpiration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ServiceToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ServiceToken");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.organization) {
+    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->organization);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 4);
+  xfer += oprot->writeI64(this->timeOfExpiration);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ServiceToken &a, ServiceToken &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.serviceName, b.serviceName);
+  swap(a.organization, b.organization);
+  swap(a.timeOfExpiration, b.timeOfExpiration);
+  swap(a.__isset, b.__isset);
+}
+
+ServiceToken::ServiceToken(const ServiceToken& other3) {
+  id = other3.id;
+  serviceName = other3.serviceName;
+  organization = other3.organization;
+  timeOfExpiration = other3.timeOfExpiration;
+  __isset = other3.__isset;
+}
+ServiceToken& ServiceToken::operator=(const ServiceToken& other4) {
+  id = other4.id;
+  serviceName = other4.serviceName;
+  organization = other4.organization;
+  timeOfExpiration = other4.timeOfExpiration;
+  __isset = other4.__isset;
+  return *this;
+}
+void ServiceToken::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ServiceToken(";
+  out << "id=" << to_string(id);
+  out << ", " << "serviceName=" << to_string(serviceName);
+  out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
+  out << ")";
+}
+
+
+DeveloperToken::~DeveloperToken() throw() {
+}
+
+
+void DeveloperToken::__set_id(const std::string& val) {
+  this->id = val;
+}
+
+void DeveloperToken::__set_oathProvider(const std::string& val) {
+  this->oathProvider = val;
+__isset.oathProvider = true;
+}
+
+void DeveloperToken::__set_timeOfExpiration(const timestamp val) {
+  this->timeOfExpiration = val;
+}
+
+void DeveloperToken::__set_organization(const std::string& val) {
+  this->organization = val;
+__isset.organization = true;
+}
+
+uint32_t DeveloperToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->oathProvider);
+          this->__isset.oathProvider = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfExpiration);
+          this->__isset.timeOfExpiration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organization);
+          this->__isset.organization = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DeveloperToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DeveloperToken");
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.oathProvider) {
+    xfer += oprot->writeFieldBegin("oathProvider", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->oathProvider);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 3);
+  xfer += oprot->writeI64(this->timeOfExpiration);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.organization) {
+    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->organization);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DeveloperToken &a, DeveloperToken &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.oathProvider, b.oathProvider);
+  swap(a.timeOfExpiration, b.timeOfExpiration);
+  swap(a.organization, b.organization);
+  swap(a.__isset, b.__isset);
+}
+
+DeveloperToken::DeveloperToken(const DeveloperToken& other5) {
+  id = other5.id;
+  oathProvider = other5.oathProvider;
+  timeOfExpiration = other5.timeOfExpiration;
+  organization = other5.organization;
+  __isset = other5.__isset;
+}
+DeveloperToken& DeveloperToken::operator=(const DeveloperToken& other6) {
+  id = other6.id;
+  oathProvider = other6.oathProvider;
+  timeOfExpiration = other6.timeOfExpiration;
+  organization = other6.organization;
+  __isset = other6.__isset;
+  return *this;
+}
+void DeveloperToken::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DeveloperToken(";
+  out << "id=" << to_string(id);
+  out << ", " << "oathProvider="; (__isset.oathProvider ? (out << to_string(oathProvider)) : (out << "<null>"));
+  out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
+  out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ")";
+}
+
+

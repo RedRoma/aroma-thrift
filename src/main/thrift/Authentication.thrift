@@ -20,3 +20,19 @@ struct Developer
     3: optional string username;
     4: Role role;
 }
+
+struct ServiceToken
+{
+    1: string id;
+    2: string serviceName;
+    3: optional string organization;
+    4: timestamp timeOfExpiration;
+}
+
+struct DeveloperToken
+{
+    1: string id;
+    2: optional string oathProvider = "github";
+    3: timestamp timeOfExpiration;
+    4: optional string organization;
+}

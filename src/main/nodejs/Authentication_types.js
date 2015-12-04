@@ -113,3 +113,199 @@ Developer.prototype.write = function(output) {
   return;
 };
 
+ServiceToken = module.exports.ServiceToken = function(args) {
+  this.id = null;
+  this.serviceName = null;
+  this.organization = null;
+  this.timeOfExpiration = null;
+  if (args) {
+    if (args.id !== undefined && args.id !== null) {
+      this.id = args.id;
+    }
+    if (args.serviceName !== undefined && args.serviceName !== null) {
+      this.serviceName = args.serviceName;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+    if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
+      this.timeOfExpiration = args.timeOfExpiration;
+    }
+  }
+};
+ServiceToken.prototype = {};
+ServiceToken.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.id = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.serviceName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfExpiration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ServiceToken.prototype.write = function(output) {
+  output.writeStructBegin('ServiceToken');
+  if (this.id !== null && this.id !== undefined) {
+    output.writeFieldBegin('id', Thrift.Type.STRING, 1);
+    output.writeString(this.id);
+    output.writeFieldEnd();
+  }
+  if (this.serviceName !== null && this.serviceName !== undefined) {
+    output.writeFieldBegin('serviceName', Thrift.Type.STRING, 2);
+    output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfExpiration);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DeveloperToken = module.exports.DeveloperToken = function(args) {
+  this.id = null;
+  this.oathProvider = 'github';
+  this.timeOfExpiration = null;
+  this.organization = null;
+  if (args) {
+    if (args.id !== undefined && args.id !== null) {
+      this.id = args.id;
+    }
+    if (args.oathProvider !== undefined && args.oathProvider !== null) {
+      this.oathProvider = args.oathProvider;
+    }
+    if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
+      this.timeOfExpiration = args.timeOfExpiration;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+  }
+};
+DeveloperToken.prototype = {};
+DeveloperToken.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.id = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.oathProvider = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfExpiration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DeveloperToken.prototype.write = function(output) {
+  output.writeStructBegin('DeveloperToken');
+  if (this.id !== null && this.id !== undefined) {
+    output.writeFieldBegin('id', Thrift.Type.STRING, 1);
+    output.writeString(this.id);
+    output.writeFieldEnd();
+  }
+  if (this.oathProvider !== null && this.oathProvider !== undefined) {
+    output.writeFieldBegin('oathProvider', Thrift.Type.STRING, 2);
+    output.writeString(this.oathProvider);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 3);
+    output.writeI64(this.timeOfExpiration);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
