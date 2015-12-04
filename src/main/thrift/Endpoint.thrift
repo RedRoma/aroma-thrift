@@ -64,5 +64,5 @@ struct HealthPokeResponse
 service ServiceEndpoint
 {
     
-    HealthPokeResponse healthPoke(1: HealthPokeRequest request) throws (1: OperationFailedException ex1)
+    HealthPokeResponse healthPoke(HealthPokeRequest request) throws (OperationFailedException ex1)
 }

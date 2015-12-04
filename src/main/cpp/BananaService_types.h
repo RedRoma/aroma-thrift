@@ -37,9 +37,131 @@ typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedExcepti
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
+class ProvisionServiceRequest;
+
+class ProvisionServiceResponse;
+
 class RegisterHealthCheckRequest;
 
 class RegisterHealthCheckResponse;
+
+typedef struct _ProvisionServiceRequest__isset {
+  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false) {}
+  bool token :1;
+  bool serviceName :1;
+  bool programmingLanguage :1;
+  bool organization :1;
+} _ProvisionServiceRequest__isset;
+
+class ProvisionServiceRequest {
+ public:
+
+  ProvisionServiceRequest(const ProvisionServiceRequest&);
+  ProvisionServiceRequest& operator=(const ProvisionServiceRequest&);
+  ProvisionServiceRequest() : token(), serviceName(), programmingLanguage(), organization() {
+  }
+
+  virtual ~ProvisionServiceRequest() throw();
+  std::string token;
+  std::string serviceName;
+  std::string programmingLanguage;
+  std::string organization;
+
+  _ProvisionServiceRequest__isset __isset;
+
+  void __set_token(const std::string& val);
+
+  void __set_serviceName(const std::string& val);
+
+  void __set_programmingLanguage(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const ProvisionServiceRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(serviceName == rhs.serviceName))
+      return false;
+    if (__isset.programmingLanguage != rhs.__isset.programmingLanguage)
+      return false;
+    else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const ProvisionServiceRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ProvisionServiceRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ProvisionServiceRequest &a, ProvisionServiceRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ProvisionServiceResponse__isset {
+  _ProvisionServiceResponse__isset() : bananaToken(false), serviceName(false) {}
+  bool bananaToken :1;
+  bool serviceName :1;
+} _ProvisionServiceResponse__isset;
+
+class ProvisionServiceResponse {
+ public:
+
+  ProvisionServiceResponse(const ProvisionServiceResponse&);
+  ProvisionServiceResponse& operator=(const ProvisionServiceResponse&);
+  ProvisionServiceResponse() : bananaToken(), serviceName() {
+  }
+
+  virtual ~ProvisionServiceResponse() throw();
+  std::string bananaToken;
+  std::string serviceName;
+
+  _ProvisionServiceResponse__isset __isset;
+
+  void __set_bananaToken(const std::string& val);
+
+  void __set_serviceName(const std::string& val);
+
+  bool operator == (const ProvisionServiceResponse & rhs) const
+  {
+    if (!(bananaToken == rhs.bananaToken))
+      return false;
+    if (!(serviceName == rhs.serviceName))
+      return false;
+    return true;
+  }
+  bool operator != (const ProvisionServiceResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ProvisionServiceResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ProvisionServiceResponse &a, ProvisionServiceResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 
 class RegisterHealthCheckRequest {

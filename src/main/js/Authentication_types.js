@@ -5,8 +5,105 @@
 //
 
 
-Severity = {
-  'INFORMATIONAL' : 1,
-  'WARNING' : 2,
-  'ERROR' : 3
+Role = {
+  'DEV' : 1,
+  'OWNER' : 2
 };
+Developer = function(args) {
+  this.email = null;
+  this.name = null;
+  this.username = null;
+  this.role = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.role !== undefined && args.role !== null) {
+      this.role = args.role;
+    }
+  }
+};
+Developer.prototype = {};
+Developer.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I32) {
+        this.role = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Developer.prototype.write = function(output) {
+  output.writeStructBegin('Developer');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.role !== null && this.role !== undefined) {
+    output.writeFieldBegin('role', Thrift.Type.I32, 4);
+    output.writeI32(this.role);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+

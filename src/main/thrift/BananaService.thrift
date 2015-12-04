@@ -18,6 +18,20 @@ typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
 
 
+struct ProvisionServiceRequest
+{
+    1: string token;
+    2: string serviceName;
+    3: optional string programmingLanguage;
+    4: string organization;
+}
+
+struct ProvisionServiceResponse
+{
+    1: string bananaToken;
+    2: string serviceName;
+}
+
 struct RegisterHealthCheckRequest
 {
    
@@ -31,9 +45,15 @@ struct RegisterHealthCheckResponse
 
 service BananaService
 {
-    RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws (1: OperationFailedException ex1,
-                                                                                                   2: InvalidArgumentException ex2,
-                                                                                                   3: InvalidCredentialsException ex3,
-                                                                                                   4: ServiceDoesNotExistException ex4
-                                                                                                    )
+    
+    ProvisionServiceResponse provisionService(ProvisionServiceRequest request) throws (OperationFailedException ex1,
+                                                                                       InvalidArgumentException ex2,
+                                                                                       InvalidCredentialsException ex3,
+                                                                                       ServiceDoesNotExistException ex4)
+    
+    
+    RegisterHealthCheckResponse registerHealthCheck(RegisterHealthCheckRequest request) throws (OperationFailedException ex1,
+                                                                                                InvalidArgumentException ex2,
+                                                                                                InvalidCredentialsException ex3,
+                                                                                                ServiceDoesNotExistException ex4)
 }

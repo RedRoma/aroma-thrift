@@ -22,6 +22,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     // Your initialization goes here
   }
 
+  void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) {
+    // Your implementation goes here
+    printf("provisionService\n");
+  }
+
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
     // Your implementation goes here
     printf("registerHealthCheck\n");

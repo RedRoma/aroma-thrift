@@ -24,8 +24,8 @@ enum Urgency
 
 struct Message
 {
-    1: string body
-    2: Urgency urgency = Urgency.PRESSING
+    1: string body;
+    2: Urgency urgency = Urgency.PRESSING;
 }
 
 struct Call
@@ -45,9 +45,3 @@ struct Service
     3: string name;
 }
 
-struct Developer
-{
-    1: string email;
-    2: optional string name;
-    3: optional string username;
-}

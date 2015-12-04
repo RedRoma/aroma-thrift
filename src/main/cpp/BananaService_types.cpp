@@ -14,6 +14,260 @@
 namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
 
 
+ProvisionServiceRequest::~ProvisionServiceRequest() throw() {
+}
+
+
+void ProvisionServiceRequest::__set_token(const std::string& val) {
+  this->token = val;
+}
+
+void ProvisionServiceRequest::__set_serviceName(const std::string& val) {
+  this->serviceName = val;
+}
+
+void ProvisionServiceRequest::__set_programmingLanguage(const std::string& val) {
+  this->programmingLanguage = val;
+__isset.programmingLanguage = true;
+}
+
+void ProvisionServiceRequest::__set_organization(const std::string& val) {
+  this->organization = val;
+}
+
+uint32_t ProvisionServiceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->token);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->serviceName);
+          this->__isset.serviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->programmingLanguage);
+          this->__isset.programmingLanguage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organization);
+          this->__isset.organization = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ProvisionServiceRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ProvisionServiceRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->token);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.programmingLanguage) {
+    xfer += oprot->writeFieldBegin("programmingLanguage", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->programmingLanguage);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->organization);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ProvisionServiceRequest &a, ProvisionServiceRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.serviceName, b.serviceName);
+  swap(a.programmingLanguage, b.programmingLanguage);
+  swap(a.organization, b.organization);
+  swap(a.__isset, b.__isset);
+}
+
+ProvisionServiceRequest::ProvisionServiceRequest(const ProvisionServiceRequest& other0) {
+  token = other0.token;
+  serviceName = other0.serviceName;
+  programmingLanguage = other0.programmingLanguage;
+  organization = other0.organization;
+  __isset = other0.__isset;
+}
+ProvisionServiceRequest& ProvisionServiceRequest::operator=(const ProvisionServiceRequest& other1) {
+  token = other1.token;
+  serviceName = other1.serviceName;
+  programmingLanguage = other1.programmingLanguage;
+  organization = other1.organization;
+  __isset = other1.__isset;
+  return *this;
+}
+void ProvisionServiceRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ProvisionServiceRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "serviceName=" << to_string(serviceName);
+  out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
+  out << ", " << "organization=" << to_string(organization);
+  out << ")";
+}
+
+
+ProvisionServiceResponse::~ProvisionServiceResponse() throw() {
+}
+
+
+void ProvisionServiceResponse::__set_bananaToken(const std::string& val) {
+  this->bananaToken = val;
+}
+
+void ProvisionServiceResponse::__set_serviceName(const std::string& val) {
+  this->serviceName = val;
+}
+
+uint32_t ProvisionServiceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->bananaToken);
+          this->__isset.bananaToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->serviceName);
+          this->__isset.serviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ProvisionServiceResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ProvisionServiceResponse");
+
+  xfer += oprot->writeFieldBegin("bananaToken", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->bananaToken);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ProvisionServiceResponse &a, ProvisionServiceResponse &b) {
+  using ::std::swap;
+  swap(a.bananaToken, b.bananaToken);
+  swap(a.serviceName, b.serviceName);
+  swap(a.__isset, b.__isset);
+}
+
+ProvisionServiceResponse::ProvisionServiceResponse(const ProvisionServiceResponse& other2) {
+  bananaToken = other2.bananaToken;
+  serviceName = other2.serviceName;
+  __isset = other2.__isset;
+}
+ProvisionServiceResponse& ProvisionServiceResponse::operator=(const ProvisionServiceResponse& other3) {
+  bananaToken = other3.bananaToken;
+  serviceName = other3.serviceName;
+  __isset = other3.__isset;
+  return *this;
+}
+void ProvisionServiceResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ProvisionServiceResponse(";
+  out << "bananaToken=" << to_string(bananaToken);
+  out << ", " << "serviceName=" << to_string(serviceName);
+  out << ")";
+}
+
+
 RegisterHealthCheckRequest::~RegisterHealthCheckRequest() throw() {
 }
 
@@ -62,11 +316,11 @@ void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b) {
   (void) b;
 }
 
-RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other0) {
-  (void) other0;
+RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other4) {
+  (void) other4;
 }
-RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other1) {
-  (void) other1;
+RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other5) {
+  (void) other5;
   return *this;
 }
 void RegisterHealthCheckRequest::printTo(std::ostream& out) const {
@@ -124,11 +378,11 @@ void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b) {
   (void) b;
 }
 
-RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other2) {
-  (void) other2;
+RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other6) {
+  (void) other6;
 }
-RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other3) {
-  (void) other3;
+RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other7) {
+  (void) other7;
   return *this;
 }
 void RegisterHealthCheckResponse::printTo(std::ostream& out) const {

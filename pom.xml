@@ -51,6 +51,7 @@
         <thrift.dest.dir.js>${project.basedir}/src/main/js</thrift.dest.dir.js>
         <thrift.dest.dir.node>${project.basedir}/src/main/nodejs</thrift.dest.dir.node>
         <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
+        <thrift.dest.dir.cocoa>${project.basedir}/src/main/cocoa</thrift.dest.dir.cocoa>
 
 
     </properties>
@@ -85,12 +86,14 @@
                                 <mkdir dir="${thrift.dest.dir.js}" />
                                 <mkdir dir="${thrift.dest.dir.node}" />
                                 <mkdir dir="${thrift.dest.dir.cpp}" />
+                                <mkdir dir="${thrift.dest.dir.cocoa}" />
 
                                 <delete includeemptydirs="true">
                                     <fileset dir="${thrift.dest.dir.doc}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.js}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.node}" includes="**/*"/>
                                     <fileset dir="${thrift.dest.dir.cpp}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.cocoa}" includes="**/*"/>
                                 </delete>
 
 
@@ -111,6 +114,8 @@
                                     <arg value="js:node"/>
                                     <arg value="--gen"/>
                                     <arg value="cpp"/>
+                                    <arg value="--gen"/>
+                                    <arg value="cocoa"/>
                                     <srcfile/>
                                     <fileset refid="thrift.src.files"/>
                                 </apply>
@@ -133,6 +138,10 @@
 
                                 <move todir="${thrift.dest.dir.cpp}">
                                     <fileset dir="${thrift.dest.dir}/gen-cpp" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.cocoa}">
+                                    <fileset dir="${thrift.dest.dir}/gen-cocoa" />
                                 </move>
 
                             </target>

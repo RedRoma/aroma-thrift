@@ -34,7 +34,7 @@ uint32_t ServiceEndpoint_healthPoke_args::read(::apache::thrift::protocol::TProt
     }
     switch (fid)
     {
-      case 1:
+      case -1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->request.read(iprot);
           this->__isset.request = true;
@@ -59,7 +59,7 @@ uint32_t ServiceEndpoint_healthPoke_args::write(::apache::thrift::protocol::TPro
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_args");
 
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, -1);
   xfer += this->request.write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -78,7 +78,7 @@ uint32_t ServiceEndpoint_healthPoke_pargs::write(::apache::thrift::protocol::TPr
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_pargs");
 
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, -1);
   xfer += (*(this->request)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -121,7 +121,7 @@ uint32_t ServiceEndpoint_healthPoke_result::read(::apache::thrift::protocol::TPr
           xfer += iprot->skip(ftype);
         }
         break;
-      case 1:
+      case -1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex1.read(iprot);
           this->__isset.ex1 = true;
@@ -147,13 +147,13 @@ uint32_t ServiceEndpoint_healthPoke_result::write(::apache::thrift::protocol::TP
 
   xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_result");
 
-  if (this->__isset.success) {
+  if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, -1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
     xfer += this->success.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex1.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -195,7 +195,7 @@ uint32_t ServiceEndpoint_healthPoke_presult::read(::apache::thrift::protocol::TP
           xfer += iprot->skip(ftype);
         }
         break;
-      case 1:
+      case -1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex1)).read(iprot);
           this->__isset.ex1 = true;

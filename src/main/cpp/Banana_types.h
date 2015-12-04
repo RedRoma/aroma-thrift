@@ -43,8 +43,6 @@ class Text;
 
 class Service;
 
-class Developer;
-
 typedef struct _Message__isset {
   _Message__isset() : body(false), urgency(true) {}
   bool body :1;
@@ -222,68 +220,6 @@ class Service {
 void swap(Service &a, Service &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Service& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _Developer__isset {
-  _Developer__isset() : email(false), name(false), username(false) {}
-  bool email :1;
-  bool name :1;
-  bool username :1;
-} _Developer__isset;
-
-class Developer {
- public:
-
-  Developer(const Developer&);
-  Developer& operator=(const Developer&);
-  Developer() : email(), name(), username() {
-  }
-
-  virtual ~Developer() throw();
-  std::string email;
-  std::string name;
-  std::string username;
-
-  _Developer__isset __isset;
-
-  void __set_email(const std::string& val);
-
-  void __set_name(const std::string& val);
-
-  void __set_username(const std::string& val);
-
-  bool operator == (const Developer & rhs) const
-  {
-    if (!(email == rhs.email))
-      return false;
-    if (__isset.name != rhs.__isset.name)
-      return false;
-    else if (__isset.name && !(name == rhs.name))
-      return false;
-    if (__isset.username != rhs.__isset.username)
-      return false;
-    else if (__isset.username && !(username == rhs.username))
-      return false;
-    return true;
-  }
-  bool operator != (const Developer &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Developer & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Developer &a, Developer &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
 {
   obj.printTo(out);
   return out;

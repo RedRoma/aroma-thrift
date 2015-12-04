@@ -36,7 +36,7 @@ ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
     }
     switch (fid)
     {
-      case 1:
+      case -1:
       if (ftype == Thrift.Type.STRUCT) {
         this.request = new ttypes.HealthPokeRequest();
         this.request.read(input);
@@ -59,7 +59,7 @@ ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
 ServiceEndpoint_healthPoke_args.prototype.write = function(output) {
   output.writeStructBegin('ServiceEndpoint_healthPoke_args');
   if (this.request !== null && this.request !== undefined) {
-    output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('request', Thrift.Type.STRUCT, -1);
     this.request.write(output);
     output.writeFieldEnd();
   }
@@ -106,7 +106,7 @@ ServiceEndpoint_healthPoke_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 1:
+      case -1:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex1 = new Exceptions_ttypes.OperationFailedException();
         this.ex1.read(input);
@@ -131,7 +131,7 @@ ServiceEndpoint_healthPoke_result.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.ex1 !== null && this.ex1 !== undefined) {
-    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, -1);
     this.ex1.write(output);
     output.writeFieldEnd();
   }

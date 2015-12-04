@@ -1,18 +1,22 @@
 namespace java  tech.aroma.banana.thrift.authentication
 namespace cocoa BananaAuthentication_
 
+include "Banana.thrift"
+
 typedef i32 int
 typedef i64 long
-
-
 typedef i64 timestamp
 
-/**
- * Determines how Severe a Call or
- */
-enum Severity
+enum Role
 {
-    INFORMATIONAL = 1,
-    WARNING = 2,
-    ERROR = 3
+    DEV = 1,
+    OWNER = 2
+}
+
+struct Developer
+{
+    1: string email;
+    2: optional string name;
+    3: optional string username;
+    4: Role role;
 }

@@ -196,12 +196,15 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a><br/>
+<a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
 <a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
@@ -234,13 +237,26 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
+<div class="definition"><h3 id="Struct_ProvisionServiceRequest">Struct: ProvisionServiceRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>programmingLanguage</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ProvisionServiceResponse">Struct: ProvisionServiceResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>bananaToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-<div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
+<div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
+<pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
 </pre></div></div></body></html>
