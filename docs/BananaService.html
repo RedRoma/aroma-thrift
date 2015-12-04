@@ -400,24 +400,53 @@ code { line-height: 20px; }
 <div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
+</pre>Sign in to the App and using a valid OAUTH Token.
+
+#developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
 <pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
+</pre>Provision a New Service to keep tabs on.
+
+#developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
 <pre><code><a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a></code> subscribeToService(<code><a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
+</pre>Subscribe to an existing service to get notifications.
+
+#developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_renewServiceToken">Function: BananaService.renewServiceToken</h4>
+</pre>Register an existing Service for Health Pokes. The Banana Service
+will then periodically poke the Service for health status.
+
+#developer
+#owner
+<br/></div><div class="definition"><h4 id="Fn_BananaService_renewServiceToken">Function: BananaService.renewServiceToken</h4>
 <pre><code><a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a></code> renewServiceToken(<code><a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
+</pre>Renew a Service Token that is close to being expired.
+Only an "owner" can perform this operation.
+
+#developer
+#owner
+<br/></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
 <pre><code><a href="#Struct_RegenerateTokenResponse">RegenerateTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateTokenRequest">RegenerateTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
+</pre>Regenerate a Token in case the existing one is lost or forgetten.
+Keep in mind that this will invalidate the existing ServiceToken.
+Only an "owner" can perform this opeartion.
+
+#developer
+#owner
+<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
+</pre>
+#service
+<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
 <pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-</pre></div></div></body></html>
+</pre>
+#service
+<br/></div></div></body></html>

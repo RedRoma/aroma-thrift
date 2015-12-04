@@ -53,7 +53,6 @@
         <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
         <thrift.dest.dir.cocoa>${project.basedir}/src/main/cocoa</thrift.dest.dir.cocoa>
 
-
     </properties>
 
     <dependencies>

@@ -21,13 +21,82 @@ namespace aroma { namespace banana { namespace thrift { namespace service {
 class BananaServiceIf {
  public:
   virtual ~BananaServiceIf() {}
+
+  /**
+   * Sign in to the App and using a valid OAUTH Token.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
+
+  /**
+   * Provision a New Service to keep tabs on.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   virtual void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) = 0;
+
+  /**
+   * Subscribe to an existing service to get notifications.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   virtual void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) = 0;
+
+  /**
+   * Register an existing Service for Health Pokes. The Banana Service
+   * will then periodically poke the Service for health status.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
+
+  /**
+   * Renew a Service Token that is close to being expired.
+   * Only an "owner" can perform this operation.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   virtual void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request) = 0;
+
+  /**
+   * Regenerate a Token in case the existing one is lost or forgetten.
+   * Keep in mind that this will invalidate the existing ServiceToken.
+   * Only an "owner" can perform this opeartion.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   virtual void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) = 0;
+
+  /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
   virtual void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) = 0;
+
+  /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
   virtual void sendMessageAsync(const SendMessageRequest& request) = 0;
 };
 

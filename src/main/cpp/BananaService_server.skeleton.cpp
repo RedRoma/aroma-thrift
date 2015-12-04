@@ -22,41 +22,102 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     // Your initialization goes here
   }
 
+  /**
+   * Sign in to the App and using a valid OAUTH Token.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   void signIn(SignInResponse& _return, const SignInRequest& request) {
     // Your implementation goes here
     printf("signIn\n");
   }
 
+  /**
+   * Provision a New Service to keep tabs on.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) {
     // Your implementation goes here
     printf("provisionService\n");
   }
 
+  /**
+   * Subscribe to an existing service to get notifications.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) {
     // Your implementation goes here
     printf("subscribeToService\n");
   }
 
+  /**
+   * Register an existing Service for Health Pokes. The Banana Service
+   * will then periodically poke the Service for health status.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
     // Your implementation goes here
     printf("registerHealthCheck\n");
   }
 
+  /**
+   * Renew a Service Token that is close to being expired.
+   * Only an "owner" can perform this operation.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request) {
     // Your implementation goes here
     printf("renewServiceToken\n");
   }
 
+  /**
+   * Regenerate a Token in case the existing one is lost or forgetten.
+   * Keep in mind that this will invalidate the existing ServiceToken.
+   * Only an "owner" can perform this opeartion.
+   * 
+   * #developer
+   * #owner
+   * 
+   * @param request
+   */
   void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) {
     // Your implementation goes here
     printf("regenerateToken\n");
   }
 
+  /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
   void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
     // Your implementation goes here
     printf("sendMessage\n");
   }
 
+  /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
   void sendMessageAsync(const SendMessageRequest& request) {
     // Your implementation goes here
     printf("sendMessageAsync\n");
