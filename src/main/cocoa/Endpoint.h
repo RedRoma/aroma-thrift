@@ -18,6 +18,7 @@
 #import "TProtocolFactory.h"
 #import "TBaseClient.h"
 
+#import "Authentication.h"
 #import "Banana.h"
 #import "Exceptions.h"
 
@@ -158,16 +159,19 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @interface BananaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
   NSString * __serviceName;
+  BananaAuthentication_ServiceToken * __serviceToken;
 
   BOOL __serviceName_isset;
+  BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ServiceToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithServiceName: (NSString *) serviceName;
+- (id) initWithServiceName: (NSString *) serviceName serviceToken: (BananaAuthentication_ServiceToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -179,6 +183,12 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) setServiceName: (NSString *) serviceName;
 #endif
 - (BOOL) serviceNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_ServiceToken *) serviceToken;
+- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
 
 @end
 

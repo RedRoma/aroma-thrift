@@ -429,6 +429,10 @@ void HealthPokeRequest::__set_serviceName(const std::string& val) {
   this->serviceName = val;
 }
 
+void HealthPokeRequest::__set_serviceToken(const  ::ServiceToken& val) {
+  this->serviceToken = val;
+}
+
 uint32_t HealthPokeRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -458,6 +462,14 @@ uint32_t HealthPokeRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->serviceToken.read(iprot);
+          this->__isset.serviceToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -479,6 +491,10 @@ uint32_t HealthPokeRequest::write(::apache::thrift::protocol::TProtocol* oprot) 
   xfer += oprot->writeString(this->serviceName);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->serviceToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -487,15 +503,18 @@ uint32_t HealthPokeRequest::write(::apache::thrift::protocol::TProtocol* oprot) 
 void swap(HealthPokeRequest &a, HealthPokeRequest &b) {
   using ::std::swap;
   swap(a.serviceName, b.serviceName);
+  swap(a.serviceToken, b.serviceToken);
   swap(a.__isset, b.__isset);
 }
 
 HealthPokeRequest::HealthPokeRequest(const HealthPokeRequest& other8) {
   serviceName = other8.serviceName;
+  serviceToken = other8.serviceToken;
   __isset = other8.__isset;
 }
 HealthPokeRequest& HealthPokeRequest::operator=(const HealthPokeRequest& other9) {
   serviceName = other9.serviceName;
+  serviceToken = other9.serviceToken;
   __isset = other9.__isset;
   return *this;
 }
@@ -503,6 +522,7 @@ void HealthPokeRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "HealthPokeRequest(";
   out << "serviceName=" << to_string(serviceName);
+  out << ", " << "serviceToken=" << to_string(serviceToken);
   out << ")";
 }
 

@@ -7,6 +7,7 @@ namespace cpp   tech.aroma.banana.thrift.endpoint
  * that the Banana Service "pokes" (polls) for Health Statuses.
  */
 
+include "Authentication.thrift"
 include "Banana.thrift"
 include "Exceptions.thrift"
 
@@ -53,6 +54,13 @@ union Endpoint
 struct HealthPokeRequest
 {
     1: string serviceName;
+    /** 
+     * We will include your ServiceToken so that you 
+     * can authenticate the call if you'd like. With
+     * the ServiceToken, you can verify that it is 
+     * us calling you.
+     */
+    2: Authentication.ServiceToken serviceToken;
 }
 
 struct HealthPokeResponse

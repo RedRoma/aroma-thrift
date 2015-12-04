@@ -7,6 +7,7 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
+var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 

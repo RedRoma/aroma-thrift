@@ -7,6 +7,7 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
+var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
@@ -279,9 +280,13 @@ Endpoint.prototype.write = function(output) {
 
 HealthPokeRequest = module.exports.HealthPokeRequest = function(args) {
   this.serviceName = null;
+  this.serviceToken = null;
   if (args) {
     if (args.serviceName !== undefined && args.serviceName !== null) {
       this.serviceName = args.serviceName;
+    }
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new Authentication_ttypes.ServiceToken(args.serviceToken);
     }
   }
 };
@@ -306,9 +311,14 @@ HealthPokeRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new Authentication_ttypes.ServiceToken();
+        this.serviceToken.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -323,6 +333,11 @@ HealthPokeRequest.prototype.write = function(output) {
   if (this.serviceName !== null && this.serviceName !== undefined) {
     output.writeFieldBegin('serviceName', Thrift.Type.STRING, 1);
     output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 2);
+    this.serviceToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

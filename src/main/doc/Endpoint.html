@@ -243,6 +243,11 @@ an HTTP Post Request with the same
 </table><br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceToken</td><td><code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></td><td>We will include your ServiceToken so that you
+can authenticate the call if you'd like. With
+the ServiceToken, you can verify that it is
+us calling you.
+</td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_HealthPokeResponse">Struct: HealthPokeResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>

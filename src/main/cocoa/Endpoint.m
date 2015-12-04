@@ -18,6 +18,7 @@
 #import "TProtocolFactory.h"
 #import "TBaseClient.h"
 
+#import "Authentication.h"
 #import "Banana.h"
 #import "Exceptions.h"
 
@@ -827,11 +828,13 @@
   return self;
 }
 
-- (id) initWithServiceName: (NSString *) serviceName
+- (id) initWithServiceName: (NSString *) serviceName serviceToken: (BananaAuthentication_ServiceToken *) serviceToken
 {
   self = [super init];
   __serviceName = [serviceName retain_stub];
   __serviceName_isset = YES;
+  __serviceToken = [serviceToken retain_stub];
+  __serviceToken_isset = YES;
   return self;
 }
 
@@ -843,6 +846,11 @@
     __serviceName = [[decoder decodeObjectForKey: @"serviceName"] retain_stub];
     __serviceName_isset = YES;
   }
+  if ([decoder containsValueForKey: @"serviceToken"])
+  {
+    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
+    __serviceToken_isset = YES;
+  }
   return self;
 }
 
@@ -851,6 +859,10 @@
   if (__serviceName_isset)
   {
     [encoder encodeObject: __serviceName forKey: @"serviceName"];
+  }
+  if (__serviceToken_isset)
+  {
+    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
   }
 }
 
@@ -861,6 +873,11 @@
   if (__serviceName_isset)
   {
     hash = (hash * 31) ^ [__serviceName hash];
+  }
+  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
+  if (__serviceToken_isset)
+  {
+    hash = (hash * 31) ^ [__serviceToken hash];
   }
   return hash;
 }
@@ -878,12 +895,17 @@
       (__serviceName_isset && ((__serviceName || other->__serviceName) && ![__serviceName isEqual:other->__serviceName]))) {
     return NO;
   }
+  if ((__serviceToken_isset != other->__serviceToken_isset) ||
+      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__serviceName release_stub];
+  [__serviceToken release_stub];
   [super dealloc_stub];
 }
 
@@ -906,6 +928,27 @@
   [__serviceName release_stub];
   __serviceName = nil;
   __serviceName_isset = NO;
+}
+
+- (BananaAuthentication_ServiceToken *) serviceToken {
+  return [[__serviceToken retain_stub] autorelease_stub];
+}
+
+- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken {
+  [serviceToken retain_stub];
+  [__serviceToken release_stub];
+  __serviceToken = serviceToken;
+  __serviceToken_isset = YES;
+}
+
+- (BOOL) serviceTokenIsSet {
+  return __serviceToken_isset;
+}
+
+- (void) unsetServiceToken {
+  [__serviceToken release_stub];
+  __serviceToken = nil;
+  __serviceToken_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -931,6 +974,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ServiceToken *fieldValue = [[BananaAuthentication_ServiceToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setServiceToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -949,6 +1002,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__serviceToken_isset) {
+    if (__serviceToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 2];
+      [__serviceToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -961,6 +1021,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HealthPokeRequest("];
   [ms appendString: @"serviceName:"];
   [ms appendFormat: @"\"%@\"", __serviceName];
+  [ms appendString: @",serviceToken:"];
+  [ms appendFormat: @"%@", __serviceToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

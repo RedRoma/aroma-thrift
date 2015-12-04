@@ -15,6 +15,7 @@
 #include <thrift/transport/TTransport.h>
 
 #include <thrift/cxxfunctional.h>
+#include "Authentication_types.h"
 #include "Banana_types.h"
 #include "Exceptions_types.h"
 
@@ -221,8 +222,9 @@ inline std::ostream& operator<<(std::ostream& out, const Endpoint& obj)
 }
 
 typedef struct _HealthPokeRequest__isset {
-  _HealthPokeRequest__isset() : serviceName(false) {}
+  _HealthPokeRequest__isset() : serviceName(false), serviceToken(false) {}
   bool serviceName :1;
+  bool serviceToken :1;
 } _HealthPokeRequest__isset;
 
 class HealthPokeRequest {
@@ -235,14 +237,19 @@ class HealthPokeRequest {
 
   virtual ~HealthPokeRequest() throw();
   std::string serviceName;
+   ::ServiceToken serviceToken;
 
   _HealthPokeRequest__isset __isset;
 
   void __set_serviceName(const std::string& val);
 
+  void __set_serviceToken(const  ::ServiceToken& val);
+
   bool operator == (const HealthPokeRequest & rhs) const
   {
     if (!(serviceName == rhs.serviceName))
+      return false;
+    if (!(serviceToken == rhs.serviceToken))
       return false;
     return true;
   }

@@ -272,9 +272,13 @@ Endpoint.prototype.write = function(output) {
 
 HealthPokeRequest = function(args) {
   this.serviceName = null;
+  this.serviceToken = null;
   if (args) {
     if (args.serviceName !== undefined && args.serviceName !== null) {
       this.serviceName = args.serviceName;
+    }
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new ServiceToken(args.serviceToken);
     }
   }
 };
@@ -299,9 +303,14 @@ HealthPokeRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new ServiceToken();
+        this.serviceToken.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -316,6 +325,11 @@ HealthPokeRequest.prototype.write = function(output) {
   if (this.serviceName !== null && this.serviceName !== undefined) {
     output.writeFieldBegin('serviceName', Thrift.Type.STRING, 1);
     output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 2);
+    this.serviceToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
