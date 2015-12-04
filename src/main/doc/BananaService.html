@@ -208,6 +208,7 @@ code { line-height: 20px; }
 </td>
 <td><a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
 <a href="#Typedef_Dimension">Dimension</a><br/>
+<a href="#Typedef_Endpoint">Endpoint</a><br/>
 <a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
@@ -229,18 +230,23 @@ code { line-height: 20px; }
 <a href="#Struct_SignInResponse">SignInResponse</a><br/>
 <a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a><br/>
 <a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
+<a href="#Typedef_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
 </td>
-<td><code><a href="#Const_MAX_ICON_DIMENSION">MAX_ICON_DIMENSION</a></code><br/>
+<td><code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
+<code><a href="#Const_MAX_ICON_DIMENSION">MAX_ICON_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_ICON_SIZE_IN_KILOBYTES">MAX_ICON_SIZE_IN_KILOBYTES</a></code><br/>
+<code><a href="#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
 </code></td>
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="#Typedef_Dimension">Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
+<tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
+<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
+<br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="#Typedef_Dimension">Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
 <br/></blockquote></td></tr><tr id="Const_MAX_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>40</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with a Service.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
@@ -263,6 +269,12 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_TcpEndpoint">Typedef: TcpEndpoint</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
@@ -316,7 +328,7 @@ code { line-height: 20px; }
 <tr><td>2</td><td>channel</td><td><code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>endpoint</td><td><code><a href="#Typedef_Endpoint">Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>

@@ -20,6 +20,7 @@
 #include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
+#include "Notifications_types.h"
 
 
 namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
@@ -37,6 +38,10 @@ typedef class  ::ServiceToken ServiceToken;
 typedef class  ::tech::aroma::banana::thrift::Dimension Dimension;
 
 typedef class  ::tech::aroma::banana::thrift::Image Image;
+
+typedef class  ::tech::aroma::banana::thrift::endpoint::Endpoint Endpoint;
+
+typedef class  ::tech::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
@@ -455,12 +460,12 @@ class RegisterHealthCheckRequest {
   }
 
   virtual ~RegisterHealthCheckRequest() throw();
-   ::tech::aroma::banana::thrift::endpoint::Endpoint endpoint;
+  Endpoint endpoint;
   DeveloperToken developerToken;
 
   _RegisterHealthCheckRequest__isset __isset;
 
-  void __set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val);
+  void __set_endpoint(const Endpoint& val);
 
   void __set_developerToken(const DeveloperToken& val);
 

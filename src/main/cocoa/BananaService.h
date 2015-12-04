@@ -23,6 +23,7 @@
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
+#import "Notifications.h"
 
 typedef Banana_int BananaService_int;
 
@@ -37,6 +38,10 @@ typedef BananaAuthentication_ServiceToken * BananaService_ServiceToken;
 typedef Banana_Dimension * BananaService_Dimension;
 
 typedef Banana_Image * BananaService_Image;
+
+typedef BananaEndpoint_Endpoint * BananaService_Endpoint;
+
+typedef BananaEndpoint_TcpEndpoint * BananaService_TcpEndpoint;
 
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
 
@@ -324,7 +329,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
-  BananaEndpoint_Endpoint * __endpoint;
+  BananaService_Endpoint __endpoint;
   BananaService_DeveloperToken __developerToken;
 
   BOOL __endpoint_isset;
@@ -332,12 +337,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaEndpoint_Endpoint * endpoint;
+@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaService_Endpoint endpoint;
 @property (nonatomic, retain, getter=developerToken, setter=setDeveloperToken:) BananaService_DeveloperToken developerToken;
 #endif
 
 - (id) init;
-- (id) initWithEndpoint: (BananaEndpoint_Endpoint *) endpoint developerToken: (BananaService_DeveloperToken) developerToken;
+- (id) initWithEndpoint: (BananaService_Endpoint) endpoint developerToken: (BananaService_DeveloperToken) developerToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -345,8 +350,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_Endpoint *) endpoint;
-- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint;
+- (BananaService_Endpoint) endpoint;
+- (void) setEndpoint: (BananaService_Endpoint) endpoint;
 #endif
 - (BOOL) endpointIsSet;
 
@@ -601,6 +606,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @interface BananaService_BananaServiceConstants : NSObject {
 }
++ (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT;
++ (BananaService_TcpEndpoint) BETA_ENDPOINT;
 + (BananaService_Dimension) MAX_ICON_DIMENSION;
 + (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES;
 @end

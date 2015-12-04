@@ -12,6 +12,7 @@ include "Banana.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
+include "Notifications.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -27,6 +28,8 @@ typedef Authentication.DeveloperToken DeveloperToken
 typedef Authentication.ServiceToken ServiceToken
 typedef Banana.Dimension Dimension
 typedef Banana.Image Image
+typedef Endpoint.Endpoint Endpoint
+typedef Endpoint.TcpEndpoint TcpEndpoint
 
 //Exception Typedefs
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
@@ -36,6 +39,15 @@ typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredExc
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
+/**
+ * This is the Banana Service Production Endpoint 
+ */
+const TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
+
+/**
+ * This is the Banana Service Beta Endpoint
+ */
+const TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
 
 
 struct SignInRequest
@@ -51,7 +63,7 @@ struct SignInResponse
 
 
 /** The Maximum Dimensions for an Icon submitted with a Service. */
-const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 }
+const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
 
 /** The Maximum Filesize for an Icon submitted with a Service. */
 const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
@@ -92,7 +104,7 @@ struct SubscribeToServiceResponse
 
 struct RegisterHealthCheckRequest
 {
-   1: Endpoint.Endpoint endpoint;
+   1: Endpoint endpoint;
    2: DeveloperToken developerToken;
 }
 

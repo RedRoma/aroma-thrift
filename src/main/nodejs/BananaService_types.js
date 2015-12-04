@@ -12,6 +12,7 @@ var Banana_ttypes = require('./Banana_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
+var Notifications_ttypes = require('./Notifications_types')
 
 
 var ttypes = module.exports = {};
@@ -1035,6 +1036,10 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
+ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
+'hostname' : 'banana-service.aroma.tech','port' : 7001});
+ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
+'hostname' : 'banana-service-beta.aroma.tech','port' : 7001});
 ttypes.MAX_ICON_DIMENSION = new Banana_ttypes.Dimension({
 'width' : 500,'height' : 500});
 ttypes.MAX_ICON_SIZE_IN_KILOBYTES = 40;

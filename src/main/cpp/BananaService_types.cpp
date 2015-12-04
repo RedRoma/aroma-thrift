@@ -802,7 +802,7 @@ RegisterHealthCheckRequest::~RegisterHealthCheckRequest() throw() {
 }
 
 
-void RegisterHealthCheckRequest::__set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val) {
+void RegisterHealthCheckRequest::__set_endpoint(const Endpoint& val) {
   this->endpoint = val;
 }
 

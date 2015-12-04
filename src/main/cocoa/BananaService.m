@@ -23,6 +23,7 @@
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
+#import "Notifications.h"
 
 #import "BananaService.h"
 
@@ -1712,7 +1713,7 @@
   return self;
 }
 
-- (id) initWithEndpoint: (BananaEndpoint_Endpoint *) endpoint developerToken: (BananaService_DeveloperToken) developerToken
+- (id) initWithEndpoint: (BananaService_Endpoint) endpoint developerToken: (BananaService_DeveloperToken) developerToken
 {
   self = [super init];
   __endpoint = [endpoint retain_stub];
@@ -3217,15 +3218,31 @@
 
 @end
 
-static BananaService_Dimension BananaService_MAX_ICON_DIMENSION = Banana_Dimension * tmp0 = [[[Banana_Dimension alloc] init] autorelease_stub];
-[tmp0 setWidth:500];
-[tmp0 setHeight:500];
+static BananaService_TcpEndpoint BananaService_PRODUCTION_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp0 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
+[tmp0 setHostname:@"banana-service.aroma.tech"];
+[tmp0 setPort:7001];
 
 tmp0;
+static BananaService_TcpEndpoint BananaService_BETA_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp1 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
+[tmp1 setHostname:@"banana-service-beta.aroma.tech"];
+[tmp1 setPort:7001];
+
+tmp1;
+static BananaService_Dimension BananaService_MAX_ICON_DIMENSION = Banana_Dimension * tmp2 = [[[Banana_Dimension alloc] init] autorelease_stub];
+[tmp2 setWidth:500];
+[tmp2 setHeight:500];
+
+tmp2;
 static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
+}
++ (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT{
+  return BananaService_PRODUCTION_ENDPOINT;
+}
++ (BananaService_TcpEndpoint) BETA_ENDPOINT{
+  return BananaService_BETA_ENDPOINT;
 }
 + (BananaService_Dimension) MAX_ICON_DIMENSION{
   return BananaService_MAX_ICON_DIMENSION;

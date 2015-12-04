@@ -1025,6 +1025,10 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
+PRODUCTION_ENDPOINT = new TcpEndpoint({
+'hostname' : 'banana-service.aroma.tech','port' : 7001});
+BETA_ENDPOINT = new TcpEndpoint({
+'hostname' : 'banana-service-beta.aroma.tech','port' : 7001});
 MAX_ICON_DIMENSION = new Dimension({
 'width' : 500,'height' : 500});
 MAX_ICON_SIZE_IN_KILOBYTES = 40;
