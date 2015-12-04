@@ -212,6 +212,7 @@ code { line-height: 20px; }
 <a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
+<a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
 <a href="#Typedef_ServiceToken">ServiceToken</a><br/>
 <a href="#Struct_SignInRequest">SignInRequest</a><br/>
@@ -261,6 +262,9 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_ServiceAlreadyRegisteredException">Typedef: ServiceAlreadyRegisteredException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceAlreadyRegisteredException">Exceptions.ServiceAlreadyRegisteredException</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
 </div>
@@ -309,7 +313,7 @@ code { line-height: 20px; }
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
 <pre><code><a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a></code> subscribeToService(<code><a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>

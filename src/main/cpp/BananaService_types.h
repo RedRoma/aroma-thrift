@@ -44,6 +44,8 @@ typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidCredentialsExce
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
+typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException;
+
 typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
 class SignInRequest;

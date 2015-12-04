@@ -3209,12 +3209,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   BananaService_InvalidArgumentException __ex2;
   BananaService_InvalidCredentialsException __ex3;
   BananaService_ServiceDoesNotExistException __ex4;
+  BananaService_ServiceAlreadyRegisteredException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
   BOOL __ex3_isset;
   BOOL __ex4_isset;
+  BOOL __ex5_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -3223,10 +3225,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
 @property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ServiceDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ServiceAlreadyRegisteredException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4;
+- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3263,6 +3266,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 #endif
 - (BOOL) ex4IsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaService_ServiceAlreadyRegisteredException) ex5;
+- (void) setEx5: (BananaService_ServiceAlreadyRegisteredException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
 @end
 
 @implementation BananaService_SubscribeToService_result
@@ -3275,7 +3284,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4
+- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3288,6 +3297,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex3_isset = YES;
   __ex4 = [ex4 retain_stub];
   __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
   return self;
 }
 
@@ -3319,6 +3330,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
     __ex4_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
   return self;
 }
 
@@ -3343,6 +3359,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex4_isset)
   {
     [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
   }
 }
 
@@ -3373,6 +3393,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex4_isset)
   {
     hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
   }
   return hash;
 }
@@ -3406,6 +3431,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
     return NO;
   }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3416,6 +3445,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [__ex2 release_stub];
   [__ex3 release_stub];
   [__ex4 release_stub];
+  [__ex5 release_stub];
   [super dealloc_stub];
 }
 
@@ -3524,6 +3554,27 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex4_isset = NO;
 }
 
+- (BananaException_ServiceAlreadyRegisteredException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_ServiceAlreadyRegisteredException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3589,6 +3640,16 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ServiceAlreadyRegisteredException *fieldValue = [[BananaException_ServiceAlreadyRegisteredException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3631,6 +3692,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       [__ex4 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -3652,6 +3719,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [ms appendFormat: @"%@", __ex3];
   [ms appendString: @",ex4:"];
   [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -4437,6 +4506,9 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   }
   if ([result ex4IsSet]) {
     @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"subscribeToService failed: unknown result"];

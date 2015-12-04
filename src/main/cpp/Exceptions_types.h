@@ -26,6 +26,8 @@ class InvalidCredentialsException;
 
 class ServiceDoesNotExistException;
 
+class ServiceAlreadyRegisteredException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -167,6 +169,54 @@ class ServiceDoesNotExistException : public ::apache::thrift::TException {
 void swap(ServiceDoesNotExistException &a, ServiceDoesNotExistException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ServiceDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ServiceAlreadyRegisteredException__isset {
+  _ServiceAlreadyRegisteredException__isset() : message(true) {}
+  bool message :1;
+} _ServiceAlreadyRegisteredException__isset;
+
+class ServiceAlreadyRegisteredException : public ::apache::thrift::TException {
+ public:
+
+  ServiceAlreadyRegisteredException(const ServiceAlreadyRegisteredException&);
+  ServiceAlreadyRegisteredException& operator=(const ServiceAlreadyRegisteredException&);
+  ServiceAlreadyRegisteredException() : message("This Channel has already been registered for this Service") {
+  }
+
+  virtual ~ServiceAlreadyRegisteredException() throw();
+  std::string message;
+
+  _ServiceAlreadyRegisteredException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ServiceAlreadyRegisteredException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ServiceAlreadyRegisteredException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ServiceAlreadyRegisteredException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(ServiceAlreadyRegisteredException &a, ServiceAlreadyRegisteredException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ServiceAlreadyRegisteredException& obj)
 {
   obj.printTo(out);
   return out;

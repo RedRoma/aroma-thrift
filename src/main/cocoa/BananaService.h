@@ -44,6 +44,8 @@ typedef BananaException_InvalidCredentialsException * BananaService_InvalidCrede
 
 typedef BananaException_OperationFailedException * BananaService_OperationFailedException;
 
+typedef BananaException_ServiceAlreadyRegisteredException * BananaService_ServiceAlreadyRegisteredException;
+
 typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoesNotExistException;
 
 @interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
@@ -342,7 +344,7 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 @protocol BananaService_BananaService <NSObject>
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_ProvisionServiceResponse *) provisionService: (BananaService_ProvisionServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
-- (BananaService_SubscribeToServiceResponse *) subscribeToService: (BananaService_SubscribeToServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
+- (BananaService_SubscribeToServiceResponse *) subscribeToService: (BananaService_SubscribeToServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_ServiceAlreadyRegisteredException, TException
 - (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 @end
 

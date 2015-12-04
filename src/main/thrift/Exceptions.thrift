@@ -35,6 +35,16 @@ exception ServiceDoesNotExistException
 }
 
 /**
+ * Thrown when trying to register a Channel for a Service that
+ * has already been registered before, either by the current Developer
+ * or by someone else.
+ */
+exception ServiceAlreadyRegisteredException
+{
+    1: string message = "This Channel has already been registered for this Service"
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  */
 exception OperationFailedException

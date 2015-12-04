@@ -382,12 +382,13 @@ class BananaService_subscribeToService_pargs {
 };
 
 typedef struct _BananaService_subscribeToService_result__isset {
-  _BananaService_subscribeToService_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_subscribeToService_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
+  bool ex5 :1;
 } _BananaService_subscribeToService_result__isset;
 
 class BananaService_subscribeToService_result {
@@ -404,6 +405,7 @@ class BananaService_subscribeToService_result {
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
   ServiceDoesNotExistException ex4;
+  ServiceAlreadyRegisteredException ex5;
 
   _BananaService_subscribeToService_result__isset __isset;
 
@@ -417,6 +419,8 @@ class BananaService_subscribeToService_result {
 
   void __set_ex4(const ServiceDoesNotExistException& val);
 
+  void __set_ex5(const ServiceAlreadyRegisteredException& val);
+
   bool operator == (const BananaService_subscribeToService_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -428,6 +432,8 @@ class BananaService_subscribeToService_result {
     if (!(ex3 == rhs.ex3))
       return false;
     if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
       return false;
     return true;
   }
@@ -443,12 +449,13 @@ class BananaService_subscribeToService_result {
 };
 
 typedef struct _BananaService_subscribeToService_presult__isset {
-  _BananaService_subscribeToService_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_subscribeToService_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
+  bool ex5 :1;
 } _BananaService_subscribeToService_presult__isset;
 
 class BananaService_subscribeToService_presult {
@@ -461,6 +468,7 @@ class BananaService_subscribeToService_presult {
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
   ServiceDoesNotExistException* ex4;
+  ServiceAlreadyRegisteredException* ex5;
 
   _BananaService_subscribeToService_presult__isset __isset;
 
