@@ -21,6 +21,7 @@ namespace tech { namespace aroma { namespace banana { namespace thrift { namespa
 class BananaServiceIf {
  public:
   virtual ~BananaServiceIf() {}
+  virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
   virtual void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) = 0;
   virtual void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) = 0;
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
@@ -53,6 +54,9 @@ class BananaServiceIfSingletonFactory : virtual public BananaServiceIfFactory {
 class BananaServiceNull : virtual public BananaServiceIf {
  public:
   virtual ~BananaServiceNull() {}
+  void signIn(SignInResponse& /* _return */, const SignInRequest& /* request */) {
+    return;
+  }
   void provisionService(ProvisionServiceResponse& /* _return */, const ProvisionServiceRequest& /* request */) {
     return;
   }
@@ -62,6 +66,134 @@ class BananaServiceNull : virtual public BananaServiceIf {
   void registerHealthCheck(RegisterHealthCheckResponse& /* _return */, const RegisterHealthCheckRequest& /* request */) {
     return;
   }
+};
+
+typedef struct _BananaService_signIn_args__isset {
+  _BananaService_signIn_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_signIn_args__isset;
+
+class BananaService_signIn_args {
+ public:
+
+  BananaService_signIn_args(const BananaService_signIn_args&);
+  BananaService_signIn_args& operator=(const BananaService_signIn_args&);
+  BananaService_signIn_args() {
+  }
+
+  virtual ~BananaService_signIn_args() throw();
+  SignInRequest request;
+
+  _BananaService_signIn_args__isset __isset;
+
+  void __set_request(const SignInRequest& val);
+
+  bool operator == (const BananaService_signIn_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_signIn_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_signIn_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_signIn_pargs {
+ public:
+
+
+  virtual ~BananaService_signIn_pargs() throw();
+  const SignInRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_signIn_result__isset {
+  _BananaService_signIn_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_signIn_result__isset;
+
+class BananaService_signIn_result {
+ public:
+
+  BananaService_signIn_result(const BananaService_signIn_result&);
+  BananaService_signIn_result& operator=(const BananaService_signIn_result&);
+  BananaService_signIn_result() {
+  }
+
+  virtual ~BananaService_signIn_result() throw();
+  SignInResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+
+  _BananaService_signIn_result__isset __isset;
+
+  void __set_success(const SignInResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  bool operator == (const BananaService_signIn_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_signIn_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_signIn_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_signIn_presult__isset {
+  _BananaService_signIn_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_signIn_presult__isset;
+
+class BananaService_signIn_presult {
+ public:
+
+
+  virtual ~BananaService_signIn_presult() throw();
+  SignInResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+
+  _BananaService_signIn_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
 };
 
 typedef struct _BananaService_provisionService_args__isset {
@@ -497,6 +629,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  void signIn(SignInResponse& _return, const SignInRequest& request);
+  void send_signIn(const SignInRequest& request);
+  void recv_signIn(SignInResponse& _return);
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   void send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return);
@@ -521,12 +656,14 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (BananaServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
+  void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_provisionService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_subscribeToService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
+    processMap_["signIn"] = &BananaServiceProcessor::process_signIn;
     processMap_["provisionService"] = &BananaServiceProcessor::process_provisionService;
     processMap_["subscribeToService"] = &BananaServiceProcessor::process_subscribeToService;
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
@@ -558,6 +695,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     ifaces_.push_back(iface);
   }
  public:
+  void signIn(SignInResponse& _return, const SignInRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->signIn(_return, request);
+    }
+    ifaces_[i]->signIn(_return, request);
+    return;
+  }
+
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -618,6 +765,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  void signIn(SignInResponse& _return, const SignInRequest& request);
+  int32_t send_signIn(const SignInRequest& request);
+  void recv_signIn(SignInResponse& _return, const int32_t seqid);
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   int32_t send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return, const int32_t seqid);

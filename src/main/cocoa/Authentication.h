@@ -139,25 +139,25 @@ typedef int64_t BananaAuthentication_timestamp;
 
 @interface BananaAuthentication_DeveloperToken : NSObject <TBase, NSCoding> {
   NSString * __id;
-  NSString * __oathProvider;
+  NSString * __oauthProvider;
   BananaAuthentication_timestamp __timeOfExpiration;
   NSString * __organization;
 
   BOOL __id_isset;
-  BOOL __oathProvider_isset;
+  BOOL __oauthProvider_isset;
   BOOL __timeOfExpiration_isset;
   BOOL __organization_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
-@property (nonatomic, retain, getter=oathProvider, setter=setOathProvider:) NSString * oathProvider;
+@property (nonatomic, retain, getter=oauthProvider, setter=setOauthProvider:) NSString * oauthProvider;
 @property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 #endif
 
 - (id) init;
-- (id) initWithId: (NSString *) id oathProvider: (NSString *) oathProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization;
+- (id) initWithId: (NSString *) id oauthProvider: (NSString *) oauthProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -171,10 +171,10 @@ typedef int64_t BananaAuthentication_timestamp;
 - (BOOL) idIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) oathProvider;
-- (void) setOathProvider: (NSString *) oathProvider;
+- (NSString *) oauthProvider;
+- (void) setOauthProvider: (NSString *) oauthProvider;
 #endif
-- (BOOL) oathProviderIsSet;
+- (BOOL) oauthProviderIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_timestamp) timeOfExpiration;
@@ -187,6 +187,76 @@ typedef int64_t BananaAuthentication_timestamp;
 - (void) setOrganization: (NSString *) organization;
 #endif
 - (BOOL) organizationIsSet;
+
+@end
+
+@interface BananaAuthentication_GithubToken : NSObject <TBase, NSCoding> {
+  NSString * __username;
+  NSString * __email;
+  NSString * __oauthToken;
+
+  BOOL __username_isset;
+  BOOL __email_isset;
+  BOOL __oauthToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=oauthToken, setter=setOauthToken:) NSString * oauthToken;
+#endif
+
+- (id) init;
+- (id) initWithUsername: (NSString *) username email: (NSString *) email oauthToken: (NSString *) oauthToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) oauthToken;
+- (void) setOauthToken: (NSString *) oauthToken;
+#endif
+- (BOOL) oauthTokenIsSet;
+
+@end
+
+@interface BananaAuthentication_OauthToken : NSObject <TBase, NSCoding> {
+  BananaAuthentication_GithubToken * __githubToken;
+
+  BOOL __githubToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) BananaAuthentication_GithubToken * githubToken;
+#endif
+
+- (id) init;
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_GithubToken *) githubToken;
+- (void) setGithubToken: (BananaAuthentication_GithubToken *) githubToken;
+#endif
+- (BOOL) githubTokenIsSet;
 
 @end
 

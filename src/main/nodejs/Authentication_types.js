@@ -213,15 +213,15 @@ ServiceToken.prototype.write = function(output) {
 
 DeveloperToken = module.exports.DeveloperToken = function(args) {
   this.id = null;
-  this.oathProvider = 'github';
+  this.oauthProvider = 'github';
   this.timeOfExpiration = null;
   this.organization = null;
   if (args) {
     if (args.id !== undefined && args.id !== null) {
       this.id = args.id;
     }
-    if (args.oathProvider !== undefined && args.oathProvider !== null) {
-      this.oathProvider = args.oathProvider;
+    if (args.oauthProvider !== undefined && args.oauthProvider !== null) {
+      this.oauthProvider = args.oauthProvider;
     }
     if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
       this.timeOfExpiration = args.timeOfExpiration;
@@ -254,7 +254,7 @@ DeveloperToken.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.oathProvider = input.readString();
+        this.oauthProvider = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -289,9 +289,9 @@ DeveloperToken.prototype.write = function(output) {
     output.writeString(this.id);
     output.writeFieldEnd();
   }
-  if (this.oathProvider !== null && this.oathProvider !== undefined) {
-    output.writeFieldBegin('oathProvider', Thrift.Type.STRING, 2);
-    output.writeString(this.oathProvider);
+  if (this.oauthProvider !== null && this.oauthProvider !== undefined) {
+    output.writeFieldBegin('oauthProvider', Thrift.Type.STRING, 2);
+    output.writeString(this.oauthProvider);
     output.writeFieldEnd();
   }
   if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
@@ -302,6 +302,144 @@ DeveloperToken.prototype.write = function(output) {
   if (this.organization !== null && this.organization !== undefined) {
     output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
     output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GithubToken = module.exports.GithubToken = function(args) {
+  this.username = null;
+  this.email = null;
+  this.oauthToken = null;
+  if (args) {
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.oauthToken !== undefined && args.oauthToken !== null) {
+      this.oauthToken = args.oauthToken;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field oauthToken is unset!');
+    }
+  }
+};
+GithubToken.prototype = {};
+GithubToken.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.oauthToken = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GithubToken.prototype.write = function(output) {
+  output.writeStructBegin('GithubToken');
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 1);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 2);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.oauthToken !== null && this.oauthToken !== undefined) {
+    output.writeFieldBegin('oauthToken', Thrift.Type.STRING, 3);
+    output.writeString(this.oauthToken);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+OauthToken = module.exports.OauthToken = function(args) {
+  this.githubToken = null;
+  if (args) {
+    if (args.githubToken !== undefined && args.githubToken !== null) {
+      this.githubToken = new ttypes.GithubToken(args.githubToken);
+    }
+  }
+};
+OauthToken.prototype = {};
+OauthToken.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.githubToken = new ttypes.GithubToken();
+        this.githubToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+OauthToken.prototype.write = function(output) {
+  output.writeStructBegin('OauthToken');
+  if (this.githubToken !== null && this.githubToken !== undefined) {
+    output.writeFieldBegin('githubToken', Thrift.Type.STRUCT, 1);
+    this.githubToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

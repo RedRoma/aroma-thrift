@@ -668,19 +668,19 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.oathProvider = @"github";
+  self.oauthProvider = @"github";
 
 #endif
   return self;
 }
 
-- (id) initWithId: (NSString *) id oathProvider: (NSString *) oathProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization
+- (id) initWithId: (NSString *) id oauthProvider: (NSString *) oauthProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization
 {
   self = [super init];
   __id = [id retain_stub];
   __id_isset = YES;
-  __oathProvider = [oathProvider retain_stub];
-  __oathProvider_isset = YES;
+  __oauthProvider = [oauthProvider retain_stub];
+  __oauthProvider_isset = YES;
   __timeOfExpiration = timeOfExpiration;
   __timeOfExpiration_isset = YES;
   __organization = [organization retain_stub];
@@ -696,10 +696,10 @@
     __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
     __id_isset = YES;
   }
-  if ([decoder containsValueForKey: @"oathProvider"])
+  if ([decoder containsValueForKey: @"oauthProvider"])
   {
-    __oathProvider = [[decoder decodeObjectForKey: @"oathProvider"] retain_stub];
-    __oathProvider_isset = YES;
+    __oauthProvider = [[decoder decodeObjectForKey: @"oauthProvider"] retain_stub];
+    __oauthProvider_isset = YES;
   }
   if ([decoder containsValueForKey: @"timeOfExpiration"])
   {
@@ -720,9 +720,9 @@
   {
     [encoder encodeObject: __id forKey: @"id"];
   }
-  if (__oathProvider_isset)
+  if (__oauthProvider_isset)
   {
-    [encoder encodeObject: __oathProvider forKey: @"oathProvider"];
+    [encoder encodeObject: __oauthProvider forKey: @"oauthProvider"];
   }
   if (__timeOfExpiration_isset)
   {
@@ -742,10 +742,10 @@
   {
     hash = (hash * 31) ^ [__id hash];
   }
-  hash = (hash * 31) ^ __oathProvider_isset ? 2654435761 : 0;
-  if (__oathProvider_isset)
+  hash = (hash * 31) ^ __oauthProvider_isset ? 2654435761 : 0;
+  if (__oauthProvider_isset)
   {
-    hash = (hash * 31) ^ [__oathProvider hash];
+    hash = (hash * 31) ^ [__oauthProvider hash];
   }
   hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
   if (__timeOfExpiration_isset)
@@ -773,8 +773,8 @@
       (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
     return NO;
   }
-  if ((__oathProvider_isset != other->__oathProvider_isset) ||
-      (__oathProvider_isset && ((__oathProvider || other->__oathProvider) && ![__oathProvider isEqual:other->__oathProvider]))) {
+  if ((__oauthProvider_isset != other->__oauthProvider_isset) ||
+      (__oauthProvider_isset && ((__oauthProvider || other->__oauthProvider) && ![__oauthProvider isEqual:other->__oauthProvider]))) {
     return NO;
   }
   if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
@@ -791,7 +791,7 @@
 - (void) dealloc
 {
   [__id release_stub];
-  [__oathProvider release_stub];
+  [__oauthProvider release_stub];
   [__organization release_stub];
   [super dealloc_stub];
 }
@@ -817,25 +817,25 @@
   __id_isset = NO;
 }
 
-- (NSString *) oathProvider {
-  return [[__oathProvider retain_stub] autorelease_stub];
+- (NSString *) oauthProvider {
+  return [[__oauthProvider retain_stub] autorelease_stub];
 }
 
-- (void) setOathProvider: (NSString *) oathProvider {
-  [oathProvider retain_stub];
-  [__oathProvider release_stub];
-  __oathProvider = oathProvider;
-  __oathProvider_isset = YES;
+- (void) setOauthProvider: (NSString *) oauthProvider {
+  [oauthProvider retain_stub];
+  [__oauthProvider release_stub];
+  __oauthProvider = oauthProvider;
+  __oauthProvider_isset = YES;
 }
 
-- (BOOL) oathProviderIsSet {
-  return __oathProvider_isset;
+- (BOOL) oauthProviderIsSet {
+  return __oauthProvider_isset;
 }
 
-- (void) unsetOathProvider {
-  [__oathProvider release_stub];
-  __oathProvider = nil;
-  __oathProvider_isset = NO;
+- (void) unsetOauthProvider {
+  [__oauthProvider release_stub];
+  __oauthProvider = nil;
+  __oauthProvider_isset = NO;
 }
 
 - (int64_t) timeOfExpiration {
@@ -902,7 +902,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOathProvider: fieldValue];
+          [self setOauthProvider: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -941,10 +941,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__oathProvider_isset) {
-    if (__oathProvider != nil) {
-      [outProtocol writeFieldBeginWithName: @"oathProvider" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __oathProvider];
+  if (__oauthProvider_isset) {
+    if (__oauthProvider != nil) {
+      [outProtocol writeFieldBeginWithName: @"oauthProvider" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __oauthProvider];
       [outProtocol writeFieldEnd];
     }
   }
@@ -972,12 +972,436 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_DeveloperToken("];
   [ms appendString: @"id:"];
   [ms appendFormat: @"\"%@\"", __id];
-  [ms appendString: @",oathProvider:"];
-  [ms appendFormat: @"\"%@\"", __oathProvider];
+  [ms appendString: @",oauthProvider:"];
+  [ms appendFormat: @"\"%@\"", __oauthProvider];
   [ms appendString: @",timeOfExpiration:"];
   [ms appendFormat: @"%qi", __timeOfExpiration];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_GithubToken
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUsername: (NSString *) username email: (NSString *) email oauthToken: (NSString *) oauthToken
+{
+  self = [super init];
+  __username = [username retain_stub];
+  __username_isset = YES;
+  __email = [email retain_stub];
+  __email_isset = YES;
+  __oauthToken = [oauthToken retain_stub];
+  __oauthToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"username"])
+  {
+    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
+    __username_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"email"])
+  {
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"oauthToken"])
+  {
+    __oauthToken = [[decoder decodeObjectForKey: @"oauthToken"] retain_stub];
+    __oauthToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__username_isset)
+  {
+    [encoder encodeObject: __username forKey: @"username"];
+  }
+  if (__email_isset)
+  {
+    [encoder encodeObject: __email forKey: @"email"];
+  }
+  if (__oauthToken_isset)
+  {
+    [encoder encodeObject: __oauthToken forKey: @"oauthToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
+  if (__username_isset)
+  {
+    hash = (hash * 31) ^ [__username hash];
+  }
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
+  {
+    hash = (hash * 31) ^ [__email hash];
+  }
+  hash = (hash * 31) ^ __oauthToken_isset ? 2654435761 : 0;
+  if (__oauthToken_isset)
+  {
+    hash = (hash * 31) ^ [__oauthToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_GithubToken class]]) {
+    return NO;
+  }
+  BananaAuthentication_GithubToken *other = (BananaAuthentication_GithubToken *)anObject;
+  if ((__username_isset != other->__username_isset) ||
+      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+    return NO;
+  }
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
+    return NO;
+  }
+  if ((__oauthToken_isset != other->__oauthToken_isset) ||
+      (__oauthToken_isset && ((__oauthToken || other->__oauthToken) && ![__oauthToken isEqual:other->__oauthToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__username release_stub];
+  [__email release_stub];
+  [__oauthToken release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) username {
+  return [[__username retain_stub] autorelease_stub];
+}
+
+- (void) setUsername: (NSString *) username {
+  [username retain_stub];
+  [__username release_stub];
+  __username = username;
+  __username_isset = YES;
+}
+
+- (BOOL) usernameIsSet {
+  return __username_isset;
+}
+
+- (void) unsetUsername {
+  [__username release_stub];
+  __username = nil;
+  __username_isset = NO;
+}
+
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
+}
+
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
+}
+
+- (BOOL) emailIsSet {
+  return __email_isset;
+}
+
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
+}
+
+- (NSString *) oauthToken {
+  return [[__oauthToken retain_stub] autorelease_stub];
+}
+
+- (void) setOauthToken: (NSString *) oauthToken {
+  [oauthToken retain_stub];
+  [__oauthToken release_stub];
+  __oauthToken = oauthToken;
+  __oauthToken_isset = YES;
+}
+
+- (BOOL) oauthTokenIsSet {
+  return __oauthToken_isset;
+}
+
+- (void) unsetOauthToken {
+  [__oauthToken release_stub];
+  __oauthToken = nil;
+  __oauthToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOauthToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GithubToken"];
+  if (__username_isset) {
+    if (__username != nil) {
+      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __username];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __email];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__oauthToken_isset) {
+    if (__oauthToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"oauthToken" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __oauthToken];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+  if (!__oauthToken_isset) {
+    @throw [TProtocolException exceptionWithName: @"TProtocolException"
+                               reason: @"Required field 'oauthToken' is not set."];
+  }
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_GithubToken("];
+  [ms appendString: @"username:"];
+  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @",email:"];
+  [ms appendFormat: @"\"%@\"", __email];
+  [ms appendString: @",oauthToken:"];
+  [ms appendFormat: @"\"%@\"", __oauthToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_OauthToken
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken
+{
+  self = [super init];
+  __githubToken = [githubToken retain_stub];
+  __githubToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"githubToken"])
+  {
+    __githubToken = [[decoder decodeObjectForKey: @"githubToken"] retain_stub];
+    __githubToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__githubToken_isset)
+  {
+    [encoder encodeObject: __githubToken forKey: @"githubToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __githubToken_isset ? 2654435761 : 0;
+  if (__githubToken_isset)
+  {
+    hash = (hash * 31) ^ [__githubToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_OauthToken class]]) {
+    return NO;
+  }
+  BananaAuthentication_OauthToken *other = (BananaAuthentication_OauthToken *)anObject;
+  if ((__githubToken_isset != other->__githubToken_isset) ||
+      (__githubToken_isset && ((__githubToken || other->__githubToken) && ![__githubToken isEqual:other->__githubToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__githubToken release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_GithubToken *) githubToken {
+  return [[__githubToken retain_stub] autorelease_stub];
+}
+
+- (void) setGithubToken: (BananaAuthentication_GithubToken *) githubToken {
+  [githubToken retain_stub];
+  [__githubToken release_stub];
+  __githubToken = githubToken;
+  __githubToken_isset = YES;
+}
+
+- (BOOL) githubTokenIsSet {
+  return __githubToken_isset;
+}
+
+- (void) unsetGithubToken {
+  [__githubToken release_stub];
+  __githubToken = nil;
+  __githubToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_GithubToken *fieldValue = [[BananaAuthentication_GithubToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setGithubToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"OauthToken"];
+  if (__githubToken_isset) {
+    if (__githubToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"githubToken" type: TType_STRUCT fieldID: 1];
+      [__githubToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_OauthToken("];
+  [ms appendString: @"githubToken:"];
+  [ms appendFormat: @"%@", __githubToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -197,6 +197,8 @@ code { line-height: 20px; }
 <td>Authentication</td><td></td>
 <td><a href="#Struct_Developer">Developer</a><br/>
 <a href="#Struct_DeveloperToken">DeveloperToken</a><br/>
+<a href="#Struct_GithubToken">GithubToken</a><br/>
+<a href="#Struct_OauthToken">OauthToken</a><br/>
 <a href="#Enum_Role">Role</a><br/>
 <a href="#Struct_ServiceToken">ServiceToken</a><br/>
 <a href="#Typedef_int">int</a><br/>
@@ -239,7 +241,15 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_DeveloperToken">Struct: DeveloperToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>oathProvider</td><td><code>string</code></td><td></td><td>optional</td><td><code>"github"</code></td></tr>
+<tr><td>2</td><td>oauthProvider</td><td><code>string</code></td><td></td><td>optional</td><td><code>"github"</code></td></tr>
 <tr><td>3</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GithubToken">Struct: GithubToken</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>email</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>oauthToken</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_OauthToken">Union: OauthToken</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>githubToken</td><td><code><a href="#Struct_GithubToken">GithubToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>

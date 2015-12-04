@@ -24,6 +24,8 @@ typedef i64 timestamp
  */
 
 //Struct Typedefs
+typedef Authentication.DeveloperToken DeveloperToken
+typedef Authentication.ServiceToken ServiceToken
 typedef Banana.Dimension Dimension
 typedef Banana.Image Image
 
@@ -32,6 +34,20 @@ typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
+
+
+
+struct SignInRequest
+{
+    1: Authentication.OauthToken oathToken;
+    2: string username;
+}
+
+struct SignInResponse
+{
+    1: DeveloperToken developerToken;
+}
+
 
 /** The Maximum Dimensions for an Icon submitted with a Service. */
 const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 }
@@ -52,6 +68,7 @@ struct ProvisionServiceResponse
 {
     1: string bananaToken;
     2: string serviceName;
+    3: ServiceToken serviceToken; 
 }
 
 struct SubscribeToServiceRequest
@@ -84,6 +101,10 @@ struct RegisterHealthCheckResponse
 service BananaService
 {
 
+    SignInResponse signIn(1: SignInRequest request) throws(1: OperationFailedException ex1,
+                                                           2: InvalidArgumentException ex2,
+                                                           3: InvalidCredentialsException ex3)
+    
     ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1: OperationFailedException ex1,
                                                                                          2: InvalidArgumentException ex2,
                                                                                          3: InvalidCredentialsException ex3,

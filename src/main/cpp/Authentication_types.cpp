@@ -332,9 +332,9 @@ void DeveloperToken::__set_id(const std::string& val) {
   this->id = val;
 }
 
-void DeveloperToken::__set_oathProvider(const std::string& val) {
-  this->oathProvider = val;
-__isset.oathProvider = true;
+void DeveloperToken::__set_oauthProvider(const std::string& val) {
+  this->oauthProvider = val;
+__isset.oauthProvider = true;
 }
 
 void DeveloperToken::__set_timeOfExpiration(const timestamp val) {
@@ -377,8 +377,8 @@ uint32_t DeveloperToken::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->oathProvider);
-          this->__isset.oathProvider = true;
+          xfer += iprot->readString(this->oauthProvider);
+          this->__isset.oauthProvider = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -420,9 +420,9 @@ uint32_t DeveloperToken::write(::apache::thrift::protocol::TProtocol* oprot) con
   xfer += oprot->writeString(this->id);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.oathProvider) {
-    xfer += oprot->writeFieldBegin("oathProvider", ::apache::thrift::protocol::T_STRING, 2);
-    xfer += oprot->writeString(this->oathProvider);
+  if (this->__isset.oauthProvider) {
+    xfer += oprot->writeFieldBegin("oauthProvider", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->oauthProvider);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 3);
@@ -442,7 +442,7 @@ uint32_t DeveloperToken::write(::apache::thrift::protocol::TProtocol* oprot) con
 void swap(DeveloperToken &a, DeveloperToken &b) {
   using ::std::swap;
   swap(a.id, b.id);
-  swap(a.oathProvider, b.oathProvider);
+  swap(a.oauthProvider, b.oauthProvider);
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.organization, b.organization);
   swap(a.__isset, b.__isset);
@@ -450,14 +450,14 @@ void swap(DeveloperToken &a, DeveloperToken &b) {
 
 DeveloperToken::DeveloperToken(const DeveloperToken& other5) {
   id = other5.id;
-  oathProvider = other5.oathProvider;
+  oauthProvider = other5.oauthProvider;
   timeOfExpiration = other5.timeOfExpiration;
   organization = other5.organization;
   __isset = other5.__isset;
 }
 DeveloperToken& DeveloperToken::operator=(const DeveloperToken& other6) {
   id = other6.id;
-  oathProvider = other6.oathProvider;
+  oauthProvider = other6.oauthProvider;
   timeOfExpiration = other6.timeOfExpiration;
   organization = other6.organization;
   __isset = other6.__isset;
@@ -467,9 +467,226 @@ void DeveloperToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "DeveloperToken(";
   out << "id=" << to_string(id);
-  out << ", " << "oathProvider="; (__isset.oathProvider ? (out << to_string(oathProvider)) : (out << "<null>"));
+  out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ")";
+}
+
+
+GithubToken::~GithubToken() throw() {
+}
+
+
+void GithubToken::__set_username(const std::string& val) {
+  this->username = val;
+}
+
+void GithubToken::__set_email(const std::string& val) {
+  this->email = val;
+__isset.email = true;
+}
+
+void GithubToken::__set_oauthToken(const std::string& val) {
+  this->oauthToken = val;
+}
+
+uint32_t GithubToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+  bool isset_oauthToken = false;
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->username);
+          this->__isset.username = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->email);
+          this->__isset.email = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->oauthToken);
+          isset_oauthToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  if (!isset_oauthToken)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  return xfer;
+}
+
+uint32_t GithubToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GithubToken");
+
+  xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->username);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.email) {
+    xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->email);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("oauthToken", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->oauthToken);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GithubToken &a, GithubToken &b) {
+  using ::std::swap;
+  swap(a.username, b.username);
+  swap(a.email, b.email);
+  swap(a.oauthToken, b.oauthToken);
+  swap(a.__isset, b.__isset);
+}
+
+GithubToken::GithubToken(const GithubToken& other7) {
+  username = other7.username;
+  email = other7.email;
+  oauthToken = other7.oauthToken;
+  __isset = other7.__isset;
+}
+GithubToken& GithubToken::operator=(const GithubToken& other8) {
+  username = other8.username;
+  email = other8.email;
+  oauthToken = other8.oauthToken;
+  __isset = other8.__isset;
+  return *this;
+}
+void GithubToken::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GithubToken(";
+  out << "username=" << to_string(username);
+  out << ", " << "email="; (__isset.email ? (out << to_string(email)) : (out << "<null>"));
+  out << ", " << "oauthToken=" << to_string(oauthToken);
+  out << ")";
+}
+
+
+OauthToken::~OauthToken() throw() {
+}
+
+
+void OauthToken::__set_githubToken(const GithubToken& val) {
+  this->githubToken = val;
+}
+
+uint32_t OauthToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->githubToken.read(iprot);
+          this->__isset.githubToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t OauthToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("OauthToken");
+
+  xfer += oprot->writeFieldBegin("githubToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->githubToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(OauthToken &a, OauthToken &b) {
+  using ::std::swap;
+  swap(a.githubToken, b.githubToken);
+  swap(a.__isset, b.__isset);
+}
+
+OauthToken::OauthToken(const OauthToken& other9) {
+  githubToken = other9.githubToken;
+  __isset = other9.__isset;
+}
+OauthToken& OauthToken::operator=(const OauthToken& other10) {
+  githubToken = other10.githubToken;
+  __isset = other10.__isset;
+  return *this;
+}
+void OauthToken::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "OauthToken(";
+  out << "githubToken=" << to_string(githubToken);
   out << ")";
 }
 

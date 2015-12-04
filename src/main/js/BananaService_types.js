@@ -5,6 +5,127 @@
 //
 
 
+SignInRequest = function(args) {
+  this.oathToken = null;
+  this.username = null;
+  if (args) {
+    if (args.oathToken !== undefined && args.oathToken !== null) {
+      this.oathToken = new OauthToken(args.oathToken);
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+  }
+};
+SignInRequest.prototype = {};
+SignInRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.oathToken = new OauthToken();
+        this.oathToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignInRequest.prototype.write = function(output) {
+  output.writeStructBegin('SignInRequest');
+  if (this.oathToken !== null && this.oathToken !== undefined) {
+    output.writeFieldBegin('oathToken', Thrift.Type.STRUCT, 1);
+    this.oathToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 2);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignInResponse = function(args) {
+  this.developerToken = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+SignInResponse.prototype = {};
+SignInResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignInResponse.prototype.write = function(output) {
+  output.writeStructBegin('SignInResponse');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ProvisionServiceRequest = function(args) {
   this.token = null;
   this.serviceName = null;
@@ -123,12 +244,16 @@ ProvisionServiceRequest.prototype.write = function(output) {
 ProvisionServiceResponse = function(args) {
   this.bananaToken = null;
   this.serviceName = null;
+  this.serviceToken = null;
   if (args) {
     if (args.bananaToken !== undefined && args.bananaToken !== null) {
       this.bananaToken = args.bananaToken;
     }
     if (args.serviceName !== undefined && args.serviceName !== null) {
       this.serviceName = args.serviceName;
+    }
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new ServiceToken(args.serviceToken);
     }
   }
 };
@@ -160,6 +285,14 @@ ProvisionServiceResponse.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new ServiceToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -179,6 +312,11 @@ ProvisionServiceResponse.prototype.write = function(output) {
   if (this.serviceName !== null && this.serviceName !== undefined) {
     output.writeFieldBegin('serviceName', Thrift.Type.STRING, 2);
     output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 3);
+    this.serviceToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

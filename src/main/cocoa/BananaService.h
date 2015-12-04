@@ -30,6 +30,10 @@ typedef int64_t BananaService_long;
 
 typedef int64_t BananaService_timestamp;
 
+typedef BananaAuthentication_DeveloperToken * BananaService_DeveloperToken;
+
+typedef BananaAuthentication_ServiceToken * BananaService_ServiceToken;
+
 typedef Banana_Dimension * BananaService_Dimension;
 
 typedef Banana_Image * BananaService_Image;
@@ -41,6 +45,67 @@ typedef BananaException_InvalidCredentialsException * BananaService_InvalidCrede
 typedef BananaException_OperationFailedException * BananaService_OperationFailedException;
 
 typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoesNotExistException;
+
+@interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
+  BananaAuthentication_OauthToken * __oathToken;
+  NSString * __username;
+
+  BOOL __oathToken_isset;
+  BOOL __username_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=oathToken, setter=setOathToken:) BananaAuthentication_OauthToken * oathToken;
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+#endif
+
+- (id) init;
+- (id) initWithOathToken: (BananaAuthentication_OauthToken *) oathToken username: (NSString *) username;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_OauthToken *) oathToken;
+- (void) setOathToken: (BananaAuthentication_OauthToken *) oathToken;
+#endif
+- (BOOL) oathTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+@end
+
+@interface BananaService_SignInResponse : NSObject <TBase, NSCoding> {
+  BananaService_DeveloperToken __developerToken;
+
+  BOOL __developerToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=developerToken, setter=setDeveloperToken:) BananaService_DeveloperToken developerToken;
+#endif
+
+- (id) init;
+- (id) initWithDeveloperToken: (BananaService_DeveloperToken) developerToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_DeveloperToken) developerToken;
+- (void) setDeveloperToken: (BananaService_DeveloperToken) developerToken;
+#endif
+- (BOOL) developerTokenIsSet;
+
+@end
 
 @interface BananaService_ProvisionServiceRequest : NSObject <TBase, NSCoding> {
   NSString * __token;
@@ -107,18 +172,21 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 @interface BananaService_ProvisionServiceResponse : NSObject <TBase, NSCoding> {
   NSString * __bananaToken;
   NSString * __serviceName;
+  BananaService_ServiceToken __serviceToken;
 
   BOOL __bananaToken_isset;
   BOOL __serviceName_isset;
+  BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=bananaToken, setter=setBananaToken:) NSString * bananaToken;
 @property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ServiceToken serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithBananaToken: (NSString *) bananaToken serviceName: (NSString *) serviceName;
+- (id) initWithBananaToken: (NSString *) bananaToken serviceName: (NSString *) serviceName serviceToken: (BananaService_ServiceToken) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -136,6 +204,12 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 - (void) setServiceName: (NSString *) serviceName;
 #endif
 - (BOOL) serviceNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ServiceToken) serviceToken;
+- (void) setServiceToken: (BananaService_ServiceToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
 
 @end
 
@@ -266,6 +340,7 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 @end
 
 @protocol BananaService_BananaService <NSObject>
+- (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_ProvisionServiceResponse *) provisionService: (BananaService_ProvisionServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 - (BananaService_SubscribeToServiceResponse *) subscribeToService: (BananaService_SubscribeToServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 - (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException

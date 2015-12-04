@@ -30,6 +30,10 @@ typedef int64_t long;
 
 typedef int64_t timestamp;
 
+typedef class  ::DeveloperToken DeveloperToken;
+
+typedef class  ::ServiceToken ServiceToken;
+
 typedef class  ::tech::aroma::banana::thrift::Dimension Dimension;
 
 typedef class  ::tech::aroma::banana::thrift::Image Image;
@@ -42,6 +46,10 @@ typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedExcepti
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
+class SignInRequest;
+
+class SignInResponse;
+
 class ProvisionServiceRequest;
 
 class ProvisionServiceResponse;
@@ -53,6 +61,104 @@ class SubscribeToServiceResponse;
 class RegisterHealthCheckRequest;
 
 class RegisterHealthCheckResponse;
+
+typedef struct _SignInRequest__isset {
+  _SignInRequest__isset() : oathToken(false), username(false) {}
+  bool oathToken :1;
+  bool username :1;
+} _SignInRequest__isset;
+
+class SignInRequest {
+ public:
+
+  SignInRequest(const SignInRequest&);
+  SignInRequest& operator=(const SignInRequest&);
+  SignInRequest() : username() {
+  }
+
+  virtual ~SignInRequest() throw();
+   ::OauthToken oathToken;
+  std::string username;
+
+  _SignInRequest__isset __isset;
+
+  void __set_oathToken(const  ::OauthToken& val);
+
+  void __set_username(const std::string& val);
+
+  bool operator == (const SignInRequest & rhs) const
+  {
+    if (!(oathToken == rhs.oathToken))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInRequest &a, SignInRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignInResponse__isset {
+  _SignInResponse__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _SignInResponse__isset;
+
+class SignInResponse {
+ public:
+
+  SignInResponse(const SignInResponse&);
+  SignInResponse& operator=(const SignInResponse&);
+  SignInResponse() {
+  }
+
+  virtual ~SignInResponse() throw();
+  DeveloperToken developerToken;
+
+  _SignInResponse__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const SignInResponse & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInResponse &a, SignInResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _ProvisionServiceRequest__isset {
   _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false) {}
@@ -129,9 +235,10 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRequest
 }
 
 typedef struct _ProvisionServiceResponse__isset {
-  _ProvisionServiceResponse__isset() : bananaToken(false), serviceName(false) {}
+  _ProvisionServiceResponse__isset() : bananaToken(false), serviceName(false), serviceToken(false) {}
   bool bananaToken :1;
   bool serviceName :1;
+  bool serviceToken :1;
 } _ProvisionServiceResponse__isset;
 
 class ProvisionServiceResponse {
@@ -145,6 +252,7 @@ class ProvisionServiceResponse {
   virtual ~ProvisionServiceResponse() throw();
   std::string bananaToken;
   std::string serviceName;
+  ServiceToken serviceToken;
 
   _ProvisionServiceResponse__isset __isset;
 
@@ -152,11 +260,15 @@ class ProvisionServiceResponse {
 
   void __set_serviceName(const std::string& val);
 
+  void __set_serviceToken(const ServiceToken& val);
+
   bool operator == (const ProvisionServiceResponse & rhs) const
   {
     if (!(bananaToken == rhs.bananaToken))
       return false;
     if (!(serviceName == rhs.serviceName))
+      return false;
+    if (!(serviceToken == rhs.serviceToken))
       return false;
     return true;
   }
