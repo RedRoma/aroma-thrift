@@ -515,6 +515,67 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_SendMessageRequest : NSObject <TBase, NSCoding> {
+  Banana_Message * __message;
+  BananaService_ServiceToken __serviceToken;
+
+  BOOL __message_isset;
+  BOOL __serviceToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) Banana_Message * message;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ServiceToken serviceToken;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (Banana_Message *) message serviceToken: (BananaService_ServiceToken) serviceToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (Banana_Message *) message;
+- (void) setMessage: (Banana_Message *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ServiceToken) serviceToken;
+- (void) setServiceToken: (BananaService_ServiceToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
+
+@end
+
+@interface BananaService_SendMessageResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
 @protocol BananaService_BananaService <NSObject>
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_ProvisionServiceResponse *) provisionService: (BananaService_ProvisionServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
@@ -522,6 +583,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_RenewServiceTokenResponse *) renewServiceToken: (BananaService_RenewServiceTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_RegenerateTokenResponse *) regenerateToken: (BananaService_RegenerateTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (void) sendMessageAsync: (BananaService_SendMessageRequest *) request;  // throws TException
 @end
 
 @interface BananaService_BananaServiceClient : TBaseClient <BananaService_BananaService> - (id) initWithProtocol: (id <TProtocol>) protocol;

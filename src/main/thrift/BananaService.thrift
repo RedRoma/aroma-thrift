@@ -124,6 +124,20 @@ struct RegenerateTokenResponse
     1: ServiceToken serviceToken;
 }
 
+//==============================
+// Operations performed by Services
+
+struct SendMessageRequest
+{
+    1: Banana.Message message;
+    2: ServiceToken serviceToken;
+}
+
+struct SendMessageResponse
+{
+    1: string message;
+}
+
 service BananaService
 {
 
@@ -161,4 +175,9 @@ service BananaService
                                                                                       4: ServiceDoesNotExistException ex4,
                                                                                       5: UnauthorizedException ex5)
     
+    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1: OperationFailedException ex1,
+                                                                          2: InvalidArgumentException ex2,
+                                                                          3: InvalidCredentialsException ex3)
+    
+    oneway void sendMessageAsync(1: SendMessageRequest request)
 }

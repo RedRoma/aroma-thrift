@@ -30,6 +30,8 @@ class ServiceDoesNotExistException;
 
 class ServiceAlreadyRegisteredException;
 
+class ThroughoutExceededException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -267,6 +269,54 @@ class ServiceAlreadyRegisteredException : public ::apache::thrift::TException {
 void swap(ServiceAlreadyRegisteredException &a, ServiceAlreadyRegisteredException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ServiceAlreadyRegisteredException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ThroughoutExceededException__isset {
+  _ThroughoutExceededException__isset() : message(true) {}
+  bool message :1;
+} _ThroughoutExceededException__isset;
+
+class ThroughoutExceededException : public ::apache::thrift::TException {
+ public:
+
+  ThroughoutExceededException(const ThroughoutExceededException&);
+  ThroughoutExceededException& operator=(const ThroughoutExceededException&);
+  ThroughoutExceededException() : message("You have exceeded your allocated throughput. Buy more or slow down") {
+  }
+
+  virtual ~ThroughoutExceededException() throw();
+  std::string message;
+
+  _ThroughoutExceededException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ThroughoutExceededException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ThroughoutExceededException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ThroughoutExceededException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(ThroughoutExceededException &a, ThroughoutExceededException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ThroughoutExceededException& obj)
 {
   obj.printTo(out);
   return out;

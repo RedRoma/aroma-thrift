@@ -27,6 +27,8 @@ class BananaServiceIf {
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
   virtual void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request) = 0;
   virtual void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) = 0;
+  virtual void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) = 0;
+  virtual void sendMessageAsync(const SendMessageRequest& request) = 0;
 };
 
 class BananaServiceIfFactory {
@@ -72,6 +74,12 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void regenerateToken(RegenerateTokenResponse& /* _return */, const RegenerateTokenRequest& /* request */) {
+    return;
+  }
+  void sendMessage(SendMessageResponse& /* _return */, const SendMessageRequest& /* request */) {
+    return;
+  }
+  void sendMessageAsync(const SendMessageRequest& /* request */) {
     return;
   }
 };
@@ -916,6 +924,183 @@ class BananaService_regenerateToken_presult {
 
 };
 
+typedef struct _BananaService_sendMessage_args__isset {
+  _BananaService_sendMessage_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_sendMessage_args__isset;
+
+class BananaService_sendMessage_args {
+ public:
+
+  BananaService_sendMessage_args(const BananaService_sendMessage_args&);
+  BananaService_sendMessage_args& operator=(const BananaService_sendMessage_args&);
+  BananaService_sendMessage_args() {
+  }
+
+  virtual ~BananaService_sendMessage_args() throw();
+  SendMessageRequest request;
+
+  _BananaService_sendMessage_args__isset __isset;
+
+  void __set_request(const SendMessageRequest& val);
+
+  bool operator == (const BananaService_sendMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_sendMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_sendMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_sendMessage_pargs {
+ public:
+
+
+  virtual ~BananaService_sendMessage_pargs() throw();
+  const SendMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_sendMessage_result__isset {
+  _BananaService_sendMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_sendMessage_result__isset;
+
+class BananaService_sendMessage_result {
+ public:
+
+  BananaService_sendMessage_result(const BananaService_sendMessage_result&);
+  BananaService_sendMessage_result& operator=(const BananaService_sendMessage_result&);
+  BananaService_sendMessage_result() {
+  }
+
+  virtual ~BananaService_sendMessage_result() throw();
+  SendMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+
+  _BananaService_sendMessage_result__isset __isset;
+
+  void __set_success(const SendMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  bool operator == (const BananaService_sendMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_sendMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_sendMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_sendMessage_presult__isset {
+  _BananaService_sendMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_sendMessage_presult__isset;
+
+class BananaService_sendMessage_presult {
+ public:
+
+
+  virtual ~BananaService_sendMessage_presult() throw();
+  SendMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+
+  _BananaService_sendMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_sendMessageAsync_args__isset {
+  _BananaService_sendMessageAsync_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_sendMessageAsync_args__isset;
+
+class BananaService_sendMessageAsync_args {
+ public:
+
+  BananaService_sendMessageAsync_args(const BananaService_sendMessageAsync_args&);
+  BananaService_sendMessageAsync_args& operator=(const BananaService_sendMessageAsync_args&);
+  BananaService_sendMessageAsync_args() {
+  }
+
+  virtual ~BananaService_sendMessageAsync_args() throw();
+  SendMessageRequest request;
+
+  _BananaService_sendMessageAsync_args__isset __isset;
+
+  void __set_request(const SendMessageRequest& val);
+
+  bool operator == (const BananaService_sendMessageAsync_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_sendMessageAsync_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_sendMessageAsync_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_sendMessageAsync_pargs {
+ public:
+
+
+  virtual ~BananaService_sendMessageAsync_pargs() throw();
+  const SendMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
 class BananaServiceClient : virtual public BananaServiceIf {
  public:
   BananaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -959,6 +1144,11 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request);
   void send_regenerateToken(const RegenerateTokenRequest& request);
   void recv_regenerateToken(RegenerateTokenResponse& _return);
+  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request);
+  void send_sendMessage(const SendMessageRequest& request);
+  void recv_sendMessage(SendMessageResponse& _return);
+  void sendMessageAsync(const SendMessageRequest& request);
+  void send_sendMessageAsync(const SendMessageRequest& request);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -980,6 +1170,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_renewServiceToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sendMessageAsync(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
@@ -989,6 +1181,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
     processMap_["renewServiceToken"] = &BananaServiceProcessor::process_renewServiceToken;
     processMap_["regenerateToken"] = &BananaServiceProcessor::process_regenerateToken;
+    processMap_["sendMessage"] = &BananaServiceProcessor::process_sendMessage;
+    processMap_["sendMessageAsync"] = &BananaServiceProcessor::process_sendMessageAsync;
   }
 
   virtual ~BananaServiceProcessor() {}
@@ -1077,6 +1271,25 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->sendMessage(_return, request);
+    }
+    ifaces_[i]->sendMessage(_return, request);
+    return;
+  }
+
+  void sendMessageAsync(const SendMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->sendMessageAsync(request);
+    }
+    ifaces_[i]->sendMessageAsync(request);
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -1125,6 +1338,11 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request);
   int32_t send_regenerateToken(const RegenerateTokenRequest& request);
   void recv_regenerateToken(RegenerateTokenResponse& _return, const int32_t seqid);
+  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request);
+  int32_t send_sendMessage(const SendMessageRequest& request);
+  void recv_sendMessage(SendMessageResponse& _return, const int32_t seqid);
+  void sendMessageAsync(const SendMessageRequest& request);
+  void send_sendMessageAsync(const SendMessageRequest& request);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

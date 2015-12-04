@@ -904,6 +904,127 @@ RegenerateTokenResponse.prototype.write = function(output) {
   return;
 };
 
+SendMessageRequest = function(args) {
+  this.message = null;
+  this.serviceToken = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = new Message(args.message);
+    }
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new ServiceToken(args.serviceToken);
+    }
+  }
+};
+SendMessageRequest.prototype = {};
+SendMessageRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.message = new Message();
+        this.message.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new ServiceToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SendMessageRequest.prototype.write = function(output) {
+  output.writeStructBegin('SendMessageRequest');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRUCT, 1);
+    this.message.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 2);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SendMessageResponse = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+SendMessageResponse.prototype = {};
+SendMessageResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SendMessageResponse.prototype.write = function(output) {
+  output.writeStructBegin('SendMessageResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MAX_ICON_DIMENSION = new Dimension({
 'width' : 500,'height' : 500});
 MAX_ICON_SIZE_IN_KILOBYTES = 40;

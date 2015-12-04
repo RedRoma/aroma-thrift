@@ -499,6 +499,103 @@ const char* ServiceAlreadyRegisteredException::what() const throw() {
 }
 
 
+ThroughoutExceededException::~ThroughoutExceededException() throw() {
+}
+
+
+void ThroughoutExceededException::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t ThroughoutExceededException::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ThroughoutExceededException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ThroughoutExceededException");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ThroughoutExceededException &a, ThroughoutExceededException &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+ThroughoutExceededException::ThroughoutExceededException(const ThroughoutExceededException& other10) : TException() {
+  message = other10.message;
+  __isset = other10.__isset;
+}
+ThroughoutExceededException& ThroughoutExceededException::operator=(const ThroughoutExceededException& other11) {
+  message = other11.message;
+  __isset = other11.__isset;
+  return *this;
+}
+void ThroughoutExceededException::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ThroughoutExceededException(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+const char* ThroughoutExceededException::what() const throw() {
+  try {
+    std::stringstream ss;
+    ss << "TException - service has thrown: " << *this;
+    this->thriftTExceptionMessageHolder_ = ss.str();
+    return this->thriftTExceptionMessageHolder_.c_str();
+  } catch (const std::exception&) {
+    return "TException - service has thrown: ThroughoutExceededException";
+  }
+}
+
+
 OperationFailedException::~OperationFailedException() throw() {
 }
 
@@ -568,13 +665,13 @@ void swap(OperationFailedException &a, OperationFailedException &b) {
   swap(a.__isset, b.__isset);
 }
 
-OperationFailedException::OperationFailedException(const OperationFailedException& other10) : TException() {
-  message = other10.message;
-  __isset = other10.__isset;
+OperationFailedException::OperationFailedException(const OperationFailedException& other12) : TException() {
+  message = other12.message;
+  __isset = other12.__isset;
 }
-OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other11) {
-  message = other11.message;
-  __isset = other11.__isset;
+OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other13) {
+  message = other13.message;
+  __isset = other13.__isset;
   return *this;
 }
 void OperationFailedException::printTo(std::ostream& out) const {

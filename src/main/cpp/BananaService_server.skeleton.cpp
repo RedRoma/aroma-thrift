@@ -52,6 +52,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("regenerateToken\n");
   }
 
+  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
+    // Your implementation goes here
+    printf("sendMessage\n");
+  }
+
+  void sendMessageAsync(const SendMessageRequest& request) {
+    // Your implementation goes here
+    printf("sendMessageAsync\n");
+  }
+
 };
 
 int main(int argc, char **argv) {

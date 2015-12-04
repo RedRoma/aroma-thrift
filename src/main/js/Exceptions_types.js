@@ -275,6 +275,60 @@ ServiceAlreadyRegisteredException.prototype.write = function(output) {
   return;
 };
 
+ThroughoutExceededException = function(args) {
+  this.message = 'You have exceeded your allocated throughput. Buy more or slow down';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(ThroughoutExceededException, Thrift.TException);
+ThroughoutExceededException.prototype.name = 'ThroughoutExceededException';
+ThroughoutExceededException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ThroughoutExceededException.prototype.write = function(output) {
+  output.writeStructBegin('ThroughoutExceededException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 OperationFailedException = function(args) {
   this.message = 'The Operation could not be completed';
   if (args) {

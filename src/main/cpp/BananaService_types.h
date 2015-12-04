@@ -74,6 +74,10 @@ class RegenerateTokenRequest;
 
 class RegenerateTokenResponse;
 
+class SendMessageRequest;
+
+class SendMessageResponse;
+
 typedef struct _SignInRequest__isset {
   _SignInRequest__isset() : oathToken(false), username(false) {}
   bool oathToken :1;
@@ -733,6 +737,104 @@ class RegenerateTokenResponse {
 void swap(RegenerateTokenResponse &a, RegenerateTokenResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SendMessageRequest__isset {
+  _SendMessageRequest__isset() : message(false), serviceToken(false) {}
+  bool message :1;
+  bool serviceToken :1;
+} _SendMessageRequest__isset;
+
+class SendMessageRequest {
+ public:
+
+  SendMessageRequest(const SendMessageRequest&);
+  SendMessageRequest& operator=(const SendMessageRequest&);
+  SendMessageRequest() {
+  }
+
+  virtual ~SendMessageRequest() throw();
+   ::tech::aroma::banana::thrift::Message message;
+  ServiceToken serviceToken;
+
+  _SendMessageRequest__isset __isset;
+
+  void __set_message(const  ::tech::aroma::banana::thrift::Message& val);
+
+  void __set_serviceToken(const ServiceToken& val);
+
+  bool operator == (const SendMessageRequest & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SendMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendMessageRequest &a, SendMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SendMessageResponse__isset {
+  _SendMessageResponse__isset() : message(false) {}
+  bool message :1;
+} _SendMessageResponse__isset;
+
+class SendMessageResponse {
+ public:
+
+  SendMessageResponse(const SendMessageResponse&);
+  SendMessageResponse& operator=(const SendMessageResponse&);
+  SendMessageResponse() : message() {
+  }
+
+  virtual ~SendMessageResponse() throw();
+  std::string message;
+
+  _SendMessageResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const SendMessageResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const SendMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendMessageResponse &a, SendMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendMessageResponse& obj)
 {
   obj.printTo(out);
   return out;

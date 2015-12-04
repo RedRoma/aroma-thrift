@@ -200,6 +200,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
 <li><a href="#Fn_BananaService_renewServiceToken">renewServiceToken</a></li>
+<li><a href="#Fn_BananaService_sendMessage">sendMessage</a></li>
+<li><a href="#Fn_BananaService_sendMessageAsync">sendMessageAsync</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
@@ -218,6 +220,8 @@ code { line-height: 20px; }
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
 <a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a><br/>
 <a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a><br/>
+<a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
+<a href="#Struct_SendMessageResponse">SendMessageResponse</a><br/>
 <a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
 <a href="#Typedef_ServiceToken">ServiceToken</a><br/>
@@ -332,6 +336,13 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_RegenerateTokenResponse">Struct: RegenerateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
 <div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
@@ -352,4 +363,9 @@ code { line-height: 20px; }
 </pre></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
 <pre><code><a href="#Struct_RegenerateTokenResponse">RegenerateTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateTokenRequest">RegenerateTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
+<pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
+<pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
 </pre></div></div></body></html>
