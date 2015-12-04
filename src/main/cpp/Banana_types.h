@@ -41,6 +41,15 @@ struct TimeUnit {
 
 extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
 
+struct ImageType {
+  enum type {
+    JPEG = 1,
+    PNG = 2
+  };
+};
+
+extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
+
 typedef int32_t int;
 
 typedef int64_t long;
@@ -51,11 +60,13 @@ class Message;
 
 class Call;
 
-class Text;
-
 class Service;
 
 class TimePeriod;
+
+class Dimension;
+
+class Image;
 
 typedef struct _Message__isset {
   _Message__isset() : body(false), urgency(true) {}
@@ -141,41 +152,6 @@ class Call {
 void swap(Call &a, Call &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Call& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-
-class Text {
- public:
-
-  Text(const Text&);
-  Text& operator=(const Text&);
-  Text() {
-  }
-
-  virtual ~Text() throw();
-
-  bool operator == (const Text & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const Text &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Text & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Text &a, Text &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Text& obj)
 {
   obj.printTo(out);
   return out;
@@ -279,6 +255,109 @@ class TimePeriod {
 void swap(TimePeriod &a, TimePeriod &b);
 
 inline std::ostream& operator<<(std::ostream& out, const TimePeriod& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class Dimension {
+ public:
+
+  Dimension(const Dimension&);
+  Dimension& operator=(const Dimension&);
+  Dimension() : width(0), height(0) {
+  }
+
+  virtual ~Dimension() throw();
+  int width;
+  int height;
+
+  void __set_width(const int val);
+
+  void __set_height(const int val);
+
+  bool operator == (const Dimension & rhs) const
+  {
+    if (!(width == rhs.width))
+      return false;
+    if (!(height == rhs.height))
+      return false;
+    return true;
+  }
+  bool operator != (const Dimension &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Dimension & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Dimension &a, Dimension &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Dimension& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Image__isset {
+  _Image__isset() : imageType(false), data(false), dimension(false) {}
+  bool imageType :1;
+  bool data :1;
+  bool dimension :1;
+} _Image__isset;
+
+class Image {
+ public:
+
+  Image(const Image&);
+  Image& operator=(const Image&);
+  Image() : imageType((ImageType::type)0), data() {
+  }
+
+  virtual ~Image() throw();
+  ImageType::type imageType;
+  std::string data;
+  Dimension dimension;
+
+  _Image__isset __isset;
+
+  void __set_imageType(const ImageType::type val);
+
+  void __set_data(const std::string& val);
+
+  void __set_dimension(const Dimension& val);
+
+  bool operator == (const Image & rhs) const
+  {
+    if (!(imageType == rhs.imageType))
+      return false;
+    if (!(data == rhs.data))
+      return false;
+    if (!(dimension == rhs.dimension))
+      return false;
+    return true;
+  }
+  bool operator != (const Image &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Image & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Image &a, Image &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 {
   obj.printTo(out);
   return out;

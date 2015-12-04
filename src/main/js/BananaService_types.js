@@ -10,6 +10,7 @@ ProvisionServiceRequest = function(args) {
   this.serviceName = null;
   this.programmingLanguage = null;
   this.organization = null;
+  this.icon = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = args.token;
@@ -22,6 +23,9 @@ ProvisionServiceRequest = function(args) {
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
+    }
+    if (args.icon !== undefined && args.icon !== null) {
+      this.icon = new Image(args.icon);
     }
   }
 };
@@ -67,6 +71,14 @@ ProvisionServiceRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.icon = new Image();
+        this.icon.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -96,6 +108,11 @@ ProvisionServiceRequest.prototype.write = function(output) {
   if (this.organization !== null && this.organization !== undefined) {
     output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
     output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.icon !== null && this.icon !== undefined) {
+    output.writeFieldBegin('icon', Thrift.Type.STRUCT, 5);
+    this.icon.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -386,3 +403,6 @@ RegisterHealthCheckResponse.prototype.write = function(output) {
   return;
 };
 
+MAX_ICON_DIMENSION = new Dimension({
+'width' : 500,'height' : 500});
+MAX_ICON_SIZE_IN_KILOBYTES = 40;

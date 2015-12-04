@@ -21,6 +21,10 @@ ttypes.TimeUnit = {
   'HOURS' : 3,
   'DAYS' : 4
 };
+ttypes.ImageType = {
+  'JPEG' : 1,
+  'PNG' : 2
+};
 Message = module.exports.Message = function(args) {
   this.body = null;
   this.urgency = 2;
@@ -110,34 +114,6 @@ Call.prototype.read = function(input) {
 
 Call.prototype.write = function(output) {
   output.writeStructBegin('Call');
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-Text = module.exports.Text = function(args) {
-};
-Text.prototype = {};
-Text.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-Text.prototype.write = function(output) {
-  output.writeStructBegin('Text');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -288,6 +264,159 @@ TimePeriod.prototype.write = function(output) {
   if (this.value !== null && this.value !== undefined) {
     output.writeFieldBegin('value', Thrift.Type.I32, 2);
     output.writeI32(this.value);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Dimension = module.exports.Dimension = function(args) {
+  this.width = null;
+  this.height = null;
+  if (args) {
+    if (args.width !== undefined && args.width !== null) {
+      this.width = args.width;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field width is unset!');
+    }
+    if (args.height !== undefined && args.height !== null) {
+      this.height = args.height;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field height is unset!');
+    }
+  }
+};
+Dimension.prototype = {};
+Dimension.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.width = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.height = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Dimension.prototype.write = function(output) {
+  output.writeStructBegin('Dimension');
+  if (this.width !== null && this.width !== undefined) {
+    output.writeFieldBegin('width', Thrift.Type.I32, 1);
+    output.writeI32(this.width);
+    output.writeFieldEnd();
+  }
+  if (this.height !== null && this.height !== undefined) {
+    output.writeFieldBegin('height', Thrift.Type.I32, 2);
+    output.writeI32(this.height);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Image = module.exports.Image = function(args) {
+  this.imageType = null;
+  this.data = null;
+  this.dimension = null;
+  if (args) {
+    if (args.imageType !== undefined && args.imageType !== null) {
+      this.imageType = args.imageType;
+    }
+    if (args.data !== undefined && args.data !== null) {
+      this.data = args.data;
+    }
+    if (args.dimension !== undefined && args.dimension !== null) {
+      this.dimension = new ttypes.Dimension(args.dimension);
+    }
+  }
+};
+Image.prototype = {};
+Image.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.imageType = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.data = input.readBinary();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.dimension = new ttypes.Dimension();
+        this.dimension.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Image.prototype.write = function(output) {
+  output.writeStructBegin('Image');
+  if (this.imageType !== null && this.imageType !== undefined) {
+    output.writeFieldBegin('imageType', Thrift.Type.I32, 1);
+    output.writeI32(this.imageType);
+    output.writeFieldEnd();
+  }
+  if (this.data !== null && this.data !== undefined) {
+    output.writeFieldBegin('data', Thrift.Type.STRING, 2);
+    output.writeBinary(this.data);
+    output.writeFieldEnd();
+  }
+  if (this.dimension !== null && this.dimension !== undefined) {
+    output.writeFieldBegin('dimension', Thrift.Type.STRUCT, 3);
+    this.dimension.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

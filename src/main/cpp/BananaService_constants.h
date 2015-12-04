@@ -15,6 +15,8 @@ class BananaServiceConstants {
  public:
   BananaServiceConstants();
 
+  Dimension MAX_ICON_DIMENSION;
+  int MAX_ICON_SIZE_IN_KILOBYTES;
 };
 
 extern const BananaServiceConstants g_BananaService_constants;

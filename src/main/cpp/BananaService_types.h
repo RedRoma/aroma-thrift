@@ -29,6 +29,10 @@ typedef int64_t long;
 
 typedef int64_t timestamp;
 
+typedef class  ::tech::aroma::banana::thrift::Dimension Dimension;
+
+typedef class  ::tech::aroma::banana::thrift::Image Image;
+
 typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
@@ -50,11 +54,12 @@ class RegisterHealthCheckRequest;
 class RegisterHealthCheckResponse;
 
 typedef struct _ProvisionServiceRequest__isset {
-  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false) {}
+  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false) {}
   bool token :1;
   bool serviceName :1;
   bool programmingLanguage :1;
   bool organization :1;
+  bool icon :1;
 } _ProvisionServiceRequest__isset;
 
 class ProvisionServiceRequest {
@@ -70,6 +75,7 @@ class ProvisionServiceRequest {
   std::string serviceName;
   std::string programmingLanguage;
   std::string organization;
+  Image icon;
 
   _ProvisionServiceRequest__isset __isset;
 
@@ -80,6 +86,8 @@ class ProvisionServiceRequest {
   void __set_programmingLanguage(const std::string& val);
 
   void __set_organization(const std::string& val);
+
+  void __set_icon(const Image& val);
 
   bool operator == (const ProvisionServiceRequest & rhs) const
   {
@@ -92,6 +100,10 @@ class ProvisionServiceRequest {
     else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
       return false;
     if (!(organization == rhs.organization))
+      return false;
+    if (__isset.icon != rhs.__isset.icon)
+      return false;
+    else if (__isset.icon && !(icon == rhs.icon))
       return false;
     return true;
   }

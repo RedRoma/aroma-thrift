@@ -35,6 +35,11 @@ void ProvisionServiceRequest::__set_organization(const std::string& val) {
   this->organization = val;
 }
 
+void ProvisionServiceRequest::__set_icon(const Image& val) {
+  this->icon = val;
+__isset.icon = true;
+}
+
 uint32_t ProvisionServiceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -88,6 +93,14 @@ uint32_t ProvisionServiceRequest::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->icon.read(iprot);
+          this->__isset.icon = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -122,6 +135,11 @@ uint32_t ProvisionServiceRequest::write(::apache::thrift::protocol::TProtocol* o
   xfer += oprot->writeString(this->organization);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.icon) {
+    xfer += oprot->writeFieldBegin("icon", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->icon.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -133,6 +151,7 @@ void swap(ProvisionServiceRequest &a, ProvisionServiceRequest &b) {
   swap(a.serviceName, b.serviceName);
   swap(a.programmingLanguage, b.programmingLanguage);
   swap(a.organization, b.organization);
+  swap(a.icon, b.icon);
   swap(a.__isset, b.__isset);
 }
 
@@ -141,6 +160,7 @@ ProvisionServiceRequest::ProvisionServiceRequest(const ProvisionServiceRequest& 
   serviceName = other0.serviceName;
   programmingLanguage = other0.programmingLanguage;
   organization = other0.organization;
+  icon = other0.icon;
   __isset = other0.__isset;
 }
 ProvisionServiceRequest& ProvisionServiceRequest::operator=(const ProvisionServiceRequest& other1) {
@@ -148,6 +168,7 @@ ProvisionServiceRequest& ProvisionServiceRequest::operator=(const ProvisionServi
   serviceName = other1.serviceName;
   programmingLanguage = other1.programmingLanguage;
   organization = other1.organization;
+  icon = other1.icon;
   __isset = other1.__isset;
   return *this;
 }
@@ -158,6 +179,7 @@ void ProvisionServiceRequest::printTo(std::ostream& out) const {
   out << ", " << "serviceName=" << to_string(serviceName);
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
   out << ", " << "organization=" << to_string(organization);
+  out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ")";
 }
 

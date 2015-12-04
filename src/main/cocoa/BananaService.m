@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon
 {
   self = [super init];
   __token = [token retain_stub];
@@ -46,6 +46,8 @@
   __programmingLanguage_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
+  __icon = [icon retain_stub];
+  __icon_isset = YES;
   return self;
 }
 
@@ -72,6 +74,11 @@
     __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
     __organization_isset = YES;
   }
+  if ([decoder containsValueForKey: @"icon"])
+  {
+    __icon = [[decoder decodeObjectForKey: @"icon"] retain_stub];
+    __icon_isset = YES;
+  }
   return self;
 }
 
@@ -92,6 +99,10 @@
   if (__organization_isset)
   {
     [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__icon_isset)
+  {
+    [encoder encodeObject: __icon forKey: @"icon"];
   }
 }
 
@@ -117,6 +128,11 @@
   if (__organization_isset)
   {
     hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __icon_isset ? 2654435761 : 0;
+  if (__icon_isset)
+  {
+    hash = (hash * 31) ^ [__icon hash];
   }
   return hash;
 }
@@ -146,6 +162,10 @@
       (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
     return NO;
   }
+  if ((__icon_isset != other->__icon_isset) ||
+      (__icon_isset && ((__icon || other->__icon) && ![__icon isEqual:other->__icon]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -155,6 +175,7 @@
   [__serviceName release_stub];
   [__programmingLanguage release_stub];
   [__organization release_stub];
+  [__icon release_stub];
   [super dealloc_stub];
 }
 
@@ -242,6 +263,27 @@
   __organization_isset = NO;
 }
 
+- (Banana_Image *) icon {
+  return [[__icon retain_stub] autorelease_stub];
+}
+
+- (void) setIcon: (Banana_Image *) icon {
+  [icon retain_stub];
+  [__icon release_stub];
+  __icon = icon;
+  __icon_isset = YES;
+}
+
+- (BOOL) iconIsSet {
+  return __icon_isset;
+}
+
+- (void) unsetIcon {
+  [__icon release_stub];
+  __icon = nil;
+  __icon_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -289,6 +331,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setIcon: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -328,6 +380,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__icon_isset) {
+    if (__icon != nil) {
+      [outProtocol writeFieldBeginWithName: @"icon" type: TType_STRUCT fieldID: 5];
+      [__icon write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -346,6 +405,8 @@
   [ms appendFormat: @"\"%@\"", __programmingLanguage];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",icon:"];
+  [ms appendFormat: @"%@", __icon];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1209,9 +1270,21 @@
 
 @end
 
+static BananaService_Dimension BananaService_MAX_ICON_DIMENSION = Banana_Dimension * tmp0 = [[[Banana_Dimension alloc] init] autorelease_stub];
+[tmp0 setWidth:500];
+[tmp0 setHeight:500];
+
+tmp0;
+static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
+}
++ (BananaService_Dimension) MAX_ICON_DIMENSION{
+  return BananaService_MAX_ICON_DIMENSION;
+}
++ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES{
+  return BananaService_MAX_ICON_SIZE_IN_KILOBYTES;
 }
 @end
 

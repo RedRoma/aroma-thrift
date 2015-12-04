@@ -16,12 +16,21 @@ typedef i32 int
 typedef i64 long
 typedef i64 timestamp
 
+//Struct Typedefs
+typedef Banana.Dimension Dimension
+typedef Banana.Image Image
+
 //Exception Typedefs
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
 
+/** The Maximum Dimensions for an Icon submitted with a Service. */
+const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 }
+
+/** The Maximum Filesize for an Icon submitted with a Service. */
+const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 struct ProvisionServiceRequest
 {
@@ -29,6 +38,7 @@ struct ProvisionServiceRequest
     2: string serviceName;
     3: optional string programmingLanguage;
     4: string organization;
+    5: optional Image icon;
 }
 
 struct ProvisionServiceResponse

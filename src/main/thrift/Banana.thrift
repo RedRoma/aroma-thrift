@@ -33,11 +33,6 @@ struct Call
 
 }
 
-struct Text
-{
-
-}
-
 struct Service
 {
     1: string owner;
@@ -59,4 +54,23 @@ struct TimePeriod
     1: required TimeUnit unit;
     /** The Value must be non-negative */
     2: required int value;
+}
+
+enum ImageType
+{
+    JPEG = 1,
+    PNG = 2
+}
+
+struct Dimension
+{
+    1: required int width;
+    2: required int height;
+}
+
+struct Image
+{
+    1: ImageType imageType;
+    2: binary data;
+    3: Dimension dimension;
 }

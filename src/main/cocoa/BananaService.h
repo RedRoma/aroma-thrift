@@ -29,6 +29,10 @@ typedef int64_t BananaService_long;
 
 typedef int64_t BananaService_timestamp;
 
+typedef Banana_Dimension * BananaService_Dimension;
+
+typedef Banana_Image * BananaService_Image;
+
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
 
 typedef BananaException_InvalidCredentialsException * BananaService_InvalidCredentialsException;
@@ -42,11 +46,13 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
   NSString * __serviceName;
   NSString * __programmingLanguage;
   NSString * __organization;
+  BananaService_Image __icon;
 
   BOOL __token_isset;
   BOOL __serviceName_isset;
   BOOL __programmingLanguage_isset;
   BOOL __organization_isset;
+  BOOL __icon_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -54,10 +60,11 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 @property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
 @property (nonatomic, retain, getter=programmingLanguage, setter=setProgrammingLanguage:) NSString * programmingLanguage;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization;
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -87,6 +94,12 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 - (void) setOrganization: (NSString *) organization;
 #endif
 - (BOOL) organizationIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_Image) icon;
+- (void) setIcon: (BananaService_Image) icon;
+#endif
+- (BOOL) iconIsSet;
 
 @end
 
@@ -253,4 +266,6 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 
 @interface BananaService_BananaServiceConstants : NSObject {
 }
++ (BananaService_Dimension) MAX_ICON_DIMENSION;
++ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES;
 @end
