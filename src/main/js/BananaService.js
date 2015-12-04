@@ -123,7 +123,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -1:
+      case 1:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex1 = new OperationFailedException();
         this.ex1.read(input);
@@ -131,7 +131,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -2:
+      case 2:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex2 = new InvalidArgumentException();
         this.ex2.read(input);
@@ -139,7 +139,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -3:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex3 = new InvalidCredentialsException();
         this.ex3.read(input);
@@ -147,7 +147,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -4:
+      case 4:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex4 = new ServiceDoesNotExistException();
         this.ex4.read(input);
@@ -172,22 +172,22 @@ BananaService_provisionService_result.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.ex1 !== null && this.ex1 !== undefined) {
-    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, -1);
+    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
     this.ex1.write(output);
     output.writeFieldEnd();
   }
   if (this.ex2 !== null && this.ex2 !== undefined) {
-    output.writeFieldBegin('ex2', Thrift.Type.STRUCT, -2);
+    output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
     this.ex2.write(output);
     output.writeFieldEnd();
   }
   if (this.ex3 !== null && this.ex3 !== undefined) {
-    output.writeFieldBegin('ex3', Thrift.Type.STRUCT, -3);
+    output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
     this.ex3.write(output);
     output.writeFieldEnd();
   }
   if (this.ex4 !== null && this.ex4 !== undefined) {
-    output.writeFieldBegin('ex4', Thrift.Type.STRUCT, -4);
+    output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
     this.ex4.write(output);
     output.writeFieldEnd();
   }
@@ -312,7 +312,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -1:
+      case 1:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex1 = new OperationFailedException();
         this.ex1.read(input);
@@ -320,7 +320,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -2:
+      case 2:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex2 = new InvalidArgumentException();
         this.ex2.read(input);
@@ -328,7 +328,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -3:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex3 = new InvalidCredentialsException();
         this.ex3.read(input);
@@ -336,7 +336,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -4:
+      case 4:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex4 = new ServiceDoesNotExistException();
         this.ex4.read(input);
@@ -361,22 +361,22 @@ BananaService_registerHealthCheck_result.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.ex1 !== null && this.ex1 !== undefined) {
-    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, -1);
+    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
     this.ex1.write(output);
     output.writeFieldEnd();
   }
   if (this.ex2 !== null && this.ex2 !== undefined) {
-    output.writeFieldBegin('ex2', Thrift.Type.STRUCT, -2);
+    output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
     this.ex2.write(output);
     output.writeFieldEnd();
   }
   if (this.ex3 !== null && this.ex3 !== undefined) {
-    output.writeFieldBegin('ex3', Thrift.Type.STRUCT, -3);
+    output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
     this.ex3.write(output);
     output.writeFieldEnd();
   }
   if (this.ex4 !== null && this.ex4 !== undefined) {
-    output.writeFieldBegin('ex4', Thrift.Type.STRUCT, -4);
+    output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
     this.ex4.write(output);
     output.writeFieldEnd();
   }

@@ -46,14 +46,14 @@ struct RegisterHealthCheckResponse
 service BananaService
 {
     
-    ProvisionServiceResponse provisionService(ProvisionServiceRequest request) throws (OperationFailedException ex1,
-                                                                                       InvalidArgumentException ex2,
-                                                                                       InvalidCredentialsException ex3,
-                                                                                       ServiceDoesNotExistException ex4)
+    ProvisionServiceResponse provisionService(ProvisionServiceRequest request) throws (1: OperationFailedException ex1,
+                                                                                       2: InvalidArgumentException ex2,
+                                                                                       3: InvalidCredentialsException ex3,
+                                                                                       4: ServiceDoesNotExistException ex4)
     
     
-    RegisterHealthCheckResponse registerHealthCheck(RegisterHealthCheckRequest request) throws (OperationFailedException ex1,
-                                                                                                InvalidArgumentException ex2,
-                                                                                                InvalidCredentialsException ex3,
-                                                                                                ServiceDoesNotExistException ex4)
+    RegisterHealthCheckResponse registerHealthCheck(RegisterHealthCheckRequest request) throws (1: OperationFailedException ex1,
+                                                                                                2: InvalidArgumentException ex2,
+                                                                                                3: InvalidCredentialsException ex3,
+                                                                                                4: ServiceDoesNotExistException ex4)
 }

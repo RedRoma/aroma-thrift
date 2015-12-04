@@ -1247,7 +1247,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -1:
+      case 1:
         if (fieldType == TType_STRUCT) {
           BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
@@ -1257,7 +1257,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -2:
+      case 2:
         if (fieldType == TType_STRUCT) {
           BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
@@ -1267,7 +1267,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -3:
+      case 3:
         if (fieldType == TType_STRUCT) {
           BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
           [fieldValue read: inProtocol];
@@ -1277,7 +1277,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -4:
+      case 4:
         if (fieldType == TType_STRUCT) {
           BananaException_ServiceDoesNotExistException *fieldValue = [[BananaException_ServiceDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
@@ -1307,25 +1307,25 @@
     }
   } else if (__ex1_isset) {
     if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: -1];
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
       [__ex1 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex2_isset) {
     if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: -2];
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex3_isset) {
     if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: -3];
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
       [__ex3 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex4_isset) {
     if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: -4];
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
       [__ex4 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
@@ -1880,7 +1880,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -1:
+      case 1:
         if (fieldType == TType_STRUCT) {
           BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
@@ -1890,7 +1890,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -2:
+      case 2:
         if (fieldType == TType_STRUCT) {
           BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
@@ -1900,7 +1900,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -3:
+      case 3:
         if (fieldType == TType_STRUCT) {
           BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
           [fieldValue read: inProtocol];
@@ -1910,7 +1910,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -4:
+      case 4:
         if (fieldType == TType_STRUCT) {
           BananaException_ServiceDoesNotExistException *fieldValue = [[BananaException_ServiceDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
@@ -1940,25 +1940,25 @@
     }
   } else if (__ex1_isset) {
     if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: -1];
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
       [__ex1 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex2_isset) {
     if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: -2];
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex3_isset) {
     if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: -3];
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
       [__ex3 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   } else if (__ex4_isset) {
     if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: -4];
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
       [__ex4 write: outProtocol];
       [outProtocol writeFieldEnd];
     }

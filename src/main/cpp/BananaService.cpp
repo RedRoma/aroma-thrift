@@ -121,7 +121,7 @@ uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol:
           xfer += iprot->skip(ftype);
         }
         break;
-      case -1:
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex1.read(iprot);
           this->__isset.ex1 = true;
@@ -129,7 +129,7 @@ uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol:
           xfer += iprot->skip(ftype);
         }
         break;
-      case -2:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex2.read(iprot);
           this->__isset.ex2 = true;
@@ -137,7 +137,7 @@ uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol:
           xfer += iprot->skip(ftype);
         }
         break;
-      case -3:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex3.read(iprot);
           this->__isset.ex3 = true;
@@ -145,7 +145,7 @@ uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol:
           xfer += iprot->skip(ftype);
         }
         break;
-      case -4:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex4.read(iprot);
           this->__isset.ex4 = true;
@@ -171,25 +171,25 @@ uint32_t BananaService_provisionService_result::write(::apache::thrift::protocol
 
   xfer += oprot->writeStructBegin("BananaService_provisionService_result");
 
-  if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, -4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, -3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, -2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, -1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.success) {
+  if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
     xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -231,7 +231,7 @@ uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case -1:
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex1)).read(iprot);
           this->__isset.ex1 = true;
@@ -239,7 +239,7 @@ uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case -2:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex2)).read(iprot);
           this->__isset.ex2 = true;
@@ -247,7 +247,7 @@ uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case -3:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex3)).read(iprot);
           this->__isset.ex3 = true;
@@ -255,7 +255,7 @@ uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol
           xfer += iprot->skip(ftype);
         }
         break;
-      case -4:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex4)).read(iprot);
           this->__isset.ex4 = true;
@@ -388,7 +388,7 @@ uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protoc
           xfer += iprot->skip(ftype);
         }
         break;
-      case -1:
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex1.read(iprot);
           this->__isset.ex1 = true;
@@ -396,7 +396,7 @@ uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protoc
           xfer += iprot->skip(ftype);
         }
         break;
-      case -2:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex2.read(iprot);
           this->__isset.ex2 = true;
@@ -404,7 +404,7 @@ uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protoc
           xfer += iprot->skip(ftype);
         }
         break;
-      case -3:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex3.read(iprot);
           this->__isset.ex3 = true;
@@ -412,7 +412,7 @@ uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protoc
           xfer += iprot->skip(ftype);
         }
         break;
-      case -4:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ex4.read(iprot);
           this->__isset.ex4 = true;
@@ -438,25 +438,25 @@ uint32_t BananaService_registerHealthCheck_result::write(::apache::thrift::proto
 
   xfer += oprot->writeStructBegin("BananaService_registerHealthCheck_result");
 
-  if (this->__isset.ex4) {
-    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, -4);
-    xfer += this->ex4.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex3) {
-    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, -3);
-    xfer += this->ex3.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex2) {
-    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, -2);
-    xfer += this->ex2.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex1) {
-    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, -1);
-    xfer += this->ex1.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.success) {
+  if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
     xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -498,7 +498,7 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
           xfer += iprot->skip(ftype);
         }
         break;
-      case -1:
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex1)).read(iprot);
           this->__isset.ex1 = true;
@@ -506,7 +506,7 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
           xfer += iprot->skip(ftype);
         }
         break;
-      case -2:
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex2)).read(iprot);
           this->__isset.ex2 = true;
@@ -514,7 +514,7 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
           xfer += iprot->skip(ftype);
         }
         break;
-      case -3:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex3)).read(iprot);
           this->__isset.ex3 = true;
@@ -522,7 +522,7 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
           xfer += iprot->skip(ftype);
         }
         break;
-      case -4:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex4)).read(iprot);
           this->__isset.ex4 = true;

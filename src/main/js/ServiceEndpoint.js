@@ -99,7 +99,7 @@ ServiceEndpoint_healthPoke_result.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case -1:
+      case 1:
       if (ftype == Thrift.Type.STRUCT) {
         this.ex1 = new OperationFailedException();
         this.ex1.read(input);
@@ -124,7 +124,7 @@ ServiceEndpoint_healthPoke_result.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.ex1 !== null && this.ex1 !== undefined) {
-    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, -1);
+    output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
     this.ex1.write(output);
     output.writeFieldEnd();
   }

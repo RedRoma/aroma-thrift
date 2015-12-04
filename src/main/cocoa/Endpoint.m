@@ -1546,7 +1546,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case -1:
+      case 1:
         if (fieldType == TType_STRUCT) {
           BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
@@ -1576,7 +1576,7 @@
     }
   } else if (__ex1_isset) {
     if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: -1];
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
       [__ex1 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
