@@ -33,19 +33,30 @@
   return self;
 }
 
-- (id) initWithBody: (NSString *) body urgency: (int) urgency
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived
 {
   self = [super init];
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
   __body = [body retain_stub];
   __body_isset = YES;
   __urgency = urgency;
   __urgency_isset = YES;
+  __timeMessageSent = timeMessageSent;
+  __timeMessageSent_isset = YES;
+  __timeMessageReceived = timeMessageReceived;
+  __timeMessageReceived_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
   if ([decoder containsValueForKey: @"body"])
   {
     __body = [[decoder decodeObjectForKey: @"body"] retain_stub];
@@ -56,11 +67,25 @@
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
   }
+  if ([decoder containsValueForKey: @"timeMessageSent"])
+  {
+    __timeMessageSent = [decoder decodeInt64ForKey: @"timeMessageSent"];
+    __timeMessageSent_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeMessageReceived"])
+  {
+    __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
+    __timeMessageReceived_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
   if (__body_isset)
   {
     [encoder encodeObject: __body forKey: @"body"];
@@ -69,11 +94,24 @@
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
   }
+  if (__timeMessageSent_isset)
+  {
+    [encoder encodeInt64: __timeMessageSent forKey: @"timeMessageSent"];
+  }
+  if (__timeMessageReceived_isset)
+  {
+    [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
   hash = (hash * 31) ^ __body_isset ? 2654435761 : 0;
   if (__body_isset)
   {
@@ -83,6 +121,16 @@
   if (__urgency_isset)
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeMessageSent_isset ? 2654435761 : 0;
+  if (__timeMessageSent_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeMessageSent) hash];
+  }
+  hash = (hash * 31) ^ __timeMessageReceived_isset ? 2654435761 : 0;
+  if (__timeMessageReceived_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
   }
   return hash;
 }
@@ -96,6 +144,10 @@
     return NO;
   }
   Banana_Message *other = (Banana_Message *)anObject;
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
   if ((__body_isset != other->__body_isset) ||
       (__body_isset && ((__body || other->__body) && ![__body isEqual:other->__body]))) {
     return NO;
@@ -104,13 +156,43 @@
       (__urgency_isset && (__urgency != other->__urgency))) {
     return NO;
   }
+  if ((__timeMessageSent_isset != other->__timeMessageSent_isset) ||
+      (__timeMessageSent_isset && (__timeMessageSent != other->__timeMessageSent))) {
+    return NO;
+  }
+  if ((__timeMessageReceived_isset != other->__timeMessageReceived_isset) ||
+      (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
+  [__messageId release_stub];
   [__body release_stub];
   [super dealloc_stub];
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
 }
 
 - (NSString *) body {
@@ -151,6 +233,40 @@
   __urgency_isset = NO;
 }
 
+- (int64_t) timeMessageSent {
+  return __timeMessageSent;
+}
+
+- (void) setTimeMessageSent: (int64_t) timeMessageSent {
+  __timeMessageSent = timeMessageSent;
+  __timeMessageSent_isset = YES;
+}
+
+- (BOOL) timeMessageSentIsSet {
+  return __timeMessageSent_isset;
+}
+
+- (void) unsetTimeMessageSent {
+  __timeMessageSent_isset = NO;
+}
+
+- (int64_t) timeMessageReceived {
+  return __timeMessageReceived;
+}
+
+- (void) setTimeMessageReceived: (int64_t) timeMessageReceived {
+  __timeMessageReceived = timeMessageReceived;
+  __timeMessageReceived_isset = YES;
+}
+
+- (BOOL) timeMessageReceivedIsSet {
+  return __timeMessageReceived_isset;
+}
+
+- (void) unsetTimeMessageReceived {
+  __timeMessageReceived_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -169,15 +285,39 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setBody: fieldValue];
+          [self setMessageId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
           [self setUrgency: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeMessageSent: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeMessageReceived: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -193,16 +333,33 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"Message"];
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__body_isset) {
     if (__body != nil) {
-      [outProtocol writeFieldBeginWithName: @"body" type: TType_STRING fieldID: 1];
+      [outProtocol writeFieldBeginWithName: @"body" type: TType_STRING fieldID: 2];
       [outProtocol writeString: __body];
       [outProtocol writeFieldEnd];
     }
   }
   if (__urgency_isset) {
-    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 2];
+    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
     [outProtocol writeI32: __urgency];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeMessageSent_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeMessageSent" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeMessageSent];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeMessageReceived_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeMessageReceived" type: TType_I64 fieldID: 5];
+    [outProtocol writeI64: __timeMessageReceived];
     [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
@@ -215,88 +372,16 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Message("];
-  [ms appendString: @"body:"];
+  [ms appendString: @"messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @",body:"];
   [ms appendFormat: @"\"%@\"", __body];
   [ms appendString: @",urgency:"];
   [ms appendFormat: @"%i", __urgency];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation Banana_Call
-
-- (id) init
-{
-  self = [super init];
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[Banana_Call class]]) {
-    return NO;
-  }
-  Banana_Call *other = (Banana_Call *)anObject;
-  return YES;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Call"];
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Call("];
+  [ms appendString: @",timeMessageSent:"];
+  [ms appendFormat: @"%qi", __timeMessageSent];
+  [ms appendString: @",timeMessageReceived:"];
+  [ms appendFormat: @"%qi", __timeMessageReceived];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

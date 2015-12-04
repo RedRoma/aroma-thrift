@@ -206,9 +206,16 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
 </td>
-<td><a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
+<td><a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
+<a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
+<a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
+<a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
 <a href="#Typedef_Dimension">Dimension</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
+<a href="#Struct_HideAllMessagesRequest">HideAllMessagesRequest</a><br/>
+<a href="#Struct_HideAllMessagesResponse">HideAllMessagesResponse</a><br/>
+<a href="#Struct_HideMessageRequest">HideMessageRequest</a><br/>
+<a href="#Struct_HideMessageResponse">HideMessageResponse</a><br/>
 <a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
@@ -223,6 +230,7 @@ code { line-height: 20px; }
 <a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a><br/>
 <a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
 <a href="#Struct_SendMessageResponse">SendMessageResponse</a><br/>
+<a href="#Typedef_Service">Service</a><br/>
 <a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
 <a href="#Typedef_ServiceToken">ServiceToken</a><br/>
@@ -232,6 +240,7 @@ code { line-height: 20px; }
 <a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
 <a href="#Typedef_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
+<a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -264,11 +273,17 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_Service">Typedef: Service</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Service">Authentication.Service</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_Dimension">Typedef: Dimension</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
@@ -343,15 +358,40 @@ code { line-height: 20px; }
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegenerateTokenRequest">Struct: RegenerateTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegenerateTokenResponse">Struct: RegenerateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageResponse">Struct: DeleteMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteAllMessagesRequest">Struct: DeleteAllMessagesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HideMessageRequest">Struct: HideMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HideMessageResponse">Struct: HideMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_HideAllMessagesRequest">Struct: HideAllMessagesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_HideAllMessagesResponse">Struct: HideAllMessagesResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 </table><br/></div><div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>urgency</td><td><code><a href="#Typedef_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code>Urgency.PRESSING</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>

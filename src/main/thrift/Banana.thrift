@@ -23,15 +23,12 @@ enum Urgency
 
 struct Message
 {
-    1: string body;
-    2: Urgency urgency = Urgency.PRESSING;
+    1: string messageId;
+    2: string body;
+    3: Urgency urgency = Urgency.PRESSING;
+    4: timestamp timeMessageSent;
+    5: timestamp timeMessageReceived;
 }
-
-struct Call
-{
-
-}
-
 
 enum TimeUnit
 {

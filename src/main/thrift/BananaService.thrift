@@ -26,8 +26,10 @@ typedef Banana.timestamp timestamp;
 //Struct Typedefs
 typedef Authentication.DeveloperToken DeveloperToken
 typedef Authentication.ServiceToken ServiceToken
+typedef Authentication.Service Service
 typedef Banana.Dimension Dimension
 typedef Banana.Image Image
+typedef Banana.Urgency Urgency
 typedef Endpoint.Endpoint Endpoint
 typedef Endpoint.TcpEndpoint TcpEndpoint
 
@@ -127,7 +129,7 @@ struct RenewServiceTokenResponse
 
 struct RegenerateTokenRequest
 {
-    1: string serviceName;
+    1: string serviceId;
     2: DeveloperToken developerToken;
 }
 
@@ -136,13 +138,55 @@ struct RegenerateTokenResponse
     1: ServiceToken serviceToken;
 }
 
+struct DeleteMessageRequest
+{
+    1: DeveloperToken developerToken;
+    2: string messageId;
+    3: string serviceId;
+}
+
+struct DeleteMessageResponse
+{
+    
+}
+
+struct DeleteAllMessagesRequest
+{
+    1: DeveloperToken developerToken;
+    2: string serviceId;
+}
+
+struct HideMessageRequest
+{
+    1: DeveloperToken developerToken;
+    2: string messageId;
+    3: string serviceId;
+}
+
+struct HideMessageResponse
+{
+    
+}
+
+struct HideAllMessagesRequest
+{
+    1: DeveloperToken developerToken;
+    2: string serviceId;
+}
+
+struct HideAllMessagesResponse
+{
+    
+}
+
 //==============================
 // Operations performed by Services
 
 struct SendMessageRequest
 {
-    1: Banana.Message message;
-    2: ServiceToken serviceToken;
+    1: ServiceToken serviceToken;
+    2: string message;
+    3: Urgency urgency = Banana.Urgency.PRESSING;
 }
 
 struct SendMessageResponse

@@ -56,12 +56,24 @@ Message::~Message() throw() {
 }
 
 
+void Message::__set_messageId(const std::string& val) {
+  this->messageId = val;
+}
+
 void Message::__set_body(const std::string& val) {
   this->body = val;
 }
 
 void Message::__set_urgency(const Urgency::type val) {
   this->urgency = val;
+}
+
+void Message::__set_timeMessageSent(const timestamp val) {
+  this->timeMessageSent = val;
+}
+
+void Message::__set_timeMessageReceived(const timestamp val) {
+  this->timeMessageReceived = val;
 }
 
 uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -87,18 +99,42 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->body);
           this->__isset.body = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 2:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast0;
           xfer += iprot->readI32(ecast0);
           this->urgency = (Urgency::type)ecast0;
           this->__isset.urgency = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeMessageSent);
+          this->__isset.timeMessageSent = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeMessageReceived);
+          this->__isset.timeMessageReceived = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -120,12 +156,24 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Message");
 
-  xfer += oprot->writeFieldBegin("body", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->messageId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("body", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->body);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32((int32_t)this->urgency);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeMessageSent", ::apache::thrift::protocol::T_I64, 4);
+  xfer += oprot->writeI64(this->timeMessageSent);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeMessageReceived", ::apache::thrift::protocol::T_I64, 5);
+  xfer += oprot->writeI64(this->timeMessageReceived);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -135,89 +183,39 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
 void swap(Message &a, Message &b) {
   using ::std::swap;
+  swap(a.messageId, b.messageId);
   swap(a.body, b.body);
   swap(a.urgency, b.urgency);
+  swap(a.timeMessageSent, b.timeMessageSent);
+  swap(a.timeMessageReceived, b.timeMessageReceived);
   swap(a.__isset, b.__isset);
 }
 
 Message::Message(const Message& other1) {
+  messageId = other1.messageId;
   body = other1.body;
   urgency = other1.urgency;
+  timeMessageSent = other1.timeMessageSent;
+  timeMessageReceived = other1.timeMessageReceived;
   __isset = other1.__isset;
 }
 Message& Message::operator=(const Message& other2) {
+  messageId = other2.messageId;
   body = other2.body;
   urgency = other2.urgency;
+  timeMessageSent = other2.timeMessageSent;
+  timeMessageReceived = other2.timeMessageReceived;
   __isset = other2.__isset;
   return *this;
 }
 void Message::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Message(";
-  out << "body=" << to_string(body);
+  out << "messageId=" << to_string(messageId);
+  out << ", " << "body=" << to_string(body);
   out << ", " << "urgency=" << to_string(urgency);
-  out << ")";
-}
-
-
-Call::~Call() throw() {
-}
-
-
-uint32_t Call::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    xfer += iprot->skip(ftype);
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t Call::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Call");
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(Call &a, Call &b) {
-  using ::std::swap;
-  (void) a;
-  (void) b;
-}
-
-Call::Call(const Call& other3) {
-  (void) other3;
-}
-Call& Call::operator=(const Call& other4) {
-  (void) other4;
-  return *this;
-}
-void Call::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "Call(";
+  out << ", " << "timeMessageSent=" << to_string(timeMessageSent);
+  out << ", " << "timeMessageReceived=" << to_string(timeMessageReceived);
   out << ")";
 }
 
@@ -259,9 +257,9 @@ uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast5;
-          xfer += iprot->readI32(ecast5);
-          this->unit = (TimeUnit::type)ecast5;
+          int32_t ecast3;
+          xfer += iprot->readI32(ecast3);
+          this->unit = (TimeUnit::type)ecast3;
           isset_unit = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -315,13 +313,13 @@ void swap(TimePeriod &a, TimePeriod &b) {
   swap(a.value, b.value);
 }
 
-TimePeriod::TimePeriod(const TimePeriod& other6) {
-  unit = other6.unit;
-  value = other6.value;
+TimePeriod::TimePeriod(const TimePeriod& other4) {
+  unit = other4.unit;
+  value = other4.value;
 }
-TimePeriod& TimePeriod::operator=(const TimePeriod& other7) {
-  unit = other7.unit;
-  value = other7.value;
+TimePeriod& TimePeriod::operator=(const TimePeriod& other5) {
+  unit = other5.unit;
+  value = other5.value;
   return *this;
 }
 void TimePeriod::printTo(std::ostream& out) const {
@@ -424,13 +422,13 @@ void swap(Dimension &a, Dimension &b) {
   swap(a.height, b.height);
 }
 
-Dimension::Dimension(const Dimension& other8) {
-  width = other8.width;
-  height = other8.height;
+Dimension::Dimension(const Dimension& other6) {
+  width = other6.width;
+  height = other6.height;
 }
-Dimension& Dimension::operator=(const Dimension& other9) {
-  width = other9.width;
-  height = other9.height;
+Dimension& Dimension::operator=(const Dimension& other7) {
+  width = other7.width;
+  height = other7.height;
   return *this;
 }
 void Dimension::printTo(std::ostream& out) const {
@@ -481,9 +479,9 @@ uint32_t Image::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast10;
-          xfer += iprot->readI32(ecast10);
-          this->imageType = (ImageType::type)ecast10;
+          int32_t ecast8;
+          xfer += iprot->readI32(ecast8);
+          this->imageType = (ImageType::type)ecast8;
           this->__isset.imageType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -547,17 +545,17 @@ void swap(Image &a, Image &b) {
   swap(a.__isset, b.__isset);
 }
 
-Image::Image(const Image& other11) {
-  imageType = other11.imageType;
-  data = other11.data;
-  dimension = other11.dimension;
-  __isset = other11.__isset;
+Image::Image(const Image& other9) {
+  imageType = other9.imageType;
+  data = other9.data;
+  dimension = other9.dimension;
+  __isset = other9.__isset;
 }
-Image& Image::operator=(const Image& other12) {
-  imageType = other12.imageType;
-  data = other12.data;
-  dimension = other12.dimension;
-  __isset = other12.__isset;
+Image& Image::operator=(const Image& other10) {
+  imageType = other10.imageType;
+  data = other10.data;
+  dimension = other10.dimension;
+  __isset = other10.__isset;
   return *this;
 }
 void Image::printTo(std::ostream& out) const {

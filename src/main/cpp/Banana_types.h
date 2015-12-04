@@ -58,8 +58,6 @@ typedef int64_t timestamp;
 
 class Message;
 
-class Call;
-
 class TimePeriod;
 
 class Dimension;
@@ -67,9 +65,12 @@ class Dimension;
 class Image;
 
 typedef struct _Message__isset {
-  _Message__isset() : body(false), urgency(true) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false) {}
+  bool messageId :1;
   bool body :1;
   bool urgency :1;
+  bool timeMessageSent :1;
+  bool timeMessageReceived :1;
 } _Message__isset;
 
 class Message {
@@ -77,26 +78,41 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : body(), urgency((Urgency::type)2) {
+  Message() : messageId(), body(), urgency((Urgency::type)2), timeMessageSent(0), timeMessageReceived(0) {
     urgency = (Urgency::type)2;
 
   }
 
   virtual ~Message() throw();
+  std::string messageId;
   std::string body;
   Urgency::type urgency;
+  timestamp timeMessageSent;
+  timestamp timeMessageReceived;
 
   _Message__isset __isset;
+
+  void __set_messageId(const std::string& val);
 
   void __set_body(const std::string& val);
 
   void __set_urgency(const Urgency::type val);
 
+  void __set_timeMessageSent(const timestamp val);
+
+  void __set_timeMessageReceived(const timestamp val);
+
   bool operator == (const Message & rhs) const
   {
+    if (!(messageId == rhs.messageId))
+      return false;
     if (!(body == rhs.body))
       return false;
     if (!(urgency == rhs.urgency))
+      return false;
+    if (!(timeMessageSent == rhs.timeMessageSent))
+      return false;
+    if (!(timeMessageReceived == rhs.timeMessageReceived))
       return false;
     return true;
   }
@@ -115,41 +131,6 @@ class Message {
 void swap(Message &a, Message &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Message& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-
-class Call {
- public:
-
-  Call(const Call&);
-  Call& operator=(const Call&);
-  Call() {
-  }
-
-  virtual ~Call() throw();
-
-  bool operator == (const Call & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const Call &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Call & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Call &a, Call &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Call& obj)
 {
   obj.printTo(out);
   return out;

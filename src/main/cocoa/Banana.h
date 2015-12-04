@@ -45,25 +45,40 @@ typedef int64_t Banana_long;
 typedef int64_t Banana_timestamp;
 
 @interface Banana_Message : NSObject <TBase, NSCoding> {
+  NSString * __messageId;
   NSString * __body;
   int __urgency;
+  Banana_timestamp __timeMessageSent;
+  Banana_timestamp __timeMessageReceived;
 
+  BOOL __messageId_isset;
   BOOL __body_isset;
   BOOL __urgency_isset;
+  BOOL __timeMessageSent_isset;
+  BOOL __timeMessageReceived_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
 @property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
+@property (nonatomic, getter=timeMessageSent, setter=setTimeMessageSent:) Banana_timestamp timeMessageSent;
+@property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
 #endif
 
 - (id) init;
-- (id) initWithBody: (NSString *) body urgency: (int) urgency;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) body;
@@ -77,17 +92,17 @@ typedef int64_t Banana_timestamp;
 #endif
 - (BOOL) urgencyIsSet;
 
-@end
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeMessageSent;
+- (void) setTimeMessageSent: (Banana_timestamp) timeMessageSent;
+#endif
+- (BOOL) timeMessageSentIsSet;
 
-@interface Banana_Call : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeMessageReceived;
+- (void) setTimeMessageReceived: (Banana_timestamp) timeMessageReceived;
+#endif
+- (BOOL) timeMessageReceivedIsSet;
 
 @end
 

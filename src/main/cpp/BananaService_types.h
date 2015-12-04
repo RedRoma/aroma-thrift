@@ -35,9 +35,13 @@ typedef class  ::DeveloperToken DeveloperToken;
 
 typedef class  ::ServiceToken ServiceToken;
 
+typedef class  ::Service Service;
+
 typedef class  ::tech::aroma::banana::thrift::Dimension Dimension;
 
 typedef class  ::tech::aroma::banana::thrift::Image Image;
+
+typedef  ::tech::aroma::banana::thrift::Urgency::type Urgency;
 
 typedef class  ::tech::aroma::banana::thrift::endpoint::Endpoint Endpoint;
 
@@ -78,6 +82,20 @@ class RenewServiceTokenResponse;
 class RegenerateTokenRequest;
 
 class RegenerateTokenResponse;
+
+class DeleteMessageRequest;
+
+class DeleteMessageResponse;
+
+class DeleteAllMessagesRequest;
+
+class HideMessageRequest;
+
+class HideMessageResponse;
+
+class HideAllMessagesRequest;
+
+class HideAllMessagesResponse;
 
 class SendMessageRequest;
 
@@ -650,8 +668,8 @@ inline std::ostream& operator<<(std::ostream& out, const RenewServiceTokenRespon
 }
 
 typedef struct _RegenerateTokenRequest__isset {
-  _RegenerateTokenRequest__isset() : serviceName(false), developerToken(false) {}
-  bool serviceName :1;
+  _RegenerateTokenRequest__isset() : serviceId(false), developerToken(false) {}
+  bool serviceId :1;
   bool developerToken :1;
 } _RegenerateTokenRequest__isset;
 
@@ -660,22 +678,22 @@ class RegenerateTokenRequest {
 
   RegenerateTokenRequest(const RegenerateTokenRequest&);
   RegenerateTokenRequest& operator=(const RegenerateTokenRequest&);
-  RegenerateTokenRequest() : serviceName() {
+  RegenerateTokenRequest() : serviceId() {
   }
 
   virtual ~RegenerateTokenRequest() throw();
-  std::string serviceName;
+  std::string serviceId;
   DeveloperToken developerToken;
 
   _RegenerateTokenRequest__isset __isset;
 
-  void __set_serviceName(const std::string& val);
+  void __set_serviceId(const std::string& val);
 
   void __set_developerToken(const DeveloperToken& val);
 
   bool operator == (const RegenerateTokenRequest & rhs) const
   {
-    if (!(serviceName == rhs.serviceName))
+    if (!(serviceId == rhs.serviceId))
       return false;
     if (!(developerToken == rhs.developerToken))
       return false;
@@ -747,10 +765,336 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenResponse
   return out;
 }
 
+typedef struct _DeleteMessageRequest__isset {
+  _DeleteMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false) {}
+  bool developerToken :1;
+  bool messageId :1;
+  bool serviceId :1;
+} _DeleteMessageRequest__isset;
+
+class DeleteMessageRequest {
+ public:
+
+  DeleteMessageRequest(const DeleteMessageRequest&);
+  DeleteMessageRequest& operator=(const DeleteMessageRequest&);
+  DeleteMessageRequest() : messageId(), serviceId() {
+  }
+
+  virtual ~DeleteMessageRequest() throw();
+  DeveloperToken developerToken;
+  std::string messageId;
+  std::string serviceId;
+
+  _DeleteMessageRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  void __set_serviceId(const std::string& val);
+
+  bool operator == (const DeleteMessageRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteMessageRequest &a, DeleteMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class DeleteMessageResponse {
+ public:
+
+  DeleteMessageResponse(const DeleteMessageResponse&);
+  DeleteMessageResponse& operator=(const DeleteMessageResponse&);
+  DeleteMessageResponse() {
+  }
+
+  virtual ~DeleteMessageResponse() throw();
+
+  bool operator == (const DeleteMessageResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const DeleteMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteMessageResponse &a, DeleteMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteAllMessagesRequest__isset {
+  _DeleteAllMessagesRequest__isset() : developerToken(false), serviceId(false) {}
+  bool developerToken :1;
+  bool serviceId :1;
+} _DeleteAllMessagesRequest__isset;
+
+class DeleteAllMessagesRequest {
+ public:
+
+  DeleteAllMessagesRequest(const DeleteAllMessagesRequest&);
+  DeleteAllMessagesRequest& operator=(const DeleteAllMessagesRequest&);
+  DeleteAllMessagesRequest() : serviceId() {
+  }
+
+  virtual ~DeleteAllMessagesRequest() throw();
+  DeveloperToken developerToken;
+  std::string serviceId;
+
+  _DeleteAllMessagesRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_serviceId(const std::string& val);
+
+  bool operator == (const DeleteAllMessagesRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteAllMessagesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteAllMessagesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteAllMessagesRequest &a, DeleteAllMessagesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteAllMessagesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _HideMessageRequest__isset {
+  _HideMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false) {}
+  bool developerToken :1;
+  bool messageId :1;
+  bool serviceId :1;
+} _HideMessageRequest__isset;
+
+class HideMessageRequest {
+ public:
+
+  HideMessageRequest(const HideMessageRequest&);
+  HideMessageRequest& operator=(const HideMessageRequest&);
+  HideMessageRequest() : messageId(), serviceId() {
+  }
+
+  virtual ~HideMessageRequest() throw();
+  DeveloperToken developerToken;
+  std::string messageId;
+  std::string serviceId;
+
+  _HideMessageRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  void __set_serviceId(const std::string& val);
+
+  bool operator == (const HideMessageRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const HideMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HideMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HideMessageRequest &a, HideMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HideMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class HideMessageResponse {
+ public:
+
+  HideMessageResponse(const HideMessageResponse&);
+  HideMessageResponse& operator=(const HideMessageResponse&);
+  HideMessageResponse() {
+  }
+
+  virtual ~HideMessageResponse() throw();
+
+  bool operator == (const HideMessageResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const HideMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HideMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HideMessageResponse &a, HideMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HideMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _HideAllMessagesRequest__isset {
+  _HideAllMessagesRequest__isset() : developerToken(false), serviceId(false) {}
+  bool developerToken :1;
+  bool serviceId :1;
+} _HideAllMessagesRequest__isset;
+
+class HideAllMessagesRequest {
+ public:
+
+  HideAllMessagesRequest(const HideAllMessagesRequest&);
+  HideAllMessagesRequest& operator=(const HideAllMessagesRequest&);
+  HideAllMessagesRequest() : serviceId() {
+  }
+
+  virtual ~HideAllMessagesRequest() throw();
+  DeveloperToken developerToken;
+  std::string serviceId;
+
+  _HideAllMessagesRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_serviceId(const std::string& val);
+
+  bool operator == (const HideAllMessagesRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const HideAllMessagesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HideAllMessagesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HideAllMessagesRequest &a, HideAllMessagesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class HideAllMessagesResponse {
+ public:
+
+  HideAllMessagesResponse(const HideAllMessagesResponse&);
+  HideAllMessagesResponse& operator=(const HideAllMessagesResponse&);
+  HideAllMessagesResponse() {
+  }
+
+  virtual ~HideAllMessagesResponse() throw();
+
+  bool operator == (const HideAllMessagesResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const HideAllMessagesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HideAllMessagesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HideAllMessagesResponse &a, HideAllMessagesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _SendMessageRequest__isset {
-  _SendMessageRequest__isset() : message(false), serviceToken(false) {}
-  bool message :1;
+  _SendMessageRequest__isset() : serviceToken(false), message(false), urgency(true) {}
   bool serviceToken :1;
+  bool message :1;
+  bool urgency :1;
 } _SendMessageRequest__isset;
 
 class SendMessageRequest {
@@ -758,24 +1102,31 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() {
+  SendMessageRequest() : message(), urgency(( ::tech::aroma::banana::thrift::Urgency::type)2) {
+    urgency = ( ::tech::aroma::banana::thrift::Urgency::type)2;
+
   }
 
   virtual ~SendMessageRequest() throw();
-   ::tech::aroma::banana::thrift::Message message;
   ServiceToken serviceToken;
+  std::string message;
+  Urgency urgency;
 
   _SendMessageRequest__isset __isset;
 
-  void __set_message(const  ::tech::aroma::banana::thrift::Message& val);
-
   void __set_serviceToken(const ServiceToken& val);
+
+  void __set_message(const std::string& val);
+
+  void __set_urgency(const Urgency val);
 
   bool operator == (const SendMessageRequest & rhs) const
   {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
     if (!(message == rhs.message))
       return false;
-    if (!(serviceToken == rhs.serviceToken))
+    if (!(urgency == rhs.urgency))
       return false;
     return true;
   }

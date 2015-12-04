@@ -26,14 +26,26 @@ ttypes.ImageType = {
   'PNG' : 2
 };
 Message = module.exports.Message = function(args) {
+  this.messageId = null;
   this.body = null;
   this.urgency = 2;
+  this.timeMessageSent = null;
+  this.timeMessageReceived = null;
   if (args) {
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
     if (args.body !== undefined && args.body !== null) {
       this.body = args.body;
     }
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
+    }
+    if (args.timeMessageSent !== undefined && args.timeMessageSent !== null) {
+      this.timeMessageSent = args.timeMessageSent;
+    }
+    if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
+      this.timeMessageReceived = args.timeMessageReceived;
     }
   }
 };
@@ -53,14 +65,35 @@ Message.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.body = input.readString();
+        this.messageId = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.body = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
       if (ftype == Thrift.Type.I32) {
         this.urgency = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeMessageSent = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I64) {
+        this.timeMessageReceived = input.readI64();
       } else {
         input.skip(ftype);
       }
@@ -76,44 +109,31 @@ Message.prototype.read = function(input) {
 
 Message.prototype.write = function(output) {
   output.writeStructBegin('Message');
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
   if (this.body !== null && this.body !== undefined) {
-    output.writeFieldBegin('body', Thrift.Type.STRING, 1);
+    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
     output.writeString(this.body);
     output.writeFieldEnd();
   }
   if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 2);
+    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
     output.writeI32(this.urgency);
     output.writeFieldEnd();
   }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-Call = module.exports.Call = function(args) {
-};
-Call.prototype = {};
-Call.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
+  if (this.timeMessageSent !== null && this.timeMessageSent !== undefined) {
+    output.writeFieldBegin('timeMessageSent', Thrift.Type.I64, 4);
+    output.writeI64(this.timeMessageSent);
+    output.writeFieldEnd();
   }
-  input.readStructEnd();
-  return;
-};
-
-Call.prototype.write = function(output) {
-  output.writeStructBegin('Call');
+  if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
+    output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
+    output.writeI64(this.timeMessageReceived);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
