@@ -24,6 +24,8 @@ class InvalidArgumentException;
 
 class InvalidCredentialsException;
 
+class UnauthorizedException;
+
 class ServiceDoesNotExistException;
 
 class ServiceAlreadyRegisteredException;
@@ -121,6 +123,54 @@ class InvalidCredentialsException : public ::apache::thrift::TException {
 void swap(InvalidCredentialsException &a, InvalidCredentialsException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const InvalidCredentialsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _UnauthorizedException__isset {
+  _UnauthorizedException__isset() : message(true) {}
+  bool message :1;
+} _UnauthorizedException__isset;
+
+class UnauthorizedException : public ::apache::thrift::TException {
+ public:
+
+  UnauthorizedException(const UnauthorizedException&);
+  UnauthorizedException& operator=(const UnauthorizedException&);
+  UnauthorizedException() : message("Only an owner can do that") {
+  }
+
+  virtual ~UnauthorizedException() throw();
+  std::string message;
+
+  _UnauthorizedException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const UnauthorizedException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const UnauthorizedException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UnauthorizedException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(UnauthorizedException &a, UnauthorizedException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UnauthorizedException& obj)
 {
   obj.printTo(out);
   return out;

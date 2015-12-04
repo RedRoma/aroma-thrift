@@ -208,6 +208,103 @@ const char* InvalidCredentialsException::what() const throw() {
 }
 
 
+UnauthorizedException::~UnauthorizedException() throw() {
+}
+
+
+void UnauthorizedException::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t UnauthorizedException::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t UnauthorizedException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("UnauthorizedException");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(UnauthorizedException &a, UnauthorizedException &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+UnauthorizedException::UnauthorizedException(const UnauthorizedException& other4) : TException() {
+  message = other4.message;
+  __isset = other4.__isset;
+}
+UnauthorizedException& UnauthorizedException::operator=(const UnauthorizedException& other5) {
+  message = other5.message;
+  __isset = other5.__isset;
+  return *this;
+}
+void UnauthorizedException::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "UnauthorizedException(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+const char* UnauthorizedException::what() const throw() {
+  try {
+    std::stringstream ss;
+    ss << "TException - service has thrown: " << *this;
+    this->thriftTExceptionMessageHolder_ = ss.str();
+    return this->thriftTExceptionMessageHolder_.c_str();
+  } catch (const std::exception&) {
+    return "TException - service has thrown: UnauthorizedException";
+  }
+}
+
+
 ServiceDoesNotExistException::~ServiceDoesNotExistException() throw() {
 }
 
@@ -277,13 +374,13 @@ void swap(ServiceDoesNotExistException &a, ServiceDoesNotExistException &b) {
   swap(a.__isset, b.__isset);
 }
 
-ServiceDoesNotExistException::ServiceDoesNotExistException(const ServiceDoesNotExistException& other4) : TException() {
-  message = other4.message;
-  __isset = other4.__isset;
+ServiceDoesNotExistException::ServiceDoesNotExistException(const ServiceDoesNotExistException& other6) : TException() {
+  message = other6.message;
+  __isset = other6.__isset;
 }
-ServiceDoesNotExistException& ServiceDoesNotExistException::operator=(const ServiceDoesNotExistException& other5) {
-  message = other5.message;
-  __isset = other5.__isset;
+ServiceDoesNotExistException& ServiceDoesNotExistException::operator=(const ServiceDoesNotExistException& other7) {
+  message = other7.message;
+  __isset = other7.__isset;
   return *this;
 }
 void ServiceDoesNotExistException::printTo(std::ostream& out) const {
@@ -374,13 +471,13 @@ void swap(ServiceAlreadyRegisteredException &a, ServiceAlreadyRegisteredExceptio
   swap(a.__isset, b.__isset);
 }
 
-ServiceAlreadyRegisteredException::ServiceAlreadyRegisteredException(const ServiceAlreadyRegisteredException& other6) : TException() {
-  message = other6.message;
-  __isset = other6.__isset;
+ServiceAlreadyRegisteredException::ServiceAlreadyRegisteredException(const ServiceAlreadyRegisteredException& other8) : TException() {
+  message = other8.message;
+  __isset = other8.__isset;
 }
-ServiceAlreadyRegisteredException& ServiceAlreadyRegisteredException::operator=(const ServiceAlreadyRegisteredException& other7) {
-  message = other7.message;
-  __isset = other7.__isset;
+ServiceAlreadyRegisteredException& ServiceAlreadyRegisteredException::operator=(const ServiceAlreadyRegisteredException& other9) {
+  message = other9.message;
+  __isset = other9.__isset;
   return *this;
 }
 void ServiceAlreadyRegisteredException::printTo(std::ostream& out) const {
@@ -471,13 +568,13 @@ void swap(OperationFailedException &a, OperationFailedException &b) {
   swap(a.__isset, b.__isset);
 }
 
-OperationFailedException::OperationFailedException(const OperationFailedException& other8) : TException() {
-  message = other8.message;
-  __isset = other8.__isset;
+OperationFailedException::OperationFailedException(const OperationFailedException& other10) : TException() {
+  message = other10.message;
+  __isset = other10.__isset;
 }
-OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other9) {
-  message = other9.message;
-  __isset = other9.__isset;
+OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other11) {
+  message = other11.message;
+  __isset = other11.__isset;
   return *this;
 }
 void OperationFailedException::printTo(std::ostream& out) const {

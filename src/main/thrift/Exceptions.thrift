@@ -27,6 +27,15 @@ exception InvalidCredentialsException
 }
 
 /**
+ * Thrown when a Developer tries to perform an Operation
+ * that only an "Owner" can do.
+ */
+exception UnauthorizedException
+{
+    1: string message = "Only an owner can do that"
+}
+
+/**
  * Thrown when referring to a service that does not exist.
  */
 exception ServiceDoesNotExistException
@@ -46,6 +55,7 @@ exception ServiceAlreadyRegisteredException
 
 /**
  * Thrown when an Operation could not be completed for any reason.
+ * This is like a catch-all exception
  */
 exception OperationFailedException
 {

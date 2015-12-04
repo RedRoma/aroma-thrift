@@ -198,6 +198,7 @@ code { line-height: 20px; }
 <ul>
 <li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
+<li><a href="#Fn_BananaService_renewServiceToken">renewServiceToken</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
@@ -212,6 +213,8 @@ code { line-height: 20px; }
 <a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
+<a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a><br/>
+<a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a><br/>
 <a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a><br/>
 <a href="#Typedef_ServiceToken">ServiceToken</a><br/>
@@ -219,6 +222,7 @@ code { line-height: 20px; }
 <a href="#Struct_SignInResponse">SignInResponse</a><br/>
 <a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a><br/>
 <a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
+<a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -268,6 +272,9 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
+</div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_SignInRequest">Struct: SignInRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -303,6 +310,13 @@ code { line-height: 20px; }
 <tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_RenewServiceTokenRequest">Struct: RenewServiceTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>timePeriod</td><td><code><a href="Banana.html#Struct_TimePeriod">Banana.TimePeriod</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RenewServiceTokenResponse">Struct: RenewServiceTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
 <div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
@@ -316,5 +330,8 @@ code { line-height: 20px; }
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_renewServiceToken">Function: BananaService.renewServiceToken</h4>
+<pre><code><a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a></code> renewServiceToken(<code><a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div></div></body></html>

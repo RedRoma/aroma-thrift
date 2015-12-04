@@ -905,4 +905,196 @@ void RegisterHealthCheckResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+RenewServiceTokenRequest::~RenewServiceTokenRequest() throw() {
+}
+
+
+void RenewServiceTokenRequest::__set_serviceToken(const ServiceToken& val) {
+  this->serviceToken = val;
+}
+
+void RenewServiceTokenRequest::__set_timePeriod(const  ::tech::aroma::banana::thrift::TimePeriod& val) {
+  this->timePeriod = val;
+}
+
+uint32_t RenewServiceTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->serviceToken.read(iprot);
+          this->__isset.serviceToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->timePeriod.read(iprot);
+          this->__isset.timePeriod = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t RenewServiceTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("RenewServiceTokenRequest");
+
+  xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->serviceToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timePeriod", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->timePeriod.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(RenewServiceTokenRequest &a, RenewServiceTokenRequest &b) {
+  using ::std::swap;
+  swap(a.serviceToken, b.serviceToken);
+  swap(a.timePeriod, b.timePeriod);
+  swap(a.__isset, b.__isset);
+}
+
+RenewServiceTokenRequest::RenewServiceTokenRequest(const RenewServiceTokenRequest& other16) {
+  serviceToken = other16.serviceToken;
+  timePeriod = other16.timePeriod;
+  __isset = other16.__isset;
+}
+RenewServiceTokenRequest& RenewServiceTokenRequest::operator=(const RenewServiceTokenRequest& other17) {
+  serviceToken = other17.serviceToken;
+  timePeriod = other17.timePeriod;
+  __isset = other17.__isset;
+  return *this;
+}
+void RenewServiceTokenRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "RenewServiceTokenRequest(";
+  out << "serviceToken=" << to_string(serviceToken);
+  out << ", " << "timePeriod=" << to_string(timePeriod);
+  out << ")";
+}
+
+
+RenewServiceTokenResponse::~RenewServiceTokenResponse() throw() {
+}
+
+
+void RenewServiceTokenResponse::__set_serviceToken(const ServiceToken& val) {
+  this->serviceToken = val;
+}
+
+uint32_t RenewServiceTokenResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->serviceToken.read(iprot);
+          this->__isset.serviceToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t RenewServiceTokenResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("RenewServiceTokenResponse");
+
+  xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->serviceToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(RenewServiceTokenResponse &a, RenewServiceTokenResponse &b) {
+  using ::std::swap;
+  swap(a.serviceToken, b.serviceToken);
+  swap(a.__isset, b.__isset);
+}
+
+RenewServiceTokenResponse::RenewServiceTokenResponse(const RenewServiceTokenResponse& other18) {
+  serviceToken = other18.serviceToken;
+  __isset = other18.__isset;
+}
+RenewServiceTokenResponse& RenewServiceTokenResponse::operator=(const RenewServiceTokenResponse& other19) {
+  serviceToken = other19.serviceToken;
+  __isset = other19.__isset;
+  return *this;
+}
+void RenewServiceTokenResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "RenewServiceTokenResponse(";
+  out << "serviceToken=" << to_string(serviceToken);
+  out << ")";
+}
+
 }}}}} // namespace

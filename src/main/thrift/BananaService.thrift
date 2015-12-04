@@ -35,6 +35,7 @@ typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
+typedef Exceptions.UnauthorizedException UnauthorizedException
 
 
 
@@ -98,6 +99,16 @@ struct RegisterHealthCheckResponse
     
 }
 
+struct RenewServiceTokenRequest
+{
+    1: ServiceToken serviceToken;
+    2: Banana.TimePeriod timePeriod;
+}
+
+struct RenewServiceTokenResponse
+{
+    1: ServiceToken serviceToken;
+}
 
 service BananaService
 {
@@ -121,5 +132,13 @@ service BananaService
     RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws(1: OperationFailedException ex1,
                                                                                                   2: InvalidArgumentException ex2,
                                                                                                   3: InvalidCredentialsException ex3,
-                                                                                                  4: ServiceDoesNotExistException ex4)
+                                                                                                  4: ServiceDoesNotExistException ex4,
+                                                                                                  5: UnauthorizedException ex5)
+    
+    RenewServiceTokenResponse renewServiceToken(1: RenewServiceTokenRequest request) throws(1: OperationFailedException ex1,
+                                                                                            2: InvalidArgumentException ex2,
+                                                                                            3: InvalidCredentialsException ex3,
+                                                                                            4: ServiceDoesNotExistException ex4,
+                                                                                            5: UnauthorizedException ex5)
+    
 }

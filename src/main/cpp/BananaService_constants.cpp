@@ -11,14 +11,14 @@ namespace tech { namespace aroma { namespace banana { namespace thrift { namespa
 const BananaServiceConstants g_BananaService_constants;
 
 BananaServiceConstants::BananaServiceConstants() {
-   ::tech::aroma::banana::thrift::int tmp16;
-  tmp16 = 500;
+   ::tech::aroma::banana::thrift::int tmp20;
+  tmp20 = 500;
 
-  MAX_ICON_DIMENSION.width = tmp16;
-   ::tech::aroma::banana::thrift::int tmp17;
-  tmp17 = 500;
+  MAX_ICON_DIMENSION.width = tmp20;
+   ::tech::aroma::banana::thrift::int tmp21;
+  tmp21 = 500;
 
-  MAX_ICON_DIMENSION.height = tmp17;
+  MAX_ICON_DIMENSION.height = tmp21;
 
   MAX_ICON_SIZE_IN_KILOBYTES = 40;
 

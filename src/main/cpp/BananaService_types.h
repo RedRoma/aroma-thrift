@@ -48,6 +48,8 @@ typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceAlreadyRegister
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
+typedef class  ::tech::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+
 class SignInRequest;
 
 class SignInResponse;
@@ -63,6 +65,10 @@ class SubscribeToServiceResponse;
 class RegisterHealthCheckRequest;
 
 class RegisterHealthCheckResponse;
+
+class RenewServiceTokenRequest;
+
+class RenewServiceTokenResponse;
 
 typedef struct _SignInRequest__isset {
   _SignInRequest__isset() : oathToken(false), username(false) {}
@@ -490,6 +496,104 @@ class RegisterHealthCheckResponse {
 void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RenewServiceTokenRequest__isset {
+  _RenewServiceTokenRequest__isset() : serviceToken(false), timePeriod(false) {}
+  bool serviceToken :1;
+  bool timePeriod :1;
+} _RenewServiceTokenRequest__isset;
+
+class RenewServiceTokenRequest {
+ public:
+
+  RenewServiceTokenRequest(const RenewServiceTokenRequest&);
+  RenewServiceTokenRequest& operator=(const RenewServiceTokenRequest&);
+  RenewServiceTokenRequest() {
+  }
+
+  virtual ~RenewServiceTokenRequest() throw();
+  ServiceToken serviceToken;
+   ::tech::aroma::banana::thrift::TimePeriod timePeriod;
+
+  _RenewServiceTokenRequest__isset __isset;
+
+  void __set_serviceToken(const ServiceToken& val);
+
+  void __set_timePeriod(const  ::tech::aroma::banana::thrift::TimePeriod& val);
+
+  bool operator == (const RenewServiceTokenRequest & rhs) const
+  {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    if (!(timePeriod == rhs.timePeriod))
+      return false;
+    return true;
+  }
+  bool operator != (const RenewServiceTokenRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RenewServiceTokenRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RenewServiceTokenRequest &a, RenewServiceTokenRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RenewServiceTokenRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RenewServiceTokenResponse__isset {
+  _RenewServiceTokenResponse__isset() : serviceToken(false) {}
+  bool serviceToken :1;
+} _RenewServiceTokenResponse__isset;
+
+class RenewServiceTokenResponse {
+ public:
+
+  RenewServiceTokenResponse(const RenewServiceTokenResponse&);
+  RenewServiceTokenResponse& operator=(const RenewServiceTokenResponse&);
+  RenewServiceTokenResponse() {
+  }
+
+  virtual ~RenewServiceTokenResponse() throw();
+  ServiceToken serviceToken;
+
+  _RenewServiceTokenResponse__isset __isset;
+
+  void __set_serviceToken(const ServiceToken& val);
+
+  bool operator == (const RenewServiceTokenResponse & rhs) const
+  {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RenewServiceTokenResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RenewServiceTokenResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RenewServiceTokenResponse &a, RenewServiceTokenResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RenewServiceTokenResponse& obj)
 {
   obj.printTo(out);
   return out;

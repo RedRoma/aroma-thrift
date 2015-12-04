@@ -48,6 +48,8 @@ typedef BananaException_ServiceAlreadyRegisteredException * BananaService_Servic
 
 typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoesNotExistException;
 
+typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
+
 @interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
   BananaAuthentication_OauthToken * __oathToken;
   NSString * __username;
@@ -341,11 +343,73 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 
 @end
 
+@interface BananaService_RenewServiceTokenRequest : NSObject <TBase, NSCoding> {
+  BananaService_ServiceToken __serviceToken;
+  Banana_TimePeriod * __timePeriod;
+
+  BOOL __serviceToken_isset;
+  BOOL __timePeriod_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ServiceToken serviceToken;
+@property (nonatomic, retain, getter=timePeriod, setter=setTimePeriod:) Banana_TimePeriod * timePeriod;
+#endif
+
+- (id) init;
+- (id) initWithServiceToken: (BananaService_ServiceToken) serviceToken timePeriod: (Banana_TimePeriod *) timePeriod;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ServiceToken) serviceToken;
+- (void) setServiceToken: (BananaService_ServiceToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_TimePeriod *) timePeriod;
+- (void) setTimePeriod: (Banana_TimePeriod *) timePeriod;
+#endif
+- (BOOL) timePeriodIsSet;
+
+@end
+
+@interface BananaService_RenewServiceTokenResponse : NSObject <TBase, NSCoding> {
+  BananaService_ServiceToken __serviceToken;
+
+  BOOL __serviceToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ServiceToken serviceToken;
+#endif
+
+- (id) init;
+- (id) initWithServiceToken: (BananaService_ServiceToken) serviceToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ServiceToken) serviceToken;
+- (void) setServiceToken: (BananaService_ServiceToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
+
+@end
+
 @protocol BananaService_BananaService <NSObject>
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_ProvisionServiceResponse *) provisionService: (BananaService_ProvisionServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 - (BananaService_SubscribeToServiceResponse *) subscribeToService: (BananaService_SubscribeToServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_ServiceAlreadyRegisteredException, TException
-- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
+- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_RenewServiceTokenResponse *) renewServiceToken: (BananaService_RenewServiceTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, BananaService_UnauthorizedException, TException
 @end
 
 @interface BananaService_BananaServiceClient : TBaseClient <BananaService_BananaService> - (id) initWithProtocol: (id <TProtocol>) protocol;

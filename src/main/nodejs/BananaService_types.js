@@ -581,6 +581,128 @@ RegisterHealthCheckResponse.prototype.write = function(output) {
   return;
 };
 
+RenewServiceTokenRequest = module.exports.RenewServiceTokenRequest = function(args) {
+  this.serviceToken = null;
+  this.timePeriod = null;
+  if (args) {
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new Authentication_ttypes.ServiceToken(args.serviceToken);
+    }
+    if (args.timePeriod !== undefined && args.timePeriod !== null) {
+      this.timePeriod = new Banana_ttypes.TimePeriod(args.timePeriod);
+    }
+  }
+};
+RenewServiceTokenRequest.prototype = {};
+RenewServiceTokenRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new Authentication_ttypes.ServiceToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.timePeriod = new Banana_ttypes.TimePeriod();
+        this.timePeriod.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RenewServiceTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('RenewServiceTokenRequest');
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.timePeriod !== null && this.timePeriod !== undefined) {
+    output.writeFieldBegin('timePeriod', Thrift.Type.STRUCT, 2);
+    this.timePeriod.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RenewServiceTokenResponse = module.exports.RenewServiceTokenResponse = function(args) {
+  this.serviceToken = null;
+  if (args) {
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new Authentication_ttypes.ServiceToken(args.serviceToken);
+    }
+  }
+};
+RenewServiceTokenResponse.prototype = {};
+RenewServiceTokenResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new Authentication_ttypes.ServiceToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RenewServiceTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('RenewServiceTokenResponse');
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ttypes.MAX_ICON_DIMENSION = new Banana_ttypes.Dimension({
 'width' : 500,'height' : 500});
 ttypes.MAX_ICON_SIZE_IN_KILOBYTES = 40;
