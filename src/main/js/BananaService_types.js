@@ -132,6 +132,7 @@ ProvisionServiceRequest = function(args) {
   this.programmingLanguage = null;
   this.organization = null;
   this.icon = null;
+  this.developerToken = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = args.token;
@@ -147,6 +148,9 @@ ProvisionServiceRequest = function(args) {
     }
     if (args.icon !== undefined && args.icon !== null) {
       this.icon = new Image(args.icon);
+    }
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
     }
   }
 };
@@ -200,6 +204,14 @@ ProvisionServiceRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -234,6 +246,11 @@ ProvisionServiceRequest.prototype.write = function(output) {
   if (this.icon !== null && this.icon !== undefined) {
     output.writeFieldBegin('icon', Thrift.Type.STRUCT, 5);
     this.icon.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 6);
+    this.developerToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -329,6 +346,7 @@ SubscribeToServiceRequest = function(args) {
   this.serviceName = null;
   this.organization = null;
   this.shared = false;
+  this.developerToken = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = args.token;
@@ -341,6 +359,9 @@ SubscribeToServiceRequest = function(args) {
     }
     if (args.shared !== undefined && args.shared !== null) {
       this.shared = args.shared;
+    }
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
     }
   }
 };
@@ -386,6 +407,14 @@ SubscribeToServiceRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -415,6 +444,11 @@ SubscribeToServiceRequest.prototype.write = function(output) {
   if (this.shared !== null && this.shared !== undefined) {
     output.writeFieldBegin('shared', Thrift.Type.BOOL, 4);
     output.writeBool(this.shared);
+    output.writeFieldEnd();
+  }
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 5);
+    this.developerToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -491,9 +525,13 @@ SubscribeToServiceResponse.prototype.write = function(output) {
 
 RegisterHealthCheckRequest = function(args) {
   this.endpoint = null;
+  this.developerToken = null;
   if (args) {
     if (args.endpoint !== undefined && args.endpoint !== null) {
       this.endpoint = new Endpoint(args.endpoint);
+    }
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
     }
   }
 };
@@ -519,9 +557,14 @@ RegisterHealthCheckRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -538,12 +581,23 @@ RegisterHealthCheckRequest.prototype.write = function(output) {
     this.endpoint.write(output);
     output.writeFieldEnd();
   }
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 2);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 RegisterHealthCheckResponse = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
 };
 RegisterHealthCheckResponse.prototype = {};
 RegisterHealthCheckResponse.prototype.read = function(input) {
@@ -557,7 +611,21 @@ RegisterHealthCheckResponse.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -566,6 +634,11 @@ RegisterHealthCheckResponse.prototype.read = function(input) {
 
 RegisterHealthCheckResponse.prototype.write = function(output) {
   output.writeStructBegin('RegisterHealthCheckResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -574,12 +647,16 @@ RegisterHealthCheckResponse.prototype.write = function(output) {
 RenewServiceTokenRequest = function(args) {
   this.serviceToken = null;
   this.timePeriod = null;
+  this.developerToken = null;
   if (args) {
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new ServiceToken(args.serviceToken);
     }
     if (args.timePeriod !== undefined && args.timePeriod !== null) {
       this.timePeriod = new TimePeriod(args.timePeriod);
+    }
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
     }
   }
 };
@@ -613,6 +690,14 @@ RenewServiceTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -632,6 +717,11 @@ RenewServiceTokenRequest.prototype.write = function(output) {
   if (this.timePeriod !== null && this.timePeriod !== undefined) {
     output.writeFieldBegin('timePeriod', Thrift.Type.STRUCT, 2);
     this.timePeriod.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 3);
+    this.developerToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -683,6 +773,127 @@ RenewServiceTokenResponse.prototype.read = function(input) {
 
 RenewServiceTokenResponse.prototype.write = function(output) {
   output.writeStructBegin('RenewServiceTokenResponse');
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegenerateTokenRequest = function(args) {
+  this.serviceName = null;
+  this.developerToken = null;
+  if (args) {
+    if (args.serviceName !== undefined && args.serviceName !== null) {
+      this.serviceName = args.serviceName;
+    }
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+RegenerateTokenRequest.prototype = {};
+RegenerateTokenRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.serviceName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegenerateTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('RegenerateTokenRequest');
+  if (this.serviceName !== null && this.serviceName !== undefined) {
+    output.writeFieldBegin('serviceName', Thrift.Type.STRING, 1);
+    output.writeString(this.serviceName);
+    output.writeFieldEnd();
+  }
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 2);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegenerateTokenResponse = function(args) {
+  this.serviceToken = null;
+  if (args) {
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new ServiceToken(args.serviceToken);
+    }
+  }
+};
+RegenerateTokenResponse.prototype = {};
+RegenerateTokenResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new ServiceToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegenerateTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('RegenerateTokenResponse');
   if (this.serviceToken !== null && this.serviceToken !== undefined) {
     output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
     this.serviceToken.write(output);

@@ -3,9 +3,9 @@ namespace cocoa BananaAuthentication_
 
 include "Banana.thrift"
 
-typedef i32 int
-typedef i64 long
-typedef i64 timestamp
+typedef Banana.int int;
+typedef Banana.long long;
+typedef Banana.timestamp timestamp;
 
 enum Role
 {
@@ -19,6 +19,14 @@ struct Developer
     2: optional string name;
     3: optional string username;
     4: Role role;
+}
+
+struct Service
+{
+    1: Developer owner;
+    2: timestamp timeOfRegistration;
+    3: string name;
+    4: string id;
 }
 
 struct ServiceToken

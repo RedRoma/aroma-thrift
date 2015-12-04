@@ -197,6 +197,7 @@ code { line-height: 20px; }
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
 <li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
+<li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
 <li><a href="#Fn_BananaService_renewServiceToken">renewServiceToken</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
@@ -211,6 +212,8 @@ code { line-height: 20px; }
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a><br/>
 <a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a><br/>
+<a href="#Struct_RegenerateTokenRequest">RegenerateTokenRequest</a><br/>
+<a href="#Struct_RegenerateTokenResponse">RegenerateTokenResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
 <a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a><br/>
@@ -237,13 +240,13 @@ code { line-height: 20px; }
 <br/></blockquote></td></tr><tr id="Const_MAX_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>40</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with a Service.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
-<p><strong>Base type:</strong>&nbsp;<code>i32</code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_long">Typedef: long</h3>
-<p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_long">Banana.long</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
-<p><strong>Base type:</strong>&nbsp;<code>i64</code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_DeveloperToken">Typedef: DeveloperToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_DeveloperToken">Authentication.DeveloperToken</a></code></p>
@@ -290,6 +293,7 @@ code { line-height: 20px; }
 <tr><td>3</td><td>programmingLanguage</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>icon</td><td><code><a href="#Typedef_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ProvisionServiceResponse">Struct: ProvisionServiceResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>bananaToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -301,6 +305,7 @@ code { line-height: 20px; }
 <tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>shared</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
+<tr><td>5</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SubscribeToServiceResponse">Struct: SubscribeToServiceResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -308,13 +313,23 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckResponse">Struct: RegisterHealthCheckResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RenewServiceTokenRequest">Struct: RenewServiceTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>timePeriod</td><td><code><a href="Banana.html#Struct_TimePeriod">Banana.TimePeriod</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RenewServiceTokenResponse">Struct: RenewServiceTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RegenerateTokenRequest">Struct: RegenerateTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RegenerateTokenResponse">Struct: RegenerateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
@@ -333,5 +348,8 @@ code { line-height: 20px; }
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_renewServiceToken">Function: BananaService.renewServiceToken</h4>
 <pre><code><a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a></code> renewServiceToken(<code><a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
+<pre><code><a href="#Struct_RegenerateTokenResponse">RegenerateTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateTokenRequest">RegenerateTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div></div></body></html>

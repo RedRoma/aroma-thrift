@@ -222,132 +222,6 @@ void Call::printTo(std::ostream& out) const {
 }
 
 
-Service::~Service() throw() {
-}
-
-
-void Service::__set_owner(const std::string& val) {
-  this->owner = val;
-}
-
-void Service::__set_timeOfRegistration(const timestamp val) {
-  this->timeOfRegistration = val;
-}
-
-void Service::__set_name(const std::string& val) {
-  this->name = val;
-}
-
-uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->owner);
-          this->__isset.owner = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_I64) {
-          xfer += iprot->readI64(this->timeOfRegistration);
-          this->__isset.timeOfRegistration = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->name);
-          this->__isset.name = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Service");
-
-  xfer += oprot->writeFieldBegin("owner", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->owner);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("timeOfRegistration", ::apache::thrift::protocol::T_I64, 2);
-  xfer += oprot->writeI64(this->timeOfRegistration);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
-  xfer += oprot->writeString(this->name);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(Service &a, Service &b) {
-  using ::std::swap;
-  swap(a.owner, b.owner);
-  swap(a.timeOfRegistration, b.timeOfRegistration);
-  swap(a.name, b.name);
-  swap(a.__isset, b.__isset);
-}
-
-Service::Service(const Service& other5) {
-  owner = other5.owner;
-  timeOfRegistration = other5.timeOfRegistration;
-  name = other5.name;
-  __isset = other5.__isset;
-}
-Service& Service::operator=(const Service& other6) {
-  owner = other6.owner;
-  timeOfRegistration = other6.timeOfRegistration;
-  name = other6.name;
-  __isset = other6.__isset;
-  return *this;
-}
-void Service::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "Service(";
-  out << "owner=" << to_string(owner);
-  out << ", " << "timeOfRegistration=" << to_string(timeOfRegistration);
-  out << ", " << "name=" << to_string(name);
-  out << ")";
-}
-
-
 TimePeriod::~TimePeriod() throw() {
 }
 
@@ -385,9 +259,9 @@ uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast7;
-          xfer += iprot->readI32(ecast7);
-          this->unit = (TimeUnit::type)ecast7;
+          int32_t ecast5;
+          xfer += iprot->readI32(ecast5);
+          this->unit = (TimeUnit::type)ecast5;
           isset_unit = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -441,13 +315,13 @@ void swap(TimePeriod &a, TimePeriod &b) {
   swap(a.value, b.value);
 }
 
-TimePeriod::TimePeriod(const TimePeriod& other8) {
-  unit = other8.unit;
-  value = other8.value;
+TimePeriod::TimePeriod(const TimePeriod& other6) {
+  unit = other6.unit;
+  value = other6.value;
 }
-TimePeriod& TimePeriod::operator=(const TimePeriod& other9) {
-  unit = other9.unit;
-  value = other9.value;
+TimePeriod& TimePeriod::operator=(const TimePeriod& other7) {
+  unit = other7.unit;
+  value = other7.value;
   return *this;
 }
 void TimePeriod::printTo(std::ostream& out) const {
@@ -550,13 +424,13 @@ void swap(Dimension &a, Dimension &b) {
   swap(a.height, b.height);
 }
 
-Dimension::Dimension(const Dimension& other10) {
-  width = other10.width;
-  height = other10.height;
+Dimension::Dimension(const Dimension& other8) {
+  width = other8.width;
+  height = other8.height;
 }
-Dimension& Dimension::operator=(const Dimension& other11) {
-  width = other11.width;
-  height = other11.height;
+Dimension& Dimension::operator=(const Dimension& other9) {
+  width = other9.width;
+  height = other9.height;
   return *this;
 }
 void Dimension::printTo(std::ostream& out) const {
@@ -607,9 +481,9 @@ uint32_t Image::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast12;
-          xfer += iprot->readI32(ecast12);
-          this->imageType = (ImageType::type)ecast12;
+          int32_t ecast10;
+          xfer += iprot->readI32(ecast10);
+          this->imageType = (ImageType::type)ecast10;
           this->__isset.imageType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -673,17 +547,17 @@ void swap(Image &a, Image &b) {
   swap(a.__isset, b.__isset);
 }
 
-Image::Image(const Image& other13) {
-  imageType = other13.imageType;
-  data = other13.data;
-  dimension = other13.dimension;
-  __isset = other13.__isset;
+Image::Image(const Image& other11) {
+  imageType = other11.imageType;
+  data = other11.data;
+  dimension = other11.dimension;
+  __isset = other11.__isset;
 }
-Image& Image::operator=(const Image& other14) {
-  imageType = other14.imageType;
-  data = other14.data;
-  dimension = other14.dimension;
-  __isset = other14.__isset;
+Image& Image::operator=(const Image& other12) {
+  imageType = other12.imageType;
+  data = other12.data;
+  dimension = other12.dimension;
+  __isset = other12.__isset;
   return *this;
 }
 void Image::printTo(std::ostream& out) const {

@@ -22,11 +22,11 @@
 
 namespace tech { namespace aroma { namespace banana { namespace thrift { namespace channels {
 
-typedef int32_t int;
+typedef  ::tech::aroma::banana::thrift::int int;
 
-typedef int64_t long;
+typedef  ::tech::aroma::banana::thrift::long long;
 
-typedef int64_t timestamp;
+typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
 
 class SlackChannel;
 

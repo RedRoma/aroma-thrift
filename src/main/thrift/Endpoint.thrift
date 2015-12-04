@@ -11,8 +11,7 @@ include "Authentication.thrift"
 include "Banana.thrift"
 include "Exceptions.thrift"
 
-typedef i32 int
-
+typedef Banana.int int
 typedef Exceptions.OperationFailedException OperationFailedException
 
 /**

@@ -4,7 +4,6 @@ namespace cpp   tech.aroma.banana.thrift
 
 typedef i32 int
 typedef i64 long
-
 /**
  * A Timestamp is defined as Unix Time, otherwise known as
  * Milliseconds since epoch.
@@ -33,12 +32,6 @@ struct Call
 
 }
 
-struct Service
-{
-    1: string owner;
-    2: timestamp timeOfRegistration;
-    3: string name;
-}
 
 enum TimeUnit
 {

@@ -13,15 +13,14 @@ include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
-typedef i32 int
-typedef i64 long
-typedef i64 timestamp
-
-
 /*
  * These Typedefs are like import statements
  * so  we don't have to type as much.
  */
+
+typedef Banana.int int;
+typedef Banana.long long;
+typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.DeveloperToken DeveloperToken
@@ -64,6 +63,7 @@ struct ProvisionServiceRequest
     3: optional string programmingLanguage;
     4: string organization;
     5: optional Image icon;
+    6: DeveloperToken developerToken;
 }
 
 struct ProvisionServiceResponse
@@ -79,6 +79,7 @@ struct SubscribeToServiceRequest
     2: string serviceName;
     3: optional string organization;
     4: optional bool shared = false;
+    5: DeveloperToken developerToken;
     
 }
 
@@ -92,20 +93,33 @@ struct SubscribeToServiceResponse
 struct RegisterHealthCheckRequest
 {
    1: Endpoint.Endpoint endpoint;
+   2: DeveloperToken developerToken;
 }
 
 struct RegisterHealthCheckResponse
 {
-    
+    1: optional string message;
 }
 
 struct RenewServiceTokenRequest
 {
     1: ServiceToken serviceToken;
     2: Banana.TimePeriod timePeriod;
+    3: DeveloperToken developerToken;
 }
 
 struct RenewServiceTokenResponse
+{
+    1: ServiceToken serviceToken;
+}
+
+struct RegenerateTokenRequest
+{
+    1: string serviceName;
+    2: DeveloperToken developerToken;
+}
+
+struct RegenerateTokenResponse
 {
     1: ServiceToken serviceToken;
 }
@@ -140,5 +154,11 @@ service BananaService
                                                                                             3: InvalidCredentialsException ex3,
                                                                                             4: ServiceDoesNotExistException ex4,
                                                                                             5: UnauthorizedException ex5)
+    
+    RegenerateTokenResponse regenerateToken(1: RegenerateTokenRequest request) throws(1: OperationFailedException ex1,
+                                                                                      2: InvalidArgumentException ex2,
+                                                                                      3: InvalidCredentialsException ex3,
+                                                                                      4: ServiceDoesNotExistException ex4,
+                                                                                      5: UnauthorizedException ex5)
     
 }

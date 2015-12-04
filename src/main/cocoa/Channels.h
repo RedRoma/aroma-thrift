@@ -22,11 +22,11 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-typedef int32_t BananaChannels_int;
+typedef Banana_int BananaChannels_int;
 
-typedef int64_t BananaChannels_long;
+typedef Banana_long BananaChannels_long;
 
-typedef int64_t BananaChannels_timestamp;
+typedef Banana_timestamp BananaChannels_timestamp;
 
 @interface BananaChannels_SlackChannel : NSObject <TBase, NSCoding> {
   NSString * __domainName;

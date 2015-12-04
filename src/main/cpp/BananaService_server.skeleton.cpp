@@ -47,6 +47,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("renewServiceToken\n");
   }
 
+  void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) {
+    // Your implementation goes here
+    printf("regenerateToken\n");
+  }
+
 };
 
 int main(int argc, char **argv) {

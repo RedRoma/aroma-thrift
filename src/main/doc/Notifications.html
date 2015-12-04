@@ -189,33 +189,28 @@ table { empty-cells: show; }
 code { line-height: 20px; }
 .table-bordered th, .table-bordered td { border-bottom: 1px solid #DDDDDD; }
 --></style>
-<title>Thrift module: Authentication</title></head><body>
+<title>Thrift module: Notifications</title></head><body>
 <div class="container-fluid">
-<h1>Thrift module: Authentication</h1>
+<h1>Thrift module: Notifications</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>Authentication</td><td></td>
-<td><a href="#Struct_Developer">Developer</a><br/>
-<a href="#Struct_DeveloperToken">DeveloperToken</a><br/>
-<a href="#Struct_GithubToken">GithubToken</a><br/>
-<a href="#Struct_OauthToken">OauthToken</a><br/>
-<a href="#Enum_Role">Role</a><br/>
-<a href="#Struct_Service">Service</a><br/>
-<a href="#Struct_ServiceToken">ServiceToken</a><br/>
+<td>Notifications</td><td></td>
+<td><a href="#Typedef_Developer">Developer</a><br/>
+<a href="#Struct_Event">Event</a><br/>
+<a href="#Struct_HealthCheckBackToNormal">HealthCheckBackToNormal</a><br/>
+<a href="#Struct_HealthCheckFailed">HealthCheckFailed</a><br/>
+<a href="#Struct_Notification">Notification</a><br/>
+<a href="#Typedef_Service">Service</a><br/>
+<a href="#Struct_ServiceSentMessage">ServiceSentMessage</a><br/>
+<a href="#Typedef_ServiceToken">ServiceToken</a><br/>
+<a href="#Struct_ServiceTokenRegenerated">ServiceTokenRegenerated</a><br/>
+<a href="#Struct_ServiceTokenRenewed">ServiceTokenRenewed</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
 </td>
 <td></code></td>
 </tr></table>
-<hr/><h2 id="Enumerations">Enumerations</h2>
-<div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
-<br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>DEV</code></td><td><code>1</code></td><td>
-</td></tr>
-<tr><td><code>OWNER</code></td><td><code>2</code></td><td>
-</td></tr>
-</table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
@@ -226,37 +221,36 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_Developer">Typedef: Developer</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Developer">Authentication.Developer</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Service">Typedef: Service</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Service">Authentication.Service</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
+</div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_Developer">Struct: Developer</h3>
+<div class="definition"><h3 id="Struct_HealthCheckFailed">Struct: HealthCheckFailed</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>role</td><td><code><a href="#Enum_Role">Role</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Service">Struct: Service</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_HealthCheckBackToNormal">Struct: HealthCheckBackToNormal</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>owner</td><td><code><a href="#Struct_Developer">Developer</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ServiceToken">Struct: ServiceToken</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_ServiceTokenRenewed">Struct: ServiceTokenRenewed</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeveloperToken">Struct: DeveloperToken</h3>
+<tr><td>1</td><td>developer</td><td><code><a href="#Typedef_Developer">Developer</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ServiceTokenRegenerated">Struct: ServiceTokenRegenerated</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>oauthProvider</td><td><code>string</code></td><td></td><td>optional</td><td><code>"github"</code></td></tr>
-<tr><td>3</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GithubToken">Struct: GithubToken</h3>
+<tr><td>1</td><td>developer</td><td><code><a href="#Typedef_Developer">Developer</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ServiceSentMessage">Struct: ServiceSentMessage</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>email</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>oauthToken</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_OauthToken">Union: OauthToken</h3>
+<tr><td>1</td><td>message</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Event">Union: Event</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>githubToken</td><td><code><a href="#Struct_GithubToken">GithubToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>healthCheckFailed</td><td><code><a href="#Struct_HealthCheckFailed">HealthCheckFailed</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Notification">Struct: Notification</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>event</td><td><code><a href="#Struct_Event">Event</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>timestamp</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>

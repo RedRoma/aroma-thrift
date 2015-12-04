@@ -24,11 +24,11 @@
 
 namespace tech { namespace aroma { namespace banana { namespace thrift { namespace service {
 
-typedef int32_t int;
+typedef  ::tech::aroma::banana::thrift::int int;
 
-typedef int64_t long;
+typedef  ::tech::aroma::banana::thrift::long long;
 
-typedef int64_t timestamp;
+typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
 
 typedef class  ::DeveloperToken DeveloperToken;
 
@@ -69,6 +69,10 @@ class RegisterHealthCheckResponse;
 class RenewServiceTokenRequest;
 
 class RenewServiceTokenResponse;
+
+class RegenerateTokenRequest;
+
+class RegenerateTokenResponse;
 
 typedef struct _SignInRequest__isset {
   _SignInRequest__isset() : oathToken(false), username(false) {}
@@ -169,12 +173,13 @@ inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
 }
 
 typedef struct _ProvisionServiceRequest__isset {
-  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false) {}
+  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false), developerToken(false) {}
   bool token :1;
   bool serviceName :1;
   bool programmingLanguage :1;
   bool organization :1;
   bool icon :1;
+  bool developerToken :1;
 } _ProvisionServiceRequest__isset;
 
 class ProvisionServiceRequest {
@@ -191,6 +196,7 @@ class ProvisionServiceRequest {
   std::string programmingLanguage;
   std::string organization;
   Image icon;
+  DeveloperToken developerToken;
 
   _ProvisionServiceRequest__isset __isset;
 
@@ -203,6 +209,8 @@ class ProvisionServiceRequest {
   void __set_organization(const std::string& val);
 
   void __set_icon(const Image& val);
+
+  void __set_developerToken(const DeveloperToken& val);
 
   bool operator == (const ProvisionServiceRequest & rhs) const
   {
@@ -219,6 +227,8 @@ class ProvisionServiceRequest {
     if (__isset.icon != rhs.__isset.icon)
       return false;
     else if (__isset.icon && !(icon == rhs.icon))
+      return false;
+    if (!(developerToken == rhs.developerToken))
       return false;
     return true;
   }
@@ -301,11 +311,12 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRespons
 }
 
 typedef struct _SubscribeToServiceRequest__isset {
-  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false), shared(true) {}
+  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false), shared(true), developerToken(false) {}
   bool token :1;
   bool serviceName :1;
   bool organization :1;
   bool shared :1;
+  bool developerToken :1;
 } _SubscribeToServiceRequest__isset;
 
 class SubscribeToServiceRequest {
@@ -321,6 +332,7 @@ class SubscribeToServiceRequest {
   std::string serviceName;
   std::string organization;
   bool shared;
+  DeveloperToken developerToken;
 
   _SubscribeToServiceRequest__isset __isset;
 
@@ -331,6 +343,8 @@ class SubscribeToServiceRequest {
   void __set_organization(const std::string& val);
 
   void __set_shared(const bool val);
+
+  void __set_developerToken(const DeveloperToken& val);
 
   bool operator == (const SubscribeToServiceRequest & rhs) const
   {
@@ -345,6 +359,8 @@ class SubscribeToServiceRequest {
     if (__isset.shared != rhs.__isset.shared)
       return false;
     else if (__isset.shared && !(shared == rhs.shared))
+      return false;
+    if (!(developerToken == rhs.developerToken))
       return false;
     return true;
   }
@@ -421,8 +437,9 @@ inline std::ostream& operator<<(std::ostream& out, const SubscribeToServiceRespo
 }
 
 typedef struct _RegisterHealthCheckRequest__isset {
-  _RegisterHealthCheckRequest__isset() : endpoint(false) {}
+  _RegisterHealthCheckRequest__isset() : endpoint(false), developerToken(false) {}
   bool endpoint :1;
+  bool developerToken :1;
 } _RegisterHealthCheckRequest__isset;
 
 class RegisterHealthCheckRequest {
@@ -435,14 +452,19 @@ class RegisterHealthCheckRequest {
 
   virtual ~RegisterHealthCheckRequest() throw();
    ::tech::aroma::banana::thrift::endpoint::Endpoint endpoint;
+  DeveloperToken developerToken;
 
   _RegisterHealthCheckRequest__isset __isset;
 
   void __set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val);
 
+  void __set_developerToken(const DeveloperToken& val);
+
   bool operator == (const RegisterHealthCheckRequest & rhs) const
   {
     if (!(endpoint == rhs.endpoint))
+      return false;
+    if (!(developerToken == rhs.developerToken))
       return false;
     return true;
   }
@@ -466,19 +488,32 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckRequ
   return out;
 }
 
+typedef struct _RegisterHealthCheckResponse__isset {
+  _RegisterHealthCheckResponse__isset() : message(false) {}
+  bool message :1;
+} _RegisterHealthCheckResponse__isset;
 
 class RegisterHealthCheckResponse {
  public:
 
   RegisterHealthCheckResponse(const RegisterHealthCheckResponse&);
   RegisterHealthCheckResponse& operator=(const RegisterHealthCheckResponse&);
-  RegisterHealthCheckResponse() {
+  RegisterHealthCheckResponse() : message() {
   }
 
   virtual ~RegisterHealthCheckResponse() throw();
+  std::string message;
 
-  bool operator == (const RegisterHealthCheckResponse & /* rhs */) const
+  _RegisterHealthCheckResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const RegisterHealthCheckResponse & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
     return true;
   }
   bool operator != (const RegisterHealthCheckResponse &rhs) const {
@@ -502,9 +537,10 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResp
 }
 
 typedef struct _RenewServiceTokenRequest__isset {
-  _RenewServiceTokenRequest__isset() : serviceToken(false), timePeriod(false) {}
+  _RenewServiceTokenRequest__isset() : serviceToken(false), timePeriod(false), developerToken(false) {}
   bool serviceToken :1;
   bool timePeriod :1;
+  bool developerToken :1;
 } _RenewServiceTokenRequest__isset;
 
 class RenewServiceTokenRequest {
@@ -518,6 +554,7 @@ class RenewServiceTokenRequest {
   virtual ~RenewServiceTokenRequest() throw();
   ServiceToken serviceToken;
    ::tech::aroma::banana::thrift::TimePeriod timePeriod;
+  DeveloperToken developerToken;
 
   _RenewServiceTokenRequest__isset __isset;
 
@@ -525,11 +562,15 @@ class RenewServiceTokenRequest {
 
   void __set_timePeriod(const  ::tech::aroma::banana::thrift::TimePeriod& val);
 
+  void __set_developerToken(const DeveloperToken& val);
+
   bool operator == (const RenewServiceTokenRequest & rhs) const
   {
     if (!(serviceToken == rhs.serviceToken))
       return false;
     if (!(timePeriod == rhs.timePeriod))
+      return false;
+    if (!(developerToken == rhs.developerToken))
       return false;
     return true;
   }
@@ -594,6 +635,104 @@ class RenewServiceTokenResponse {
 void swap(RenewServiceTokenResponse &a, RenewServiceTokenResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const RenewServiceTokenResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegenerateTokenRequest__isset {
+  _RegenerateTokenRequest__isset() : serviceName(false), developerToken(false) {}
+  bool serviceName :1;
+  bool developerToken :1;
+} _RegenerateTokenRequest__isset;
+
+class RegenerateTokenRequest {
+ public:
+
+  RegenerateTokenRequest(const RegenerateTokenRequest&);
+  RegenerateTokenRequest& operator=(const RegenerateTokenRequest&);
+  RegenerateTokenRequest() : serviceName() {
+  }
+
+  virtual ~RegenerateTokenRequest() throw();
+  std::string serviceName;
+  DeveloperToken developerToken;
+
+  _RegenerateTokenRequest__isset __isset;
+
+  void __set_serviceName(const std::string& val);
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const RegenerateTokenRequest & rhs) const
+  {
+    if (!(serviceName == rhs.serviceName))
+      return false;
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RegenerateTokenRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegenerateTokenRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegenerateTokenRequest &a, RegenerateTokenRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegenerateTokenResponse__isset {
+  _RegenerateTokenResponse__isset() : serviceToken(false) {}
+  bool serviceToken :1;
+} _RegenerateTokenResponse__isset;
+
+class RegenerateTokenResponse {
+ public:
+
+  RegenerateTokenResponse(const RegenerateTokenResponse&);
+  RegenerateTokenResponse& operator=(const RegenerateTokenResponse&);
+  RegenerateTokenResponse() {
+  }
+
+  virtual ~RegenerateTokenResponse() throw();
+  ServiceToken serviceToken;
+
+  _RegenerateTokenResponse__isset __isset;
+
+  void __set_serviceToken(const ServiceToken& val);
+
+  bool operator == (const RegenerateTokenResponse & rhs) const
+  {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RegenerateTokenResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegenerateTokenResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegenerateTokenResponse &a, RegenerateTokenResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenResponse& obj)
 {
   obj.printTo(out);
   return out;

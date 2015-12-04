@@ -26,6 +26,7 @@ class BananaServiceIf {
   virtual void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) = 0;
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
   virtual void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request) = 0;
+  virtual void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) = 0;
 };
 
 class BananaServiceIfFactory {
@@ -68,6 +69,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void renewServiceToken(RenewServiceTokenResponse& /* _return */, const RenewServiceTokenRequest& /* request */) {
+    return;
+  }
+  void regenerateToken(RegenerateTokenResponse& /* _return */, const RegenerateTokenRequest& /* request */) {
     return;
   }
 };
@@ -768,6 +772,150 @@ class BananaService_renewServiceToken_presult {
 
 };
 
+typedef struct _BananaService_regenerateToken_args__isset {
+  _BananaService_regenerateToken_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_regenerateToken_args__isset;
+
+class BananaService_regenerateToken_args {
+ public:
+
+  BananaService_regenerateToken_args(const BananaService_regenerateToken_args&);
+  BananaService_regenerateToken_args& operator=(const BananaService_regenerateToken_args&);
+  BananaService_regenerateToken_args() {
+  }
+
+  virtual ~BananaService_regenerateToken_args() throw();
+  RegenerateTokenRequest request;
+
+  _BananaService_regenerateToken_args__isset __isset;
+
+  void __set_request(const RegenerateTokenRequest& val);
+
+  bool operator == (const BananaService_regenerateToken_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_regenerateToken_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_regenerateToken_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_regenerateToken_pargs {
+ public:
+
+
+  virtual ~BananaService_regenerateToken_pargs() throw();
+  const RegenerateTokenRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_regenerateToken_result__isset {
+  _BananaService_regenerateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_regenerateToken_result__isset;
+
+class BananaService_regenerateToken_result {
+ public:
+
+  BananaService_regenerateToken_result(const BananaService_regenerateToken_result&);
+  BananaService_regenerateToken_result& operator=(const BananaService_regenerateToken_result&);
+  BananaService_regenerateToken_result() {
+  }
+
+  virtual ~BananaService_regenerateToken_result() throw();
+  RegenerateTokenResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  ServiceDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _BananaService_regenerateToken_result__isset __isset;
+
+  void __set_success(const RegenerateTokenResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const ServiceDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_regenerateToken_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_regenerateToken_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_regenerateToken_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_regenerateToken_presult__isset {
+  _BananaService_regenerateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_regenerateToken_presult__isset;
+
+class BananaService_regenerateToken_presult {
+ public:
+
+
+  virtual ~BananaService_regenerateToken_presult() throw();
+  RegenerateTokenResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  ServiceDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _BananaService_regenerateToken_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class BananaServiceClient : virtual public BananaServiceIf {
  public:
   BananaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -808,6 +956,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request);
   void send_renewServiceToken(const RenewServiceTokenRequest& request);
   void recv_renewServiceToken(RenewServiceTokenResponse& _return);
+  void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request);
+  void send_regenerateToken(const RegenerateTokenRequest& request);
+  void recv_regenerateToken(RegenerateTokenResponse& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -828,6 +979,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_subscribeToService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_renewServiceToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
@@ -836,6 +988,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["subscribeToService"] = &BananaServiceProcessor::process_subscribeToService;
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
     processMap_["renewServiceToken"] = &BananaServiceProcessor::process_renewServiceToken;
+    processMap_["regenerateToken"] = &BananaServiceProcessor::process_regenerateToken;
   }
 
   virtual ~BananaServiceProcessor() {}
@@ -914,6 +1067,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->regenerateToken(_return, request);
+    }
+    ifaces_[i]->regenerateToken(_return, request);
+    return;
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -959,6 +1122,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request);
   int32_t send_renewServiceToken(const RenewServiceTokenRequest& request);
   void recv_renewServiceToken(RenewServiceTokenResponse& _return, const int32_t seqid);
+  void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request);
+  int32_t send_regenerateToken(const RegenerateTokenRequest& request);
+  void recv_regenerateToken(RegenerateTokenResponse& _return, const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

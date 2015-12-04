@@ -25,11 +25,11 @@ enum BananaAuthentication_Role {
   Role_OWNER = 2
 };
 
-typedef int32_t BananaAuthentication_int;
+typedef Banana_int BananaAuthentication_int;
 
-typedef int64_t BananaAuthentication_long;
+typedef Banana_long BananaAuthentication_long;
 
-typedef int64_t BananaAuthentication_timestamp;
+typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @interface BananaAuthentication_Developer : NSObject <TBase, NSCoding> {
   NSString * __email;
@@ -81,6 +81,59 @@ typedef int64_t BananaAuthentication_timestamp;
 - (void) setRole: (int) role;
 #endif
 - (BOOL) roleIsSet;
+
+@end
+
+@interface BananaAuthentication_Service : NSObject <TBase, NSCoding> {
+  BananaAuthentication_Developer * __owner;
+  BananaAuthentication_timestamp __timeOfRegistration;
+  NSString * __name;
+  NSString * __id;
+
+  BOOL __owner_isset;
+  BOOL __timeOfRegistration_isset;
+  BOOL __name_isset;
+  BOOL __id_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=owner, setter=setOwner:) BananaAuthentication_Developer * owner;
+@property (nonatomic, getter=timeOfRegistration, setter=setTimeOfRegistration:) BananaAuthentication_timestamp timeOfRegistration;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
+#endif
+
+- (id) init;
+- (id) initWithOwner: (BananaAuthentication_Developer *) owner timeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_Developer *) owner;
+- (void) setOwner: (BananaAuthentication_Developer *) owner;
+#endif
+- (BOOL) ownerIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_timestamp) timeOfRegistration;
+- (void) setTimeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration;
+#endif
+- (BOOL) timeOfRegistrationIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) id;
+- (void) setId: (NSString *) id;
+#endif
+- (BOOL) idIsSet;
 
 @end
 

@@ -29,13 +29,15 @@ struct Role {
 
 extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
 
-typedef int32_t int;
+typedef  ::tech::aroma::banana::thrift::int int;
 
-typedef int64_t long;
+typedef  ::tech::aroma::banana::thrift::long long;
 
-typedef int64_t timestamp;
+typedef  ::tech::aroma::banana::thrift::timestamp timestamp;
 
 class Developer;
+
+class Service;
 
 class ServiceToken;
 
@@ -108,6 +110,70 @@ class Developer {
 void swap(Developer &a, Developer &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Service__isset {
+  _Service__isset() : owner(false), timeOfRegistration(false), name(false), id(false) {}
+  bool owner :1;
+  bool timeOfRegistration :1;
+  bool name :1;
+  bool id :1;
+} _Service__isset;
+
+class Service {
+ public:
+
+  Service(const Service&);
+  Service& operator=(const Service&);
+  Service() : timeOfRegistration(0), name(), id() {
+  }
+
+  virtual ~Service() throw();
+  Developer owner;
+  timestamp timeOfRegistration;
+  std::string name;
+  std::string id;
+
+  _Service__isset __isset;
+
+  void __set_owner(const Developer& val);
+
+  void __set_timeOfRegistration(const timestamp val);
+
+  void __set_name(const std::string& val);
+
+  void __set_id(const std::string& val);
+
+  bool operator == (const Service & rhs) const
+  {
+    if (!(owner == rhs.owner))
+      return false;
+    if (!(timeOfRegistration == rhs.timeOfRegistration))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    return true;
+  }
+  bool operator != (const Service &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Service & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Service &a, Service &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Service& obj)
 {
   obj.printTo(out);
   return out;

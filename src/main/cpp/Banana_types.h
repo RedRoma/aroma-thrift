@@ -60,8 +60,6 @@ class Message;
 
 class Call;
 
-class Service;
-
 class TimePeriod;
 
 class Dimension;
@@ -152,64 +150,6 @@ class Call {
 void swap(Call &a, Call &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Call& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _Service__isset {
-  _Service__isset() : owner(false), timeOfRegistration(false), name(false) {}
-  bool owner :1;
-  bool timeOfRegistration :1;
-  bool name :1;
-} _Service__isset;
-
-class Service {
- public:
-
-  Service(const Service&);
-  Service& operator=(const Service&);
-  Service() : owner(), timeOfRegistration(0), name() {
-  }
-
-  virtual ~Service() throw();
-  std::string owner;
-  timestamp timeOfRegistration;
-  std::string name;
-
-  _Service__isset __isset;
-
-  void __set_owner(const std::string& val);
-
-  void __set_timeOfRegistration(const timestamp val);
-
-  void __set_name(const std::string& val);
-
-  bool operator == (const Service & rhs) const
-  {
-    if (!(owner == rhs.owner))
-      return false;
-    if (!(timeOfRegistration == rhs.timeOfRegistration))
-      return false;
-    if (!(name == rhs.name))
-      return false;
-    return true;
-  }
-  bool operator != (const Service &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Service & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Service &a, Service &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Service& obj)
 {
   obj.printTo(out);
   return out;

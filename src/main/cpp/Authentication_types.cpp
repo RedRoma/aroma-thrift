@@ -176,6 +176,152 @@ void Developer::printTo(std::ostream& out) const {
 }
 
 
+Service::~Service() throw() {
+}
+
+
+void Service::__set_owner(const Developer& val) {
+  this->owner = val;
+}
+
+void Service::__set_timeOfRegistration(const timestamp val) {
+  this->timeOfRegistration = val;
+}
+
+void Service::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void Service::__set_id(const std::string& val) {
+  this->id = val;
+}
+
+uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->owner.read(iprot);
+          this->__isset.owner = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfRegistration);
+          this->__isset.timeOfRegistration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Service");
+
+  xfer += oprot->writeFieldBegin("owner", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->owner.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeOfRegistration", ::apache::thrift::protocol::T_I64, 2);
+  xfer += oprot->writeI64(this->timeOfRegistration);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Service &a, Service &b) {
+  using ::std::swap;
+  swap(a.owner, b.owner);
+  swap(a.timeOfRegistration, b.timeOfRegistration);
+  swap(a.name, b.name);
+  swap(a.id, b.id);
+  swap(a.__isset, b.__isset);
+}
+
+Service::Service(const Service& other3) {
+  owner = other3.owner;
+  timeOfRegistration = other3.timeOfRegistration;
+  name = other3.name;
+  id = other3.id;
+  __isset = other3.__isset;
+}
+Service& Service::operator=(const Service& other4) {
+  owner = other4.owner;
+  timeOfRegistration = other4.timeOfRegistration;
+  name = other4.name;
+  id = other4.id;
+  __isset = other4.__isset;
+  return *this;
+}
+void Service::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Service(";
+  out << "owner=" << to_string(owner);
+  out << ", " << "timeOfRegistration=" << to_string(timeOfRegistration);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "id=" << to_string(id);
+  out << ")";
+}
+
+
 ServiceToken::~ServiceToken() throw() {
 }
 
@@ -298,19 +444,19 @@ void swap(ServiceToken &a, ServiceToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-ServiceToken::ServiceToken(const ServiceToken& other3) {
-  id = other3.id;
-  serviceName = other3.serviceName;
-  organization = other3.organization;
-  timeOfExpiration = other3.timeOfExpiration;
-  __isset = other3.__isset;
+ServiceToken::ServiceToken(const ServiceToken& other5) {
+  id = other5.id;
+  serviceName = other5.serviceName;
+  organization = other5.organization;
+  timeOfExpiration = other5.timeOfExpiration;
+  __isset = other5.__isset;
 }
-ServiceToken& ServiceToken::operator=(const ServiceToken& other4) {
-  id = other4.id;
-  serviceName = other4.serviceName;
-  organization = other4.organization;
-  timeOfExpiration = other4.timeOfExpiration;
-  __isset = other4.__isset;
+ServiceToken& ServiceToken::operator=(const ServiceToken& other6) {
+  id = other6.id;
+  serviceName = other6.serviceName;
+  organization = other6.organization;
+  timeOfExpiration = other6.timeOfExpiration;
+  __isset = other6.__isset;
   return *this;
 }
 void ServiceToken::printTo(std::ostream& out) const {
@@ -448,19 +594,19 @@ void swap(DeveloperToken &a, DeveloperToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-DeveloperToken::DeveloperToken(const DeveloperToken& other5) {
-  id = other5.id;
-  oauthProvider = other5.oauthProvider;
-  timeOfExpiration = other5.timeOfExpiration;
-  organization = other5.organization;
-  __isset = other5.__isset;
+DeveloperToken::DeveloperToken(const DeveloperToken& other7) {
+  id = other7.id;
+  oauthProvider = other7.oauthProvider;
+  timeOfExpiration = other7.timeOfExpiration;
+  organization = other7.organization;
+  __isset = other7.__isset;
 }
-DeveloperToken& DeveloperToken::operator=(const DeveloperToken& other6) {
-  id = other6.id;
-  oauthProvider = other6.oauthProvider;
-  timeOfExpiration = other6.timeOfExpiration;
-  organization = other6.organization;
-  __isset = other6.__isset;
+DeveloperToken& DeveloperToken::operator=(const DeveloperToken& other8) {
+  id = other8.id;
+  oauthProvider = other8.oauthProvider;
+  timeOfExpiration = other8.timeOfExpiration;
+  organization = other8.organization;
+  __isset = other8.__isset;
   return *this;
 }
 void DeveloperToken::printTo(std::ostream& out) const {
@@ -582,17 +728,17 @@ void swap(GithubToken &a, GithubToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-GithubToken::GithubToken(const GithubToken& other7) {
-  username = other7.username;
-  email = other7.email;
-  oauthToken = other7.oauthToken;
-  __isset = other7.__isset;
+GithubToken::GithubToken(const GithubToken& other9) {
+  username = other9.username;
+  email = other9.email;
+  oauthToken = other9.oauthToken;
+  __isset = other9.__isset;
 }
-GithubToken& GithubToken::operator=(const GithubToken& other8) {
-  username = other8.username;
-  email = other8.email;
-  oauthToken = other8.oauthToken;
-  __isset = other8.__isset;
+GithubToken& GithubToken::operator=(const GithubToken& other10) {
+  username = other10.username;
+  email = other10.email;
+  oauthToken = other10.oauthToken;
+  __isset = other10.__isset;
   return *this;
 }
 void GithubToken::printTo(std::ostream& out) const {
@@ -674,13 +820,13 @@ void swap(OauthToken &a, OauthToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-OauthToken::OauthToken(const OauthToken& other9) {
-  githubToken = other9.githubToken;
-  __isset = other9.__isset;
+OauthToken::OauthToken(const OauthToken& other11) {
+  githubToken = other11.githubToken;
+  __isset = other11.__isset;
 }
-OauthToken& OauthToken::operator=(const OauthToken& other10) {
-  githubToken = other10.githubToken;
-  __isset = other10.__isset;
+OauthToken& OauthToken::operator=(const OauthToken& other12) {
+  githubToken = other12.githubToken;
+  __isset = other12.__isset;
   return *this;
 }
 void OauthToken::printTo(std::ostream& out) const {

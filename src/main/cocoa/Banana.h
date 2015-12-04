@@ -91,50 +91,6 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_Service : NSObject <TBase, NSCoding> {
-  NSString * __owner;
-  Banana_timestamp __timeOfRegistration;
-  NSString * __name;
-
-  BOOL __owner_isset;
-  BOOL __timeOfRegistration_isset;
-  BOOL __name_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=owner, setter=setOwner:) NSString * owner;
-@property (nonatomic, getter=timeOfRegistration, setter=setTimeOfRegistration:) Banana_timestamp timeOfRegistration;
-@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-#endif
-
-- (id) init;
-- (id) initWithOwner: (NSString *) owner timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) owner;
-- (void) setOwner: (NSString *) owner;
-#endif
-- (BOOL) ownerIsSet;
-
-#if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfRegistration;
-- (void) setTimeOfRegistration: (Banana_timestamp) timeOfRegistration;
-#endif
-- (BOOL) timeOfRegistrationIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) name;
-- (void) setName: (NSString *) name;
-#endif
-- (BOOL) nameIsSet;
-
-@end
-
 @interface Banana_TimePeriod : NSObject <TBase, NSCoding> {
   int __unit;
   Banana_int __value;

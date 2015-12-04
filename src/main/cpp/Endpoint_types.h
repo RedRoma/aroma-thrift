@@ -22,7 +22,7 @@
 
 namespace tech { namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
-typedef int32_t int;
+typedef  ::tech::aroma::banana::thrift::int int;
 
 typedef class  ::tech::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 

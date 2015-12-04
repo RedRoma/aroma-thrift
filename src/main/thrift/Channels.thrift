@@ -14,14 +14,9 @@ include "Banana.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
-typedef i32 int
-typedef i64 long
-
-/**
- * A Timestamp is defined as Unix Time, otherwise known as
- * Milliseconds since epoch.
- */
-typedef i64 timestamp
+typedef Banana.int int
+typedef Banana.long long
+typedef Banana.timestamp timestamp
 
 struct SlackChannel
 {

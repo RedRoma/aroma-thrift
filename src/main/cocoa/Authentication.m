@@ -342,6 +342,328 @@
 
 @end
 
+@implementation BananaAuthentication_Service
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithOwner: (BananaAuthentication_Developer *) owner timeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id
+{
+  self = [super init];
+  __owner = [owner retain_stub];
+  __owner_isset = YES;
+  __timeOfRegistration = timeOfRegistration;
+  __timeOfRegistration_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __id = [id retain_stub];
+  __id_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"owner"])
+  {
+    __owner = [[decoder decodeObjectForKey: @"owner"] retain_stub];
+    __owner_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfRegistration"])
+  {
+    __timeOfRegistration = [decoder decodeInt64ForKey: @"timeOfRegistration"];
+    __timeOfRegistration_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"id"])
+  {
+    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
+    __id_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__owner_isset)
+  {
+    [encoder encodeObject: __owner forKey: @"owner"];
+  }
+  if (__timeOfRegistration_isset)
+  {
+    [encoder encodeInt64: __timeOfRegistration forKey: @"timeOfRegistration"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__id_isset)
+  {
+    [encoder encodeObject: __id forKey: @"id"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __owner_isset ? 2654435761 : 0;
+  if (__owner_isset)
+  {
+    hash = (hash * 31) ^ [__owner hash];
+  }
+  hash = (hash * 31) ^ __timeOfRegistration_isset ? 2654435761 : 0;
+  if (__timeOfRegistration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfRegistration) hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
+  if (__id_isset)
+  {
+    hash = (hash * 31) ^ [__id hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_Service class]]) {
+    return NO;
+  }
+  BananaAuthentication_Service *other = (BananaAuthentication_Service *)anObject;
+  if ((__owner_isset != other->__owner_isset) ||
+      (__owner_isset && ((__owner || other->__owner) && ![__owner isEqual:other->__owner]))) {
+    return NO;
+  }
+  if ((__timeOfRegistration_isset != other->__timeOfRegistration_isset) ||
+      (__timeOfRegistration_isset && (__timeOfRegistration != other->__timeOfRegistration))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__id_isset != other->__id_isset) ||
+      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__owner release_stub];
+  [__name release_stub];
+  [__id release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_Developer *) owner {
+  return [[__owner retain_stub] autorelease_stub];
+}
+
+- (void) setOwner: (BananaAuthentication_Developer *) owner {
+  [owner retain_stub];
+  [__owner release_stub];
+  __owner = owner;
+  __owner_isset = YES;
+}
+
+- (BOOL) ownerIsSet {
+  return __owner_isset;
+}
+
+- (void) unsetOwner {
+  [__owner release_stub];
+  __owner = nil;
+  __owner_isset = NO;
+}
+
+- (int64_t) timeOfRegistration {
+  return __timeOfRegistration;
+}
+
+- (void) setTimeOfRegistration: (int64_t) timeOfRegistration {
+  __timeOfRegistration = timeOfRegistration;
+  __timeOfRegistration_isset = YES;
+}
+
+- (BOOL) timeOfRegistrationIsSet {
+  return __timeOfRegistration_isset;
+}
+
+- (void) unsetTimeOfRegistration {
+  __timeOfRegistration_isset = NO;
+}
+
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (NSString *) id {
+  return [[__id retain_stub] autorelease_stub];
+}
+
+- (void) setId: (NSString *) id {
+  [id retain_stub];
+  [__id release_stub];
+  __id = id;
+  __id_isset = YES;
+}
+
+- (BOOL) idIsSet {
+  return __id_isset;
+}
+
+- (void) unsetId {
+  [__id release_stub];
+  __id = nil;
+  __id_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_Developer *fieldValue = [[BananaAuthentication_Developer alloc] init];
+          [fieldValue read: inProtocol];
+          [self setOwner: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfRegistration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Service"];
+  if (__owner_isset) {
+    if (__owner != nil) {
+      [outProtocol writeFieldBeginWithName: @"owner" type: TType_STRUCT fieldID: 1];
+      [__owner write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfRegistration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfRegistration" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __timeOfRegistration];
+    [outProtocol writeFieldEnd];
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__id_isset) {
+    if (__id != nil) {
+      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __id];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Service("];
+  [ms appendString: @"owner:"];
+  [ms appendFormat: @"%@", __owner];
+  [ms appendString: @",timeOfRegistration:"];
+  [ms appendFormat: @"%qi", __timeOfRegistration];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",id:"];
+  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaAuthentication_ServiceToken
 
 - (id) init

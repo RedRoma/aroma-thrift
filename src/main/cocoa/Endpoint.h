@@ -22,7 +22,7 @@
 #import "Banana.h"
 #import "Exceptions.h"
 
-typedef int32_t BananaEndpoint_int;
+typedef Banana_int BananaEndpoint_int;
 
 typedef BananaException_OperationFailedException * BananaEndpoint_OperationFailedException;
 
