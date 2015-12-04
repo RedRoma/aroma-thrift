@@ -36,7 +36,7 @@ ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
     }
     switch (fid)
     {
-      case -1:
+      case 1:
       if (ftype == Thrift.Type.STRUCT) {
         this.request = new ttypes.HealthPokeRequest();
         this.request.read(input);
@@ -59,7 +59,7 @@ ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
 ServiceEndpoint_healthPoke_args.prototype.write = function(output) {
   output.writeStructBegin('ServiceEndpoint_healthPoke_args');
   if (this.request !== null && this.request !== undefined) {
-    output.writeFieldBegin('request', Thrift.Type.STRUCT, -1);
+    output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
     this.request.write(output);
     output.writeFieldEnd();
   }

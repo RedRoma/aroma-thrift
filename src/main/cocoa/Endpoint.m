@@ -1307,7 +1307,7 @@
     }
     switch (fieldID)
     {
-      case -1:
+      case 1:
         if (fieldType == TType_STRUCT) {
           BananaEndpoint_HealthPokeRequest *fieldValue = [[BananaEndpoint_HealthPokeRequest alloc] init];
           [fieldValue read: inProtocol];
@@ -1330,7 +1330,7 @@
   [outProtocol writeStructBeginWithName: @"healthPoke_args"];
   if (__request_isset) {
     if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: -1];
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
       [__request write: outProtocol];
       [outProtocol writeFieldEnd];
     }
@@ -1620,7 +1620,7 @@
   [outProtocol writeMessageBeginWithName: @"healthPoke" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"healthPoke_args"];
   if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: -1];
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
     [outProtocol writeFieldEnd];
   }

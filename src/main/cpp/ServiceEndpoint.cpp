@@ -34,7 +34,7 @@ uint32_t ServiceEndpoint_healthPoke_args::read(::apache::thrift::protocol::TProt
     }
     switch (fid)
     {
-      case -1:
+      case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->request.read(iprot);
           this->__isset.request = true;
@@ -59,7 +59,7 @@ uint32_t ServiceEndpoint_healthPoke_args::write(::apache::thrift::protocol::TPro
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_args");
 
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, -1);
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -78,7 +78,7 @@ uint32_t ServiceEndpoint_healthPoke_pargs::write(::apache::thrift::protocol::TPr
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_pargs");
 
-  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, -1);
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
   xfer += oprot->writeFieldEnd();
 

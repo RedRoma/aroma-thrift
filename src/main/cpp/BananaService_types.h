@@ -41,6 +41,10 @@ class ProvisionServiceRequest;
 
 class ProvisionServiceResponse;
 
+class SubscribeToServiceRequest;
+
+class SubscribeToServiceResponse;
+
 class RegisterHealthCheckRequest;
 
 class RegisterHealthCheckResponse;
@@ -163,6 +167,116 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRespons
   return out;
 }
 
+typedef struct _SubscribeToServiceRequest__isset {
+  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false) {}
+  bool token :1;
+  bool serviceName :1;
+  bool organization :1;
+} _SubscribeToServiceRequest__isset;
+
+class SubscribeToServiceRequest {
+ public:
+
+  SubscribeToServiceRequest(const SubscribeToServiceRequest&);
+  SubscribeToServiceRequest& operator=(const SubscribeToServiceRequest&);
+  SubscribeToServiceRequest() : token(), serviceName(), organization() {
+  }
+
+  virtual ~SubscribeToServiceRequest() throw();
+  std::string token;
+  std::string serviceName;
+  std::string organization;
+
+  _SubscribeToServiceRequest__isset __isset;
+
+  void __set_token(const std::string& val);
+
+  void __set_serviceName(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const SubscribeToServiceRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(serviceName == rhs.serviceName))
+      return false;
+    if (__isset.organization != rhs.__isset.organization)
+      return false;
+    else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const SubscribeToServiceRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SubscribeToServiceRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SubscribeToServiceRequest &a, SubscribeToServiceRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SubscribeToServiceRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SubscribeToServiceResponse__isset {
+  _SubscribeToServiceResponse__isset() : message(false) {}
+  bool message :1;
+} _SubscribeToServiceResponse__isset;
+
+class SubscribeToServiceResponse {
+ public:
+
+  SubscribeToServiceResponse(const SubscribeToServiceResponse&);
+  SubscribeToServiceResponse& operator=(const SubscribeToServiceResponse&);
+  SubscribeToServiceResponse() : message() {
+  }
+
+  virtual ~SubscribeToServiceResponse() throw();
+  std::string message;
+
+  _SubscribeToServiceResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const SubscribeToServiceResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const SubscribeToServiceResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SubscribeToServiceResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SubscribeToServiceResponse &a, SubscribeToServiceResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SubscribeToServiceResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegisterHealthCheckRequest__isset {
+  _RegisterHealthCheckRequest__isset() : endpoint(false) {}
+  bool endpoint :1;
+} _RegisterHealthCheckRequest__isset;
 
 class RegisterHealthCheckRequest {
  public:
@@ -173,9 +287,16 @@ class RegisterHealthCheckRequest {
   }
 
   virtual ~RegisterHealthCheckRequest() throw();
+   ::tech::aroma::banana::thrift::endpoint::Endpoint endpoint;
 
-  bool operator == (const RegisterHealthCheckRequest & /* rhs */) const
+  _RegisterHealthCheckRequest__isset __isset;
+
+  void __set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val);
+
+  bool operator == (const RegisterHealthCheckRequest & rhs) const
   {
+    if (!(endpoint == rhs.endpoint))
+      return false;
     return true;
   }
   bool operator != (const RegisterHealthCheckRequest &rhs) const {

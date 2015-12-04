@@ -268,9 +268,227 @@ void ProvisionServiceResponse::printTo(std::ostream& out) const {
 }
 
 
+SubscribeToServiceRequest::~SubscribeToServiceRequest() throw() {
+}
+
+
+void SubscribeToServiceRequest::__set_token(const std::string& val) {
+  this->token = val;
+}
+
+void SubscribeToServiceRequest::__set_serviceName(const std::string& val) {
+  this->serviceName = val;
+}
+
+void SubscribeToServiceRequest::__set_organization(const std::string& val) {
+  this->organization = val;
+__isset.organization = true;
+}
+
+uint32_t SubscribeToServiceRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->token);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->serviceName);
+          this->__isset.serviceName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organization);
+          this->__isset.organization = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SubscribeToServiceRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SubscribeToServiceRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->token);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.organization) {
+    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->organization);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SubscribeToServiceRequest &a, SubscribeToServiceRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.serviceName, b.serviceName);
+  swap(a.organization, b.organization);
+  swap(a.__isset, b.__isset);
+}
+
+SubscribeToServiceRequest::SubscribeToServiceRequest(const SubscribeToServiceRequest& other4) {
+  token = other4.token;
+  serviceName = other4.serviceName;
+  organization = other4.organization;
+  __isset = other4.__isset;
+}
+SubscribeToServiceRequest& SubscribeToServiceRequest::operator=(const SubscribeToServiceRequest& other5) {
+  token = other5.token;
+  serviceName = other5.serviceName;
+  organization = other5.organization;
+  __isset = other5.__isset;
+  return *this;
+}
+void SubscribeToServiceRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SubscribeToServiceRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "serviceName=" << to_string(serviceName);
+  out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ")";
+}
+
+
+SubscribeToServiceResponse::~SubscribeToServiceResponse() throw() {
+}
+
+
+void SubscribeToServiceResponse::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t SubscribeToServiceResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SubscribeToServiceResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SubscribeToServiceResponse");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SubscribeToServiceResponse &a, SubscribeToServiceResponse &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+SubscribeToServiceResponse::SubscribeToServiceResponse(const SubscribeToServiceResponse& other6) {
+  message = other6.message;
+  __isset = other6.__isset;
+}
+SubscribeToServiceResponse& SubscribeToServiceResponse::operator=(const SubscribeToServiceResponse& other7) {
+  message = other7.message;
+  __isset = other7.__isset;
+  return *this;
+}
+void SubscribeToServiceResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SubscribeToServiceResponse(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+
 RegisterHealthCheckRequest::~RegisterHealthCheckRequest() throw() {
 }
 
+
+void RegisterHealthCheckRequest::__set_endpoint(const  ::tech::aroma::banana::thrift::endpoint::Endpoint& val) {
+  this->endpoint = val;
+}
 
 uint32_t RegisterHealthCheckRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -291,7 +509,20 @@ uint32_t RegisterHealthCheckRequest::read(::apache::thrift::protocol::TProtocol*
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->endpoint.read(iprot);
+          this->__isset.endpoint = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -305,6 +536,10 @@ uint32_t RegisterHealthCheckRequest::write(::apache::thrift::protocol::TProtocol
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("RegisterHealthCheckRequest");
 
+  xfer += oprot->writeFieldBegin("endpoint", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->endpoint.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -312,20 +547,23 @@ uint32_t RegisterHealthCheckRequest::write(::apache::thrift::protocol::TProtocol
 
 void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.endpoint, b.endpoint);
+  swap(a.__isset, b.__isset);
 }
 
-RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other4) {
-  (void) other4;
+RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other8) {
+  endpoint = other8.endpoint;
+  __isset = other8.__isset;
 }
-RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other5) {
-  (void) other5;
+RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other9) {
+  endpoint = other9.endpoint;
+  __isset = other9.__isset;
   return *this;
 }
 void RegisterHealthCheckRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RegisterHealthCheckRequest(";
+  out << "endpoint=" << to_string(endpoint);
   out << ")";
 }
 
@@ -378,11 +616,11 @@ void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b) {
   (void) b;
 }
 
-RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other6) {
-  (void) other6;
+RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other10) {
+  (void) other10;
 }
-RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other7) {
-  (void) other7;
+RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other11) {
+  (void) other11;
   return *this;
 }
 void RegisterHealthCheckResponse::printTo(std::ostream& out) const {

@@ -125,15 +125,99 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 
 @end
 
-@interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
+@interface BananaService_SubscribeToServiceRequest : NSObject <TBase, NSCoding> {
+  NSString * __token;
+  NSString * __serviceName;
+  NSString * __organization;
+
+  BOOL __token_isset;
+  BOOL __serviceName_isset;
+  BOOL __organization_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
+@property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+#endif
+
 - (id) init;
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) token;
+- (void) setToken: (NSString *) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) serviceName;
+- (void) setServiceName: (NSString *) serviceName;
+#endif
+- (BOOL) serviceNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organization;
+- (void) setOrganization: (NSString *) organization;
+#endif
+- (BOOL) organizationIsSet;
+
+@end
+
+@interface BananaService_SubscribeToServiceResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
+@interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
+  BananaEndpoint_Endpoint * __endpoint;
+
+  BOOL __endpoint_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaEndpoint_Endpoint * endpoint;
+#endif
+
+- (id) init;
+- (id) initWithEndpoint: (BananaEndpoint_Endpoint *) endpoint;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaEndpoint_Endpoint *) endpoint;
+- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint;
+#endif
+- (BOOL) endpointIsSet;
 
 @end
 
@@ -151,6 +235,7 @@ typedef BananaException_ServiceDoesNotExistException * BananaService_ServiceDoes
 
 @protocol BananaService_BananaService <NSObject>
 - (BananaService_ProvisionServiceResponse *) provisionService: (BananaService_ProvisionServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
+- (BananaService_SubscribeToServiceResponse *) subscribeToService: (BananaService_SubscribeToServiceRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 - (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ServiceDoesNotExistException, TException
 @end
 

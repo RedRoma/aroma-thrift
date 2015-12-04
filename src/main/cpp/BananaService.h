@@ -22,6 +22,7 @@ class BananaServiceIf {
  public:
   virtual ~BananaServiceIf() {}
   virtual void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) = 0;
+  virtual void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) = 0;
   virtual void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) = 0;
 };
 
@@ -53,6 +54,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
  public:
   virtual ~BananaServiceNull() {}
   void provisionService(ProvisionServiceResponse& /* _return */, const ProvisionServiceRequest& /* request */) {
+    return;
+  }
+  void subscribeToService(SubscribeToServiceResponse& /* _return */, const SubscribeToServiceRequest& /* request */) {
     return;
   }
   void registerHealthCheck(RegisterHealthCheckResponse& /* _return */, const RegisterHealthCheckRequest& /* request */) {
@@ -191,6 +195,142 @@ class BananaService_provisionService_presult {
   ServiceDoesNotExistException* ex4;
 
   _BananaService_provisionService_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_subscribeToService_args__isset {
+  _BananaService_subscribeToService_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_subscribeToService_args__isset;
+
+class BananaService_subscribeToService_args {
+ public:
+
+  BananaService_subscribeToService_args(const BananaService_subscribeToService_args&);
+  BananaService_subscribeToService_args& operator=(const BananaService_subscribeToService_args&);
+  BananaService_subscribeToService_args() {
+  }
+
+  virtual ~BananaService_subscribeToService_args() throw();
+  SubscribeToServiceRequest request;
+
+  _BananaService_subscribeToService_args__isset __isset;
+
+  void __set_request(const SubscribeToServiceRequest& val);
+
+  bool operator == (const BananaService_subscribeToService_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_subscribeToService_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_subscribeToService_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_subscribeToService_pargs {
+ public:
+
+
+  virtual ~BananaService_subscribeToService_pargs() throw();
+  const SubscribeToServiceRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_subscribeToService_result__isset {
+  _BananaService_subscribeToService_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _BananaService_subscribeToService_result__isset;
+
+class BananaService_subscribeToService_result {
+ public:
+
+  BananaService_subscribeToService_result(const BananaService_subscribeToService_result&);
+  BananaService_subscribeToService_result& operator=(const BananaService_subscribeToService_result&);
+  BananaService_subscribeToService_result() {
+  }
+
+  virtual ~BananaService_subscribeToService_result() throw();
+  SubscribeToServiceResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  ServiceDoesNotExistException ex4;
+
+  _BananaService_subscribeToService_result__isset __isset;
+
+  void __set_success(const SubscribeToServiceResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const ServiceDoesNotExistException& val);
+
+  bool operator == (const BananaService_subscribeToService_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_subscribeToService_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_subscribeToService_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_subscribeToService_presult__isset {
+  _BananaService_subscribeToService_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _BananaService_subscribeToService_presult__isset;
+
+class BananaService_subscribeToService_presult {
+ public:
+
+
+  virtual ~BananaService_subscribeToService_presult() throw();
+  SubscribeToServiceResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  ServiceDoesNotExistException* ex4;
+
+  _BananaService_subscribeToService_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -360,6 +500,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   void send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return);
+  void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request);
+  void send_subscribeToService(const SubscribeToServiceRequest& request);
+  void recv_subscribeToService(SubscribeToServiceResponse& _return);
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
   void send_registerHealthCheck(const RegisterHealthCheckRequest& request);
   void recv_registerHealthCheck(RegisterHealthCheckResponse& _return);
@@ -379,11 +522,13 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_provisionService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_subscribeToService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
     processMap_["provisionService"] = &BananaServiceProcessor::process_provisionService;
+    processMap_["subscribeToService"] = &BananaServiceProcessor::process_subscribeToService;
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
   }
 
@@ -420,6 +565,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
       ifaces_[i]->provisionService(_return, request);
     }
     ifaces_[i]->provisionService(_return, request);
+    return;
+  }
+
+  void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->subscribeToService(_return, request);
+    }
+    ifaces_[i]->subscribeToService(_return, request);
     return;
   }
 
@@ -466,6 +621,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   int32_t send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return, const int32_t seqid);
+  void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request);
+  int32_t send_subscribeToService(const SubscribeToServiceRequest& request);
+  void recv_subscribeToService(SubscribeToServiceResponse& _return, const int32_t seqid);
   void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request);
   int32_t send_registerHealthCheck(const RegisterHealthCheckRequest& request);
   void recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid);
