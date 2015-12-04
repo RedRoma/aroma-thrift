@@ -29,6 +29,18 @@ struct Urgency {
 
 extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
 
+struct TimeUnit {
+  enum type {
+    MILLIS = 0,
+    SECONDS = 1,
+    MINUTES = 2,
+    HOURS = 3,
+    DAYS = 4
+  };
+};
+
+extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
+
 typedef int32_t int;
 
 typedef int64_t long;
@@ -42,6 +54,8 @@ class Call;
 class Text;
 
 class Service;
+
+class TimePeriod;
 
 typedef struct _Message__isset {
   _Message__isset() : body(false), urgency(true) {}
@@ -220,6 +234,51 @@ class Service {
 void swap(Service &a, Service &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Service& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class TimePeriod {
+ public:
+
+  TimePeriod(const TimePeriod&);
+  TimePeriod& operator=(const TimePeriod&);
+  TimePeriod() : unit((TimeUnit::type)0), value(0) {
+  }
+
+  virtual ~TimePeriod() throw();
+  TimeUnit::type unit;
+  int value;
+
+  void __set_unit(const TimeUnit::type val);
+
+  void __set_value(const int val);
+
+  bool operator == (const TimePeriod & rhs) const
+  {
+    if (!(unit == rhs.unit))
+      return false;
+    if (!(value == rhs.value))
+      return false;
+    return true;
+  }
+  bool operator != (const TimePeriod &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const TimePeriod & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(TimePeriod &a, TimePeriod &b);
+
+inline std::ostream& operator<<(std::ostream& out, const TimePeriod& obj)
 {
   obj.printTo(out);
   return out;

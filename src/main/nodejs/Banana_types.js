@@ -14,6 +14,13 @@ ttypes.Urgency = {
   'PRESSING' : 2,
   'CRITICAL' : 3
 };
+ttypes.TimeUnit = {
+  'MILLIS' : 0,
+  'SECONDS' : 1,
+  'MINUTES' : 2,
+  'HOURS' : 3,
+  'DAYS' : 4
+};
 Message = module.exports.Message = function(args) {
   this.body = null;
   this.urgency = 2;
@@ -211,6 +218,76 @@ Service.prototype.write = function(output) {
   if (this.name !== null && this.name !== undefined) {
     output.writeFieldBegin('name', Thrift.Type.STRING, 3);
     output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+TimePeriod = module.exports.TimePeriod = function(args) {
+  this.unit = null;
+  this.value = null;
+  if (args) {
+    if (args.unit !== undefined && args.unit !== null) {
+      this.unit = args.unit;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field unit is unset!');
+    }
+    if (args.value !== undefined && args.value !== null) {
+      this.value = args.value;
+    } else {
+      throw new Thrift.TProtocolException(Thrift.TProtocolExceptionType.UNKNOWN, 'Required field value is unset!');
+    }
+  }
+};
+TimePeriod.prototype = {};
+TimePeriod.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.unit = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.value = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+TimePeriod.prototype.write = function(output) {
+  output.writeStructBegin('TimePeriod');
+  if (this.unit !== null && this.unit !== undefined) {
+    output.writeFieldBegin('unit', Thrift.Type.I32, 1);
+    output.writeI32(this.unit);
+    output.writeFieldEnd();
+  }
+  if (this.value !== null && this.value !== undefined) {
+    output.writeFieldBegin('value', Thrift.Type.I32, 2);
+    output.writeI32(this.value);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

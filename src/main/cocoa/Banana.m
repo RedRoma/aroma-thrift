@@ -642,6 +642,209 @@
 
 @end
 
+@implementation Banana_TimePeriod
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUnit: (int) unit value: (Banana_int) value
+{
+  self = [super init];
+  __unit = unit;
+  __unit_isset = YES;
+  __value = value;
+  __value_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"unit"])
+  {
+    __unit = [decoder decodeIntForKey: @"unit"];
+    __unit_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"value"])
+  {
+    __value = [decoder decodeInt32ForKey: @"value"];
+    __value_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__unit_isset)
+  {
+    [encoder encodeInt: __unit forKey: @"unit"];
+  }
+  if (__value_isset)
+  {
+    [encoder encodeInt32: __value forKey: @"value"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __unit_isset ? 2654435761 : 0;
+  if (__unit_isset)
+  {
+    hash = (hash * 31) ^ [@(__unit) hash];
+  }
+  hash = (hash * 31) ^ __value_isset ? 2654435761 : 0;
+  if (__value_isset)
+  {
+    hash = (hash * 31) ^ [@(__value) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_TimePeriod class]]) {
+    return NO;
+  }
+  Banana_TimePeriod *other = (Banana_TimePeriod *)anObject;
+  if ((__unit_isset != other->__unit_isset) ||
+      (__unit_isset && (__unit != other->__unit))) {
+    return NO;
+  }
+  if ((__value_isset != other->__value_isset) ||
+      (__value_isset && (__value != other->__value))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int) unit {
+  return __unit;
+}
+
+- (void) setUnit: (int) unit {
+  __unit = unit;
+  __unit_isset = YES;
+}
+
+- (BOOL) unitIsSet {
+  return __unit_isset;
+}
+
+- (void) unsetUnit {
+  __unit_isset = NO;
+}
+
+- (int32_t) value {
+  return __value;
+}
+
+- (void) setValue: (int32_t) value {
+  __value = value;
+  __value_isset = YES;
+}
+
+- (BOOL) valueIsSet {
+  return __value_isset;
+}
+
+- (void) unsetValue {
+  __value_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setUnit: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setValue: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"TimePeriod"];
+  if (__unit_isset) {
+    [outProtocol writeFieldBeginWithName: @"unit" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __unit];
+    [outProtocol writeFieldEnd];
+  }
+  if (__value_isset) {
+    [outProtocol writeFieldBeginWithName: @"value" type: TType_I32 fieldID: 2];
+    [outProtocol writeI32: __value];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+  if (!__unit_isset) {
+    @throw [TProtocolException exceptionWithName: @"TProtocolException"
+                               reason: @"Required field 'unit' is not set."];
+  }
+  if (!__value_isset) {
+    @throw [TProtocolException exceptionWithName: @"TProtocolException"
+                               reason: @"Required field 'value' is not set."];
+  }
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_TimePeriod("];
+  [ms appendString: @"unit:"];
+  [ms appendFormat: @"%i", __unit];
+  [ms appendString: @",value:"];
+  [ms appendFormat: @"%i", __value];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 
 @implementation Banana_BananaConstants
 + (void) initialize {

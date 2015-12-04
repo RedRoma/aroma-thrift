@@ -25,6 +25,22 @@ const char* _kUrgencyNames[] = {
 };
 const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+int _kTimeUnitValues[] = {
+  TimeUnit::MILLIS,
+  TimeUnit::SECONDS,
+  TimeUnit::MINUTES,
+  TimeUnit::HOURS,
+  TimeUnit::DAYS
+};
+const char* _kTimeUnitNames[] = {
+  "MILLIS",
+  "SECONDS",
+  "MINUTES",
+  "HOURS",
+  "DAYS"
+};
+const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(5, _kTimeUnitValues, _kTimeUnitNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 Message::~Message() throw() {
 }
@@ -380,6 +396,117 @@ void Service::printTo(std::ostream& out) const {
   out << "owner=" << to_string(owner);
   out << ", " << "timeOfRegistration=" << to_string(timeOfRegistration);
   out << ", " << "name=" << to_string(name);
+  out << ")";
+}
+
+
+TimePeriod::~TimePeriod() throw() {
+}
+
+
+void TimePeriod::__set_unit(const TimeUnit::type val) {
+  this->unit = val;
+}
+
+void TimePeriod::__set_value(const int val) {
+  this->value = val;
+}
+
+uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+  bool isset_unit = false;
+  bool isset_value = false;
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast9;
+          xfer += iprot->readI32(ecast9);
+          this->unit = (TimeUnit::type)ecast9;
+          isset_unit = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->value);
+          isset_value = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  if (!isset_unit)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  if (!isset_value)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  return xfer;
+}
+
+uint32_t TimePeriod::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("TimePeriod");
+
+  xfer += oprot->writeFieldBegin("unit", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32((int32_t)this->unit);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("value", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->value);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(TimePeriod &a, TimePeriod &b) {
+  using ::std::swap;
+  swap(a.unit, b.unit);
+  swap(a.value, b.value);
+}
+
+TimePeriod::TimePeriod(const TimePeriod& other10) {
+  unit = other10.unit;
+  value = other10.value;
+}
+TimePeriod& TimePeriod::operator=(const TimePeriod& other11) {
+  unit = other11.unit;
+  value = other11.value;
+  return *this;
+}
+void TimePeriod::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "TimePeriod(";
+  out << "unit=" << to_string(unit);
+  out << ", " << "value=" << to_string(value);
   out << ")";
 }
 

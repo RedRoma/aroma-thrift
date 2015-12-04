@@ -25,6 +25,14 @@ enum Banana_Urgency {
   Urgency_CRITICAL = 3
 };
 
+enum Banana_TimeUnit {
+  TimeUnit_MILLIS = 0,
+  TimeUnit_SECONDS = 1,
+  TimeUnit_MINUTES = 2,
+  TimeUnit_HOURS = 3,
+  TimeUnit_DAYS = 4
+};
+
 typedef int32_t Banana_int;
 
 typedef int64_t Banana_long;
@@ -131,6 +139,41 @@ typedef int64_t Banana_timestamp;
 - (void) setName: (NSString *) name;
 #endif
 - (BOOL) nameIsSet;
+
+@end
+
+@interface Banana_TimePeriod : NSObject <TBase, NSCoding> {
+  int __unit;
+  Banana_int __value;
+
+  BOOL __unit_isset;
+  BOOL __value_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=unit, setter=setUnit:) int unit;
+@property (nonatomic, getter=value, setter=setValue:) Banana_int value;
+#endif
+
+- (id) init;
+- (id) initWithUnit: (int) unit value: (Banana_int) value;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (int) unit;
+- (void) setUnit: (int) unit;
+#endif
+- (BOOL) unitIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_int) value;
+- (void) setValue: (Banana_int) value;
+#endif
+- (BOOL) valueIsSet;
 
 @end
 

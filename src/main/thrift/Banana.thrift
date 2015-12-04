@@ -45,3 +45,18 @@ struct Service
     3: string name;
 }
 
+enum TimeUnit
+{
+    MILLIS,
+    SECONDS,
+    MINUTES,
+    HOURS,
+    DAYS
+}
+
+struct TimePeriod
+{
+    1: required TimeUnit unit;
+    /** The Value must be non-negative */
+    2: required int value;
+}

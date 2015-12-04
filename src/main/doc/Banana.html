@@ -199,6 +199,8 @@ code { line-height: 20px; }
 <a href="#Struct_Message">Message</a><br/>
 <a href="#Struct_Service">Service</a><br/>
 <a href="#Struct_Text">Text</a><br/>
+<a href="#Struct_TimePeriod">TimePeriod</a><br/>
+<a href="#Enum_TimeUnit">TimeUnit</a><br/>
 <a href="#Enum_Urgency">Urgency</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
@@ -215,6 +217,19 @@ Determines how Important or Severe a Message is.
 <tr><td><code>PRESSING</code></td><td><code>2</code></td><td>
 </td></tr>
 <tr><td><code>CRITICAL</code></td><td><code>3</code></td><td>
+</td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_TimeUnit">Enumeration: TimeUnit</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>MILLIS</code></td><td><code>0</code></td><td>
+</td></tr>
+<tr><td><code>SECONDS</code></td><td><code>1</code></td><td>
+</td></tr>
+<tr><td><code>MINUTES</code></td><td><code>2</code></td><td>
+</td></tr>
+<tr><td><code>HOURS</code></td><td><code>3</code></td><td>
+</td></tr>
+<tr><td><code>DAYS</code></td><td><code>4</code></td><td>
 </td></tr>
 </table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
@@ -243,4 +258,9 @@ Milliseconds since epoch.
 <tr><td>1</td><td>owner</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_TimePeriod">Struct: TimePeriod</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>unit</td><td><code><a href="#Enum_TimeUnit">TimeUnit</a></code></td><td></td><td>required</td><td></td></tr>
+<tr><td>2</td><td>value</td><td><code><a href="#Typedef_int">int</a></code></td><td>The Value must be non-negative
+</td><td>required</td><td></td></tr>
 </table><br/></div></div></body></html>
