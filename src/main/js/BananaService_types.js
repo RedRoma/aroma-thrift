@@ -908,6 +908,7 @@ DeleteMessageRequest = function(args) {
   this.developerToken = null;
   this.messageId = null;
   this.serviceId = null;
+  this.messageIds = [];
   if (args) {
     if (args.developerToken !== undefined && args.developerToken !== null) {
       this.developerToken = new DeveloperToken(args.developerToken);
@@ -917,6 +918,9 @@ DeleteMessageRequest = function(args) {
     }
     if (args.serviceId !== undefined && args.serviceId !== null) {
       this.serviceId = args.serviceId;
+    }
+    if (args.messageIds !== undefined && args.messageIds !== null) {
+      this.messageIds = Thrift.copyList(args.messageIds, [null]);
     }
   }
 };
@@ -956,6 +960,26 @@ DeleteMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.messageIds = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.messageIds.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -980,6 +1004,20 @@ DeleteMessageRequest.prototype.write = function(output) {
   if (this.serviceId !== null && this.serviceId !== undefined) {
     output.writeFieldBegin('serviceId', Thrift.Type.STRING, 3);
     output.writeString(this.serviceId);
+    output.writeFieldEnd();
+  }
+  if (this.messageIds !== null && this.messageIds !== undefined) {
+    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
+    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
+    for (var iter7 in this.messageIds)
+    {
+      if (this.messageIds.hasOwnProperty(iter7))
+      {
+        iter7 = this.messageIds[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1086,6 +1124,7 @@ HideMessageRequest = function(args) {
   this.developerToken = null;
   this.messageId = null;
   this.serviceId = null;
+  this.messageIds = [];
   if (args) {
     if (args.developerToken !== undefined && args.developerToken !== null) {
       this.developerToken = new DeveloperToken(args.developerToken);
@@ -1095,6 +1134,9 @@ HideMessageRequest = function(args) {
     }
     if (args.serviceId !== undefined && args.serviceId !== null) {
       this.serviceId = args.serviceId;
+    }
+    if (args.messageIds !== undefined && args.messageIds !== null) {
+      this.messageIds = Thrift.copyList(args.messageIds, [null]);
     }
   }
 };
@@ -1134,6 +1176,26 @@ HideMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.LIST) {
+        var _size8 = 0;
+        var _rtmp312;
+        this.messageIds = [];
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        {
+          var elem14 = null;
+          elem14 = input.readString().value;
+          this.messageIds.push(elem14);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1158,6 +1220,20 @@ HideMessageRequest.prototype.write = function(output) {
   if (this.serviceId !== null && this.serviceId !== undefined) {
     output.writeFieldBegin('serviceId', Thrift.Type.STRING, 3);
     output.writeString(this.serviceId);
+    output.writeFieldEnd();
+  }
+  if (this.messageIds !== null && this.messageIds !== undefined) {
+    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
+    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
+    for (var iter15 in this.messageIds)
+    {
+      if (this.messageIds.hasOwnProperty(iter15))
+      {
+        iter15 = this.messageIds[iter15];
+        output.writeString(iter15);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1283,6 +1359,165 @@ HideAllMessagesResponse.prototype.read = function(input) {
 
 HideAllMessagesResponse.prototype.write = function(output) {
   output.writeStructBegin('HideAllMessagesResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SearchForServicesRequest = function(args) {
+  this.developerToken = null;
+  this.searchTerm = null;
+  this.organization = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.searchTerm !== undefined && args.searchTerm !== null) {
+      this.searchTerm = args.searchTerm;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+  }
+};
+SearchForServicesRequest.prototype = {};
+SearchForServicesRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.searchTerm = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SearchForServicesRequest.prototype.write = function(output) {
+  output.writeStructBegin('SearchForServicesRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.searchTerm !== null && this.searchTerm !== undefined) {
+    output.writeFieldBegin('searchTerm', Thrift.Type.STRING, 2);
+    output.writeString(this.searchTerm);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SearchForServicesResponse = function(args) {
+  this.services = [];
+  if (args) {
+    if (args.services !== undefined && args.services !== null) {
+      this.services = Thrift.copyList(args.services, [null]);
+    }
+  }
+};
+SearchForServicesResponse.prototype = {};
+SearchForServicesResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.services = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new Service();
+          elem22.read(input);
+          this.services.push(elem22);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SearchForServicesResponse.prototype.write = function(output) {
+  output.writeStructBegin('SearchForServicesResponse');
+  if (this.services !== null && this.services !== undefined) {
+    output.writeFieldBegin('services', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.services.length);
+    for (var iter23 in this.services)
+    {
+      if (this.services.hasOwnProperty(iter23))
+      {
+        iter23 = this.services[iter23];
+        iter23.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;

@@ -12,25 +12,25 @@ const BananaServiceConstants g_BananaService_constants;
 
 BananaServiceConstants::BananaServiceConstants() {
   PRODUCTION_ENDPOINT.hostname = "banana-service.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp43;
-  tmp43 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp65;
+  tmp65 = 7001;
 
-  PRODUCTION_ENDPOINT.port = tmp43;
+  PRODUCTION_ENDPOINT.port = tmp65;
 
   BETA_ENDPOINT.hostname = "banana-service-beta.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp44;
-  tmp44 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp66;
+  tmp66 = 7001;
 
-  BETA_ENDPOINT.port = tmp44;
+  BETA_ENDPOINT.port = tmp66;
 
-   ::aroma::banana::thrift::int tmp45;
-  tmp45 = 500;
+   ::aroma::banana::thrift::int tmp67;
+  tmp67 = 500;
 
-  MAX_ICON_DIMENSION.width = tmp45;
-   ::aroma::banana::thrift::int tmp46;
-  tmp46 = 500;
+  MAX_ICON_DIMENSION.width = tmp67;
+   ::aroma::banana::thrift::int tmp68;
+  tmp68 = 500;
 
-  MAX_ICON_DIMENSION.height = tmp46;
+  MAX_ICON_DIMENSION.height = tmp68;
 
   MAX_ICON_SIZE_IN_KILOBYTES = 40;
 

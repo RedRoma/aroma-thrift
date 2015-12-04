@@ -148,6 +148,8 @@ struct DeleteMessageRequest
     1: DeveloperToken developerToken;
     2: string messageId;
     3: string serviceId;
+    /** Use for Batch Deletes. */
+    4: optional list<string> messageIds = [];
 }
 
 struct DeleteMessageResponse
@@ -166,6 +168,8 @@ struct HideMessageRequest
     1: DeveloperToken developerToken;
     2: string messageId;
     3: string serviceId;
+    /** Use for Batch Hides. */
+    4: optional list<string> messageIds = [];
 }
 
 struct HideMessageResponse
@@ -182,6 +186,18 @@ struct HideAllMessagesRequest
 struct HideAllMessagesResponse
 {
     
+}
+
+struct SearchForServicesRequest
+{
+    1: DeveloperToken developerToken;
+    2: string searchTerm;
+    3: optional string organization;
+}
+
+struct SearchForServicesResponse
+{
+    1: list<Service> services = []
 }
 
 //==============================
@@ -270,6 +286,15 @@ service BananaService
                                                                                       3: InvalidCredentialsException ex3,
                                                                                       4: ServiceDoesNotExistException ex4,
                                                                                       5: UnauthorizedException ex5)
+    
+    
+    SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1: OperationFailedException ex1,
+                                                                                            2: InvalidArgumentException ex2,
+                                                                                            3: InvalidCredentialsException ex3,
+                                                                                            4: UnauthorizedException ex4)
+    
+    //===============================================
+    // Searching for Services
     
     /**
      * 

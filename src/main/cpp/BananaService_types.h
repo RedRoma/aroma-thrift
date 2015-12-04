@@ -97,6 +97,10 @@ class HideAllMessagesRequest;
 
 class HideAllMessagesResponse;
 
+class SearchForServicesRequest;
+
+class SearchForServicesResponse;
+
 class SendMessageRequest;
 
 class SendMessageResponse;
@@ -766,10 +770,11 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenResponse
 }
 
 typedef struct _DeleteMessageRequest__isset {
-  _DeleteMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false) {}
+  _DeleteMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false), messageIds(true) {}
   bool developerToken :1;
   bool messageId :1;
   bool serviceId :1;
+  bool messageIds :1;
 } _DeleteMessageRequest__isset;
 
 class DeleteMessageRequest {
@@ -778,12 +783,14 @@ class DeleteMessageRequest {
   DeleteMessageRequest(const DeleteMessageRequest&);
   DeleteMessageRequest& operator=(const DeleteMessageRequest&);
   DeleteMessageRequest() : messageId(), serviceId() {
+
   }
 
   virtual ~DeleteMessageRequest() throw();
   DeveloperToken developerToken;
   std::string messageId;
   std::string serviceId;
+  std::vector<std::string>  messageIds;
 
   _DeleteMessageRequest__isset __isset;
 
@@ -793,6 +800,8 @@ class DeleteMessageRequest {
 
   void __set_serviceId(const std::string& val);
 
+  void __set_messageIds(const std::vector<std::string> & val);
+
   bool operator == (const DeleteMessageRequest & rhs) const
   {
     if (!(developerToken == rhs.developerToken))
@@ -800,6 +809,10 @@ class DeleteMessageRequest {
     if (!(messageId == rhs.messageId))
       return false;
     if (!(serviceId == rhs.serviceId))
+      return false;
+    if (__isset.messageIds != rhs.__isset.messageIds)
+      return false;
+    else if (__isset.messageIds && !(messageIds == rhs.messageIds))
       return false;
     return true;
   }
@@ -911,10 +924,11 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteAllMessagesReques
 }
 
 typedef struct _HideMessageRequest__isset {
-  _HideMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false) {}
+  _HideMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false), messageIds(true) {}
   bool developerToken :1;
   bool messageId :1;
   bool serviceId :1;
+  bool messageIds :1;
 } _HideMessageRequest__isset;
 
 class HideMessageRequest {
@@ -923,12 +937,14 @@ class HideMessageRequest {
   HideMessageRequest(const HideMessageRequest&);
   HideMessageRequest& operator=(const HideMessageRequest&);
   HideMessageRequest() : messageId(), serviceId() {
+
   }
 
   virtual ~HideMessageRequest() throw();
   DeveloperToken developerToken;
   std::string messageId;
   std::string serviceId;
+  std::vector<std::string>  messageIds;
 
   _HideMessageRequest__isset __isset;
 
@@ -938,6 +954,8 @@ class HideMessageRequest {
 
   void __set_serviceId(const std::string& val);
 
+  void __set_messageIds(const std::vector<std::string> & val);
+
   bool operator == (const HideMessageRequest & rhs) const
   {
     if (!(developerToken == rhs.developerToken))
@@ -945,6 +963,10 @@ class HideMessageRequest {
     if (!(messageId == rhs.messageId))
       return false;
     if (!(serviceId == rhs.serviceId))
+      return false;
+    if (__isset.messageIds != rhs.__isset.messageIds)
+      return false;
+    else if (__isset.messageIds && !(messageIds == rhs.messageIds))
       return false;
     return true;
   }
@@ -1085,6 +1107,113 @@ class HideAllMessagesResponse {
 void swap(HideAllMessagesResponse &a, HideAllMessagesResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SearchForServicesRequest__isset {
+  _SearchForServicesRequest__isset() : developerToken(false), searchTerm(false), organization(false) {}
+  bool developerToken :1;
+  bool searchTerm :1;
+  bool organization :1;
+} _SearchForServicesRequest__isset;
+
+class SearchForServicesRequest {
+ public:
+
+  SearchForServicesRequest(const SearchForServicesRequest&);
+  SearchForServicesRequest& operator=(const SearchForServicesRequest&);
+  SearchForServicesRequest() : searchTerm(), organization() {
+  }
+
+  virtual ~SearchForServicesRequest() throw();
+  DeveloperToken developerToken;
+  std::string searchTerm;
+  std::string organization;
+
+  _SearchForServicesRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_searchTerm(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const SearchForServicesRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(searchTerm == rhs.searchTerm))
+      return false;
+    if (__isset.organization != rhs.__isset.organization)
+      return false;
+    else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const SearchForServicesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SearchForServicesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SearchForServicesRequest &a, SearchForServicesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SearchForServicesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SearchForServicesResponse__isset {
+  _SearchForServicesResponse__isset() : services(true) {}
+  bool services :1;
+} _SearchForServicesResponse__isset;
+
+class SearchForServicesResponse {
+ public:
+
+  SearchForServicesResponse(const SearchForServicesResponse&);
+  SearchForServicesResponse& operator=(const SearchForServicesResponse&);
+  SearchForServicesResponse() {
+
+  }
+
+  virtual ~SearchForServicesResponse() throw();
+  std::vector<Service>  services;
+
+  _SearchForServicesResponse__isset __isset;
+
+  void __set_services(const std::vector<Service> & val);
+
+  bool operator == (const SearchForServicesResponse & rhs) const
+  {
+    if (!(services == rhs.services))
+      return false;
+    return true;
+  }
+  bool operator != (const SearchForServicesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SearchForServicesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SearchForServicesResponse &a, SearchForServicesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SearchForServicesResponse& obj)
 {
   obj.printTo(out);
   return out;

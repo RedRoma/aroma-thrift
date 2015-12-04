@@ -101,6 +101,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("regenerateToken\n");
   }
 
+  void searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request) {
+    // Your implementation goes here
+    printf("searchForServices\n");
+  }
+
   /**
    * 
    * #service
