@@ -1364,6 +1364,127 @@ HideAllMessagesResponse.prototype.write = function(output) {
   return;
 };
 
+GetServiceInfoRequest = function(args) {
+  this.developerToken = null;
+  this.serviceId = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.serviceId !== undefined && args.serviceId !== null) {
+      this.serviceId = args.serviceId;
+    }
+  }
+};
+GetServiceInfoRequest.prototype = {};
+GetServiceInfoRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.serviceId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceInfoRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceInfoRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.serviceId !== null && this.serviceId !== undefined) {
+    output.writeFieldBegin('serviceId', Thrift.Type.STRING, 2);
+    output.writeString(this.serviceId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetServiceInfoResponse = function(args) {
+  this.serviceInfo = null;
+  if (args) {
+    if (args.serviceInfo !== undefined && args.serviceInfo !== null) {
+      this.serviceInfo = new Service(args.serviceInfo);
+    }
+  }
+};
+GetServiceInfoResponse.prototype = {};
+GetServiceInfoResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceInfo = new Service();
+        this.serviceInfo.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceInfoResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceInfoResponse');
+  if (this.serviceInfo !== null && this.serviceInfo !== undefined) {
+    output.writeFieldBegin('serviceInfo', Thrift.Type.STRUCT, 1);
+    this.serviceInfo.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SearchForServicesRequest = function(args) {
   this.developerToken = null;
   this.searchTerm = null;
@@ -1513,6 +1634,165 @@ SearchForServicesResponse.prototype.write = function(output) {
       {
         iter23 = this.services[iter23];
         iter23.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetServiceSubscribersRequest = function(args) {
+  this.developerToken = null;
+  this.serviceId = null;
+  this.organization = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.serviceId !== undefined && args.serviceId !== null) {
+      this.serviceId = args.serviceId;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+  }
+};
+GetServiceSubscribersRequest.prototype = {};
+GetServiceSubscribersRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.serviceId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceSubscribersRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceSubscribersRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.serviceId !== null && this.serviceId !== undefined) {
+    output.writeFieldBegin('serviceId', Thrift.Type.STRING, 2);
+    output.writeString(this.serviceId);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetServiceSubscribersResponse = function(args) {
+  this.developers = [];
+  if (args) {
+    if (args.developers !== undefined && args.developers !== null) {
+      this.developers = Thrift.copyList(args.developers, [null]);
+    }
+  }
+};
+GetServiceSubscribersResponse.prototype = {};
+GetServiceSubscribersResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size24 = 0;
+        var _rtmp328;
+        this.developers = [];
+        var _etype27 = 0;
+        _rtmp328 = input.readListBegin();
+        _etype27 = _rtmp328.etype;
+        _size24 = _rtmp328.size;
+        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        {
+          var elem30 = null;
+          elem30 = new Developer();
+          elem30.read(input);
+          this.developers.push(elem30);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceSubscribersResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceSubscribersResponse');
+  if (this.developers !== null && this.developers !== undefined) {
+    output.writeFieldBegin('developers', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.developers.length);
+    for (var iter31 in this.developers)
+    {
+      if (this.developers.hasOwnProperty(iter31))
+      {
+        iter31 = this.developers[iter31];
+        iter31.write(output);
       }
     }
     output.writeListEnd();

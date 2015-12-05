@@ -101,9 +101,40 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("regenerateToken\n");
   }
 
+  /**
+   * Get details about a Service from it's unique ID
+   * 
+   * #developer
+   * 
+   * @param request
+   */
+  void getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request) {
+    // Your implementation goes here
+    printf("getServiceInfo\n");
+  }
+
+  /**
+   * Perform a Search on all the services registered to the Banana Service by searching for its title.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
   void searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request) {
     // Your implementation goes here
     printf("searchForServices\n");
+  }
+
+  /**
+   * Get a list of all Developers subscribed to a Service.
+   * 
+   * #developer
+   * 
+   * @param request
+   */
+  void getServiceSubscribers(GetServiceSubscribersResponse& _return, const GetServiceSubscribersRequest& request) {
+    // Your implementation goes here
+    printf("getServiceSubscribers\n");
   }
 
   /**

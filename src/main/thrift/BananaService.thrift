@@ -30,9 +30,10 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
+typedef Authentication.Developer Developer
 typedef Authentication.DeveloperToken DeveloperToken
-typedef Authentication.ServiceToken ServiceToken
 typedef Authentication.Service Service
+typedef Authentication.ServiceToken ServiceToken
 typedef Banana.Dimension Dimension
 typedef Banana.Image Image
 typedef Banana.Urgency Urgency
@@ -57,7 +58,11 @@ const TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tec
  */
 const TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
 
+//==========================================================
+// Actions
+//==========================================================
 
+//
 struct SignInRequest
 {
     1: Authentication.OauthToken oathToken;
@@ -188,6 +193,21 @@ struct HideAllMessagesResponse
     
 }
 
+//==========================================================
+// Getting and Querying for Data
+//==========================================================
+
+struct GetServiceInfoRequest
+{
+    1: DeveloperToken developerToken;
+    2: string serviceId;
+}
+
+struct GetServiceInfoResponse
+{
+    1: Service serviceInfo;
+}
+
 struct SearchForServicesRequest
 {
     1: DeveloperToken developerToken;
@@ -200,7 +220,19 @@ struct SearchForServicesResponse
     1: list<Service> services = []
 }
 
-//==============================
+struct GetServiceSubscribersRequest
+{
+    1: DeveloperToken developerToken;
+    2: string serviceId;
+    3: string organization;
+}
+
+struct GetServiceSubscribersResponse
+{
+    1: list<Developer> developers = [];
+}
+
+//==========================================================
 // Operations performed by Services
 
 struct SendMessageRequest
@@ -222,29 +254,29 @@ service BananaService
      * 
      * #developer
      */
-    SignInResponse signIn(1: SignInRequest request) throws(1: OperationFailedException ex1,
-                                                           2: InvalidArgumentException ex2,
-                                                           3: InvalidCredentialsException ex3)
+    SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
+                                                           2 : InvalidArgumentException ex2,
+                                                           3 : InvalidCredentialsException ex3)
     
     /**
      * Provision a New Service to keep tabs on.
      * 
      * #developer
      */
-    ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1: OperationFailedException ex1,
-                                                                                         2: InvalidArgumentException ex2,
-                                                                                         3: InvalidCredentialsException ex3,
-                                                                                         4: ServiceDoesNotExistException ex4)
+    ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1 : OperationFailedException ex1,
+                                                                                         2 : InvalidArgumentException ex2,
+                                                                                         3 : InvalidCredentialsException ex3,
+                                                                                         4 : ServiceDoesNotExistException ex4)
     /**
      * Subscribe to an existing service to get notifications.
      * 
      * #developer
      */
-    SubscribeToServiceResponse subscribeToService(1: SubscribeToServiceRequest request) throws(1: OperationFailedException ex1,
-                                                                                               2: InvalidArgumentException ex2,
-                                                                                               3: InvalidCredentialsException ex3,
-                                                                                               4: ServiceDoesNotExistException ex4,
-                                                                                               5: ServiceAlreadyRegisteredException ex5)
+    SubscribeToServiceResponse subscribeToService(1: SubscribeToServiceRequest request) throws(1 : OperationFailedException ex1,
+                                                                                               2 : InvalidArgumentException ex2,
+                                                                                               3 : InvalidCredentialsException ex3,
+                                                                                               4 : ServiceDoesNotExistException ex4,
+                                                                                               5 : ServiceAlreadyRegisteredException ex5)
 
     
     /**
@@ -254,11 +286,11 @@ service BananaService
      * #developer
      * #owner
      */
-    RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws(1: OperationFailedException ex1,
-                                                                                                  2: InvalidArgumentException ex2,
-                                                                                                  3: InvalidCredentialsException ex3,
-                                                                                                  4: ServiceDoesNotExistException ex4,
-                                                                                                  5: UnauthorizedException ex5)
+    RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                  2 : InvalidArgumentException ex2,
+                                                                                                  3 : InvalidCredentialsException ex3,
+                                                                                                  4 : ServiceDoesNotExistException ex4,
+                                                                                                  5 : UnauthorizedException ex5)
     
     /**
      * Renew a Service Token that is close to being expired. 
@@ -267,11 +299,11 @@ service BananaService
      * #developer
      * #owner
      */
-    RenewServiceTokenResponse renewServiceToken(1: RenewServiceTokenRequest request) throws(1: OperationFailedException ex1,
-                                                                                            2: InvalidArgumentException ex2,
-                                                                                            3: InvalidCredentialsException ex3,
-                                                                                            4: ServiceDoesNotExistException ex4,
-                                                                                            5: UnauthorizedException ex5)
+    RenewServiceTokenResponse renewServiceToken(1: RenewServiceTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                            2 : InvalidArgumentException ex2,
+                                                                                            3 : InvalidCredentialsException ex3,
+                                                                                            4 : ServiceDoesNotExistException ex4,
+                                                                                            5 : UnauthorizedException ex5)
     
     /**
      * Regenerate a Token in case the existing one is lost or forgetten.
@@ -281,17 +313,44 @@ service BananaService
      * #developer
      * #owner
      */
-    RegenerateTokenResponse regenerateToken(1: RegenerateTokenRequest request) throws(1: OperationFailedException ex1,
-                                                                                      2: InvalidArgumentException ex2,
-                                                                                      3: InvalidCredentialsException ex3,
-                                                                                      4: ServiceDoesNotExistException ex4,
-                                                                                      5: UnauthorizedException ex5)
+    RegenerateTokenResponse regenerateToken(1: RegenerateTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                      2 : InvalidArgumentException ex2,
+                                                                                      3 : InvalidCredentialsException ex3,
+                                                                                      4 : ServiceDoesNotExistException ex4,
+                                                                                      5 : UnauthorizedException ex5)
     
     
-    SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1: OperationFailedException ex1,
-                                                                                            2: InvalidArgumentException ex2,
-                                                                                            3: InvalidCredentialsException ex3,
-                                                                                            4: UnauthorizedException ex4)
+    /**
+     * Get details about a Service from it's unique ID
+     * 
+     * #developer
+     */
+    GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                                   2 : InvalidArgumentException ex2,
+                                                                                   3 : InvalidCredentialsException ex3,
+                                                                                   4 : ServiceDoesNotExistException ex4,
+                                                                                   5 : UnauthorizedException ex5)
+    
+    
+    /**
+     * Perform a Search on all the services registered to the Banana Service by searching for its title.
+     * 
+     * #developer
+     */
+    SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1 : OperationFailedException ex1,
+                                                                                            2 : InvalidArgumentException ex2,
+                                                                                            3 : InvalidCredentialsException ex3,
+                                                                                            4 : UnauthorizedException ex4)
+
+    /**
+     * Get a list of all Developers subscribed to a Service.
+     * 
+     * #developer
+     */
+    GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                        2 : InvalidArgumentException ex2,
+                                                                                                        3 : InvalidCredentialsException ex3,
+                                                                                                        4 : UnauthorizedException ex4)
     
     //===============================================
     // Searching for Services
@@ -300,9 +359,9 @@ service BananaService
      * 
      * #service
      */
-    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1: OperationFailedException ex1,
-                                                                          2: InvalidArgumentException ex2,
-                                                                          3: InvalidCredentialsException ex3)
+    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                          2 : InvalidArgumentException ex2,
+                                                                          3 : InvalidCredentialsException ex3)
     
     /**
      * 

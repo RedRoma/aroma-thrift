@@ -196,6 +196,8 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_getServiceInfo">getServiceInfo</a></li>
+<li><a href="#Fn_BananaService_getServiceSubscribers">getServiceSubscribers</a></li>
 <li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
 <li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
@@ -210,9 +212,14 @@ code { line-height: 20px; }
 <td><a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
+<a href="#Typedef_Developer">Developer</a><br/>
 <a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
 <a href="#Typedef_Dimension">Dimension</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
+<a href="#Struct_GetServiceInfoRequest">GetServiceInfoRequest</a><br/>
+<a href="#Struct_GetServiceInfoResponse">GetServiceInfoResponse</a><br/>
+<a href="#Struct_GetServiceSubscribersRequest">GetServiceSubscribersRequest</a><br/>
+<a href="#Struct_GetServiceSubscribersResponse">GetServiceSubscribersResponse</a><br/>
 <a href="#Struct_HideAllMessagesRequest">HideAllMessagesRequest</a><br/>
 <a href="#Struct_HideAllMessagesResponse">HideAllMessagesResponse</a><br/>
 <a href="#Struct_HideMessageRequest">HideMessageRequest</a><br/>
@@ -270,14 +277,17 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_Developer">Typedef: Developer</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Developer">Authentication.Developer</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_DeveloperToken">Typedef: DeveloperToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_DeveloperToken">Authentication.DeveloperToken</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_Service">Typedef: Service</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Service">Authentication.Service</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Dimension">Typedef: Dimension</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></p>
@@ -394,6 +404,13 @@ code { line-height: 20px; }
 <tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_HideAllMessagesResponse">Struct: HideAllMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_GetServiceInfoRequest">Struct: GetServiceInfoRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetServiceInfoResponse">Struct: GetServiceInfoResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>serviceInfo</td><td><code><a href="#Typedef_Service">Service</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForServicesRequest">Struct: SearchForServicesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -402,6 +419,14 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForServicesResponse">Struct: SearchForServicesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>services</td><td><code>list&lt;<code><a href="#Typedef_Service">Service</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetServiceSubscribersRequest">Struct: GetServiceSubscribersRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetServiceSubscribersResponse">Struct: GetServiceSubscribersResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developers</td><td><code>list&lt;<code><a href="#Typedef_Developer">Developer</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -455,10 +480,25 @@ Only an "owner" can perform this opeartion.
 
 #developer
 #owner
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getServiceInfo">Function: BananaService.getServiceInfo</h4>
+<pre><code><a href="#Struct_GetServiceInfoResponse">GetServiceInfoResponse</a></code> getServiceInfo(<code><a href="#Struct_GetServiceInfoRequest">GetServiceInfoRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Get details about a Service from it's unique ID
+
+#developer
 <br/></div><div class="definition"><h4 id="Fn_BananaService_searchForServices">Function: BananaService.searchForServices</h4>
 <pre><code><a href="#Struct_SearchForServicesResponse">SearchForServicesResponse</a></code> searchForServices(<code><a href="#Struct_SearchForServicesRequest">SearchForServicesRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
+</pre>Perform a Search on all the services registered to the Banana Service by searching for its title.
+
+#developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getServiceSubscribers">Function: BananaService.getServiceSubscribers</h4>
+<pre><code><a href="#Struct_GetServiceSubscribersResponse">GetServiceSubscribersResponse</a></code> getServiceSubscribers(<code><a href="#Struct_GetServiceSubscribersRequest">GetServiceSubscribersRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>Get a list of all Developers subscribed to a Service.
+
+#developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre>

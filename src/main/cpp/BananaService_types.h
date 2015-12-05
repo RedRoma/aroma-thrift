@@ -31,11 +31,13 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef class  ::aroma::banana::thrift::authentication::Developer Developer;
+
 typedef class  ::aroma::banana::thrift::authentication::DeveloperToken DeveloperToken;
 
-typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
-
 typedef class  ::aroma::banana::thrift::authentication::Service Service;
+
+typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
 typedef class  ::aroma::banana::thrift::Dimension Dimension;
 
@@ -97,9 +99,17 @@ class HideAllMessagesRequest;
 
 class HideAllMessagesResponse;
 
+class GetServiceInfoRequest;
+
+class GetServiceInfoResponse;
+
 class SearchForServicesRequest;
 
 class SearchForServicesResponse;
+
+class GetServiceSubscribersRequest;
+
+class GetServiceSubscribersResponse;
 
 class SendMessageRequest;
 
@@ -1112,6 +1122,104 @@ inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesResponse
   return out;
 }
 
+typedef struct _GetServiceInfoRequest__isset {
+  _GetServiceInfoRequest__isset() : developerToken(false), serviceId(false) {}
+  bool developerToken :1;
+  bool serviceId :1;
+} _GetServiceInfoRequest__isset;
+
+class GetServiceInfoRequest {
+ public:
+
+  GetServiceInfoRequest(const GetServiceInfoRequest&);
+  GetServiceInfoRequest& operator=(const GetServiceInfoRequest&);
+  GetServiceInfoRequest() : serviceId() {
+  }
+
+  virtual ~GetServiceInfoRequest() throw();
+  DeveloperToken developerToken;
+  std::string serviceId;
+
+  _GetServiceInfoRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_serviceId(const std::string& val);
+
+  bool operator == (const GetServiceInfoRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetServiceInfoRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceInfoRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceInfoRequest &a, GetServiceInfoRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceInfoRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetServiceInfoResponse__isset {
+  _GetServiceInfoResponse__isset() : serviceInfo(false) {}
+  bool serviceInfo :1;
+} _GetServiceInfoResponse__isset;
+
+class GetServiceInfoResponse {
+ public:
+
+  GetServiceInfoResponse(const GetServiceInfoResponse&);
+  GetServiceInfoResponse& operator=(const GetServiceInfoResponse&);
+  GetServiceInfoResponse() {
+  }
+
+  virtual ~GetServiceInfoResponse() throw();
+  Service serviceInfo;
+
+  _GetServiceInfoResponse__isset __isset;
+
+  void __set_serviceInfo(const Service& val);
+
+  bool operator == (const GetServiceInfoResponse & rhs) const
+  {
+    if (!(serviceInfo == rhs.serviceInfo))
+      return false;
+    return true;
+  }
+  bool operator != (const GetServiceInfoResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceInfoResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceInfoResponse &a, GetServiceInfoResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceInfoResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _SearchForServicesRequest__isset {
   _SearchForServicesRequest__isset() : developerToken(false), searchTerm(false), organization(false) {}
   bool developerToken :1;
@@ -1214,6 +1322,111 @@ class SearchForServicesResponse {
 void swap(SearchForServicesResponse &a, SearchForServicesResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SearchForServicesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetServiceSubscribersRequest__isset {
+  _GetServiceSubscribersRequest__isset() : developerToken(false), serviceId(false), organization(false) {}
+  bool developerToken :1;
+  bool serviceId :1;
+  bool organization :1;
+} _GetServiceSubscribersRequest__isset;
+
+class GetServiceSubscribersRequest {
+ public:
+
+  GetServiceSubscribersRequest(const GetServiceSubscribersRequest&);
+  GetServiceSubscribersRequest& operator=(const GetServiceSubscribersRequest&);
+  GetServiceSubscribersRequest() : serviceId(), organization() {
+  }
+
+  virtual ~GetServiceSubscribersRequest() throw();
+  DeveloperToken developerToken;
+  std::string serviceId;
+  std::string organization;
+
+  _GetServiceSubscribersRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_serviceId(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const GetServiceSubscribersRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(serviceId == rhs.serviceId))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const GetServiceSubscribersRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceSubscribersRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceSubscribersRequest &a, GetServiceSubscribersRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceSubscribersRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetServiceSubscribersResponse__isset {
+  _GetServiceSubscribersResponse__isset() : developers(true) {}
+  bool developers :1;
+} _GetServiceSubscribersResponse__isset;
+
+class GetServiceSubscribersResponse {
+ public:
+
+  GetServiceSubscribersResponse(const GetServiceSubscribersResponse&);
+  GetServiceSubscribersResponse& operator=(const GetServiceSubscribersResponse&);
+  GetServiceSubscribersResponse() {
+
+  }
+
+  virtual ~GetServiceSubscribersResponse() throw();
+  std::vector<Developer>  developers;
+
+  _GetServiceSubscribersResponse__isset __isset;
+
+  void __set_developers(const std::vector<Developer> & val);
+
+  bool operator == (const GetServiceSubscribersResponse & rhs) const
+  {
+    if (!(developers == rhs.developers))
+      return false;
+    return true;
+  }
+  bool operator != (const GetServiceSubscribersResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceSubscribersResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceSubscribersResponse &a, GetServiceSubscribersResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceSubscribersResponse& obj)
 {
   obj.printTo(out);
   return out;
