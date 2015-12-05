@@ -5871,7 +5871,7 @@
 
 @end
 
-static double BananaService_API_VERSION = 1;
+static double BananaService_API_VERSION = 1.1;
 static BananaService_TcpEndpoint BananaService_PRODUCTION_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp20 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
 [tmp20 setHostname:@"banana-service.aroma.tech"];
 [tmp20 setPort:7001];

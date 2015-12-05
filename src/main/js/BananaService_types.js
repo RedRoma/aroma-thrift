@@ -1939,7 +1939,7 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-API_VERSION = 1;
+API_VERSION = 1.1;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'banana-service.aroma.tech','port' : 7001});
 BETA_ENDPOINT = new TcpEndpoint({
