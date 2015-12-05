@@ -1037,6 +1037,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @interface BananaService_BananaServiceConstants : NSObject {
 }
++ (double) API_VERSION;
 + (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT;
 + (BananaService_TcpEndpoint) BETA_ENDPOINT;
 + (BananaService_Dimension) MAX_ICON_DIMENSION;

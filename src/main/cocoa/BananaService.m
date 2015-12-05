@@ -5871,6 +5871,7 @@
 
 @end
 
+static double BananaService_API_VERSION = 1;
 static BananaService_TcpEndpoint BananaService_PRODUCTION_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp20 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
 [tmp20 setHostname:@"banana-service.aroma.tech"];
 [tmp20 setPort:7001];
@@ -5890,6 +5891,9 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
+}
++ (double) API_VERSION{
+  return BananaService_API_VERSION;
 }
 + (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT{
   return BananaService_PRODUCTION_ENDPOINT;
