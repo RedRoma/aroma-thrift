@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>banana-thrift</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
@@ -38,5 +38,125 @@
     </prerequisites>
 
     <!-- END OF POM METADATA -->
+
+    <properties>
+
+        <!--Thrift Compiler Properties-->
+        <thrift.compiler>thrift</thrift.compiler>
+        <src.main>${project.basedir}/src/main</src.main>
+        <src.thrift.dir>${src.main}/thrift</src.thrift.dir>
+        <thrift.dest.dir> ${project.build.directory}/generated-sources/thrift</thrift.dest.dir>
+        <thrift.dest.dir.java>${project.build.directory}/generated-sources/java</thrift.dest.dir.java>
+        <thrift.dest.dir.doc>${project.basedir}/docs</thrift.dest.dir.doc>
+        <thrift.dest.dir.js>${project.basedir}/src/main/js</thrift.dest.dir.js>
+        <thrift.dest.dir.node>${project.basedir}/src/main/nodejs</thrift.dest.dir.node>
+        <thrift.dest.dir.cpp>${project.basedir}/src/main/cpp</thrift.dest.dir.cpp>
+        <thrift.dest.dir.cocoa>${project.basedir}/src/main/cocoa</thrift.dest.dir.cocoa>
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!--COMPILE THE THRIFT SOURCE-->
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <target>
+                                <!-- Define fileset of thrift files -->
+                                <fileset id="thrift.src.files" dir="${src.thrift.dir}">
+                                    <include name="**/*.thrift"/>
+                                </fileset>
+
+                                <mkdir dir="${thrift.dest.dir}" />
+                                <mkdir dir="${thrift.dest.dir.doc}" />
+                                <mkdir dir="${thrift.dest.dir.js}" />
+                                <mkdir dir="${thrift.dest.dir.node}" />
+                                <mkdir dir="${thrift.dest.dir.cpp}" />
+                                <mkdir dir="${thrift.dest.dir.cocoa}" />
+
+                                <delete includeemptydirs="true">
+                                    <fileset dir="${thrift.dest.dir.doc}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.js}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.node}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.cpp}" includes="**/*"/>
+                                    <fileset dir="${thrift.dest.dir.cocoa}" includes="**/*"/>
+                                </delete>
+
+
+                                <!--Generate Doc Files-->
+                                <!-- Invoke thrift binary for each of these files -->
+                                <apply executable="${thrift.compiler}" resultproperty="thrift.compile.result"
+                                       failifexecutionfails="true" failonerror="true" resolveExecutable="true"
+                                       searchpath="true" dir="." verbose="true">
+                                    <arg value="-o"/>
+                                    <arg value="${thrift.dest.dir}"/>
+                                    <arg value="--gen"/>
+                                    <arg value="html:standalone"/>
+                                    <arg value="--gen"/>
+                                    <arg value="java:hashcode"/>
+                                    <arg value="--gen"/>
+                                    <arg value="js"/>
+                                    <arg value="--gen"/>
+                                    <arg value="js:node"/>
+                                    <arg value="--gen"/>
+                                    <arg value="cpp"/>
+                                    <arg value="--gen"/>
+                                    <arg value="cocoa"/>
+                                    <srcfile/>
+                                    <fileset refid="thrift.src.files"/>
+                                </apply>
+
+                                <move todir="${thrift.dest.dir.doc}">
+                                    <fileset dir="${thrift.dest.dir}/gen-html" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.java}">
+                                    <fileset dir="${thrift.dest.dir}/gen-java" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.js}">
+                                    <fileset dir="${thrift.dest.dir}/gen-js" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.node}">
+                                    <fileset dir="${thrift.dest.dir}/gen-nodejs" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.cpp}">
+                                    <fileset dir="${thrift.dest.dir}/gen-cpp" />
+                                </move>
+
+                                <move todir="${thrift.dest.dir.cocoa}">
+                                    <fileset dir="${thrift.dest.dir}/gen-cocoa" />
+                                </move>
+
+                            </target>
+                            <sourceRoot>
+                                ${thrift.dest.dir.java}
+                            </sourceRoot>
+
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
