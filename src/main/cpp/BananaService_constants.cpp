@@ -11,6 +11,8 @@ namespace aroma { namespace banana { namespace thrift { namespace service {
 const BananaServiceConstants g_BananaService_constants;
 
 BananaServiceConstants::BananaServiceConstants() {
+  API_VERSION = 1;
+
   PRODUCTION_ENDPOINT.hostname = "banana-service.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp79;
   tmp79 = 7001;

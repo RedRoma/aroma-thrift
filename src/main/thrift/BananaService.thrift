@@ -48,6 +48,9 @@ typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredExc
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
+/** Defines the Version of the Banana Service API currently in use. */
+const double API_VERSION = 1.0;
+
 /**
  * This is the Banana Service Production Endpoint 
  */

@@ -15,6 +15,7 @@ class BananaServiceConstants {
  public:
   BananaServiceConstants();
 
+  double API_VERSION;
   TcpEndpoint PRODUCTION_ENDPOINT;
   TcpEndpoint BETA_ENDPOINT;
   Dimension MAX_ICON_DIMENSION;
