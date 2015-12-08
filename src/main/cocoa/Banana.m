@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfService: (NSString *) nameOfService
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -46,6 +46,8 @@
   __timeMessageSent_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
+  __nameOfService = [nameOfService retain_stub];
+  __nameOfService_isset = YES;
   return self;
 }
 
@@ -77,6 +79,11 @@
     __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
     __timeMessageReceived_isset = YES;
   }
+  if ([decoder containsValueForKey: @"nameOfService"])
+  {
+    __nameOfService = [[decoder decodeObjectForKey: @"nameOfService"] retain_stub];
+    __nameOfService_isset = YES;
+  }
   return self;
 }
 
@@ -101,6 +108,10 @@
   if (__timeMessageReceived_isset)
   {
     [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
+  }
+  if (__nameOfService_isset)
+  {
+    [encoder encodeObject: __nameOfService forKey: @"nameOfService"];
   }
 }
 
@@ -131,6 +142,11 @@
   if (__timeMessageReceived_isset)
   {
     hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
+  }
+  hash = (hash * 31) ^ __nameOfService_isset ? 2654435761 : 0;
+  if (__nameOfService_isset)
+  {
+    hash = (hash * 31) ^ [__nameOfService hash];
   }
   return hash;
 }
@@ -164,6 +180,10 @@
       (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
     return NO;
   }
+  if ((__nameOfService_isset != other->__nameOfService_isset) ||
+      (__nameOfService_isset && ((__nameOfService || other->__nameOfService) && ![__nameOfService isEqual:other->__nameOfService]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -171,6 +191,7 @@
 {
   [__messageId release_stub];
   [__body release_stub];
+  [__nameOfService release_stub];
   [super dealloc_stub];
 }
 
@@ -267,6 +288,27 @@
   __timeMessageReceived_isset = NO;
 }
 
+- (NSString *) nameOfService {
+  return [[__nameOfService retain_stub] autorelease_stub];
+}
+
+- (void) setNameOfService: (NSString *) nameOfService {
+  [nameOfService retain_stub];
+  [__nameOfService release_stub];
+  __nameOfService = nameOfService;
+  __nameOfService_isset = YES;
+}
+
+- (BOOL) nameOfServiceIsSet {
+  return __nameOfService_isset;
+}
+
+- (void) unsetNameOfService {
+  [__nameOfService release_stub];
+  __nameOfService = nil;
+  __nameOfService_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -322,6 +364,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setNameOfService: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -362,6 +412,13 @@
     [outProtocol writeI64: __timeMessageReceived];
     [outProtocol writeFieldEnd];
   }
+  if (__nameOfService_isset) {
+    if (__nameOfService != nil) {
+      [outProtocol writeFieldBeginWithName: @"nameOfService" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __nameOfService];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -382,6 +439,8 @@
   [ms appendFormat: @"%qi", __timeMessageSent];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
+  [ms appendString: @",nameOfService:"];
+  [ms appendFormat: @"\"%@\"", __nameOfService];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

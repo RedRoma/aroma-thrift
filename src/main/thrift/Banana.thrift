@@ -28,6 +28,7 @@ struct Message
     3: Urgency urgency = Urgency.PRESSING;
     4: timestamp timeMessageSent;
     5: timestamp timeMessageReceived;
+    6: string nameOfService;
 }
 
 enum TimeUnit

@@ -46,6 +46,7 @@ typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
+typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API currently in use. */
@@ -279,7 +280,8 @@ service BananaService
                                                                                                2 : InvalidArgumentException ex2,
                                                                                                3 : InvalidCredentialsException ex3,
                                                                                                4 : ServiceDoesNotExistException ex4,
-                                                                                               5 : ServiceAlreadyRegisteredException ex5)
+                                                                                               5 : ServiceAlreadyRegisteredException ex5,
+                                                                                               6 : CustomChannelUnreachableException ex6)
 
     
     /**

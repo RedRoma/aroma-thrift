@@ -65,12 +65,13 @@ class Dimension;
 class Image;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), nameOfService(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
   bool timeMessageSent :1;
   bool timeMessageReceived :1;
+  bool nameOfService :1;
 } _Message__isset;
 
 class Message {
@@ -78,7 +79,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)2), timeMessageSent(0), timeMessageReceived(0) {
+  Message() : messageId(), body(), urgency((Urgency::type)2), timeMessageSent(0), timeMessageReceived(0), nameOfService() {
     urgency = (Urgency::type)2;
 
   }
@@ -89,6 +90,7 @@ class Message {
   Urgency::type urgency;
   timestamp timeMessageSent;
   timestamp timeMessageReceived;
+  std::string nameOfService;
 
   _Message__isset __isset;
 
@@ -102,6 +104,8 @@ class Message {
 
   void __set_timeMessageReceived(const timestamp val);
 
+  void __set_nameOfService(const std::string& val);
+
   bool operator == (const Message & rhs) const
   {
     if (!(messageId == rhs.messageId))
@@ -113,6 +117,8 @@ class Message {
     if (!(timeMessageSent == rhs.timeMessageSent))
       return false;
     if (!(timeMessageReceived == rhs.timeMessageReceived))
+      return false;
+    if (!(nameOfService == rhs.nameOfService))
       return false;
     return true;
   }

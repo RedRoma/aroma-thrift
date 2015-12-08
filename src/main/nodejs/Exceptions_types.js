@@ -347,6 +347,62 @@ ThroughoutExceededException.prototype.write = function(output) {
   return;
 };
 
+CustomChannelUnreachableException = module.exports.CustomChannelUnreachableException = function(args) {
+  Thrift.TException.call(this, "CustomChannelUnreachableException")
+  this.name = "CustomChannelUnreachableException"
+  this.message = 'The Custom Channel you\'ve supplied could not be reached. Please ensure the Service is reachable and operational.';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(CustomChannelUnreachableException, Thrift.TException);
+CustomChannelUnreachableException.prototype.name = 'CustomChannelUnreachableException';
+CustomChannelUnreachableException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CustomChannelUnreachableException.prototype.write = function(output) {
+  output.writeStructBegin('CustomChannelUnreachableException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 OperationFailedException = module.exports.OperationFailedException = function(args) {
   Thrift.TException.call(this, "OperationFailedException")
   this.name = "OperationFailedException"

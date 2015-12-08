@@ -436,6 +436,7 @@ BananaService_subscribeToService_result = function(args) {
         this.ex3 = null;
         this.ex4 = null;
         this.ex5 = null;
+        this.ex6 = null;
         if (args instanceof Exceptions_ttypes.OperationFailedException) {
                 this.ex1 = args;
                 return;
@@ -456,6 +457,10 @@ BananaService_subscribeToService_result = function(args) {
                 this.ex5 = args;
                 return;
         }
+        if (args instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                this.ex6 = args;
+                return;
+        }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
                         this.success = new ttypes.SubscribeToServiceResponse(args.success);
@@ -474,6 +479,9 @@ BananaService_subscribeToService_result = function(args) {
                 }
                 if (args.ex5 !== undefined && args.ex5 !== null) {
                         this.ex5 = args.ex5;
+                }
+                if (args.ex6 !== undefined && args.ex6 !== null) {
+                        this.ex6 = args.ex6;
                 }
         }
 };
@@ -539,6 +547,14 @@ BananaService_subscribeToService_result.prototype.read = function(input) {
               input.skip(ftype);
             }
             break;
+            case 6:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex6 = new Exceptions_ttypes.CustomChannelUnreachableException();
+              this.ex6.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
             default:
               input.skip(ftype);
           }
@@ -578,6 +594,11 @@ BananaService_subscribeToService_result.prototype.write = function(output) {
         if (this.ex5 !== null && this.ex5 !== undefined) {
           output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
           this.ex5.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex6 !== null && this.ex6 !== undefined) {
+          output.writeFieldBegin('ex6', Thrift.Type.STRUCT, 6);
+          this.ex6.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -2234,6 +2255,9 @@ BananaServiceClient.prototype.recv_subscribeToService = function(input,mtype,rse
         if (null !== result.ex5) {
           return callback(result.ex5);
         }
+        if (null !== result.ex6) {
+          return callback(result.ex6);
+        }
         if (null !== result.success) {
           return callback(null, result.success);
         }
@@ -2800,7 +2824,7 @@ BananaServiceProcessor = exports.Processor = function(handler)       {
               output.writeMessageEnd();
               output.flush();
             }, function (err) {
-              if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ServiceDoesNotExistException || err instanceof Exceptions_ttypes.ServiceAlreadyRegisteredException) {
+              if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ServiceDoesNotExistException || err instanceof Exceptions_ttypes.ServiceAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
                 var result = new BananaService_subscribeToService_result(err);
                 output.writeMessageBegin("subscribeToService", Thrift.MessageType.REPLY, seqid);
               } else {
@@ -2813,7 +2837,7 @@ BananaServiceProcessor = exports.Processor = function(handler)       {
             });
         } else {
           this._handler.subscribeToService(args.request, function (err, result) {
-            if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ServiceDoesNotExistException || err instanceof Exceptions_ttypes.ServiceAlreadyRegisteredException) {
+            if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ServiceDoesNotExistException || err instanceof Exceptions_ttypes.ServiceAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
               var result = new BananaService_subscribeToService_result((err != null ? err : {success: result}));
               output.writeMessageBegin("subscribeToService", Thrift.MessageType.REPLY, seqid);
             } else {

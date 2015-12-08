@@ -7291,6 +7291,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   BananaService_InvalidCredentialsException __ex3;
   BananaService_ServiceDoesNotExistException __ex4;
   BananaService_ServiceAlreadyRegisteredException __ex5;
+  BananaService_CustomChannelUnreachableException __ex6;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -7298,6 +7299,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   BOOL __ex3_isset;
   BOOL __ex4_isset;
   BOOL __ex5_isset;
+  BOOL __ex6_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -7307,10 +7309,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
 @property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ServiceDoesNotExistException ex4;
 @property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ServiceAlreadyRegisteredException ex5;
+@property (nonatomic, retain, getter=ex6, setter=setEx6:) BananaService_CustomChannelUnreachableException ex6;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5;
+- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -7353,6 +7356,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 #endif
 - (BOOL) ex5IsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaService_CustomChannelUnreachableException) ex6;
+- (void) setEx6: (BananaService_CustomChannelUnreachableException) ex6;
+#endif
+- (BOOL) ex6IsSet;
+
 @end
 
 @implementation BananaService_SubscribeToService_result
@@ -7365,7 +7374,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5
+- (id) initWithSuccess: (BananaService_SubscribeToServiceResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ServiceDoesNotExistException) ex4 ex5: (BananaService_ServiceAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6
 {
   self = [super init];
   __success = [success retain_stub];
@@ -7380,6 +7389,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex4_isset = YES;
   __ex5 = [ex5 retain_stub];
   __ex5_isset = YES;
+  __ex6 = [ex6 retain_stub];
+  __ex6_isset = YES;
   return self;
 }
 
@@ -7416,6 +7427,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
     __ex5_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex6"])
+  {
+    __ex6 = [[decoder decodeObjectForKey: @"ex6"] retain_stub];
+    __ex6_isset = YES;
+  }
   return self;
 }
 
@@ -7444,6 +7460,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex5_isset)
   {
     [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+  if (__ex6_isset)
+  {
+    [encoder encodeObject: __ex6 forKey: @"ex6"];
   }
 }
 
@@ -7479,6 +7499,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex5_isset)
   {
     hash = (hash * 31) ^ [__ex5 hash];
+  }
+  hash = (hash * 31) ^ __ex6_isset ? 2654435761 : 0;
+  if (__ex6_isset)
+  {
+    hash = (hash * 31) ^ [__ex6 hash];
   }
   return hash;
 }
@@ -7516,6 +7541,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
     return NO;
   }
+  if ((__ex6_isset != other->__ex6_isset) ||
+      (__ex6_isset && ((__ex6 || other->__ex6) && ![__ex6 isEqual:other->__ex6]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -7527,6 +7556,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [__ex3 release_stub];
   [__ex4 release_stub];
   [__ex5 release_stub];
+  [__ex6 release_stub];
   [super dealloc_stub];
 }
 
@@ -7656,6 +7686,27 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex5_isset = NO;
 }
 
+- (BananaException_CustomChannelUnreachableException *) ex6 {
+  return [[__ex6 retain_stub] autorelease_stub];
+}
+
+- (void) setEx6: (BananaException_CustomChannelUnreachableException *) ex6 {
+  [ex6 retain_stub];
+  [__ex6 release_stub];
+  __ex6 = ex6;
+  __ex6_isset = YES;
+}
+
+- (BOOL) ex6IsSet {
+  return __ex6_isset;
+}
+
+- (void) unsetEx6 {
+  [__ex6 release_stub];
+  __ex6 = nil;
+  __ex6_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -7731,6 +7782,16 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRUCT) {
+          BananaException_CustomChannelUnreachableException *fieldValue = [[BananaException_CustomChannelUnreachableException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx6: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -7779,6 +7840,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       [__ex5 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex6_isset) {
+    if (__ex6 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex6" type: TType_STRUCT fieldID: 6];
+      [__ex6 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -7802,6 +7869,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [ms appendFormat: @"%@", __ex4];
   [ms appendString: @",ex5:"];
   [ms appendFormat: @"%@", __ex5];
+  [ms appendString: @",ex6:"];
+  [ms appendFormat: @"%@", __ex6];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -12773,6 +12842,9 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   }
   if ([result ex5IsSet]) {
     @throw [result ex5];
+  }
+  if ([result ex6IsSet]) {
+    @throw [result ex6];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"subscribeToService failed: unknown result"];

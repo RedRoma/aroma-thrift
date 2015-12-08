@@ -62,6 +62,15 @@ exception ThroughoutExceededException
 }
 
 /**
+ * Thrown when trying to register a Custom Banana Service Channel, but the Endpoint cannot
+ * be reached by the Banana Service.
+ */
+exception CustomChannelUnreachableException
+{
+    1: string message = "The Custom Channel you've supplied could not be reached. Please ensure the Service is reachable and operational."
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  * This is like a catch-all exception
  */

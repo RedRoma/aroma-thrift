@@ -503,13 +503,14 @@ class BananaService_subscribeToService_pargs {
 };
 
 typedef struct _BananaService_subscribeToService_result__isset {
-  _BananaService_subscribeToService_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  _BananaService_subscribeToService_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
+  bool ex6 :1;
 } _BananaService_subscribeToService_result__isset;
 
 class BananaService_subscribeToService_result {
@@ -527,6 +528,7 @@ class BananaService_subscribeToService_result {
   InvalidCredentialsException ex3;
   ServiceDoesNotExistException ex4;
   ServiceAlreadyRegisteredException ex5;
+  CustomChannelUnreachableException ex6;
 
   _BananaService_subscribeToService_result__isset __isset;
 
@@ -542,6 +544,8 @@ class BananaService_subscribeToService_result {
 
   void __set_ex5(const ServiceAlreadyRegisteredException& val);
 
+  void __set_ex6(const CustomChannelUnreachableException& val);
+
   bool operator == (const BananaService_subscribeToService_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -555,6 +559,8 @@ class BananaService_subscribeToService_result {
     if (!(ex4 == rhs.ex4))
       return false;
     if (!(ex5 == rhs.ex5))
+      return false;
+    if (!(ex6 == rhs.ex6))
       return false;
     return true;
   }
@@ -570,13 +576,14 @@ class BananaService_subscribeToService_result {
 };
 
 typedef struct _BananaService_subscribeToService_presult__isset {
-  _BananaService_subscribeToService_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  _BananaService_subscribeToService_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
+  bool ex6 :1;
 } _BananaService_subscribeToService_presult__isset;
 
 class BananaService_subscribeToService_presult {
@@ -590,6 +597,7 @@ class BananaService_subscribeToService_presult {
   InvalidCredentialsException* ex3;
   ServiceDoesNotExistException* ex4;
   ServiceAlreadyRegisteredException* ex5;
+  CustomChannelUnreachableException* ex6;
 
   _BananaService_subscribeToService_presult__isset __isset;
 

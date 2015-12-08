@@ -15,6 +15,87 @@ var Exceptions_ttypes = require('./Exceptions_types')
 var ttypes = require('./Channels_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
+CustomBananaChannel_ping_args = function(args) {
+};
+CustomBananaChannel_ping_args.prototype = {};
+CustomBananaChannel_ping_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CustomBananaChannel_ping_args.prototype.write = function(output) {
+  output.writeStructBegin('CustomBananaChannel_ping_args');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+CustomBananaChannel_ping_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = args.success;
+    }
+  }
+};
+CustomBananaChannel_ping_result.prototype = {};
+CustomBananaChannel_ping_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.I32) {
+        this.success = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CustomBananaChannel_ping_result.prototype.write = function(output) {
+  output.writeStructBegin('CustomBananaChannel_ping_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.I32, 0);
+    output.writeI32(this.success);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 CustomBananaChannel_receiveMessage_args = function(args) {
   this.request = null;
   if (args) {
@@ -106,6 +187,52 @@ CustomBananaChannelClient = exports.Client = function(output, pClass) {
 CustomBananaChannelClient.prototype = {};
 CustomBananaChannelClient.prototype.seqid = function() { return this._seqid; }
 CustomBananaChannelClient.prototype.new_seqid = function() { return this._seqid += 1; }
+CustomBananaChannelClient.prototype.ping = function(callback) {
+  this._seqid = this.new_seqid();
+  if (callback === undefined) {
+    var _defer = Q.defer();
+    this._reqs[this.seqid()] = function(error, result) {
+      if (error) {
+        _defer.reject(error);
+      } else {
+        _defer.resolve(result);
+      }
+    };
+    this.send_ping();
+    return _defer.promise;
+  } else {
+    this._reqs[this.seqid()] = callback;
+    this.send_ping();
+  }
+};
+
+CustomBananaChannelClient.prototype.send_ping = function() {
+  var output = new this.pClass(this.output);
+  output.writeMessageBegin('ping', Thrift.MessageType.CALL, this.seqid());
+  var args = new CustomBananaChannel_ping_args();
+  args.write(output);
+  output.writeMessageEnd();
+  return this.output.flush();
+};
+
+CustomBananaChannelClient.prototype.recv_ping = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new CustomBananaChannel_ping_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('ping failed: unknown result');
+};
 CustomBananaChannelClient.prototype.receiveMessage = function(request, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
@@ -149,6 +276,41 @@ CustomBananaChannelProcessor.prototype.process = function(input, output) {
     x.write(output);
     output.writeMessageEnd();
     output.flush();
+  }
+}
+
+CustomBananaChannelProcessor.prototype.process_ping = function(seqid, input, output) {
+  var args = new CustomBananaChannel_ping_args();
+  args.read(input);
+  input.readMessageEnd();
+  if (this._handler.ping.length === 0) {
+    Q.fcall(this._handler.ping)
+      .then(function(result) {
+        var result = new CustomBananaChannel_ping_result({success: result});
+        output.writeMessageBegin("ping", Thrift.MessageType.REPLY, seqid);
+        result.write(output);
+        output.writeMessageEnd();
+        output.flush();
+      }, function (err) {
+        var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+        output.writeMessageBegin("ping", Thrift.MessageType.EXCEPTION, seqid);
+        result.write(output);
+        output.writeMessageEnd();
+        output.flush();
+      });
+  } else {
+    this._handler.ping(function (err, result) {
+      if (err == null) {
+        var result = new CustomBananaChannel_ping_result((err != null ? err : {success: result}));
+        output.writeMessageBegin("ping", Thrift.MessageType.REPLY, seqid);
+      } else {
+        var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+        output.writeMessageBegin("ping", Thrift.MessageType.EXCEPTION, seqid);
+      }
+      result.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
   }
 }
 

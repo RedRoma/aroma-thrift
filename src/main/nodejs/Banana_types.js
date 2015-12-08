@@ -31,6 +31,7 @@ Message = module.exports.Message = function(args) {
   this.urgency = 2;
   this.timeMessageSent = null;
   this.timeMessageReceived = null;
+  this.nameOfService = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -46,6 +47,9 @@ Message = module.exports.Message = function(args) {
     }
     if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
       this.timeMessageReceived = args.timeMessageReceived;
+    }
+    if (args.nameOfService !== undefined && args.nameOfService !== null) {
+      this.nameOfService = args.nameOfService;
     }
   }
 };
@@ -98,6 +102,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.nameOfService = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -132,6 +143,11 @@ Message.prototype.write = function(output) {
   if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
     output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
     output.writeI64(this.timeMessageReceived);
+    output.writeFieldEnd();
+  }
+  if (this.nameOfService !== null && this.nameOfService !== undefined) {
+    output.writeFieldBegin('nameOfService', Thrift.Type.STRING, 6);
+    output.writeString(this.nameOfService);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

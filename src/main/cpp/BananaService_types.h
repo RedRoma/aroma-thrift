@@ -59,6 +59,8 @@ typedef class  ::aroma::banana::thrift::exceptions::ServiceAlreadyRegisteredExce
 
 typedef class  ::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
+typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class SignInRequest;

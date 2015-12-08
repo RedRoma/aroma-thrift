@@ -32,6 +32,8 @@ class ServiceAlreadyRegisteredException;
 
 class ThroughoutExceededException;
 
+class CustomChannelUnreachableException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -317,6 +319,54 @@ class ThroughoutExceededException : public ::apache::thrift::TException {
 void swap(ThroughoutExceededException &a, ThroughoutExceededException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ThroughoutExceededException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _CustomChannelUnreachableException__isset {
+  _CustomChannelUnreachableException__isset() : message(true) {}
+  bool message :1;
+} _CustomChannelUnreachableException__isset;
+
+class CustomChannelUnreachableException : public ::apache::thrift::TException {
+ public:
+
+  CustomChannelUnreachableException(const CustomChannelUnreachableException&);
+  CustomChannelUnreachableException& operator=(const CustomChannelUnreachableException&);
+  CustomChannelUnreachableException() : message("The Custom Channel you've supplied could not be reached. Please ensure the Service is reachable and operational.") {
+  }
+
+  virtual ~CustomChannelUnreachableException() throw();
+  std::string message;
+
+  _CustomChannelUnreachableException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const CustomChannelUnreachableException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const CustomChannelUnreachableException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CustomChannelUnreachableException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(CustomChannelUnreachableException &a, CustomChannelUnreachableException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CustomChannelUnreachableException& obj)
 {
   obj.printTo(out);
   return out;

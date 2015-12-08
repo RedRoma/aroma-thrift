@@ -21,6 +21,18 @@ namespace aroma { namespace banana { namespace thrift { namespace channels {
 class CustomBananaChannelIf {
  public:
   virtual ~CustomBananaChannelIf() {}
+
+  /**
+   * The Banana Service will first ping your Custom Channel
+   * to make sure it is reachable and operational.
+   */
+  virtual int ping() = 0;
+
+  /**
+   * Called each time the Banana Service sends a message to a specific service.
+   * 
+   * @param request
+   */
   virtual void receiveMessage(const ReceiveMessageRequest& request) = 0;
 };
 
@@ -51,9 +63,105 @@ class CustomBananaChannelIfSingletonFactory : virtual public CustomBananaChannel
 class CustomBananaChannelNull : virtual public CustomBananaChannelIf {
  public:
   virtual ~CustomBananaChannelNull() {}
+  int ping() {
+    int _return = 0;
+    return _return;
+  }
   void receiveMessage(const ReceiveMessageRequest& /* request */) {
     return;
   }
+};
+
+
+class CustomBananaChannel_ping_args {
+ public:
+
+  CustomBananaChannel_ping_args(const CustomBananaChannel_ping_args&);
+  CustomBananaChannel_ping_args& operator=(const CustomBananaChannel_ping_args&);
+  CustomBananaChannel_ping_args() {
+  }
+
+  virtual ~CustomBananaChannel_ping_args() throw();
+
+  bool operator == (const CustomBananaChannel_ping_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const CustomBananaChannel_ping_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CustomBananaChannel_ping_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class CustomBananaChannel_ping_pargs {
+ public:
+
+
+  virtual ~CustomBananaChannel_ping_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CustomBananaChannel_ping_result__isset {
+  _CustomBananaChannel_ping_result__isset() : success(false) {}
+  bool success :1;
+} _CustomBananaChannel_ping_result__isset;
+
+class CustomBananaChannel_ping_result {
+ public:
+
+  CustomBananaChannel_ping_result(const CustomBananaChannel_ping_result&);
+  CustomBananaChannel_ping_result& operator=(const CustomBananaChannel_ping_result&);
+  CustomBananaChannel_ping_result() : success(0) {
+  }
+
+  virtual ~CustomBananaChannel_ping_result() throw();
+  int success;
+
+  _CustomBananaChannel_ping_result__isset __isset;
+
+  void __set_success(const int val);
+
+  bool operator == (const CustomBananaChannel_ping_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const CustomBananaChannel_ping_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CustomBananaChannel_ping_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _CustomBananaChannel_ping_presult__isset {
+  _CustomBananaChannel_ping_presult__isset() : success(false) {}
+  bool success :1;
+} _CustomBananaChannel_ping_presult__isset;
+
+class CustomBananaChannel_ping_presult {
+ public:
+
+
+  virtual ~CustomBananaChannel_ping_presult() throw();
+  int* success;
+
+  _CustomBananaChannel_ping_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
 };
 
 typedef struct _CustomBananaChannel_receiveMessage_args__isset {
@@ -130,6 +238,9 @@ class CustomBananaChannelClient : virtual public CustomBananaChannelIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  int ping();
+  void send_ping();
+  int recv_ping();
   void receiveMessage(const ReceiveMessageRequest& request);
   void send_receiveMessage(const ReceiveMessageRequest& request);
  protected:
@@ -147,10 +258,12 @@ class CustomBananaChannelProcessor : public ::apache::thrift::TDispatchProcessor
   typedef  void (CustomBananaChannelProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
+  void process_ping(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_receiveMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   CustomBananaChannelProcessor(boost::shared_ptr<CustomBananaChannelIf> iface) :
     iface_(iface) {
+    processMap_["ping"] = &CustomBananaChannelProcessor::process_ping;
     processMap_["receiveMessage"] = &CustomBananaChannelProcessor::process_receiveMessage;
   }
 
@@ -180,6 +293,15 @@ class CustomBananaChannelMultiface : virtual public CustomBananaChannelIf {
     ifaces_.push_back(iface);
   }
  public:
+  int ping() {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->ping();
+    }
+    return ifaces_[i]->ping();
+  }
+
   void receiveMessage(const ReceiveMessageRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -219,6 +341,9 @@ class CustomBananaChannelConcurrentClient : virtual public CustomBananaChannelIf
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  int ping();
+  int32_t send_ping();
+  int recv_ping(const int32_t seqid);
   void receiveMessage(const ReceiveMessageRequest& request);
   void send_receiveMessage(const ReceiveMessageRequest& request);
  protected:

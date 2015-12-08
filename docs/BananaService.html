@@ -209,7 +209,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
 </td>
-<td><a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
+<td><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
 <a href="#Typedef_Developer">Developer</a><br/>
@@ -320,6 +321,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_CustomChannelUnreachableException">Typedef: CustomChannelUnreachableException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_CustomChannelUnreachableException">Exceptions.CustomChannelUnreachableException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
@@ -453,7 +457,7 @@ code { line-height: 20px; }
 #developer
 <br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
 <pre><code><a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a></code> subscribeToService(<code><a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
 </pre>Subscribe to an existing service to get notifications.
 
 #developer

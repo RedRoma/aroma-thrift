@@ -596,6 +596,103 @@ const char* ThroughoutExceededException::what() const throw() {
 }
 
 
+CustomChannelUnreachableException::~CustomChannelUnreachableException() throw() {
+}
+
+
+void CustomChannelUnreachableException::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t CustomChannelUnreachableException::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t CustomChannelUnreachableException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("CustomChannelUnreachableException");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(CustomChannelUnreachableException &a, CustomChannelUnreachableException &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+CustomChannelUnreachableException::CustomChannelUnreachableException(const CustomChannelUnreachableException& other12) : TException() {
+  message = other12.message;
+  __isset = other12.__isset;
+}
+CustomChannelUnreachableException& CustomChannelUnreachableException::operator=(const CustomChannelUnreachableException& other13) {
+  message = other13.message;
+  __isset = other13.__isset;
+  return *this;
+}
+void CustomChannelUnreachableException::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "CustomChannelUnreachableException(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+const char* CustomChannelUnreachableException::what() const throw() {
+  try {
+    std::stringstream ss;
+    ss << "TException - service has thrown: " << *this;
+    this->thriftTExceptionMessageHolder_ = ss.str();
+    return this->thriftTExceptionMessageHolder_.c_str();
+  } catch (const std::exception&) {
+    return "TException - service has thrown: CustomChannelUnreachableException";
+  }
+}
+
+
 OperationFailedException::~OperationFailedException() throw() {
 }
 
@@ -665,13 +762,13 @@ void swap(OperationFailedException &a, OperationFailedException &b) {
   swap(a.__isset, b.__isset);
 }
 
-OperationFailedException::OperationFailedException(const OperationFailedException& other12) : TException() {
-  message = other12.message;
-  __isset = other12.__isset;
+OperationFailedException::OperationFailedException(const OperationFailedException& other14) : TException() {
+  message = other14.message;
+  __isset = other14.__isset;
 }
-OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other13) {
-  message = other13.message;
-  __isset = other13.__isset;
+OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other15) {
+  message = other15.message;
+  __isset = other15.__isset;
   return *this;
 }
 void OperationFailedException::printTo(std::ostream& out) const {

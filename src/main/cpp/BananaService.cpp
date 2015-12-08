@@ -675,6 +675,14 @@ uint32_t BananaService_subscribeToService_result::read(::apache::thrift::protoco
           xfer += iprot->skip(ftype);
         }
         break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex6.read(iprot);
+          this->__isset.ex6 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -716,6 +724,10 @@ uint32_t BananaService_subscribeToService_result::write(::apache::thrift::protoc
   } else if (this->__isset.ex5) {
     xfer += oprot->writeFieldBegin("ex5", ::apache::thrift::protocol::T_STRUCT, 5);
     xfer += this->ex5.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex6) {
+    xfer += oprot->writeFieldBegin("ex6", ::apache::thrift::protocol::T_STRUCT, 6);
+    xfer += this->ex6.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -793,6 +805,14 @@ uint32_t BananaService_subscribeToService_presult::read(::apache::thrift::protoc
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex5)).read(iprot);
           this->__isset.ex5 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex6)).read(iprot);
+          this->__isset.ex6 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -3024,6 +3044,9 @@ void BananaServiceClient::recv_subscribeToService(SubscribeToServiceResponse& _r
   if (result.__isset.ex5) {
     throw result.ex5;
   }
+  if (result.__isset.ex6) {
+    throw result.ex6;
+  }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToService failed: unknown result");
 }
 
@@ -3733,6 +3756,9 @@ void BananaServiceProcessor::process_subscribeToService(int32_t seqid, ::apache:
   } catch (ServiceAlreadyRegisteredException &ex5) {
     result.ex5 = ex5;
     result.__isset.ex5 = true;
+  } catch (CustomChannelUnreachableException &ex6) {
+    result.ex6 = ex6;
+    result.__isset.ex6 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "BananaService.subscribeToService");
@@ -4565,6 +4591,10 @@ void BananaServiceConcurrentClient::recv_subscribeToService(SubscribeToServiceRe
       if (result.__isset.ex5) {
         sentry.commit();
         throw result.ex5;
+      }
+      if (result.__isset.ex6) {
+        sentry.commit();
+        throw result.ex6;
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToService failed: unknown result");
