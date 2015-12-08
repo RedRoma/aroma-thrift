@@ -30,12 +30,12 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.Developer Developer
 typedef Authentication.DeveloperToken DeveloperToken
-typedef Authentication.Service Service
 typedef Authentication.ServiceToken ServiceToken
 typedef Banana.Dimension Dimension
 typedef Banana.Image Image
+typedef Banana.Developer Developer
+typedef Banana.Service Service
 typedef Banana.Urgency Urgency
 typedef Endpoint.Endpoint Endpoint
 typedef Endpoint.TcpEndpoint TcpEndpoint

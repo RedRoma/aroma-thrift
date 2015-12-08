@@ -21,17 +21,17 @@
 #import "Authentication.h"
 #import "Banana.h"
 
+typedef BananaNotifications_Authentication.Service BananaNotifications_Service;
+
+typedef BananaAuthentication_ServiceToken * BananaNotifications_ServiceToken;
+
 typedef Banana_int BananaNotifications_int;
 
 typedef Banana_long BananaNotifications_long;
 
 typedef Banana_timestamp BananaNotifications_timestamp;
 
-typedef BananaAuthentication_Developer * BananaNotifications_Developer;
-
-typedef BananaAuthentication_Service * BananaNotifications_Service;
-
-typedef BananaAuthentication_ServiceToken * BananaNotifications_ServiceToken;
+typedef Banana_Developer * BananaNotifications_Developer;
 
 @interface BananaNotifications_HealthCheckFailed : NSObject <TBase, NSCoding> {
 }

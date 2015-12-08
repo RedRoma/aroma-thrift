@@ -31,17 +31,17 @@ typedef Banana_long BananaService_long;
 
 typedef Banana_timestamp BananaService_timestamp;
 
-typedef BananaAuthentication_Developer * BananaService_Developer;
-
 typedef BananaAuthentication_DeveloperToken * BananaService_DeveloperToken;
-
-typedef BananaAuthentication_Service * BananaService_Service;
 
 typedef BananaAuthentication_ServiceToken * BananaService_ServiceToken;
 
 typedef Banana_Dimension * BananaService_Dimension;
 
 typedef Banana_Image * BananaService_Image;
+
+typedef Banana_Developer * BananaService_Developer;
+
+typedef Banana_Service * BananaService_Service;
 
 typedef int BananaService_Urgency;
 

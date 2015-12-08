@@ -25,6 +25,10 @@ ttypes.ImageType = {
   'JPEG' : 1,
   'PNG' : 2
 };
+ttypes.Role = {
+  'DEV' : 1,
+  'OWNER' : 2
+};
 Message = module.exports.Message = function(args) {
   this.messageId = null;
   this.body = null;
@@ -371,6 +375,219 @@ Image.prototype.write = function(output) {
   if (this.dimension !== null && this.dimension !== undefined) {
     output.writeFieldBegin('dimension', Thrift.Type.STRUCT, 3);
     this.dimension.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Developer = module.exports.Developer = function(args) {
+  this.email = null;
+  this.name = null;
+  this.username = null;
+  this.role = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.role !== undefined && args.role !== null) {
+      this.role = args.role;
+    }
+  }
+};
+Developer.prototype = {};
+Developer.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I32) {
+        this.role = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Developer.prototype.write = function(output) {
+  output.writeStructBegin('Developer');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.role !== null && this.role !== undefined) {
+    output.writeFieldBegin('role', Thrift.Type.I32, 4);
+    output.writeI32(this.role);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Service = module.exports.Service = function(args) {
+  this.owner = null;
+  this.timeOfRegistration = null;
+  this.name = null;
+  this.id = null;
+  this.totalMessagesSent = null;
+  if (args) {
+    if (args.owner !== undefined && args.owner !== null) {
+      this.owner = new ttypes.Developer(args.owner);
+    }
+    if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
+      this.timeOfRegistration = args.timeOfRegistration;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.id !== undefined && args.id !== null) {
+      this.id = args.id;
+    }
+    if (args.totalMessagesSent !== undefined && args.totalMessagesSent !== null) {
+      this.totalMessagesSent = args.totalMessagesSent;
+    }
+  }
+};
+Service.prototype = {};
+Service.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.owner = new ttypes.Developer();
+        this.owner.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfRegistration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.id = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I64) {
+        this.totalMessagesSent = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Service.prototype.write = function(output) {
+  output.writeStructBegin('Service');
+  if (this.owner !== null && this.owner !== undefined) {
+    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 1);
+    this.owner.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfRegistration !== null && this.timeOfRegistration !== undefined) {
+    output.writeFieldBegin('timeOfRegistration', Thrift.Type.I64, 2);
+    output.writeI64(this.timeOfRegistration);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.id !== null && this.id !== undefined) {
+    output.writeFieldBegin('id', Thrift.Type.STRING, 4);
+    output.writeString(this.id);
+    output.writeFieldEnd();
+  }
+  if (this.totalMessagesSent !== null && this.totalMessagesSent !== undefined) {
+    output.writeFieldBegin('totalMessagesSent', Thrift.Type.I64, 5);
+    output.writeI64(this.totalMessagesSent);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

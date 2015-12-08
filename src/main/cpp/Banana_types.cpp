@@ -51,6 +51,16 @@ const char* _kImageTypeNames[] = {
 };
 const std::map<int, const char*> _ImageType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kImageTypeValues, _kImageTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+int _kRoleValues[] = {
+  Role::DEV,
+  Role::OWNER
+};
+const char* _kRoleNames[] = {
+  "DEV",
+  "OWNER"
+};
+const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 Message::~Message() throw() {
 }
@@ -584,6 +594,324 @@ void Image::printTo(std::ostream& out) const {
   out << "imageType=" << to_string(imageType);
   out << ", " << "data=" << to_string(data);
   out << ", " << "dimension=" << to_string(dimension);
+  out << ")";
+}
+
+
+Developer::~Developer() throw() {
+}
+
+
+void Developer::__set_email(const std::string& val) {
+  this->email = val;
+}
+
+void Developer::__set_name(const std::string& val) {
+  this->name = val;
+__isset.name = true;
+}
+
+void Developer::__set_username(const std::string& val) {
+  this->username = val;
+__isset.username = true;
+}
+
+void Developer::__set_role(const Role::type val) {
+  this->role = val;
+}
+
+uint32_t Developer::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->email);
+          this->__isset.email = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->username);
+          this->__isset.username = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast11;
+          xfer += iprot->readI32(ecast11);
+          this->role = (Role::type)ecast11;
+          this->__isset.role = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Developer::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Developer");
+
+  xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->email);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.name) {
+    xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->name);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.username) {
+    xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->username);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("role", ::apache::thrift::protocol::T_I32, 4);
+  xfer += oprot->writeI32((int32_t)this->role);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Developer &a, Developer &b) {
+  using ::std::swap;
+  swap(a.email, b.email);
+  swap(a.name, b.name);
+  swap(a.username, b.username);
+  swap(a.role, b.role);
+  swap(a.__isset, b.__isset);
+}
+
+Developer::Developer(const Developer& other12) {
+  email = other12.email;
+  name = other12.name;
+  username = other12.username;
+  role = other12.role;
+  __isset = other12.__isset;
+}
+Developer& Developer::operator=(const Developer& other13) {
+  email = other13.email;
+  name = other13.name;
+  username = other13.username;
+  role = other13.role;
+  __isset = other13.__isset;
+  return *this;
+}
+void Developer::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Developer(";
+  out << "email=" << to_string(email);
+  out << ", " << "name="; (__isset.name ? (out << to_string(name)) : (out << "<null>"));
+  out << ", " << "username="; (__isset.username ? (out << to_string(username)) : (out << "<null>"));
+  out << ", " << "role=" << to_string(role);
+  out << ")";
+}
+
+
+Service::~Service() throw() {
+}
+
+
+void Service::__set_owner(const Developer& val) {
+  this->owner = val;
+}
+
+void Service::__set_timeOfRegistration(const timestamp val) {
+  this->timeOfRegistration = val;
+}
+
+void Service::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void Service::__set_id(const std::string& val) {
+  this->id = val;
+}
+
+void Service::__set_totalMessagesSent(const long val) {
+  this->totalMessagesSent = val;
+}
+
+uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->owner.read(iprot);
+          this->__isset.owner = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfRegistration);
+          this->__isset.timeOfRegistration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->totalMessagesSent);
+          this->__isset.totalMessagesSent = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Service");
+
+  xfer += oprot->writeFieldBegin("owner", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->owner.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeOfRegistration", ::apache::thrift::protocol::T_I64, 2);
+  xfer += oprot->writeI64(this->timeOfRegistration);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("totalMessagesSent", ::apache::thrift::protocol::T_I64, 5);
+  xfer += oprot->writeI64(this->totalMessagesSent);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Service &a, Service &b) {
+  using ::std::swap;
+  swap(a.owner, b.owner);
+  swap(a.timeOfRegistration, b.timeOfRegistration);
+  swap(a.name, b.name);
+  swap(a.id, b.id);
+  swap(a.totalMessagesSent, b.totalMessagesSent);
+  swap(a.__isset, b.__isset);
+}
+
+Service::Service(const Service& other14) {
+  owner = other14.owner;
+  timeOfRegistration = other14.timeOfRegistration;
+  name = other14.name;
+  id = other14.id;
+  totalMessagesSent = other14.totalMessagesSent;
+  __isset = other14.__isset;
+}
+Service& Service::operator=(const Service& other15) {
+  owner = other15.owner;
+  timeOfRegistration = other15.timeOfRegistration;
+  name = other15.name;
+  id = other15.id;
+  totalMessagesSent = other15.totalMessagesSent;
+  __isset = other15.__isset;
+  return *this;
+}
+void Service::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Service(";
+  out << "owner=" << to_string(owner);
+  out << ", " << "timeOfRegistration=" << to_string(timeOfRegistration);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "id=" << to_string(id);
+  out << ", " << "totalMessagesSent=" << to_string(totalMessagesSent);
   out << ")";
 }
 

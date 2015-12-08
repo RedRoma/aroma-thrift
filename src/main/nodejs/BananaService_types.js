@@ -1446,7 +1446,7 @@ GetServiceInfoResponse = module.exports.GetServiceInfoResponse = function(args) 
   this.serviceInfo = null;
   if (args) {
     if (args.serviceInfo !== undefined && args.serviceInfo !== null) {
-      this.serviceInfo = new Authentication_ttypes.Service(args.serviceInfo);
+      this.serviceInfo = new Banana_ttypes.Service(args.serviceInfo);
     }
   }
 };
@@ -1466,7 +1466,7 @@ GetServiceInfoResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.serviceInfo = new Authentication_ttypes.Service();
+        this.serviceInfo = new Banana_ttypes.Service();
         this.serviceInfo.read(input);
       } else {
         input.skip(ftype);
@@ -1613,7 +1613,7 @@ SearchForServicesResponse.prototype.read = function(input) {
         for (var _i21 = 0; _i21 < _size16; ++_i21)
         {
           var elem22 = null;
-          elem22 = new Authentication_ttypes.Service();
+          elem22 = new Banana_ttypes.Service();
           elem22.read(input);
           this.services.push(elem22);
         }
@@ -1772,7 +1772,7 @@ GetServiceSubscribersResponse.prototype.read = function(input) {
         for (var _i29 = 0; _i29 < _size24; ++_i29)
         {
           var elem30 = null;
-          elem30 = new Authentication_ttypes.Developer();
+          elem30 = new Banana_ttypes.Developer();
           elem30.read(input);
           this.developers.push(elem30);
         }

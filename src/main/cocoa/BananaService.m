@@ -4490,11 +4490,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_Service *) serviceInfo {
+- (Banana_Service *) serviceInfo {
   return [[__serviceInfo retain_stub] autorelease_stub];
 }
 
-- (void) setServiceInfo: (BananaAuthentication_Service *) serviceInfo {
+- (void) setServiceInfo: (Banana_Service *) serviceInfo {
   [serviceInfo retain_stub];
   [__serviceInfo release_stub];
   __serviceInfo = serviceInfo;
@@ -4528,7 +4528,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Service *fieldValue = [[BananaAuthentication_Service alloc] init];
+          Banana_Service *fieldValue = [[Banana_Service alloc] init];
           [fieldValue read: inProtocol];
           [self setServiceInfo: fieldValue];
           [fieldValue release_stub];
@@ -4958,7 +4958,7 @@
           int _i11;
           for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            BananaAuthentication_Service *_elem12 = [[BananaAuthentication_Service alloc] init];
+            Banana_Service *_elem12 = [[Banana_Service alloc] init];
             [_elem12 read: inProtocol];
             [fieldValue addObject: _elem12];
             [_elem12 release_stub];
@@ -5400,7 +5400,7 @@
           int _i16;
           for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            BananaAuthentication_Developer *_elem17 = [[BananaAuthentication_Developer alloc] init];
+            Banana_Developer *_elem17 = [[Banana_Developer alloc] init];
             [_elem17 read: inProtocol];
             [fieldValue addObject: _elem17];
             [_elem17 release_stub];

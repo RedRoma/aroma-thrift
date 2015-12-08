@@ -31,17 +31,17 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::Developer Developer;
-
 typedef class  ::aroma::banana::thrift::authentication::DeveloperToken DeveloperToken;
-
-typedef class  ::aroma::banana::thrift::authentication::Service Service;
 
 typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
 typedef class  ::aroma::banana::thrift::Dimension Dimension;
 
 typedef class  ::aroma::banana::thrift::Image Image;
+
+typedef class  ::aroma::banana::thrift::Developer Developer;
+
+typedef class  ::aroma::banana::thrift::Service Service;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 

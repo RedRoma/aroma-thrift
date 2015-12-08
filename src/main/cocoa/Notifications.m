@@ -270,11 +270,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_Developer *) developer {
+- (Banana_Developer *) developer {
   return [[__developer retain_stub] autorelease_stub];
 }
 
-- (void) setDeveloper: (BananaAuthentication_Developer *) developer {
+- (void) setDeveloper: (Banana_Developer *) developer {
   [developer retain_stub];
   [__developer release_stub];
   __developer = developer;
@@ -329,7 +329,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Developer *fieldValue = [[BananaAuthentication_Developer alloc] init];
+          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
           [fieldValue read: inProtocol];
           [self setDeveloper: fieldValue];
           [fieldValue release_stub];
@@ -483,11 +483,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_Developer *) developer {
+- (Banana_Developer *) developer {
   return [[__developer retain_stub] autorelease_stub];
 }
 
-- (void) setDeveloper: (BananaAuthentication_Developer *) developer {
+- (void) setDeveloper: (Banana_Developer *) developer {
   [developer retain_stub];
   [__developer release_stub];
   __developer = developer;
@@ -542,7 +542,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Developer *fieldValue = [[BananaAuthentication_Developer alloc] init];
+          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
           [fieldValue read: inProtocol];
           [self setDeveloper: fieldValue];
           [fieldValue release_stub];

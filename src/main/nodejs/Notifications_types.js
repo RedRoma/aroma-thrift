@@ -73,7 +73,7 @@ ServiceTokenRenewed = module.exports.ServiceTokenRenewed = function(args) {
   this.serviceToken = null;
   if (args) {
     if (args.developer !== undefined && args.developer !== null) {
-      this.developer = new Authentication_ttypes.Developer(args.developer);
+      this.developer = new Banana_ttypes.Developer(args.developer);
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new Authentication_ttypes.ServiceToken(args.serviceToken);
@@ -96,7 +96,7 @@ ServiceTokenRenewed.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.developer = new Authentication_ttypes.Developer();
+        this.developer = new Banana_ttypes.Developer();
         this.developer.read(input);
       } else {
         input.skip(ftype);
@@ -141,7 +141,7 @@ ServiceTokenRegenerated = module.exports.ServiceTokenRegenerated = function(args
   this.serviceToken = null;
   if (args) {
     if (args.developer !== undefined && args.developer !== null) {
-      this.developer = new Authentication_ttypes.Developer(args.developer);
+      this.developer = new Banana_ttypes.Developer(args.developer);
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new Authentication_ttypes.ServiceToken(args.serviceToken);
@@ -164,7 +164,7 @@ ServiceTokenRegenerated.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.developer = new Authentication_ttypes.Developer();
+        this.developer = new Banana_ttypes.Developer();
         this.developer.read(input);
       } else {
         input.skip(ftype);
