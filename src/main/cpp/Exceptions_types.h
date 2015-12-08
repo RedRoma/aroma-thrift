@@ -34,6 +34,8 @@ class ThroughoutExceededException;
 
 class CustomChannelUnreachableException;
 
+class ChannelDoesNotExistException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -367,6 +369,54 @@ class CustomChannelUnreachableException : public ::apache::thrift::TException {
 void swap(CustomChannelUnreachableException &a, CustomChannelUnreachableException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const CustomChannelUnreachableException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ChannelDoesNotExistException__isset {
+  _ChannelDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _ChannelDoesNotExistException__isset;
+
+class ChannelDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  ChannelDoesNotExistException(const ChannelDoesNotExistException&);
+  ChannelDoesNotExistException& operator=(const ChannelDoesNotExistException&);
+  ChannelDoesNotExistException() : message("The Channel specified does not exist in the System") {
+  }
+
+  virtual ~ChannelDoesNotExistException() throw();
+  std::string message;
+
+  _ChannelDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ChannelDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ChannelDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ChannelDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ChannelDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;

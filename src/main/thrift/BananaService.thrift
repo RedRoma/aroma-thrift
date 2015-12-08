@@ -37,6 +37,7 @@ typedef Banana.Image Image
 typedef Banana.Developer Developer
 typedef Banana.Service Service
 typedef Banana.Urgency Urgency
+typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Endpoint.TcpEndpoint TcpEndpoint
 
@@ -47,6 +48,7 @@ typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
+typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API currently in use. */
@@ -114,7 +116,7 @@ struct SubscribeToServiceRequest
 struct SubscribeToServiceResponse
 {
     1: string message;
-    2: Channels.BananaChannel channel;
+    2: BananaChannel channel;
 }
 
 
@@ -197,6 +199,33 @@ struct HideAllMessagesResponse
     
 }
 
+/**
+ * Save a Developer's Personal Contact Channel for future use.
+ */
+struct SaveChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct SaveChannelResponse
+{
+    1: string message;
+    2: optional BananaChannel channel;
+}
+
+struct RemoveSavedChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct RemoveSavedChannelResponse
+{
+    1: string message;
+    2: optional BananaChannel channel;
+}
+
 //==========================================================
 // Getting and Querying for Data
 //==========================================================
@@ -236,6 +265,16 @@ struct GetServiceSubscribersResponse
     1: list<Developer> developers = [];
 }
 
+struct GetMySavedChannelsRequest
+{
+    1: DeveloperToken developerToken;
+}
+
+struct GetMySavedChannelsResponse
+{
+    1: list<BananaChannel> channels;
+}
+
 //==========================================================
 // Operations performed by Services
 
@@ -253,6 +292,30 @@ struct SendMessageResponse
 
 service BananaService
 {
+    //===============================================
+    // Operations for Services
+    //===============================================
+
+    
+    /**
+     * 
+     * #service
+     */
+    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                          2 : InvalidArgumentException ex2,
+                                                                          3 : InvalidCredentialsException ex3)
+    
+    /**
+     * 
+     * #service
+     */
+    oneway void sendMessageAsync(1: SendMessageRequest request)
+    
+    
+    //===============================================
+    // Operations for Developers
+    //===============================================    
+    
     /**
      * Sign in to the App and using a valid OAUTH Token.
      * 
@@ -357,20 +420,20 @@ service BananaService
                                                                                                         3 : InvalidCredentialsException ex3,
                                                                                                         4 : UnauthorizedException ex4)
     
-    //===============================================
-    // Searching for Services
-    
-    /**
-     * 
-     * #service
-     */
-    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
+    SaveChannelResponse saveChannel(1: SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                           2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidCredentialsException ex3)
+                                                                          3 : InvalidCredentialsException ex3,
+                                                                          4 : UnauthorizedException ex4)
     
-    /**
-     * 
-     * #service
-     */
-    oneway void sendMessageAsync(1: SendMessageRequest request)
+    
+    RemoveSavedChannelResponse removeSavedChannel(1: RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                               2 : InvalidArgumentException ex2,
+                                                                                               3 : InvalidCredentialsException ex3,
+                                                                                               4 : UnauthorizedException ex4,
+                                                                                               5: ChannelDoesNotExistException ex5)
+
+    GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                2 : InvalidArgumentException ex2,
+                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                4 : UnauthorizedException ex4)
 }

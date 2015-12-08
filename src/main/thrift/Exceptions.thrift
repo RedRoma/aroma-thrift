@@ -71,6 +71,14 @@ exception CustomChannelUnreachableException
 }
 
 /**
+ * Thrown when referencing a Developer's saved Channel that does not exist.
+ */
+exception ChannelDoesNotExistException
+{
+    1: string message = "The Channel specified does not exist in the System"
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  * This is like a catch-all exception
  */
