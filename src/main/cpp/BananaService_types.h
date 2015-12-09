@@ -113,6 +113,10 @@ class RemoveSavedChannelRequest;
 
 class RemoveSavedChannelResponse;
 
+class SnoozeChannelRequest;
+
+class SnoozeChannelResponse;
+
 class GetServiceInfoRequest;
 
 class GetServiceInfoResponse;
@@ -1347,6 +1351,104 @@ class RemoveSavedChannelResponse {
 void swap(RemoveSavedChannelResponse &a, RemoveSavedChannelResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SnoozeChannelRequest__isset {
+  _SnoozeChannelRequest__isset() : developerToken(false), channel(false) {}
+  bool developerToken :1;
+  bool channel :1;
+} _SnoozeChannelRequest__isset;
+
+class SnoozeChannelRequest {
+ public:
+
+  SnoozeChannelRequest(const SnoozeChannelRequest&);
+  SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
+  SnoozeChannelRequest() {
+  }
+
+  virtual ~SnoozeChannelRequest() throw();
+  DeveloperToken developerToken;
+  BananaChannel channel;
+
+  _SnoozeChannelRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SnoozeChannelRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SnoozeChannelRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnoozeChannelRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnoozeChannelRequest &a, SnoozeChannelRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SnoozeChannelResponse__isset {
+  _SnoozeChannelResponse__isset() : message(false) {}
+  bool message :1;
+} _SnoozeChannelResponse__isset;
+
+class SnoozeChannelResponse {
+ public:
+
+  SnoozeChannelResponse(const SnoozeChannelResponse&);
+  SnoozeChannelResponse& operator=(const SnoozeChannelResponse&);
+  SnoozeChannelResponse() : message() {
+  }
+
+  virtual ~SnoozeChannelResponse() throw();
+  std::string message;
+
+  _SnoozeChannelResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const SnoozeChannelResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const SnoozeChannelResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnoozeChannelResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnoozeChannelResponse &a, SnoozeChannelResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& obj)
 {
   obj.printTo(out);
   return out;

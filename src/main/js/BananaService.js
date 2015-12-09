@@ -2651,6 +2651,216 @@ BananaService_getMySavedChannels_result.prototype.write = function(output) {
         return;
       };
 
+BananaService_snoozeChannel_args = function(args) {
+        this.request = null;
+        if (args) {
+                if (args.request !== undefined && args.request !== null) {
+                        this.request = new SnoozeChannelRequest(args.request);
+                }
+        }
+};
+BananaService_snoozeChannel_args.prototype = {};
+BananaService_snoozeChannel_args.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          switch (fid)
+          {
+            case 1:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.request = new SnoozeChannelRequest();
+              this.request.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 0:
+              input.skip(ftype);
+              break;
+            default:
+              input.skip(ftype);
+          }
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_snoozeChannel_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_snoozeChannel_args');
+        if (this.request !== null && this.request !== undefined) {
+          output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+          this.request.write(output);
+          output.writeFieldEnd();
+        }
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
+BananaService_snoozeChannel_result = function(args) {
+        this.success = null;
+        this.ex1 = null;
+        this.ex2 = null;
+        this.ex3 = null;
+        this.ex4 = null;
+        this.ex5 = null;
+        if (args instanceof OperationFailedException) {
+                this.ex1 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex2 = args;
+                return;
+        }
+        if (args instanceof InvalidCredentialsException) {
+                this.ex3 = args;
+                return;
+        }
+        if (args instanceof UnauthorizedException) {
+                this.ex4 = args;
+                return;
+        }
+        if (args instanceof ChannelDoesNotExistException) {
+                this.ex5 = args;
+                return;
+        }
+        if (args) {
+                if (args.success !== undefined && args.success !== null) {
+                        this.success = new SnoozeChannelResponse(args.success);
+                }
+                if (args.ex1 !== undefined && args.ex1 !== null) {
+                        this.ex1 = args.ex1;
+                }
+                if (args.ex2 !== undefined && args.ex2 !== null) {
+                        this.ex2 = args.ex2;
+                }
+                if (args.ex3 !== undefined && args.ex3 !== null) {
+                        this.ex3 = args.ex3;
+                }
+                if (args.ex4 !== undefined && args.ex4 !== null) {
+                        this.ex4 = args.ex4;
+                }
+                if (args.ex5 !== undefined && args.ex5 !== null) {
+                        this.ex5 = args.ex5;
+                }
+        }
+};
+BananaService_snoozeChannel_result.prototype = {};
+BananaService_snoozeChannel_result.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          switch (fid)
+          {
+            case 0:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.success = new SnoozeChannelResponse();
+              this.success.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 1:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex1 = new OperationFailedException();
+              this.ex1.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 2:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex2 = new InvalidArgumentException();
+              this.ex2.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 3:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex3 = new InvalidCredentialsException();
+              this.ex3.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 4:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex4 = new UnauthorizedException();
+              this.ex4.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 5:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex5 = new ChannelDoesNotExistException();
+              this.ex5.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            default:
+              input.skip(ftype);
+          }
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_snoozeChannel_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_snoozeChannel_result');
+        if (this.success !== null && this.success !== undefined) {
+          output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+          this.success.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex1 !== null && this.ex1 !== undefined) {
+          output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+          this.ex1.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex2 !== null && this.ex2 !== undefined) {
+          output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+          this.ex2.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex3 !== null && this.ex3 !== undefined) {
+          output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+          this.ex3.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex4 !== null && this.ex4 !== undefined) {
+          output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+          this.ex4.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex5 !== null && this.ex5 !== undefined) {
+          output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+          this.ex5.write(output);
+          output.writeFieldEnd();
+        }
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
 BananaServiceClient = function(input, output) {
           this.input = input;
           this.output = (!output) ? input : output;
@@ -3489,4 +3699,68 @@ BananaServiceClient.prototype.recv_getMySavedChannels = function() {
           return result.success;
         }
         throw 'getMySavedChannels failed: unknown result';
+};
+BananaServiceClient.prototype.snoozeChannel = function(request, callback) {
+        this.send_snoozeChannel(request, callback); 
+        if (!callback) {
+          return this.recv_snoozeChannel();
+        }
+};
+
+BananaServiceClient.prototype.send_snoozeChannel = function(request, callback) {
+        this.output.writeMessageBegin('snoozeChannel', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_snoozeChannel_args();
+        args.request = request;
+        args.write(this.output);
+        this.output.writeMessageEnd();
+        if (callback) {
+          var self = this;
+          this.output.getTransport().flush(true, function() {
+            var result = null;
+            try {
+              result = self.recv_snoozeChannel();
+            } catch (e) {
+              result = e;
+            }
+            callback(result);
+          });
+        } else {
+          return this.output.getTransport().flush();
+        }
+};
+
+BananaServiceClient.prototype.recv_snoozeChannel = function() {
+        var ret = this.input.readMessageBegin();
+        var fname = ret.fname;
+        var mtype = ret.mtype;
+        var rseqid = ret.rseqid;
+        if (mtype == Thrift.MessageType.EXCEPTION) {
+          var x = new Thrift.TApplicationException();
+          x.read(this.input);
+          this.input.readMessageEnd();
+          throw x;
+        }
+        var result = new BananaService_snoozeChannel_result();
+        result.read(this.input);
+        this.input.readMessageEnd();
+
+        if (null !== result.ex1) {
+          throw result.ex1;
+        }
+        if (null !== result.ex2) {
+          throw result.ex2;
+        }
+        if (null !== result.ex3) {
+          throw result.ex3;
+        }
+        if (null !== result.ex4) {
+          throw result.ex4;
+        }
+        if (null !== result.ex5) {
+          throw result.ex5;
+        }
+        if (null !== result.success) {
+          return result.success;
+        }
+        throw 'snoozeChannel failed: unknown result';
 };

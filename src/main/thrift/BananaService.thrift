@@ -226,6 +226,21 @@ struct RemoveSavedChannelResponse
     2: optional BananaChannel channel;
 }
 
+/**
+ * A Snoozed Channel will not receive Notifications
+ * for a set time period.
+ */
+struct SnoozeChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct SnoozeChannelResponse
+{
+    1: string message;
+}
+
 //==========================================================
 // Getting and Querying for Data
 //==========================================================
@@ -430,10 +445,16 @@ service BananaService
                                                                                                2 : InvalidArgumentException ex2,
                                                                                                3 : InvalidCredentialsException ex3,
                                                                                                4 : UnauthorizedException ex4,
-                                                                                               5: ChannelDoesNotExistException ex5)
+                                                                                               5 : ChannelDoesNotExistException ex5)
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
                                                                                                 3 : InvalidCredentialsException ex3,
                                                                                                 4 : UnauthorizedException ex4)
+    
+    SnoozeChannelResponse snoozeChannel(1: SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                2 : InvalidArgumentException ex2,
+                                                                                3 : InvalidCredentialsException ex3,
+                                                                                4 : UnauthorizedException ex4,
+                                                                                5 : ChannelDoesNotExistException ex5)
 }

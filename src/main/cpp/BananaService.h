@@ -128,6 +128,7 @@ class BananaServiceIf {
   virtual void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) = 0;
   virtual void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
+  virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 };
 
 class BananaServiceIfFactory {
@@ -197,6 +198,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
+    return;
+  }
+  void snoozeChannel(SnoozeChannelResponse& /* _return */, const SnoozeChannelRequest& /* request */) {
     return;
   }
 };
@@ -2058,6 +2062,150 @@ class BananaService_getMySavedChannels_presult {
 
 };
 
+typedef struct _BananaService_snoozeChannel_args__isset {
+  _BananaService_snoozeChannel_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_snoozeChannel_args__isset;
+
+class BananaService_snoozeChannel_args {
+ public:
+
+  BananaService_snoozeChannel_args(const BananaService_snoozeChannel_args&);
+  BananaService_snoozeChannel_args& operator=(const BananaService_snoozeChannel_args&);
+  BananaService_snoozeChannel_args() {
+  }
+
+  virtual ~BananaService_snoozeChannel_args() throw();
+  SnoozeChannelRequest request;
+
+  _BananaService_snoozeChannel_args__isset __isset;
+
+  void __set_request(const SnoozeChannelRequest& val);
+
+  bool operator == (const BananaService_snoozeChannel_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_snoozeChannel_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_snoozeChannel_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_snoozeChannel_pargs {
+ public:
+
+
+  virtual ~BananaService_snoozeChannel_pargs() throw();
+  const SnoozeChannelRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_snoozeChannel_result__isset {
+  _BananaService_snoozeChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_snoozeChannel_result__isset;
+
+class BananaService_snoozeChannel_result {
+ public:
+
+  BananaService_snoozeChannel_result(const BananaService_snoozeChannel_result&);
+  BananaService_snoozeChannel_result& operator=(const BananaService_snoozeChannel_result&);
+  BananaService_snoozeChannel_result() {
+  }
+
+  virtual ~BananaService_snoozeChannel_result() throw();
+  SnoozeChannelResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  UnauthorizedException ex4;
+  ChannelDoesNotExistException ex5;
+
+  _BananaService_snoozeChannel_result__isset __isset;
+
+  void __set_success(const SnoozeChannelResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const UnauthorizedException& val);
+
+  void __set_ex5(const ChannelDoesNotExistException& val);
+
+  bool operator == (const BananaService_snoozeChannel_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_snoozeChannel_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_snoozeChannel_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_snoozeChannel_presult__isset {
+  _BananaService_snoozeChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_snoozeChannel_presult__isset;
+
+class BananaService_snoozeChannel_presult {
+ public:
+
+
+  virtual ~BananaService_snoozeChannel_presult() throw();
+  SnoozeChannelResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  UnauthorizedException* ex4;
+  ChannelDoesNotExistException* ex5;
+
+  _BananaService_snoozeChannel_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class BananaServiceClient : virtual public BananaServiceIf {
  public:
   BananaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -2124,6 +2272,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
+  void send_snoozeChannel(const SnoozeChannelRequest& request);
+  void recv_snoozeChannel(SnoozeChannelResponse& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -2153,6 +2304,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
@@ -2170,6 +2322,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["saveChannel"] = &BananaServiceProcessor::process_saveChannel;
     processMap_["removeSavedChannel"] = &BananaServiceProcessor::process_removeSavedChannel;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
+    processMap_["snoozeChannel"] = &BananaServiceProcessor::process_snoozeChannel;
   }
 
   virtual ~BananaServiceProcessor() {}
@@ -2337,6 +2490,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->snoozeChannel(_return, request);
+    }
+    ifaces_[i]->snoozeChannel(_return, request);
+    return;
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -2408,6 +2571,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
+  int32_t send_snoozeChannel(const SnoozeChannelRequest& request);
+  void recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
