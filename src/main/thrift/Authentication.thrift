@@ -31,7 +31,26 @@ struct GithubToken
     3: required string oauthToken;
 }
 
-union OauthToken
+struct Password
+{
+    1: string encryptedPassword;
+}
+
+/**
+ * An Account registered with our System.
+ */
+struct AromaAccount
+{
+    1: string username;
+    2: Password password;
+}
+
+/**
+ * There are multiple ways to Sign In and Authenticate with
+ * the Banana Service.
+ */
+union Credentials
 {
     1: GithubToken githubToken;
+    2: AromaAccount aromaAccount;
 }

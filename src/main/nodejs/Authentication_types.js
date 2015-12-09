@@ -291,16 +291,140 @@ GithubToken.prototype.write = function(output) {
   return;
 };
 
-OauthToken = module.exports.OauthToken = function(args) {
+Password = module.exports.Password = function(args) {
+  this.encryptedPassword = null;
+  if (args) {
+    if (args.encryptedPassword !== undefined && args.encryptedPassword !== null) {
+      this.encryptedPassword = args.encryptedPassword;
+    }
+  }
+};
+Password.prototype = {};
+Password.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.encryptedPassword = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Password.prototype.write = function(output) {
+  output.writeStructBegin('Password');
+  if (this.encryptedPassword !== null && this.encryptedPassword !== undefined) {
+    output.writeFieldBegin('encryptedPassword', Thrift.Type.STRING, 1);
+    output.writeString(this.encryptedPassword);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+AromaAccount = module.exports.AromaAccount = function(args) {
+  this.username = null;
+  this.password = null;
+  if (args) {
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.password !== undefined && args.password !== null) {
+      this.password = new ttypes.Password(args.password);
+    }
+  }
+};
+AromaAccount.prototype = {};
+AromaAccount.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.password = new ttypes.Password();
+        this.password.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+AromaAccount.prototype.write = function(output) {
+  output.writeStructBegin('AromaAccount');
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 1);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.password !== null && this.password !== undefined) {
+    output.writeFieldBegin('password', Thrift.Type.STRUCT, 2);
+    this.password.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Credentials = module.exports.Credentials = function(args) {
   this.githubToken = null;
+  this.aromaAccount = null;
   if (args) {
     if (args.githubToken !== undefined && args.githubToken !== null) {
       this.githubToken = new ttypes.GithubToken(args.githubToken);
     }
+    if (args.aromaAccount !== undefined && args.aromaAccount !== null) {
+      this.aromaAccount = new ttypes.AromaAccount(args.aromaAccount);
+    }
   }
 };
-OauthToken.prototype = {};
-OauthToken.prototype.read = function(input) {
+Credentials.prototype = {};
+Credentials.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -321,9 +445,14 @@ OauthToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.aromaAccount = new ttypes.AromaAccount();
+        this.aromaAccount.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -333,11 +462,16 @@ OauthToken.prototype.read = function(input) {
   return;
 };
 
-OauthToken.prototype.write = function(output) {
-  output.writeStructBegin('OauthToken');
+Credentials.prototype.write = function(output) {
+  output.writeStructBegin('Credentials');
   if (this.githubToken !== null && this.githubToken !== undefined) {
     output.writeFieldBegin('githubToken', Thrift.Type.STRUCT, 1);
     this.githubToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.aromaAccount !== null && this.aromaAccount !== undefined) {
+    output.writeFieldBegin('aromaAccount', Thrift.Type.STRUCT, 2);
+    this.aromaAccount.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

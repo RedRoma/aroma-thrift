@@ -195,9 +195,11 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Authentication</td><td></td>
-<td><a href="#Struct_DeveloperToken">DeveloperToken</a><br/>
+<td><a href="#Struct_AromaAccount">AromaAccount</a><br/>
+<a href="#Struct_Credentials">Credentials</a><br/>
+<a href="#Struct_DeveloperToken">DeveloperToken</a><br/>
 <a href="#Struct_GithubToken">GithubToken</a><br/>
-<a href="#Struct_OauthToken">OauthToken</a><br/>
+<a href="#Struct_Password">Password</a><br/>
 <a href="#Struct_ServiceToken">ServiceToken</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
@@ -233,7 +235,18 @@ code { line-height: 20px; }
 <tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>email</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>oauthToken</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_OauthToken">Union: OauthToken</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_Password">Struct: Password</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>encryptedPassword</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_AromaAccount">Struct: AromaAccount</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>password</td><td><code><a href="#Struct_Password">Password</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>An Account registered with our System.
+<br/></div><div class="definition"><h3 id="Struct_Credentials">Union: Credentials</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>githubToken</td><td><code><a href="#Struct_GithubToken">GithubToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div></div></body></html>
+<tr><td>2</td><td>aromaAccount</td><td><code><a href="#Struct_AromaAccount">AromaAccount</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>There are multiple ways to Sign In and Authenticate with
+the Banana Service.
+<br/></div></div></body></html>

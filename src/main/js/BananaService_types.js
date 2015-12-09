@@ -6,11 +6,11 @@
 
 
 SignInRequest = function(args) {
-  this.oathToken = null;
+  this.credentials = null;
   this.username = null;
   if (args) {
-    if (args.oathToken !== undefined && args.oathToken !== null) {
-      this.oathToken = new OauthToken(args.oathToken);
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Credentials(args.credentials);
     }
     if (args.username !== undefined && args.username !== null) {
       this.username = args.username;
@@ -33,8 +33,8 @@ SignInRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.oathToken = new OauthToken();
-        this.oathToken.read(input);
+        this.credentials = new Credentials();
+        this.credentials.read(input);
       } else {
         input.skip(ftype);
       }
@@ -57,9 +57,9 @@ SignInRequest.prototype.read = function(input) {
 
 SignInRequest.prototype.write = function(output) {
   output.writeStructBegin('SignInRequest');
-  if (this.oathToken !== null && this.oathToken !== undefined) {
-    output.writeFieldBegin('oathToken', Thrift.Type.STRUCT, 1);
-    this.oathToken.write(output);
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 1);
+    this.credentials.write(output);
     output.writeFieldEnd();
   }
   if (this.username !== null && this.username !== undefined) {
@@ -116,6 +116,158 @@ SignInResponse.prototype.read = function(input) {
 
 SignInResponse.prototype.write = function(output) {
   output.writeStructBegin('SignInResponse');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpRequest = function(args) {
+  this.email = null;
+  this.name = null;
+  this.username = null;
+  this.organization = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+  }
+};
+SignUpRequest.prototype = {};
+SignUpRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpRequest.prototype.write = function(output) {
+  output.writeStructBegin('SignUpRequest');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpResponse = function(args) {
+  this.developerToken = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+SignUpResponse.prototype = {};
+SignUpResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpResponse.prototype.write = function(output) {
+  output.writeStructBegin('SignUpResponse');
   if (this.developerToken !== null && this.developerToken !== undefined) {
     output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
     this.developerToken.write(output);

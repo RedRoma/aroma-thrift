@@ -443,15 +443,211 @@ void GithubToken::printTo(std::ostream& out) const {
 }
 
 
-OauthToken::~OauthToken() throw() {
+Password::~Password() throw() {
 }
 
 
-void OauthToken::__set_githubToken(const GithubToken& val) {
+void Password::__set_encryptedPassword(const std::string& val) {
+  this->encryptedPassword = val;
+}
+
+uint32_t Password::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->encryptedPassword);
+          this->__isset.encryptedPassword = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Password::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Password");
+
+  xfer += oprot->writeFieldBegin("encryptedPassword", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->encryptedPassword);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Password &a, Password &b) {
+  using ::std::swap;
+  swap(a.encryptedPassword, b.encryptedPassword);
+  swap(a.__isset, b.__isset);
+}
+
+Password::Password(const Password& other6) {
+  encryptedPassword = other6.encryptedPassword;
+  __isset = other6.__isset;
+}
+Password& Password::operator=(const Password& other7) {
+  encryptedPassword = other7.encryptedPassword;
+  __isset = other7.__isset;
+  return *this;
+}
+void Password::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Password(";
+  out << "encryptedPassword=" << to_string(encryptedPassword);
+  out << ")";
+}
+
+
+AromaAccount::~AromaAccount() throw() {
+}
+
+
+void AromaAccount::__set_username(const std::string& val) {
+  this->username = val;
+}
+
+void AromaAccount::__set_password(const Password& val) {
+  this->password = val;
+}
+
+uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->username);
+          this->__isset.username = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->password.read(iprot);
+          this->__isset.password = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AromaAccount::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AromaAccount");
+
+  xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->username);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("password", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->password.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(AromaAccount &a, AromaAccount &b) {
+  using ::std::swap;
+  swap(a.username, b.username);
+  swap(a.password, b.password);
+  swap(a.__isset, b.__isset);
+}
+
+AromaAccount::AromaAccount(const AromaAccount& other8) {
+  username = other8.username;
+  password = other8.password;
+  __isset = other8.__isset;
+}
+AromaAccount& AromaAccount::operator=(const AromaAccount& other9) {
+  username = other9.username;
+  password = other9.password;
+  __isset = other9.__isset;
+  return *this;
+}
+void AromaAccount::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "AromaAccount(";
+  out << "username=" << to_string(username);
+  out << ", " << "password=" << to_string(password);
+  out << ")";
+}
+
+
+Credentials::~Credentials() throw() {
+}
+
+
+void Credentials::__set_githubToken(const GithubToken& val) {
   this->githubToken = val;
 }
 
-uint32_t OauthToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+void Credentials::__set_aromaAccount(const AromaAccount& val) {
+  this->aromaAccount = val;
+}
+
+uint32_t Credentials::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -480,6 +676,14 @@ uint32_t OauthToken::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->aromaAccount.read(iprot);
+          this->__isset.aromaAccount = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -492,13 +696,17 @@ uint32_t OauthToken::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t OauthToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Credentials::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("OauthToken");
+  xfer += oprot->writeStructBegin("Credentials");
 
   xfer += oprot->writeFieldBegin("githubToken", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->githubToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("aromaAccount", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->aromaAccount.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -506,25 +714,29 @@ uint32_t OauthToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(OauthToken &a, OauthToken &b) {
+void swap(Credentials &a, Credentials &b) {
   using ::std::swap;
   swap(a.githubToken, b.githubToken);
+  swap(a.aromaAccount, b.aromaAccount);
   swap(a.__isset, b.__isset);
 }
 
-OauthToken::OauthToken(const OauthToken& other6) {
-  githubToken = other6.githubToken;
-  __isset = other6.__isset;
+Credentials::Credentials(const Credentials& other10) {
+  githubToken = other10.githubToken;
+  aromaAccount = other10.aromaAccount;
+  __isset = other10.__isset;
 }
-OauthToken& OauthToken::operator=(const OauthToken& other7) {
-  githubToken = other7.githubToken;
-  __isset = other7.__isset;
+Credentials& Credentials::operator=(const Credentials& other11) {
+  githubToken = other11.githubToken;
+  aromaAccount = other11.aromaAccount;
+  __isset = other11.__isset;
   return *this;
 }
-void OauthToken::printTo(std::ostream& out) const {
+void Credentials::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "OauthToken(";
+  out << "Credentials(";
   out << "githubToken=" << to_string(githubToken);
+  out << ", " << "aromaAccount=" << to_string(aromaAccount);
   out << ")";
 }
 

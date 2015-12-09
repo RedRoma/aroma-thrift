@@ -176,18 +176,82 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @end
 
-@interface BananaAuthentication_OauthToken : NSObject <TBase, NSCoding> {
+@interface BananaAuthentication_Password : NSObject <TBase, NSCoding> {
+  NSString * __encryptedPassword;
+
+  BOOL __encryptedPassword_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=encryptedPassword, setter=setEncryptedPassword:) NSString * encryptedPassword;
+#endif
+
+- (id) init;
+- (id) initWithEncryptedPassword: (NSString *) encryptedPassword;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) encryptedPassword;
+- (void) setEncryptedPassword: (NSString *) encryptedPassword;
+#endif
+- (BOOL) encryptedPasswordIsSet;
+
+@end
+
+@interface BananaAuthentication_AromaAccount : NSObject <TBase, NSCoding> {
+  NSString * __username;
+  BananaAuthentication_Password * __password;
+
+  BOOL __username_isset;
+  BOOL __password_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=password, setter=setPassword:) BananaAuthentication_Password * password;
+#endif
+
+- (id) init;
+- (id) initWithUsername: (NSString *) username password: (BananaAuthentication_Password *) password;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_Password *) password;
+- (void) setPassword: (BananaAuthentication_Password *) password;
+#endif
+- (BOOL) passwordIsSet;
+
+@end
+
+@interface BananaAuthentication_Credentials : NSObject <TBase, NSCoding> {
   BananaAuthentication_GithubToken * __githubToken;
+  BananaAuthentication_AromaAccount * __aromaAccount;
 
   BOOL __githubToken_isset;
+  BOOL __aromaAccount_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) BananaAuthentication_GithubToken * githubToken;
+@property (nonatomic, retain, getter=aromaAccount, setter=setAromaAccount:) BananaAuthentication_AromaAccount * aromaAccount;
 #endif
 
 - (id) init;
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken;
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -199,6 +263,12 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (void) setGithubToken: (BananaAuthentication_GithubToken *) githubToken;
 #endif
 - (BOOL) githubTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_AromaAccount *) aromaAccount;
+- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
+#endif
+- (BOOL) aromaAccountIsSet;
 
 @end
 

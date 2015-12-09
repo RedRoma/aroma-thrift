@@ -71,6 +71,10 @@ class SignInRequest;
 
 class SignInResponse;
 
+class SignUpRequest;
+
+class SignUpResponse;
+
 class ProvisionServiceRequest;
 
 class ProvisionServiceResponse;
@@ -138,8 +142,8 @@ class SendMessageRequest;
 class SendMessageResponse;
 
 typedef struct _SignInRequest__isset {
-  _SignInRequest__isset() : oathToken(false), username(false) {}
-  bool oathToken :1;
+  _SignInRequest__isset() : credentials(false), username(false) {}
+  bool credentials :1;
   bool username :1;
 } _SignInRequest__isset;
 
@@ -152,18 +156,18 @@ class SignInRequest {
   }
 
   virtual ~SignInRequest() throw();
-   ::aroma::banana::thrift::authentication::OauthToken oathToken;
+   ::aroma::banana::thrift::authentication::Credentials credentials;
   std::string username;
 
   _SignInRequest__isset __isset;
 
-  void __set_oathToken(const  ::aroma::banana::thrift::authentication::OauthToken& val);
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
 
   void __set_username(const std::string& val);
 
   bool operator == (const SignInRequest & rhs) const
   {
-    if (!(oathToken == rhs.oathToken))
+    if (!(credentials == rhs.credentials))
       return false;
     if (!(username == rhs.username))
       return false;
@@ -230,6 +234,116 @@ class SignInResponse {
 void swap(SignInResponse &a, SignInResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpRequest__isset {
+  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false) {}
+  bool email :1;
+  bool name :1;
+  bool username :1;
+  bool organization :1;
+} _SignUpRequest__isset;
+
+class SignUpRequest {
+ public:
+
+  SignUpRequest(const SignUpRequest&);
+  SignUpRequest& operator=(const SignUpRequest&);
+  SignUpRequest() : email(), name(), username(), organization() {
+  }
+
+  virtual ~SignUpRequest() throw();
+  std::string email;
+  std::string name;
+  std::string username;
+  std::string organization;
+
+  _SignUpRequest__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_username(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  bool operator == (const SignUpRequest & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpRequest &a, SignUpRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpResponse__isset {
+  _SignUpResponse__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _SignUpResponse__isset;
+
+class SignUpResponse {
+ public:
+
+  SignUpResponse(const SignUpResponse&);
+  SignUpResponse& operator=(const SignUpResponse&);
+  SignUpResponse() {
+  }
+
+  virtual ~SignUpResponse() throw();
+  DeveloperToken developerToken;
+
+  _SignUpResponse__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const SignUpResponse & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpResponse &a, SignUpResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 {
   obj.printTo(out);
   return out;

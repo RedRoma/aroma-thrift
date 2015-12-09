@@ -936,7 +936,7 @@
 
 @end
 
-@implementation BananaAuthentication_OauthToken
+@implementation BananaAuthentication_Password
 
 - (id) init
 {
@@ -946,11 +946,374 @@
   return self;
 }
 
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken
+- (id) initWithEncryptedPassword: (NSString *) encryptedPassword
+{
+  self = [super init];
+  __encryptedPassword = [encryptedPassword retain_stub];
+  __encryptedPassword_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"encryptedPassword"])
+  {
+    __encryptedPassword = [[decoder decodeObjectForKey: @"encryptedPassword"] retain_stub];
+    __encryptedPassword_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__encryptedPassword_isset)
+  {
+    [encoder encodeObject: __encryptedPassword forKey: @"encryptedPassword"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __encryptedPassword_isset ? 2654435761 : 0;
+  if (__encryptedPassword_isset)
+  {
+    hash = (hash * 31) ^ [__encryptedPassword hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_Password class]]) {
+    return NO;
+  }
+  BananaAuthentication_Password *other = (BananaAuthentication_Password *)anObject;
+  if ((__encryptedPassword_isset != other->__encryptedPassword_isset) ||
+      (__encryptedPassword_isset && ((__encryptedPassword || other->__encryptedPassword) && ![__encryptedPassword isEqual:other->__encryptedPassword]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__encryptedPassword release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) encryptedPassword {
+  return [[__encryptedPassword retain_stub] autorelease_stub];
+}
+
+- (void) setEncryptedPassword: (NSString *) encryptedPassword {
+  [encryptedPassword retain_stub];
+  [__encryptedPassword release_stub];
+  __encryptedPassword = encryptedPassword;
+  __encryptedPassword_isset = YES;
+}
+
+- (BOOL) encryptedPasswordIsSet {
+  return __encryptedPassword_isset;
+}
+
+- (void) unsetEncryptedPassword {
+  [__encryptedPassword release_stub];
+  __encryptedPassword = nil;
+  __encryptedPassword_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEncryptedPassword: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Password"];
+  if (__encryptedPassword_isset) {
+    if (__encryptedPassword != nil) {
+      [outProtocol writeFieldBeginWithName: @"encryptedPassword" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __encryptedPassword];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Password("];
+  [ms appendString: @"encryptedPassword:"];
+  [ms appendFormat: @"\"%@\"", __encryptedPassword];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_AromaAccount
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUsername: (NSString *) username password: (BananaAuthentication_Password *) password
+{
+  self = [super init];
+  __username = [username retain_stub];
+  __username_isset = YES;
+  __password = [password retain_stub];
+  __password_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"username"])
+  {
+    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
+    __username_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"password"])
+  {
+    __password = [[decoder decodeObjectForKey: @"password"] retain_stub];
+    __password_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__username_isset)
+  {
+    [encoder encodeObject: __username forKey: @"username"];
+  }
+  if (__password_isset)
+  {
+    [encoder encodeObject: __password forKey: @"password"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
+  if (__username_isset)
+  {
+    hash = (hash * 31) ^ [__username hash];
+  }
+  hash = (hash * 31) ^ __password_isset ? 2654435761 : 0;
+  if (__password_isset)
+  {
+    hash = (hash * 31) ^ [__password hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_AromaAccount class]]) {
+    return NO;
+  }
+  BananaAuthentication_AromaAccount *other = (BananaAuthentication_AromaAccount *)anObject;
+  if ((__username_isset != other->__username_isset) ||
+      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+    return NO;
+  }
+  if ((__password_isset != other->__password_isset) ||
+      (__password_isset && ((__password || other->__password) && ![__password isEqual:other->__password]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__username release_stub];
+  [__password release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) username {
+  return [[__username retain_stub] autorelease_stub];
+}
+
+- (void) setUsername: (NSString *) username {
+  [username retain_stub];
+  [__username release_stub];
+  __username = username;
+  __username_isset = YES;
+}
+
+- (BOOL) usernameIsSet {
+  return __username_isset;
+}
+
+- (void) unsetUsername {
+  [__username release_stub];
+  __username = nil;
+  __username_isset = NO;
+}
+
+- (BananaAuthentication_Password *) password {
+  return [[__password retain_stub] autorelease_stub];
+}
+
+- (void) setPassword: (BananaAuthentication_Password *) password {
+  [password retain_stub];
+  [__password release_stub];
+  __password = password;
+  __password_isset = YES;
+}
+
+- (BOOL) passwordIsSet {
+  return __password_isset;
+}
+
+- (void) unsetPassword {
+  [__password release_stub];
+  __password = nil;
+  __password_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
+          [fieldValue read: inProtocol];
+          [self setPassword: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"AromaAccount"];
+  if (__username_isset) {
+    if (__username != nil) {
+      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __username];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__password_isset) {
+    if (__password != nil) {
+      [outProtocol writeFieldBeginWithName: @"password" type: TType_STRUCT fieldID: 2];
+      [__password write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AromaAccount("];
+  [ms appendString: @"username:"];
+  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @",password:"];
+  [ms appendFormat: @"%@", __password];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_Credentials
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount
 {
   self = [super init];
   __githubToken = [githubToken retain_stub];
   __githubToken_isset = YES;
+  __aromaAccount = [aromaAccount retain_stub];
+  __aromaAccount_isset = YES;
   return self;
 }
 
@@ -962,6 +1325,11 @@
     __githubToken = [[decoder decodeObjectForKey: @"githubToken"] retain_stub];
     __githubToken_isset = YES;
   }
+  if ([decoder containsValueForKey: @"aromaAccount"])
+  {
+    __aromaAccount = [[decoder decodeObjectForKey: @"aromaAccount"] retain_stub];
+    __aromaAccount_isset = YES;
+  }
   return self;
 }
 
@@ -970,6 +1338,10 @@
   if (__githubToken_isset)
   {
     [encoder encodeObject: __githubToken forKey: @"githubToken"];
+  }
+  if (__aromaAccount_isset)
+  {
+    [encoder encodeObject: __aromaAccount forKey: @"aromaAccount"];
   }
 }
 
@@ -981,6 +1353,11 @@
   {
     hash = (hash * 31) ^ [__githubToken hash];
   }
+  hash = (hash * 31) ^ __aromaAccount_isset ? 2654435761 : 0;
+  if (__aromaAccount_isset)
+  {
+    hash = (hash * 31) ^ [__aromaAccount hash];
+  }
   return hash;
 }
 
@@ -989,12 +1366,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_OauthToken class]]) {
+  if (![anObject isKindOfClass:[BananaAuthentication_Credentials class]]) {
     return NO;
   }
-  BananaAuthentication_OauthToken *other = (BananaAuthentication_OauthToken *)anObject;
+  BananaAuthentication_Credentials *other = (BananaAuthentication_Credentials *)anObject;
   if ((__githubToken_isset != other->__githubToken_isset) ||
       (__githubToken_isset && ((__githubToken || other->__githubToken) && ![__githubToken isEqual:other->__githubToken]))) {
+    return NO;
+  }
+  if ((__aromaAccount_isset != other->__aromaAccount_isset) ||
+      (__aromaAccount_isset && ((__aromaAccount || other->__aromaAccount) && ![__aromaAccount isEqual:other->__aromaAccount]))) {
     return NO;
   }
   return YES;
@@ -1003,6 +1384,7 @@
 - (void) dealloc
 {
   [__githubToken release_stub];
+  [__aromaAccount release_stub];
   [super dealloc_stub];
 }
 
@@ -1025,6 +1407,27 @@
   [__githubToken release_stub];
   __githubToken = nil;
   __githubToken_isset = NO;
+}
+
+- (BananaAuthentication_AromaAccount *) aromaAccount {
+  return [[__aromaAccount retain_stub] autorelease_stub];
+}
+
+- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount {
+  [aromaAccount retain_stub];
+  [__aromaAccount release_stub];
+  __aromaAccount = aromaAccount;
+  __aromaAccount_isset = YES;
+}
+
+- (BOOL) aromaAccountIsSet {
+  return __aromaAccount_isset;
+}
+
+- (void) unsetAromaAccount {
+  [__aromaAccount release_stub];
+  __aromaAccount = nil;
+  __aromaAccount_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1052,6 +1455,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_AromaAccount *fieldValue = [[BananaAuthentication_AromaAccount alloc] init];
+          [fieldValue read: inProtocol];
+          [self setAromaAccount: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1062,11 +1475,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"OauthToken"];
+  [outProtocol writeStructBeginWithName: @"Credentials"];
   if (__githubToken_isset) {
     if (__githubToken != nil) {
       [outProtocol writeFieldBeginWithName: @"githubToken" type: TType_STRUCT fieldID: 1];
       [__githubToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__aromaAccount_isset) {
+    if (__aromaAccount != nil) {
+      [outProtocol writeFieldBeginWithName: @"aromaAccount" type: TType_STRUCT fieldID: 2];
+      [__aromaAccount write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1079,9 +1499,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_OauthToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Credentials("];
   [ms appendString: @"githubToken:"];
   [ms appendFormat: @"%@", __githubToken];
+  [ms appendString: @",aromaAccount:"];
+  [ms appendFormat: @"%@", __aromaAccount];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

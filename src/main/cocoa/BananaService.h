@@ -68,20 +68,20 @@ typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoes
 typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
 
 @interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
-  BananaAuthentication_OauthToken * __oathToken;
+  BananaAuthentication_Credentials * __credentials;
   NSString * __username;
 
-  BOOL __oathToken_isset;
+  BOOL __credentials_isset;
   BOOL __username_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=oathToken, setter=setOathToken:) BananaAuthentication_OauthToken * oathToken;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 #endif
 
 - (id) init;
-- (id) initWithOathToken: (BananaAuthentication_OauthToken *) oathToken username: (NSString *) username;
+- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials username: (NSString *) username;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -89,10 +89,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_OauthToken *) oathToken;
-- (void) setOathToken: (BananaAuthentication_OauthToken *) oathToken;
+- (BananaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
 #endif
-- (BOOL) oathTokenIsSet;
+- (BOOL) credentialsIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) username;
@@ -103,6 +103,85 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_SignInResponse : NSObject <TBase, NSCoding> {
+  BananaService_DeveloperToken __developerToken;
+
+  BOOL __developerToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=developerToken, setter=setDeveloperToken:) BananaService_DeveloperToken developerToken;
+#endif
+
+- (id) init;
+- (id) initWithDeveloperToken: (BananaService_DeveloperToken) developerToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_DeveloperToken) developerToken;
+- (void) setDeveloperToken: (BananaService_DeveloperToken) developerToken;
+#endif
+- (BOOL) developerTokenIsSet;
+
+@end
+
+@interface BananaService_SignUpRequest : NSObject <TBase, NSCoding> {
+  NSString * __email;
+  NSString * __name;
+  NSString * __username;
+  NSString * __organization;
+
+  BOOL __email_isset;
+  BOOL __name_isset;
+  BOOL __username_isset;
+  BOOL __organization_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+#endif
+
+- (id) init;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organization;
+- (void) setOrganization: (NSString *) organization;
+#endif
+- (BOOL) organizationIsSet;
+
+@end
+
+@interface BananaService_SignUpResponse : NSObject <TBase, NSCoding> {
   BananaService_DeveloperToken __developerToken;
 
   BOOL __developerToken_isset;
