@@ -1096,56 +1096,88 @@
   return self;
 }
 
-- (id) initWithUsername: (NSString *) username password: (BananaAuthentication_Password *) password
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage
 {
   self = [super init];
-  __username = [username retain_stub];
-  __username_isset = YES;
+  __email = [email retain_stub];
+  __email_isset = YES;
   __password = [password retain_stub];
   __password_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __profileImage = [profileImage retain_stub];
+  __profileImage_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"username"])
+  if ([decoder containsValueForKey: @"email"])
   {
-    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
-    __username_isset = YES;
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
   }
   if ([decoder containsValueForKey: @"password"])
   {
     __password = [[decoder decodeObjectForKey: @"password"] retain_stub];
     __password_isset = YES;
   }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"profileImage"])
+  {
+    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
+    __profileImage_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__username_isset)
+  if (__email_isset)
   {
-    [encoder encodeObject: __username forKey: @"username"];
+    [encoder encodeObject: __email forKey: @"email"];
   }
   if (__password_isset)
   {
     [encoder encodeObject: __password forKey: @"password"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__profileImage_isset)
+  {
+    [encoder encodeObject: __profileImage forKey: @"profileImage"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
-  if (__username_isset)
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
   {
-    hash = (hash * 31) ^ [__username hash];
+    hash = (hash * 31) ^ [__email hash];
   }
   hash = (hash * 31) ^ __password_isset ? 2654435761 : 0;
   if (__password_isset)
   {
     hash = (hash * 31) ^ [__password hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
+  if (__profileImage_isset)
+  {
+    hash = (hash * 31) ^ [__profileImage hash];
   }
   return hash;
 }
@@ -1159,12 +1191,20 @@
     return NO;
   }
   BananaAuthentication_AromaAccount *other = (BananaAuthentication_AromaAccount *)anObject;
-  if ((__username_isset != other->__username_isset) ||
-      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
   }
   if ((__password_isset != other->__password_isset) ||
       (__password_isset && ((__password || other->__password) && ![__password isEqual:other->__password]))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__profileImage_isset != other->__profileImage_isset) ||
+      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
     return NO;
   }
   return YES;
@@ -1172,30 +1212,32 @@
 
 - (void) dealloc
 {
-  [__username release_stub];
+  [__email release_stub];
   [__password release_stub];
+  [__name release_stub];
+  [__profileImage release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) username {
-  return [[__username retain_stub] autorelease_stub];
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
 }
 
-- (void) setUsername: (NSString *) username {
-  [username retain_stub];
-  [__username release_stub];
-  __username = username;
-  __username_isset = YES;
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
 }
 
-- (BOOL) usernameIsSet {
-  return __username_isset;
+- (BOOL) emailIsSet {
+  return __email_isset;
 }
 
-- (void) unsetUsername {
-  [__username release_stub];
-  __username = nil;
-  __username_isset = NO;
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
 }
 
 - (BananaAuthentication_Password *) password {
@@ -1219,6 +1261,48 @@
   __password_isset = NO;
 }
 
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (Banana_Image *) profileImage {
+  return [[__profileImage retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImage: (Banana_Image *) profileImage {
+  [profileImage retain_stub];
+  [__profileImage release_stub];
+  __profileImage = profileImage;
+  __profileImage_isset = YES;
+}
+
+- (BOOL) profileImageIsSet {
+  return __profileImage_isset;
+}
+
+- (void) unsetProfileImage {
+  [__profileImage release_stub];
+  __profileImage = nil;
+  __profileImage_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1237,7 +1321,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
+          [self setEmail: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1247,6 +1331,24 @@
           BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
           [fieldValue read: inProtocol];
           [self setPassword: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setProfileImage: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1263,10 +1365,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"AromaAccount"];
-  if (__username_isset) {
-    if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __username];
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __email];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1274,6 +1376,20 @@
     if (__password != nil) {
       [outProtocol writeFieldBeginWithName: @"password" type: TType_STRUCT fieldID: 2];
       [__password write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__profileImage_isset) {
+    if (__profileImage != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 4];
+      [__profileImage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1287,10 +1403,14 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AromaAccount("];
-  [ms appendString: @"username:"];
-  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @"email:"];
+  [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",password:"];
   [ms appendFormat: @"%@", __password];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",profileImage:"];
+  [ms appendFormat: @"%@", __profileImage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1510,9 +1630,13 @@
 
 @end
 
+static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
 
 @implementation BananaAuthentication_AuthenticationConstants
 + (void) initialize {
+}
++ (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY{
+  return BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 }
 @end
 

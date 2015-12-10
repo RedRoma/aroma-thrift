@@ -345,14 +345,22 @@ Password.prototype.write = function(output) {
 };
 
 AromaAccount = module.exports.AromaAccount = function(args) {
-  this.username = null;
+  this.email = null;
   this.password = null;
+  this.name = null;
+  this.profileImage = null;
   if (args) {
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
     }
     if (args.password !== undefined && args.password !== null) {
       this.password = new ttypes.Password(args.password);
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Banana_ttypes.Image(args.profileImage);
     }
   }
 };
@@ -372,7 +380,7 @@ AromaAccount.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString();
+        this.email = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -381,6 +389,21 @@ AromaAccount.prototype.read = function(input) {
       if (ftype == Thrift.Type.STRUCT) {
         this.password = new ttypes.Password();
         this.password.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Banana_ttypes.Image();
+        this.profileImage.read(input);
       } else {
         input.skip(ftype);
       }
@@ -396,14 +419,24 @@ AromaAccount.prototype.read = function(input) {
 
 AromaAccount.prototype.write = function(output) {
   output.writeStructBegin('AromaAccount');
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 1);
-    output.writeString(this.username);
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
     output.writeFieldEnd();
   }
   if (this.password !== null && this.password !== undefined) {
     output.writeFieldBegin('password', Thrift.Type.STRUCT, 2);
     this.password.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 4);
+    this.profileImage.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -479,3 +512,4 @@ Credentials.prototype.write = function(output) {
   return;
 };
 
+ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM';

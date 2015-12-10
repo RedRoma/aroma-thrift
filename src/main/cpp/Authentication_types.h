@@ -278,9 +278,11 @@ inline std::ostream& operator<<(std::ostream& out, const Password& obj)
 }
 
 typedef struct _AromaAccount__isset {
-  _AromaAccount__isset() : username(false), password(false) {}
-  bool username :1;
+  _AromaAccount__isset() : email(false), password(false), name(false), profileImage(false) {}
+  bool email :1;
   bool password :1;
+  bool name :1;
+  bool profileImage :1;
 } _AromaAccount__isset;
 
 class AromaAccount {
@@ -288,24 +290,34 @@ class AromaAccount {
 
   AromaAccount(const AromaAccount&);
   AromaAccount& operator=(const AromaAccount&);
-  AromaAccount() : username() {
+  AromaAccount() : email(), name() {
   }
 
   virtual ~AromaAccount() throw();
-  std::string username;
+  std::string email;
   Password password;
+  std::string name;
+   ::aroma::banana::thrift::Image profileImage;
 
   _AromaAccount__isset __isset;
 
-  void __set_username(const std::string& val);
+  void __set_email(const std::string& val);
 
   void __set_password(const Password& val);
 
+  void __set_name(const std::string& val);
+
+  void __set_profileImage(const  ::aroma::banana::thrift::Image& val);
+
   bool operator == (const AromaAccount & rhs) const
   {
-    if (!(username == rhs.username))
+    if (!(email == rhs.email))
       return false;
     if (!(password == rhs.password))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(profileImage == rhs.profileImage))
       return false;
     return true;
   }

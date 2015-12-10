@@ -15,6 +15,7 @@ class AuthenticationConstants {
  public:
   AuthenticationConstants();
 
+  std::string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 };
 
 extern const AuthenticationConstants g_Authentication_constants;

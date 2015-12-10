@@ -533,12 +533,20 @@ AromaAccount::~AromaAccount() throw() {
 }
 
 
-void AromaAccount::__set_username(const std::string& val) {
-  this->username = val;
+void AromaAccount::__set_email(const std::string& val) {
+  this->email = val;
 }
 
 void AromaAccount::__set_password(const Password& val) {
   this->password = val;
+}
+
+void AromaAccount::__set_name(const std::string& val) {
+  this->name = val;
+}
+
+void AromaAccount::__set_profileImage(const  ::aroma::banana::thrift::Image& val) {
+  this->profileImage = val;
 }
 
 uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -564,8 +572,8 @@ uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->username);
-          this->__isset.username = true;
+          xfer += iprot->readString(this->email);
+          this->__isset.email = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -574,6 +582,22 @@ uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->password.read(iprot);
           this->__isset.password = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->profileImage.read(iprot);
+          this->__isset.profileImage = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -595,12 +619,20 @@ uint32_t AromaAccount::write(::apache::thrift::protocol::TProtocol* oprot) const
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("AromaAccount");
 
-  xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->username);
+  xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->email);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("password", ::apache::thrift::protocol::T_STRUCT, 2);
   xfer += this->password.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("profileImage", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += this->profileImage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -610,27 +642,35 @@ uint32_t AromaAccount::write(::apache::thrift::protocol::TProtocol* oprot) const
 
 void swap(AromaAccount &a, AromaAccount &b) {
   using ::std::swap;
-  swap(a.username, b.username);
+  swap(a.email, b.email);
   swap(a.password, b.password);
+  swap(a.name, b.name);
+  swap(a.profileImage, b.profileImage);
   swap(a.__isset, b.__isset);
 }
 
 AromaAccount::AromaAccount(const AromaAccount& other8) {
-  username = other8.username;
+  email = other8.email;
   password = other8.password;
+  name = other8.name;
+  profileImage = other8.profileImage;
   __isset = other8.__isset;
 }
 AromaAccount& AromaAccount::operator=(const AromaAccount& other9) {
-  username = other9.username;
+  email = other9.email;
   password = other9.password;
+  name = other9.name;
+  profileImage = other9.profileImage;
   __isset = other9.__isset;
   return *this;
 }
 void AromaAccount::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "AromaAccount(";
-  out << "username=" << to_string(username);
+  out << "email=" << to_string(email);
   out << ", " << "password=" << to_string(password);
+  out << ", " << "name=" << to_string(name);
+  out << ", " << "profileImage=" << to_string(profileImage);
   out << ")";
 }
 

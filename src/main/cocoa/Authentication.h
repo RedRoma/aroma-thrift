@@ -203,20 +203,26 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 @end
 
 @interface BananaAuthentication_AromaAccount : NSObject <TBase, NSCoding> {
-  NSString * __username;
+  NSString * __email;
   BananaAuthentication_Password * __password;
+  NSString * __name;
+  Banana_Image * __profileImage;
 
-  BOOL __username_isset;
+  BOOL __email_isset;
   BOOL __password_isset;
+  BOOL __name_isset;
+  BOOL __profileImage_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 @property (nonatomic, retain, getter=password, setter=setPassword:) BananaAuthentication_Password * password;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
 #endif
 
 - (id) init;
-- (id) initWithUsername: (NSString *) username password: (BananaAuthentication_Password *) password;
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -224,16 +230,28 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
 #endif
-- (BOOL) usernameIsSet;
+- (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_Password *) password;
 - (void) setPassword: (BananaAuthentication_Password *) password;
 #endif
 - (BOOL) passwordIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) profileImage;
+- (void) setProfileImage: (Banana_Image *) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
 
 @end
 
@@ -274,4 +292,5 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @interface BananaAuthentication_AuthenticationConstants : NSObject {
 }
++ (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 @end

@@ -37,12 +37,21 @@ struct Password
 }
 
 /**
+ * Use this password to encrypt the password 
+ * before sending it over the wire. Without it, passwords will
+ * not be understood by the service, and will be rejected.
+ */
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
+
+/**
  * An Account registered with our System.
  */
 struct AromaAccount
 {
-    1: string username;
+    1: string email;
     2: Password password;
+    3: string name;
+    4: Banana.Image profileImage;
 }
 
 /**
