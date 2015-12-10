@@ -24,6 +24,10 @@ class InvalidArgumentException;
 
 class InvalidCredentialsException;
 
+class AccountAlreadyExistsException;
+
+class InvalidCodeException;
+
 class UnauthorizedException;
 
 class ServiceDoesNotExistException;
@@ -129,6 +133,102 @@ class InvalidCredentialsException : public ::apache::thrift::TException {
 void swap(InvalidCredentialsException &a, InvalidCredentialsException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const InvalidCredentialsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _AccountAlreadyExistsException__isset {
+  _AccountAlreadyExistsException__isset() : message(true) {}
+  bool message :1;
+} _AccountAlreadyExistsException__isset;
+
+class AccountAlreadyExistsException : public ::apache::thrift::TException {
+ public:
+
+  AccountAlreadyExistsException(const AccountAlreadyExistsException&);
+  AccountAlreadyExistsException& operator=(const AccountAlreadyExistsException&);
+  AccountAlreadyExistsException() : message("This email has already been registered. Reset your password if you forgot it.") {
+  }
+
+  virtual ~AccountAlreadyExistsException() throw();
+  std::string message;
+
+  _AccountAlreadyExistsException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const AccountAlreadyExistsException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const AccountAlreadyExistsException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AccountAlreadyExistsException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(AccountAlreadyExistsException &a, AccountAlreadyExistsException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AccountAlreadyExistsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _InvalidCodeException__isset {
+  _InvalidCodeException__isset() : message(true) {}
+  bool message :1;
+} _InvalidCodeException__isset;
+
+class InvalidCodeException : public ::apache::thrift::TException {
+ public:
+
+  InvalidCodeException(const InvalidCodeException&);
+  InvalidCodeException& operator=(const InvalidCodeException&);
+  InvalidCodeException() : message("The Reset Password is invalid") {
+  }
+
+  virtual ~InvalidCodeException() throw();
+  std::string message;
+
+  _InvalidCodeException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const InvalidCodeException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const InvalidCodeException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const InvalidCodeException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(InvalidCodeException &a, InvalidCodeException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const InvalidCodeException& obj)
 {
   obj.printTo(out);
   return out;

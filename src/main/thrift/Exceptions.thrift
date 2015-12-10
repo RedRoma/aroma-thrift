@@ -27,6 +27,22 @@ exception InvalidCredentialsException
 }
 
 /**
+ * Thrown when trying to create an account that is already registered.
+ */
+exception AccountAlreadyExistsException
+{
+    1: string message = "This email has already been registered. Reset your password if you forgot it."
+}
+
+/**
+ * Thrown when trying to reset an Account, but the Reset Code provided is invalid.
+ */
+exception InvalidCodeException
+{
+    1: string message = "The Reset Password is invalid"
+}
+
+/**
  * Thrown when a Developer tries to perform an Operation
  * that only an "Owner" can do.
  */

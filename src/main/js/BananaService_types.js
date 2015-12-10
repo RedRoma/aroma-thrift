@@ -131,6 +131,7 @@ SignUpRequest = function(args) {
   this.name = null;
   this.username = null;
   this.organization = null;
+  this.credentials = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -143,6 +144,9 @@ SignUpRequest = function(args) {
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
+    }
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Credentials(args.credentials);
     }
   }
 };
@@ -188,6 +192,14 @@ SignUpRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.credentials = new Credentials();
+        this.credentials.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -217,6 +229,11 @@ SignUpRequest.prototype.write = function(output) {
   if (this.organization !== null && this.organization !== undefined) {
     output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
     output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 5);
+    this.credentials.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

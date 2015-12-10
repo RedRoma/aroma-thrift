@@ -133,11 +133,13 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
   NSString * __name;
   NSString * __username;
   NSString * __organization;
+  BananaAuthentication_Credentials * __credentials;
 
   BOOL __email_isset;
   BOOL __name_isset;
   BOOL __username_isset;
   BOOL __organization_isset;
+  BOOL __credentials_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -145,10 +147,11 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -178,6 +181,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setOrganization: (NSString *) organization;
 #endif
 - (BOOL) organizationIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_Credentials *) credentials;
+- (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
+#endif
+- (BOOL) credentialsIsSet;
 
 @end
 

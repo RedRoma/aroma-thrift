@@ -195,9 +195,11 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Exceptions</td><td></td>
-<td><a href="#Struct_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
+<td><a href="#Struct_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
+<a href="#Struct_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Struct_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Struct_InvalidArgumentException">InvalidArgumentException</a><br/>
+<a href="#Struct_InvalidCodeException">InvalidCodeException</a><br/>
 <a href="#Struct_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Struct_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a><br/>
@@ -217,6 +219,14 @@ code { line-height: 20px; }
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Failed to Verify and Authenticate credentials"</code></td></tr>
 </table><br/>Thrown when a Service Operation could not be authenticated
 or validated.
+<br/></div><div class="definition"><h3 id="Struct_AccountAlreadyExistsException">Exception: AccountAlreadyExistsException</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"This email has already been registered. Reset your password if you forgot it."</code></td></tr>
+</table><br/>Thrown when trying to create an account that is already registered.
+<br/></div><div class="definition"><h3 id="Struct_InvalidCodeException">Exception: InvalidCodeException</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Reset Password is invalid"</code></td></tr>
+</table><br/>Thrown when trying to reset an Account, but the Reset Code provided is invalid.
 <br/></div><div class="definition"><h3 id="Struct_UnauthorizedException">Exception: UnauthorizedException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Only an owner can do that"</code></td></tr>

@@ -240,11 +240,12 @@ inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
 }
 
 typedef struct _SignUpRequest__isset {
-  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false) {}
+  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false), credentials(false) {}
   bool email :1;
   bool name :1;
   bool username :1;
   bool organization :1;
+  bool credentials :1;
 } _SignUpRequest__isset;
 
 class SignUpRequest {
@@ -260,6 +261,7 @@ class SignUpRequest {
   std::string name;
   std::string username;
   std::string organization;
+   ::aroma::banana::thrift::authentication::Credentials credentials;
 
   _SignUpRequest__isset __isset;
 
@@ -271,6 +273,8 @@ class SignUpRequest {
 
   void __set_organization(const std::string& val);
 
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+
   bool operator == (const SignUpRequest & rhs) const
   {
     if (!(email == rhs.email))
@@ -280,6 +284,8 @@ class SignUpRequest {
     if (!(username == rhs.username))
       return false;
     if (!(organization == rhs.organization))
+      return false;
+    if (!(credentials == rhs.credentials))
       return false;
     return true;
   }

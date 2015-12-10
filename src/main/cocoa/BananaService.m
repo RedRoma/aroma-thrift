@@ -400,7 +400,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials
 {
   self = [super init];
   __email = [email retain_stub];
@@ -411,6 +411,8 @@
   __username_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
+  __credentials = [credentials retain_stub];
+  __credentials_isset = YES;
   return self;
 }
 
@@ -437,6 +439,11 @@
     __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
     __organization_isset = YES;
   }
+  if ([decoder containsValueForKey: @"credentials"])
+  {
+    __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
+    __credentials_isset = YES;
+  }
   return self;
 }
 
@@ -457,6 +464,10 @@
   if (__organization_isset)
   {
     [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__credentials_isset)
+  {
+    [encoder encodeObject: __credentials forKey: @"credentials"];
   }
 }
 
@@ -482,6 +493,11 @@
   if (__organization_isset)
   {
     hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
+  if (__credentials_isset)
+  {
+    hash = (hash * 31) ^ [__credentials hash];
   }
   return hash;
 }
@@ -511,6 +527,10 @@
       (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
     return NO;
   }
+  if ((__credentials_isset != other->__credentials_isset) ||
+      (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -520,6 +540,7 @@
   [__name release_stub];
   [__username release_stub];
   [__organization release_stub];
+  [__credentials release_stub];
   [super dealloc_stub];
 }
 
@@ -607,6 +628,27 @@
   __organization_isset = NO;
 }
 
+- (BananaAuthentication_Credentials *) credentials {
+  return [[__credentials retain_stub] autorelease_stub];
+}
+
+- (void) setCredentials: (BananaAuthentication_Credentials *) credentials {
+  [credentials retain_stub];
+  [__credentials release_stub];
+  __credentials = credentials;
+  __credentials_isset = YES;
+}
+
+- (BOOL) credentialsIsSet {
+  return __credentials_isset;
+}
+
+- (void) unsetCredentials {
+  [__credentials release_stub];
+  __credentials = nil;
+  __credentials_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -654,6 +696,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
+          [fieldValue read: inProtocol];
+          [self setCredentials: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -693,6 +745,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__credentials_isset) {
+    if (__credentials != nil) {
+      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 5];
+      [__credentials write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -711,6 +770,8 @@
   [ms appendFormat: @"\"%@\"", __username];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",credentials:"];
+  [ms appendFormat: @"%@", __credentials];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

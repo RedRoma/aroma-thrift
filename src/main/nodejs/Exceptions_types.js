@@ -123,6 +123,118 @@ InvalidCredentialsException.prototype.write = function(output) {
   return;
 };
 
+AccountAlreadyExistsException = module.exports.AccountAlreadyExistsException = function(args) {
+  Thrift.TException.call(this, "AccountAlreadyExistsException")
+  this.name = "AccountAlreadyExistsException"
+  this.message = 'This email has already been registered. Reset your password if you forgot it.';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(AccountAlreadyExistsException, Thrift.TException);
+AccountAlreadyExistsException.prototype.name = 'AccountAlreadyExistsException';
+AccountAlreadyExistsException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+AccountAlreadyExistsException.prototype.write = function(output) {
+  output.writeStructBegin('AccountAlreadyExistsException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+InvalidCodeException = module.exports.InvalidCodeException = function(args) {
+  Thrift.TException.call(this, "InvalidCodeException")
+  this.name = "InvalidCodeException"
+  this.message = 'The Reset Password is invalid';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(InvalidCodeException, Thrift.TException);
+InvalidCodeException.prototype.name = 'InvalidCodeException';
+InvalidCodeException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+InvalidCodeException.prototype.write = function(output) {
+  output.writeStructBegin('InvalidCodeException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 UnauthorizedException = module.exports.UnauthorizedException = function(args) {
   Thrift.TException.call(this, "UnauthorizedException")
   this.name = "UnauthorizedException"

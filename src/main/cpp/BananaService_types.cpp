@@ -226,6 +226,10 @@ void SignUpRequest::__set_organization(const std::string& val) {
   this->organization = val;
 }
 
+void SignUpRequest::__set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val) {
+  this->credentials = val;
+}
+
 uint32_t SignUpRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -279,6 +283,14 @@ uint32_t SignUpRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->credentials.read(iprot);
+          this->__isset.credentials = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -312,6 +324,10 @@ uint32_t SignUpRequest::write(::apache::thrift::protocol::TProtocol* oprot) cons
   xfer += oprot->writeString(this->organization);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("credentials", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += this->credentials.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -323,6 +339,7 @@ void swap(SignUpRequest &a, SignUpRequest &b) {
   swap(a.name, b.name);
   swap(a.username, b.username);
   swap(a.organization, b.organization);
+  swap(a.credentials, b.credentials);
   swap(a.__isset, b.__isset);
 }
 
@@ -331,6 +348,7 @@ SignUpRequest::SignUpRequest(const SignUpRequest& other4) {
   name = other4.name;
   username = other4.username;
   organization = other4.organization;
+  credentials = other4.credentials;
   __isset = other4.__isset;
 }
 SignUpRequest& SignUpRequest::operator=(const SignUpRequest& other5) {
@@ -338,6 +356,7 @@ SignUpRequest& SignUpRequest::operator=(const SignUpRequest& other5) {
   name = other5.name;
   username = other5.username;
   organization = other5.organization;
+  credentials = other5.credentials;
   __isset = other5.__isset;
   return *this;
 }
@@ -348,6 +367,7 @@ void SignUpRequest::printTo(std::ostream& out) const {
   out << ", " << "name=" << to_string(name);
   out << ", " << "username=" << to_string(username);
   out << ", " << "organization=" << to_string(organization);
+  out << ", " << "credentials=" << to_string(credentials);
   out << ")";
 }
 

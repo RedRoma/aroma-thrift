@@ -89,6 +89,7 @@ struct SignUpRequest
     2: string name;
     3: string username;
     4: string organization;
+    5: Authentication.Credentials credentials;
 }
 
 /**
