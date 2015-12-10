@@ -425,6 +425,174 @@ BananaService_signIn_result.prototype.write = function(output) {
         return;
       };
 
+BananaService_signUp_args = function(args) {
+        this.request = null;
+        if (args) {
+                if (args.request !== undefined && args.request !== null) {
+                        this.request = new SignUpRequest(args.request);
+                }
+        }
+};
+BananaService_signUp_args.prototype = {};
+BananaService_signUp_args.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          switch (fid)
+          {
+            case 1:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.request = new SignUpRequest();
+              this.request.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 0:
+              input.skip(ftype);
+              break;
+            default:
+              input.skip(ftype);
+          }
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_signUp_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_signUp_args');
+        if (this.request !== null && this.request !== undefined) {
+          output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+          this.request.write(output);
+          output.writeFieldEnd();
+        }
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
+BananaService_signUp_result = function(args) {
+        this.success = null;
+        this.ex1 = null;
+        this.ex2 = null;
+        this.ex3 = null;
+        if (args instanceof OperationFailedException) {
+                this.ex1 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex2 = args;
+                return;
+        }
+        if (args instanceof InvalidCredentialsException) {
+                this.ex3 = args;
+                return;
+        }
+        if (args) {
+                if (args.success !== undefined && args.success !== null) {
+                        this.success = new SignUpResponse(args.success);
+                }
+                if (args.ex1 !== undefined && args.ex1 !== null) {
+                        this.ex1 = args.ex1;
+                }
+                if (args.ex2 !== undefined && args.ex2 !== null) {
+                        this.ex2 = args.ex2;
+                }
+                if (args.ex3 !== undefined && args.ex3 !== null) {
+                        this.ex3 = args.ex3;
+                }
+        }
+};
+BananaService_signUp_result.prototype = {};
+BananaService_signUp_result.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          switch (fid)
+          {
+            case 0:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.success = new SignUpResponse();
+              this.success.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 1:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex1 = new OperationFailedException();
+              this.ex1.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 2:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex2 = new InvalidArgumentException();
+              this.ex2.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 3:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex3 = new InvalidCredentialsException();
+              this.ex3.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            default:
+              input.skip(ftype);
+          }
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_signUp_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_signUp_result');
+        if (this.success !== null && this.success !== undefined) {
+          output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+          this.success.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex1 !== null && this.ex1 !== undefined) {
+          output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+          this.ex1.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex2 !== null && this.ex2 !== undefined) {
+          output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+          this.ex2.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex3 !== null && this.ex3 !== undefined) {
+          output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+          this.ex3.write(output);
+          output.writeFieldEnd();
+        }
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
 BananaService_provisionService_args = function(args) {
         this.request = null;
         if (args) {
@@ -3007,6 +3175,64 @@ BananaServiceClient.prototype.recv_signIn = function() {
           return result.success;
         }
         throw 'signIn failed: unknown result';
+};
+BananaServiceClient.prototype.signUp = function(request, callback) {
+        this.send_signUp(request, callback); 
+        if (!callback) {
+          return this.recv_signUp();
+        }
+};
+
+BananaServiceClient.prototype.send_signUp = function(request, callback) {
+        this.output.writeMessageBegin('signUp', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_signUp_args();
+        args.request = request;
+        args.write(this.output);
+        this.output.writeMessageEnd();
+        if (callback) {
+          var self = this;
+          this.output.getTransport().flush(true, function() {
+            var result = null;
+            try {
+              result = self.recv_signUp();
+            } catch (e) {
+              result = e;
+            }
+            callback(result);
+          });
+        } else {
+          return this.output.getTransport().flush();
+        }
+};
+
+BananaServiceClient.prototype.recv_signUp = function() {
+        var ret = this.input.readMessageBegin();
+        var fname = ret.fname;
+        var mtype = ret.mtype;
+        var rseqid = ret.rseqid;
+        if (mtype == Thrift.MessageType.EXCEPTION) {
+          var x = new Thrift.TApplicationException();
+          x.read(this.input);
+          this.input.readMessageEnd();
+          throw x;
+        }
+        var result = new BananaService_signUp_result();
+        result.read(this.input);
+        this.input.readMessageEnd();
+
+        if (null !== result.ex1) {
+          throw result.ex1;
+        }
+        if (null !== result.ex2) {
+          throw result.ex2;
+        }
+        if (null !== result.ex3) {
+          throw result.ex3;
+        }
+        if (null !== result.success) {
+          return result.success;
+        }
+        throw 'signUp failed: unknown result';
 };
 BananaServiceClient.prototype.provisionService = function(request, callback) {
         this.send_provisionService(request, callback); 

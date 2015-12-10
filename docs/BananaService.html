@@ -209,6 +209,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_sendMessage">sendMessage</a></li>
 <li><a href="#Fn_BananaService_sendMessageAsync">sendMessageAsync</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
+<li><a href="#Fn_BananaService_signUp">signUp</a></li>
 <li><a href="#Fn_BananaService_snoozeChannel">snoozeChannel</a></li>
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
@@ -524,6 +525,10 @@ for a set time period.
 </pre>Sign in to the App and using a valid OAUTH Token.
 
 #developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_signUp">Function: BananaService.signUp</h4>
+<pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre>Sign Up for an Aroma Account.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
 <pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>

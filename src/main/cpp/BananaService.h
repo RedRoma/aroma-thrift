@@ -48,6 +48,13 @@ class BananaServiceIf {
   virtual void signIn(SignInResponse& _return, const SignInRequest& request) = 0;
 
   /**
+   * Sign Up for an Aroma Account.
+   * 
+   * @param request
+   */
+  virtual void signUp(SignUpResponse& _return, const SignUpRequest& request) = 0;
+
+  /**
    * Provision a New Service to keep tabs on.
    * 
    * #developer
@@ -165,6 +172,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void signIn(SignInResponse& /* _return */, const SignInRequest& /* request */) {
+    return;
+  }
+  void signUp(SignUpResponse& /* _return */, const SignUpRequest& /* request */) {
     return;
   }
   void provisionService(ProvisionServiceResponse& /* _return */, const ProvisionServiceRequest& /* request */) {
@@ -505,6 +515,134 @@ class BananaService_signIn_presult {
   InvalidCredentialsException* ex3;
 
   _BananaService_signIn_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_signUp_args__isset {
+  _BananaService_signUp_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_signUp_args__isset;
+
+class BananaService_signUp_args {
+ public:
+
+  BananaService_signUp_args(const BananaService_signUp_args&);
+  BananaService_signUp_args& operator=(const BananaService_signUp_args&);
+  BananaService_signUp_args() {
+  }
+
+  virtual ~BananaService_signUp_args() throw();
+  SignUpRequest request;
+
+  _BananaService_signUp_args__isset __isset;
+
+  void __set_request(const SignUpRequest& val);
+
+  bool operator == (const BananaService_signUp_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_signUp_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_signUp_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_signUp_pargs {
+ public:
+
+
+  virtual ~BananaService_signUp_pargs() throw();
+  const SignUpRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_signUp_result__isset {
+  _BananaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_signUp_result__isset;
+
+class BananaService_signUp_result {
+ public:
+
+  BananaService_signUp_result(const BananaService_signUp_result&);
+  BananaService_signUp_result& operator=(const BananaService_signUp_result&);
+  BananaService_signUp_result() {
+  }
+
+  virtual ~BananaService_signUp_result() throw();
+  SignUpResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+
+  _BananaService_signUp_result__isset __isset;
+
+  void __set_success(const SignUpResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  bool operator == (const BananaService_signUp_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_signUp_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_signUp_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_signUp_presult__isset {
+  _BananaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_signUp_presult__isset;
+
+class BananaService_signUp_presult {
+ public:
+
+
+  virtual ~BananaService_signUp_presult() throw();
+  SignUpResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+
+  _BananaService_signUp_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2239,6 +2377,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void signIn(SignInResponse& _return, const SignInRequest& request);
   void send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return);
+  void signUp(SignUpResponse& _return, const SignUpRequest& request);
+  void send_signUp(const SignUpRequest& request);
+  void recv_signUp(SignUpResponse& _return);
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   void send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return);
@@ -2293,6 +2434,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_sendMessageAsync(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_provisionService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_subscribeToService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -2311,6 +2453,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["sendMessage"] = &BananaServiceProcessor::process_sendMessage;
     processMap_["sendMessageAsync"] = &BananaServiceProcessor::process_sendMessageAsync;
     processMap_["signIn"] = &BananaServiceProcessor::process_signIn;
+    processMap_["signUp"] = &BananaServiceProcessor::process_signUp;
     processMap_["provisionService"] = &BananaServiceProcessor::process_provisionService;
     processMap_["subscribeToService"] = &BananaServiceProcessor::process_subscribeToService;
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
@@ -2377,6 +2520,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
       ifaces_[i]->signIn(_return, request);
     }
     ifaces_[i]->signIn(_return, request);
+    return;
+  }
+
+  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->signUp(_return, request);
+    }
+    ifaces_[i]->signUp(_return, request);
     return;
   }
 
@@ -2538,6 +2691,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void signIn(SignInResponse& _return, const SignInRequest& request);
   int32_t send_signIn(const SignInRequest& request);
   void recv_signIn(SignInResponse& _return, const int32_t seqid);
+  void signUp(SignUpResponse& _return, const SignUpRequest& request);
+  int32_t send_signUp(const SignUpRequest& request);
+  void recv_signUp(SignUpResponse& _return, const int32_t seqid);
   void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request);
   int32_t send_provisionService(const ProvisionServiceRequest& request);
   void recv_provisionService(ProvisionServiceResponse& _return, const int32_t seqid);

@@ -358,6 +358,13 @@ service BananaService
     SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
                                                            2 : InvalidArgumentException ex2,
                                                            3 : InvalidCredentialsException ex3)
+    
+    /**
+     * Sign Up for an Aroma Account.
+     */
+    SignUpResponse signUp(1: SignUpRequest request) throws(1 : OperationFailedException ex1,
+                                                           2 : InvalidArgumentException ex2,
+                                                           3 : InvalidCredentialsException ex3)
 
     /**
      * Provision a New Service to keep tabs on.

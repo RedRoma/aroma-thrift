@@ -57,6 +57,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
+   * Sign Up for an Aroma Account.
+   * 
+   * @param request
+   */
+  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
+    // Your implementation goes here
+    printf("signUp\n");
+  }
+
+  /**
    * Provision a New Service to keep tabs on.
    * 
    * #developer
