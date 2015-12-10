@@ -51,6 +51,8 @@ typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
 
 typedef class  ::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
 
+typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
+
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;

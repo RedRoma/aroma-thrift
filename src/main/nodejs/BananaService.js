@@ -495,6 +495,7 @@ BananaService_signUp_result = function(args) {
         this.ex1 = null;
         this.ex2 = null;
         this.ex3 = null;
+        this.ex4 = null;
         if (args instanceof Exceptions_ttypes.OperationFailedException) {
                 this.ex1 = args;
                 return;
@@ -505,6 +506,10 @@ BananaService_signUp_result = function(args) {
         }
         if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
                 this.ex3 = args;
+                return;
+        }
+        if (args instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                this.ex4 = args;
                 return;
         }
         if (args) {
@@ -519,6 +524,9 @@ BananaService_signUp_result = function(args) {
                 }
                 if (args.ex3 !== undefined && args.ex3 !== null) {
                         this.ex3 = args.ex3;
+                }
+                if (args.ex4 !== undefined && args.ex4 !== null) {
+                        this.ex4 = args.ex4;
                 }
         }
 };
@@ -568,6 +576,14 @@ BananaService_signUp_result.prototype.read = function(input) {
               input.skip(ftype);
             }
             break;
+            case 4:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex4 = new Exceptions_ttypes.AccountAlreadyExistsException();
+              this.ex4.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
             default:
               input.skip(ftype);
           }
@@ -597,6 +613,11 @@ BananaService_signUp_result.prototype.write = function(output) {
         if (this.ex3 !== null && this.ex3 !== undefined) {
           output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
           this.ex3.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex4 !== null && this.ex4 !== undefined) {
+          output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+          this.ex4.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -3240,6 +3261,9 @@ BananaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
         if (null !== result.ex3) {
           return callback(result.ex3);
         }
+        if (null !== result.ex4) {
+          return callback(result.ex4);
+        }
         if (null !== result.success) {
           return callback(null, result.success);
         }
@@ -4095,7 +4119,7 @@ BananaServiceProcessor = exports.Processor = function(handler)       {
               output.writeMessageEnd();
               output.flush();
             }, function (err) {
-              if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+              if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
                 var result = new BananaService_signUp_result(err);
                 output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
               } else {
@@ -4108,7 +4132,7 @@ BananaServiceProcessor = exports.Processor = function(handler)       {
             });
         } else {
           this._handler.signUp(args.request, function (err, result) {
-            if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
               var result = new BananaService_signUp_result((err != null ? err : {success: result}));
               output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
             } else {

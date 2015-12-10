@@ -214,7 +214,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
 </td>
-<td><a href="#Typedef_BananaChannel">BananaChannel</a><br/>
+<td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
+<a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
@@ -326,6 +327,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_TcpEndpoint">Typedef: TcpEndpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
@@ -527,7 +531,7 @@ for a set time period.
 #developer
 <br/></div><div class="definition"><h4 id="Fn_BananaService_signUp">Function: BananaService.signUp</h4>
 <pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a></code>
 </pre>Sign Up for an Aroma Account.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
 <pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)

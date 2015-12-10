@@ -42,6 +42,7 @@ typedef Endpoint.Endpoint Endpoint
 typedef Endpoint.TcpEndpoint TcpEndpoint
 
 //Exception Typedefs
+typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
@@ -364,7 +365,8 @@ service BananaService
      */
     SignUpResponse signUp(1: SignUpRequest request) throws(1 : OperationFailedException ex1,
                                                            2 : InvalidArgumentException ex2,
-                                                           3 : InvalidCredentialsException ex3)
+                                                           3 : InvalidCredentialsException ex3,
+                                                           4 : AccountAlreadyExistsException ex4)
 
     /**
      * Provision a New Service to keep tabs on.

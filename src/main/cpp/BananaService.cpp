@@ -718,6 +718,14 @@ uint32_t BananaService_signUp_result::read(::apache::thrift::protocol::TProtocol
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex4.read(iprot);
+          this->__isset.ex4 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -751,6 +759,10 @@ uint32_t BananaService_signUp_result::write(::apache::thrift::protocol::TProtoco
   } else if (this->__isset.ex3) {
     xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
     xfer += this->ex3.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex4) {
+    xfer += oprot->writeFieldBegin("ex4", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->ex4.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -812,6 +824,14 @@ uint32_t BananaService_signUp_presult::read(::apache::thrift::protocol::TProtoco
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex3)).read(iprot);
           this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex4)).read(iprot);
+          this->__isset.ex4 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -4409,6 +4429,9 @@ void BananaServiceClient::recv_signUp(SignUpResponse& _return)
   if (result.__isset.ex3) {
     throw result.ex3;
   }
+  if (result.__isset.ex4) {
+    throw result.ex4;
+  }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
 }
 
@@ -5492,6 +5515,9 @@ void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::pro
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
+  } catch (AccountAlreadyExistsException &ex4) {
+    result.ex4 = ex4;
+    result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "BananaService.signUp");
@@ -6642,6 +6668,10 @@ void BananaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const i
       if (result.__isset.ex3) {
         sentry.commit();
         throw result.ex3;
+      }
+      if (result.__isset.ex4) {
+        sentry.commit();
+        throw result.ex4;
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");

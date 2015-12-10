@@ -570,11 +570,12 @@ class BananaService_signUp_pargs {
 };
 
 typedef struct _BananaService_signUp_result__isset {
-  _BananaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  _BananaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
+  bool ex4 :1;
 } _BananaService_signUp_result__isset;
 
 class BananaService_signUp_result {
@@ -590,6 +591,7 @@ class BananaService_signUp_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
+  AccountAlreadyExistsException ex4;
 
   _BananaService_signUp_result__isset __isset;
 
@@ -601,6 +603,8 @@ class BananaService_signUp_result {
 
   void __set_ex3(const InvalidCredentialsException& val);
 
+  void __set_ex4(const AccountAlreadyExistsException& val);
+
   bool operator == (const BananaService_signUp_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -610,6 +614,8 @@ class BananaService_signUp_result {
     if (!(ex2 == rhs.ex2))
       return false;
     if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
       return false;
     return true;
   }
@@ -625,11 +631,12 @@ class BananaService_signUp_result {
 };
 
 typedef struct _BananaService_signUp_presult__isset {
-  _BananaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  _BananaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
+  bool ex4 :1;
 } _BananaService_signUp_presult__isset;
 
 class BananaService_signUp_presult {
@@ -641,6 +648,7 @@ class BananaService_signUp_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
+  AccountAlreadyExistsException* ex4;
 
   _BananaService_signUp_presult__isset __isset;
 
