@@ -1,3 +1,0 @@
-[submodule "src/main/cocoa"]
-	path = src/main/cocoa
-	url = https://github.com/SirWellington/banana-thrift-cocoa.git
