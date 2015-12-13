@@ -485,8 +485,11 @@ service BananaService
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
-                                                                                                4 : UnauthorizedException ex4)
+                                                                                                3 : InvalidCredentialsException ex3)
+    
+    GetMyServicesResponse getMyServices(1: GetMyServicesRequest request) throws(1 : OperationFailedException ex1,
+                                                                                2 : InvalidArgumentException ex2,
+                                                                                3 : InvalidCredentialsException ex3)
 
     SnoozeChannelResponse snoozeChannel(1: SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                 2 : InvalidArgumentException ex2,
