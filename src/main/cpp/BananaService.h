@@ -135,6 +135,7 @@ class BananaServiceIf {
   virtual void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) = 0;
   virtual void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
+  virtual void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request) = 0;
   virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 };
 
@@ -208,6 +209,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
+    return;
+  }
+  void getMyServices(GetMyServicesResponse& /* _return */, const GetMyServicesRequest& /* request */) {
     return;
   }
   void snoozeChannel(SnoozeChannelResponse& /* _return */, const SnoozeChannelRequest& /* request */) {
@@ -2122,12 +2126,11 @@ class BananaService_getMySavedChannels_pargs {
 };
 
 typedef struct _BananaService_getMySavedChannels_result__isset {
-  _BananaService_getMySavedChannels_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_getMySavedChannels_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
 } _BananaService_getMySavedChannels_result__isset;
 
 class BananaService_getMySavedChannels_result {
@@ -2143,7 +2146,6 @@ class BananaService_getMySavedChannels_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
-  UnauthorizedException ex4;
 
   _BananaService_getMySavedChannels_result__isset __isset;
 
@@ -2155,8 +2157,6 @@ class BananaService_getMySavedChannels_result {
 
   void __set_ex3(const InvalidCredentialsException& val);
 
-  void __set_ex4(const UnauthorizedException& val);
-
   bool operator == (const BananaService_getMySavedChannels_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -2166,8 +2166,6 @@ class BananaService_getMySavedChannels_result {
     if (!(ex2 == rhs.ex2))
       return false;
     if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
       return false;
     return true;
   }
@@ -2183,12 +2181,11 @@ class BananaService_getMySavedChannels_result {
 };
 
 typedef struct _BananaService_getMySavedChannels_presult__isset {
-  _BananaService_getMySavedChannels_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_getMySavedChannels_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
 } _BananaService_getMySavedChannels_presult__isset;
 
 class BananaService_getMySavedChannels_presult {
@@ -2200,9 +2197,136 @@ class BananaService_getMySavedChannels_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
-  UnauthorizedException* ex4;
 
   _BananaService_getMySavedChannels_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getMyServices_args__isset {
+  _BananaService_getMyServices_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getMyServices_args__isset;
+
+class BananaService_getMyServices_args {
+ public:
+
+  BananaService_getMyServices_args(const BananaService_getMyServices_args&);
+  BananaService_getMyServices_args& operator=(const BananaService_getMyServices_args&);
+  BananaService_getMyServices_args() {
+  }
+
+  virtual ~BananaService_getMyServices_args() throw();
+  GetMyServicesRequest request;
+
+  _BananaService_getMyServices_args__isset __isset;
+
+  void __set_request(const GetMyServicesRequest& val);
+
+  bool operator == (const BananaService_getMyServices_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMyServices_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMyServices_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getMyServices_pargs {
+ public:
+
+
+  virtual ~BananaService_getMyServices_pargs() throw();
+  const GetMyServicesRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMyServices_result__isset {
+  _BananaService_getMyServices_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getMyServices_result__isset;
+
+class BananaService_getMyServices_result {
+ public:
+
+  BananaService_getMyServices_result(const BananaService_getMyServices_result&);
+  BananaService_getMyServices_result& operator=(const BananaService_getMyServices_result&);
+  BananaService_getMyServices_result() {
+  }
+
+  virtual ~BananaService_getMyServices_result() throw();
+  GetMyServicesResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+
+  _BananaService_getMyServices_result__isset __isset;
+
+  void __set_success(const GetMyServicesResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  bool operator == (const BananaService_getMyServices_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMyServices_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMyServices_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMyServices_presult__isset {
+  _BananaService_getMyServices_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getMyServices_presult__isset;
+
+class BananaService_getMyServices_presult {
+ public:
+
+
+  virtual ~BananaService_getMyServices_presult() throw();
+  GetMyServicesResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+
+  _BananaService_getMyServices_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2421,6 +2545,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
+  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request);
+  void send_getMyServices(const GetMyServicesRequest& request);
+  void recv_getMyServices(GetMyServicesResponse& _return);
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   void send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return);
@@ -2454,6 +2581,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getMyServices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
@@ -2473,6 +2601,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["saveChannel"] = &BananaServiceProcessor::process_saveChannel;
     processMap_["removeSavedChannel"] = &BananaServiceProcessor::process_removeSavedChannel;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
+    processMap_["getMyServices"] = &BananaServiceProcessor::process_getMyServices;
     processMap_["snoozeChannel"] = &BananaServiceProcessor::process_snoozeChannel;
   }
 
@@ -2651,6 +2780,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getMyServices(_return, request);
+    }
+    ifaces_[i]->getMyServices(_return, request);
+    return;
+  }
+
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -2735,6 +2874,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
+  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request);
+  int32_t send_getMyServices(const GetMyServicesRequest& request);
+  void recv_getMyServices(GetMyServicesResponse& _return, const int32_t seqid);
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   int32_t send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid);

@@ -184,6 +184,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getMySavedChannels\n");
   }
 
+  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request) {
+    // Your implementation goes here
+    printf("getMyServices\n");
+  }
+
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
     // Your implementation goes here
     printf("snoozeChannel\n");

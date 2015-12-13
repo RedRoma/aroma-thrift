@@ -197,6 +197,7 @@ code { line-height: 20px; }
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
+<li><a href="#Fn_BananaService_getMyServices">getMyServices</a></li>
 <li><a href="#Fn_BananaService_getServiceInfo">getServiceInfo</a></li>
 <li><a href="#Fn_BananaService_getServiceSubscribers">getServiceSubscribers</a></li>
 <li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
@@ -596,7 +597,10 @@ Only an "owner" can perform this opeartion.
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_getMySavedChannels">Function: BananaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getMyServices">Function: BananaService.getMyServices</h4>
+<pre><code><a href="#Struct_GetMyServicesResponse">GetMyServicesResponse</a></code> getMyServices(<code><a href="#Struct_GetMyServicesRequest">GetMyServicesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_snoozeChannel">Function: BananaService.snoozeChannel</h4>
 <pre><code><a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a></code> snoozeChannel(<code><a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
