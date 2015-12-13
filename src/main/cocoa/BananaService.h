@@ -35,8 +35,6 @@ typedef BananaAuthentication_DeveloperToken * BananaService_DeveloperToken;
 
 typedef BananaAuthentication_ServiceToken * BananaService_ServiceToken;
 
-typedef Banana_Dimension * BananaService_Dimension;
-
 typedef Banana_Image * BananaService_Image;
 
 typedef Banana_Developer * BananaService_Developer;
@@ -48,8 +46,6 @@ typedef int BananaService_Urgency;
 typedef BananaChannels_BananaChannel * BananaService_BananaChannel;
 
 typedef BananaEndpoint_Endpoint * BananaService_Endpoint;
-
-typedef BananaEndpoint_TcpEndpoint * BananaService_TcpEndpoint;
 
 typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
 
@@ -1392,8 +1388,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_BananaServiceConstants : NSObject {
 }
 + (double) API_VERSION;
-+ (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT;
-+ (BananaService_TcpEndpoint) BETA_ENDPOINT;
-+ (BananaService_Dimension) MAX_ICON_DIMENSION;
++ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Banana_Dimension *) MAX_ICON_DIMENSION;
 + (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES;
 @end

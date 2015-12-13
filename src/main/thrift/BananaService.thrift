@@ -32,14 +32,12 @@ typedef Banana.timestamp timestamp;
 //Struct Typedefs
 typedef Authentication.DeveloperToken DeveloperToken
 typedef Authentication.ServiceToken ServiceToken
-typedef Banana.Dimension Dimension
 typedef Banana.Image Image
 typedef Banana.Developer Developer
 typedef Banana.Service Service
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
-typedef Endpoint.TcpEndpoint TcpEndpoint
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -58,12 +56,12 @@ const double API_VERSION = 1.1;
 /**
  * This is the Banana Service Production Endpoint
  */
-const TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
 
 /**
  * This is the Banana Service Beta Endpoint
  */
-const TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
 
 //==========================================================
 // Actions
@@ -102,7 +100,7 @@ struct SignUpResponse
 }
 
 /** The Maximum Dimensions for an Icon submitted with a Service. */
-const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
+const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
 
 /** The Maximum Filesize for an Icon submitted with a Service. */
 const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
@@ -359,7 +357,7 @@ service BananaService
     SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
                                                            2 : InvalidArgumentException ex2,
                                                            3 : InvalidCredentialsException ex3)
-    
+
     /**
      * Sign Up for an Aroma Account.
      */

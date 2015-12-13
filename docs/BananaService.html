@@ -223,7 +223,6 @@ code { line-height: 20px; }
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
 <a href="#Typedef_Developer">Developer</a><br/>
 <a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
-<a href="#Typedef_Dimension">Dimension</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
 <a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
@@ -267,7 +266,6 @@ code { line-height: 20px; }
 <a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a><br/>
 <a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a><br/>
 <a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
-<a href="#Typedef_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_int">int</a><br/>
@@ -284,9 +282,9 @@ code { line-height: 20px; }
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.1</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API currently in use.
-<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
-<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
-<br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="#Typedef_Dimension">Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
+<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
+<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
+<br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
 <br/></blockquote></td></tr><tr id="Const_MAX_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>40</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with a Service.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
@@ -303,9 +301,6 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Dimension">Typedef: Dimension</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
@@ -324,9 +319,6 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_TcpEndpoint">Typedef: TcpEndpoint</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
