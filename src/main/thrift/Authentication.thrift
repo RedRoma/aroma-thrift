@@ -8,28 +8,6 @@ typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
-enum Role
-{
-    DEV = 1,
-    OWNER = 2
-}
-
-struct Developer
-{
-    1: string email;
-    2: optional string name;
-    3: optional string username;
-    4: Role role;
-}
-
-struct Service
-{
-    1: Developer owner;
-    2: timestamp timeOfRegistration;
-    3: string name;
-    4: string id;
-}
-
 struct ServiceToken
 {
     1: string id;
@@ -53,7 +31,35 @@ struct GithubToken
     3: required string oauthToken;
 }
 
-union OauthToken
+struct Password
+{
+    1: string encryptedPassword;
+}
+
+/**
+ * Use this password to encrypt the password 
+ * before sending it over the wire. Without it, passwords will
+ * not be understood by the service, and will be rejected.
+ */
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
+
+/**
+ * An Account registered with our System.
+ */
+struct AromaAccount
+{
+    1: string email;
+    2: Password password;
+    3: string name;
+    4: Banana.Image profileImage;
+}
+
+/**
+ * There are multiple ways to Sign In and Authenticate with
+ * the Banana Service.
+ */
+union Credentials
 {
     1: GithubToken githubToken;
+    2: AromaAccount aromaAccount;
 }

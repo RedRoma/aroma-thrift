@@ -195,10 +195,13 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Banana</td><td></td>
-<td><a href="#Struct_Dimension">Dimension</a><br/>
+<td><a href="#Struct_Developer">Developer</a><br/>
+<a href="#Struct_Dimension">Dimension</a><br/>
 <a href="#Struct_Image">Image</a><br/>
 <a href="#Enum_ImageType">ImageType</a><br/>
 <a href="#Struct_Message">Message</a><br/>
+<a href="#Enum_Role">Role</a><br/>
+<a href="#Struct_Service">Service</a><br/>
 <a href="#Struct_TimePeriod">TimePeriod</a><br/>
 <a href="#Enum_TimeUnit">TimeUnit</a><br/>
 <a href="#Enum_Urgency">Urgency</a><br/>
@@ -239,6 +242,13 @@ Determines how Important or Severe a Message is.
 <tr><td><code>PNG</code></td><td><code>2</code></td><td>
 </td></tr>
 </table></div>
+<div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>DEV</code></td><td><code>1</code></td><td>
+</td></tr>
+<tr><td><code>OWNER</code></td><td><code>2</code></td><td>
+</td></tr>
+</table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code>i32</code></p>
@@ -259,6 +269,7 @@ Milliseconds since epoch.
 <tr><td>3</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.PRESSING">Urgency.PRESSING</a></code></code></td></tr>
 <tr><td>4</td><td>timeMessageSent</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>timeMessageReceived</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>6</td><td>nameOfService</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_TimePeriod">Struct: TimePeriod</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>unit</td><td><code><a href="#Enum_TimeUnit">TimeUnit</a></code></td><td></td><td>required</td><td></td></tr>
@@ -273,4 +284,17 @@ Milliseconds since epoch.
 <tr><td>1</td><td>imageType</td><td><code><a href="#Enum_ImageType">ImageType</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>data</td><td><code>binary</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>dimension</td><td><code><a href="#Struct_Dimension">Dimension</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Developer">Struct: Developer</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>role</td><td><code><a href="#Enum_Role">Role</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Service">Struct: Service</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>owner</td><td><code><a href="#Struct_Developer">Developer</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>

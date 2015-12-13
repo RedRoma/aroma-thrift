@@ -17,9 +17,9 @@ include "Notifications.thrift"
 /*
  * These Typedefs are like import statements
  * so  we don't have to type as much.
- * 
+ *
  * Tag definitions:
- * 
+ *
  * #developer   - Signifies an Operation designed to be used by Humans.
  * #service     - Signifies an Operation designed to be used by Computers.
  * #owner       - Signifies an Operation that can only be performed by an "Owner".
@@ -30,45 +30,47 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.Developer Developer
 typedef Authentication.DeveloperToken DeveloperToken
-typedef Authentication.Service Service
 typedef Authentication.ServiceToken ServiceToken
-typedef Banana.Dimension Dimension
 typedef Banana.Image Image
+typedef Banana.Developer Developer
+typedef Banana.Service Service
 typedef Banana.Urgency Urgency
+typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
-typedef Endpoint.TcpEndpoint TcpEndpoint
 
 //Exception Typedefs
+typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException
 typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
+typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
+typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API currently in use. */
-const double API_VERSION = 1.0;
+const double API_VERSION = 1.1;
 
 /**
- * This is the Banana Service Production Endpoint 
+ * This is the Banana Service Production Endpoint
  */
-const TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
 
 /**
  * This is the Banana Service Beta Endpoint
  */
-const TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
 
 //==========================================================
 // Actions
 //==========================================================
 
-//
+
 struct SignInRequest
 {
-    1: Authentication.OauthToken oathToken;
+    1: Authentication.Credentials credentials;
     2: string username;
 }
 
@@ -77,9 +79,28 @@ struct SignInResponse
     1: DeveloperToken developerToken;
 }
 
+/**
+ * Sign Up for an Aroma Account.
+ */
+struct SignUpRequest
+{
+    1: string email;
+    2: string name;
+    3: string username;
+    4: string organization;
+    5: Authentication.Credentials credentials;
+}
+
+/**
+ * Receive a Developer Token after Signing Up.
+ */
+struct SignUpResponse
+{
+    1: DeveloperToken developerToken;
+}
 
 /** The Maximum Dimensions for an Icon submitted with a Service. */
-const Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
+const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
 
 /** The Maximum Filesize for an Icon submitted with a Service. */
 const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
@@ -98,7 +119,7 @@ struct ProvisionServiceResponse
 {
     1: string bananaToken;
     2: string serviceName;
-    3: ServiceToken serviceToken; 
+    3: ServiceToken serviceToken;
 }
 
 struct SubscribeToServiceRequest
@@ -113,7 +134,7 @@ struct SubscribeToServiceRequest
 struct SubscribeToServiceResponse
 {
     1: string message;
-    2: Channels.BananaChannel channel;
+    2: BananaChannel channel;
 }
 
 
@@ -162,7 +183,7 @@ struct DeleteMessageRequest
 
 struct DeleteMessageResponse
 {
-    
+
 }
 
 struct DeleteAllMessagesRequest
@@ -182,7 +203,7 @@ struct HideMessageRequest
 
 struct HideMessageResponse
 {
-    
+
 }
 
 struct HideAllMessagesRequest
@@ -193,7 +214,49 @@ struct HideAllMessagesRequest
 
 struct HideAllMessagesResponse
 {
-    
+
+}
+
+/**
+ * Save a Developer's Personal Contact Channel for future use.
+ */
+struct SaveChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct SaveChannelResponse
+{
+    1: string message;
+    2: optional BananaChannel channel;
+}
+
+struct RemoveSavedChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct RemoveSavedChannelResponse
+{
+    1: string message;
+    2: optional BananaChannel channel;
+}
+
+/**
+ * A Snoozed Channel will not receive Notifications
+ * for a set time period.
+ */
+struct SnoozeChannelRequest
+{
+    1: DeveloperToken developerToken;
+    2: BananaChannel channel;
+}
+
+struct SnoozeChannelResponse
+{
+    1: string message;
 }
 
 //==========================================================
@@ -235,6 +298,16 @@ struct GetServiceSubscribersResponse
     1: list<Developer> developers = [];
 }
 
+struct GetMySavedChannelsRequest
+{
+    1: DeveloperToken developerToken;
+}
+
+struct GetMySavedChannelsResponse
+{
+    1: list<BananaChannel> channels;
+}
+
 //==========================================================
 // Operations performed by Services
 
@@ -252,18 +325,50 @@ struct SendMessageResponse
 
 service BananaService
 {
+    //===============================================
+    // Operations for Services
+    //===============================================
+
+
+    /**
+     *
+     * #service
+     */
+    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                          2 : InvalidArgumentException ex2,
+                                                                          3 : InvalidCredentialsException ex3)
+
+    /**
+     *
+     * #service
+     */
+    oneway void sendMessageAsync(1: SendMessageRequest request)
+
+
+    //===============================================
+    // Operations for Developers
+    //===============================================
+
     /**
      * Sign in to the App and using a valid OAUTH Token.
-     * 
+     *
      * #developer
      */
     SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
                                                            2 : InvalidArgumentException ex2,
                                                            3 : InvalidCredentialsException ex3)
-    
+
+    /**
+     * Sign Up for an Aroma Account.
+     */
+    SignUpResponse signUp(1: SignUpRequest request) throws(1 : OperationFailedException ex1,
+                                                           2 : InvalidArgumentException ex2,
+                                                           3 : InvalidCredentialsException ex3,
+                                                           4 : AccountAlreadyExistsException ex4)
+
     /**
      * Provision a New Service to keep tabs on.
-     * 
+     *
      * #developer
      */
     ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1 : OperationFailedException ex1,
@@ -272,20 +377,21 @@ service BananaService
                                                                                          4 : ServiceDoesNotExistException ex4)
     /**
      * Subscribe to an existing service to get notifications.
-     * 
+     *
      * #developer
      */
     SubscribeToServiceResponse subscribeToService(1: SubscribeToServiceRequest request) throws(1 : OperationFailedException ex1,
                                                                                                2 : InvalidArgumentException ex2,
                                                                                                3 : InvalidCredentialsException ex3,
                                                                                                4 : ServiceDoesNotExistException ex4,
-                                                                                               5 : ServiceAlreadyRegisteredException ex5)
+                                                                                               5 : ServiceAlreadyRegisteredException ex5,
+                                                                                               6 : CustomChannelUnreachableException ex6)
 
-    
+
     /**
      * Register an existing Service for Health Pokes. The Banana Service
      * will then periodically poke the Service for health status.
-     * 
+     *
      * #developer
      * #owner
      */
@@ -294,11 +400,11 @@ service BananaService
                                                                                                   3 : InvalidCredentialsException ex3,
                                                                                                   4 : ServiceDoesNotExistException ex4,
                                                                                                   5 : UnauthorizedException ex5)
-    
+
     /**
-     * Renew a Service Token that is close to being expired. 
+     * Renew a Service Token that is close to being expired.
      * Only an "owner" can perform this operation.
-     * 
+     *
      * #developer
      * #owner
      */
@@ -307,12 +413,12 @@ service BananaService
                                                                                             3 : InvalidCredentialsException ex3,
                                                                                             4 : ServiceDoesNotExistException ex4,
                                                                                             5 : UnauthorizedException ex5)
-    
+
     /**
      * Regenerate a Token in case the existing one is lost or forgetten.
-     * Keep in mind that this will invalidate the existing ServiceToken. 
+     * Keep in mind that this will invalidate the existing ServiceToken.
      * Only an "owner" can perform this opeartion.
-     * 
+     *
      * #developer
      * #owner
      */
@@ -321,11 +427,11 @@ service BananaService
                                                                                       3 : InvalidCredentialsException ex3,
                                                                                       4 : ServiceDoesNotExistException ex4,
                                                                                       5 : UnauthorizedException ex5)
-    
-    
+
+
     /**
      * Get details about a Service from it's unique ID
-     * 
+     *
      * #developer
      */
     GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
@@ -333,11 +439,11 @@ service BananaService
                                                                                    3 : InvalidCredentialsException ex3,
                                                                                    4 : ServiceDoesNotExistException ex4,
                                                                                    5 : UnauthorizedException ex5)
-    
-    
+
+
     /**
      * Perform a Search on all the services registered to the Banana Service by searching for its title.
-     * 
+     *
      * #developer
      */
     SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1 : OperationFailedException ex1,
@@ -347,28 +453,34 @@ service BananaService
 
     /**
      * Get a list of all Developers subscribed to a Service.
-     * 
+     *
      * #developer
      */
     GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
                                                                                                         2 : InvalidArgumentException ex2,
                                                                                                         3 : InvalidCredentialsException ex3,
                                                                                                         4 : UnauthorizedException ex4)
-    
-    //===============================================
-    // Searching for Services
-    
-    /**
-     * 
-     * #service
-     */
-    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
+
+    SaveChannelResponse saveChannel(1: SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                           2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidCredentialsException ex3)
-    
-    /**
-     * 
-     * #service
-     */
-    oneway void sendMessageAsync(1: SendMessageRequest request)
+                                                                          3 : InvalidCredentialsException ex3,
+                                                                          4 : UnauthorizedException ex4)
+
+
+    RemoveSavedChannelResponse removeSavedChannel(1: RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                               2 : InvalidArgumentException ex2,
+                                                                                               3 : InvalidCredentialsException ex3,
+                                                                                               4 : UnauthorizedException ex4,
+                                                                                               5 : ChannelDoesNotExistException ex5)
+
+    GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                2 : InvalidArgumentException ex2,
+                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                4 : UnauthorizedException ex4)
+
+    SnoozeChannelResponse snoozeChannel(1: SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                2 : InvalidArgumentException ex2,
+                                                                                3 : InvalidCredentialsException ex3,
+                                                                                4 : UnauthorizedException ex4,
+                                                                                5 : ChannelDoesNotExistException ex5)
 }

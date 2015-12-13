@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>Channels</td><td><a href="#Svc_CustomBananaChannel">CustomBananaChannel</a><br/>
 <ul>
+<li><a href="#Fn_CustomBananaChannel_ping">ping</a></li>
 <li><a href="#Fn_CustomBananaChannel_receiveMessage">receiveMessage</a></li>
 </ul>
 </td>
@@ -227,30 +228,46 @@ code { line-height: 20px; }
 <tr><td>1</td><td>domainName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channelName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>slackToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SlackUsername">Struct: SlackUsername</h3>
+</table><br/>It's a bit confusing, but
+this references a specific Slack Channel in a Team Slack Account,
+for example, #operations, #development.
+<br/></div><div class="definition"><h3 id="Struct_SlackUsername">Struct: SlackUsername</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>domainName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>slackToken</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Email">Struct: Email</h3>
+</table><br/>This Channel refers to a Slack User, referenced directly by their
+username.
+<br/></div><div class="definition"><h3 id="Struct_Email">Struct: Email</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>emailAddress</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>subject</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Banana Service - Message Received"</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_CustomChannel">Struct: CustomChannel</h3>
+</table><br/>Email will be sent from the Aroma Tech domain, "aroma.tech".
+<br/></div><div class="definition"><h3 id="Struct_CustomChannel">Struct: CustomChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td>This endpoint will be hit with a message each time.
 </td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_BananaChannel">Union: BananaChannel</h3>
+</table><br/>Allows for messages to be sent to a custom Channel
+<br/></div><div class="definition"><h3 id="Struct_BananaChannel">Union: BananaChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>slackChannel</td><td><code><a href="#Struct_SlackChannel">SlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>slackUsername</td><td><code><a href="#Struct_SlackUsername">SlackUsername</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>email</td><td><code><a href="#Struct_Email">Email</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>customChannel</td><td><code><a href="#Struct_CustomChannel">CustomChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ReceiveMessageRequest">Struct: ReceiveMessageRequest</h3>
+</table><br/>This Union represents the Abstract concept of a
+Banana Service "Channel".
+<br/></div><div class="definition"><h3 id="Struct_ReceiveMessageRequest">Struct: ReceiveMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><hr/><h2 id="Services">Services</h2>
+</table><br/>This is the Request Body that will be sent to any
+Custom Channels registered to a service.
+<br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_CustomBananaChannel">Service: CustomBananaChannel</h3>
-<div class="definition"><h4 id="Fn_CustomBananaChannel_receiveMessage">Function: CustomBananaChannel.receiveMessage</h4>
+<div class="definition"><h4 id="Fn_CustomBananaChannel_ping">Function: CustomBananaChannel.ping</h4>
+<pre><code><a href="#Typedef_int">int</a></code> ping()
+</pre>The Banana Service will first ping your Custom Channel
+to make sure it is reachable and operational.
+<br/></div><div class="definition"><h4 id="Fn_CustomBananaChannel_receiveMessage">Function: CustomBananaChannel.receiveMessage</h4>
 <pre><code>void</code> receiveMessage(<code><a href="#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a></code> request)
-</pre></div></div></body></html>
+</pre>Called each time the Banana Service sends a message to a specific service.
+<br/></div></div></body></html>

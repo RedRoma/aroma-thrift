@@ -24,6 +24,10 @@ class InvalidArgumentException;
 
 class InvalidCredentialsException;
 
+class AccountAlreadyExistsException;
+
+class InvalidCodeException;
+
 class UnauthorizedException;
 
 class ServiceDoesNotExistException;
@@ -31,6 +35,10 @@ class ServiceDoesNotExistException;
 class ServiceAlreadyRegisteredException;
 
 class ThroughoutExceededException;
+
+class CustomChannelUnreachableException;
+
+class ChannelDoesNotExistException;
 
 class OperationFailedException;
 
@@ -125,6 +133,102 @@ class InvalidCredentialsException : public ::apache::thrift::TException {
 void swap(InvalidCredentialsException &a, InvalidCredentialsException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const InvalidCredentialsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _AccountAlreadyExistsException__isset {
+  _AccountAlreadyExistsException__isset() : message(true) {}
+  bool message :1;
+} _AccountAlreadyExistsException__isset;
+
+class AccountAlreadyExistsException : public ::apache::thrift::TException {
+ public:
+
+  AccountAlreadyExistsException(const AccountAlreadyExistsException&);
+  AccountAlreadyExistsException& operator=(const AccountAlreadyExistsException&);
+  AccountAlreadyExistsException() : message("This email has already been registered. Reset your password if you forgot it.") {
+  }
+
+  virtual ~AccountAlreadyExistsException() throw();
+  std::string message;
+
+  _AccountAlreadyExistsException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const AccountAlreadyExistsException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const AccountAlreadyExistsException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AccountAlreadyExistsException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(AccountAlreadyExistsException &a, AccountAlreadyExistsException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AccountAlreadyExistsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _InvalidCodeException__isset {
+  _InvalidCodeException__isset() : message(true) {}
+  bool message :1;
+} _InvalidCodeException__isset;
+
+class InvalidCodeException : public ::apache::thrift::TException {
+ public:
+
+  InvalidCodeException(const InvalidCodeException&);
+  InvalidCodeException& operator=(const InvalidCodeException&);
+  InvalidCodeException() : message("The Reset Password is invalid") {
+  }
+
+  virtual ~InvalidCodeException() throw();
+  std::string message;
+
+  _InvalidCodeException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const InvalidCodeException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const InvalidCodeException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const InvalidCodeException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(InvalidCodeException &a, InvalidCodeException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const InvalidCodeException& obj)
 {
   obj.printTo(out);
   return out;
@@ -317,6 +421,102 @@ class ThroughoutExceededException : public ::apache::thrift::TException {
 void swap(ThroughoutExceededException &a, ThroughoutExceededException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ThroughoutExceededException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _CustomChannelUnreachableException__isset {
+  _CustomChannelUnreachableException__isset() : message(true) {}
+  bool message :1;
+} _CustomChannelUnreachableException__isset;
+
+class CustomChannelUnreachableException : public ::apache::thrift::TException {
+ public:
+
+  CustomChannelUnreachableException(const CustomChannelUnreachableException&);
+  CustomChannelUnreachableException& operator=(const CustomChannelUnreachableException&);
+  CustomChannelUnreachableException() : message("The Custom Channel you've supplied could not be reached. Please ensure the Service is reachable and operational.") {
+  }
+
+  virtual ~CustomChannelUnreachableException() throw();
+  std::string message;
+
+  _CustomChannelUnreachableException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const CustomChannelUnreachableException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const CustomChannelUnreachableException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CustomChannelUnreachableException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(CustomChannelUnreachableException &a, CustomChannelUnreachableException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CustomChannelUnreachableException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ChannelDoesNotExistException__isset {
+  _ChannelDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _ChannelDoesNotExistException__isset;
+
+class ChannelDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  ChannelDoesNotExistException(const ChannelDoesNotExistException&);
+  ChannelDoesNotExistException& operator=(const ChannelDoesNotExistException&);
+  ChannelDoesNotExistException() : message("The Channel specified does not exist in the System") {
+  }
+
+  virtual ~ChannelDoesNotExistException() throw();
+  std::string message;
+
+  _ChannelDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ChannelDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ChannelDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ChannelDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ChannelDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;

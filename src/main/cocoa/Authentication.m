@@ -22,648 +22,6 @@
 
 #import "Authentication.h"
 
-@implementation BananaAuthentication_Developer
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role
-{
-  self = [super init];
-  __email = [email retain_stub];
-  __email_isset = YES;
-  __name = [name retain_stub];
-  __name_isset = YES;
-  __username = [username retain_stub];
-  __username_isset = YES;
-  __role = role;
-  __role_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"email"])
-  {
-    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
-    __email_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"name"])
-  {
-    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
-    __name_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"username"])
-  {
-    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
-    __username_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"role"])
-  {
-    __role = [decoder decodeIntForKey: @"role"];
-    __role_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__email_isset)
-  {
-    [encoder encodeObject: __email forKey: @"email"];
-  }
-  if (__name_isset)
-  {
-    [encoder encodeObject: __name forKey: @"name"];
-  }
-  if (__username_isset)
-  {
-    [encoder encodeObject: __username forKey: @"username"];
-  }
-  if (__role_isset)
-  {
-    [encoder encodeInt: __role forKey: @"role"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
-  if (__email_isset)
-  {
-    hash = (hash * 31) ^ [__email hash];
-  }
-  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
-  if (__name_isset)
-  {
-    hash = (hash * 31) ^ [__name hash];
-  }
-  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
-  if (__username_isset)
-  {
-    hash = (hash * 31) ^ [__username hash];
-  }
-  hash = (hash * 31) ^ __role_isset ? 2654435761 : 0;
-  if (__role_isset)
-  {
-    hash = (hash * 31) ^ [@(__role) hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaAuthentication_Developer class]]) {
-    return NO;
-  }
-  BananaAuthentication_Developer *other = (BananaAuthentication_Developer *)anObject;
-  if ((__email_isset != other->__email_isset) ||
-      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
-    return NO;
-  }
-  if ((__name_isset != other->__name_isset) ||
-      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
-    return NO;
-  }
-  if ((__username_isset != other->__username_isset) ||
-      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
-    return NO;
-  }
-  if ((__role_isset != other->__role_isset) ||
-      (__role_isset && (__role != other->__role))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__email release_stub];
-  [__name release_stub];
-  [__username release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) email {
-  return [[__email retain_stub] autorelease_stub];
-}
-
-- (void) setEmail: (NSString *) email {
-  [email retain_stub];
-  [__email release_stub];
-  __email = email;
-  __email_isset = YES;
-}
-
-- (BOOL) emailIsSet {
-  return __email_isset;
-}
-
-- (void) unsetEmail {
-  [__email release_stub];
-  __email = nil;
-  __email_isset = NO;
-}
-
-- (NSString *) name {
-  return [[__name retain_stub] autorelease_stub];
-}
-
-- (void) setName: (NSString *) name {
-  [name retain_stub];
-  [__name release_stub];
-  __name = name;
-  __name_isset = YES;
-}
-
-- (BOOL) nameIsSet {
-  return __name_isset;
-}
-
-- (void) unsetName {
-  [__name release_stub];
-  __name = nil;
-  __name_isset = NO;
-}
-
-- (NSString *) username {
-  return [[__username retain_stub] autorelease_stub];
-}
-
-- (void) setUsername: (NSString *) username {
-  [username retain_stub];
-  [__username release_stub];
-  __username = username;
-  __username_isset = YES;
-}
-
-- (BOOL) usernameIsSet {
-  return __username_isset;
-}
-
-- (void) unsetUsername {
-  [__username release_stub];
-  __username = nil;
-  __username_isset = NO;
-}
-
-- (int) role {
-  return __role;
-}
-
-- (void) setRole: (int) role {
-  __role = role;
-  __role_isset = YES;
-}
-
-- (BOOL) roleIsSet {
-  return __role_isset;
-}
-
-- (void) unsetRole {
-  __role_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setEmail: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setRole: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Developer"];
-  if (__email_isset) {
-    if (__email != nil) {
-      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __email];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__name_isset) {
-    if (__name != nil) {
-      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __name];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__username_isset) {
-    if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __username];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__role_isset) {
-    [outProtocol writeFieldBeginWithName: @"role" type: TType_I32 fieldID: 4];
-    [outProtocol writeI32: __role];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Developer("];
-  [ms appendString: @"email:"];
-  [ms appendFormat: @"\"%@\"", __email];
-  [ms appendString: @",name:"];
-  [ms appendFormat: @"\"%@\"", __name];
-  [ms appendString: @",username:"];
-  [ms appendFormat: @"\"%@\"", __username];
-  [ms appendString: @",role:"];
-  [ms appendFormat: @"%i", __role];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaAuthentication_Service
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithOwner: (BananaAuthentication_Developer *) owner timeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id
-{
-  self = [super init];
-  __owner = [owner retain_stub];
-  __owner_isset = YES;
-  __timeOfRegistration = timeOfRegistration;
-  __timeOfRegistration_isset = YES;
-  __name = [name retain_stub];
-  __name_isset = YES;
-  __id = [id retain_stub];
-  __id_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"owner"])
-  {
-    __owner = [[decoder decodeObjectForKey: @"owner"] retain_stub];
-    __owner_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"timeOfRegistration"])
-  {
-    __timeOfRegistration = [decoder decodeInt64ForKey: @"timeOfRegistration"];
-    __timeOfRegistration_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"name"])
-  {
-    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
-    __name_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"id"])
-  {
-    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
-    __id_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__owner_isset)
-  {
-    [encoder encodeObject: __owner forKey: @"owner"];
-  }
-  if (__timeOfRegistration_isset)
-  {
-    [encoder encodeInt64: __timeOfRegistration forKey: @"timeOfRegistration"];
-  }
-  if (__name_isset)
-  {
-    [encoder encodeObject: __name forKey: @"name"];
-  }
-  if (__id_isset)
-  {
-    [encoder encodeObject: __id forKey: @"id"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __owner_isset ? 2654435761 : 0;
-  if (__owner_isset)
-  {
-    hash = (hash * 31) ^ [__owner hash];
-  }
-  hash = (hash * 31) ^ __timeOfRegistration_isset ? 2654435761 : 0;
-  if (__timeOfRegistration_isset)
-  {
-    hash = (hash * 31) ^ [@(__timeOfRegistration) hash];
-  }
-  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
-  if (__name_isset)
-  {
-    hash = (hash * 31) ^ [__name hash];
-  }
-  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
-  if (__id_isset)
-  {
-    hash = (hash * 31) ^ [__id hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaAuthentication_Service class]]) {
-    return NO;
-  }
-  BananaAuthentication_Service *other = (BananaAuthentication_Service *)anObject;
-  if ((__owner_isset != other->__owner_isset) ||
-      (__owner_isset && ((__owner || other->__owner) && ![__owner isEqual:other->__owner]))) {
-    return NO;
-  }
-  if ((__timeOfRegistration_isset != other->__timeOfRegistration_isset) ||
-      (__timeOfRegistration_isset && (__timeOfRegistration != other->__timeOfRegistration))) {
-    return NO;
-  }
-  if ((__name_isset != other->__name_isset) ||
-      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
-    return NO;
-  }
-  if ((__id_isset != other->__id_isset) ||
-      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__owner release_stub];
-  [__name release_stub];
-  [__id release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_Developer *) owner {
-  return [[__owner retain_stub] autorelease_stub];
-}
-
-- (void) setOwner: (BananaAuthentication_Developer *) owner {
-  [owner retain_stub];
-  [__owner release_stub];
-  __owner = owner;
-  __owner_isset = YES;
-}
-
-- (BOOL) ownerIsSet {
-  return __owner_isset;
-}
-
-- (void) unsetOwner {
-  [__owner release_stub];
-  __owner = nil;
-  __owner_isset = NO;
-}
-
-- (int64_t) timeOfRegistration {
-  return __timeOfRegistration;
-}
-
-- (void) setTimeOfRegistration: (int64_t) timeOfRegistration {
-  __timeOfRegistration = timeOfRegistration;
-  __timeOfRegistration_isset = YES;
-}
-
-- (BOOL) timeOfRegistrationIsSet {
-  return __timeOfRegistration_isset;
-}
-
-- (void) unsetTimeOfRegistration {
-  __timeOfRegistration_isset = NO;
-}
-
-- (NSString *) name {
-  return [[__name retain_stub] autorelease_stub];
-}
-
-- (void) setName: (NSString *) name {
-  [name retain_stub];
-  [__name release_stub];
-  __name = name;
-  __name_isset = YES;
-}
-
-- (BOOL) nameIsSet {
-  return __name_isset;
-}
-
-- (void) unsetName {
-  [__name release_stub];
-  __name = nil;
-  __name_isset = NO;
-}
-
-- (NSString *) id {
-  return [[__id retain_stub] autorelease_stub];
-}
-
-- (void) setId: (NSString *) id {
-  [id retain_stub];
-  [__id release_stub];
-  __id = id;
-  __id_isset = YES;
-}
-
-- (BOOL) idIsSet {
-  return __id_isset;
-}
-
-- (void) unsetId {
-  [__id release_stub];
-  __id = nil;
-  __id_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_Developer *fieldValue = [[BananaAuthentication_Developer alloc] init];
-          [fieldValue read: inProtocol];
-          [self setOwner: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_I64) {
-          int64_t fieldValue = [inProtocol readI64];
-          [self setTimeOfRegistration: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Service"];
-  if (__owner_isset) {
-    if (__owner != nil) {
-      [outProtocol writeFieldBeginWithName: @"owner" type: TType_STRUCT fieldID: 1];
-      [__owner write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__timeOfRegistration_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeOfRegistration" type: TType_I64 fieldID: 2];
-    [outProtocol writeI64: __timeOfRegistration];
-    [outProtocol writeFieldEnd];
-  }
-  if (__name_isset) {
-    if (__name != nil) {
-      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __name];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__id_isset) {
-    if (__id != nil) {
-      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __id];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Service("];
-  [ms appendString: @"owner:"];
-  [ms appendFormat: @"%@", __owner];
-  [ms appendString: @",timeOfRegistration:"];
-  [ms appendFormat: @"%qi", __timeOfRegistration];
-  [ms appendString: @",name:"];
-  [ms appendFormat: @"\"%@\"", __name];
-  [ms appendString: @",id:"];
-  [ms appendFormat: @"\"%@\"", __id];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation BananaAuthentication_ServiceToken
 
 - (id) init
@@ -1578,7 +936,7 @@
 
 @end
 
-@implementation BananaAuthentication_OauthToken
+@implementation BananaAuthentication_Password
 
 - (id) init
 {
@@ -1588,11 +946,494 @@
   return self;
 }
 
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken
+- (id) initWithEncryptedPassword: (NSString *) encryptedPassword
+{
+  self = [super init];
+  __encryptedPassword = [encryptedPassword retain_stub];
+  __encryptedPassword_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"encryptedPassword"])
+  {
+    __encryptedPassword = [[decoder decodeObjectForKey: @"encryptedPassword"] retain_stub];
+    __encryptedPassword_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__encryptedPassword_isset)
+  {
+    [encoder encodeObject: __encryptedPassword forKey: @"encryptedPassword"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __encryptedPassword_isset ? 2654435761 : 0;
+  if (__encryptedPassword_isset)
+  {
+    hash = (hash * 31) ^ [__encryptedPassword hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_Password class]]) {
+    return NO;
+  }
+  BananaAuthentication_Password *other = (BananaAuthentication_Password *)anObject;
+  if ((__encryptedPassword_isset != other->__encryptedPassword_isset) ||
+      (__encryptedPassword_isset && ((__encryptedPassword || other->__encryptedPassword) && ![__encryptedPassword isEqual:other->__encryptedPassword]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__encryptedPassword release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) encryptedPassword {
+  return [[__encryptedPassword retain_stub] autorelease_stub];
+}
+
+- (void) setEncryptedPassword: (NSString *) encryptedPassword {
+  [encryptedPassword retain_stub];
+  [__encryptedPassword release_stub];
+  __encryptedPassword = encryptedPassword;
+  __encryptedPassword_isset = YES;
+}
+
+- (BOOL) encryptedPasswordIsSet {
+  return __encryptedPassword_isset;
+}
+
+- (void) unsetEncryptedPassword {
+  [__encryptedPassword release_stub];
+  __encryptedPassword = nil;
+  __encryptedPassword_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEncryptedPassword: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Password"];
+  if (__encryptedPassword_isset) {
+    if (__encryptedPassword != nil) {
+      [outProtocol writeFieldBeginWithName: @"encryptedPassword" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __encryptedPassword];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Password("];
+  [ms appendString: @"encryptedPassword:"];
+  [ms appendFormat: @"\"%@\"", __encryptedPassword];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_AromaAccount
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage
+{
+  self = [super init];
+  __email = [email retain_stub];
+  __email_isset = YES;
+  __password = [password retain_stub];
+  __password_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __profileImage = [profileImage retain_stub];
+  __profileImage_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"email"])
+  {
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"password"])
+  {
+    __password = [[decoder decodeObjectForKey: @"password"] retain_stub];
+    __password_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"profileImage"])
+  {
+    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
+    __profileImage_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__email_isset)
+  {
+    [encoder encodeObject: __email forKey: @"email"];
+  }
+  if (__password_isset)
+  {
+    [encoder encodeObject: __password forKey: @"password"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__profileImage_isset)
+  {
+    [encoder encodeObject: __profileImage forKey: @"profileImage"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
+  {
+    hash = (hash * 31) ^ [__email hash];
+  }
+  hash = (hash * 31) ^ __password_isset ? 2654435761 : 0;
+  if (__password_isset)
+  {
+    hash = (hash * 31) ^ [__password hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
+  if (__profileImage_isset)
+  {
+    hash = (hash * 31) ^ [__profileImage hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaAuthentication_AromaAccount class]]) {
+    return NO;
+  }
+  BananaAuthentication_AromaAccount *other = (BananaAuthentication_AromaAccount *)anObject;
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
+    return NO;
+  }
+  if ((__password_isset != other->__password_isset) ||
+      (__password_isset && ((__password || other->__password) && ![__password isEqual:other->__password]))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__profileImage_isset != other->__profileImage_isset) ||
+      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__email release_stub];
+  [__password release_stub];
+  [__name release_stub];
+  [__profileImage release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
+}
+
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
+}
+
+- (BOOL) emailIsSet {
+  return __email_isset;
+}
+
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
+}
+
+- (BananaAuthentication_Password *) password {
+  return [[__password retain_stub] autorelease_stub];
+}
+
+- (void) setPassword: (BananaAuthentication_Password *) password {
+  [password retain_stub];
+  [__password release_stub];
+  __password = password;
+  __password_isset = YES;
+}
+
+- (BOOL) passwordIsSet {
+  return __password_isset;
+}
+
+- (void) unsetPassword {
+  [__password release_stub];
+  __password = nil;
+  __password_isset = NO;
+}
+
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (Banana_Image *) profileImage {
+  return [[__profileImage retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImage: (Banana_Image *) profileImage {
+  [profileImage retain_stub];
+  [__profileImage release_stub];
+  __profileImage = profileImage;
+  __profileImage_isset = YES;
+}
+
+- (BOOL) profileImageIsSet {
+  return __profileImage_isset;
+}
+
+- (void) unsetProfileImage {
+  [__profileImage release_stub];
+  __profileImage = nil;
+  __profileImage_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
+          [fieldValue read: inProtocol];
+          [self setPassword: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setProfileImage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"AromaAccount"];
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __email];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__password_isset) {
+    if (__password != nil) {
+      [outProtocol writeFieldBeginWithName: @"password" type: TType_STRUCT fieldID: 2];
+      [__password write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__profileImage_isset) {
+    if (__profileImage != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 4];
+      [__profileImage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AromaAccount("];
+  [ms appendString: @"email:"];
+  [ms appendFormat: @"\"%@\"", __email];
+  [ms appendString: @",password:"];
+  [ms appendFormat: @"%@", __password];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",profileImage:"];
+  [ms appendFormat: @"%@", __profileImage];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaAuthentication_Credentials
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount
 {
   self = [super init];
   __githubToken = [githubToken retain_stub];
   __githubToken_isset = YES;
+  __aromaAccount = [aromaAccount retain_stub];
+  __aromaAccount_isset = YES;
   return self;
 }
 
@@ -1604,6 +1445,11 @@
     __githubToken = [[decoder decodeObjectForKey: @"githubToken"] retain_stub];
     __githubToken_isset = YES;
   }
+  if ([decoder containsValueForKey: @"aromaAccount"])
+  {
+    __aromaAccount = [[decoder decodeObjectForKey: @"aromaAccount"] retain_stub];
+    __aromaAccount_isset = YES;
+  }
   return self;
 }
 
@@ -1612,6 +1458,10 @@
   if (__githubToken_isset)
   {
     [encoder encodeObject: __githubToken forKey: @"githubToken"];
+  }
+  if (__aromaAccount_isset)
+  {
+    [encoder encodeObject: __aromaAccount forKey: @"aromaAccount"];
   }
 }
 
@@ -1623,6 +1473,11 @@
   {
     hash = (hash * 31) ^ [__githubToken hash];
   }
+  hash = (hash * 31) ^ __aromaAccount_isset ? 2654435761 : 0;
+  if (__aromaAccount_isset)
+  {
+    hash = (hash * 31) ^ [__aromaAccount hash];
+  }
   return hash;
 }
 
@@ -1631,12 +1486,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_OauthToken class]]) {
+  if (![anObject isKindOfClass:[BananaAuthentication_Credentials class]]) {
     return NO;
   }
-  BananaAuthentication_OauthToken *other = (BananaAuthentication_OauthToken *)anObject;
+  BananaAuthentication_Credentials *other = (BananaAuthentication_Credentials *)anObject;
   if ((__githubToken_isset != other->__githubToken_isset) ||
       (__githubToken_isset && ((__githubToken || other->__githubToken) && ![__githubToken isEqual:other->__githubToken]))) {
+    return NO;
+  }
+  if ((__aromaAccount_isset != other->__aromaAccount_isset) ||
+      (__aromaAccount_isset && ((__aromaAccount || other->__aromaAccount) && ![__aromaAccount isEqual:other->__aromaAccount]))) {
     return NO;
   }
   return YES;
@@ -1645,6 +1504,7 @@
 - (void) dealloc
 {
   [__githubToken release_stub];
+  [__aromaAccount release_stub];
   [super dealloc_stub];
 }
 
@@ -1667,6 +1527,27 @@
   [__githubToken release_stub];
   __githubToken = nil;
   __githubToken_isset = NO;
+}
+
+- (BananaAuthentication_AromaAccount *) aromaAccount {
+  return [[__aromaAccount retain_stub] autorelease_stub];
+}
+
+- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount {
+  [aromaAccount retain_stub];
+  [__aromaAccount release_stub];
+  __aromaAccount = aromaAccount;
+  __aromaAccount_isset = YES;
+}
+
+- (BOOL) aromaAccountIsSet {
+  return __aromaAccount_isset;
+}
+
+- (void) unsetAromaAccount {
+  [__aromaAccount release_stub];
+  __aromaAccount = nil;
+  __aromaAccount_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1694,6 +1575,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_AromaAccount *fieldValue = [[BananaAuthentication_AromaAccount alloc] init];
+          [fieldValue read: inProtocol];
+          [self setAromaAccount: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1704,11 +1595,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"OauthToken"];
+  [outProtocol writeStructBeginWithName: @"Credentials"];
   if (__githubToken_isset) {
     if (__githubToken != nil) {
       [outProtocol writeFieldBeginWithName: @"githubToken" type: TType_STRUCT fieldID: 1];
       [__githubToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__aromaAccount_isset) {
+    if (__aromaAccount != nil) {
+      [outProtocol writeFieldBeginWithName: @"aromaAccount" type: TType_STRUCT fieldID: 2];
+      [__aromaAccount write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1721,18 +1619,24 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_OauthToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Credentials("];
   [ms appendString: @"githubToken:"];
   [ms appendFormat: @"%@", __githubToken];
+  [ms appendString: @",aromaAccount:"];
+  [ms appendFormat: @"%@", __aromaAccount];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
+static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
 
 @implementation BananaAuthentication_AuthenticationConstants
 + (void) initialize {
+}
++ (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY{
+  return BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 }
 @end
 

@@ -195,28 +195,25 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Authentication</td><td></td>
-<td><a href="#Struct_Developer">Developer</a><br/>
+<td><a href="#Struct_AromaAccount">AromaAccount</a><br/>
+<a href="#Struct_Credentials">Credentials</a><br/>
 <a href="#Struct_DeveloperToken">DeveloperToken</a><br/>
 <a href="#Struct_GithubToken">GithubToken</a><br/>
-<a href="#Struct_OauthToken">OauthToken</a><br/>
-<a href="#Enum_Role">Role</a><br/>
-<a href="#Struct_Service">Service</a><br/>
+<a href="#Struct_Password">Password</a><br/>
 <a href="#Struct_ServiceToken">ServiceToken</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
 </td>
-<td></code></td>
+<td><code><a href="#Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY">OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</a></code><br/>
+</code></td>
 </tr></table>
-<hr/><h2 id="Enumerations">Enumerations</h2>
-<div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
-<br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>DEV</code></td><td><code>1</code></td><td>
-</td></tr>
-<tr><td><code>OWNER</code></td><td><code>2</code></td><td>
-</td></tr>
-</table></div>
-<hr/><h2 id="Typedefs">Type declarations</h2>
+<hr/><h2 id="Constants">Constants</h2>
+<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
+<tr id="Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY"><td><code>OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</code></td><td><code>string</code></td><td><code>"dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM"</code></td></tr><tr><td colspan="3"><blockquote>Use this password to encrypt the password
+before sending it over the wire. Without it, passwords will
+not be understood by the service, and will be rejected.
+<br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
 </div>
@@ -227,19 +224,7 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_Developer">Struct: Developer</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>role</td><td><code><a href="#Enum_Role">Role</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Service">Struct: Service</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>owner</td><td><code><a href="#Struct_Developer">Developer</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ServiceToken">Struct: ServiceToken</h3>
+<div class="definition"><h3 id="Struct_ServiceToken">Struct: ServiceToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -256,7 +241,20 @@ code { line-height: 20px; }
 <tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>email</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>oauthToken</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_OauthToken">Union: OauthToken</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_Password">Struct: Password</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>encryptedPassword</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_AromaAccount">Struct: AromaAccount</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>password</td><td><code><a href="#Struct_Password">Password</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>profileImage</td><td><code><a href="Banana.html#Struct_Image">Banana.Image</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>An Account registered with our System.
+<br/></div><div class="definition"><h3 id="Struct_Credentials">Union: Credentials</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>githubToken</td><td><code><a href="#Struct_GithubToken">GithubToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div></div></body></html>
+<tr><td>2</td><td>aromaAccount</td><td><code><a href="#Struct_AromaAccount">AromaAccount</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>There are multiple ways to Sign In and Authenticate with
+the Banana Service.
+<br/></div></div></body></html>

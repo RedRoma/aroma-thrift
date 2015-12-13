@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfService: (NSString *) nameOfService
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -46,6 +46,8 @@
   __timeMessageSent_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
+  __nameOfService = [nameOfService retain_stub];
+  __nameOfService_isset = YES;
   return self;
 }
 
@@ -77,6 +79,11 @@
     __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
     __timeMessageReceived_isset = YES;
   }
+  if ([decoder containsValueForKey: @"nameOfService"])
+  {
+    __nameOfService = [[decoder decodeObjectForKey: @"nameOfService"] retain_stub];
+    __nameOfService_isset = YES;
+  }
   return self;
 }
 
@@ -101,6 +108,10 @@
   if (__timeMessageReceived_isset)
   {
     [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
+  }
+  if (__nameOfService_isset)
+  {
+    [encoder encodeObject: __nameOfService forKey: @"nameOfService"];
   }
 }
 
@@ -131,6 +142,11 @@
   if (__timeMessageReceived_isset)
   {
     hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
+  }
+  hash = (hash * 31) ^ __nameOfService_isset ? 2654435761 : 0;
+  if (__nameOfService_isset)
+  {
+    hash = (hash * 31) ^ [__nameOfService hash];
   }
   return hash;
 }
@@ -164,6 +180,10 @@
       (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
     return NO;
   }
+  if ((__nameOfService_isset != other->__nameOfService_isset) ||
+      (__nameOfService_isset && ((__nameOfService || other->__nameOfService) && ![__nameOfService isEqual:other->__nameOfService]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -171,6 +191,7 @@
 {
   [__messageId release_stub];
   [__body release_stub];
+  [__nameOfService release_stub];
   [super dealloc_stub];
 }
 
@@ -267,6 +288,27 @@
   __timeMessageReceived_isset = NO;
 }
 
+- (NSString *) nameOfService {
+  return [[__nameOfService retain_stub] autorelease_stub];
+}
+
+- (void) setNameOfService: (NSString *) nameOfService {
+  [nameOfService retain_stub];
+  [__nameOfService release_stub];
+  __nameOfService = nameOfService;
+  __nameOfService_isset = YES;
+}
+
+- (BOOL) nameOfServiceIsSet {
+  return __nameOfService_isset;
+}
+
+- (void) unsetNameOfService {
+  [__nameOfService release_stub];
+  __nameOfService = nil;
+  __nameOfService_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -322,6 +364,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setNameOfService: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -362,6 +412,13 @@
     [outProtocol writeI64: __timeMessageReceived];
     [outProtocol writeFieldEnd];
   }
+  if (__nameOfService_isset) {
+    if (__nameOfService != nil) {
+      [outProtocol writeFieldBeginWithName: @"nameOfService" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __nameOfService];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -382,6 +439,8 @@
   [ms appendFormat: @"%qi", __timeMessageSent];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
+  [ms appendString: @",nameOfService:"];
+  [ms appendFormat: @"\"%@\"", __nameOfService];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1051,6 +1110,700 @@
   [ms appendFormat: @"\"%@\"", __data];
   [ms appendString: @",dimension:"];
   [ms appendFormat: @"%@", __dimension];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation Banana_Developer
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role
+{
+  self = [super init];
+  __email = [email retain_stub];
+  __email_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __username = [username retain_stub];
+  __username_isset = YES;
+  __role = role;
+  __role_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"email"])
+  {
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"username"])
+  {
+    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
+    __username_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"role"])
+  {
+    __role = [decoder decodeIntForKey: @"role"];
+    __role_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__email_isset)
+  {
+    [encoder encodeObject: __email forKey: @"email"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__username_isset)
+  {
+    [encoder encodeObject: __username forKey: @"username"];
+  }
+  if (__role_isset)
+  {
+    [encoder encodeInt: __role forKey: @"role"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
+  {
+    hash = (hash * 31) ^ [__email hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
+  if (__username_isset)
+  {
+    hash = (hash * 31) ^ [__username hash];
+  }
+  hash = (hash * 31) ^ __role_isset ? 2654435761 : 0;
+  if (__role_isset)
+  {
+    hash = (hash * 31) ^ [@(__role) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_Developer class]]) {
+    return NO;
+  }
+  Banana_Developer *other = (Banana_Developer *)anObject;
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__username_isset != other->__username_isset) ||
+      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+    return NO;
+  }
+  if ((__role_isset != other->__role_isset) ||
+      (__role_isset && (__role != other->__role))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__email release_stub];
+  [__name release_stub];
+  [__username release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
+}
+
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
+}
+
+- (BOOL) emailIsSet {
+  return __email_isset;
+}
+
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
+}
+
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (NSString *) username {
+  return [[__username retain_stub] autorelease_stub];
+}
+
+- (void) setUsername: (NSString *) username {
+  [username retain_stub];
+  [__username release_stub];
+  __username = username;
+  __username_isset = YES;
+}
+
+- (BOOL) usernameIsSet {
+  return __username_isset;
+}
+
+- (void) unsetUsername {
+  [__username release_stub];
+  __username = nil;
+  __username_isset = NO;
+}
+
+- (int) role {
+  return __role;
+}
+
+- (void) setRole: (int) role {
+  __role = role;
+  __role_isset = YES;
+}
+
+- (BOOL) roleIsSet {
+  return __role_isset;
+}
+
+- (void) unsetRole {
+  __role_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setRole: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Developer"];
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __email];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__username_isset) {
+    if (__username != nil) {
+      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __username];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__role_isset) {
+    [outProtocol writeFieldBeginWithName: @"role" type: TType_I32 fieldID: 4];
+    [outProtocol writeI32: __role];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Developer("];
+  [ms appendString: @"email:"];
+  [ms appendFormat: @"\"%@\"", __email];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",username:"];
+  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @",role:"];
+  [ms appendFormat: @"%i", __role];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation Banana_Service
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithOwner: (Banana_Developer *) owner timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent
+{
+  self = [super init];
+  __owner = [owner retain_stub];
+  __owner_isset = YES;
+  __timeOfRegistration = timeOfRegistration;
+  __timeOfRegistration_isset = YES;
+  __name = [name retain_stub];
+  __name_isset = YES;
+  __id = [id retain_stub];
+  __id_isset = YES;
+  __totalMessagesSent = totalMessagesSent;
+  __totalMessagesSent_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"owner"])
+  {
+    __owner = [[decoder decodeObjectForKey: @"owner"] retain_stub];
+    __owner_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfRegistration"])
+  {
+    __timeOfRegistration = [decoder decodeInt64ForKey: @"timeOfRegistration"];
+    __timeOfRegistration_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"name"])
+  {
+    __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
+    __name_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"id"])
+  {
+    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
+    __id_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"totalMessagesSent"])
+  {
+    __totalMessagesSent = [decoder decodeInt64ForKey: @"totalMessagesSent"];
+    __totalMessagesSent_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__owner_isset)
+  {
+    [encoder encodeObject: __owner forKey: @"owner"];
+  }
+  if (__timeOfRegistration_isset)
+  {
+    [encoder encodeInt64: __timeOfRegistration forKey: @"timeOfRegistration"];
+  }
+  if (__name_isset)
+  {
+    [encoder encodeObject: __name forKey: @"name"];
+  }
+  if (__id_isset)
+  {
+    [encoder encodeObject: __id forKey: @"id"];
+  }
+  if (__totalMessagesSent_isset)
+  {
+    [encoder encodeInt64: __totalMessagesSent forKey: @"totalMessagesSent"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __owner_isset ? 2654435761 : 0;
+  if (__owner_isset)
+  {
+    hash = (hash * 31) ^ [__owner hash];
+  }
+  hash = (hash * 31) ^ __timeOfRegistration_isset ? 2654435761 : 0;
+  if (__timeOfRegistration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfRegistration) hash];
+  }
+  hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
+  if (__name_isset)
+  {
+    hash = (hash * 31) ^ [__name hash];
+  }
+  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
+  if (__id_isset)
+  {
+    hash = (hash * 31) ^ [__id hash];
+  }
+  hash = (hash * 31) ^ __totalMessagesSent_isset ? 2654435761 : 0;
+  if (__totalMessagesSent_isset)
+  {
+    hash = (hash * 31) ^ [@(__totalMessagesSent) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_Service class]]) {
+    return NO;
+  }
+  Banana_Service *other = (Banana_Service *)anObject;
+  if ((__owner_isset != other->__owner_isset) ||
+      (__owner_isset && ((__owner || other->__owner) && ![__owner isEqual:other->__owner]))) {
+    return NO;
+  }
+  if ((__timeOfRegistration_isset != other->__timeOfRegistration_isset) ||
+      (__timeOfRegistration_isset && (__timeOfRegistration != other->__timeOfRegistration))) {
+    return NO;
+  }
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+    return NO;
+  }
+  if ((__id_isset != other->__id_isset) ||
+      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+    return NO;
+  }
+  if ((__totalMessagesSent_isset != other->__totalMessagesSent_isset) ||
+      (__totalMessagesSent_isset && (__totalMessagesSent != other->__totalMessagesSent))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__owner release_stub];
+  [__name release_stub];
+  [__id release_stub];
+  [super dealloc_stub];
+}
+
+- (Banana_Developer *) owner {
+  return [[__owner retain_stub] autorelease_stub];
+}
+
+- (void) setOwner: (Banana_Developer *) owner {
+  [owner retain_stub];
+  [__owner release_stub];
+  __owner = owner;
+  __owner_isset = YES;
+}
+
+- (BOOL) ownerIsSet {
+  return __owner_isset;
+}
+
+- (void) unsetOwner {
+  [__owner release_stub];
+  __owner = nil;
+  __owner_isset = NO;
+}
+
+- (int64_t) timeOfRegistration {
+  return __timeOfRegistration;
+}
+
+- (void) setTimeOfRegistration: (int64_t) timeOfRegistration {
+  __timeOfRegistration = timeOfRegistration;
+  __timeOfRegistration_isset = YES;
+}
+
+- (BOOL) timeOfRegistrationIsSet {
+  return __timeOfRegistration_isset;
+}
+
+- (void) unsetTimeOfRegistration {
+  __timeOfRegistration_isset = NO;
+}
+
+- (NSString *) name {
+  return [[__name retain_stub] autorelease_stub];
+}
+
+- (void) setName: (NSString *) name {
+  [name retain_stub];
+  [__name release_stub];
+  __name = name;
+  __name_isset = YES;
+}
+
+- (BOOL) nameIsSet {
+  return __name_isset;
+}
+
+- (void) unsetName {
+  [__name release_stub];
+  __name = nil;
+  __name_isset = NO;
+}
+
+- (NSString *) id {
+  return [[__id retain_stub] autorelease_stub];
+}
+
+- (void) setId: (NSString *) id {
+  [id retain_stub];
+  [__id release_stub];
+  __id = id;
+  __id_isset = YES;
+}
+
+- (BOOL) idIsSet {
+  return __id_isset;
+}
+
+- (void) unsetId {
+  [__id release_stub];
+  __id = nil;
+  __id_isset = NO;
+}
+
+- (int64_t) totalMessagesSent {
+  return __totalMessagesSent;
+}
+
+- (void) setTotalMessagesSent: (int64_t) totalMessagesSent {
+  __totalMessagesSent = totalMessagesSent;
+  __totalMessagesSent_isset = YES;
+}
+
+- (BOOL) totalMessagesSentIsSet {
+  return __totalMessagesSent_isset;
+}
+
+- (void) unsetTotalMessagesSent {
+  __totalMessagesSent_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
+          [fieldValue read: inProtocol];
+          [self setOwner: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfRegistration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTotalMessagesSent: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Service"];
+  if (__owner_isset) {
+    if (__owner != nil) {
+      [outProtocol writeFieldBeginWithName: @"owner" type: TType_STRUCT fieldID: 1];
+      [__owner write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfRegistration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfRegistration" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __timeOfRegistration];
+    [outProtocol writeFieldEnd];
+  }
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__id_isset) {
+    if (__id != nil) {
+      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __id];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__totalMessagesSent_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalMessagesSent" type: TType_I64 fieldID: 5];
+    [outProtocol writeI64: __totalMessagesSent];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Service("];
+  [ms appendString: @"owner:"];
+  [ms appendFormat: @"%@", __owner];
+  [ms appendString: @",timeOfRegistration:"];
+  [ms appendFormat: @"%qi", __timeOfRegistration];
+  [ms appendString: @",name:"];
+  [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",id:"];
+  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @",totalMessagesSent:"];
+  [ms appendFormat: @"%qi", __totalMessagesSent];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -10,13 +10,13 @@ namespace cpp   aroma.banana.thrift.notifications
 include "Authentication.thrift"
 include "Banana.thrift"
 
+typedef Authentication.ServiceToken ServiceToken
+
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
-
-typedef Authentication.Developer Developer
-typedef Authentication.Service Service
-typedef Authentication.ServiceToken ServiceToken
+typedef Banana.Developer Developer
+typedef Banana.Service Service
 
 struct HealthCheckFailed
 {

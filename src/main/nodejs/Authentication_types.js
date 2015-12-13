@@ -11,207 +11,6 @@ var Banana_ttypes = require('./Banana_types')
 
 
 var ttypes = module.exports = {};
-ttypes.Role = {
-  'DEV' : 1,
-  'OWNER' : 2
-};
-Developer = module.exports.Developer = function(args) {
-  this.email = null;
-  this.name = null;
-  this.username = null;
-  this.role = null;
-  if (args) {
-    if (args.email !== undefined && args.email !== null) {
-      this.email = args.email;
-    }
-    if (args.name !== undefined && args.name !== null) {
-      this.name = args.name;
-    }
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
-    }
-    if (args.role !== undefined && args.role !== null) {
-      this.role = args.role;
-    }
-  }
-};
-Developer.prototype = {};
-Developer.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.email = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.name = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.I32) {
-        this.role = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-Developer.prototype.write = function(output) {
-  output.writeStructBegin('Developer');
-  if (this.email !== null && this.email !== undefined) {
-    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
-    output.writeString(this.email);
-    output.writeFieldEnd();
-  }
-  if (this.name !== null && this.name !== undefined) {
-    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
-    output.writeString(this.name);
-    output.writeFieldEnd();
-  }
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
-    output.writeString(this.username);
-    output.writeFieldEnd();
-  }
-  if (this.role !== null && this.role !== undefined) {
-    output.writeFieldBegin('role', Thrift.Type.I32, 4);
-    output.writeI32(this.role);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-Service = module.exports.Service = function(args) {
-  this.owner = null;
-  this.timeOfRegistration = null;
-  this.name = null;
-  this.id = null;
-  if (args) {
-    if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new ttypes.Developer(args.owner);
-    }
-    if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
-      this.timeOfRegistration = args.timeOfRegistration;
-    }
-    if (args.name !== undefined && args.name !== null) {
-      this.name = args.name;
-    }
-    if (args.id !== undefined && args.id !== null) {
-      this.id = args.id;
-    }
-  }
-};
-Service.prototype = {};
-Service.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new ttypes.Developer();
-        this.owner.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.I64) {
-        this.timeOfRegistration = input.readI64();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.name = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.id = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-Service.prototype.write = function(output) {
-  output.writeStructBegin('Service');
-  if (this.owner !== null && this.owner !== undefined) {
-    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 1);
-    this.owner.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.timeOfRegistration !== null && this.timeOfRegistration !== undefined) {
-    output.writeFieldBegin('timeOfRegistration', Thrift.Type.I64, 2);
-    output.writeI64(this.timeOfRegistration);
-    output.writeFieldEnd();
-  }
-  if (this.name !== null && this.name !== undefined) {
-    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
-    output.writeString(this.name);
-    output.writeFieldEnd();
-  }
-  if (this.id !== null && this.id !== undefined) {
-    output.writeFieldBegin('id', Thrift.Type.STRING, 4);
-    output.writeString(this.id);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 ServiceToken = module.exports.ServiceToken = function(args) {
   this.id = null;
   this.serviceName = null;
@@ -492,16 +291,173 @@ GithubToken.prototype.write = function(output) {
   return;
 };
 
-OauthToken = module.exports.OauthToken = function(args) {
+Password = module.exports.Password = function(args) {
+  this.encryptedPassword = null;
+  if (args) {
+    if (args.encryptedPassword !== undefined && args.encryptedPassword !== null) {
+      this.encryptedPassword = args.encryptedPassword;
+    }
+  }
+};
+Password.prototype = {};
+Password.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.encryptedPassword = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Password.prototype.write = function(output) {
+  output.writeStructBegin('Password');
+  if (this.encryptedPassword !== null && this.encryptedPassword !== undefined) {
+    output.writeFieldBegin('encryptedPassword', Thrift.Type.STRING, 1);
+    output.writeString(this.encryptedPassword);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+AromaAccount = module.exports.AromaAccount = function(args) {
+  this.email = null;
+  this.password = null;
+  this.name = null;
+  this.profileImage = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.password !== undefined && args.password !== null) {
+      this.password = new ttypes.Password(args.password);
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Banana_ttypes.Image(args.profileImage);
+    }
+  }
+};
+AromaAccount.prototype = {};
+AromaAccount.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.password = new ttypes.Password();
+        this.password.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Banana_ttypes.Image();
+        this.profileImage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+AromaAccount.prototype.write = function(output) {
+  output.writeStructBegin('AromaAccount');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.password !== null && this.password !== undefined) {
+    output.writeFieldBegin('password', Thrift.Type.STRUCT, 2);
+    this.password.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 4);
+    this.profileImage.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Credentials = module.exports.Credentials = function(args) {
   this.githubToken = null;
+  this.aromaAccount = null;
   if (args) {
     if (args.githubToken !== undefined && args.githubToken !== null) {
       this.githubToken = new ttypes.GithubToken(args.githubToken);
     }
+    if (args.aromaAccount !== undefined && args.aromaAccount !== null) {
+      this.aromaAccount = new ttypes.AromaAccount(args.aromaAccount);
+    }
   }
 };
-OauthToken.prototype = {};
-OauthToken.prototype.read = function(input) {
+Credentials.prototype = {};
+Credentials.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -522,9 +478,14 @@ OauthToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.aromaAccount = new ttypes.AromaAccount();
+        this.aromaAccount.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -534,11 +495,16 @@ OauthToken.prototype.read = function(input) {
   return;
 };
 
-OauthToken.prototype.write = function(output) {
-  output.writeStructBegin('OauthToken');
+Credentials.prototype.write = function(output) {
+  output.writeStructBegin('Credentials');
   if (this.githubToken !== null && this.githubToken !== undefined) {
     output.writeFieldBegin('githubToken', Thrift.Type.STRUCT, 1);
     this.githubToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.aromaAccount !== null && this.aromaAccount !== undefined) {
+    output.writeFieldBegin('aromaAccount', Thrift.Type.STRUCT, 2);
+    this.aromaAccount.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -546,3 +512,4 @@ OauthToken.prototype.write = function(output) {
   return;
 };
 
+ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM';

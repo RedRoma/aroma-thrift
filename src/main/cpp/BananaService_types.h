@@ -31,23 +31,23 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::Developer Developer;
-
 typedef class  ::aroma::banana::thrift::authentication::DeveloperToken DeveloperToken;
-
-typedef class  ::aroma::banana::thrift::authentication::Service Service;
 
 typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
-typedef class  ::aroma::banana::thrift::Dimension Dimension;
-
 typedef class  ::aroma::banana::thrift::Image Image;
+
+typedef class  ::aroma::banana::thrift::Developer Developer;
+
+typedef class  ::aroma::banana::thrift::Service Service;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
+typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
+
 typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
 
-typedef class  ::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
+typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
@@ -59,11 +59,19 @@ typedef class  ::aroma::banana::thrift::exceptions::ServiceAlreadyRegisteredExce
 
 typedef class  ::aroma::banana::thrift::exceptions::ServiceDoesNotExistException ServiceDoesNotExistException;
 
+typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+
+typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
+
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class SignInRequest;
 
 class SignInResponse;
+
+class SignUpRequest;
+
+class SignUpResponse;
 
 class ProvisionServiceRequest;
 
@@ -99,6 +107,18 @@ class HideAllMessagesRequest;
 
 class HideAllMessagesResponse;
 
+class SaveChannelRequest;
+
+class SaveChannelResponse;
+
+class RemoveSavedChannelRequest;
+
+class RemoveSavedChannelResponse;
+
+class SnoozeChannelRequest;
+
+class SnoozeChannelResponse;
+
 class GetServiceInfoRequest;
 
 class GetServiceInfoResponse;
@@ -111,13 +131,17 @@ class GetServiceSubscribersRequest;
 
 class GetServiceSubscribersResponse;
 
+class GetMySavedChannelsRequest;
+
+class GetMySavedChannelsResponse;
+
 class SendMessageRequest;
 
 class SendMessageResponse;
 
 typedef struct _SignInRequest__isset {
-  _SignInRequest__isset() : oathToken(false), username(false) {}
-  bool oathToken :1;
+  _SignInRequest__isset() : credentials(false), username(false) {}
+  bool credentials :1;
   bool username :1;
 } _SignInRequest__isset;
 
@@ -130,18 +154,18 @@ class SignInRequest {
   }
 
   virtual ~SignInRequest() throw();
-   ::aroma::banana::thrift::authentication::OauthToken oathToken;
+   ::aroma::banana::thrift::authentication::Credentials credentials;
   std::string username;
 
   _SignInRequest__isset __isset;
 
-  void __set_oathToken(const  ::aroma::banana::thrift::authentication::OauthToken& val);
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
 
   void __set_username(const std::string& val);
 
   bool operator == (const SignInRequest & rhs) const
   {
-    if (!(oathToken == rhs.oathToken))
+    if (!(credentials == rhs.credentials))
       return false;
     if (!(username == rhs.username))
       return false;
@@ -208,6 +232,122 @@ class SignInResponse {
 void swap(SignInResponse &a, SignInResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpRequest__isset {
+  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false), credentials(false) {}
+  bool email :1;
+  bool name :1;
+  bool username :1;
+  bool organization :1;
+  bool credentials :1;
+} _SignUpRequest__isset;
+
+class SignUpRequest {
+ public:
+
+  SignUpRequest(const SignUpRequest&);
+  SignUpRequest& operator=(const SignUpRequest&);
+  SignUpRequest() : email(), name(), username(), organization() {
+  }
+
+  virtual ~SignUpRequest() throw();
+  std::string email;
+  std::string name;
+  std::string username;
+  std::string organization;
+   ::aroma::banana::thrift::authentication::Credentials credentials;
+
+  _SignUpRequest__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_username(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+
+  bool operator == (const SignUpRequest & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    if (!(credentials == rhs.credentials))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpRequest &a, SignUpRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpResponse__isset {
+  _SignUpResponse__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _SignUpResponse__isset;
+
+class SignUpResponse {
+ public:
+
+  SignUpResponse(const SignUpResponse&);
+  SignUpResponse& operator=(const SignUpResponse&);
+  SignUpResponse() {
+  }
+
+  virtual ~SignUpResponse() throw();
+  DeveloperToken developerToken;
+
+  _SignUpResponse__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const SignUpResponse & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpResponse &a, SignUpResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 {
   obj.printTo(out);
   return out;
@@ -441,13 +581,13 @@ class SubscribeToServiceResponse {
 
   virtual ~SubscribeToServiceResponse() throw();
   std::string message;
-   ::aroma::banana::thrift::channels::BananaChannel channel;
+  BananaChannel channel;
 
   _SubscribeToServiceResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_channel(const  ::aroma::banana::thrift::channels::BananaChannel& val);
+  void __set_channel(const BananaChannel& val);
 
   bool operator == (const SubscribeToServiceResponse & rhs) const
   {
@@ -1122,6 +1262,316 @@ inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesResponse
   return out;
 }
 
+typedef struct _SaveChannelRequest__isset {
+  _SaveChannelRequest__isset() : developerToken(false), channel(false) {}
+  bool developerToken :1;
+  bool channel :1;
+} _SaveChannelRequest__isset;
+
+class SaveChannelRequest {
+ public:
+
+  SaveChannelRequest(const SaveChannelRequest&);
+  SaveChannelRequest& operator=(const SaveChannelRequest&);
+  SaveChannelRequest() {
+  }
+
+  virtual ~SaveChannelRequest() throw();
+  DeveloperToken developerToken;
+  BananaChannel channel;
+
+  _SaveChannelRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SaveChannelRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SaveChannelRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SaveChannelRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SaveChannelRequest &a, SaveChannelRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SaveChannelRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SaveChannelResponse__isset {
+  _SaveChannelResponse__isset() : message(false), channel(false) {}
+  bool message :1;
+  bool channel :1;
+} _SaveChannelResponse__isset;
+
+class SaveChannelResponse {
+ public:
+
+  SaveChannelResponse(const SaveChannelResponse&);
+  SaveChannelResponse& operator=(const SaveChannelResponse&);
+  SaveChannelResponse() : message() {
+  }
+
+  virtual ~SaveChannelResponse() throw();
+  std::string message;
+  BananaChannel channel;
+
+  _SaveChannelResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SaveChannelResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    if (__isset.channel != rhs.__isset.channel)
+      return false;
+    else if (__isset.channel && !(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SaveChannelResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SaveChannelResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SaveChannelResponse &a, SaveChannelResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RemoveSavedChannelRequest__isset {
+  _RemoveSavedChannelRequest__isset() : developerToken(false), channel(false) {}
+  bool developerToken :1;
+  bool channel :1;
+} _RemoveSavedChannelRequest__isset;
+
+class RemoveSavedChannelRequest {
+ public:
+
+  RemoveSavedChannelRequest(const RemoveSavedChannelRequest&);
+  RemoveSavedChannelRequest& operator=(const RemoveSavedChannelRequest&);
+  RemoveSavedChannelRequest() {
+  }
+
+  virtual ~RemoveSavedChannelRequest() throw();
+  DeveloperToken developerToken;
+  BananaChannel channel;
+
+  _RemoveSavedChannelRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const RemoveSavedChannelRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const RemoveSavedChannelRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RemoveSavedChannelRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RemoveSavedChannelRequest &a, RemoveSavedChannelRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RemoveSavedChannelResponse__isset {
+  _RemoveSavedChannelResponse__isset() : message(false), channel(false) {}
+  bool message :1;
+  bool channel :1;
+} _RemoveSavedChannelResponse__isset;
+
+class RemoveSavedChannelResponse {
+ public:
+
+  RemoveSavedChannelResponse(const RemoveSavedChannelResponse&);
+  RemoveSavedChannelResponse& operator=(const RemoveSavedChannelResponse&);
+  RemoveSavedChannelResponse() : message() {
+  }
+
+  virtual ~RemoveSavedChannelResponse() throw();
+  std::string message;
+  BananaChannel channel;
+
+  _RemoveSavedChannelResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const RemoveSavedChannelResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    if (__isset.channel != rhs.__isset.channel)
+      return false;
+    else if (__isset.channel && !(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const RemoveSavedChannelResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RemoveSavedChannelResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RemoveSavedChannelResponse &a, RemoveSavedChannelResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SnoozeChannelRequest__isset {
+  _SnoozeChannelRequest__isset() : developerToken(false), channel(false) {}
+  bool developerToken :1;
+  bool channel :1;
+} _SnoozeChannelRequest__isset;
+
+class SnoozeChannelRequest {
+ public:
+
+  SnoozeChannelRequest(const SnoozeChannelRequest&);
+  SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
+  SnoozeChannelRequest() {
+  }
+
+  virtual ~SnoozeChannelRequest() throw();
+  DeveloperToken developerToken;
+  BananaChannel channel;
+
+  _SnoozeChannelRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SnoozeChannelRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    if (!(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SnoozeChannelRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnoozeChannelRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnoozeChannelRequest &a, SnoozeChannelRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SnoozeChannelResponse__isset {
+  _SnoozeChannelResponse__isset() : message(false) {}
+  bool message :1;
+} _SnoozeChannelResponse__isset;
+
+class SnoozeChannelResponse {
+ public:
+
+  SnoozeChannelResponse(const SnoozeChannelResponse&);
+  SnoozeChannelResponse& operator=(const SnoozeChannelResponse&);
+  SnoozeChannelResponse() : message() {
+  }
+
+  virtual ~SnoozeChannelResponse() throw();
+  std::string message;
+
+  _SnoozeChannelResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const SnoozeChannelResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const SnoozeChannelResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SnoozeChannelResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SnoozeChannelResponse &a, SnoozeChannelResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _GetServiceInfoRequest__isset {
   _GetServiceInfoRequest__isset() : developerToken(false), serviceId(false) {}
   bool developerToken :1;
@@ -1427,6 +1877,98 @@ class GetServiceSubscribersResponse {
 void swap(GetServiceSubscribersResponse &a, GetServiceSubscribersResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetServiceSubscribersResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMySavedChannelsRequest__isset {
+  _GetMySavedChannelsRequest__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _GetMySavedChannelsRequest__isset;
+
+class GetMySavedChannelsRequest {
+ public:
+
+  GetMySavedChannelsRequest(const GetMySavedChannelsRequest&);
+  GetMySavedChannelsRequest& operator=(const GetMySavedChannelsRequest&);
+  GetMySavedChannelsRequest() {
+  }
+
+  virtual ~GetMySavedChannelsRequest() throw();
+  DeveloperToken developerToken;
+
+  _GetMySavedChannelsRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const GetMySavedChannelsRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMySavedChannelsRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMySavedChannelsRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMySavedChannelsRequest &a, GetMySavedChannelsRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMySavedChannelsRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMySavedChannelsResponse__isset {
+  _GetMySavedChannelsResponse__isset() : channels(false) {}
+  bool channels :1;
+} _GetMySavedChannelsResponse__isset;
+
+class GetMySavedChannelsResponse {
+ public:
+
+  GetMySavedChannelsResponse(const GetMySavedChannelsResponse&);
+  GetMySavedChannelsResponse& operator=(const GetMySavedChannelsResponse&);
+  GetMySavedChannelsResponse() {
+  }
+
+  virtual ~GetMySavedChannelsResponse() throw();
+  std::vector<BananaChannel>  channels;
+
+  _GetMySavedChannelsResponse__isset __isset;
+
+  void __set_channels(const std::vector<BananaChannel> & val);
+
+  bool operator == (const GetMySavedChannelsResponse & rhs) const
+  {
+    if (!(channels == rhs.channels))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMySavedChannelsResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMySavedChannelsResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMySavedChannelsResponse &a, GetMySavedChannelsResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMySavedChannelsResponse& obj)
 {
   obj.printTo(out);
   return out;

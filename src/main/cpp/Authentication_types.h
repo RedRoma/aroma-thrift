@@ -20,24 +20,11 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
-struct Role {
-  enum type {
-    DEV = 1,
-    OWNER = 2
-  };
-};
-
-extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
-
 typedef  ::aroma::banana::thrift::int int;
 
 typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
-
-class Developer;
-
-class Service;
 
 class ServiceToken;
 
@@ -45,139 +32,11 @@ class DeveloperToken;
 
 class GithubToken;
 
-class OauthToken;
+class Password;
 
-typedef struct _Developer__isset {
-  _Developer__isset() : email(false), name(false), username(false), role(false) {}
-  bool email :1;
-  bool name :1;
-  bool username :1;
-  bool role :1;
-} _Developer__isset;
+class AromaAccount;
 
-class Developer {
- public:
-
-  Developer(const Developer&);
-  Developer& operator=(const Developer&);
-  Developer() : email(), name(), username(), role((Role::type)0) {
-  }
-
-  virtual ~Developer() throw();
-  std::string email;
-  std::string name;
-  std::string username;
-  Role::type role;
-
-  _Developer__isset __isset;
-
-  void __set_email(const std::string& val);
-
-  void __set_name(const std::string& val);
-
-  void __set_username(const std::string& val);
-
-  void __set_role(const Role::type val);
-
-  bool operator == (const Developer & rhs) const
-  {
-    if (!(email == rhs.email))
-      return false;
-    if (__isset.name != rhs.__isset.name)
-      return false;
-    else if (__isset.name && !(name == rhs.name))
-      return false;
-    if (__isset.username != rhs.__isset.username)
-      return false;
-    else if (__isset.username && !(username == rhs.username))
-      return false;
-    if (!(role == rhs.role))
-      return false;
-    return true;
-  }
-  bool operator != (const Developer &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Developer & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Developer &a, Developer &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _Service__isset {
-  _Service__isset() : owner(false), timeOfRegistration(false), name(false), id(false) {}
-  bool owner :1;
-  bool timeOfRegistration :1;
-  bool name :1;
-  bool id :1;
-} _Service__isset;
-
-class Service {
- public:
-
-  Service(const Service&);
-  Service& operator=(const Service&);
-  Service() : timeOfRegistration(0), name(), id() {
-  }
-
-  virtual ~Service() throw();
-  Developer owner;
-  timestamp timeOfRegistration;
-  std::string name;
-  std::string id;
-
-  _Service__isset __isset;
-
-  void __set_owner(const Developer& val);
-
-  void __set_timeOfRegistration(const timestamp val);
-
-  void __set_name(const std::string& val);
-
-  void __set_id(const std::string& val);
-
-  bool operator == (const Service & rhs) const
-  {
-    if (!(owner == rhs.owner))
-      return false;
-    if (!(timeOfRegistration == rhs.timeOfRegistration))
-      return false;
-    if (!(name == rhs.name))
-      return false;
-    if (!(id == rhs.id))
-      return false;
-    return true;
-  }
-  bool operator != (const Service &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Service & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Service &a, Service &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Service& obj)
-{
-  obj.printTo(out);
-  return out;
-}
+class Credentials;
 
 typedef struct _ServiceToken__isset {
   _ServiceToken__isset() : id(false), serviceName(false), organization(false), timeOfExpiration(false) {}
@@ -372,37 +231,37 @@ inline std::ostream& operator<<(std::ostream& out, const GithubToken& obj)
   return out;
 }
 
-typedef struct _OauthToken__isset {
-  _OauthToken__isset() : githubToken(false) {}
-  bool githubToken :1;
-} _OauthToken__isset;
+typedef struct _Password__isset {
+  _Password__isset() : encryptedPassword(false) {}
+  bool encryptedPassword :1;
+} _Password__isset;
 
-class OauthToken {
+class Password {
  public:
 
-  OauthToken(const OauthToken&);
-  OauthToken& operator=(const OauthToken&);
-  OauthToken() {
+  Password(const Password&);
+  Password& operator=(const Password&);
+  Password() : encryptedPassword() {
   }
 
-  virtual ~OauthToken() throw();
-  GithubToken githubToken;
+  virtual ~Password() throw();
+  std::string encryptedPassword;
 
-  _OauthToken__isset __isset;
+  _Password__isset __isset;
 
-  void __set_githubToken(const GithubToken& val);
+  void __set_encryptedPassword(const std::string& val);
 
-  bool operator == (const OauthToken & rhs) const
+  bool operator == (const Password & rhs) const
   {
-    if (!(githubToken == rhs.githubToken))
+    if (!(encryptedPassword == rhs.encryptedPassword))
       return false;
     return true;
   }
-  bool operator != (const OauthToken &rhs) const {
+  bool operator != (const Password &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const OauthToken & ) const;
+  bool operator < (const Password & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -410,9 +269,125 @@ class OauthToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(OauthToken &a, OauthToken &b);
+void swap(Password &a, Password &b);
 
-inline std::ostream& operator<<(std::ostream& out, const OauthToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const Password& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _AromaAccount__isset {
+  _AromaAccount__isset() : email(false), password(false), name(false), profileImage(false) {}
+  bool email :1;
+  bool password :1;
+  bool name :1;
+  bool profileImage :1;
+} _AromaAccount__isset;
+
+class AromaAccount {
+ public:
+
+  AromaAccount(const AromaAccount&);
+  AromaAccount& operator=(const AromaAccount&);
+  AromaAccount() : email(), name() {
+  }
+
+  virtual ~AromaAccount() throw();
+  std::string email;
+  Password password;
+  std::string name;
+   ::aroma::banana::thrift::Image profileImage;
+
+  _AromaAccount__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_password(const Password& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_profileImage(const  ::aroma::banana::thrift::Image& val);
+
+  bool operator == (const AromaAccount & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (!(password == rhs.password))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(profileImage == rhs.profileImage))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaAccount &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaAccount & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(AromaAccount &a, AromaAccount &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AromaAccount& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Credentials__isset {
+  _Credentials__isset() : githubToken(false), aromaAccount(false) {}
+  bool githubToken :1;
+  bool aromaAccount :1;
+} _Credentials__isset;
+
+class Credentials {
+ public:
+
+  Credentials(const Credentials&);
+  Credentials& operator=(const Credentials&);
+  Credentials() {
+  }
+
+  virtual ~Credentials() throw();
+  GithubToken githubToken;
+  AromaAccount aromaAccount;
+
+  _Credentials__isset __isset;
+
+  void __set_githubToken(const GithubToken& val);
+
+  void __set_aromaAccount(const AromaAccount& val);
+
+  bool operator == (const Credentials & rhs) const
+  {
+    if (!(githubToken == rhs.githubToken))
+      return false;
+    if (!(aromaAccount == rhs.aromaAccount))
+      return false;
+    return true;
+  }
+  bool operator != (const Credentials &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Credentials & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Credentials &a, Credentials &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Credentials& obj)
 {
   obj.printTo(out);
   return out;

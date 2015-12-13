@@ -196,26 +196,36 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
 <li><a href="#Fn_BananaService_getServiceInfo">getServiceInfo</a></li>
 <li><a href="#Fn_BananaService_getServiceSubscribers">getServiceSubscribers</a></li>
 <li><a href="#Fn_BananaService_provisionService">provisionService</a></li>
 <li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
+<li><a href="#Fn_BananaService_removeSavedChannel">removeSavedChannel</a></li>
 <li><a href="#Fn_BananaService_renewServiceToken">renewServiceToken</a></li>
+<li><a href="#Fn_BananaService_saveChannel">saveChannel</a></li>
 <li><a href="#Fn_BananaService_searchForServices">searchForServices</a></li>
 <li><a href="#Fn_BananaService_sendMessage">sendMessage</a></li>
 <li><a href="#Fn_BananaService_sendMessageAsync">sendMessageAsync</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
+<li><a href="#Fn_BananaService_signUp">signUp</a></li>
+<li><a href="#Fn_BananaService_snoozeChannel">snoozeChannel</a></li>
 <li><a href="#Fn_BananaService_subscribeToService">subscribeToService</a></li>
 </ul>
 </td>
-<td><a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
+<td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
+<a href="#Typedef_BananaChannel">BananaChannel</a><br/>
+<a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
+<a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
 <a href="#Typedef_Developer">Developer</a><br/>
 <a href="#Typedef_DeveloperToken">DeveloperToken</a><br/>
-<a href="#Typedef_Dimension">Dimension</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
+<a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
+<a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
 <a href="#Struct_GetServiceInfoRequest">GetServiceInfoRequest</a><br/>
 <a href="#Struct_GetServiceInfoResponse">GetServiceInfoResponse</a><br/>
 <a href="#Struct_GetServiceSubscribersRequest">GetServiceSubscribersRequest</a><br/>
@@ -234,8 +244,12 @@ code { line-height: 20px; }
 <a href="#Struct_RegenerateTokenResponse">RegenerateTokenResponse</a><br/>
 <a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a><br/>
 <a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a><br/>
+<a href="#Struct_RemoveSavedChannelRequest">RemoveSavedChannelRequest</a><br/>
+<a href="#Struct_RemoveSavedChannelResponse">RemoveSavedChannelResponse</a><br/>
 <a href="#Struct_RenewServiceTokenRequest">RenewServiceTokenRequest</a><br/>
 <a href="#Struct_RenewServiceTokenResponse">RenewServiceTokenResponse</a><br/>
+<a href="#Struct_SaveChannelRequest">SaveChannelRequest</a><br/>
+<a href="#Struct_SaveChannelResponse">SaveChannelResponse</a><br/>
 <a href="#Struct_SearchForServicesRequest">SearchForServicesRequest</a><br/>
 <a href="#Struct_SearchForServicesResponse">SearchForServicesResponse</a><br/>
 <a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
@@ -246,9 +260,12 @@ code { line-height: 20px; }
 <a href="#Typedef_ServiceToken">ServiceToken</a><br/>
 <a href="#Struct_SignInRequest">SignInRequest</a><br/>
 <a href="#Struct_SignInResponse">SignInResponse</a><br/>
+<a href="#Struct_SignUpRequest">SignUpRequest</a><br/>
+<a href="#Struct_SignUpResponse">SignUpResponse</a><br/>
+<a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a><br/>
+<a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a><br/>
 <a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a><br/>
 <a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a><br/>
-<a href="#Typedef_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_int">int</a><br/>
@@ -264,10 +281,10 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API currently in use.
-<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
-<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="#Typedef_TcpEndpoint">TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
-<br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="#Typedef_Dimension">Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
+<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.1</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API currently in use.
+<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
+<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
+<br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with a Service.
 <br/></blockquote></td></tr><tr id="Const_MAX_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>40</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with a Service.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
@@ -279,32 +296,32 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_Developer">Typedef: Developer</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Developer">Authentication.Developer</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_DeveloperToken">Typedef: DeveloperToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_DeveloperToken">Authentication.DeveloperToken</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Service">Typedef: Service</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_Service">Authentication.Service</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ServiceToken">Typedef: ServiceToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_Dimension">Typedef: Dimension</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Developer">Typedef: Developer</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Developer">Banana.Developer</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_Service">Typedef: Service</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Service">Banana.Service</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_TcpEndpoint">Typedef: TcpEndpoint</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></p>
+<div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
@@ -321,18 +338,36 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_ServiceDoesNotExistException">Typedef: ServiceDoesNotExistException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ServiceDoesNotExistException">Exceptions.ServiceDoesNotExistException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_CustomChannelUnreachableException">Typedef: CustomChannelUnreachableException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_CustomChannelUnreachableException">Exceptions.CustomChannelUnreachableException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ChannelDoesNotExistException">Typedef: ChannelDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ChannelDoesNotExistException">Exceptions.ChannelDoesNotExistException</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_SignInRequest">Struct: SignInRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>oathToken</td><td><code><a href="Authentication.html#Struct_OauthToken">Authentication.OauthToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>credentials</td><td><code><a href="Authentication.html#Struct_Credentials">Authentication.Credentials</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SignInResponse">Struct: SignInResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_ProvisionServiceRequest">Struct: ProvisionServiceRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_SignUpRequest">Struct: SignUpRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>5</td><td>credentials</td><td><code><a href="Authentication.html#Struct_Credentials">Authentication.Credentials</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Sign Up for an Aroma Account.
+<br/></div><div class="definition"><h3 id="Struct_SignUpResponse">Struct: SignUpResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Receive a Developer Token after Signing Up.
+<br/></div><div class="definition"><h3 id="Struct_ProvisionServiceRequest">Struct: ProvisionServiceRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -355,7 +390,7 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_SubscribeToServiceResponse">Struct: SubscribeToServiceResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>channel</td><td><code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>endpoint</td><td><code><a href="#Typedef_Endpoint">Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
@@ -406,6 +441,32 @@ code { line-height: 20px; }
 <tr><td>2</td><td>serviceId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_HideAllMessagesResponse">Struct: HideAllMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_SaveChannelRequest">Struct: SaveChannelRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Save a Developer's Personal Contact Channel for future use.
+<br/></div><div class="definition"><h3 id="Struct_SaveChannelResponse">Struct: SaveChannelResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RemoveSavedChannelRequest">Struct: RemoveSavedChannelRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_RemoveSavedChannelResponse">Struct: RemoveSavedChannelResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SnoozeChannelRequest">Struct: SnoozeChannelRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>A Snoozed Channel will not receive Notifications
+for a set time period.
+<br/></div><div class="definition"><h3 id="Struct_SnoozeChannelResponse">Struct: SnoozeChannelResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceInfoRequest">Struct: GetServiceInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -429,6 +490,12 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceSubscribersResponse">Struct: GetServiceSubscribersResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>developers</td><td><code>list&lt;<code><a href="#Typedef_Developer">Developer</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsRequest">Struct: GetMySavedChannelsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>developerToken</td><td><code><a href="#Typedef_DeveloperToken">DeveloperToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsResponse">Struct: GetMySavedChannelsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_BananaChannel">BananaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ServiceToken">ServiceToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -439,12 +506,25 @@ code { line-height: 20px; }
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-<div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
+<div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
+<pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre>
+#service
+<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
+<pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
+</pre>
+#service
+<br/></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre>Sign in to the App and using a valid OAUTH Token.
 
 #developer
+<br/></div><div class="definition"><h4 id="Fn_BananaService_signUp">Function: BananaService.signUp</h4>
+<pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a></code>
+</pre>Sign Up for an Aroma Account.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_provisionService">Function: BananaService.provisionService</h4>
 <pre><code><a href="#Struct_ProvisionServiceResponse">ProvisionServiceResponse</a></code> provisionService(<code><a href="#Struct_ProvisionServiceRequest">ProvisionServiceRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>
@@ -453,7 +533,7 @@ code { line-height: 20px; }
 #developer
 <br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToService">Function: BananaService.subscribeToService</h4>
 <pre><code><a href="#Struct_SubscribeToServiceResponse">SubscribeToServiceResponse</a></code> subscribeToService(<code><a href="#Struct_SubscribeToServiceRequest">SubscribeToServiceRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ServiceDoesNotExistException">ServiceDoesNotExistException</a></code>, <code><a href="#Typedef_ServiceAlreadyRegisteredException">ServiceAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
 </pre>Subscribe to an existing service to get notifications.
 
 #developer
@@ -500,13 +580,16 @@ Only an "owner" can perform this opeartion.
 </pre>Get a list of all Developers subscribed to a Service.
 
 #developer
-<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
-<pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre>
-#service
-<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
-<pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-</pre>
-#service
-<br/></div></div></body></html>
+<br/></div><div class="definition"><h4 id="Fn_BananaService_saveChannel">Function: BananaService.saveChannel</h4>
+<pre><code><a href="#Struct_SaveChannelResponse">SaveChannelResponse</a></code> saveChannel(<code><a href="#Struct_SaveChannelRequest">SaveChannelRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_removeSavedChannel">Function: BananaService.removeSavedChannel</h4>
+<pre><code><a href="#Struct_RemoveSavedChannelResponse">RemoveSavedChannelResponse</a></code> removeSavedChannel(<code><a href="#Struct_RemoveSavedChannelRequest">RemoveSavedChannelRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getMySavedChannels">Function: BananaService.getMySavedChannels</h4>
+<pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_snoozeChannel">Function: BananaService.snoozeChannel</h4>
+<pre><code><a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a></code> snoozeChannel(<code><a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
+</pre></div></div></body></html>

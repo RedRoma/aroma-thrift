@@ -28,6 +28,7 @@ struct Message
     3: Urgency urgency = Urgency.PRESSING;
     4: timestamp timeMessageSent;
     5: timestamp timeMessageReceived;
+    6: string nameOfService;
 }
 
 enum TimeUnit
@@ -63,4 +64,27 @@ struct Image
     1: ImageType imageType;
     2: binary data;
     3: Dimension dimension;
+}
+
+enum Role
+{
+    DEV = 1,
+    OWNER = 2
+}
+
+struct Developer
+{
+    1: string email;
+    2: optional string name;
+    3: optional string username;
+    4: Role role;
+}
+
+struct Service
+{
+    1: Developer owner;
+    2: timestamp timeOfRegistration;
+    3: string name;
+    4: string id;
+    5: long totalMessagesSent;
 }

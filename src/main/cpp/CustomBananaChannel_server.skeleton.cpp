@@ -22,6 +22,20 @@ class CustomBananaChannelHandler : virtual public CustomBananaChannelIf {
     // Your initialization goes here
   }
 
+  /**
+   * The Banana Service will first ping your Custom Channel
+   * to make sure it is reachable and operational.
+   */
+  int ping() {
+    // Your implementation goes here
+    printf("ping\n");
+  }
+
+  /**
+   * Called each time the Banana Service sends a message to a specific service.
+   * 
+   * @param request
+   */
   void receiveMessage(const ReceiveMessageRequest& request) {
     // Your implementation goes here
     printf("receiveMessage\n");

@@ -257,6 +257,7 @@ typedef Banana_timestamp BananaChannels_timestamp;
 @end
 
 @protocol BananaChannels_CustomBananaChannel <NSObject>
+- (BananaChannels_int) ping;  // throws TException
 - (void) receiveMessage: (BananaChannels_ReceiveMessageRequest *) request;  // throws TException
 @end
 

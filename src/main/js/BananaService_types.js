@@ -6,11 +6,11 @@
 
 
 SignInRequest = function(args) {
-  this.oathToken = null;
+  this.credentials = null;
   this.username = null;
   if (args) {
-    if (args.oathToken !== undefined && args.oathToken !== null) {
-      this.oathToken = new OauthToken(args.oathToken);
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Credentials(args.credentials);
     }
     if (args.username !== undefined && args.username !== null) {
       this.username = args.username;
@@ -33,8 +33,8 @@ SignInRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.oathToken = new OauthToken();
-        this.oathToken.read(input);
+        this.credentials = new Credentials();
+        this.credentials.read(input);
       } else {
         input.skip(ftype);
       }
@@ -57,9 +57,9 @@ SignInRequest.prototype.read = function(input) {
 
 SignInRequest.prototype.write = function(output) {
   output.writeStructBegin('SignInRequest');
-  if (this.oathToken !== null && this.oathToken !== undefined) {
-    output.writeFieldBegin('oathToken', Thrift.Type.STRUCT, 1);
-    this.oathToken.write(output);
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 1);
+    this.credentials.write(output);
     output.writeFieldEnd();
   }
   if (this.username !== null && this.username !== undefined) {
@@ -116,6 +116,175 @@ SignInResponse.prototype.read = function(input) {
 
 SignInResponse.prototype.write = function(output) {
   output.writeStructBegin('SignInResponse');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpRequest = function(args) {
+  this.email = null;
+  this.name = null;
+  this.username = null;
+  this.organization = null;
+  this.credentials = null;
+  if (args) {
+    if (args.email !== undefined && args.email !== null) {
+      this.email = args.email;
+    }
+    if (args.name !== undefined && args.name !== null) {
+      this.name = args.name;
+    }
+    if (args.username !== undefined && args.username !== null) {
+      this.username = args.username;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+    if (args.credentials !== undefined && args.credentials !== null) {
+      this.credentials = new Credentials(args.credentials);
+    }
+  }
+};
+SignUpRequest.prototype = {};
+SignUpRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.email = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.name = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.credentials = new Credentials();
+        this.credentials.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpRequest.prototype.write = function(output) {
+  output.writeStructBegin('SignUpRequest');
+  if (this.email !== null && this.email !== undefined) {
+    output.writeFieldBegin('email', Thrift.Type.STRING, 1);
+    output.writeString(this.email);
+    output.writeFieldEnd();
+  }
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeString(this.name);
+    output.writeFieldEnd();
+  }
+  if (this.username !== null && this.username !== undefined) {
+    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeString(this.username);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.credentials !== null && this.credentials !== undefined) {
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 5);
+    this.credentials.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SignUpResponse = function(args) {
+  this.developerToken = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+SignUpResponse.prototype = {};
+SignUpResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SignUpResponse.prototype.write = function(output) {
+  output.writeStructBegin('SignUpResponse');
   if (this.developerToken !== null && this.developerToken !== undefined) {
     output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
     this.developerToken.write(output);
@@ -1364,6 +1533,397 @@ HideAllMessagesResponse.prototype.write = function(output) {
   return;
 };
 
+SaveChannelRequest = function(args) {
+  this.developerToken = null;
+  this.channel = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+  }
+};
+SaveChannelRequest.prototype = {};
+SaveChannelRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SaveChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('SaveChannelRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SaveChannelResponse = function(args) {
+  this.message = null;
+  this.channel = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+  }
+};
+SaveChannelResponse.prototype = {};
+SaveChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SaveChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('SaveChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RemoveSavedChannelRequest = function(args) {
+  this.developerToken = null;
+  this.channel = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+  }
+};
+RemoveSavedChannelRequest.prototype = {};
+RemoveSavedChannelRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RemoveSavedChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('RemoveSavedChannelRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RemoveSavedChannelResponse = function(args) {
+  this.message = null;
+  this.channel = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+  }
+};
+RemoveSavedChannelResponse.prototype = {};
+RemoveSavedChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RemoveSavedChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('RemoveSavedChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SnoozeChannelRequest = function(args) {
+  this.developerToken = null;
+  this.channel = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+  }
+};
+SnoozeChannelRequest.prototype = {};
+SnoozeChannelRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SnoozeChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('SnoozeChannelRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SnoozeChannelResponse = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+SnoozeChannelResponse.prototype = {};
+SnoozeChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SnoozeChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('SnoozeChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 GetServiceInfoRequest = function(args) {
   this.developerToken = null;
   this.serviceId = null;
@@ -1803,6 +2363,136 @@ GetServiceSubscribersResponse.prototype.write = function(output) {
   return;
 };
 
+GetMySavedChannelsRequest = function(args) {
+  this.developerToken = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+GetMySavedChannelsRequest.prototype = {};
+GetMySavedChannelsRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMySavedChannelsRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetMySavedChannelsRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetMySavedChannelsResponse = function(args) {
+  this.channels = null;
+  if (args) {
+    if (args.channels !== undefined && args.channels !== null) {
+      this.channels = Thrift.copyList(args.channels, [null]);
+    }
+  }
+};
+GetMySavedChannelsResponse.prototype = {};
+GetMySavedChannelsResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size32 = 0;
+        var _rtmp336;
+        this.channels = [];
+        var _etype35 = 0;
+        _rtmp336 = input.readListBegin();
+        _etype35 = _rtmp336.etype;
+        _size32 = _rtmp336.size;
+        for (var _i37 = 0; _i37 < _size32; ++_i37)
+        {
+          var elem38 = null;
+          elem38 = new BananaChannel();
+          elem38.read(input);
+          this.channels.push(elem38);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMySavedChannelsResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetMySavedChannelsResponse');
+  if (this.channels !== null && this.channels !== undefined) {
+    output.writeFieldBegin('channels', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.channels.length);
+    for (var iter39 in this.channels)
+    {
+      if (this.channels.hasOwnProperty(iter39))
+      {
+        iter39 = this.channels[iter39];
+        iter39.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SendMessageRequest = function(args) {
   this.serviceToken = null;
   this.message = null;
@@ -1939,7 +2629,7 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-API_VERSION = 1;
+API_VERSION = 1.1;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'banana-service.aroma.tech','port' : 7001});
 BETA_ENDPOINT = new TcpEndpoint({

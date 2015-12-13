@@ -20,122 +20,11 @@
 
 #import "Banana.h"
 
-enum BananaAuthentication_Role {
-  Role_DEV = 1,
-  Role_OWNER = 2
-};
-
 typedef Banana_int BananaAuthentication_int;
 
 typedef Banana_long BananaAuthentication_long;
 
 typedef Banana_timestamp BananaAuthentication_timestamp;
-
-@interface BananaAuthentication_Developer : NSObject <TBase, NSCoding> {
-  NSString * __email;
-  NSString * __name;
-  NSString * __username;
-  int __role;
-
-  BOOL __email_isset;
-  BOOL __name_isset;
-  BOOL __username_isset;
-  BOOL __role_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, getter=role, setter=setRole:) int role;
-#endif
-
-- (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) email;
-- (void) setEmail: (NSString *) email;
-#endif
-- (BOOL) emailIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) name;
-- (void) setName: (NSString *) name;
-#endif
-- (BOOL) nameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
-#endif
-- (BOOL) usernameIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) role;
-- (void) setRole: (int) role;
-#endif
-- (BOOL) roleIsSet;
-
-@end
-
-@interface BananaAuthentication_Service : NSObject <TBase, NSCoding> {
-  BananaAuthentication_Developer * __owner;
-  BananaAuthentication_timestamp __timeOfRegistration;
-  NSString * __name;
-  NSString * __id;
-
-  BOOL __owner_isset;
-  BOOL __timeOfRegistration_isset;
-  BOOL __name_isset;
-  BOOL __id_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=owner, setter=setOwner:) BananaAuthentication_Developer * owner;
-@property (nonatomic, getter=timeOfRegistration, setter=setTimeOfRegistration:) BananaAuthentication_timestamp timeOfRegistration;
-@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
-#endif
-
-- (id) init;
-- (id) initWithOwner: (BananaAuthentication_Developer *) owner timeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaAuthentication_Developer *) owner;
-- (void) setOwner: (BananaAuthentication_Developer *) owner;
-#endif
-- (BOOL) ownerIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaAuthentication_timestamp) timeOfRegistration;
-- (void) setTimeOfRegistration: (BananaAuthentication_timestamp) timeOfRegistration;
-#endif
-- (BOOL) timeOfRegistrationIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) name;
-- (void) setName: (NSString *) name;
-#endif
-- (BOOL) nameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) id;
-- (void) setId: (NSString *) id;
-#endif
-- (BOOL) idIsSet;
-
-@end
 
 @interface BananaAuthentication_ServiceToken : NSObject <TBase, NSCoding> {
   NSString * __id;
@@ -287,18 +176,100 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @end
 
-@interface BananaAuthentication_OauthToken : NSObject <TBase, NSCoding> {
+@interface BananaAuthentication_Password : NSObject <TBase, NSCoding> {
+  NSString * __encryptedPassword;
+
+  BOOL __encryptedPassword_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=encryptedPassword, setter=setEncryptedPassword:) NSString * encryptedPassword;
+#endif
+
+- (id) init;
+- (id) initWithEncryptedPassword: (NSString *) encryptedPassword;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) encryptedPassword;
+- (void) setEncryptedPassword: (NSString *) encryptedPassword;
+#endif
+- (BOOL) encryptedPasswordIsSet;
+
+@end
+
+@interface BananaAuthentication_AromaAccount : NSObject <TBase, NSCoding> {
+  NSString * __email;
+  BananaAuthentication_Password * __password;
+  NSString * __name;
+  Banana_Image * __profileImage;
+
+  BOOL __email_isset;
+  BOOL __password_isset;
+  BOOL __name_isset;
+  BOOL __profileImage_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=password, setter=setPassword:) BananaAuthentication_Password * password;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
+#endif
+
+- (id) init;
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_Password *) password;
+- (void) setPassword: (BananaAuthentication_Password *) password;
+#endif
+- (BOOL) passwordIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) profileImage;
+- (void) setProfileImage: (Banana_Image *) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
+
+@end
+
+@interface BananaAuthentication_Credentials : NSObject <TBase, NSCoding> {
   BananaAuthentication_GithubToken * __githubToken;
+  BananaAuthentication_AromaAccount * __aromaAccount;
 
   BOOL __githubToken_isset;
+  BOOL __aromaAccount_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) BananaAuthentication_GithubToken * githubToken;
+@property (nonatomic, retain, getter=aromaAccount, setter=setAromaAccount:) BananaAuthentication_AromaAccount * aromaAccount;
 #endif
 
 - (id) init;
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken;
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -311,8 +282,15 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 #endif
 - (BOOL) githubTokenIsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_AromaAccount *) aromaAccount;
+- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
+#endif
+- (BOOL) aromaAccountIsSet;
+
 @end
 
 @interface BananaAuthentication_AuthenticationConstants : NSObject {
 }
++ (NSString *) OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY;
 @end

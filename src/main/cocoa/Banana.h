@@ -38,6 +38,11 @@ enum Banana_ImageType {
   ImageType_PNG = 2
 };
 
+enum Banana_Role {
+  Role_DEV = 1,
+  Role_OWNER = 2
+};
+
 typedef int32_t Banana_int;
 
 typedef int64_t Banana_long;
@@ -50,12 +55,14 @@ typedef int64_t Banana_timestamp;
   int __urgency;
   Banana_timestamp __timeMessageSent;
   Banana_timestamp __timeMessageReceived;
+  NSString * __nameOfService;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
   BOOL __urgency_isset;
   BOOL __timeMessageSent_isset;
   BOOL __timeMessageReceived_isset;
+  BOOL __nameOfService_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -64,10 +71,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
 @property (nonatomic, getter=timeMessageSent, setter=setTimeMessageSent:) Banana_timestamp timeMessageSent;
 @property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
+@property (nonatomic, retain, getter=nameOfService, setter=setNameOfService:) NSString * nameOfService;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfService: (NSString *) nameOfService;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -103,6 +111,12 @@ typedef int64_t Banana_timestamp;
 - (void) setTimeMessageReceived: (Banana_timestamp) timeMessageReceived;
 #endif
 - (BOOL) timeMessageReceivedIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) nameOfService;
+- (void) setNameOfService: (NSString *) nameOfService;
+#endif
+- (BOOL) nameOfServiceIsSet;
 
 @end
 
@@ -217,6 +231,121 @@ typedef int64_t Banana_timestamp;
 - (void) setDimension: (Banana_Dimension *) dimension;
 #endif
 - (BOOL) dimensionIsSet;
+
+@end
+
+@interface Banana_Developer : NSObject <TBase, NSCoding> {
+  NSString * __email;
+  NSString * __name;
+  NSString * __username;
+  int __role;
+
+  BOOL __email_isset;
+  BOOL __name_isset;
+  BOOL __username_isset;
+  BOOL __role_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, getter=role, setter=setRole:) int role;
+#endif
+
+- (id) init;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) username;
+- (void) setUsername: (NSString *) username;
+#endif
+- (BOOL) usernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) role;
+- (void) setRole: (int) role;
+#endif
+- (BOOL) roleIsSet;
+
+@end
+
+@interface Banana_Service : NSObject <TBase, NSCoding> {
+  Banana_Developer * __owner;
+  Banana_timestamp __timeOfRegistration;
+  NSString * __name;
+  NSString * __id;
+  Banana_long __totalMessagesSent;
+
+  BOOL __owner_isset;
+  BOOL __timeOfRegistration_isset;
+  BOOL __name_isset;
+  BOOL __id_isset;
+  BOOL __totalMessagesSent_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=owner, setter=setOwner:) Banana_Developer * owner;
+@property (nonatomic, getter=timeOfRegistration, setter=setTimeOfRegistration:) Banana_timestamp timeOfRegistration;
+@property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
+@property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
+#endif
+
+- (id) init;
+- (id) initWithOwner: (Banana_Developer *) owner timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (Banana_Developer *) owner;
+- (void) setOwner: (Banana_Developer *) owner;
+#endif
+- (BOOL) ownerIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeOfRegistration;
+- (void) setTimeOfRegistration: (Banana_timestamp) timeOfRegistration;
+#endif
+- (BOOL) timeOfRegistrationIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) name;
+- (void) setName: (NSString *) name;
+#endif
+- (BOOL) nameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) id;
+- (void) setId: (NSString *) id;
+#endif
+- (BOOL) idIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_long) totalMessagesSent;
+- (void) setTotalMessagesSent: (Banana_long) totalMessagesSent;
+#endif
+- (BOOL) totalMessagesSentIsSet;
 
 @end
 

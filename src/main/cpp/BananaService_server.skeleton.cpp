@@ -23,6 +23,28 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
+  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
+    // Your implementation goes here
+    printf("sendMessage\n");
+  }
+
+  /**
+   * 
+   * #service
+   * 
+   * @param request
+   */
+  void sendMessageAsync(const SendMessageRequest& request) {
+    // Your implementation goes here
+    printf("sendMessageAsync\n");
+  }
+
+  /**
    * Sign in to the App and using a valid OAUTH Token.
    * 
    * #developer
@@ -32,6 +54,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   void signIn(SignInResponse& _return, const SignInRequest& request) {
     // Your implementation goes here
     printf("signIn\n");
+  }
+
+  /**
+   * Sign Up for an Aroma Account.
+   * 
+   * @param request
+   */
+  void signUp(SignUpResponse& _return, const SignUpRequest& request) {
+    // Your implementation goes here
+    printf("signUp\n");
   }
 
   /**
@@ -137,26 +169,24 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getServiceSubscribers\n");
   }
 
-  /**
-   * 
-   * #service
-   * 
-   * @param request
-   */
-  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
+  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
     // Your implementation goes here
-    printf("sendMessage\n");
+    printf("saveChannel\n");
   }
 
-  /**
-   * 
-   * #service
-   * 
-   * @param request
-   */
-  void sendMessageAsync(const SendMessageRequest& request) {
+  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
     // Your implementation goes here
-    printf("sendMessageAsync\n");
+    printf("removeSavedChannel\n");
+  }
+
+  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
+    // Your implementation goes here
+    printf("getMySavedChannels\n");
+  }
+
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
+    // Your implementation goes here
+    printf("snoozeChannel\n");
   }
 
 };
