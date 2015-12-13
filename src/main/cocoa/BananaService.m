@@ -7945,36 +7945,39 @@
 @end
 
 static double BananaService_API_VERSION = 1.1;
-static BananaService_TcpEndpoint BananaService_PRODUCTION_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp25 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
-[tmp25 setHostname:@"banana-service.aroma.tech"];
-[tmp25 setPort:7001];
-
-tmp25;
-static BananaService_TcpEndpoint BananaService_BETA_ENDPOINT = BananaEndpoint_TcpEndpoint * tmp26 = [[[BananaEndpoint_TcpEndpoint alloc] init] autorelease_stub];
-[tmp26 setHostname:@"banana-service-beta.aroma.tech"];
-[tmp26 setPort:7001];
-
-tmp26;
-static BananaService_Dimension BananaService_MAX_ICON_DIMENSION = Banana_Dimension * tmp27 = [[[Banana_Dimension alloc] init] autorelease_stub];
-[tmp27 setWidth:500];
-[tmp27 setHeight:500];
-
-tmp27;
+static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
+static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
+static Banana_Dimension * BananaService_MAX_ICON_DIMENSION;
 static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
+  BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
+  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-service.aroma.tech"];
+  [BananaService_PRODUCTION_ENDPOINT setPort:7001];
+
+;
+  BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
+  [BananaService_BETA_ENDPOINT setHostname:@"banana-service-beta.aroma.tech"];
+  [BananaService_BETA_ENDPOINT setPort:7001];
+
+;
+  BananaService_MAX_ICON_DIMENSION = [[Banana_Dimension alloc] init];
+  [BananaService_MAX_ICON_DIMENSION setWidth:500];
+  [BananaService_MAX_ICON_DIMENSION setHeight:500];
+
+;
 }
 + (double) API_VERSION{
   return BananaService_API_VERSION;
 }
-+ (BananaService_TcpEndpoint) PRODUCTION_ENDPOINT{
++ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return BananaService_PRODUCTION_ENDPOINT;
 }
-+ (BananaService_TcpEndpoint) BETA_ENDPOINT{
++ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return BananaService_BETA_ENDPOINT;
 }
-+ (BananaService_Dimension) MAX_ICON_DIMENSION{
++ (Banana_Dimension *) MAX_ICON_DIMENSION{
   return BananaService_MAX_ICON_DIMENSION;
 }
 + (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES{

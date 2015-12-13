@@ -35,8 +35,6 @@ typedef class  ::aroma::banana::thrift::authentication::DeveloperToken Developer
 
 typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
-typedef class  ::aroma::banana::thrift::Dimension Dimension;
-
 typedef class  ::aroma::banana::thrift::Image Image;
 
 typedef class  ::aroma::banana::thrift::Developer Developer;
@@ -48,8 +46,6 @@ typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
 
 typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
-
-typedef class  ::aroma::banana::thrift::endpoint::TcpEndpoint TcpEndpoint;
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 

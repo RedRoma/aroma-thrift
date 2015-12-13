@@ -16,9 +16,9 @@ class BananaServiceConstants {
   BananaServiceConstants();
 
   double API_VERSION;
-  TcpEndpoint PRODUCTION_ENDPOINT;
-  TcpEndpoint BETA_ENDPOINT;
-  Dimension MAX_ICON_DIMENSION;
+   ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
+   ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+   ::aroma::banana::thrift::Dimension MAX_ICON_DIMENSION;
   int MAX_ICON_SIZE_IN_KILOBYTES;
 };
 
