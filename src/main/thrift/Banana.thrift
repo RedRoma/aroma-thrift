@@ -82,9 +82,10 @@ struct Developer
 
 struct Service
 {
-    1: Developer owner;
+    1: list<Developer> owners;
     2: timestamp timeOfRegistration;
     3: string name;
     4: string id;
     5: long totalMessagesSent;
+    6: optional Image icon;
 }

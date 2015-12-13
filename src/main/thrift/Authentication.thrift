@@ -19,9 +19,10 @@ struct ServiceToken
 struct DeveloperToken
 {
     1: string id;
-    2: optional string oauthProvider = "github";
-    3: timestamp timeOfExpiration;
-    4: optional string organization;
+    2: timestamp timeOfExpiration;
+    3: optional string organization;
+    4: optional bool oauthToken = false;
+    5: optional string oauthProvider;
 }
 
 struct GithubToken

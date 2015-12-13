@@ -348,23 +348,25 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.oauthProvider = @"github";
+  self.oauthToken = NO;
 
 #endif
   return self;
 }
 
-- (id) initWithId: (NSString *) id oauthProvider: (NSString *) oauthProvider timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization
+- (id) initWithId: (NSString *) id timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization oauthToken: (BOOL) oauthToken oauthProvider: (NSString *) oauthProvider
 {
   self = [super init];
   __id = [id retain_stub];
   __id_isset = YES;
-  __oauthProvider = [oauthProvider retain_stub];
-  __oauthProvider_isset = YES;
   __timeOfExpiration = timeOfExpiration;
   __timeOfExpiration_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
+  __oauthToken = oauthToken;
+  __oauthToken_isset = YES;
+  __oauthProvider = [oauthProvider retain_stub];
+  __oauthProvider_isset = YES;
   return self;
 }
 
@@ -376,11 +378,6 @@
     __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
     __id_isset = YES;
   }
-  if ([decoder containsValueForKey: @"oauthProvider"])
-  {
-    __oauthProvider = [[decoder decodeObjectForKey: @"oauthProvider"] retain_stub];
-    __oauthProvider_isset = YES;
-  }
   if ([decoder containsValueForKey: @"timeOfExpiration"])
   {
     __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
@@ -391,6 +388,16 @@
     __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
     __organization_isset = YES;
   }
+  if ([decoder containsValueForKey: @"oauthToken"])
+  {
+    __oauthToken = [decoder decodeBoolForKey: @"oauthToken"];
+    __oauthToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"oauthProvider"])
+  {
+    __oauthProvider = [[decoder decodeObjectForKey: @"oauthProvider"] retain_stub];
+    __oauthProvider_isset = YES;
+  }
   return self;
 }
 
@@ -400,10 +407,6 @@
   {
     [encoder encodeObject: __id forKey: @"id"];
   }
-  if (__oauthProvider_isset)
-  {
-    [encoder encodeObject: __oauthProvider forKey: @"oauthProvider"];
-  }
   if (__timeOfExpiration_isset)
   {
     [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
@@ -411,6 +414,14 @@
   if (__organization_isset)
   {
     [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__oauthToken_isset)
+  {
+    [encoder encodeBool: __oauthToken forKey: @"oauthToken"];
+  }
+  if (__oauthProvider_isset)
+  {
+    [encoder encodeObject: __oauthProvider forKey: @"oauthProvider"];
   }
 }
 
@@ -422,11 +433,6 @@
   {
     hash = (hash * 31) ^ [__id hash];
   }
-  hash = (hash * 31) ^ __oauthProvider_isset ? 2654435761 : 0;
-  if (__oauthProvider_isset)
-  {
-    hash = (hash * 31) ^ [__oauthProvider hash];
-  }
   hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
   if (__timeOfExpiration_isset)
   {
@@ -436,6 +442,16 @@
   if (__organization_isset)
   {
     hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __oauthToken_isset ? 2654435761 : 0;
+  if (__oauthToken_isset)
+  {
+    hash = (hash * 31) ^ [@(__oauthToken) hash];
+  }
+  hash = (hash * 31) ^ __oauthProvider_isset ? 2654435761 : 0;
+  if (__oauthProvider_isset)
+  {
+    hash = (hash * 31) ^ [__oauthProvider hash];
   }
   return hash;
 }
@@ -453,10 +469,6 @@
       (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
     return NO;
   }
-  if ((__oauthProvider_isset != other->__oauthProvider_isset) ||
-      (__oauthProvider_isset && ((__oauthProvider || other->__oauthProvider) && ![__oauthProvider isEqual:other->__oauthProvider]))) {
-    return NO;
-  }
   if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
       (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
     return NO;
@@ -465,14 +477,22 @@
       (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
     return NO;
   }
+  if ((__oauthToken_isset != other->__oauthToken_isset) ||
+      (__oauthToken_isset && (__oauthToken != other->__oauthToken))) {
+    return NO;
+  }
+  if ((__oauthProvider_isset != other->__oauthProvider_isset) ||
+      (__oauthProvider_isset && ((__oauthProvider || other->__oauthProvider) && ![__oauthProvider isEqual:other->__oauthProvider]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__id release_stub];
-  [__oauthProvider release_stub];
   [__organization release_stub];
+  [__oauthProvider release_stub];
   [super dealloc_stub];
 }
 
@@ -495,27 +515,6 @@
   [__id release_stub];
   __id = nil;
   __id_isset = NO;
-}
-
-- (NSString *) oauthProvider {
-  return [[__oauthProvider retain_stub] autorelease_stub];
-}
-
-- (void) setOauthProvider: (NSString *) oauthProvider {
-  [oauthProvider retain_stub];
-  [__oauthProvider release_stub];
-  __oauthProvider = oauthProvider;
-  __oauthProvider_isset = YES;
-}
-
-- (BOOL) oauthProviderIsSet {
-  return __oauthProvider_isset;
-}
-
-- (void) unsetOauthProvider {
-  [__oauthProvider release_stub];
-  __oauthProvider = nil;
-  __oauthProvider_isset = NO;
 }
 
 - (int64_t) timeOfExpiration {
@@ -556,6 +555,44 @@
   __organization_isset = NO;
 }
 
+- (BOOL) oauthToken {
+  return __oauthToken;
+}
+
+- (void) setOauthToken: (BOOL) oauthToken {
+  __oauthToken = oauthToken;
+  __oauthToken_isset = YES;
+}
+
+- (BOOL) oauthTokenIsSet {
+  return __oauthToken_isset;
+}
+
+- (void) unsetOauthToken {
+  __oauthToken_isset = NO;
+}
+
+- (NSString *) oauthProvider {
+  return [[__oauthProvider retain_stub] autorelease_stub];
+}
+
+- (void) setOauthProvider: (NSString *) oauthProvider {
+  [oauthProvider retain_stub];
+  [__oauthProvider release_stub];
+  __oauthProvider = oauthProvider;
+  __oauthProvider_isset = YES;
+}
+
+- (BOOL) oauthProviderIsSet {
+  return __oauthProvider_isset;
+}
+
+- (void) unsetOauthProvider {
+  [__oauthProvider release_stub];
+  __oauthProvider = nil;
+  __oauthProvider_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -580,14 +617,6 @@
         }
         break;
       case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOauthProvider: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setTimeOfExpiration: fieldValue];
@@ -595,10 +624,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
+      case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setOauthToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOauthProvider: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -621,22 +666,27 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__oauthProvider_isset) {
-    if (__oauthProvider != nil) {
-      [outProtocol writeFieldBeginWithName: @"oauthProvider" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __oauthProvider];
-      [outProtocol writeFieldEnd];
-    }
-  }
   if (__timeOfExpiration_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 3];
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 2];
     [outProtocol writeI64: __timeOfExpiration];
     [outProtocol writeFieldEnd];
   }
   if (__organization_isset) {
     if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
       [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__oauthToken_isset) {
+    [outProtocol writeFieldBeginWithName: @"oauthToken" type: TType_BOOL fieldID: 4];
+    [outProtocol writeBool: __oauthToken];
+    [outProtocol writeFieldEnd];
+  }
+  if (__oauthProvider_isset) {
+    if (__oauthProvider != nil) {
+      [outProtocol writeFieldBeginWithName: @"oauthProvider" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __oauthProvider];
       [outProtocol writeFieldEnd];
     }
   }
@@ -652,12 +702,14 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_DeveloperToken("];
   [ms appendString: @"id:"];
   [ms appendFormat: @"\"%@\"", __id];
-  [ms appendString: @",oauthProvider:"];
-  [ms appendFormat: @"\"%@\"", __oauthProvider];
   [ms appendString: @",timeOfExpiration:"];
   [ms appendFormat: @"%qi", __timeOfExpiration];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",oauthToken:"];
+  [ms appendFormat: @"%i", __oauthToken];
+  [ms appendString: @",oauthProvider:"];
+  [ms appendFormat: @"\"%@\"", __oauthProvider];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

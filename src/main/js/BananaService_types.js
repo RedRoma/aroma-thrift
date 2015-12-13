@@ -1924,6 +1924,136 @@ SnoozeChannelResponse.prototype.write = function(output) {
   return;
 };
 
+GetMyServicesRequest = function(args) {
+  this.developerToken = null;
+  if (args) {
+    if (args.developerToken !== undefined && args.developerToken !== null) {
+      this.developerToken = new DeveloperToken(args.developerToken);
+    }
+  }
+};
+GetMyServicesRequest.prototype = {};
+GetMyServicesRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.developerToken = new DeveloperToken();
+        this.developerToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMyServicesRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetMyServicesRequest');
+  if (this.developerToken !== null && this.developerToken !== undefined) {
+    output.writeFieldBegin('developerToken', Thrift.Type.STRUCT, 1);
+    this.developerToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetMyServicesResponse = function(args) {
+  this.services = null;
+  if (args) {
+    if (args.services !== undefined && args.services !== null) {
+      this.services = Thrift.copyList(args.services, [null]);
+    }
+  }
+};
+GetMyServicesResponse.prototype = {};
+GetMyServicesResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size16 = 0;
+        var _rtmp320;
+        this.services = [];
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        {
+          var elem22 = null;
+          elem22 = new Service();
+          elem22.read(input);
+          this.services.push(elem22);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMyServicesResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetMyServicesResponse');
+  if (this.services !== null && this.services !== undefined) {
+    output.writeFieldBegin('services', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.services.length);
+    for (var iter23 in this.services)
+    {
+      if (this.services.hasOwnProperty(iter23))
+      {
+        iter23 = this.services[iter23];
+        iter23.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 GetServiceInfoRequest = function(args) {
   this.developerToken = null;
   this.serviceId = null;
@@ -2152,19 +2282,19 @@ SearchForServicesResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size16 = 0;
-        var _rtmp320;
+        var _size24 = 0;
+        var _rtmp328;
         this.services = [];
-        var _etype19 = 0;
-        _rtmp320 = input.readListBegin();
-        _etype19 = _rtmp320.etype;
-        _size16 = _rtmp320.size;
-        for (var _i21 = 0; _i21 < _size16; ++_i21)
+        var _etype27 = 0;
+        _rtmp328 = input.readListBegin();
+        _etype27 = _rtmp328.etype;
+        _size24 = _rtmp328.size;
+        for (var _i29 = 0; _i29 < _size24; ++_i29)
         {
-          var elem22 = null;
-          elem22 = new Service();
-          elem22.read(input);
-          this.services.push(elem22);
+          var elem30 = null;
+          elem30 = new Service();
+          elem30.read(input);
+          this.services.push(elem30);
         }
         input.readListEnd();
       } else {
@@ -2188,12 +2318,12 @@ SearchForServicesResponse.prototype.write = function(output) {
   if (this.services !== null && this.services !== undefined) {
     output.writeFieldBegin('services', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.services.length);
-    for (var iter23 in this.services)
+    for (var iter31 in this.services)
     {
-      if (this.services.hasOwnProperty(iter23))
+      if (this.services.hasOwnProperty(iter31))
       {
-        iter23 = this.services[iter23];
-        iter23.write(output);
+        iter31 = this.services[iter31];
+        iter31.write(output);
       }
     }
     output.writeListEnd();
@@ -2311,19 +2441,19 @@ GetServiceSubscribersResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size24 = 0;
-        var _rtmp328;
+        var _size32 = 0;
+        var _rtmp336;
         this.developers = [];
-        var _etype27 = 0;
-        _rtmp328 = input.readListBegin();
-        _etype27 = _rtmp328.etype;
-        _size24 = _rtmp328.size;
-        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        var _etype35 = 0;
+        _rtmp336 = input.readListBegin();
+        _etype35 = _rtmp336.etype;
+        _size32 = _rtmp336.size;
+        for (var _i37 = 0; _i37 < _size32; ++_i37)
         {
-          var elem30 = null;
-          elem30 = new Developer();
-          elem30.read(input);
-          this.developers.push(elem30);
+          var elem38 = null;
+          elem38 = new Developer();
+          elem38.read(input);
+          this.developers.push(elem38);
         }
         input.readListEnd();
       } else {
@@ -2347,12 +2477,12 @@ GetServiceSubscribersResponse.prototype.write = function(output) {
   if (this.developers !== null && this.developers !== undefined) {
     output.writeFieldBegin('developers', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.developers.length);
-    for (var iter31 in this.developers)
+    for (var iter39 in this.developers)
     {
-      if (this.developers.hasOwnProperty(iter31))
+      if (this.developers.hasOwnProperty(iter39))
       {
-        iter31 = this.developers[iter31];
-        iter31.write(output);
+        iter39 = this.developers[iter39];
+        iter39.write(output);
       }
     }
     output.writeListEnd();
@@ -2441,19 +2571,19 @@ GetMySavedChannelsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size32 = 0;
-        var _rtmp336;
+        var _size40 = 0;
+        var _rtmp344;
         this.channels = [];
-        var _etype35 = 0;
-        _rtmp336 = input.readListBegin();
-        _etype35 = _rtmp336.etype;
-        _size32 = _rtmp336.size;
-        for (var _i37 = 0; _i37 < _size32; ++_i37)
+        var _etype43 = 0;
+        _rtmp344 = input.readListBegin();
+        _etype43 = _rtmp344.etype;
+        _size40 = _rtmp344.size;
+        for (var _i45 = 0; _i45 < _size40; ++_i45)
         {
-          var elem38 = null;
-          elem38 = new BananaChannel();
-          elem38.read(input);
-          this.channels.push(elem38);
+          var elem46 = null;
+          elem46 = new BananaChannel();
+          elem46.read(input);
+          this.channels.push(elem46);
         }
         input.readListEnd();
       } else {
@@ -2477,12 +2607,12 @@ GetMySavedChannelsResponse.prototype.write = function(output) {
   if (this.channels !== null && this.channels !== undefined) {
     output.writeFieldBegin('channels', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.channels.length);
-    for (var iter39 in this.channels)
+    for (var iter47 in this.channels)
     {
-      if (this.channels.hasOwnProperty(iter39))
+      if (this.channels.hasOwnProperty(iter47))
       {
-        iter39 = this.channels[iter39];
-        iter39.write(output);
+        iter47 = this.channels[iter47];
+        iter47.write(output);
       }
     }
     output.writeListEnd();

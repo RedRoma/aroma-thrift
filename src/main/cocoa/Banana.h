@@ -288,29 +288,32 @@ typedef int64_t Banana_timestamp;
 @end
 
 @interface Banana_Service : NSObject <TBase, NSCoding> {
-  Banana_Developer * __owner;
+  NSMutableArray * __owners;
   Banana_timestamp __timeOfRegistration;
   NSString * __name;
   NSString * __id;
   Banana_long __totalMessagesSent;
+  Banana_Image * __icon;
 
-  BOOL __owner_isset;
+  BOOL __owners_isset;
   BOOL __timeOfRegistration_isset;
   BOOL __name_isset;
   BOOL __id_isset;
   BOOL __totalMessagesSent_isset;
+  BOOL __icon_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=owner, setter=setOwner:) Banana_Developer * owner;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
 @property (nonatomic, getter=timeOfRegistration, setter=setTimeOfRegistration:) Banana_timestamp timeOfRegistration;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 #endif
 
 - (id) init;
-- (id) initWithOwner: (Banana_Developer *) owner timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent;
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -318,10 +321,10 @@ typedef int64_t Banana_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_Developer *) owner;
-- (void) setOwner: (Banana_Developer *) owner;
+- (NSMutableArray *) owners;
+- (void) setOwners: (NSMutableArray *) owners;
 #endif
-- (BOOL) ownerIsSet;
+- (BOOL) ownersIsSet;
 
 #if !__has_feature(objc_arc)
 - (Banana_timestamp) timeOfRegistration;
@@ -346,6 +349,12 @@ typedef int64_t Banana_timestamp;
 - (void) setTotalMessagesSent: (Banana_long) totalMessagesSent;
 #endif
 - (BOOL) totalMessagesSentIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) icon;
+- (void) setIcon: (Banana_Image *) icon;
+#endif
+- (BOOL) iconIsSet;
 
 @end
 

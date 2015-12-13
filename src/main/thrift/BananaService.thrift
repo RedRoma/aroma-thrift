@@ -263,6 +263,16 @@ struct SnoozeChannelResponse
 // Getting and Querying for Data
 //==========================================================
 
+struct GetMyServicesRequest
+{
+    1: DeveloperToken developerToken;
+}
+
+struct GetMyServicesResponse
+{
+    1: list<Service> services;
+}
+
 struct GetServiceInfoRequest
 {
     1: DeveloperToken developerToken;

@@ -170,11 +170,6 @@ void DeveloperToken::__set_id(const std::string& val) {
   this->id = val;
 }
 
-void DeveloperToken::__set_oauthProvider(const std::string& val) {
-  this->oauthProvider = val;
-__isset.oauthProvider = true;
-}
-
 void DeveloperToken::__set_timeOfExpiration(const timestamp val) {
   this->timeOfExpiration = val;
 }
@@ -182,6 +177,16 @@ void DeveloperToken::__set_timeOfExpiration(const timestamp val) {
 void DeveloperToken::__set_organization(const std::string& val) {
   this->organization = val;
 __isset.organization = true;
+}
+
+void DeveloperToken::__set_oauthToken(const bool val) {
+  this->oauthToken = val;
+__isset.oauthToken = true;
+}
+
+void DeveloperToken::__set_oauthProvider(const std::string& val) {
+  this->oauthProvider = val;
+__isset.oauthProvider = true;
 }
 
 uint32_t DeveloperToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -214,14 +219,6 @@ uint32_t DeveloperToken::read(::apache::thrift::protocol::TProtocol* iprot) {
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->oauthProvider);
-          this->__isset.oauthProvider = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
         if (ftype == ::apache::thrift::protocol::T_I64) {
           xfer += iprot->readI64(this->timeOfExpiration);
           this->__isset.timeOfExpiration = true;
@@ -229,10 +226,26 @@ uint32_t DeveloperToken::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->organization);
           this->__isset.organization = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->oauthToken);
+          this->__isset.oauthToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->oauthProvider);
+          this->__isset.oauthProvider = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -258,18 +271,23 @@ uint32_t DeveloperToken::write(::apache::thrift::protocol::TProtocol* oprot) con
   xfer += oprot->writeString(this->id);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.oauthProvider) {
-    xfer += oprot->writeFieldBegin("oauthProvider", ::apache::thrift::protocol::T_STRING, 2);
-    xfer += oprot->writeString(this->oauthProvider);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 3);
+  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 2);
   xfer += oprot->writeI64(this->timeOfExpiration);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.organization) {
-    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 3);
     xfer += oprot->writeString(this->organization);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.oauthToken) {
+    xfer += oprot->writeFieldBegin("oauthToken", ::apache::thrift::protocol::T_BOOL, 4);
+    xfer += oprot->writeBool(this->oauthToken);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.oauthProvider) {
+    xfer += oprot->writeFieldBegin("oauthProvider", ::apache::thrift::protocol::T_STRING, 5);
+    xfer += oprot->writeString(this->oauthProvider);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -280,24 +298,27 @@ uint32_t DeveloperToken::write(::apache::thrift::protocol::TProtocol* oprot) con
 void swap(DeveloperToken &a, DeveloperToken &b) {
   using ::std::swap;
   swap(a.id, b.id);
-  swap(a.oauthProvider, b.oauthProvider);
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.organization, b.organization);
+  swap(a.oauthToken, b.oauthToken);
+  swap(a.oauthProvider, b.oauthProvider);
   swap(a.__isset, b.__isset);
 }
 
 DeveloperToken::DeveloperToken(const DeveloperToken& other2) {
   id = other2.id;
-  oauthProvider = other2.oauthProvider;
   timeOfExpiration = other2.timeOfExpiration;
   organization = other2.organization;
+  oauthToken = other2.oauthToken;
+  oauthProvider = other2.oauthProvider;
   __isset = other2.__isset;
 }
 DeveloperToken& DeveloperToken::operator=(const DeveloperToken& other3) {
   id = other3.id;
-  oauthProvider = other3.oauthProvider;
   timeOfExpiration = other3.timeOfExpiration;
   organization = other3.organization;
+  oauthToken = other3.oauthToken;
+  oauthProvider = other3.oauthProvider;
   __isset = other3.__isset;
   return *this;
 }
@@ -305,9 +326,10 @@ void DeveloperToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "DeveloperToken(";
   out << "id=" << to_string(id);
-  out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ", " << "oauthToken="; (__isset.oauthToken ? (out << to_string(oauthToken)) : (out << "<null>"));
+  out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
   out << ")";
 }
 

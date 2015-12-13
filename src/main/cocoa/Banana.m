@@ -1446,11 +1446,11 @@
   return self;
 }
 
-- (id) initWithOwner: (Banana_Developer *) owner timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon
 {
   self = [super init];
-  __owner = [owner retain_stub];
-  __owner_isset = YES;
+  __owners = [owners retain_stub];
+  __owners_isset = YES;
   __timeOfRegistration = timeOfRegistration;
   __timeOfRegistration_isset = YES;
   __name = [name retain_stub];
@@ -1459,16 +1459,18 @@
   __id_isset = YES;
   __totalMessagesSent = totalMessagesSent;
   __totalMessagesSent_isset = YES;
+  __icon = [icon retain_stub];
+  __icon_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"owner"])
+  if ([decoder containsValueForKey: @"owners"])
   {
-    __owner = [[decoder decodeObjectForKey: @"owner"] retain_stub];
-    __owner_isset = YES;
+    __owners = [[decoder decodeObjectForKey: @"owners"] retain_stub];
+    __owners_isset = YES;
   }
   if ([decoder containsValueForKey: @"timeOfRegistration"])
   {
@@ -1490,14 +1492,19 @@
     __totalMessagesSent = [decoder decodeInt64ForKey: @"totalMessagesSent"];
     __totalMessagesSent_isset = YES;
   }
+  if ([decoder containsValueForKey: @"icon"])
+  {
+    __icon = [[decoder decodeObjectForKey: @"icon"] retain_stub];
+    __icon_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__owner_isset)
+  if (__owners_isset)
   {
-    [encoder encodeObject: __owner forKey: @"owner"];
+    [encoder encodeObject: __owners forKey: @"owners"];
   }
   if (__timeOfRegistration_isset)
   {
@@ -1515,15 +1522,19 @@
   {
     [encoder encodeInt64: __totalMessagesSent forKey: @"totalMessagesSent"];
   }
+  if (__icon_isset)
+  {
+    [encoder encodeObject: __icon forKey: @"icon"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __owner_isset ? 2654435761 : 0;
-  if (__owner_isset)
+  hash = (hash * 31) ^ __owners_isset ? 2654435761 : 0;
+  if (__owners_isset)
   {
-    hash = (hash * 31) ^ [__owner hash];
+    hash = (hash * 31) ^ [__owners hash];
   }
   hash = (hash * 31) ^ __timeOfRegistration_isset ? 2654435761 : 0;
   if (__timeOfRegistration_isset)
@@ -1545,6 +1556,11 @@
   {
     hash = (hash * 31) ^ [@(__totalMessagesSent) hash];
   }
+  hash = (hash * 31) ^ __icon_isset ? 2654435761 : 0;
+  if (__icon_isset)
+  {
+    hash = (hash * 31) ^ [__icon hash];
+  }
   return hash;
 }
 
@@ -1557,8 +1573,8 @@
     return NO;
   }
   Banana_Service *other = (Banana_Service *)anObject;
-  if ((__owner_isset != other->__owner_isset) ||
-      (__owner_isset && ((__owner || other->__owner) && ![__owner isEqual:other->__owner]))) {
+  if ((__owners_isset != other->__owners_isset) ||
+      (__owners_isset && ((__owners || other->__owners) && ![__owners isEqual:other->__owners]))) {
     return NO;
   }
   if ((__timeOfRegistration_isset != other->__timeOfRegistration_isset) ||
@@ -1577,36 +1593,41 @@
       (__totalMessagesSent_isset && (__totalMessagesSent != other->__totalMessagesSent))) {
     return NO;
   }
+  if ((__icon_isset != other->__icon_isset) ||
+      (__icon_isset && ((__icon || other->__icon) && ![__icon isEqual:other->__icon]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
-  [__owner release_stub];
+  [__owners release_stub];
   [__name release_stub];
   [__id release_stub];
+  [__icon release_stub];
   [super dealloc_stub];
 }
 
-- (Banana_Developer *) owner {
-  return [[__owner retain_stub] autorelease_stub];
+- (NSMutableArray *) owners {
+  return [[__owners retain_stub] autorelease_stub];
 }
 
-- (void) setOwner: (Banana_Developer *) owner {
-  [owner retain_stub];
-  [__owner release_stub];
-  __owner = owner;
-  __owner_isset = YES;
+- (void) setOwners: (NSMutableArray *) owners {
+  [owners retain_stub];
+  [__owners release_stub];
+  __owners = owners;
+  __owners_isset = YES;
 }
 
-- (BOOL) ownerIsSet {
-  return __owner_isset;
+- (BOOL) ownersIsSet {
+  return __owners_isset;
 }
 
-- (void) unsetOwner {
-  [__owner release_stub];
-  __owner = nil;
-  __owner_isset = NO;
+- (void) unsetOwners {
+  [__owners release_stub];
+  __owners = nil;
+  __owners_isset = NO;
 }
 
 - (int64_t) timeOfRegistration {
@@ -1685,6 +1706,27 @@
   __totalMessagesSent_isset = NO;
 }
 
+- (Banana_Image *) icon {
+  return [[__icon retain_stub] autorelease_stub];
+}
+
+- (void) setIcon: (Banana_Image *) icon {
+  [icon retain_stub];
+  [__icon release_stub];
+  __icon = icon;
+  __icon_isset = YES;
+}
+
+- (BOOL) iconIsSet {
+  return __icon_isset;
+}
+
+- (void) unsetIcon {
+  [__icon release_stub];
+  __icon = nil;
+  __icon_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1701,10 +1743,20 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRUCT) {
-          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
-          [fieldValue read: inProtocol];
-          [self setOwner: fieldValue];
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            Banana_Developer *_elem2 = [[Banana_Developer alloc] init];
+            [_elem2 read: inProtocol];
+            [fieldValue addObject: _elem2];
+            [_elem2 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setOwners: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1742,6 +1794,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setIcon: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1753,10 +1815,18 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"Service"];
-  if (__owner_isset) {
-    if (__owner != nil) {
-      [outProtocol writeFieldBeginWithName: @"owner" type: TType_STRUCT fieldID: 1];
-      [__owner write: outProtocol];
+  if (__owners_isset) {
+    if (__owners != nil) {
+      [outProtocol writeFieldBeginWithName: @"owners" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__owners count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__owners count]; idx4++)
+        {
+          [[__owners objectAtIndex: idx4] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
       [outProtocol writeFieldEnd];
     }
   }
@@ -1784,6 +1854,13 @@
     [outProtocol writeI64: __totalMessagesSent];
     [outProtocol writeFieldEnd];
   }
+  if (__icon_isset) {
+    if (__icon != nil) {
+      [outProtocol writeFieldBeginWithName: @"icon" type: TType_STRUCT fieldID: 6];
+      [__icon write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1794,8 +1871,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Service("];
-  [ms appendString: @"owner:"];
-  [ms appendFormat: @"%@", __owner];
+  [ms appendString: @"owners:"];
+  [ms appendFormat: @"%@", __owners];
   [ms appendString: @",timeOfRegistration:"];
   [ms appendFormat: @"%qi", __timeOfRegistration];
   [ms appendString: @",name:"];
@@ -1804,6 +1881,8 @@
   [ms appendFormat: @"\"%@\"", __id];
   [ms appendString: @",totalMessagesSent:"];
   [ms appendFormat: @"%qi", __totalMessagesSent];
+  [ms appendString: @",icon:"];
+  [ms appendFormat: @"%@", __icon];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

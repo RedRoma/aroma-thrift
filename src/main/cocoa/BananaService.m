@@ -5960,6 +5960,328 @@
 
 @end
 
+@implementation BananaService_GetMyServicesRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithDeveloperToken: (BananaService_DeveloperToken) developerToken
+{
+  self = [super init];
+  __developerToken = [developerToken retain_stub];
+  __developerToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"developerToken"])
+  {
+    __developerToken = [[decoder decodeObjectForKey: @"developerToken"] retain_stub];
+    __developerToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__developerToken_isset)
+  {
+    [encoder encodeObject: __developerToken forKey: @"developerToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __developerToken_isset ? 2654435761 : 0;
+  if (__developerToken_isset)
+  {
+    hash = (hash * 31) ^ [__developerToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMyServicesRequest class]]) {
+    return NO;
+  }
+  BananaService_GetMyServicesRequest *other = (BananaService_GetMyServicesRequest *)anObject;
+  if ((__developerToken_isset != other->__developerToken_isset) ||
+      (__developerToken_isset && ((__developerToken || other->__developerToken) && ![__developerToken isEqual:other->__developerToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__developerToken release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_DeveloperToken *) developerToken {
+  return [[__developerToken retain_stub] autorelease_stub];
+}
+
+- (void) setDeveloperToken: (BananaAuthentication_DeveloperToken *) developerToken {
+  [developerToken retain_stub];
+  [__developerToken release_stub];
+  __developerToken = developerToken;
+  __developerToken_isset = YES;
+}
+
+- (BOOL) developerTokenIsSet {
+  return __developerToken_isset;
+}
+
+- (void) unsetDeveloperToken {
+  [__developerToken release_stub];
+  __developerToken = nil;
+  __developerToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_DeveloperToken *fieldValue = [[BananaAuthentication_DeveloperToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDeveloperToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMyServicesRequest"];
+  if (__developerToken_isset) {
+    if (__developerToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"developerToken" type: TType_STRUCT fieldID: 1];
+      [__developerToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyServicesRequest("];
+  [ms appendString: @"developerToken:"];
+  [ms appendFormat: @"%@", __developerToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetMyServicesResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithServices: (NSMutableArray *) services
+{
+  self = [super init];
+  __services = [services retain_stub];
+  __services_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"services"])
+  {
+    __services = [[decoder decodeObjectForKey: @"services"] retain_stub];
+    __services_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__services_isset)
+  {
+    [encoder encodeObject: __services forKey: @"services"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __services_isset ? 2654435761 : 0;
+  if (__services_isset)
+  {
+    hash = (hash * 31) ^ [__services hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMyServicesResponse class]]) {
+    return NO;
+  }
+  BananaService_GetMyServicesResponse *other = (BananaService_GetMyServicesResponse *)anObject;
+  if ((__services_isset != other->__services_isset) ||
+      (__services_isset && ((__services || other->__services) && ![__services isEqual:other->__services]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__services release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) services {
+  return [[__services retain_stub] autorelease_stub];
+}
+
+- (void) setServices: (NSMutableArray *) services {
+  [services retain_stub];
+  [__services release_stub];
+  __services = services;
+  __services_isset = YES;
+}
+
+- (BOOL) servicesIsSet {
+  return __services_isset;
+}
+
+- (void) unsetServices {
+  [__services release_stub];
+  __services = nil;
+  __services_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
+          {
+            Banana_Service *_elem12 = [[Banana_Service alloc] init];
+            [_elem12 read: inProtocol];
+            [fieldValue addObject: _elem12];
+            [_elem12 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setServices: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMyServicesResponse"];
+  if (__services_isset) {
+    if (__services != nil) {
+      [outProtocol writeFieldBeginWithName: @"services" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__services count]];
+        int idx14;
+        for (idx14 = 0; idx14 < [__services count]; idx14++)
+        {
+          [[__services objectAtIndex: idx14] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyServicesResponse("];
+  [ms appendString: @"services:"];
+  [ms appendFormat: @"%@", __services];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_GetServiceInfoRequest
 
 - (id) init
@@ -6703,16 +7025,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size10;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
-          int _i11;
-          for (_i11 = 0; _i11 < _size10; ++_i11)
+          int _size15;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            Banana_Service *_elem12 = [[Banana_Service alloc] init];
-            [_elem12 read: inProtocol];
-            [fieldValue addObject: _elem12];
-            [_elem12 release_stub];
+            Banana_Service *_elem17 = [[Banana_Service alloc] init];
+            [_elem17 read: inProtocol];
+            [fieldValue addObject: _elem17];
+            [_elem17 release_stub];
           }
           [inProtocol readListEnd];
           [self setServices: fieldValue];
@@ -6737,10 +7059,10 @@
       [outProtocol writeFieldBeginWithName: @"services" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__services count]];
-        int idx14;
-        for (idx14 = 0; idx14 < [__services count]; idx14++)
+        int idx19;
+        for (idx19 = 0; idx19 < [__services count]; idx19++)
         {
-          [[__services objectAtIndex: idx14] write: outProtocol];
+          [[__services objectAtIndex: idx19] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -7145,16 +7467,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size20;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
+          int _i21;
+          for (_i21 = 0; _i21 < _size20; ++_i21)
           {
-            Banana_Developer *_elem17 = [[Banana_Developer alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            Banana_Developer *_elem22 = [[Banana_Developer alloc] init];
+            [_elem22 read: inProtocol];
+            [fieldValue addObject: _elem22];
+            [_elem22 release_stub];
           }
           [inProtocol readListEnd];
           [self setDevelopers: fieldValue];
@@ -7179,10 +7501,10 @@
       [outProtocol writeFieldBeginWithName: @"developers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__developers count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__developers count]; idx19++)
+        int idx24;
+        for (idx24 = 0; idx24 < [__developers count]; idx24++)
         {
-          [[__developers objectAtIndex: idx19] write: outProtocol];
+          [[__developers objectAtIndex: idx24] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -7467,16 +7789,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            BananaChannels_BananaChannel *_elem22 = [[BananaChannels_BananaChannel alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            BananaChannels_BananaChannel *_elem27 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -7501,10 +7823,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx24;
-        for (idx24 = 0; idx24 < [__channels count]; idx24++)
+        int idx29;
+        for (idx29 = 0; idx29 < [__channels count]; idx29++)
         {
-          [[__channels objectAtIndex: idx24] write: outProtocol];
+          [[__channels objectAtIndex: idx29] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }

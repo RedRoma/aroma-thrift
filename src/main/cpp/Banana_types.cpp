@@ -754,8 +754,8 @@ Service::~Service() throw() {
 }
 
 
-void Service::__set_owner(const Developer& val) {
-  this->owner = val;
+void Service::__set_owners(const std::vector<Developer> & val) {
+  this->owners = val;
 }
 
 void Service::__set_timeOfRegistration(const timestamp val) {
@@ -772,6 +772,11 @@ void Service::__set_id(const std::string& val) {
 
 void Service::__set_totalMessagesSent(const long val) {
   this->totalMessagesSent = val;
+}
+
+void Service::__set_icon(const Image& val) {
+  this->icon = val;
+__isset.icon = true;
 }
 
 uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -796,9 +801,21 @@ uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->owner.read(iprot);
-          this->__isset.owner = true;
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->owners.clear();
+            uint32_t _size14;
+            ::apache::thrift::protocol::TType _etype17;
+            xfer += iprot->readListBegin(_etype17, _size14);
+            this->owners.resize(_size14);
+            uint32_t _i18;
+            for (_i18 = 0; _i18 < _size14; ++_i18)
+            {
+              xfer += this->owners[_i18].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.owners = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -835,6 +852,14 @@ uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->icon.read(iprot);
+          this->__isset.icon = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -852,8 +877,16 @@ uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("Service");
 
-  xfer += oprot->writeFieldBegin("owner", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->owner.write(oprot);
+  xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->owners.size()));
+    std::vector<Developer> ::const_iterator _iter19;
+    for (_iter19 = this->owners.begin(); _iter19 != this->owners.end(); ++_iter19)
+    {
+      xfer += (*_iter19).write(oprot);
+    }
+    xfer += oprot->writeListEnd();
+  }
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("timeOfRegistration", ::apache::thrift::protocol::T_I64, 2);
@@ -872,6 +905,11 @@ uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI64(this->totalMessagesSent);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.icon) {
+    xfer += oprot->writeFieldBegin("icon", ::apache::thrift::protocol::T_STRUCT, 6);
+    xfer += this->icon.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -879,39 +917,43 @@ uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
 void swap(Service &a, Service &b) {
   using ::std::swap;
-  swap(a.owner, b.owner);
+  swap(a.owners, b.owners);
   swap(a.timeOfRegistration, b.timeOfRegistration);
   swap(a.name, b.name);
   swap(a.id, b.id);
   swap(a.totalMessagesSent, b.totalMessagesSent);
+  swap(a.icon, b.icon);
   swap(a.__isset, b.__isset);
 }
 
-Service::Service(const Service& other14) {
-  owner = other14.owner;
-  timeOfRegistration = other14.timeOfRegistration;
-  name = other14.name;
-  id = other14.id;
-  totalMessagesSent = other14.totalMessagesSent;
-  __isset = other14.__isset;
+Service::Service(const Service& other20) {
+  owners = other20.owners;
+  timeOfRegistration = other20.timeOfRegistration;
+  name = other20.name;
+  id = other20.id;
+  totalMessagesSent = other20.totalMessagesSent;
+  icon = other20.icon;
+  __isset = other20.__isset;
 }
-Service& Service::operator=(const Service& other15) {
-  owner = other15.owner;
-  timeOfRegistration = other15.timeOfRegistration;
-  name = other15.name;
-  id = other15.id;
-  totalMessagesSent = other15.totalMessagesSent;
-  __isset = other15.__isset;
+Service& Service::operator=(const Service& other21) {
+  owners = other21.owners;
+  timeOfRegistration = other21.timeOfRegistration;
+  name = other21.name;
+  id = other21.id;
+  totalMessagesSent = other21.totalMessagesSent;
+  icon = other21.icon;
+  __isset = other21.__isset;
   return *this;
 }
 void Service::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Service(";
-  out << "owner=" << to_string(owner);
+  out << "owners=" << to_string(owners);
   out << ", " << "timeOfRegistration=" << to_string(timeOfRegistration);
   out << ", " << "name=" << to_string(name);
   out << ", " << "id=" << to_string(id);
   out << ", " << "totalMessagesSent=" << to_string(totalMessagesSent);
+  out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ")";
 }
 

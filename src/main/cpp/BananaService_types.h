@@ -119,6 +119,10 @@ class SnoozeChannelRequest;
 
 class SnoozeChannelResponse;
 
+class GetMyServicesRequest;
+
+class GetMyServicesResponse;
+
 class GetServiceInfoRequest;
 
 class GetServiceInfoResponse;
@@ -1567,6 +1571,98 @@ class SnoozeChannelResponse {
 void swap(SnoozeChannelResponse &a, SnoozeChannelResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMyServicesRequest__isset {
+  _GetMyServicesRequest__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _GetMyServicesRequest__isset;
+
+class GetMyServicesRequest {
+ public:
+
+  GetMyServicesRequest(const GetMyServicesRequest&);
+  GetMyServicesRequest& operator=(const GetMyServicesRequest&);
+  GetMyServicesRequest() {
+  }
+
+  virtual ~GetMyServicesRequest() throw();
+  DeveloperToken developerToken;
+
+  _GetMyServicesRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const GetMyServicesRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMyServicesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMyServicesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMyServicesRequest &a, GetMyServicesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMyServicesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMyServicesResponse__isset {
+  _GetMyServicesResponse__isset() : services(false) {}
+  bool services :1;
+} _GetMyServicesResponse__isset;
+
+class GetMyServicesResponse {
+ public:
+
+  GetMyServicesResponse(const GetMyServicesResponse&);
+  GetMyServicesResponse& operator=(const GetMyServicesResponse&);
+  GetMyServicesResponse() {
+  }
+
+  virtual ~GetMyServicesResponse() throw();
+  std::vector<Service>  services;
+
+  _GetMyServicesResponse__isset __isset;
+
+  void __set_services(const std::vector<Service> & val);
+
+  bool operator == (const GetMyServicesResponse & rhs) const
+  {
+    if (!(services == rhs.services))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMyServicesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMyServicesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMyServicesResponse &a, GetMyServicesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMyServicesResponse& obj)
 {
   obj.printTo(out);
   return out;

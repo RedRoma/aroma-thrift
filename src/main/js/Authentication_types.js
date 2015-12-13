@@ -105,21 +105,25 @@ ServiceToken.prototype.write = function(output) {
 
 DeveloperToken = function(args) {
   this.id = null;
-  this.oauthProvider = 'github';
   this.timeOfExpiration = null;
   this.organization = null;
+  this.oauthToken = false;
+  this.oauthProvider = null;
   if (args) {
     if (args.id !== undefined && args.id !== null) {
       this.id = args.id;
-    }
-    if (args.oauthProvider !== undefined && args.oauthProvider !== null) {
-      this.oauthProvider = args.oauthProvider;
     }
     if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
       this.timeOfExpiration = args.timeOfExpiration;
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
+    }
+    if (args.oauthToken !== undefined && args.oauthToken !== null) {
+      this.oauthToken = args.oauthToken;
+    }
+    if (args.oauthProvider !== undefined && args.oauthProvider !== null) {
+      this.oauthProvider = args.oauthProvider;
     }
   }
 };
@@ -145,22 +149,29 @@ DeveloperToken.prototype.read = function(input) {
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.oauthProvider = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
       if (ftype == Thrift.Type.I64) {
         this.timeOfExpiration = input.readI64().value;
       } else {
         input.skip(ftype);
       }
       break;
-      case 4:
+      case 3:
       if (ftype == Thrift.Type.STRING) {
         this.organization = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.BOOL) {
+        this.oauthToken = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.oauthProvider = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -181,19 +192,24 @@ DeveloperToken.prototype.write = function(output) {
     output.writeString(this.id);
     output.writeFieldEnd();
   }
-  if (this.oauthProvider !== null && this.oauthProvider !== undefined) {
-    output.writeFieldBegin('oauthProvider', Thrift.Type.STRING, 2);
-    output.writeString(this.oauthProvider);
-    output.writeFieldEnd();
-  }
   if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
-    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 3);
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 2);
     output.writeI64(this.timeOfExpiration);
     output.writeFieldEnd();
   }
   if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
     output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.oauthToken !== null && this.oauthToken !== undefined) {
+    output.writeFieldBegin('oauthToken', Thrift.Type.BOOL, 4);
+    output.writeBool(this.oauthToken);
+    output.writeFieldEnd();
+  }
+  if (this.oauthProvider !== null && this.oauthProvider !== undefined) {
+    output.writeFieldBegin('oauthProvider', Thrift.Type.STRING, 5);
+    output.writeString(this.oauthProvider);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -105,11 +105,12 @@ inline std::ostream& operator<<(std::ostream& out, const ServiceToken& obj)
 }
 
 typedef struct _DeveloperToken__isset {
-  _DeveloperToken__isset() : id(false), oauthProvider(true), timeOfExpiration(false), organization(false) {}
+  _DeveloperToken__isset() : id(false), timeOfExpiration(false), organization(false), oauthToken(true), oauthProvider(false) {}
   bool id :1;
-  bool oauthProvider :1;
   bool timeOfExpiration :1;
   bool organization :1;
+  bool oauthToken :1;
+  bool oauthProvider :1;
 } _DeveloperToken__isset;
 
 class DeveloperToken {
@@ -117,38 +118,45 @@ class DeveloperToken {
 
   DeveloperToken(const DeveloperToken&);
   DeveloperToken& operator=(const DeveloperToken&);
-  DeveloperToken() : id(), oauthProvider("github"), timeOfExpiration(0), organization() {
+  DeveloperToken() : id(), timeOfExpiration(0), organization(), oauthToken(false), oauthProvider() {
   }
 
   virtual ~DeveloperToken() throw();
   std::string id;
-  std::string oauthProvider;
   timestamp timeOfExpiration;
   std::string organization;
+  bool oauthToken;
+  std::string oauthProvider;
 
   _DeveloperToken__isset __isset;
 
   void __set_id(const std::string& val);
 
-  void __set_oauthProvider(const std::string& val);
-
   void __set_timeOfExpiration(const timestamp val);
 
   void __set_organization(const std::string& val);
 
+  void __set_oauthToken(const bool val);
+
+  void __set_oauthProvider(const std::string& val);
+
   bool operator == (const DeveloperToken & rhs) const
   {
     if (!(id == rhs.id))
-      return false;
-    if (__isset.oauthProvider != rhs.__isset.oauthProvider)
-      return false;
-    else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
       return false;
     if (!(timeOfExpiration == rhs.timeOfExpiration))
       return false;
     if (__isset.organization != rhs.__isset.organization)
       return false;
     else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    if (__isset.oauthToken != rhs.__isset.oauthToken)
+      return false;
+    else if (__isset.oauthToken && !(oauthToken == rhs.oauthToken))
+      return false;
+    if (__isset.oauthProvider != rhs.__isset.oauthProvider)
+      return false;
+    else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
       return false;
     return true;
   }

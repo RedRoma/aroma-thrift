@@ -1031,6 +1031,58 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_GetMyServicesRequest : NSObject <TBase, NSCoding> {
+  BananaService_DeveloperToken __developerToken;
+
+  BOOL __developerToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=developerToken, setter=setDeveloperToken:) BananaService_DeveloperToken developerToken;
+#endif
+
+- (id) init;
+- (id) initWithDeveloperToken: (BananaService_DeveloperToken) developerToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_DeveloperToken) developerToken;
+- (void) setDeveloperToken: (BananaService_DeveloperToken) developerToken;
+#endif
+- (BOOL) developerTokenIsSet;
+
+@end
+
+@interface BananaService_GetMyServicesResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __services;
+
+  BOOL __services_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=services, setter=setServices:) NSMutableArray * services;
+#endif
+
+- (id) init;
+- (id) initWithServices: (NSMutableArray *) services;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) services;
+- (void) setServices: (NSMutableArray *) services;
+#endif
+- (BOOL) servicesIsSet;
+
+@end
+
 @interface BananaService_GetServiceInfoRequest : NSObject <TBase, NSCoding> {
   BananaService_DeveloperToken __developerToken;
   NSString * __serviceId;
