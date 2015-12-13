@@ -21,8 +21,6 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
-typedef Authentication.Service Service;
-
 typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
 typedef  ::aroma::banana::thrift::int int;
@@ -32,6 +30,8 @@ typedef  ::aroma::banana::thrift::long long;
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 typedef class  ::aroma::banana::thrift::Developer Developer;
+
+typedef class  ::aroma::banana::thrift::Service Service;
 
 class HealthCheckFailed;
 
