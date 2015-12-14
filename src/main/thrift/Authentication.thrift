@@ -10,7 +10,7 @@ typedef Banana.timestamp timestamp;
 
 struct ServiceToken
 {
-    1: string id;
+    1: string token;
     2: string serviceName;
     3: optional string organization;
     4: timestamp timeOfExpiration;
@@ -18,10 +18,10 @@ struct ServiceToken
 
 struct DeveloperToken
 {
-    1: string id;
+    1: string token;
     2: timestamp timeOfExpiration;
     3: optional string organization;
-    4: optional bool oauthToken = false;
+    4: optional bool isOauthToken = false;
     5: optional string oauthProvider;
 }
 
