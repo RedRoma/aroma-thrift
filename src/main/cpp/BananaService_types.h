@@ -127,6 +127,10 @@ class GetServiceInfoRequest;
 
 class GetServiceInfoResponse;
 
+class GetDashboardRequest;
+
+class GetDashboardResponse;
+
 class SearchForServicesRequest;
 
 class SearchForServicesResponse;
@@ -1761,6 +1765,117 @@ class GetServiceInfoResponse {
 void swap(GetServiceInfoResponse &a, GetServiceInfoResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetServiceInfoResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetDashboardRequest__isset {
+  _GetDashboardRequest__isset() : developerToken(false) {}
+  bool developerToken :1;
+} _GetDashboardRequest__isset;
+
+class GetDashboardRequest {
+ public:
+
+  GetDashboardRequest(const GetDashboardRequest&);
+  GetDashboardRequest& operator=(const GetDashboardRequest&);
+  GetDashboardRequest() {
+  }
+
+  virtual ~GetDashboardRequest() throw();
+  DeveloperToken developerToken;
+
+  _GetDashboardRequest__isset __isset;
+
+  void __set_developerToken(const DeveloperToken& val);
+
+  bool operator == (const GetDashboardRequest & rhs) const
+  {
+    if (!(developerToken == rhs.developerToken))
+      return false;
+    return true;
+  }
+  bool operator != (const GetDashboardRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetDashboardRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetDashboardRequest &a, GetDashboardRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetDashboardRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetDashboardResponse__isset {
+  _GetDashboardResponse__isset() : unreadMessageCount(true), totalMessagesLastHour(true), totalMessagesLast24hrs(true), recentMessages(true) {}
+  bool unreadMessageCount :1;
+  bool totalMessagesLastHour :1;
+  bool totalMessagesLast24hrs :1;
+  bool recentMessages :1;
+} _GetDashboardResponse__isset;
+
+class GetDashboardResponse {
+ public:
+
+  GetDashboardResponse(const GetDashboardResponse&);
+  GetDashboardResponse& operator=(const GetDashboardResponse&);
+  GetDashboardResponse() : unreadMessageCount(0), totalMessagesLastHour(0), totalMessagesLast24hrs(0) {
+
+  }
+
+  virtual ~GetDashboardResponse() throw();
+  int unreadMessageCount;
+  int totalMessagesLastHour;
+  int totalMessagesLast24hrs;
+  std::vector< ::aroma::banana::thrift::Message>  recentMessages;
+
+  _GetDashboardResponse__isset __isset;
+
+  void __set_unreadMessageCount(const int val);
+
+  void __set_totalMessagesLastHour(const int val);
+
+  void __set_totalMessagesLast24hrs(const int val);
+
+  void __set_recentMessages(const std::vector< ::aroma::banana::thrift::Message> & val);
+
+  bool operator == (const GetDashboardResponse & rhs) const
+  {
+    if (!(unreadMessageCount == rhs.unreadMessageCount))
+      return false;
+    if (!(totalMessagesLastHour == rhs.totalMessagesLastHour))
+      return false;
+    if (!(totalMessagesLast24hrs == rhs.totalMessagesLast24hrs))
+      return false;
+    if (!(recentMessages == rhs.recentMessages))
+      return false;
+    return true;
+  }
+  bool operator != (const GetDashboardResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetDashboardResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetDashboardResponse &a, GetDashboardResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& obj)
 {
   obj.printTo(out);
   return out;
