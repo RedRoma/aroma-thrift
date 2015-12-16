@@ -11,7 +11,7 @@ var Q = thrift.Q;
 var ttypes = module.exports = {};
 ttypes.Urgency = {
   'INFORMATIONAL' : 1,
-  'PRESSING' : 2,
+  'IMPORTANT' : 2,
   'CRITICAL' : 3
 };
 ttypes.TimeUnit = {
@@ -481,14 +481,15 @@ Developer.prototype.write = function(output) {
 };
 
 Service = module.exports.Service = function(args) {
-  this.owner = null;
+  this.owners = null;
   this.timeOfRegistration = null;
   this.name = null;
   this.id = null;
   this.totalMessagesSent = null;
+  this.icon = null;
   if (args) {
-    if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new ttypes.Developer(args.owner);
+    if (args.owners !== undefined && args.owners !== null) {
+      this.owners = Thrift.copyList(args.owners, [ttypes.Developer]);
     }
     if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
       this.timeOfRegistration = args.timeOfRegistration;
@@ -501,6 +502,9 @@ Service = module.exports.Service = function(args) {
     }
     if (args.totalMessagesSent !== undefined && args.totalMessagesSent !== null) {
       this.totalMessagesSent = args.totalMessagesSent;
+    }
+    if (args.icon !== undefined && args.icon !== null) {
+      this.icon = new ttypes.Image(args.icon);
     }
   }
 };
@@ -519,9 +523,22 @@ Service.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new ttypes.Developer();
-        this.owner.read(input);
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.owners = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new ttypes.Developer();
+          elem6.read(input);
+          this.owners.push(elem6);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
@@ -554,6 +571,14 @@ Service.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.icon = new ttypes.Image();
+        this.icon.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -565,9 +590,18 @@ Service.prototype.read = function(input) {
 
 Service.prototype.write = function(output) {
   output.writeStructBegin('Service');
-  if (this.owner !== null && this.owner !== undefined) {
-    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 1);
-    this.owner.write(output);
+  if (this.owners !== null && this.owners !== undefined) {
+    output.writeFieldBegin('owners', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.owners.length);
+    for (var iter7 in this.owners)
+    {
+      if (this.owners.hasOwnProperty(iter7))
+      {
+        iter7 = this.owners[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   if (this.timeOfRegistration !== null && this.timeOfRegistration !== undefined) {
@@ -588,6 +622,11 @@ Service.prototype.write = function(output) {
   if (this.totalMessagesSent !== null && this.totalMessagesSent !== undefined) {
     output.writeFieldBegin('totalMessagesSent', Thrift.Type.I64, 5);
     output.writeI64(this.totalMessagesSent);
+    output.writeFieldEnd();
+  }
+  if (this.icon !== null && this.icon !== undefined) {
+    output.writeFieldBegin('icon', Thrift.Type.STRUCT, 6);
+    this.icon.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

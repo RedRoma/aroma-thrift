@@ -22,7 +22,7 @@ namespace aroma { namespace banana { namespace thrift {
 struct Urgency {
   enum type {
     INFORMATIONAL = 1,
-    PRESSING = 2,
+    IMPORTANT = 2,
     CRITICAL = 3
   };
 };
@@ -372,12 +372,13 @@ inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
 }
 
 typedef struct _Service__isset {
-  _Service__isset() : owner(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false) {}
-  bool owner :1;
+  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false) {}
+  bool owners :1;
   bool timeOfRegistration :1;
   bool name :1;
   bool id :1;
   bool totalMessagesSent :1;
+  bool icon :1;
 } _Service__isset;
 
 class Service {
@@ -389,15 +390,16 @@ class Service {
   }
 
   virtual ~Service() throw();
-  Developer owner;
+  std::vector<Developer>  owners;
   timestamp timeOfRegistration;
   std::string name;
   std::string id;
   long totalMessagesSent;
+  Image icon;
 
   _Service__isset __isset;
 
-  void __set_owner(const Developer& val);
+  void __set_owners(const std::vector<Developer> & val);
 
   void __set_timeOfRegistration(const timestamp val);
 
@@ -407,9 +409,11 @@ class Service {
 
   void __set_totalMessagesSent(const long val);
 
+  void __set_icon(const Image& val);
+
   bool operator == (const Service & rhs) const
   {
-    if (!(owner == rhs.owner))
+    if (!(owners == rhs.owners))
       return false;
     if (!(timeOfRegistration == rhs.timeOfRegistration))
       return false;
@@ -418,6 +422,10 @@ class Service {
     if (!(id == rhs.id))
       return false;
     if (!(totalMessagesSent == rhs.totalMessagesSent))
+      return false;
+    if (__isset.icon != rhs.__isset.icon)
+      return false;
+    else if (__isset.icon && !(icon == rhs.icon))
       return false;
     return true;
   }

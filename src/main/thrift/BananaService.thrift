@@ -263,6 +263,16 @@ struct SnoozeChannelResponse
 // Getting and Querying for Data
 //==========================================================
 
+struct GetMyServicesRequest
+{
+    1: DeveloperToken developerToken;
+}
+
+struct GetMyServicesResponse
+{
+    1: list<Service> services;
+}
+
 struct GetServiceInfoRequest
 {
     1: DeveloperToken developerToken;
@@ -272,6 +282,20 @@ struct GetServiceInfoRequest
 struct GetServiceInfoResponse
 {
     1: Service serviceInfo;
+}
+
+struct GetDashboardRequest
+{
+    1: DeveloperToken developerToken;
+}
+
+struct GetDashboardResponse
+{
+    1: int unreadMessageCount = 0;
+    2: int totalMessagesLastHour = 0;
+    3: int totalMessagesLast24hrs = 0;
+    4: list<Banana.Message> recentMessages = [];
+
 }
 
 struct SearchForServicesRequest
@@ -315,7 +339,7 @@ struct SendMessageRequest
 {
     1: ServiceToken serviceToken;
     2: string message;
-    3: Urgency urgency = Banana.Urgency.PRESSING;
+    3: Urgency urgency = Banana.Urgency.IMPORTANT;
 }
 
 struct SendMessageResponse
@@ -429,17 +453,6 @@ service BananaService
                                                                                       5 : UnauthorizedException ex5)
 
 
-    /**
-     * Get details about a Service from it's unique ID
-     *
-     * #developer
-     */
-    GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                                   2 : InvalidArgumentException ex2,
-                                                                                   3 : InvalidCredentialsException ex3,
-                                                                                   4 : ServiceDoesNotExistException ex4,
-                                                                                   5 : UnauthorizedException ex5)
-
 
     /**
      * Perform a Search on all the services registered to the Banana Service by searching for its title.
@@ -451,15 +464,7 @@ service BananaService
                                                                                             3 : InvalidCredentialsException ex3,
                                                                                             4 : UnauthorizedException ex4)
 
-    /**
-     * Get a list of all Developers subscribed to a Service.
-     *
-     * #developer
-     */
-    GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                        2 : InvalidArgumentException ex2,
-                                                                                                        3 : InvalidCredentialsException ex3,
-                                                                                                        4 : UnauthorizedException ex4)
+
 
     SaveChannelResponse saveChannel(1: SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                           2 : InvalidArgumentException ex2,
@@ -472,15 +477,47 @@ service BananaService
                                                                                                3 : InvalidCredentialsException ex3,
                                                                                                4 : UnauthorizedException ex4,
                                                                                                5 : ChannelDoesNotExistException ex5)
-
-    GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
-                                                                                                4 : UnauthorizedException ex4)
-
+    
     SnoozeChannelResponse snoozeChannel(1: SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                 2 : InvalidArgumentException ex2,
                                                                                 3 : InvalidCredentialsException ex3,
                                                                                 4 : UnauthorizedException ex4,
                                                                                 5 : ChannelDoesNotExistException ex5)
+    
+    /**
+     * Get a list of all Developers subscribed to a Service.
+     *
+     * #developer
+     */
+    GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                        2 : InvalidArgumentException ex2,
+                                                                                                        3 : InvalidCredentialsException ex3,
+                                                                                                        4 : UnauthorizedException ex4)
+
+    
+    GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                2 : InvalidArgumentException ex2,
+                                                                                                3 : InvalidCredentialsException ex3)
+    
+    GetMyServicesResponse getMyServices(1: GetMyServicesRequest request) throws(1 : OperationFailedException ex1,
+                                                                                2 : InvalidArgumentException ex2,
+                                                                                3 : InvalidCredentialsException ex3)
+    
+
+    /**
+     * Get details about a Service from it's unique ID
+     *
+     * #developer
+     */
+    GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                                   2 : InvalidArgumentException ex2,
+                                                                                   3 : InvalidCredentialsException ex3,
+                                                                                   4 : ServiceDoesNotExistException ex4,
+                                                                                   5 : UnauthorizedException ex5)
+
+    
+    GetDashboardResponse getDashboard(1: GetDashboardRequest request) throws(1 : OperationFailedException ex1,
+                                                                             2 : InvalidArgumentException ex2,
+                                                                             3 : InvalidCredentialsException ex3)
+
 }

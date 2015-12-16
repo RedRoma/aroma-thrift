@@ -39,8 +39,8 @@ class AromaAccount;
 class Credentials;
 
 typedef struct _ServiceToken__isset {
-  _ServiceToken__isset() : id(false), serviceName(false), organization(false), timeOfExpiration(false) {}
-  bool id :1;
+  _ServiceToken__isset() : token(false), serviceName(false), organization(false), timeOfExpiration(false) {}
+  bool token :1;
   bool serviceName :1;
   bool organization :1;
   bool timeOfExpiration :1;
@@ -51,18 +51,18 @@ class ServiceToken {
 
   ServiceToken(const ServiceToken&);
   ServiceToken& operator=(const ServiceToken&);
-  ServiceToken() : id(), serviceName(), organization(), timeOfExpiration(0) {
+  ServiceToken() : token(), serviceName(), organization(), timeOfExpiration(0) {
   }
 
   virtual ~ServiceToken() throw();
-  std::string id;
+  std::string token;
   std::string serviceName;
   std::string organization;
   timestamp timeOfExpiration;
 
   _ServiceToken__isset __isset;
 
-  void __set_id(const std::string& val);
+  void __set_token(const std::string& val);
 
   void __set_serviceName(const std::string& val);
 
@@ -72,7 +72,7 @@ class ServiceToken {
 
   bool operator == (const ServiceToken & rhs) const
   {
-    if (!(id == rhs.id))
+    if (!(token == rhs.token))
       return false;
     if (!(serviceName == rhs.serviceName))
       return false;
@@ -105,11 +105,12 @@ inline std::ostream& operator<<(std::ostream& out, const ServiceToken& obj)
 }
 
 typedef struct _DeveloperToken__isset {
-  _DeveloperToken__isset() : id(false), oauthProvider(true), timeOfExpiration(false), organization(false) {}
-  bool id :1;
-  bool oauthProvider :1;
+  _DeveloperToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+  bool token :1;
   bool timeOfExpiration :1;
   bool organization :1;
+  bool isOauthToken :1;
+  bool oauthProvider :1;
 } _DeveloperToken__isset;
 
 class DeveloperToken {
@@ -117,38 +118,45 @@ class DeveloperToken {
 
   DeveloperToken(const DeveloperToken&);
   DeveloperToken& operator=(const DeveloperToken&);
-  DeveloperToken() : id(), oauthProvider("github"), timeOfExpiration(0), organization() {
+  DeveloperToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
   }
 
   virtual ~DeveloperToken() throw();
-  std::string id;
-  std::string oauthProvider;
+  std::string token;
   timestamp timeOfExpiration;
   std::string organization;
+  bool isOauthToken;
+  std::string oauthProvider;
 
   _DeveloperToken__isset __isset;
 
-  void __set_id(const std::string& val);
-
-  void __set_oauthProvider(const std::string& val);
+  void __set_token(const std::string& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
   void __set_organization(const std::string& val);
 
+  void __set_isOauthToken(const bool val);
+
+  void __set_oauthProvider(const std::string& val);
+
   bool operator == (const DeveloperToken & rhs) const
   {
-    if (!(id == rhs.id))
-      return false;
-    if (__isset.oauthProvider != rhs.__isset.oauthProvider)
-      return false;
-    else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
+    if (!(token == rhs.token))
       return false;
     if (!(timeOfExpiration == rhs.timeOfExpiration))
       return false;
     if (__isset.organization != rhs.__isset.organization)
       return false;
     else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    if (__isset.isOauthToken != rhs.__isset.isOauthToken)
+      return false;
+    else if (__isset.isOauthToken && !(isOauthToken == rhs.isOauthToken))
+      return false;
+    if (__isset.oauthProvider != rhs.__isset.oauthProvider)
+      return false;
+    else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
       return false;
     return true;
   }

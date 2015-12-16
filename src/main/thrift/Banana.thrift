@@ -16,7 +16,7 @@ typedef i64 timestamp
 enum Urgency
 {
     INFORMATIONAL = 1,
-    PRESSING = 2,
+    IMPORTANT = 2,
     CRITICAL = 3
 }
 
@@ -25,7 +25,7 @@ struct Message
 {
     1: string messageId;
     2: string body;
-    3: Urgency urgency = Urgency.PRESSING;
+    3: Urgency urgency = Urgency.IMPORTANT;
     4: timestamp timeMessageSent;
     5: timestamp timeMessageReceived;
     6: string nameOfService;
@@ -82,9 +82,10 @@ struct Developer
 
 struct Service
 {
-    1: Developer owner;
+    1: list<Developer> owners;
     2: timestamp timeOfRegistration;
     3: string name;
     4: string id;
     5: long totalMessagesSent;
+    6: optional Image icon;
 }

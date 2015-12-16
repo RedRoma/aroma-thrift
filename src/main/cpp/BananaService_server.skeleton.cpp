@@ -134,18 +134,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Get details about a Service from it's unique ID
-   * 
-   * #developer
-   * 
-   * @param request
-   */
-  void getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request) {
-    // Your implementation goes here
-    printf("getServiceInfo\n");
-  }
-
-  /**
    * Perform a Search on all the services registered to the Banana Service by searching for its title.
    * 
    * #developer
@@ -155,6 +143,21 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   void searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request) {
     // Your implementation goes here
     printf("searchForServices\n");
+  }
+
+  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
+    // Your implementation goes here
+    printf("saveChannel\n");
+  }
+
+  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
+    // Your implementation goes here
+    printf("removeSavedChannel\n");
+  }
+
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
+    // Your implementation goes here
+    printf("snoozeChannel\n");
   }
 
   /**
@@ -169,24 +172,31 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getServiceSubscribers\n");
   }
 
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
-    // Your implementation goes here
-    printf("saveChannel\n");
-  }
-
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
-    // Your implementation goes here
-    printf("removeSavedChannel\n");
-  }
-
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
     // Your implementation goes here
     printf("getMySavedChannels\n");
   }
 
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
+  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request) {
     // Your implementation goes here
-    printf("snoozeChannel\n");
+    printf("getMyServices\n");
+  }
+
+  /**
+   * Get details about a Service from it's unique ID
+   * 
+   * #developer
+   * 
+   * @param request
+   */
+  void getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request) {
+    // Your implementation goes here
+    printf("getServiceInfo\n");
+  }
+
+  void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
+    // Your implementation goes here
+    printf("getDashboard\n");
   }
 
 };
