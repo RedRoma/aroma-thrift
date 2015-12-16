@@ -11,7 +11,7 @@ var Q = thrift.Q;
 var ttypes = module.exports = {};
 ttypes.Urgency = {
   'INFORMATIONAL' : 1,
-  'PRESSING' : 2,
+  'IMPORTANT' : 2,
   'CRITICAL' : 3
 };
 ttypes.TimeUnit = {

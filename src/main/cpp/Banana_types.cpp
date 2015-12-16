@@ -15,12 +15,12 @@ namespace aroma { namespace banana { namespace thrift {
 
 int _kUrgencyValues[] = {
   Urgency::INFORMATIONAL,
-  Urgency::PRESSING,
+  Urgency::IMPORTANT,
   Urgency::CRITICAL
 };
 const char* _kUrgencyNames[] = {
   "INFORMATIONAL",
-  "PRESSING",
+  "IMPORTANT",
   "CRITICAL"
 };
 const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));

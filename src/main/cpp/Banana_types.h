@@ -22,7 +22,7 @@ namespace aroma { namespace banana { namespace thrift {
 struct Urgency {
   enum type {
     INFORMATIONAL = 1,
-    PRESSING = 2,
+    IMPORTANT = 2,
     CRITICAL = 3
   };
 };
