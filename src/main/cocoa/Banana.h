@@ -21,7 +21,7 @@
 
 enum Banana_Urgency {
   Urgency_INFORMATIONAL = 1,
-  Urgency_PRESSING = 2,
+  Urgency_IMPORTANT = 2,
   Urgency_CRITICAL = 3
 };
 

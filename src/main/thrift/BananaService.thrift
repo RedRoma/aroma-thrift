@@ -339,7 +339,7 @@ struct SendMessageRequest
 {
     1: ServiceToken serviceToken;
     2: string message;
-    3: Urgency urgency = Banana.Urgency.PRESSING;
+    3: Urgency urgency = Banana.Urgency.IMPORTANT;
 }
 
 struct SendMessageResponse
