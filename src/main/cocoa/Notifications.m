@@ -28,22 +28,78 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname application: (BananaNotifications_Application) application
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __hostname = [hostname retain_stub];
+  __hostname_isset = YES;
+  __application = [application retain_stub];
+  __application_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostname"])
+  {
+    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
+    __hostname_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"application"])
+  {
+    __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
+    __application_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__hostname_isset)
+  {
+    [encoder encodeObject: __hostname forKey: @"hostname"];
+  }
+  if (__application_isset)
+  {
+    [encoder encodeObject: __application forKey: @"application"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
+  if (__hostname_isset)
+  {
+    hash = (hash * 31) ^ [__hostname hash];
+  }
+  hash = (hash * 31) ^ __application_isset ? 2654435761 : 0;
+  if (__application_isset)
+  {
+    hash = (hash * 31) ^ [__application hash];
+  }
   return hash;
 }
 
@@ -56,7 +112,90 @@
     return NO;
   }
   BananaNotifications_HealthCheckFailed *other = (BananaNotifications_HealthCheckFailed *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__hostname_isset != other->__hostname_isset) ||
+      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
+    return NO;
+  }
+  if ((__application_isset != other->__application_isset) ||
+      (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__hostname release_stub];
+  [__application release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (NSString *) hostname {
+  return [[__hostname retain_stub] autorelease_stub];
+}
+
+- (void) setHostname: (NSString *) hostname {
+  [hostname retain_stub];
+  [__hostname release_stub];
+  __hostname = hostname;
+  __hostname_isset = YES;
+}
+
+- (BOOL) hostnameIsSet {
+  return __hostname_isset;
+}
+
+- (void) unsetHostname {
+  [__hostname release_stub];
+  __hostname = nil;
+  __hostname_isset = NO;
+}
+
+- (Banana_Application *) application {
+  return [[__application retain_stub] autorelease_stub];
+}
+
+- (void) setApplication: (Banana_Application *) application {
+  [application retain_stub];
+  [__application release_stub];
+  __application = application;
+  __application_isset = YES;
+}
+
+- (BOOL) applicationIsSet {
+  return __application_isset;
+}
+
+- (void) unsetApplication {
+  [__application release_stub];
+  __application = nil;
+  __application_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -74,6 +213,32 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHostname: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplication: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -85,6 +250,27 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"HealthCheckFailed"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostname_isset) {
+    if (__hostname != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __hostname];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__application_isset) {
+    if (__application != nil) {
+      [outProtocol writeFieldBeginWithName: @"application" type: TType_STRUCT fieldID: 3];
+      [__application write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -95,6 +281,12 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckFailed("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",hostname:"];
+  [ms appendFormat: @"\"%@\"", __hostname];
+  [ms appendString: @",application:"];
+  [ms appendFormat: @"%@", __application];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -106,22 +298,62 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message application: (BananaNotifications_Application) application
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __application = [application retain_stub];
+  __application_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"application"])
+  {
+    __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
+    __application_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__application_isset)
+  {
+    [encoder encodeObject: __application forKey: @"application"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __application_isset ? 2654435761 : 0;
+  if (__application_isset)
+  {
+    hash = (hash * 31) ^ [__application hash];
+  }
   return hash;
 }
 
@@ -134,7 +366,64 @@
     return NO;
   }
   BananaNotifications_HealthCheckBackToNormal *other = (BananaNotifications_HealthCheckBackToNormal *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__application_isset != other->__application_isset) ||
+      (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__application release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (Banana_Application *) application {
+  return [[__application retain_stub] autorelease_stub];
+}
+
+- (void) setApplication: (Banana_Application *) application {
+  [application retain_stub];
+  [__application release_stub];
+  __application = application;
+  __application_isset = YES;
+}
+
+- (BOOL) applicationIsSet {
+  return __application_isset;
+}
+
+- (void) unsetApplication {
+  [__application release_stub];
+  __application = nil;
+  __application_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -152,6 +441,24 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplication: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -163,6 +470,20 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"HealthCheckBackToNormal"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__application_isset) {
+    if (__application != nil) {
+      [outProtocol writeFieldBeginWithName: @"application" type: TType_STRUCT fieldID: 2];
+      [__application write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -173,13 +494,17 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckBackToNormal("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",application:"];
+  [ms appendFormat: @"%@", __application];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation BananaNotifications_ServiceTokenRenewed
+@implementation BananaNotifications_ApplicationTokenRenewed
 
 - (id) init
 {
@@ -189,13 +514,15 @@
   return self;
 }
 
-- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken
+- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
 {
   self = [super init];
   __human = [human retain_stub];
   __human_isset = YES;
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __application = [application retain_stub];
+  __application_isset = YES;
   return self;
 }
 
@@ -207,10 +534,15 @@
     __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
     __human_isset = YES;
   }
-  if ([decoder containsValueForKey: @"serviceToken"])
+  if ([decoder containsValueForKey: @"applicationToken"])
   {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"application"])
+  {
+    __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
+    __application_isset = YES;
   }
   return self;
 }
@@ -221,9 +553,13 @@
   {
     [encoder encodeObject: __human forKey: @"human"];
   }
-  if (__serviceToken_isset)
+  if (__applicationToken_isset)
   {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__application_isset)
+  {
+    [encoder encodeObject: __application forKey: @"application"];
   }
 }
 
@@ -235,10 +571,15 @@
   {
     hash = (hash * 31) ^ [__human hash];
   }
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
   {
-    hash = (hash * 31) ^ [__serviceToken hash];
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __application_isset ? 2654435761 : 0;
+  if (__application_isset)
+  {
+    hash = (hash * 31) ^ [__application hash];
   }
   return hash;
 }
@@ -248,16 +589,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ServiceTokenRenewed class]]) {
+  if (![anObject isKindOfClass:[BananaNotifications_ApplicationTokenRenewed class]]) {
     return NO;
   }
-  BananaNotifications_ServiceTokenRenewed *other = (BananaNotifications_ServiceTokenRenewed *)anObject;
+  BananaNotifications_ApplicationTokenRenewed *other = (BananaNotifications_ApplicationTokenRenewed *)anObject;
   if ((__human_isset != other->__human_isset) ||
       (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
     return NO;
   }
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__application_isset != other->__application_isset) ||
+      (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
     return NO;
   }
   return YES;
@@ -266,7 +611,8 @@
 - (void) dealloc
 {
   [__human release_stub];
-  [__serviceToken release_stub];
+  [__applicationToken release_stub];
+  [__application release_stub];
   [super dealloc_stub];
 }
 
@@ -291,25 +637,46 @@
   __human_isset = NO;
 }
 
-- (BananaAuthentication_ServiceToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
 }
 
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
 }
 
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (Banana_Application *) application {
+  return [[__application retain_stub] autorelease_stub];
+}
+
+- (void) setApplication: (Banana_Application *) application {
+  [application retain_stub];
+  [__application release_stub];
+  __application = application;
+  __application_isset = YES;
+}
+
+- (BOOL) applicationIsSet {
+  return __application_isset;
+}
+
+- (void) unsetApplication {
+  [__application release_stub];
+  __application = nil;
+  __application_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -339,9 +706,19 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ServiceToken *fieldValue = [[BananaAuthentication_ServiceToken alloc] init];
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplication: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -357,7 +734,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceTokenRenewed"];
+  [outProtocol writeStructBeginWithName: @"ApplicationTokenRenewed"];
   if (__human_isset) {
     if (__human != nil) {
       [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
@@ -365,10 +742,17 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 2];
-      [__serviceToken write: outProtocol];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 2];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__application_isset) {
+    if (__application != nil) {
+      [outProtocol writeFieldBeginWithName: @"application" type: TType_STRUCT fieldID: 3];
+      [__application write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -381,18 +765,20 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ServiceTokenRenewed("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRenewed("];
   [ms appendString: @"human:"];
   [ms appendFormat: @"%@", __human];
-  [ms appendString: @",serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
+  [ms appendString: @",applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",application:"];
+  [ms appendFormat: @"%@", __application];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation BananaNotifications_ServiceTokenRegenerated
+@implementation BananaNotifications_ApplicationTokenRegenerated
 
 - (id) init
 {
@@ -402,13 +788,15 @@
   return self;
 }
 
-- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken
+- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
 {
   self = [super init];
   __human = [human retain_stub];
   __human_isset = YES;
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __application = [application retain_stub];
+  __application_isset = YES;
   return self;
 }
 
@@ -420,10 +808,15 @@
     __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
     __human_isset = YES;
   }
-  if ([decoder containsValueForKey: @"serviceToken"])
+  if ([decoder containsValueForKey: @"applicationToken"])
   {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"application"])
+  {
+    __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
+    __application_isset = YES;
   }
   return self;
 }
@@ -434,9 +827,13 @@
   {
     [encoder encodeObject: __human forKey: @"human"];
   }
-  if (__serviceToken_isset)
+  if (__applicationToken_isset)
   {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__application_isset)
+  {
+    [encoder encodeObject: __application forKey: @"application"];
   }
 }
 
@@ -448,10 +845,15 @@
   {
     hash = (hash * 31) ^ [__human hash];
   }
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
   {
-    hash = (hash * 31) ^ [__serviceToken hash];
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __application_isset ? 2654435761 : 0;
+  if (__application_isset)
+  {
+    hash = (hash * 31) ^ [__application hash];
   }
   return hash;
 }
@@ -461,16 +863,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ServiceTokenRegenerated class]]) {
+  if (![anObject isKindOfClass:[BananaNotifications_ApplicationTokenRegenerated class]]) {
     return NO;
   }
-  BananaNotifications_ServiceTokenRegenerated *other = (BananaNotifications_ServiceTokenRegenerated *)anObject;
+  BananaNotifications_ApplicationTokenRegenerated *other = (BananaNotifications_ApplicationTokenRegenerated *)anObject;
   if ((__human_isset != other->__human_isset) ||
       (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
     return NO;
   }
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__application_isset != other->__application_isset) ||
+      (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
     return NO;
   }
   return YES;
@@ -479,7 +885,8 @@
 - (void) dealloc
 {
   [__human release_stub];
-  [__serviceToken release_stub];
+  [__applicationToken release_stub];
+  [__application release_stub];
   [super dealloc_stub];
 }
 
@@ -504,25 +911,46 @@
   __human_isset = NO;
 }
 
-- (BananaAuthentication_ServiceToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
 }
 
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
 }
 
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (Banana_Application *) application {
+  return [[__application retain_stub] autorelease_stub];
+}
+
+- (void) setApplication: (Banana_Application *) application {
+  [application retain_stub];
+  [__application release_stub];
+  __application = application;
+  __application_isset = YES;
+}
+
+- (BOOL) applicationIsSet {
+  return __application_isset;
+}
+
+- (void) unsetApplication {
+  [__application release_stub];
+  __application = nil;
+  __application_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -552,9 +980,19 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ServiceToken *fieldValue = [[BananaAuthentication_ServiceToken alloc] init];
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplication: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -570,7 +1008,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceTokenRegenerated"];
+  [outProtocol writeStructBeginWithName: @"ApplicationTokenRegenerated"];
   if (__human_isset) {
     if (__human != nil) {
       [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
@@ -578,10 +1016,17 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 2];
-      [__serviceToken write: outProtocol];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 2];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__application_isset) {
+    if (__application != nil) {
+      [outProtocol writeFieldBeginWithName: @"application" type: TType_STRUCT fieldID: 3];
+      [__application write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -594,18 +1039,20 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ServiceTokenRegenerated("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRegenerated("];
   [ms appendString: @"human:"];
   [ms appendFormat: @"%@", __human];
-  [ms appendString: @",serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
+  [ms appendString: @",applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",application:"];
+  [ms appendFormat: @"%@", __application];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation BananaNotifications_ServiceSentMessage
+@implementation BananaNotifications_ApplicationSentMessage
 
 - (id) init
 {
@@ -615,11 +1062,13 @@
   return self;
 }
 
-- (id) initWithMessage: (Banana_Message *) message
+- (id) initWithMessage: (Banana_Message *) message application: (BananaNotifications_Application) application
 {
   self = [super init];
   __message = [message retain_stub];
   __message_isset = YES;
+  __application = [application retain_stub];
+  __application_isset = YES;
   return self;
 }
 
@@ -631,6 +1080,11 @@
     __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
     __message_isset = YES;
   }
+  if ([decoder containsValueForKey: @"application"])
+  {
+    __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
+    __application_isset = YES;
+  }
   return self;
 }
 
@@ -639,6 +1093,10 @@
   if (__message_isset)
   {
     [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__application_isset)
+  {
+    [encoder encodeObject: __application forKey: @"application"];
   }
 }
 
@@ -650,6 +1108,11 @@
   {
     hash = (hash * 31) ^ [__message hash];
   }
+  hash = (hash * 31) ^ __application_isset ? 2654435761 : 0;
+  if (__application_isset)
+  {
+    hash = (hash * 31) ^ [__application hash];
+  }
   return hash;
 }
 
@@ -658,12 +1121,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ServiceSentMessage class]]) {
+  if (![anObject isKindOfClass:[BananaNotifications_ApplicationSentMessage class]]) {
     return NO;
   }
-  BananaNotifications_ServiceSentMessage *other = (BananaNotifications_ServiceSentMessage *)anObject;
+  BananaNotifications_ApplicationSentMessage *other = (BananaNotifications_ApplicationSentMessage *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__application_isset != other->__application_isset) ||
+      (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
     return NO;
   }
   return YES;
@@ -672,6 +1139,7 @@
 - (void) dealloc
 {
   [__message release_stub];
+  [__application release_stub];
   [super dealloc_stub];
 }
 
@@ -694,6 +1162,27 @@
   [__message release_stub];
   __message = nil;
   __message_isset = NO;
+}
+
+- (Banana_Application *) application {
+  return [[__application retain_stub] autorelease_stub];
+}
+
+- (void) setApplication: (Banana_Application *) application {
+  [application retain_stub];
+  [__application release_stub];
+  __application = application;
+  __application_isset = YES;
+}
+
+- (BOOL) applicationIsSet {
+  return __application_isset;
+}
+
+- (void) unsetApplication {
+  [__application release_stub];
+  __application = nil;
+  __application_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -721,6 +1210,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplication: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -731,11 +1230,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceSentMessage"];
+  [outProtocol writeStructBeginWithName: @"ApplicationSentMessage"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRUCT fieldID: 1];
       [__message write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__application_isset) {
+    if (__application != nil) {
+      [outProtocol writeFieldBeginWithName: @"application" type: TType_STRUCT fieldID: 2];
+      [__application write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -748,9 +1254,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ServiceSentMessage("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationSentMessage("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"%@", __message];
+  [ms appendString: @",application:"];
+  [ms appendFormat: @"%@", __application];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -767,11 +1275,19 @@
   return self;
 }
 
-- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed
+- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage
 {
   self = [super init];
   __healthCheckFailed = [healthCheckFailed retain_stub];
   __healthCheckFailed_isset = YES;
+  __healthCheckBackToNormal = [healthCheckBackToNormal retain_stub];
+  __healthCheckBackToNormal_isset = YES;
+  __applicationTokenRenewed = [applicationTokenRenewed retain_stub];
+  __applicationTokenRenewed_isset = YES;
+  __applicationTokenRegenerated = [applicationTokenRegenerated retain_stub];
+  __applicationTokenRegenerated_isset = YES;
+  __applicationSentMessage = [applicationSentMessage retain_stub];
+  __applicationSentMessage_isset = YES;
   return self;
 }
 
@@ -783,6 +1299,26 @@
     __healthCheckFailed = [[decoder decodeObjectForKey: @"healthCheckFailed"] retain_stub];
     __healthCheckFailed_isset = YES;
   }
+  if ([decoder containsValueForKey: @"healthCheckBackToNormal"])
+  {
+    __healthCheckBackToNormal = [[decoder decodeObjectForKey: @"healthCheckBackToNormal"] retain_stub];
+    __healthCheckBackToNormal_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationTokenRenewed"])
+  {
+    __applicationTokenRenewed = [[decoder decodeObjectForKey: @"applicationTokenRenewed"] retain_stub];
+    __applicationTokenRenewed_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationTokenRegenerated"])
+  {
+    __applicationTokenRegenerated = [[decoder decodeObjectForKey: @"applicationTokenRegenerated"] retain_stub];
+    __applicationTokenRegenerated_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationSentMessage"])
+  {
+    __applicationSentMessage = [[decoder decodeObjectForKey: @"applicationSentMessage"] retain_stub];
+    __applicationSentMessage_isset = YES;
+  }
   return self;
 }
 
@@ -791,6 +1327,22 @@
   if (__healthCheckFailed_isset)
   {
     [encoder encodeObject: __healthCheckFailed forKey: @"healthCheckFailed"];
+  }
+  if (__healthCheckBackToNormal_isset)
+  {
+    [encoder encodeObject: __healthCheckBackToNormal forKey: @"healthCheckBackToNormal"];
+  }
+  if (__applicationTokenRenewed_isset)
+  {
+    [encoder encodeObject: __applicationTokenRenewed forKey: @"applicationTokenRenewed"];
+  }
+  if (__applicationTokenRegenerated_isset)
+  {
+    [encoder encodeObject: __applicationTokenRegenerated forKey: @"applicationTokenRegenerated"];
+  }
+  if (__applicationSentMessage_isset)
+  {
+    [encoder encodeObject: __applicationSentMessage forKey: @"applicationSentMessage"];
   }
 }
 
@@ -801,6 +1353,26 @@
   if (__healthCheckFailed_isset)
   {
     hash = (hash * 31) ^ [__healthCheckFailed hash];
+  }
+  hash = (hash * 31) ^ __healthCheckBackToNormal_isset ? 2654435761 : 0;
+  if (__healthCheckBackToNormal_isset)
+  {
+    hash = (hash * 31) ^ [__healthCheckBackToNormal hash];
+  }
+  hash = (hash * 31) ^ __applicationTokenRenewed_isset ? 2654435761 : 0;
+  if (__applicationTokenRenewed_isset)
+  {
+    hash = (hash * 31) ^ [__applicationTokenRenewed hash];
+  }
+  hash = (hash * 31) ^ __applicationTokenRegenerated_isset ? 2654435761 : 0;
+  if (__applicationTokenRegenerated_isset)
+  {
+    hash = (hash * 31) ^ [__applicationTokenRegenerated hash];
+  }
+  hash = (hash * 31) ^ __applicationSentMessage_isset ? 2654435761 : 0;
+  if (__applicationSentMessage_isset)
+  {
+    hash = (hash * 31) ^ [__applicationSentMessage hash];
   }
   return hash;
 }
@@ -818,12 +1390,32 @@
       (__healthCheckFailed_isset && ((__healthCheckFailed || other->__healthCheckFailed) && ![__healthCheckFailed isEqual:other->__healthCheckFailed]))) {
     return NO;
   }
+  if ((__healthCheckBackToNormal_isset != other->__healthCheckBackToNormal_isset) ||
+      (__healthCheckBackToNormal_isset && ((__healthCheckBackToNormal || other->__healthCheckBackToNormal) && ![__healthCheckBackToNormal isEqual:other->__healthCheckBackToNormal]))) {
+    return NO;
+  }
+  if ((__applicationTokenRenewed_isset != other->__applicationTokenRenewed_isset) ||
+      (__applicationTokenRenewed_isset && ((__applicationTokenRenewed || other->__applicationTokenRenewed) && ![__applicationTokenRenewed isEqual:other->__applicationTokenRenewed]))) {
+    return NO;
+  }
+  if ((__applicationTokenRegenerated_isset != other->__applicationTokenRegenerated_isset) ||
+      (__applicationTokenRegenerated_isset && ((__applicationTokenRegenerated || other->__applicationTokenRegenerated) && ![__applicationTokenRegenerated isEqual:other->__applicationTokenRegenerated]))) {
+    return NO;
+  }
+  if ((__applicationSentMessage_isset != other->__applicationSentMessage_isset) ||
+      (__applicationSentMessage_isset && ((__applicationSentMessage || other->__applicationSentMessage) && ![__applicationSentMessage isEqual:other->__applicationSentMessage]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__healthCheckFailed release_stub];
+  [__healthCheckBackToNormal release_stub];
+  [__applicationTokenRenewed release_stub];
+  [__applicationTokenRegenerated release_stub];
+  [__applicationSentMessage release_stub];
   [super dealloc_stub];
 }
 
@@ -846,6 +1438,90 @@
   [__healthCheckFailed release_stub];
   __healthCheckFailed = nil;
   __healthCheckFailed_isset = NO;
+}
+
+- (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal {
+  return [[__healthCheckBackToNormal retain_stub] autorelease_stub];
+}
+
+- (void) setHealthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal {
+  [healthCheckBackToNormal retain_stub];
+  [__healthCheckBackToNormal release_stub];
+  __healthCheckBackToNormal = healthCheckBackToNormal;
+  __healthCheckBackToNormal_isset = YES;
+}
+
+- (BOOL) healthCheckBackToNormalIsSet {
+  return __healthCheckBackToNormal_isset;
+}
+
+- (void) unsetHealthCheckBackToNormal {
+  [__healthCheckBackToNormal release_stub];
+  __healthCheckBackToNormal = nil;
+  __healthCheckBackToNormal_isset = NO;
+}
+
+- (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed {
+  return [[__applicationTokenRenewed retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed {
+  [applicationTokenRenewed retain_stub];
+  [__applicationTokenRenewed release_stub];
+  __applicationTokenRenewed = applicationTokenRenewed;
+  __applicationTokenRenewed_isset = YES;
+}
+
+- (BOOL) applicationTokenRenewedIsSet {
+  return __applicationTokenRenewed_isset;
+}
+
+- (void) unsetApplicationTokenRenewed {
+  [__applicationTokenRenewed release_stub];
+  __applicationTokenRenewed = nil;
+  __applicationTokenRenewed_isset = NO;
+}
+
+- (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+  return [[__applicationTokenRegenerated retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+  [applicationTokenRegenerated retain_stub];
+  [__applicationTokenRegenerated release_stub];
+  __applicationTokenRegenerated = applicationTokenRegenerated;
+  __applicationTokenRegenerated_isset = YES;
+}
+
+- (BOOL) applicationTokenRegeneratedIsSet {
+  return __applicationTokenRegenerated_isset;
+}
+
+- (void) unsetApplicationTokenRegenerated {
+  [__applicationTokenRegenerated release_stub];
+  __applicationTokenRegenerated = nil;
+  __applicationTokenRegenerated_isset = NO;
+}
+
+- (BananaNotifications_ApplicationSentMessage *) applicationSentMessage {
+  return [[__applicationSentMessage retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage {
+  [applicationSentMessage retain_stub];
+  [__applicationSentMessage release_stub];
+  __applicationSentMessage = applicationSentMessage;
+  __applicationSentMessage_isset = YES;
+}
+
+- (BOOL) applicationSentMessageIsSet {
+  return __applicationSentMessage_isset;
+}
+
+- (void) unsetApplicationSentMessage {
+  [__applicationSentMessage release_stub];
+  __applicationSentMessage = nil;
+  __applicationSentMessage_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -873,6 +1549,46 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_HealthCheckBackToNormal *fieldValue = [[BananaNotifications_HealthCheckBackToNormal alloc] init];
+          [fieldValue read: inProtocol];
+          [self setHealthCheckBackToNormal: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_ApplicationTokenRenewed *fieldValue = [[BananaNotifications_ApplicationTokenRenewed alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationTokenRenewed: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_ApplicationTokenRegenerated *fieldValue = [[BananaNotifications_ApplicationTokenRegenerated alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationTokenRegenerated: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_ApplicationSentMessage *fieldValue = [[BananaNotifications_ApplicationSentMessage alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationSentMessage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -891,6 +1607,34 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__healthCheckBackToNormal_isset) {
+    if (__healthCheckBackToNormal != nil) {
+      [outProtocol writeFieldBeginWithName: @"healthCheckBackToNormal" type: TType_STRUCT fieldID: 2];
+      [__healthCheckBackToNormal write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationTokenRenewed_isset) {
+    if (__applicationTokenRenewed != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationTokenRenewed" type: TType_STRUCT fieldID: 3];
+      [__applicationTokenRenewed write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationTokenRegenerated_isset) {
+    if (__applicationTokenRegenerated != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationTokenRegenerated" type: TType_STRUCT fieldID: 4];
+      [__applicationTokenRegenerated write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationSentMessage_isset) {
+    if (__applicationSentMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationSentMessage" type: TType_STRUCT fieldID: 5];
+      [__applicationSentMessage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -903,6 +1647,14 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_Event("];
   [ms appendString: @"healthCheckFailed:"];
   [ms appendFormat: @"%@", __healthCheckFailed];
+  [ms appendString: @",healthCheckBackToNormal:"];
+  [ms appendFormat: @"%@", __healthCheckBackToNormal];
+  [ms appendString: @",applicationTokenRenewed:"];
+  [ms appendFormat: @"%@", __applicationTokenRenewed];
+  [ms appendString: @",applicationTokenRegenerated:"];
+  [ms appendFormat: @"%@", __applicationTokenRegenerated];
+  [ms appendString: @",applicationSentMessage:"];
+  [ms appendFormat: @"%@", __applicationSentMessage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

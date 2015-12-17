@@ -22,7 +22,7 @@
 
 #import "Authentication.h"
 
-@implementation BananaAuthentication_ServiceToken
+@implementation BananaAuthentication_ApplicationToken
 
 - (id) init
 {
@@ -32,13 +32,13 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration
+- (id) initWithToken: (NSString *) token applicationName: (NSString *) applicationName organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
-  __serviceName = [serviceName retain_stub];
-  __serviceName_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
   __timeOfExpiration = timeOfExpiration;
@@ -54,10 +54,10 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"serviceName"])
+  if ([decoder containsValueForKey: @"applicationName"])
   {
-    __serviceName = [[decoder decodeObjectForKey: @"serviceName"] retain_stub];
-    __serviceName_isset = YES;
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
   }
   if ([decoder containsValueForKey: @"organization"])
   {
@@ -78,9 +78,9 @@
   {
     [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__serviceName_isset)
+  if (__applicationName_isset)
   {
-    [encoder encodeObject: __serviceName forKey: @"serviceName"];
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
   if (__organization_isset)
   {
@@ -100,10 +100,10 @@
   {
     hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __serviceName_isset ? 2654435761 : 0;
-  if (__serviceName_isset)
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
   {
-    hash = (hash * 31) ^ [__serviceName hash];
+    hash = (hash * 31) ^ [__applicationName hash];
   }
   hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
   if (__organization_isset)
@@ -123,16 +123,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_ServiceToken class]]) {
+  if (![anObject isKindOfClass:[BananaAuthentication_ApplicationToken class]]) {
     return NO;
   }
-  BananaAuthentication_ServiceToken *other = (BananaAuthentication_ServiceToken *)anObject;
+  BananaAuthentication_ApplicationToken *other = (BananaAuthentication_ApplicationToken *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__serviceName_isset != other->__serviceName_isset) ||
-      (__serviceName_isset && ((__serviceName || other->__serviceName) && ![__serviceName isEqual:other->__serviceName]))) {
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
   if ((__organization_isset != other->__organization_isset) ||
@@ -149,7 +149,7 @@
 - (void) dealloc
 {
   [__token release_stub];
-  [__serviceName release_stub];
+  [__applicationName release_stub];
   [__organization release_stub];
   [super dealloc_stub];
 }
@@ -175,25 +175,25 @@
   __token_isset = NO;
 }
 
-- (NSString *) serviceName {
-  return [[__serviceName retain_stub] autorelease_stub];
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
 }
 
-- (void) setServiceName: (NSString *) serviceName {
-  [serviceName retain_stub];
-  [__serviceName release_stub];
-  __serviceName = serviceName;
-  __serviceName_isset = YES;
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
 }
 
-- (BOOL) serviceNameIsSet {
-  return __serviceName_isset;
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
 }
 
-- (void) unsetServiceName {
-  [__serviceName release_stub];
-  __serviceName = nil;
-  __serviceName_isset = NO;
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
 }
 
 - (NSString *) organization {
@@ -260,7 +260,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setServiceName: fieldValue];
+          [self setApplicationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -291,7 +291,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceToken"];
+  [outProtocol writeStructBeginWithName: @"ApplicationToken"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
@@ -299,10 +299,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__serviceName_isset) {
-    if (__serviceName != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceName" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __serviceName];
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationName];
       [outProtocol writeFieldEnd];
     }
   }
@@ -327,11 +327,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ServiceToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ApplicationToken("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"\"%@\"", __token];
-  [ms appendString: @",serviceName:"];
-  [ms appendFormat: @"\"%@\"", __serviceName];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @",timeOfExpiration:"];
@@ -1148,7 +1148,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage role: (int) role
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1159,6 +1159,8 @@
   __name_isset = YES;
   __profileImage = [profileImage retain_stub];
   __profileImage_isset = YES;
+  __role = role;
+  __role_isset = YES;
   return self;
 }
 
@@ -1185,6 +1187,11 @@
     __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
     __profileImage_isset = YES;
   }
+  if ([decoder containsValueForKey: @"role"])
+  {
+    __role = [decoder decodeIntForKey: @"role"];
+    __role_isset = YES;
+  }
   return self;
 }
 
@@ -1205,6 +1212,10 @@
   if (__profileImage_isset)
   {
     [encoder encodeObject: __profileImage forKey: @"profileImage"];
+  }
+  if (__role_isset)
+  {
+    [encoder encodeInt: __role forKey: @"role"];
   }
 }
 
@@ -1230,6 +1241,11 @@
   if (__profileImage_isset)
   {
     hash = (hash * 31) ^ [__profileImage hash];
+  }
+  hash = (hash * 31) ^ __role_isset ? 2654435761 : 0;
+  if (__role_isset)
+  {
+    hash = (hash * 31) ^ [@(__role) hash];
   }
   return hash;
 }
@@ -1257,6 +1273,10 @@
   }
   if ((__profileImage_isset != other->__profileImage_isset) ||
       (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
+    return NO;
+  }
+  if ((__role_isset != other->__role_isset) ||
+      (__role_isset && (__role != other->__role))) {
     return NO;
   }
   return YES;
@@ -1355,6 +1375,23 @@
   __profileImage_isset = NO;
 }
 
+- (int) role {
+  return __role;
+}
+
+- (void) setRole: (int) role {
+  __role = role;
+  __role_isset = YES;
+}
+
+- (BOOL) roleIsSet {
+  return __role_isset;
+}
+
+- (void) unsetRole {
+  __role_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1406,6 +1443,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setRole: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1445,6 +1490,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__role_isset) {
+    [outProtocol writeFieldBeginWithName: @"role" type: TType_I32 fieldID: 5];
+    [outProtocol writeI32: __role];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1463,6 +1513,8 @@
   [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @",profileImage:"];
   [ms appendFormat: @"%@", __profileImage];
+  [ms appendString: @",role:"];
+  [ms appendFormat: @"%i", __role];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

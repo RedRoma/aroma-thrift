@@ -22,7 +22,7 @@ namespace aroma { namespace banana { namespace thrift {
 struct Urgency {
   enum type {
     INFORMATIONAL = 1,
-    IMPORTANT = 2,
+    WARNING = 2,
     CRITICAL = 3
   };
 };
@@ -35,7 +35,8 @@ struct TimeUnit {
     SECONDS = 1,
     MINUTES = 2,
     HOURS = 3,
-    DAYS = 4
+    DAYS = 4,
+    WEEKS = 5
   };
 };
 
@@ -67,14 +68,17 @@ struct ProgrammingLanguage {
     JAVA = 0,
     CPP = 1,
     C_SHARP = 2,
-    DOT_NET = 3,
-    RUBY = 4,
-    GROOVY = 5,
-    PYTHON = 6,
-    PHP = 7,
-    NODE = 8,
-    DART = 9,
-    OTHER = 10
+    C = 3,
+    OBJECTIVE_C = 4,
+    SWIFT = 5,
+    DOT_NET = 6,
+    RUBY = 7,
+    GROOVY = 8,
+    PYTHON = 9,
+    PHP = 10,
+    NODE = 11,
+    DART = 12,
+    OTHER = 13
   };
 };
 
@@ -96,16 +100,16 @@ class Image;
 
 class Human;
 
-class Service;
+class Application;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), nameOfService(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), nameOfApplication(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
   bool timeMessageSent :1;
   bool timeMessageReceived :1;
-  bool nameOfService :1;
+  bool nameOfApplication :1;
 } _Message__isset;
 
 class Message {
@@ -113,8 +117,8 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)2), timeMessageSent(0), timeMessageReceived(0), nameOfService() {
-    urgency = (Urgency::type)2;
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeMessageSent(0), timeMessageReceived(0), nameOfApplication() {
+    urgency = (Urgency::type)1;
 
   }
 
@@ -124,7 +128,7 @@ class Message {
   Urgency::type urgency;
   timestamp timeMessageSent;
   timestamp timeMessageReceived;
-  std::string nameOfService;
+  std::string nameOfApplication;
 
   _Message__isset __isset;
 
@@ -138,7 +142,7 @@ class Message {
 
   void __set_timeMessageReceived(const timestamp val);
 
-  void __set_nameOfService(const std::string& val);
+  void __set_nameOfApplication(const std::string& val);
 
   bool operator == (const Message & rhs) const
   {
@@ -152,7 +156,7 @@ class Message {
       return false;
     if (!(timeMessageReceived == rhs.timeMessageReceived))
       return false;
-    if (!(nameOfService == rhs.nameOfService))
+    if (!(nameOfApplication == rhs.nameOfApplication))
       return false;
     return true;
   }
@@ -325,7 +329,7 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _Human__isset {
-  _Human__isset() : email(false), name(false), username(false), roles(false) {}
+  _Human__isset() : email(false), name(false), username(false), roles(true) {}
   bool email :1;
   bool name :1;
   bool username :1;
@@ -338,6 +342,8 @@ class Human {
   Human(const Human&);
   Human& operator=(const Human&);
   Human() : email(), name(), username() {
+    roles.push_back((Role::type)1);
+
   }
 
   virtual ~Human() throw();
@@ -392,30 +398,30 @@ inline std::ostream& operator<<(std::ostream& out, const Human& obj)
   return out;
 }
 
-typedef struct _Service__isset {
-  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true) {}
+typedef struct _Application__isset {
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true) {}
   bool owners :1;
-  bool timeOfRegistration :1;
+  bool timeOfProvisioning :1;
   bool name :1;
   bool id :1;
   bool totalMessagesSent :1;
   bool icon :1;
   bool programmingLanguage :1;
   bool subscribers :1;
-} _Service__isset;
+} _Application__isset;
 
-class Service {
+class Application {
  public:
 
-  Service(const Service&);
-  Service& operator=(const Service&);
-  Service() : timeOfRegistration(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0) {
+  Application(const Application&);
+  Application& operator=(const Application&);
+  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0) {
 
   }
 
-  virtual ~Service() throw();
+  virtual ~Application() throw();
   std::vector<Human>  owners;
-  timestamp timeOfRegistration;
+  timestamp timeOfProvisioning;
   std::string name;
   std::string id;
   long totalMessagesSent;
@@ -423,11 +429,11 @@ class Service {
   ProgrammingLanguage::type programmingLanguage;
   std::vector<Human>  subscribers;
 
-  _Service__isset __isset;
+  _Application__isset __isset;
 
   void __set_owners(const std::vector<Human> & val);
 
-  void __set_timeOfRegistration(const timestamp val);
+  void __set_timeOfProvisioning(const timestamp val);
 
   void __set_name(const std::string& val);
 
@@ -441,11 +447,11 @@ class Service {
 
   void __set_subscribers(const std::vector<Human> & val);
 
-  bool operator == (const Service & rhs) const
+  bool operator == (const Application & rhs) const
   {
     if (!(owners == rhs.owners))
       return false;
-    if (!(timeOfRegistration == rhs.timeOfRegistration))
+    if (!(timeOfProvisioning == rhs.timeOfProvisioning))
       return false;
     if (!(name == rhs.name))
       return false;
@@ -467,11 +473,11 @@ class Service {
       return false;
     return true;
   }
-  bool operator != (const Service &rhs) const {
+  bool operator != (const Application &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Service & ) const;
+  bool operator < (const Application & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -479,9 +485,9 @@ class Service {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(Service &a, Service &b);
+void swap(Application &a, Application &b);
 
-inline std::ostream& operator<<(std::ostream& out, const Service& obj)
+inline std::ostream& operator<<(std::ostream& out, const Application& obj)
 {
   obj.printTo(out);
   return out;

@@ -167,7 +167,7 @@ class Email {
 
   Email(const Email&);
   Email& operator=(const Email&);
-  Email() : emailAddress(), subject("Banana Service - Message Received") {
+  Email() : emailAddress(), subject("Banana Service - New Message") {
   }
 
   virtual ~Email() throw();

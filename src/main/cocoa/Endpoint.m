@@ -828,11 +828,11 @@
   return self;
 }
 
-- (id) initWithServiceName: (NSString *) serviceName serviceToken: (BananaAuthentication_ServiceToken *) serviceToken
+- (id) initWithApplicationName: (NSString *) applicationName serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken
 {
   self = [super init];
-  __serviceName = [serviceName retain_stub];
-  __serviceName_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
   __serviceToken = [serviceToken retain_stub];
   __serviceToken_isset = YES;
   return self;
@@ -841,10 +841,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"serviceName"])
+  if ([decoder containsValueForKey: @"applicationName"])
   {
-    __serviceName = [[decoder decodeObjectForKey: @"serviceName"] retain_stub];
-    __serviceName_isset = YES;
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
   }
   if ([decoder containsValueForKey: @"serviceToken"])
   {
@@ -856,9 +856,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__serviceName_isset)
+  if (__applicationName_isset)
   {
-    [encoder encodeObject: __serviceName forKey: @"serviceName"];
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
   if (__serviceToken_isset)
   {
@@ -869,10 +869,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __serviceName_isset ? 2654435761 : 0;
-  if (__serviceName_isset)
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
   {
-    hash = (hash * 31) ^ [__serviceName hash];
+    hash = (hash * 31) ^ [__applicationName hash];
   }
   hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
   if (__serviceToken_isset)
@@ -891,8 +891,8 @@
     return NO;
   }
   BananaEndpoint_HealthPokeRequest *other = (BananaEndpoint_HealthPokeRequest *)anObject;
-  if ((__serviceName_isset != other->__serviceName_isset) ||
-      (__serviceName_isset && ((__serviceName || other->__serviceName) && ![__serviceName isEqual:other->__serviceName]))) {
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
   if ((__serviceToken_isset != other->__serviceToken_isset) ||
@@ -904,37 +904,37 @@
 
 - (void) dealloc
 {
-  [__serviceName release_stub];
+  [__applicationName release_stub];
   [__serviceToken release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) serviceName {
-  return [[__serviceName retain_stub] autorelease_stub];
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
 }
 
-- (void) setServiceName: (NSString *) serviceName {
-  [serviceName retain_stub];
-  [__serviceName release_stub];
-  __serviceName = serviceName;
-  __serviceName_isset = YES;
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
 }
 
-- (BOOL) serviceNameIsSet {
-  return __serviceName_isset;
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
 }
 
-- (void) unsetServiceName {
-  [__serviceName release_stub];
-  __serviceName = nil;
-  __serviceName_isset = NO;
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
 }
 
-- (BananaAuthentication_ServiceToken *) serviceToken {
+- (BananaAuthentication_ApplicationToken *) serviceToken {
   return [[__serviceToken retain_stub] autorelease_stub];
 }
 
-- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken {
+- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
   [serviceToken retain_stub];
   [__serviceToken release_stub];
   __serviceToken = serviceToken;
@@ -969,14 +969,14 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setServiceName: fieldValue];
+          [self setApplicationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ServiceToken *fieldValue = [[BananaAuthentication_ServiceToken alloc] init];
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setServiceToken: fieldValue];
           [fieldValue release_stub];
@@ -995,10 +995,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"HealthPokeRequest"];
-  if (__serviceName_isset) {
-    if (__serviceName != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceName" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __serviceName];
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __applicationName];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1019,8 +1019,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HealthPokeRequest("];
-  [ms appendString: @"serviceName:"];
-  [ms appendFormat: @"\"%@\"", __serviceName];
+  [ms appendString: @"applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",serviceToken:"];
   [ms appendFormat: @"%@", __serviceToken];
   [ms appendString: @")"];
@@ -1663,7 +1663,7 @@
 
 @end
 
-@implementation BananaEndpoint_ServiceEndpointClient
+@implementation BananaEndpoint_ApplicationEndpointClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -1719,9 +1719,9 @@
 
 @end
 
-@implementation BananaEndpoint_ServiceEndpointProcessor
+@implementation BananaEndpoint_ApplicationEndpointProcessor
 
-- (id) initWithServiceEndpoint: (id <BananaEndpoint_ServiceEndpoint>) service
+- (id) initWithApplicationEndpoint: (id <BananaEndpoint_ApplicationEndpoint>) service
 {
 self = [super init];
 if (!self) {
@@ -1740,7 +1740,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaEndpoint_ServiceEndpoint>) service
+- (id<BananaEndpoint_ApplicationEndpoint>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }

@@ -222,8 +222,8 @@ inline std::ostream& operator<<(std::ostream& out, const Endpoint& obj)
 }
 
 typedef struct _HealthPokeRequest__isset {
-  _HealthPokeRequest__isset() : serviceName(false), serviceToken(false) {}
-  bool serviceName :1;
+  _HealthPokeRequest__isset() : applicationName(false), serviceToken(false) {}
+  bool applicationName :1;
   bool serviceToken :1;
 } _HealthPokeRequest__isset;
 
@@ -232,22 +232,22 @@ class HealthPokeRequest {
 
   HealthPokeRequest(const HealthPokeRequest&);
   HealthPokeRequest& operator=(const HealthPokeRequest&);
-  HealthPokeRequest() : serviceName() {
+  HealthPokeRequest() : applicationName() {
   }
 
   virtual ~HealthPokeRequest() throw();
-  std::string serviceName;
-   ::aroma::banana::thrift::authentication::ServiceToken serviceToken;
+  std::string applicationName;
+   ::aroma::banana::thrift::authentication::ApplicationToken serviceToken;
 
   _HealthPokeRequest__isset __isset;
 
-  void __set_serviceName(const std::string& val);
+  void __set_applicationName(const std::string& val);
 
-  void __set_serviceToken(const  ::aroma::banana::thrift::authentication::ServiceToken& val);
+  void __set_serviceToken(const  ::aroma::banana::thrift::authentication::ApplicationToken& val);
 
   bool operator == (const HealthPokeRequest & rhs) const
   {
-    if (!(serviceName == rhs.serviceName))
+    if (!(applicationName == rhs.applicationName))
       return false;
     if (!(serviceToken == rhs.serviceToken))
       return false;

@@ -762,11 +762,11 @@
 
 @end
 
-@implementation BananaException_ServiceDoesNotExistException
+@implementation BananaException_ApplicationDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ServiceDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"BananaException_ApplicationDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -813,10 +813,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ServiceDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[BananaException_ApplicationDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_ServiceDoesNotExistException *other = (BananaException_ServiceDoesNotExistException *)anObject;
+  BananaException_ApplicationDoesNotExistException *other = (BananaException_ApplicationDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -884,7 +884,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceDoesNotExistException"];
+  [outProtocol writeStructBeginWithName: @"ApplicationDoesNotExistException"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
@@ -901,7 +901,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ServiceDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ApplicationDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -910,11 +910,11 @@
 
 @end
 
-@implementation BananaException_ServiceAlreadyRegisteredException
+@implementation BananaException_ApplicationAlreadyRegisteredException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ServiceAlreadyRegisteredException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"BananaException_ApplicationAlreadyRegisteredException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -961,10 +961,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ServiceAlreadyRegisteredException class]]) {
+  if (![anObject isKindOfClass:[BananaException_ApplicationAlreadyRegisteredException class]]) {
     return NO;
   }
-  BananaException_ServiceAlreadyRegisteredException *other = (BananaException_ServiceAlreadyRegisteredException *)anObject;
+  BananaException_ApplicationAlreadyRegisteredException *other = (BananaException_ApplicationAlreadyRegisteredException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1032,7 +1032,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ServiceAlreadyRegisteredException"];
+  [outProtocol writeStructBeginWithName: @"ApplicationAlreadyRegisteredException"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
@@ -1049,7 +1049,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ServiceAlreadyRegisteredException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ApplicationAlreadyRegisteredException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];

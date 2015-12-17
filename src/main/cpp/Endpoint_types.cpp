@@ -425,11 +425,11 @@ HealthPokeRequest::~HealthPokeRequest() throw() {
 }
 
 
-void HealthPokeRequest::__set_serviceName(const std::string& val) {
-  this->serviceName = val;
+void HealthPokeRequest::__set_applicationName(const std::string& val) {
+  this->applicationName = val;
 }
 
-void HealthPokeRequest::__set_serviceToken(const  ::aroma::banana::thrift::authentication::ServiceToken& val) {
+void HealthPokeRequest::__set_serviceToken(const  ::aroma::banana::thrift::authentication::ApplicationToken& val) {
   this->serviceToken = val;
 }
 
@@ -456,8 +456,8 @@ uint32_t HealthPokeRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->serviceName);
-          this->__isset.serviceName = true;
+          xfer += iprot->readString(this->applicationName);
+          this->__isset.applicationName = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -487,8 +487,8 @@ uint32_t HealthPokeRequest::write(::apache::thrift::protocol::TProtocol* oprot) 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("HealthPokeRequest");
 
-  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldBegin("applicationName", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 2);
@@ -502,18 +502,18 @@ uint32_t HealthPokeRequest::write(::apache::thrift::protocol::TProtocol* oprot) 
 
 void swap(HealthPokeRequest &a, HealthPokeRequest &b) {
   using ::std::swap;
-  swap(a.serviceName, b.serviceName);
+  swap(a.applicationName, b.applicationName);
   swap(a.serviceToken, b.serviceToken);
   swap(a.__isset, b.__isset);
 }
 
 HealthPokeRequest::HealthPokeRequest(const HealthPokeRequest& other8) {
-  serviceName = other8.serviceName;
+  applicationName = other8.applicationName;
   serviceToken = other8.serviceToken;
   __isset = other8.__isset;
 }
 HealthPokeRequest& HealthPokeRequest::operator=(const HealthPokeRequest& other9) {
-  serviceName = other9.serviceName;
+  applicationName = other9.applicationName;
   serviceToken = other9.serviceToken;
   __isset = other9.__isset;
   return *this;
@@ -521,7 +521,7 @@ HealthPokeRequest& HealthPokeRequest::operator=(const HealthPokeRequest& other9)
 void HealthPokeRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "HealthPokeRequest(";
-  out << "serviceName=" << to_string(serviceName);
+  out << "applicationName=" << to_string(applicationName);
   out << ", " << "serviceToken=" << to_string(serviceToken);
   out << ")";
 }

@@ -7,7 +7,7 @@
 
 //HELPER FUNCTIONS AND STRUCTURES
 
-ServiceEndpoint_healthPoke_args = function(args) {
+ApplicationEndpoint_healthPoke_args = function(args) {
   this.request = null;
   if (args) {
     if (args.request !== undefined && args.request !== null) {
@@ -15,8 +15,8 @@ ServiceEndpoint_healthPoke_args = function(args) {
     }
   }
 };
-ServiceEndpoint_healthPoke_args.prototype = {};
-ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
+ApplicationEndpoint_healthPoke_args.prototype = {};
+ApplicationEndpoint_healthPoke_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -49,8 +49,8 @@ ServiceEndpoint_healthPoke_args.prototype.read = function(input) {
   return;
 };
 
-ServiceEndpoint_healthPoke_args.prototype.write = function(output) {
-  output.writeStructBegin('ServiceEndpoint_healthPoke_args');
+ApplicationEndpoint_healthPoke_args.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationEndpoint_healthPoke_args');
   if (this.request !== null && this.request !== undefined) {
     output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
     this.request.write(output);
@@ -61,7 +61,7 @@ ServiceEndpoint_healthPoke_args.prototype.write = function(output) {
   return;
 };
 
-ServiceEndpoint_healthPoke_result = function(args) {
+ApplicationEndpoint_healthPoke_result = function(args) {
   this.success = null;
   this.ex1 = null;
   if (args instanceof OperationFailedException) {
@@ -77,8 +77,8 @@ ServiceEndpoint_healthPoke_result = function(args) {
     }
   }
 };
-ServiceEndpoint_healthPoke_result.prototype = {};
-ServiceEndpoint_healthPoke_result.prototype.read = function(input) {
+ApplicationEndpoint_healthPoke_result.prototype = {};
+ApplicationEndpoint_healthPoke_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -116,8 +116,8 @@ ServiceEndpoint_healthPoke_result.prototype.read = function(input) {
   return;
 };
 
-ServiceEndpoint_healthPoke_result.prototype.write = function(output) {
-  output.writeStructBegin('ServiceEndpoint_healthPoke_result');
+ApplicationEndpoint_healthPoke_result.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationEndpoint_healthPoke_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
     this.success.write(output);
@@ -133,22 +133,22 @@ ServiceEndpoint_healthPoke_result.prototype.write = function(output) {
   return;
 };
 
-ServiceEndpointClient = function(input, output) {
+ApplicationEndpointClient = function(input, output) {
     this.input = input;
     this.output = (!output) ? input : output;
     this.seqid = 0;
 };
-ServiceEndpointClient.prototype = {};
-ServiceEndpointClient.prototype.healthPoke = function(request, callback) {
+ApplicationEndpointClient.prototype = {};
+ApplicationEndpointClient.prototype.healthPoke = function(request, callback) {
   this.send_healthPoke(request, callback); 
   if (!callback) {
     return this.recv_healthPoke();
   }
 };
 
-ServiceEndpointClient.prototype.send_healthPoke = function(request, callback) {
+ApplicationEndpointClient.prototype.send_healthPoke = function(request, callback) {
   this.output.writeMessageBegin('healthPoke', Thrift.MessageType.CALL, this.seqid);
-  var args = new ServiceEndpoint_healthPoke_args();
+  var args = new ApplicationEndpoint_healthPoke_args();
   args.request = request;
   args.write(this.output);
   this.output.writeMessageEnd();
@@ -168,7 +168,7 @@ ServiceEndpointClient.prototype.send_healthPoke = function(request, callback) {
   }
 };
 
-ServiceEndpointClient.prototype.recv_healthPoke = function() {
+ApplicationEndpointClient.prototype.recv_healthPoke = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -179,7 +179,7 @@ ServiceEndpointClient.prototype.recv_healthPoke = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new ServiceEndpoint_healthPoke_result();
+  var result = new ApplicationEndpoint_healthPoke_result();
   result.read(this.input);
   this.input.readMessageEnd();
 

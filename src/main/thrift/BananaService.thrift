@@ -4,7 +4,7 @@ namespace cpp   aroma.banana.thrift.service
 
 /*
  * Defined in this File is the Banana Service API and all of the operations
- * that can be performed by both Humans and their services.
+ * that can be performed by both Humans and their Applications.
  */
 
 include "Authentication.thrift"
@@ -21,8 +21,8 @@ include "Notifications.thrift"
  * Tag definitions:
  *
  * #human   - Signifies an Operation designed to be used by Humans.
- * #service     - Signifies an Operation designed to be used by Computers.
- * #owner       - Signifies an Operation that can only be performed by an "Owner".
+ * #app     - Signifies an Operation designed to be used by Applications.
+ * #owner   - Signifies an Operation that can only be performed by an "Owner".
  */
 
 typedef Banana.int int;
@@ -31,10 +31,10 @@ typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.HumanToken HumanToken
-typedef Authentication.ServiceToken ServiceToken
+typedef Authentication.ApplicationToken ApplicationToken
 typedef Banana.Image Image
 typedef Banana.Human Human
-typedef Banana.Service Service
+typedef Banana.Application Application
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
@@ -44,14 +44,14 @@ typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.OperationFailedException OperationFailedException
-typedef Exceptions.ServiceAlreadyRegisteredException ServiceAlreadyRegisteredException
-typedef Exceptions.ServiceDoesNotExistException ServiceDoesNotExistException
+typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
+typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API currently in use. */
-const double API_VERSION = 1.1;
+const double API_VERSION = 1.3;
 
 /**
  * This is the Banana Service Production Endpoint
@@ -97,47 +97,59 @@ struct SignUpRequest
 struct SignUpResponse
 {
     1: HumanToken humanToken;
+    2: Authentication.AromaAccount account;
 }
 
-/** The Maximum Dimensions for an Icon submitted with a Service. */
+/** The Maximum Dimensions for an Icon submitted with an Application. */
 const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
 
-/** The Maximum Filesize for an Icon submitted with a Service. */
+/** The Maximum Filesize for an Icon submitted with an Application. */
 const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
-struct ProvisionServiceRequest
+/**
+ * Defines the required information to provision
+ * an Application with the Banana Service.
+ */
+struct ProvisionApplicationRequest
 {
     1: string token;
-    2: string serviceName;
+    2: string applicationName;
     3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: string organization;
     5: optional Image icon;
     6: HumanToken humanToken;
 }
 
-struct ProvisionServiceResponse
+struct ProvisionApplicationResponse
 {
     1: string bananaToken;
-    2: string serviceName;
-    3: ServiceToken serviceToken;
+    2: string applicationName;
+    3: ApplicationToken serviceToken;
+    4: optional string applicationId;
 }
 
-struct SubscribeToServiceRequest
+/**
+ * Subscribe to an Application to receive notifications for it.
+ */
+struct SubscribeToApplicationRequest
 {
-    1: string token;
-    2: string serviceName;
-    3: optional string organization;
-    4: optional bool shared = false;
-    5: HumanToken humanToken;
+    1: HumanToken humanToken;
+    2: string applicationName;
+    3: string applicationId;
+    4: optional string organization;
+    5: optional bool shared = false;
 }
 
-struct SubscribeToServiceResponse
+struct SubscribeToApplicationResponse
 {
     1: string message;
     2: BananaChannel channel;
 }
 
-
+/**
+ * Registers an Application Endpoint to use
+ * for Health Checks.
+ */
 struct RegisterHealthCheckRequest
 {
    1: Endpoint endpoint;
@@ -147,72 +159,76 @@ struct RegisterHealthCheckRequest
 struct RegisterHealthCheckResponse
 {
     1: optional string message;
+    2: optional string healthCheckToken;
 }
 
-struct RenewServiceTokenRequest
+struct RenewApplicationTokenRequest
 {
-    1: ServiceToken serviceToken;
+    1: ApplicationToken applicationToken;
     2: Banana.TimePeriod timePeriod;
     3: HumanToken humanToken;
+    4: string applicationId;
 }
 
-struct RenewServiceTokenResponse
+struct RenewApplicationTokenResponse
 {
-    1: ServiceToken serviceToken;
+    1: ApplicationToken serviceToken;
 }
 
-struct RegenerateTokenRequest
+struct RegenerateApplicationTokenRequest
 {
-    1: string serviceId;
+    1: string applicationId;
     2: HumanToken humanToken;
 }
 
-struct RegenerateTokenResponse
+struct RegenerateApplicationTokenResponse
 {
-    1: ServiceToken serviceToken;
+    1: ApplicationToken serviceToken;
 }
 
 struct DeleteMessageRequest
 {
     1: HumanToken humanToken;
     2: string messageId;
-    3: string serviceId;
+    3: string applicationId;
     /** Use for Batch Deletes. */
     4: optional list<string> messageIds = [];
 }
 
 struct DeleteMessageResponse
 {
-
+    1: optional int messagesDeleted = 0;
 }
 
 struct DeleteAllMessagesRequest
 {
     1: HumanToken humanToken;
-    2: string serviceId;
+    2: string applicationId;
+    3: optional int messagesDeleted = 0;
 }
 
-struct HideMessageRequest
+struct DismissMessageRequest
 {
     1: HumanToken humanToken;
     2: string messageId;
-    3: string serviceId;
-    /** Use for Batch Hides. */
+    3: string applicationId;
+    /** Use for Dismissing multiple Messages. */
     4: optional list<string> messageIds = [];
 }
 
-struct HideMessageResponse
+struct DismissMessageResponse
 {
-
+    1: optional int messagesDismissed = 0;
 }
 
-struct HideAllMessagesRequest
+struct DismissAllMessagesRequest
 {
     1: HumanToken humanToken;
-    2: string serviceId;
+    2: string applicationId;
+    3: optional int messagesDismissed = 0;
 }
 
-struct HideAllMessagesResponse
+struct DismissAllMessagesResponse
 {
 
 }
@@ -263,25 +279,25 @@ struct SnoozeChannelResponse
 // Getting and Querying for Data
 //==========================================================
 
-struct GetMyServicesRequest
+struct GetMyApplicationsRequest
 {
     1: HumanToken humanToken;
 }
 
-struct GetMyServicesResponse
+struct GetMyApplicationsResponse
 {
-    1: list<Service> services;
+    1: list<Application> applications;
 }
 
-struct GetServiceInfoRequest
+struct GetApplicationInfoRequest
 {
     1: HumanToken humanToken;
-    2: string serviceId;
+    2: string applicationId;
 }
 
-struct GetServiceInfoResponse
+struct GetApplicationInfoResponse
 {
-    1: Service serviceInfo;
+    1: Application applicationInfo;
 }
 
 struct GetDashboardRequest
@@ -298,26 +314,26 @@ struct GetDashboardResponse
 
 }
 
-struct SearchForServicesRequest
+struct SearchForApplicationsRequest
 {
     1: HumanToken humanToken;
     2: string searchTerm;
     3: optional string organization;
 }
 
-struct SearchForServicesResponse
+struct SearchForApplicationsResponse
 {
-    1: list<Service> services = []
+    1: list<Application> applications = []
 }
 
-struct GetServiceSubscribersRequest
+struct GetApplicationSubscribersRequest
 {
     1: HumanToken humanToken;
-    2: string serviceId;
+    2: string applicationId;
     3: string organization;
 }
 
-struct GetServiceSubscribersResponse
+struct GetApplicationSubscribersResponse
 {
     1: list<Human> humans = [];
 }
@@ -333,13 +349,13 @@ struct GetMySavedChannelsResponse
 }
 
 //==========================================================
-// Operations performed by Services
+// Operations performed by Applications
 
 struct SendMessageRequest
 {
-    1: ServiceToken serviceToken;
+    1: ApplicationToken applicationToken;
     2: string message;
-    3: Urgency urgency = Banana.Urgency.IMPORTANT;
+    3: Urgency urgency = Banana.Urgency.INFORMATIONAL;
 }
 
 struct SendMessageResponse
@@ -350,23 +366,23 @@ struct SendMessageResponse
 service BananaService
 {
     //===============================================
-    // Operations for Services
+    // Operations for Applications
     //===============================================
 
 
     /**
      *
-     * #service
+     * #app
      */
-    SendMessageResponse sendMessage(1: SendMessageRequest request) throws(1 : OperationFailedException ex1,
-                                                                          2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidCredentialsException ex3)
+    SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidArgumentException ex2,
+                                                                           3 : InvalidCredentialsException ex3)
 
     /**
      *
-     * #service
+     * #app
      */
-    oneway void sendMessageAsync(1: SendMessageRequest request)
+    oneway void sendMessageAsync(1 : SendMessageRequest request)
 
 
     //===============================================
@@ -378,146 +394,146 @@ service BananaService
      *
      * #human
      */
-    SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
-                                                           2 : InvalidArgumentException ex2,
-                                                           3 : InvalidCredentialsException ex3)
+    SignInResponse signIn(1 : SignInRequest request) throws(1 : OperationFailedException ex1,
+                                                            2 : InvalidArgumentException ex2,
+                                                            3 : InvalidCredentialsException ex3)
 
     /**
      * Sign Up for an Aroma Account.
      */
-    SignUpResponse signUp(1: SignUpRequest request) throws(1 : OperationFailedException ex1,
-                                                           2 : InvalidArgumentException ex2,
-                                                           3 : InvalidCredentialsException ex3,
-                                                           4 : AccountAlreadyExistsException ex4)
+    SignUpResponse signUp(1 : SignUpRequest request) throws(1 : OperationFailedException ex1,
+                                                            2 : InvalidArgumentException ex2,
+                                                            3 : InvalidCredentialsException ex3,
+                                                            4 : AccountAlreadyExistsException ex4)
 
     /**
-     * Provision a New Service to keep tabs on.
+     * Provision a New Application to keep tabs on.
      *
      * #human
      */
-    ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1 : OperationFailedException ex1,
-                                                                                         2 : InvalidArgumentException ex2,
-                                                                                         3 : InvalidCredentialsException ex3,
-                                                                                         4 : ServiceDoesNotExistException ex4)
+    ProvisionApplicationResponse provisionApplication(1 : ProvisionApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                      2 : InvalidArgumentException ex2,
+                                                                                                      3 : InvalidCredentialsException ex3,
+                                                                                                      4 : ApplicationDoesNotExistException ex4)
     /**
-     * Subscribe to an existing service to get notifications.
+     * Subscribe to an existing application to get notifications.
      *
      * #human
      */
-    SubscribeToServiceResponse subscribeToService(1: SubscribeToServiceRequest request) throws(1 : OperationFailedException ex1,
-                                                                                               2 : InvalidArgumentException ex2,
-                                                                                               3 : InvalidCredentialsException ex3,
-                                                                                               4 : ServiceDoesNotExistException ex4,
-                                                                                               5 : ServiceAlreadyRegisteredException ex5,
-                                                                                               6 : CustomChannelUnreachableException ex6)
+    SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                            2 : InvalidArgumentException ex2,
+                                                                                                            3 : InvalidCredentialsException ex3,
+                                                                                                            4 : ApplicationDoesNotExistException ex4,
+                                                                                                            5 : ApplicationAlreadyRegisteredException ex5,
+                                                                                                            6 : CustomChannelUnreachableException ex6)
 
 
     /**
-     * Register an existing Service for Health Pokes. The Banana Service
-     * will then periodically poke the Service for health status.
+     * Register an existing Application for Health Pokes. The Banana Service
+     * will then periodically poke the Application for health status.
      *
      * #human
      * #owner
      */
-    RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                  2 : InvalidArgumentException ex2,
-                                                                                                  3 : InvalidCredentialsException ex3,
-                                                                                                  4 : ServiceDoesNotExistException ex4,
-                                                                                                  5 : UnauthorizedException ex5)
+    RegisterHealthCheckResponse registerHealthCheck(1 : RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                   2 : InvalidArgumentException ex2,
+                                                                                                   3 : InvalidCredentialsException ex3,
+                                                                                                   4 : ApplicationDoesNotExistException ex4,
+                                                                                                   5 : UnauthorizedException ex5)
 
     /**
-     * Renew a Service Token that is close to being expired.
+     * Renew an Application Token that is close to being expired.
      * Only an "owner" can perform this operation.
      *
      * #human
      * #owner
      */
-    RenewServiceTokenResponse renewServiceToken(1: RenewServiceTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                            2 : InvalidArgumentException ex2,
-                                                                                            3 : InvalidCredentialsException ex3,
-                                                                                            4 : ServiceDoesNotExistException ex4,
-                                                                                            5 : UnauthorizedException ex5)
+    RenewApplicationTokenResponse renewApplicationToken(1 : RenewApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                         2 : InvalidArgumentException ex2,
+                                                                                                         3 : InvalidCredentialsException ex3,
+                                                                                                         4 : ApplicationDoesNotExistException ex4,
+                                                                                                         5 : UnauthorizedException ex5)
 
     /**
-     * Regenerate a Token in case the existing one is lost or forgetten.
-     * Keep in mind that this will invalidate the existing ServiceToken.
-     * Only an "owner" can perform this opeartion.
+     * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+     * Keep in mind that this will invalidate any prior existing Application Tokens.
+     * Only an "owner" can perform this operation.
      *
      * #human
      * #owner
      */
-    RegenerateTokenResponse regenerateToken(1: RegenerateTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                      2 : InvalidArgumentException ex2,
-                                                                                      3 : InvalidCredentialsException ex3,
-                                                                                      4 : ServiceDoesNotExistException ex4,
-                                                                                      5 : UnauthorizedException ex5)
+    RegenerateApplicationTokenResponse regenerateToken(1 : RegenerateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                             2 : InvalidArgumentException ex2,
+                                                                                                             3 : InvalidCredentialsException ex3,
+                                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                                             5 : UnauthorizedException ex5)
 
 
 
     /**
-     * Perform a Search on all the services registered to the Banana Service by searching for its title.
+     * Perform a Search on all the applications registered to the Banana Service by searching for its title.
      *
      * #human
      */
-    SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1 : OperationFailedException ex1,
-                                                                                            2 : InvalidArgumentException ex2,
-                                                                                            3 : InvalidCredentialsException ex3,
-                                                                                            4 : UnauthorizedException ex4)
+    SearchForApplicationsResponse searchForApplications(1 : SearchForApplicationsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                         2 : InvalidArgumentException ex2,
+                                                                                                         3 : InvalidCredentialsException ex3,
+                                                                                                         4 : UnauthorizedException ex4)
 
 
 
-    SaveChannelResponse saveChannel(1: SaveChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                          2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidCredentialsException ex3,
-                                                                          4 : UnauthorizedException ex4)
+    SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidArgumentException ex2,
+                                                                           3 : InvalidCredentialsException ex3,
+                                                                           4 : UnauthorizedException ex4)
 
 
-    RemoveSavedChannelResponse removeSavedChannel(1: RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                                               2 : InvalidArgumentException ex2,
-                                                                                               3 : InvalidCredentialsException ex3,
-                                                                                               4 : UnauthorizedException ex4,
-                                                                                               5 : ChannelDoesNotExistException ex5)
+    RemoveSavedChannelResponse removeSavedChannel(1 : RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                2 : InvalidArgumentException ex2,
+                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                4 : UnauthorizedException ex4,
+                                                                                                5 : ChannelDoesNotExistException ex5)
     
-    SnoozeChannelResponse snoozeChannel(1: SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
-                                                                                2 : InvalidArgumentException ex2,
-                                                                                3 : InvalidCredentialsException ex3,
-                                                                                4 : UnauthorizedException ex4,
-                                                                                5 : ChannelDoesNotExistException ex5)
+    SnoozeChannelResponse snoozeChannel(1 : SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
+                                                                                 2 : InvalidArgumentException ex2,
+                                                                                 3 : InvalidCredentialsException ex3,
+                                                                                 4 : UnauthorizedException ex4,
+                                                                                 5 : ChannelDoesNotExistException ex5)
     
     /**
-     * Get a list of all Humans subscribed to a Service.
+     * Get a list of all Humans subscribed to an Application.
      *
      * #human
      */
-    GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                        2 : InvalidArgumentException ex2,
-                                                                                                        3 : InvalidCredentialsException ex3,
-                                                                                                        4 : UnauthorizedException ex4)
+    GetApplicationSubscribersResponse getApplicationSubscribers(1 : GetApplicationSubscribersRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                                     2 : InvalidArgumentException ex2,
+                                                                                                                     3 : InvalidCredentialsException ex3,
+                                                                                                                     4 : UnauthorizedException ex4)
 
     
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
                                                                                                 3 : InvalidCredentialsException ex3)
     
-    GetMyServicesResponse getMyServices(1: GetMyServicesRequest request) throws(1 : OperationFailedException ex1,
-                                                                                2 : InvalidArgumentException ex2,
-                                                                                3 : InvalidCredentialsException ex3)
+    GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidCredentialsException ex3)
     
 
     /**
-     * Get details about a Service from it's unique ID
+     * Get details about an Application from it's unique ID
      *
      * #human
      */
-    GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                                   2 : InvalidArgumentException ex2,
-                                                                                   3 : InvalidCredentialsException ex3,
-                                                                                   4 : ServiceDoesNotExistException ex4,
-                                                                                   5 : UnauthorizedException ex5)
+    GetApplicationInfoResponse getApplicationInfo(1 : GetApplicationInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                2 : InvalidArgumentException ex2,
+                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                4 : ApplicationDoesNotExistException ex4,
+                                                                                                5 : UnauthorizedException ex5)
 
     
-    GetDashboardResponse getDashboard(1: GetDashboardRequest request) throws(1 : OperationFailedException ex1,
-                                                                             2 : InvalidArgumentException ex2,
-                                                                             3 : InvalidCredentialsException ex3)
+    GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
+                                                                              2 : InvalidArgumentException ex2,
+                                                                              3 : InvalidCredentialsException ex3)
 
 }

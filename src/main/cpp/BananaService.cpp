@@ -849,11 +849,11 @@ uint32_t BananaService_signUp_presult::read(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_provisionService_args::~BananaService_provisionService_args() throw() {
+BananaService_provisionApplication_args::~BananaService_provisionApplication_args() throw() {
 }
 
 
-uint32_t BananaService_provisionService_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_provisionApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -894,10 +894,10 @@ uint32_t BananaService_provisionService_args::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t BananaService_provisionService_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_provisionApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_provisionService_args");
+  xfer += oprot->writeStructBegin("BananaService_provisionApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -909,14 +909,14 @@ uint32_t BananaService_provisionService_args::write(::apache::thrift::protocol::
 }
 
 
-BananaService_provisionService_pargs::~BananaService_provisionService_pargs() throw() {
+BananaService_provisionApplication_pargs::~BananaService_provisionApplication_pargs() throw() {
 }
 
 
-uint32_t BananaService_provisionService_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_provisionApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_provisionService_pargs");
+  xfer += oprot->writeStructBegin("BananaService_provisionApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -928,11 +928,11 @@ uint32_t BananaService_provisionService_pargs::write(::apache::thrift::protocol:
 }
 
 
-BananaService_provisionService_result::~BananaService_provisionService_result() throw() {
+BananaService_provisionApplication_result::~BananaService_provisionApplication_result() throw() {
 }
 
 
-uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_provisionApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1005,11 +1005,11 @@ uint32_t BananaService_provisionService_result::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t BananaService_provisionService_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_provisionApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_provisionService_result");
+  xfer += oprot->writeStructBegin("BananaService_provisionApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1038,11 +1038,11 @@ uint32_t BananaService_provisionService_result::write(::apache::thrift::protocol
 }
 
 
-BananaService_provisionService_presult::~BananaService_provisionService_presult() throw() {
+BananaService_provisionApplication_presult::~BananaService_provisionApplication_presult() throw() {
 }
 
 
-uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_provisionApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1116,11 +1116,11 @@ uint32_t BananaService_provisionService_presult::read(::apache::thrift::protocol
 }
 
 
-BananaService_subscribeToService_args::~BananaService_subscribeToService_args() throw() {
+BananaService_subscribeToApplication_args::~BananaService_subscribeToApplication_args() throw() {
 }
 
 
-uint32_t BananaService_subscribeToService_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_subscribeToApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1161,10 +1161,10 @@ uint32_t BananaService_subscribeToService_args::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t BananaService_subscribeToService_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_subscribeToApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_subscribeToService_args");
+  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1176,14 +1176,14 @@ uint32_t BananaService_subscribeToService_args::write(::apache::thrift::protocol
 }
 
 
-BananaService_subscribeToService_pargs::~BananaService_subscribeToService_pargs() throw() {
+BananaService_subscribeToApplication_pargs::~BananaService_subscribeToApplication_pargs() throw() {
 }
 
 
-uint32_t BananaService_subscribeToService_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_subscribeToApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_subscribeToService_pargs");
+  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1195,11 +1195,11 @@ uint32_t BananaService_subscribeToService_pargs::write(::apache::thrift::protoco
 }
 
 
-BananaService_subscribeToService_result::~BananaService_subscribeToService_result() throw() {
+BananaService_subscribeToApplication_result::~BananaService_subscribeToApplication_result() throw() {
 }
 
 
-uint32_t BananaService_subscribeToService_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_subscribeToApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1288,11 +1288,11 @@ uint32_t BananaService_subscribeToService_result::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t BananaService_subscribeToService_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_subscribeToApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_subscribeToService_result");
+  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1329,11 +1329,11 @@ uint32_t BananaService_subscribeToService_result::write(::apache::thrift::protoc
 }
 
 
-BananaService_subscribeToService_presult::~BananaService_subscribeToService_presult() throw() {
+BananaService_subscribeToApplication_presult::~BananaService_subscribeToApplication_presult() throw() {
 }
 
 
-uint32_t BananaService_subscribeToService_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_subscribeToApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1710,11 +1710,11 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
 }
 
 
-BananaService_renewServiceToken_args::~BananaService_renewServiceToken_args() throw() {
+BananaService_renewApplicationToken_args::~BananaService_renewApplicationToken_args() throw() {
 }
 
 
-uint32_t BananaService_renewServiceToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_renewApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1755,10 +1755,10 @@ uint32_t BananaService_renewServiceToken_args::read(::apache::thrift::protocol::
   return xfer;
 }
 
-uint32_t BananaService_renewServiceToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_renewApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_renewServiceToken_args");
+  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1770,14 +1770,14 @@ uint32_t BananaService_renewServiceToken_args::write(::apache::thrift::protocol:
 }
 
 
-BananaService_renewServiceToken_pargs::~BananaService_renewServiceToken_pargs() throw() {
+BananaService_renewApplicationToken_pargs::~BananaService_renewApplicationToken_pargs() throw() {
 }
 
 
-uint32_t BananaService_renewServiceToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_renewApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_renewServiceToken_pargs");
+  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1789,11 +1789,11 @@ uint32_t BananaService_renewServiceToken_pargs::write(::apache::thrift::protocol
 }
 
 
-BananaService_renewServiceToken_result::~BananaService_renewServiceToken_result() throw() {
+BananaService_renewApplicationToken_result::~BananaService_renewApplicationToken_result() throw() {
 }
 
 
-uint32_t BananaService_renewServiceToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_renewApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1874,11 +1874,11 @@ uint32_t BananaService_renewServiceToken_result::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t BananaService_renewServiceToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_renewApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_renewServiceToken_result");
+  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1911,11 +1911,11 @@ uint32_t BananaService_renewServiceToken_result::write(::apache::thrift::protoco
 }
 
 
-BananaService_renewServiceToken_presult::~BananaService_renewServiceToken_presult() throw() {
+BananaService_renewApplicationToken_presult::~BananaService_renewApplicationToken_presult() throw() {
 }
 
 
-uint32_t BananaService_renewServiceToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_renewApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2284,11 +2284,11 @@ uint32_t BananaService_regenerateToken_presult::read(::apache::thrift::protocol:
 }
 
 
-BananaService_searchForServices_args::~BananaService_searchForServices_args() throw() {
+BananaService_searchForApplications_args::~BananaService_searchForApplications_args() throw() {
 }
 
 
-uint32_t BananaService_searchForServices_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_searchForApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2329,10 +2329,10 @@ uint32_t BananaService_searchForServices_args::read(::apache::thrift::protocol::
   return xfer;
 }
 
-uint32_t BananaService_searchForServices_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_searchForApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_searchForServices_args");
+  xfer += oprot->writeStructBegin("BananaService_searchForApplications_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -2344,14 +2344,14 @@ uint32_t BananaService_searchForServices_args::write(::apache::thrift::protocol:
 }
 
 
-BananaService_searchForServices_pargs::~BananaService_searchForServices_pargs() throw() {
+BananaService_searchForApplications_pargs::~BananaService_searchForApplications_pargs() throw() {
 }
 
 
-uint32_t BananaService_searchForServices_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_searchForApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_searchForServices_pargs");
+  xfer += oprot->writeStructBegin("BananaService_searchForApplications_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -2363,11 +2363,11 @@ uint32_t BananaService_searchForServices_pargs::write(::apache::thrift::protocol
 }
 
 
-BananaService_searchForServices_result::~BananaService_searchForServices_result() throw() {
+BananaService_searchForApplications_result::~BananaService_searchForApplications_result() throw() {
 }
 
 
-uint32_t BananaService_searchForServices_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_searchForApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2440,11 +2440,11 @@ uint32_t BananaService_searchForServices_result::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t BananaService_searchForServices_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_searchForApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_searchForServices_result");
+  xfer += oprot->writeStructBegin("BananaService_searchForApplications_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -2473,11 +2473,11 @@ uint32_t BananaService_searchForServices_result::write(::apache::thrift::protoco
 }
 
 
-BananaService_searchForServices_presult::~BananaService_searchForServices_presult() throw() {
+BananaService_searchForApplications_presult::~BananaService_searchForApplications_presult() throw() {
 }
 
 
-uint32_t BananaService_searchForServices_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_searchForApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3392,11 +3392,11 @@ uint32_t BananaService_snoozeChannel_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_getServiceSubscribers_args::~BananaService_getServiceSubscribers_args() throw() {
+BananaService_getApplicationSubscribers_args::~BananaService_getApplicationSubscribers_args() throw() {
 }
 
 
-uint32_t BananaService_getServiceSubscribers_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationSubscribers_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3437,10 +3437,10 @@ uint32_t BananaService_getServiceSubscribers_args::read(::apache::thrift::protoc
   return xfer;
 }
 
-uint32_t BananaService_getServiceSubscribers_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationSubscribers_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getServiceSubscribers_args");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationSubscribers_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3452,14 +3452,14 @@ uint32_t BananaService_getServiceSubscribers_args::write(::apache::thrift::proto
 }
 
 
-BananaService_getServiceSubscribers_pargs::~BananaService_getServiceSubscribers_pargs() throw() {
+BananaService_getApplicationSubscribers_pargs::~BananaService_getApplicationSubscribers_pargs() throw() {
 }
 
 
-uint32_t BananaService_getServiceSubscribers_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationSubscribers_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getServiceSubscribers_pargs");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationSubscribers_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3471,11 +3471,11 @@ uint32_t BananaService_getServiceSubscribers_pargs::write(::apache::thrift::prot
 }
 
 
-BananaService_getServiceSubscribers_result::~BananaService_getServiceSubscribers_result() throw() {
+BananaService_getApplicationSubscribers_result::~BananaService_getApplicationSubscribers_result() throw() {
 }
 
 
-uint32_t BananaService_getServiceSubscribers_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationSubscribers_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3548,11 +3548,11 @@ uint32_t BananaService_getServiceSubscribers_result::read(::apache::thrift::prot
   return xfer;
 }
 
-uint32_t BananaService_getServiceSubscribers_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationSubscribers_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getServiceSubscribers_result");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationSubscribers_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3581,11 +3581,11 @@ uint32_t BananaService_getServiceSubscribers_result::write(::apache::thrift::pro
 }
 
 
-BananaService_getServiceSubscribers_presult::~BananaService_getServiceSubscribers_presult() throw() {
+BananaService_getApplicationSubscribers_presult::~BananaService_getApplicationSubscribers_presult() throw() {
 }
 
 
-uint32_t BananaService_getServiceSubscribers_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationSubscribers_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3906,11 +3906,11 @@ uint32_t BananaService_getMySavedChannels_presult::read(::apache::thrift::protoc
 }
 
 
-BananaService_getMyServices_args::~BananaService_getMyServices_args() throw() {
+BananaService_getMyApplications_args::~BananaService_getMyApplications_args() throw() {
 }
 
 
-uint32_t BananaService_getMyServices_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getMyApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3951,10 +3951,10 @@ uint32_t BananaService_getMyServices_args::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_getMyServices_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getMyApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMyServices_args");
+  xfer += oprot->writeStructBegin("BananaService_getMyApplications_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3966,14 +3966,14 @@ uint32_t BananaService_getMyServices_args::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getMyServices_pargs::~BananaService_getMyServices_pargs() throw() {
+BananaService_getMyApplications_pargs::~BananaService_getMyApplications_pargs() throw() {
 }
 
 
-uint32_t BananaService_getMyServices_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getMyApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMyServices_pargs");
+  xfer += oprot->writeStructBegin("BananaService_getMyApplications_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3985,11 +3985,11 @@ uint32_t BananaService_getMyServices_pargs::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getMyServices_result::~BananaService_getMyServices_result() throw() {
+BananaService_getMyApplications_result::~BananaService_getMyApplications_result() throw() {
 }
 
 
-uint32_t BananaService_getMyServices_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getMyApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4054,11 +4054,11 @@ uint32_t BananaService_getMyServices_result::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t BananaService_getMyServices_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getMyApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getMyServices_result");
+  xfer += oprot->writeStructBegin("BananaService_getMyApplications_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4083,11 +4083,11 @@ uint32_t BananaService_getMyServices_result::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_getMyServices_presult::~BananaService_getMyServices_presult() throw() {
+BananaService_getMyApplications_presult::~BananaService_getMyApplications_presult() throw() {
 }
 
 
-uint32_t BananaService_getMyServices_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getMyApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4153,11 +4153,11 @@ uint32_t BananaService_getMyServices_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_getServiceInfo_args::~BananaService_getServiceInfo_args() throw() {
+BananaService_getApplicationInfo_args::~BananaService_getApplicationInfo_args() throw() {
 }
 
 
-uint32_t BananaService_getServiceInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4198,10 +4198,10 @@ uint32_t BananaService_getServiceInfo_args::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t BananaService_getServiceInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getServiceInfo_args");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4213,14 +4213,14 @@ uint32_t BananaService_getServiceInfo_args::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getServiceInfo_pargs::~BananaService_getServiceInfo_pargs() throw() {
+BananaService_getApplicationInfo_pargs::~BananaService_getApplicationInfo_pargs() throw() {
 }
 
 
-uint32_t BananaService_getServiceInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getServiceInfo_pargs");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4232,11 +4232,11 @@ uint32_t BananaService_getServiceInfo_pargs::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_getServiceInfo_result::~BananaService_getServiceInfo_result() throw() {
+BananaService_getApplicationInfo_result::~BananaService_getApplicationInfo_result() throw() {
 }
 
 
-uint32_t BananaService_getServiceInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4317,11 +4317,11 @@ uint32_t BananaService_getServiceInfo_result::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t BananaService_getServiceInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_getApplicationInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getServiceInfo_result");
+  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4354,11 +4354,11 @@ uint32_t BananaService_getServiceInfo_result::write(::apache::thrift::protocol::
 }
 
 
-BananaService_getServiceInfo_presult::~BananaService_getServiceInfo_presult() throw() {
+BananaService_getApplicationInfo_presult::~BananaService_getApplicationInfo_presult() throw() {
 }
 
 
-uint32_t BananaService_getServiceInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_getApplicationInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4909,18 +4909,18 @@ void BananaServiceClient::recv_signUp(SignUpResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
 }
 
-void BananaServiceClient::provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request)
+void BananaServiceClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
 {
-  send_provisionService(request);
-  recv_provisionService(_return);
+  send_provisionApplication(request);
+  recv_provisionApplication(_return);
 }
 
-void BananaServiceClient::send_provisionService(const ProvisionServiceRequest& request)
+void BananaServiceClient::send_provisionApplication(const ProvisionApplicationRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("provisionService", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_provisionService_pargs args;
+  BananaService_provisionApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -4929,7 +4929,7 @@ void BananaServiceClient::send_provisionService(const ProvisionServiceRequest& r
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_provisionService(ProvisionServiceResponse& _return)
+void BananaServiceClient::recv_provisionApplication(ProvisionApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -4949,12 +4949,12 @@ void BananaServiceClient::recv_provisionService(ProvisionServiceResponse& _retur
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("provisionService") != 0) {
+  if (fname.compare("provisionApplication") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_provisionService_presult result;
+  BananaService_provisionApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -4976,21 +4976,21 @@ void BananaServiceClient::recv_provisionService(ProvisionServiceResponse& _retur
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "provisionService failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "provisionApplication failed: unknown result");
 }
 
-void BananaServiceClient::subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request)
+void BananaServiceClient::subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request)
 {
-  send_subscribeToService(request);
-  recv_subscribeToService(_return);
+  send_subscribeToApplication(request);
+  recv_subscribeToApplication(_return);
 }
 
-void BananaServiceClient::send_subscribeToService(const SubscribeToServiceRequest& request)
+void BananaServiceClient::send_subscribeToApplication(const SubscribeToApplicationRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("subscribeToService", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_subscribeToService_pargs args;
+  BananaService_subscribeToApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -4999,7 +4999,7 @@ void BananaServiceClient::send_subscribeToService(const SubscribeToServiceReques
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_subscribeToService(SubscribeToServiceResponse& _return)
+void BananaServiceClient::recv_subscribeToApplication(SubscribeToApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5019,12 +5019,12 @@ void BananaServiceClient::recv_subscribeToService(SubscribeToServiceResponse& _r
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("subscribeToService") != 0) {
+  if (fname.compare("subscribeToApplication") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_subscribeToService_presult result;
+  BananaService_subscribeToApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5052,7 +5052,7 @@ void BananaServiceClient::recv_subscribeToService(SubscribeToServiceResponse& _r
   if (result.__isset.ex6) {
     throw result.ex6;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToService failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToApplication failed: unknown result");
 }
 
 void BananaServiceClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
@@ -5128,18 +5128,18 @@ void BananaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& 
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
 }
 
-void BananaServiceClient::renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request)
+void BananaServiceClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
 {
-  send_renewServiceToken(request);
-  recv_renewServiceToken(_return);
+  send_renewApplicationToken(request);
+  recv_renewApplicationToken(_return);
 }
 
-void BananaServiceClient::send_renewServiceToken(const RenewServiceTokenRequest& request)
+void BananaServiceClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("renewServiceToken", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_renewServiceToken_pargs args;
+  BananaService_renewApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -5148,7 +5148,7 @@ void BananaServiceClient::send_renewServiceToken(const RenewServiceTokenRequest&
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_renewServiceToken(RenewServiceTokenResponse& _return)
+void BananaServiceClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5168,12 +5168,12 @@ void BananaServiceClient::recv_renewServiceToken(RenewServiceTokenResponse& _ret
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("renewServiceToken") != 0) {
+  if (fname.compare("renewApplicationToken") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_renewServiceToken_presult result;
+  BananaService_renewApplicationToken_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5198,16 +5198,16 @@ void BananaServiceClient::recv_renewServiceToken(RenewServiceTokenResponse& _ret
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewServiceToken failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewApplicationToken failed: unknown result");
 }
 
-void BananaServiceClient::regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request)
+void BananaServiceClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
 {
   send_regenerateToken(request);
   recv_regenerateToken(_return);
 }
 
-void BananaServiceClient::send_regenerateToken(const RegenerateTokenRequest& request)
+void BananaServiceClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("regenerateToken", ::apache::thrift::protocol::T_CALL, cseqid);
@@ -5221,7 +5221,7 @@ void BananaServiceClient::send_regenerateToken(const RegenerateTokenRequest& req
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_regenerateToken(RegenerateTokenResponse& _return)
+void BananaServiceClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5274,18 +5274,18 @@ void BananaServiceClient::recv_regenerateToken(RegenerateTokenResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "regenerateToken failed: unknown result");
 }
 
-void BananaServiceClient::searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request)
+void BananaServiceClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
 {
-  send_searchForServices(request);
-  recv_searchForServices(_return);
+  send_searchForApplications(request);
+  recv_searchForApplications(_return);
 }
 
-void BananaServiceClient::send_searchForServices(const SearchForServicesRequest& request)
+void BananaServiceClient::send_searchForApplications(const SearchForApplicationsRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("searchForServices", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_searchForServices_pargs args;
+  BananaService_searchForApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -5294,7 +5294,7 @@ void BananaServiceClient::send_searchForServices(const SearchForServicesRequest&
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_searchForServices(SearchForServicesResponse& _return)
+void BananaServiceClient::recv_searchForApplications(SearchForApplicationsResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5314,12 +5314,12 @@ void BananaServiceClient::recv_searchForServices(SearchForServicesResponse& _ret
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("searchForServices") != 0) {
+  if (fname.compare("searchForApplications") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_searchForServices_presult result;
+  BananaService_searchForApplications_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5341,7 +5341,7 @@ void BananaServiceClient::recv_searchForServices(SearchForServicesResponse& _ret
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForServices failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
 }
 
 void BananaServiceClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
@@ -5560,18 +5560,18 @@ void BananaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "snoozeChannel failed: unknown result");
 }
 
-void BananaServiceClient::getServiceSubscribers(GetServiceSubscribersResponse& _return, const GetServiceSubscribersRequest& request)
+void BananaServiceClient::getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request)
 {
-  send_getServiceSubscribers(request);
-  recv_getServiceSubscribers(_return);
+  send_getApplicationSubscribers(request);
+  recv_getApplicationSubscribers(_return);
 }
 
-void BananaServiceClient::send_getServiceSubscribers(const GetServiceSubscribersRequest& request)
+void BananaServiceClient::send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getServiceSubscribers", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationSubscribers", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getServiceSubscribers_pargs args;
+  BananaService_getApplicationSubscribers_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -5580,7 +5580,7 @@ void BananaServiceClient::send_getServiceSubscribers(const GetServiceSubscribers
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getServiceSubscribers(GetServiceSubscribersResponse& _return)
+void BananaServiceClient::recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5600,12 +5600,12 @@ void BananaServiceClient::recv_getServiceSubscribers(GetServiceSubscribersRespon
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getServiceSubscribers") != 0) {
+  if (fname.compare("getApplicationSubscribers") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getServiceSubscribers_presult result;
+  BananaService_getApplicationSubscribers_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5627,7 +5627,7 @@ void BananaServiceClient::recv_getServiceSubscribers(GetServiceSubscribersRespon
   if (result.__isset.ex4) {
     throw result.ex4;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getServiceSubscribers failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationSubscribers failed: unknown result");
 }
 
 void BananaServiceClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
@@ -5697,18 +5697,18 @@ void BananaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _r
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMySavedChannels failed: unknown result");
 }
 
-void BananaServiceClient::getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request)
+void BananaServiceClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
 {
-  send_getMyServices(request);
-  recv_getMyServices(_return);
+  send_getMyApplications(request);
+  recv_getMyApplications(_return);
 }
 
-void BananaServiceClient::send_getMyServices(const GetMyServicesRequest& request)
+void BananaServiceClient::send_getMyApplications(const GetMyApplicationsRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getMyServices", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMyServices_pargs args;
+  BananaService_getMyApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -5717,7 +5717,7 @@ void BananaServiceClient::send_getMyServices(const GetMyServicesRequest& request
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getMyServices(GetMyServicesResponse& _return)
+void BananaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5737,12 +5737,12 @@ void BananaServiceClient::recv_getMyServices(GetMyServicesResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getMyServices") != 0) {
+  if (fname.compare("getMyApplications") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getMyServices_presult result;
+  BananaService_getMyApplications_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5761,21 +5761,21 @@ void BananaServiceClient::recv_getMyServices(GetMyServicesResponse& _return)
   if (result.__isset.ex3) {
     throw result.ex3;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyServices failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyApplications failed: unknown result");
 }
 
-void BananaServiceClient::getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request)
+void BananaServiceClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
-  send_getServiceInfo(request);
-  recv_getServiceInfo(_return);
+  send_getApplicationInfo(request);
+  recv_getApplicationInfo(_return);
 }
 
-void BananaServiceClient::send_getServiceInfo(const GetServiceInfoRequest& request)
+void BananaServiceClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getServiceInfo", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getServiceInfo_pargs args;
+  BananaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -5784,7 +5784,7 @@ void BananaServiceClient::send_getServiceInfo(const GetServiceInfoRequest& reque
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getServiceInfo(GetServiceInfoResponse& _return)
+void BananaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -5804,12 +5804,12 @@ void BananaServiceClient::recv_getServiceInfo(GetServiceInfoResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getServiceInfo") != 0) {
+  if (fname.compare("getApplicationInfo") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getServiceInfo_presult result;
+  BananaService_getApplicationInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -5834,7 +5834,7 @@ void BananaServiceClient::recv_getServiceInfo(GetServiceInfoResponse& _return)
   if (result.__isset.ex5) {
     throw result.ex5;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getServiceInfo failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
 }
 
 void BananaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
@@ -6152,30 +6152,30 @@ void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::pro
   }
 }
 
-void BananaServiceProcessor::process_provisionService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.provisionService", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.provisionApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.provisionService");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.provisionApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.provisionService");
+    this->eventHandler_->preRead(ctx, "BananaService.provisionApplication");
   }
 
-  BananaService_provisionService_args args;
+  BananaService_provisionApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.provisionService", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.provisionApplication", bytes);
   }
 
-  BananaService_provisionService_result result;
+  BananaService_provisionApplication_result result;
   try {
-    iface_->provisionService(result.success, args.request);
+    iface_->provisionApplication(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6186,16 +6186,16 @@ void BananaServiceProcessor::process_provisionService(int32_t seqid, ::apache::t
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.provisionService");
+      this->eventHandler_->handlerError(ctx, "BananaService.provisionApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("provisionService", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6204,44 +6204,44 @@ void BananaServiceProcessor::process_provisionService(int32_t seqid, ::apache::t
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.provisionService");
+    this->eventHandler_->preWrite(ctx, "BananaService.provisionApplication");
   }
 
-  oprot->writeMessageBegin("provisionService", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.provisionService", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.provisionApplication", bytes);
   }
 }
 
-void BananaServiceProcessor::process_subscribeToService(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_subscribeToApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.subscribeToService", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.subscribeToApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.subscribeToService");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.subscribeToApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.subscribeToService");
+    this->eventHandler_->preRead(ctx, "BananaService.subscribeToApplication");
   }
 
-  BananaService_subscribeToService_args args;
+  BananaService_subscribeToApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.subscribeToService", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.subscribeToApplication", bytes);
   }
 
-  BananaService_subscribeToService_result result;
+  BananaService_subscribeToApplication_result result;
   try {
-    iface_->subscribeToService(result.success, args.request);
+    iface_->subscribeToApplication(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6252,10 +6252,10 @@ void BananaServiceProcessor::process_subscribeToService(int32_t seqid, ::apache:
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
-  } catch (ServiceAlreadyRegisteredException &ex5) {
+  } catch (ApplicationAlreadyRegisteredException &ex5) {
     result.ex5 = ex5;
     result.__isset.ex5 = true;
   } catch (CustomChannelUnreachableException &ex6) {
@@ -6263,11 +6263,11 @@ void BananaServiceProcessor::process_subscribeToService(int32_t seqid, ::apache:
     result.__isset.ex6 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.subscribeToService");
+      this->eventHandler_->handlerError(ctx, "BananaService.subscribeToApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("subscribeToService", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6276,17 +6276,17 @@ void BananaServiceProcessor::process_subscribeToService(int32_t seqid, ::apache:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.subscribeToService");
+    this->eventHandler_->preWrite(ctx, "BananaService.subscribeToApplication");
   }
 
-  oprot->writeMessageBegin("subscribeToService", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.subscribeToService", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.subscribeToApplication", bytes);
   }
 }
 
@@ -6324,7 +6324,7 @@ void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
   } catch (UnauthorizedException &ex5) {
@@ -6359,30 +6359,30 @@ void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache
   }
 }
 
-void BananaServiceProcessor::process_renewServiceToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.renewServiceToken", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.renewApplicationToken", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.renewServiceToken");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.renewApplicationToken");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.renewServiceToken");
+    this->eventHandler_->preRead(ctx, "BananaService.renewApplicationToken");
   }
 
-  BananaService_renewServiceToken_args args;
+  BananaService_renewApplicationToken_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.renewServiceToken", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.renewApplicationToken", bytes);
   }
 
-  BananaService_renewServiceToken_result result;
+  BananaService_renewApplicationToken_result result;
   try {
-    iface_->renewServiceToken(result.success, args.request);
+    iface_->renewApplicationToken(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6393,7 +6393,7 @@ void BananaServiceProcessor::process_renewServiceToken(int32_t seqid, ::apache::
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
   } catch (UnauthorizedException &ex5) {
@@ -6401,11 +6401,11 @@ void BananaServiceProcessor::process_renewServiceToken(int32_t seqid, ::apache::
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.renewServiceToken");
+      this->eventHandler_->handlerError(ctx, "BananaService.renewApplicationToken");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("renewServiceToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6414,17 +6414,17 @@ void BananaServiceProcessor::process_renewServiceToken(int32_t seqid, ::apache::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.renewServiceToken");
+    this->eventHandler_->preWrite(ctx, "BananaService.renewApplicationToken");
   }
 
-  oprot->writeMessageBegin("renewServiceToken", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.renewServiceToken", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.renewApplicationToken", bytes);
   }
 }
 
@@ -6462,7 +6462,7 @@ void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::th
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
   } catch (UnauthorizedException &ex5) {
@@ -6497,30 +6497,30 @@ void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::th
   }
 }
 
-void BananaServiceProcessor::process_searchForServices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.searchForServices", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.searchForApplications", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.searchForServices");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.searchForApplications");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.searchForServices");
+    this->eventHandler_->preRead(ctx, "BananaService.searchForApplications");
   }
 
-  BananaService_searchForServices_args args;
+  BananaService_searchForApplications_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.searchForServices", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.searchForApplications", bytes);
   }
 
-  BananaService_searchForServices_result result;
+  BananaService_searchForApplications_result result;
   try {
-    iface_->searchForServices(result.success, args.request);
+    iface_->searchForApplications(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6536,11 +6536,11 @@ void BananaServiceProcessor::process_searchForServices(int32_t seqid, ::apache::
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.searchForServices");
+      this->eventHandler_->handlerError(ctx, "BananaService.searchForApplications");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("searchForServices", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6549,17 +6549,17 @@ void BananaServiceProcessor::process_searchForServices(int32_t seqid, ::apache::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.searchForServices");
+    this->eventHandler_->preWrite(ctx, "BananaService.searchForApplications");
   }
 
-  oprot->writeMessageBegin("searchForServices", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.searchForServices", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.searchForApplications", bytes);
   }
 }
 
@@ -6767,30 +6767,30 @@ void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thri
   }
 }
 
-void BananaServiceProcessor::process_getServiceSubscribers(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_getApplicationSubscribers(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getServiceSubscribers", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.getApplicationSubscribers", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getServiceSubscribers");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getApplicationSubscribers");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getServiceSubscribers");
+    this->eventHandler_->preRead(ctx, "BananaService.getApplicationSubscribers");
   }
 
-  BananaService_getServiceSubscribers_args args;
+  BananaService_getApplicationSubscribers_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getServiceSubscribers", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.getApplicationSubscribers", bytes);
   }
 
-  BananaService_getServiceSubscribers_result result;
+  BananaService_getApplicationSubscribers_result result;
   try {
-    iface_->getServiceSubscribers(result.success, args.request);
+    iface_->getApplicationSubscribers(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6806,11 +6806,11 @@ void BananaServiceProcessor::process_getServiceSubscribers(int32_t seqid, ::apac
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getServiceSubscribers");
+      this->eventHandler_->handlerError(ctx, "BananaService.getApplicationSubscribers");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getServiceSubscribers", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApplicationSubscribers", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6819,17 +6819,17 @@ void BananaServiceProcessor::process_getServiceSubscribers(int32_t seqid, ::apac
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getServiceSubscribers");
+    this->eventHandler_->preWrite(ctx, "BananaService.getApplicationSubscribers");
   }
 
-  oprot->writeMessageBegin("getServiceSubscribers", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApplicationSubscribers", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getServiceSubscribers", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.getApplicationSubscribers", bytes);
   }
 }
 
@@ -6896,30 +6896,30 @@ void BananaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache:
   }
 }
 
-void BananaServiceProcessor::process_getMyServices(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getMyServices", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.getMyApplications", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getMyServices");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getMyApplications");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getMyServices");
+    this->eventHandler_->preRead(ctx, "BananaService.getMyApplications");
   }
 
-  BananaService_getMyServices_args args;
+  BananaService_getMyApplications_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getMyServices", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.getMyApplications", bytes);
   }
 
-  BananaService_getMyServices_result result;
+  BananaService_getMyApplications_result result;
   try {
-    iface_->getMyServices(result.success, args.request);
+    iface_->getMyApplications(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6932,11 +6932,11 @@ void BananaServiceProcessor::process_getMyServices(int32_t seqid, ::apache::thri
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getMyServices");
+      this->eventHandler_->handlerError(ctx, "BananaService.getMyApplications");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getMyServices", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -6945,44 +6945,44 @@ void BananaServiceProcessor::process_getMyServices(int32_t seqid, ::apache::thri
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getMyServices");
+    this->eventHandler_->preWrite(ctx, "BananaService.getMyApplications");
   }
 
-  oprot->writeMessageBegin("getMyServices", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getMyServices", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.getMyApplications", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getServiceInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getServiceInfo", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.getApplicationInfo", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getServiceInfo");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getApplicationInfo");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getServiceInfo");
+    this->eventHandler_->preRead(ctx, "BananaService.getApplicationInfo");
   }
 
-  BananaService_getServiceInfo_args args;
+  BananaService_getApplicationInfo_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getServiceInfo", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.getApplicationInfo", bytes);
   }
 
-  BananaService_getServiceInfo_result result;
+  BananaService_getApplicationInfo_result result;
   try {
-    iface_->getServiceInfo(result.success, args.request);
+    iface_->getApplicationInfo(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -6993,7 +6993,7 @@ void BananaServiceProcessor::process_getServiceInfo(int32_t seqid, ::apache::thr
   } catch (InvalidCredentialsException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
-  } catch (ServiceDoesNotExistException &ex4) {
+  } catch (ApplicationDoesNotExistException &ex4) {
     result.ex4 = ex4;
     result.__isset.ex4 = true;
   } catch (UnauthorizedException &ex5) {
@@ -7001,11 +7001,11 @@ void BananaServiceProcessor::process_getServiceInfo(int32_t seqid, ::apache::thr
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getServiceInfo");
+      this->eventHandler_->handlerError(ctx, "BananaService.getApplicationInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getServiceInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -7014,17 +7014,17 @@ void BananaServiceProcessor::process_getServiceInfo(int32_t seqid, ::apache::thr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getServiceInfo");
+    this->eventHandler_->preWrite(ctx, "BananaService.getApplicationInfo");
   }
 
-  oprot->writeMessageBegin("getServiceInfo", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getServiceInfo", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.getApplicationInfo", bytes);
   }
 }
 
@@ -7412,19 +7412,19 @@ void BananaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const i
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request)
+void BananaServiceConcurrentClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
 {
-  int32_t seqid = send_provisionService(request);
-  recv_provisionService(_return, seqid);
+  int32_t seqid = send_provisionApplication(request);
+  recv_provisionApplication(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_provisionService(const ProvisionServiceRequest& request)
+int32_t BananaServiceConcurrentClient::send_provisionApplication(const ProvisionApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("provisionService", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_provisionService_pargs args;
+  BananaService_provisionApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7436,7 +7436,7 @@ int32_t BananaServiceConcurrentClient::send_provisionService(const ProvisionServ
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_provisionService(ProvisionServiceResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -7465,7 +7465,7 @@ void BananaServiceConcurrentClient::recv_provisionService(ProvisionServiceRespon
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("provisionService") != 0) {
+      if (fname.compare("provisionApplication") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -7474,7 +7474,7 @@ void BananaServiceConcurrentClient::recv_provisionService(ProvisionServiceRespon
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_provisionService_presult result;
+      BananaService_provisionApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -7502,7 +7502,7 @@ void BananaServiceConcurrentClient::recv_provisionService(ProvisionServiceRespon
         throw result.ex4;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "provisionService failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "provisionApplication failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -7512,19 +7512,19 @@ void BananaServiceConcurrentClient::recv_provisionService(ProvisionServiceRespon
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request)
+void BananaServiceConcurrentClient::subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request)
 {
-  int32_t seqid = send_subscribeToService(request);
-  recv_subscribeToService(_return, seqid);
+  int32_t seqid = send_subscribeToApplication(request);
+  recv_subscribeToApplication(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_subscribeToService(const SubscribeToServiceRequest& request)
+int32_t BananaServiceConcurrentClient::send_subscribeToApplication(const SubscribeToApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("subscribeToService", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_subscribeToService_pargs args;
+  BananaService_subscribeToApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7536,7 +7536,7 @@ int32_t BananaServiceConcurrentClient::send_subscribeToService(const SubscribeTo
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_subscribeToService(SubscribeToServiceResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_subscribeToApplication(SubscribeToApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -7565,7 +7565,7 @@ void BananaServiceConcurrentClient::recv_subscribeToService(SubscribeToServiceRe
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("subscribeToService") != 0) {
+      if (fname.compare("subscribeToApplication") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -7574,7 +7574,7 @@ void BananaServiceConcurrentClient::recv_subscribeToService(SubscribeToServiceRe
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_subscribeToService_presult result;
+      BananaService_subscribeToApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -7610,7 +7610,7 @@ void BananaServiceConcurrentClient::recv_subscribeToService(SubscribeToServiceRe
         throw result.ex6;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToService failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToApplication failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -7724,19 +7724,19 @@ void BananaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheck
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request)
+void BananaServiceConcurrentClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
 {
-  int32_t seqid = send_renewServiceToken(request);
-  recv_renewServiceToken(_return, seqid);
+  int32_t seqid = send_renewApplicationToken(request);
+  recv_renewApplicationToken(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_renewServiceToken(const RenewServiceTokenRequest& request)
+int32_t BananaServiceConcurrentClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("renewServiceToken", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_renewServiceToken_pargs args;
+  BananaService_renewApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7748,7 +7748,7 @@ int32_t BananaServiceConcurrentClient::send_renewServiceToken(const RenewService
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_renewServiceToken(RenewServiceTokenResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -7777,7 +7777,7 @@ void BananaServiceConcurrentClient::recv_renewServiceToken(RenewServiceTokenResp
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("renewServiceToken") != 0) {
+      if (fname.compare("renewApplicationToken") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -7786,7 +7786,7 @@ void BananaServiceConcurrentClient::recv_renewServiceToken(RenewServiceTokenResp
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_renewServiceToken_presult result;
+      BananaService_renewApplicationToken_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -7818,7 +7818,7 @@ void BananaServiceConcurrentClient::recv_renewServiceToken(RenewServiceTokenResp
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewServiceToken failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewApplicationToken failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -7828,13 +7828,13 @@ void BananaServiceConcurrentClient::recv_renewServiceToken(RenewServiceTokenResp
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request)
+void BananaServiceConcurrentClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
 {
   int32_t seqid = send_regenerateToken(request);
   recv_regenerateToken(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_regenerateToken(const RegenerateTokenRequest& request)
+int32_t BananaServiceConcurrentClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
@@ -7852,7 +7852,7 @@ int32_t BananaServiceConcurrentClient::send_regenerateToken(const RegenerateToke
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateTokenResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -7932,19 +7932,19 @@ void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateTokenResponse
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request)
+void BananaServiceConcurrentClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
 {
-  int32_t seqid = send_searchForServices(request);
-  recv_searchForServices(_return, seqid);
+  int32_t seqid = send_searchForApplications(request);
+  recv_searchForApplications(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_searchForServices(const SearchForServicesRequest& request)
+int32_t BananaServiceConcurrentClient::send_searchForApplications(const SearchForApplicationsRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("searchForServices", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_searchForServices_pargs args;
+  BananaService_searchForApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7956,7 +7956,7 @@ int32_t BananaServiceConcurrentClient::send_searchForServices(const SearchForSer
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_searchForServices(SearchForServicesResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -7985,7 +7985,7 @@ void BananaServiceConcurrentClient::recv_searchForServices(SearchForServicesResp
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("searchForServices") != 0) {
+      if (fname.compare("searchForApplications") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -7994,7 +7994,7 @@ void BananaServiceConcurrentClient::recv_searchForServices(SearchForServicesResp
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_searchForServices_presult result;
+      BananaService_searchForApplications_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -8022,7 +8022,7 @@ void BananaServiceConcurrentClient::recv_searchForServices(SearchForServicesResp
         throw result.ex4;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForServices failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -8340,19 +8340,19 @@ void BananaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _r
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getServiceSubscribers(GetServiceSubscribersResponse& _return, const GetServiceSubscribersRequest& request)
+void BananaServiceConcurrentClient::getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request)
 {
-  int32_t seqid = send_getServiceSubscribers(request);
-  recv_getServiceSubscribers(_return, seqid);
+  int32_t seqid = send_getApplicationSubscribers(request);
+  recv_getApplicationSubscribers(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getServiceSubscribers(const GetServiceSubscribersRequest& request)
+int32_t BananaServiceConcurrentClient::send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getServiceSubscribers", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationSubscribers", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getServiceSubscribers_pargs args;
+  BananaService_getApplicationSubscribers_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8364,7 +8364,7 @@ int32_t BananaServiceConcurrentClient::send_getServiceSubscribers(const GetServi
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getServiceSubscribers(GetServiceSubscribersResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -8393,7 +8393,7 @@ void BananaServiceConcurrentClient::recv_getServiceSubscribers(GetServiceSubscri
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getServiceSubscribers") != 0) {
+      if (fname.compare("getApplicationSubscribers") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -8402,7 +8402,7 @@ void BananaServiceConcurrentClient::recv_getServiceSubscribers(GetServiceSubscri
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getServiceSubscribers_presult result;
+      BananaService_getApplicationSubscribers_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -8430,7 +8430,7 @@ void BananaServiceConcurrentClient::recv_getServiceSubscribers(GetServiceSubscri
         throw result.ex4;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getServiceSubscribers failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationSubscribers failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -8536,19 +8536,19 @@ void BananaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsRe
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request)
+void BananaServiceConcurrentClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
 {
-  int32_t seqid = send_getMyServices(request);
-  recv_getMyServices(_return, seqid);
+  int32_t seqid = send_getMyApplications(request);
+  recv_getMyApplications(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getMyServices(const GetMyServicesRequest& request)
+int32_t BananaServiceConcurrentClient::send_getMyApplications(const GetMyApplicationsRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getMyServices", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMyServices_pargs args;
+  BananaService_getMyApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8560,7 +8560,7 @@ int32_t BananaServiceConcurrentClient::send_getMyServices(const GetMyServicesReq
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getMyServices(GetMyServicesResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -8589,7 +8589,7 @@ void BananaServiceConcurrentClient::recv_getMyServices(GetMyServicesResponse& _r
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getMyServices") != 0) {
+      if (fname.compare("getMyApplications") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -8598,7 +8598,7 @@ void BananaServiceConcurrentClient::recv_getMyServices(GetMyServicesResponse& _r
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getMyServices_presult result;
+      BananaService_getMyApplications_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -8622,7 +8622,7 @@ void BananaServiceConcurrentClient::recv_getMyServices(GetMyServicesResponse& _r
         throw result.ex3;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyServices failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyApplications failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -8632,19 +8632,19 @@ void BananaServiceConcurrentClient::recv_getMyServices(GetMyServicesResponse& _r
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request)
+void BananaServiceConcurrentClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
-  int32_t seqid = send_getServiceInfo(request);
-  recv_getServiceInfo(_return, seqid);
+  int32_t seqid = send_getApplicationInfo(request);
+  recv_getApplicationInfo(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getServiceInfo(const GetServiceInfoRequest& request)
+int32_t BananaServiceConcurrentClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getServiceInfo", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getServiceInfo_pargs args;
+  BananaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8656,7 +8656,7 @@ int32_t BananaServiceConcurrentClient::send_getServiceInfo(const GetServiceInfoR
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getServiceInfo(GetServiceInfoResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -8685,7 +8685,7 @@ void BananaServiceConcurrentClient::recv_getServiceInfo(GetServiceInfoResponse& 
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getServiceInfo") != 0) {
+      if (fname.compare("getApplicationInfo") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -8694,7 +8694,7 @@ void BananaServiceConcurrentClient::recv_getServiceInfo(GetServiceInfoResponse& 
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getServiceInfo_presult result;
+      BananaService_getApplicationInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -8726,7 +8726,7 @@ void BananaServiceConcurrentClient::recv_getServiceInfo(GetServiceInfoResponse& 
         throw result.ex5;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getServiceInfo failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

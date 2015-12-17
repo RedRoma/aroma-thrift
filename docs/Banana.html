@@ -195,14 +195,14 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Banana</td><td></td>
-<td><a href="#Struct_Dimension">Dimension</a><br/>
+<td><a href="#Struct_Application">Application</a><br/>
+<a href="#Struct_Dimension">Dimension</a><br/>
 <a href="#Struct_Human">Human</a><br/>
 <a href="#Struct_Image">Image</a><br/>
 <a href="#Enum_ImageType">ImageType</a><br/>
 <a href="#Struct_Message">Message</a><br/>
 <a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a><br/>
 <a href="#Enum_Role">Role</a><br/>
-<a href="#Struct_Service">Service</a><br/>
 <a href="#Struct_TimePeriod">TimePeriod</a><br/>
 <a href="#Enum_TimeUnit">TimeUnit</a><br/>
 <a href="#Enum_Urgency">Urgency</a><br/>
@@ -217,14 +217,18 @@ code { line-height: 20px; }
 Determines how Important or Severe a Message is.
 <br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>INFORMATIONAL</code></td><td><code>1</code></td><td>
-</td></tr>
-<tr><td><code>IMPORTANT</code></td><td><code>2</code></td><td>
-</td></tr>
+Lowest level of urgency.
+<br/></td></tr>
+<tr><td><code>WARNING</code></td><td><code>2</code></td><td>
+Middle level of urgency.
+<br/></td></tr>
 <tr><td><code>CRITICAL</code></td><td><code>3</code></td><td>
-</td></tr>
+Highest level of urgency.
+<br/></td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_TimeUnit">Enumeration: TimeUnit</h3>
-<br/><table class="table-bordered table-striped table-condensed">
+Defines the basic Units of Time Measurement.
+<br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>MILLIS</code></td><td><code>0</code></td><td>
 </td></tr>
 <tr><td><code>SECONDS</code></td><td><code>1</code></td><td>
@@ -235,6 +239,8 @@ Determines how Important or Severe a Message is.
 </td></tr>
 <tr><td><code>DAYS</code></td><td><code>4</code></td><td>
 </td></tr>
+<tr><td><code>WEEKS</code></td><td><code>5</code></td><td>
+</td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_ImageType">Enumeration: ImageType</h3>
 <br/><table class="table-bordered table-striped table-condensed">
@@ -244,7 +250,9 @@ Determines how Important or Severe a Message is.
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
-<br/><table class="table-bordered table-striped table-condensed">
+Defines the Role(s) that a human in this system
+can be.
+<br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>DEVELOPER</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>OPERATIONS</code></td><td><code>2</code></td><td>
@@ -257,28 +265,35 @@ Determines how Important or Severe a Message is.
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_ProgrammingLanguage">Enumeration: ProgrammingLanguage</h3>
-<br/><table class="table-bordered table-striped table-condensed">
+Applications are usually written in one main language.
+<br/><br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>JAVA</code></td><td><code>0</code></td><td>
 </td></tr>
 <tr><td><code>CPP</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>C_SHARP</code></td><td><code>2</code></td><td>
 </td></tr>
-<tr><td><code>DOT_NET</code></td><td><code>3</code></td><td>
+<tr><td><code>C</code></td><td><code>3</code></td><td>
 </td></tr>
-<tr><td><code>RUBY</code></td><td><code>4</code></td><td>
+<tr><td><code>OBJECTIVE_C</code></td><td><code>4</code></td><td>
 </td></tr>
-<tr><td><code>GROOVY</code></td><td><code>5</code></td><td>
+<tr><td><code>SWIFT</code></td><td><code>5</code></td><td>
 </td></tr>
-<tr><td><code>PYTHON</code></td><td><code>6</code></td><td>
+<tr><td><code>DOT_NET</code></td><td><code>6</code></td><td>
 </td></tr>
-<tr><td><code>PHP</code></td><td><code>7</code></td><td>
+<tr><td><code>RUBY</code></td><td><code>7</code></td><td>
 </td></tr>
-<tr><td><code>NODE</code></td><td><code>8</code></td><td>
+<tr><td><code>GROOVY</code></td><td><code>8</code></td><td>
 </td></tr>
-<tr><td><code>DART</code></td><td><code>9</code></td><td>
+<tr><td><code>PYTHON</code></td><td><code>9</code></td><td>
 </td></tr>
-<tr><td><code>OTHER</code></td><td><code>10</code></td><td>
+<tr><td><code>PHP</code></td><td><code>10</code></td><td>
+</td></tr>
+<tr><td><code>NODE</code></td><td><code>11</code></td><td>
+</td></tr>
+<tr><td><code>DART</code></td><td><code>12</code></td><td>
+</td></tr>
+<tr><td><code>OTHER</code></td><td><code>13</code></td><td>
 </td></tr>
 </table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
@@ -298,38 +313,49 @@ Milliseconds since epoch.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>body</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.IMPORTANT">Urgency.IMPORTANT</a></code></code></td></tr>
+<tr><td>3</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.INFORMATIONAL">Urgency.INFORMATIONAL</a></code></code></td></tr>
 <tr><td>4</td><td>timeMessageSent</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>timeMessageReceived</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>6</td><td>nameOfService</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>6</td><td>nameOfApplication</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_TimePeriod">Struct: TimePeriod</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>unit</td><td><code><a href="#Enum_TimeUnit">TimeUnit</a></code></td><td></td><td>required</td><td></td></tr>
 <tr><td>2</td><td>value</td><td><code><a href="#Typedef_int">int</a></code></td><td>The Value must be non-negative
 </td><td>required</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Dimension">Struct: Dimension</h3>
+</table><br/>Defines a Period of Time, or a Length of Time.
+<br/></div><div class="definition"><h3 id="Struct_Dimension">Struct: Dimension</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>width</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td></td></tr>
 <tr><td>2</td><td>height</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Image">Struct: Image</h3>
+</table><br/>2 Dimensional Image Size.
+<br/></div><div class="definition"><h3 id="Struct_Image">Struct: Image</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>imageType</td><td><code><a href="#Enum_ImageType">ImageType</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>data</td><td><code>binary</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>dimension</td><td><code><a href="#Struct_Dimension">Dimension</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Human">Struct: Human</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>email</td><td><code>string</code></td><td>A person's email address is also considered their identifying trait.
+</td><td>default</td><td></td></tr>
 <tr><td>2</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>username</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>roles</td><td><code>list&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Service">Struct: Service</h3>
+<tr><td>4</td><td>roles</td><td><code>list&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td>A Person can be more than one thing at once. By default, we assume a developer.
+</td><td>default</td><td><code>{ <code><a href="#Const_Role.DEVELOPER">Role.DEVELOPER</a></code> }</code></td></tr>
+</table><br/>A Human
+<br/></div><div class="definition"><h3 id="Struct_Application">Struct: Application</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>owners</td><td><code>list&lt;<code><a href="#Struct_Human">Human</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>timeOfRegistration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>id</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>owners</td><td><code>list&lt;<code><a href="#Struct_Human">Human</a></code>&gt;</code></td><td>Owners can perform administrative actions on a service.
+</td><td>default</td><td></td></tr>
+<tr><td>2</td><td>timeOfProvisioning</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>When the application was first provisioned.
+</td><td>default</td><td></td></tr>
+<tr><td>3</td><td>name</td><td><code>string</code></td><td>The name of the application.
+</td><td>default</td><td></td></tr>
+<tr><td>4</td><td>id</td><td><code>string</code></td><td>The Automatically generated ID for the Application.
+</td><td>default</td><td></td></tr>
+<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td>The total amount of messages that have been counted so far for the Application
+</td><td>default</td><td></td></tr>
 <tr><td>6</td><td>icon</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>programmingLanguage</td><td><code><a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>8</td><td>subscribers</td><td><code>list&lt;<code><a href="#Struct_Human">Human</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+<tr><td>8</td><td>subscribers</td><td><code>list&lt;<code><a href="#Struct_Human">Human</a></code>&gt;</code></td><td>Defines a list of people that are subscribed to events for an Application.
+</td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div></div></body></html>

@@ -14,28 +14,28 @@
 namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
 
-ServiceToken::~ServiceToken() throw() {
+ApplicationToken::~ApplicationToken() throw() {
 }
 
 
-void ServiceToken::__set_token(const std::string& val) {
+void ApplicationToken::__set_token(const std::string& val) {
   this->token = val;
 }
 
-void ServiceToken::__set_serviceName(const std::string& val) {
-  this->serviceName = val;
+void ApplicationToken::__set_applicationName(const std::string& val) {
+  this->applicationName = val;
 }
 
-void ServiceToken::__set_organization(const std::string& val) {
+void ApplicationToken::__set_organization(const std::string& val) {
   this->organization = val;
 __isset.organization = true;
 }
 
-void ServiceToken::__set_timeOfExpiration(const timestamp val) {
+void ApplicationToken::__set_timeOfExpiration(const timestamp val) {
   this->timeOfExpiration = val;
 }
 
-uint32_t ServiceToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -66,8 +66,8 @@ uint32_t ServiceToken::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->serviceName);
-          this->__isset.serviceName = true;
+          xfer += iprot->readString(this->applicationName);
+          this->__isset.applicationName = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -100,17 +100,17 @@ uint32_t ServiceToken::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t ServiceToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceToken");
+  xfer += oprot->writeStructBegin("ApplicationToken");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->token);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("serviceName", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->serviceName);
+  xfer += oprot->writeFieldBegin("applicationName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.organization) {
@@ -127,35 +127,35 @@ uint32_t ServiceToken::write(::apache::thrift::protocol::TProtocol* oprot) const
   return xfer;
 }
 
-void swap(ServiceToken &a, ServiceToken &b) {
+void swap(ApplicationToken &a, ApplicationToken &b) {
   using ::std::swap;
   swap(a.token, b.token);
-  swap(a.serviceName, b.serviceName);
+  swap(a.applicationName, b.applicationName);
   swap(a.organization, b.organization);
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.__isset, b.__isset);
 }
 
-ServiceToken::ServiceToken(const ServiceToken& other0) {
+ApplicationToken::ApplicationToken(const ApplicationToken& other0) {
   token = other0.token;
-  serviceName = other0.serviceName;
+  applicationName = other0.applicationName;
   organization = other0.organization;
   timeOfExpiration = other0.timeOfExpiration;
   __isset = other0.__isset;
 }
-ServiceToken& ServiceToken::operator=(const ServiceToken& other1) {
+ApplicationToken& ApplicationToken::operator=(const ApplicationToken& other1) {
   token = other1.token;
-  serviceName = other1.serviceName;
+  applicationName = other1.applicationName;
   organization = other1.organization;
   timeOfExpiration = other1.timeOfExpiration;
   __isset = other1.__isset;
   return *this;
 }
-void ServiceToken::printTo(std::ostream& out) const {
+void ApplicationToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceToken(";
+  out << "ApplicationToken(";
   out << "token=" << to_string(token);
-  out << ", " << "serviceName=" << to_string(serviceName);
+  out << ", " << "applicationName=" << to_string(applicationName);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ")";
@@ -344,7 +344,6 @@ void GithubToken::__set_username(const std::string& val) {
 
 void GithubToken::__set_email(const std::string& val) {
   this->email = val;
-__isset.email = true;
 }
 
 void GithubToken::__set_oauthToken(const std::string& val) {
@@ -420,11 +419,10 @@ uint32_t GithubToken::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeString(this->username);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.email) {
-    xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 2);
-    xfer += oprot->writeString(this->email);
-    xfer += oprot->writeFieldEnd();
-  }
+  xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->email);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldBegin("oauthToken", ::apache::thrift::protocol::T_STRING, 3);
   xfer += oprot->writeString(this->oauthToken);
   xfer += oprot->writeFieldEnd();
@@ -459,7 +457,7 @@ void GithubToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GithubToken(";
   out << "username=" << to_string(username);
-  out << ", " << "email="; (__isset.email ? (out << to_string(email)) : (out << "<null>"));
+  out << ", " << "email=" << to_string(email);
   out << ", " << "oauthToken=" << to_string(oauthToken);
   out << ")";
 }
@@ -571,6 +569,11 @@ void AromaAccount::__set_profileImage(const  ::aroma::banana::thrift::Image& val
   this->profileImage = val;
 }
 
+void AromaAccount::__set_role(const  ::aroma::banana::thrift::Role::type val) {
+  this->role = val;
+__isset.role = true;
+}
+
 uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -624,6 +627,16 @@ uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast8;
+          xfer += iprot->readI32(ecast8);
+          this->role = ( ::aroma::banana::thrift::Role::type)ecast8;
+          this->__isset.role = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -657,6 +670,11 @@ uint32_t AromaAccount::write(::apache::thrift::protocol::TProtocol* oprot) const
   xfer += this->profileImage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.role) {
+    xfer += oprot->writeFieldBegin("role", ::apache::thrift::protocol::T_I32, 5);
+    xfer += oprot->writeI32((int32_t)this->role);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -668,22 +686,25 @@ void swap(AromaAccount &a, AromaAccount &b) {
   swap(a.password, b.password);
   swap(a.name, b.name);
   swap(a.profileImage, b.profileImage);
+  swap(a.role, b.role);
   swap(a.__isset, b.__isset);
 }
 
-AromaAccount::AromaAccount(const AromaAccount& other8) {
-  email = other8.email;
-  password = other8.password;
-  name = other8.name;
-  profileImage = other8.profileImage;
-  __isset = other8.__isset;
-}
-AromaAccount& AromaAccount::operator=(const AromaAccount& other9) {
+AromaAccount::AromaAccount(const AromaAccount& other9) {
   email = other9.email;
   password = other9.password;
   name = other9.name;
   profileImage = other9.profileImage;
+  role = other9.role;
   __isset = other9.__isset;
+}
+AromaAccount& AromaAccount::operator=(const AromaAccount& other10) {
+  email = other10.email;
+  password = other10.password;
+  name = other10.name;
+  profileImage = other10.profileImage;
+  role = other10.role;
+  __isset = other10.__isset;
   return *this;
 }
 void AromaAccount::printTo(std::ostream& out) const {
@@ -693,6 +714,7 @@ void AromaAccount::printTo(std::ostream& out) const {
   out << ", " << "password=" << to_string(password);
   out << ", " << "name=" << to_string(name);
   out << ", " << "profileImage=" << to_string(profileImage);
+  out << ", " << "role="; (__isset.role ? (out << to_string(role)) : (out << "<null>"));
   out << ")";
 }
 
@@ -783,15 +805,15 @@ void swap(Credentials &a, Credentials &b) {
   swap(a.__isset, b.__isset);
 }
 
-Credentials::Credentials(const Credentials& other10) {
-  githubToken = other10.githubToken;
-  aromaAccount = other10.aromaAccount;
-  __isset = other10.__isset;
-}
-Credentials& Credentials::operator=(const Credentials& other11) {
+Credentials::Credentials(const Credentials& other11) {
   githubToken = other11.githubToken;
   aromaAccount = other11.aromaAccount;
   __isset = other11.__isset;
+}
+Credentials& Credentials::operator=(const Credentials& other12) {
+  githubToken = other12.githubToken;
+  aromaAccount = other12.aromaAccount;
+  __isset = other12.__isset;
   return *this;
 }
 void Credentials::printTo(std::ostream& out) const {

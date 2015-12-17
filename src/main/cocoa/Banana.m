@@ -27,13 +27,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.urgency = 2;
+  self.urgency = 1;
 
 #endif
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfService: (NSString *) nameOfService
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfApplication: (NSString *) nameOfApplication
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -46,8 +46,8 @@
   __timeMessageSent_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
-  __nameOfService = [nameOfService retain_stub];
-  __nameOfService_isset = YES;
+  __nameOfApplication = [nameOfApplication retain_stub];
+  __nameOfApplication_isset = YES;
   return self;
 }
 
@@ -79,10 +79,10 @@
     __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
     __timeMessageReceived_isset = YES;
   }
-  if ([decoder containsValueForKey: @"nameOfService"])
+  if ([decoder containsValueForKey: @"nameOfApplication"])
   {
-    __nameOfService = [[decoder decodeObjectForKey: @"nameOfService"] retain_stub];
-    __nameOfService_isset = YES;
+    __nameOfApplication = [[decoder decodeObjectForKey: @"nameOfApplication"] retain_stub];
+    __nameOfApplication_isset = YES;
   }
   return self;
 }
@@ -109,9 +109,9 @@
   {
     [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
   }
-  if (__nameOfService_isset)
+  if (__nameOfApplication_isset)
   {
-    [encoder encodeObject: __nameOfService forKey: @"nameOfService"];
+    [encoder encodeObject: __nameOfApplication forKey: @"nameOfApplication"];
   }
 }
 
@@ -143,10 +143,10 @@
   {
     hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
   }
-  hash = (hash * 31) ^ __nameOfService_isset ? 2654435761 : 0;
-  if (__nameOfService_isset)
+  hash = (hash * 31) ^ __nameOfApplication_isset ? 2654435761 : 0;
+  if (__nameOfApplication_isset)
   {
-    hash = (hash * 31) ^ [__nameOfService hash];
+    hash = (hash * 31) ^ [__nameOfApplication hash];
   }
   return hash;
 }
@@ -180,8 +180,8 @@
       (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
     return NO;
   }
-  if ((__nameOfService_isset != other->__nameOfService_isset) ||
-      (__nameOfService_isset && ((__nameOfService || other->__nameOfService) && ![__nameOfService isEqual:other->__nameOfService]))) {
+  if ((__nameOfApplication_isset != other->__nameOfApplication_isset) ||
+      (__nameOfApplication_isset && ((__nameOfApplication || other->__nameOfApplication) && ![__nameOfApplication isEqual:other->__nameOfApplication]))) {
     return NO;
   }
   return YES;
@@ -191,7 +191,7 @@
 {
   [__messageId release_stub];
   [__body release_stub];
-  [__nameOfService release_stub];
+  [__nameOfApplication release_stub];
   [super dealloc_stub];
 }
 
@@ -288,25 +288,25 @@
   __timeMessageReceived_isset = NO;
 }
 
-- (NSString *) nameOfService {
-  return [[__nameOfService retain_stub] autorelease_stub];
+- (NSString *) nameOfApplication {
+  return [[__nameOfApplication retain_stub] autorelease_stub];
 }
 
-- (void) setNameOfService: (NSString *) nameOfService {
-  [nameOfService retain_stub];
-  [__nameOfService release_stub];
-  __nameOfService = nameOfService;
-  __nameOfService_isset = YES;
+- (void) setNameOfApplication: (NSString *) nameOfApplication {
+  [nameOfApplication retain_stub];
+  [__nameOfApplication release_stub];
+  __nameOfApplication = nameOfApplication;
+  __nameOfApplication_isset = YES;
 }
 
-- (BOOL) nameOfServiceIsSet {
-  return __nameOfService_isset;
+- (BOOL) nameOfApplicationIsSet {
+  return __nameOfApplication_isset;
 }
 
-- (void) unsetNameOfService {
-  [__nameOfService release_stub];
-  __nameOfService = nil;
-  __nameOfService_isset = NO;
+- (void) unsetNameOfApplication {
+  [__nameOfApplication release_stub];
+  __nameOfApplication = nil;
+  __nameOfApplication_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -367,7 +367,7 @@
       case 6:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setNameOfService: fieldValue];
+          [self setNameOfApplication: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -412,10 +412,10 @@
     [outProtocol writeI64: __timeMessageReceived];
     [outProtocol writeFieldEnd];
   }
-  if (__nameOfService_isset) {
-    if (__nameOfService != nil) {
-      [outProtocol writeFieldBeginWithName: @"nameOfService" type: TType_STRING fieldID: 6];
-      [outProtocol writeString: __nameOfService];
+  if (__nameOfApplication_isset) {
+    if (__nameOfApplication != nil) {
+      [outProtocol writeFieldBeginWithName: @"nameOfApplication" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __nameOfApplication];
       [outProtocol writeFieldEnd];
     }
   }
@@ -439,8 +439,8 @@
   [ms appendFormat: @"%qi", __timeMessageSent];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
-  [ms appendString: @",nameOfService:"];
-  [ms appendFormat: @"\"%@\"", __nameOfService];
+  [ms appendString: @",nameOfApplication:"];
+  [ms appendFormat: @"\"%@\"", __nameOfApplication];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1122,6 +1122,9 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.roles = [[[NSMutableArray alloc] initWithCapacity:1] autorelease_stub];
+  [self.roles addObject:[NSNumber numberWithInt: 1]];
+
 #endif
   return self;
 }
@@ -1461,7 +1464,7 @@
 
 @end
 
-@implementation Banana_Service
+@implementation Banana_Application
 
 - (id) init
 {
@@ -1473,13 +1476,13 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers
+- (id) initWithOwners: (NSMutableArray *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers
 {
   self = [super init];
   __owners = [owners retain_stub];
   __owners_isset = YES;
-  __timeOfRegistration = timeOfRegistration;
-  __timeOfRegistration_isset = YES;
+  __timeOfProvisioning = timeOfProvisioning;
+  __timeOfProvisioning_isset = YES;
   __name = [name retain_stub];
   __name_isset = YES;
   __id = [id retain_stub];
@@ -1503,10 +1506,10 @@
     __owners = [[decoder decodeObjectForKey: @"owners"] retain_stub];
     __owners_isset = YES;
   }
-  if ([decoder containsValueForKey: @"timeOfRegistration"])
+  if ([decoder containsValueForKey: @"timeOfProvisioning"])
   {
-    __timeOfRegistration = [decoder decodeInt64ForKey: @"timeOfRegistration"];
-    __timeOfRegistration_isset = YES;
+    __timeOfProvisioning = [decoder decodeInt64ForKey: @"timeOfProvisioning"];
+    __timeOfProvisioning_isset = YES;
   }
   if ([decoder containsValueForKey: @"name"])
   {
@@ -1547,9 +1550,9 @@
   {
     [encoder encodeObject: __owners forKey: @"owners"];
   }
-  if (__timeOfRegistration_isset)
+  if (__timeOfProvisioning_isset)
   {
-    [encoder encodeInt64: __timeOfRegistration forKey: @"timeOfRegistration"];
+    [encoder encodeInt64: __timeOfProvisioning forKey: @"timeOfProvisioning"];
   }
   if (__name_isset)
   {
@@ -1585,10 +1588,10 @@
   {
     hash = (hash * 31) ^ [__owners hash];
   }
-  hash = (hash * 31) ^ __timeOfRegistration_isset ? 2654435761 : 0;
-  if (__timeOfRegistration_isset)
+  hash = (hash * 31) ^ __timeOfProvisioning_isset ? 2654435761 : 0;
+  if (__timeOfProvisioning_isset)
   {
-    hash = (hash * 31) ^ [@(__timeOfRegistration) hash];
+    hash = (hash * 31) ^ [@(__timeOfProvisioning) hash];
   }
   hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
   if (__name_isset)
@@ -1628,16 +1631,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Service class]]) {
+  if (![anObject isKindOfClass:[Banana_Application class]]) {
     return NO;
   }
-  Banana_Service *other = (Banana_Service *)anObject;
+  Banana_Application *other = (Banana_Application *)anObject;
   if ((__owners_isset != other->__owners_isset) ||
       (__owners_isset && ((__owners || other->__owners) && ![__owners isEqual:other->__owners]))) {
     return NO;
   }
-  if ((__timeOfRegistration_isset != other->__timeOfRegistration_isset) ||
-      (__timeOfRegistration_isset && (__timeOfRegistration != other->__timeOfRegistration))) {
+  if ((__timeOfProvisioning_isset != other->__timeOfProvisioning_isset) ||
+      (__timeOfProvisioning_isset && (__timeOfProvisioning != other->__timeOfProvisioning))) {
     return NO;
   }
   if ((__name_isset != other->__name_isset) ||
@@ -1698,21 +1701,21 @@
   __owners_isset = NO;
 }
 
-- (int64_t) timeOfRegistration {
-  return __timeOfRegistration;
+- (int64_t) timeOfProvisioning {
+  return __timeOfProvisioning;
 }
 
-- (void) setTimeOfRegistration: (int64_t) timeOfRegistration {
-  __timeOfRegistration = timeOfRegistration;
-  __timeOfRegistration_isset = YES;
+- (void) setTimeOfProvisioning: (int64_t) timeOfProvisioning {
+  __timeOfProvisioning = timeOfProvisioning;
+  __timeOfProvisioning_isset = YES;
 }
 
-- (BOOL) timeOfRegistrationIsSet {
-  return __timeOfRegistration_isset;
+- (BOOL) timeOfProvisioningIsSet {
+  return __timeOfProvisioning_isset;
 }
 
-- (void) unsetTimeOfRegistration {
-  __timeOfRegistration_isset = NO;
+- (void) unsetTimeOfProvisioning {
+  __timeOfProvisioning_isset = NO;
 }
 
 - (NSString *) name {
@@ -1871,7 +1874,7 @@
       case 2:
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
-          [self setTimeOfRegistration: fieldValue];
+          [self setTimeOfProvisioning: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1948,7 +1951,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Service"];
+  [outProtocol writeStructBeginWithName: @"Application"];
   if (__owners_isset) {
     if (__owners != nil) {
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_LIST fieldID: 1];
@@ -1964,9 +1967,9 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__timeOfRegistration_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeOfRegistration" type: TType_I64 fieldID: 2];
-    [outProtocol writeI64: __timeOfRegistration];
+  if (__timeOfProvisioning_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfProvisioning" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __timeOfProvisioning];
     [outProtocol writeFieldEnd];
   }
   if (__name_isset) {
@@ -2024,11 +2027,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Service("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Application("];
   [ms appendString: @"owners:"];
   [ms appendFormat: @"%@", __owners];
-  [ms appendString: @",timeOfRegistration:"];
-  [ms appendFormat: @"%qi", __timeOfRegistration];
+  [ms appendString: @",timeOfProvisioning:"];
+  [ms appendFormat: @"%qi", __timeOfProvisioning];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @",id:"];

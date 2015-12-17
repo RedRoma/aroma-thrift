@@ -171,7 +171,7 @@ SlackUsername.prototype.write = function(output) {
 
 Email = function(args) {
   this.emailAddress = null;
-  this.subject = 'Banana Service - Message Received';
+  this.subject = 'Banana Service - New Message';
   if (args) {
     if (args.emailAddress !== undefined && args.emailAddress !== null) {
       this.emailAddress = args.emailAddress;

@@ -7,7 +7,7 @@
 
 Urgency = {
   'INFORMATIONAL' : 1,
-  'IMPORTANT' : 2,
+  'WARNING' : 2,
   'CRITICAL' : 3
 };
 TimeUnit = {
@@ -15,7 +15,8 @@ TimeUnit = {
   'SECONDS' : 1,
   'MINUTES' : 2,
   'HOURS' : 3,
-  'DAYS' : 4
+  'DAYS' : 4,
+  'WEEKS' : 5
 };
 ImageType = {
   'JPEG' : 1,
@@ -32,22 +33,25 @@ ProgrammingLanguage = {
   'JAVA' : 0,
   'CPP' : 1,
   'C_SHARP' : 2,
-  'DOT_NET' : 3,
-  'RUBY' : 4,
-  'GROOVY' : 5,
-  'PYTHON' : 6,
-  'PHP' : 7,
-  'NODE' : 8,
-  'DART' : 9,
-  'OTHER' : 10
+  'C' : 3,
+  'OBJECTIVE_C' : 4,
+  'SWIFT' : 5,
+  'DOT_NET' : 6,
+  'RUBY' : 7,
+  'GROOVY' : 8,
+  'PYTHON' : 9,
+  'PHP' : 10,
+  'NODE' : 11,
+  'DART' : 12,
+  'OTHER' : 13
 };
 Message = function(args) {
   this.messageId = null;
   this.body = null;
-  this.urgency = 2;
+  this.urgency = 1;
   this.timeMessageSent = null;
   this.timeMessageReceived = null;
-  this.nameOfService = null;
+  this.nameOfApplication = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -64,8 +68,8 @@ Message = function(args) {
     if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
       this.timeMessageReceived = args.timeMessageReceived;
     }
-    if (args.nameOfService !== undefined && args.nameOfService !== null) {
-      this.nameOfService = args.nameOfService;
+    if (args.nameOfApplication !== undefined && args.nameOfApplication !== null) {
+      this.nameOfApplication = args.nameOfApplication;
     }
   }
 };
@@ -120,7 +124,7 @@ Message.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.STRING) {
-        this.nameOfService = input.readString().value;
+        this.nameOfApplication = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -161,9 +165,9 @@ Message.prototype.write = function(output) {
     output.writeI64(this.timeMessageReceived);
     output.writeFieldEnd();
   }
-  if (this.nameOfService !== null && this.nameOfService !== undefined) {
-    output.writeFieldBegin('nameOfService', Thrift.Type.STRING, 6);
-    output.writeString(this.nameOfService);
+  if (this.nameOfApplication !== null && this.nameOfApplication !== undefined) {
+    output.writeFieldBegin('nameOfApplication', Thrift.Type.STRING, 6);
+    output.writeString(this.nameOfApplication);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -398,7 +402,7 @@ Human = function(args) {
   this.email = null;
   this.name = null;
   this.username = null;
-  this.roles = null;
+  this.roles = [1];
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -514,9 +518,9 @@ Human.prototype.write = function(output) {
   return;
 };
 
-Service = function(args) {
+Application = function(args) {
   this.owners = null;
-  this.timeOfRegistration = null;
+  this.timeOfProvisioning = null;
   this.name = null;
   this.id = null;
   this.totalMessagesSent = null;
@@ -527,8 +531,8 @@ Service = function(args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [Human]);
     }
-    if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
-      this.timeOfRegistration = args.timeOfRegistration;
+    if (args.timeOfProvisioning !== undefined && args.timeOfProvisioning !== null) {
+      this.timeOfProvisioning = args.timeOfProvisioning;
     }
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
@@ -550,8 +554,8 @@ Service = function(args) {
     }
   }
 };
-Service.prototype = {};
-Service.prototype.read = function(input) {
+Application.prototype = {};
+Application.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -587,7 +591,7 @@ Service.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.I64) {
-        this.timeOfRegistration = input.readI64().value;
+        this.timeOfProvisioning = input.readI64().value;
       } else {
         input.skip(ftype);
       }
@@ -658,8 +662,8 @@ Service.prototype.read = function(input) {
   return;
 };
 
-Service.prototype.write = function(output) {
-  output.writeStructBegin('Service');
+Application.prototype.write = function(output) {
+  output.writeStructBegin('Application');
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.owners.length);
@@ -674,9 +678,9 @@ Service.prototype.write = function(output) {
     output.writeListEnd();
     output.writeFieldEnd();
   }
-  if (this.timeOfRegistration !== null && this.timeOfRegistration !== undefined) {
-    output.writeFieldBegin('timeOfRegistration', Thrift.Type.I64, 2);
-    output.writeI64(this.timeOfRegistration);
+  if (this.timeOfProvisioning !== null && this.timeOfProvisioning !== undefined) {
+    output.writeFieldBegin('timeOfProvisioning', Thrift.Type.I64, 2);
+    output.writeI64(this.timeOfProvisioning);
     output.writeFieldEnd();
   }
   if (this.name !== null && this.name !== undefined) {

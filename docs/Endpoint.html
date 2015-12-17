@@ -194,9 +194,9 @@ code { line-height: 20px; }
 <h1>Thrift module: Endpoint</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>Endpoint</td><td><a href="#Svc_ServiceEndpoint">ServiceEndpoint</a><br/>
+<td>Endpoint</td><td><a href="#Svc_ApplicationEndpoint">ApplicationEndpoint</a><br/>
 <ul>
-<li><a href="#Fn_ServiceEndpoint_healthPoke">healthPoke</a></li>
+<li><a href="#Fn_ApplicationEndpoint_healthPoke">healthPoke</a></li>
 </ul>
 </td>
 <td><a href="#Struct_Endpoint">Endpoint</a><br/>
@@ -222,39 +222,49 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>hostname</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 <tr><td>2</td><td>port</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td><code>80</code></td></tr>
-</table><br/>A TCP ServiceEndpoint to Poke,
+</table><br/>A TCP Application Endpoint to Poke,
 defined in Thrift.
 <br/></div><div class="definition"><h3 id="Struct_ThriftHttpEndpoint">Struct: ThriftHttpEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
-</table><br/>An HTTP ServiceEndpoint to Poke,
+</table><br/>An HTTP ApplicationEndpoint to Poke,
 defined in Thrift.
 <br/></div><div class="definition"><h3 id="Struct_RestHttpEndpoint">Struct: RestHttpEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 </table><br/>A REST HTTP Endpoint to Poke.
-This Service is not defined in Thrift and will instead receive
-an HTTP Post Request with the same
+
+This Endpoint is not defined in Thrift and will instead receive
+an HTTP Post Request with the same payload, but in JSON.
+
+Examples to follow...
 <br/></div><div class="definition"><h3 id="Struct_Endpoint">Union: Endpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tcp</td><td><code><a href="#Struct_TcpEndpoint">TcpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>thriftHttp</td><td><code><a href="#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>restHttp</td><td><code><a href="#Struct_RestHttpEndpoint">RestHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>
+</table><br/>This union defines the multiple ways that an Endpoint can be defined
+and understood.
+<br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>serviceName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>serviceToken</td><td><code><a href="Authentication.html#Struct_ServiceToken">Authentication.ServiceToken</a></code></td><td>We will include your ServiceToken so that you
+<tr><td>1</td><td>applicationName</td><td><code>string</code></td><td>This is the name of the Application we are asking about.
+</td><td>default</td><td></td></tr>
+<tr><td>2</td><td>serviceToken</td><td><code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></td><td>We will include your ApplicationToken so that you
 can authenticate the call if you'd like. With
-the ServiceToken, you can verify that it is
+the ApplicationToken, you can verify that it is
 us calling you.
 </td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_HealthPokeResponse">Struct: HealthPokeResponse</h3>
+</table><br/>Sent by the Banana Service to an Application Endpoint
+to poke for health status.
+<br/></div><div class="definition"><h3 id="Struct_HealthPokeResponse">Struct: HealthPokeResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>healthy</td><td><code>bool</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td>Send us back some message, not too long.
+</td><td>default</td><td></td></tr>
+<tr><td>2</td><td>healthy</td><td><code>bool</code></td><td>Tell us whether your Application is healthy or not.
+</td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
-<h3 id="Svc_ServiceEndpoint">Service: ServiceEndpoint</h3>
-<div class="definition"><h4 id="Fn_ServiceEndpoint_healthPoke">Function: ServiceEndpoint.healthPoke</h4>
+<h3 id="Svc_ApplicationEndpoint">Service: ApplicationEndpoint</h3>
+<div class="definition"><h4 id="Fn_ApplicationEndpoint_healthPoke">Function: ApplicationEndpoint.healthPoke</h4>
 <pre><code><a href="#Struct_HealthPokeResponse">HealthPokeResponse</a></code> healthPoke(<code><a href="#Struct_HealthPokeRequest">HealthPokeRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
 </pre></div></div></body></html>

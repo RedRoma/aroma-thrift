@@ -60,7 +60,7 @@ InvalidArgumentException.prototype.write = function(output) {
 };
 
 InvalidCredentialsException = function(args) {
-  this.message = 'Failed to Verify and Authenticate credentials';
+  this.message = 'Failed to Verify and Authenticate Credentials';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -222,7 +222,7 @@ InvalidCodeException.prototype.write = function(output) {
 };
 
 UnauthorizedException = function(args) {
-  this.message = 'Only an owner can do that';
+  this.message = 'Only an Owner can do that';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -275,17 +275,17 @@ UnauthorizedException.prototype.write = function(output) {
   return;
 };
 
-ServiceDoesNotExistException = function(args) {
-  this.message = 'The Specified Service does not exist';
+ApplicationDoesNotExistException = function(args) {
+  this.message = 'The Specified Application does not exist';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
   }
 };
-Thrift.inherits(ServiceDoesNotExistException, Thrift.TException);
-ServiceDoesNotExistException.prototype.name = 'ServiceDoesNotExistException';
-ServiceDoesNotExistException.prototype.read = function(input) {
+Thrift.inherits(ApplicationDoesNotExistException, Thrift.TException);
+ApplicationDoesNotExistException.prototype.name = 'ApplicationDoesNotExistException';
+ApplicationDoesNotExistException.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -317,8 +317,8 @@ ServiceDoesNotExistException.prototype.read = function(input) {
   return;
 };
 
-ServiceDoesNotExistException.prototype.write = function(output) {
-  output.writeStructBegin('ServiceDoesNotExistException');
+ApplicationDoesNotExistException.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationDoesNotExistException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
@@ -329,17 +329,17 @@ ServiceDoesNotExistException.prototype.write = function(output) {
   return;
 };
 
-ServiceAlreadyRegisteredException = function(args) {
-  this.message = 'This Channel has already been registered for this Service';
+ApplicationAlreadyRegisteredException = function(args) {
+  this.message = 'This Channel has already been registered for this Application';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
   }
 };
-Thrift.inherits(ServiceAlreadyRegisteredException, Thrift.TException);
-ServiceAlreadyRegisteredException.prototype.name = 'ServiceAlreadyRegisteredException';
-ServiceAlreadyRegisteredException.prototype.read = function(input) {
+Thrift.inherits(ApplicationAlreadyRegisteredException, Thrift.TException);
+ApplicationAlreadyRegisteredException.prototype.name = 'ApplicationAlreadyRegisteredException';
+ApplicationAlreadyRegisteredException.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -371,8 +371,8 @@ ServiceAlreadyRegisteredException.prototype.read = function(input) {
   return;
 };
 
-ServiceAlreadyRegisteredException.prototype.write = function(output) {
-  output.writeStructBegin('ServiceAlreadyRegisteredException');
+ApplicationAlreadyRegisteredException.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationAlreadyRegisteredException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
@@ -438,7 +438,7 @@ ThroughoutExceededException.prototype.write = function(output) {
 };
 
 CustomChannelUnreachableException = function(args) {
-  this.message = 'The Custom Channel you\'ve supplied could not be reached. Please ensure the Service is reachable and operational.';
+  this.message = 'The Custom Channel you\'ve supplied could not be reached. Please ensure the Application is reachable and operational.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;

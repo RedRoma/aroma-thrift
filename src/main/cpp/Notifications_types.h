@@ -21,7 +21,7 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
-typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
+typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 
 typedef  ::aroma::banana::thrift::int int;
 
@@ -31,35 +31,62 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 typedef class  ::aroma::banana::thrift::Human Human;
 
-typedef class  ::aroma::banana::thrift::Service Service;
+typedef class  ::aroma::banana::thrift::Application Application;
 
 class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
 
-class ServiceTokenRenewed;
+class ApplicationTokenRenewed;
 
-class ServiceTokenRegenerated;
+class ApplicationTokenRegenerated;
 
-class ServiceSentMessage;
+class ApplicationSentMessage;
 
 class Event;
 
 class Notification;
 
+typedef struct _HealthCheckFailed__isset {
+  _HealthCheckFailed__isset() : message(false), hostname(false), application(false) {}
+  bool message :1;
+  bool hostname :1;
+  bool application :1;
+} _HealthCheckFailed__isset;
 
 class HealthCheckFailed {
  public:
 
   HealthCheckFailed(const HealthCheckFailed&);
   HealthCheckFailed& operator=(const HealthCheckFailed&);
-  HealthCheckFailed() {
+  HealthCheckFailed() : message(), hostname() {
   }
 
   virtual ~HealthCheckFailed() throw();
+  std::string message;
+  std::string hostname;
+  Application application;
 
-  bool operator == (const HealthCheckFailed & /* rhs */) const
+  _HealthCheckFailed__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_hostname(const std::string& val);
+
+  void __set_application(const Application& val);
+
+  bool operator == (const HealthCheckFailed & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (__isset.hostname != rhs.__isset.hostname)
+      return false;
+    else if (__isset.hostname && !(hostname == rhs.hostname))
+      return false;
+    if (!(application == rhs.application))
+      return false;
     return true;
   }
   bool operator != (const HealthCheckFailed &rhs) const {
@@ -82,19 +109,38 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckFailed& obj)
   return out;
 }
 
+typedef struct _HealthCheckBackToNormal__isset {
+  _HealthCheckBackToNormal__isset() : message(false), application(false) {}
+  bool message :1;
+  bool application :1;
+} _HealthCheckBackToNormal__isset;
 
 class HealthCheckBackToNormal {
  public:
 
   HealthCheckBackToNormal(const HealthCheckBackToNormal&);
   HealthCheckBackToNormal& operator=(const HealthCheckBackToNormal&);
-  HealthCheckBackToNormal() {
+  HealthCheckBackToNormal() : message() {
   }
 
   virtual ~HealthCheckBackToNormal() throw();
+  std::string message;
+  Application application;
 
-  bool operator == (const HealthCheckBackToNormal & /* rhs */) const
+  _HealthCheckBackToNormal__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_application(const Application& val);
+
+  bool operator == (const HealthCheckBackToNormal & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(application == rhs.application))
+      return false;
     return true;
   }
   bool operator != (const HealthCheckBackToNormal &rhs) const {
@@ -117,45 +163,53 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
   return out;
 }
 
-typedef struct _ServiceTokenRenewed__isset {
-  _ServiceTokenRenewed__isset() : human(false), serviceToken(false) {}
+typedef struct _ApplicationTokenRenewed__isset {
+  _ApplicationTokenRenewed__isset() : human(false), applicationToken(false), application(false) {}
   bool human :1;
-  bool serviceToken :1;
-} _ServiceTokenRenewed__isset;
+  bool applicationToken :1;
+  bool application :1;
+} _ApplicationTokenRenewed__isset;
 
-class ServiceTokenRenewed {
+class ApplicationTokenRenewed {
  public:
 
-  ServiceTokenRenewed(const ServiceTokenRenewed&);
-  ServiceTokenRenewed& operator=(const ServiceTokenRenewed&);
-  ServiceTokenRenewed() {
+  ApplicationTokenRenewed(const ApplicationTokenRenewed&);
+  ApplicationTokenRenewed& operator=(const ApplicationTokenRenewed&);
+  ApplicationTokenRenewed() {
   }
 
-  virtual ~ServiceTokenRenewed() throw();
+  virtual ~ApplicationTokenRenewed() throw();
   Human human;
-  ServiceToken serviceToken;
+  ApplicationToken applicationToken;
+  Application application;
 
-  _ServiceTokenRenewed__isset __isset;
+  _ApplicationTokenRenewed__isset __isset;
 
   void __set_human(const Human& val);
 
-  void __set_serviceToken(const ServiceToken& val);
+  void __set_applicationToken(const ApplicationToken& val);
 
-  bool operator == (const ServiceTokenRenewed & rhs) const
+  void __set_application(const Application& val);
+
+  bool operator == (const ApplicationTokenRenewed & rhs) const
   {
     if (!(human == rhs.human))
       return false;
-    if (__isset.serviceToken != rhs.__isset.serviceToken)
+    if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
-    else if (__isset.serviceToken && !(serviceToken == rhs.serviceToken))
+    else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
+      return false;
+    if (__isset.application != rhs.__isset.application)
+      return false;
+    else if (__isset.application && !(application == rhs.application))
       return false;
     return true;
   }
-  bool operator != (const ServiceTokenRenewed &rhs) const {
+  bool operator != (const ApplicationTokenRenewed &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceTokenRenewed & ) const;
+  bool operator < (const ApplicationTokenRenewed & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -163,53 +217,59 @@ class ServiceTokenRenewed {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ServiceTokenRenewed &a, ServiceTokenRenewed &b);
+void swap(ApplicationTokenRenewed &a, ApplicationTokenRenewed &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceTokenRenewed& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRenewed& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ServiceTokenRegenerated__isset {
-  _ServiceTokenRegenerated__isset() : human(false), serviceToken(false) {}
+typedef struct _ApplicationTokenRegenerated__isset {
+  _ApplicationTokenRegenerated__isset() : human(false), applicationToken(false), application(false) {}
   bool human :1;
-  bool serviceToken :1;
-} _ServiceTokenRegenerated__isset;
+  bool applicationToken :1;
+  bool application :1;
+} _ApplicationTokenRegenerated__isset;
 
-class ServiceTokenRegenerated {
+class ApplicationTokenRegenerated {
  public:
 
-  ServiceTokenRegenerated(const ServiceTokenRegenerated&);
-  ServiceTokenRegenerated& operator=(const ServiceTokenRegenerated&);
-  ServiceTokenRegenerated() {
+  ApplicationTokenRegenerated(const ApplicationTokenRegenerated&);
+  ApplicationTokenRegenerated& operator=(const ApplicationTokenRegenerated&);
+  ApplicationTokenRegenerated() {
   }
 
-  virtual ~ServiceTokenRegenerated() throw();
+  virtual ~ApplicationTokenRegenerated() throw();
   Human human;
-  ServiceToken serviceToken;
+  ApplicationToken applicationToken;
+  Application application;
 
-  _ServiceTokenRegenerated__isset __isset;
+  _ApplicationTokenRegenerated__isset __isset;
 
   void __set_human(const Human& val);
 
-  void __set_serviceToken(const ServiceToken& val);
+  void __set_applicationToken(const ApplicationToken& val);
 
-  bool operator == (const ServiceTokenRegenerated & rhs) const
+  void __set_application(const Application& val);
+
+  bool operator == (const ApplicationTokenRegenerated & rhs) const
   {
     if (!(human == rhs.human))
       return false;
-    if (__isset.serviceToken != rhs.__isset.serviceToken)
+    if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
-    else if (__isset.serviceToken && !(serviceToken == rhs.serviceToken))
+    else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(application == rhs.application))
       return false;
     return true;
   }
-  bool operator != (const ServiceTokenRegenerated &rhs) const {
+  bool operator != (const ApplicationTokenRegenerated &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceTokenRegenerated & ) const;
+  bool operator < (const ApplicationTokenRegenerated & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -217,45 +277,53 @@ class ServiceTokenRegenerated {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ServiceTokenRegenerated &a, ServiceTokenRegenerated &b);
+void swap(ApplicationTokenRegenerated &a, ApplicationTokenRegenerated &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceTokenRegenerated& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRegenerated& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ServiceSentMessage__isset {
-  _ServiceSentMessage__isset() : message(false) {}
+typedef struct _ApplicationSentMessage__isset {
+  _ApplicationSentMessage__isset() : message(false), application(false) {}
   bool message :1;
-} _ServiceSentMessage__isset;
+  bool application :1;
+} _ApplicationSentMessage__isset;
 
-class ServiceSentMessage {
+class ApplicationSentMessage {
  public:
 
-  ServiceSentMessage(const ServiceSentMessage&);
-  ServiceSentMessage& operator=(const ServiceSentMessage&);
-  ServiceSentMessage() {
+  ApplicationSentMessage(const ApplicationSentMessage&);
+  ApplicationSentMessage& operator=(const ApplicationSentMessage&);
+  ApplicationSentMessage() {
   }
 
-  virtual ~ServiceSentMessage() throw();
+  virtual ~ApplicationSentMessage() throw();
    ::aroma::banana::thrift::Message message;
+  Application application;
 
-  _ServiceSentMessage__isset __isset;
+  _ApplicationSentMessage__isset __isset;
 
   void __set_message(const  ::aroma::banana::thrift::Message& val);
 
-  bool operator == (const ServiceSentMessage & rhs) const
+  void __set_application(const Application& val);
+
+  bool operator == (const ApplicationSentMessage & rhs) const
   {
-    if (!(message == rhs.message))
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(application == rhs.application))
       return false;
     return true;
   }
-  bool operator != (const ServiceSentMessage &rhs) const {
+  bool operator != (const ApplicationSentMessage &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceSentMessage & ) const;
+  bool operator < (const ApplicationSentMessage & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -263,17 +331,21 @@ class ServiceSentMessage {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ServiceSentMessage &a, ServiceSentMessage &b);
+void swap(ApplicationSentMessage &a, ApplicationSentMessage &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceSentMessage& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationSentMessage& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 typedef struct _Event__isset {
-  _Event__isset() : healthCheckFailed(false) {}
+  _Event__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false) {}
   bool healthCheckFailed :1;
+  bool healthCheckBackToNormal :1;
+  bool applicationTokenRenewed :1;
+  bool applicationTokenRegenerated :1;
+  bool applicationSentMessage :1;
 } _Event__isset;
 
 class Event {
@@ -286,14 +358,34 @@ class Event {
 
   virtual ~Event() throw();
   HealthCheckFailed healthCheckFailed;
+  HealthCheckBackToNormal healthCheckBackToNormal;
+  ApplicationTokenRenewed applicationTokenRenewed;
+  ApplicationTokenRegenerated applicationTokenRegenerated;
+  ApplicationSentMessage applicationSentMessage;
 
   _Event__isset __isset;
 
   void __set_healthCheckFailed(const HealthCheckFailed& val);
 
+  void __set_healthCheckBackToNormal(const HealthCheckBackToNormal& val);
+
+  void __set_applicationTokenRenewed(const ApplicationTokenRenewed& val);
+
+  void __set_applicationTokenRegenerated(const ApplicationTokenRegenerated& val);
+
+  void __set_applicationSentMessage(const ApplicationSentMessage& val);
+
   bool operator == (const Event & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
+      return false;
+    if (!(healthCheckBackToNormal == rhs.healthCheckBackToNormal))
+      return false;
+    if (!(applicationTokenRenewed == rhs.applicationTokenRenewed))
+      return false;
+    if (!(applicationTokenRegenerated == rhs.applicationTokenRegenerated))
+      return false;
+    if (!(applicationSentMessage == rhs.applicationSentMessage))
       return false;
     return true;
   }
