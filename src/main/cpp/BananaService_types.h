@@ -376,13 +376,13 @@ class ProvisionServiceRequest {
 
   ProvisionServiceRequest(const ProvisionServiceRequest&);
   ProvisionServiceRequest& operator=(const ProvisionServiceRequest&);
-  ProvisionServiceRequest() : token(), serviceName(), programmingLanguage(), organization() {
+  ProvisionServiceRequest() : token(), serviceName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
   }
 
   virtual ~ProvisionServiceRequest() throw();
   std::string token;
   std::string serviceName;
-  std::string programmingLanguage;
+   ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
   std::string organization;
   Image icon;
   DeveloperToken developerToken;
@@ -393,7 +393,7 @@ class ProvisionServiceRequest {
 
   void __set_serviceName(const std::string& val);
 
-  void __set_programmingLanguage(const std::string& val);
+  void __set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val);
 
   void __set_organization(const std::string& val);
 

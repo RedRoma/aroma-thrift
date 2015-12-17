@@ -363,8 +363,8 @@ ProvisionServiceRequest.prototype.read = function(input) {
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.programmingLanguage = input.readString();
+      if (ftype == Thrift.Type.I32) {
+        this.programmingLanguage = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -414,8 +414,8 @@ ProvisionServiceRequest.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.programmingLanguage !== null && this.programmingLanguage !== undefined) {
-    output.writeFieldBegin('programmingLanguage', Thrift.Type.STRING, 3);
-    output.writeString(this.programmingLanguage);
+    output.writeFieldBegin('programmingLanguage', Thrift.Type.I32, 3);
+    output.writeI32(this.programmingLanguage);
     output.writeFieldEnd();
   }
   if (this.organization !== null && this.organization !== undefined) {

@@ -109,7 +109,7 @@ struct ProvisionServiceRequest
 {
     1: string token;
     2: string serviceName;
-    3: optional string programmingLanguage;
+    3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: string organization;
     5: optional Image icon;
     6: DeveloperToken developerToken;

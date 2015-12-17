@@ -80,6 +80,21 @@ struct Developer
     4: Role role;
 }
 
+enum ProgrammingLanguage
+{
+    JAVA,
+    CPP,
+    C_SHARP,
+    DOT_NET,
+    RUBY,
+    GROOVY,
+    PYTHON,
+    PHP,
+    NODE,
+    DART,
+    OTHER
+}
+
 struct Service
 {
     1: list<Developer> owners;
@@ -88,4 +103,5 @@ struct Service
     4: string id;
     5: long totalMessagesSent;
     6: optional Image icon;
+    7: optional ProgrammingLanguage programmingLanguage;
 }

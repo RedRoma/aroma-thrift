@@ -43,6 +43,20 @@ enum Banana_Role {
   Role_OWNER = 2
 };
 
+enum Banana_ProgrammingLanguage {
+  ProgrammingLanguage_JAVA = 0,
+  ProgrammingLanguage_CPP = 1,
+  ProgrammingLanguage_C_SHARP = 2,
+  ProgrammingLanguage_DOT_NET = 3,
+  ProgrammingLanguage_RUBY = 4,
+  ProgrammingLanguage_GROOVY = 5,
+  ProgrammingLanguage_PYTHON = 6,
+  ProgrammingLanguage_PHP = 7,
+  ProgrammingLanguage_NODE = 8,
+  ProgrammingLanguage_DART = 9,
+  ProgrammingLanguage_OTHER = 10
+};
+
 typedef int32_t Banana_int;
 
 typedef int64_t Banana_long;
@@ -294,6 +308,7 @@ typedef int64_t Banana_timestamp;
   NSString * __id;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
+  int __programmingLanguage;
 
   BOOL __owners_isset;
   BOOL __timeOfRegistration_isset;
@@ -301,6 +316,7 @@ typedef int64_t Banana_timestamp;
   BOOL __id_isset;
   BOOL __totalMessagesSent_isset;
   BOOL __icon_isset;
+  BOOL __programmingLanguage_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -310,10 +326,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
+@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon;
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -355,6 +372,12 @@ typedef int64_t Banana_timestamp;
 - (void) setIcon: (Banana_Image *) icon;
 #endif
 - (BOOL) iconIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) programmingLanguage;
+- (void) setProgrammingLanguage: (int) programmingLanguage;
+#endif
+- (BOOL) programmingLanguageIsSet;
 
 @end
 

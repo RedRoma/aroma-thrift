@@ -25,6 +25,19 @@ Role = {
   'DEV' : 1,
   'OWNER' : 2
 };
+ProgrammingLanguage = {
+  'JAVA' : 0,
+  'CPP' : 1,
+  'C_SHARP' : 2,
+  'DOT_NET' : 3,
+  'RUBY' : 4,
+  'GROOVY' : 5,
+  'PYTHON' : 6,
+  'PHP' : 7,
+  'NODE' : 8,
+  'DART' : 9,
+  'OTHER' : 10
+};
 Message = function(args) {
   this.messageId = null;
   this.body = null;
@@ -483,6 +496,7 @@ Service = function(args) {
   this.id = null;
   this.totalMessagesSent = null;
   this.icon = null;
+  this.programmingLanguage = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [Developer]);
@@ -501,6 +515,9 @@ Service = function(args) {
     }
     if (args.icon !== undefined && args.icon !== null) {
       this.icon = new Image(args.icon);
+    }
+    if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
+      this.programmingLanguage = args.programmingLanguage;
     }
   }
 };
@@ -575,6 +592,13 @@ Service.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.I32) {
+        this.programmingLanguage = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -623,6 +647,11 @@ Service.prototype.write = function(output) {
   if (this.icon !== null && this.icon !== undefined) {
     output.writeFieldBegin('icon', Thrift.Type.STRUCT, 6);
     this.icon.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.programmingLanguage !== null && this.programmingLanguage !== undefined) {
+    output.writeFieldBegin('programmingLanguage', Thrift.Type.I32, 7);
+    output.writeI32(this.programmingLanguage);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

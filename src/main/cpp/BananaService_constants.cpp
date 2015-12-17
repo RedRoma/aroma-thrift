@@ -14,25 +14,25 @@ BananaServiceConstants::BananaServiceConstants() {
   API_VERSION = 1.1;
 
   PRODUCTION_ENDPOINT.hostname = "banana-service.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp125;
-  tmp125 = 7001;
-
-  PRODUCTION_ENDPOINT.port = tmp125;
-
-  BETA_ENDPOINT.hostname = "banana-service-beta.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp126;
   tmp126 = 7001;
 
-  BETA_ENDPOINT.port = tmp126;
+  PRODUCTION_ENDPOINT.port = tmp126;
 
-   ::aroma::banana::thrift::int tmp127;
-  tmp127 = 500;
+  BETA_ENDPOINT.hostname = "banana-service-beta.aroma.tech";
+   ::aroma::banana::thrift::endpoint::int tmp127;
+  tmp127 = 7001;
 
-  MAX_ICON_DIMENSION.width = tmp127;
+  BETA_ENDPOINT.port = tmp127;
+
    ::aroma::banana::thrift::int tmp128;
   tmp128 = 500;
 
-  MAX_ICON_DIMENSION.height = tmp128;
+  MAX_ICON_DIMENSION.width = tmp128;
+   ::aroma::banana::thrift::int tmp129;
+  tmp129 = 500;
+
+  MAX_ICON_DIMENSION.height = tmp129;
 
   MAX_ICON_SIZE_IN_KILOBYTES = 40;
 

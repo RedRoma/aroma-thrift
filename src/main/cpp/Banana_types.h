@@ -59,6 +59,24 @@ struct Role {
 
 extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
 
+struct ProgrammingLanguage {
+  enum type {
+    JAVA = 0,
+    CPP = 1,
+    C_SHARP = 2,
+    DOT_NET = 3,
+    RUBY = 4,
+    GROOVY = 5,
+    PYTHON = 6,
+    PHP = 7,
+    NODE = 8,
+    DART = 9,
+    OTHER = 10
+  };
+};
+
+extern const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES;
+
 typedef int32_t int;
 
 typedef int64_t long;
@@ -372,13 +390,14 @@ inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
 }
 
 typedef struct _Service__isset {
-  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false) {}
+  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false) {}
   bool owners :1;
   bool timeOfRegistration :1;
   bool name :1;
   bool id :1;
   bool totalMessagesSent :1;
   bool icon :1;
+  bool programmingLanguage :1;
 } _Service__isset;
 
 class Service {
@@ -386,7 +405,7 @@ class Service {
 
   Service(const Service&);
   Service& operator=(const Service&);
-  Service() : timeOfRegistration(0), name(), id(), totalMessagesSent(0) {
+  Service() : timeOfRegistration(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0) {
   }
 
   virtual ~Service() throw();
@@ -396,6 +415,7 @@ class Service {
   std::string id;
   long totalMessagesSent;
   Image icon;
+  ProgrammingLanguage::type programmingLanguage;
 
   _Service__isset __isset;
 
@@ -410,6 +430,8 @@ class Service {
   void __set_totalMessagesSent(const long val);
 
   void __set_icon(const Image& val);
+
+  void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
   bool operator == (const Service & rhs) const
   {
@@ -426,6 +448,10 @@ class Service {
     if (__isset.icon != rhs.__isset.icon)
       return false;
     else if (__isset.icon && !(icon == rhs.icon))
+      return false;
+    if (__isset.programmingLanguage != rhs.__isset.programmingLanguage)
+      return false;
+    else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
       return false;
     return true;
   }

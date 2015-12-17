@@ -940,14 +940,14 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon developerToken: (BananaService_DeveloperToken) developerToken
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon developerToken: (BananaService_DeveloperToken) developerToken
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __serviceName = [serviceName retain_stub];
   __serviceName_isset = YES;
-  __programmingLanguage = [programmingLanguage retain_stub];
+  __programmingLanguage = programmingLanguage;
   __programmingLanguage_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
@@ -973,7 +973,7 @@
   }
   if ([decoder containsValueForKey: @"programmingLanguage"])
   {
-    __programmingLanguage = [[decoder decodeObjectForKey: @"programmingLanguage"] retain_stub];
+    __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
     __programmingLanguage_isset = YES;
   }
   if ([decoder containsValueForKey: @"organization"])
@@ -1006,7 +1006,7 @@
   }
   if (__programmingLanguage_isset)
   {
-    [encoder encodeObject: __programmingLanguage forKey: @"programmingLanguage"];
+    [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
   }
   if (__organization_isset)
   {
@@ -1038,7 +1038,7 @@
   hash = (hash * 31) ^ __programmingLanguage_isset ? 2654435761 : 0;
   if (__programmingLanguage_isset)
   {
-    hash = (hash * 31) ^ [__programmingLanguage hash];
+    hash = (hash * 31) ^ [@(__programmingLanguage) hash];
   }
   hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
   if (__organization_isset)
@@ -1076,7 +1076,7 @@
     return NO;
   }
   if ((__programmingLanguage_isset != other->__programmingLanguage_isset) ||
-      (__programmingLanguage_isset && ((__programmingLanguage || other->__programmingLanguage) && ![__programmingLanguage isEqual:other->__programmingLanguage]))) {
+      (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
     return NO;
   }
   if ((__organization_isset != other->__organization_isset) ||
@@ -1098,7 +1098,6 @@
 {
   [__token release_stub];
   [__serviceName release_stub];
-  [__programmingLanguage release_stub];
   [__organization release_stub];
   [__icon release_stub];
   [__developerToken release_stub];
@@ -1147,13 +1146,11 @@
   __serviceName_isset = NO;
 }
 
-- (NSString *) programmingLanguage {
-  return [[__programmingLanguage retain_stub] autorelease_stub];
+- (int) programmingLanguage {
+  return __programmingLanguage;
 }
 
-- (void) setProgrammingLanguage: (NSString *) programmingLanguage {
-  [programmingLanguage retain_stub];
-  [__programmingLanguage release_stub];
+- (void) setProgrammingLanguage: (int) programmingLanguage {
   __programmingLanguage = programmingLanguage;
   __programmingLanguage_isset = YES;
 }
@@ -1163,8 +1160,6 @@
 }
 
 - (void) unsetProgrammingLanguage {
-  [__programmingLanguage release_stub];
-  __programmingLanguage = nil;
   __programmingLanguage_isset = NO;
 }
 
@@ -1263,8 +1258,8 @@
         }
         break;
       case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
           [self setProgrammingLanguage: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1324,11 +1319,9 @@
     }
   }
   if (__programmingLanguage_isset) {
-    if (__programmingLanguage != nil) {
-      [outProtocol writeFieldBeginWithName: @"programmingLanguage" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __programmingLanguage];
-      [outProtocol writeFieldEnd];
-    }
+    [outProtocol writeFieldBeginWithName: @"programmingLanguage" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __programmingLanguage];
+    [outProtocol writeFieldEnd];
   }
   if (__organization_isset) {
     if (__organization != nil) {
@@ -1366,7 +1359,7 @@
   [ms appendString: @",serviceName:"];
   [ms appendFormat: @"\"%@\"", __serviceName];
   [ms appendString: @",programmingLanguage:"];
-  [ms appendFormat: @"\"%@\"", __programmingLanguage];
+  [ms appendFormat: @"%i", __programmingLanguage];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @",icon:"];

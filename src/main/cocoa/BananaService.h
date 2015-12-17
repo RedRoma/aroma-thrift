@@ -217,7 +217,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_ProvisionServiceRequest : NSObject <TBase, NSCoding> {
   NSString * __token;
   NSString * __serviceName;
-  NSString * __programmingLanguage;
+  int __programmingLanguage;
   NSString * __organization;
   BananaService_Image __icon;
   BananaService_DeveloperToken __developerToken;
@@ -233,14 +233,14 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
 @property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
-@property (nonatomic, retain, getter=programmingLanguage, setter=setProgrammingLanguage:) NSString * programmingLanguage;
+@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
 @property (nonatomic, retain, getter=developerToken, setter=setDeveloperToken:) BananaService_DeveloperToken developerToken;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (NSString *) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon developerToken: (BananaService_DeveloperToken) developerToken;
+- (id) initWithToken: (NSString *) token serviceName: (NSString *) serviceName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon developerToken: (BananaService_DeveloperToken) developerToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -260,8 +260,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (BOOL) serviceNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) programmingLanguage;
-- (void) setProgrammingLanguage: (NSString *) programmingLanguage;
+- (int) programmingLanguage;
+- (void) setProgrammingLanguage: (int) programmingLanguage;
 #endif
 - (BOOL) programmingLanguageIsSet;
 

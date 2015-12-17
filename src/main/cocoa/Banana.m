@@ -1446,7 +1446,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -1461,6 +1461,8 @@
   __totalMessagesSent_isset = YES;
   __icon = [icon retain_stub];
   __icon_isset = YES;
+  __programmingLanguage = programmingLanguage;
+  __programmingLanguage_isset = YES;
   return self;
 }
 
@@ -1497,6 +1499,11 @@
     __icon = [[decoder decodeObjectForKey: @"icon"] retain_stub];
     __icon_isset = YES;
   }
+  if ([decoder containsValueForKey: @"programmingLanguage"])
+  {
+    __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
+    __programmingLanguage_isset = YES;
+  }
   return self;
 }
 
@@ -1525,6 +1532,10 @@
   if (__icon_isset)
   {
     [encoder encodeObject: __icon forKey: @"icon"];
+  }
+  if (__programmingLanguage_isset)
+  {
+    [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
   }
 }
 
@@ -1561,6 +1572,11 @@
   {
     hash = (hash * 31) ^ [__icon hash];
   }
+  hash = (hash * 31) ^ __programmingLanguage_isset ? 2654435761 : 0;
+  if (__programmingLanguage_isset)
+  {
+    hash = (hash * 31) ^ [@(__programmingLanguage) hash];
+  }
   return hash;
 }
 
@@ -1595,6 +1611,10 @@
   }
   if ((__icon_isset != other->__icon_isset) ||
       (__icon_isset && ((__icon || other->__icon) && ![__icon isEqual:other->__icon]))) {
+    return NO;
+  }
+  if ((__programmingLanguage_isset != other->__programmingLanguage_isset) ||
+      (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
     return NO;
   }
   return YES;
@@ -1727,6 +1747,23 @@
   __icon_isset = NO;
 }
 
+- (int) programmingLanguage {
+  return __programmingLanguage;
+}
+
+- (void) setProgrammingLanguage: (int) programmingLanguage {
+  __programmingLanguage = programmingLanguage;
+  __programmingLanguage_isset = YES;
+}
+
+- (BOOL) programmingLanguageIsSet {
+  return __programmingLanguage_isset;
+}
+
+- (void) unsetProgrammingLanguage {
+  __programmingLanguage_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1804,6 +1841,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 7:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setProgrammingLanguage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1861,6 +1906,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__programmingLanguage_isset) {
+    [outProtocol writeFieldBeginWithName: @"programmingLanguage" type: TType_I32 fieldID: 7];
+    [outProtocol writeI32: __programmingLanguage];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1883,6 +1933,8 @@
   [ms appendFormat: @"%qi", __totalMessagesSent];
   [ms appendString: @",icon:"];
   [ms appendFormat: @"%@", __icon];
+  [ms appendString: @",programmingLanguage:"];
+  [ms appendFormat: @"%i", __programmingLanguage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -61,6 +61,34 @@ const char* _kRoleNames[] = {
 };
 const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+int _kProgrammingLanguageValues[] = {
+  ProgrammingLanguage::JAVA,
+  ProgrammingLanguage::CPP,
+  ProgrammingLanguage::C_SHARP,
+  ProgrammingLanguage::DOT_NET,
+  ProgrammingLanguage::RUBY,
+  ProgrammingLanguage::GROOVY,
+  ProgrammingLanguage::PYTHON,
+  ProgrammingLanguage::PHP,
+  ProgrammingLanguage::NODE,
+  ProgrammingLanguage::DART,
+  ProgrammingLanguage::OTHER
+};
+const char* _kProgrammingLanguageNames[] = {
+  "JAVA",
+  "CPP",
+  "C_SHARP",
+  "DOT_NET",
+  "RUBY",
+  "GROOVY",
+  "PYTHON",
+  "PHP",
+  "NODE",
+  "DART",
+  "OTHER"
+};
+const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(11, _kProgrammingLanguageValues, _kProgrammingLanguageNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 Message::~Message() throw() {
 }
@@ -779,6 +807,11 @@ void Service::__set_icon(const Image& val) {
 __isset.icon = true;
 }
 
+void Service::__set_programmingLanguage(const ProgrammingLanguage::type val) {
+  this->programmingLanguage = val;
+__isset.programmingLanguage = true;
+}
+
 uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -860,6 +893,16 @@ uint32_t Service::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast19;
+          xfer += iprot->readI32(ecast19);
+          this->programmingLanguage = (ProgrammingLanguage::type)ecast19;
+          this->__isset.programmingLanguage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -880,10 +923,10 @@ uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->owners.size()));
-    std::vector<Developer> ::const_iterator _iter19;
-    for (_iter19 = this->owners.begin(); _iter19 != this->owners.end(); ++_iter19)
+    std::vector<Developer> ::const_iterator _iter20;
+    for (_iter20 = this->owners.begin(); _iter20 != this->owners.end(); ++_iter20)
     {
-      xfer += (*_iter19).write(oprot);
+      xfer += (*_iter20).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -910,6 +953,11 @@ uint32_t Service::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += this->icon.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.programmingLanguage) {
+    xfer += oprot->writeFieldBegin("programmingLanguage", ::apache::thrift::protocol::T_I32, 7);
+    xfer += oprot->writeI32((int32_t)this->programmingLanguage);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -923,26 +971,29 @@ void swap(Service &a, Service &b) {
   swap(a.id, b.id);
   swap(a.totalMessagesSent, b.totalMessagesSent);
   swap(a.icon, b.icon);
+  swap(a.programmingLanguage, b.programmingLanguage);
   swap(a.__isset, b.__isset);
 }
 
-Service::Service(const Service& other20) {
-  owners = other20.owners;
-  timeOfRegistration = other20.timeOfRegistration;
-  name = other20.name;
-  id = other20.id;
-  totalMessagesSent = other20.totalMessagesSent;
-  icon = other20.icon;
-  __isset = other20.__isset;
-}
-Service& Service::operator=(const Service& other21) {
+Service::Service(const Service& other21) {
   owners = other21.owners;
   timeOfRegistration = other21.timeOfRegistration;
   name = other21.name;
   id = other21.id;
   totalMessagesSent = other21.totalMessagesSent;
   icon = other21.icon;
+  programmingLanguage = other21.programmingLanguage;
   __isset = other21.__isset;
+}
+Service& Service::operator=(const Service& other22) {
+  owners = other22.owners;
+  timeOfRegistration = other22.timeOfRegistration;
+  name = other22.name;
+  id = other22.id;
+  totalMessagesSent = other22.totalMessagesSent;
+  icon = other22.icon;
+  programmingLanguage = other22.programmingLanguage;
+  __isset = other22.__isset;
   return *this;
 }
 void Service::printTo(std::ostream& out) const {
@@ -954,6 +1005,7 @@ void Service::printTo(std::ostream& out) const {
   out << ", " << "id=" << to_string(id);
   out << ", " << "totalMessagesSent=" << to_string(totalMessagesSent);
   out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
+  out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
   out << ")";
 }
 
