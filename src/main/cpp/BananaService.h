@@ -21,6 +21,7 @@ namespace aroma { namespace banana { namespace thrift { namespace service {
 class BananaServiceIf {
  public:
   virtual ~BananaServiceIf() {}
+  virtual double getApiVersion() = 0;
 
   /**
    * 
@@ -167,6 +168,10 @@ class BananaServiceIfSingletonFactory : virtual public BananaServiceIfFactory {
 class BananaServiceNull : virtual public BananaServiceIf {
  public:
   virtual ~BananaServiceNull() {}
+  double getApiVersion() {
+    double _return = (double)0;
+    return _return;
+  }
   void sendMessage(SendMessageResponse& /* _return */, const SendMessageRequest& /* request */) {
     return;
   }
@@ -221,6 +226,98 @@ class BananaServiceNull : virtual public BananaServiceIf {
   void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
     return;
   }
+};
+
+
+class BananaService_getApiVersion_args {
+ public:
+
+  BananaService_getApiVersion_args(const BananaService_getApiVersion_args&);
+  BananaService_getApiVersion_args& operator=(const BananaService_getApiVersion_args&);
+  BananaService_getApiVersion_args() {
+  }
+
+  virtual ~BananaService_getApiVersion_args() throw();
+
+  bool operator == (const BananaService_getApiVersion_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const BananaService_getApiVersion_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getApiVersion_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getApiVersion_pargs {
+ public:
+
+
+  virtual ~BananaService_getApiVersion_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getApiVersion_result__isset {
+  _BananaService_getApiVersion_result__isset() : success(false) {}
+  bool success :1;
+} _BananaService_getApiVersion_result__isset;
+
+class BananaService_getApiVersion_result {
+ public:
+
+  BananaService_getApiVersion_result(const BananaService_getApiVersion_result&);
+  BananaService_getApiVersion_result& operator=(const BananaService_getApiVersion_result&);
+  BananaService_getApiVersion_result() : success(0) {
+  }
+
+  virtual ~BananaService_getApiVersion_result() throw();
+  double success;
+
+  _BananaService_getApiVersion_result__isset __isset;
+
+  void __set_success(const double val);
+
+  bool operator == (const BananaService_getApiVersion_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getApiVersion_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getApiVersion_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getApiVersion_presult__isset {
+  _BananaService_getApiVersion_presult__isset() : success(false) {}
+  bool success :1;
+} _BananaService_getApiVersion_presult__isset;
+
+class BananaService_getApiVersion_presult {
+ public:
+
+
+  virtual ~BananaService_getApiVersion_presult() throw();
+  double* success;
+
+  _BananaService_getApiVersion_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
 };
 
 typedef struct _BananaService_sendMessage_args__isset {
@@ -2633,6 +2730,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  double getApiVersion();
+  void send_getApiVersion();
+  double recv_getApiVersion();
   void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request);
   void send_sendMessage(const SendMessageRequest& request);
   void recv_sendMessage(SendMessageResponse& _return);
@@ -2701,6 +2801,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef  void (BananaServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
+  void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_sendMessageAsync(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -2722,6 +2823,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
+    processMap_["getApiVersion"] = &BananaServiceProcessor::process_getApiVersion;
     processMap_["sendMessage"] = &BananaServiceProcessor::process_sendMessage;
     processMap_["sendMessageAsync"] = &BananaServiceProcessor::process_sendMessageAsync;
     processMap_["signIn"] = &BananaServiceProcessor::process_signIn;
@@ -2768,6 +2870,15 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     ifaces_.push_back(iface);
   }
  public:
+  double getApiVersion() {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getApiVersion();
+    }
+    return ifaces_[i]->getApiVersion();
+  }
+
   void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -2977,6 +3088,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
+  double getApiVersion();
+  int32_t send_getApiVersion();
+  double recv_getApiVersion(const int32_t seqid);
   void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request);
   int32_t send_sendMessage(const SendMessageRequest& request);
   void recv_sendMessage(SendMessageResponse& _return, const int32_t seqid);

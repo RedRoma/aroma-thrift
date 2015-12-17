@@ -22,6 +22,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     // Your initialization goes here
   }
 
+  double getApiVersion() {
+    // Your implementation goes here
+    printf("getApiVersion\n");
+  }
+
   /**
    * 
    * #app

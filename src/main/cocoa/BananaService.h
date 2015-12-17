@@ -1568,6 +1568,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @protocol BananaService_BananaService <NSObject>
+- (double) getApiVersion;  // throws TException
 - (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (void) sendMessageAsync: (BananaService_SendMessageRequest *) request;  // throws TException
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException

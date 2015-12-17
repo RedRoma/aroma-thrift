@@ -50,7 +50,7 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-/** Defines the Version of the Banana Service API currently in use. */
+/** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.3;
 
 /**
@@ -365,6 +365,9 @@ struct SendMessageResponse
 
 service BananaService
 {
+    
+    double getApiVersion()
+    
     //===============================================
     // Operations for Applications
     //===============================================

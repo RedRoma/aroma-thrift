@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
 <li><a href="#Fn_BananaService_getApplicationSubscribers">getApplicationSubscribers</a></li>
 <li><a href="#Fn_BananaService_getDashboard">getDashboard</a></li>
@@ -287,7 +288,7 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.3</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API currently in use.
+<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.3</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
 <br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
 <br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-service-beta.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
 <br/></blockquote></td></tr><tr id="Const_MAX_ICON_DIMENSION"><td><code>MAX_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 500, height = 500 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
@@ -540,7 +541,9 @@ for a set time period.
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-<div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
+<div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
+<pre><code>double</code> getApiVersion()
+</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre>
