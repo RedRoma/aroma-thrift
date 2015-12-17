@@ -79,7 +79,7 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @end
 
-@interface BananaAuthentication_DeveloperToken : NSObject <TBase, NSCoding> {
+@interface BananaAuthentication_HumanToken : NSObject <TBase, NSCoding> {
   NSString * __token;
   BananaAuthentication_timestamp __timeOfExpiration;
   NSString * __organization;

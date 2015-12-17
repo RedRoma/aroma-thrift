@@ -29,7 +29,7 @@ typedef Banana_long BananaNotifications_long;
 
 typedef Banana_timestamp BananaNotifications_timestamp;
 
-typedef Banana_Developer * BananaNotifications_Developer;
+typedef Banana_Human * BananaNotifications_Human;
 
 typedef Banana_Service * BananaNotifications_Service;
 
@@ -58,20 +58,20 @@ typedef Banana_Service * BananaNotifications_Service;
 @end
 
 @interface BananaNotifications_ServiceTokenRenewed : NSObject <TBase, NSCoding> {
-  BananaNotifications_Developer __developer;
+  BananaNotifications_Human __human;
   BananaNotifications_ServiceToken __serviceToken;
 
-  BOOL __developer_isset;
+  BOOL __human_isset;
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=developer, setter=setDeveloper:) BananaNotifications_Developer developer;
+@property (nonatomic, retain, getter=human, setter=setHuman:) BananaNotifications_Human human;
 @property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaNotifications_ServiceToken serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithDeveloper: (BananaNotifications_Developer) developer serviceToken: (BananaNotifications_ServiceToken) serviceToken;
+- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -79,10 +79,10 @@ typedef Banana_Service * BananaNotifications_Service;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaNotifications_Developer) developer;
-- (void) setDeveloper: (BananaNotifications_Developer) developer;
+- (BananaNotifications_Human) human;
+- (void) setHuman: (BananaNotifications_Human) human;
 #endif
-- (BOOL) developerIsSet;
+- (BOOL) humanIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaNotifications_ServiceToken) serviceToken;
@@ -93,20 +93,20 @@ typedef Banana_Service * BananaNotifications_Service;
 @end
 
 @interface BananaNotifications_ServiceTokenRegenerated : NSObject <TBase, NSCoding> {
-  BananaNotifications_Developer __developer;
+  BananaNotifications_Human __human;
   BananaNotifications_ServiceToken __serviceToken;
 
-  BOOL __developer_isset;
+  BOOL __human_isset;
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=developer, setter=setDeveloper:) BananaNotifications_Developer developer;
+@property (nonatomic, retain, getter=human, setter=setHuman:) BananaNotifications_Human human;
 @property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaNotifications_ServiceToken serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithDeveloper: (BananaNotifications_Developer) developer serviceToken: (BananaNotifications_ServiceToken) serviceToken;
+- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -114,10 +114,10 @@ typedef Banana_Service * BananaNotifications_Service;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaNotifications_Developer) developer;
-- (void) setDeveloper: (BananaNotifications_Developer) developer;
+- (BananaNotifications_Human) human;
+- (void) setHuman: (BananaNotifications_Human) human;
 #endif
-- (BOOL) developerIsSet;
+- (BOOL) humanIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaNotifications_ServiceToken) serviceToken;

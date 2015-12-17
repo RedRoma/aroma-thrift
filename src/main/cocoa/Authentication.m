@@ -342,7 +342,7 @@
 
 @end
 
-@implementation BananaAuthentication_DeveloperToken
+@implementation BananaAuthentication_HumanToken
 
 - (id) init
 {
@@ -461,10 +461,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_DeveloperToken class]]) {
+  if (![anObject isKindOfClass:[BananaAuthentication_HumanToken class]]) {
     return NO;
   }
-  BananaAuthentication_DeveloperToken *other = (BananaAuthentication_DeveloperToken *)anObject;
+  BananaAuthentication_HumanToken *other = (BananaAuthentication_HumanToken *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -658,7 +658,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DeveloperToken"];
+  [outProtocol writeStructBeginWithName: @"HumanToken"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
@@ -699,7 +699,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_DeveloperToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_HumanToken("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"\"%@\"", __token];
   [ms appendString: @",timeOfExpiration:"];

@@ -1116,7 +1116,7 @@
 
 @end
 
-@implementation Banana_Developer
+@implementation Banana_Human
 
 - (id) init
 {
@@ -1126,7 +1126,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username roles: (NSMutableArray *) roles
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1135,8 +1135,8 @@
   __name_isset = YES;
   __username = [username retain_stub];
   __username_isset = YES;
-  __role = role;
-  __role_isset = YES;
+  __roles = [roles retain_stub];
+  __roles_isset = YES;
   return self;
 }
 
@@ -1158,10 +1158,10 @@
     __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
     __username_isset = YES;
   }
-  if ([decoder containsValueForKey: @"role"])
+  if ([decoder containsValueForKey: @"roles"])
   {
-    __role = [decoder decodeIntForKey: @"role"];
-    __role_isset = YES;
+    __roles = [[decoder decodeObjectForKey: @"roles"] retain_stub];
+    __roles_isset = YES;
   }
   return self;
 }
@@ -1180,9 +1180,9 @@
   {
     [encoder encodeObject: __username forKey: @"username"];
   }
-  if (__role_isset)
+  if (__roles_isset)
   {
-    [encoder encodeInt: __role forKey: @"role"];
+    [encoder encodeObject: __roles forKey: @"roles"];
   }
 }
 
@@ -1204,10 +1204,10 @@
   {
     hash = (hash * 31) ^ [__username hash];
   }
-  hash = (hash * 31) ^ __role_isset ? 2654435761 : 0;
-  if (__role_isset)
+  hash = (hash * 31) ^ __roles_isset ? 2654435761 : 0;
+  if (__roles_isset)
   {
-    hash = (hash * 31) ^ [@(__role) hash];
+    hash = (hash * 31) ^ [__roles hash];
   }
   return hash;
 }
@@ -1217,10 +1217,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Developer class]]) {
+  if (![anObject isKindOfClass:[Banana_Human class]]) {
     return NO;
   }
-  Banana_Developer *other = (Banana_Developer *)anObject;
+  Banana_Human *other = (Banana_Human *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -1233,8 +1233,8 @@
       (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
     return NO;
   }
-  if ((__role_isset != other->__role_isset) ||
-      (__role_isset && (__role != other->__role))) {
+  if ((__roles_isset != other->__roles_isset) ||
+      (__roles_isset && ((__roles || other->__roles) && ![__roles isEqual:other->__roles]))) {
     return NO;
   }
   return YES;
@@ -1245,6 +1245,7 @@
   [__email release_stub];
   [__name release_stub];
   [__username release_stub];
+  [__roles release_stub];
   [super dealloc_stub];
 }
 
@@ -1311,21 +1312,25 @@
   __username_isset = NO;
 }
 
-- (int) role {
-  return __role;
+- (NSMutableArray *) roles {
+  return [[__roles retain_stub] autorelease_stub];
 }
 
-- (void) setRole: (int) role {
-  __role = role;
-  __role_isset = YES;
+- (void) setRoles: (NSMutableArray *) roles {
+  [roles retain_stub];
+  [__roles release_stub];
+  __roles = roles;
+  __roles_isset = YES;
 }
 
-- (BOOL) roleIsSet {
-  return __role_isset;
+- (BOOL) rolesIsSet {
+  return __roles_isset;
 }
 
-- (void) unsetRole {
-  __role_isset = NO;
+- (void) unsetRoles {
+  [__roles release_stub];
+  __roles = nil;
+  __roles_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1368,9 +1373,19 @@
         }
         break;
       case 4:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setRole: fieldValue];
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            int _elem2 = [inProtocol readI32];
+            [fieldValue addObject: [NSNumber numberWithInt: _elem2]];
+          }
+          [inProtocol readListEnd];
+          [self setRoles: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1385,7 +1400,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Developer"];
+  [outProtocol writeStructBeginWithName: @"Human"];
   if (__email_isset) {
     if (__email != nil) {
       [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
@@ -1407,10 +1422,20 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__role_isset) {
-    [outProtocol writeFieldBeginWithName: @"role" type: TType_I32 fieldID: 4];
-    [outProtocol writeI32: __role];
-    [outProtocol writeFieldEnd];
+  if (__roles_isset) {
+    if (__roles != nil) {
+      [outProtocol writeFieldBeginWithName: @"roles" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_I32 size: [__roles count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__roles count]; idx4++)
+        {
+          [outProtocol writeI32: [[__roles objectAtIndex: idx4] intValue]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -1421,15 +1446,15 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Developer("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Human("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @",username:"];
   [ms appendFormat: @"\"%@\"", __username];
-  [ms appendString: @",role:"];
-  [ms appendFormat: @"%i", __role];
+  [ms appendString: @",roles:"];
+  [ms appendFormat: @"%@", __roles];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1442,11 +1467,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.subscribers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -1463,6 +1490,8 @@
   __icon_isset = YES;
   __programmingLanguage = programmingLanguage;
   __programmingLanguage_isset = YES;
+  __subscribers = [subscribers retain_stub];
+  __subscribers_isset = YES;
   return self;
 }
 
@@ -1504,6 +1533,11 @@
     __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
     __programmingLanguage_isset = YES;
   }
+  if ([decoder containsValueForKey: @"subscribers"])
+  {
+    __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
+    __subscribers_isset = YES;
+  }
   return self;
 }
 
@@ -1536,6 +1570,10 @@
   if (__programmingLanguage_isset)
   {
     [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
+  }
+  if (__subscribers_isset)
+  {
+    [encoder encodeObject: __subscribers forKey: @"subscribers"];
   }
 }
 
@@ -1577,6 +1615,11 @@
   {
     hash = (hash * 31) ^ [@(__programmingLanguage) hash];
   }
+  hash = (hash * 31) ^ __subscribers_isset ? 2654435761 : 0;
+  if (__subscribers_isset)
+  {
+    hash = (hash * 31) ^ [__subscribers hash];
+  }
   return hash;
 }
 
@@ -1617,6 +1660,10 @@
       (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
     return NO;
   }
+  if ((__subscribers_isset != other->__subscribers_isset) ||
+      (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1626,6 +1673,7 @@
   [__name release_stub];
   [__id release_stub];
   [__icon release_stub];
+  [__subscribers release_stub];
   [super dealloc_stub];
 }
 
@@ -1764,6 +1812,27 @@
   __programmingLanguage_isset = NO;
 }
 
+- (NSMutableArray *) subscribers {
+  return [[__subscribers retain_stub] autorelease_stub];
+}
+
+- (void) setSubscribers: (NSMutableArray *) subscribers {
+  [subscribers retain_stub];
+  [__subscribers release_stub];
+  __subscribers = subscribers;
+  __subscribers_isset = YES;
+}
+
+- (BOOL) subscribersIsSet {
+  return __subscribers_isset;
+}
+
+- (void) unsetSubscribers {
+  [__subscribers release_stub];
+  __subscribers = nil;
+  __subscribers_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1781,16 +1850,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+          int _size5;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            Banana_Developer *_elem2 = [[Banana_Developer alloc] init];
-            [_elem2 read: inProtocol];
-            [fieldValue addObject: _elem2];
-            [_elem2 release_stub];
+            Banana_Human *_elem7 = [[Banana_Human alloc] init];
+            [_elem7 read: inProtocol];
+            [fieldValue addObject: _elem7];
+            [_elem7 release_stub];
           }
           [inProtocol readListEnd];
           [self setOwners: fieldValue];
@@ -1849,6 +1918,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 8:
+        if (fieldType == TType_LIST) {
+          int _size8;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size8];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size8];
+          int _i9;
+          for (_i9 = 0; _i9 < _size8; ++_i9)
+          {
+            Banana_Human *_elem10 = [[Banana_Human alloc] init];
+            [_elem10 read: inProtocol];
+            [fieldValue addObject: _elem10];
+            [_elem10 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setSubscribers: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1865,10 +1954,10 @@
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__owners count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__owners count]; idx4++)
+        int idx12;
+        for (idx12 = 0; idx12 < [__owners count]; idx12++)
         {
-          [[__owners objectAtIndex: idx4] write: outProtocol];
+          [[__owners objectAtIndex: idx12] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -1911,6 +2000,21 @@
     [outProtocol writeI32: __programmingLanguage];
     [outProtocol writeFieldEnd];
   }
+  if (__subscribers_isset) {
+    if (__subscribers != nil) {
+      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_LIST fieldID: 8];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__subscribers count]];
+        int idx14;
+        for (idx14 = 0; idx14 < [__subscribers count]; idx14++)
+        {
+          [[__subscribers objectAtIndex: idx14] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1935,6 +2039,8 @@
   [ms appendFormat: @"%@", __icon];
   [ms appendString: @",programmingLanguage:"];
   [ms appendFormat: @"%i", __programmingLanguage];
+  [ms appendString: @",subscribers:"];
+  [ms appendFormat: @"%@", __subscribers];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

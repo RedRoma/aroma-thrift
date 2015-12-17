@@ -5,8 +5,8 @@ namespace cpp   aroma.banana.thrift.channels
 /*
  * Defined in this File are the various Channels that
  * the Banana Service can send Messages to.
- * Essentially a channel is a way to contact a developer.
- * A Developer can register various channels where he/she can
+ * Essentially a channel is a way to contact a person.
+ * A Person can register various channels where he/she can
  * be reached.
  */
 

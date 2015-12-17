@@ -142,8 +142,8 @@ ServiceTokenRenewed::~ServiceTokenRenewed() throw() {
 }
 
 
-void ServiceTokenRenewed::__set_developer(const Developer& val) {
-  this->developer = val;
+void ServiceTokenRenewed::__set_human(const Human& val) {
+  this->human = val;
 }
 
 void ServiceTokenRenewed::__set_serviceToken(const ServiceToken& val) {
@@ -174,8 +174,8 @@ uint32_t ServiceTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot)
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->developer.read(iprot);
-          this->__isset.developer = true;
+          xfer += this->human.read(iprot);
+          this->__isset.human = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -205,8 +205,8 @@ uint32_t ServiceTokenRenewed::write(::apache::thrift::protocol::TProtocol* oprot
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceTokenRenewed");
 
-  xfer += oprot->writeFieldBegin("developer", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->developer.write(oprot);
+  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->human.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.serviceToken) {
@@ -221,18 +221,18 @@ uint32_t ServiceTokenRenewed::write(::apache::thrift::protocol::TProtocol* oprot
 
 void swap(ServiceTokenRenewed &a, ServiceTokenRenewed &b) {
   using ::std::swap;
-  swap(a.developer, b.developer);
+  swap(a.human, b.human);
   swap(a.serviceToken, b.serviceToken);
   swap(a.__isset, b.__isset);
 }
 
 ServiceTokenRenewed::ServiceTokenRenewed(const ServiceTokenRenewed& other4) {
-  developer = other4.developer;
+  human = other4.human;
   serviceToken = other4.serviceToken;
   __isset = other4.__isset;
 }
 ServiceTokenRenewed& ServiceTokenRenewed::operator=(const ServiceTokenRenewed& other5) {
-  developer = other5.developer;
+  human = other5.human;
   serviceToken = other5.serviceToken;
   __isset = other5.__isset;
   return *this;
@@ -240,7 +240,7 @@ ServiceTokenRenewed& ServiceTokenRenewed::operator=(const ServiceTokenRenewed& o
 void ServiceTokenRenewed::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ServiceTokenRenewed(";
-  out << "developer=" << to_string(developer);
+  out << "human=" << to_string(human);
   out << ", " << "serviceToken="; (__isset.serviceToken ? (out << to_string(serviceToken)) : (out << "<null>"));
   out << ")";
 }
@@ -250,8 +250,8 @@ ServiceTokenRegenerated::~ServiceTokenRegenerated() throw() {
 }
 
 
-void ServiceTokenRegenerated::__set_developer(const Developer& val) {
-  this->developer = val;
+void ServiceTokenRegenerated::__set_human(const Human& val) {
+  this->human = val;
 }
 
 void ServiceTokenRegenerated::__set_serviceToken(const ServiceToken& val) {
@@ -282,8 +282,8 @@ uint32_t ServiceTokenRegenerated::read(::apache::thrift::protocol::TProtocol* ip
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->developer.read(iprot);
-          this->__isset.developer = true;
+          xfer += this->human.read(iprot);
+          this->__isset.human = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -313,8 +313,8 @@ uint32_t ServiceTokenRegenerated::write(::apache::thrift::protocol::TProtocol* o
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ServiceTokenRegenerated");
 
-  xfer += oprot->writeFieldBegin("developer", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->developer.write(oprot);
+  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->human.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.serviceToken) {
@@ -329,18 +329,18 @@ uint32_t ServiceTokenRegenerated::write(::apache::thrift::protocol::TProtocol* o
 
 void swap(ServiceTokenRegenerated &a, ServiceTokenRegenerated &b) {
   using ::std::swap;
-  swap(a.developer, b.developer);
+  swap(a.human, b.human);
   swap(a.serviceToken, b.serviceToken);
   swap(a.__isset, b.__isset);
 }
 
 ServiceTokenRegenerated::ServiceTokenRegenerated(const ServiceTokenRegenerated& other6) {
-  developer = other6.developer;
+  human = other6.human;
   serviceToken = other6.serviceToken;
   __isset = other6.__isset;
 }
 ServiceTokenRegenerated& ServiceTokenRegenerated::operator=(const ServiceTokenRegenerated& other7) {
-  developer = other7.developer;
+  human = other7.human;
   serviceToken = other7.serviceToken;
   __isset = other7.__isset;
   return *this;
@@ -348,7 +348,7 @@ ServiceTokenRegenerated& ServiceTokenRegenerated::operator=(const ServiceTokenRe
 void ServiceTokenRegenerated::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ServiceTokenRegenerated(";
-  out << "developer=" << to_string(developer);
+  out << "human=" << to_string(human);
   out << ", " << "serviceToken="; (__isset.serviceToken ? (out << to_string(serviceToken)) : (out << "<null>"));
   out << ")";
 }

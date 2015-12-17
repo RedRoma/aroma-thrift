@@ -68,16 +68,19 @@ struct Image
 
 enum Role
 {
-    DEV = 1,
-    OWNER = 2
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
 }
 
-struct Developer
+struct Human
 {
     1: string email;
     2: optional string name;
     3: optional string username;
-    4: Role role;
+    4: list<Role> roles;
 }
 
 enum ProgrammingLanguage
@@ -97,11 +100,12 @@ enum ProgrammingLanguage
 
 struct Service
 {
-    1: list<Developer> owners;
+    1: list<Human> owners;
     2: timestamp timeOfRegistration;
     3: string name;
     4: string id;
     5: long totalMessagesSent;
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
+    8: optional list<Human> subscribers = [];
 }

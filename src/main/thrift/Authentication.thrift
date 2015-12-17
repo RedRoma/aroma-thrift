@@ -16,7 +16,7 @@ struct ServiceToken
     4: timestamp timeOfExpiration;
 }
 
-struct DeveloperToken
+struct HumanToken
 {
     1: string token;
     2: timestamp timeOfExpiration;

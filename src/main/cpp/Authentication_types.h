@@ -28,7 +28,7 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 class ServiceToken;
 
-class DeveloperToken;
+class HumanToken;
 
 class GithubToken;
 
@@ -104,31 +104,31 @@ inline std::ostream& operator<<(std::ostream& out, const ServiceToken& obj)
   return out;
 }
 
-typedef struct _DeveloperToken__isset {
-  _DeveloperToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+typedef struct _HumanToken__isset {
+  _HumanToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
   bool token :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
-} _DeveloperToken__isset;
+} _HumanToken__isset;
 
-class DeveloperToken {
+class HumanToken {
  public:
 
-  DeveloperToken(const DeveloperToken&);
-  DeveloperToken& operator=(const DeveloperToken&);
-  DeveloperToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  HumanToken(const HumanToken&);
+  HumanToken& operator=(const HumanToken&);
+  HumanToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
   }
 
-  virtual ~DeveloperToken() throw();
+  virtual ~HumanToken() throw();
   std::string token;
   timestamp timeOfExpiration;
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
 
-  _DeveloperToken__isset __isset;
+  _HumanToken__isset __isset;
 
   void __set_token(const std::string& val);
 
@@ -140,7 +140,7 @@ class DeveloperToken {
 
   void __set_oauthProvider(const std::string& val);
 
-  bool operator == (const DeveloperToken & rhs) const
+  bool operator == (const HumanToken & rhs) const
   {
     if (!(token == rhs.token))
       return false;
@@ -160,11 +160,11 @@ class DeveloperToken {
       return false;
     return true;
   }
-  bool operator != (const DeveloperToken &rhs) const {
+  bool operator != (const HumanToken &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const DeveloperToken & ) const;
+  bool operator < (const HumanToken & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -172,9 +172,9 @@ class DeveloperToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(DeveloperToken &a, DeveloperToken &b);
+void swap(HumanToken &a, HumanToken &b);
 
-inline std::ostream& operator<<(std::ostream& out, const DeveloperToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const HumanToken& obj)
 {
   obj.printTo(out);
   return out;

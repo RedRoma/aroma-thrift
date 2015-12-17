@@ -52,8 +52,11 @@ extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
 
 struct Role {
   enum type {
-    DEV = 1,
-    OWNER = 2
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
   };
 };
 
@@ -91,7 +94,7 @@ class Dimension;
 
 class Image;
 
-class Developer;
+class Human;
 
 class Service;
 
@@ -321,29 +324,29 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
   return out;
 }
 
-typedef struct _Developer__isset {
-  _Developer__isset() : email(false), name(false), username(false), role(false) {}
+typedef struct _Human__isset {
+  _Human__isset() : email(false), name(false), username(false), roles(false) {}
   bool email :1;
   bool name :1;
   bool username :1;
-  bool role :1;
-} _Developer__isset;
+  bool roles :1;
+} _Human__isset;
 
-class Developer {
+class Human {
  public:
 
-  Developer(const Developer&);
-  Developer& operator=(const Developer&);
-  Developer() : email(), name(), username(), role((Role::type)0) {
+  Human(const Human&);
+  Human& operator=(const Human&);
+  Human() : email(), name(), username() {
   }
 
-  virtual ~Developer() throw();
+  virtual ~Human() throw();
   std::string email;
   std::string name;
   std::string username;
-  Role::type role;
+  std::vector<Role::type>  roles;
 
-  _Developer__isset __isset;
+  _Human__isset __isset;
 
   void __set_email(const std::string& val);
 
@@ -351,9 +354,9 @@ class Developer {
 
   void __set_username(const std::string& val);
 
-  void __set_role(const Role::type val);
+  void __set_roles(const std::vector<Role::type> & val);
 
-  bool operator == (const Developer & rhs) const
+  bool operator == (const Human & rhs) const
   {
     if (!(email == rhs.email))
       return false;
@@ -365,15 +368,15 @@ class Developer {
       return false;
     else if (__isset.username && !(username == rhs.username))
       return false;
-    if (!(role == rhs.role))
+    if (!(roles == rhs.roles))
       return false;
     return true;
   }
-  bool operator != (const Developer &rhs) const {
+  bool operator != (const Human &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Developer & ) const;
+  bool operator < (const Human & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -381,16 +384,16 @@ class Developer {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(Developer &a, Developer &b);
+void swap(Human &a, Human &b);
 
-inline std::ostream& operator<<(std::ostream& out, const Developer& obj)
+inline std::ostream& operator<<(std::ostream& out, const Human& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 typedef struct _Service__isset {
-  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false) {}
+  _Service__isset() : owners(false), timeOfRegistration(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true) {}
   bool owners :1;
   bool timeOfRegistration :1;
   bool name :1;
@@ -398,6 +401,7 @@ typedef struct _Service__isset {
   bool totalMessagesSent :1;
   bool icon :1;
   bool programmingLanguage :1;
+  bool subscribers :1;
 } _Service__isset;
 
 class Service {
@@ -406,20 +410,22 @@ class Service {
   Service(const Service&);
   Service& operator=(const Service&);
   Service() : timeOfRegistration(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0) {
+
   }
 
   virtual ~Service() throw();
-  std::vector<Developer>  owners;
+  std::vector<Human>  owners;
   timestamp timeOfRegistration;
   std::string name;
   std::string id;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
+  std::vector<Human>  subscribers;
 
   _Service__isset __isset;
 
-  void __set_owners(const std::vector<Developer> & val);
+  void __set_owners(const std::vector<Human> & val);
 
   void __set_timeOfRegistration(const timestamp val);
 
@@ -432,6 +438,8 @@ class Service {
   void __set_icon(const Image& val);
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
+
+  void __set_subscribers(const std::vector<Human> & val);
 
   bool operator == (const Service & rhs) const
   {
@@ -452,6 +460,10 @@ class Service {
     if (__isset.programmingLanguage != rhs.__isset.programmingLanguage)
       return false;
     else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
+      return false;
+    if (__isset.subscribers != rhs.__isset.subscribers)
+      return false;
+    else if (__isset.subscribers && !(subscribers == rhs.subscribers))
       return false;
     return true;
   }

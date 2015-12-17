@@ -109,7 +109,7 @@ ServiceToken.prototype.write = function(output) {
   return;
 };
 
-DeveloperToken = module.exports.DeveloperToken = function(args) {
+HumanToken = module.exports.HumanToken = function(args) {
   this.token = null;
   this.timeOfExpiration = null;
   this.organization = null;
@@ -133,8 +133,8 @@ DeveloperToken = module.exports.DeveloperToken = function(args) {
     }
   }
 };
-DeveloperToken.prototype = {};
-DeveloperToken.prototype.read = function(input) {
+HumanToken.prototype = {};
+HumanToken.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -191,8 +191,8 @@ DeveloperToken.prototype.read = function(input) {
   return;
 };
 
-DeveloperToken.prototype.write = function(output) {
-  output.writeStructBegin('DeveloperToken');
+HumanToken.prototype.write = function(output) {
+  output.writeStructBegin('HumanToken');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRING, 1);
     output.writeString(this.token);

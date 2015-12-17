@@ -4,7 +4,7 @@ namespace cpp   aroma.banana.thrift.service
 
 /*
  * Defined in this File is the Banana Service API and all of the operations
- * that can be performed by both Developers and their services.
+ * that can be performed by both Humans and their services.
  */
 
 include "Authentication.thrift"
@@ -20,7 +20,7 @@ include "Notifications.thrift"
  *
  * Tag definitions:
  *
- * #developer   - Signifies an Operation designed to be used by Humans.
+ * #human   - Signifies an Operation designed to be used by Humans.
  * #service     - Signifies an Operation designed to be used by Computers.
  * #owner       - Signifies an Operation that can only be performed by an "Owner".
  */
@@ -30,10 +30,10 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.DeveloperToken DeveloperToken
+typedef Authentication.HumanToken HumanToken
 typedef Authentication.ServiceToken ServiceToken
 typedef Banana.Image Image
-typedef Banana.Developer Developer
+typedef Banana.Human Human
 typedef Banana.Service Service
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
@@ -76,7 +76,7 @@ struct SignInRequest
 
 struct SignInResponse
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
 }
 
 /**
@@ -92,11 +92,11 @@ struct SignUpRequest
 }
 
 /**
- * Receive a Developer Token after Signing Up.
+ * Receive a Human Token after Signing Up.
  */
 struct SignUpResponse
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
 }
 
 /** The Maximum Dimensions for an Icon submitted with a Service. */
@@ -112,7 +112,7 @@ struct ProvisionServiceRequest
     3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: string organization;
     5: optional Image icon;
-    6: DeveloperToken developerToken;
+    6: HumanToken humanToken;
 }
 
 struct ProvisionServiceResponse
@@ -128,7 +128,7 @@ struct SubscribeToServiceRequest
     2: string serviceName;
     3: optional string organization;
     4: optional bool shared = false;
-    5: DeveloperToken developerToken;
+    5: HumanToken humanToken;
 }
 
 struct SubscribeToServiceResponse
@@ -141,7 +141,7 @@ struct SubscribeToServiceResponse
 struct RegisterHealthCheckRequest
 {
    1: Endpoint endpoint;
-   2: DeveloperToken developerToken;
+   2: HumanToken humanToken;
 }
 
 struct RegisterHealthCheckResponse
@@ -153,7 +153,7 @@ struct RenewServiceTokenRequest
 {
     1: ServiceToken serviceToken;
     2: Banana.TimePeriod timePeriod;
-    3: DeveloperToken developerToken;
+    3: HumanToken humanToken;
 }
 
 struct RenewServiceTokenResponse
@@ -164,7 +164,7 @@ struct RenewServiceTokenResponse
 struct RegenerateTokenRequest
 {
     1: string serviceId;
-    2: DeveloperToken developerToken;
+    2: HumanToken humanToken;
 }
 
 struct RegenerateTokenResponse
@@ -174,7 +174,7 @@ struct RegenerateTokenResponse
 
 struct DeleteMessageRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string messageId;
     3: string serviceId;
     /** Use for Batch Deletes. */
@@ -188,13 +188,13 @@ struct DeleteMessageResponse
 
 struct DeleteAllMessagesRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string serviceId;
 }
 
 struct HideMessageRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string messageId;
     3: string serviceId;
     /** Use for Batch Hides. */
@@ -208,7 +208,7 @@ struct HideMessageResponse
 
 struct HideAllMessagesRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string serviceId;
 }
 
@@ -218,11 +218,11 @@ struct HideAllMessagesResponse
 }
 
 /**
- * Save a Developer's Personal Contact Channel for future use.
+ * Save a Human's Personal Contact Channel for future use.
  */
 struct SaveChannelRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: BananaChannel channel;
 }
 
@@ -234,7 +234,7 @@ struct SaveChannelResponse
 
 struct RemoveSavedChannelRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: BananaChannel channel;
 }
 
@@ -250,7 +250,7 @@ struct RemoveSavedChannelResponse
  */
 struct SnoozeChannelRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: BananaChannel channel;
 }
 
@@ -265,7 +265,7 @@ struct SnoozeChannelResponse
 
 struct GetMyServicesRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
 }
 
 struct GetMyServicesResponse
@@ -275,7 +275,7 @@ struct GetMyServicesResponse
 
 struct GetServiceInfoRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string serviceId;
 }
 
@@ -286,7 +286,7 @@ struct GetServiceInfoResponse
 
 struct GetDashboardRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
 }
 
 struct GetDashboardResponse
@@ -300,7 +300,7 @@ struct GetDashboardResponse
 
 struct SearchForServicesRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string searchTerm;
     3: optional string organization;
 }
@@ -312,19 +312,19 @@ struct SearchForServicesResponse
 
 struct GetServiceSubscribersRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
     2: string serviceId;
     3: string organization;
 }
 
 struct GetServiceSubscribersResponse
 {
-    1: list<Developer> developers = [];
+    1: list<Human> humans = [];
 }
 
 struct GetMySavedChannelsRequest
 {
-    1: DeveloperToken developerToken;
+    1: HumanToken humanToken;
 }
 
 struct GetMySavedChannelsResponse
@@ -370,13 +370,13 @@ service BananaService
 
 
     //===============================================
-    // Operations for Developers
+    // Operations for Humans
     //===============================================
 
     /**
      * Sign in to the App and using a valid OAUTH Token.
      *
-     * #developer
+     * #human
      */
     SignInResponse signIn(1: SignInRequest request) throws(1 : OperationFailedException ex1,
                                                            2 : InvalidArgumentException ex2,
@@ -393,7 +393,7 @@ service BananaService
     /**
      * Provision a New Service to keep tabs on.
      *
-     * #developer
+     * #human
      */
     ProvisionServiceResponse provisionService(1: ProvisionServiceRequest request) throws(1 : OperationFailedException ex1,
                                                                                          2 : InvalidArgumentException ex2,
@@ -402,7 +402,7 @@ service BananaService
     /**
      * Subscribe to an existing service to get notifications.
      *
-     * #developer
+     * #human
      */
     SubscribeToServiceResponse subscribeToService(1: SubscribeToServiceRequest request) throws(1 : OperationFailedException ex1,
                                                                                                2 : InvalidArgumentException ex2,
@@ -416,7 +416,7 @@ service BananaService
      * Register an existing Service for Health Pokes. The Banana Service
      * will then periodically poke the Service for health status.
      *
-     * #developer
+     * #human
      * #owner
      */
     RegisterHealthCheckResponse registerHealthCheck(1: RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
@@ -429,7 +429,7 @@ service BananaService
      * Renew a Service Token that is close to being expired.
      * Only an "owner" can perform this operation.
      *
-     * #developer
+     * #human
      * #owner
      */
     RenewServiceTokenResponse renewServiceToken(1: RenewServiceTokenRequest request) throws(1 : OperationFailedException ex1,
@@ -443,7 +443,7 @@ service BananaService
      * Keep in mind that this will invalidate the existing ServiceToken.
      * Only an "owner" can perform this opeartion.
      *
-     * #developer
+     * #human
      * #owner
      */
     RegenerateTokenResponse regenerateToken(1: RegenerateTokenRequest request) throws(1 : OperationFailedException ex1,
@@ -457,7 +457,7 @@ service BananaService
     /**
      * Perform a Search on all the services registered to the Banana Service by searching for its title.
      *
-     * #developer
+     * #human
      */
     SearchForServicesResponse searchForServices(1: SearchForServicesRequest request) throws(1 : OperationFailedException ex1,
                                                                                             2 : InvalidArgumentException ex2,
@@ -485,9 +485,9 @@ service BananaService
                                                                                 5 : ChannelDoesNotExistException ex5)
     
     /**
-     * Get a list of all Developers subscribed to a Service.
+     * Get a list of all Humans subscribed to a Service.
      *
-     * #developer
+     * #human
      */
     GetServiceSubscribersResponse getServiceSubscribers(1: GetServiceSubscribersRequest request) throws(1 : OperationFailedException ex1,
                                                                                                         2 : InvalidArgumentException ex2,
@@ -507,7 +507,7 @@ service BananaService
     /**
      * Get details about a Service from it's unique ID
      *
-     * #developer
+     * #human
      */
     GetServiceInfoResponse getServiceInfo(1: GetServiceInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                                    2 : InvalidArgumentException ex2,

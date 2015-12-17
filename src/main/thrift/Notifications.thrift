@@ -4,7 +4,7 @@ namespace cpp   aroma.banana.thrift.notifications
 
 /*
  * Defined in this File are the Banana Service Notifications
- * and Event types that can be sent to a Developer.
+ * and Event types that can be sent to a Human.
  */
 
 include "Authentication.thrift"
@@ -15,7 +15,7 @@ typedef Authentication.ServiceToken ServiceToken
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
-typedef Banana.Developer Developer
+typedef Banana.Human Human
 typedef Banana.Service Service
 
 struct HealthCheckFailed
@@ -28,13 +28,13 @@ struct HealthCheckBackToNormal
 
 struct ServiceTokenRenewed
 {
-    1: Developer developer;
+    1: Human human;
     2: optional ServiceToken serviceToken;
 }
 
 struct ServiceTokenRegenerated
 {
-    1: Developer developer;
+    1: Human human;
     2: optional ServiceToken serviceToken;
 }
 

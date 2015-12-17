@@ -29,7 +29,7 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::Developer Developer;
+typedef class  ::aroma::banana::thrift::Human Human;
 
 typedef class  ::aroma::banana::thrift::Service Service;
 
@@ -118,8 +118,8 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
 }
 
 typedef struct _ServiceTokenRenewed__isset {
-  _ServiceTokenRenewed__isset() : developer(false), serviceToken(false) {}
-  bool developer :1;
+  _ServiceTokenRenewed__isset() : human(false), serviceToken(false) {}
+  bool human :1;
   bool serviceToken :1;
 } _ServiceTokenRenewed__isset;
 
@@ -132,18 +132,18 @@ class ServiceTokenRenewed {
   }
 
   virtual ~ServiceTokenRenewed() throw();
-  Developer developer;
+  Human human;
   ServiceToken serviceToken;
 
   _ServiceTokenRenewed__isset __isset;
 
-  void __set_developer(const Developer& val);
+  void __set_human(const Human& val);
 
   void __set_serviceToken(const ServiceToken& val);
 
   bool operator == (const ServiceTokenRenewed & rhs) const
   {
-    if (!(developer == rhs.developer))
+    if (!(human == rhs.human))
       return false;
     if (__isset.serviceToken != rhs.__isset.serviceToken)
       return false;
@@ -172,8 +172,8 @@ inline std::ostream& operator<<(std::ostream& out, const ServiceTokenRenewed& ob
 }
 
 typedef struct _ServiceTokenRegenerated__isset {
-  _ServiceTokenRegenerated__isset() : developer(false), serviceToken(false) {}
-  bool developer :1;
+  _ServiceTokenRegenerated__isset() : human(false), serviceToken(false) {}
+  bool human :1;
   bool serviceToken :1;
 } _ServiceTokenRegenerated__isset;
 
@@ -186,18 +186,18 @@ class ServiceTokenRegenerated {
   }
 
   virtual ~ServiceTokenRegenerated() throw();
-  Developer developer;
+  Human human;
   ServiceToken serviceToken;
 
   _ServiceTokenRegenerated__isset __isset;
 
-  void __set_developer(const Developer& val);
+  void __set_human(const Human& val);
 
   void __set_serviceToken(const ServiceToken& val);
 
   bool operator == (const ServiceTokenRegenerated & rhs) const
   {
-    if (!(developer == rhs.developer))
+    if (!(human == rhs.human))
       return false;
     if (__isset.serviceToken != rhs.__isset.serviceToken)
       return false;

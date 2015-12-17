@@ -47,7 +47,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Sign in to the App and using a valid OAUTH Token.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -69,7 +69,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Provision a New Service to keep tabs on.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -81,7 +81,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Subscribe to an existing service to get notifications.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -94,7 +94,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * Register an existing Service for Health Pokes. The Banana Service
    * will then periodically poke the Service for health status.
    * 
-   * #developer
+   * #human
    * #owner
    * 
    * @param request
@@ -108,7 +108,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * Renew a Service Token that is close to being expired.
    * Only an "owner" can perform this operation.
    * 
-   * #developer
+   * #human
    * #owner
    * 
    * @param request
@@ -123,7 +123,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * Keep in mind that this will invalidate the existing ServiceToken.
    * Only an "owner" can perform this opeartion.
    * 
-   * #developer
+   * #human
    * #owner
    * 
    * @param request
@@ -136,7 +136,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Perform a Search on all the services registered to the Banana Service by searching for its title.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -161,9 +161,9 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Get a list of all Developers subscribed to a Service.
+   * Get a list of all Humans subscribed to a Service.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -185,7 +185,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Get details about a Service from it's unique ID
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */

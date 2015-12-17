@@ -22,8 +22,11 @@ ImageType = {
   'PNG' : 2
 };
 Role = {
-  'DEV' : 1,
-  'OWNER' : 2
+  'DEVELOPER' : 1,
+  'OPERATIONS' : 2,
+  'MANAGER' : 3,
+  'PRODUCT' : 4,
+  'QA' : 5
 };
 ProgrammingLanguage = {
   'JAVA' : 0,
@@ -391,11 +394,11 @@ Image.prototype.write = function(output) {
   return;
 };
 
-Developer = function(args) {
+Human = function(args) {
   this.email = null;
   this.name = null;
   this.username = null;
-  this.role = null;
+  this.roles = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -406,13 +409,13 @@ Developer = function(args) {
     if (args.username !== undefined && args.username !== null) {
       this.username = args.username;
     }
-    if (args.role !== undefined && args.role !== null) {
-      this.role = args.role;
+    if (args.roles !== undefined && args.roles !== null) {
+      this.roles = Thrift.copyList(args.roles, [null]);
     }
   }
 };
-Developer.prototype = {};
-Developer.prototype.read = function(input) {
+Human.prototype = {};
+Human.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -447,8 +450,21 @@ Developer.prototype.read = function(input) {
       }
       break;
       case 4:
-      if (ftype == Thrift.Type.I32) {
-        this.role = input.readI32().value;
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.roles = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readI32().value;
+          this.roles.push(elem6);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
@@ -462,8 +478,8 @@ Developer.prototype.read = function(input) {
   return;
 };
 
-Developer.prototype.write = function(output) {
-  output.writeStructBegin('Developer');
+Human.prototype.write = function(output) {
+  output.writeStructBegin('Human');
   if (this.email !== null && this.email !== undefined) {
     output.writeFieldBegin('email', Thrift.Type.STRING, 1);
     output.writeString(this.email);
@@ -479,9 +495,18 @@ Developer.prototype.write = function(output) {
     output.writeString(this.username);
     output.writeFieldEnd();
   }
-  if (this.role !== null && this.role !== undefined) {
-    output.writeFieldBegin('role', Thrift.Type.I32, 4);
-    output.writeI32(this.role);
+  if (this.roles !== null && this.roles !== undefined) {
+    output.writeFieldBegin('roles', Thrift.Type.LIST, 4);
+    output.writeListBegin(Thrift.Type.I32, this.roles.length);
+    for (var iter7 in this.roles)
+    {
+      if (this.roles.hasOwnProperty(iter7))
+      {
+        iter7 = this.roles[iter7];
+        output.writeI32(iter7);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -497,9 +522,10 @@ Service = function(args) {
   this.totalMessagesSent = null;
   this.icon = null;
   this.programmingLanguage = null;
+  this.subscribers = [];
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
-      this.owners = Thrift.copyList(args.owners, [Developer]);
+      this.owners = Thrift.copyList(args.owners, [Human]);
     }
     if (args.timeOfRegistration !== undefined && args.timeOfRegistration !== null) {
       this.timeOfRegistration = args.timeOfRegistration;
@@ -519,6 +545,9 @@ Service = function(args) {
     if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
       this.programmingLanguage = args.programmingLanguage;
     }
+    if (args.subscribers !== undefined && args.subscribers !== null) {
+      this.subscribers = Thrift.copyList(args.subscribers, [Human]);
+    }
   }
 };
 Service.prototype = {};
@@ -537,19 +566,19 @@ Service.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.owners = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = new Developer();
-          elem6.read(input);
-          this.owners.push(elem6);
+          var elem14 = null;
+          elem14 = new Human();
+          elem14.read(input);
+          this.owners.push(elem14);
         }
         input.readListEnd();
       } else {
@@ -599,6 +628,27 @@ Service.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 8:
+      if (ftype == Thrift.Type.LIST) {
+        var _size15 = 0;
+        var _rtmp319;
+        this.subscribers = [];
+        var _etype18 = 0;
+        _rtmp319 = input.readListBegin();
+        _etype18 = _rtmp319.etype;
+        _size15 = _rtmp319.size;
+        for (var _i20 = 0; _i20 < _size15; ++_i20)
+        {
+          var elem21 = null;
+          elem21 = new Human();
+          elem21.read(input);
+          this.subscribers.push(elem21);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -613,12 +663,12 @@ Service.prototype.write = function(output) {
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.owners.length);
-    for (var iter7 in this.owners)
+    for (var iter22 in this.owners)
     {
-      if (this.owners.hasOwnProperty(iter7))
+      if (this.owners.hasOwnProperty(iter22))
       {
-        iter7 = this.owners[iter7];
-        iter7.write(output);
+        iter22 = this.owners[iter22];
+        iter22.write(output);
       }
     }
     output.writeListEnd();
@@ -652,6 +702,20 @@ Service.prototype.write = function(output) {
   if (this.programmingLanguage !== null && this.programmingLanguage !== undefined) {
     output.writeFieldBegin('programmingLanguage', Thrift.Type.I32, 7);
     output.writeI32(this.programmingLanguage);
+    output.writeFieldEnd();
+  }
+  if (this.subscribers !== null && this.subscribers !== undefined) {
+    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 8);
+    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
+    for (var iter23 in this.subscribers)
+    {
+      if (this.subscribers.hasOwnProperty(iter23))
+      {
+        iter23 = this.subscribers[iter23];
+        iter23.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();

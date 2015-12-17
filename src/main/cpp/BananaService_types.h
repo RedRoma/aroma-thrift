@@ -31,13 +31,13 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::DeveloperToken DeveloperToken;
+typedef class  ::aroma::banana::thrift::authentication::HumanToken HumanToken;
 
 typedef class  ::aroma::banana::thrift::authentication::ServiceToken ServiceToken;
 
 typedef class  ::aroma::banana::thrift::Image Image;
 
-typedef class  ::aroma::banana::thrift::Developer Developer;
+typedef class  ::aroma::banana::thrift::Human Human;
 
 typedef class  ::aroma::banana::thrift::Service Service;
 
@@ -200,8 +200,8 @@ inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
 }
 
 typedef struct _SignInResponse__isset {
-  _SignInResponse__isset() : developerToken(false) {}
-  bool developerToken :1;
+  _SignInResponse__isset() : humanToken(false) {}
+  bool humanToken :1;
 } _SignInResponse__isset;
 
 class SignInResponse {
@@ -213,15 +213,15 @@ class SignInResponse {
   }
 
   virtual ~SignInResponse() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _SignInResponse__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const SignInResponse & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -316,8 +316,8 @@ inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
 }
 
 typedef struct _SignUpResponse__isset {
-  _SignUpResponse__isset() : developerToken(false) {}
-  bool developerToken :1;
+  _SignUpResponse__isset() : humanToken(false) {}
+  bool humanToken :1;
 } _SignUpResponse__isset;
 
 class SignUpResponse {
@@ -329,15 +329,15 @@ class SignUpResponse {
   }
 
   virtual ~SignUpResponse() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _SignUpResponse__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const SignUpResponse & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -362,13 +362,13 @@ inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 }
 
 typedef struct _ProvisionServiceRequest__isset {
-  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false), developerToken(false) {}
+  _ProvisionServiceRequest__isset() : token(false), serviceName(false), programmingLanguage(false), organization(false), icon(false), humanToken(false) {}
   bool token :1;
   bool serviceName :1;
   bool programmingLanguage :1;
   bool organization :1;
   bool icon :1;
-  bool developerToken :1;
+  bool humanToken :1;
 } _ProvisionServiceRequest__isset;
 
 class ProvisionServiceRequest {
@@ -385,7 +385,7 @@ class ProvisionServiceRequest {
    ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
   std::string organization;
   Image icon;
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _ProvisionServiceRequest__isset __isset;
 
@@ -399,7 +399,7 @@ class ProvisionServiceRequest {
 
   void __set_icon(const Image& val);
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const ProvisionServiceRequest & rhs) const
   {
@@ -417,7 +417,7 @@ class ProvisionServiceRequest {
       return false;
     else if (__isset.icon && !(icon == rhs.icon))
       return false;
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -500,12 +500,12 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionServiceRespons
 }
 
 typedef struct _SubscribeToServiceRequest__isset {
-  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false), shared(true), developerToken(false) {}
+  _SubscribeToServiceRequest__isset() : token(false), serviceName(false), organization(false), shared(true), humanToken(false) {}
   bool token :1;
   bool serviceName :1;
   bool organization :1;
   bool shared :1;
-  bool developerToken :1;
+  bool humanToken :1;
 } _SubscribeToServiceRequest__isset;
 
 class SubscribeToServiceRequest {
@@ -521,7 +521,7 @@ class SubscribeToServiceRequest {
   std::string serviceName;
   std::string organization;
   bool shared;
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _SubscribeToServiceRequest__isset __isset;
 
@@ -533,7 +533,7 @@ class SubscribeToServiceRequest {
 
   void __set_shared(const bool val);
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const SubscribeToServiceRequest & rhs) const
   {
@@ -549,7 +549,7 @@ class SubscribeToServiceRequest {
       return false;
     else if (__isset.shared && !(shared == rhs.shared))
       return false;
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -626,9 +626,9 @@ inline std::ostream& operator<<(std::ostream& out, const SubscribeToServiceRespo
 }
 
 typedef struct _RegisterHealthCheckRequest__isset {
-  _RegisterHealthCheckRequest__isset() : endpoint(false), developerToken(false) {}
+  _RegisterHealthCheckRequest__isset() : endpoint(false), humanToken(false) {}
   bool endpoint :1;
-  bool developerToken :1;
+  bool humanToken :1;
 } _RegisterHealthCheckRequest__isset;
 
 class RegisterHealthCheckRequest {
@@ -641,19 +641,19 @@ class RegisterHealthCheckRequest {
 
   virtual ~RegisterHealthCheckRequest() throw();
   Endpoint endpoint;
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _RegisterHealthCheckRequest__isset __isset;
 
   void __set_endpoint(const Endpoint& val);
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const RegisterHealthCheckRequest & rhs) const
   {
     if (!(endpoint == rhs.endpoint))
       return false;
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -726,10 +726,10 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResp
 }
 
 typedef struct _RenewServiceTokenRequest__isset {
-  _RenewServiceTokenRequest__isset() : serviceToken(false), timePeriod(false), developerToken(false) {}
+  _RenewServiceTokenRequest__isset() : serviceToken(false), timePeriod(false), humanToken(false) {}
   bool serviceToken :1;
   bool timePeriod :1;
-  bool developerToken :1;
+  bool humanToken :1;
 } _RenewServiceTokenRequest__isset;
 
 class RenewServiceTokenRequest {
@@ -743,7 +743,7 @@ class RenewServiceTokenRequest {
   virtual ~RenewServiceTokenRequest() throw();
   ServiceToken serviceToken;
    ::aroma::banana::thrift::TimePeriod timePeriod;
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _RenewServiceTokenRequest__isset __isset;
 
@@ -751,7 +751,7 @@ class RenewServiceTokenRequest {
 
   void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const RenewServiceTokenRequest & rhs) const
   {
@@ -759,7 +759,7 @@ class RenewServiceTokenRequest {
       return false;
     if (!(timePeriod == rhs.timePeriod))
       return false;
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -830,9 +830,9 @@ inline std::ostream& operator<<(std::ostream& out, const RenewServiceTokenRespon
 }
 
 typedef struct _RegenerateTokenRequest__isset {
-  _RegenerateTokenRequest__isset() : serviceId(false), developerToken(false) {}
+  _RegenerateTokenRequest__isset() : serviceId(false), humanToken(false) {}
   bool serviceId :1;
-  bool developerToken :1;
+  bool humanToken :1;
 } _RegenerateTokenRequest__isset;
 
 class RegenerateTokenRequest {
@@ -845,19 +845,19 @@ class RegenerateTokenRequest {
 
   virtual ~RegenerateTokenRequest() throw();
   std::string serviceId;
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _RegenerateTokenRequest__isset __isset;
 
   void __set_serviceId(const std::string& val);
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const RegenerateTokenRequest & rhs) const
   {
     if (!(serviceId == rhs.serviceId))
       return false;
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -928,8 +928,8 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateTokenResponse
 }
 
 typedef struct _DeleteMessageRequest__isset {
-  _DeleteMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false), messageIds(true) {}
-  bool developerToken :1;
+  _DeleteMessageRequest__isset() : humanToken(false), messageId(false), serviceId(false), messageIds(true) {}
+  bool humanToken :1;
   bool messageId :1;
   bool serviceId :1;
   bool messageIds :1;
@@ -945,14 +945,14 @@ class DeleteMessageRequest {
   }
 
   virtual ~DeleteMessageRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string messageId;
   std::string serviceId;
   std::vector<std::string>  messageIds;
 
   _DeleteMessageRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_messageId(const std::string& val);
 
@@ -962,7 +962,7 @@ class DeleteMessageRequest {
 
   bool operator == (const DeleteMessageRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(messageId == rhs.messageId))
       return false;
@@ -1030,8 +1030,8 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteMessageResponse& 
 }
 
 typedef struct _DeleteAllMessagesRequest__isset {
-  _DeleteAllMessagesRequest__isset() : developerToken(false), serviceId(false) {}
-  bool developerToken :1;
+  _DeleteAllMessagesRequest__isset() : humanToken(false), serviceId(false) {}
+  bool humanToken :1;
   bool serviceId :1;
 } _DeleteAllMessagesRequest__isset;
 
@@ -1044,18 +1044,18 @@ class DeleteAllMessagesRequest {
   }
 
   virtual ~DeleteAllMessagesRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string serviceId;
 
   _DeleteAllMessagesRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_serviceId(const std::string& val);
 
   bool operator == (const DeleteAllMessagesRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(serviceId == rhs.serviceId))
       return false;
@@ -1082,8 +1082,8 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteAllMessagesReques
 }
 
 typedef struct _HideMessageRequest__isset {
-  _HideMessageRequest__isset() : developerToken(false), messageId(false), serviceId(false), messageIds(true) {}
-  bool developerToken :1;
+  _HideMessageRequest__isset() : humanToken(false), messageId(false), serviceId(false), messageIds(true) {}
+  bool humanToken :1;
   bool messageId :1;
   bool serviceId :1;
   bool messageIds :1;
@@ -1099,14 +1099,14 @@ class HideMessageRequest {
   }
 
   virtual ~HideMessageRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string messageId;
   std::string serviceId;
   std::vector<std::string>  messageIds;
 
   _HideMessageRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_messageId(const std::string& val);
 
@@ -1116,7 +1116,7 @@ class HideMessageRequest {
 
   bool operator == (const HideMessageRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(messageId == rhs.messageId))
       return false;
@@ -1184,8 +1184,8 @@ inline std::ostream& operator<<(std::ostream& out, const HideMessageResponse& ob
 }
 
 typedef struct _HideAllMessagesRequest__isset {
-  _HideAllMessagesRequest__isset() : developerToken(false), serviceId(false) {}
-  bool developerToken :1;
+  _HideAllMessagesRequest__isset() : humanToken(false), serviceId(false) {}
+  bool humanToken :1;
   bool serviceId :1;
 } _HideAllMessagesRequest__isset;
 
@@ -1198,18 +1198,18 @@ class HideAllMessagesRequest {
   }
 
   virtual ~HideAllMessagesRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string serviceId;
 
   _HideAllMessagesRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_serviceId(const std::string& val);
 
   bool operator == (const HideAllMessagesRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(serviceId == rhs.serviceId))
       return false;
@@ -1271,8 +1271,8 @@ inline std::ostream& operator<<(std::ostream& out, const HideAllMessagesResponse
 }
 
 typedef struct _SaveChannelRequest__isset {
-  _SaveChannelRequest__isset() : developerToken(false), channel(false) {}
-  bool developerToken :1;
+  _SaveChannelRequest__isset() : humanToken(false), channel(false) {}
+  bool humanToken :1;
   bool channel :1;
 } _SaveChannelRequest__isset;
 
@@ -1285,18 +1285,18 @@ class SaveChannelRequest {
   }
 
   virtual ~SaveChannelRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   BananaChannel channel;
 
   _SaveChannelRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const SaveChannelRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1377,8 +1377,8 @@ inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& ob
 }
 
 typedef struct _RemoveSavedChannelRequest__isset {
-  _RemoveSavedChannelRequest__isset() : developerToken(false), channel(false) {}
-  bool developerToken :1;
+  _RemoveSavedChannelRequest__isset() : humanToken(false), channel(false) {}
+  bool humanToken :1;
   bool channel :1;
 } _RemoveSavedChannelRequest__isset;
 
@@ -1391,18 +1391,18 @@ class RemoveSavedChannelRequest {
   }
 
   virtual ~RemoveSavedChannelRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   BananaChannel channel;
 
   _RemoveSavedChannelRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const RemoveSavedChannelRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1483,8 +1483,8 @@ inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRespo
 }
 
 typedef struct _SnoozeChannelRequest__isset {
-  _SnoozeChannelRequest__isset() : developerToken(false), channel(false) {}
-  bool developerToken :1;
+  _SnoozeChannelRequest__isset() : humanToken(false), channel(false) {}
+  bool humanToken :1;
   bool channel :1;
 } _SnoozeChannelRequest__isset;
 
@@ -1497,18 +1497,18 @@ class SnoozeChannelRequest {
   }
 
   virtual ~SnoozeChannelRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   BananaChannel channel;
 
   _SnoozeChannelRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const SnoozeChannelRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1581,8 +1581,8 @@ inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& 
 }
 
 typedef struct _GetMyServicesRequest__isset {
-  _GetMyServicesRequest__isset() : developerToken(false) {}
-  bool developerToken :1;
+  _GetMyServicesRequest__isset() : humanToken(false) {}
+  bool humanToken :1;
 } _GetMyServicesRequest__isset;
 
 class GetMyServicesRequest {
@@ -1594,15 +1594,15 @@ class GetMyServicesRequest {
   }
 
   virtual ~GetMyServicesRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _GetMyServicesRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const GetMyServicesRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -1673,8 +1673,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetMyServicesResponse& 
 }
 
 typedef struct _GetServiceInfoRequest__isset {
-  _GetServiceInfoRequest__isset() : developerToken(false), serviceId(false) {}
-  bool developerToken :1;
+  _GetServiceInfoRequest__isset() : humanToken(false), serviceId(false) {}
+  bool humanToken :1;
   bool serviceId :1;
 } _GetServiceInfoRequest__isset;
 
@@ -1687,18 +1687,18 @@ class GetServiceInfoRequest {
   }
 
   virtual ~GetServiceInfoRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string serviceId;
 
   _GetServiceInfoRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_serviceId(const std::string& val);
 
   bool operator == (const GetServiceInfoRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(serviceId == rhs.serviceId))
       return false;
@@ -1771,8 +1771,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetServiceInfoResponse&
 }
 
 typedef struct _GetDashboardRequest__isset {
-  _GetDashboardRequest__isset() : developerToken(false) {}
-  bool developerToken :1;
+  _GetDashboardRequest__isset() : humanToken(false) {}
+  bool humanToken :1;
 } _GetDashboardRequest__isset;
 
 class GetDashboardRequest {
@@ -1784,15 +1784,15 @@ class GetDashboardRequest {
   }
 
   virtual ~GetDashboardRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _GetDashboardRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const GetDashboardRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -1882,8 +1882,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& o
 }
 
 typedef struct _SearchForServicesRequest__isset {
-  _SearchForServicesRequest__isset() : developerToken(false), searchTerm(false), organization(false) {}
-  bool developerToken :1;
+  _SearchForServicesRequest__isset() : humanToken(false), searchTerm(false), organization(false) {}
+  bool humanToken :1;
   bool searchTerm :1;
   bool organization :1;
 } _SearchForServicesRequest__isset;
@@ -1897,13 +1897,13 @@ class SearchForServicesRequest {
   }
 
   virtual ~SearchForServicesRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string searchTerm;
   std::string organization;
 
   _SearchForServicesRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_searchTerm(const std::string& val);
 
@@ -1911,7 +1911,7 @@ class SearchForServicesRequest {
 
   bool operator == (const SearchForServicesRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(searchTerm == rhs.searchTerm))
       return false;
@@ -1989,8 +1989,8 @@ inline std::ostream& operator<<(std::ostream& out, const SearchForServicesRespon
 }
 
 typedef struct _GetServiceSubscribersRequest__isset {
-  _GetServiceSubscribersRequest__isset() : developerToken(false), serviceId(false), organization(false) {}
-  bool developerToken :1;
+  _GetServiceSubscribersRequest__isset() : humanToken(false), serviceId(false), organization(false) {}
+  bool humanToken :1;
   bool serviceId :1;
   bool organization :1;
 } _GetServiceSubscribersRequest__isset;
@@ -2004,13 +2004,13 @@ class GetServiceSubscribersRequest {
   }
 
   virtual ~GetServiceSubscribersRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
   std::string serviceId;
   std::string organization;
 
   _GetServiceSubscribersRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   void __set_serviceId(const std::string& val);
 
@@ -2018,7 +2018,7 @@ class GetServiceSubscribersRequest {
 
   bool operator == (const GetServiceSubscribersRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(serviceId == rhs.serviceId))
       return false;
@@ -2047,8 +2047,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetServiceSubscribersRe
 }
 
 typedef struct _GetServiceSubscribersResponse__isset {
-  _GetServiceSubscribersResponse__isset() : developers(true) {}
-  bool developers :1;
+  _GetServiceSubscribersResponse__isset() : humans(true) {}
+  bool humans :1;
 } _GetServiceSubscribersResponse__isset;
 
 class GetServiceSubscribersResponse {
@@ -2061,15 +2061,15 @@ class GetServiceSubscribersResponse {
   }
 
   virtual ~GetServiceSubscribersResponse() throw();
-  std::vector<Developer>  developers;
+  std::vector<Human>  humans;
 
   _GetServiceSubscribersResponse__isset __isset;
 
-  void __set_developers(const std::vector<Developer> & val);
+  void __set_humans(const std::vector<Human> & val);
 
   bool operator == (const GetServiceSubscribersResponse & rhs) const
   {
-    if (!(developers == rhs.developers))
+    if (!(humans == rhs.humans))
       return false;
     return true;
   }
@@ -2094,8 +2094,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetServiceSubscribersRe
 }
 
 typedef struct _GetMySavedChannelsRequest__isset {
-  _GetMySavedChannelsRequest__isset() : developerToken(false) {}
-  bool developerToken :1;
+  _GetMySavedChannelsRequest__isset() : humanToken(false) {}
+  bool humanToken :1;
 } _GetMySavedChannelsRequest__isset;
 
 class GetMySavedChannelsRequest {
@@ -2107,15 +2107,15 @@ class GetMySavedChannelsRequest {
   }
 
   virtual ~GetMySavedChannelsRequest() throw();
-  DeveloperToken developerToken;
+  HumanToken humanToken;
 
   _GetMySavedChannelsRequest__isset __isset;
 
-  void __set_developerToken(const DeveloperToken& val);
+  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const GetMySavedChannelsRequest & rhs) const
   {
-    if (!(developerToken == rhs.developerToken))
+    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }

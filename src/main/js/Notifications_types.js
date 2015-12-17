@@ -62,11 +62,11 @@ HealthCheckBackToNormal.prototype.write = function(output) {
 };
 
 ServiceTokenRenewed = function(args) {
-  this.developer = null;
+  this.human = null;
   this.serviceToken = null;
   if (args) {
-    if (args.developer !== undefined && args.developer !== null) {
-      this.developer = new Developer(args.developer);
+    if (args.human !== undefined && args.human !== null) {
+      this.human = new Human(args.human);
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new ServiceToken(args.serviceToken);
@@ -89,8 +89,8 @@ ServiceTokenRenewed.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.developer = new Developer();
-        this.developer.read(input);
+        this.human = new Human();
+        this.human.read(input);
       } else {
         input.skip(ftype);
       }
@@ -114,9 +114,9 @@ ServiceTokenRenewed.prototype.read = function(input) {
 
 ServiceTokenRenewed.prototype.write = function(output) {
   output.writeStructBegin('ServiceTokenRenewed');
-  if (this.developer !== null && this.developer !== undefined) {
-    output.writeFieldBegin('developer', Thrift.Type.STRUCT, 1);
-    this.developer.write(output);
+  if (this.human !== null && this.human !== undefined) {
+    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
+    this.human.write(output);
     output.writeFieldEnd();
   }
   if (this.serviceToken !== null && this.serviceToken !== undefined) {
@@ -130,11 +130,11 @@ ServiceTokenRenewed.prototype.write = function(output) {
 };
 
 ServiceTokenRegenerated = function(args) {
-  this.developer = null;
+  this.human = null;
   this.serviceToken = null;
   if (args) {
-    if (args.developer !== undefined && args.developer !== null) {
-      this.developer = new Developer(args.developer);
+    if (args.human !== undefined && args.human !== null) {
+      this.human = new Human(args.human);
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new ServiceToken(args.serviceToken);
@@ -157,8 +157,8 @@ ServiceTokenRegenerated.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.developer = new Developer();
-        this.developer.read(input);
+        this.human = new Human();
+        this.human.read(input);
       } else {
         input.skip(ftype);
       }
@@ -182,9 +182,9 @@ ServiceTokenRegenerated.prototype.read = function(input) {
 
 ServiceTokenRegenerated.prototype.write = function(output) {
   output.writeStructBegin('ServiceTokenRegenerated');
-  if (this.developer !== null && this.developer !== undefined) {
-    output.writeFieldBegin('developer', Thrift.Type.STRUCT, 1);
-    this.developer.write(output);
+  if (this.human !== null && this.human !== undefined) {
+    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
+    this.human.write(output);
     output.writeFieldEnd();
   }
   if (this.serviceToken !== null && this.serviceToken !== undefined) {

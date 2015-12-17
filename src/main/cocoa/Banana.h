@@ -39,8 +39,11 @@ enum Banana_ImageType {
 };
 
 enum Banana_Role {
-  Role_DEV = 1,
-  Role_OWNER = 2
+  Role_DEVELOPER = 1,
+  Role_OPERATIONS = 2,
+  Role_MANAGER = 3,
+  Role_PRODUCT = 4,
+  Role_QA = 5
 };
 
 enum Banana_ProgrammingLanguage {
@@ -248,27 +251,27 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_Developer : NSObject <TBase, NSCoding> {
+@interface Banana_Human : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __name;
   NSString * __username;
-  int __role;
+  NSMutableArray * __roles;
 
   BOOL __email_isset;
   BOOL __name_isset;
   BOOL __username_isset;
-  BOOL __role_isset;
+  BOOL __roles_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, getter=role, setter=setRole:) int role;
+@property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableArray * roles;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username role: (int) role;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username roles: (NSMutableArray *) roles;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -294,10 +297,10 @@ typedef int64_t Banana_timestamp;
 - (BOOL) usernameIsSet;
 
 #if !__has_feature(objc_arc)
-- (int) role;
-- (void) setRole: (int) role;
+- (NSMutableArray *) roles;
+- (void) setRoles: (NSMutableArray *) roles;
 #endif
-- (BOOL) roleIsSet;
+- (BOOL) rolesIsSet;
 
 @end
 
@@ -309,6 +312,7 @@ typedef int64_t Banana_timestamp;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
   int __programmingLanguage;
+  NSMutableArray * __subscribers;
 
   BOOL __owners_isset;
   BOOL __timeOfRegistration_isset;
@@ -317,6 +321,7 @@ typedef int64_t Banana_timestamp;
   BOOL __totalMessagesSent_isset;
   BOOL __icon_isset;
   BOOL __programmingLanguage_isset;
+  BOOL __subscribers_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -327,10 +332,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
+@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableArray * subscribers;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage;
+- (id) initWithOwners: (NSMutableArray *) owners timeOfRegistration: (Banana_timestamp) timeOfRegistration name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -378,6 +384,12 @@ typedef int64_t Banana_timestamp;
 - (void) setProgrammingLanguage: (int) programmingLanguage;
 #endif
 - (BOOL) programmingLanguageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) subscribers;
+- (void) setSubscribers: (NSMutableArray *) subscribers;
+#endif
+- (BOOL) subscribersIsSet;
 
 @end
 

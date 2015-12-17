@@ -189,11 +189,11 @@
   return self;
 }
 
-- (id) initWithDeveloper: (BananaNotifications_Developer) developer serviceToken: (BananaNotifications_ServiceToken) serviceToken
+- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken
 {
   self = [super init];
-  __developer = [developer retain_stub];
-  __developer_isset = YES;
+  __human = [human retain_stub];
+  __human_isset = YES;
   __serviceToken = [serviceToken retain_stub];
   __serviceToken_isset = YES;
   return self;
@@ -202,10 +202,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"developer"])
+  if ([decoder containsValueForKey: @"human"])
   {
-    __developer = [[decoder decodeObjectForKey: @"developer"] retain_stub];
-    __developer_isset = YES;
+    __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
+    __human_isset = YES;
   }
   if ([decoder containsValueForKey: @"serviceToken"])
   {
@@ -217,9 +217,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__developer_isset)
+  if (__human_isset)
   {
-    [encoder encodeObject: __developer forKey: @"developer"];
+    [encoder encodeObject: __human forKey: @"human"];
   }
   if (__serviceToken_isset)
   {
@@ -230,10 +230,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __developer_isset ? 2654435761 : 0;
-  if (__developer_isset)
+  hash = (hash * 31) ^ __human_isset ? 2654435761 : 0;
+  if (__human_isset)
   {
-    hash = (hash * 31) ^ [__developer hash];
+    hash = (hash * 31) ^ [__human hash];
   }
   hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
   if (__serviceToken_isset)
@@ -252,8 +252,8 @@
     return NO;
   }
   BananaNotifications_ServiceTokenRenewed *other = (BananaNotifications_ServiceTokenRenewed *)anObject;
-  if ((__developer_isset != other->__developer_isset) ||
-      (__developer_isset && ((__developer || other->__developer) && ![__developer isEqual:other->__developer]))) {
+  if ((__human_isset != other->__human_isset) ||
+      (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
     return NO;
   }
   if ((__serviceToken_isset != other->__serviceToken_isset) ||
@@ -265,30 +265,30 @@
 
 - (void) dealloc
 {
-  [__developer release_stub];
+  [__human release_stub];
   [__serviceToken release_stub];
   [super dealloc_stub];
 }
 
-- (Banana_Developer *) developer {
-  return [[__developer retain_stub] autorelease_stub];
+- (Banana_Human *) human {
+  return [[__human retain_stub] autorelease_stub];
 }
 
-- (void) setDeveloper: (Banana_Developer *) developer {
-  [developer retain_stub];
-  [__developer release_stub];
-  __developer = developer;
-  __developer_isset = YES;
+- (void) setHuman: (Banana_Human *) human {
+  [human retain_stub];
+  [__human release_stub];
+  __human = human;
+  __human_isset = YES;
 }
 
-- (BOOL) developerIsSet {
-  return __developer_isset;
+- (BOOL) humanIsSet {
+  return __human_isset;
 }
 
-- (void) unsetDeveloper {
-  [__developer release_stub];
-  __developer = nil;
-  __developer_isset = NO;
+- (void) unsetHuman {
+  [__human release_stub];
+  __human = nil;
+  __human_isset = NO;
 }
 
 - (BananaAuthentication_ServiceToken *) serviceToken {
@@ -329,9 +329,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
+          Banana_Human *fieldValue = [[Banana_Human alloc] init];
           [fieldValue read: inProtocol];
-          [self setDeveloper: fieldValue];
+          [self setHuman: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -358,10 +358,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"ServiceTokenRenewed"];
-  if (__developer_isset) {
-    if (__developer != nil) {
-      [outProtocol writeFieldBeginWithName: @"developer" type: TType_STRUCT fieldID: 1];
-      [__developer write: outProtocol];
+  if (__human_isset) {
+    if (__human != nil) {
+      [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
+      [__human write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -382,8 +382,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ServiceTokenRenewed("];
-  [ms appendString: @"developer:"];
-  [ms appendFormat: @"%@", __developer];
+  [ms appendString: @"human:"];
+  [ms appendFormat: @"%@", __human];
   [ms appendString: @",serviceToken:"];
   [ms appendFormat: @"%@", __serviceToken];
   [ms appendString: @")"];
@@ -402,11 +402,11 @@
   return self;
 }
 
-- (id) initWithDeveloper: (BananaNotifications_Developer) developer serviceToken: (BananaNotifications_ServiceToken) serviceToken
+- (id) initWithHuman: (BananaNotifications_Human) human serviceToken: (BananaNotifications_ServiceToken) serviceToken
 {
   self = [super init];
-  __developer = [developer retain_stub];
-  __developer_isset = YES;
+  __human = [human retain_stub];
+  __human_isset = YES;
   __serviceToken = [serviceToken retain_stub];
   __serviceToken_isset = YES;
   return self;
@@ -415,10 +415,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"developer"])
+  if ([decoder containsValueForKey: @"human"])
   {
-    __developer = [[decoder decodeObjectForKey: @"developer"] retain_stub];
-    __developer_isset = YES;
+    __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
+    __human_isset = YES;
   }
   if ([decoder containsValueForKey: @"serviceToken"])
   {
@@ -430,9 +430,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__developer_isset)
+  if (__human_isset)
   {
-    [encoder encodeObject: __developer forKey: @"developer"];
+    [encoder encodeObject: __human forKey: @"human"];
   }
   if (__serviceToken_isset)
   {
@@ -443,10 +443,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __developer_isset ? 2654435761 : 0;
-  if (__developer_isset)
+  hash = (hash * 31) ^ __human_isset ? 2654435761 : 0;
+  if (__human_isset)
   {
-    hash = (hash * 31) ^ [__developer hash];
+    hash = (hash * 31) ^ [__human hash];
   }
   hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
   if (__serviceToken_isset)
@@ -465,8 +465,8 @@
     return NO;
   }
   BananaNotifications_ServiceTokenRegenerated *other = (BananaNotifications_ServiceTokenRegenerated *)anObject;
-  if ((__developer_isset != other->__developer_isset) ||
-      (__developer_isset && ((__developer || other->__developer) && ![__developer isEqual:other->__developer]))) {
+  if ((__human_isset != other->__human_isset) ||
+      (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
     return NO;
   }
   if ((__serviceToken_isset != other->__serviceToken_isset) ||
@@ -478,30 +478,30 @@
 
 - (void) dealloc
 {
-  [__developer release_stub];
+  [__human release_stub];
   [__serviceToken release_stub];
   [super dealloc_stub];
 }
 
-- (Banana_Developer *) developer {
-  return [[__developer retain_stub] autorelease_stub];
+- (Banana_Human *) human {
+  return [[__human retain_stub] autorelease_stub];
 }
 
-- (void) setDeveloper: (Banana_Developer *) developer {
-  [developer retain_stub];
-  [__developer release_stub];
-  __developer = developer;
-  __developer_isset = YES;
+- (void) setHuman: (Banana_Human *) human {
+  [human retain_stub];
+  [__human release_stub];
+  __human = human;
+  __human_isset = YES;
 }
 
-- (BOOL) developerIsSet {
-  return __developer_isset;
+- (BOOL) humanIsSet {
+  return __human_isset;
 }
 
-- (void) unsetDeveloper {
-  [__developer release_stub];
-  __developer = nil;
-  __developer_isset = NO;
+- (void) unsetHuman {
+  [__human release_stub];
+  __human = nil;
+  __human_isset = NO;
 }
 
 - (BananaAuthentication_ServiceToken *) serviceToken {
@@ -542,9 +542,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Developer *fieldValue = [[Banana_Developer alloc] init];
+          Banana_Human *fieldValue = [[Banana_Human alloc] init];
           [fieldValue read: inProtocol];
-          [self setDeveloper: fieldValue];
+          [self setHuman: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -571,10 +571,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"ServiceTokenRegenerated"];
-  if (__developer_isset) {
-    if (__developer != nil) {
-      [outProtocol writeFieldBeginWithName: @"developer" type: TType_STRUCT fieldID: 1];
-      [__developer write: outProtocol];
+  if (__human_isset) {
+    if (__human != nil) {
+      [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
+      [__human write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -595,8 +595,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ServiceTokenRegenerated("];
-  [ms appendString: @"developer:"];
-  [ms appendFormat: @"%@", __developer];
+  [ms appendString: @"human:"];
+  [ms appendFormat: @"%@", __human];
   [ms appendString: @",serviceToken:"];
   [ms appendFormat: @"%@", __serviceToken];
   [ms appendString: @")"];
