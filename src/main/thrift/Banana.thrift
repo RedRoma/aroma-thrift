@@ -150,3 +150,21 @@ struct Application
     /** Defines a list of people that are subscribed to events for an Application.*/
     8: optional list<Human> subscribers = [];
 }
+
+/**
+ * Defines a Banana Service announcement.
+ * Examples include:
+ * + Going down for system maintenance
+ * + Looking for feedback
+ * + New Update available
+ * + Other news
+ */
+struct ServiceAnnouncement
+{
+    1: string message;
+    2: Urgency importance;
+    /** Each announcement has an ID so that it can be dismissed by users.*/
+    3: string id;
+    /** An announcement is irrelevant after this time. */
+    4: timestamp timeOfExpiration;
+}

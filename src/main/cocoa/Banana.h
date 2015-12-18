@@ -397,6 +397,59 @@ typedef int64_t Banana_timestamp;
 
 @end
 
+@interface Banana_ServiceAnnouncement : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  int __importance;
+  NSString * __id;
+  Banana_timestamp __timeOfExpiration;
+
+  BOOL __message_isset;
+  BOOL __importance_isset;
+  BOOL __id_isset;
+  BOOL __timeOfExpiration_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, getter=importance, setter=setImportance:) int importance;
+@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) Banana_timestamp timeOfExpiration;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message importance: (int) importance id: (NSString *) id timeOfExpiration: (Banana_timestamp) timeOfExpiration;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) importance;
+- (void) setImportance: (int) importance;
+#endif
+- (BOOL) importanceIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) id;
+- (void) setId: (NSString *) id;
+#endif
+- (BOOL) idIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (Banana_timestamp) timeOfExpiration;
+#endif
+- (BOOL) timeOfExpirationIsSet;
+
+@end
+
 @interface Banana_BananaConstants : NSObject {
 }
 @end

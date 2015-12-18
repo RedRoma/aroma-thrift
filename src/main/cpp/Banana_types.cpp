@@ -1085,4 +1085,152 @@ void Application::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+ServiceAnnouncement::~ServiceAnnouncement() throw() {
+}
+
+
+void ServiceAnnouncement::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+void ServiceAnnouncement::__set_importance(const Urgency::type val) {
+  this->importance = val;
+}
+
+void ServiceAnnouncement::__set_id(const std::string& val) {
+  this->id = val;
+}
+
+void ServiceAnnouncement::__set_timeOfExpiration(const timestamp val) {
+  this->timeOfExpiration = val;
+}
+
+uint32_t ServiceAnnouncement::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast35;
+          xfer += iprot->readI32(ecast35);
+          this->importance = (Urgency::type)ecast35;
+          this->__isset.importance = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfExpiration);
+          this->__isset.timeOfExpiration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ServiceAnnouncement::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ServiceAnnouncement");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("importance", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32((int32_t)this->importance);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 4);
+  xfer += oprot->writeI64(this->timeOfExpiration);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ServiceAnnouncement &a, ServiceAnnouncement &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.importance, b.importance);
+  swap(a.id, b.id);
+  swap(a.timeOfExpiration, b.timeOfExpiration);
+  swap(a.__isset, b.__isset);
+}
+
+ServiceAnnouncement::ServiceAnnouncement(const ServiceAnnouncement& other36) {
+  message = other36.message;
+  importance = other36.importance;
+  id = other36.id;
+  timeOfExpiration = other36.timeOfExpiration;
+  __isset = other36.__isset;
+}
+ServiceAnnouncement& ServiceAnnouncement::operator=(const ServiceAnnouncement& other37) {
+  message = other37.message;
+  importance = other37.importance;
+  id = other37.id;
+  timeOfExpiration = other37.timeOfExpiration;
+  __isset = other37.__isset;
+  return *this;
+}
+void ServiceAnnouncement::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ServiceAnnouncement(";
+  out << "message=" << to_string(message);
+  out << ", " << "importance=" << to_string(importance);
+  out << ", " << "id=" << to_string(id);
+  out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
+  out << ")";
+}
+
 }}} // namespace

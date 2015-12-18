@@ -731,3 +731,101 @@ Application.prototype.write = function(output) {
   return;
 };
 
+ServiceAnnouncement = module.exports.ServiceAnnouncement = function(args) {
+  this.message = null;
+  this.importance = null;
+  this.id = null;
+  this.timeOfExpiration = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.importance !== undefined && args.importance !== null) {
+      this.importance = args.importance;
+    }
+    if (args.id !== undefined && args.id !== null) {
+      this.id = args.id;
+    }
+    if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
+      this.timeOfExpiration = args.timeOfExpiration;
+    }
+  }
+};
+ServiceAnnouncement.prototype = {};
+ServiceAnnouncement.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.importance = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.id = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfExpiration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ServiceAnnouncement.prototype.write = function(output) {
+  output.writeStructBegin('ServiceAnnouncement');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.importance !== null && this.importance !== undefined) {
+    output.writeFieldBegin('importance', Thrift.Type.I32, 2);
+    output.writeI32(this.importance);
+    output.writeFieldEnd();
+  }
+  if (this.id !== null && this.id !== undefined) {
+    output.writeFieldBegin('id', Thrift.Type.STRING, 3);
+    output.writeString(this.id);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfExpiration);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+

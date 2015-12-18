@@ -102,6 +102,8 @@ class Human;
 
 class Application;
 
+class ServiceAnnouncement;
+
 typedef struct _Message__isset {
   _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), nameOfApplication(false) {}
   bool messageId :1;
@@ -488,6 +490,70 @@ class Application {
 void swap(Application &a, Application &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Application& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ServiceAnnouncement__isset {
+  _ServiceAnnouncement__isset() : message(false), importance(false), id(false), timeOfExpiration(false) {}
+  bool message :1;
+  bool importance :1;
+  bool id :1;
+  bool timeOfExpiration :1;
+} _ServiceAnnouncement__isset;
+
+class ServiceAnnouncement {
+ public:
+
+  ServiceAnnouncement(const ServiceAnnouncement&);
+  ServiceAnnouncement& operator=(const ServiceAnnouncement&);
+  ServiceAnnouncement() : message(), importance((Urgency::type)0), id(), timeOfExpiration(0) {
+  }
+
+  virtual ~ServiceAnnouncement() throw();
+  std::string message;
+  Urgency::type importance;
+  std::string id;
+  timestamp timeOfExpiration;
+
+  _ServiceAnnouncement__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_importance(const Urgency::type val);
+
+  void __set_id(const std::string& val);
+
+  void __set_timeOfExpiration(const timestamp val);
+
+  bool operator == (const ServiceAnnouncement & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    if (!(importance == rhs.importance))
+      return false;
+    if (!(id == rhs.id))
+      return false;
+    if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    return true;
+  }
+  bool operator != (const ServiceAnnouncement &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ServiceAnnouncement & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ServiceAnnouncement &a, ServiceAnnouncement &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ServiceAnnouncement& obj)
 {
   obj.printTo(out);
   return out;

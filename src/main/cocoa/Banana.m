@@ -2050,6 +2050,319 @@
 
 @end
 
+@implementation Banana_ServiceAnnouncement
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message importance: (int) importance id: (NSString *) id timeOfExpiration: (Banana_timestamp) timeOfExpiration
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __importance = importance;
+  __importance_isset = YES;
+  __id = [id retain_stub];
+  __id_isset = YES;
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"importance"])
+  {
+    __importance = [decoder decodeIntForKey: @"importance"];
+    __importance_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"id"])
+  {
+    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
+    __id_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfExpiration"])
+  {
+    __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
+    __timeOfExpiration_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__importance_isset)
+  {
+    [encoder encodeInt: __importance forKey: @"importance"];
+  }
+  if (__id_isset)
+  {
+    [encoder encodeObject: __id forKey: @"id"];
+  }
+  if (__timeOfExpiration_isset)
+  {
+    [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __importance_isset ? 2654435761 : 0;
+  if (__importance_isset)
+  {
+    hash = (hash * 31) ^ [@(__importance) hash];
+  }
+  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
+  if (__id_isset)
+  {
+    hash = (hash * 31) ^ [__id hash];
+  }
+  hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
+  if (__timeOfExpiration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfExpiration) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_ServiceAnnouncement class]]) {
+    return NO;
+  }
+  Banana_ServiceAnnouncement *other = (Banana_ServiceAnnouncement *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__importance_isset != other->__importance_isset) ||
+      (__importance_isset && (__importance != other->__importance))) {
+    return NO;
+  }
+  if ((__id_isset != other->__id_isset) ||
+      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+    return NO;
+  }
+  if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
+      (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__id release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (int) importance {
+  return __importance;
+}
+
+- (void) setImportance: (int) importance {
+  __importance = importance;
+  __importance_isset = YES;
+}
+
+- (BOOL) importanceIsSet {
+  return __importance_isset;
+}
+
+- (void) unsetImportance {
+  __importance_isset = NO;
+}
+
+- (NSString *) id {
+  return [[__id retain_stub] autorelease_stub];
+}
+
+- (void) setId: (NSString *) id {
+  [id retain_stub];
+  [__id release_stub];
+  __id = id;
+  __id_isset = YES;
+}
+
+- (BOOL) idIsSet {
+  return __id_isset;
+}
+
+- (void) unsetId {
+  [__id release_stub];
+  __id = nil;
+  __id_isset = NO;
+}
+
+- (int64_t) timeOfExpiration {
+  return __timeOfExpiration;
+}
+
+- (void) setTimeOfExpiration: (int64_t) timeOfExpiration {
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+}
+
+- (BOOL) timeOfExpirationIsSet {
+  return __timeOfExpiration_isset;
+}
+
+- (void) unsetTimeOfExpiration {
+  __timeOfExpiration_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setImportance: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ServiceAnnouncement"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__importance_isset) {
+    [outProtocol writeFieldBeginWithName: @"importance" type: TType_I32 fieldID: 2];
+    [outProtocol writeI32: __importance];
+    [outProtocol writeFieldEnd];
+  }
+  if (__id_isset) {
+    if (__id != nil) {
+      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __id];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfExpiration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfExpiration];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_ServiceAnnouncement("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",importance:"];
+  [ms appendFormat: @"%i", __importance];
+  [ms appendString: @",id:"];
+  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @",timeOfExpiration:"];
+  [ms appendFormat: @"%qi", __timeOfExpiration];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 
 @implementation Banana_BananaConstants
 + (void) initialize {
