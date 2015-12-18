@@ -1497,6 +1497,44 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface BananaService_GetServiceAnnouncementsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __serviceAnnouncements;
+
+  BOOL __serviceAnnouncements_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceAnnouncements, setter=setServiceAnnouncements:) NSMutableArray * serviceAnnouncements;
+#endif
+
+- (id) init;
+- (id) initWithServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) serviceAnnouncements;
+- (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
+#endif
+- (BOOL) serviceAnnouncementsIsSet;
+
+@end
+
 @interface BananaService_SendMessageRequest : NSObject <TBase, NSCoding> {
   BananaService_ApplicationToken __applicationToken;
   NSString * __message;

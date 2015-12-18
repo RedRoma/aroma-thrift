@@ -143,6 +143,10 @@ class GetMySavedChannelsRequest;
 
 class GetMySavedChannelsResponse;
 
+class GetServiceAnnouncementsRequest;
+
+class GetServiceAnnouncementsResponse;
+
 class SendMessageRequest;
 
 class SendMessageResponse;
@@ -2250,6 +2254,90 @@ class GetMySavedChannelsResponse {
 void swap(GetMySavedChannelsResponse &a, GetMySavedChannelsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetMySavedChannelsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class GetServiceAnnouncementsRequest {
+ public:
+
+  GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest&);
+  GetServiceAnnouncementsRequest& operator=(const GetServiceAnnouncementsRequest&);
+  GetServiceAnnouncementsRequest() {
+  }
+
+  virtual ~GetServiceAnnouncementsRequest() throw();
+
+  bool operator == (const GetServiceAnnouncementsRequest & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const GetServiceAnnouncementsRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceAnnouncementsRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceAnnouncementsRequest &a, GetServiceAnnouncementsRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceAnnouncementsRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetServiceAnnouncementsResponse__isset {
+  _GetServiceAnnouncementsResponse__isset() : serviceAnnouncements(true) {}
+  bool serviceAnnouncements :1;
+} _GetServiceAnnouncementsResponse__isset;
+
+class GetServiceAnnouncementsResponse {
+ public:
+
+  GetServiceAnnouncementsResponse(const GetServiceAnnouncementsResponse&);
+  GetServiceAnnouncementsResponse& operator=(const GetServiceAnnouncementsResponse&);
+  GetServiceAnnouncementsResponse() {
+
+  }
+
+  virtual ~GetServiceAnnouncementsResponse() throw();
+  std::vector< ::aroma::banana::thrift::ServiceAnnouncement>  serviceAnnouncements;
+
+  _GetServiceAnnouncementsResponse__isset __isset;
+
+  void __set_serviceAnnouncements(const std::vector< ::aroma::banana::thrift::ServiceAnnouncement> & val);
+
+  bool operator == (const GetServiceAnnouncementsResponse & rhs) const
+  {
+    if (__isset.serviceAnnouncements != rhs.__isset.serviceAnnouncements)
+      return false;
+    else if (__isset.serviceAnnouncements && !(serviceAnnouncements == rhs.serviceAnnouncements))
+      return false;
+    return true;
+  }
+  bool operator != (const GetServiceAnnouncementsResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetServiceAnnouncementsResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetServiceAnnouncementsResponse &a, GetServiceAnnouncementsResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetServiceAnnouncementsResponse& obj)
 {
   obj.printTo(out);
   return out;

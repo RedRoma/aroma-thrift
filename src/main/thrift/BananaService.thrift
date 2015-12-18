@@ -348,6 +348,16 @@ struct GetMySavedChannelsResponse
     1: list<BananaChannel> channels;
 }
 
+struct GetServiceAnnouncementsRequest
+{
+    
+}
+
+struct GetServiceAnnouncementsResponse
+{
+    1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
+}
+
 //==========================================================
 // Operations performed by Applications
 

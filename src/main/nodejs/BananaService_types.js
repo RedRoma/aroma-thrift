@@ -2950,6 +2950,110 @@ GetMySavedChannelsResponse.prototype.write = function(output) {
   return;
 };
 
+GetServiceAnnouncementsRequest = module.exports.GetServiceAnnouncementsRequest = function(args) {
+};
+GetServiceAnnouncementsRequest.prototype = {};
+GetServiceAnnouncementsRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceAnnouncementsRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceAnnouncementsRequest');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetServiceAnnouncementsResponse = module.exports.GetServiceAnnouncementsResponse = function(args) {
+  this.serviceAnnouncements = [];
+  if (args) {
+    if (args.serviceAnnouncements !== undefined && args.serviceAnnouncements !== null) {
+      this.serviceAnnouncements = Thrift.copyList(args.serviceAnnouncements, [Banana_ttypes.ServiceAnnouncement]);
+    }
+  }
+};
+GetServiceAnnouncementsResponse.prototype = {};
+GetServiceAnnouncementsResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size56 = 0;
+        var _rtmp360;
+        this.serviceAnnouncements = [];
+        var _etype59 = 0;
+        _rtmp360 = input.readListBegin();
+        _etype59 = _rtmp360.etype;
+        _size56 = _rtmp360.size;
+        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        {
+          var elem62 = null;
+          elem62 = new Banana_ttypes.ServiceAnnouncement();
+          elem62.read(input);
+          this.serviceAnnouncements.push(elem62);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetServiceAnnouncementsResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetServiceAnnouncementsResponse');
+  if (this.serviceAnnouncements !== null && this.serviceAnnouncements !== undefined) {
+    output.writeFieldBegin('serviceAnnouncements', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.serviceAnnouncements.length);
+    for (var iter63 in this.serviceAnnouncements)
+    {
+      if (this.serviceAnnouncements.hasOwnProperty(iter63))
+      {
+        iter63 = this.serviceAnnouncements[iter63];
+        iter63.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SendMessageRequest = module.exports.SendMessageRequest = function(args) {
   this.applicationToken = null;
   this.message = null;

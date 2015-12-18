@@ -8810,6 +8810,256 @@
 
 @end
 
+@implementation BananaService_GetServiceAnnouncementsRequest
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsRequest class]]) {
+    return NO;
+  }
+  BananaService_GetServiceAnnouncementsRequest *other = (BananaService_GetServiceAnnouncementsRequest *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetServiceAnnouncementsRequest"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsRequest("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetServiceAnnouncementsResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.serviceAnnouncements = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithServiceAnnouncements: (NSMutableArray *) serviceAnnouncements
+{
+  self = [super init];
+  __serviceAnnouncements = [serviceAnnouncements retain_stub];
+  __serviceAnnouncements_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"serviceAnnouncements"])
+  {
+    __serviceAnnouncements = [[decoder decodeObjectForKey: @"serviceAnnouncements"] retain_stub];
+    __serviceAnnouncements_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__serviceAnnouncements_isset)
+  {
+    [encoder encodeObject: __serviceAnnouncements forKey: @"serviceAnnouncements"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __serviceAnnouncements_isset ? 2654435761 : 0;
+  if (__serviceAnnouncements_isset)
+  {
+    hash = (hash * 31) ^ [__serviceAnnouncements hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsResponse class]]) {
+    return NO;
+  }
+  BananaService_GetServiceAnnouncementsResponse *other = (BananaService_GetServiceAnnouncementsResponse *)anObject;
+  if ((__serviceAnnouncements_isset != other->__serviceAnnouncements_isset) ||
+      (__serviceAnnouncements_isset && ((__serviceAnnouncements || other->__serviceAnnouncements) && ![__serviceAnnouncements isEqual:other->__serviceAnnouncements]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__serviceAnnouncements release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) serviceAnnouncements {
+  return [[__serviceAnnouncements retain_stub] autorelease_stub];
+}
+
+- (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements {
+  [serviceAnnouncements retain_stub];
+  [__serviceAnnouncements release_stub];
+  __serviceAnnouncements = serviceAnnouncements;
+  __serviceAnnouncements_isset = YES;
+}
+
+- (BOOL) serviceAnnouncementsIsSet {
+  return __serviceAnnouncements_isset;
+}
+
+- (void) unsetServiceAnnouncements {
+  [__serviceAnnouncements release_stub];
+  __serviceAnnouncements = nil;
+  __serviceAnnouncements_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
+          {
+            Banana_ServiceAnnouncement *_elem37 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setServiceAnnouncements: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetServiceAnnouncementsResponse"];
+  if (__serviceAnnouncements_isset) {
+    if (__serviceAnnouncements != nil) {
+      [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
+        int idx39;
+        for (idx39 = 0; idx39 < [__serviceAnnouncements count]; idx39++)
+        {
+          [[__serviceAnnouncements objectAtIndex: idx39] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsResponse("];
+  [ms appendString: @"serviceAnnouncements:"];
+  [ms appendFormat: @"%@", __serviceAnnouncements];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_SendMessageRequest
 
 - (id) init
