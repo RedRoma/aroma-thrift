@@ -373,6 +373,12 @@ struct SendMessageResponse
     1: string message;
 }
 
+/**
+ * TODO: Consider breaking up into various services:
+ * + Banana Application Service - Called by Machines
+ * + Banana Human Service - Called by People
+ * + Banana Authentication Service - Called for authenticating and obtaining Tokens
+ */
 service BananaService
 {
     
