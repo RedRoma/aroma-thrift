@@ -548,7 +548,11 @@ for a set time period.
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-<div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
+TODO: Consider breaking up into various services:
++ Banana Application Service - Called by Machines
++ Banana Human Service - Called by People
++ Banana Authentication Service - Called for authenticating and obtaining Tokens
+<br/><div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
