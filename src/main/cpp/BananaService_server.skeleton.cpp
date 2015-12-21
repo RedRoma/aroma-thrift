@@ -113,18 +113,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("regenerateToken\n");
   }
 
-  /**
-   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
-   * 
-   * #human
-   * 
-   * @param request
-   */
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
-    // Your implementation goes here
-    printf("searchForApplications\n");
-  }
-
   void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
     // Your implementation goes here
     printf("saveChannel\n");
@@ -141,28 +129,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Get a list of all Humans subscribed to an Application.
-   * 
-   * #human
-   * 
-   * @param request
-   */
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationSubscribers\n");
-  }
-
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
-    // Your implementation goes here
-    printf("getMySavedChannels\n");
-  }
-
-  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
-    // Your implementation goes here
-    printf("getMyApplications\n");
-  }
-
-  /**
    * Get details about an Application from it's unique ID
    * 
    * #human
@@ -174,9 +140,43 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApplicationInfo\n");
   }
 
+  /**
+   * Get a list of all Humans subscribed to an Application.
+   * 
+   * #human
+   * 
+   * @param request
+   */
+  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationSubscribers\n");
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");
+  }
+
+  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
+    // Your implementation goes here
+    printf("getMyApplications\n");
+  }
+
+  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
+    // Your implementation goes here
+    printf("getMySavedChannels\n");
+  }
+
+  /**
+   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
+   * 
+   * #human
+   * 
+   * @param request
+   */
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
+    // Your implementation goes here
+    printf("searchForApplications\n");
   }
 
 };

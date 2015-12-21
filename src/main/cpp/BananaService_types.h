@@ -143,6 +143,10 @@ class GetMySavedChannelsRequest;
 
 class GetMySavedChannelsResponse;
 
+class GetActivityRequest;
+
+class GetActivityResponse;
+
 class GetServiceAnnouncementsRequest;
 
 class GetServiceAnnouncementsResponse;
@@ -2269,6 +2273,107 @@ class GetMySavedChannelsResponse {
 void swap(GetMySavedChannelsResponse &a, GetMySavedChannelsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetMySavedChannelsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetActivityRequest__isset {
+  _GetActivityRequest__isset() : token(false), limit(true) {}
+  bool token :1;
+  bool limit :1;
+} _GetActivityRequest__isset;
+
+class GetActivityRequest {
+ public:
+
+  GetActivityRequest(const GetActivityRequest&);
+  GetActivityRequest& operator=(const GetActivityRequest&);
+  GetActivityRequest() : limit(0) {
+  }
+
+  virtual ~GetActivityRequest() throw();
+  HumanToken token;
+  int limit;
+
+  _GetActivityRequest__isset __isset;
+
+  void __set_token(const HumanToken& val);
+
+  void __set_limit(const int val);
+
+  bool operator == (const GetActivityRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (__isset.limit != rhs.__isset.limit)
+      return false;
+    else if (__isset.limit && !(limit == rhs.limit))
+      return false;
+    return true;
+  }
+  bool operator != (const GetActivityRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetActivityRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetActivityRequest &a, GetActivityRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetActivityRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetActivityResponse__isset {
+  _GetActivityResponse__isset() : notifications(true) {}
+  bool notifications :1;
+} _GetActivityResponse__isset;
+
+class GetActivityResponse {
+ public:
+
+  GetActivityResponse(const GetActivityResponse&);
+  GetActivityResponse& operator=(const GetActivityResponse&);
+  GetActivityResponse() {
+
+  }
+
+  virtual ~GetActivityResponse() throw();
+  std::vector< ::aroma::banana::thrift::notifications::Notification>  notifications;
+
+  _GetActivityResponse__isset __isset;
+
+  void __set_notifications(const std::vector< ::aroma::banana::thrift::notifications::Notification> & val);
+
+  bool operator == (const GetActivityResponse & rhs) const
+  {
+    if (!(notifications == rhs.notifications))
+      return false;
+    return true;
+  }
+  bool operator != (const GetActivityResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetActivityResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetActivityResponse &a, GetActivityResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetActivityResponse& obj)
 {
   obj.printTo(out);
   return out;
