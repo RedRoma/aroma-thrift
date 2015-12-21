@@ -51,7 +51,7 @@ typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.3;
+const double API_VERSION = 1.4;
 
 /**
  * This is the Banana Service Production Endpoint

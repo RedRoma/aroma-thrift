@@ -9475,7 +9475,7 @@
 
 @end
 
-static double BananaService_API_VERSION = 1.3;
+static double BananaService_API_VERSION = 1.4;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 static Banana_Dimension * BananaService_MAX_ICON_DIMENSION;

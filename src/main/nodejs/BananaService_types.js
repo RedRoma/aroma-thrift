@@ -3190,7 +3190,7 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.3;
+ttypes.API_VERSION = 1.4;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-service.aroma.tech','port' : 7001});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
