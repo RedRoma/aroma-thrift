@@ -152,6 +152,6 @@ SendMessageResponse.prototype.write = function(output) {
 
 ttypes.API_VERSION = 1.4;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-msg-srv.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-msg-srv.beta.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7005});

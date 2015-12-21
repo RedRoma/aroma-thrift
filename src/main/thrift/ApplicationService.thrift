@@ -41,9 +41,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.4;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-msg-srv.aroma.tech", "port" : 7005 };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.banana.aroma.tech", "port" : 7005 };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-msg-srv.beta.aroma.tech", "port" : 7005 };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : 7005 };
 
 
 //==========================================================

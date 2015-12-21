@@ -447,12 +447,12 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 @implementation BananaService_ApplicationServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-msg-srv.aroma.tech"];
+  [BananaService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
   [BananaService_PRODUCTION_ENDPOINT setPort:7005];
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-msg-srv.beta.aroma.tech"];
+  [BananaService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
   [BananaService_BETA_ENDPOINT setPort:7005];
 
 ;

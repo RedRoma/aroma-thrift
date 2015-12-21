@@ -143,6 +143,6 @@ SendMessageResponse.prototype.write = function(output) {
 
 API_VERSION = 1.4;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-msg-srv.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-msg-srv.beta.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7005});

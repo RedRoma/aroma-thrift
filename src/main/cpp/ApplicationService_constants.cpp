@@ -13,13 +13,13 @@ const ApplicationServiceConstants g_ApplicationService_constants;
 ApplicationServiceConstants::ApplicationServiceConstants() {
   API_VERSION = 1.4;
 
-  PRODUCTION_ENDPOINT.hostname = "banana-msg-srv.aroma.tech";
+  PRODUCTION_ENDPOINT.hostname = "application-srv.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp5;
   tmp5 = 7005;
 
   PRODUCTION_ENDPOINT.port = tmp5;
 
-  BETA_ENDPOINT.hostname = "banana-msg-srv.beta.aroma.tech";
+  BETA_ENDPOINT.hostname = "application-srv.beta.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp6;
   tmp6 = 7005;
 
