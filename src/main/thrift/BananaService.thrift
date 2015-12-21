@@ -275,7 +275,7 @@ struct DismissAllMessagesResponse
 }
 
 /**
- * Save a Human's Personal Contact Channel for future use.
+ * Save a Human's Personal Contact Channel for future reference.
  */
 struct SaveChannelRequest
 {
@@ -289,6 +289,10 @@ struct SaveChannelResponse
     2: optional BananaChannel channel;
 }
 
+/**
+ *  Removes a User's Saved Channel. 
+ * It will no longer be remembered or suggested. 
+ */
 struct RemoveSavedChannelRequest
 {
     1: HumanToken token;

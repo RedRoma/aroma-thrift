@@ -490,7 +490,7 @@ still be visible to other subscribers.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Save a Human's Personal Contact Channel for future use.
+</table><br/>Save a Human's Personal Contact Channel for future reference.
 <br/></div><div class="definition"><h3 id="Struct_SaveChannelResponse">Struct: SaveChannelResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -499,7 +499,9 @@ still be visible to other subscribers.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_RemoveSavedChannelResponse">Struct: RemoveSavedChannelResponse</h3>
+</table><br/> Removes a User's Saved Channel.
+It will no longer be remembered or suggested.
+<br/></div><div class="definition"><h3 id="Struct_RemoveSavedChannelResponse">Struct: RemoveSavedChannelResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>optional</td><td></td></tr>
