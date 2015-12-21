@@ -20,10 +20,8 @@
 
 #import "Authentication.h"
 #import "Banana.h"
-#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
-#import "Notifications.h"
 
 typedef Banana_int BananaService_int;
 
@@ -31,21 +29,13 @@ typedef Banana_long BananaService_long;
 
 typedef Banana_timestamp BananaService_timestamp;
 
-typedef BananaAuthentication_HumanToken * BananaService_HumanToken;
-
 typedef BananaAuthentication_ApplicationToken * BananaService_ApplicationToken;
-
-typedef Banana_Image * BananaService_Image;
-
-typedef Banana_Human * BananaService_Human;
 
 typedef Banana_Application * BananaService_Application;
 
 typedef int BananaService_Urgency;
 
-typedef BananaChannels_BananaChannel * BananaService_BananaChannel;
-
-typedef BananaEndpoint_Endpoint * BananaService_Endpoint;
+typedef BananaService_Channels.BananaChannel BananaService_BananaChannel;
 
 typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
 

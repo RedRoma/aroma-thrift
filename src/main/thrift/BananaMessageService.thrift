@@ -10,10 +10,8 @@ namespace cpp   aroma.banana.thrift.service
 
 include "Authentication.thrift"
 include "Banana.thrift"
-include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
-include "Notifications.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -25,14 +23,9 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.HumanToken HumanToken
 typedef Authentication.ApplicationToken ApplicationToken
-typedef Banana.Image Image
-typedef Banana.Human Human
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
-typedef Channels.BananaChannel BananaChannel
-typedef Endpoint.Endpoint Endpoint
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -48,20 +41,17 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.4;
 
-/**
- * This is the Banana Service Production Endpoint
- */
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-application-srv.aroma.tech", "port" : 7005 };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-msg-srv.aroma.tech", "port" : 7005 };
 
-/**
- * This is the Banana Service Beta Endpoint
- */
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-application-srv-beta.aroma.tech", "port" : 7005 };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-msg-srv.beta.aroma.tech", "port" : 7005 };
 
 
 //==========================================================
 // Operations performed by Applications
 
+/**
+ * Send a Message to the Banana Service.
+ */
 struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;

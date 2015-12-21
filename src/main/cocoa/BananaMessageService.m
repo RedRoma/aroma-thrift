@@ -20,10 +20,8 @@
 
 #import "Authentication.h"
 #import "Banana.h"
-#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
-#import "Notifications.h"
 
 #import "BananaMessageService.h"
 
@@ -449,12 +447,12 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 @implementation BananaService_BananaMessageServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-application-srv.aroma.tech"];
+  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-msg-srv.aroma.tech"];
   [BananaService_PRODUCTION_ENDPOINT setPort:7005];
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-application-srv-beta.aroma.tech"];
+  [BananaService_BETA_ENDPOINT setHostname:@"banana-msg-srv.beta.aroma.tech"];
   [BananaService_BETA_ENDPOINT setPort:7005];
 
 ;

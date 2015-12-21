@@ -9,10 +9,8 @@ var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
-var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var Notifications_ttypes = require('./Notifications_types')
 
 
 var ttypes = module.exports = {};
@@ -154,6 +152,6 @@ SendMessageResponse.prototype.write = function(output) {
 
 ttypes.API_VERSION = 1.4;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-application-srv.aroma.tech','port' : 7005});
+'hostname' : 'banana-msg-srv.aroma.tech','port' : 7005});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-application-srv-beta.aroma.tech','port' : 7005});
+'hostname' : 'banana-msg-srv.beta.aroma.tech','port' : 7005});

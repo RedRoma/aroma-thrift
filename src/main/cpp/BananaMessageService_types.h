@@ -17,10 +17,8 @@
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
 #include "Banana_types.h"
-#include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
-#include "Notifications_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
@@ -31,21 +29,13 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::HumanToken HumanToken;
-
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
-
-typedef class  ::aroma::banana::thrift::Image Image;
-
-typedef class  ::aroma::banana::thrift::Human Human;
 
 typedef class  ::aroma::banana::thrift::Application Application;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
-typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
-
-typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
+typedef Channels.BananaChannel BananaChannel;
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 

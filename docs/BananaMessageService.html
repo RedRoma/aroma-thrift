@@ -209,10 +209,6 @@ code { line-height: 20px; }
 <a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
-<a href="#Typedef_Endpoint">Endpoint</a><br/>
-<a href="#Typedef_Human">Human</a><br/>
-<a href="#Typedef_HumanToken">HumanToken</a><br/>
-<a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
@@ -232,9 +228,7 @@ code { line-height: 20px; }
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.4</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
-<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-application-srv.aroma.tech", port = 7005 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
-<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-application-srv-beta.aroma.tech", port = 7005 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
-<br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<br/></blockquote></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-msg-srv.aroma.tech", port = 7005 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-msg-srv.beta.aroma.tech", port = 7005 }</code></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
 </div>
@@ -244,17 +238,8 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_HumanToken">Typedef: HumanToken</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_HumanToken">Authentication.HumanToken</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Human">Typedef: Human</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Human">Banana.Human</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Application">Banana.Application</a></code></p>
@@ -263,10 +248,7 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="#Typedef_Channels.BananaChannel">Channels.BananaChannel</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
@@ -301,7 +283,8 @@ code { line-height: 20px; }
 <tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>urgency</td><td><code><a href="#Typedef_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code>Urgency.INFORMATIONAL</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
+</table><br/>Send a Message to the Banana Service.
+<br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
