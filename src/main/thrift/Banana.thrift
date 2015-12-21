@@ -38,7 +38,8 @@ struct Message
     3: Urgency urgency = Urgency.INFORMATIONAL;
     4: timestamp timeMessageSent;
     5: timestamp timeMessageReceived;
-    6: string nameOfApplication;
+    /** Name of the Application that sent the message. */
+    6: string applicationName;
 }
 
 /**

@@ -55,7 +55,7 @@ Message = module.exports.Message = function(args) {
   this.urgency = 1;
   this.timeMessageSent = null;
   this.timeMessageReceived = null;
-  this.nameOfApplication = null;
+  this.applicationName = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -72,8 +72,8 @@ Message = module.exports.Message = function(args) {
     if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
       this.timeMessageReceived = args.timeMessageReceived;
     }
-    if (args.nameOfApplication !== undefined && args.nameOfApplication !== null) {
-      this.nameOfApplication = args.nameOfApplication;
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -128,7 +128,7 @@ Message.prototype.read = function(input) {
       break;
       case 6:
       if (ftype == Thrift.Type.STRING) {
-        this.nameOfApplication = input.readString();
+        this.applicationName = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -169,9 +169,9 @@ Message.prototype.write = function(output) {
     output.writeI64(this.timeMessageReceived);
     output.writeFieldEnd();
   }
-  if (this.nameOfApplication !== null && this.nameOfApplication !== undefined) {
-    output.writeFieldBegin('nameOfApplication', Thrift.Type.STRING, 6);
-    output.writeString(this.nameOfApplication);
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

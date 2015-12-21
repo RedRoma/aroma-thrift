@@ -105,13 +105,13 @@ class Application;
 class ServiceAnnouncement;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), nameOfApplication(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), applicationName(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
   bool timeMessageSent :1;
   bool timeMessageReceived :1;
-  bool nameOfApplication :1;
+  bool applicationName :1;
 } _Message__isset;
 
 class Message {
@@ -119,7 +119,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeMessageSent(0), timeMessageReceived(0), nameOfApplication() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeMessageSent(0), timeMessageReceived(0), applicationName() {
     urgency = (Urgency::type)1;
 
   }
@@ -130,7 +130,7 @@ class Message {
   Urgency::type urgency;
   timestamp timeMessageSent;
   timestamp timeMessageReceived;
-  std::string nameOfApplication;
+  std::string applicationName;
 
   _Message__isset __isset;
 
@@ -144,7 +144,7 @@ class Message {
 
   void __set_timeMessageReceived(const timestamp val);
 
-  void __set_nameOfApplication(const std::string& val);
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const Message & rhs) const
   {
@@ -158,7 +158,7 @@ class Message {
       return false;
     if (!(timeMessageReceived == rhs.timeMessageReceived))
       return false;
-    if (!(nameOfApplication == rhs.nameOfApplication))
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }

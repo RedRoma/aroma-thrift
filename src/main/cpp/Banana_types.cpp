@@ -128,8 +128,8 @@ void Message::__set_timeMessageReceived(const timestamp val) {
   this->timeMessageReceived = val;
 }
 
-void Message::__set_nameOfApplication(const std::string& val) {
-  this->nameOfApplication = val;
+void Message::__set_applicationName(const std::string& val) {
+  this->applicationName = val;
 }
 
 uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -197,8 +197,8 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 6:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->nameOfApplication);
-          this->__isset.nameOfApplication = true;
+          xfer += iprot->readString(this->applicationName);
+          this->__isset.applicationName = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -240,8 +240,8 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI64(this->timeMessageReceived);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("nameOfApplication", ::apache::thrift::protocol::T_STRING, 6);
-  xfer += oprot->writeString(this->nameOfApplication);
+  xfer += oprot->writeFieldBegin("applicationName", ::apache::thrift::protocol::T_STRING, 6);
+  xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -256,7 +256,7 @@ void swap(Message &a, Message &b) {
   swap(a.urgency, b.urgency);
   swap(a.timeMessageSent, b.timeMessageSent);
   swap(a.timeMessageReceived, b.timeMessageReceived);
-  swap(a.nameOfApplication, b.nameOfApplication);
+  swap(a.applicationName, b.applicationName);
   swap(a.__isset, b.__isset);
 }
 
@@ -266,7 +266,7 @@ Message::Message(const Message& other1) {
   urgency = other1.urgency;
   timeMessageSent = other1.timeMessageSent;
   timeMessageReceived = other1.timeMessageReceived;
-  nameOfApplication = other1.nameOfApplication;
+  applicationName = other1.applicationName;
   __isset = other1.__isset;
 }
 Message& Message::operator=(const Message& other2) {
@@ -275,7 +275,7 @@ Message& Message::operator=(const Message& other2) {
   urgency = other2.urgency;
   timeMessageSent = other2.timeMessageSent;
   timeMessageReceived = other2.timeMessageReceived;
-  nameOfApplication = other2.nameOfApplication;
+  applicationName = other2.applicationName;
   __isset = other2.__isset;
   return *this;
 }
@@ -287,7 +287,7 @@ void Message::printTo(std::ostream& out) const {
   out << ", " << "urgency=" << to_string(urgency);
   out << ", " << "timeMessageSent=" << to_string(timeMessageSent);
   out << ", " << "timeMessageReceived=" << to_string(timeMessageReceived);
-  out << ", " << "nameOfApplication=" << to_string(nameOfApplication);
+  out << ", " << "applicationName=" << to_string(applicationName);
   out << ")";
 }
 

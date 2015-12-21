@@ -76,14 +76,14 @@ typedef int64_t Banana_timestamp;
   int __urgency;
   Banana_timestamp __timeMessageSent;
   Banana_timestamp __timeMessageReceived;
-  NSString * __nameOfApplication;
+  NSString * __applicationName;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
   BOOL __urgency_isset;
   BOOL __timeMessageSent_isset;
   BOOL __timeMessageReceived_isset;
-  BOOL __nameOfApplication_isset;
+  BOOL __applicationName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -92,11 +92,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
 @property (nonatomic, getter=timeMessageSent, setter=setTimeMessageSent:) Banana_timestamp timeMessageSent;
 @property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
-@property (nonatomic, retain, getter=nameOfApplication, setter=setNameOfApplication:) NSString * nameOfApplication;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfApplication: (NSString *) nameOfApplication;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -134,10 +134,10 @@ typedef int64_t Banana_timestamp;
 - (BOOL) timeMessageReceivedIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) nameOfApplication;
-- (void) setNameOfApplication: (NSString *) nameOfApplication;
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
 #endif
-- (BOOL) nameOfApplicationIsSet;
+- (BOOL) applicationNameIsSet;
 
 @end
 

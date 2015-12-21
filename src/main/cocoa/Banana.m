@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived nameOfApplication: (NSString *) nameOfApplication
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -46,8 +46,8 @@
   __timeMessageSent_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
-  __nameOfApplication = [nameOfApplication retain_stub];
-  __nameOfApplication_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
   return self;
 }
 
@@ -79,10 +79,10 @@
     __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
     __timeMessageReceived_isset = YES;
   }
-  if ([decoder containsValueForKey: @"nameOfApplication"])
+  if ([decoder containsValueForKey: @"applicationName"])
   {
-    __nameOfApplication = [[decoder decodeObjectForKey: @"nameOfApplication"] retain_stub];
-    __nameOfApplication_isset = YES;
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
   }
   return self;
 }
@@ -109,9 +109,9 @@
   {
     [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
   }
-  if (__nameOfApplication_isset)
+  if (__applicationName_isset)
   {
-    [encoder encodeObject: __nameOfApplication forKey: @"nameOfApplication"];
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
 }
 
@@ -143,10 +143,10 @@
   {
     hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
   }
-  hash = (hash * 31) ^ __nameOfApplication_isset ? 2654435761 : 0;
-  if (__nameOfApplication_isset)
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
   {
-    hash = (hash * 31) ^ [__nameOfApplication hash];
+    hash = (hash * 31) ^ [__applicationName hash];
   }
   return hash;
 }
@@ -180,8 +180,8 @@
       (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
     return NO;
   }
-  if ((__nameOfApplication_isset != other->__nameOfApplication_isset) ||
-      (__nameOfApplication_isset && ((__nameOfApplication || other->__nameOfApplication) && ![__nameOfApplication isEqual:other->__nameOfApplication]))) {
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
   return YES;
@@ -191,7 +191,7 @@
 {
   [__messageId release_stub];
   [__body release_stub];
-  [__nameOfApplication release_stub];
+  [__applicationName release_stub];
   [super dealloc_stub];
 }
 
@@ -288,25 +288,25 @@
   __timeMessageReceived_isset = NO;
 }
 
-- (NSString *) nameOfApplication {
-  return [[__nameOfApplication retain_stub] autorelease_stub];
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
 }
 
-- (void) setNameOfApplication: (NSString *) nameOfApplication {
-  [nameOfApplication retain_stub];
-  [__nameOfApplication release_stub];
-  __nameOfApplication = nameOfApplication;
-  __nameOfApplication_isset = YES;
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
 }
 
-- (BOOL) nameOfApplicationIsSet {
-  return __nameOfApplication_isset;
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
 }
 
-- (void) unsetNameOfApplication {
-  [__nameOfApplication release_stub];
-  __nameOfApplication = nil;
-  __nameOfApplication_isset = NO;
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -367,7 +367,7 @@
       case 6:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setNameOfApplication: fieldValue];
+          [self setApplicationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -412,10 +412,10 @@
     [outProtocol writeI64: __timeMessageReceived];
     [outProtocol writeFieldEnd];
   }
-  if (__nameOfApplication_isset) {
-    if (__nameOfApplication != nil) {
-      [outProtocol writeFieldBeginWithName: @"nameOfApplication" type: TType_STRING fieldID: 6];
-      [outProtocol writeString: __nameOfApplication];
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __applicationName];
       [outProtocol writeFieldEnd];
     }
   }
@@ -439,8 +439,8 @@
   [ms appendFormat: @"%qi", __timeMessageSent];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
-  [ms appendString: @",nameOfApplication:"];
-  [ms appendFormat: @"\"%@\"", __nameOfApplication];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
