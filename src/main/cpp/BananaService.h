@@ -24,7 +24,7 @@ class BananaServiceIf {
   virtual double getApiVersion() = 0;
 
   /**
-   * Sign in to the App and using a valid OAUTH Token.
+   * Sign in to the App and get a Human Token in return.
    * 
    * #human
    * 
@@ -87,8 +87,26 @@ class BananaServiceIf {
    * @param request
    */
   virtual void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) = 0;
+
+  /**
+   * Saves a user's channel for future reference.
+   * 
+   * @param request
+   */
   virtual void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) = 0;
+
+  /**
+   * Removes a previously saved channel.
+   * 
+   * @param request
+   */
   virtual void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) = 0;
+
+  /**
+   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
+   * 
+   * @param request
+   */
   virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 
   /**

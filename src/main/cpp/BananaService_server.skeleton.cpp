@@ -28,7 +28,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Sign in to the App and using a valid OAUTH Token.
+   * Sign in to the App and get a Human Token in return.
    * 
    * #human
    * 
@@ -113,16 +113,31 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("regenerateToken\n");
   }
 
+  /**
+   * Saves a user's channel for future reference.
+   * 
+   * @param request
+   */
   void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
     // Your implementation goes here
     printf("saveChannel\n");
   }
 
+  /**
+   * Removes a previously saved channel.
+   * 
+   * @param request
+   */
   void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
     // Your implementation goes here
     printf("removeSavedChannel\n");
   }
 
+  /**
+   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
+   * 
+   * @param request
+   */
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
     // Your implementation goes here
     printf("snoozeChannel\n");

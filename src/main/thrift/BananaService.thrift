@@ -462,7 +462,7 @@ service BananaService
     //==========================================================
     
     /**
-     * Sign in to the App and using a valid OAUTH Token.
+     * Sign in to the App and get a Human Token in return.
      *
      * #human
      */
@@ -473,7 +473,7 @@ service BananaService
     /**
      * Sign Up for an Aroma Account.
      */
-                                                            SignUpResponse signUp(1 : SignUpRequest request) throws(1 : OperationFailedException ex1,
+    SignUpResponse signUp(1 : SignUpRequest request) throws(1 : OperationFailedException ex1,
                                                             2 : InvalidArgumentException ex2,
                                                             3 : InvalidCredentialsException ex3,
                                                             4 : AccountAlreadyExistsException ex4)
@@ -538,21 +538,27 @@ service BananaService
                                                                                                              5 : UnauthorizedException ex5)
 
 
-
-
-
+    /**
+     * Saves a user's channel for future reference.
+     */
     SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
                                                                            3 : InvalidCredentialsException ex3,
                                                                            4 : UnauthorizedException ex4)
 
-
+    
+    /**
+     * Removes a previously saved channel.
+     */
     RemoveSavedChannelResponse removeSavedChannel(1 : RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
                                                                                                 3 : InvalidCredentialsException ex3,
                                                                                                 4 : UnauthorizedException ex4,
                                                                                                 5 : ChannelDoesNotExistException ex5)
-
+    
+    /**
+     * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
+     */
     SnoozeChannelResponse snoozeChannel(1 : SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
                                                                                  3 : InvalidCredentialsException ex3,

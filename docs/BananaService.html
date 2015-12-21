@@ -605,7 +605,7 @@ They provide query interfaces and Authentication/Authorization over Data.
 </pre></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre>Sign in to the App and using a valid OAUTH Token.
+</pre>Sign in to the App and get a Human Token in return.
 
 #human
 <br/></div><div class="definition"><h4 id="Fn_BananaService_signUp">Function: BananaService.signUp</h4>
@@ -649,13 +649,16 @@ Only an "owner" can perform this operation.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_saveChannel">Function: BananaService.saveChannel</h4>
 <pre><code><a href="#Struct_SaveChannelResponse">SaveChannelResponse</a></code> saveChannel(<code><a href="#Struct_SaveChannelRequest">SaveChannelRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_removeSavedChannel">Function: BananaService.removeSavedChannel</h4>
+</pre>Saves a user's channel for future reference.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_removeSavedChannel">Function: BananaService.removeSavedChannel</h4>
 <pre><code><a href="#Struct_RemoveSavedChannelResponse">RemoveSavedChannelResponse</a></code> removeSavedChannel(<code><a href="#Struct_RemoveSavedChannelRequest">RemoveSavedChannelRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_snoozeChannel">Function: BananaService.snoozeChannel</h4>
+</pre>Removes a previously saved channel.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_snoozeChannel">Function: BananaService.snoozeChannel</h4>
 <pre><code><a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a></code> snoozeChannel(<code><a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_getApplicationInfo">Function: BananaService.getApplicationInfo</h4>
+</pre>Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationInfo">Function: BananaService.getApplicationInfo</h4>
 <pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Get details about an Application from it's unique ID
