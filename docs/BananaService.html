@@ -209,8 +209,6 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_renewApplicationToken">renewApplicationToken</a></li>
 <li><a href="#Fn_BananaService_saveChannel">saveChannel</a></li>
 <li><a href="#Fn_BananaService_searchForApplications">searchForApplications</a></li>
-<li><a href="#Fn_BananaService_sendMessage">sendMessage</a></li>
-<li><a href="#Fn_BananaService_sendMessageAsync">sendMessageAsync</a></li>
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
 <li><a href="#Fn_BananaService_signUp">signUp</a></li>
 <li><a href="#Fn_BananaService_snoozeChannel">snoozeChannel</a></li>
@@ -265,8 +263,6 @@ code { line-height: 20px; }
 <a href="#Struct_SaveChannelResponse">SaveChannelResponse</a><br/>
 <a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a><br/>
 <a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a><br/>
-<a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
-<a href="#Struct_SendMessageResponse">SendMessageResponse</a><br/>
 <a href="#Struct_SignInRequest">SignInRequest</a><br/>
 <a href="#Struct_SignInResponse">SignInResponse</a><br/>
 <a href="#Struct_SignUpRequest">SignUpRequest</a><br/>
@@ -538,32 +534,13 @@ for a set time period.
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>urgency</td><td><code><a href="#Typedef_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code>Urgency.INFORMATIONAL</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-TODO: Consider breaking up into various services:
-+ Banana Application Service - Called by Machines
-+ Banana Human Service - Called by People
-+ Banana Authentication Service - Called for authenticating and obtaining Tokens
+The Banana Service is designed to be used by Humans, and not Applications.
+They provide query interfaces and Authentication/Authorization over Data.
 <br/><div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_BananaService_sendMessage">Function: BananaService.sendMessage</h4>
-<pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre>
-#app
-<br/></div><div class="definition"><h4 id="Fn_BananaService_sendMessageAsync">Function: BananaService.sendMessageAsync</h4>
-<pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-</pre>
-#app
-<br/></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre>Sign in to the App and using a valid OAUTH Token.

@@ -28,28 +28,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * 
-   * #app
-   * 
-   * @param request
-   */
-  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
-    // Your implementation goes here
-    printf("sendMessage\n");
-  }
-
-  /**
-   * 
-   * #app
-   * 
-   * @param request
-   */
-  void sendMessageAsync(const SendMessageRequest& request) {
-    // Your implementation goes here
-    printf("sendMessageAsync\n");
-  }
-
-  /**
    * Sign in to the App and using a valid OAUTH Token.
    * 
    * #human

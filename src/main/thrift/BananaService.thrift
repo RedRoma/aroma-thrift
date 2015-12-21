@@ -20,8 +20,7 @@ include "Notifications.thrift"
  *
  * Tag definitions:
  *
- * #human   - Signifies an Operation designed to be used by Humans.
- * #app     - Signifies an Operation designed to be used by Applications.
+ * #human   - Signifies an Operation designed to be used by any person.
  * #owner   - Signifies an Operation that can only be performed by an "Owner".
  */
 
@@ -358,55 +357,14 @@ struct GetServiceAnnouncementsResponse
     1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
 }
 
-//==========================================================
-// Operations performed by Applications
-
-struct SendMessageRequest
-{
-    1: ApplicationToken applicationToken;
-    2: string message;
-    3: Urgency urgency = Banana.Urgency.INFORMATIONAL;
-}
-
-struct SendMessageResponse
-{
-    1: string message;
-}
-
 /**
- * TODO: Consider breaking up into various services:
- * + Banana Application Service - Called by Machines
- * + Banana Human Service - Called by People
- * + Banana Authentication Service - Called for authenticating and obtaining Tokens
+ * The Banana Service is designed to be used by Humans, and not Applications.
+ * They provide query interfaces and Authentication/Authorization over Data.
  */
 service BananaService
 {
     
     double getApiVersion()
-    
-    //===============================================
-    // Operations for Applications
-    //===============================================
-
-
-    /**
-     *
-     * #app
-     */
-    SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
-                                                                           2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3)
-
-    /**
-     *
-     * #app
-     */
-    oneway void sendMessageAsync(1 : SendMessageRequest request)
-
-
-    //===============================================
-    // Operations for Humans
-    //===============================================
 
     /**
      * Sign in to the App and using a valid OAUTH Token.
@@ -498,7 +456,6 @@ service BananaService
                                                                                                          2 : InvalidArgumentException ex2,
                                                                                                          3 : InvalidCredentialsException ex3,
                                                                                                          4 : UnauthorizedException ex4)
-
 
 
     SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
