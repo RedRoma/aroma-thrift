@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "BananaMessageService_constants.h"
+#include "ApplicationService_constants.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
-const BananaMessageServiceConstants g_BananaMessageService_constants;
+const ApplicationServiceConstants g_ApplicationService_constants;
 
-BananaMessageServiceConstants::BananaMessageServiceConstants() {
+ApplicationServiceConstants::ApplicationServiceConstants() {
   API_VERSION = 1.4;
 
   PRODUCTION_ENDPOINT.hostname = "banana-msg-srv.aroma.tech";

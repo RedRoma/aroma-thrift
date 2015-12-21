@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaMessageService_TYPES_H
-#define BananaMessageService_TYPES_H
+#ifndef ApplicationService_TYPES_H
+#define ApplicationService_TYPES_H
 
 #include <iosfwd>
 
@@ -34,8 +34,6 @@ typedef class  ::aroma::banana::thrift::authentication::ApplicationToken Applica
 typedef class  ::aroma::banana::thrift::Application Application;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
-
-typedef Channels.BananaChannel BananaChannel;
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 

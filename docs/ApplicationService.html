@@ -189,16 +189,16 @@ table { empty-cells: show; }
 code { line-height: 20px; }
 .table-bordered th, .table-bordered td { border-bottom: 1px solid #DDDDDD; }
 --></style>
-<title>Thrift module: BananaMessageService</title></head><body>
+<title>Thrift module: ApplicationService</title></head><body>
 <div class="container-fluid">
-<h1>Thrift module: BananaMessageService</h1>
+<h1>Thrift module: ApplicationService</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>BananaMessageService</td><td><a href="#Svc_BananaMessageService">BananaMessageService</a><br/>
+<td>ApplicationService</td><td><a href="#Svc_ApplicationService">ApplicationService</a><br/>
 <ul>
-<li><a href="#Fn_BananaMessageService_getApiVersion">getApiVersion</a></li>
-<li><a href="#Fn_BananaMessageService_sendMessage">sendMessage</a></li>
-<li><a href="#Fn_BananaMessageService_sendMessageAsync">sendMessageAsync</a></li>
+<li><a href="#Fn_ApplicationService_getApiVersion">getApiVersion</a></li>
+<li><a href="#Fn_ApplicationService_sendMessage">sendMessage</a></li>
+<li><a href="#Fn_ApplicationService_sendMessageAsync">sendMessageAsync</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -206,7 +206,6 @@ code { line-height: 20px; }
 <a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="#Typedef_ApplicationToken">ApplicationToken</a><br/>
-<a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
@@ -247,9 +246,6 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="#Typedef_Channels.BananaChannel">Channels.BananaChannel</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
 </div>
@@ -288,17 +284,17 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
-<h3 id="Svc_BananaMessageService">Service: BananaMessageService</h3>
-The Banana Message Service is designed to be called by Applications, to send messages
-and report Alerts to their maintainers. It is designed to be used by machines, not humans.
+<h3 id="Svc_ApplicationService">Service: ApplicationService</h3>
+The Application  Service is designed to be called by Applications, to send messages
+and report alerts to people. It is designed to be used by machines, not humans.
 This is where Incoming Messages are accepted, processed, and stored.
-<br/><div class="definition"><h4 id="Fn_BananaMessageService_getApiVersion">Function: BananaMessageService.getApiVersion</h4>
+<br/><div class="definition"><h4 id="Fn_ApplicationService_getApiVersion">Function: ApplicationService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_BananaMessageService_sendMessage">Function: BananaMessageService.sendMessage</h4>
+</pre></div><div class="definition"><h4 id="Fn_ApplicationService_sendMessage">Function: ApplicationService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre>Send a Message from your Application to the Banana Service.
-<br/></div><div class="definition"><h4 id="Fn_BananaMessageService_sendMessageAsync">Function: BananaMessageService.sendMessageAsync</h4>
+<br/></div><div class="definition"><h4 id="Fn_ApplicationService_sendMessageAsync">Function: ApplicationService.sendMessageAsync</h4>
 <pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
 </pre>
 <br/></div></div></body></html>

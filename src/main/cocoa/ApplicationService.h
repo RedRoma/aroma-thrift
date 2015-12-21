@@ -35,8 +35,6 @@ typedef Banana_Application * BananaService_Application;
 
 typedef int BananaService_Urgency;
 
-typedef BananaService_Channels.BananaChannel BananaService_BananaChannel;
-
 typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
 
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
@@ -125,25 +123,25 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@protocol BananaService_BananaMessageService <NSObject>
+@protocol BananaService_ApplicationService <NSObject>
 - (double) getApiVersion;  // throws TException
 - (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (void) sendMessageAsync: (BananaService_SendMessageRequest *) request;  // throws TException
 @end
 
-@interface BananaService_BananaMessageServiceClient : TBaseClient <BananaService_BananaMessageService> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface BananaService_ApplicationServiceClient : TBaseClient <BananaService_ApplicationService> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaService_BananaMessageServiceProcessor : NSObject <TProcessor> {
-  id <BananaService_BananaMessageService> mService;
+@interface BananaService_ApplicationServiceProcessor : NSObject <TProcessor> {
+  id <BananaService_ApplicationService> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithBananaMessageService: (id <BananaService_BananaMessageService>) service;
-- (id<BananaService_BananaMessageService>) service;
+- (id) initWithApplicationService: (id <BananaService_ApplicationService>) service;
+- (id<BananaService_ApplicationService>) service;
 @end
 
-@interface BananaService_BananaMessageServiceConstants : NSObject {
+@interface BananaService_ApplicationServiceConstants : NSObject {
 }
 + (double) API_VERSION;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;

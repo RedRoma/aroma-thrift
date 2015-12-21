@@ -3,7 +3,7 @@ namespace cocoa BananaService_
 namespace cpp   aroma.banana.thrift.service
 
 /*
- * Defined in this File is the Banana Message Service API.
+ * Defined in this File is the Application Service API.
  * This Service is responsible for accepting, processing, and storing
  * incoming messages sent by Applications.
  */
@@ -65,11 +65,11 @@ struct SendMessageResponse
 }
 
 /**
- * The Banana Message Service is designed to be called by Applications, to send messages
- * and report Alerts to their maintainers. It is designed to be used by machines, not humans.
+ * The Application  Service is designed to be called by Applications, to send messages
+ * and report alerts to people. It is designed to be used by machines, not humans.
  * This is where Incoming Messages are accepted, processed, and stored.
  */
-service BananaMessageService
+service ApplicationService
 {
     
     double getApiVersion()

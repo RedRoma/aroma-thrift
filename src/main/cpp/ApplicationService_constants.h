@@ -4,23 +4,23 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaMessageService_CONSTANTS_H
-#define BananaMessageService_CONSTANTS_H
+#ifndef ApplicationService_CONSTANTS_H
+#define ApplicationService_CONSTANTS_H
 
-#include "BananaMessageService_types.h"
+#include "ApplicationService_types.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
-class BananaMessageServiceConstants {
+class ApplicationServiceConstants {
  public:
-  BananaMessageServiceConstants();
+  ApplicationServiceConstants();
 
   double API_VERSION;
    ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
 };
 
-extern const BananaMessageServiceConstants g_BananaMessageService_constants;
+extern const ApplicationServiceConstants g_ApplicationService_constants;
 
 }}}} // namespace
 

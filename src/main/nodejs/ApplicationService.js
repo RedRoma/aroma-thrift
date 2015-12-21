@@ -13,13 +13,13 @@ var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
 
-var ttypes = require('./BananaMessageService_types');
+var ttypes = require('./ApplicationService_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
-BananaMessageService_getApiVersion_args = function(args) {
+ApplicationService_getApiVersion_args = function(args) {
 };
-BananaMessageService_getApiVersion_args.prototype = {};
-BananaMessageService_getApiVersion_args.prototype.read = function(input) {
+ApplicationService_getApiVersion_args.prototype = {};
+ApplicationService_getApiVersion_args.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -37,14 +37,14 @@ BananaMessageService_getApiVersion_args.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_getApiVersion_args.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_getApiVersion_args');
+ApplicationService_getApiVersion_args.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_getApiVersion_args');
       output.writeFieldStop();
       output.writeStructEnd();
       return;
     };
 
-BananaMessageService_getApiVersion_result = function(args) {
+ApplicationService_getApiVersion_result = function(args) {
       this.success = null;
       if (args) {
             if (args.success !== undefined && args.success !== null) {
@@ -52,8 +52,8 @@ BananaMessageService_getApiVersion_result = function(args) {
             }
       }
 };
-BananaMessageService_getApiVersion_result.prototype = {};
-BananaMessageService_getApiVersion_result.prototype.read = function(input) {
+ApplicationService_getApiVersion_result.prototype = {};
+ApplicationService_getApiVersion_result.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -85,8 +85,8 @@ BananaMessageService_getApiVersion_result.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_getApiVersion_result.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_getApiVersion_result');
+ApplicationService_getApiVersion_result.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_getApiVersion_result');
       if (this.success !== null && this.success !== undefined) {
         output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
         output.writeDouble(this.success);
@@ -97,7 +97,7 @@ BananaMessageService_getApiVersion_result.prototype.write = function(output) {
       return;
     };
 
-BananaMessageService_sendMessage_args = function(args) {
+ApplicationService_sendMessage_args = function(args) {
       this.request = null;
       if (args) {
             if (args.request !== undefined && args.request !== null) {
@@ -105,8 +105,8 @@ BananaMessageService_sendMessage_args = function(args) {
             }
       }
 };
-BananaMessageService_sendMessage_args.prototype = {};
-BananaMessageService_sendMessage_args.prototype.read = function(input) {
+ApplicationService_sendMessage_args.prototype = {};
+ApplicationService_sendMessage_args.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -139,8 +139,8 @@ BananaMessageService_sendMessage_args.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_sendMessage_args.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_sendMessage_args');
+ApplicationService_sendMessage_args.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_sendMessage_args');
       if (this.request !== null && this.request !== undefined) {
         output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
         this.request.write(output);
@@ -151,7 +151,7 @@ BananaMessageService_sendMessage_args.prototype.write = function(output) {
       return;
     };
 
-BananaMessageService_sendMessage_result = function(args) {
+ApplicationService_sendMessage_result = function(args) {
       this.success = null;
       this.ex1 = null;
       this.ex2 = null;
@@ -183,8 +183,8 @@ BananaMessageService_sendMessage_result = function(args) {
             }
       }
 };
-BananaMessageService_sendMessage_result.prototype = {};
-BananaMessageService_sendMessage_result.prototype.read = function(input) {
+ApplicationService_sendMessage_result.prototype = {};
+ApplicationService_sendMessage_result.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -238,8 +238,8 @@ BananaMessageService_sendMessage_result.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_sendMessage_result.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_sendMessage_result');
+ApplicationService_sendMessage_result.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_sendMessage_result');
       if (this.success !== null && this.success !== undefined) {
         output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
         this.success.write(output);
@@ -265,7 +265,7 @@ BananaMessageService_sendMessage_result.prototype.write = function(output) {
       return;
     };
 
-BananaMessageService_sendMessageAsync_args = function(args) {
+ApplicationService_sendMessageAsync_args = function(args) {
       this.request = null;
       if (args) {
             if (args.request !== undefined && args.request !== null) {
@@ -273,8 +273,8 @@ BananaMessageService_sendMessageAsync_args = function(args) {
             }
       }
 };
-BananaMessageService_sendMessageAsync_args.prototype = {};
-BananaMessageService_sendMessageAsync_args.prototype.read = function(input) {
+ApplicationService_sendMessageAsync_args.prototype = {};
+ApplicationService_sendMessageAsync_args.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -307,8 +307,8 @@ BananaMessageService_sendMessageAsync_args.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_sendMessageAsync_args.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_sendMessageAsync_args');
+ApplicationService_sendMessageAsync_args.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_sendMessageAsync_args');
       if (this.request !== null && this.request !== undefined) {
         output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
         this.request.write(output);
@@ -319,10 +319,10 @@ BananaMessageService_sendMessageAsync_args.prototype.write = function(output) {
       return;
     };
 
-BananaMessageService_sendMessageAsync_result = function(args) {
+ApplicationService_sendMessageAsync_result = function(args) {
 };
-BananaMessageService_sendMessageAsync_result.prototype = {};
-BananaMessageService_sendMessageAsync_result.prototype.read = function(input) {
+ApplicationService_sendMessageAsync_result.prototype = {};
+ApplicationService_sendMessageAsync_result.prototype.read = function(input) {
       input.readStructBegin();
       while (true)
       {
@@ -340,23 +340,23 @@ BananaMessageService_sendMessageAsync_result.prototype.read = function(input) {
       return;
     };
 
-BananaMessageService_sendMessageAsync_result.prototype.write = function(output) {
-      output.writeStructBegin('BananaMessageService_sendMessageAsync_result');
+ApplicationService_sendMessageAsync_result.prototype.write = function(output) {
+      output.writeStructBegin('ApplicationService_sendMessageAsync_result');
       output.writeFieldStop();
       output.writeStructEnd();
       return;
     };
 
-BananaMessageServiceClient = exports.Client = function(output, pClass) {
+ApplicationServiceClient = exports.Client = function(output, pClass) {
         this.output = output;
         this.pClass = pClass;
         this._seqid = 0;
         this._reqs = {};
     };
-    BananaMessageServiceClient.prototype = {};
-    BananaMessageServiceClient.prototype.seqid = function() { return this._seqid; }
-BananaMessageServiceClient.prototype.new_seqid = function() { return this._seqid += 1; }
-BananaMessageServiceClient.prototype.getApiVersion = function(callback) {
+    ApplicationServiceClient.prototype = {};
+    ApplicationServiceClient.prototype.seqid = function() { return this._seqid; }
+ApplicationServiceClient.prototype.new_seqid = function() { return this._seqid += 1; }
+ApplicationServiceClient.prototype.getApiVersion = function(callback) {
       this._seqid = this.new_seqid();
       if (callback === undefined) {
         var _defer = Q.defer();
@@ -375,16 +375,16 @@ BananaMessageServiceClient.prototype.getApiVersion = function(callback) {
       }
 };
 
-BananaMessageServiceClient.prototype.send_getApiVersion = function() {
+ApplicationServiceClient.prototype.send_getApiVersion = function() {
       var output = new this.pClass(this.output);
       output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid());
-      var args = new BananaMessageService_getApiVersion_args();
+      var args = new ApplicationService_getApiVersion_args();
       args.write(output);
       output.writeMessageEnd();
       return this.output.flush();
 };
 
-BananaMessageServiceClient.prototype.recv_getApiVersion = function(input,mtype,rseqid) {
+ApplicationServiceClient.prototype.recv_getApiVersion = function(input,mtype,rseqid) {
       var callback = this._reqs[rseqid] || function() {};
       delete this._reqs[rseqid];
       if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -393,7 +393,7 @@ BananaMessageServiceClient.prototype.recv_getApiVersion = function(input,mtype,r
         input.readMessageEnd();
         return callback(x);
       }
-      var result = new BananaMessageService_getApiVersion_result();
+      var result = new ApplicationService_getApiVersion_result();
       result.read(input);
       input.readMessageEnd();
 
@@ -402,7 +402,7 @@ BananaMessageServiceClient.prototype.recv_getApiVersion = function(input,mtype,r
       }
       return callback('getApiVersion failed: unknown result');
 };
-BananaMessageServiceClient.prototype.sendMessage = function(request, callback) {
+ApplicationServiceClient.prototype.sendMessage = function(request, callback) {
       this._seqid = this.new_seqid();
       if (callback === undefined) {
         var _defer = Q.defer();
@@ -421,17 +421,17 @@ BananaMessageServiceClient.prototype.sendMessage = function(request, callback) {
       }
 };
 
-BananaMessageServiceClient.prototype.send_sendMessage = function(request) {
+ApplicationServiceClient.prototype.send_sendMessage = function(request) {
       var output = new this.pClass(this.output);
       output.writeMessageBegin('sendMessage', Thrift.MessageType.CALL, this.seqid());
-      var args = new BananaMessageService_sendMessage_args();
+      var args = new ApplicationService_sendMessage_args();
       args.request = request;
       args.write(output);
       output.writeMessageEnd();
       return this.output.flush();
 };
 
-BananaMessageServiceClient.prototype.recv_sendMessage = function(input,mtype,rseqid) {
+ApplicationServiceClient.prototype.recv_sendMessage = function(input,mtype,rseqid) {
       var callback = this._reqs[rseqid] || function() {};
       delete this._reqs[rseqid];
       if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -440,7 +440,7 @@ BananaMessageServiceClient.prototype.recv_sendMessage = function(input,mtype,rse
         input.readMessageEnd();
         return callback(x);
       }
-      var result = new BananaMessageService_sendMessage_result();
+      var result = new ApplicationService_sendMessage_result();
       result.read(input);
       input.readMessageEnd();
 
@@ -458,7 +458,7 @@ BananaMessageServiceClient.prototype.recv_sendMessage = function(input,mtype,rse
       }
       return callback('sendMessage failed: unknown result');
 };
-BananaMessageServiceClient.prototype.sendMessageAsync = function(request, callback) {
+ApplicationServiceClient.prototype.sendMessageAsync = function(request, callback) {
       this._seqid = this.new_seqid();
       if (callback === undefined) {
         var _defer = Q.defer();
@@ -477,19 +477,19 @@ BananaMessageServiceClient.prototype.sendMessageAsync = function(request, callba
       }
 };
 
-BananaMessageServiceClient.prototype.send_sendMessageAsync = function(request) {
+ApplicationServiceClient.prototype.send_sendMessageAsync = function(request) {
       var output = new this.pClass(this.output);
       output.writeMessageBegin('sendMessageAsync', Thrift.MessageType.ONEWAY, this.seqid());
-      var args = new BananaMessageService_sendMessageAsync_args();
+      var args = new ApplicationService_sendMessageAsync_args();
       args.request = request;
       args.write(output);
       output.writeMessageEnd();
       return this.output.flush();
 };
-BananaMessageServiceProcessor = exports.Processor = function(handler)     {
+ApplicationServiceProcessor = exports.Processor = function(handler)     {
       this._handler = handler
     }
-    BananaMessageServiceProcessor.prototype.process = function(input, output)     {
+    ApplicationServiceProcessor.prototype.process = function(input, output)     {
       var r = input.readMessageBegin();
       if (this['process_' + r.fname]) {
         return this['process_' + r.fname].call(this, r.rseqid, input, output);
@@ -504,14 +504,14 @@ BananaMessageServiceProcessor = exports.Processor = function(handler)     {
       }
     }
 
-    BananaMessageServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)     {
-      var args = new BananaMessageService_getApiVersion_args();
+    ApplicationServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)     {
+      var args = new ApplicationService_getApiVersion_args();
       args.read(input);
       input.readMessageEnd();
       if (this._handler.getApiVersion.length === 0) {
         Q.fcall(this._handler.getApiVersion)
           .then(function(result) {
-            var result = new BananaMessageService_getApiVersion_result({success: result});
+            var result = new ApplicationService_getApiVersion_result({success: result});
             output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
             result.write(output);
             output.writeMessageEnd();
@@ -526,7 +526,7 @@ BananaMessageServiceProcessor = exports.Processor = function(handler)     {
       } else {
         this._handler.getApiVersion(function (err, result) {
           if (err == null) {
-            var result = new BananaMessageService_getApiVersion_result((err != null ? err : {success: result}));
+            var result = new ApplicationService_getApiVersion_result((err != null ? err : {success: result}));
             output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
           } else {
             var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -539,21 +539,21 @@ BananaMessageServiceProcessor = exports.Processor = function(handler)     {
       }
     }
 
-    BananaMessageServiceProcessor.prototype.process_sendMessage = function(seqid, input, output)     {
-      var args = new BananaMessageService_sendMessage_args();
+    ApplicationServiceProcessor.prototype.process_sendMessage = function(seqid, input, output)     {
+      var args = new ApplicationService_sendMessage_args();
       args.read(input);
       input.readMessageEnd();
       if (this._handler.sendMessage.length === 1) {
         Q.fcall(this._handler.sendMessage, args.request)
           .then(function(result) {
-            var result = new BananaMessageService_sendMessage_result({success: result});
+            var result = new ApplicationService_sendMessage_result({success: result});
             output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
             result.write(output);
             output.writeMessageEnd();
             output.flush();
           }, function (err) {
             if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
-              var result = new BananaMessageService_sendMessage_result(err);
+              var result = new ApplicationService_sendMessage_result(err);
               output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
             } else {
               var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -566,7 +566,7 @@ BananaMessageServiceProcessor = exports.Processor = function(handler)     {
       } else {
         this._handler.sendMessage(args.request, function (err, result) {
           if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
-            var result = new BananaMessageService_sendMessage_result((err != null ? err : {success: result}));
+            var result = new ApplicationService_sendMessage_result((err != null ? err : {success: result}));
             output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
           } else {
             var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -579,8 +579,8 @@ BananaMessageServiceProcessor = exports.Processor = function(handler)     {
       }
     }
 
-    BananaMessageServiceProcessor.prototype.process_sendMessageAsync = function(seqid, input, output)     {
-      var args = new BananaMessageService_sendMessageAsync_args();
+    ApplicationServiceProcessor.prototype.process_sendMessageAsync = function(seqid, input, output)     {
+      var args = new ApplicationService_sendMessageAsync_args();
       args.read(input);
       input.readMessageEnd();
       this._handler.sendMessageAsync(args.request)

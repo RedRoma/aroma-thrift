@@ -23,7 +23,7 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-#import "BananaMessageService.h"
+#import "ApplicationService.h"
 
 @implementation BananaService_SendMessageRequest
 
@@ -444,7 +444,7 @@ static double BananaService_API_VERSION = 1.4;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
-@implementation BananaService_BananaMessageServiceConstants
+@implementation BananaService_ApplicationServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-msg-srv.aroma.tech"];
@@ -1470,7 +1470,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_BananaMessageServiceClient
+@implementation BananaService_ApplicationServiceClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -1584,9 +1584,9 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_BananaMessageServiceProcessor
+@implementation BananaService_ApplicationServiceProcessor
 
-- (id) initWithBananaMessageService: (id <BananaService_BananaMessageService>) service
+- (id) initWithApplicationService: (id <BananaService_ApplicationService>) service
 {
 self = [super init];
 if (!self) {
@@ -1621,7 +1621,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaService_BananaMessageService>) service
+- (id<BananaService_ApplicationService>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }

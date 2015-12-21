@@ -4,12 +4,12 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaMessageService_H
-#define BananaMessageService_H
+#ifndef ApplicationService_H
+#define ApplicationService_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
-#include "BananaMessageService_types.h"
+#include "ApplicationService_types.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
@@ -18,9 +18,9 @@ namespace aroma { namespace banana { namespace thrift { namespace service {
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class BananaMessageServiceIf {
+class ApplicationServiceIf {
  public:
-  virtual ~BananaMessageServiceIf() {}
+  virtual ~ApplicationServiceIf() {}
   virtual double getApiVersion() = 0;
 
   /**
@@ -38,33 +38,33 @@ class BananaMessageServiceIf {
   virtual void sendMessageAsync(const SendMessageRequest& request) = 0;
 };
 
-class BananaMessageServiceIfFactory {
+class ApplicationServiceIfFactory {
  public:
-  typedef BananaMessageServiceIf Handler;
+  typedef ApplicationServiceIf Handler;
 
-  virtual ~BananaMessageServiceIfFactory() {}
+  virtual ~ApplicationServiceIfFactory() {}
 
-  virtual BananaMessageServiceIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(BananaMessageServiceIf* /* handler */) = 0;
+  virtual ApplicationServiceIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(ApplicationServiceIf* /* handler */) = 0;
 };
 
-class BananaMessageServiceIfSingletonFactory : virtual public BananaMessageServiceIfFactory {
+class ApplicationServiceIfSingletonFactory : virtual public ApplicationServiceIfFactory {
  public:
-  BananaMessageServiceIfSingletonFactory(const boost::shared_ptr<BananaMessageServiceIf>& iface) : iface_(iface) {}
-  virtual ~BananaMessageServiceIfSingletonFactory() {}
+  ApplicationServiceIfSingletonFactory(const boost::shared_ptr<ApplicationServiceIf>& iface) : iface_(iface) {}
+  virtual ~ApplicationServiceIfSingletonFactory() {}
 
-  virtual BananaMessageServiceIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
+  virtual ApplicationServiceIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
     return iface_.get();
   }
-  virtual void releaseHandler(BananaMessageServiceIf* /* handler */) {}
+  virtual void releaseHandler(ApplicationServiceIf* /* handler */) {}
 
  protected:
-  boost::shared_ptr<BananaMessageServiceIf> iface_;
+  boost::shared_ptr<ApplicationServiceIf> iface_;
 };
 
-class BananaMessageServiceNull : virtual public BananaMessageServiceIf {
+class ApplicationServiceNull : virtual public ApplicationServiceIf {
  public:
-  virtual ~BananaMessageServiceNull() {}
+  virtual ~ApplicationServiceNull() {}
   double getApiVersion() {
     double _return = (double)0;
     return _return;
@@ -78,25 +78,25 @@ class BananaMessageServiceNull : virtual public BananaMessageServiceIf {
 };
 
 
-class BananaMessageService_getApiVersion_args {
+class ApplicationService_getApiVersion_args {
  public:
 
-  BananaMessageService_getApiVersion_args(const BananaMessageService_getApiVersion_args&);
-  BananaMessageService_getApiVersion_args& operator=(const BananaMessageService_getApiVersion_args&);
-  BananaMessageService_getApiVersion_args() {
+  ApplicationService_getApiVersion_args(const ApplicationService_getApiVersion_args&);
+  ApplicationService_getApiVersion_args& operator=(const ApplicationService_getApiVersion_args&);
+  ApplicationService_getApiVersion_args() {
   }
 
-  virtual ~BananaMessageService_getApiVersion_args() throw();
+  virtual ~ApplicationService_getApiVersion_args() throw();
 
-  bool operator == (const BananaMessageService_getApiVersion_args & /* rhs */) const
+  bool operator == (const ApplicationService_getApiVersion_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const BananaMessageService_getApiVersion_args &rhs) const {
+  bool operator != (const ApplicationService_getApiVersion_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaMessageService_getApiVersion_args & ) const;
+  bool operator < (const ApplicationService_getApiVersion_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -104,102 +104,102 @@ class BananaMessageService_getApiVersion_args {
 };
 
 
-class BananaMessageService_getApiVersion_pargs {
+class ApplicationService_getApiVersion_pargs {
  public:
 
 
-  virtual ~BananaMessageService_getApiVersion_pargs() throw();
+  virtual ~ApplicationService_getApiVersion_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaMessageService_getApiVersion_result__isset {
-  _BananaMessageService_getApiVersion_result__isset() : success(false) {}
+typedef struct _ApplicationService_getApiVersion_result__isset {
+  _ApplicationService_getApiVersion_result__isset() : success(false) {}
   bool success :1;
-} _BananaMessageService_getApiVersion_result__isset;
+} _ApplicationService_getApiVersion_result__isset;
 
-class BananaMessageService_getApiVersion_result {
+class ApplicationService_getApiVersion_result {
  public:
 
-  BananaMessageService_getApiVersion_result(const BananaMessageService_getApiVersion_result&);
-  BananaMessageService_getApiVersion_result& operator=(const BananaMessageService_getApiVersion_result&);
-  BananaMessageService_getApiVersion_result() : success(0) {
+  ApplicationService_getApiVersion_result(const ApplicationService_getApiVersion_result&);
+  ApplicationService_getApiVersion_result& operator=(const ApplicationService_getApiVersion_result&);
+  ApplicationService_getApiVersion_result() : success(0) {
   }
 
-  virtual ~BananaMessageService_getApiVersion_result() throw();
+  virtual ~ApplicationService_getApiVersion_result() throw();
   double success;
 
-  _BananaMessageService_getApiVersion_result__isset __isset;
+  _ApplicationService_getApiVersion_result__isset __isset;
 
   void __set_success(const double val);
 
-  bool operator == (const BananaMessageService_getApiVersion_result & rhs) const
+  bool operator == (const ApplicationService_getApiVersion_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const BananaMessageService_getApiVersion_result &rhs) const {
+  bool operator != (const ApplicationService_getApiVersion_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaMessageService_getApiVersion_result & ) const;
+  bool operator < (const ApplicationService_getApiVersion_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaMessageService_getApiVersion_presult__isset {
-  _BananaMessageService_getApiVersion_presult__isset() : success(false) {}
+typedef struct _ApplicationService_getApiVersion_presult__isset {
+  _ApplicationService_getApiVersion_presult__isset() : success(false) {}
   bool success :1;
-} _BananaMessageService_getApiVersion_presult__isset;
+} _ApplicationService_getApiVersion_presult__isset;
 
-class BananaMessageService_getApiVersion_presult {
+class ApplicationService_getApiVersion_presult {
  public:
 
 
-  virtual ~BananaMessageService_getApiVersion_presult() throw();
+  virtual ~ApplicationService_getApiVersion_presult() throw();
   double* success;
 
-  _BananaMessageService_getApiVersion_presult__isset __isset;
+  _ApplicationService_getApiVersion_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaMessageService_sendMessage_args__isset {
-  _BananaMessageService_sendMessage_args__isset() : request(false) {}
+typedef struct _ApplicationService_sendMessage_args__isset {
+  _ApplicationService_sendMessage_args__isset() : request(false) {}
   bool request :1;
-} _BananaMessageService_sendMessage_args__isset;
+} _ApplicationService_sendMessage_args__isset;
 
-class BananaMessageService_sendMessage_args {
+class ApplicationService_sendMessage_args {
  public:
 
-  BananaMessageService_sendMessage_args(const BananaMessageService_sendMessage_args&);
-  BananaMessageService_sendMessage_args& operator=(const BananaMessageService_sendMessage_args&);
-  BananaMessageService_sendMessage_args() {
+  ApplicationService_sendMessage_args(const ApplicationService_sendMessage_args&);
+  ApplicationService_sendMessage_args& operator=(const ApplicationService_sendMessage_args&);
+  ApplicationService_sendMessage_args() {
   }
 
-  virtual ~BananaMessageService_sendMessage_args() throw();
+  virtual ~ApplicationService_sendMessage_args() throw();
   SendMessageRequest request;
 
-  _BananaMessageService_sendMessage_args__isset __isset;
+  _ApplicationService_sendMessage_args__isset __isset;
 
   void __set_request(const SendMessageRequest& val);
 
-  bool operator == (const BananaMessageService_sendMessage_args & rhs) const
+  bool operator == (const ApplicationService_sendMessage_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaMessageService_sendMessage_args &rhs) const {
+  bool operator != (const ApplicationService_sendMessage_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaMessageService_sendMessage_args & ) const;
+  bool operator < (const ApplicationService_sendMessage_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -207,40 +207,40 @@ class BananaMessageService_sendMessage_args {
 };
 
 
-class BananaMessageService_sendMessage_pargs {
+class ApplicationService_sendMessage_pargs {
  public:
 
 
-  virtual ~BananaMessageService_sendMessage_pargs() throw();
+  virtual ~ApplicationService_sendMessage_pargs() throw();
   const SendMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaMessageService_sendMessage_result__isset {
-  _BananaMessageService_sendMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _ApplicationService_sendMessage_result__isset {
+  _ApplicationService_sendMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaMessageService_sendMessage_result__isset;
+} _ApplicationService_sendMessage_result__isset;
 
-class BananaMessageService_sendMessage_result {
+class ApplicationService_sendMessage_result {
  public:
 
-  BananaMessageService_sendMessage_result(const BananaMessageService_sendMessage_result&);
-  BananaMessageService_sendMessage_result& operator=(const BananaMessageService_sendMessage_result&);
-  BananaMessageService_sendMessage_result() {
+  ApplicationService_sendMessage_result(const ApplicationService_sendMessage_result&);
+  ApplicationService_sendMessage_result& operator=(const ApplicationService_sendMessage_result&);
+  ApplicationService_sendMessage_result() {
   }
 
-  virtual ~BananaMessageService_sendMessage_result() throw();
+  virtual ~ApplicationService_sendMessage_result() throw();
   SendMessageResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
 
-  _BananaMessageService_sendMessage_result__isset __isset;
+  _ApplicationService_sendMessage_result__isset __isset;
 
   void __set_success(const SendMessageResponse& val);
 
@@ -250,7 +250,7 @@ class BananaMessageService_sendMessage_result {
 
   void __set_ex3(const InvalidCredentialsException& val);
 
-  bool operator == (const BananaMessageService_sendMessage_result & rhs) const
+  bool operator == (const ApplicationService_sendMessage_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -262,72 +262,72 @@ class BananaMessageService_sendMessage_result {
       return false;
     return true;
   }
-  bool operator != (const BananaMessageService_sendMessage_result &rhs) const {
+  bool operator != (const ApplicationService_sendMessage_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaMessageService_sendMessage_result & ) const;
+  bool operator < (const ApplicationService_sendMessage_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaMessageService_sendMessage_presult__isset {
-  _BananaMessageService_sendMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _ApplicationService_sendMessage_presult__isset {
+  _ApplicationService_sendMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaMessageService_sendMessage_presult__isset;
+} _ApplicationService_sendMessage_presult__isset;
 
-class BananaMessageService_sendMessage_presult {
+class ApplicationService_sendMessage_presult {
  public:
 
 
-  virtual ~BananaMessageService_sendMessage_presult() throw();
+  virtual ~ApplicationService_sendMessage_presult() throw();
   SendMessageResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
 
-  _BananaMessageService_sendMessage_presult__isset __isset;
+  _ApplicationService_sendMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaMessageService_sendMessageAsync_args__isset {
-  _BananaMessageService_sendMessageAsync_args__isset() : request(false) {}
+typedef struct _ApplicationService_sendMessageAsync_args__isset {
+  _ApplicationService_sendMessageAsync_args__isset() : request(false) {}
   bool request :1;
-} _BananaMessageService_sendMessageAsync_args__isset;
+} _ApplicationService_sendMessageAsync_args__isset;
 
-class BananaMessageService_sendMessageAsync_args {
+class ApplicationService_sendMessageAsync_args {
  public:
 
-  BananaMessageService_sendMessageAsync_args(const BananaMessageService_sendMessageAsync_args&);
-  BananaMessageService_sendMessageAsync_args& operator=(const BananaMessageService_sendMessageAsync_args&);
-  BananaMessageService_sendMessageAsync_args() {
+  ApplicationService_sendMessageAsync_args(const ApplicationService_sendMessageAsync_args&);
+  ApplicationService_sendMessageAsync_args& operator=(const ApplicationService_sendMessageAsync_args&);
+  ApplicationService_sendMessageAsync_args() {
   }
 
-  virtual ~BananaMessageService_sendMessageAsync_args() throw();
+  virtual ~ApplicationService_sendMessageAsync_args() throw();
   SendMessageRequest request;
 
-  _BananaMessageService_sendMessageAsync_args__isset __isset;
+  _ApplicationService_sendMessageAsync_args__isset __isset;
 
   void __set_request(const SendMessageRequest& val);
 
-  bool operator == (const BananaMessageService_sendMessageAsync_args & rhs) const
+  bool operator == (const ApplicationService_sendMessageAsync_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaMessageService_sendMessageAsync_args &rhs) const {
+  bool operator != (const ApplicationService_sendMessageAsync_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaMessageService_sendMessageAsync_args & ) const;
+  bool operator < (const ApplicationService_sendMessageAsync_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -335,23 +335,23 @@ class BananaMessageService_sendMessageAsync_args {
 };
 
 
-class BananaMessageService_sendMessageAsync_pargs {
+class ApplicationService_sendMessageAsync_pargs {
  public:
 
 
-  virtual ~BananaMessageService_sendMessageAsync_pargs() throw();
+  virtual ~ApplicationService_sendMessageAsync_pargs() throw();
   const SendMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-class BananaMessageServiceClient : virtual public BananaMessageServiceIf {
+class ApplicationServiceClient : virtual public ApplicationServiceIf {
  public:
-  BananaMessageServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  ApplicationServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  BananaMessageServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  ApplicationServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -386,48 +386,48 @@ class BananaMessageServiceClient : virtual public BananaMessageServiceIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class BananaMessageServiceProcessor : public ::apache::thrift::TDispatchProcessor {
+class ApplicationServiceProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  boost::shared_ptr<BananaMessageServiceIf> iface_;
+  boost::shared_ptr<ApplicationServiceIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext);
  private:
-  typedef  void (BananaMessageServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (ApplicationServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_sendMessageAsync(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
-  BananaMessageServiceProcessor(boost::shared_ptr<BananaMessageServiceIf> iface) :
+  ApplicationServiceProcessor(boost::shared_ptr<ApplicationServiceIf> iface) :
     iface_(iface) {
-    processMap_["getApiVersion"] = &BananaMessageServiceProcessor::process_getApiVersion;
-    processMap_["sendMessage"] = &BananaMessageServiceProcessor::process_sendMessage;
-    processMap_["sendMessageAsync"] = &BananaMessageServiceProcessor::process_sendMessageAsync;
+    processMap_["getApiVersion"] = &ApplicationServiceProcessor::process_getApiVersion;
+    processMap_["sendMessage"] = &ApplicationServiceProcessor::process_sendMessage;
+    processMap_["sendMessageAsync"] = &ApplicationServiceProcessor::process_sendMessageAsync;
   }
 
-  virtual ~BananaMessageServiceProcessor() {}
+  virtual ~ApplicationServiceProcessor() {}
 };
 
-class BananaMessageServiceProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class ApplicationServiceProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  BananaMessageServiceProcessorFactory(const ::boost::shared_ptr< BananaMessageServiceIfFactory >& handlerFactory) :
+  ApplicationServiceProcessorFactory(const ::boost::shared_ptr< ApplicationServiceIfFactory >& handlerFactory) :
       handlerFactory_(handlerFactory) {}
 
   ::boost::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo);
 
  protected:
-  ::boost::shared_ptr< BananaMessageServiceIfFactory > handlerFactory_;
+  ::boost::shared_ptr< ApplicationServiceIfFactory > handlerFactory_;
 };
 
-class BananaMessageServiceMultiface : virtual public BananaMessageServiceIf {
+class ApplicationServiceMultiface : virtual public ApplicationServiceIf {
  public:
-  BananaMessageServiceMultiface(std::vector<boost::shared_ptr<BananaMessageServiceIf> >& ifaces) : ifaces_(ifaces) {
+  ApplicationServiceMultiface(std::vector<boost::shared_ptr<ApplicationServiceIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~BananaMessageServiceMultiface() {}
+  virtual ~ApplicationServiceMultiface() {}
  protected:
-  std::vector<boost::shared_ptr<BananaMessageServiceIf> > ifaces_;
-  BananaMessageServiceMultiface() {}
-  void add(boost::shared_ptr<BananaMessageServiceIf> iface) {
+  std::vector<boost::shared_ptr<ApplicationServiceIf> > ifaces_;
+  ApplicationServiceMultiface() {}
+  void add(boost::shared_ptr<ApplicationServiceIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -464,12 +464,12 @@ class BananaMessageServiceMultiface : virtual public BananaMessageServiceIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class BananaMessageServiceConcurrentClient : virtual public BananaMessageServiceIf {
+class ApplicationServiceConcurrentClient : virtual public ApplicationServiceIf {
  public:
-  BananaMessageServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  ApplicationServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  BananaMessageServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  ApplicationServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:

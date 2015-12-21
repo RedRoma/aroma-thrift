@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "BananaMessageService_types.h"
+#include "ApplicationService_types.h"
 
 #include <algorithm>
 #include <ostream>
