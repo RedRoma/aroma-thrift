@@ -124,8 +124,8 @@ SignInResponse::~SignInResponse() throw() {
 }
 
 
-void SignInResponse::__set_humanToken(const HumanToken& val) {
-  this->humanToken = val;
+void SignInResponse::__set_userToken(const UserToken& val) {
+  this->userToken = val;
 }
 
 uint32_t SignInResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -151,8 +151,8 @@ uint32_t SignInResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->humanToken.read(iprot);
-          this->__isset.humanToken = true;
+          xfer += this->userToken.read(iprot);
+          this->__isset.userToken = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -174,8 +174,8 @@ uint32_t SignInResponse::write(::apache::thrift::protocol::TProtocol* oprot) con
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SignInResponse");
 
-  xfer += oprot->writeFieldBegin("humanToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->humanToken.write(oprot);
+  xfer += oprot->writeFieldBegin("userToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->userToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -185,23 +185,23 @@ uint32_t SignInResponse::write(::apache::thrift::protocol::TProtocol* oprot) con
 
 void swap(SignInResponse &a, SignInResponse &b) {
   using ::std::swap;
-  swap(a.humanToken, b.humanToken);
+  swap(a.userToken, b.userToken);
   swap(a.__isset, b.__isset);
 }
 
 SignInResponse::SignInResponse(const SignInResponse& other2) {
-  humanToken = other2.humanToken;
+  userToken = other2.userToken;
   __isset = other2.__isset;
 }
 SignInResponse& SignInResponse::operator=(const SignInResponse& other3) {
-  humanToken = other3.humanToken;
+  userToken = other3.userToken;
   __isset = other3.__isset;
   return *this;
 }
 void SignInResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SignInResponse(";
-  out << "humanToken=" << to_string(humanToken);
+  out << "userToken=" << to_string(userToken);
   out << ")";
 }
 
@@ -376,8 +376,8 @@ SignUpResponse::~SignUpResponse() throw() {
 }
 
 
-void SignUpResponse::__set_humanToken(const HumanToken& val) {
-  this->humanToken = val;
+void SignUpResponse::__set_userToken(const UserToken& val) {
+  this->userToken = val;
 }
 
 void SignUpResponse::__set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val) {
@@ -407,8 +407,8 @@ uint32_t SignUpResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->humanToken.read(iprot);
-          this->__isset.humanToken = true;
+          xfer += this->userToken.read(iprot);
+          this->__isset.userToken = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -438,8 +438,8 @@ uint32_t SignUpResponse::write(::apache::thrift::protocol::TProtocol* oprot) con
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SignUpResponse");
 
-  xfer += oprot->writeFieldBegin("humanToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->humanToken.write(oprot);
+  xfer += oprot->writeFieldBegin("userToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->userToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("account", ::apache::thrift::protocol::T_STRUCT, 2);
@@ -453,18 +453,18 @@ uint32_t SignUpResponse::write(::apache::thrift::protocol::TProtocol* oprot) con
 
 void swap(SignUpResponse &a, SignUpResponse &b) {
   using ::std::swap;
-  swap(a.humanToken, b.humanToken);
+  swap(a.userToken, b.userToken);
   swap(a.account, b.account);
   swap(a.__isset, b.__isset);
 }
 
 SignUpResponse::SignUpResponse(const SignUpResponse& other6) {
-  humanToken = other6.humanToken;
+  userToken = other6.userToken;
   account = other6.account;
   __isset = other6.__isset;
 }
 SignUpResponse& SignUpResponse::operator=(const SignUpResponse& other7) {
-  humanToken = other7.humanToken;
+  userToken = other7.userToken;
   account = other7.account;
   __isset = other7.__isset;
   return *this;
@@ -472,7 +472,7 @@ SignUpResponse& SignUpResponse::operator=(const SignUpResponse& other7) {
 void SignUpResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SignUpResponse(";
-  out << "humanToken=" << to_string(humanToken);
+  out << "userToken=" << to_string(userToken);
   out << ", " << "account=" << to_string(account);
   out << ")";
 }
@@ -482,7 +482,7 @@ ProvisionApplicationRequest::~ProvisionApplicationRequest() throw() {
 }
 
 
-void ProvisionApplicationRequest::__set_token(const HumanToken& val) {
+void ProvisionApplicationRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -800,7 +800,7 @@ SubscribeToApplicationRequest::~SubscribeToApplicationRequest() throw() {
 }
 
 
-void SubscribeToApplicationRequest::__set_token(const HumanToken& val) {
+void SubscribeToApplicationRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -1076,7 +1076,7 @@ RegisterHealthCheckRequest::~RegisterHealthCheckRequest() throw() {
 }
 
 
-void RegisterHealthCheckRequest::__set_token(const HumanToken& val) {
+void RegisterHealthCheckRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -1292,7 +1292,7 @@ RenewApplicationTokenRequest::~RenewApplicationTokenRequest() throw() {
 }
 
 
-void RenewApplicationTokenRequest::__set_token(const HumanToken& val) {
+void RenewApplicationTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -1524,7 +1524,7 @@ RegenerateApplicationTokenRequest::~RegenerateApplicationTokenRequest() throw() 
 }
 
 
-void RegenerateApplicationTokenRequest::__set_token(const HumanToken& val) {
+void RegenerateApplicationTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -1716,7 +1716,7 @@ DeleteMessageRequest::~DeleteMessageRequest() throw() {
 }
 
 
-void DeleteMessageRequest::__set_token(const HumanToken& val) {
+void DeleteMessageRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -1972,8 +1972,8 @@ DeleteAllMessagesRequest::~DeleteAllMessagesRequest() throw() {
 }
 
 
-void DeleteAllMessagesRequest::__set_humanToken(const HumanToken& val) {
-  this->humanToken = val;
+void DeleteAllMessagesRequest::__set_token(const UserToken& val) {
+  this->token = val;
 }
 
 void DeleteAllMessagesRequest::__set_applicationId(const std::string& val) {
@@ -2008,8 +2008,8 @@ uint32_t DeleteAllMessagesRequest::read(::apache::thrift::protocol::TProtocol* i
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->humanToken.read(iprot);
-          this->__isset.humanToken = true;
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2047,8 +2047,8 @@ uint32_t DeleteAllMessagesRequest::write(::apache::thrift::protocol::TProtocol* 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("DeleteAllMessagesRequest");
 
-  xfer += oprot->writeFieldBegin("humanToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->humanToken.write(oprot);
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 2);
@@ -2067,20 +2067,20 @@ uint32_t DeleteAllMessagesRequest::write(::apache::thrift::protocol::TProtocol* 
 
 void swap(DeleteAllMessagesRequest &a, DeleteAllMessagesRequest &b) {
   using ::std::swap;
-  swap(a.humanToken, b.humanToken);
+  swap(a.token, b.token);
   swap(a.applicationId, b.applicationId);
   swap(a.messagesDeleted, b.messagesDeleted);
   swap(a.__isset, b.__isset);
 }
 
 DeleteAllMessagesRequest::DeleteAllMessagesRequest(const DeleteAllMessagesRequest& other39) {
-  humanToken = other39.humanToken;
+  token = other39.token;
   applicationId = other39.applicationId;
   messagesDeleted = other39.messagesDeleted;
   __isset = other39.__isset;
 }
 DeleteAllMessagesRequest& DeleteAllMessagesRequest::operator=(const DeleteAllMessagesRequest& other40) {
-  humanToken = other40.humanToken;
+  token = other40.token;
   applicationId = other40.applicationId;
   messagesDeleted = other40.messagesDeleted;
   __isset = other40.__isset;
@@ -2089,7 +2089,7 @@ DeleteAllMessagesRequest& DeleteAllMessagesRequest::operator=(const DeleteAllMes
 void DeleteAllMessagesRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "DeleteAllMessagesRequest(";
-  out << "humanToken=" << to_string(humanToken);
+  out << "token=" << to_string(token);
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "messagesDeleted="; (__isset.messagesDeleted ? (out << to_string(messagesDeleted)) : (out << "<null>"));
   out << ")";
@@ -2100,7 +2100,7 @@ DismissMessageRequest::~DismissMessageRequest() throw() {
 }
 
 
-void DismissMessageRequest::__set_token(const HumanToken& val) {
+void DismissMessageRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -2356,7 +2356,7 @@ DismissAllMessagesRequest::~DismissAllMessagesRequest() throw() {
 }
 
 
-void DismissAllMessagesRequest::__set_token(const HumanToken& val) {
+void DismissAllMessagesRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -2550,7 +2550,7 @@ SaveChannelRequest::~SaveChannelRequest() throw() {
 }
 
 
-void SaveChannelRequest::__set_token(const HumanToken& val) {
+void SaveChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -2764,7 +2764,7 @@ RemoveSavedChannelRequest::~RemoveSavedChannelRequest() throw() {
 }
 
 
-void RemoveSavedChannelRequest::__set_token(const HumanToken& val) {
+void RemoveSavedChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -2978,7 +2978,7 @@ SnoozeChannelRequest::~SnoozeChannelRequest() throw() {
 }
 
 
-void SnoozeChannelRequest::__set_token(const HumanToken& val) {
+void SnoozeChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -3192,7 +3192,7 @@ GetMyApplicationsRequest::~GetMyApplicationsRequest() throw() {
 }
 
 
-void GetMyApplicationsRequest::__set_token(const HumanToken& val) {
+void GetMyApplicationsRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -3384,7 +3384,7 @@ GetApplicationInfoRequest::~GetApplicationInfoRequest() throw() {
 }
 
 
-void GetApplicationInfoRequest::__set_token(const HumanToken& val) {
+void GetApplicationInfoRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -3576,7 +3576,7 @@ GetDashboardRequest::~GetDashboardRequest() throw() {
 }
 
 
-void GetDashboardRequest::__set_token(const HumanToken& val) {
+void GetDashboardRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -3828,7 +3828,7 @@ GetMessagesRequest::~GetMessagesRequest() throw() {
 }
 
 
-void GetMessagesRequest::__set_token(const HumanToken& val) {
+void GetMessagesRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -4086,7 +4086,7 @@ GetApplicationSubscribersRequest::~GetApplicationSubscribersRequest() throw() {
 }
 
 
-void GetApplicationSubscribersRequest::__set_token(const HumanToken& val) {
+void GetApplicationSubscribersRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -4212,8 +4212,8 @@ GetApplicationSubscribersResponse::~GetApplicationSubscribersResponse() throw() 
 }
 
 
-void GetApplicationSubscribersResponse::__set_humans(const std::vector<Human> & val) {
-  this->humans = val;
+void GetApplicationSubscribersResponse::__set_subscribers(const std::vector<User> & val) {
+  this->subscribers = val;
 }
 
 uint32_t GetApplicationSubscribersResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -4240,19 +4240,19 @@ uint32_t GetApplicationSubscribersResponse::read(::apache::thrift::protocol::TPr
       case 1:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
-            this->humans.clear();
+            this->subscribers.clear();
             uint32_t _size103;
             ::apache::thrift::protocol::TType _etype106;
             xfer += iprot->readListBegin(_etype106, _size103);
-            this->humans.resize(_size103);
+            this->subscribers.resize(_size103);
             uint32_t _i107;
             for (_i107 = 0; _i107 < _size103; ++_i107)
             {
-              xfer += this->humans[_i107].read(iprot);
+              xfer += this->subscribers[_i107].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
-          this->__isset.humans = true;
+          this->__isset.subscribers = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -4274,11 +4274,11 @@ uint32_t GetApplicationSubscribersResponse::write(::apache::thrift::protocol::TP
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetApplicationSubscribersResponse");
 
-  xfer += oprot->writeFieldBegin("humans", ::apache::thrift::protocol::T_LIST, 1);
+  xfer += oprot->writeFieldBegin("subscribers", ::apache::thrift::protocol::T_LIST, 1);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->humans.size()));
-    std::vector<Human> ::const_iterator _iter108;
-    for (_iter108 = this->humans.begin(); _iter108 != this->humans.end(); ++_iter108)
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->subscribers.size()));
+    std::vector<User> ::const_iterator _iter108;
+    for (_iter108 = this->subscribers.begin(); _iter108 != this->subscribers.end(); ++_iter108)
     {
       xfer += (*_iter108).write(oprot);
     }
@@ -4293,23 +4293,23 @@ uint32_t GetApplicationSubscribersResponse::write(::apache::thrift::protocol::TP
 
 void swap(GetApplicationSubscribersResponse &a, GetApplicationSubscribersResponse &b) {
   using ::std::swap;
-  swap(a.humans, b.humans);
+  swap(a.subscribers, b.subscribers);
   swap(a.__isset, b.__isset);
 }
 
 GetApplicationSubscribersResponse::GetApplicationSubscribersResponse(const GetApplicationSubscribersResponse& other109) {
-  humans = other109.humans;
+  subscribers = other109.subscribers;
   __isset = other109.__isset;
 }
 GetApplicationSubscribersResponse& GetApplicationSubscribersResponse::operator=(const GetApplicationSubscribersResponse& other110) {
-  humans = other110.humans;
+  subscribers = other110.subscribers;
   __isset = other110.__isset;
   return *this;
 }
 void GetApplicationSubscribersResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetApplicationSubscribersResponse(";
-  out << "humans=" << to_string(humans);
+  out << "subscribers=" << to_string(subscribers);
   out << ")";
 }
 
@@ -4318,7 +4318,7 @@ GetMySavedChannelsRequest::~GetMySavedChannelsRequest() throw() {
 }
 
 
-void GetMySavedChannelsRequest::__set_token(const HumanToken& val) {
+void GetMySavedChannelsRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -4510,7 +4510,7 @@ GetActivityRequest::~GetActivityRequest() throw() {
 }
 
 
-void GetActivityRequest::__set_token(const HumanToken& val) {
+void GetActivityRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -4724,7 +4724,7 @@ GetServiceAnnouncementsRequest::~GetServiceAnnouncementsRequest() throw() {
 }
 
 
-void GetServiceAnnouncementsRequest::__set_token(const HumanToken& val) {
+void GetServiceAnnouncementsRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
@@ -4918,7 +4918,7 @@ SearchForApplicationsRequest::~SearchForApplicationsRequest() throw() {
 }
 
 
-void SearchForApplicationsRequest::__set_token(const HumanToken& val) {
+void SearchForApplicationsRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 

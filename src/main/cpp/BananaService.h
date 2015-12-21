@@ -24,9 +24,9 @@ class BananaServiceIf {
   virtual double getApiVersion() = 0;
 
   /**
-   * Sign in to the App and get a Human Token in return.
+   * Sign in to the App and get a User Token in return.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -42,7 +42,7 @@ class BananaServiceIf {
   /**
    * Provision a New Application to keep tabs on.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -51,7 +51,7 @@ class BananaServiceIf {
   /**
    * Subscribe to an existing application to get notifications.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -110,9 +110,9 @@ class BananaServiceIf {
   virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 
   /**
-   * Get all of the Human-Related activities that have happened recently.
+   * Get all of the User-Related activities that have happened recently.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -121,16 +121,16 @@ class BananaServiceIf {
   /**
    * Get details about an Application from it's unique ID
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
   virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
 
   /**
-   * Get a list of all Humans subscribed to an Application.
+   * Get a list of all Users subscribed to an Application.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -142,7 +142,7 @@ class BananaServiceIf {
   /**
    * Perform a Search on all the applications registered to the Banana Service by searching for its title.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */

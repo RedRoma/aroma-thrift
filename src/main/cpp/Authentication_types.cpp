@@ -162,34 +162,34 @@ void ApplicationToken::printTo(std::ostream& out) const {
 }
 
 
-HumanToken::~HumanToken() throw() {
+UserToken::~UserToken() throw() {
 }
 
 
-void HumanToken::__set_token(const std::string& val) {
+void UserToken::__set_token(const std::string& val) {
   this->token = val;
 }
 
-void HumanToken::__set_timeOfExpiration(const timestamp val) {
+void UserToken::__set_timeOfExpiration(const timestamp val) {
   this->timeOfExpiration = val;
 }
 
-void HumanToken::__set_organization(const std::string& val) {
+void UserToken::__set_organization(const std::string& val) {
   this->organization = val;
 __isset.organization = true;
 }
 
-void HumanToken::__set_isOauthToken(const bool val) {
+void UserToken::__set_isOauthToken(const bool val) {
   this->isOauthToken = val;
 __isset.isOauthToken = true;
 }
 
-void HumanToken::__set_oauthProvider(const std::string& val) {
+void UserToken::__set_oauthProvider(const std::string& val) {
   this->oauthProvider = val;
 __isset.oauthProvider = true;
 }
 
-uint32_t HumanToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -262,10 +262,10 @@ uint32_t HumanToken::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t HumanToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("HumanToken");
+  xfer += oprot->writeStructBegin("UserToken");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->token);
@@ -295,7 +295,7 @@ uint32_t HumanToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(HumanToken &a, HumanToken &b) {
+void swap(UserToken &a, UserToken &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.timeOfExpiration, b.timeOfExpiration);
@@ -305,7 +305,7 @@ void swap(HumanToken &a, HumanToken &b) {
   swap(a.__isset, b.__isset);
 }
 
-HumanToken::HumanToken(const HumanToken& other2) {
+UserToken::UserToken(const UserToken& other2) {
   token = other2.token;
   timeOfExpiration = other2.timeOfExpiration;
   organization = other2.organization;
@@ -313,7 +313,7 @@ HumanToken::HumanToken(const HumanToken& other2) {
   oauthProvider = other2.oauthProvider;
   __isset = other2.__isset;
 }
-HumanToken& HumanToken::operator=(const HumanToken& other3) {
+UserToken& UserToken::operator=(const UserToken& other3) {
   token = other3.token;
   timeOfExpiration = other3.timeOfExpiration;
   organization = other3.organization;
@@ -322,9 +322,9 @@ HumanToken& HumanToken::operator=(const HumanToken& other3) {
   __isset = other3.__isset;
   return *this;
 }
-void HumanToken::printTo(std::ostream& out) const {
+void UserToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "HumanToken(";
+  out << "UserToken(";
   out << "token=" << to_string(token);
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));

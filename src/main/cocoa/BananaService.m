@@ -248,40 +248,40 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken
+- (id) initWithUserToken: (BananaService_UserToken) userToken
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"userToken"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__userToken_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __userToken forKey: @"userToken"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__userToken hash];
   }
   return hash;
 }
@@ -295,8 +295,8 @@
     return NO;
   }
   BananaService_SignInResponse *other = (BananaService_SignInResponse *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
   }
   return YES;
@@ -304,29 +304,29 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__userToken release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -346,9 +346,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setUserToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -365,10 +365,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SignInResponse"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -382,8 +382,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignInResponse("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -788,11 +788,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken account: (BananaAuthentication_AromaAccount *) account
+- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
   __account = [account retain_stub];
   __account_isset = YES;
   return self;
@@ -801,10 +801,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"userToken"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
   }
   if ([decoder containsValueForKey: @"account"])
   {
@@ -816,9 +816,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__userToken_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __userToken forKey: @"userToken"];
   }
   if (__account_isset)
   {
@@ -829,10 +829,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__userToken hash];
   }
   hash = (hash * 31) ^ __account_isset ? 2654435761 : 0;
   if (__account_isset)
@@ -851,8 +851,8 @@
     return NO;
   }
   BananaService_SignUpResponse *other = (BananaService_SignUpResponse *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
   }
   if ((__account_isset != other->__account_isset) ||
@@ -864,30 +864,30 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__userToken release_stub];
   [__account release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
 }
 
 - (BananaAuthentication_AromaAccount *) account {
@@ -928,9 +928,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setUserToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -957,10 +957,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SignUpResponse"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -981,8 +981,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignUpResponse("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
   [ms appendString: @",account:"];
   [ms appendFormat: @"%@", __account];
   [ms appendString: @")"];
@@ -1001,7 +1001,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon
 {
   self = [super init];
   __token = [token retain_stub];
@@ -1144,11 +1144,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1262,7 +1262,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -1717,7 +1717,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared
 {
   self = [super init];
   __token = [token retain_stub];
@@ -1860,11 +1860,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1978,7 +1978,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2309,7 +2309,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token endpoint: (BananaService_Endpoint) endpoint
+- (id) initWithToken: (BananaService_UserToken) token endpoint: (BananaService_Endpoint) endpoint
 {
   self = [super init];
   __token = [token retain_stub];
@@ -2390,11 +2390,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2449,7 +2449,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -2731,7 +2731,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -2854,11 +2854,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -2955,7 +2955,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3216,7 +3216,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -3297,11 +3297,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3356,7 +3356,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -3581,7 +3581,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
 {
   self = [super init];
   __token = [token retain_stub];
@@ -3704,11 +3704,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -3805,7 +3805,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4075,11 +4075,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
   __messagesDeleted = messagesDeleted;
@@ -4090,10 +4090,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationId"])
   {
@@ -4110,9 +4110,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
   if (__applicationId_isset)
   {
@@ -4127,10 +4127,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
   if (__applicationId_isset)
@@ -4154,8 +4154,8 @@
     return NO;
   }
   BananaService_DeleteAllMessagesRequest *other = (BananaService_DeleteAllMessagesRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   if ((__applicationId_isset != other->__applicationId_isset) ||
@@ -4171,30 +4171,30 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [__applicationId release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (NSString *) applicationId {
@@ -4252,9 +4252,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -4287,10 +4287,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"DeleteAllMessagesRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4316,8 +4316,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteAllMessagesRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",messagesDeleted:"];
@@ -4340,7 +4340,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
 {
   self = [super init];
   __token = [token retain_stub];
@@ -4463,11 +4463,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4564,7 +4564,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -4832,7 +4832,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -4913,11 +4913,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -4972,7 +4972,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -5188,7 +5188,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token channel: (BananaService_BananaChannel) channel
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
 {
   self = [super init];
   __token = [token retain_stub];
@@ -5269,11 +5269,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -5328,7 +5328,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -5612,7 +5612,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token channel: (BananaService_BananaChannel) channel
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
 {
   self = [super init];
   __token = [token retain_stub];
@@ -5693,11 +5693,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -5752,7 +5752,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -6036,7 +6036,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6138,11 +6138,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6218,7 +6218,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -6458,7 +6458,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6518,11 +6518,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6556,7 +6556,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -6780,7 +6780,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6861,11 +6861,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6920,7 +6920,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7143,7 +7143,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -7203,11 +7203,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7241,7 +7241,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -7631,7 +7631,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -7732,11 +7732,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -7808,7 +7808,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8120,7 +8120,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId organization: (NSString *) organization
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId organization: (NSString *) organization
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8222,11 +8222,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8302,7 +8302,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8386,46 +8386,46 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.humans = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.subscribers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
 #endif
   return self;
 }
 
-- (id) initWithHumans: (NSMutableArray *) humans
+- (id) initWithSubscribers: (NSMutableArray *) subscribers
 {
   self = [super init];
-  __humans = [humans retain_stub];
-  __humans_isset = YES;
+  __subscribers = [subscribers retain_stub];
+  __subscribers_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humans"])
+  if ([decoder containsValueForKey: @"subscribers"])
   {
-    __humans = [[decoder decodeObjectForKey: @"humans"] retain_stub];
-    __humans_isset = YES;
+    __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
+    __subscribers_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humans_isset)
+  if (__subscribers_isset)
   {
-    [encoder encodeObject: __humans forKey: @"humans"];
+    [encoder encodeObject: __subscribers forKey: @"subscribers"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humans_isset ? 2654435761 : 0;
-  if (__humans_isset)
+  hash = (hash * 31) ^ __subscribers_isset ? 2654435761 : 0;
+  if (__subscribers_isset)
   {
-    hash = (hash * 31) ^ [__humans hash];
+    hash = (hash * 31) ^ [__subscribers hash];
   }
   return hash;
 }
@@ -8439,8 +8439,8 @@
     return NO;
   }
   BananaService_GetApplicationSubscribersResponse *other = (BananaService_GetApplicationSubscribersResponse *)anObject;
-  if ((__humans_isset != other->__humans_isset) ||
-      (__humans_isset && ((__humans || other->__humans) && ![__humans isEqual:other->__humans]))) {
+  if ((__subscribers_isset != other->__subscribers_isset) ||
+      (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
     return NO;
   }
   return YES;
@@ -8448,29 +8448,29 @@
 
 - (void) dealloc
 {
-  [__humans release_stub];
+  [__subscribers release_stub];
   [super dealloc_stub];
 }
 
-- (NSMutableArray *) humans {
-  return [[__humans retain_stub] autorelease_stub];
+- (NSMutableArray *) subscribers {
+  return [[__subscribers retain_stub] autorelease_stub];
 }
 
-- (void) setHumans: (NSMutableArray *) humans {
-  [humans retain_stub];
-  [__humans release_stub];
-  __humans = humans;
-  __humans_isset = YES;
+- (void) setSubscribers: (NSMutableArray *) subscribers {
+  [subscribers retain_stub];
+  [__subscribers release_stub];
+  __subscribers = subscribers;
+  __subscribers_isset = YES;
 }
 
-- (BOOL) humansIsSet {
-  return __humans_isset;
+- (BOOL) subscribersIsSet {
+  return __subscribers_isset;
 }
 
-- (void) unsetHumans {
-  [__humans release_stub];
-  __humans = nil;
-  __humans_isset = NO;
+- (void) unsetSubscribers {
+  [__subscribers release_stub];
+  __subscribers = nil;
+  __subscribers_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -8496,13 +8496,13 @@
           int _i26;
           for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Banana_Human *_elem27 = [[Banana_Human alloc] init];
+            Banana_User *_elem27 = [[Banana_User alloc] init];
             [_elem27 read: inProtocol];
             [fieldValue addObject: _elem27];
             [_elem27 release_stub];
           }
           [inProtocol readListEnd];
-          [self setHumans: fieldValue];
+          [self setSubscribers: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -8519,15 +8519,15 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetApplicationSubscribersResponse"];
-  if (__humans_isset) {
-    if (__humans != nil) {
-      [outProtocol writeFieldBeginWithName: @"humans" type: TType_LIST fieldID: 1];
+  if (__subscribers_isset) {
+    if (__subscribers != nil) {
+      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_LIST fieldID: 1];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__humans count]];
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__subscribers count]];
         int idx29;
-        for (idx29 = 0; idx29 < [__humans count]; idx29++)
+        for (idx29 = 0; idx29 < [__subscribers count]; idx29++)
         {
-          [[__humans objectAtIndex: idx29] write: outProtocol];
+          [[__subscribers objectAtIndex: idx29] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8544,8 +8544,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationSubscribersResponse("];
-  [ms appendString: @"humans:"];
-  [ms appendFormat: @"%@", __humans];
+  [ms appendString: @"subscribers:"];
+  [ms appendFormat: @"%@", __subscribers];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -8562,7 +8562,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8622,11 +8622,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -8660,7 +8660,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -8886,7 +8886,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token limit: (BananaService_int) limit
+- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8966,11 +8966,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9021,7 +9021,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -9262,7 +9262,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -9322,11 +9322,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9360,7 +9360,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -9586,7 +9586,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_HumanToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization
 {
   self = [super init];
   __token = [token retain_stub];
@@ -9688,11 +9688,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -9768,7 +9768,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];

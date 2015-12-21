@@ -98,7 +98,7 @@ class Dimension;
 
 class Image;
 
-class Human;
+class User;
 
 class Application;
 
@@ -346,31 +346,31 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
   return out;
 }
 
-typedef struct _Human__isset {
-  _Human__isset() : email(false), name(false), username(false), roles(true) {}
+typedef struct _User__isset {
+  _User__isset() : email(false), name(false), username(false), roles(true) {}
   bool email :1;
   bool name :1;
   bool username :1;
   bool roles :1;
-} _Human__isset;
+} _User__isset;
 
-class Human {
+class User {
  public:
 
-  Human(const Human&);
-  Human& operator=(const Human&);
-  Human() : email(), name(), username() {
+  User(const User&);
+  User& operator=(const User&);
+  User() : email(), name(), username() {
     roles.push_back((Role::type)1);
 
   }
 
-  virtual ~Human() throw();
+  virtual ~User() throw();
   std::string email;
   std::string name;
   std::string username;
   std::vector<Role::type>  roles;
 
-  _Human__isset __isset;
+  _User__isset __isset;
 
   void __set_email(const std::string& val);
 
@@ -380,7 +380,7 @@ class Human {
 
   void __set_roles(const std::vector<Role::type> & val);
 
-  bool operator == (const Human & rhs) const
+  bool operator == (const User & rhs) const
   {
     if (!(email == rhs.email))
       return false;
@@ -396,11 +396,11 @@ class Human {
       return false;
     return true;
   }
-  bool operator != (const Human &rhs) const {
+  bool operator != (const User &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Human & ) const;
+  bool operator < (const User & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -408,9 +408,9 @@ class Human {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(Human &a, Human &b);
+void swap(User &a, User &b);
 
-inline std::ostream& operator<<(std::ostream& out, const Human& obj)
+inline std::ostream& operator<<(std::ostream& out, const User& obj)
 {
   obj.printTo(out);
   return out;
@@ -438,18 +438,18 @@ class Application {
   }
 
   virtual ~Application() throw();
-  std::vector<Human>  owners;
+  std::vector<User>  owners;
   timestamp timeOfProvisioning;
   std::string name;
   std::string id;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::vector<Human>  subscribers;
+  std::vector<User>  subscribers;
 
   _Application__isset __isset;
 
-  void __set_owners(const std::vector<Human> & val);
+  void __set_owners(const std::vector<User> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 
@@ -463,7 +463,7 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::vector<Human> & val);
+  void __set_subscribers(const std::vector<User> & val);
 
   bool operator == (const Application & rhs) const
   {

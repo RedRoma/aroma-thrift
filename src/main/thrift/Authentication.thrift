@@ -21,7 +21,7 @@ struct ApplicationToken
     4: timestamp timeOfExpiration;
 }
 
-struct HumanToken
+struct UserToken
 {
     1: string token;
     2: timestamp timeOfExpiration;
@@ -47,7 +47,7 @@ struct Password
  * before sending it over the wire. Without it, passwords will
  * not be understood by the service, and will be rejected.
  */
-const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
 
 /**
  * An Account registered with our System.

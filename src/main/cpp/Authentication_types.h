@@ -28,7 +28,7 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 class ApplicationToken;
 
-class HumanToken;
+class UserToken;
 
 class GithubToken;
 
@@ -104,31 +104,31 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
   return out;
 }
 
-typedef struct _HumanToken__isset {
-  _HumanToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+typedef struct _UserToken__isset {
+  _UserToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
   bool token :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
-} _HumanToken__isset;
+} _UserToken__isset;
 
-class HumanToken {
+class UserToken {
  public:
 
-  HumanToken(const HumanToken&);
-  HumanToken& operator=(const HumanToken&);
-  HumanToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  UserToken(const UserToken&);
+  UserToken& operator=(const UserToken&);
+  UserToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
   }
 
-  virtual ~HumanToken() throw();
+  virtual ~UserToken() throw();
   std::string token;
   timestamp timeOfExpiration;
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
 
-  _HumanToken__isset __isset;
+  _UserToken__isset __isset;
 
   void __set_token(const std::string& val);
 
@@ -140,7 +140,7 @@ class HumanToken {
 
   void __set_oauthProvider(const std::string& val);
 
-  bool operator == (const HumanToken & rhs) const
+  bool operator == (const UserToken & rhs) const
   {
     if (!(token == rhs.token))
       return false;
@@ -160,11 +160,11 @@ class HumanToken {
       return false;
     return true;
   }
-  bool operator != (const HumanToken &rhs) const {
+  bool operator != (const UserToken &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const HumanToken & ) const;
+  bool operator < (const UserToken & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -172,9 +172,9 @@ class HumanToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(HumanToken &a, HumanToken &b);
+void swap(UserToken &a, UserToken &b);
 
-inline std::ostream& operator<<(std::ostream& out, const HumanToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const UserToken& obj)
 {
   obj.printTo(out);
   return out;

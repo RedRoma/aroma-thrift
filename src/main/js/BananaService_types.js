@@ -73,10 +73,10 @@ SignInRequest.prototype.write = function(output) {
 };
 
 SignInResponse = function(args) {
-  this.humanToken = null;
+  this.userToken = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new HumanToken(args.humanToken);
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new UserToken(args.userToken);
     }
   }
 };
@@ -96,8 +96,8 @@ SignInResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new HumanToken();
-        this.humanToken.read(input);
+        this.userToken = new UserToken();
+        this.userToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -116,9 +116,9 @@ SignInResponse.prototype.read = function(input) {
 
 SignInResponse.prototype.write = function(output) {
   output.writeStructBegin('SignInResponse');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -242,11 +242,11 @@ SignUpRequest.prototype.write = function(output) {
 };
 
 SignUpResponse = function(args) {
-  this.humanToken = null;
+  this.userToken = null;
   this.account = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new HumanToken(args.humanToken);
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new UserToken(args.userToken);
     }
     if (args.account !== undefined && args.account !== null) {
       this.account = new AromaAccount(args.account);
@@ -269,8 +269,8 @@ SignUpResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new HumanToken();
-        this.humanToken.read(input);
+        this.userToken = new UserToken();
+        this.userToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -294,9 +294,9 @@ SignUpResponse.prototype.read = function(input) {
 
 SignUpResponse.prototype.write = function(output) {
   output.writeStructBegin('SignUpResponse');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
     output.writeFieldEnd();
   }
   if (this.account !== null && this.account !== undefined) {
@@ -317,7 +317,7 @@ ProvisionApplicationRequest = function(args) {
   this.icon = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
@@ -349,7 +349,7 @@ ProvisionApplicationRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -533,7 +533,7 @@ SubscribeToApplicationRequest = function(args) {
   this.shared = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
@@ -565,7 +565,7 @@ SubscribeToApplicationRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -712,7 +712,7 @@ RegisterHealthCheckRequest = function(args) {
   this.endpoint = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.endpoint !== undefined && args.endpoint !== null) {
       this.endpoint = new Endpoint(args.endpoint);
@@ -735,7 +735,7 @@ RegisterHealthCheckRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -848,7 +848,7 @@ RenewApplicationTokenRequest = function(args) {
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
@@ -877,7 +877,7 @@ RenewApplicationTokenRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1001,7 +1001,7 @@ RegenerateApplicationTokenRequest = function(args) {
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -1024,7 +1024,7 @@ RegenerateApplicationTokenRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1124,7 +1124,7 @@ DeleteMessageRequest = function(args) {
   this.messageIds = [];
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -1153,7 +1153,7 @@ DeleteMessageRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1292,12 +1292,12 @@ DeleteMessageResponse.prototype.write = function(output) {
 };
 
 DeleteAllMessagesRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   this.applicationId = null;
   this.messagesDeleted = 0;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -1323,8 +1323,8 @@ DeleteAllMessagesRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new HumanToken();
-        this.humanToken.read(input);
+        this.token = new UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1354,9 +1354,9 @@ DeleteAllMessagesRequest.prototype.read = function(input) {
 
 DeleteAllMessagesRequest.prototype.write = function(output) {
   output.writeStructBegin('DeleteAllMessagesRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationId !== null && this.applicationId !== undefined) {
@@ -1381,7 +1381,7 @@ DismissMessageRequest = function(args) {
   this.messageIds = [];
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -1410,7 +1410,7 @@ DismissMessageRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1553,7 +1553,7 @@ DismissAllMessagesRequest = function(args) {
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -1576,7 +1576,7 @@ DismissAllMessagesRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1673,7 +1673,7 @@ SaveChannelRequest = function(args) {
   this.channel = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
       this.channel = new BananaChannel(args.channel);
@@ -1696,7 +1696,7 @@ SaveChannelRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1808,7 +1808,7 @@ RemoveSavedChannelRequest = function(args) {
   this.channel = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
       this.channel = new BananaChannel(args.channel);
@@ -1831,7 +1831,7 @@ RemoveSavedChannelRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -1944,7 +1944,7 @@ SnoozeChannelRequest = function(args) {
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
       this.channel = new BananaChannel(args.channel);
@@ -1970,7 +1970,7 @@ SnoozeChannelRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2079,7 +2079,7 @@ GetMyApplicationsRequest = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
   }
 };
@@ -2099,7 +2099,7 @@ GetMyApplicationsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2210,7 +2210,7 @@ GetApplicationInfoRequest = function(args) {
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -2233,7 +2233,7 @@ GetApplicationInfoRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2330,7 +2330,7 @@ GetDashboardRequest = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
   }
 };
@@ -2350,7 +2350,7 @@ GetDashboardRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2507,7 +2507,7 @@ GetMessagesRequest = function(args) {
   this.limit = 0;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -2533,7 +2533,7 @@ GetMessagesRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2679,7 +2679,7 @@ GetApplicationSubscribersRequest = function(args) {
   this.organization = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -2705,7 +2705,7 @@ GetApplicationSubscribersRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2757,10 +2757,10 @@ GetApplicationSubscribersRequest.prototype.write = function(output) {
 };
 
 GetApplicationSubscribersResponse = function(args) {
-  this.humans = [];
+  this.subscribers = [];
   if (args) {
-    if (args.humans !== undefined && args.humans !== null) {
-      this.humans = Thrift.copyList(args.humans, [null]);
+    if (args.subscribers !== undefined && args.subscribers !== null) {
+      this.subscribers = Thrift.copyList(args.subscribers, [null]);
     }
   }
 };
@@ -2782,7 +2782,7 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
       if (ftype == Thrift.Type.LIST) {
         var _size40 = 0;
         var _rtmp344;
-        this.humans = [];
+        this.subscribers = [];
         var _etype43 = 0;
         _rtmp344 = input.readListBegin();
         _etype43 = _rtmp344.etype;
@@ -2790,9 +2790,9 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
         for (var _i45 = 0; _i45 < _size40; ++_i45)
         {
           var elem46 = null;
-          elem46 = new Human();
+          elem46 = new User();
           elem46.read(input);
-          this.humans.push(elem46);
+          this.subscribers.push(elem46);
         }
         input.readListEnd();
       } else {
@@ -2813,14 +2813,14 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
 
 GetApplicationSubscribersResponse.prototype.write = function(output) {
   output.writeStructBegin('GetApplicationSubscribersResponse');
-  if (this.humans !== null && this.humans !== undefined) {
-    output.writeFieldBegin('humans', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.humans.length);
-    for (var iter47 in this.humans)
+  if (this.subscribers !== null && this.subscribers !== undefined) {
+    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
+    for (var iter47 in this.subscribers)
     {
-      if (this.humans.hasOwnProperty(iter47))
+      if (this.subscribers.hasOwnProperty(iter47))
       {
-        iter47 = this.humans[iter47];
+        iter47 = this.subscribers[iter47];
         iter47.write(output);
       }
     }
@@ -2836,7 +2836,7 @@ GetMySavedChannelsRequest = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
   }
 };
@@ -2856,7 +2856,7 @@ GetMySavedChannelsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -2967,7 +2967,7 @@ GetActivityRequest = function(args) {
   this.limit = 0;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.limit !== undefined && args.limit !== null) {
       this.limit = args.limit;
@@ -2990,7 +2990,7 @@ GetActivityRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -3109,7 +3109,7 @@ GetServiceAnnouncementsRequest = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
   }
 };
@@ -3129,7 +3129,7 @@ GetServiceAnnouncementsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -3241,7 +3241,7 @@ SearchForApplicationsRequest = function(args) {
   this.organization = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new HumanToken(args.token);
+      this.token = new UserToken(args.token);
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
@@ -3267,7 +3267,7 @@ SearchForApplicationsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new HumanToken();
+        this.token = new UserToken();
         this.token.read(input);
       } else {
         input.skip(ftype);

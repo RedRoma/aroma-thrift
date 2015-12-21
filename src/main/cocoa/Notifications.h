@@ -29,7 +29,7 @@ typedef Banana_long BananaNotifications_long;
 
 typedef Banana_timestamp BananaNotifications_timestamp;
 
-typedef Banana_Human * BananaNotifications_Human;
+typedef Banana_User * BananaNotifications_User;
 
 typedef Banana_Application * BananaNotifications_Application;
 
@@ -113,23 +113,23 @@ typedef Banana_Application * BananaNotifications_Application;
 @end
 
 @interface BananaNotifications_ApplicationTokenRenewed : NSObject <TBase, NSCoding> {
-  BananaNotifications_Human __human;
+  BananaNotifications_User __user;
   BananaNotifications_ApplicationToken __applicationToken;
   BananaNotifications_Application __application;
 
-  BOOL __human_isset;
+  BOOL __user_isset;
   BOOL __applicationToken_isset;
   BOOL __application_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=human, setter=setHuman:) BananaNotifications_Human human;
+@property (nonatomic, retain, getter=user, setter=setUser:) BananaNotifications_User user;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaNotifications_ApplicationToken applicationToken;
 @property (nonatomic, retain, getter=application, setter=setApplication:) BananaNotifications_Application application;
 #endif
 
 - (id) init;
-- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application;
+- (id) initWithUser: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -137,10 +137,10 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaNotifications_Human) human;
-- (void) setHuman: (BananaNotifications_Human) human;
+- (BananaNotifications_User) user;
+- (void) setUser: (BananaNotifications_User) user;
 #endif
-- (BOOL) humanIsSet;
+- (BOOL) userIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaNotifications_ApplicationToken) applicationToken;
@@ -157,23 +157,23 @@ typedef Banana_Application * BananaNotifications_Application;
 @end
 
 @interface BananaNotifications_ApplicationTokenRegenerated : NSObject <TBase, NSCoding> {
-  BananaNotifications_Human __human;
+  BananaNotifications_User __user;
   BananaNotifications_ApplicationToken __applicationToken;
   BananaNotifications_Application __application;
 
-  BOOL __human_isset;
+  BOOL __user_isset;
   BOOL __applicationToken_isset;
   BOOL __application_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=human, setter=setHuman:) BananaNotifications_Human human;
+@property (nonatomic, retain, getter=user, setter=setUser:) BananaNotifications_User user;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaNotifications_ApplicationToken applicationToken;
 @property (nonatomic, retain, getter=application, setter=setApplication:) BananaNotifications_Application application;
 #endif
 
 - (id) init;
-- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application;
+- (id) initWithUser: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -181,10 +181,10 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaNotifications_Human) human;
-- (void) setHuman: (BananaNotifications_Human) human;
+- (BananaNotifications_User) user;
+- (void) setUser: (BananaNotifications_User) user;
 #endif
-- (BOOL) humanIsSet;
+- (BOOL) userIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaNotifications_ApplicationToken) applicationToken;

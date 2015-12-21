@@ -1234,7 +1234,7 @@
 
 @end
 
-@implementation Banana_Human
+@implementation Banana_User
 
 - (id) init
 {
@@ -1338,10 +1338,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Human class]]) {
+  if (![anObject isKindOfClass:[Banana_User class]]) {
     return NO;
   }
-  Banana_Human *other = (Banana_Human *)anObject;
+  Banana_User *other = (Banana_User *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -1521,7 +1521,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Human"];
+  [outProtocol writeStructBeginWithName: @"User"];
   if (__email_isset) {
     if (__email != nil) {
       [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
@@ -1567,7 +1567,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Human("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_User("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",name:"];
@@ -1977,7 +1977,7 @@
           int _i6;
           for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            Banana_Human *_elem7 = [[Banana_Human alloc] init];
+            Banana_User *_elem7 = [[Banana_User alloc] init];
             [_elem7 read: inProtocol];
             [fieldValue addObject: _elem7];
             [_elem7 release_stub];
@@ -2047,7 +2047,7 @@
           int _i9;
           for (_i9 = 0; _i9 < _size8; ++_i9)
           {
-            Banana_Human *_elem10 = [[Banana_Human alloc] init];
+            Banana_User *_elem10 = [[Banana_User alloc] init];
             [_elem10 read: inProtocol];
             [fieldValue addObject: _elem10];
             [_elem10 release_stub];

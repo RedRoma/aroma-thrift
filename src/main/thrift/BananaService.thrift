@@ -4,7 +4,7 @@ namespace cpp   aroma.banana.thrift.service
 
 /*
  * Defined in this File is the Banana Service API and all of the operations
- * that can be performed primarily Humans.
+ * that can be performed primarily by People.
  */
 
 include "Authentication.thrift"
@@ -20,7 +20,7 @@ include "Notifications.thrift"
  *
  * Tag definitions:
  *
- * #human   - Signifies an Operation designed to be used by any person.
+ * #user   - Signifies an Operation designed to be used by any person.
  * #owner   - Signifies an Operation that can only be performed by an "Owner".
  */
 
@@ -29,10 +29,10 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.HumanToken HumanToken
+typedef Authentication.UserToken UserToken
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Banana.Image Image
-typedef Banana.Human Human
+typedef Banana.User User
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
@@ -67,7 +67,7 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banan
 //==========================================================
 
 /**
- * Sign In to the Banana Service, and get a Human Token.
+ * Sign In to the Banana Service, and get a User Token.
  */
 struct SignInRequest
 {
@@ -77,7 +77,7 @@ struct SignInRequest
 
 struct SignInResponse
 {
-    1: HumanToken humanToken;
+    1: UserToken userToken;
 }
 
 /**
@@ -93,11 +93,11 @@ struct SignUpRequest
 }
 
 /**
- * Receive a Human Token after Signing Up.
+ * Receive a User Token after Signing Up.
  */
 struct SignUpResponse
 {
-    1: HumanToken humanToken;
+    1: UserToken userToken;
     2: Authentication.AromaAccount account;
 }
 
@@ -120,7 +120,7 @@ const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
  */
 struct ProvisionApplicationRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationName;
     3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: string organization;
@@ -140,7 +140,7 @@ struct ProvisionApplicationResponse
  */
 struct SubscribeToApplicationRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationName;
     3: string applicationId;
     4: optional string organization;
@@ -159,7 +159,7 @@ struct SubscribeToApplicationResponse
  */
 struct RegisterHealthCheckRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: Endpoint endpoint;
 }
 
@@ -175,7 +175,7 @@ struct RegisterHealthCheckResponse
  */
 struct RenewApplicationTokenRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     /** The Token to renew */
     2: ApplicationToken applicationToken;
     /** Defines for how long to extend a Token. */
@@ -201,7 +201,7 @@ struct RenewApplicationTokenResponse
  */
 struct RegenerateApplicationTokenRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationId;
 }
 
@@ -217,7 +217,7 @@ struct RegenerateApplicationTokenResponse
  */
 struct DeleteMessageRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string messageId;
     3: string applicationId;
     /** Use for Batch Deletes. */
@@ -236,7 +236,7 @@ struct DeleteMessageResponse
  */
 struct DeleteAllMessagesRequest
 {
-    1: HumanToken humanToken;
+    1: UserToken token;
     2: string applicationId;
     3: optional int messagesDeleted = 0;
 }
@@ -248,7 +248,7 @@ struct DeleteAllMessagesRequest
  */
 struct DismissMessageRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string messageId;
     3: string applicationId;
     /** Use for Dismissing multiple Messages. */
@@ -265,7 +265,7 @@ struct DismissMessageResponse
  */
 struct DismissAllMessagesRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationId;
 }
 
@@ -275,11 +275,11 @@ struct DismissAllMessagesResponse
 }
 
 /**
- * Save a Human's Personal Contact Channel for future reference.
+ * Save a User's Personal Contact Channel for future reference.
  */
 struct SaveChannelRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: BananaChannel channel;
 }
 
@@ -295,7 +295,7 @@ struct SaveChannelResponse
  */
 struct RemoveSavedChannelRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: BananaChannel channel;
 }
 
@@ -311,7 +311,7 @@ struct RemoveSavedChannelResponse
  */
 struct SnoozeChannelRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: BananaChannel channel;
     /** Optionally choose to snooze a specific Application. */
     3: optional string applicationId;
@@ -328,7 +328,7 @@ struct SnoozeChannelResponse
 
 struct GetMyApplicationsRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
 }
 
 struct GetMyApplicationsResponse
@@ -338,7 +338,7 @@ struct GetMyApplicationsResponse
 
 struct GetApplicationInfoRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationId;
 }
 
@@ -349,7 +349,7 @@ struct GetApplicationInfoResponse
 
 struct GetDashboardRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
 }
 
 struct GetDashboardResponse
@@ -367,7 +367,7 @@ struct GetDashboardResponse
  */
 struct GetMessagesRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     /** Allows you to get Messages from a particular application. */
     2: optional string applicationId;
     /** Suggests that the Service limits the results of the query.*/
@@ -382,19 +382,19 @@ struct GetMessagesResponse
 
 struct GetApplicationSubscribersRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationId;
     3: string organization;
 }
 
 struct GetApplicationSubscribersResponse
 {
-    1: list<Human> humans = [];
+    1: list<User> subscribers = [];
 }
 
 struct GetMySavedChannelsRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
 }
 
 struct GetMySavedChannelsResponse
@@ -409,7 +409,7 @@ struct GetMySavedChannelsResponse
  */
 struct GetActivityRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: optional int limit = 0;
 }
 
@@ -424,7 +424,7 @@ struct GetActivityResponse
  */
 struct GetServiceAnnouncementsRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
 }
 
 struct GetServiceAnnouncementsResponse
@@ -437,7 +437,7 @@ struct GetServiceAnnouncementsResponse
  */
 struct SearchForApplicationsRequest
 {
-    1: HumanToken token;
+    1: UserToken token;
     2: string applicationName;
     3: optional string organization;
 }
@@ -449,7 +449,7 @@ struct SearchForApplicationsResponse
 
 
 /**
- * The Banana Service is designed to be used by Humans, and not Applications.
+ * The Banana Service is designed to be used by People, and not Applications.
  * They provide query interfaces and Authentication/Authorization over Data.
  */
 service BananaService
@@ -462,9 +462,9 @@ service BananaService
     //==========================================================
     
     /**
-     * Sign in to the App and get a Human Token in return.
+     * Sign in to the App and get a User Token in return.
      *
-     * #human
+     * #user
      */
     SignInResponse signIn(1 : SignInRequest request) throws(1 : OperationFailedException ex1,
                                                             2 : InvalidArgumentException ex2,
@@ -481,7 +481,7 @@ service BananaService
     /**
      * Provision a New Application to keep tabs on.
      *
-     * #human
+     * #user
      */
     ProvisionApplicationResponse provisionApplication(1 : ProvisionApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                       2 : InvalidArgumentException ex2,
@@ -490,7 +490,7 @@ service BananaService
     /**
      * Subscribe to an existing application to get notifications.
      *
-     * #human
+     * #user
      */
     SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
@@ -571,9 +571,9 @@ service BananaService
     //==========================================================
     
     /**
-     * Get all of the Human-Related activities that have happened recently.
+     * Get all of the User-Related activities that have happened recently.
      * 
-     * #human
+     * #user
      */
     GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
@@ -582,7 +582,7 @@ service BananaService
     /**
      * Get details about an Application from it's unique ID
      *
-     * #human
+     * #user
      */
     GetApplicationInfoResponse getApplicationInfo(1 : GetApplicationInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
@@ -592,9 +592,9 @@ service BananaService
     
 
     /**
-     * Get a list of all Humans subscribed to an Application.
+     * Get a list of all Users subscribed to an Application.
      *
-     * #human
+     * #user
      */
     GetApplicationSubscribersResponse getApplicationSubscribers(1 : GetApplicationSubscribersRequest request) throws(1 : OperationFailedException ex1,
                                                                                                                      2 : InvalidArgumentException ex2,
@@ -618,7 +618,7 @@ service BananaService
     /**
      * Perform a Search on all the applications registered to the Banana Service by searching for its title.
      *
-     * #human
+     * #user
      */
     SearchForApplicationsResponse searchForApplications(1 : SearchForApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,

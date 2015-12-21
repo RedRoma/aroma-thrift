@@ -156,12 +156,12 @@ HealthCheckBackToNormal.prototype.write = function(output) {
 };
 
 ApplicationTokenRenewed = function(args) {
-  this.human = null;
+  this.user = null;
   this.applicationToken = null;
   this.application = null;
   if (args) {
-    if (args.human !== undefined && args.human !== null) {
-      this.human = new Human(args.human);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
@@ -187,8 +187,8 @@ ApplicationTokenRenewed.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.human = new Human();
-        this.human.read(input);
+        this.user = new User();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -220,9 +220,9 @@ ApplicationTokenRenewed.prototype.read = function(input) {
 
 ApplicationTokenRenewed.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRenewed');
-  if (this.human !== null && this.human !== undefined) {
-    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
-    this.human.write(output);
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
@@ -241,12 +241,12 @@ ApplicationTokenRenewed.prototype.write = function(output) {
 };
 
 ApplicationTokenRegenerated = function(args) {
-  this.human = null;
+  this.user = null;
   this.applicationToken = null;
   this.application = null;
   if (args) {
-    if (args.human !== undefined && args.human !== null) {
-      this.human = new Human(args.human);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
@@ -272,8 +272,8 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.human = new Human();
-        this.human.read(input);
+        this.user = new User();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -305,9 +305,9 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
 
 ApplicationTokenRegenerated.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRegenerated');
-  if (this.human !== null && this.human !== undefined) {
-    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
-    this.human.write(output);
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {

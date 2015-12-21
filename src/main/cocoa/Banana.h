@@ -273,7 +273,7 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_Human : NSObject <TBase, NSCoding> {
+@interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __name;
   NSString * __username;

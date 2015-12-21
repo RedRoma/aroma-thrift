@@ -248,8 +248,6 @@ code { line-height: 20px; }
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
 <a href="#Struct_GetServiceAnnouncementsResponse">GetServiceAnnouncementsResponse</a><br/>
-<a href="#Typedef_Human">Human</a><br/>
-<a href="#Typedef_HumanToken">HumanToken</a><br/>
 <a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
@@ -278,6 +276,8 @@ code { line-height: 20px; }
 <a href="#Struct_SubscribeToApplicationResponse">SubscribeToApplicationResponse</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
+<a href="#Typedef_User">User</a><br/>
+<a href="#Typedef_UserToken">UserToken</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -310,8 +310,8 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_HumanToken">Typedef: HumanToken</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_HumanToken">Authentication.HumanToken</a></code></p>
+<div class="definition"><h3 id="Typedef_UserToken">Typedef: UserToken</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -319,8 +319,8 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_Human">Typedef: Human</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Human">Banana.Human</a></code></p>
+<div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_User">Banana.User</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Application">Banana.Application</a></code></p>
@@ -366,10 +366,10 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>credentials</td><td><code><a href="Authentication.html#Struct_Credentials">Authentication.Credentials</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Sign In to the Banana Service, and get a Human Token.
+</table><br/>Sign In to the Banana Service, and get a User Token.
 <br/></div><div class="definition"><h3 id="Struct_SignInResponse">Struct: SignInResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>humanToken</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>userToken</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SignUpRequest">Struct: SignUpRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>email</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -380,12 +380,12 @@ code { line-height: 20px; }
 </table><br/>Sign Up for a Banana Service Account.
 <br/></div><div class="definition"><h3 id="Struct_SignUpResponse">Struct: SignUpResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>humanToken</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>userToken</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>account</td><td><code><a href="Authentication.html#Struct_AromaAccount">Authentication.AromaAccount</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Receive a Human Token after Signing Up.
+</table><br/>Receive a User Token after Signing Up.
 <br/></div><div class="definition"><h3 id="Struct_ProvisionApplicationRequest">Struct: ProvisionApplicationRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>programmingLanguage</td><td><code><a href="Banana.html#Enum_ProgrammingLanguage">Banana.ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -400,7 +400,7 @@ an Application with the Banana Service.
 <tr><td>4</td><td>applicationInfo</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SubscribeToApplicationRequest">Struct: SubscribeToApplicationRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
@@ -412,7 +412,7 @@ an Application with the Banana Service.
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegisterHealthCheckRequest">Struct: RegisterHealthCheckRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>endpoint</td><td><code><a href="#Typedef_Endpoint">Endpoint</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Registers an Application Endpoint to use
 for Health Checks.
@@ -422,7 +422,7 @@ for Health Checks.
 <tr><td>2</td><td>healthCheckToken</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenRequest">Struct: RenewApplicationTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td>The Token to renew
 </td><td>default</td><td></td></tr>
 <tr><td>3</td><td>timePeriod</td><td><code><a href="Banana.html#Struct_TimePeriod">Banana.TimePeriod</a></code></td><td>Defines for how long to extend a Token.
@@ -435,7 +435,7 @@ Additional Charges may apply.
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenRequest">Struct: RegenerateApplicationTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Regenerates an Application's Token. This is usually done because the original token was:
 1: Lost or Misplaced
@@ -451,7 +451,7 @@ NOTE: Only an owner can perform this operation.
 <tr><td>1</td><td>serviceToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Batch Deletes.
@@ -464,7 +464,7 @@ NOTE: Only an owner can perform this operation.
 <tr><td>1</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DeleteAllMessagesRequest">Struct: DeleteAllMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>humanToken</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/>Deletes all of Applications' Messages.
@@ -472,7 +472,7 @@ NOTE: Only an owner can perform this operation.
 #owner
 <br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Dismissing multiple Messages.
@@ -485,7 +485,7 @@ still be visible to other subscribers.
 <tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesRequest">Struct: DismissAllMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Dismisses all Messages. They will no longer be visible to you.
 <br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesResponse">Struct: DismissAllMessagesResponse</h3>
@@ -493,16 +493,16 @@ still be visible to other subscribers.
 <tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SaveChannelRequest">Struct: SaveChannelRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Save a Human's Personal Contact Channel for future reference.
+</table><br/>Save a User's Personal Contact Channel for future reference.
 <br/></div><div class="definition"><h3 id="Struct_SaveChannelResponse">Struct: SaveChannelResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RemoveSavedChannelRequest">Struct: RemoveSavedChannelRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/> Removes a User's Saved Channel.
 It will no longer be remembered or suggested.
@@ -512,7 +512,7 @@ It will no longer be remembered or suggested.
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SnoozeChannelRequest">Struct: SnoozeChannelRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code>string</code></td><td>Optionally choose to snooze a specific Application.
 </td><td>optional</td><td></td></tr>
@@ -523,20 +523,20 @@ for a set time period.
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsRequest">Struct: GetMyApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsResponse">Struct: GetMyApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoRequest">Struct: GetApplicationInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoResponse">Struct: GetApplicationInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applicationInfo</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetDashboardRequest">Struct: GetDashboardRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetDashboardResponse">Struct: GetDashboardResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>unreadMessageCount</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
@@ -545,7 +545,7 @@ for a set time period.
 <tr><td>4</td><td>recentMessages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>Allows you to get Messages from a particular application.
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
@@ -558,21 +558,21 @@ or by a specific Application.
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersRequest">Struct: GetApplicationSubscribersRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersResponse">Struct: GetApplicationSubscribersResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>humans</td><td><code>list&lt;<code><a href="#Typedef_Human">Human</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>subscribers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsRequest">Struct: GetMySavedChannelsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsResponse">Struct: GetMySavedChannelsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_BananaChannel">BananaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetActivityRequest">Struct: GetActivityRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/>Request to get a User's Activity Stream.
 An Activity is an event that resulted from a person's
@@ -582,7 +582,7 @@ action, and not an application or machine.
 <tr><td>1</td><td>notifications</td><td><code>list&lt;<code><a href="Notifications.html#Struct_Notification">Notifications.Notification</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsRequest">Struct: GetServiceAnnouncementsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Request to get any upcoming Service Announcements
 from the Team @ Aroma Tech.
 <br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
@@ -590,7 +590,7 @@ from the Team @ Aroma Tech.
 <tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>Search for Applications that match the given search terms.
@@ -599,16 +599,16 @@ from the Team @ Aroma Tech.
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
-The Banana Service is designed to be used by Humans, and not Applications.
+The Banana Service is designed to be used by People, and not Applications.
 They provide query interfaces and Authentication/Authorization over Data.
 <br/><div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre>Sign in to the App and get a Human Token in return.
+</pre>Sign in to the App and get a User Token in return.
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_signUp">Function: BananaService.signUp</h4>
 <pre><code><a href="#Struct_SignUpResponse">SignUpResponse</a></code> signUp(<code><a href="#Struct_SignUpRequest">SignUpRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a></code>
@@ -618,13 +618,13 @@ They provide query interfaces and Authentication/Authorization over Data.
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>
 </pre>Provision a New Application to keep tabs on.
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToApplication">Function: BananaService.subscribeToApplication</h4>
 <pre><code><a href="#Struct_SubscribeToApplicationResponse">SubscribeToApplicationResponse</a></code> subscribeToApplication(<code><a href="#Struct_SubscribeToApplicationRequest">SubscribeToApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
 </pre>Subscribe to an existing application to get notifications.
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
@@ -662,21 +662,21 @@ Only an "owner" can perform this operation.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getActivity">Function: BananaService.getActivity</h4>
 <pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre>Get all of the Human-Related activities that have happened recently.
+</pre>Get all of the User-Related activities that have happened recently.
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationInfo">Function: BananaService.getApplicationInfo</h4>
 <pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Get details about an Application from it's unique ID
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationSubscribers">Function: BananaService.getApplicationSubscribers</h4>
 <pre><code><a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a></code> getApplicationSubscribers(<code><a href="#Struct_GetApplicationSubscribersRequest">GetApplicationSubscribersRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Get a list of all Humans subscribed to an Application.
+</pre>Get a list of all Users subscribed to an Application.
 
-#human
+#user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
@@ -691,5 +691,5 @@ Only an "owner" can perform this operation.
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Perform a Search on all the applications registered to the Banana Service by searching for its title.
 
-#human
+#user
 <br/></div></div></body></html>

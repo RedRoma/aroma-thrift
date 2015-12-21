@@ -29,7 +29,7 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::Human Human;
+typedef class  ::aroma::banana::thrift::User User;
 
 typedef class  ::aroma::banana::thrift::Application Application;
 
@@ -164,8 +164,8 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
 }
 
 typedef struct _ApplicationTokenRenewed__isset {
-  _ApplicationTokenRenewed__isset() : human(false), applicationToken(false), application(false) {}
-  bool human :1;
+  _ApplicationTokenRenewed__isset() : user(false), applicationToken(false), application(false) {}
+  bool user :1;
   bool applicationToken :1;
   bool application :1;
 } _ApplicationTokenRenewed__isset;
@@ -179,13 +179,13 @@ class ApplicationTokenRenewed {
   }
 
   virtual ~ApplicationTokenRenewed() throw();
-  Human human;
+  User user;
   ApplicationToken applicationToken;
   Application application;
 
   _ApplicationTokenRenewed__isset __isset;
 
-  void __set_human(const Human& val);
+  void __set_user(const User& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
@@ -193,7 +193,7 @@ class ApplicationTokenRenewed {
 
   bool operator == (const ApplicationTokenRenewed & rhs) const
   {
-    if (!(human == rhs.human))
+    if (!(user == rhs.user))
       return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
@@ -226,8 +226,8 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRenewed
 }
 
 typedef struct _ApplicationTokenRegenerated__isset {
-  _ApplicationTokenRegenerated__isset() : human(false), applicationToken(false), application(false) {}
-  bool human :1;
+  _ApplicationTokenRegenerated__isset() : user(false), applicationToken(false), application(false) {}
+  bool user :1;
   bool applicationToken :1;
   bool application :1;
 } _ApplicationTokenRegenerated__isset;
@@ -241,13 +241,13 @@ class ApplicationTokenRegenerated {
   }
 
   virtual ~ApplicationTokenRegenerated() throw();
-  Human human;
+  User user;
   ApplicationToken applicationToken;
   Application application;
 
   _ApplicationTokenRegenerated__isset __isset;
 
-  void __set_human(const Human& val);
+  void __set_user(const User& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
@@ -255,7 +255,7 @@ class ApplicationTokenRegenerated {
 
   bool operator == (const ApplicationTokenRegenerated & rhs) const
   {
-    if (!(human == rhs.human))
+    if (!(user == rhs.user))
       return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;

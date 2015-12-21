@@ -256,8 +256,8 @@ ApplicationTokenRenewed::~ApplicationTokenRenewed() throw() {
 }
 
 
-void ApplicationTokenRenewed::__set_human(const Human& val) {
-  this->human = val;
+void ApplicationTokenRenewed::__set_user(const User& val) {
+  this->user = val;
 }
 
 void ApplicationTokenRenewed::__set_applicationToken(const ApplicationToken& val) {
@@ -293,8 +293,8 @@ uint32_t ApplicationTokenRenewed::read(::apache::thrift::protocol::TProtocol* ip
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->human.read(iprot);
-          this->__isset.human = true;
+          xfer += this->user.read(iprot);
+          this->__isset.user = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -332,8 +332,8 @@ uint32_t ApplicationTokenRenewed::write(::apache::thrift::protocol::TProtocol* o
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ApplicationTokenRenewed");
 
-  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->human.write(oprot);
+  xfer += oprot->writeFieldBegin("user", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->user.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.applicationToken) {
@@ -353,20 +353,20 @@ uint32_t ApplicationTokenRenewed::write(::apache::thrift::protocol::TProtocol* o
 
 void swap(ApplicationTokenRenewed &a, ApplicationTokenRenewed &b) {
   using ::std::swap;
-  swap(a.human, b.human);
+  swap(a.user, b.user);
   swap(a.applicationToken, b.applicationToken);
   swap(a.application, b.application);
   swap(a.__isset, b.__isset);
 }
 
 ApplicationTokenRenewed::ApplicationTokenRenewed(const ApplicationTokenRenewed& other4) {
-  human = other4.human;
+  user = other4.user;
   applicationToken = other4.applicationToken;
   application = other4.application;
   __isset = other4.__isset;
 }
 ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTokenRenewed& other5) {
-  human = other5.human;
+  user = other5.user;
   applicationToken = other5.applicationToken;
   application = other5.application;
   __isset = other5.__isset;
@@ -375,7 +375,7 @@ ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTok
 void ApplicationTokenRenewed::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ApplicationTokenRenewed(";
-  out << "human=" << to_string(human);
+  out << "user=" << to_string(user);
   out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
   out << ", " << "application="; (__isset.application ? (out << to_string(application)) : (out << "<null>"));
   out << ")";
@@ -386,8 +386,8 @@ ApplicationTokenRegenerated::~ApplicationTokenRegenerated() throw() {
 }
 
 
-void ApplicationTokenRegenerated::__set_human(const Human& val) {
-  this->human = val;
+void ApplicationTokenRegenerated::__set_user(const User& val) {
+  this->user = val;
 }
 
 void ApplicationTokenRegenerated::__set_applicationToken(const ApplicationToken& val) {
@@ -422,8 +422,8 @@ uint32_t ApplicationTokenRegenerated::read(::apache::thrift::protocol::TProtocol
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->human.read(iprot);
-          this->__isset.human = true;
+          xfer += this->user.read(iprot);
+          this->__isset.user = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -461,8 +461,8 @@ uint32_t ApplicationTokenRegenerated::write(::apache::thrift::protocol::TProtoco
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ApplicationTokenRegenerated");
 
-  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->human.write(oprot);
+  xfer += oprot->writeFieldBegin("user", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->user.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.applicationToken) {
@@ -481,20 +481,20 @@ uint32_t ApplicationTokenRegenerated::write(::apache::thrift::protocol::TProtoco
 
 void swap(ApplicationTokenRegenerated &a, ApplicationTokenRegenerated &b) {
   using ::std::swap;
-  swap(a.human, b.human);
+  swap(a.user, b.user);
   swap(a.applicationToken, b.applicationToken);
   swap(a.application, b.application);
   swap(a.__isset, b.__isset);
 }
 
 ApplicationTokenRegenerated::ApplicationTokenRegenerated(const ApplicationTokenRegenerated& other6) {
-  human = other6.human;
+  user = other6.user;
   applicationToken = other6.applicationToken;
   application = other6.application;
   __isset = other6.__isset;
 }
 ApplicationTokenRegenerated& ApplicationTokenRegenerated::operator=(const ApplicationTokenRegenerated& other7) {
-  human = other7.human;
+  user = other7.user;
   applicationToken = other7.applicationToken;
   application = other7.application;
   __isset = other7.__isset;
@@ -503,7 +503,7 @@ ApplicationTokenRegenerated& ApplicationTokenRegenerated::operator=(const Applic
 void ApplicationTokenRegenerated::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ApplicationTokenRegenerated(";
-  out << "human=" << to_string(human);
+  out << "user=" << to_string(user);
   out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
   out << ", " << "application=" << to_string(application);
   out << ")";

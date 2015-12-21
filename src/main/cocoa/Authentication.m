@@ -342,7 +342,7 @@
 
 @end
 
-@implementation BananaAuthentication_HumanToken
+@implementation BananaAuthentication_UserToken
 
 - (id) init
 {
@@ -461,10 +461,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaAuthentication_HumanToken class]]) {
+  if (![anObject isKindOfClass:[BananaAuthentication_UserToken class]]) {
     return NO;
   }
-  BananaAuthentication_HumanToken *other = (BananaAuthentication_HumanToken *)anObject;
+  BananaAuthentication_UserToken *other = (BananaAuthentication_UserToken *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -658,7 +658,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"HumanToken"];
+  [outProtocol writeStructBeginWithName: @"UserToken"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
@@ -699,7 +699,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_HumanToken("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_UserToken("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"\"%@\"", __token];
   [ms appendString: @",timeOfExpiration:"];
@@ -1734,7 +1734,7 @@
 
 @end
 
-static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
+static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
 
 @implementation BananaAuthentication_AuthenticationConstants
 + (void) initialize {

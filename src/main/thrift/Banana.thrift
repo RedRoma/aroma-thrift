@@ -104,9 +104,9 @@ enum Role
 }
 
 /**
- * A Human
+ * A User represents a Human who is a user of the Service.
  */
-struct Human
+struct User
 {
     /** A person's email address is also considered their identifying trait. */
     1: string email;
@@ -140,7 +140,7 @@ enum ProgrammingLanguage
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: list<Human> owners;
+    1: list<User> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
@@ -152,7 +152,7 @@ struct Application
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
     /** Defines a list of people that are subscribed to events for an Application.*/
-    8: optional list<Human> subscribers = [];
+    8: optional list<User> subscribers = [];
 }
 
 /**

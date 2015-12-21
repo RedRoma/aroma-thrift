@@ -109,7 +109,7 @@ ApplicationToken.prototype.write = function(output) {
   return;
 };
 
-HumanToken = module.exports.HumanToken = function(args) {
+UserToken = module.exports.UserToken = function(args) {
   this.token = null;
   this.timeOfExpiration = null;
   this.organization = null;
@@ -133,8 +133,8 @@ HumanToken = module.exports.HumanToken = function(args) {
     }
   }
 };
-HumanToken.prototype = {};
-HumanToken.prototype.read = function(input) {
+UserToken.prototype = {};
+UserToken.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -191,8 +191,8 @@ HumanToken.prototype.read = function(input) {
   return;
 };
 
-HumanToken.prototype.write = function(output) {
-  output.writeStructBegin('HumanToken');
+UserToken.prototype.write = function(output) {
+  output.writeStructBegin('UserToken');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRING, 1);
     output.writeString(this.token);
@@ -544,4 +544,4 @@ Credentials.prototype.write = function(output) {
   return;
 };
 
-ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM';
+ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk';
