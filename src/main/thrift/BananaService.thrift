@@ -120,20 +120,19 @@ const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
  */
 struct ProvisionApplicationRequest
 {
-    1: string token;
+    1: HumanToken token;
     2: string applicationName;
     3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: string organization;
     5: optional Image icon;
-    6: HumanToken humanToken;
 }
 
 struct ProvisionApplicationResponse
 {
-    1: string bananaToken;
+    1: string applicationId;
     2: string applicationName;
-    3: ApplicationToken serviceToken;
-    4: optional string applicationId;
+    3: ApplicationToken applicationToken;
+    4: Application applicationInfo;
 }
 
 /**
@@ -141,7 +140,7 @@ struct ProvisionApplicationResponse
  */
 struct SubscribeToApplicationRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string applicationName;
     3: string applicationId;
     4: optional string organization;
@@ -160,8 +159,8 @@ struct SubscribeToApplicationResponse
  */
 struct RegisterHealthCheckRequest
 {
-   1: Endpoint endpoint;
-   2: HumanToken humanToken;
+    1: HumanToken token;
+    2: Endpoint endpoint;
 }
 
 struct RegisterHealthCheckResponse
@@ -170,11 +169,17 @@ struct RegisterHealthCheckResponse
     2: optional string healthCheckToken;
 }
 
+/**
+ * Renews an Application Token, effectively extending it's lifetime.
+ * Additional Charges may apply.
+ */
 struct RenewApplicationTokenRequest
 {
-    1: ApplicationToken applicationToken;
-    2: Banana.TimePeriod timePeriod;
-    3: HumanToken humanToken;
+    1: HumanToken token;
+    /** The Token to renew */
+    2: ApplicationToken applicationToken;
+    /** Defines for how long to extend a Token. */
+    3: Banana.TimePeriod timePeriod;
     4: string applicationId;
 }
 
@@ -183,10 +188,21 @@ struct RenewApplicationTokenResponse
     1: ApplicationToken serviceToken;
 }
 
+/**
+ * Regenerates an Application's Token. This is usually done because the original token was:
+ * 1: Lost or Misplaced
+ * 2: Compromised (someone else has accessed it)
+ * 3: Just for security reasons.
+ * 
+ * NOTE: This will invalidate any existing Tokens for this Application.
+ * NOTE: Only an owner can perform this operation.
+ * 
+ * #owner
+ */
 struct RegenerateApplicationTokenRequest
 {
-    1: string applicationId;
-    2: HumanToken humanToken;
+    1: HumanToken token;
+    2: string applicationId;
 }
 
 struct RegenerateApplicationTokenResponse
@@ -194,9 +210,14 @@ struct RegenerateApplicationTokenResponse
     1: ApplicationToken serviceToken;
 }
 
+/**
+ * Deletes a Message.
+ * 
+ * #owner
+ */
 struct DeleteMessageRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string messageId;
     3: string applicationId;
     /** Use for Batch Deletes. */
@@ -208,6 +229,11 @@ struct DeleteMessageResponse
     1: optional int messagesDeleted = 0;
 }
 
+/**
+ * Deletes all of Applications' Messages.
+ * 
+ * #owner
+ */
 struct DeleteAllMessagesRequest
 {
     1: HumanToken humanToken;
@@ -215,9 +241,14 @@ struct DeleteAllMessagesRequest
     3: optional int messagesDeleted = 0;
 }
 
+/**
+ * Dismisses a Message. Dismissing is analogous to archiving
+ * an email; it will no longer be visible to you, but will
+ * still be visible to other subscribers.
+ */
 struct DismissMessageRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string messageId;
     3: string applicationId;
     /** Use for Dismissing multiple Messages. */
@@ -229,16 +260,18 @@ struct DismissMessageResponse
     1: optional int messagesDismissed = 0;
 }
 
+/**
+ * Dismisses all Messages. They will no longer be visible to you.
+ */
 struct DismissAllMessagesRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string applicationId;
-    3: optional int messagesDismissed = 0;
 }
 
 struct DismissAllMessagesResponse
 {
-
+    1: optional int messagesDismissed = 0;
 }
 
 /**
@@ -246,7 +279,7 @@ struct DismissAllMessagesResponse
  */
 struct SaveChannelRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: BananaChannel channel;
 }
 
@@ -258,7 +291,7 @@ struct SaveChannelResponse
 
 struct RemoveSavedChannelRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: BananaChannel channel;
 }
 
@@ -274,7 +307,7 @@ struct RemoveSavedChannelResponse
  */
 struct SnoozeChannelRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: BananaChannel channel;
 }
 
@@ -289,7 +322,7 @@ struct SnoozeChannelResponse
 
 struct GetMyApplicationsRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
 }
 
 struct GetMyApplicationsResponse
@@ -299,7 +332,7 @@ struct GetMyApplicationsResponse
 
 struct GetApplicationInfoRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string applicationId;
 }
 
@@ -310,7 +343,7 @@ struct GetApplicationInfoResponse
 
 struct GetDashboardRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
 }
 
 struct GetDashboardResponse
@@ -324,7 +357,7 @@ struct GetDashboardResponse
 
 struct SearchForApplicationsRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string searchTerm;
     3: optional string organization;
 }
@@ -336,7 +369,7 @@ struct SearchForApplicationsResponse
 
 struct GetApplicationSubscribersRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
     2: string applicationId;
     3: string organization;
 }
@@ -348,7 +381,7 @@ struct GetApplicationSubscribersResponse
 
 struct GetMySavedChannelsRequest
 {
-    1: HumanToken humanToken;
+    1: HumanToken token;
 }
 
 struct GetMySavedChannelsResponse

@@ -368,13 +368,12 @@ inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 }
 
 typedef struct _ProvisionApplicationRequest__isset {
-  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false), humanToken(false) {}
+  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false) {}
   bool token :1;
   bool applicationName :1;
   bool programmingLanguage :1;
   bool organization :1;
   bool icon :1;
-  bool humanToken :1;
 } _ProvisionApplicationRequest__isset;
 
 class ProvisionApplicationRequest {
@@ -382,20 +381,19 @@ class ProvisionApplicationRequest {
 
   ProvisionApplicationRequest(const ProvisionApplicationRequest&);
   ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : token(), applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
   }
 
   virtual ~ProvisionApplicationRequest() throw();
-  std::string token;
+  HumanToken token;
   std::string applicationName;
    ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
   std::string organization;
   Image icon;
-  HumanToken humanToken;
 
   _ProvisionApplicationRequest__isset __isset;
 
-  void __set_token(const std::string& val);
+  void __set_token(const HumanToken& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -404,8 +402,6 @@ class ProvisionApplicationRequest {
   void __set_organization(const std::string& val);
 
   void __set_icon(const Image& val);
-
-  void __set_humanToken(const HumanToken& val);
 
   bool operator == (const ProvisionApplicationRequest & rhs) const
   {
@@ -422,8 +418,6 @@ class ProvisionApplicationRequest {
     if (__isset.icon != rhs.__isset.icon)
       return false;
     else if (__isset.icon && !(icon == rhs.icon))
-      return false;
-    if (!(humanToken == rhs.humanToken))
       return false;
     return true;
   }
@@ -448,11 +442,11 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationReq
 }
 
 typedef struct _ProvisionApplicationResponse__isset {
-  _ProvisionApplicationResponse__isset() : bananaToken(false), applicationName(false), serviceToken(false), applicationId(false) {}
-  bool bananaToken :1;
-  bool applicationName :1;
-  bool serviceToken :1;
+  _ProvisionApplicationResponse__isset() : applicationId(false), applicationName(false), applicationToken(false), applicationInfo(false) {}
   bool applicationId :1;
+  bool applicationName :1;
+  bool applicationToken :1;
+  bool applicationInfo :1;
 } _ProvisionApplicationResponse__isset;
 
 class ProvisionApplicationResponse {
@@ -460,36 +454,34 @@ class ProvisionApplicationResponse {
 
   ProvisionApplicationResponse(const ProvisionApplicationResponse&);
   ProvisionApplicationResponse& operator=(const ProvisionApplicationResponse&);
-  ProvisionApplicationResponse() : bananaToken(), applicationName(), applicationId() {
+  ProvisionApplicationResponse() : applicationId(), applicationName() {
   }
 
   virtual ~ProvisionApplicationResponse() throw();
-  std::string bananaToken;
-  std::string applicationName;
-  ApplicationToken serviceToken;
   std::string applicationId;
+  std::string applicationName;
+  ApplicationToken applicationToken;
+  Application applicationInfo;
 
   _ProvisionApplicationResponse__isset __isset;
 
-  void __set_bananaToken(const std::string& val);
+  void __set_applicationId(const std::string& val);
 
   void __set_applicationName(const std::string& val);
 
-  void __set_serviceToken(const ApplicationToken& val);
+  void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationInfo(const Application& val);
 
   bool operator == (const ProvisionApplicationResponse & rhs) const
   {
-    if (!(bananaToken == rhs.bananaToken))
+    if (!(applicationId == rhs.applicationId))
       return false;
     if (!(applicationName == rhs.applicationName))
       return false;
-    if (!(serviceToken == rhs.serviceToken))
+    if (!(applicationToken == rhs.applicationToken))
       return false;
-    if (__isset.applicationId != rhs.__isset.applicationId)
-      return false;
-    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+    if (!(applicationInfo == rhs.applicationInfo))
       return false;
     return true;
   }
@@ -514,8 +506,8 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationRes
 }
 
 typedef struct _SubscribeToApplicationRequest__isset {
-  _SubscribeToApplicationRequest__isset() : humanToken(false), applicationName(false), applicationId(false), organization(false), shared(true) {}
-  bool humanToken :1;
+  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organization(false), shared(true) {}
+  bool token :1;
   bool applicationName :1;
   bool applicationId :1;
   bool organization :1;
@@ -531,7 +523,7 @@ class SubscribeToApplicationRequest {
   }
 
   virtual ~SubscribeToApplicationRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string applicationName;
   std::string applicationId;
   std::string organization;
@@ -539,7 +531,7 @@ class SubscribeToApplicationRequest {
 
   _SubscribeToApplicationRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -551,7 +543,7 @@ class SubscribeToApplicationRequest {
 
   bool operator == (const SubscribeToApplicationRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(applicationName == rhs.applicationName))
       return false;
@@ -640,9 +632,9 @@ inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationR
 }
 
 typedef struct _RegisterHealthCheckRequest__isset {
-  _RegisterHealthCheckRequest__isset() : endpoint(false), humanToken(false) {}
+  _RegisterHealthCheckRequest__isset() : token(false), endpoint(false) {}
+  bool token :1;
   bool endpoint :1;
-  bool humanToken :1;
 } _RegisterHealthCheckRequest__isset;
 
 class RegisterHealthCheckRequest {
@@ -654,20 +646,20 @@ class RegisterHealthCheckRequest {
   }
 
   virtual ~RegisterHealthCheckRequest() throw();
+  HumanToken token;
   Endpoint endpoint;
-  HumanToken humanToken;
 
   _RegisterHealthCheckRequest__isset __isset;
 
-  void __set_endpoint(const Endpoint& val);
+  void __set_token(const HumanToken& val);
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_endpoint(const Endpoint& val);
 
   bool operator == (const RegisterHealthCheckRequest & rhs) const
   {
-    if (!(endpoint == rhs.endpoint))
+    if (!(token == rhs.token))
       return false;
-    if (!(humanToken == rhs.humanToken))
+    if (!(endpoint == rhs.endpoint))
       return false;
     return true;
   }
@@ -748,10 +740,10 @@ inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResp
 }
 
 typedef struct _RenewApplicationTokenRequest__isset {
-  _RenewApplicationTokenRequest__isset() : applicationToken(false), timePeriod(false), humanToken(false), applicationId(false) {}
+  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), timePeriod(false), applicationId(false) {}
+  bool token :1;
   bool applicationToken :1;
   bool timePeriod :1;
-  bool humanToken :1;
   bool applicationId :1;
 } _RenewApplicationTokenRequest__isset;
 
@@ -764,28 +756,28 @@ class RenewApplicationTokenRequest {
   }
 
   virtual ~RenewApplicationTokenRequest() throw();
+  HumanToken token;
   ApplicationToken applicationToken;
    ::aroma::banana::thrift::TimePeriod timePeriod;
-  HumanToken humanToken;
   std::string applicationId;
 
   _RenewApplicationTokenRequest__isset __isset;
+
+  void __set_token(const HumanToken& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
   void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
 
-  void __set_humanToken(const HumanToken& val);
-
   void __set_applicationId(const std::string& val);
 
   bool operator == (const RenewApplicationTokenRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
     if (!(applicationToken == rhs.applicationToken))
       return false;
     if (!(timePeriod == rhs.timePeriod))
-      return false;
-    if (!(humanToken == rhs.humanToken))
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;
@@ -858,9 +850,9 @@ inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenRe
 }
 
 typedef struct _RegenerateApplicationTokenRequest__isset {
-  _RegenerateApplicationTokenRequest__isset() : applicationId(false), humanToken(false) {}
+  _RegenerateApplicationTokenRequest__isset() : token(false), applicationId(false) {}
+  bool token :1;
   bool applicationId :1;
-  bool humanToken :1;
 } _RegenerateApplicationTokenRequest__isset;
 
 class RegenerateApplicationTokenRequest {
@@ -872,20 +864,20 @@ class RegenerateApplicationTokenRequest {
   }
 
   virtual ~RegenerateApplicationTokenRequest() throw();
+  HumanToken token;
   std::string applicationId;
-  HumanToken humanToken;
 
   _RegenerateApplicationTokenRequest__isset __isset;
 
-  void __set_applicationId(const std::string& val);
+  void __set_token(const HumanToken& val);
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_applicationId(const std::string& val);
 
   bool operator == (const RegenerateApplicationTokenRequest & rhs) const
   {
-    if (!(applicationId == rhs.applicationId))
+    if (!(token == rhs.token))
       return false;
-    if (!(humanToken == rhs.humanToken))
+    if (!(applicationId == rhs.applicationId))
       return false;
     return true;
   }
@@ -956,8 +948,8 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTo
 }
 
 typedef struct _DeleteMessageRequest__isset {
-  _DeleteMessageRequest__isset() : humanToken(false), messageId(false), applicationId(false), messageIds(true) {}
-  bool humanToken :1;
+  _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  bool token :1;
   bool messageId :1;
   bool applicationId :1;
   bool messageIds :1;
@@ -973,14 +965,14 @@ class DeleteMessageRequest {
   }
 
   virtual ~DeleteMessageRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string messageId;
   std::string applicationId;
   std::vector<std::string>  messageIds;
 
   _DeleteMessageRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_messageId(const std::string& val);
 
@@ -990,7 +982,7 @@ class DeleteMessageRequest {
 
   bool operator == (const DeleteMessageRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(messageId == rhs.messageId))
       return false;
@@ -1131,8 +1123,8 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteAllMessagesReques
 }
 
 typedef struct _DismissMessageRequest__isset {
-  _DismissMessageRequest__isset() : humanToken(false), messageId(false), applicationId(false), messageIds(true) {}
-  bool humanToken :1;
+  _DismissMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  bool token :1;
   bool messageId :1;
   bool applicationId :1;
   bool messageIds :1;
@@ -1148,14 +1140,14 @@ class DismissMessageRequest {
   }
 
   virtual ~DismissMessageRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string messageId;
   std::string applicationId;
   std::vector<std::string>  messageIds;
 
   _DismissMessageRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_messageId(const std::string& val);
 
@@ -1165,7 +1157,7 @@ class DismissMessageRequest {
 
   bool operator == (const DismissMessageRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(messageId == rhs.messageId))
       return false;
@@ -1246,10 +1238,9 @@ inline std::ostream& operator<<(std::ostream& out, const DismissMessageResponse&
 }
 
 typedef struct _DismissAllMessagesRequest__isset {
-  _DismissAllMessagesRequest__isset() : humanToken(false), applicationId(false), messagesDismissed(true) {}
-  bool humanToken :1;
+  _DismissAllMessagesRequest__isset() : token(false), applicationId(false) {}
+  bool token :1;
   bool applicationId :1;
-  bool messagesDismissed :1;
 } _DismissAllMessagesRequest__isset;
 
 class DismissAllMessagesRequest {
@@ -1257,31 +1248,24 @@ class DismissAllMessagesRequest {
 
   DismissAllMessagesRequest(const DismissAllMessagesRequest&);
   DismissAllMessagesRequest& operator=(const DismissAllMessagesRequest&);
-  DismissAllMessagesRequest() : applicationId(), messagesDismissed(0) {
+  DismissAllMessagesRequest() : applicationId() {
   }
 
   virtual ~DismissAllMessagesRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string applicationId;
-  int messagesDismissed;
 
   _DismissAllMessagesRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_applicationId(const std::string& val);
 
-  void __set_messagesDismissed(const int val);
-
   bool operator == (const DismissAllMessagesRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(applicationId == rhs.applicationId))
-      return false;
-    if (__isset.messagesDismissed != rhs.__isset.messagesDismissed)
-      return false;
-    else if (__isset.messagesDismissed && !(messagesDismissed == rhs.messagesDismissed))
       return false;
     return true;
   }
@@ -1305,19 +1289,32 @@ inline std::ostream& operator<<(std::ostream& out, const DismissAllMessagesReque
   return out;
 }
 
+typedef struct _DismissAllMessagesResponse__isset {
+  _DismissAllMessagesResponse__isset() : messagesDismissed(true) {}
+  bool messagesDismissed :1;
+} _DismissAllMessagesResponse__isset;
 
 class DismissAllMessagesResponse {
  public:
 
   DismissAllMessagesResponse(const DismissAllMessagesResponse&);
   DismissAllMessagesResponse& operator=(const DismissAllMessagesResponse&);
-  DismissAllMessagesResponse() {
+  DismissAllMessagesResponse() : messagesDismissed(0) {
   }
 
   virtual ~DismissAllMessagesResponse() throw();
+  int messagesDismissed;
 
-  bool operator == (const DismissAllMessagesResponse & /* rhs */) const
+  _DismissAllMessagesResponse__isset __isset;
+
+  void __set_messagesDismissed(const int val);
+
+  bool operator == (const DismissAllMessagesResponse & rhs) const
   {
+    if (__isset.messagesDismissed != rhs.__isset.messagesDismissed)
+      return false;
+    else if (__isset.messagesDismissed && !(messagesDismissed == rhs.messagesDismissed))
+      return false;
     return true;
   }
   bool operator != (const DismissAllMessagesResponse &rhs) const {
@@ -1341,8 +1338,8 @@ inline std::ostream& operator<<(std::ostream& out, const DismissAllMessagesRespo
 }
 
 typedef struct _SaveChannelRequest__isset {
-  _SaveChannelRequest__isset() : humanToken(false), channel(false) {}
-  bool humanToken :1;
+  _SaveChannelRequest__isset() : token(false), channel(false) {}
+  bool token :1;
   bool channel :1;
 } _SaveChannelRequest__isset;
 
@@ -1355,18 +1352,18 @@ class SaveChannelRequest {
   }
 
   virtual ~SaveChannelRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   BananaChannel channel;
 
   _SaveChannelRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const SaveChannelRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1447,8 +1444,8 @@ inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& ob
 }
 
 typedef struct _RemoveSavedChannelRequest__isset {
-  _RemoveSavedChannelRequest__isset() : humanToken(false), channel(false) {}
-  bool humanToken :1;
+  _RemoveSavedChannelRequest__isset() : token(false), channel(false) {}
+  bool token :1;
   bool channel :1;
 } _RemoveSavedChannelRequest__isset;
 
@@ -1461,18 +1458,18 @@ class RemoveSavedChannelRequest {
   }
 
   virtual ~RemoveSavedChannelRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   BananaChannel channel;
 
   _RemoveSavedChannelRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const RemoveSavedChannelRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1553,8 +1550,8 @@ inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRespo
 }
 
 typedef struct _SnoozeChannelRequest__isset {
-  _SnoozeChannelRequest__isset() : humanToken(false), channel(false) {}
-  bool humanToken :1;
+  _SnoozeChannelRequest__isset() : token(false), channel(false) {}
+  bool token :1;
   bool channel :1;
 } _SnoozeChannelRequest__isset;
 
@@ -1567,18 +1564,18 @@ class SnoozeChannelRequest {
   }
 
   virtual ~SnoozeChannelRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   BananaChannel channel;
 
   _SnoozeChannelRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_channel(const BananaChannel& val);
 
   bool operator == (const SnoozeChannelRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(channel == rhs.channel))
       return false;
@@ -1651,8 +1648,8 @@ inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& 
 }
 
 typedef struct _GetMyApplicationsRequest__isset {
-  _GetMyApplicationsRequest__isset() : humanToken(false) {}
-  bool humanToken :1;
+  _GetMyApplicationsRequest__isset() : token(false) {}
+  bool token :1;
 } _GetMyApplicationsRequest__isset;
 
 class GetMyApplicationsRequest {
@@ -1664,15 +1661,15 @@ class GetMyApplicationsRequest {
   }
 
   virtual ~GetMyApplicationsRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
 
   _GetMyApplicationsRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   bool operator == (const GetMyApplicationsRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     return true;
   }
@@ -1743,8 +1740,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsRespon
 }
 
 typedef struct _GetApplicationInfoRequest__isset {
-  _GetApplicationInfoRequest__isset() : humanToken(false), applicationId(false) {}
-  bool humanToken :1;
+  _GetApplicationInfoRequest__isset() : token(false), applicationId(false) {}
+  bool token :1;
   bool applicationId :1;
 } _GetApplicationInfoRequest__isset;
 
@@ -1757,18 +1754,18 @@ class GetApplicationInfoRequest {
   }
 
   virtual ~GetApplicationInfoRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string applicationId;
 
   _GetApplicationInfoRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_applicationId(const std::string& val);
 
   bool operator == (const GetApplicationInfoRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;
@@ -1841,8 +1838,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationInfoRespo
 }
 
 typedef struct _GetDashboardRequest__isset {
-  _GetDashboardRequest__isset() : humanToken(false) {}
-  bool humanToken :1;
+  _GetDashboardRequest__isset() : token(false) {}
+  bool token :1;
 } _GetDashboardRequest__isset;
 
 class GetDashboardRequest {
@@ -1854,15 +1851,15 @@ class GetDashboardRequest {
   }
 
   virtual ~GetDashboardRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
 
   _GetDashboardRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   bool operator == (const GetDashboardRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     return true;
   }
@@ -1952,8 +1949,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& o
 }
 
 typedef struct _SearchForApplicationsRequest__isset {
-  _SearchForApplicationsRequest__isset() : humanToken(false), searchTerm(false), organization(false) {}
-  bool humanToken :1;
+  _SearchForApplicationsRequest__isset() : token(false), searchTerm(false), organization(false) {}
+  bool token :1;
   bool searchTerm :1;
   bool organization :1;
 } _SearchForApplicationsRequest__isset;
@@ -1967,13 +1964,13 @@ class SearchForApplicationsRequest {
   }
 
   virtual ~SearchForApplicationsRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string searchTerm;
   std::string organization;
 
   _SearchForApplicationsRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_searchTerm(const std::string& val);
 
@@ -1981,7 +1978,7 @@ class SearchForApplicationsRequest {
 
   bool operator == (const SearchForApplicationsRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(searchTerm == rhs.searchTerm))
       return false;
@@ -2059,8 +2056,8 @@ inline std::ostream& operator<<(std::ostream& out, const SearchForApplicationsRe
 }
 
 typedef struct _GetApplicationSubscribersRequest__isset {
-  _GetApplicationSubscribersRequest__isset() : humanToken(false), applicationId(false), organization(false) {}
-  bool humanToken :1;
+  _GetApplicationSubscribersRequest__isset() : token(false), applicationId(false), organization(false) {}
+  bool token :1;
   bool applicationId :1;
   bool organization :1;
 } _GetApplicationSubscribersRequest__isset;
@@ -2074,13 +2071,13 @@ class GetApplicationSubscribersRequest {
   }
 
   virtual ~GetApplicationSubscribersRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
   std::string applicationId;
   std::string organization;
 
   _GetApplicationSubscribersRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   void __set_applicationId(const std::string& val);
 
@@ -2088,7 +2085,7 @@ class GetApplicationSubscribersRequest {
 
   bool operator == (const GetApplicationSubscribersRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;
@@ -2164,8 +2161,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationSubscribe
 }
 
 typedef struct _GetMySavedChannelsRequest__isset {
-  _GetMySavedChannelsRequest__isset() : humanToken(false) {}
-  bool humanToken :1;
+  _GetMySavedChannelsRequest__isset() : token(false) {}
+  bool token :1;
 } _GetMySavedChannelsRequest__isset;
 
 class GetMySavedChannelsRequest {
@@ -2177,15 +2174,15 @@ class GetMySavedChannelsRequest {
   }
 
   virtual ~GetMySavedChannelsRequest() throw();
-  HumanToken humanToken;
+  HumanToken token;
 
   _GetMySavedChannelsRequest__isset __isset;
 
-  void __set_humanToken(const HumanToken& val);
+  void __set_token(const HumanToken& val);
 
   bool operator == (const GetMySavedChannelsRequest & rhs) const
   {
-    if (!(humanToken == rhs.humanToken))
+    if (!(token == rhs.token))
       return false;
     return true;
   }
