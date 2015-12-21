@@ -380,18 +380,6 @@ struct GetMessagesResponse
     2: optional int totalMessagesMatching = 0;
 }
 
-struct SearchForApplicationsRequest
-{
-    1: HumanToken token;
-    2: string searchTerm;
-    3: optional string organization;
-}
-
-struct SearchForApplicationsResponse
-{
-    1: list<Application> applications = []
-}
-
 struct GetApplicationSubscribersRequest
 {
     1: HumanToken token;
@@ -423,6 +411,22 @@ struct GetServiceAnnouncementsResponse
 {
     1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
 }
+
+/**
+ * Search for Applications that match the given search terms.
+ */
+struct SearchForApplicationsRequest
+{
+    1: HumanToken token;
+    2: string applicationName;
+    3: optional string organization;
+}
+
+struct SearchForApplicationsResponse
+{
+    1: list<Application> applications = []
+}
+
 
 /**
  * The Banana Service is designed to be used by Humans, and not Applications.

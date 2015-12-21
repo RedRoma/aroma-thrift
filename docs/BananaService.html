@@ -553,14 +553,6 @@ or by a specific Application.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>searchTerm</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersRequest">Struct: GetApplicationSubscribersRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -580,6 +572,15 @@ or by a specific Application.
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>Search for Applications that match the given search terms.
+<br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_BananaService">Service: BananaService</h3>
 The Banana Service is designed to be used by Humans, and not Applications.

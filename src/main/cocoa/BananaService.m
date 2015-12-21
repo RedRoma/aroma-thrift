@@ -8110,448 +8110,6 @@
 
 @end
 
-@implementation BananaService_SearchForApplicationsRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (BananaService_HumanToken) token searchTerm: (NSString *) searchTerm organization: (NSString *) organization
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __searchTerm = [searchTerm retain_stub];
-  __searchTerm_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"searchTerm"])
-  {
-    __searchTerm = [[decoder decodeObjectForKey: @"searchTerm"] retain_stub];
-    __searchTerm_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"organization"])
-  {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__searchTerm_isset)
-  {
-    [encoder encodeObject: __searchTerm forKey: @"searchTerm"];
-  }
-  if (__organization_isset)
-  {
-    [encoder encodeObject: __organization forKey: @"organization"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __searchTerm_isset ? 2654435761 : 0;
-  if (__searchTerm_isset)
-  {
-    hash = (hash * 31) ^ [__searchTerm hash];
-  }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
-  {
-    hash = (hash * 31) ^ [__organization hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsRequest class]]) {
-    return NO;
-  }
-  BananaService_SearchForApplicationsRequest *other = (BananaService_SearchForApplicationsRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__searchTerm_isset != other->__searchTerm_isset) ||
-      (__searchTerm_isset && ((__searchTerm || other->__searchTerm) && ![__searchTerm isEqual:other->__searchTerm]))) {
-    return NO;
-  }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__searchTerm release_stub];
-  [__organization release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_HumanToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (NSString *) searchTerm {
-  return [[__searchTerm retain_stub] autorelease_stub];
-}
-
-- (void) setSearchTerm: (NSString *) searchTerm {
-  [searchTerm retain_stub];
-  [__searchTerm release_stub];
-  __searchTerm = searchTerm;
-  __searchTerm_isset = YES;
-}
-
-- (BOOL) searchTermIsSet {
-  return __searchTerm_isset;
-}
-
-- (void) unsetSearchTerm {
-  [__searchTerm release_stub];
-  __searchTerm = nil;
-  __searchTerm_isset = NO;
-}
-
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
-}
-
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
-}
-
-- (BOOL) organizationIsSet {
-  return __organization_isset;
-}
-
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setSearchTerm: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SearchForApplicationsRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__searchTerm_isset) {
-    if (__searchTerm != nil) {
-      [outProtocol writeFieldBeginWithName: @"searchTerm" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __searchTerm];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __organization];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",searchTerm:"];
-  [ms appendFormat: @"\"%@\"", __searchTerm];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_SearchForApplicationsResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.applications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
-
-#endif
-  return self;
-}
-
-- (id) initWithApplications: (NSMutableArray *) applications
-{
-  self = [super init];
-  __applications = [applications retain_stub];
-  __applications_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"applications"])
-  {
-    __applications = [[decoder decodeObjectForKey: @"applications"] retain_stub];
-    __applications_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__applications_isset)
-  {
-    [encoder encodeObject: __applications forKey: @"applications"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applications_isset ? 2654435761 : 0;
-  if (__applications_isset)
-  {
-    hash = (hash * 31) ^ [__applications hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsResponse class]]) {
-    return NO;
-  }
-  BananaService_SearchForApplicationsResponse *other = (BananaService_SearchForApplicationsResponse *)anObject;
-  if ((__applications_isset != other->__applications_isset) ||
-      (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__applications release_stub];
-  [super dealloc_stub];
-}
-
-- (NSMutableArray *) applications {
-  return [[__applications retain_stub] autorelease_stub];
-}
-
-- (void) setApplications: (NSMutableArray *) applications {
-  [applications retain_stub];
-  [__applications release_stub];
-  __applications = applications;
-  __applications_isset = YES;
-}
-
-- (BOOL) applicationsIsSet {
-  return __applications_isset;
-}
-
-- (void) unsetApplications {
-  [__applications release_stub];
-  __applications = nil;
-  __applications_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_LIST) {
-          int _size25;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
-          int _i26;
-          for (_i26 = 0; _i26 < _size25; ++_i26)
-          {
-            Banana_Application *_elem27 = [[Banana_Application alloc] init];
-            [_elem27 read: inProtocol];
-            [fieldValue addObject: _elem27];
-            [_elem27 release_stub];
-          }
-          [inProtocol readListEnd];
-          [self setApplications: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SearchForApplicationsResponse"];
-  if (__applications_isset) {
-    if (__applications != nil) {
-      [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx29;
-        for (idx29 = 0; idx29 < [__applications count]; idx29++)
-        {
-          [[__applications objectAtIndex: idx29] write: outProtocol];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsResponse("];
-  [ms appendString: @"applications:"];
-  [ms appendFormat: @"%@", __applications];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation BananaService_GetApplicationSubscribersRequest
 
 - (id) init
@@ -8932,16 +8490,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size30;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
-          int _i31;
-          for (_i31 = 0; _i31 < _size30; ++_i31)
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Banana_Human *_elem32 = [[Banana_Human alloc] init];
-            [_elem32 read: inProtocol];
-            [fieldValue addObject: _elem32];
-            [_elem32 release_stub];
+            Banana_Human *_elem27 = [[Banana_Human alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
           }
           [inProtocol readListEnd];
           [self setHumans: fieldValue];
@@ -8966,10 +8524,10 @@
       [outProtocol writeFieldBeginWithName: @"humans" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__humans count]];
-        int idx34;
-        for (idx34 = 0; idx34 < [__humans count]; idx34++)
+        int idx29;
+        for (idx29 = 0; idx29 < [__humans count]; idx29++)
         {
-          [[__humans objectAtIndex: idx34] write: outProtocol];
+          [[__humans objectAtIndex: idx29] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9254,16 +8812,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size30;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
+          int _i31;
+          for (_i31 = 0; _i31 < _size30; ++_i31)
           {
-            BananaChannels_BananaChannel *_elem37 = [[BananaChannels_BananaChannel alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            BananaChannels_BananaChannel *_elem32 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem32 read: inProtocol];
+            [fieldValue addObject: _elem32];
+            [_elem32 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -9288,10 +8846,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__channels count]; idx39++)
+        int idx34;
+        for (idx34 = 0; idx34 < [__channels count]; idx34++)
         {
-          [[__channels objectAtIndex: idx39] write: outProtocol];
+          [[__channels objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9504,16 +9062,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            Banana_ServiceAnnouncement *_elem42 = [[Banana_ServiceAnnouncement alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Banana_ServiceAnnouncement *_elem37 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -9538,10 +9096,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__serviceAnnouncements count]; idx44++)
+        int idx39;
+        for (idx39 = 0; idx39 < [__serviceAnnouncements count]; idx39++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx44] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx39] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9560,6 +9118,448 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsResponse("];
   [ms appendString: @"serviceAnnouncements:"];
   [ms appendFormat: @"%@", __serviceAnnouncements];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_SearchForApplicationsRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_HumanToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __organization = [organization retain_stub];
+  __organization_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organization"])
+  {
+    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
+    __organization_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__organization_isset)
+  {
+    [encoder encodeObject: __organization forKey: @"organization"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
+  if (__organization_isset)
+  {
+    hash = (hash * 31) ^ [__organization hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsRequest class]]) {
+    return NO;
+  }
+  BananaService_SearchForApplicationsRequest *other = (BananaService_SearchForApplicationsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  if ((__organization_isset != other->__organization_isset) ||
+      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationName release_stub];
+  [__organization release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_HumanToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_HumanToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (NSString *) organization {
+  return [[__organization retain_stub] autorelease_stub];
+}
+
+- (void) setOrganization: (NSString *) organization {
+  [organization retain_stub];
+  [__organization release_stub];
+  __organization = organization;
+  __organization_isset = YES;
+}
+
+- (BOOL) organizationIsSet {
+  return __organization_isset;
+}
+
+- (void) unsetOrganization {
+  [__organization release_stub];
+  __organization = nil;
+  __organization_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SearchForApplicationsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organization_isset) {
+    if (__organization != nil) {
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",organization:"];
+  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_SearchForApplicationsResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.applications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithApplications: (NSMutableArray *) applications
+{
+  self = [super init];
+  __applications = [applications retain_stub];
+  __applications_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applications"])
+  {
+    __applications = [[decoder decodeObjectForKey: @"applications"] retain_stub];
+    __applications_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applications_isset)
+  {
+    [encoder encodeObject: __applications forKey: @"applications"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applications_isset ? 2654435761 : 0;
+  if (__applications_isset)
+  {
+    hash = (hash * 31) ^ [__applications hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsResponse class]]) {
+    return NO;
+  }
+  BananaService_SearchForApplicationsResponse *other = (BananaService_SearchForApplicationsResponse *)anObject;
+  if ((__applications_isset != other->__applications_isset) ||
+      (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applications release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) applications {
+  return [[__applications retain_stub] autorelease_stub];
+}
+
+- (void) setApplications: (NSMutableArray *) applications {
+  [applications retain_stub];
+  [__applications release_stub];
+  __applications = applications;
+  __applications_isset = YES;
+}
+
+- (BOOL) applicationsIsSet {
+  return __applications_isset;
+}
+
+- (void) unsetApplications {
+  [__applications release_stub];
+  __applications = nil;
+  __applications_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size40;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
+          int _i41;
+          for (_i41 = 0; _i41 < _size40; ++_i41)
+          {
+            Banana_Application *_elem42 = [[Banana_Application alloc] init];
+            [_elem42 read: inProtocol];
+            [fieldValue addObject: _elem42];
+            [_elem42 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setApplications: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SearchForApplicationsResponse"];
+  if (__applications_isset) {
+    if (__applications != nil) {
+      [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
+        int idx44;
+        for (idx44 = 0; idx44 < [__applications count]; idx44++)
+        {
+          [[__applications objectAtIndex: idx44] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsResponse("];
+  [ms appendString: @"applications:"];
+  [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

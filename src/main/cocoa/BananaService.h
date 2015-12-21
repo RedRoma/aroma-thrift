@@ -1389,76 +1389,6 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __token;
-  NSString * __searchTerm;
-  NSString * __organization;
-
-  BOOL __token_isset;
-  BOOL __searchTerm_isset;
-  BOOL __organization_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_HumanToken token;
-@property (nonatomic, retain, getter=searchTerm, setter=setSearchTerm:) NSString * searchTerm;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
-#endif
-
-- (id) init;
-- (id) initWithToken: (BananaService_HumanToken) token searchTerm: (NSString *) searchTerm organization: (NSString *) organization;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) token;
-- (void) setToken: (BananaService_HumanToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) searchTerm;
-- (void) setSearchTerm: (NSString *) searchTerm;
-#endif
-- (BOOL) searchTermIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) organization;
-- (void) setOrganization: (NSString *) organization;
-#endif
-- (BOOL) organizationIsSet;
-
-@end
-
-@interface BananaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __applications;
-
-  BOOL __applications_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
-#endif
-
-- (id) init;
-- (id) initWithApplications: (NSMutableArray *) applications;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) applications;
-- (void) setApplications: (NSMutableArray *) applications;
-#endif
-- (BOOL) applicationsIsSet;
-
-@end
-
 @interface BananaService_GetApplicationSubscribersRequest : NSObject <TBase, NSCoding> {
   BananaService_HumanToken __token;
   NSString * __applicationId;
@@ -1616,6 +1546,76 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
 #endif
 - (BOOL) serviceAnnouncementsIsSet;
+
+@end
+
+@interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
+  BananaService_HumanToken __token;
+  NSString * __applicationName;
+  NSString * __organization;
+
+  BOOL __token_isset;
+  BOOL __applicationName_isset;
+  BOOL __organization_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_HumanToken token;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_HumanToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_HumanToken) token;
+- (void) setToken: (BananaService_HumanToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organization;
+- (void) setOrganization: (NSString *) organization;
+#endif
+- (BOOL) organizationIsSet;
+
+@end
+
+@interface BananaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __applications;
+
+  BOOL __applications_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
+#endif
+
+- (id) init;
+- (id) initWithApplications: (NSMutableArray *) applications;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) applications;
+- (void) setApplications: (NSMutableArray *) applications;
+#endif
+- (BOOL) applicationsIsSet;
 
 @end
 
