@@ -22,9 +22,14 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     // Your initialization goes here
   }
 
+  double getApiVersion() {
+    // Your implementation goes here
+    printf("getApiVersion\n");
+  }
+
   /**
    * 
-   * #service
+   * #app
    * 
    * @param request
    */
@@ -35,7 +40,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
 
   /**
    * 
-   * #service
+   * #app
    * 
    * @param request
    */
@@ -47,7 +52,7 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   /**
    * Sign in to the App and using a valid OAUTH Token.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
@@ -67,34 +72,34 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Provision a New Service to keep tabs on.
+   * Provision a New Application to keep tabs on.
    * 
-   * #developer
-   * 
-   * @param request
-   */
-  void provisionService(ProvisionServiceResponse& _return, const ProvisionServiceRequest& request) {
-    // Your implementation goes here
-    printf("provisionService\n");
-  }
-
-  /**
-   * Subscribe to an existing service to get notifications.
-   * 
-   * #developer
+   * #human
    * 
    * @param request
    */
-  void subscribeToService(SubscribeToServiceResponse& _return, const SubscribeToServiceRequest& request) {
+  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
     // Your implementation goes here
-    printf("subscribeToService\n");
+    printf("provisionApplication\n");
   }
 
   /**
-   * Register an existing Service for Health Pokes. The Banana Service
-   * will then periodically poke the Service for health status.
+   * Subscribe to an existing application to get notifications.
    * 
-   * #developer
+   * #human
+   * 
+   * @param request
+   */
+  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) {
+    // Your implementation goes here
+    printf("subscribeToApplication\n");
+  }
+
+  /**
+   * Register an existing Application for Health Pokes. The Banana Service
+   * will then periodically poke the Application for health status.
+   * 
+   * #human
    * #owner
    * 
    * @param request
@@ -105,44 +110,44 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Renew a Service Token that is close to being expired.
+   * Renew an Application Token that is close to being expired.
    * Only an "owner" can perform this operation.
    * 
-   * #developer
+   * #human
    * #owner
    * 
    * @param request
    */
-  void renewServiceToken(RenewServiceTokenResponse& _return, const RenewServiceTokenRequest& request) {
+  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
     // Your implementation goes here
-    printf("renewServiceToken\n");
+    printf("renewApplicationToken\n");
   }
 
   /**
-   * Regenerate a Token in case the existing one is lost or forgetten.
-   * Keep in mind that this will invalidate the existing ServiceToken.
-   * Only an "owner" can perform this opeartion.
+   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Keep in mind that this will invalidate any prior existing Application Tokens.
+   * Only an "owner" can perform this operation.
    * 
-   * #developer
+   * #human
    * #owner
    * 
    * @param request
    */
-  void regenerateToken(RegenerateTokenResponse& _return, const RegenerateTokenRequest& request) {
+  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
     // Your implementation goes here
     printf("regenerateToken\n");
   }
 
   /**
-   * Perform a Search on all the services registered to the Banana Service by searching for its title.
+   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
-  void searchForServices(SearchForServicesResponse& _return, const SearchForServicesRequest& request) {
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
     // Your implementation goes here
-    printf("searchForServices\n");
+    printf("searchForApplications\n");
   }
 
   void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
@@ -161,15 +166,15 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Get a list of all Developers subscribed to a Service.
+   * Get a list of all Humans subscribed to an Application.
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
-  void getServiceSubscribers(GetServiceSubscribersResponse& _return, const GetServiceSubscribersRequest& request) {
+  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
     // Your implementation goes here
-    printf("getServiceSubscribers\n");
+    printf("getApplicationSubscribers\n");
   }
 
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
@@ -177,21 +182,21 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getMySavedChannels\n");
   }
 
-  void getMyServices(GetMyServicesResponse& _return, const GetMyServicesRequest& request) {
+  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
     // Your implementation goes here
-    printf("getMyServices\n");
+    printf("getMyApplications\n");
   }
 
   /**
-   * Get details about a Service from it's unique ID
+   * Get details about an Application from it's unique ID
    * 
-   * #developer
+   * #human
    * 
    * @param request
    */
-  void getServiceInfo(GetServiceInfoResponse& _return, const GetServiceInfoRequest& request) {
+  void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
     // Your implementation goes here
-    printf("getServiceInfo\n");
+    printf("getApplicationInfo\n");
   }
 
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {

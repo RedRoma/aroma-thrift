@@ -26,9 +26,9 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-class ServiceToken;
+class ApplicationToken;
 
-class DeveloperToken;
+class HumanToken;
 
 class GithubToken;
 
@@ -38,43 +38,43 @@ class AromaAccount;
 
 class Credentials;
 
-typedef struct _ServiceToken__isset {
-  _ServiceToken__isset() : token(false), serviceName(false), organization(false), timeOfExpiration(false) {}
+typedef struct _ApplicationToken__isset {
+  _ApplicationToken__isset() : token(false), applicationName(false), organization(false), timeOfExpiration(false) {}
   bool token :1;
-  bool serviceName :1;
+  bool applicationName :1;
   bool organization :1;
   bool timeOfExpiration :1;
-} _ServiceToken__isset;
+} _ApplicationToken__isset;
 
-class ServiceToken {
+class ApplicationToken {
  public:
 
-  ServiceToken(const ServiceToken&);
-  ServiceToken& operator=(const ServiceToken&);
-  ServiceToken() : token(), serviceName(), organization(), timeOfExpiration(0) {
+  ApplicationToken(const ApplicationToken&);
+  ApplicationToken& operator=(const ApplicationToken&);
+  ApplicationToken() : token(), applicationName(), organization(), timeOfExpiration(0) {
   }
 
-  virtual ~ServiceToken() throw();
+  virtual ~ApplicationToken() throw();
   std::string token;
-  std::string serviceName;
+  std::string applicationName;
   std::string organization;
   timestamp timeOfExpiration;
 
-  _ServiceToken__isset __isset;
+  _ApplicationToken__isset __isset;
 
   void __set_token(const std::string& val);
 
-  void __set_serviceName(const std::string& val);
+  void __set_applicationName(const std::string& val);
 
   void __set_organization(const std::string& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
-  bool operator == (const ServiceToken & rhs) const
+  bool operator == (const ApplicationToken & rhs) const
   {
     if (!(token == rhs.token))
       return false;
-    if (!(serviceName == rhs.serviceName))
+    if (!(applicationName == rhs.applicationName))
       return false;
     if (__isset.organization != rhs.__isset.organization)
       return false;
@@ -84,11 +84,11 @@ class ServiceToken {
       return false;
     return true;
   }
-  bool operator != (const ServiceToken &rhs) const {
+  bool operator != (const ApplicationToken &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceToken & ) const;
+  bool operator < (const ApplicationToken & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -96,39 +96,39 @@ class ServiceToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ServiceToken &a, ServiceToken &b);
+void swap(ApplicationToken &a, ApplicationToken &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _DeveloperToken__isset {
-  _DeveloperToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+typedef struct _HumanToken__isset {
+  _HumanToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
   bool token :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
-} _DeveloperToken__isset;
+} _HumanToken__isset;
 
-class DeveloperToken {
+class HumanToken {
  public:
 
-  DeveloperToken(const DeveloperToken&);
-  DeveloperToken& operator=(const DeveloperToken&);
-  DeveloperToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  HumanToken(const HumanToken&);
+  HumanToken& operator=(const HumanToken&);
+  HumanToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
   }
 
-  virtual ~DeveloperToken() throw();
+  virtual ~HumanToken() throw();
   std::string token;
   timestamp timeOfExpiration;
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
 
-  _DeveloperToken__isset __isset;
+  _HumanToken__isset __isset;
 
   void __set_token(const std::string& val);
 
@@ -140,7 +140,7 @@ class DeveloperToken {
 
   void __set_oauthProvider(const std::string& val);
 
-  bool operator == (const DeveloperToken & rhs) const
+  bool operator == (const HumanToken & rhs) const
   {
     if (!(token == rhs.token))
       return false;
@@ -160,11 +160,11 @@ class DeveloperToken {
       return false;
     return true;
   }
-  bool operator != (const DeveloperToken &rhs) const {
+  bool operator != (const HumanToken &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const DeveloperToken & ) const;
+  bool operator < (const HumanToken & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -172,9 +172,9 @@ class DeveloperToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(DeveloperToken &a, DeveloperToken &b);
+void swap(HumanToken &a, HumanToken &b);
 
-inline std::ostream& operator<<(std::ostream& out, const DeveloperToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const HumanToken& obj)
 {
   obj.printTo(out);
   return out;
@@ -211,9 +211,7 @@ class GithubToken {
   {
     if (!(username == rhs.username))
       return false;
-    if (__isset.email != rhs.__isset.email)
-      return false;
-    else if (__isset.email && !(email == rhs.email))
+    if (!(email == rhs.email))
       return false;
     if (!(oauthToken == rhs.oauthToken))
       return false;
@@ -286,11 +284,12 @@ inline std::ostream& operator<<(std::ostream& out, const Password& obj)
 }
 
 typedef struct _AromaAccount__isset {
-  _AromaAccount__isset() : email(false), password(false), name(false), profileImage(false) {}
+  _AromaAccount__isset() : email(false), password(false), name(false), profileImage(false), role(false) {}
   bool email :1;
   bool password :1;
   bool name :1;
   bool profileImage :1;
+  bool role :1;
 } _AromaAccount__isset;
 
 class AromaAccount {
@@ -298,7 +297,7 @@ class AromaAccount {
 
   AromaAccount(const AromaAccount&);
   AromaAccount& operator=(const AromaAccount&);
-  AromaAccount() : email(), name() {
+  AromaAccount() : email(), name(), role(( ::aroma::banana::thrift::Role::type)0) {
   }
 
   virtual ~AromaAccount() throw();
@@ -306,6 +305,7 @@ class AromaAccount {
   Password password;
   std::string name;
    ::aroma::banana::thrift::Image profileImage;
+   ::aroma::banana::thrift::Role::type role;
 
   _AromaAccount__isset __isset;
 
@@ -317,6 +317,8 @@ class AromaAccount {
 
   void __set_profileImage(const  ::aroma::banana::thrift::Image& val);
 
+  void __set_role(const  ::aroma::banana::thrift::Role::type val);
+
   bool operator == (const AromaAccount & rhs) const
   {
     if (!(email == rhs.email))
@@ -326,6 +328,10 @@ class AromaAccount {
     if (!(name == rhs.name))
       return false;
     if (!(profileImage == rhs.profileImage))
+      return false;
+    if (__isset.role != rhs.__isset.role)
+      return false;
+    else if (__isset.role && !(role == rhs.role))
       return false;
     return true;
   }

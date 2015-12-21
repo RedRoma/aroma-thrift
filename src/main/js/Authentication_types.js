@@ -5,17 +5,17 @@
 //
 
 
-ServiceToken = function(args) {
+ApplicationToken = function(args) {
   this.token = null;
-  this.serviceName = null;
+  this.applicationName = null;
   this.organization = null;
   this.timeOfExpiration = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = args.token;
     }
-    if (args.serviceName !== undefined && args.serviceName !== null) {
-      this.serviceName = args.serviceName;
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
@@ -25,8 +25,8 @@ ServiceToken = function(args) {
     }
   }
 };
-ServiceToken.prototype = {};
-ServiceToken.prototype.read = function(input) {
+ApplicationToken.prototype = {};
+ApplicationToken.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -48,7 +48,7 @@ ServiceToken.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.serviceName = input.readString().value;
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -76,16 +76,16 @@ ServiceToken.prototype.read = function(input) {
   return;
 };
 
-ServiceToken.prototype.write = function(output) {
-  output.writeStructBegin('ServiceToken');
+ApplicationToken.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationToken');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRING, 1);
     output.writeString(this.token);
     output.writeFieldEnd();
   }
-  if (this.serviceName !== null && this.serviceName !== undefined) {
-    output.writeFieldBegin('serviceName', Thrift.Type.STRING, 2);
-    output.writeString(this.serviceName);
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   if (this.organization !== null && this.organization !== undefined) {
@@ -103,7 +103,7 @@ ServiceToken.prototype.write = function(output) {
   return;
 };
 
-DeveloperToken = function(args) {
+HumanToken = function(args) {
   this.token = null;
   this.timeOfExpiration = null;
   this.organization = null;
@@ -127,8 +127,8 @@ DeveloperToken = function(args) {
     }
   }
 };
-DeveloperToken.prototype = {};
-DeveloperToken.prototype.read = function(input) {
+HumanToken.prototype = {};
+HumanToken.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -185,8 +185,8 @@ DeveloperToken.prototype.read = function(input) {
   return;
 };
 
-DeveloperToken.prototype.write = function(output) {
-  output.writeStructBegin('DeveloperToken');
+HumanToken.prototype.write = function(output) {
+  output.writeStructBegin('HumanToken');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRING, 1);
     output.writeString(this.token);
@@ -359,6 +359,7 @@ AromaAccount = function(args) {
   this.password = null;
   this.name = null;
   this.profileImage = null;
+  this.role = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -371,6 +372,9 @@ AromaAccount = function(args) {
     }
     if (args.profileImage !== undefined && args.profileImage !== null) {
       this.profileImage = new Image(args.profileImage);
+    }
+    if (args.role !== undefined && args.role !== null) {
+      this.role = args.role;
     }
   }
 };
@@ -418,6 +422,13 @@ AromaAccount.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.I32) {
+        this.role = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -447,6 +458,11 @@ AromaAccount.prototype.write = function(output) {
   if (this.profileImage !== null && this.profileImage !== undefined) {
     output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 4);
     this.profileImage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.role !== null && this.role !== undefined) {
+    output.writeFieldBegin('role', Thrift.Type.I32, 5);
+    output.writeI32(this.role);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

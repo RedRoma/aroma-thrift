@@ -499,15 +499,15 @@ const char* UnauthorizedException::what() const throw() {
 }
 
 
-ServiceDoesNotExistException::~ServiceDoesNotExistException() throw() {
+ApplicationDoesNotExistException::~ApplicationDoesNotExistException() throw() {
 }
 
 
-void ServiceDoesNotExistException::__set_message(const std::string& val) {
+void ApplicationDoesNotExistException::__set_message(const std::string& val) {
   this->message = val;
 }
 
-uint32_t ServiceDoesNotExistException::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationDoesNotExistException::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -548,10 +548,10 @@ uint32_t ServiceDoesNotExistException::read(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-uint32_t ServiceDoesNotExistException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationDoesNotExistException::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceDoesNotExistException");
+  xfer += oprot->writeStructBegin("ApplicationDoesNotExistException");
 
   xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->message);
@@ -562,49 +562,49 @@ uint32_t ServiceDoesNotExistException::write(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-void swap(ServiceDoesNotExistException &a, ServiceDoesNotExistException &b) {
+void swap(ApplicationDoesNotExistException &a, ApplicationDoesNotExistException &b) {
   using ::std::swap;
   swap(a.message, b.message);
   swap(a.__isset, b.__isset);
 }
 
-ServiceDoesNotExistException::ServiceDoesNotExistException(const ServiceDoesNotExistException& other10) : TException() {
+ApplicationDoesNotExistException::ApplicationDoesNotExistException(const ApplicationDoesNotExistException& other10) : TException() {
   message = other10.message;
   __isset = other10.__isset;
 }
-ServiceDoesNotExistException& ServiceDoesNotExistException::operator=(const ServiceDoesNotExistException& other11) {
+ApplicationDoesNotExistException& ApplicationDoesNotExistException::operator=(const ApplicationDoesNotExistException& other11) {
   message = other11.message;
   __isset = other11.__isset;
   return *this;
 }
-void ServiceDoesNotExistException::printTo(std::ostream& out) const {
+void ApplicationDoesNotExistException::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceDoesNotExistException(";
+  out << "ApplicationDoesNotExistException(";
   out << "message=" << to_string(message);
   out << ")";
 }
 
-const char* ServiceDoesNotExistException::what() const throw() {
+const char* ApplicationDoesNotExistException::what() const throw() {
   try {
     std::stringstream ss;
     ss << "TException - service has thrown: " << *this;
     this->thriftTExceptionMessageHolder_ = ss.str();
     return this->thriftTExceptionMessageHolder_.c_str();
   } catch (const std::exception&) {
-    return "TException - service has thrown: ServiceDoesNotExistException";
+    return "TException - service has thrown: ApplicationDoesNotExistException";
   }
 }
 
 
-ServiceAlreadyRegisteredException::~ServiceAlreadyRegisteredException() throw() {
+ApplicationAlreadyRegisteredException::~ApplicationAlreadyRegisteredException() throw() {
 }
 
 
-void ServiceAlreadyRegisteredException::__set_message(const std::string& val) {
+void ApplicationAlreadyRegisteredException::__set_message(const std::string& val) {
   this->message = val;
 }
 
-uint32_t ServiceAlreadyRegisteredException::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationAlreadyRegisteredException::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -645,10 +645,10 @@ uint32_t ServiceAlreadyRegisteredException::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t ServiceAlreadyRegisteredException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationAlreadyRegisteredException::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceAlreadyRegisteredException");
+  xfer += oprot->writeStructBegin("ApplicationAlreadyRegisteredException");
 
   xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->message);
@@ -659,36 +659,36 @@ uint32_t ServiceAlreadyRegisteredException::write(::apache::thrift::protocol::TP
   return xfer;
 }
 
-void swap(ServiceAlreadyRegisteredException &a, ServiceAlreadyRegisteredException &b) {
+void swap(ApplicationAlreadyRegisteredException &a, ApplicationAlreadyRegisteredException &b) {
   using ::std::swap;
   swap(a.message, b.message);
   swap(a.__isset, b.__isset);
 }
 
-ServiceAlreadyRegisteredException::ServiceAlreadyRegisteredException(const ServiceAlreadyRegisteredException& other12) : TException() {
+ApplicationAlreadyRegisteredException::ApplicationAlreadyRegisteredException(const ApplicationAlreadyRegisteredException& other12) : TException() {
   message = other12.message;
   __isset = other12.__isset;
 }
-ServiceAlreadyRegisteredException& ServiceAlreadyRegisteredException::operator=(const ServiceAlreadyRegisteredException& other13) {
+ApplicationAlreadyRegisteredException& ApplicationAlreadyRegisteredException::operator=(const ApplicationAlreadyRegisteredException& other13) {
   message = other13.message;
   __isset = other13.__isset;
   return *this;
 }
-void ServiceAlreadyRegisteredException::printTo(std::ostream& out) const {
+void ApplicationAlreadyRegisteredException::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceAlreadyRegisteredException(";
+  out << "ApplicationAlreadyRegisteredException(";
   out << "message=" << to_string(message);
   out << ")";
 }
 
-const char* ServiceAlreadyRegisteredException::what() const throw() {
+const char* ApplicationAlreadyRegisteredException::what() const throw() {
   try {
     std::stringstream ss;
     ss << "TException - service has thrown: " << *this;
     this->thriftTExceptionMessageHolder_ = ss.str();
     return this->thriftTExceptionMessageHolder_.c_str();
   } catch (const std::exception&) {
-    return "TException - service has thrown: ServiceAlreadyRegisteredException";
+    return "TException - service has thrown: ApplicationAlreadyRegisteredException";
   }
 }
 

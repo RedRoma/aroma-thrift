@@ -3,8 +3,8 @@ namespace cocoa BananaEndpoint_
 namespace cpp   aroma.banana.thrift.endpoint
 
 /*
- * Defined in this File are names and verbs about Service Endpoints
- * that the Banana Service "pokes" (polls) for Health Statuses.
+ * Defined in this File are names and verbs relating to Application Endpoints
+ * that the Banana Service periodically "pokes" (polls) for Health Statuses.
  */
 
 include "Authentication.thrift"
@@ -15,7 +15,7 @@ typedef Banana.int int
 typedef Exceptions.OperationFailedException OperationFailedException
 
 /**
- * A TCP ServiceEndpoint to Poke,
+ * A TCP Application Endpoint to Poke,
  * defined in Thrift.
  */
 struct TcpEndpoint
@@ -25,7 +25,7 @@ struct TcpEndpoint
 }
 
 /**
- * An HTTP ServiceEndpoint to Poke,
+ * An HTTP ApplicationEndpoint to Poke,
  * defined in Thrift.
  */
 struct ThriftHttpEndpoint
@@ -35,14 +35,21 @@ struct ThriftHttpEndpoint
 
 /**
  * A REST HTTP Endpoint to Poke.
- * This Service is not defined in Thrift and will instead receive
- * an HTTP Post Request with the same
+ * 
+ * This Endpoint is not defined in Thrift and will instead receive
+ * an HTTP Post Request with the same payload, but in JSON.
+ * 
+ * Examples to follow...
  */
 struct RestHttpEndpoint
 {
     1: required string url;
 }
 
+/**
+ * This union defines the multiple ways that an Endpoint can be defined
+ * and understood.
+ */
 union Endpoint
 {
     1: TcpEndpoint tcp;
@@ -50,25 +57,32 @@ union Endpoint
     3: RestHttpEndpoint restHttp;
 }
 
+/**
+ * Sent by the Banana Service to an Application Endpoint
+ * to poke for health status.
+ */
 struct HealthPokeRequest
 {
-    1: string serviceName;
+    /** This is the name of the Application we are asking about. */
+    1: string applicationName;
     /** 
-     * We will include your ServiceToken so that you 
+     * We will include your ApplicationToken so that you 
      * can authenticate the call if you'd like. With
-     * the ServiceToken, you can verify that it is 
+     * the ApplicationToken, you can verify that it is 
      * us calling you.
      */
-    2: Authentication.ServiceToken serviceToken;
+    2: Authentication.ApplicationToken serviceToken;
 }
 
 struct HealthPokeResponse
 {
+    /** Send us back some message, not too long. */
     1: string message;
+    /** Tell us whether your Application is healthy or not. */
     2: bool healthy;
 }
 
-service ServiceEndpoint
+service ApplicationEndpoint
 {
     
     HealthPokeResponse healthPoke(1: HealthPokeRequest request) throws (1: OperationFailedException ex1)

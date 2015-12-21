@@ -70,7 +70,7 @@ InvalidArgumentException.prototype.write = function(output) {
 InvalidCredentialsException = module.exports.InvalidCredentialsException = function(args) {
   Thrift.TException.call(this, "InvalidCredentialsException")
   this.name = "InvalidCredentialsException"
-  this.message = 'Failed to Verify and Authenticate credentials';
+  this.message = 'Failed to Verify and Authenticate Credentials';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -238,7 +238,7 @@ InvalidCodeException.prototype.write = function(output) {
 UnauthorizedException = module.exports.UnauthorizedException = function(args) {
   Thrift.TException.call(this, "UnauthorizedException")
   this.name = "UnauthorizedException"
-  this.message = 'Only an owner can do that';
+  this.message = 'Only an Owner can do that';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -291,19 +291,19 @@ UnauthorizedException.prototype.write = function(output) {
   return;
 };
 
-ServiceDoesNotExistException = module.exports.ServiceDoesNotExistException = function(args) {
-  Thrift.TException.call(this, "ServiceDoesNotExistException")
-  this.name = "ServiceDoesNotExistException"
-  this.message = 'The Specified Service does not exist';
+ApplicationDoesNotExistException = module.exports.ApplicationDoesNotExistException = function(args) {
+  Thrift.TException.call(this, "ApplicationDoesNotExistException")
+  this.name = "ApplicationDoesNotExistException"
+  this.message = 'The Specified Application does not exist';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
   }
 };
-Thrift.inherits(ServiceDoesNotExistException, Thrift.TException);
-ServiceDoesNotExistException.prototype.name = 'ServiceDoesNotExistException';
-ServiceDoesNotExistException.prototype.read = function(input) {
+Thrift.inherits(ApplicationDoesNotExistException, Thrift.TException);
+ApplicationDoesNotExistException.prototype.name = 'ApplicationDoesNotExistException';
+ApplicationDoesNotExistException.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -335,8 +335,8 @@ ServiceDoesNotExistException.prototype.read = function(input) {
   return;
 };
 
-ServiceDoesNotExistException.prototype.write = function(output) {
-  output.writeStructBegin('ServiceDoesNotExistException');
+ApplicationDoesNotExistException.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationDoesNotExistException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
@@ -347,19 +347,19 @@ ServiceDoesNotExistException.prototype.write = function(output) {
   return;
 };
 
-ServiceAlreadyRegisteredException = module.exports.ServiceAlreadyRegisteredException = function(args) {
-  Thrift.TException.call(this, "ServiceAlreadyRegisteredException")
-  this.name = "ServiceAlreadyRegisteredException"
-  this.message = 'This Channel has already been registered for this Service';
+ApplicationAlreadyRegisteredException = module.exports.ApplicationAlreadyRegisteredException = function(args) {
+  Thrift.TException.call(this, "ApplicationAlreadyRegisteredException")
+  this.name = "ApplicationAlreadyRegisteredException"
+  this.message = 'This Channel has already been registered for this Application';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
   }
 };
-Thrift.inherits(ServiceAlreadyRegisteredException, Thrift.TException);
-ServiceAlreadyRegisteredException.prototype.name = 'ServiceAlreadyRegisteredException';
-ServiceAlreadyRegisteredException.prototype.read = function(input) {
+Thrift.inherits(ApplicationAlreadyRegisteredException, Thrift.TException);
+ApplicationAlreadyRegisteredException.prototype.name = 'ApplicationAlreadyRegisteredException';
+ApplicationAlreadyRegisteredException.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -391,8 +391,8 @@ ServiceAlreadyRegisteredException.prototype.read = function(input) {
   return;
 };
 
-ServiceAlreadyRegisteredException.prototype.write = function(output) {
-  output.writeStructBegin('ServiceAlreadyRegisteredException');
+ApplicationAlreadyRegisteredException.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationAlreadyRegisteredException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);
@@ -462,7 +462,7 @@ ThroughoutExceededException.prototype.write = function(output) {
 CustomChannelUnreachableException = module.exports.CustomChannelUnreachableException = function(args) {
   Thrift.TException.call(this, "CustomChannelUnreachableException")
   this.name = "CustomChannelUnreachableException"
-  this.message = 'The Custom Channel you\'ve supplied could not be reached. Please ensure the Service is reachable and operational.';
+  this.message = 'The Custom Channel you\'ve supplied could not be reached. Please ensure the Application is reachable and operational.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;

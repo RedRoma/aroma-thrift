@@ -18,6 +18,20 @@ HealthCheckFailed::~HealthCheckFailed() throw() {
 }
 
 
+void HealthCheckFailed::__set_message(const std::string& val) {
+  this->message = val;
+__isset.message = true;
+}
+
+void HealthCheckFailed::__set_hostname(const std::string& val) {
+  this->hostname = val;
+__isset.hostname = true;
+}
+
+void HealthCheckFailed::__set_application(const Application& val) {
+  this->application = val;
+}
+
 uint32_t HealthCheckFailed::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -37,7 +51,36 @@ uint32_t HealthCheckFailed::read(::apache::thrift::protocol::TProtocol* iprot) {
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->hostname);
+          this->__isset.hostname = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -51,6 +94,20 @@ uint32_t HealthCheckFailed::write(::apache::thrift::protocol::TProtocol* oprot) 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("HealthCheckFailed");
 
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->message);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.hostname) {
+    xfer += oprot->writeFieldBegin("hostname", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->hostname);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->application.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -58,20 +115,31 @@ uint32_t HealthCheckFailed::write(::apache::thrift::protocol::TProtocol* oprot) 
 
 void swap(HealthCheckFailed &a, HealthCheckFailed &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.message, b.message);
+  swap(a.hostname, b.hostname);
+  swap(a.application, b.application);
+  swap(a.__isset, b.__isset);
 }
 
 HealthCheckFailed::HealthCheckFailed(const HealthCheckFailed& other0) {
-  (void) other0;
+  message = other0.message;
+  hostname = other0.hostname;
+  application = other0.application;
+  __isset = other0.__isset;
 }
 HealthCheckFailed& HealthCheckFailed::operator=(const HealthCheckFailed& other1) {
-  (void) other1;
+  message = other1.message;
+  hostname = other1.hostname;
+  application = other1.application;
+  __isset = other1.__isset;
   return *this;
 }
 void HealthCheckFailed::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "HealthCheckFailed(";
+  out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
+  out << ", " << "hostname="; (__isset.hostname ? (out << to_string(hostname)) : (out << "<null>"));
+  out << ", " << "application=" << to_string(application);
   out << ")";
 }
 
@@ -79,6 +147,15 @@ void HealthCheckFailed::printTo(std::ostream& out) const {
 HealthCheckBackToNormal::~HealthCheckBackToNormal() throw() {
 }
 
+
+void HealthCheckBackToNormal::__set_message(const std::string& val) {
+  this->message = val;
+__isset.message = true;
+}
+
+void HealthCheckBackToNormal::__set_application(const Application& val) {
+  this->application = val;
+}
 
 uint32_t HealthCheckBackToNormal::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -99,7 +176,28 @@ uint32_t HealthCheckBackToNormal::read(::apache::thrift::protocol::TProtocol* ip
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -113,6 +211,15 @@ uint32_t HealthCheckBackToNormal::write(::apache::thrift::protocol::TProtocol* o
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("HealthCheckBackToNormal");
 
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->message);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->application.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -120,38 +227,50 @@ uint32_t HealthCheckBackToNormal::write(::apache::thrift::protocol::TProtocol* o
 
 void swap(HealthCheckBackToNormal &a, HealthCheckBackToNormal &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.message, b.message);
+  swap(a.application, b.application);
+  swap(a.__isset, b.__isset);
 }
 
 HealthCheckBackToNormal::HealthCheckBackToNormal(const HealthCheckBackToNormal& other2) {
-  (void) other2;
+  message = other2.message;
+  application = other2.application;
+  __isset = other2.__isset;
 }
 HealthCheckBackToNormal& HealthCheckBackToNormal::operator=(const HealthCheckBackToNormal& other3) {
-  (void) other3;
+  message = other3.message;
+  application = other3.application;
+  __isset = other3.__isset;
   return *this;
 }
 void HealthCheckBackToNormal::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "HealthCheckBackToNormal(";
+  out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
+  out << ", " << "application=" << to_string(application);
   out << ")";
 }
 
 
-ServiceTokenRenewed::~ServiceTokenRenewed() throw() {
+ApplicationTokenRenewed::~ApplicationTokenRenewed() throw() {
 }
 
 
-void ServiceTokenRenewed::__set_developer(const Developer& val) {
-  this->developer = val;
+void ApplicationTokenRenewed::__set_human(const Human& val) {
+  this->human = val;
 }
 
-void ServiceTokenRenewed::__set_serviceToken(const ServiceToken& val) {
-  this->serviceToken = val;
-__isset.serviceToken = true;
+void ApplicationTokenRenewed::__set_applicationToken(const ApplicationToken& val) {
+  this->applicationToken = val;
+__isset.applicationToken = true;
 }
 
-uint32_t ServiceTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot) {
+void ApplicationTokenRenewed::__set_application(const Application& val) {
+  this->application = val;
+__isset.application = true;
+}
+
+uint32_t ApplicationTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -174,16 +293,24 @@ uint32_t ServiceTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot)
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->developer.read(iprot);
-          this->__isset.developer = true;
+          xfer += this->human.read(iprot);
+          this->__isset.human = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->serviceToken.read(iprot);
-          this->__isset.serviceToken = true;
+          xfer += this->applicationToken.read(iprot);
+          this->__isset.applicationToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -200,18 +327,23 @@ uint32_t ServiceTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-uint32_t ServiceTokenRenewed::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationTokenRenewed::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceTokenRenewed");
+  xfer += oprot->writeStructBegin("ApplicationTokenRenewed");
 
-  xfer += oprot->writeFieldBegin("developer", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->developer.write(oprot);
+  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->human.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.serviceToken) {
-    xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->serviceToken.write(oprot);
+  if (this->__isset.applicationToken) {
+    xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->applicationToken.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.application) {
+    xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->application.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -219,47 +351,55 @@ uint32_t ServiceTokenRenewed::write(::apache::thrift::protocol::TProtocol* oprot
   return xfer;
 }
 
-void swap(ServiceTokenRenewed &a, ServiceTokenRenewed &b) {
+void swap(ApplicationTokenRenewed &a, ApplicationTokenRenewed &b) {
   using ::std::swap;
-  swap(a.developer, b.developer);
-  swap(a.serviceToken, b.serviceToken);
+  swap(a.human, b.human);
+  swap(a.applicationToken, b.applicationToken);
+  swap(a.application, b.application);
   swap(a.__isset, b.__isset);
 }
 
-ServiceTokenRenewed::ServiceTokenRenewed(const ServiceTokenRenewed& other4) {
-  developer = other4.developer;
-  serviceToken = other4.serviceToken;
+ApplicationTokenRenewed::ApplicationTokenRenewed(const ApplicationTokenRenewed& other4) {
+  human = other4.human;
+  applicationToken = other4.applicationToken;
+  application = other4.application;
   __isset = other4.__isset;
 }
-ServiceTokenRenewed& ServiceTokenRenewed::operator=(const ServiceTokenRenewed& other5) {
-  developer = other5.developer;
-  serviceToken = other5.serviceToken;
+ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTokenRenewed& other5) {
+  human = other5.human;
+  applicationToken = other5.applicationToken;
+  application = other5.application;
   __isset = other5.__isset;
   return *this;
 }
-void ServiceTokenRenewed::printTo(std::ostream& out) const {
+void ApplicationTokenRenewed::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceTokenRenewed(";
-  out << "developer=" << to_string(developer);
-  out << ", " << "serviceToken="; (__isset.serviceToken ? (out << to_string(serviceToken)) : (out << "<null>"));
+  out << "ApplicationTokenRenewed(";
+  out << "human=" << to_string(human);
+  out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
+  out << ", " << "application="; (__isset.application ? (out << to_string(application)) : (out << "<null>"));
   out << ")";
 }
 
 
-ServiceTokenRegenerated::~ServiceTokenRegenerated() throw() {
+ApplicationTokenRegenerated::~ApplicationTokenRegenerated() throw() {
 }
 
 
-void ServiceTokenRegenerated::__set_developer(const Developer& val) {
-  this->developer = val;
+void ApplicationTokenRegenerated::__set_human(const Human& val) {
+  this->human = val;
 }
 
-void ServiceTokenRegenerated::__set_serviceToken(const ServiceToken& val) {
-  this->serviceToken = val;
-__isset.serviceToken = true;
+void ApplicationTokenRegenerated::__set_applicationToken(const ApplicationToken& val) {
+  this->applicationToken = val;
+__isset.applicationToken = true;
 }
 
-uint32_t ServiceTokenRegenerated::read(::apache::thrift::protocol::TProtocol* iprot) {
+void ApplicationTokenRegenerated::__set_application(const Application& val) {
+  this->application = val;
+}
+
+uint32_t ApplicationTokenRegenerated::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -282,16 +422,24 @@ uint32_t ServiceTokenRegenerated::read(::apache::thrift::protocol::TProtocol* ip
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->developer.read(iprot);
-          this->__isset.developer = true;
+          xfer += this->human.read(iprot);
+          this->__isset.human = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->serviceToken.read(iprot);
-          this->__isset.serviceToken = true;
+          xfer += this->applicationToken.read(iprot);
+          this->__isset.applicationToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -308,61 +456,74 @@ uint32_t ServiceTokenRegenerated::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t ServiceTokenRegenerated::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationTokenRegenerated::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceTokenRegenerated");
+  xfer += oprot->writeStructBegin("ApplicationTokenRegenerated");
 
-  xfer += oprot->writeFieldBegin("developer", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->developer.write(oprot);
+  xfer += oprot->writeFieldBegin("human", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->human.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.serviceToken) {
-    xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 2);
-    xfer += this->serviceToken.write(oprot);
+  if (this->__isset.applicationToken) {
+    xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->applicationToken.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->application.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void swap(ServiceTokenRegenerated &a, ServiceTokenRegenerated &b) {
+void swap(ApplicationTokenRegenerated &a, ApplicationTokenRegenerated &b) {
   using ::std::swap;
-  swap(a.developer, b.developer);
-  swap(a.serviceToken, b.serviceToken);
+  swap(a.human, b.human);
+  swap(a.applicationToken, b.applicationToken);
+  swap(a.application, b.application);
   swap(a.__isset, b.__isset);
 }
 
-ServiceTokenRegenerated::ServiceTokenRegenerated(const ServiceTokenRegenerated& other6) {
-  developer = other6.developer;
-  serviceToken = other6.serviceToken;
+ApplicationTokenRegenerated::ApplicationTokenRegenerated(const ApplicationTokenRegenerated& other6) {
+  human = other6.human;
+  applicationToken = other6.applicationToken;
+  application = other6.application;
   __isset = other6.__isset;
 }
-ServiceTokenRegenerated& ServiceTokenRegenerated::operator=(const ServiceTokenRegenerated& other7) {
-  developer = other7.developer;
-  serviceToken = other7.serviceToken;
+ApplicationTokenRegenerated& ApplicationTokenRegenerated::operator=(const ApplicationTokenRegenerated& other7) {
+  human = other7.human;
+  applicationToken = other7.applicationToken;
+  application = other7.application;
   __isset = other7.__isset;
   return *this;
 }
-void ServiceTokenRegenerated::printTo(std::ostream& out) const {
+void ApplicationTokenRegenerated::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceTokenRegenerated(";
-  out << "developer=" << to_string(developer);
-  out << ", " << "serviceToken="; (__isset.serviceToken ? (out << to_string(serviceToken)) : (out << "<null>"));
+  out << "ApplicationTokenRegenerated(";
+  out << "human=" << to_string(human);
+  out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
+  out << ", " << "application=" << to_string(application);
   out << ")";
 }
 
 
-ServiceSentMessage::~ServiceSentMessage() throw() {
+ApplicationSentMessage::~ApplicationSentMessage() throw() {
 }
 
 
-void ServiceSentMessage::__set_message(const  ::aroma::banana::thrift::Message& val) {
+void ApplicationSentMessage::__set_message(const  ::aroma::banana::thrift::Message& val) {
   this->message = val;
+__isset.message = true;
 }
 
-uint32_t ServiceSentMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
+void ApplicationSentMessage::__set_application(const Application& val) {
+  this->application = val;
+}
+
+uint32_t ApplicationSentMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -391,6 +552,14 @@ uint32_t ServiceSentMessage::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -403,13 +572,18 @@ uint32_t ServiceSentMessage::read(::apache::thrift::protocol::TProtocol* iprot) 
   return xfer;
 }
 
-uint32_t ServiceSentMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationSentMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceSentMessage");
+  xfer += oprot->writeStructBegin("ApplicationSentMessage");
 
-  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->message.write(oprot);
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->message.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->application.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -417,25 +591,29 @@ uint32_t ServiceSentMessage::write(::apache::thrift::protocol::TProtocol* oprot)
   return xfer;
 }
 
-void swap(ServiceSentMessage &a, ServiceSentMessage &b) {
+void swap(ApplicationSentMessage &a, ApplicationSentMessage &b) {
   using ::std::swap;
   swap(a.message, b.message);
+  swap(a.application, b.application);
   swap(a.__isset, b.__isset);
 }
 
-ServiceSentMessage::ServiceSentMessage(const ServiceSentMessage& other8) {
+ApplicationSentMessage::ApplicationSentMessage(const ApplicationSentMessage& other8) {
   message = other8.message;
+  application = other8.application;
   __isset = other8.__isset;
 }
-ServiceSentMessage& ServiceSentMessage::operator=(const ServiceSentMessage& other9) {
+ApplicationSentMessage& ApplicationSentMessage::operator=(const ApplicationSentMessage& other9) {
   message = other9.message;
+  application = other9.application;
   __isset = other9.__isset;
   return *this;
 }
-void ServiceSentMessage::printTo(std::ostream& out) const {
+void ApplicationSentMessage::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ServiceSentMessage(";
-  out << "message=" << to_string(message);
+  out << "ApplicationSentMessage(";
+  out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
+  out << ", " << "application=" << to_string(application);
   out << ")";
 }
 
@@ -446,6 +624,22 @@ Event::~Event() throw() {
 
 void Event::__set_healthCheckFailed(const HealthCheckFailed& val) {
   this->healthCheckFailed = val;
+}
+
+void Event::__set_healthCheckBackToNormal(const HealthCheckBackToNormal& val) {
+  this->healthCheckBackToNormal = val;
+}
+
+void Event::__set_applicationTokenRenewed(const ApplicationTokenRenewed& val) {
+  this->applicationTokenRenewed = val;
+}
+
+void Event::__set_applicationTokenRegenerated(const ApplicationTokenRegenerated& val) {
+  this->applicationTokenRegenerated = val;
+}
+
+void Event::__set_applicationSentMessage(const ApplicationSentMessage& val) {
+  this->applicationSentMessage = val;
 }
 
 uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -477,6 +671,38 @@ uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->healthCheckBackToNormal.read(iprot);
+          this->__isset.healthCheckBackToNormal = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationTokenRenewed.read(iprot);
+          this->__isset.applicationTokenRenewed = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationTokenRegenerated.read(iprot);
+          this->__isset.applicationTokenRegenerated = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationSentMessage.read(iprot);
+          this->__isset.applicationSentMessage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -498,6 +724,22 @@ uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += this->healthCheckFailed.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("healthCheckBackToNormal", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->healthCheckBackToNormal.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationTokenRenewed", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->applicationTokenRenewed.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationTokenRegenerated", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += this->applicationTokenRegenerated.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationSentMessage", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += this->applicationSentMessage.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -506,15 +748,27 @@ uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(Event &a, Event &b) {
   using ::std::swap;
   swap(a.healthCheckFailed, b.healthCheckFailed);
+  swap(a.healthCheckBackToNormal, b.healthCheckBackToNormal);
+  swap(a.applicationTokenRenewed, b.applicationTokenRenewed);
+  swap(a.applicationTokenRegenerated, b.applicationTokenRegenerated);
+  swap(a.applicationSentMessage, b.applicationSentMessage);
   swap(a.__isset, b.__isset);
 }
 
 Event::Event(const Event& other10) {
   healthCheckFailed = other10.healthCheckFailed;
+  healthCheckBackToNormal = other10.healthCheckBackToNormal;
+  applicationTokenRenewed = other10.applicationTokenRenewed;
+  applicationTokenRegenerated = other10.applicationTokenRegenerated;
+  applicationSentMessage = other10.applicationSentMessage;
   __isset = other10.__isset;
 }
 Event& Event::operator=(const Event& other11) {
   healthCheckFailed = other11.healthCheckFailed;
+  healthCheckBackToNormal = other11.healthCheckBackToNormal;
+  applicationTokenRenewed = other11.applicationTokenRenewed;
+  applicationTokenRegenerated = other11.applicationTokenRegenerated;
+  applicationSentMessage = other11.applicationSentMessage;
   __isset = other11.__isset;
   return *this;
 }
@@ -522,6 +776,10 @@ void Event::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Event(";
   out << "healthCheckFailed=" << to_string(healthCheckFailed);
+  out << ", " << "healthCheckBackToNormal=" << to_string(healthCheckBackToNormal);
+  out << ", " << "applicationTokenRenewed=" << to_string(applicationTokenRenewed);
+  out << ", " << "applicationTokenRegenerated=" << to_string(applicationTokenRegenerated);
+  out << ", " << "applicationSentMessage=" << to_string(applicationSentMessage);
   out << ")";
 }
 

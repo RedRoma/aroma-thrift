@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "ServiceEndpoint.h"
+#include "ApplicationEndpoint.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 
-ServiceEndpoint_healthPoke_args::~ServiceEndpoint_healthPoke_args() throw() {
+ApplicationEndpoint_healthPoke_args::~ApplicationEndpoint_healthPoke_args() throw() {
 }
 
 
-uint32_t ServiceEndpoint_healthPoke_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationEndpoint_healthPoke_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -54,10 +54,10 @@ uint32_t ServiceEndpoint_healthPoke_args::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t ServiceEndpoint_healthPoke_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationEndpoint_healthPoke_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_args");
+  xfer += oprot->writeStructBegin("ApplicationEndpoint_healthPoke_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -69,14 +69,14 @@ uint32_t ServiceEndpoint_healthPoke_args::write(::apache::thrift::protocol::TPro
 }
 
 
-ServiceEndpoint_healthPoke_pargs::~ServiceEndpoint_healthPoke_pargs() throw() {
+ApplicationEndpoint_healthPoke_pargs::~ApplicationEndpoint_healthPoke_pargs() throw() {
 }
 
 
-uint32_t ServiceEndpoint_healthPoke_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationEndpoint_healthPoke_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_pargs");
+  xfer += oprot->writeStructBegin("ApplicationEndpoint_healthPoke_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -88,11 +88,11 @@ uint32_t ServiceEndpoint_healthPoke_pargs::write(::apache::thrift::protocol::TPr
 }
 
 
-ServiceEndpoint_healthPoke_result::~ServiceEndpoint_healthPoke_result() throw() {
+ApplicationEndpoint_healthPoke_result::~ApplicationEndpoint_healthPoke_result() throw() {
 }
 
 
-uint32_t ServiceEndpoint_healthPoke_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationEndpoint_healthPoke_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -141,11 +141,11 @@ uint32_t ServiceEndpoint_healthPoke_result::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t ServiceEndpoint_healthPoke_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t ApplicationEndpoint_healthPoke_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("ServiceEndpoint_healthPoke_result");
+  xfer += oprot->writeStructBegin("ApplicationEndpoint_healthPoke_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -162,11 +162,11 @@ uint32_t ServiceEndpoint_healthPoke_result::write(::apache::thrift::protocol::TP
 }
 
 
-ServiceEndpoint_healthPoke_presult::~ServiceEndpoint_healthPoke_presult() throw() {
+ApplicationEndpoint_healthPoke_presult::~ApplicationEndpoint_healthPoke_presult() throw() {
 }
 
 
-uint32_t ServiceEndpoint_healthPoke_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t ApplicationEndpoint_healthPoke_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -215,18 +215,18 @@ uint32_t ServiceEndpoint_healthPoke_presult::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-void ServiceEndpointClient::healthPoke(HealthPokeResponse& _return, const HealthPokeRequest& request)
+void ApplicationEndpointClient::healthPoke(HealthPokeResponse& _return, const HealthPokeRequest& request)
 {
   send_healthPoke(request);
   recv_healthPoke(_return);
 }
 
-void ServiceEndpointClient::send_healthPoke(const HealthPokeRequest& request)
+void ApplicationEndpointClient::send_healthPoke(const HealthPokeRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("healthPoke", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ServiceEndpoint_healthPoke_pargs args;
+  ApplicationEndpoint_healthPoke_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -235,7 +235,7 @@ void ServiceEndpointClient::send_healthPoke(const HealthPokeRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void ServiceEndpointClient::recv_healthPoke(HealthPokeResponse& _return)
+void ApplicationEndpointClient::recv_healthPoke(HealthPokeResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -260,7 +260,7 @@ void ServiceEndpointClient::recv_healthPoke(HealthPokeResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  ServiceEndpoint_healthPoke_presult result;
+  ApplicationEndpoint_healthPoke_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -276,7 +276,7 @@ void ServiceEndpointClient::recv_healthPoke(HealthPokeResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "healthPoke failed: unknown result");
 }
 
-bool ServiceEndpointProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool ApplicationEndpointProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -295,28 +295,28 @@ bool ServiceEndpointProcessor::dispatchCall(::apache::thrift::protocol::TProtoco
   return true;
 }
 
-void ServiceEndpointProcessor::process_healthPoke(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void ApplicationEndpointProcessor::process_healthPoke(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("ServiceEndpoint.healthPoke", callContext);
+    ctx = this->eventHandler_->getContext("ApplicationEndpoint.healthPoke", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ServiceEndpoint.healthPoke");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "ApplicationEndpoint.healthPoke");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "ServiceEndpoint.healthPoke");
+    this->eventHandler_->preRead(ctx, "ApplicationEndpoint.healthPoke");
   }
 
-  ServiceEndpoint_healthPoke_args args;
+  ApplicationEndpoint_healthPoke_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "ServiceEndpoint.healthPoke", bytes);
+    this->eventHandler_->postRead(ctx, "ApplicationEndpoint.healthPoke", bytes);
   }
 
-  ServiceEndpoint_healthPoke_result result;
+  ApplicationEndpoint_healthPoke_result result;
   try {
     iface_->healthPoke(result.success, args.request);
     result.__isset.success = true;
@@ -325,7 +325,7 @@ void ServiceEndpointProcessor::process_healthPoke(int32_t seqid, ::apache::thrif
     result.__isset.ex1 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "ServiceEndpoint.healthPoke");
+      this->eventHandler_->handlerError(ctx, "ApplicationEndpoint.healthPoke");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -338,7 +338,7 @@ void ServiceEndpointProcessor::process_healthPoke(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "ServiceEndpoint.healthPoke");
+    this->eventHandler_->preWrite(ctx, "ApplicationEndpoint.healthPoke");
   }
 
   oprot->writeMessageBegin("healthPoke", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -348,30 +348,30 @@ void ServiceEndpointProcessor::process_healthPoke(int32_t seqid, ::apache::thrif
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "ServiceEndpoint.healthPoke", bytes);
+    this->eventHandler_->postWrite(ctx, "ApplicationEndpoint.healthPoke", bytes);
   }
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > ServiceEndpointProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< ServiceEndpointIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< ServiceEndpointIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new ServiceEndpointProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > ApplicationEndpointProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< ApplicationEndpointIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< ApplicationEndpointIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new ApplicationEndpointProcessor(handler));
   return processor;
 }
 
-void ServiceEndpointConcurrentClient::healthPoke(HealthPokeResponse& _return, const HealthPokeRequest& request)
+void ApplicationEndpointConcurrentClient::healthPoke(HealthPokeResponse& _return, const HealthPokeRequest& request)
 {
   int32_t seqid = send_healthPoke(request);
   recv_healthPoke(_return, seqid);
 }
 
-int32_t ServiceEndpointConcurrentClient::send_healthPoke(const HealthPokeRequest& request)
+int32_t ApplicationEndpointConcurrentClient::send_healthPoke(const HealthPokeRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("healthPoke", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  ServiceEndpoint_healthPoke_pargs args;
+  ApplicationEndpoint_healthPoke_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -383,7 +383,7 @@ int32_t ServiceEndpointConcurrentClient::send_healthPoke(const HealthPokeRequest
   return cseqid;
 }
 
-void ServiceEndpointConcurrentClient::recv_healthPoke(HealthPokeResponse& _return, const int32_t seqid)
+void ApplicationEndpointConcurrentClient::recv_healthPoke(HealthPokeResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -421,7 +421,7 @@ void ServiceEndpointConcurrentClient::recv_healthPoke(HealthPokeResponse& _retur
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      ServiceEndpoint_healthPoke_presult result;
+      ApplicationEndpoint_healthPoke_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();

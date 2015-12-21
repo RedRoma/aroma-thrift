@@ -7,6 +7,87 @@
 
 //HELPER FUNCTIONS AND STRUCTURES
 
+BananaService_getApiVersion_args = function(args) {
+};
+BananaService_getApiVersion_args.prototype = {};
+BananaService_getApiVersion_args.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          input.skip(ftype);
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_getApiVersion_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApiVersion_args');
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
+BananaService_getApiVersion_result = function(args) {
+        this.success = null;
+        if (args) {
+                if (args.success !== undefined && args.success !== null) {
+                        this.success = args.success;
+                }
+        }
+};
+BananaService_getApiVersion_result.prototype = {};
+BananaService_getApiVersion_result.prototype.read = function(input) {
+        input.readStructBegin();
+        while (true)
+        {
+          var ret = input.readFieldBegin();
+          var fname = ret.fname;
+          var ftype = ret.ftype;
+          var fid = ret.fid;
+          if (ftype == Thrift.Type.STOP) {
+            break;
+          }
+          switch (fid)
+          {
+            case 0:
+            if (ftype == Thrift.Type.DOUBLE) {
+              this.success = input.readDouble().value;
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 0:
+              input.skip(ftype);
+              break;
+            default:
+              input.skip(ftype);
+          }
+          input.readFieldEnd();
+        }
+        input.readStructEnd();
+        return;
+      };
+
+BananaService_getApiVersion_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApiVersion_result');
+        if (this.success !== null && this.success !== undefined) {
+          output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
+          output.writeDouble(this.success);
+          output.writeFieldEnd();
+        }
+        output.writeFieldStop();
+        output.writeStructEnd();
+        return;
+      };
+
 BananaService_sendMessage_args = function(args) {
         this.request = null;
         if (args) {
@@ -614,16 +695,16 @@ BananaService_signUp_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_provisionService_args = function(args) {
+BananaService_provisionApplication_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new ProvisionServiceRequest(args.request);
+                        this.request = new ProvisionApplicationRequest(args.request);
                 }
         }
 };
-BananaService_provisionService_args.prototype = {};
-BananaService_provisionService_args.prototype.read = function(input) {
+BananaService_provisionApplication_args.prototype = {};
+BananaService_provisionApplication_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -638,7 +719,7 @@ BananaService_provisionService_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new ProvisionServiceRequest();
+              this.request = new ProvisionApplicationRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -656,8 +737,8 @@ BananaService_provisionService_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_provisionService_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_provisionService_args');
+BananaService_provisionApplication_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_provisionApplication_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -668,7 +749,7 @@ BananaService_provisionService_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_provisionService_result = function(args) {
+BananaService_provisionApplication_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -686,13 +767,13 @@ BananaService_provisionService_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new ProvisionServiceResponse(args.success);
+                        this.success = new ProvisionApplicationResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -708,8 +789,8 @@ BananaService_provisionService_result = function(args) {
                 }
         }
 };
-BananaService_provisionService_result.prototype = {};
-BananaService_provisionService_result.prototype.read = function(input) {
+BananaService_provisionApplication_result.prototype = {};
+BananaService_provisionApplication_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -724,7 +805,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new ProvisionServiceResponse();
+              this.success = new ProvisionApplicationResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -756,7 +837,7 @@ BananaService_provisionService_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -771,8 +852,8 @@ BananaService_provisionService_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_provisionService_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_provisionService_result');
+BananaService_provisionApplication_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_provisionApplication_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -803,16 +884,16 @@ BananaService_provisionService_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_subscribeToService_args = function(args) {
+BananaService_subscribeToApplication_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new SubscribeToServiceRequest(args.request);
+                        this.request = new SubscribeToApplicationRequest(args.request);
                 }
         }
 };
-BananaService_subscribeToService_args.prototype = {};
-BananaService_subscribeToService_args.prototype.read = function(input) {
+BananaService_subscribeToApplication_args.prototype = {};
+BananaService_subscribeToApplication_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -827,7 +908,7 @@ BananaService_subscribeToService_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new SubscribeToServiceRequest();
+              this.request = new SubscribeToApplicationRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -845,8 +926,8 @@ BananaService_subscribeToService_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_subscribeToService_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_subscribeToService_args');
+BananaService_subscribeToApplication_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_subscribeToApplication_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -857,7 +938,7 @@ BananaService_subscribeToService_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_subscribeToService_result = function(args) {
+BananaService_subscribeToApplication_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -877,11 +958,11 @@ BananaService_subscribeToService_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
-        if (args instanceof ServiceAlreadyRegisteredException) {
+        if (args instanceof ApplicationAlreadyRegisteredException) {
                 this.ex5 = args;
                 return;
         }
@@ -891,7 +972,7 @@ BananaService_subscribeToService_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new SubscribeToServiceResponse(args.success);
+                        this.success = new SubscribeToApplicationResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -913,8 +994,8 @@ BananaService_subscribeToService_result = function(args) {
                 }
         }
 };
-BananaService_subscribeToService_result.prototype = {};
-BananaService_subscribeToService_result.prototype.read = function(input) {
+BananaService_subscribeToApplication_result.prototype = {};
+BananaService_subscribeToApplication_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -929,7 +1010,7 @@ BananaService_subscribeToService_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new SubscribeToServiceResponse();
+              this.success = new SubscribeToApplicationResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -961,7 +1042,7 @@ BananaService_subscribeToService_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -969,7 +1050,7 @@ BananaService_subscribeToService_result.prototype.read = function(input) {
             break;
             case 5:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex5 = new ServiceAlreadyRegisteredException();
+              this.ex5 = new ApplicationAlreadyRegisteredException();
               this.ex5.read(input);
             } else {
               input.skip(ftype);
@@ -992,8 +1073,8 @@ BananaService_subscribeToService_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_subscribeToService_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_subscribeToService_result');
+BananaService_subscribeToApplication_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_subscribeToApplication_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -1107,7 +1188,7 @@ BananaService_registerHealthCheck_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
@@ -1184,7 +1265,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -1244,16 +1325,16 @@ BananaService_registerHealthCheck_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_renewServiceToken_args = function(args) {
+BananaService_renewApplicationToken_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new RenewServiceTokenRequest(args.request);
+                        this.request = new RenewApplicationTokenRequest(args.request);
                 }
         }
 };
-BananaService_renewServiceToken_args.prototype = {};
-BananaService_renewServiceToken_args.prototype.read = function(input) {
+BananaService_renewApplicationToken_args.prototype = {};
+BananaService_renewApplicationToken_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -1268,7 +1349,7 @@ BananaService_renewServiceToken_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new RenewServiceTokenRequest();
+              this.request = new RenewApplicationTokenRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -1286,8 +1367,8 @@ BananaService_renewServiceToken_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_renewServiceToken_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_renewServiceToken_args');
+BananaService_renewApplicationToken_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_renewApplicationToken_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -1298,7 +1379,7 @@ BananaService_renewServiceToken_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_renewServiceToken_result = function(args) {
+BananaService_renewApplicationToken_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -1317,7 +1398,7 @@ BananaService_renewServiceToken_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
@@ -1327,7 +1408,7 @@ BananaService_renewServiceToken_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new RenewServiceTokenResponse(args.success);
+                        this.success = new RenewApplicationTokenResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -1346,8 +1427,8 @@ BananaService_renewServiceToken_result = function(args) {
                 }
         }
 };
-BananaService_renewServiceToken_result.prototype = {};
-BananaService_renewServiceToken_result.prototype.read = function(input) {
+BananaService_renewApplicationToken_result.prototype = {};
+BananaService_renewApplicationToken_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -1362,7 +1443,7 @@ BananaService_renewServiceToken_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new RenewServiceTokenResponse();
+              this.success = new RenewApplicationTokenResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -1394,7 +1475,7 @@ BananaService_renewServiceToken_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -1417,8 +1498,8 @@ BananaService_renewServiceToken_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_renewServiceToken_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_renewServiceToken_result');
+BananaService_renewApplicationToken_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_renewApplicationToken_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -1458,7 +1539,7 @@ BananaService_regenerateToken_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new RegenerateTokenRequest(args.request);
+                        this.request = new RegenerateApplicationTokenRequest(args.request);
                 }
         }
 };
@@ -1478,7 +1559,7 @@ BananaService_regenerateToken_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new RegenerateTokenRequest();
+              this.request = new RegenerateApplicationTokenRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -1527,7 +1608,7 @@ BananaService_regenerateToken_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
@@ -1537,7 +1618,7 @@ BananaService_regenerateToken_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new RegenerateTokenResponse(args.success);
+                        this.success = new RegenerateApplicationTokenResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -1572,7 +1653,7 @@ BananaService_regenerateToken_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new RegenerateTokenResponse();
+              this.success = new RegenerateApplicationTokenResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -1604,7 +1685,7 @@ BananaService_regenerateToken_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -1664,16 +1745,16 @@ BananaService_regenerateToken_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_searchForServices_args = function(args) {
+BananaService_searchForApplications_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new SearchForServicesRequest(args.request);
+                        this.request = new SearchForApplicationsRequest(args.request);
                 }
         }
 };
-BananaService_searchForServices_args.prototype = {};
-BananaService_searchForServices_args.prototype.read = function(input) {
+BananaService_searchForApplications_args.prototype = {};
+BananaService_searchForApplications_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -1688,7 +1769,7 @@ BananaService_searchForServices_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new SearchForServicesRequest();
+              this.request = new SearchForApplicationsRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -1706,8 +1787,8 @@ BananaService_searchForServices_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_searchForServices_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_searchForServices_args');
+BananaService_searchForApplications_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_searchForApplications_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -1718,7 +1799,7 @@ BananaService_searchForServices_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_searchForServices_result = function(args) {
+BananaService_searchForApplications_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -1742,7 +1823,7 @@ BananaService_searchForServices_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new SearchForServicesResponse(args.success);
+                        this.success = new SearchForApplicationsResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -1758,8 +1839,8 @@ BananaService_searchForServices_result = function(args) {
                 }
         }
 };
-BananaService_searchForServices_result.prototype = {};
-BananaService_searchForServices_result.prototype.read = function(input) {
+BananaService_searchForApplications_result.prototype = {};
+BananaService_searchForApplications_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -1774,7 +1855,7 @@ BananaService_searchForServices_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new SearchForServicesResponse();
+              this.success = new SearchForApplicationsResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -1821,8 +1902,8 @@ BananaService_searchForServices_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_searchForServices_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_searchForServices_result');
+BananaService_searchForApplications_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_searchForApplications_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -2462,16 +2543,16 @@ BananaService_snoozeChannel_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_getServiceSubscribers_args = function(args) {
+BananaService_getApplicationSubscribers_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new GetServiceSubscribersRequest(args.request);
+                        this.request = new GetApplicationSubscribersRequest(args.request);
                 }
         }
 };
-BananaService_getServiceSubscribers_args.prototype = {};
-BananaService_getServiceSubscribers_args.prototype.read = function(input) {
+BananaService_getApplicationSubscribers_args.prototype = {};
+BananaService_getApplicationSubscribers_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -2486,7 +2567,7 @@ BananaService_getServiceSubscribers_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new GetServiceSubscribersRequest();
+              this.request = new GetApplicationSubscribersRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -2504,8 +2585,8 @@ BananaService_getServiceSubscribers_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_getServiceSubscribers_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getServiceSubscribers_args');
+BananaService_getApplicationSubscribers_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApplicationSubscribers_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -2516,7 +2597,7 @@ BananaService_getServiceSubscribers_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_getServiceSubscribers_result = function(args) {
+BananaService_getApplicationSubscribers_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -2540,7 +2621,7 @@ BananaService_getServiceSubscribers_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new GetServiceSubscribersResponse(args.success);
+                        this.success = new GetApplicationSubscribersResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -2556,8 +2637,8 @@ BananaService_getServiceSubscribers_result = function(args) {
                 }
         }
 };
-BananaService_getServiceSubscribers_result.prototype = {};
-BananaService_getServiceSubscribers_result.prototype.read = function(input) {
+BananaService_getApplicationSubscribers_result.prototype = {};
+BananaService_getApplicationSubscribers_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -2572,7 +2653,7 @@ BananaService_getServiceSubscribers_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new GetServiceSubscribersResponse();
+              this.success = new GetApplicationSubscribersResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -2619,8 +2700,8 @@ BananaService_getServiceSubscribers_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_getServiceSubscribers_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getServiceSubscribers_result');
+BananaService_getApplicationSubscribers_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApplicationSubscribers_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -2819,16 +2900,16 @@ BananaService_getMySavedChannels_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_getMyServices_args = function(args) {
+BananaService_getMyApplications_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new GetMyServicesRequest(args.request);
+                        this.request = new GetMyApplicationsRequest(args.request);
                 }
         }
 };
-BananaService_getMyServices_args.prototype = {};
-BananaService_getMyServices_args.prototype.read = function(input) {
+BananaService_getMyApplications_args.prototype = {};
+BananaService_getMyApplications_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -2843,7 +2924,7 @@ BananaService_getMyServices_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new GetMyServicesRequest();
+              this.request = new GetMyApplicationsRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -2861,8 +2942,8 @@ BananaService_getMyServices_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_getMyServices_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getMyServices_args');
+BananaService_getMyApplications_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getMyApplications_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -2873,7 +2954,7 @@ BananaService_getMyServices_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_getMyServices_result = function(args) {
+BananaService_getMyApplications_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -2892,7 +2973,7 @@ BananaService_getMyServices_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new GetMyServicesResponse(args.success);
+                        this.success = new GetMyApplicationsResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -2905,8 +2986,8 @@ BananaService_getMyServices_result = function(args) {
                 }
         }
 };
-BananaService_getMyServices_result.prototype = {};
-BananaService_getMyServices_result.prototype.read = function(input) {
+BananaService_getMyApplications_result.prototype = {};
+BananaService_getMyApplications_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -2921,7 +3002,7 @@ BananaService_getMyServices_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new GetMyServicesResponse();
+              this.success = new GetMyApplicationsResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -2960,8 +3041,8 @@ BananaService_getMyServices_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_getMyServices_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getMyServices_result');
+BananaService_getMyApplications_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getMyApplications_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -2987,16 +3068,16 @@ BananaService_getMyServices_result.prototype.write = function(output) {
         return;
       };
 
-BananaService_getServiceInfo_args = function(args) {
+BananaService_getApplicationInfo_args = function(args) {
         this.request = null;
         if (args) {
                 if (args.request !== undefined && args.request !== null) {
-                        this.request = new GetServiceInfoRequest(args.request);
+                        this.request = new GetApplicationInfoRequest(args.request);
                 }
         }
 };
-BananaService_getServiceInfo_args.prototype = {};
-BananaService_getServiceInfo_args.prototype.read = function(input) {
+BananaService_getApplicationInfo_args.prototype = {};
+BananaService_getApplicationInfo_args.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -3011,7 +3092,7 @@ BananaService_getServiceInfo_args.prototype.read = function(input) {
           {
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.request = new GetServiceInfoRequest();
+              this.request = new GetApplicationInfoRequest();
               this.request.read(input);
             } else {
               input.skip(ftype);
@@ -3029,8 +3110,8 @@ BananaService_getServiceInfo_args.prototype.read = function(input) {
         return;
       };
 
-BananaService_getServiceInfo_args.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getServiceInfo_args');
+BananaService_getApplicationInfo_args.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApplicationInfo_args');
         if (this.request !== null && this.request !== undefined) {
           output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
           this.request.write(output);
@@ -3041,7 +3122,7 @@ BananaService_getServiceInfo_args.prototype.write = function(output) {
         return;
       };
 
-BananaService_getServiceInfo_result = function(args) {
+BananaService_getApplicationInfo_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
@@ -3060,7 +3141,7 @@ BananaService_getServiceInfo_result = function(args) {
                 this.ex3 = args;
                 return;
         }
-        if (args instanceof ServiceDoesNotExistException) {
+        if (args instanceof ApplicationDoesNotExistException) {
                 this.ex4 = args;
                 return;
         }
@@ -3070,7 +3151,7 @@ BananaService_getServiceInfo_result = function(args) {
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
-                        this.success = new GetServiceInfoResponse(args.success);
+                        this.success = new GetApplicationInfoResponse(args.success);
                 }
                 if (args.ex1 !== undefined && args.ex1 !== null) {
                         this.ex1 = args.ex1;
@@ -3089,8 +3170,8 @@ BananaService_getServiceInfo_result = function(args) {
                 }
         }
 };
-BananaService_getServiceInfo_result.prototype = {};
-BananaService_getServiceInfo_result.prototype.read = function(input) {
+BananaService_getApplicationInfo_result.prototype = {};
+BananaService_getApplicationInfo_result.prototype.read = function(input) {
         input.readStructBegin();
         while (true)
         {
@@ -3105,7 +3186,7 @@ BananaService_getServiceInfo_result.prototype.read = function(input) {
           {
             case 0:
             if (ftype == Thrift.Type.STRUCT) {
-              this.success = new GetServiceInfoResponse();
+              this.success = new GetApplicationInfoResponse();
               this.success.read(input);
             } else {
               input.skip(ftype);
@@ -3137,7 +3218,7 @@ BananaService_getServiceInfo_result.prototype.read = function(input) {
             break;
             case 4:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex4 = new ServiceDoesNotExistException();
+              this.ex4 = new ApplicationDoesNotExistException();
               this.ex4.read(input);
             } else {
               input.skip(ftype);
@@ -3160,8 +3241,8 @@ BananaService_getServiceInfo_result.prototype.read = function(input) {
         return;
       };
 
-BananaService_getServiceInfo_result.prototype.write = function(output) {
-        output.writeStructBegin('BananaService_getServiceInfo_result');
+BananaService_getApplicationInfo_result.prototype.write = function(output) {
+        output.writeStructBegin('BananaService_getApplicationInfo_result');
         if (this.success !== null && this.success !== undefined) {
           output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
           this.success.write(output);
@@ -3371,6 +3452,54 @@ BananaServiceClient = function(input, output) {
           this.seqid = 0;
       };
       BananaServiceClient.prototype = {};
+BananaServiceClient.prototype.getApiVersion = function(callback) {
+        this.send_getApiVersion(callback); 
+        if (!callback) {
+          return this.recv_getApiVersion();
+        }
+};
+
+BananaServiceClient.prototype.send_getApiVersion = function(callback) {
+        this.output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_getApiVersion_args();
+        args.write(this.output);
+        this.output.writeMessageEnd();
+        if (callback) {
+          var self = this;
+          this.output.getTransport().flush(true, function() {
+            var result = null;
+            try {
+              result = self.recv_getApiVersion();
+            } catch (e) {
+              result = e;
+            }
+            callback(result);
+          });
+        } else {
+          return this.output.getTransport().flush();
+        }
+};
+
+BananaServiceClient.prototype.recv_getApiVersion = function() {
+        var ret = this.input.readMessageBegin();
+        var fname = ret.fname;
+        var mtype = ret.mtype;
+        var rseqid = ret.rseqid;
+        if (mtype == Thrift.MessageType.EXCEPTION) {
+          var x = new Thrift.TApplicationException();
+          x.read(this.input);
+          this.input.readMessageEnd();
+          throw x;
+        }
+        var result = new BananaService_getApiVersion_result();
+        result.read(this.input);
+        this.input.readMessageEnd();
+
+        if (null !== result.success) {
+          return result.success;
+        }
+        throw 'getApiVersion failed: unknown result';
+};
 BananaServiceClient.prototype.sendMessage = function(request, callback) {
         this.send_sendMessage(request, callback); 
         if (!callback) {
@@ -3573,16 +3702,16 @@ BananaServiceClient.prototype.recv_signUp = function() {
         }
         throw 'signUp failed: unknown result';
 };
-BananaServiceClient.prototype.provisionService = function(request, callback) {
-        this.send_provisionService(request, callback); 
+BananaServiceClient.prototype.provisionApplication = function(request, callback) {
+        this.send_provisionApplication(request, callback); 
         if (!callback) {
-          return this.recv_provisionService();
+          return this.recv_provisionApplication();
         }
 };
 
-BananaServiceClient.prototype.send_provisionService = function(request, callback) {
-        this.output.writeMessageBegin('provisionService', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_provisionService_args();
+BananaServiceClient.prototype.send_provisionApplication = function(request, callback) {
+        this.output.writeMessageBegin('provisionApplication', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_provisionApplication_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -3591,7 +3720,7 @@ BananaServiceClient.prototype.send_provisionService = function(request, callback
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_provisionService();
+              result = self.recv_provisionApplication();
             } catch (e) {
               result = e;
             }
@@ -3602,7 +3731,7 @@ BananaServiceClient.prototype.send_provisionService = function(request, callback
         }
 };
 
-BananaServiceClient.prototype.recv_provisionService = function() {
+BananaServiceClient.prototype.recv_provisionApplication = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -3613,7 +3742,7 @@ BananaServiceClient.prototype.recv_provisionService = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_provisionService_result();
+        var result = new BananaService_provisionApplication_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -3632,18 +3761,18 @@ BananaServiceClient.prototype.recv_provisionService = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'provisionService failed: unknown result';
+        throw 'provisionApplication failed: unknown result';
 };
-BananaServiceClient.prototype.subscribeToService = function(request, callback) {
-        this.send_subscribeToService(request, callback); 
+BananaServiceClient.prototype.subscribeToApplication = function(request, callback) {
+        this.send_subscribeToApplication(request, callback); 
         if (!callback) {
-          return this.recv_subscribeToService();
+          return this.recv_subscribeToApplication();
         }
 };
 
-BananaServiceClient.prototype.send_subscribeToService = function(request, callback) {
-        this.output.writeMessageBegin('subscribeToService', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_subscribeToService_args();
+BananaServiceClient.prototype.send_subscribeToApplication = function(request, callback) {
+        this.output.writeMessageBegin('subscribeToApplication', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_subscribeToApplication_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -3652,7 +3781,7 @@ BananaServiceClient.prototype.send_subscribeToService = function(request, callba
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_subscribeToService();
+              result = self.recv_subscribeToApplication();
             } catch (e) {
               result = e;
             }
@@ -3663,7 +3792,7 @@ BananaServiceClient.prototype.send_subscribeToService = function(request, callba
         }
 };
 
-BananaServiceClient.prototype.recv_subscribeToService = function() {
+BananaServiceClient.prototype.recv_subscribeToApplication = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -3674,7 +3803,7 @@ BananaServiceClient.prototype.recv_subscribeToService = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_subscribeToService_result();
+        var result = new BananaService_subscribeToApplication_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -3699,7 +3828,7 @@ BananaServiceClient.prototype.recv_subscribeToService = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'subscribeToService failed: unknown result';
+        throw 'subscribeToApplication failed: unknown result';
 };
 BananaServiceClient.prototype.registerHealthCheck = function(request, callback) {
         this.send_registerHealthCheck(request, callback); 
@@ -3765,16 +3894,16 @@ BananaServiceClient.prototype.recv_registerHealthCheck = function() {
         }
         throw 'registerHealthCheck failed: unknown result';
 };
-BananaServiceClient.prototype.renewServiceToken = function(request, callback) {
-        this.send_renewServiceToken(request, callback); 
+BananaServiceClient.prototype.renewApplicationToken = function(request, callback) {
+        this.send_renewApplicationToken(request, callback); 
         if (!callback) {
-          return this.recv_renewServiceToken();
+          return this.recv_renewApplicationToken();
         }
 };
 
-BananaServiceClient.prototype.send_renewServiceToken = function(request, callback) {
-        this.output.writeMessageBegin('renewServiceToken', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_renewServiceToken_args();
+BananaServiceClient.prototype.send_renewApplicationToken = function(request, callback) {
+        this.output.writeMessageBegin('renewApplicationToken', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_renewApplicationToken_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -3783,7 +3912,7 @@ BananaServiceClient.prototype.send_renewServiceToken = function(request, callbac
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_renewServiceToken();
+              result = self.recv_renewApplicationToken();
             } catch (e) {
               result = e;
             }
@@ -3794,7 +3923,7 @@ BananaServiceClient.prototype.send_renewServiceToken = function(request, callbac
         }
 };
 
-BananaServiceClient.prototype.recv_renewServiceToken = function() {
+BananaServiceClient.prototype.recv_renewApplicationToken = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -3805,7 +3934,7 @@ BananaServiceClient.prototype.recv_renewServiceToken = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_renewServiceToken_result();
+        var result = new BananaService_renewApplicationToken_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -3827,7 +3956,7 @@ BananaServiceClient.prototype.recv_renewServiceToken = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'renewServiceToken failed: unknown result';
+        throw 'renewApplicationToken failed: unknown result';
 };
 BananaServiceClient.prototype.regenerateToken = function(request, callback) {
         this.send_regenerateToken(request, callback); 
@@ -3893,16 +4022,16 @@ BananaServiceClient.prototype.recv_regenerateToken = function() {
         }
         throw 'regenerateToken failed: unknown result';
 };
-BananaServiceClient.prototype.searchForServices = function(request, callback) {
-        this.send_searchForServices(request, callback); 
+BananaServiceClient.prototype.searchForApplications = function(request, callback) {
+        this.send_searchForApplications(request, callback); 
         if (!callback) {
-          return this.recv_searchForServices();
+          return this.recv_searchForApplications();
         }
 };
 
-BananaServiceClient.prototype.send_searchForServices = function(request, callback) {
-        this.output.writeMessageBegin('searchForServices', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_searchForServices_args();
+BananaServiceClient.prototype.send_searchForApplications = function(request, callback) {
+        this.output.writeMessageBegin('searchForApplications', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_searchForApplications_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -3911,7 +4040,7 @@ BananaServiceClient.prototype.send_searchForServices = function(request, callbac
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_searchForServices();
+              result = self.recv_searchForApplications();
             } catch (e) {
               result = e;
             }
@@ -3922,7 +4051,7 @@ BananaServiceClient.prototype.send_searchForServices = function(request, callbac
         }
 };
 
-BananaServiceClient.prototype.recv_searchForServices = function() {
+BananaServiceClient.prototype.recv_searchForApplications = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -3933,7 +4062,7 @@ BananaServiceClient.prototype.recv_searchForServices = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_searchForServices_result();
+        var result = new BananaService_searchForApplications_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -3952,7 +4081,7 @@ BananaServiceClient.prototype.recv_searchForServices = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'searchForServices failed: unknown result';
+        throw 'searchForApplications failed: unknown result';
 };
 BananaServiceClient.prototype.saveChannel = function(request, callback) {
         this.send_saveChannel(request, callback); 
@@ -4143,16 +4272,16 @@ BananaServiceClient.prototype.recv_snoozeChannel = function() {
         }
         throw 'snoozeChannel failed: unknown result';
 };
-BananaServiceClient.prototype.getServiceSubscribers = function(request, callback) {
-        this.send_getServiceSubscribers(request, callback); 
+BananaServiceClient.prototype.getApplicationSubscribers = function(request, callback) {
+        this.send_getApplicationSubscribers(request, callback); 
         if (!callback) {
-          return this.recv_getServiceSubscribers();
+          return this.recv_getApplicationSubscribers();
         }
 };
 
-BananaServiceClient.prototype.send_getServiceSubscribers = function(request, callback) {
-        this.output.writeMessageBegin('getServiceSubscribers', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_getServiceSubscribers_args();
+BananaServiceClient.prototype.send_getApplicationSubscribers = function(request, callback) {
+        this.output.writeMessageBegin('getApplicationSubscribers', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_getApplicationSubscribers_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -4161,7 +4290,7 @@ BananaServiceClient.prototype.send_getServiceSubscribers = function(request, cal
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_getServiceSubscribers();
+              result = self.recv_getApplicationSubscribers();
             } catch (e) {
               result = e;
             }
@@ -4172,7 +4301,7 @@ BananaServiceClient.prototype.send_getServiceSubscribers = function(request, cal
         }
 };
 
-BananaServiceClient.prototype.recv_getServiceSubscribers = function() {
+BananaServiceClient.prototype.recv_getApplicationSubscribers = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -4183,7 +4312,7 @@ BananaServiceClient.prototype.recv_getServiceSubscribers = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_getServiceSubscribers_result();
+        var result = new BananaService_getApplicationSubscribers_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -4202,7 +4331,7 @@ BananaServiceClient.prototype.recv_getServiceSubscribers = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'getServiceSubscribers failed: unknown result';
+        throw 'getApplicationSubscribers failed: unknown result';
 };
 BananaServiceClient.prototype.getMySavedChannels = function(request, callback) {
         this.send_getMySavedChannels(request, callback); 
@@ -4262,16 +4391,16 @@ BananaServiceClient.prototype.recv_getMySavedChannels = function() {
         }
         throw 'getMySavedChannels failed: unknown result';
 };
-BananaServiceClient.prototype.getMyServices = function(request, callback) {
-        this.send_getMyServices(request, callback); 
+BananaServiceClient.prototype.getMyApplications = function(request, callback) {
+        this.send_getMyApplications(request, callback); 
         if (!callback) {
-          return this.recv_getMyServices();
+          return this.recv_getMyApplications();
         }
 };
 
-BananaServiceClient.prototype.send_getMyServices = function(request, callback) {
-        this.output.writeMessageBegin('getMyServices', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_getMyServices_args();
+BananaServiceClient.prototype.send_getMyApplications = function(request, callback) {
+        this.output.writeMessageBegin('getMyApplications', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_getMyApplications_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -4280,7 +4409,7 @@ BananaServiceClient.prototype.send_getMyServices = function(request, callback) {
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_getMyServices();
+              result = self.recv_getMyApplications();
             } catch (e) {
               result = e;
             }
@@ -4291,7 +4420,7 @@ BananaServiceClient.prototype.send_getMyServices = function(request, callback) {
         }
 };
 
-BananaServiceClient.prototype.recv_getMyServices = function() {
+BananaServiceClient.prototype.recv_getMyApplications = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -4302,7 +4431,7 @@ BananaServiceClient.prototype.recv_getMyServices = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_getMyServices_result();
+        var result = new BananaService_getMyApplications_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -4318,18 +4447,18 @@ BananaServiceClient.prototype.recv_getMyServices = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'getMyServices failed: unknown result';
+        throw 'getMyApplications failed: unknown result';
 };
-BananaServiceClient.prototype.getServiceInfo = function(request, callback) {
-        this.send_getServiceInfo(request, callback); 
+BananaServiceClient.prototype.getApplicationInfo = function(request, callback) {
+        this.send_getApplicationInfo(request, callback); 
         if (!callback) {
-          return this.recv_getServiceInfo();
+          return this.recv_getApplicationInfo();
         }
 };
 
-BananaServiceClient.prototype.send_getServiceInfo = function(request, callback) {
-        this.output.writeMessageBegin('getServiceInfo', Thrift.MessageType.CALL, this.seqid);
-        var args = new BananaService_getServiceInfo_args();
+BananaServiceClient.prototype.send_getApplicationInfo = function(request, callback) {
+        this.output.writeMessageBegin('getApplicationInfo', Thrift.MessageType.CALL, this.seqid);
+        var args = new BananaService_getApplicationInfo_args();
         args.request = request;
         args.write(this.output);
         this.output.writeMessageEnd();
@@ -4338,7 +4467,7 @@ BananaServiceClient.prototype.send_getServiceInfo = function(request, callback) 
           this.output.getTransport().flush(true, function() {
             var result = null;
             try {
-              result = self.recv_getServiceInfo();
+              result = self.recv_getApplicationInfo();
             } catch (e) {
               result = e;
             }
@@ -4349,7 +4478,7 @@ BananaServiceClient.prototype.send_getServiceInfo = function(request, callback) 
         }
 };
 
-BananaServiceClient.prototype.recv_getServiceInfo = function() {
+BananaServiceClient.prototype.recv_getApplicationInfo = function() {
         var ret = this.input.readMessageBegin();
         var fname = ret.fname;
         var mtype = ret.mtype;
@@ -4360,7 +4489,7 @@ BananaServiceClient.prototype.recv_getServiceInfo = function() {
           this.input.readMessageEnd();
           throw x;
         }
-        var result = new BananaService_getServiceInfo_result();
+        var result = new BananaService_getApplicationInfo_result();
         result.read(this.input);
         this.input.readMessageEnd();
 
@@ -4382,7 +4511,7 @@ BananaServiceClient.prototype.recv_getServiceInfo = function() {
         if (null !== result.success) {
           return result.success;
         }
-        throw 'getServiceInfo failed: unknown result';
+        throw 'getApplicationInfo failed: unknown result';
 };
 BananaServiceClient.prototype.getDashboard = function(request, callback) {
         this.send_getDashboard(request, callback); 

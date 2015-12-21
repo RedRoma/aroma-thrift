@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef ServiceEndpoint_H
-#define ServiceEndpoint_H
+#ifndef ApplicationEndpoint_H
+#define ApplicationEndpoint_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
@@ -18,75 +18,75 @@ namespace aroma { namespace banana { namespace thrift { namespace endpoint {
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class ServiceEndpointIf {
+class ApplicationEndpointIf {
  public:
-  virtual ~ServiceEndpointIf() {}
+  virtual ~ApplicationEndpointIf() {}
   virtual void healthPoke(HealthPokeResponse& _return, const HealthPokeRequest& request) = 0;
 };
 
-class ServiceEndpointIfFactory {
+class ApplicationEndpointIfFactory {
  public:
-  typedef ServiceEndpointIf Handler;
+  typedef ApplicationEndpointIf Handler;
 
-  virtual ~ServiceEndpointIfFactory() {}
+  virtual ~ApplicationEndpointIfFactory() {}
 
-  virtual ServiceEndpointIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(ServiceEndpointIf* /* handler */) = 0;
+  virtual ApplicationEndpointIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(ApplicationEndpointIf* /* handler */) = 0;
 };
 
-class ServiceEndpointIfSingletonFactory : virtual public ServiceEndpointIfFactory {
+class ApplicationEndpointIfSingletonFactory : virtual public ApplicationEndpointIfFactory {
  public:
-  ServiceEndpointIfSingletonFactory(const boost::shared_ptr<ServiceEndpointIf>& iface) : iface_(iface) {}
-  virtual ~ServiceEndpointIfSingletonFactory() {}
+  ApplicationEndpointIfSingletonFactory(const boost::shared_ptr<ApplicationEndpointIf>& iface) : iface_(iface) {}
+  virtual ~ApplicationEndpointIfSingletonFactory() {}
 
-  virtual ServiceEndpointIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
+  virtual ApplicationEndpointIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
     return iface_.get();
   }
-  virtual void releaseHandler(ServiceEndpointIf* /* handler */) {}
+  virtual void releaseHandler(ApplicationEndpointIf* /* handler */) {}
 
  protected:
-  boost::shared_ptr<ServiceEndpointIf> iface_;
+  boost::shared_ptr<ApplicationEndpointIf> iface_;
 };
 
-class ServiceEndpointNull : virtual public ServiceEndpointIf {
+class ApplicationEndpointNull : virtual public ApplicationEndpointIf {
  public:
-  virtual ~ServiceEndpointNull() {}
+  virtual ~ApplicationEndpointNull() {}
   void healthPoke(HealthPokeResponse& /* _return */, const HealthPokeRequest& /* request */) {
     return;
   }
 };
 
-typedef struct _ServiceEndpoint_healthPoke_args__isset {
-  _ServiceEndpoint_healthPoke_args__isset() : request(false) {}
+typedef struct _ApplicationEndpoint_healthPoke_args__isset {
+  _ApplicationEndpoint_healthPoke_args__isset() : request(false) {}
   bool request :1;
-} _ServiceEndpoint_healthPoke_args__isset;
+} _ApplicationEndpoint_healthPoke_args__isset;
 
-class ServiceEndpoint_healthPoke_args {
+class ApplicationEndpoint_healthPoke_args {
  public:
 
-  ServiceEndpoint_healthPoke_args(const ServiceEndpoint_healthPoke_args&);
-  ServiceEndpoint_healthPoke_args& operator=(const ServiceEndpoint_healthPoke_args&);
-  ServiceEndpoint_healthPoke_args() {
+  ApplicationEndpoint_healthPoke_args(const ApplicationEndpoint_healthPoke_args&);
+  ApplicationEndpoint_healthPoke_args& operator=(const ApplicationEndpoint_healthPoke_args&);
+  ApplicationEndpoint_healthPoke_args() {
   }
 
-  virtual ~ServiceEndpoint_healthPoke_args() throw();
+  virtual ~ApplicationEndpoint_healthPoke_args() throw();
   HealthPokeRequest request;
 
-  _ServiceEndpoint_healthPoke_args__isset __isset;
+  _ApplicationEndpoint_healthPoke_args__isset __isset;
 
   void __set_request(const HealthPokeRequest& val);
 
-  bool operator == (const ServiceEndpoint_healthPoke_args & rhs) const
+  bool operator == (const ApplicationEndpoint_healthPoke_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const ServiceEndpoint_healthPoke_args &rhs) const {
+  bool operator != (const ApplicationEndpoint_healthPoke_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceEndpoint_healthPoke_args & ) const;
+  bool operator < (const ApplicationEndpoint_healthPoke_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -94,42 +94,42 @@ class ServiceEndpoint_healthPoke_args {
 };
 
 
-class ServiceEndpoint_healthPoke_pargs {
+class ApplicationEndpoint_healthPoke_pargs {
  public:
 
 
-  virtual ~ServiceEndpoint_healthPoke_pargs() throw();
+  virtual ~ApplicationEndpoint_healthPoke_pargs() throw();
   const HealthPokeRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ServiceEndpoint_healthPoke_result__isset {
-  _ServiceEndpoint_healthPoke_result__isset() : success(false), ex1(false) {}
+typedef struct _ApplicationEndpoint_healthPoke_result__isset {
+  _ApplicationEndpoint_healthPoke_result__isset() : success(false), ex1(false) {}
   bool success :1;
   bool ex1 :1;
-} _ServiceEndpoint_healthPoke_result__isset;
+} _ApplicationEndpoint_healthPoke_result__isset;
 
-class ServiceEndpoint_healthPoke_result {
+class ApplicationEndpoint_healthPoke_result {
  public:
 
-  ServiceEndpoint_healthPoke_result(const ServiceEndpoint_healthPoke_result&);
-  ServiceEndpoint_healthPoke_result& operator=(const ServiceEndpoint_healthPoke_result&);
-  ServiceEndpoint_healthPoke_result() {
+  ApplicationEndpoint_healthPoke_result(const ApplicationEndpoint_healthPoke_result&);
+  ApplicationEndpoint_healthPoke_result& operator=(const ApplicationEndpoint_healthPoke_result&);
+  ApplicationEndpoint_healthPoke_result() {
   }
 
-  virtual ~ServiceEndpoint_healthPoke_result() throw();
+  virtual ~ApplicationEndpoint_healthPoke_result() throw();
   HealthPokeResponse success;
   OperationFailedException ex1;
 
-  _ServiceEndpoint_healthPoke_result__isset __isset;
+  _ApplicationEndpoint_healthPoke_result__isset __isset;
 
   void __set_success(const HealthPokeResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
-  bool operator == (const ServiceEndpoint_healthPoke_result & rhs) const
+  bool operator == (const ApplicationEndpoint_healthPoke_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -137,43 +137,43 @@ class ServiceEndpoint_healthPoke_result {
       return false;
     return true;
   }
-  bool operator != (const ServiceEndpoint_healthPoke_result &rhs) const {
+  bool operator != (const ApplicationEndpoint_healthPoke_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceEndpoint_healthPoke_result & ) const;
+  bool operator < (const ApplicationEndpoint_healthPoke_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _ServiceEndpoint_healthPoke_presult__isset {
-  _ServiceEndpoint_healthPoke_presult__isset() : success(false), ex1(false) {}
+typedef struct _ApplicationEndpoint_healthPoke_presult__isset {
+  _ApplicationEndpoint_healthPoke_presult__isset() : success(false), ex1(false) {}
   bool success :1;
   bool ex1 :1;
-} _ServiceEndpoint_healthPoke_presult__isset;
+} _ApplicationEndpoint_healthPoke_presult__isset;
 
-class ServiceEndpoint_healthPoke_presult {
+class ApplicationEndpoint_healthPoke_presult {
  public:
 
 
-  virtual ~ServiceEndpoint_healthPoke_presult() throw();
+  virtual ~ApplicationEndpoint_healthPoke_presult() throw();
   HealthPokeResponse* success;
   OperationFailedException* ex1;
 
-  _ServiceEndpoint_healthPoke_presult__isset __isset;
+  _ApplicationEndpoint_healthPoke_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-class ServiceEndpointClient : virtual public ServiceEndpointIf {
+class ApplicationEndpointClient : virtual public ApplicationEndpointIf {
  public:
-  ServiceEndpointClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  ApplicationEndpointClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  ServiceEndpointClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  ApplicationEndpointClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -203,44 +203,44 @@ class ServiceEndpointClient : virtual public ServiceEndpointIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class ServiceEndpointProcessor : public ::apache::thrift::TDispatchProcessor {
+class ApplicationEndpointProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  boost::shared_ptr<ServiceEndpointIf> iface_;
+  boost::shared_ptr<ApplicationEndpointIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext);
  private:
-  typedef  void (ServiceEndpointProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (ApplicationEndpointProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_healthPoke(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
-  ServiceEndpointProcessor(boost::shared_ptr<ServiceEndpointIf> iface) :
+  ApplicationEndpointProcessor(boost::shared_ptr<ApplicationEndpointIf> iface) :
     iface_(iface) {
-    processMap_["healthPoke"] = &ServiceEndpointProcessor::process_healthPoke;
+    processMap_["healthPoke"] = &ApplicationEndpointProcessor::process_healthPoke;
   }
 
-  virtual ~ServiceEndpointProcessor() {}
+  virtual ~ApplicationEndpointProcessor() {}
 };
 
-class ServiceEndpointProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class ApplicationEndpointProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  ServiceEndpointProcessorFactory(const ::boost::shared_ptr< ServiceEndpointIfFactory >& handlerFactory) :
+  ApplicationEndpointProcessorFactory(const ::boost::shared_ptr< ApplicationEndpointIfFactory >& handlerFactory) :
       handlerFactory_(handlerFactory) {}
 
   ::boost::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo);
 
  protected:
-  ::boost::shared_ptr< ServiceEndpointIfFactory > handlerFactory_;
+  ::boost::shared_ptr< ApplicationEndpointIfFactory > handlerFactory_;
 };
 
-class ServiceEndpointMultiface : virtual public ServiceEndpointIf {
+class ApplicationEndpointMultiface : virtual public ApplicationEndpointIf {
  public:
-  ServiceEndpointMultiface(std::vector<boost::shared_ptr<ServiceEndpointIf> >& ifaces) : ifaces_(ifaces) {
+  ApplicationEndpointMultiface(std::vector<boost::shared_ptr<ApplicationEndpointIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~ServiceEndpointMultiface() {}
+  virtual ~ApplicationEndpointMultiface() {}
  protected:
-  std::vector<boost::shared_ptr<ServiceEndpointIf> > ifaces_;
-  ServiceEndpointMultiface() {}
-  void add(boost::shared_ptr<ServiceEndpointIf> iface) {
+  std::vector<boost::shared_ptr<ApplicationEndpointIf> > ifaces_;
+  ApplicationEndpointMultiface() {}
+  void add(boost::shared_ptr<ApplicationEndpointIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -259,12 +259,12 @@ class ServiceEndpointMultiface : virtual public ServiceEndpointIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class ServiceEndpointConcurrentClient : virtual public ServiceEndpointIf {
+class ApplicationEndpointConcurrentClient : virtual public ApplicationEndpointIf {
  public:
-  ServiceEndpointConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  ApplicationEndpointConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  ServiceEndpointConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  ApplicationEndpointConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:

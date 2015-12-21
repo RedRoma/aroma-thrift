@@ -566,7 +566,7 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.subject = @"Banana Service - Message Received";
+  self.subject = @"Banana Service - New Message";
 
 #endif
   return self;

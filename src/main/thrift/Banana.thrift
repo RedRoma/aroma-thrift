@@ -2,8 +2,16 @@ namespace java  tech.aroma.banana.thrift
 namespace cocoa Banana_
 namespace cpp   aroma.banana.thrift
 
+/*
+ * Defined in this file are the basic structures and types for 
+ * the Banana Service.
+ * 
+ * Note that Human and Person are used interchangeably.
+ */
+
 typedef i32 int
 typedef i64 long
+
 /**
  * A Timestamp is defined as Unix Time, otherwise known as
  * Milliseconds since epoch.
@@ -15,31 +23,44 @@ typedef i64 timestamp
  */
 enum Urgency
 {
+    /** Lowest level of urgency. */
     INFORMATIONAL = 1,
-    IMPORTANT = 2,
+    /** Middle level of urgency. */
+    WARNING = 2,
+    /** Highest level of urgency. */
     CRITICAL = 3
 }
-
 
 struct Message
 {
     1: string messageId;
     2: string body;
-    3: Urgency urgency = Urgency.IMPORTANT;
+    3: Urgency urgency = Urgency.INFORMATIONAL;
     4: timestamp timeMessageSent;
     5: timestamp timeMessageReceived;
-    6: string nameOfService;
+    /** Name of the Application that sent the message. */
+    6: string applicationName;
+    /** The Network Hostname of the Device sending the message, ideally the FQDM. */
+    7: optional string hostname;
+    8: optional string macAddress;
 }
 
+/**
+ * Defines the basic Units of Time Measurement.
+ */
 enum TimeUnit
 {
     MILLIS,
     SECONDS,
     MINUTES,
     HOURS,
-    DAYS
+    DAYS,
+    WEEKS
 }
 
+/**
+ * Defines a Period of Time, or a Length of Time.
+ */
 struct TimePeriod
 {
     1: required TimeUnit unit;
@@ -53,6 +74,9 @@ enum ImageType
     PNG = 2
 }
 
+/**
+ * 2 Dimensional Image Size.
+ */
 struct Dimension
 {
     1: required int width;
@@ -66,26 +90,85 @@ struct Image
     3: Dimension dimension;
 }
 
+/**
+ * Defines the Role(s) that a human in this system
+ * can be.
+ */
 enum Role
 {
-    DEV = 1,
-    OWNER = 2
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
 }
 
-struct Developer
+/**
+ * A Human
+ */
+struct Human
 {
+    /** A person's email address is also considered their identifying trait. */
     1: string email;
     2: optional string name;
     3: optional string username;
-    4: Role role;
+    /** A Person can be more than one thing at once. By default, we assume a developer. */
+    4: list<Role> roles = [ Role.DEVELOPER ];
 }
 
-struct Service
+/**
+ * Applications are usually written in one main language.
+ */
+enum ProgrammingLanguage
 {
-    1: list<Developer> owners;
-    2: timestamp timeOfRegistration;
+    JAVA,
+    CPP,
+    C_SHARP,
+    C,
+    OBJECTIVE_C,
+    SWIFT,
+    DOT_NET,
+    RUBY,
+    GROOVY,
+    PYTHON,
+    PHP,
+    NODE,
+    DART,
+    OTHER
+}
+
+struct Application
+{
+    /** Owners can perform administrative actions on a service. */
+    1: list<Human> owners;
+    /** When the application was first provisioned. */
+    2: timestamp timeOfProvisioning;
+    /** The name of the application. */
     3: string name;
+    /** The Automatically generated ID for the Application. */
     4: string id;
+    /** The total amount of messages that have been counted so far for the Application*/
     5: long totalMessagesSent;
     6: optional Image icon;
+    7: optional ProgrammingLanguage programmingLanguage;
+    /** Defines a list of people that are subscribed to events for an Application.*/
+    8: optional list<Human> subscribers = [];
+}
+
+/**
+ * Defines a Banana Service announcement.
+ * Examples include:
+ * + Going down for system maintenance
+ * + Looking for feedback
+ * + New Update available
+ * + Other news
+ */
+struct ServiceAnnouncement
+{
+    1: string message;
+    2: Urgency importance;
+    /** Each announcement has an ID so that it can be dismissed by users.*/
+    3: string id;
+    /** An announcement is irrelevant after this time. */
+    4: timestamp timeOfExpiration;
 }

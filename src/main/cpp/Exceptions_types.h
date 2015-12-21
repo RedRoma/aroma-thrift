@@ -30,9 +30,9 @@ class InvalidCodeException;
 
 class UnauthorizedException;
 
-class ServiceDoesNotExistException;
+class ApplicationDoesNotExistException;
 
-class ServiceAlreadyRegisteredException;
+class ApplicationAlreadyRegisteredException;
 
 class ThroughoutExceededException;
 
@@ -100,7 +100,7 @@ class InvalidCredentialsException : public ::apache::thrift::TException {
 
   InvalidCredentialsException(const InvalidCredentialsException&);
   InvalidCredentialsException& operator=(const InvalidCredentialsException&);
-  InvalidCredentialsException() : message("Failed to Verify and Authenticate credentials") {
+  InvalidCredentialsException() : message("Failed to Verify and Authenticate Credentials") {
   }
 
   virtual ~InvalidCredentialsException() throw();
@@ -244,7 +244,7 @@ class UnauthorizedException : public ::apache::thrift::TException {
 
   UnauthorizedException(const UnauthorizedException&);
   UnauthorizedException& operator=(const UnauthorizedException&);
-  UnauthorizedException() : message("Only an owner can do that") {
+  UnauthorizedException() : message("Only an Owner can do that") {
   }
 
   virtual ~UnauthorizedException() throw();
@@ -282,37 +282,37 @@ inline std::ostream& operator<<(std::ostream& out, const UnauthorizedException& 
   return out;
 }
 
-typedef struct _ServiceDoesNotExistException__isset {
-  _ServiceDoesNotExistException__isset() : message(true) {}
+typedef struct _ApplicationDoesNotExistException__isset {
+  _ApplicationDoesNotExistException__isset() : message(true) {}
   bool message :1;
-} _ServiceDoesNotExistException__isset;
+} _ApplicationDoesNotExistException__isset;
 
-class ServiceDoesNotExistException : public ::apache::thrift::TException {
+class ApplicationDoesNotExistException : public ::apache::thrift::TException {
  public:
 
-  ServiceDoesNotExistException(const ServiceDoesNotExistException&);
-  ServiceDoesNotExistException& operator=(const ServiceDoesNotExistException&);
-  ServiceDoesNotExistException() : message("The Specified Service does not exist") {
+  ApplicationDoesNotExistException(const ApplicationDoesNotExistException&);
+  ApplicationDoesNotExistException& operator=(const ApplicationDoesNotExistException&);
+  ApplicationDoesNotExistException() : message("The Specified Application does not exist") {
   }
 
-  virtual ~ServiceDoesNotExistException() throw();
+  virtual ~ApplicationDoesNotExistException() throw();
   std::string message;
 
-  _ServiceDoesNotExistException__isset __isset;
+  _ApplicationDoesNotExistException__isset __isset;
 
   void __set_message(const std::string& val);
 
-  bool operator == (const ServiceDoesNotExistException & rhs) const
+  bool operator == (const ApplicationDoesNotExistException & rhs) const
   {
     if (!(message == rhs.message))
       return false;
     return true;
   }
-  bool operator != (const ServiceDoesNotExistException &rhs) const {
+  bool operator != (const ApplicationDoesNotExistException &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceDoesNotExistException & ) const;
+  bool operator < (const ApplicationDoesNotExistException & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -322,45 +322,45 @@ class ServiceDoesNotExistException : public ::apache::thrift::TException {
   const char* what() const throw();
 };
 
-void swap(ServiceDoesNotExistException &a, ServiceDoesNotExistException &b);
+void swap(ApplicationDoesNotExistException &a, ApplicationDoesNotExistException &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceDoesNotExistException& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _ServiceAlreadyRegisteredException__isset {
-  _ServiceAlreadyRegisteredException__isset() : message(true) {}
+typedef struct _ApplicationAlreadyRegisteredException__isset {
+  _ApplicationAlreadyRegisteredException__isset() : message(true) {}
   bool message :1;
-} _ServiceAlreadyRegisteredException__isset;
+} _ApplicationAlreadyRegisteredException__isset;
 
-class ServiceAlreadyRegisteredException : public ::apache::thrift::TException {
+class ApplicationAlreadyRegisteredException : public ::apache::thrift::TException {
  public:
 
-  ServiceAlreadyRegisteredException(const ServiceAlreadyRegisteredException&);
-  ServiceAlreadyRegisteredException& operator=(const ServiceAlreadyRegisteredException&);
-  ServiceAlreadyRegisteredException() : message("This Channel has already been registered for this Service") {
+  ApplicationAlreadyRegisteredException(const ApplicationAlreadyRegisteredException&);
+  ApplicationAlreadyRegisteredException& operator=(const ApplicationAlreadyRegisteredException&);
+  ApplicationAlreadyRegisteredException() : message("This Channel has already been registered for this Application") {
   }
 
-  virtual ~ServiceAlreadyRegisteredException() throw();
+  virtual ~ApplicationAlreadyRegisteredException() throw();
   std::string message;
 
-  _ServiceAlreadyRegisteredException__isset __isset;
+  _ApplicationAlreadyRegisteredException__isset __isset;
 
   void __set_message(const std::string& val);
 
-  bool operator == (const ServiceAlreadyRegisteredException & rhs) const
+  bool operator == (const ApplicationAlreadyRegisteredException & rhs) const
   {
     if (!(message == rhs.message))
       return false;
     return true;
   }
-  bool operator != (const ServiceAlreadyRegisteredException &rhs) const {
+  bool operator != (const ApplicationAlreadyRegisteredException &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ServiceAlreadyRegisteredException & ) const;
+  bool operator < (const ApplicationAlreadyRegisteredException & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -370,9 +370,9 @@ class ServiceAlreadyRegisteredException : public ::apache::thrift::TException {
   const char* what() const throw();
 };
 
-void swap(ServiceAlreadyRegisteredException &a, ServiceAlreadyRegisteredException &b);
+void swap(ApplicationAlreadyRegisteredException &a, ApplicationAlreadyRegisteredException &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ServiceAlreadyRegisteredException& obj)
+inline std::ostream& operator<<(std::ostream& out, const ApplicationAlreadyRegisteredException& obj)
 {
   obj.printTo(out);
   return out;
@@ -436,7 +436,7 @@ class CustomChannelUnreachableException : public ::apache::thrift::TException {
 
   CustomChannelUnreachableException(const CustomChannelUnreachableException&);
   CustomChannelUnreachableException& operator=(const CustomChannelUnreachableException&);
-  CustomChannelUnreachableException() : message("The Custom Channel you've supplied could not be reached. Please ensure the Service is reachable and operational.") {
+  CustomChannelUnreachableException() : message("The Custom Channel you've supplied could not be reached. Please ensure the Application is reachable and operational.") {
   }
 
   virtual ~CustomChannelUnreachableException() throw();

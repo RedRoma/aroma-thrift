@@ -29,7 +29,8 @@ class CustomBananaChannelIf {
   virtual int ping() = 0;
 
   /**
-   * Called each time the Banana Service sends a message to a specific service.
+   * Called each time the Banana Service receives a Message from the Application
+   * in question.
    * 
    * @param request
    */

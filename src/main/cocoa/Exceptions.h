@@ -150,7 +150,7 @@
 
 @end
 
-@interface BananaException_ServiceDoesNotExistException : NSException <TBase, NSCoding> {
+@interface BananaException_ApplicationDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -176,7 +176,7 @@
 
 @end
 
-@interface BananaException_ServiceAlreadyRegisteredException : NSException <TBase, NSCoding> {
+@interface BananaException_ApplicationAlreadyRegisteredException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;

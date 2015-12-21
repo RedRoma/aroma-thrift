@@ -5,8 +5,8 @@ namespace cpp   aroma.banana.thrift.channels
 /*
  * Defined in this File are the various Channels that
  * the Banana Service can send Messages to.
- * Essentially a channel is a way to contact a developer.
- * A Developer can register various channels where he/she can
+ * Essentially a channel is a way to contact a person.
+ * A Person can register various channels where he/she can
  * be reached.
  */
 
@@ -47,7 +47,7 @@ struct SlackUsername
 struct Email
 {
     1: string emailAddress;
-    2: optional string subject = "Banana Service - Message Received";
+    2: optional string subject = "Banana Service - New Message";
 }
 
 /**
@@ -80,6 +80,14 @@ struct ReceiveMessageRequest
     1: Banana.Message message;
 }
 
+/**
+ * Defines a custom endpoint to send messages to.
+ * Note that a channel can receive messages and events from
+ * more than one Application.
+ * 
+ * Note that no care is taken to rate-limit. Your endpoint
+ * may get flooded. Use with caution.
+ */
 service CustomBananaChannel
 {
     /**
@@ -89,7 +97,8 @@ service CustomBananaChannel
     int ping();
     
     /**
-     * Called each time the Banana Service sends a message to a specific service.
+     * Called each time the Banana Service receives a Message from the Application
+     * in question.
      */
     oneway void receiveMessage(1: ReceiveMessageRequest request)
 }

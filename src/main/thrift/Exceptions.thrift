@@ -18,12 +18,12 @@ exception InvalidArgumentException
 }
 
 /**
- * Thrown when a Service Operation could not be authenticated
+ * Thrown when an Operation could not be authenticated
  * or validated.
  */
 exception InvalidCredentialsException
 {
-    1: string message = "Failed to Verify and Authenticate credentials"
+    1: string message = "Failed to Verify and Authenticate Credentials"
 }
 
 /**
@@ -43,34 +43,34 @@ exception InvalidCodeException
 }
 
 /**
- * Thrown when a Developer tries to perform an Operation
+ * Thrown when a Human tries to perform an Operation
  * that only an "Owner" can do.
  */
 exception UnauthorizedException
 {
-    1: string message = "Only an owner can do that"
+    1: string message = "Only an Owner can do that"
 }
 
 /**
  * Thrown when referring to a service that does not exist.
  */
-exception ServiceDoesNotExistException
+exception ApplicationDoesNotExistException
 {
-    1: string message = "The Specified Service does not exist"
+    1: string message = "The Specified Application does not exist"
 }
 
 /**
- * Thrown when trying to register a Channel for a Service that
- * has already been registered before, either by the current Developer
+ * Thrown when trying to register a Channel for an Application that
+ * has already been registered before, either by the current Person
  * or by someone else.
  */
-exception ServiceAlreadyRegisteredException
+exception ApplicationAlreadyRegisteredException
 {
-    1: string message = "This Channel has already been registered for this Service"
+    1: string message = "This Channel has already been registered for this Application"
 }
 
 /**
- * Thrown when a Service's provisioned Throughout has been exceeded.
+ * Thrown when an Application's provisioned Throughout has been exceeded.
  */
 exception ThroughoutExceededException
 {
@@ -83,7 +83,7 @@ exception ThroughoutExceededException
  */
 exception CustomChannelUnreachableException
 {
-    1: string message = "The Custom Channel you've supplied could not be reached. Please ensure the Service is reachable and operational."
+    1: string message = "The Custom Channel you've supplied could not be reached. Please ensure the Application is reachable and operational."
 }
 
 /**

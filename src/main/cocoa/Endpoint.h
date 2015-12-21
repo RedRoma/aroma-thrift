@@ -158,20 +158,20 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 @end
 
 @interface BananaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
-  NSString * __serviceName;
-  BananaAuthentication_ServiceToken * __serviceToken;
+  NSString * __applicationName;
+  BananaAuthentication_ApplicationToken * __serviceToken;
 
-  BOOL __serviceName_isset;
+  BOOL __applicationName_isset;
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceName, setter=setServiceName:) NSString * serviceName;
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ServiceToken * serviceToken;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ApplicationToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithServiceName: (NSString *) serviceName serviceToken: (BananaAuthentication_ServiceToken *) serviceToken;
+- (id) initWithApplicationName: (NSString *) applicationName serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -179,14 +179,14 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) serviceName;
-- (void) setServiceName: (NSString *) serviceName;
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
 #endif
-- (BOOL) serviceNameIsSet;
+- (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_ServiceToken *) serviceToken;
-- (void) setServiceToken: (BananaAuthentication_ServiceToken *) serviceToken;
+- (BananaAuthentication_ApplicationToken *) serviceToken;
+- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
 #endif
 - (BOOL) serviceTokenIsSet;
 
@@ -227,20 +227,20 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@protocol BananaEndpoint_ServiceEndpoint <NSObject>
+@protocol BananaEndpoint_ApplicationEndpoint <NSObject>
 - (BananaEndpoint_HealthPokeResponse *) healthPoke: (BananaEndpoint_HealthPokeRequest *) request;  // throws BananaEndpoint_OperationFailedException, TException
 @end
 
-@interface BananaEndpoint_ServiceEndpointClient : TBaseClient <BananaEndpoint_ServiceEndpoint> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface BananaEndpoint_ApplicationEndpointClient : TBaseClient <BananaEndpoint_ApplicationEndpoint> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaEndpoint_ServiceEndpointProcessor : NSObject <TProcessor> {
-  id <BananaEndpoint_ServiceEndpoint> mService;
+@interface BananaEndpoint_ApplicationEndpointProcessor : NSObject <TProcessor> {
+  id <BananaEndpoint_ApplicationEndpoint> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithServiceEndpoint: (id <BananaEndpoint_ServiceEndpoint>) service;
-- (id<BananaEndpoint_ServiceEndpoint>) service;
+- (id) initWithApplicationEndpoint: (id <BananaEndpoint_ApplicationEndpoint>) service;
+- (id<BananaEndpoint_ApplicationEndpoint>) service;
 @end
 
 @interface BananaEndpoint_EndpointConstants : NSObject {
