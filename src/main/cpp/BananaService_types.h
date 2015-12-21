@@ -2274,6 +2274,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetMySavedChannelsRespo
   return out;
 }
 
+typedef struct _GetServiceAnnouncementsRequest__isset {
+  _GetServiceAnnouncementsRequest__isset() : token(false) {}
+  bool token :1;
+} _GetServiceAnnouncementsRequest__isset;
 
 class GetServiceAnnouncementsRequest {
  public:
@@ -2284,9 +2288,16 @@ class GetServiceAnnouncementsRequest {
   }
 
   virtual ~GetServiceAnnouncementsRequest() throw();
+  HumanToken token;
 
-  bool operator == (const GetServiceAnnouncementsRequest & /* rhs */) const
+  _GetServiceAnnouncementsRequest__isset __isset;
+
+  void __set_token(const HumanToken& val);
+
+  bool operator == (const GetServiceAnnouncementsRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
     return true;
   }
   bool operator != (const GetServiceAnnouncementsRequest &rhs) const {

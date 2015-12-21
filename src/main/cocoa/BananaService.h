@@ -1512,14 +1512,28 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
+  BananaService_HumanToken __token;
+
+  BOOL __token_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_HumanToken token;
+#endif
+
 - (id) init;
+- (id) initWithToken: (BananaService_HumanToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_HumanToken) token;
+- (void) setToken: (BananaService_HumanToken) token;
+#endif
+- (BOOL) tokenIsSet;
 
 @end
 

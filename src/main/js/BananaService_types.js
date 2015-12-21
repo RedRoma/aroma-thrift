@@ -2963,6 +2963,12 @@ GetMySavedChannelsResponse.prototype.write = function(output) {
 };
 
 GetServiceAnnouncementsRequest = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new HumanToken(args.token);
+    }
+  }
 };
 GetServiceAnnouncementsRequest.prototype = {};
 GetServiceAnnouncementsRequest.prototype.read = function(input) {
@@ -2976,7 +2982,22 @@ GetServiceAnnouncementsRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new HumanToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -2985,6 +3006,11 @@ GetServiceAnnouncementsRequest.prototype.read = function(input) {
 
 GetServiceAnnouncementsRequest.prototype.write = function(output) {
   output.writeStructBegin('GetServiceAnnouncementsRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;

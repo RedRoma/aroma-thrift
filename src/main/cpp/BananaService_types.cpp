@@ -4510,6 +4510,10 @@ GetServiceAnnouncementsRequest::~GetServiceAnnouncementsRequest() throw() {
 }
 
 
+void GetServiceAnnouncementsRequest::__set_token(const HumanToken& val) {
+  this->token = val;
+}
+
 uint32_t GetServiceAnnouncementsRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -4529,7 +4533,20 @@ uint32_t GetServiceAnnouncementsRequest::read(::apache::thrift::protocol::TProto
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -4543,6 +4560,10 @@ uint32_t GetServiceAnnouncementsRequest::write(::apache::thrift::protocol::TProt
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetServiceAnnouncementsRequest");
 
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -4550,20 +4571,23 @@ uint32_t GetServiceAnnouncementsRequest::write(::apache::thrift::protocol::TProt
 
 void swap(GetServiceAnnouncementsRequest &a, GetServiceAnnouncementsRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.token, b.token);
+  swap(a.__isset, b.__isset);
 }
 
 GetServiceAnnouncementsRequest::GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest& other121) {
-  (void) other121;
+  token = other121.token;
+  __isset = other121.__isset;
 }
 GetServiceAnnouncementsRequest& GetServiceAnnouncementsRequest::operator=(const GetServiceAnnouncementsRequest& other122) {
-  (void) other122;
+  token = other122.token;
+  __isset = other122.__isset;
   return *this;
 }
 void GetServiceAnnouncementsRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetServiceAnnouncementsRequest(";
+  out << "token=" << to_string(token);
   out << ")";
 }
 
