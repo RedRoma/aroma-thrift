@@ -28,6 +28,78 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
+   * Provision a New Application to keep tabs on.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
+    // Your implementation goes here
+    printf("provisionApplication\n");
+  }
+
+  /**
+   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Keep in mind that this will invalidate any prior existing Application Tokens.
+   * Only an "owner" can perform this operation.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
+  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("regenerateToken\n");
+  }
+
+  /**
+   * Register an existing Application for Health Pokes. The Banana Service
+   * will then periodically poke the Application for health status.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
+    // Your implementation goes here
+    printf("registerHealthCheck\n");
+  }
+
+  /**
+   * Removes a previously saved channel.
+   * 
+   * @param request
+   */
+  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
+    // Your implementation goes here
+    printf("removeSavedChannel\n");
+  }
+
+  /**
+   * Renew an Application Token that is close to being expired.
+   * Only an "owner" can perform this operation.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
+  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("renewApplicationToken\n");
+  }
+
+  /**
+   * Saves a user's channel for future reference.
+   * 
+   * @param request
+   */
+  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
+    // Your implementation goes here
+    printf("saveChannel\n");
+  }
+
+  /**
    * Sign in to the App and get a User Token in return.
    * 
    * #user
@@ -50,15 +122,13 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Provision a New Application to keep tabs on.
-   * 
-   * #user
+   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
    * 
    * @param request
    */
-  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
     // Your implementation goes here
-    printf("provisionApplication\n");
+    printf("snoozeChannel\n");
   }
 
   /**
@@ -71,76 +141,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) {
     // Your implementation goes here
     printf("subscribeToApplication\n");
-  }
-
-  /**
-   * Register an existing Application for Health Pokes. The Banana Service
-   * will then periodically poke the Application for health status.
-   * 
-   * #owner
-   * 
-   * @param request
-   */
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
-    // Your implementation goes here
-    printf("registerHealthCheck\n");
-  }
-
-  /**
-   * Renew an Application Token that is close to being expired.
-   * Only an "owner" can perform this operation.
-   * 
-   * #owner
-   * 
-   * @param request
-   */
-  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
-    // Your implementation goes here
-    printf("renewApplicationToken\n");
-  }
-
-  /**
-   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
-   * Keep in mind that this will invalidate any prior existing Application Tokens.
-   * Only an "owner" can perform this operation.
-   * 
-   * #owner
-   * 
-   * @param request
-   */
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
-    // Your implementation goes here
-    printf("regenerateToken\n");
-  }
-
-  /**
-   * Saves a user's channel for future reference.
-   * 
-   * @param request
-   */
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
-    // Your implementation goes here
-    printf("saveChannel\n");
-  }
-
-  /**
-   * Removes a previously saved channel.
-   * 
-   * @param request
-   */
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
-    // Your implementation goes here
-    printf("removeSavedChannel\n");
-  }
-
-  /**
-   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
-   * 
-   * @param request
-   */
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
-    // Your implementation goes here
-    printf("snoozeChannel\n");
   }
 
   /**
