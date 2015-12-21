@@ -77,6 +77,8 @@ typedef int64_t Banana_timestamp;
   Banana_timestamp __timeMessageSent;
   Banana_timestamp __timeMessageReceived;
   NSString * __applicationName;
+  NSString * __hostname;
+  NSString * __macAddress;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -84,6 +86,8 @@ typedef int64_t Banana_timestamp;
   BOOL __timeMessageSent_isset;
   BOOL __timeMessageReceived_isset;
   BOOL __applicationName_isset;
+  BOOL __hostname_isset;
+  BOOL __macAddress_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -93,10 +97,12 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, getter=timeMessageSent, setter=setTimeMessageSent:) Banana_timestamp timeMessageSent;
 @property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
+@property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -138,6 +144,18 @@ typedef int64_t Banana_timestamp;
 - (void) setApplicationName: (NSString *) applicationName;
 #endif
 - (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) hostname;
+- (void) setHostname: (NSString *) hostname;
+#endif
+- (BOOL) hostnameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) macAddress;
+- (void) setMacAddress: (NSString *) macAddress;
+#endif
+- (BOOL) macAddressIsSet;
 
 @end
 

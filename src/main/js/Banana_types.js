@@ -52,6 +52,8 @@ Message = function(args) {
   this.timeMessageSent = null;
   this.timeMessageReceived = null;
   this.applicationName = null;
+  this.hostname = null;
+  this.macAddress = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -70,6 +72,12 @@ Message = function(args) {
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
+    }
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.macAddress !== undefined && args.macAddress !== null) {
+      this.macAddress = args.macAddress;
     }
   }
 };
@@ -129,6 +137,20 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.macAddress = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -168,6 +190,16 @@ Message.prototype.write = function(output) {
   if (this.applicationName !== null && this.applicationName !== undefined) {
     output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
     output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 7);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.macAddress !== null && this.macAddress !== undefined) {
+    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
+    output.writeString(this.macAddress);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

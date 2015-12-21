@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -48,6 +48,10 @@
   __timeMessageReceived_isset = YES;
   __applicationName = [applicationName retain_stub];
   __applicationName_isset = YES;
+  __hostname = [hostname retain_stub];
+  __hostname_isset = YES;
+  __macAddress = [macAddress retain_stub];
+  __macAddress_isset = YES;
   return self;
 }
 
@@ -84,6 +88,16 @@
     __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
     __applicationName_isset = YES;
   }
+  if ([decoder containsValueForKey: @"hostname"])
+  {
+    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
+    __hostname_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"macAddress"])
+  {
+    __macAddress = [[decoder decodeObjectForKey: @"macAddress"] retain_stub];
+    __macAddress_isset = YES;
+  }
   return self;
 }
 
@@ -112,6 +126,14 @@
   if (__applicationName_isset)
   {
     [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__hostname_isset)
+  {
+    [encoder encodeObject: __hostname forKey: @"hostname"];
+  }
+  if (__macAddress_isset)
+  {
+    [encoder encodeObject: __macAddress forKey: @"macAddress"];
   }
 }
 
@@ -147,6 +169,16 @@
   if (__applicationName_isset)
   {
     hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
+  if (__hostname_isset)
+  {
+    hash = (hash * 31) ^ [__hostname hash];
+  }
+  hash = (hash * 31) ^ __macAddress_isset ? 2654435761 : 0;
+  if (__macAddress_isset)
+  {
+    hash = (hash * 31) ^ [__macAddress hash];
   }
   return hash;
 }
@@ -184,6 +216,14 @@
       (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
+  if ((__hostname_isset != other->__hostname_isset) ||
+      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
+    return NO;
+  }
+  if ((__macAddress_isset != other->__macAddress_isset) ||
+      (__macAddress_isset && ((__macAddress || other->__macAddress) && ![__macAddress isEqual:other->__macAddress]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -192,6 +232,8 @@
   [__messageId release_stub];
   [__body release_stub];
   [__applicationName release_stub];
+  [__hostname release_stub];
+  [__macAddress release_stub];
   [super dealloc_stub];
 }
 
@@ -309,6 +351,48 @@
   __applicationName_isset = NO;
 }
 
+- (NSString *) hostname {
+  return [[__hostname retain_stub] autorelease_stub];
+}
+
+- (void) setHostname: (NSString *) hostname {
+  [hostname retain_stub];
+  [__hostname release_stub];
+  __hostname = hostname;
+  __hostname_isset = YES;
+}
+
+- (BOOL) hostnameIsSet {
+  return __hostname_isset;
+}
+
+- (void) unsetHostname {
+  [__hostname release_stub];
+  __hostname = nil;
+  __hostname_isset = NO;
+}
+
+- (NSString *) macAddress {
+  return [[__macAddress retain_stub] autorelease_stub];
+}
+
+- (void) setMacAddress: (NSString *) macAddress {
+  [macAddress retain_stub];
+  [__macAddress release_stub];
+  __macAddress = macAddress;
+  __macAddress_isset = YES;
+}
+
+- (BOOL) macAddressIsSet {
+  return __macAddress_isset;
+}
+
+- (void) unsetMacAddress {
+  [__macAddress release_stub];
+  __macAddress = nil;
+  __macAddress_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -372,6 +456,22 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHostname: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMacAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -419,6 +519,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__hostname_isset) {
+    if (__hostname != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __hostname];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__macAddress_isset) {
+    if (__macAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"macAddress" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __macAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -441,6 +555,10 @@
   [ms appendFormat: @"%qi", __timeMessageReceived];
   [ms appendString: @",applicationName:"];
   [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",hostname:"];
+  [ms appendFormat: @"\"%@\"", __hostname];
+  [ms appendString: @",macAddress:"];
+  [ms appendFormat: @"\"%@\"", __macAddress];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -132,6 +132,16 @@ void Message::__set_applicationName(const std::string& val) {
   this->applicationName = val;
 }
 
+void Message::__set_hostname(const std::string& val) {
+  this->hostname = val;
+__isset.hostname = true;
+}
+
+void Message::__set_macAddress(const std::string& val) {
+  this->macAddress = val;
+__isset.macAddress = true;
+}
+
 uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -203,6 +213,22 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->hostname);
+          this->__isset.hostname = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->macAddress);
+          this->__isset.macAddress = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -244,6 +270,16 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.hostname) {
+    xfer += oprot->writeFieldBegin("hostname", ::apache::thrift::protocol::T_STRING, 7);
+    xfer += oprot->writeString(this->hostname);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.macAddress) {
+    xfer += oprot->writeFieldBegin("macAddress", ::apache::thrift::protocol::T_STRING, 8);
+    xfer += oprot->writeString(this->macAddress);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -257,6 +293,8 @@ void swap(Message &a, Message &b) {
   swap(a.timeMessageSent, b.timeMessageSent);
   swap(a.timeMessageReceived, b.timeMessageReceived);
   swap(a.applicationName, b.applicationName);
+  swap(a.hostname, b.hostname);
+  swap(a.macAddress, b.macAddress);
   swap(a.__isset, b.__isset);
 }
 
@@ -267,6 +305,8 @@ Message::Message(const Message& other1) {
   timeMessageSent = other1.timeMessageSent;
   timeMessageReceived = other1.timeMessageReceived;
   applicationName = other1.applicationName;
+  hostname = other1.hostname;
+  macAddress = other1.macAddress;
   __isset = other1.__isset;
 }
 Message& Message::operator=(const Message& other2) {
@@ -276,6 +316,8 @@ Message& Message::operator=(const Message& other2) {
   timeMessageSent = other2.timeMessageSent;
   timeMessageReceived = other2.timeMessageReceived;
   applicationName = other2.applicationName;
+  hostname = other2.hostname;
+  macAddress = other2.macAddress;
   __isset = other2.__isset;
   return *this;
 }
@@ -288,6 +330,8 @@ void Message::printTo(std::ostream& out) const {
   out << ", " << "timeMessageSent=" << to_string(timeMessageSent);
   out << ", " << "timeMessageReceived=" << to_string(timeMessageReceived);
   out << ", " << "applicationName=" << to_string(applicationName);
+  out << ", " << "hostname="; (__isset.hostname ? (out << to_string(hostname)) : (out << "<null>"));
+  out << ", " << "macAddress="; (__isset.macAddress ? (out << to_string(macAddress)) : (out << "<null>"));
   out << ")";
 }
 

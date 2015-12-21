@@ -40,6 +40,9 @@ struct Message
     5: timestamp timeMessageReceived;
     /** Name of the Application that sent the message. */
     6: string applicationName;
+    /** The Network Hostname of the Device sending the message, ideally the FQDM. */
+    7: optional string hostname;
+    8: optional string macAddress;
 }
 
 /**
