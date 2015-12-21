@@ -3045,9 +3045,9 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
 
 API_VERSION = 1.4;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-service.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-service-beta.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
 MAX_ICON_DIMENSION = new Dimension({
 'width' : 500,'height' : 500});
 MAX_ICON_SIZE_IN_KILOBYTES = 40;

@@ -4,7 +4,7 @@ namespace cpp   aroma.banana.thrift.service
 
 /*
  * Defined in this File is the Banana Service API and all of the operations
- * that can be performed by both Humans and their Applications.
+ * that can be performed primarily Humans.
  */
 
 include "Authentication.thrift"
@@ -55,12 +55,12 @@ const double API_VERSION = 1.4;
 /**
  * This is the Banana Service Production Endpoint
  */
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-service.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-srv.banana.aroma.tech", "port" : 7001 };
 
 /**
  * This is the Banana Service Beta Endpoint
  */
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-service-beta.aroma.tech", "port" : 7001 };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banana.aroma.tech", "port" : 7001 };
 
 //==========================================================
 // Actions

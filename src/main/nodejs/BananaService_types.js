@@ -3056,9 +3056,9 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
 
 ttypes.API_VERSION = 1.4;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-service.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-service-beta.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
 ttypes.MAX_ICON_DIMENSION = new Banana_ttypes.Dimension({
 'width' : 500,'height' : 500});
 ttypes.MAX_ICON_SIZE_IN_KILOBYTES = 40;

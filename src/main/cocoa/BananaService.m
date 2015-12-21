@@ -9069,12 +9069,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-service.aroma.tech"];
+  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-srv.banana.aroma.tech"];
   [BananaService_PRODUCTION_ENDPOINT setPort:7001];
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-service-beta.aroma.tech"];
+  [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
   [BananaService_BETA_ENDPOINT setPort:7001];
 
 ;
