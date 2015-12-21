@@ -28,13 +28,24 @@ BananaServiceConstants::BananaServiceConstants() {
    ::aroma::banana::thrift::int tmp133;
   tmp133 = 1024;
 
-  MAX_ICON_DIMENSION.width = tmp133;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp133;
    ::aroma::banana::thrift::int tmp134;
   tmp134 = 1024;
 
-  MAX_ICON_DIMENSION.height = tmp134;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp134;
 
-  MAX_ICON_SIZE_IN_KILOBYTES = 40;
+   ::aroma::banana::thrift::int tmp135;
+  tmp135 = 1024;
+
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp135;
+   ::aroma::banana::thrift::int tmp136;
+  tmp136 = 1024;
+
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp136;
+
+  MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+
+  MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
 }
 

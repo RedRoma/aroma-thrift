@@ -67,7 +67,7 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banan
 //==========================================================
 
 /**
- * Sign In to the Banna Service, and get a Human Token.
+ * Sign In to the Banana Service, and get a Human Token.
  */
 struct SignInRequest
 {
@@ -102,10 +102,17 @@ struct SignUpResponse
 }
 
 /** The Maximum Dimensions for an Icon submitted with an Application. */
-const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
+const Banana.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
+
+/** The Maximum Dimension for a Profile Picture submitted. */
+const Banana.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" : 1024 };
+
 
 /** The Maximum Filesize for an Icon submitted with an Application. */
-const int MAX_ICON_SIZE_IN_KILOBYTES = 40;
+const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+
+/** The Maximum Filesize for a Profile Picture submitted. */
+const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
 /**
  * Defines the required information to provision

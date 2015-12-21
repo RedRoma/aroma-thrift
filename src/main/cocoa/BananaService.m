@@ -9063,8 +9063,10 @@
 static double BananaService_API_VERSION = 1.4;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
-static Banana_Dimension * BananaService_MAX_ICON_DIMENSION;
-static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
+static Banana_Dimension * BananaService_MAX_APPLICATION_ICON_DIMENSION;
+static Banana_Dimension * BananaService_MAX_PROFILE_IMAGE_DIMENSION;
+static BananaService_int BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
@@ -9078,9 +9080,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [BananaService_BETA_ENDPOINT setPort:7001];
 
 ;
-  BananaService_MAX_ICON_DIMENSION = [[Banana_Dimension alloc] init];
-  [BananaService_MAX_ICON_DIMENSION setWidth:1024];
-  [BananaService_MAX_ICON_DIMENSION setHeight:1024];
+  BananaService_MAX_APPLICATION_ICON_DIMENSION = [[Banana_Dimension alloc] init];
+  [BananaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
+  [BananaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
+
+;
+  BananaService_MAX_PROFILE_IMAGE_DIMENSION = [[Banana_Dimension alloc] init];
+  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
+  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
 
 ;
 }
@@ -9093,11 +9100,17 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return BananaService_BETA_ENDPOINT;
 }
-+ (Banana_Dimension *) MAX_ICON_DIMENSION{
-  return BananaService_MAX_ICON_DIMENSION;
++ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
+  return BananaService_MAX_APPLICATION_ICON_DIMENSION;
 }
-+ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES{
-  return BananaService_MAX_ICON_SIZE_IN_KILOBYTES;
++ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION{
+  return BananaService_MAX_PROFILE_IMAGE_DIMENSION;
+}
++ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES{
+  return BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
+}
++ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
+  return BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 }
 @end
 

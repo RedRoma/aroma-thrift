@@ -1572,6 +1572,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 + (double) API_VERSION;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Banana_Dimension *) MAX_ICON_DIMENSION;
-+ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES;
++ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
++ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
++ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
++ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 @end

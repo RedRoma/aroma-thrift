@@ -18,8 +18,10 @@ class BananaServiceConstants {
   double API_VERSION;
    ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
-   ::aroma::banana::thrift::Dimension MAX_ICON_DIMENSION;
-  int MAX_ICON_SIZE_IN_KILOBYTES;
+   ::aroma::banana::thrift::Dimension MAX_APPLICATION_ICON_DIMENSION;
+   ::aroma::banana::thrift::Dimension MAX_PROFILE_IMAGE_DIMENSION;
+  int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
+  int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 };
 
 extern const BananaServiceConstants g_BananaService_constants;
