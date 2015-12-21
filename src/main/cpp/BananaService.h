@@ -61,7 +61,6 @@ class BananaServiceIf {
    * Register an existing Application for Health Pokes. The Banana Service
    * will then periodically poke the Application for health status.
    * 
-   * #human
    * #owner
    * 
    * @param request
@@ -72,7 +71,6 @@ class BananaServiceIf {
    * Renew an Application Token that is close to being expired.
    * Only an "owner" can perform this operation.
    * 
-   * #human
    * #owner
    * 
    * @param request
@@ -84,7 +82,6 @@ class BananaServiceIf {
    * Keep in mind that this will invalidate any prior existing Application Tokens.
    * Only an "owner" can perform this operation.
    * 
-   * #human
    * #owner
    * 
    * @param request

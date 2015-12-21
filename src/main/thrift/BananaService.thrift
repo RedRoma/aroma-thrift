@@ -313,6 +313,8 @@ struct SnoozeChannelRequest
 {
     1: HumanToken token;
     2: BananaChannel channel;
+    /** Optionally choose to snooze a specific Application. */
+    3: optional string applicationId;
 }
 
 struct SnoozeChannelResponse
@@ -357,6 +359,25 @@ struct GetDashboardResponse
     3: int totalMessagesLast24hrs = 0;
     4: list<Banana.Message> recentMessages = [];
 
+}
+
+/**
+ * Query to get a User's messages, either across all Services,
+ * or by a specific Application.
+ */
+struct GetMessagesRequest
+{
+    1: HumanToken token;
+    /** Allows you to get Messages from a particular application. */
+    2: optional string applicationId;
+    /** Suggests that the Service limits the results of the query.*/
+    3: optional int limit = 0;
+}
+
+struct GetMessagesResponse
+{
+    1: list<Banana.Message> messages = [];
+    2: optional int totalMessagesMatching = 0;
 }
 
 struct SearchForApplicationsRequest
@@ -455,7 +476,6 @@ service BananaService
      * Register an existing Application for Health Pokes. The Banana Service
      * will then periodically poke the Application for health status.
      *
-     * #human
      * #owner
      */
     RegisterHealthCheckResponse registerHealthCheck(1 : RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
@@ -468,7 +488,6 @@ service BananaService
      * Renew an Application Token that is close to being expired.
      * Only an "owner" can perform this operation.
      *
-     * #human
      * #owner
      */
     RenewApplicationTokenResponse renewApplicationToken(1 : RenewApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
@@ -482,7 +501,6 @@ service BananaService
      * Keep in mind that this will invalidate any prior existing Application Tokens.
      * Only an "owner" can perform this operation.
      *
-     * #human
      * #owner
      */
     RegenerateApplicationTokenResponse regenerateToken(1 : RegenerateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,

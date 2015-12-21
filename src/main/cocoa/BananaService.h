@@ -1051,18 +1051,21 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_SnoozeChannelRequest : NSObject <TBase, NSCoding> {
   BananaService_HumanToken __token;
   BananaService_BananaChannel __channel;
+  NSString * __applicationId;
 
   BOOL __token_isset;
   BOOL __channel_isset;
+  BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) BananaService_HumanToken token;
 @property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_HumanToken) token channel: (BananaService_BananaChannel) channel;
+- (id) initWithToken: (BananaService_HumanToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1080,6 +1083,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setChannel: (BananaService_BananaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
 
 @end
 
@@ -1298,6 +1307,85 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setRecentMessages: (NSMutableArray *) recentMessages;
 #endif
 - (BOOL) recentMessagesIsSet;
+
+@end
+
+@interface BananaService_GetMessagesRequest : NSObject <TBase, NSCoding> {
+  BananaService_HumanToken __token;
+  NSString * __applicationId;
+  BananaService_int __limit;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __limit_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_HumanToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_HumanToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_HumanToken) token;
+- (void) setToken: (BananaService_HumanToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) limit;
+- (void) setLimit: (BananaService_int) limit;
+#endif
+- (BOOL) limitIsSet;
+
+@end
+
+@interface BananaService_GetMessagesResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __messages;
+  BananaService_int __totalMessagesMatching;
+
+  BOOL __messages_isset;
+  BOOL __totalMessagesMatching_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messages, setter=setMessages:) NSMutableArray * messages;
+@property (nonatomic, getter=totalMessagesMatching, setter=setTotalMessagesMatching:) BananaService_int totalMessagesMatching;
+#endif
+
+- (id) init;
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (BananaService_int) totalMessagesMatching;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messages;
+- (void) setMessages: (NSMutableArray *) messages;
+#endif
+- (BOOL) messagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) totalMessagesMatching;
+- (void) setTotalMessagesMatching: (BananaService_int) totalMessagesMatching;
+#endif
+- (BOOL) totalMessagesMatchingIsSet;
 
 @end
 

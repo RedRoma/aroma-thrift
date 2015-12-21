@@ -237,6 +237,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
 <a href="#Struct_GetDashboardResponse">GetDashboardResponse</a><br/>
+<a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
+<a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
 <a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a><br/>
 <a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a><br/>
 <a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
@@ -509,6 +511,8 @@ It will no longer be remembered or suggested.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td>Optionally choose to snooze a specific Application.
+</td><td>optional</td><td></td></tr>
 </table><br/>A Snoozed Channel will not receive Notifications
 for a set time period.
 <br/></div><div class="definition"><h3 id="Struct_SnoozeChannelResponse">Struct: SnoozeChannelResponse</h3>
@@ -536,6 +540,19 @@ for a set time period.
 <tr><td>2</td><td>totalMessagesLastHour</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>3</td><td>totalMessagesLast24hrs</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>4</td><td>recentMessages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>Allows you to get Messages from a particular application.
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
+</td><td>optional</td><td><code>0</code></td></tr>
+</table><br/>Query to get a User's messages, either across all Services,
+or by a specific Application.
+<br/></div><div class="definition"><h3 id="Struct_GetMessagesResponse">Struct: GetMessagesResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_HumanToken">HumanToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -597,7 +614,6 @@ They provide query interfaces and Authentication/Authorization over Data.
 </pre>Register an existing Application for Health Pokes. The Banana Service
 will then periodically poke the Application for health status.
 
-#human
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_renewApplicationToken">Function: BananaService.renewApplicationToken</h4>
 <pre><code><a href="#Struct_RenewApplicationTokenResponse">RenewApplicationTokenResponse</a></code> renewApplicationToken(<code><a href="#Struct_RenewApplicationTokenRequest">RenewApplicationTokenRequest</a></code> request)
@@ -605,7 +621,6 @@ will then periodically poke the Application for health status.
 </pre>Renew an Application Token that is close to being expired.
 Only an "owner" can perform this operation.
 
-#human
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
 <pre><code><a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a></code> request)
@@ -614,7 +629,6 @@ Only an "owner" can perform this operation.
 Keep in mind that this will invalidate any prior existing Application Tokens.
 Only an "owner" can perform this operation.
 
-#human
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_searchForApplications">Function: BananaService.searchForApplications</h4>
 <pre><code><a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a></code> searchForApplications(<code><a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a></code> request)

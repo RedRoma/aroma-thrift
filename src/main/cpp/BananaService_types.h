@@ -131,6 +131,10 @@ class GetDashboardRequest;
 
 class GetDashboardResponse;
 
+class GetMessagesRequest;
+
+class GetMessagesResponse;
+
 class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
@@ -1550,9 +1554,10 @@ inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRespo
 }
 
 typedef struct _SnoozeChannelRequest__isset {
-  _SnoozeChannelRequest__isset() : token(false), channel(false) {}
+  _SnoozeChannelRequest__isset() : token(false), channel(false), applicationId(false) {}
   bool token :1;
   bool channel :1;
+  bool applicationId :1;
 } _SnoozeChannelRequest__isset;
 
 class SnoozeChannelRequest {
@@ -1560,12 +1565,13 @@ class SnoozeChannelRequest {
 
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
-  SnoozeChannelRequest() {
+  SnoozeChannelRequest() : applicationId() {
   }
 
   virtual ~SnoozeChannelRequest() throw();
   HumanToken token;
   BananaChannel channel;
+  std::string applicationId;
 
   _SnoozeChannelRequest__isset __isset;
 
@@ -1573,11 +1579,17 @@ class SnoozeChannelRequest {
 
   void __set_channel(const BananaChannel& val);
 
+  void __set_applicationId(const std::string& val);
+
   bool operator == (const SnoozeChannelRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(channel == rhs.channel))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
       return false;
     return true;
   }
@@ -1943,6 +1955,123 @@ class GetDashboardResponse {
 void swap(GetDashboardResponse &a, GetDashboardResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMessagesRequest__isset {
+  _GetMessagesRequest__isset() : token(false), applicationId(false), limit(true) {}
+  bool token :1;
+  bool applicationId :1;
+  bool limit :1;
+} _GetMessagesRequest__isset;
+
+class GetMessagesRequest {
+ public:
+
+  GetMessagesRequest(const GetMessagesRequest&);
+  GetMessagesRequest& operator=(const GetMessagesRequest&);
+  GetMessagesRequest() : applicationId(), limit(0) {
+  }
+
+  virtual ~GetMessagesRequest() throw();
+  HumanToken token;
+  std::string applicationId;
+  int limit;
+
+  _GetMessagesRequest__isset __isset;
+
+  void __set_token(const HumanToken& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_limit(const int val);
+
+  bool operator == (const GetMessagesRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.limit != rhs.__isset.limit)
+      return false;
+    else if (__isset.limit && !(limit == rhs.limit))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMessagesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMessagesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMessagesRequest &a, GetMessagesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMessagesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMessagesResponse__isset {
+  _GetMessagesResponse__isset() : messages(true), totalMessagesMatching(true) {}
+  bool messages :1;
+  bool totalMessagesMatching :1;
+} _GetMessagesResponse__isset;
+
+class GetMessagesResponse {
+ public:
+
+  GetMessagesResponse(const GetMessagesResponse&);
+  GetMessagesResponse& operator=(const GetMessagesResponse&);
+  GetMessagesResponse() : totalMessagesMatching(0) {
+
+  }
+
+  virtual ~GetMessagesResponse() throw();
+  std::vector< ::aroma::banana::thrift::Message>  messages;
+  int totalMessagesMatching;
+
+  _GetMessagesResponse__isset __isset;
+
+  void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
+
+  void __set_totalMessagesMatching(const int val);
+
+  bool operator == (const GetMessagesResponse & rhs) const
+  {
+    if (!(messages == rhs.messages))
+      return false;
+    if (__isset.totalMessagesMatching != rhs.__isset.totalMessagesMatching)
+      return false;
+    else if (__isset.totalMessagesMatching && !(totalMessagesMatching == rhs.totalMessagesMatching))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMessagesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMessagesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMessagesResponse &a, GetMessagesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& obj)
 {
   obj.printTo(out);
   return out;
