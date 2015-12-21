@@ -569,7 +569,16 @@ service BananaService
     //==========================================================
     // Query Operations
     //==========================================================
-
+    
+    /**
+     * Get all of the Human-Related activities that have happened recently.
+     * 
+     * #human
+     */
+    GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidArgumentException ex2,
+                                                                           3 : InvalidCredentialsException ex3)
+    
     /**
      * Get details about an Application from it's unique ID
      *

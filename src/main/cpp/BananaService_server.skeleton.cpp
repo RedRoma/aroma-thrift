@@ -144,6 +144,18 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
+   * Get all of the Human-Related activities that have happened recently.
+   * 
+   * #human
+   * 
+   * @param request
+   */
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
+    // Your implementation goes here
+    printf("getActivity\n");
+  }
+
+  /**
    * Get details about an Application from it's unique ID
    * 
    * #human

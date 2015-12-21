@@ -110,6 +110,15 @@ class BananaServiceIf {
   virtual void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) = 0;
 
   /**
+   * Get all of the Human-Related activities that have happened recently.
+   * 
+   * #human
+   * 
+   * @param request
+   */
+  virtual void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) = 0;
+
+  /**
    * Get details about an Application from it's unique ID
    * 
    * #human
@@ -199,6 +208,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void snoozeChannel(SnoozeChannelResponse& /* _return */, const SnoozeChannelRequest& /* request */) {
+    return;
+  }
+  void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
     return;
   }
   void getApplicationInfo(GetApplicationInfoResponse& /* _return */, const GetApplicationInfoRequest& /* request */) {
@@ -1721,6 +1733,134 @@ class BananaService_snoozeChannel_presult {
 
 };
 
+typedef struct _BananaService_getActivity_args__isset {
+  _BananaService_getActivity_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getActivity_args__isset;
+
+class BananaService_getActivity_args {
+ public:
+
+  BananaService_getActivity_args(const BananaService_getActivity_args&);
+  BananaService_getActivity_args& operator=(const BananaService_getActivity_args&);
+  BananaService_getActivity_args() {
+  }
+
+  virtual ~BananaService_getActivity_args() throw();
+  GetActivityRequest request;
+
+  _BananaService_getActivity_args__isset __isset;
+
+  void __set_request(const GetActivityRequest& val);
+
+  bool operator == (const BananaService_getActivity_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getActivity_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getActivity_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getActivity_pargs {
+ public:
+
+
+  virtual ~BananaService_getActivity_pargs() throw();
+  const GetActivityRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getActivity_result__isset {
+  _BananaService_getActivity_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getActivity_result__isset;
+
+class BananaService_getActivity_result {
+ public:
+
+  BananaService_getActivity_result(const BananaService_getActivity_result&);
+  BananaService_getActivity_result& operator=(const BananaService_getActivity_result&);
+  BananaService_getActivity_result() {
+  }
+
+  virtual ~BananaService_getActivity_result() throw();
+  GetActivityResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+
+  _BananaService_getActivity_result__isset __isset;
+
+  void __set_success(const GetActivityResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  bool operator == (const BananaService_getActivity_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getActivity_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getActivity_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getActivity_presult__isset {
+  _BananaService_getActivity_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getActivity_presult__isset;
+
+class BananaService_getActivity_presult {
+ public:
+
+
+  virtual ~BananaService_getActivity_presult() throw();
+  GetActivityResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+
+  _BananaService_getActivity_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _BananaService_getApplicationInfo_args__isset {
   _BananaService_getApplicationInfo_args__isset() : request(false) {}
   bool request :1;
@@ -2579,6 +2719,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   void send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return);
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
+  void send_getActivity(const GetActivityRequest& request);
+  void recv_getActivity(GetActivityResponse& _return);
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   void send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return);
@@ -2623,6 +2766,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationSubscribers(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -2643,6 +2787,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["saveChannel"] = &BananaServiceProcessor::process_saveChannel;
     processMap_["removeSavedChannel"] = &BananaServiceProcessor::process_removeSavedChannel;
     processMap_["snoozeChannel"] = &BananaServiceProcessor::process_snoozeChannel;
+    processMap_["getActivity"] = &BananaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
     processMap_["getApplicationSubscribers"] = &BananaServiceProcessor::process_getApplicationSubscribers;
     processMap_["getDashboard"] = &BananaServiceProcessor::process_getDashboard;
@@ -2786,6 +2931,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getActivity(_return, request);
+    }
+    ifaces_[i]->getActivity(_return, request);
+    return;
+  }
+
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -2909,6 +3064,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   int32_t send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid);
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
+  int32_t send_getActivity(const GetActivityRequest& request);
+  void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   int32_t send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid);
