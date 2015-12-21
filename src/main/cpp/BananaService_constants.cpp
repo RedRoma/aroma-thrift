@@ -26,11 +26,11 @@ BananaServiceConstants::BananaServiceConstants() {
   BETA_ENDPOINT.port = tmp132;
 
    ::aroma::banana::thrift::int tmp133;
-  tmp133 = 500;
+  tmp133 = 1024;
 
   MAX_ICON_DIMENSION.width = tmp133;
    ::aroma::banana::thrift::int tmp134;
-  tmp134 = 500;
+  tmp134 = 1024;
 
   MAX_ICON_DIMENSION.height = tmp134;
 

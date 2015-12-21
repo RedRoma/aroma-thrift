@@ -9079,8 +9079,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 ;
   BananaService_MAX_ICON_DIMENSION = [[Banana_Dimension alloc] init];
-  [BananaService_MAX_ICON_DIMENSION setWidth:500];
-  [BananaService_MAX_ICON_DIMENSION setHeight:500];
+  [BananaService_MAX_ICON_DIMENSION setWidth:1024];
+  [BananaService_MAX_ICON_DIMENSION setHeight:1024];
 
 ;
 }

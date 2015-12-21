@@ -66,7 +66,9 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banan
 // Actions
 //==========================================================
 
-
+/**
+ * Sign In to the Banna Service, and get a Human Token.
+ */
 struct SignInRequest
 {
     1: Authentication.Credentials credentials;
@@ -79,7 +81,7 @@ struct SignInResponse
 }
 
 /**
- * Sign Up for an Aroma Account.
+ * Sign Up for a Banana Service Account.
  */
 struct SignUpRequest
 {
@@ -100,7 +102,7 @@ struct SignUpResponse
 }
 
 /** The Maximum Dimensions for an Icon submitted with an Application. */
-const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 500, "height" : 500 };
+const Banana.Dimension MAX_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
 
 /** The Maximum Filesize for an Icon submitted with an Application. */
 const int MAX_ICON_SIZE_IN_KILOBYTES = 40;

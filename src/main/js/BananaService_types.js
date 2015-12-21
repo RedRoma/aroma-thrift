@@ -3049,5 +3049,5 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
 MAX_ICON_DIMENSION = new Dimension({
-'width' : 500,'height' : 500});
+'width' : 1024,'height' : 1024});
 MAX_ICON_SIZE_IN_KILOBYTES = 40;

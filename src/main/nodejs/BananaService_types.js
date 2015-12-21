@@ -3060,5 +3060,5 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
 ttypes.MAX_ICON_DIMENSION = new Banana_ttypes.Dimension({
-'width' : 500,'height' : 500});
+'width' : 1024,'height' : 1024});
 ttypes.MAX_ICON_SIZE_IN_KILOBYTES = 40;
