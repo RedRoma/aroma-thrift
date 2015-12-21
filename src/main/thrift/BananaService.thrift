@@ -403,7 +403,7 @@ struct GetMySavedChannelsResponse
 }
 
 /**
- * Request to get any upcoming Service Annoucements 
+ * Request to get any upcoming Service Announcements 
  * from the Team @ Aroma Tech.
  */
 struct GetServiceAnnouncementsRequest
