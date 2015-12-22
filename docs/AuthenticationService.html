@@ -201,6 +201,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_AuthenticationService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_AuthenticationService_invalidateApplicationToken">invalidateApplicationToken</a></li>
 <li><a href="#Fn_AuthenticationService_invalidateUserToken">invalidateUserToken</a></li>
+<li><a href="#Fn_AuthenticationService_verifyApplicationToken">verifyApplicationToken</a></li>
+<li><a href="#Fn_AuthenticationService_verifyUserToken">verifyUserToken</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -342,4 +344,12 @@ an InvalidTokenException.
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
 an InvalidTokenException.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyApplicationToken">Function: AuthenticationService.verifyApplicationToken</h4>
+<pre><code><a href="#Struct_VerifyApplicationTokenResponse">VerifyApplicationTokenResponse</a></code> verifyApplicationToken(<code><a href="#Struct_VerifyApplicationTokenRequest">VerifyApplicationTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Verify that a Token is valid, and optionally, that it belongs to the specified application.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyUserToken">Function: AuthenticationService.verifyUserToken</h4>
+<pre><code><a href="#Struct_VerifyUserTokenResponse">VerifyUserTokenResponse</a></code> verifyUserToken(<code><a href="#Struct_VerifyUserTokenRequest">VerifyUserTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Verify that a Token is valid, and optionally, that it belongs to the specified user.
 <br/></div></div></body></html>

@@ -643,6 +643,300 @@ AuthenticationService_invalidateUserToken_result.prototype.write = function(outp
       return;
     };
 
+AuthenticationService_verifyApplicationToken_args = function(args) {
+      this.request = null;
+      if (args) {
+            if (args.request !== undefined && args.request !== null) {
+                  this.request = new ttypes.VerifyApplicationTokenRequest(args.request);
+            }
+      }
+};
+AuthenticationService_verifyApplicationToken_args.prototype = {};
+AuthenticationService_verifyApplicationToken_args.prototype.read = function(input) {
+      input.readStructBegin();
+      while (true)
+      {
+        var ret = input.readFieldBegin();
+        var fname = ret.fname;
+        var ftype = ret.ftype;
+        var fid = ret.fid;
+        if (ftype == Thrift.Type.STOP) {
+          break;
+        }
+        switch (fid)
+        {
+          case 1:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.request = new ttypes.VerifyApplicationTokenRequest();
+            this.request.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 0:
+            input.skip(ftype);
+            break;
+          default:
+            input.skip(ftype);
+        }
+        input.readFieldEnd();
+      }
+      input.readStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyApplicationToken_args.prototype.write = function(output) {
+      output.writeStructBegin('AuthenticationService_verifyApplicationToken_args');
+      if (this.request !== null && this.request !== undefined) {
+        output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+        this.request.write(output);
+        output.writeFieldEnd();
+      }
+      output.writeFieldStop();
+      output.writeStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyApplicationToken_result = function(args) {
+      this.success = null;
+      this.ex1 = null;
+      this.ex2 = null;
+      if (args instanceof Exceptions_ttypes.OperationFailedException) {
+            this.ex1 = args;
+            return;
+      }
+      if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+            this.ex2 = args;
+            return;
+      }
+      if (args) {
+            if (args.success !== undefined && args.success !== null) {
+                  this.success = new ttypes.VerifyApplicationTokenResponse(args.success);
+            }
+            if (args.ex1 !== undefined && args.ex1 !== null) {
+                  this.ex1 = args.ex1;
+            }
+            if (args.ex2 !== undefined && args.ex2 !== null) {
+                  this.ex2 = args.ex2;
+            }
+      }
+};
+AuthenticationService_verifyApplicationToken_result.prototype = {};
+AuthenticationService_verifyApplicationToken_result.prototype.read = function(input) {
+      input.readStructBegin();
+      while (true)
+      {
+        var ret = input.readFieldBegin();
+        var fname = ret.fname;
+        var ftype = ret.ftype;
+        var fid = ret.fid;
+        if (ftype == Thrift.Type.STOP) {
+          break;
+        }
+        switch (fid)
+        {
+          case 0:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.success = new ttypes.VerifyApplicationTokenResponse();
+            this.success.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 1:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex1 = new Exceptions_ttypes.OperationFailedException();
+            this.ex1.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 2:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex2 = new Exceptions_ttypes.InvalidTokenException();
+            this.ex2.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          default:
+            input.skip(ftype);
+        }
+        input.readFieldEnd();
+      }
+      input.readStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyApplicationToken_result.prototype.write = function(output) {
+      output.writeStructBegin('AuthenticationService_verifyApplicationToken_result');
+      if (this.success !== null && this.success !== undefined) {
+        output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+        this.success.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex1 !== null && this.ex1 !== undefined) {
+        output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+        this.ex1.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex2 !== null && this.ex2 !== undefined) {
+        output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+        this.ex2.write(output);
+        output.writeFieldEnd();
+      }
+      output.writeFieldStop();
+      output.writeStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyUserToken_args = function(args) {
+      this.request = null;
+      if (args) {
+            if (args.request !== undefined && args.request !== null) {
+                  this.request = new ttypes.VerifyUserTokenRequest(args.request);
+            }
+      }
+};
+AuthenticationService_verifyUserToken_args.prototype = {};
+AuthenticationService_verifyUserToken_args.prototype.read = function(input) {
+      input.readStructBegin();
+      while (true)
+      {
+        var ret = input.readFieldBegin();
+        var fname = ret.fname;
+        var ftype = ret.ftype;
+        var fid = ret.fid;
+        if (ftype == Thrift.Type.STOP) {
+          break;
+        }
+        switch (fid)
+        {
+          case 1:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.request = new ttypes.VerifyUserTokenRequest();
+            this.request.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 0:
+            input.skip(ftype);
+            break;
+          default:
+            input.skip(ftype);
+        }
+        input.readFieldEnd();
+      }
+      input.readStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyUserToken_args.prototype.write = function(output) {
+      output.writeStructBegin('AuthenticationService_verifyUserToken_args');
+      if (this.request !== null && this.request !== undefined) {
+        output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+        this.request.write(output);
+        output.writeFieldEnd();
+      }
+      output.writeFieldStop();
+      output.writeStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyUserToken_result = function(args) {
+      this.success = null;
+      this.ex1 = null;
+      this.ex2 = null;
+      if (args instanceof Exceptions_ttypes.OperationFailedException) {
+            this.ex1 = args;
+            return;
+      }
+      if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+            this.ex2 = args;
+            return;
+      }
+      if (args) {
+            if (args.success !== undefined && args.success !== null) {
+                  this.success = new ttypes.VerifyUserTokenResponse(args.success);
+            }
+            if (args.ex1 !== undefined && args.ex1 !== null) {
+                  this.ex1 = args.ex1;
+            }
+            if (args.ex2 !== undefined && args.ex2 !== null) {
+                  this.ex2 = args.ex2;
+            }
+      }
+};
+AuthenticationService_verifyUserToken_result.prototype = {};
+AuthenticationService_verifyUserToken_result.prototype.read = function(input) {
+      input.readStructBegin();
+      while (true)
+      {
+        var ret = input.readFieldBegin();
+        var fname = ret.fname;
+        var ftype = ret.ftype;
+        var fid = ret.fid;
+        if (ftype == Thrift.Type.STOP) {
+          break;
+        }
+        switch (fid)
+        {
+          case 0:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.success = new ttypes.VerifyUserTokenResponse();
+            this.success.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 1:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex1 = new Exceptions_ttypes.OperationFailedException();
+            this.ex1.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 2:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex2 = new Exceptions_ttypes.InvalidTokenException();
+            this.ex2.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          default:
+            input.skip(ftype);
+        }
+        input.readFieldEnd();
+      }
+      input.readStructEnd();
+      return;
+    };
+
+AuthenticationService_verifyUserToken_result.prototype.write = function(output) {
+      output.writeStructBegin('AuthenticationService_verifyUserToken_result');
+      if (this.success !== null && this.success !== undefined) {
+        output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+        this.success.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex1 !== null && this.ex1 !== undefined) {
+        output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+        this.ex1.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex2 !== null && this.ex2 !== undefined) {
+        output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+        this.ex2.write(output);
+        output.writeFieldEnd();
+      }
+      output.writeFieldStop();
+      output.writeStructEnd();
+      return;
+    };
+
 AuthenticationServiceClient = exports.Client = function(output, pClass) {
         this.output = output;
         this.pClass = pClass;
@@ -904,6 +1198,112 @@ AuthenticationServiceClient.prototype.recv_invalidateUserToken = function(input,
       }
       return callback('invalidateUserToken failed: unknown result');
 };
+AuthenticationServiceClient.prototype.verifyApplicationToken = function(request, callback) {
+      this._seqid = this.new_seqid();
+      if (callback === undefined) {
+        var _defer = Q.defer();
+        this._reqs[this.seqid()] = function(error, result) {
+          if (error) {
+            _defer.reject(error);
+          } else {
+            _defer.resolve(result);
+          }
+        };
+        this.send_verifyApplicationToken(request);
+        return _defer.promise;
+      } else {
+        this._reqs[this.seqid()] = callback;
+        this.send_verifyApplicationToken(request);
+      }
+};
+
+AuthenticationServiceClient.prototype.send_verifyApplicationToken = function(request) {
+      var output = new this.pClass(this.output);
+      output.writeMessageBegin('verifyApplicationToken', Thrift.MessageType.CALL, this.seqid());
+      var args = new AuthenticationService_verifyApplicationToken_args();
+      args.request = request;
+      args.write(output);
+      output.writeMessageEnd();
+      return this.output.flush();
+};
+
+AuthenticationServiceClient.prototype.recv_verifyApplicationToken = function(input,mtype,rseqid) {
+      var callback = this._reqs[rseqid] || function() {};
+      delete this._reqs[rseqid];
+      if (mtype == Thrift.MessageType.EXCEPTION) {
+        var x = new Thrift.TApplicationException();
+        x.read(input);
+        input.readMessageEnd();
+        return callback(x);
+      }
+      var result = new AuthenticationService_verifyApplicationToken_result();
+      result.read(input);
+      input.readMessageEnd();
+
+      if (null !== result.ex1) {
+        return callback(result.ex1);
+      }
+      if (null !== result.ex2) {
+        return callback(result.ex2);
+      }
+      if (null !== result.success) {
+        return callback(null, result.success);
+      }
+      return callback('verifyApplicationToken failed: unknown result');
+};
+AuthenticationServiceClient.prototype.verifyUserToken = function(request, callback) {
+      this._seqid = this.new_seqid();
+      if (callback === undefined) {
+        var _defer = Q.defer();
+        this._reqs[this.seqid()] = function(error, result) {
+          if (error) {
+            _defer.reject(error);
+          } else {
+            _defer.resolve(result);
+          }
+        };
+        this.send_verifyUserToken(request);
+        return _defer.promise;
+      } else {
+        this._reqs[this.seqid()] = callback;
+        this.send_verifyUserToken(request);
+      }
+};
+
+AuthenticationServiceClient.prototype.send_verifyUserToken = function(request) {
+      var output = new this.pClass(this.output);
+      output.writeMessageBegin('verifyUserToken', Thrift.MessageType.CALL, this.seqid());
+      var args = new AuthenticationService_verifyUserToken_args();
+      args.request = request;
+      args.write(output);
+      output.writeMessageEnd();
+      return this.output.flush();
+};
+
+AuthenticationServiceClient.prototype.recv_verifyUserToken = function(input,mtype,rseqid) {
+      var callback = this._reqs[rseqid] || function() {};
+      delete this._reqs[rseqid];
+      if (mtype == Thrift.MessageType.EXCEPTION) {
+        var x = new Thrift.TApplicationException();
+        x.read(input);
+        input.readMessageEnd();
+        return callback(x);
+      }
+      var result = new AuthenticationService_verifyUserToken_result();
+      result.read(input);
+      input.readMessageEnd();
+
+      if (null !== result.ex1) {
+        return callback(result.ex1);
+      }
+      if (null !== result.ex2) {
+        return callback(result.ex2);
+      }
+      if (null !== result.success) {
+        return callback(null, result.success);
+      }
+      return callback('verifyUserToken failed: unknown result');
+};
 AuthenticationServiceProcessor = exports.Processor = function(handler)     {
       this._handler = handler
     }
@@ -1109,6 +1509,86 @@ AuthenticationServiceProcessor = exports.Processor = function(handler)     {
           } else {
             var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
             output.writeMessageBegin("invalidateUserToken", Thrift.MessageType.EXCEPTION, seqid);
+          }
+          result.write(output);
+          output.writeMessageEnd();
+          output.flush();
+        });
+      }
+    }
+
+    AuthenticationServiceProcessor.prototype.process_verifyApplicationToken = function(seqid, input, output)     {
+      var args = new AuthenticationService_verifyApplicationToken_args();
+      args.read(input);
+      input.readMessageEnd();
+      if (this._handler.verifyApplicationToken.length === 1) {
+        Q.fcall(this._handler.verifyApplicationToken, args.request)
+          .then(function(result) {
+            var result = new AuthenticationService_verifyApplicationToken_result({success: result});
+            output.writeMessageBegin("verifyApplicationToken", Thrift.MessageType.REPLY, seqid);
+            result.write(output);
+            output.writeMessageEnd();
+            output.flush();
+          }, function (err) {
+            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+              var result = new AuthenticationService_verifyApplicationToken_result(err);
+              output.writeMessageBegin("verifyApplicationToken", Thrift.MessageType.REPLY, seqid);
+            } else {
+              var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+              output.writeMessageBegin("verifyApplicationToken", Thrift.MessageType.EXCEPTION, seqid);
+            }
+            result.write(output);
+            output.writeMessageEnd();
+            output.flush();
+          });
+      } else {
+        this._handler.verifyApplicationToken(args.request, function (err, result) {
+          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+            var result = new AuthenticationService_verifyApplicationToken_result((err != null ? err : {success: result}));
+            output.writeMessageBegin("verifyApplicationToken", Thrift.MessageType.REPLY, seqid);
+          } else {
+            var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+            output.writeMessageBegin("verifyApplicationToken", Thrift.MessageType.EXCEPTION, seqid);
+          }
+          result.write(output);
+          output.writeMessageEnd();
+          output.flush();
+        });
+      }
+    }
+
+    AuthenticationServiceProcessor.prototype.process_verifyUserToken = function(seqid, input, output)     {
+      var args = new AuthenticationService_verifyUserToken_args();
+      args.read(input);
+      input.readMessageEnd();
+      if (this._handler.verifyUserToken.length === 1) {
+        Q.fcall(this._handler.verifyUserToken, args.request)
+          .then(function(result) {
+            var result = new AuthenticationService_verifyUserToken_result({success: result});
+            output.writeMessageBegin("verifyUserToken", Thrift.MessageType.REPLY, seqid);
+            result.write(output);
+            output.writeMessageEnd();
+            output.flush();
+          }, function (err) {
+            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+              var result = new AuthenticationService_verifyUserToken_result(err);
+              output.writeMessageBegin("verifyUserToken", Thrift.MessageType.REPLY, seqid);
+            } else {
+              var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+              output.writeMessageBegin("verifyUserToken", Thrift.MessageType.EXCEPTION, seqid);
+            }
+            result.write(output);
+            output.writeMessageEnd();
+            output.flush();
+          });
+      } else {
+        this._handler.verifyUserToken(args.request, function (err, result) {
+          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+            var result = new AuthenticationService_verifyUserToken_result((err != null ? err : {success: result}));
+            output.writeMessageBegin("verifyUserToken", Thrift.MessageType.REPLY, seqid);
+          } else {
+            var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+            output.writeMessageBegin("verifyUserToken", Thrift.MessageType.EXCEPTION, seqid);
           }
           result.write(output);
           output.writeMessageEnd();

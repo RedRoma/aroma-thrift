@@ -373,6 +373,8 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
 - (AuthenticationService_InvalidateApplicationTokenResponse *) invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 - (AuthenticationService_InvalidateUserTokenResponse *) invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_VerifyApplicationTokenResponse *) verifyApplicationToken: (AuthenticationService_VerifyApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_VerifyUserTokenResponse *) verifyUserToken: (AuthenticationService_VerifyUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

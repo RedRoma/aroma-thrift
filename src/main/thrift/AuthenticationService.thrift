@@ -149,4 +149,18 @@ service AuthenticationService
      */   
     InvalidateUserTokenResponse invalidateUserToken(1 : InvalidateUserTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                                    2 : InvalidTokenException ex2);
+
+
+    /**
+     * Verify that a Token is valid, and optionally, that it belongs to the specified application.
+     */
+    VerifyApplicationTokenResponse verifyApplicationToken(1 : VerifyApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                            2 : InvalidTokenException ex2);
+
+    /**
+     * Verify that a Token is valid, and optionally, that it belongs to the specified user.
+     */
+    VerifyUserTokenResponse verifyUserToken(1 : VerifyUserTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                       2 : InvalidTokenException ex2);
+    
    }

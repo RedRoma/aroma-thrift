@@ -69,6 +69,26 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
     printf("invalidateUserToken\n");
   }
 
+  /**
+   * Verify that a Token is valid, and optionally, that it belongs to the specified application.
+   * 
+   * @param request
+   */
+  void verifyApplicationToken(VerifyApplicationTokenResponse& _return, const VerifyApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("verifyApplicationToken\n");
+  }
+
+  /**
+   * Verify that a Token is valid, and optionally, that it belongs to the specified user.
+   * 
+   * @param request
+   */
+  void verifyUserToken(VerifyUserTokenResponse& _return, const VerifyUserTokenRequest& request) {
+    // Your implementation goes here
+    printf("verifyUserToken\n");
+  }
+
 };
 
 int main(int argc, char **argv) {
