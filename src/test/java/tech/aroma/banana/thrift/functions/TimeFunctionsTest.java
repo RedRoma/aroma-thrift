@@ -25,6 +25,7 @@ import tech.aroma.banana.thrift.LengthOfTime;
 import tech.aroma.banana.thrift.TimeUnit;
 import tech.sirwellington.alchemy.generator.NumberGenerators;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
+import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.is;
@@ -55,6 +56,14 @@ public class TimeFunctionsTest
         lengthOfTime = new LengthOfTime()
             .setUnit(timeUnit)
             .setValue(timeValue);
+    }
+    
+    @DontRepeat
+    @Test
+    public void testCannotInstantiate()
+    {
+        assertThrows(() -> TimeFunctions.class.newInstance())
+            .isInstanceOf(IllegalAccessException.class);
     }
     
     @Test

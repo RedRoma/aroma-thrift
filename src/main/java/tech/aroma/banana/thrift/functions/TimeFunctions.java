@@ -29,7 +29,7 @@ import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
-import static tech.sirwellington.alchemy.arguments.assertions.NumberAssertions.greaterThan;
+import static tech.sirwellington.alchemy.arguments.assertions.NumberAssertions.greaterThanOrEqualTo;
 
 /**
  *
@@ -81,7 +81,7 @@ public final class TimeFunctions
         
         checkThat(t.value)
             .usingMessage("time value must be >= 0")
-            .is(greaterThan(0L));
+            .is(greaterThanOrEqualTo(0L));
 
         ChronoUnit chronoUnit = TIME_UNIT_TO_CHRONO_UNIT.apply(t.unit);
         return chronoUnit.getDuration().multipliedBy(t.value);
