@@ -27,6 +27,14 @@ exception InvalidCredentialsException
 }
 
 /**
+ * Thrown when referencing or using an Invalid Token (Application or User).
+ */
+exception InvalidTokenException
+{
+    1: string message = "The specified token is invalid"
+}
+
+/**
  * Thrown when trying to create an account that is already registered.
  */
 exception AccountAlreadyExistsException

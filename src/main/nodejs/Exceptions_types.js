@@ -123,6 +123,62 @@ InvalidCredentialsException.prototype.write = function(output) {
   return;
 };
 
+InvalidTokenException = module.exports.InvalidTokenException = function(args) {
+  Thrift.TException.call(this, "InvalidTokenException")
+  this.name = "InvalidTokenException"
+  this.message = 'The specified token is invalid';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(InvalidTokenException, Thrift.TException);
+InvalidTokenException.prototype.name = 'InvalidTokenException';
+InvalidTokenException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+InvalidTokenException.prototype.write = function(output) {
+  output.writeStructBegin('InvalidTokenException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AccountAlreadyExistsException = module.exports.AccountAlreadyExistsException = function(args) {
   Thrift.TException.call(this, "AccountAlreadyExistsException")
   this.name = "AccountAlreadyExistsException"

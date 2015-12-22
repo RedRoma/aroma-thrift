@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>AuthenticationService</td><td><a href="#Svc_AuthenticationService">AuthenticationService</a><br/>
 <ul>
+<li><a href="#Fn_AuthenticationService_createUserToken">createUserToken</a></li>
 <li><a href="#Fn_AuthenticationService_getApiVersion">getApiVersion</a></li>
 </ul>
 </td>
@@ -316,4 +317,8 @@ NOTE: This Service is for internal use only. It is designed to be called only by
 the Banana Service and it's supporting services.
 <br/><div class="definition"><h4 id="Fn_AuthenticationService_getApiVersion">Function: AuthenticationService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
-</pre></div></div></body></html>
+</pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createUserToken">Function: AuthenticationService.createUserToken</h4>
+<pre><code><a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a></code> createUserToken(<code><a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
+</pre>Create a User Token to be used to represent a Human.
+<br/></div></div></body></html>

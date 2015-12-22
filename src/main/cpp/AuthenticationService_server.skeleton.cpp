@@ -27,6 +27,16 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
     printf("getApiVersion\n");
   }
 
+  /**
+   * Create a User Token to be used to represent a Human.
+   * 
+   * @param request
+   */
+  void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request) {
+    // Your implementation goes here
+    printf("createUserToken\n");
+  }
+
 };
 
 int main(int argc, char **argv) {

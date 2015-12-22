@@ -24,6 +24,8 @@ class InvalidArgumentException;
 
 class InvalidCredentialsException;
 
+class InvalidTokenException;
+
 class AccountAlreadyExistsException;
 
 class InvalidCodeException;
@@ -135,6 +137,54 @@ class InvalidCredentialsException : public ::apache::thrift::TException {
 void swap(InvalidCredentialsException &a, InvalidCredentialsException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const InvalidCredentialsException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _InvalidTokenException__isset {
+  _InvalidTokenException__isset() : message(true) {}
+  bool message :1;
+} _InvalidTokenException__isset;
+
+class InvalidTokenException : public ::apache::thrift::TException {
+ public:
+
+  InvalidTokenException(const InvalidTokenException&);
+  InvalidTokenException& operator=(const InvalidTokenException&);
+  InvalidTokenException() : message("The specified token is invalid") {
+  }
+
+  virtual ~InvalidTokenException() throw();
+  std::string message;
+
+  _InvalidTokenException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const InvalidTokenException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const InvalidTokenException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const InvalidTokenException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(InvalidTokenException &a, InvalidTokenException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const InvalidTokenException& obj)
 {
   obj.printTo(out);
   return out;
