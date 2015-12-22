@@ -32,17 +32,19 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token applicationName: (NSString *) applicationName organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration
+- (id) initWithToken: (NSString *) token organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
   __timeOfExpiration = timeOfExpiration;
   __timeOfExpiration_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
   return self;
 }
 
@@ -54,11 +56,6 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"applicationName"])
-  {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
-  }
   if ([decoder containsValueForKey: @"organization"])
   {
     __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
@@ -69,6 +66,16 @@
     __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
     __timeOfExpiration_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
   return self;
 }
 
@@ -78,10 +85,6 @@
   {
     [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__applicationName_isset)
-  {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
-  }
   if (__organization_isset)
   {
     [encoder encodeObject: __organization forKey: @"organization"];
@@ -89,6 +92,14 @@
   if (__timeOfExpiration_isset)
   {
     [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
 }
 
@@ -100,11 +111,6 @@
   {
     hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
-  {
-    hash = (hash * 31) ^ [__applicationName hash];
-  }
   hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
   if (__organization_isset)
   {
@@ -114,6 +120,16 @@
   if (__timeOfExpiration_isset)
   {
     hash = (hash * 31) ^ [@(__timeOfExpiration) hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
   }
   return hash;
 }
@@ -131,10 +147,6 @@
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
-    return NO;
-  }
   if ((__organization_isset != other->__organization_isset) ||
       (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
     return NO;
@@ -143,14 +155,23 @@
       (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
     return NO;
   }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__token release_stub];
-  [__applicationName release_stub];
   [__organization release_stub];
+  [__applicationId release_stub];
+  [__applicationName release_stub];
   [super dealloc_stub];
 }
 
@@ -173,27 +194,6 @@
   [__token release_stub];
   __token = nil;
   __token_isset = NO;
-}
-
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
-}
-
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
-}
-
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
 }
 
 - (NSString *) organization {
@@ -234,6 +234,48 @@
   __timeOfExpiration_isset = NO;
 }
 
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -260,23 +302,31 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
           [self setOrganization: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
+      case 3:
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
           [self setTimeOfExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -299,24 +349,31 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
   if (__organization_isset) {
     if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 2];
       [outProtocol writeString: __organization];
       [outProtocol writeFieldEnd];
     }
   }
   if (__timeOfExpiration_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 4];
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 3];
     [outProtocol writeI64: __timeOfExpiration];
     [outProtocol writeFieldEnd];
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -330,12 +387,14 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ApplicationToken("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"\"%@\"", __token];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @",timeOfExpiration:"];
   [ms appendFormat: @"%qi", __timeOfExpiration];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

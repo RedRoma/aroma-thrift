@@ -16,9 +16,10 @@ typedef Banana.timestamp timestamp;
 struct ApplicationToken
 {
     1: string token;
-    2: string applicationName;
-    3: optional string organization;
-    4: timestamp timeOfExpiration;
+    2: optional string organization;
+    3: timestamp timeOfExpiration;
+    4: optional string applicationId;
+    5: optional string applicationName;
 }
 
 struct UserToken
@@ -62,8 +63,8 @@ struct AromaAccount
 }
 
 /**
- * This union represents the multiple ways to Sign In and Authenticate with
- * the Banana Service.
+ * This union represents the multiple ways a User can 
+ * Sign In and Authenticate with the Banana Service.
  */
 union Credentials
 {

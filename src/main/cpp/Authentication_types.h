@@ -39,11 +39,12 @@ class AromaAccount;
 class Credentials;
 
 typedef struct _ApplicationToken__isset {
-  _ApplicationToken__isset() : token(false), applicationName(false), organization(false), timeOfExpiration(false) {}
+  _ApplicationToken__isset() : token(false), organization(false), timeOfExpiration(false), applicationId(false), applicationName(false) {}
   bool token :1;
-  bool applicationName :1;
   bool organization :1;
   bool timeOfExpiration :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _ApplicationToken__isset;
 
 class ApplicationToken {
@@ -51,36 +52,45 @@ class ApplicationToken {
 
   ApplicationToken(const ApplicationToken&);
   ApplicationToken& operator=(const ApplicationToken&);
-  ApplicationToken() : token(), applicationName(), organization(), timeOfExpiration(0) {
+  ApplicationToken() : token(), organization(), timeOfExpiration(0), applicationId(), applicationName() {
   }
 
   virtual ~ApplicationToken() throw();
   std::string token;
-  std::string applicationName;
   std::string organization;
   timestamp timeOfExpiration;
+  std::string applicationId;
+  std::string applicationName;
 
   _ApplicationToken__isset __isset;
 
   void __set_token(const std::string& val);
 
-  void __set_applicationName(const std::string& val);
-
   void __set_organization(const std::string& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
   bool operator == (const ApplicationToken & rhs) const
   {
     if (!(token == rhs.token))
-      return false;
-    if (!(applicationName == rhs.applicationName))
       return false;
     if (__isset.organization != rhs.__isset.organization)
       return false;
     else if (__isset.organization && !(organization == rhs.organization))
       return false;
     if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.applicationName != rhs.__isset.applicationName)
+      return false;
+    else if (__isset.applicationName && !(applicationName == rhs.applicationName))
       return false;
     return true;
   }
