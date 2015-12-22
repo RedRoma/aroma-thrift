@@ -93,6 +93,8 @@ struct InvalidateUserTokenResponse
 struct VerifyUserTokenRequest
 {
     1: UserToken token;
+    /** If included, the operation will also verify that the token belongs to this User ID. */
+    2: optional string userId;
 }
 
 struct VerifyUserTokenResponse
@@ -103,6 +105,8 @@ struct VerifyUserTokenResponse
 struct VerifyApplicationTokenRequest
 {
     1: ApplicationToken token;
+    /** If included, the operation will also verify that the token belongs to this Application ID*/
+    2: optional string applicationId;
 }
 
 struct VerifyApplicationTokenResponse

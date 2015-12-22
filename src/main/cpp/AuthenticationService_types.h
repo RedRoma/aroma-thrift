@@ -436,8 +436,9 @@ inline std::ostream& operator<<(std::ostream& out, const InvalidateUserTokenResp
 }
 
 typedef struct _VerifyUserTokenRequest__isset {
-  _VerifyUserTokenRequest__isset() : token(false) {}
+  _VerifyUserTokenRequest__isset() : token(false), userId(false) {}
   bool token :1;
+  bool userId :1;
 } _VerifyUserTokenRequest__isset;
 
 class VerifyUserTokenRequest {
@@ -445,19 +446,26 @@ class VerifyUserTokenRequest {
 
   VerifyUserTokenRequest(const VerifyUserTokenRequest&);
   VerifyUserTokenRequest& operator=(const VerifyUserTokenRequest&);
-  VerifyUserTokenRequest() {
+  VerifyUserTokenRequest() : userId() {
   }
 
   virtual ~VerifyUserTokenRequest() throw();
   UserToken token;
+  std::string userId;
 
   _VerifyUserTokenRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
+  void __set_userId(const std::string& val);
+
   bool operator == (const VerifyUserTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
+      return false;
+    if (__isset.userId != rhs.__isset.userId)
+      return false;
+    else if (__isset.userId && !(userId == rhs.userId))
       return false;
     return true;
   }
@@ -528,8 +536,9 @@ inline std::ostream& operator<<(std::ostream& out, const VerifyUserTokenResponse
 }
 
 typedef struct _VerifyApplicationTokenRequest__isset {
-  _VerifyApplicationTokenRequest__isset() : token(false) {}
+  _VerifyApplicationTokenRequest__isset() : token(false), applicationId(false) {}
   bool token :1;
+  bool applicationId :1;
 } _VerifyApplicationTokenRequest__isset;
 
 class VerifyApplicationTokenRequest {
@@ -537,19 +546,26 @@ class VerifyApplicationTokenRequest {
 
   VerifyApplicationTokenRequest(const VerifyApplicationTokenRequest&);
   VerifyApplicationTokenRequest& operator=(const VerifyApplicationTokenRequest&);
-  VerifyApplicationTokenRequest() {
+  VerifyApplicationTokenRequest() : applicationId() {
   }
 
   virtual ~VerifyApplicationTokenRequest() throw();
   ApplicationToken token;
+  std::string applicationId;
 
   _VerifyApplicationTokenRequest__isset __isset;
 
   void __set_token(const ApplicationToken& val);
 
+  void __set_applicationId(const std::string& val);
+
   bool operator == (const VerifyApplicationTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
       return false;
     return true;
   }

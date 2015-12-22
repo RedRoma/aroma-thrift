@@ -422,9 +422,13 @@ InvalidateUserTokenResponse.prototype.write = function(output) {
 
 VerifyUserTokenRequest = module.exports.VerifyUserTokenRequest = function(args) {
   this.token = null;
+  this.userId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
@@ -450,9 +454,13 @@ VerifyUserTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString();
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -467,6 +475,11 @@ VerifyUserTokenRequest.prototype.write = function(output) {
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -529,9 +542,13 @@ VerifyUserTokenResponse.prototype.write = function(output) {
 
 VerifyApplicationTokenRequest = module.exports.VerifyApplicationTokenRequest = function(args) {
   this.token = null;
+  this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.ApplicationToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
   }
 };
@@ -557,9 +574,13 @@ VerifyApplicationTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -574,6 +595,11 @@ VerifyApplicationTokenRequest.prototype.write = function(output) {
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

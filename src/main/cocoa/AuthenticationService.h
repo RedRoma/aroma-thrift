@@ -253,16 +253,19 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_VerifyUserTokenRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_UserToken __token;
+  NSString * __userId;
 
   BOOL __token_isset;
+  BOOL __userId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_UserToken token;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_UserToken) token;
+- (id) initWithToken: (AuthenticationService_UserToken) token userId: (NSString *) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -274,6 +277,12 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setToken: (AuthenticationService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) userId;
+- (void) setUserId: (NSString *) userId;
+#endif
+- (BOOL) userIdIsSet;
 
 @end
 
@@ -305,16 +314,19 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_VerifyApplicationTokenRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_ApplicationToken __token;
+  NSString * __applicationId;
 
   BOOL __token_isset;
+  BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token;
+- (id) initWithToken: (AuthenticationService_ApplicationToken) token applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -326,6 +338,12 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setToken: (AuthenticationService_ApplicationToken) token;
 #endif
 - (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
 
 @end
 

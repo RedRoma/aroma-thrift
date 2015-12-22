@@ -702,6 +702,11 @@ void VerifyUserTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
+void VerifyUserTokenRequest::__set_userId(const std::string& val) {
+  this->userId = val;
+__isset.userId = true;
+}
+
 uint32_t VerifyUserTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -731,6 +736,14 @@ uint32_t VerifyUserTokenRequest::read(::apache::thrift::protocol::TProtocol* ipr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->userId);
+          this->__isset.userId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -752,6 +765,11 @@ uint32_t VerifyUserTokenRequest::write(::apache::thrift::protocol::TProtocol* op
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.userId) {
+    xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->userId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -760,15 +778,18 @@ uint32_t VerifyUserTokenRequest::write(::apache::thrift::protocol::TProtocol* op
 void swap(VerifyUserTokenRequest &a, VerifyUserTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
+  swap(a.userId, b.userId);
   swap(a.__isset, b.__isset);
 }
 
 VerifyUserTokenRequest::VerifyUserTokenRequest(const VerifyUserTokenRequest& other16) {
   token = other16.token;
+  userId = other16.userId;
   __isset = other16.__isset;
 }
 VerifyUserTokenRequest& VerifyUserTokenRequest::operator=(const VerifyUserTokenRequest& other17) {
   token = other17.token;
+  userId = other17.userId;
   __isset = other17.__isset;
   return *this;
 }
@@ -776,6 +797,7 @@ void VerifyUserTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "VerifyUserTokenRequest(";
   out << "token=" << to_string(token);
+  out << ", " << "userId="; (__isset.userId ? (out << to_string(userId)) : (out << "<null>"));
   out << ")";
 }
 
@@ -874,6 +896,11 @@ void VerifyApplicationTokenRequest::__set_token(const ApplicationToken& val) {
   this->token = val;
 }
 
+void VerifyApplicationTokenRequest::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+__isset.applicationId = true;
+}
+
 uint32_t VerifyApplicationTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -903,6 +930,14 @@ uint32_t VerifyApplicationTokenRequest::read(::apache::thrift::protocol::TProtoc
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -924,6 +959,11 @@ uint32_t VerifyApplicationTokenRequest::write(::apache::thrift::protocol::TProto
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.applicationId) {
+    xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->applicationId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -932,15 +972,18 @@ uint32_t VerifyApplicationTokenRequest::write(::apache::thrift::protocol::TProto
 void swap(VerifyApplicationTokenRequest &a, VerifyApplicationTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
+  swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
 }
 
 VerifyApplicationTokenRequest::VerifyApplicationTokenRequest(const VerifyApplicationTokenRequest& other20) {
   token = other20.token;
+  applicationId = other20.applicationId;
   __isset = other20.__isset;
 }
 VerifyApplicationTokenRequest& VerifyApplicationTokenRequest::operator=(const VerifyApplicationTokenRequest& other21) {
   token = other21.token;
+  applicationId = other21.applicationId;
   __isset = other21.__isset;
   return *this;
 }
@@ -948,6 +991,7 @@ void VerifyApplicationTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "VerifyApplicationTokenRequest(";
   out << "token=" << to_string(token);
+  out << ", " << "applicationId="; (__isset.applicationId ? (out << to_string(applicationId)) : (out << "<null>"));
   out << ")";
 }
 
