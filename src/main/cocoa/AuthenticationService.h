@@ -368,6 +368,7 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 @protocol AuthenticationService_AuthenticationService <NSObject>
 - (double) getApiVersion;  // throws TException
 - (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
+- (AuthenticationService_CreateApplicationTokenResponse *) createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

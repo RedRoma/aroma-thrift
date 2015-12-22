@@ -24,11 +24,18 @@ class AuthenticationServiceIf {
   virtual double getApiVersion() = 0;
 
   /**
-   * Create a User Token to be used to represent a Human.
+   * Create a User Token, used to represent a Human.
    * 
    * @param request
    */
   virtual void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request) = 0;
+
+  /**
+   * Create an Application Token, used to represent an Application or Computer.
+   * 
+   * @param request
+   */
+  virtual void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) = 0;
 };
 
 class AuthenticationServiceIfFactory {
@@ -63,6 +70,9 @@ class AuthenticationServiceNull : virtual public AuthenticationServiceIf {
     return _return;
   }
   void createUserToken(CreateUserTokenResponse& /* _return */, const CreateUserTokenRequest& /* request */) {
+    return;
+  }
+  void createApplicationToken(CreateApplicationTokenResponse& /* _return */, const CreateApplicationTokenRequest& /* request */) {
     return;
   }
 };
@@ -271,6 +281,118 @@ class AuthenticationService_createUserToken_presult {
 
 };
 
+typedef struct _AuthenticationService_createApplicationToken_args__isset {
+  _AuthenticationService_createApplicationToken_args__isset() : request(false) {}
+  bool request :1;
+} _AuthenticationService_createApplicationToken_args__isset;
+
+class AuthenticationService_createApplicationToken_args {
+ public:
+
+  AuthenticationService_createApplicationToken_args(const AuthenticationService_createApplicationToken_args&);
+  AuthenticationService_createApplicationToken_args& operator=(const AuthenticationService_createApplicationToken_args&);
+  AuthenticationService_createApplicationToken_args() {
+  }
+
+  virtual ~AuthenticationService_createApplicationToken_args() throw();
+  CreateApplicationTokenRequest request;
+
+  _AuthenticationService_createApplicationToken_args__isset __isset;
+
+  void __set_request(const CreateApplicationTokenRequest& val);
+
+  bool operator == (const AuthenticationService_createApplicationToken_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AuthenticationService_createApplicationToken_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AuthenticationService_createApplicationToken_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AuthenticationService_createApplicationToken_pargs {
+ public:
+
+
+  virtual ~AuthenticationService_createApplicationToken_pargs() throw();
+  const CreateApplicationTokenRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AuthenticationService_createApplicationToken_result__isset {
+  _AuthenticationService_createApplicationToken_result__isset() : success(false), ex(false) {}
+  bool success :1;
+  bool ex :1;
+} _AuthenticationService_createApplicationToken_result__isset;
+
+class AuthenticationService_createApplicationToken_result {
+ public:
+
+  AuthenticationService_createApplicationToken_result(const AuthenticationService_createApplicationToken_result&);
+  AuthenticationService_createApplicationToken_result& operator=(const AuthenticationService_createApplicationToken_result&);
+  AuthenticationService_createApplicationToken_result() {
+  }
+
+  virtual ~AuthenticationService_createApplicationToken_result() throw();
+  CreateApplicationTokenResponse success;
+  OperationFailedException ex;
+
+  _AuthenticationService_createApplicationToken_result__isset __isset;
+
+  void __set_success(const CreateApplicationTokenResponse& val);
+
+  void __set_ex(const OperationFailedException& val);
+
+  bool operator == (const AuthenticationService_createApplicationToken_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex == rhs.ex))
+      return false;
+    return true;
+  }
+  bool operator != (const AuthenticationService_createApplicationToken_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AuthenticationService_createApplicationToken_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AuthenticationService_createApplicationToken_presult__isset {
+  _AuthenticationService_createApplicationToken_presult__isset() : success(false), ex(false) {}
+  bool success :1;
+  bool ex :1;
+} _AuthenticationService_createApplicationToken_presult__isset;
+
+class AuthenticationService_createApplicationToken_presult {
+ public:
+
+
+  virtual ~AuthenticationService_createApplicationToken_presult() throw();
+  CreateApplicationTokenResponse* success;
+  OperationFailedException* ex;
+
+  _AuthenticationService_createApplicationToken_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class AuthenticationServiceClient : virtual public AuthenticationServiceIf {
  public:
   AuthenticationServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -302,6 +424,9 @@ class AuthenticationServiceClient : virtual public AuthenticationServiceIf {
   void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request);
   void send_createUserToken(const CreateUserTokenRequest& request);
   void recv_createUserToken(CreateUserTokenResponse& _return);
+  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request);
+  void send_createApplicationToken(const CreateApplicationTokenRequest& request);
+  void recv_createApplicationToken(CreateApplicationTokenResponse& _return);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -319,11 +444,13 @@ class AuthenticationServiceProcessor : public ::apache::thrift::TDispatchProcess
   ProcessMap processMap_;
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_createUserToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_createApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   AuthenticationServiceProcessor(boost::shared_ptr<AuthenticationServiceIf> iface) :
     iface_(iface) {
     processMap_["getApiVersion"] = &AuthenticationServiceProcessor::process_getApiVersion;
     processMap_["createUserToken"] = &AuthenticationServiceProcessor::process_createUserToken;
+    processMap_["createApplicationToken"] = &AuthenticationServiceProcessor::process_createApplicationToken;
   }
 
   virtual ~AuthenticationServiceProcessor() {}
@@ -371,6 +498,16 @@ class AuthenticationServiceMultiface : virtual public AuthenticationServiceIf {
     return;
   }
 
+  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->createApplicationToken(_return, request);
+    }
+    ifaces_[i]->createApplicationToken(_return, request);
+    return;
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -407,6 +544,9 @@ class AuthenticationServiceConcurrentClient : virtual public AuthenticationServi
   void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request);
   int32_t send_createUserToken(const CreateUserTokenRequest& request);
   void recv_createUserToken(CreateUserTokenResponse& _return, const int32_t seqid);
+  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request);
+  int32_t send_createApplicationToken(const CreateApplicationTokenRequest& request);
+  void recv_createApplicationToken(CreateApplicationTokenResponse& _return, const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

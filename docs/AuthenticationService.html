@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>AuthenticationService</td><td><a href="#Svc_AuthenticationService">AuthenticationService</a><br/>
 <ul>
+<li><a href="#Fn_AuthenticationService_createApplicationToken">createApplicationToken</a></li>
 <li><a href="#Fn_AuthenticationService_createUserToken">createUserToken</a></li>
 <li><a href="#Fn_AuthenticationService_getApiVersion">getApiVersion</a></li>
 </ul>
@@ -320,5 +321,9 @@ the Banana Service and it's supporting services.
 </pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createUserToken">Function: AuthenticationService.createUserToken</h4>
 <pre><code><a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a></code> createUserToken(<code><a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
-</pre>Create a User Token to be used to represent a Human.
+</pre>Create a User Token, used to represent a Human.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_createApplicationToken">Function: AuthenticationService.createApplicationToken</h4>
+<pre><code><a href="#Struct_CreateApplicationTokenResponse">CreateApplicationTokenResponse</a></code> createApplicationToken(<code><a href="#Struct_CreateApplicationTokenRequest">CreateApplicationTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
+</pre>Create an Application Token, used to represent an Application or Computer.
 <br/></div></div></body></html>

@@ -28,13 +28,23 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
   }
 
   /**
-   * Create a User Token to be used to represent a Human.
+   * Create a User Token, used to represent a Human.
    * 
    * @param request
    */
   void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request) {
     // Your implementation goes here
     printf("createUserToken\n");
+  }
+
+  /**
+   * Create an Application Token, used to represent an Application or Computer.
+   * 
+   * @param request
+   */
+  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("createApplicationToken\n");
   }
 
 };

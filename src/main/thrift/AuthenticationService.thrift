@@ -123,8 +123,13 @@ service AuthenticationService
     double getApiVersion()
     
     /**
-     * Create a User Token to be used to represent a Human.
+     * Create a User Token, used to represent a Human.
      */
     CreateUserTokenResponse createUserToken(1: CreateUserTokenRequest request) throws (1: OperationFailedException ex);
+    
+    /**
+     * Create an Application Token, used to represent an Application or Computer.
+     */
+    CreateApplicationTokenResponse createApplicationToken(1: CreateApplicationTokenRequest request) throws (1: OperationFailedException ex);
     
 }
