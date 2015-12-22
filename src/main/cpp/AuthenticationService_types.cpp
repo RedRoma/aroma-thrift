@@ -13,6 +13,16 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
 
+int _kTokenTypeValues[] = {
+  TokenType::APPLICATION,
+  TokenType::USER
+};
+const char* _kTokenTypeNames[] = {
+  "APPLICATION",
+  "USER"
+};
+const std::map<int, const char*> _TokenType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTokenTypeValues, _kTokenTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 CreateUserTokenRequest::~CreateUserTokenRequest() throw() {
 }

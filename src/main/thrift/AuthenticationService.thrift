@@ -45,6 +45,13 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+
+enum TokenType
+{
+    APPLICATION = 1,
+    USER = 2
+}
+
 struct CreateUserTokenRequest
 {
     1: string userId;

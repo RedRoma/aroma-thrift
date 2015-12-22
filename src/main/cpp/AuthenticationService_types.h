@@ -23,6 +23,15 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
 
+struct TokenType {
+  enum type {
+    APPLICATION = 1,
+    USER = 2
+  };
+};
+
+extern const std::map<int, const char*> _TokenType_VALUES_TO_NAMES;
+
 typedef  ::aroma::banana::thrift::int int;
 
 typedef  ::aroma::banana::thrift::long long;

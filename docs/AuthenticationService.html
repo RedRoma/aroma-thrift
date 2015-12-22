@@ -226,6 +226,7 @@ code { line-height: 20px; }
 <a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Typedef_TimePeriod">TimePeriod</a><br/>
+<a href="#Enum_TokenType">TokenType</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
 <a href="#Struct_VerifyApplicationTokenRequest">VerifyApplicationTokenRequest</a><br/>
@@ -245,7 +246,15 @@ code { line-height: 20px; }
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.4</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
-<br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>6001</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.banana.aroma.tech", port = 6001 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.beta.banana.aroma.tech", port = 6001 }</code></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>6001</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.banana.aroma.tech", port = 6001 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "authentication-srv.beta.banana.aroma.tech", port = 6001 }</code></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
+<div class="definition"><h3 id="Enum_TokenType">Enumeration: TokenType</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>APPLICATION</code></td><td><code>1</code></td><td>
+</td></tr>
+<tr><td><code>USER</code></td><td><code>2</code></td><td>
+</td></tr>
+</table></div>
+<hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
 </div>

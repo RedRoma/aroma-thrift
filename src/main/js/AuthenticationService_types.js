@@ -5,6 +5,10 @@
 //
 
 
+TokenType = {
+  'APPLICATION' : 1,
+  'USER' : 2
+};
 CreateUserTokenRequest = function(args) {
   this.userId = null;
   this.lifetime = null;

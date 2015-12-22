@@ -23,6 +23,11 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
+enum AuthenticationService_TokenType {
+  TokenType_APPLICATION = 1,
+  TokenType_USER = 2
+};
+
 typedef Banana_int AuthenticationService_int;
 
 typedef Banana_long AuthenticationService_long;

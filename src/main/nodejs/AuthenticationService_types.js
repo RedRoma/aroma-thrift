@@ -14,6 +14,10 @@ var Exceptions_ttypes = require('./Exceptions_types')
 
 
 var ttypes = module.exports = {};
+ttypes.TokenType = {
+  'APPLICATION' : 1,
+  'USER' : 2
+};
 CreateUserTokenRequest = module.exports.CreateUserTokenRequest = function(args) {
   this.userId = null;
   this.lifetime = null;
