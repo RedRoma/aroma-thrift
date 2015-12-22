@@ -235,7 +235,7 @@ typedef Banana_Application * BananaNotifications_Application;
 
 @end
 
-@interface BananaNotifications_Event : NSObject <TBase, NSCoding> {
+@interface BananaNotifications_EventType : NSObject <TBase, NSCoding> {
   BananaNotifications_HealthCheckFailed * __healthCheckFailed;
   BananaNotifications_HealthCheckBackToNormal * __healthCheckBackToNormal;
   BananaNotifications_ApplicationTokenRenewed * __applicationTokenRenewed;
@@ -297,21 +297,21 @@ typedef Banana_Application * BananaNotifications_Application;
 
 @end
 
-@interface BananaNotifications_Notification : NSObject <TBase, NSCoding> {
-  BananaNotifications_Event * __event;
+@interface BananaNotifications_Event : NSObject <TBase, NSCoding> {
+  BananaNotifications_EventType * __eventType;
   BananaNotifications_timestamp __timestamp;
 
-  BOOL __event_isset;
+  BOOL __eventType_isset;
   BOOL __timestamp_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=event, setter=setEvent:) BananaNotifications_Event * event;
+@property (nonatomic, retain, getter=eventType, setter=setEventType:) BananaNotifications_EventType * eventType;
 @property (nonatomic, getter=timestamp, setter=setTimestamp:) BananaNotifications_timestamp timestamp;
 #endif
 
 - (id) init;
-- (id) initWithEvent: (BananaNotifications_Event *) event timestamp: (BananaNotifications_timestamp) timestamp;
+- (id) initWithEventType: (BananaNotifications_EventType *) eventType timestamp: (BananaNotifications_timestamp) timestamp;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -319,10 +319,10 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaNotifications_Event *) event;
-- (void) setEvent: (BananaNotifications_Event *) event;
+- (BananaNotifications_EventType *) eventType;
+- (void) setEventType: (BananaNotifications_EventType *) eventType;
 #endif
-- (BOOL) eventIsSet;
+- (BOOL) eventTypeIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaNotifications_timestamp) timestamp;

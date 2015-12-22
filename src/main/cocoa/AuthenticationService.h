@@ -43,14 +43,6 @@ typedef BananaException_InvalidCredentialsException * AuthenticationService_Inva
 
 typedef BananaException_OperationFailedException * AuthenticationService_OperationFailedException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * AuthenticationService_ApplicationAlreadyRegisteredException;
-
-typedef BananaException_ApplicationDoesNotExistException * AuthenticationService_ApplicationDoesNotExistException;
-
-typedef BananaException_CustomChannelUnreachableException * AuthenticationService_CustomChannelUnreachableException;
-
-typedef BananaException_ChannelDoesNotExistException * AuthenticationService_ChannelDoesNotExistException;
-
 typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
 
 @interface AuthenticationService_CreateUserTokenRequest : NSObject <TBase, NSCoding> {

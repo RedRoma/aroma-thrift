@@ -43,9 +43,9 @@ class ApplicationTokenRegenerated;
 
 class ApplicationSentMessage;
 
-class Event;
+class EventType;
 
-class Notification;
+class Event;
 
 typedef struct _HealthCheckFailed__isset {
   _HealthCheckFailed__isset() : message(false), hostname(false), application(false) {}
@@ -339,31 +339,31 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationSentMessage&
   return out;
 }
 
-typedef struct _Event__isset {
-  _Event__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false) {}
+typedef struct _EventType__isset {
+  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false) {}
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
-} _Event__isset;
+} _EventType__isset;
 
-class Event {
+class EventType {
  public:
 
-  Event(const Event&);
-  Event& operator=(const Event&);
-  Event() {
+  EventType(const EventType&);
+  EventType& operator=(const EventType&);
+  EventType() {
   }
 
-  virtual ~Event() throw();
+  virtual ~EventType() throw();
   HealthCheckFailed healthCheckFailed;
   HealthCheckBackToNormal healthCheckBackToNormal;
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
 
-  _Event__isset __isset;
+  _EventType__isset __isset;
 
   void __set_healthCheckFailed(const HealthCheckFailed& val);
 
@@ -375,7 +375,7 @@ class Event {
 
   void __set_applicationSentMessage(const ApplicationSentMessage& val);
 
-  bool operator == (const Event & rhs) const
+  bool operator == (const EventType & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
       return false;
@@ -386,6 +386,58 @@ class Event {
     if (!(applicationTokenRegenerated == rhs.applicationTokenRegenerated))
       return false;
     if (!(applicationSentMessage == rhs.applicationSentMessage))
+      return false;
+    return true;
+  }
+  bool operator != (const EventType &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const EventType & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(EventType &a, EventType &b);
+
+inline std::ostream& operator<<(std::ostream& out, const EventType& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Event__isset {
+  _Event__isset() : eventType(false), timestamp(false) {}
+  bool eventType :1;
+  bool timestamp :1;
+} _Event__isset;
+
+class Event {
+ public:
+
+  Event(const Event&);
+  Event& operator=(const Event&);
+  Event() : timestamp(0) {
+  }
+
+  virtual ~Event() throw();
+  EventType eventType;
+  timestamp timestamp;
+
+  _Event__isset __isset;
+
+  void __set_eventType(const EventType& val);
+
+  void __set_timestamp(const timestamp val);
+
+  bool operator == (const Event & rhs) const
+  {
+    if (!(eventType == rhs.eventType))
+      return false;
+    if (!(timestamp == rhs.timestamp))
       return false;
     return true;
   }
@@ -404,58 +456,6 @@ class Event {
 void swap(Event &a, Event &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Event& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _Notification__isset {
-  _Notification__isset() : event(false), timestamp(false) {}
-  bool event :1;
-  bool timestamp :1;
-} _Notification__isset;
-
-class Notification {
- public:
-
-  Notification(const Notification&);
-  Notification& operator=(const Notification&);
-  Notification() : timestamp(0) {
-  }
-
-  virtual ~Notification() throw();
-  Event event;
-  timestamp timestamp;
-
-  _Notification__isset __isset;
-
-  void __set_event(const Event& val);
-
-  void __set_timestamp(const timestamp val);
-
-  bool operator == (const Notification & rhs) const
-  {
-    if (!(event == rhs.event))
-      return false;
-    if (!(timestamp == rhs.timestamp))
-      return false;
-    return true;
-  }
-  bool operator != (const Notification &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Notification & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Notification &a, Notification &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Notification& obj)
 {
   obj.printTo(out);
   return out;

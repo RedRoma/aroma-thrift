@@ -13,6 +13,8 @@ namespace cpp   aroma.banana.thrift.service
  * + iOS Service
  * 
  * but for the moment they are rolled up into one, for simplicity.
+ * 
+ * NOTE: An attempt has been made to order the Operations alphabetically.
  */
 
 include "Authentication.thrift"
@@ -72,45 +74,6 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-srv.bana
  */
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
-//==========================================================
-// Actions
-//==========================================================
-
-/**
- * Sign In to the Banana Service, and get a User Token.
- */
-struct SignInRequest
-{
-    1: Authentication.Credentials credentials;
-    2: string username;
-}
-
-struct SignInResponse
-{
-    1: UserToken userToken;
-}
-
-/**
- * Sign Up for a Banana Service Account.
- */
-struct SignUpRequest
-{
-    1: string email;
-    2: string name;
-    3: string username;
-    4: string organization;
-    5: Authentication.Credentials credentials;
-}
-
-/**
- * Receive a User Token after Signing Up.
- */
-struct SignUpResponse
-{
-    1: UserToken userToken;
-    2: Authentication.AromaAccount account;
-}
-
 /** The Maximum Dimensions for an Icon submitted with an Application. */
 const Banana.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
 
@@ -124,101 +87,10 @@ const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 /** The Maximum Filesize for a Profile Picture submitted. */
 const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
-/**
- * Defines the required information to provision
- * an Application with the Banana Service.
- */
-struct ProvisionApplicationRequest
-{
-    1: UserToken token;
-    2: string applicationName;
-    3: optional Banana.ProgrammingLanguage programmingLanguage;
-    4: string organization;
-    5: optional Image icon;
-}
+//==========================================================
+// Actions
+//==========================================================
 
-struct ProvisionApplicationResponse
-{
-    1: string applicationId;
-    2: string applicationName;
-    3: ApplicationToken applicationToken;
-    4: Application applicationInfo;
-}
-
-/**
- * Subscribe to an Application to receive notifications for it.
- */
-struct SubscribeToApplicationRequest
-{
-    1: UserToken token;
-    2: string applicationName;
-    3: string applicationId;
-    4: optional string organization;
-    5: optional bool shared = false;
-}
-
-struct SubscribeToApplicationResponse
-{
-    1: string message;
-    2: BananaChannel channel;
-}
-
-/**
- * Registers an Application Endpoint to use
- * for Health Checks.
- */
-struct RegisterHealthCheckRequest
-{
-    1: UserToken token;
-    2: Endpoint endpoint;
-}
-
-struct RegisterHealthCheckResponse
-{
-    1: optional string message;
-    2: optional string healthCheckToken;
-}
-
-/**
- * Renews an Application Token, effectively extending it's lifetime.
- * Additional Charges may apply.
- */
-struct RenewApplicationTokenRequest
-{
-    1: UserToken token;
-    /** The Token to renew */
-    2: ApplicationToken applicationToken;
-    /** Defines for how long to extend a Token. */
-    3: Banana.TimePeriod timePeriod;
-    4: string applicationId;
-}
-
-struct RenewApplicationTokenResponse
-{
-    1: ApplicationToken serviceToken;
-}
-
-/**
- * Regenerates an Application's Token. This is usually done because the original token was:
- * 1: Lost or Misplaced
- * 2: Compromised (someone else has accessed it)
- * 3: Just for security reasons.
- * 
- * NOTE: This will invalidate any existing Tokens for this Application.
- * NOTE: Only an owner can perform this operation.
- * 
- * #owner
- */
-struct RegenerateApplicationTokenRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-}
-
-struct RegenerateApplicationTokenResponse
-{
-    1: ApplicationToken serviceToken;
-}
 
 /**
  * Deletes a Message.
@@ -285,18 +157,62 @@ struct DismissAllMessagesResponse
 }
 
 /**
- * Save a User's Personal Contact Channel for future reference.
+ * Defines the required information to provision
+ * an Application with the Banana Service.
  */
-struct SaveChannelRequest
+struct ProvisionApplicationRequest
 {
     1: UserToken token;
-    2: BananaChannel channel;
+    2: string applicationName;
+    3: optional Banana.ProgrammingLanguage programmingLanguage;
+    4: string organization;
+    5: optional Image icon;
 }
 
-struct SaveChannelResponse
+struct ProvisionApplicationResponse
 {
-    1: string message;
-    2: optional BananaChannel channel;
+    1: string applicationId;
+    2: string applicationName;
+    3: ApplicationToken applicationToken;
+    4: Application applicationInfo;
+}
+
+/**
+ * Regenerates an Application's Token. This is usually done because the original token was:
+ * 1: Lost or Misplaced
+ * 2: Compromised (someone else has accessed it)
+ * 3: Just for security reasons.
+ * 
+ * NOTE: This will invalidate any existing Tokens for this Application.
+ * NOTE: Only an owner can perform this operation.
+ * 
+ * #owner
+ */
+struct RegenerateApplicationTokenRequest
+{
+    1: UserToken token;
+    2: string applicationId;
+}
+
+struct RegenerateApplicationTokenResponse
+{
+    1: ApplicationToken serviceToken;
+}
+
+/**
+ * Registers an Application Endpoint to use
+ * for Health Checks.
+ */
+struct RegisterHealthCheckRequest
+{
+    1: UserToken token;
+    2: Endpoint endpoint;
+}
+
+struct RegisterHealthCheckResponse
+{
+    1: optional string message;
+    2: optional string healthCheckToken;
 }
 
 /**
@@ -316,6 +232,75 @@ struct RemoveSavedChannelResponse
 }
 
 /**
+ * Renews an Application Token, effectively extending it's lifetime.
+ * Additional Charges may apply.
+ */
+struct RenewApplicationTokenRequest
+{
+    1: UserToken token;
+    /** The Token to renew */
+    2: ApplicationToken applicationToken;
+    /** Defines for how long to extend a Token. */
+    3: Banana.TimePeriod timePeriod;
+    4: string applicationId;
+}
+
+struct RenewApplicationTokenResponse
+{
+    1: ApplicationToken serviceToken;
+}
+
+/**
+ * Save a User's Personal Contact Channel for future reference.
+ */
+struct SaveChannelRequest
+{
+    1: UserToken token;
+    2: BananaChannel channel;
+}
+
+struct SaveChannelResponse
+{
+    1: string message;
+    2: optional BananaChannel channel;
+}
+
+/**
+ * Sign In to the Banana Service, and get a User Token.
+ */
+struct SignInRequest
+{
+    1: Authentication.Credentials credentials;
+    2: string username;
+}
+
+struct SignInResponse
+{
+    1: UserToken userToken;
+}
+
+/**
+ * Sign Up for a Banana Service Account.
+ */
+struct SignUpRequest
+{
+    1: string email;
+    2: string name;
+    3: string username;
+    4: string organization;
+    5: Authentication.Credentials credentials;
+}
+
+/**
+ * Receive a User Token after Signing Up.
+ */
+struct SignUpResponse
+{
+    1: UserToken userToken;
+    2: Authentication.AromaAccount account;
+}
+
+/**
  * A Snoozed Channel will not receive Notifications
  * for a set time period.
  */
@@ -332,19 +317,28 @@ struct SnoozeChannelResponse
     1: string message;
 }
 
+/**
+ * Subscribe to an Application to receive notifications for it.
+ */
+struct SubscribeToApplicationRequest
+{
+    1: UserToken token;
+    2: string applicationName;
+    3: string applicationId;
+    4: optional string organization;
+    5: optional bool shared = false;
+}
+
+struct SubscribeToApplicationResponse
+{
+    1: string message;
+    2: BananaChannel channel;
+}
+
+
 //==========================================================
 // Query Operations
 //==========================================================
-
-struct GetMyApplicationsRequest
-{
-    1: UserToken token;
-}
-
-struct GetMyApplicationsResponse
-{
-    1: list<Application> applications;
-}
 
 struct GetApplicationInfoRequest
 {
@@ -356,6 +350,8 @@ struct GetApplicationInfoResponse
 {
     1: Application applicationInfo;
 }
+
+
 
 struct GetDashboardRequest
 {
@@ -389,6 +385,16 @@ struct GetMessagesResponse
     1: list<Banana.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
 }
+struct GetMyApplicationsRequest
+{
+    1: UserToken token;
+}
+
+struct GetMyApplicationsResponse
+{
+    1: list<Application> applications;
+}
+
 
 struct GetApplicationSubscribersRequest
 {
@@ -425,7 +431,7 @@ struct GetActivityRequest
 
 struct GetActivityResponse
 {
-    1: list<Notifications.Notification> notifications = [];
+    1: list<Notifications.Event> events = [];
 }
 
 /**

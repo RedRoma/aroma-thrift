@@ -79,7 +79,7 @@ struct ApplicationSentMessage
  * An Event represents the different types of events that can
  * occur within the Banana Service.
  */
-union Event
+union EventType
 {
     1: HealthCheckFailed healthCheckFailed;
     2: HealthCheckBackToNormal healthCheckBackToNormal;
@@ -91,8 +91,8 @@ union Event
 /**
  * A Notification defines an Event, and the time that it happened.
  */
-struct Notification
+struct Event
 {
-    1: Event event;
+    1: EventType eventType;
     2: timestamp timestamp;
 }

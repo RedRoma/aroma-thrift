@@ -393,7 +393,7 @@ ApplicationSentMessage.prototype.write = function(output) {
   return;
 };
 
-Event = function(args) {
+EventType = function(args) {
   this.healthCheckFailed = null;
   this.healthCheckBackToNormal = null;
   this.applicationTokenRenewed = null;
@@ -417,8 +417,8 @@ Event = function(args) {
     }
   }
 };
-Event.prototype = {};
-Event.prototype.read = function(input) {
+EventType.prototype = {};
+EventType.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -480,8 +480,8 @@ Event.prototype.read = function(input) {
   return;
 };
 
-Event.prototype.write = function(output) {
-  output.writeStructBegin('Event');
+EventType.prototype.write = function(output) {
+  output.writeStructBegin('EventType');
   if (this.healthCheckFailed !== null && this.healthCheckFailed !== undefined) {
     output.writeFieldBegin('healthCheckFailed', Thrift.Type.STRUCT, 1);
     this.healthCheckFailed.write(output);
@@ -512,20 +512,20 @@ Event.prototype.write = function(output) {
   return;
 };
 
-Notification = function(args) {
-  this.event = null;
+Event = function(args) {
+  this.eventType = null;
   this.timestamp = null;
   if (args) {
-    if (args.event !== undefined && args.event !== null) {
-      this.event = new Event(args.event);
+    if (args.eventType !== undefined && args.eventType !== null) {
+      this.eventType = new EventType(args.eventType);
     }
     if (args.timestamp !== undefined && args.timestamp !== null) {
       this.timestamp = args.timestamp;
     }
   }
 };
-Notification.prototype = {};
-Notification.prototype.read = function(input) {
+Event.prototype = {};
+Event.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -540,8 +540,8 @@ Notification.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.event = new Event();
-        this.event.read(input);
+        this.eventType = new EventType();
+        this.eventType.read(input);
       } else {
         input.skip(ftype);
       }
@@ -562,11 +562,11 @@ Notification.prototype.read = function(input) {
   return;
 };
 
-Notification.prototype.write = function(output) {
-  output.writeStructBegin('Notification');
-  if (this.event !== null && this.event !== undefined) {
-    output.writeFieldBegin('event', Thrift.Type.STRUCT, 1);
-    this.event.write(output);
+Event.prototype.write = function(output) {
+  output.writeStructBegin('Event');
+  if (this.eventType !== null && this.eventType !== undefined) {
+    output.writeFieldBegin('eventType', Thrift.Type.STRUCT, 1);
+    this.eventType.write(output);
     output.writeFieldEnd();
   }
   if (this.timestamp !== null && this.timestamp !== undefined) {

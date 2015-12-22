@@ -618,31 +618,31 @@ void ApplicationSentMessage::printTo(std::ostream& out) const {
 }
 
 
-Event::~Event() throw() {
+EventType::~EventType() throw() {
 }
 
 
-void Event::__set_healthCheckFailed(const HealthCheckFailed& val) {
+void EventType::__set_healthCheckFailed(const HealthCheckFailed& val) {
   this->healthCheckFailed = val;
 }
 
-void Event::__set_healthCheckBackToNormal(const HealthCheckBackToNormal& val) {
+void EventType::__set_healthCheckBackToNormal(const HealthCheckBackToNormal& val) {
   this->healthCheckBackToNormal = val;
 }
 
-void Event::__set_applicationTokenRenewed(const ApplicationTokenRenewed& val) {
+void EventType::__set_applicationTokenRenewed(const ApplicationTokenRenewed& val) {
   this->applicationTokenRenewed = val;
 }
 
-void Event::__set_applicationTokenRegenerated(const ApplicationTokenRegenerated& val) {
+void EventType::__set_applicationTokenRegenerated(const ApplicationTokenRegenerated& val) {
   this->applicationTokenRegenerated = val;
 }
 
-void Event::__set_applicationSentMessage(const ApplicationSentMessage& val) {
+void EventType::__set_applicationSentMessage(const ApplicationSentMessage& val) {
   this->applicationSentMessage = val;
 }
 
-uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -715,10 +715,10 @@ uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t EventType::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Event");
+  xfer += oprot->writeStructBegin("EventType");
 
   xfer += oprot->writeFieldBegin("healthCheckFailed", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->healthCheckFailed.write(oprot);
@@ -745,7 +745,7 @@ uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(Event &a, Event &b) {
+void swap(EventType &a, EventType &b) {
   using ::std::swap;
   swap(a.healthCheckFailed, b.healthCheckFailed);
   swap(a.healthCheckBackToNormal, b.healthCheckBackToNormal);
@@ -755,7 +755,7 @@ void swap(Event &a, Event &b) {
   swap(a.__isset, b.__isset);
 }
 
-Event::Event(const Event& other10) {
+EventType::EventType(const EventType& other10) {
   healthCheckFailed = other10.healthCheckFailed;
   healthCheckBackToNormal = other10.healthCheckBackToNormal;
   applicationTokenRenewed = other10.applicationTokenRenewed;
@@ -763,7 +763,7 @@ Event::Event(const Event& other10) {
   applicationSentMessage = other10.applicationSentMessage;
   __isset = other10.__isset;
 }
-Event& Event::operator=(const Event& other11) {
+EventType& EventType::operator=(const EventType& other11) {
   healthCheckFailed = other11.healthCheckFailed;
   healthCheckBackToNormal = other11.healthCheckBackToNormal;
   applicationTokenRenewed = other11.applicationTokenRenewed;
@@ -772,9 +772,9 @@ Event& Event::operator=(const Event& other11) {
   __isset = other11.__isset;
   return *this;
 }
-void Event::printTo(std::ostream& out) const {
+void EventType::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "Event(";
+  out << "EventType(";
   out << "healthCheckFailed=" << to_string(healthCheckFailed);
   out << ", " << "healthCheckBackToNormal=" << to_string(healthCheckBackToNormal);
   out << ", " << "applicationTokenRenewed=" << to_string(applicationTokenRenewed);
@@ -784,19 +784,19 @@ void Event::printTo(std::ostream& out) const {
 }
 
 
-Notification::~Notification() throw() {
+Event::~Event() throw() {
 }
 
 
-void Notification::__set_event(const Event& val) {
-  this->event = val;
+void Event::__set_eventType(const EventType& val) {
+  this->eventType = val;
 }
 
-void Notification::__set_timestamp(const timestamp val) {
+void Event::__set_timestamp(const timestamp val) {
   this->timestamp = val;
 }
 
-uint32_t Notification::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -819,8 +819,8 @@ uint32_t Notification::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->event.read(iprot);
-          this->__isset.event = true;
+          xfer += this->eventType.read(iprot);
+          this->__isset.eventType = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -845,13 +845,13 @@ uint32_t Notification::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Notification::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Notification");
+  xfer += oprot->writeStructBegin("Event");
 
-  xfer += oprot->writeFieldBegin("event", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->event.write(oprot);
+  xfer += oprot->writeFieldBegin("eventType", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->eventType.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("timestamp", ::apache::thrift::protocol::T_I64, 2);
@@ -863,28 +863,28 @@ uint32_t Notification::write(::apache::thrift::protocol::TProtocol* oprot) const
   return xfer;
 }
 
-void swap(Notification &a, Notification &b) {
+void swap(Event &a, Event &b) {
   using ::std::swap;
-  swap(a.event, b.event);
+  swap(a.eventType, b.eventType);
   swap(a.timestamp, b.timestamp);
   swap(a.__isset, b.__isset);
 }
 
-Notification::Notification(const Notification& other12) {
-  event = other12.event;
+Event::Event(const Event& other12) {
+  eventType = other12.eventType;
   timestamp = other12.timestamp;
   __isset = other12.__isset;
 }
-Notification& Notification::operator=(const Notification& other13) {
-  event = other13.event;
+Event& Event::operator=(const Event& other13) {
+  eventType = other13.eventType;
   timestamp = other13.timestamp;
   __isset = other13.__isset;
   return *this;
 }
-void Notification::printTo(std::ostream& out) const {
+void Event::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "Notification(";
-  out << "event=" << to_string(event);
+  out << "Event(";
+  out << "eventType=" << to_string(eventType);
   out << ", " << "timestamp=" << to_string(timestamp);
   out << ")";
 }

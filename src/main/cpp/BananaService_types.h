@@ -65,34 +65,6 @@ typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-class SignInRequest;
-
-class SignInResponse;
-
-class SignUpRequest;
-
-class SignUpResponse;
-
-class ProvisionApplicationRequest;
-
-class ProvisionApplicationResponse;
-
-class SubscribeToApplicationRequest;
-
-class SubscribeToApplicationResponse;
-
-class RegisterHealthCheckRequest;
-
-class RegisterHealthCheckResponse;
-
-class RenewApplicationTokenRequest;
-
-class RenewApplicationTokenResponse;
-
-class RegenerateApplicationTokenRequest;
-
-class RegenerateApplicationTokenResponse;
-
 class DeleteMessageRequest;
 
 class DeleteMessageResponse;
@@ -107,21 +79,45 @@ class DismissAllMessagesRequest;
 
 class DismissAllMessagesResponse;
 
-class SaveChannelRequest;
+class ProvisionApplicationRequest;
 
-class SaveChannelResponse;
+class ProvisionApplicationResponse;
+
+class RegenerateApplicationTokenRequest;
+
+class RegenerateApplicationTokenResponse;
+
+class RegisterHealthCheckRequest;
+
+class RegisterHealthCheckResponse;
 
 class RemoveSavedChannelRequest;
 
 class RemoveSavedChannelResponse;
 
+class RenewApplicationTokenRequest;
+
+class RenewApplicationTokenResponse;
+
+class SaveChannelRequest;
+
+class SaveChannelResponse;
+
+class SignInRequest;
+
+class SignInResponse;
+
+class SignUpRequest;
+
+class SignUpResponse;
+
 class SnoozeChannelRequest;
 
 class SnoozeChannelResponse;
 
-class GetMyApplicationsRequest;
+class SubscribeToApplicationRequest;
 
-class GetMyApplicationsResponse;
+class SubscribeToApplicationResponse;
 
 class GetApplicationInfoRequest;
 
@@ -134,6 +130,10 @@ class GetDashboardResponse;
 class GetMessagesRequest;
 
 class GetMessagesResponse;
+
+class GetMyApplicationsRequest;
+
+class GetMyApplicationsResponse;
 
 class GetApplicationSubscribersRequest;
 
@@ -154,806 +154,6 @@ class GetServiceAnnouncementsResponse;
 class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
-
-typedef struct _SignInRequest__isset {
-  _SignInRequest__isset() : credentials(false), username(false) {}
-  bool credentials :1;
-  bool username :1;
-} _SignInRequest__isset;
-
-class SignInRequest {
- public:
-
-  SignInRequest(const SignInRequest&);
-  SignInRequest& operator=(const SignInRequest&);
-  SignInRequest() : username() {
-  }
-
-  virtual ~SignInRequest() throw();
-   ::aroma::banana::thrift::authentication::Credentials credentials;
-  std::string username;
-
-  _SignInRequest__isset __isset;
-
-  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
-
-  void __set_username(const std::string& val);
-
-  bool operator == (const SignInRequest & rhs) const
-  {
-    if (!(credentials == rhs.credentials))
-      return false;
-    if (!(username == rhs.username))
-      return false;
-    return true;
-  }
-  bool operator != (const SignInRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignInRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignInRequest &a, SignInRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignInResponse__isset {
-  _SignInResponse__isset() : userToken(false) {}
-  bool userToken :1;
-} _SignInResponse__isset;
-
-class SignInResponse {
- public:
-
-  SignInResponse(const SignInResponse&);
-  SignInResponse& operator=(const SignInResponse&);
-  SignInResponse() {
-  }
-
-  virtual ~SignInResponse() throw();
-  UserToken userToken;
-
-  _SignInResponse__isset __isset;
-
-  void __set_userToken(const UserToken& val);
-
-  bool operator == (const SignInResponse & rhs) const
-  {
-    if (!(userToken == rhs.userToken))
-      return false;
-    return true;
-  }
-  bool operator != (const SignInResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignInResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignInResponse &a, SignInResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignUpRequest__isset {
-  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false), credentials(false) {}
-  bool email :1;
-  bool name :1;
-  bool username :1;
-  bool organization :1;
-  bool credentials :1;
-} _SignUpRequest__isset;
-
-class SignUpRequest {
- public:
-
-  SignUpRequest(const SignUpRequest&);
-  SignUpRequest& operator=(const SignUpRequest&);
-  SignUpRequest() : email(), name(), username(), organization() {
-  }
-
-  virtual ~SignUpRequest() throw();
-  std::string email;
-  std::string name;
-  std::string username;
-  std::string organization;
-   ::aroma::banana::thrift::authentication::Credentials credentials;
-
-  _SignUpRequest__isset __isset;
-
-  void __set_email(const std::string& val);
-
-  void __set_name(const std::string& val);
-
-  void __set_username(const std::string& val);
-
-  void __set_organization(const std::string& val);
-
-  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
-
-  bool operator == (const SignUpRequest & rhs) const
-  {
-    if (!(email == rhs.email))
-      return false;
-    if (!(name == rhs.name))
-      return false;
-    if (!(username == rhs.username))
-      return false;
-    if (!(organization == rhs.organization))
-      return false;
-    if (!(credentials == rhs.credentials))
-      return false;
-    return true;
-  }
-  bool operator != (const SignUpRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignUpRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignUpRequest &a, SignUpRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SignUpResponse__isset {
-  _SignUpResponse__isset() : userToken(false), account(false) {}
-  bool userToken :1;
-  bool account :1;
-} _SignUpResponse__isset;
-
-class SignUpResponse {
- public:
-
-  SignUpResponse(const SignUpResponse&);
-  SignUpResponse& operator=(const SignUpResponse&);
-  SignUpResponse() {
-  }
-
-  virtual ~SignUpResponse() throw();
-  UserToken userToken;
-   ::aroma::banana::thrift::authentication::AromaAccount account;
-
-  _SignUpResponse__isset __isset;
-
-  void __set_userToken(const UserToken& val);
-
-  void __set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val);
-
-  bool operator == (const SignUpResponse & rhs) const
-  {
-    if (!(userToken == rhs.userToken))
-      return false;
-    if (!(account == rhs.account))
-      return false;
-    return true;
-  }
-  bool operator != (const SignUpResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SignUpResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SignUpResponse &a, SignUpResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _ProvisionApplicationRequest__isset {
-  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false) {}
-  bool token :1;
-  bool applicationName :1;
-  bool programmingLanguage :1;
-  bool organization :1;
-  bool icon :1;
-} _ProvisionApplicationRequest__isset;
-
-class ProvisionApplicationRequest {
- public:
-
-  ProvisionApplicationRequest(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
-  }
-
-  virtual ~ProvisionApplicationRequest() throw();
-  UserToken token;
-  std::string applicationName;
-   ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
-  std::string organization;
-  Image icon;
-
-  _ProvisionApplicationRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val);
-
-  void __set_organization(const std::string& val);
-
-  void __set_icon(const Image& val);
-
-  bool operator == (const ProvisionApplicationRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (__isset.programmingLanguage != rhs.__isset.programmingLanguage)
-      return false;
-    else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
-      return false;
-    if (!(organization == rhs.organization))
-      return false;
-    if (__isset.icon != rhs.__isset.icon)
-      return false;
-    else if (__isset.icon && !(icon == rhs.icon))
-      return false;
-    return true;
-  }
-  bool operator != (const ProvisionApplicationRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const ProvisionApplicationRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(ProvisionApplicationRequest &a, ProvisionApplicationRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _ProvisionApplicationResponse__isset {
-  _ProvisionApplicationResponse__isset() : applicationId(false), applicationName(false), applicationToken(false), applicationInfo(false) {}
-  bool applicationId :1;
-  bool applicationName :1;
-  bool applicationToken :1;
-  bool applicationInfo :1;
-} _ProvisionApplicationResponse__isset;
-
-class ProvisionApplicationResponse {
- public:
-
-  ProvisionApplicationResponse(const ProvisionApplicationResponse&);
-  ProvisionApplicationResponse& operator=(const ProvisionApplicationResponse&);
-  ProvisionApplicationResponse() : applicationId(), applicationName() {
-  }
-
-  virtual ~ProvisionApplicationResponse() throw();
-  std::string applicationId;
-  std::string applicationName;
-  ApplicationToken applicationToken;
-  Application applicationInfo;
-
-  _ProvisionApplicationResponse__isset __isset;
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_applicationToken(const ApplicationToken& val);
-
-  void __set_applicationInfo(const Application& val);
-
-  bool operator == (const ProvisionApplicationResponse & rhs) const
-  {
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (!(applicationToken == rhs.applicationToken))
-      return false;
-    if (!(applicationInfo == rhs.applicationInfo))
-      return false;
-    return true;
-  }
-  bool operator != (const ProvisionApplicationResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const ProvisionApplicationResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(ProvisionApplicationResponse &a, ProvisionApplicationResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SubscribeToApplicationRequest__isset {
-  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organization(false), shared(true) {}
-  bool token :1;
-  bool applicationName :1;
-  bool applicationId :1;
-  bool organization :1;
-  bool shared :1;
-} _SubscribeToApplicationRequest__isset;
-
-class SubscribeToApplicationRequest {
- public:
-
-  SubscribeToApplicationRequest(const SubscribeToApplicationRequest&);
-  SubscribeToApplicationRequest& operator=(const SubscribeToApplicationRequest&);
-  SubscribeToApplicationRequest() : applicationName(), applicationId(), organization(), shared(false) {
-  }
-
-  virtual ~SubscribeToApplicationRequest() throw();
-  UserToken token;
-  std::string applicationName;
-  std::string applicationId;
-  std::string organization;
-  bool shared;
-
-  _SubscribeToApplicationRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_organization(const std::string& val);
-
-  void __set_shared(const bool val);
-
-  bool operator == (const SubscribeToApplicationRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (__isset.organization != rhs.__isset.organization)
-      return false;
-    else if (__isset.organization && !(organization == rhs.organization))
-      return false;
-    if (__isset.shared != rhs.__isset.shared)
-      return false;
-    else if (__isset.shared && !(shared == rhs.shared))
-      return false;
-    return true;
-  }
-  bool operator != (const SubscribeToApplicationRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SubscribeToApplicationRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _SubscribeToApplicationResponse__isset {
-  _SubscribeToApplicationResponse__isset() : message(false), channel(false) {}
-  bool message :1;
-  bool channel :1;
-} _SubscribeToApplicationResponse__isset;
-
-class SubscribeToApplicationResponse {
- public:
-
-  SubscribeToApplicationResponse(const SubscribeToApplicationResponse&);
-  SubscribeToApplicationResponse& operator=(const SubscribeToApplicationResponse&);
-  SubscribeToApplicationResponse() : message() {
-  }
-
-  virtual ~SubscribeToApplicationResponse() throw();
-  std::string message;
-  BananaChannel channel;
-
-  _SubscribeToApplicationResponse__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_channel(const BananaChannel& val);
-
-  bool operator == (const SubscribeToApplicationResponse & rhs) const
-  {
-    if (!(message == rhs.message))
-      return false;
-    if (!(channel == rhs.channel))
-      return false;
-    return true;
-  }
-  bool operator != (const SubscribeToApplicationResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const SubscribeToApplicationResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(SubscribeToApplicationResponse &a, SubscribeToApplicationResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RegisterHealthCheckRequest__isset {
-  _RegisterHealthCheckRequest__isset() : token(false), endpoint(false) {}
-  bool token :1;
-  bool endpoint :1;
-} _RegisterHealthCheckRequest__isset;
-
-class RegisterHealthCheckRequest {
- public:
-
-  RegisterHealthCheckRequest(const RegisterHealthCheckRequest&);
-  RegisterHealthCheckRequest& operator=(const RegisterHealthCheckRequest&);
-  RegisterHealthCheckRequest() {
-  }
-
-  virtual ~RegisterHealthCheckRequest() throw();
-  UserToken token;
-  Endpoint endpoint;
-
-  _RegisterHealthCheckRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_endpoint(const Endpoint& val);
-
-  bool operator == (const RegisterHealthCheckRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(endpoint == rhs.endpoint))
-      return false;
-    return true;
-  }
-  bool operator != (const RegisterHealthCheckRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RegisterHealthCheckRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RegisterHealthCheckResponse__isset {
-  _RegisterHealthCheckResponse__isset() : message(false), healthCheckToken(false) {}
-  bool message :1;
-  bool healthCheckToken :1;
-} _RegisterHealthCheckResponse__isset;
-
-class RegisterHealthCheckResponse {
- public:
-
-  RegisterHealthCheckResponse(const RegisterHealthCheckResponse&);
-  RegisterHealthCheckResponse& operator=(const RegisterHealthCheckResponse&);
-  RegisterHealthCheckResponse() : message(), healthCheckToken() {
-  }
-
-  virtual ~RegisterHealthCheckResponse() throw();
-  std::string message;
-  std::string healthCheckToken;
-
-  _RegisterHealthCheckResponse__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_healthCheckToken(const std::string& val);
-
-  bool operator == (const RegisterHealthCheckResponse & rhs) const
-  {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (__isset.healthCheckToken != rhs.__isset.healthCheckToken)
-      return false;
-    else if (__isset.healthCheckToken && !(healthCheckToken == rhs.healthCheckToken))
-      return false;
-    return true;
-  }
-  bool operator != (const RegisterHealthCheckResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RegisterHealthCheckResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RenewApplicationTokenRequest__isset {
-  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), timePeriod(false), applicationId(false) {}
-  bool token :1;
-  bool applicationToken :1;
-  bool timePeriod :1;
-  bool applicationId :1;
-} _RenewApplicationTokenRequest__isset;
-
-class RenewApplicationTokenRequest {
- public:
-
-  RenewApplicationTokenRequest(const RenewApplicationTokenRequest&);
-  RenewApplicationTokenRequest& operator=(const RenewApplicationTokenRequest&);
-  RenewApplicationTokenRequest() : applicationId() {
-  }
-
-  virtual ~RenewApplicationTokenRequest() throw();
-  UserToken token;
-  ApplicationToken applicationToken;
-   ::aroma::banana::thrift::TimePeriod timePeriod;
-  std::string applicationId;
-
-  _RenewApplicationTokenRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationToken(const ApplicationToken& val);
-
-  void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
-
-  void __set_applicationId(const std::string& val);
-
-  bool operator == (const RenewApplicationTokenRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationToken == rhs.applicationToken))
-      return false;
-    if (!(timePeriod == rhs.timePeriod))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    return true;
-  }
-  bool operator != (const RenewApplicationTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RenewApplicationTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RenewApplicationTokenResponse__isset {
-  _RenewApplicationTokenResponse__isset() : serviceToken(false) {}
-  bool serviceToken :1;
-} _RenewApplicationTokenResponse__isset;
-
-class RenewApplicationTokenResponse {
- public:
-
-  RenewApplicationTokenResponse(const RenewApplicationTokenResponse&);
-  RenewApplicationTokenResponse& operator=(const RenewApplicationTokenResponse&);
-  RenewApplicationTokenResponse() {
-  }
-
-  virtual ~RenewApplicationTokenResponse() throw();
-  ApplicationToken serviceToken;
-
-  _RenewApplicationTokenResponse__isset __isset;
-
-  void __set_serviceToken(const ApplicationToken& val);
-
-  bool operator == (const RenewApplicationTokenResponse & rhs) const
-  {
-    if (!(serviceToken == rhs.serviceToken))
-      return false;
-    return true;
-  }
-  bool operator != (const RenewApplicationTokenResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RenewApplicationTokenResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RenewApplicationTokenResponse &a, RenewApplicationTokenResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RegenerateApplicationTokenRequest__isset {
-  _RegenerateApplicationTokenRequest__isset() : token(false), applicationId(false) {}
-  bool token :1;
-  bool applicationId :1;
-} _RegenerateApplicationTokenRequest__isset;
-
-class RegenerateApplicationTokenRequest {
- public:
-
-  RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest&);
-  RegenerateApplicationTokenRequest& operator=(const RegenerateApplicationTokenRequest&);
-  RegenerateApplicationTokenRequest() : applicationId() {
-  }
-
-  virtual ~RegenerateApplicationTokenRequest() throw();
-  UserToken token;
-  std::string applicationId;
-
-  _RegenerateApplicationTokenRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationId(const std::string& val);
-
-  bool operator == (const RegenerateApplicationTokenRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    return true;
-  }
-  bool operator != (const RegenerateApplicationTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RegenerateApplicationTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RegenerateApplicationTokenRequest &a, RegenerateApplicationTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _RegenerateApplicationTokenResponse__isset {
-  _RegenerateApplicationTokenResponse__isset() : serviceToken(false) {}
-  bool serviceToken :1;
-} _RegenerateApplicationTokenResponse__isset;
-
-class RegenerateApplicationTokenResponse {
- public:
-
-  RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse&);
-  RegenerateApplicationTokenResponse& operator=(const RegenerateApplicationTokenResponse&);
-  RegenerateApplicationTokenResponse() {
-  }
-
-  virtual ~RegenerateApplicationTokenResponse() throw();
-  ApplicationToken serviceToken;
-
-  _RegenerateApplicationTokenResponse__isset __isset;
-
-  void __set_serviceToken(const ApplicationToken& val);
-
-  bool operator == (const RegenerateApplicationTokenResponse & rhs) const
-  {
-    if (!(serviceToken == rhs.serviceToken))
-      return false;
-    return true;
-  }
-  bool operator != (const RegenerateApplicationTokenResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const RegenerateApplicationTokenResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
 
 typedef struct _DeleteMessageRequest__isset {
   _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
@@ -1345,43 +545,65 @@ inline std::ostream& operator<<(std::ostream& out, const DismissAllMessagesRespo
   return out;
 }
 
-typedef struct _SaveChannelRequest__isset {
-  _SaveChannelRequest__isset() : token(false), channel(false) {}
+typedef struct _ProvisionApplicationRequest__isset {
+  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false) {}
   bool token :1;
-  bool channel :1;
-} _SaveChannelRequest__isset;
+  bool applicationName :1;
+  bool programmingLanguage :1;
+  bool organization :1;
+  bool icon :1;
+} _ProvisionApplicationRequest__isset;
 
-class SaveChannelRequest {
+class ProvisionApplicationRequest {
  public:
 
-  SaveChannelRequest(const SaveChannelRequest&);
-  SaveChannelRequest& operator=(const SaveChannelRequest&);
-  SaveChannelRequest() {
+  ProvisionApplicationRequest(const ProvisionApplicationRequest&);
+  ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
   }
 
-  virtual ~SaveChannelRequest() throw();
+  virtual ~ProvisionApplicationRequest() throw();
   UserToken token;
-  BananaChannel channel;
+  std::string applicationName;
+   ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
+  std::string organization;
+  Image icon;
 
-  _SaveChannelRequest__isset __isset;
+  _ProvisionApplicationRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_applicationName(const std::string& val);
 
-  bool operator == (const SaveChannelRequest & rhs) const
+  void __set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val);
+
+  void __set_organization(const std::string& val);
+
+  void __set_icon(const Image& val);
+
+  bool operator == (const ProvisionApplicationRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
-    if (!(channel == rhs.channel))
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (__isset.programmingLanguage != rhs.__isset.programmingLanguage)
+      return false;
+    else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    if (__isset.icon != rhs.__isset.icon)
+      return false;
+    else if (__isset.icon && !(icon == rhs.icon))
       return false;
     return true;
   }
-  bool operator != (const SaveChannelRequest &rhs) const {
+  bool operator != (const ProvisionApplicationRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SaveChannelRequest & ) const;
+  bool operator < (const ProvisionApplicationRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1389,53 +611,63 @@ class SaveChannelRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SaveChannelRequest &a, SaveChannelRequest &b);
+void swap(ProvisionApplicationRequest &a, ProvisionApplicationRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SaveChannelRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _SaveChannelResponse__isset {
-  _SaveChannelResponse__isset() : message(false), channel(false) {}
-  bool message :1;
-  bool channel :1;
-} _SaveChannelResponse__isset;
+typedef struct _ProvisionApplicationResponse__isset {
+  _ProvisionApplicationResponse__isset() : applicationId(false), applicationName(false), applicationToken(false), applicationInfo(false) {}
+  bool applicationId :1;
+  bool applicationName :1;
+  bool applicationToken :1;
+  bool applicationInfo :1;
+} _ProvisionApplicationResponse__isset;
 
-class SaveChannelResponse {
+class ProvisionApplicationResponse {
  public:
 
-  SaveChannelResponse(const SaveChannelResponse&);
-  SaveChannelResponse& operator=(const SaveChannelResponse&);
-  SaveChannelResponse() : message() {
+  ProvisionApplicationResponse(const ProvisionApplicationResponse&);
+  ProvisionApplicationResponse& operator=(const ProvisionApplicationResponse&);
+  ProvisionApplicationResponse() : applicationId(), applicationName() {
   }
 
-  virtual ~SaveChannelResponse() throw();
-  std::string message;
-  BananaChannel channel;
+  virtual ~ProvisionApplicationResponse() throw();
+  std::string applicationId;
+  std::string applicationName;
+  ApplicationToken applicationToken;
+  Application applicationInfo;
 
-  _SaveChannelResponse__isset __isset;
+  _ProvisionApplicationResponse__isset __isset;
 
-  void __set_message(const std::string& val);
+  void __set_applicationId(const std::string& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_applicationName(const std::string& val);
 
-  bool operator == (const SaveChannelResponse & rhs) const
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_applicationInfo(const Application& val);
+
+  bool operator == (const ProvisionApplicationResponse & rhs) const
   {
-    if (!(message == rhs.message))
+    if (!(applicationId == rhs.applicationId))
       return false;
-    if (__isset.channel != rhs.__isset.channel)
+    if (!(applicationName == rhs.applicationName))
       return false;
-    else if (__isset.channel && !(channel == rhs.channel))
+    if (!(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(applicationInfo == rhs.applicationInfo))
       return false;
     return true;
   }
-  bool operator != (const SaveChannelResponse &rhs) const {
+  bool operator != (const ProvisionApplicationResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SaveChannelResponse & ) const;
+  bool operator < (const ProvisionApplicationResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1443,9 +675,215 @@ class SaveChannelResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SaveChannelResponse &a, SaveChannelResponse &b);
+void swap(ProvisionApplicationResponse &a, ProvisionApplicationResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegenerateApplicationTokenRequest__isset {
+  _RegenerateApplicationTokenRequest__isset() : token(false), applicationId(false) {}
+  bool token :1;
+  bool applicationId :1;
+} _RegenerateApplicationTokenRequest__isset;
+
+class RegenerateApplicationTokenRequest {
+ public:
+
+  RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest&);
+  RegenerateApplicationTokenRequest& operator=(const RegenerateApplicationTokenRequest&);
+  RegenerateApplicationTokenRequest() : applicationId() {
+  }
+
+  virtual ~RegenerateApplicationTokenRequest() throw();
+  UserToken token;
+  std::string applicationId;
+
+  _RegenerateApplicationTokenRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_applicationId(const std::string& val);
+
+  bool operator == (const RegenerateApplicationTokenRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    return true;
+  }
+  bool operator != (const RegenerateApplicationTokenRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegenerateApplicationTokenRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegenerateApplicationTokenRequest &a, RegenerateApplicationTokenRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegenerateApplicationTokenResponse__isset {
+  _RegenerateApplicationTokenResponse__isset() : serviceToken(false) {}
+  bool serviceToken :1;
+} _RegenerateApplicationTokenResponse__isset;
+
+class RegenerateApplicationTokenResponse {
+ public:
+
+  RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse&);
+  RegenerateApplicationTokenResponse& operator=(const RegenerateApplicationTokenResponse&);
+  RegenerateApplicationTokenResponse() {
+  }
+
+  virtual ~RegenerateApplicationTokenResponse() throw();
+  ApplicationToken serviceToken;
+
+  _RegenerateApplicationTokenResponse__isset __isset;
+
+  void __set_serviceToken(const ApplicationToken& val);
+
+  bool operator == (const RegenerateApplicationTokenResponse & rhs) const
+  {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RegenerateApplicationTokenResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegenerateApplicationTokenResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTokenResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegisterHealthCheckRequest__isset {
+  _RegisterHealthCheckRequest__isset() : token(false), endpoint(false) {}
+  bool token :1;
+  bool endpoint :1;
+} _RegisterHealthCheckRequest__isset;
+
+class RegisterHealthCheckRequest {
+ public:
+
+  RegisterHealthCheckRequest(const RegisterHealthCheckRequest&);
+  RegisterHealthCheckRequest& operator=(const RegisterHealthCheckRequest&);
+  RegisterHealthCheckRequest() {
+  }
+
+  virtual ~RegisterHealthCheckRequest() throw();
+  UserToken token;
+  Endpoint endpoint;
+
+  _RegisterHealthCheckRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_endpoint(const Endpoint& val);
+
+  bool operator == (const RegisterHealthCheckRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(endpoint == rhs.endpoint))
+      return false;
+    return true;
+  }
+  bool operator != (const RegisterHealthCheckRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegisterHealthCheckRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RegisterHealthCheckResponse__isset {
+  _RegisterHealthCheckResponse__isset() : message(false), healthCheckToken(false) {}
+  bool message :1;
+  bool healthCheckToken :1;
+} _RegisterHealthCheckResponse__isset;
+
+class RegisterHealthCheckResponse {
+ public:
+
+  RegisterHealthCheckResponse(const RegisterHealthCheckResponse&);
+  RegisterHealthCheckResponse& operator=(const RegisterHealthCheckResponse&);
+  RegisterHealthCheckResponse() : message(), healthCheckToken() {
+  }
+
+  virtual ~RegisterHealthCheckResponse() throw();
+  std::string message;
+  std::string healthCheckToken;
+
+  _RegisterHealthCheckResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_healthCheckToken(const std::string& val);
+
+  bool operator == (const RegisterHealthCheckResponse & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (__isset.healthCheckToken != rhs.__isset.healthCheckToken)
+      return false;
+    else if (__isset.healthCheckToken && !(healthCheckToken == rhs.healthCheckToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RegisterHealthCheckResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RegisterHealthCheckResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RegisterHealthCheckResponse& obj)
 {
   obj.printTo(out);
   return out;
@@ -1557,6 +995,442 @@ inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRespo
   return out;
 }
 
+typedef struct _RenewApplicationTokenRequest__isset {
+  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), timePeriod(false), applicationId(false) {}
+  bool token :1;
+  bool applicationToken :1;
+  bool timePeriod :1;
+  bool applicationId :1;
+} _RenewApplicationTokenRequest__isset;
+
+class RenewApplicationTokenRequest {
+ public:
+
+  RenewApplicationTokenRequest(const RenewApplicationTokenRequest&);
+  RenewApplicationTokenRequest& operator=(const RenewApplicationTokenRequest&);
+  RenewApplicationTokenRequest() : applicationId() {
+  }
+
+  virtual ~RenewApplicationTokenRequest() throw();
+  UserToken token;
+  ApplicationToken applicationToken;
+   ::aroma::banana::thrift::TimePeriod timePeriod;
+  std::string applicationId;
+
+  _RenewApplicationTokenRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
+
+  void __set_applicationId(const std::string& val);
+
+  bool operator == (const RenewApplicationTokenRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(timePeriod == rhs.timePeriod))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    return true;
+  }
+  bool operator != (const RenewApplicationTokenRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RenewApplicationTokenRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _RenewApplicationTokenResponse__isset {
+  _RenewApplicationTokenResponse__isset() : serviceToken(false) {}
+  bool serviceToken :1;
+} _RenewApplicationTokenResponse__isset;
+
+class RenewApplicationTokenResponse {
+ public:
+
+  RenewApplicationTokenResponse(const RenewApplicationTokenResponse&);
+  RenewApplicationTokenResponse& operator=(const RenewApplicationTokenResponse&);
+  RenewApplicationTokenResponse() {
+  }
+
+  virtual ~RenewApplicationTokenResponse() throw();
+  ApplicationToken serviceToken;
+
+  _RenewApplicationTokenResponse__isset __isset;
+
+  void __set_serviceToken(const ApplicationToken& val);
+
+  bool operator == (const RenewApplicationTokenResponse & rhs) const
+  {
+    if (!(serviceToken == rhs.serviceToken))
+      return false;
+    return true;
+  }
+  bool operator != (const RenewApplicationTokenResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const RenewApplicationTokenResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(RenewApplicationTokenResponse &a, RenewApplicationTokenResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const RenewApplicationTokenResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SaveChannelRequest__isset {
+  _SaveChannelRequest__isset() : token(false), channel(false) {}
+  bool token :1;
+  bool channel :1;
+} _SaveChannelRequest__isset;
+
+class SaveChannelRequest {
+ public:
+
+  SaveChannelRequest(const SaveChannelRequest&);
+  SaveChannelRequest& operator=(const SaveChannelRequest&);
+  SaveChannelRequest() {
+  }
+
+  virtual ~SaveChannelRequest() throw();
+  UserToken token;
+  BananaChannel channel;
+
+  _SaveChannelRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SaveChannelRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SaveChannelRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SaveChannelRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SaveChannelRequest &a, SaveChannelRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SaveChannelRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SaveChannelResponse__isset {
+  _SaveChannelResponse__isset() : message(false), channel(false) {}
+  bool message :1;
+  bool channel :1;
+} _SaveChannelResponse__isset;
+
+class SaveChannelResponse {
+ public:
+
+  SaveChannelResponse(const SaveChannelResponse&);
+  SaveChannelResponse& operator=(const SaveChannelResponse&);
+  SaveChannelResponse() : message() {
+  }
+
+  virtual ~SaveChannelResponse() throw();
+  std::string message;
+  BananaChannel channel;
+
+  _SaveChannelResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SaveChannelResponse & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    if (__isset.channel != rhs.__isset.channel)
+      return false;
+    else if (__isset.channel && !(channel == rhs.channel))
+      return false;
+    return true;
+  }
+  bool operator != (const SaveChannelResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SaveChannelResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SaveChannelResponse &a, SaveChannelResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignInRequest__isset {
+  _SignInRequest__isset() : credentials(false), username(false) {}
+  bool credentials :1;
+  bool username :1;
+} _SignInRequest__isset;
+
+class SignInRequest {
+ public:
+
+  SignInRequest(const SignInRequest&);
+  SignInRequest& operator=(const SignInRequest&);
+  SignInRequest() : username() {
+  }
+
+  virtual ~SignInRequest() throw();
+   ::aroma::banana::thrift::authentication::Credentials credentials;
+  std::string username;
+
+  _SignInRequest__isset __isset;
+
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+
+  void __set_username(const std::string& val);
+
+  bool operator == (const SignInRequest & rhs) const
+  {
+    if (!(credentials == rhs.credentials))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInRequest &a, SignInRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignInResponse__isset {
+  _SignInResponse__isset() : userToken(false) {}
+  bool userToken :1;
+} _SignInResponse__isset;
+
+class SignInResponse {
+ public:
+
+  SignInResponse(const SignInResponse&);
+  SignInResponse& operator=(const SignInResponse&);
+  SignInResponse() {
+  }
+
+  virtual ~SignInResponse() throw();
+  UserToken userToken;
+
+  _SignInResponse__isset __isset;
+
+  void __set_userToken(const UserToken& val);
+
+  bool operator == (const SignInResponse & rhs) const
+  {
+    if (!(userToken == rhs.userToken))
+      return false;
+    return true;
+  }
+  bool operator != (const SignInResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignInResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignInResponse &a, SignInResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpRequest__isset {
+  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false), credentials(false) {}
+  bool email :1;
+  bool name :1;
+  bool username :1;
+  bool organization :1;
+  bool credentials :1;
+} _SignUpRequest__isset;
+
+class SignUpRequest {
+ public:
+
+  SignUpRequest(const SignUpRequest&);
+  SignUpRequest& operator=(const SignUpRequest&);
+  SignUpRequest() : email(), name(), username(), organization() {
+  }
+
+  virtual ~SignUpRequest() throw();
+  std::string email;
+  std::string name;
+  std::string username;
+  std::string organization;
+   ::aroma::banana::thrift::authentication::Credentials credentials;
+
+  _SignUpRequest__isset __isset;
+
+  void __set_email(const std::string& val);
+
+  void __set_name(const std::string& val);
+
+  void __set_username(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+
+  bool operator == (const SignUpRequest & rhs) const
+  {
+    if (!(email == rhs.email))
+      return false;
+    if (!(name == rhs.name))
+      return false;
+    if (!(username == rhs.username))
+      return false;
+    if (!(organization == rhs.organization))
+      return false;
+    if (!(credentials == rhs.credentials))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpRequest &a, SignUpRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SignUpResponse__isset {
+  _SignUpResponse__isset() : userToken(false), account(false) {}
+  bool userToken :1;
+  bool account :1;
+} _SignUpResponse__isset;
+
+class SignUpResponse {
+ public:
+
+  SignUpResponse(const SignUpResponse&);
+  SignUpResponse& operator=(const SignUpResponse&);
+  SignUpResponse() {
+  }
+
+  virtual ~SignUpResponse() throw();
+  UserToken userToken;
+   ::aroma::banana::thrift::authentication::AromaAccount account;
+
+  _SignUpResponse__isset __isset;
+
+  void __set_userToken(const UserToken& val);
+
+  void __set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val);
+
+  bool operator == (const SignUpResponse & rhs) const
+  {
+    if (!(userToken == rhs.userToken))
+      return false;
+    if (!(account == rhs.account))
+      return false;
+    return true;
+  }
+  bool operator != (const SignUpResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SignUpResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SignUpResponse &a, SignUpResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _SnoozeChannelRequest__isset {
   _SnoozeChannelRequest__isset() : token(false), channel(false), applicationId(false) {}
   bool token :1;
@@ -1663,37 +1537,65 @@ inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& 
   return out;
 }
 
-typedef struct _GetMyApplicationsRequest__isset {
-  _GetMyApplicationsRequest__isset() : token(false) {}
+typedef struct _SubscribeToApplicationRequest__isset {
+  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organization(false), shared(true) {}
   bool token :1;
-} _GetMyApplicationsRequest__isset;
+  bool applicationName :1;
+  bool applicationId :1;
+  bool organization :1;
+  bool shared :1;
+} _SubscribeToApplicationRequest__isset;
 
-class GetMyApplicationsRequest {
+class SubscribeToApplicationRequest {
  public:
 
-  GetMyApplicationsRequest(const GetMyApplicationsRequest&);
-  GetMyApplicationsRequest& operator=(const GetMyApplicationsRequest&);
-  GetMyApplicationsRequest() {
+  SubscribeToApplicationRequest(const SubscribeToApplicationRequest&);
+  SubscribeToApplicationRequest& operator=(const SubscribeToApplicationRequest&);
+  SubscribeToApplicationRequest() : applicationName(), applicationId(), organization(), shared(false) {
   }
 
-  virtual ~GetMyApplicationsRequest() throw();
+  virtual ~SubscribeToApplicationRequest() throw();
   UserToken token;
+  std::string applicationName;
+  std::string applicationId;
+  std::string organization;
+  bool shared;
 
-  _GetMyApplicationsRequest__isset __isset;
+  _SubscribeToApplicationRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  bool operator == (const GetMyApplicationsRequest & rhs) const
+  void __set_applicationName(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_organization(const std::string& val);
+
+  void __set_shared(const bool val);
+
+  bool operator == (const SubscribeToApplicationRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.organization != rhs.__isset.organization)
+      return false;
+    else if (__isset.organization && !(organization == rhs.organization))
+      return false;
+    if (__isset.shared != rhs.__isset.shared)
+      return false;
+    else if (__isset.shared && !(shared == rhs.shared))
+      return false;
     return true;
   }
-  bool operator != (const GetMyApplicationsRequest &rhs) const {
+  bool operator != (const SubscribeToApplicationRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMyApplicationsRequest & ) const;
+  bool operator < (const SubscribeToApplicationRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1701,45 +1603,51 @@ class GetMyApplicationsRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMyApplicationsRequest &a, GetMyApplicationsRequest &b);
+void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _GetMyApplicationsResponse__isset {
-  _GetMyApplicationsResponse__isset() : applications(false) {}
-  bool applications :1;
-} _GetMyApplicationsResponse__isset;
+typedef struct _SubscribeToApplicationResponse__isset {
+  _SubscribeToApplicationResponse__isset() : message(false), channel(false) {}
+  bool message :1;
+  bool channel :1;
+} _SubscribeToApplicationResponse__isset;
 
-class GetMyApplicationsResponse {
+class SubscribeToApplicationResponse {
  public:
 
-  GetMyApplicationsResponse(const GetMyApplicationsResponse&);
-  GetMyApplicationsResponse& operator=(const GetMyApplicationsResponse&);
-  GetMyApplicationsResponse() {
+  SubscribeToApplicationResponse(const SubscribeToApplicationResponse&);
+  SubscribeToApplicationResponse& operator=(const SubscribeToApplicationResponse&);
+  SubscribeToApplicationResponse() : message() {
   }
 
-  virtual ~GetMyApplicationsResponse() throw();
-  std::vector<Application>  applications;
+  virtual ~SubscribeToApplicationResponse() throw();
+  std::string message;
+  BananaChannel channel;
 
-  _GetMyApplicationsResponse__isset __isset;
+  _SubscribeToApplicationResponse__isset __isset;
 
-  void __set_applications(const std::vector<Application> & val);
+  void __set_message(const std::string& val);
 
-  bool operator == (const GetMyApplicationsResponse & rhs) const
+  void __set_channel(const BananaChannel& val);
+
+  bool operator == (const SubscribeToApplicationResponse & rhs) const
   {
-    if (!(applications == rhs.applications))
+    if (!(message == rhs.message))
+      return false;
+    if (!(channel == rhs.channel))
       return false;
     return true;
   }
-  bool operator != (const GetMyApplicationsResponse &rhs) const {
+  bool operator != (const SubscribeToApplicationResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMyApplicationsResponse & ) const;
+  bool operator < (const SubscribeToApplicationResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1747,9 +1655,9 @@ class GetMyApplicationsResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b);
+void swap(SubscribeToApplicationResponse &a, SubscribeToApplicationResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationResponse& obj)
 {
   obj.printTo(out);
   return out;
@@ -2081,6 +1989,98 @@ inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& ob
   return out;
 }
 
+typedef struct _GetMyApplicationsRequest__isset {
+  _GetMyApplicationsRequest__isset() : token(false) {}
+  bool token :1;
+} _GetMyApplicationsRequest__isset;
+
+class GetMyApplicationsRequest {
+ public:
+
+  GetMyApplicationsRequest(const GetMyApplicationsRequest&);
+  GetMyApplicationsRequest& operator=(const GetMyApplicationsRequest&);
+  GetMyApplicationsRequest() {
+  }
+
+  virtual ~GetMyApplicationsRequest() throw();
+  UserToken token;
+
+  _GetMyApplicationsRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  bool operator == (const GetMyApplicationsRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMyApplicationsRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMyApplicationsRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMyApplicationsRequest &a, GetMyApplicationsRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMyApplicationsResponse__isset {
+  _GetMyApplicationsResponse__isset() : applications(false) {}
+  bool applications :1;
+} _GetMyApplicationsResponse__isset;
+
+class GetMyApplicationsResponse {
+ public:
+
+  GetMyApplicationsResponse(const GetMyApplicationsResponse&);
+  GetMyApplicationsResponse& operator=(const GetMyApplicationsResponse&);
+  GetMyApplicationsResponse() {
+  }
+
+  virtual ~GetMyApplicationsResponse() throw();
+  std::vector<Application>  applications;
+
+  _GetMyApplicationsResponse__isset __isset;
+
+  void __set_applications(const std::vector<Application> & val);
+
+  bool operator == (const GetMyApplicationsResponse & rhs) const
+  {
+    if (!(applications == rhs.applications))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMyApplicationsResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMyApplicationsResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _GetApplicationSubscribersRequest__isset {
   _GetApplicationSubscribersRequest__isset() : token(false), applicationId(false), organization(false) {}
   bool token :1;
@@ -2333,8 +2333,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetActivityRequest& obj
 }
 
 typedef struct _GetActivityResponse__isset {
-  _GetActivityResponse__isset() : notifications(true) {}
-  bool notifications :1;
+  _GetActivityResponse__isset() : events(true) {}
+  bool events :1;
 } _GetActivityResponse__isset;
 
 class GetActivityResponse {
@@ -2347,15 +2347,15 @@ class GetActivityResponse {
   }
 
   virtual ~GetActivityResponse() throw();
-  std::vector< ::aroma::banana::thrift::notifications::Notification>  notifications;
+  std::vector< ::aroma::banana::thrift::notifications::Event>  events;
 
   _GetActivityResponse__isset __isset;
 
-  void __set_notifications(const std::vector< ::aroma::banana::thrift::notifications::Notification> & val);
+  void __set_events(const std::vector< ::aroma::banana::thrift::notifications::Event> & val);
 
   bool operator == (const GetActivityResponse & rhs) const
   {
-    if (!(notifications == rhs.notifications))
+    if (!(events == rhs.events))
       return false;
     return true;
   }

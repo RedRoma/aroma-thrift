@@ -43,14 +43,6 @@ typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException 
 
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
-
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
-
-typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
-
-typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
-
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class CreateUserTokenRequest;
