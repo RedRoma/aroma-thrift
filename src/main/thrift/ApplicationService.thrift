@@ -56,7 +56,7 @@ struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;
     2: string message;
-    3: Urgency urgency = Banana.Urgency.INFORMATIONAL;
+    3: Urgency urgency = Banana.Urgency.LOW;
 }
 
 struct SendMessageResponse

@@ -6,7 +6,7 @@ namespace cpp   aroma.banana.thrift
  * Defined in this file are the basic structures and types for 
  * the Banana Service.
  * 
- * Note that Human and Person are used interchangeably.
+ * Note that Human, User, and Person are used interchangeably.
  */
 
 typedef i32 int
@@ -24,19 +24,23 @@ typedef i64 timestamp
 enum Urgency
 {
     /** Lowest level of urgency. */
-    INFORMATIONAL = 1,
+    LOW = 1,
     /** Middle level of urgency. */
-    WARNING = 2,
+    MEDIUM = 2,
     /** Highest level of urgency. */
-    CRITICAL = 3
+    HIGH = 3
 }
 
 struct Message
 {
+    /** Each message has a unique ID */
     1: string messageId;
+    /** The body represents the Message's Payload, i.e. the actual message. */
     2: string body;
-    3: Urgency urgency = Urgency.INFORMATIONAL;
-    4: timestamp timeMessageSent;
+    3: Urgency urgency = Urgency.LOW;
+    /** The time the message was created on the Application side */
+    4: timestamp timeOfCreation;
+    /** The time the message was received on the Server side */
     5: timestamp timeMessageReceived;
     /** Name of the Application that sent the message. */
     6: string applicationName;

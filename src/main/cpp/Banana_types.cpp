@@ -14,14 +14,14 @@
 namespace aroma { namespace banana { namespace thrift {
 
 int _kUrgencyValues[] = {
-  Urgency::INFORMATIONAL,
-  Urgency::WARNING,
-  Urgency::CRITICAL
+  Urgency::LOW,
+  Urgency::MEDIUM,
+  Urgency::HIGH
 };
 const char* _kUrgencyNames[] = {
-  "INFORMATIONAL",
-  "WARNING",
-  "CRITICAL"
+  "LOW",
+  "MEDIUM",
+  "HIGH"
 };
 const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
@@ -120,8 +120,8 @@ void Message::__set_urgency(const Urgency::type val) {
   this->urgency = val;
 }
 
-void Message::__set_timeMessageSent(const timestamp val) {
-  this->timeMessageSent = val;
+void Message::__set_timeOfCreation(const timestamp val) {
+  this->timeOfCreation = val;
 }
 
 void Message::__set_timeMessageReceived(const timestamp val) {
@@ -191,8 +191,8 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_I64) {
-          xfer += iprot->readI64(this->timeMessageSent);
-          this->__isset.timeMessageSent = true;
+          xfer += iprot->readI64(this->timeOfCreation);
+          this->__isset.timeOfCreation = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -258,8 +258,8 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI32((int32_t)this->urgency);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("timeMessageSent", ::apache::thrift::protocol::T_I64, 4);
-  xfer += oprot->writeI64(this->timeMessageSent);
+  xfer += oprot->writeFieldBegin("timeOfCreation", ::apache::thrift::protocol::T_I64, 4);
+  xfer += oprot->writeI64(this->timeOfCreation);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("timeMessageReceived", ::apache::thrift::protocol::T_I64, 5);
@@ -290,7 +290,7 @@ void swap(Message &a, Message &b) {
   swap(a.messageId, b.messageId);
   swap(a.body, b.body);
   swap(a.urgency, b.urgency);
-  swap(a.timeMessageSent, b.timeMessageSent);
+  swap(a.timeOfCreation, b.timeOfCreation);
   swap(a.timeMessageReceived, b.timeMessageReceived);
   swap(a.applicationName, b.applicationName);
   swap(a.hostname, b.hostname);
@@ -302,7 +302,7 @@ Message::Message(const Message& other1) {
   messageId = other1.messageId;
   body = other1.body;
   urgency = other1.urgency;
-  timeMessageSent = other1.timeMessageSent;
+  timeOfCreation = other1.timeOfCreation;
   timeMessageReceived = other1.timeMessageReceived;
   applicationName = other1.applicationName;
   hostname = other1.hostname;
@@ -313,7 +313,7 @@ Message& Message::operator=(const Message& other2) {
   messageId = other2.messageId;
   body = other2.body;
   urgency = other2.urgency;
-  timeMessageSent = other2.timeMessageSent;
+  timeOfCreation = other2.timeOfCreation;
   timeMessageReceived = other2.timeMessageReceived;
   applicationName = other2.applicationName;
   hostname = other2.hostname;
@@ -327,7 +327,7 @@ void Message::printTo(std::ostream& out) const {
   out << "messageId=" << to_string(messageId);
   out << ", " << "body=" << to_string(body);
   out << ", " << "urgency=" << to_string(urgency);
-  out << ", " << "timeMessageSent=" << to_string(timeMessageSent);
+  out << ", " << "timeOfCreation=" << to_string(timeOfCreation);
   out << ", " << "timeMessageReceived=" << to_string(timeMessageReceived);
   out << ", " << "applicationName=" << to_string(applicationName);
   out << ", " << "hostname="; (__isset.hostname ? (out << to_string(hostname)) : (out << "<null>"));

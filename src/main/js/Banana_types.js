@@ -6,9 +6,9 @@
 
 
 Urgency = {
-  'INFORMATIONAL' : 1,
-  'WARNING' : 2,
-  'CRITICAL' : 3
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
 TimeUnit = {
   'MILLIS' : 0,
@@ -49,7 +49,7 @@ Message = function(args) {
   this.messageId = null;
   this.body = null;
   this.urgency = 1;
-  this.timeMessageSent = null;
+  this.timeOfCreation = null;
   this.timeMessageReceived = null;
   this.applicationName = null;
   this.hostname = null;
@@ -64,8 +64,8 @@ Message = function(args) {
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
     }
-    if (args.timeMessageSent !== undefined && args.timeMessageSent !== null) {
-      this.timeMessageSent = args.timeMessageSent;
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
     }
     if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
       this.timeMessageReceived = args.timeMessageReceived;
@@ -118,7 +118,7 @@ Message.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.I64) {
-        this.timeMessageSent = input.readI64().value;
+        this.timeOfCreation = input.readI64().value;
       } else {
         input.skip(ftype);
       }
@@ -177,9 +177,9 @@ Message.prototype.write = function(output) {
     output.writeI32(this.urgency);
     output.writeFieldEnd();
   }
-  if (this.timeMessageSent !== null && this.timeMessageSent !== undefined) {
-    output.writeFieldBegin('timeMessageSent', Thrift.Type.I64, 4);
-    output.writeI64(this.timeMessageSent);
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfCreation);
     output.writeFieldEnd();
   }
   if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {

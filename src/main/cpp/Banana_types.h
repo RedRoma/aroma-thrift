@@ -21,9 +21,9 @@ namespace aroma { namespace banana { namespace thrift {
 
 struct Urgency {
   enum type {
-    INFORMATIONAL = 1,
-    WARNING = 2,
-    CRITICAL = 3
+    LOW = 1,
+    MEDIUM = 2,
+    HIGH = 3
   };
 };
 
@@ -105,11 +105,11 @@ class Application;
 class ServiceAnnouncement;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeMessageSent(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
-  bool timeMessageSent :1;
+  bool timeOfCreation :1;
   bool timeMessageReceived :1;
   bool applicationName :1;
   bool hostname :1;
@@ -121,7 +121,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeMessageSent(0), timeMessageReceived(0), applicationName(), hostname(), macAddress() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress() {
     urgency = (Urgency::type)1;
 
   }
@@ -130,7 +130,7 @@ class Message {
   std::string messageId;
   std::string body;
   Urgency::type urgency;
-  timestamp timeMessageSent;
+  timestamp timeOfCreation;
   timestamp timeMessageReceived;
   std::string applicationName;
   std::string hostname;
@@ -144,7 +144,7 @@ class Message {
 
   void __set_urgency(const Urgency::type val);
 
-  void __set_timeMessageSent(const timestamp val);
+  void __set_timeOfCreation(const timestamp val);
 
   void __set_timeMessageReceived(const timestamp val);
 
@@ -162,7 +162,7 @@ class Message {
       return false;
     if (!(urgency == rhs.urgency))
       return false;
-    if (!(timeMessageSent == rhs.timeMessageSent))
+    if (!(timeOfCreation == rhs.timeOfCreation))
       return false;
     if (!(timeMessageReceived == rhs.timeMessageReceived))
       return false;

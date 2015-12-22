@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -42,8 +42,8 @@
   __body_isset = YES;
   __urgency = urgency;
   __urgency_isset = YES;
-  __timeMessageSent = timeMessageSent;
-  __timeMessageSent_isset = YES;
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
   __applicationName = [applicationName retain_stub];
@@ -73,10 +73,10 @@
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
   }
-  if ([decoder containsValueForKey: @"timeMessageSent"])
+  if ([decoder containsValueForKey: @"timeOfCreation"])
   {
-    __timeMessageSent = [decoder decodeInt64ForKey: @"timeMessageSent"];
-    __timeMessageSent_isset = YES;
+    __timeOfCreation = [decoder decodeInt64ForKey: @"timeOfCreation"];
+    __timeOfCreation_isset = YES;
   }
   if ([decoder containsValueForKey: @"timeMessageReceived"])
   {
@@ -115,9 +115,9 @@
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
   }
-  if (__timeMessageSent_isset)
+  if (__timeOfCreation_isset)
   {
-    [encoder encodeInt64: __timeMessageSent forKey: @"timeMessageSent"];
+    [encoder encodeInt64: __timeOfCreation forKey: @"timeOfCreation"];
   }
   if (__timeMessageReceived_isset)
   {
@@ -155,10 +155,10 @@
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
   }
-  hash = (hash * 31) ^ __timeMessageSent_isset ? 2654435761 : 0;
-  if (__timeMessageSent_isset)
+  hash = (hash * 31) ^ __timeOfCreation_isset ? 2654435761 : 0;
+  if (__timeOfCreation_isset)
   {
-    hash = (hash * 31) ^ [@(__timeMessageSent) hash];
+    hash = (hash * 31) ^ [@(__timeOfCreation) hash];
   }
   hash = (hash * 31) ^ __timeMessageReceived_isset ? 2654435761 : 0;
   if (__timeMessageReceived_isset)
@@ -204,8 +204,8 @@
       (__urgency_isset && (__urgency != other->__urgency))) {
     return NO;
   }
-  if ((__timeMessageSent_isset != other->__timeMessageSent_isset) ||
-      (__timeMessageSent_isset && (__timeMessageSent != other->__timeMessageSent))) {
+  if ((__timeOfCreation_isset != other->__timeOfCreation_isset) ||
+      (__timeOfCreation_isset && (__timeOfCreation != other->__timeOfCreation))) {
     return NO;
   }
   if ((__timeMessageReceived_isset != other->__timeMessageReceived_isset) ||
@@ -296,21 +296,21 @@
   __urgency_isset = NO;
 }
 
-- (int64_t) timeMessageSent {
-  return __timeMessageSent;
+- (int64_t) timeOfCreation {
+  return __timeOfCreation;
 }
 
-- (void) setTimeMessageSent: (int64_t) timeMessageSent {
-  __timeMessageSent = timeMessageSent;
-  __timeMessageSent_isset = YES;
+- (void) setTimeOfCreation: (int64_t) timeOfCreation {
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
 }
 
-- (BOOL) timeMessageSentIsSet {
-  return __timeMessageSent_isset;
+- (BOOL) timeOfCreationIsSet {
+  return __timeOfCreation_isset;
 }
 
-- (void) unsetTimeMessageSent {
-  __timeMessageSent_isset = NO;
+- (void) unsetTimeOfCreation {
+  __timeOfCreation_isset = NO;
 }
 
 - (int64_t) timeMessageReceived {
@@ -435,7 +435,7 @@
       case 4:
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
-          [self setTimeMessageSent: fieldValue];
+          [self setTimeOfCreation: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -502,9 +502,9 @@
     [outProtocol writeI32: __urgency];
     [outProtocol writeFieldEnd];
   }
-  if (__timeMessageSent_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeMessageSent" type: TType_I64 fieldID: 4];
-    [outProtocol writeI64: __timeMessageSent];
+  if (__timeOfCreation_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfCreation" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfCreation];
     [outProtocol writeFieldEnd];
   }
   if (__timeMessageReceived_isset) {
@@ -549,8 +549,8 @@
   [ms appendFormat: @"\"%@\"", __body];
   [ms appendString: @",urgency:"];
   [ms appendFormat: @"%i", __urgency];
-  [ms appendString: @",timeMessageSent:"];
-  [ms appendFormat: @"%qi", __timeMessageSent];
+  [ms appendString: @",timeOfCreation:"];
+  [ms appendFormat: @"%qi", __timeOfCreation];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
   [ms appendString: @",applicationName:"];
