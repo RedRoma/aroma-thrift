@@ -95,6 +95,15 @@ exception ChannelDoesNotExistException
 }
 
 /**
+ * Thrown when an Application sends too many messages in a short period of time.
+ * This prevents against DoS attacks.
+ */
+exception ThroughputExceeedException
+{
+    1: string message = "You have surpassed your allowable rate of messages. Slow Down."
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  * This is like a catch-all exception
  */
