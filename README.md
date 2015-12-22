@@ -1,4 +1,4 @@
-<div style="text-align:center">Banana Service Thrift</div>
+Banana Service Thrift
 ==============================================
 
 
