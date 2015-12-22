@@ -3,8 +3,7 @@ namespace cocoa Banana_
 namespace cpp   aroma.banana.thrift
 
 /*
- * Defined in this file are the basic structures and types for 
- * the Banana Service.
+ * Defined in this file are the basic structures and types used by the Banana Services.
  * 
  * Note that Human, User, and Person are used interchangeably.
  */
