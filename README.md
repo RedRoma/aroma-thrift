@@ -1,4 +1,4 @@
-Banana Service Thrift
+<p align="center">Banana Service Thrift</p>
 ==============================================
 
 
