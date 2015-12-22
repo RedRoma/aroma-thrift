@@ -5,6 +5,14 @@ namespace cpp   aroma.banana.thrift.service
 /*
  * Defined in this File is the Banana Service API and all of the operations
  * that can be performed primarily by People.
+ * 
+ * The Banana Service can be decomposed into multiple services:
+ * 
+ * + User Service
+ * + Query Service
+ * + iOS Service
+ * 
+ * but for the moment they are rolled up into one, for simplicity.
  */
 
 include "Authentication.thrift"
