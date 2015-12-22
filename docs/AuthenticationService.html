@@ -204,10 +204,18 @@ code { line-height: 20px; }
 <a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="#Typedef_ApplicationToken">ApplicationToken</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
+<a href="#Struct_CreateApplicationTokenRequest">CreateApplicationTokenRequest</a><br/>
+<a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a><br/>
+<a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="#Struct_InvalidateApplicationTokenRequest">InvalidateApplicationTokenRequest</a><br/>
+<a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a><br/>
+<a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a><br/>
+<a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="#Typedef_TimePeriod">TimePeriod</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
 <a href="#Struct_VerifyApplicationTokenRequest">VerifyApplicationTokenRequest</a><br/>
@@ -236,6 +244,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_TimePeriod">Typedef: TimePeriod</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_TimePeriod">Banana.TimePeriod</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -271,7 +282,26 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_VerifyUserTokenRequest">Struct: VerifyUserTokenRequest</h3>
+<div class="definition"><h3 id="Struct_CreateUserTokenRequest">Struct: CreateUserTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CreateUserTokenResponse">Struct: CreateUserTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CreateApplicationTokenRequest">Struct: CreateApplicationTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateApplicationTokenRequest">Struct: InvalidateApplicationTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateApplicationTokenResponse">Struct: InvalidateApplicationTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateUserTokenRequest">Struct: InvalidateUserTokenRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateUserTokenResponse">Struct: InvalidateUserTokenResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_VerifyUserTokenRequest">Struct: VerifyUserTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_VerifyUserTokenResponse">Struct: VerifyUserTokenResponse</h3>

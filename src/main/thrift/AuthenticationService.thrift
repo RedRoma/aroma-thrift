@@ -22,6 +22,7 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.TimePeriod TimePeriod;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
@@ -46,6 +47,42 @@ const int SERVICE_PORT = 6001;
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+
+struct CreateUserTokenRequest
+{
+    1: string userId;
+}
+
+struct CreateUserTokenResponse
+{
+    1: UserToken token;
+}
+
+struct CreateApplicationTokenRequest
+{
+    1: ApplicationToken token;
+}
+
+
+struct InvalidateApplicationTokenRequest
+{
+    1: ApplicationToken token;
+}
+
+struct InvalidateApplicationTokenResponse
+{
+    
+}
+
+struct InvalidateUserTokenRequest
+{
+    1: ApplicationToken token;
+}
+
+struct InvalidateUserTokenResponse
+{
+    
+}
 
 struct VerifyUserTokenRequest
 {
