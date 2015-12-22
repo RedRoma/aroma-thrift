@@ -1,4 +1,4 @@
-<p align="center">Banana Service Thrift</p>
+<div style="text-align:center">Banana Service Thrift</div>
 ==============================================
 
 
