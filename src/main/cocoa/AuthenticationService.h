@@ -41,6 +41,8 @@ typedef BananaException_InvalidArgumentException * AuthenticationService_Invalid
 
 typedef BananaException_InvalidCredentialsException * AuthenticationService_InvalidCredentialsException;
 
+typedef BananaException_InvalidTokenException * AuthenticationService_InvalidTokenException;
+
 typedef BananaException_OperationFailedException * AuthenticationService_OperationFailedException;
 
 typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
@@ -367,8 +369,10 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @protocol AuthenticationService_AuthenticationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
 - (AuthenticationService_CreateApplicationTokenResponse *) createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
+- (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
+- (AuthenticationService_InvalidateApplicationTokenResponse *) invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_InvalidateUserTokenResponse *) invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

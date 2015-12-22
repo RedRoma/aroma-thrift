@@ -175,6 +175,213 @@ uint32_t AuthenticationService_getApiVersion_presult::read(::apache::thrift::pro
 }
 
 
+AuthenticationService_createApplicationToken_args::~AuthenticationService_createApplicationToken_args() throw() {
+}
+
+
+uint32_t AuthenticationService_createApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AuthenticationService_createApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_createApplicationToken_pargs::~AuthenticationService_createApplicationToken_pargs() throw() {
+}
+
+
+uint32_t AuthenticationService_createApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_createApplicationToken_result::~AuthenticationService_createApplicationToken_result() throw() {
+}
+
+
+uint32_t AuthenticationService_createApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex.read(iprot);
+          this->__isset.ex = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AuthenticationService_createApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex) {
+    xfer += oprot->writeFieldBegin("ex", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_createApplicationToken_presult::~AuthenticationService_createApplicationToken_presult() throw() {
+}
+
+
+uint32_t AuthenticationService_createApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex)).read(iprot);
+          this->__isset.ex = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
 AuthenticationService_createUserToken_args::~AuthenticationService_createUserToken_args() throw() {
 }
 
@@ -382,11 +589,11 @@ uint32_t AuthenticationService_createUserToken_presult::read(::apache::thrift::p
 }
 
 
-AuthenticationService_createApplicationToken_args::~AuthenticationService_createApplicationToken_args() throw() {
+AuthenticationService_invalidateApplicationToken_args::~AuthenticationService_invalidateApplicationToken_args() throw() {
 }
 
 
-uint32_t AuthenticationService_createApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AuthenticationService_invalidateApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -427,10 +634,10 @@ uint32_t AuthenticationService_createApplicationToken_args::read(::apache::thrif
   return xfer;
 }
 
-uint32_t AuthenticationService_createApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AuthenticationService_invalidateApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_args");
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateApplicationToken_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -442,14 +649,14 @@ uint32_t AuthenticationService_createApplicationToken_args::write(::apache::thri
 }
 
 
-AuthenticationService_createApplicationToken_pargs::~AuthenticationService_createApplicationToken_pargs() throw() {
+AuthenticationService_invalidateApplicationToken_pargs::~AuthenticationService_invalidateApplicationToken_pargs() throw() {
 }
 
 
-uint32_t AuthenticationService_createApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AuthenticationService_invalidateApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_pargs");
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateApplicationToken_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -461,11 +668,11 @@ uint32_t AuthenticationService_createApplicationToken_pargs::write(::apache::thr
 }
 
 
-AuthenticationService_createApplicationToken_result::~AuthenticationService_createApplicationToken_result() throw() {
+AuthenticationService_invalidateApplicationToken_result::~AuthenticationService_invalidateApplicationToken_result() throw() {
 }
 
 
-uint32_t AuthenticationService_createApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AuthenticationService_invalidateApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -496,8 +703,16 @@ uint32_t AuthenticationService_createApplicationToken_result::read(::apache::thr
         break;
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex.read(iprot);
-          this->__isset.ex = true;
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -514,19 +729,23 @@ uint32_t AuthenticationService_createApplicationToken_result::read(::apache::thr
   return xfer;
 }
 
-uint32_t AuthenticationService_createApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AuthenticationService_invalidateApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AuthenticationService_createApplicationToken_result");
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateApplicationToken_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
     xfer += this->success.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex) {
-    xfer += oprot->writeFieldBegin("ex", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex.write(oprot);
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -535,11 +754,11 @@ uint32_t AuthenticationService_createApplicationToken_result::write(::apache::th
 }
 
 
-AuthenticationService_createApplicationToken_presult::~AuthenticationService_createApplicationToken_presult() throw() {
+AuthenticationService_invalidateApplicationToken_presult::~AuthenticationService_invalidateApplicationToken_presult() throw() {
 }
 
 
-uint32_t AuthenticationService_createApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AuthenticationService_invalidateApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -570,8 +789,243 @@ uint32_t AuthenticationService_createApplicationToken_presult::read(::apache::th
         break;
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex)).read(iprot);
-          this->__isset.ex = true;
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+
+AuthenticationService_invalidateUserToken_args::~AuthenticationService_invalidateUserToken_args() throw() {
+}
+
+
+uint32_t AuthenticationService_invalidateUserToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->request.read(iprot);
+          this->__isset.request = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AuthenticationService_invalidateUserToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateUserToken_args");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->request.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_invalidateUserToken_pargs::~AuthenticationService_invalidateUserToken_pargs() throw() {
+}
+
+
+uint32_t AuthenticationService_invalidateUserToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateUserToken_pargs");
+
+  xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->request)).write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_invalidateUserToken_result::~AuthenticationService_invalidateUserToken_result() throw() {
+}
+
+
+uint32_t AuthenticationService_invalidateUserToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AuthenticationService_invalidateUserToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+
+  uint32_t xfer = 0;
+
+  xfer += oprot->writeStructBegin("AuthenticationService_invalidateUserToken_result");
+
+  if (this->__isset.success) {
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+
+AuthenticationService_invalidateUserToken_presult::~AuthenticationService_invalidateUserToken_presult() throw() {
+}
+
+
+uint32_t AuthenticationService_invalidateUserToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
+          this->__isset.success = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -645,6 +1099,67 @@ double AuthenticationServiceClient::recv_getApiVersion()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
 }
 
+void AuthenticationServiceClient::createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request)
+{
+  send_createApplicationToken(request);
+  recv_createApplicationToken(_return);
+}
+
+void AuthenticationServiceClient::send_createApplicationToken(const CreateApplicationTokenRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AuthenticationService_createApplicationToken_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AuthenticationServiceClient::recv_createApplicationToken(CreateApplicationTokenResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("createApplicationToken") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AuthenticationService_createApplicationToken_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex) {
+    throw result.ex;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createApplicationToken failed: unknown result");
+}
+
 void AuthenticationServiceClient::createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request)
 {
   send_createUserToken(request);
@@ -706,18 +1221,18 @@ void AuthenticationServiceClient::recv_createUserToken(CreateUserTokenResponse& 
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createUserToken failed: unknown result");
 }
 
-void AuthenticationServiceClient::createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request)
+void AuthenticationServiceClient::invalidateApplicationToken(InvalidateApplicationTokenResponse& _return, const InvalidateApplicationTokenRequest& request)
 {
-  send_createApplicationToken(request);
-  recv_createApplicationToken(_return);
+  send_invalidateApplicationToken(request);
+  recv_invalidateApplicationToken(_return);
 }
 
-void AuthenticationServiceClient::send_createApplicationToken(const CreateApplicationTokenRequest& request)
+void AuthenticationServiceClient::send_invalidateApplicationToken(const InvalidateApplicationTokenRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("invalidateApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AuthenticationService_createApplicationToken_pargs args;
+  AuthenticationService_invalidateApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -726,7 +1241,7 @@ void AuthenticationServiceClient::send_createApplicationToken(const CreateApplic
   oprot_->getTransport()->flush();
 }
 
-void AuthenticationServiceClient::recv_createApplicationToken(CreateApplicationTokenResponse& _return)
+void AuthenticationServiceClient::recv_invalidateApplicationToken(InvalidateApplicationTokenResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -746,12 +1261,12 @@ void AuthenticationServiceClient::recv_createApplicationToken(CreateApplicationT
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("createApplicationToken") != 0) {
+  if (fname.compare("invalidateApplicationToken") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AuthenticationService_createApplicationToken_presult result;
+  AuthenticationService_invalidateApplicationToken_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -761,10 +1276,77 @@ void AuthenticationServiceClient::recv_createApplicationToken(CreateApplicationT
     // _return pointer has now been filled
     return;
   }
-  if (result.__isset.ex) {
-    throw result.ex;
+  if (result.__isset.ex1) {
+    throw result.ex1;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createApplicationToken failed: unknown result");
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateApplicationToken failed: unknown result");
+}
+
+void AuthenticationServiceClient::invalidateUserToken(InvalidateUserTokenResponse& _return, const InvalidateUserTokenRequest& request)
+{
+  send_invalidateUserToken(request);
+  recv_invalidateUserToken(_return);
+}
+
+void AuthenticationServiceClient::send_invalidateUserToken(const InvalidateUserTokenRequest& request)
+{
+  int32_t cseqid = 0;
+  oprot_->writeMessageBegin("invalidateUserToken", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AuthenticationService_invalidateUserToken_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+}
+
+void AuthenticationServiceClient::recv_invalidateUserToken(InvalidateUserTokenResponse& _return)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  iprot_->readMessageBegin(fname, mtype, rseqid);
+  if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+    ::apache::thrift::TApplicationException x;
+    x.read(iprot_);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+    throw x;
+  }
+  if (mtype != ::apache::thrift::protocol::T_REPLY) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  if (fname.compare("invalidateUserToken") != 0) {
+    iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+    iprot_->readMessageEnd();
+    iprot_->getTransport()->readEnd();
+  }
+  AuthenticationService_invalidateUserToken_presult result;
+  result.success = &_return;
+  result.read(iprot_);
+  iprot_->readMessageEnd();
+  iprot_->getTransport()->readEnd();
+
+  if (result.__isset.success) {
+    // _return pointer has now been filled
+    return;
+  }
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
+  }
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateUserToken failed: unknown result");
 }
 
 bool AuthenticationServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
@@ -840,6 +1422,63 @@ void AuthenticationServiceProcessor::process_getApiVersion(int32_t seqid, ::apac
   }
 }
 
+void AuthenticationServiceProcessor::process_createApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AuthenticationService.createApplicationToken", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AuthenticationService.createApplicationToken");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AuthenticationService.createApplicationToken");
+  }
+
+  AuthenticationService_createApplicationToken_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AuthenticationService.createApplicationToken", bytes);
+  }
+
+  AuthenticationService_createApplicationToken_result result;
+  try {
+    iface_->createApplicationToken(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex) {
+    result.ex = ex;
+    result.__isset.ex = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AuthenticationService.createApplicationToken");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AuthenticationService.createApplicationToken");
+  }
+
+  oprot->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AuthenticationService.createApplicationToken", bytes);
+  }
+}
+
 void AuthenticationServiceProcessor::process_createUserToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
@@ -897,41 +1536,44 @@ void AuthenticationServiceProcessor::process_createUserToken(int32_t seqid, ::ap
   }
 }
 
-void AuthenticationServiceProcessor::process_createApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AuthenticationServiceProcessor::process_invalidateApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AuthenticationService.createApplicationToken", callContext);
+    ctx = this->eventHandler_->getContext("AuthenticationService.invalidateApplicationToken", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AuthenticationService.createApplicationToken");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AuthenticationService.invalidateApplicationToken");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AuthenticationService.createApplicationToken");
+    this->eventHandler_->preRead(ctx, "AuthenticationService.invalidateApplicationToken");
   }
 
-  AuthenticationService_createApplicationToken_args args;
+  AuthenticationService_invalidateApplicationToken_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AuthenticationService.createApplicationToken", bytes);
+    this->eventHandler_->postRead(ctx, "AuthenticationService.invalidateApplicationToken", bytes);
   }
 
-  AuthenticationService_createApplicationToken_result result;
+  AuthenticationService_invalidateApplicationToken_result result;
   try {
-    iface_->createApplicationToken(result.success, args.request);
+    iface_->invalidateApplicationToken(result.success, args.request);
     result.__isset.success = true;
-  } catch (OperationFailedException &ex) {
-    result.ex = ex;
-    result.__isset.ex = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidTokenException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AuthenticationService.createApplicationToken");
+      this->eventHandler_->handlerError(ctx, "AuthenticationService.invalidateApplicationToken");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("invalidateApplicationToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -940,17 +1582,77 @@ void AuthenticationServiceProcessor::process_createApplicationToken(int32_t seqi
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AuthenticationService.createApplicationToken");
+    this->eventHandler_->preWrite(ctx, "AuthenticationService.invalidateApplicationToken");
   }
 
-  oprot->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("invalidateApplicationToken", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AuthenticationService.createApplicationToken", bytes);
+    this->eventHandler_->postWrite(ctx, "AuthenticationService.invalidateApplicationToken", bytes);
+  }
+}
+
+void AuthenticationServiceProcessor::process_invalidateUserToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+{
+  void* ctx = NULL;
+  if (this->eventHandler_.get() != NULL) {
+    ctx = this->eventHandler_->getContext("AuthenticationService.invalidateUserToken", callContext);
+  }
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AuthenticationService.invalidateUserToken");
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preRead(ctx, "AuthenticationService.invalidateUserToken");
+  }
+
+  AuthenticationService_invalidateUserToken_args args;
+  args.read(iprot);
+  iprot->readMessageEnd();
+  uint32_t bytes = iprot->getTransport()->readEnd();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postRead(ctx, "AuthenticationService.invalidateUserToken", bytes);
+  }
+
+  AuthenticationService_invalidateUserToken_result result;
+  try {
+    iface_->invalidateUserToken(result.success, args.request);
+    result.__isset.success = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidTokenException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
+  } catch (const std::exception& e) {
+    if (this->eventHandler_.get() != NULL) {
+      this->eventHandler_->handlerError(ctx, "AuthenticationService.invalidateUserToken");
+    }
+
+    ::apache::thrift::TApplicationException x(e.what());
+    oprot->writeMessageBegin("invalidateUserToken", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    x.write(oprot);
+    oprot->writeMessageEnd();
+    oprot->getTransport()->writeEnd();
+    oprot->getTransport()->flush();
+    return;
+  }
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->preWrite(ctx, "AuthenticationService.invalidateUserToken");
+  }
+
+  oprot->writeMessageBegin("invalidateUserToken", ::apache::thrift::protocol::T_REPLY, seqid);
+  result.write(oprot);
+  oprot->writeMessageEnd();
+  bytes = oprot->getTransport()->writeEnd();
+  oprot->getTransport()->flush();
+
+  if (this->eventHandler_.get() != NULL) {
+    this->eventHandler_->postWrite(ctx, "AuthenticationService.invalidateUserToken", bytes);
   }
 }
 
@@ -1035,6 +1737,94 @@ double AuthenticationServiceConcurrentClient::recv_getApiVersion(const int32_t s
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AuthenticationServiceConcurrentClient::createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request)
+{
+  int32_t seqid = send_createApplicationToken(request);
+  recv_createApplicationToken(_return, seqid);
+}
+
+int32_t AuthenticationServiceConcurrentClient::send_createApplicationToken(const CreateApplicationTokenRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AuthenticationService_createApplicationToken_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AuthenticationServiceConcurrentClient::recv_createApplicationToken(CreateApplicationTokenResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("createApplicationToken") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AuthenticationService_createApplicationToken_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex) {
+        sentry.commit();
+        throw result.ex;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createApplicationToken failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -1132,19 +1922,19 @@ void AuthenticationServiceConcurrentClient::recv_createUserToken(CreateUserToken
   } // end while(true)
 }
 
-void AuthenticationServiceConcurrentClient::createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request)
+void AuthenticationServiceConcurrentClient::invalidateApplicationToken(InvalidateApplicationTokenResponse& _return, const InvalidateApplicationTokenRequest& request)
 {
-  int32_t seqid = send_createApplicationToken(request);
-  recv_createApplicationToken(_return, seqid);
+  int32_t seqid = send_invalidateApplicationToken(request);
+  recv_invalidateApplicationToken(_return, seqid);
 }
 
-int32_t AuthenticationServiceConcurrentClient::send_createApplicationToken(const CreateApplicationTokenRequest& request)
+int32_t AuthenticationServiceConcurrentClient::send_invalidateApplicationToken(const InvalidateApplicationTokenRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("createApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("invalidateApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AuthenticationService_createApplicationToken_pargs args;
+  AuthenticationService_invalidateApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -1156,7 +1946,7 @@ int32_t AuthenticationServiceConcurrentClient::send_createApplicationToken(const
   return cseqid;
 }
 
-void AuthenticationServiceConcurrentClient::recv_createApplicationToken(CreateApplicationTokenResponse& _return, const int32_t seqid)
+void AuthenticationServiceConcurrentClient::recv_invalidateApplicationToken(InvalidateApplicationTokenResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -1185,7 +1975,7 @@ void AuthenticationServiceConcurrentClient::recv_createApplicationToken(CreateAp
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("createApplicationToken") != 0) {
+      if (fname.compare("invalidateApplicationToken") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -1194,7 +1984,7 @@ void AuthenticationServiceConcurrentClient::recv_createApplicationToken(CreateAp
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AuthenticationService_createApplicationToken_presult result;
+      AuthenticationService_invalidateApplicationToken_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -1205,12 +1995,108 @@ void AuthenticationServiceConcurrentClient::recv_createApplicationToken(CreateAp
         sentry.commit();
         return;
       }
-      if (result.__isset.ex) {
+      if (result.__isset.ex1) {
         sentry.commit();
-        throw result.ex;
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createApplicationToken failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateApplicationToken failed: unknown result");
+    }
+    // seqid != rseqid
+    this->sync_.updatePending(fname, mtype, rseqid);
+
+    // this will temporarily unlock the readMutex, and let other clients get work done
+    this->sync_.waitForWork(seqid);
+  } // end while(true)
+}
+
+void AuthenticationServiceConcurrentClient::invalidateUserToken(InvalidateUserTokenResponse& _return, const InvalidateUserTokenRequest& request)
+{
+  int32_t seqid = send_invalidateUserToken(request);
+  recv_invalidateUserToken(_return, seqid);
+}
+
+int32_t AuthenticationServiceConcurrentClient::send_invalidateUserToken(const InvalidateUserTokenRequest& request)
+{
+  int32_t cseqid = this->sync_.generateSeqId();
+  ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
+  oprot_->writeMessageBegin("invalidateUserToken", ::apache::thrift::protocol::T_CALL, cseqid);
+
+  AuthenticationService_invalidateUserToken_pargs args;
+  args.request = &request;
+  args.write(oprot_);
+
+  oprot_->writeMessageEnd();
+  oprot_->getTransport()->writeEnd();
+  oprot_->getTransport()->flush();
+
+  sentry.commit();
+  return cseqid;
+}
+
+void AuthenticationServiceConcurrentClient::recv_invalidateUserToken(InvalidateUserTokenResponse& _return, const int32_t seqid)
+{
+
+  int32_t rseqid = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TMessageType mtype;
+
+  // the read mutex gets dropped and reacquired as part of waitForWork()
+  // The destructor of this sentry wakes up other clients
+  ::apache::thrift::async::TConcurrentRecvSentry sentry(&this->sync_, seqid);
+
+  while(true) {
+    if(!this->sync_.getPending(fname, mtype, rseqid)) {
+      iprot_->readMessageBegin(fname, mtype, rseqid);
+    }
+    if(seqid == rseqid) {
+      if (mtype == ::apache::thrift::protocol::T_EXCEPTION) {
+        ::apache::thrift::TApplicationException x;
+        x.read(iprot_);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+        sentry.commit();
+        throw x;
+      }
+      if (mtype != ::apache::thrift::protocol::T_REPLY) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+      }
+      if (fname.compare("invalidateUserToken") != 0) {
+        iprot_->skip(::apache::thrift::protocol::T_STRUCT);
+        iprot_->readMessageEnd();
+        iprot_->getTransport()->readEnd();
+
+        // in a bad state, don't commit
+        using ::apache::thrift::protocol::TProtocolException;
+        throw TProtocolException(TProtocolException::INVALID_DATA);
+      }
+      AuthenticationService_invalidateUserToken_presult result;
+      result.success = &_return;
+      result.read(iprot_);
+      iprot_->readMessageEnd();
+      iprot_->getTransport()->readEnd();
+
+      if (result.__isset.success) {
+        // _return pointer has now been filled
+        sentry.commit();
+        return;
+      }
+      if (result.__isset.ex1) {
+        sentry.commit();
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
+      }
+      // in a bad state, don't commit
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateUserToken failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

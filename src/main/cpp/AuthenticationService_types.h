@@ -41,6 +41,8 @@ typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException Inv
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
+typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;

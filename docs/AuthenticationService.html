@@ -199,6 +199,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_AuthenticationService_createApplicationToken">createApplicationToken</a></li>
 <li><a href="#Fn_AuthenticationService_createUserToken">createUserToken</a></li>
 <li><a href="#Fn_AuthenticationService_getApiVersion">getApiVersion</a></li>
+<li><a href="#Fn_AuthenticationService_invalidateApplicationToken">invalidateApplicationToken</a></li>
+<li><a href="#Fn_AuthenticationService_invalidateUserToken">invalidateUserToken</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -209,6 +211,7 @@ code { line-height: 20px; }
 <a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Struct_InvalidateApplicationTokenRequest">InvalidateApplicationTokenRequest</a><br/>
 <a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a><br/>
 <a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a><br/>
@@ -261,6 +264,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_InvalidTokenException">Typedef: InvalidTokenException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidTokenException">Exceptions.InvalidTokenException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
@@ -318,12 +324,22 @@ NOTE: This Service is for internal use only. It is designed to be called only by
 the Banana Service and it's supporting services.
 <br/><div class="definition"><h4 id="Fn_AuthenticationService_getApiVersion">Function: AuthenticationService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createUserToken">Function: AuthenticationService.createUserToken</h4>
-<pre><code><a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a></code> createUserToken(<code><a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
-</pre>Create a User Token, used to represent a Human.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_createApplicationToken">Function: AuthenticationService.createApplicationToken</h4>
+</pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createApplicationToken">Function: AuthenticationService.createApplicationToken</h4>
 <pre><code><a href="#Struct_CreateApplicationTokenResponse">CreateApplicationTokenResponse</a></code> createApplicationToken(<code><a href="#Struct_CreateApplicationTokenRequest">CreateApplicationTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
 </pre>Create an Application Token, used to represent an Application or Computer.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_createUserToken">Function: AuthenticationService.createUserToken</h4>
+<pre><code><a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a></code> createUserToken(<code><a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
+</pre>Create a User Token, used to represent a Human.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateApplicationToken">Function: AuthenticationService.invalidateApplicationToken</h4>
+<pre><code><a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a></code> invalidateApplicationToken(<code><a href="#Struct_InvalidateApplicationTokenRequest">InvalidateApplicationTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+an InvalidTokenException.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateUserToken">Function: AuthenticationService.invalidateUserToken</h4>
+<pre><code><a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a></code> invalidateUserToken(<code><a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+an InvalidTokenException.
 <br/></div></div></body></html>

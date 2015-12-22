@@ -28,6 +28,16 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
   }
 
   /**
+   * Create an Application Token, used to represent an Application or Computer.
+   * 
+   * @param request
+   */
+  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("createApplicationToken\n");
+  }
+
+  /**
    * Create a User Token, used to represent a Human.
    * 
    * @param request
@@ -38,13 +48,25 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
   }
 
   /**
-   * Create an Application Token, used to represent an Application or Computer.
+   * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+   * an InvalidTokenException.
    * 
    * @param request
    */
-  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) {
+  void invalidateApplicationToken(InvalidateApplicationTokenResponse& _return, const InvalidateApplicationTokenRequest& request) {
     // Your implementation goes here
-    printf("createApplicationToken\n");
+    printf("invalidateApplicationToken\n");
+  }
+
+  /**
+   * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+   * an InvalidTokenException.
+   * 
+   * @param request
+   */
+  void invalidateUserToken(InvalidateUserTokenResponse& _return, const InvalidateUserTokenRequest& request) {
+    // Your implementation goes here
+    printf("invalidateUserToken\n");
   }
 
 };

@@ -32,6 +32,7 @@ typedef Authentication.UserToken UserToken
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
+typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
@@ -131,6 +132,21 @@ service AuthenticationService
      * Create a User Token, used to represent a Human.
      */
     CreateUserTokenResponse createUserToken(1: CreateUserTokenRequest request) throws (1: OperationFailedException ex);
+
     
+    /**
+     * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+     * an InvalidTokenException. 
+     */
+    InvalidateApplicationTokenResponse invalidateApplicationToken(1 : InvalidateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                                        2 : InvalidTokenException ex2);
     
-}
+
+    
+    /**
+     * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
+     * an InvalidTokenException. 
+     */   
+    InvalidateUserTokenResponse invalidateUserToken(1 : InvalidateUserTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                   2 : InvalidTokenException ex2);
+   }
