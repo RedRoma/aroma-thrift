@@ -441,6 +441,7 @@
 @end
 
 static double ApplicationService_API_VERSION = 1.4;
+static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 
@@ -459,6 +460,9 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 }
 + (double) API_VERSION{
   return ApplicationService_API_VERSION;
+}
++ (ApplicationService_int) SERVICE_PORT{
+  return ApplicationService_SERVICE_PORT;
 }
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return ApplicationService_PRODUCTION_ENDPOINT;

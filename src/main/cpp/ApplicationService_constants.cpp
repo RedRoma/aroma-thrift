@@ -13,6 +13,8 @@ const ApplicationServiceConstants g_ApplicationService_constants;
 ApplicationServiceConstants::ApplicationServiceConstants() {
   API_VERSION = 1.4;
 
+  SERVICE_PORT = 7005;
+
   PRODUCTION_ENDPOINT.hostname = "application-srv.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp5;
   tmp5 = 7005;
