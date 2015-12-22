@@ -170,32 +170,6 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 @end
 
 @interface AuthenticationService_GetApplicationTokenInfoRequest : NSObject <TBase, NSCoding> {
-  NSString * __tokenId;
-
-  BOOL __tokenId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
-#endif
-
-- (id) init;
-- (id) initWithTokenId: (NSString *) tokenId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) tokenId;
-- (void) setTokenId: (NSString *) tokenId;
-#endif
-- (BOOL) tokenIdIsSet;
-
-@end
-
-@interface AuthenticationService_GetApplicationTokenInfoResponse : NSObject <TBase, NSCoding> {
   AuthenticationService_ApplicationToken __token;
 
   BOOL __token_isset;
@@ -221,18 +195,18 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @end
 
-@interface AuthenticationService_GetUserTokenInfoRequest : NSObject <TBase, NSCoding> {
-  NSString * __tokenId;
+@interface AuthenticationService_GetApplicationTokenInfoResponse : NSObject <TBase, NSCoding> {
+  NSString * __applicationId;
 
-  BOOL __tokenId_isset;
+  BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId;
+- (id) initWithApplicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -240,14 +214,14 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) tokenId;
-- (void) setTokenId: (NSString *) tokenId;
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
 #endif
-- (BOOL) tokenIdIsSet;
+- (BOOL) applicationIdIsSet;
 
 @end
 
-@interface AuthenticationService_GetUserTokenInfoResponse : NSObject <TBase, NSCoding> {
+@interface AuthenticationService_GetUserTokenInfoRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_UserToken __token;
 
   BOOL __token_isset;
@@ -270,6 +244,32 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setToken: (AuthenticationService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
+
+@end
+
+@interface AuthenticationService_GetUserTokenInfoResponse : NSObject <TBase, NSCoding> {
+  NSString * __userId;
+
+  BOOL __userId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
+#endif
+
+- (id) init;
+- (id) initWithUserId: (NSString *) userId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) userId;
+- (void) setUserId: (NSString *) userId;
+#endif
+- (BOOL) userIdIsSet;
 
 @end
 
@@ -475,6 +475,8 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (double) getApiVersion;  // throws TException
 - (AuthenticationService_CreateApplicationTokenResponse *) createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
 - (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
+- (AuthenticationService_GetApplicationTokenInfoResponse *) getApplicationTokenInfo: (AuthenticationService_GetApplicationTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_GetUserTokenInfoResponse *) getUserTokenInfo: (AuthenticationService_GetUserTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 - (AuthenticationService_InvalidateApplicationTokenResponse *) invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 - (AuthenticationService_InvalidateUserTokenResponse *) invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 - (AuthenticationService_VerifyApplicationTokenResponse *) verifyApplicationToken: (AuthenticationService_VerifyApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException

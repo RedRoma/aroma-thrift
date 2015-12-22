@@ -48,6 +48,26 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
   }
 
   /**
+   * Get information about an Application Token.
+   * 
+   * @param request
+   */
+  void getApplicationTokenInfo(GetApplicationTokenInfoResponse& _return, const GetApplicationTokenInfoRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationTokenInfo\n");
+  }
+
+  /**
+   * Get information about a User Token.
+   * 
+   * @param request
+   */
+  void getUserTokenInfo(GetUserTokenInfoResponse& _return, const GetUserTokenInfoRequest& request) {
+    // Your implementation goes here
+    printf("getUserTokenInfo\n");
+  }
+
+  /**
    * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
    * an InvalidTokenException.
    * 

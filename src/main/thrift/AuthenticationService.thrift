@@ -69,22 +69,22 @@ struct CreateApplicationTokenResponse
 
 struct GetApplicationTokenInfoRequest
 {
-    1: string tokenId;
+    1: ApplicationToken token;
 }
 
 struct GetApplicationTokenInfoResponse
 {
-    1: ApplicationToken token;
+    1: string applicationId;
 }
 
 struct GetUserTokenInfoRequest
 {
-    1: string tokenId;
+    1: UserToken token;
 }
 
 struct GetUserTokenInfoResponse
 {
-    1: UserToken token;
+    1: string userId;
 }
 
 struct InvalidateApplicationTokenRequest
@@ -153,6 +153,19 @@ service AuthenticationService
      */
     CreateUserTokenResponse createUserToken(1: CreateUserTokenRequest request) throws (1: OperationFailedException ex);
 
+    /**
+     * Get information about an Application Token.
+     */
+    GetApplicationTokenInfoResponse getApplicationTokenInfo(1 : GetApplicationTokenInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                               2 : InvalidTokenException ex2);
+
+    /**
+     * Get information about a User Token.
+     */
+    GetUserTokenInfoResponse getUserTokenInfo(1 : GetUserTokenInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                                          2 : InvalidTokenException ex2);
+
+ 
     
     /**
      * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
