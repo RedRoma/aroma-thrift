@@ -21,7 +21,7 @@
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
 
 typedef  ::aroma::banana::thrift::int int;
 
@@ -163,6 +163,6 @@ inline std::ostream& operator<<(std::ostream& out, const SendMessageResponse& ob
   return out;
 }
 
-}}}} // namespace
+}}}}} // namespace
 
 #endif

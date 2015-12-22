@@ -9,7 +9,7 @@
 
 #include "ApplicationService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
 
 class ApplicationServiceConstants {
  public:
@@ -22,6 +22,6 @@ class ApplicationServiceConstants {
 
 extern const ApplicationServiceConstants g_ApplicationService_constants;
 
-}}}} // namespace
+}}}}} // namespace
 
 #endif

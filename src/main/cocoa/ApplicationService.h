@@ -23,40 +23,40 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-typedef Banana_int BananaService_int;
+typedef Banana_int ApplicationService_int;
 
-typedef Banana_long BananaService_long;
+typedef Banana_long ApplicationService_long;
 
-typedef Banana_timestamp BananaService_timestamp;
+typedef Banana_timestamp ApplicationService_timestamp;
 
-typedef BananaAuthentication_ApplicationToken * BananaService_ApplicationToken;
+typedef BananaAuthentication_ApplicationToken * ApplicationService_ApplicationToken;
 
-typedef Banana_Application * BananaService_Application;
+typedef Banana_Application * ApplicationService_Application;
 
-typedef int BananaService_Urgency;
+typedef int ApplicationService_Urgency;
 
-typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
+typedef BananaException_AccountAlreadyExistsException * ApplicationService_AccountAlreadyExistsException;
 
-typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
+typedef BananaException_InvalidArgumentException * ApplicationService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * BananaService_InvalidCredentialsException;
+typedef BananaException_InvalidCredentialsException * ApplicationService_InvalidCredentialsException;
 
-typedef BananaException_OperationFailedException * BananaService_OperationFailedException;
+typedef BananaException_OperationFailedException * ApplicationService_OperationFailedException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * BananaService_ApplicationAlreadyRegisteredException;
+typedef BananaException_ApplicationAlreadyRegisteredException * ApplicationService_ApplicationAlreadyRegisteredException;
 
-typedef BananaException_ApplicationDoesNotExistException * BananaService_ApplicationDoesNotExistException;
+typedef BananaException_ApplicationDoesNotExistException * ApplicationService_ApplicationDoesNotExistException;
 
-typedef BananaException_CustomChannelUnreachableException * BananaService_CustomChannelUnreachableException;
+typedef BananaException_CustomChannelUnreachableException * ApplicationService_CustomChannelUnreachableException;
 
-typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoesNotExistException;
+typedef BananaException_ChannelDoesNotExistException * ApplicationService_ChannelDoesNotExistException;
 
-typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
+typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedException;
 
-@interface BananaService_SendMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __applicationToken;
+@interface ApplicationService_SendMessageRequest : NSObject <TBase, NSCoding> {
+  ApplicationService_ApplicationToken __applicationToken;
   NSString * __message;
-  BananaService_Urgency __urgency;
+  ApplicationService_Urgency __urgency;
 
   BOOL __applicationToken_isset;
   BOOL __message_isset;
@@ -64,13 +64,13 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) ApplicationService_ApplicationToken applicationToken;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, getter=urgency, setter=setUrgency:) BananaService_Urgency urgency;
+@property (nonatomic, getter=urgency, setter=setUrgency:) ApplicationService_Urgency urgency;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken message: (NSString *) message urgency: (BananaService_Urgency) urgency;
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -78,8 +78,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+- (ApplicationService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (ApplicationService_ApplicationToken) applicationToken;
 #endif
 - (BOOL) applicationTokenIsSet;
 
@@ -90,14 +90,14 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Urgency) urgency;
-- (void) setUrgency: (BananaService_Urgency) urgency;
+- (ApplicationService_Urgency) urgency;
+- (void) setUrgency: (ApplicationService_Urgency) urgency;
 #endif
 - (BOOL) urgencyIsSet;
 
 @end
 
-@interface BananaService_SendMessageResponse : NSObject <TBase, NSCoding> {
+@interface ApplicationService_SendMessageResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -123,25 +123,25 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@protocol BananaService_ApplicationService <NSObject>
+@protocol ApplicationService_ApplicationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
-- (void) sendMessageAsync: (BananaService_SendMessageRequest *) request;  // throws TException
+- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request;  // throws ApplicationService_OperationFailedException, ApplicationService_InvalidArgumentException, ApplicationService_InvalidCredentialsException, TException
+- (void) sendMessageAsync: (ApplicationService_SendMessageRequest *) request;  // throws TException
 @end
 
-@interface BananaService_ApplicationServiceClient : TBaseClient <BananaService_ApplicationService> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface ApplicationService_ApplicationServiceClient : TBaseClient <ApplicationService_ApplicationService> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaService_ApplicationServiceProcessor : NSObject <TProcessor> {
-  id <BananaService_ApplicationService> mService;
+@interface ApplicationService_ApplicationServiceProcessor : NSObject <TProcessor> {
+  id <ApplicationService_ApplicationService> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithApplicationService: (id <BananaService_ApplicationService>) service;
-- (id<BananaService_ApplicationService>) service;
+- (id) initWithApplicationService: (id <ApplicationService_ApplicationService>) service;
+- (id<ApplicationService_ApplicationService>) service;
 @end
 
-@interface BananaService_ApplicationServiceConstants : NSObject {
+@interface ApplicationService_ApplicationServiceConstants : NSObject {
 }
 + (double) API_VERSION;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;

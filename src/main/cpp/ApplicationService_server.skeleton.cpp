@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::aroma::banana::thrift::service;
+using namespace  ::aroma::banana::thrift::application::service;
 
 class ApplicationServiceHandler : virtual public ApplicationServiceIf {
  public:

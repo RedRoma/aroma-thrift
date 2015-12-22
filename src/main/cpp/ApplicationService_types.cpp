@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
 
 
 SendMessageRequest::~SendMessageRequest() throw() {
@@ -227,4 +227,4 @@ void SendMessageResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}}}} // namespace

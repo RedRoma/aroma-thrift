@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.service
-namespace cocoa BananaService_
-namespace cpp   aroma.banana.thrift.service
+namespace java  tech.aroma.banana.thrift.application.service
+namespace cocoa ApplicationService_
+namespace cpp   aroma.banana.thrift.application.service
 
 /*
  * Defined in this File is the Application Service API.

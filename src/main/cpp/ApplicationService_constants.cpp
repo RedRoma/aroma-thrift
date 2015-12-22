@@ -6,7 +6,7 @@
  */
 #include "ApplicationService_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
 
 const ApplicationServiceConstants g_ApplicationService_constants;
 
@@ -27,5 +27,5 @@ ApplicationServiceConstants::ApplicationServiceConstants() {
 
 }
 
-}}}} // namespace
+}}}}} // namespace
 

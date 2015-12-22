@@ -25,7 +25,7 @@
 
 #import "ApplicationService.h"
 
-@implementation BananaService_SendMessageRequest
+@implementation ApplicationService_SendMessageRequest
 
 - (id) init
 {
@@ -37,7 +37,7 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken message: (NSString *) message urgency: (BananaService_Urgency) urgency
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
@@ -112,10 +112,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessageRequest class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_SendMessageRequest class]]) {
     return NO;
   }
-  BananaService_SendMessageRequest *other = (BananaService_SendMessageRequest *)anObject;
+  ApplicationService_SendMessageRequest *other = (ApplicationService_SendMessageRequest *)anObject;
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
@@ -277,7 +277,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessageRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageRequest("];
   [ms appendString: @"applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @",message:"];
@@ -290,7 +290,7 @@
 
 @end
 
-@implementation BananaService_SendMessageResponse
+@implementation ApplicationService_SendMessageResponse
 
 - (id) init
 {
@@ -343,10 +343,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessageResponse class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_SendMessageResponse class]]) {
     return NO;
   }
-  BananaService_SendMessageResponse *other = (BananaService_SendMessageResponse *)anObject;
+  ApplicationService_SendMessageResponse *other = (ApplicationService_SendMessageResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -431,7 +431,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessageResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -440,35 +440,35 @@
 
 @end
 
-static double BananaService_API_VERSION = 1.4;
-static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
+static double ApplicationService_API_VERSION = 1.4;
+static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
+static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 
-@implementation BananaService_ApplicationServiceConstants
+@implementation ApplicationService_ApplicationServiceConstants
 + (void) initialize {
-  BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
-  [BananaService_PRODUCTION_ENDPOINT setPort:7005];
+  ApplicationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
+  [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
+  [ApplicationService_PRODUCTION_ENDPOINT setPort:7005];
 
 ;
-  BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
-  [BananaService_BETA_ENDPOINT setPort:7005];
+  ApplicationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
+  [ApplicationService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
+  [ApplicationService_BETA_ENDPOINT setPort:7005];
 
 ;
 }
 + (double) API_VERSION{
-  return BananaService_API_VERSION;
+  return ApplicationService_API_VERSION;
 }
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
-  return BananaService_PRODUCTION_ENDPOINT;
+  return ApplicationService_PRODUCTION_ENDPOINT;
 }
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
-  return BananaService_BETA_ENDPOINT;
+  return ApplicationService_BETA_ENDPOINT;
 }
 @end
 
-@interface BananaService_getApiVersion_args : NSObject <TBase, NSCoding> {
+@interface ApplicationService_getApiVersion_args : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -480,7 +480,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_getApiVersion_args
+@implementation ApplicationService_getApiVersion_args
 
 - (id) init
 {
@@ -509,10 +509,10 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getApiVersion_args class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_getApiVersion_args class]]) {
     return NO;
   }
-  BananaService_getApiVersion_args *other = (BananaService_getApiVersion_args *)anObject;
+  ApplicationService_getApiVersion_args *other = (ApplicationService_getApiVersion_args *)anObject;
   return YES;
 }
 
@@ -551,14 +551,14 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApiVersion_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_getApiVersion_args("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@interface BananaService_GetApiVersion_result : NSObject <TBase, NSCoding> {
+@interface ApplicationService_GetApiVersion_result : NSObject <TBase, NSCoding> {
   double __success;
 
   BOOL __success_isset;
@@ -584,7 +584,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_GetApiVersion_result
+@implementation ApplicationService_GetApiVersion_result
 
 - (id) init
 {
@@ -637,10 +637,10 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApiVersion_result class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_GetApiVersion_result class]]) {
     return NO;
   }
-  BananaService_GetApiVersion_result *other = (BananaService_GetApiVersion_result *)anObject;
+  ApplicationService_GetApiVersion_result *other = (ApplicationService_GetApiVersion_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && (__success != other->__success))) {
     return NO;
@@ -719,7 +719,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApiVersion_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_GetApiVersion_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%f", __success];
   [ms appendString: @")"];
@@ -728,18 +728,18 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@interface BananaService_sendMessage_args : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageRequest * __request;
+@interface ApplicationService_sendMessage_args : NSObject <TBase, NSCoding> {
+  ApplicationService_SendMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SendMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request;
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -747,14 +747,14 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageRequest *) request;
-- (void) setRequest: (BananaService_SendMessageRequest *) request;
+- (ApplicationService_SendMessageRequest *) request;
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_sendMessage_args
+@implementation ApplicationService_sendMessage_args
 
 - (id) init
 {
@@ -764,7 +764,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -807,10 +807,10 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_sendMessage_args class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_sendMessage_args class]]) {
     return NO;
   }
-  BananaService_sendMessage_args *other = (BananaService_sendMessage_args *)anObject;
+  ApplicationService_sendMessage_args *other = (ApplicationService_sendMessage_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -824,11 +824,11 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageRequest *) request {
+- (ApplicationService_SendMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SendMessageRequest *) request {
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -862,7 +862,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageRequest *fieldValue = [[BananaService_SendMessageRequest alloc] init];
+          ApplicationService_SendMessageRequest *fieldValue = [[ApplicationService_SendMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -897,7 +897,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_sendMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_sendMessage_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -906,11 +906,11 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@interface BananaService_SendMessage_result : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
+@interface ApplicationService_SendMessage_result : NSObject <TBase, NSCoding> {
+  ApplicationService_SendMessageResponse * __success;
+  ApplicationService_OperationFailedException __ex1;
+  ApplicationService_InvalidArgumentException __ex2;
+  ApplicationService_InvalidCredentialsException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -919,14 +919,14 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SendMessageResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) ApplicationService_SendMessageResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) ApplicationService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) ApplicationService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) ApplicationService_InvalidCredentialsException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SendMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidCredentialsException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -934,32 +934,32 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageResponse *) success;
-- (void) setSuccess: (BananaService_SendMessageResponse *) success;
+- (ApplicationService_SendMessageResponse *) success;
+- (void) setSuccess: (ApplicationService_SendMessageResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (ApplicationService_OperationFailedException) ex1;
+- (void) setEx1: (ApplicationService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (ApplicationService_InvalidArgumentException) ex2;
+- (void) setEx2: (ApplicationService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+- (ApplicationService_InvalidCredentialsException) ex3;
+- (void) setEx3: (ApplicationService_InvalidCredentialsException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_SendMessage_result
+@implementation ApplicationService_SendMessage_result
 
 - (id) init
 {
@@ -969,7 +969,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SendMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidCredentialsException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -1060,10 +1060,10 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessage_result class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_SendMessage_result class]]) {
     return NO;
   }
-  BananaService_SendMessage_result *other = (BananaService_SendMessage_result *)anObject;
+  ApplicationService_SendMessage_result *other = (ApplicationService_SendMessage_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -1092,11 +1092,11 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageResponse *) success {
+- (ApplicationService_SendMessageResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SendMessageResponse *) success {
+- (void) setSuccess: (ApplicationService_SendMessageResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -1193,7 +1193,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageResponse *fieldValue = [[BananaService_SendMessageResponse alloc] init];
+          ApplicationService_SendMessageResponse *fieldValue = [[ApplicationService_SendMessageResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -1277,7 +1277,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessage_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessage_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -1292,18 +1292,18 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@interface BananaService_sendMessageAsync_args : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageRequest * __request;
+@interface ApplicationService_sendMessageAsync_args : NSObject <TBase, NSCoding> {
+  ApplicationService_SendMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SendMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request;
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1311,14 +1311,14 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageRequest *) request;
-- (void) setRequest: (BananaService_SendMessageRequest *) request;
+- (ApplicationService_SendMessageRequest *) request;
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_sendMessageAsync_args
+@implementation ApplicationService_sendMessageAsync_args
 
 - (id) init
 {
@@ -1328,7 +1328,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -1371,10 +1371,10 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_sendMessageAsync_args class]]) {
+  if (![anObject isKindOfClass:[ApplicationService_sendMessageAsync_args class]]) {
     return NO;
   }
-  BananaService_sendMessageAsync_args *other = (BananaService_sendMessageAsync_args *)anObject;
+  ApplicationService_sendMessageAsync_args *other = (ApplicationService_sendMessageAsync_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -1388,11 +1388,11 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageRequest *) request {
+- (ApplicationService_SendMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SendMessageRequest *) request {
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -1426,7 +1426,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageRequest *fieldValue = [[BananaService_SendMessageRequest alloc] init];
+          ApplicationService_SendMessageRequest *fieldValue = [[ApplicationService_SendMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -1461,7 +1461,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_sendMessageAsync_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_sendMessageAsync_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -1470,7 +1470,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_ApplicationServiceClient
+@implementation ApplicationService_ApplicationServiceClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -1499,7 +1499,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetApiVersion_result * result = [[[BananaService_GetApiVersion_result alloc] init] autorelease_stub];
+  ApplicationService_GetApiVersion_result * result = [[[ApplicationService_GetApiVersion_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -1516,7 +1516,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   return [self recv_getApiVersion];
 }
 
-- (void) send_sendMessage: (BananaService_SendMessageRequest *) request
+- (void) send_sendMessage: (ApplicationService_SendMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"sendMessage" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"sendMessage_args"];
@@ -1530,13 +1530,13 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SendMessageResponse *) recv_sendMessage
+- (ApplicationService_SendMessageResponse *) recv_sendMessage
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SendMessage_result * result = [[[BananaService_SendMessage_result alloc] init] autorelease_stub];
+  ApplicationService_SendMessage_result * result = [[[ApplicationService_SendMessage_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -1555,14 +1555,14 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
                                            reason: @"sendMessage failed: unknown result"];
 }
 
-- (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request
+- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request
 {
   [self send_sendMessage : request];
   [[outProtocol transport] flush];
   return [self recv_sendMessage];
 }
 
-- (void) send_sendMessageAsync: (BananaService_SendMessageRequest *) request
+- (void) send_sendMessageAsync: (ApplicationService_SendMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"sendMessageAsync" type: TMessageType_ONEWAY sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"sendMessageAsync_args"];
@@ -1576,7 +1576,7 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (void) sendMessageAsync: (BananaService_SendMessageRequest *) request
+- (void) sendMessageAsync: (ApplicationService_SendMessageRequest *) request
 {
   [self send_sendMessageAsync : request];
   [[outProtocol transport] flush];
@@ -1584,9 +1584,9 @@ static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 
 @end
 
-@implementation BananaService_ApplicationServiceProcessor
+@implementation ApplicationService_ApplicationServiceProcessor
 
-- (id) initWithApplicationService: (id <BananaService_ApplicationService>) service
+- (id) initWithApplicationService: (id <ApplicationService_ApplicationService>) service
 {
 self = [super init];
 if (!self) {
@@ -1621,7 +1621,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaService_ApplicationService>) service
+- (id<ApplicationService_ApplicationService>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }
@@ -1661,10 +1661,10 @@ return self;
 
 - (void) process_getApiVersion_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getApiVersion_args * args = [[BananaService_getApiVersion_args alloc] init];
+ApplicationService_getApiVersion_args * args = [[ApplicationService_getApiVersion_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetApiVersion_result * result = [[BananaService_GetApiVersion_result alloc] init];
+ApplicationService_GetApiVersion_result * result = [[ApplicationService_GetApiVersion_result alloc] init];
 [result setSuccess: [mService getApiVersion]];
 [outProtocol writeMessageBeginWithName: @"getApiVersion"
                                   type: TMessageType_REPLY
@@ -1678,10 +1678,10 @@ BananaService_GetApiVersion_result * result = [[BananaService_GetApiVersion_resu
 
 - (void) process_sendMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_sendMessage_args * args = [[BananaService_sendMessage_args alloc] init];
+ApplicationService_sendMessage_args * args = [[ApplicationService_sendMessage_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SendMessage_result * result = [[BananaService_SendMessage_result alloc] init];
+ApplicationService_SendMessage_result * result = [[ApplicationService_SendMessage_result alloc] init];
 [result setSuccess: [mService sendMessage: [args request]]];
 [outProtocol writeMessageBeginWithName: @"sendMessage"
                                   type: TMessageType_REPLY
@@ -1695,7 +1695,7 @@ BananaService_SendMessage_result * result = [[BananaService_SendMessage_result a
 
 - (void) process_sendMessageAsync_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_sendMessageAsync_args * args = [[BananaService_sendMessageAsync_args alloc] init];
+ApplicationService_sendMessageAsync_args * args = [[ApplicationService_sendMessageAsync_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
 [mService sendMessageAsync: [args request]];
