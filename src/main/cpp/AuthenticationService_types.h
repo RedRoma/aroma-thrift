@@ -59,6 +59,8 @@ class CreateUserTokenResponse;
 
 class CreateApplicationTokenRequest;
 
+class CreateApplicationTokenResponse;
+
 class InvalidateApplicationTokenRequest;
 
 class InvalidateApplicationTokenResponse;
@@ -76,8 +78,9 @@ class VerifyApplicationTokenRequest;
 class VerifyApplicationTokenResponse;
 
 typedef struct _CreateUserTokenRequest__isset {
-  _CreateUserTokenRequest__isset() : userId(false) {}
+  _CreateUserTokenRequest__isset() : userId(false), lifetime(false) {}
   bool userId :1;
+  bool lifetime :1;
 } _CreateUserTokenRequest__isset;
 
 class CreateUserTokenRequest {
@@ -90,14 +93,19 @@ class CreateUserTokenRequest {
 
   virtual ~CreateUserTokenRequest() throw();
   std::string userId;
+  TimePeriod lifetime;
 
   _CreateUserTokenRequest__isset __isset;
 
   void __set_userId(const std::string& val);
 
+  void __set_lifetime(const TimePeriod& val);
+
   bool operator == (const CreateUserTokenRequest & rhs) const
   {
     if (!(userId == rhs.userId))
+      return false;
+    if (!(lifetime == rhs.lifetime))
       return false;
     return true;
   }
@@ -168,8 +176,9 @@ inline std::ostream& operator<<(std::ostream& out, const CreateUserTokenResponse
 }
 
 typedef struct _CreateApplicationTokenRequest__isset {
-  _CreateApplicationTokenRequest__isset() : token(false) {}
-  bool token :1;
+  _CreateApplicationTokenRequest__isset() : applicationId(false), lifetime(false) {}
+  bool applicationId :1;
+  bool lifetime :1;
 } _CreateApplicationTokenRequest__isset;
 
 class CreateApplicationTokenRequest {
@@ -177,19 +186,24 @@ class CreateApplicationTokenRequest {
 
   CreateApplicationTokenRequest(const CreateApplicationTokenRequest&);
   CreateApplicationTokenRequest& operator=(const CreateApplicationTokenRequest&);
-  CreateApplicationTokenRequest() {
+  CreateApplicationTokenRequest() : applicationId() {
   }
 
   virtual ~CreateApplicationTokenRequest() throw();
-  ApplicationToken token;
+  std::string applicationId;
+  TimePeriod lifetime;
 
   _CreateApplicationTokenRequest__isset __isset;
 
-  void __set_token(const ApplicationToken& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_lifetime(const TimePeriod& val);
 
   bool operator == (const CreateApplicationTokenRequest & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(lifetime == rhs.lifetime))
       return false;
     return true;
   }
@@ -208,6 +222,52 @@ class CreateApplicationTokenRequest {
 void swap(CreateApplicationTokenRequest &a, CreateApplicationTokenRequest &b);
 
 inline std::ostream& operator<<(std::ostream& out, const CreateApplicationTokenRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _CreateApplicationTokenResponse__isset {
+  _CreateApplicationTokenResponse__isset() : token(false) {}
+  bool token :1;
+} _CreateApplicationTokenResponse__isset;
+
+class CreateApplicationTokenResponse {
+ public:
+
+  CreateApplicationTokenResponse(const CreateApplicationTokenResponse&);
+  CreateApplicationTokenResponse& operator=(const CreateApplicationTokenResponse&);
+  CreateApplicationTokenResponse() {
+  }
+
+  virtual ~CreateApplicationTokenResponse() throw();
+  ApplicationToken token;
+
+  _CreateApplicationTokenResponse__isset __isset;
+
+  void __set_token(const ApplicationToken& val);
+
+  bool operator == (const CreateApplicationTokenResponse & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    return true;
+  }
+  bool operator != (const CreateApplicationTokenResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CreateApplicationTokenResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(CreateApplicationTokenResponse &a, CreateApplicationTokenResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CreateApplicationTokenResponse& obj)
 {
   obj.printTo(out);
   return out;

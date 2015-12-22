@@ -55,16 +55,19 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_CreateUserTokenRequest : NSObject <TBase, NSCoding> {
   NSString * __userId;
+  AuthenticationService_TimePeriod __lifetime;
 
   BOOL __userId_isset;
+  BOOL __lifetime_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
+@property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_TimePeriod lifetime;
 #endif
 
 - (id) init;
-- (id) initWithUserId: (NSString *) userId;
+- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_TimePeriod) lifetime;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -76,6 +79,12 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setUserId: (NSString *) userId;
 #endif
 - (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_TimePeriod) lifetime;
+- (void) setLifetime: (AuthenticationService_TimePeriod) lifetime;
+#endif
+- (BOOL) lifetimeIsSet;
 
 @end
 
@@ -106,6 +115,41 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 @end
 
 @interface AuthenticationService_CreateApplicationTokenRequest : NSObject <TBase, NSCoding> {
+  NSString * __applicationId;
+  AuthenticationService_TimePeriod __lifetime;
+
+  BOOL __applicationId_isset;
+  BOOL __lifetime_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_TimePeriod lifetime;
+#endif
+
+- (id) init;
+- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_TimePeriod) lifetime;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_TimePeriod) lifetime;
+- (void) setLifetime: (AuthenticationService_TimePeriod) lifetime;
+#endif
+- (BOOL) lifetimeIsSet;
+
+@end
+
+@interface AuthenticationService_CreateApplicationTokenResponse : NSObject <TBase, NSCoding> {
   AuthenticationService_ApplicationToken __token;
 
   BOOL __token_isset;

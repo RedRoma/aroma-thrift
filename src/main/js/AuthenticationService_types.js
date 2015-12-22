@@ -7,9 +7,13 @@
 
 CreateUserTokenRequest = function(args) {
   this.userId = null;
+  this.lifetime = null;
   if (args) {
     if (args.userId !== undefined && args.userId !== null) {
       this.userId = args.userId;
+    }
+    if (args.lifetime !== undefined && args.lifetime !== null) {
+      this.lifetime = new TimePeriod(args.lifetime);
     }
   }
 };
@@ -34,9 +38,14 @@ CreateUserTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.lifetime = new TimePeriod();
+        this.lifetime.read(input);
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -51,6 +60,11 @@ CreateUserTokenRequest.prototype.write = function(output) {
   if (this.userId !== null && this.userId !== undefined) {
     output.writeFieldBegin('userId', Thrift.Type.STRING, 1);
     output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
+  if (this.lifetime !== null && this.lifetime !== undefined) {
+    output.writeFieldBegin('lifetime', Thrift.Type.STRUCT, 2);
+    this.lifetime.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -113,6 +127,73 @@ CreateUserTokenResponse.prototype.write = function(output) {
 };
 
 CreateApplicationTokenRequest = function(args) {
+  this.applicationId = null;
+  this.lifetime = null;
+  if (args) {
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.lifetime !== undefined && args.lifetime !== null) {
+      this.lifetime = new TimePeriod(args.lifetime);
+    }
+  }
+};
+CreateApplicationTokenRequest.prototype = {};
+CreateApplicationTokenRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.lifetime = new TimePeriod();
+        this.lifetime.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CreateApplicationTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('CreateApplicationTokenRequest');
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.lifetime !== null && this.lifetime !== undefined) {
+    output.writeFieldBegin('lifetime', Thrift.Type.STRUCT, 2);
+    this.lifetime.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+CreateApplicationTokenResponse = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -120,8 +201,8 @@ CreateApplicationTokenRequest = function(args) {
     }
   }
 };
-CreateApplicationTokenRequest.prototype = {};
-CreateApplicationTokenRequest.prototype.read = function(input) {
+CreateApplicationTokenResponse.prototype = {};
+CreateApplicationTokenResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -154,8 +235,8 @@ CreateApplicationTokenRequest.prototype.read = function(input) {
   return;
 };
 
-CreateApplicationTokenRequest.prototype.write = function(output) {
-  output.writeStructBegin('CreateApplicationTokenRequest');
+CreateApplicationTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('CreateApplicationTokenResponse');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);

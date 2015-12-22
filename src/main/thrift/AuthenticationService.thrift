@@ -51,6 +51,7 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.be
 struct CreateUserTokenRequest
 {
     1: string userId;
+    2: TimePeriod lifetime;
 }
 
 struct CreateUserTokenResponse
@@ -60,9 +61,14 @@ struct CreateUserTokenResponse
 
 struct CreateApplicationTokenRequest
 {
-    1: ApplicationToken token;
+    1: string applicationId;
+    2: TimePeriod lifetime;
 }
 
+struct CreateApplicationTokenResponse
+{
+    1: ApplicationToken token;
+}
 
 struct InvalidateApplicationTokenRequest
 {

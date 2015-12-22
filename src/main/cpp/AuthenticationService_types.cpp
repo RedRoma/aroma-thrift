@@ -22,6 +22,10 @@ void CreateUserTokenRequest::__set_userId(const std::string& val) {
   this->userId = val;
 }
 
+void CreateUserTokenRequest::__set_lifetime(const TimePeriod& val) {
+  this->lifetime = val;
+}
+
 uint32_t CreateUserTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -51,6 +55,14 @@ uint32_t CreateUserTokenRequest::read(::apache::thrift::protocol::TProtocol* ipr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->lifetime.read(iprot);
+          this->__isset.lifetime = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -72,6 +84,10 @@ uint32_t CreateUserTokenRequest::write(::apache::thrift::protocol::TProtocol* op
   xfer += oprot->writeString(this->userId);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->lifetime.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -80,15 +96,18 @@ uint32_t CreateUserTokenRequest::write(::apache::thrift::protocol::TProtocol* op
 void swap(CreateUserTokenRequest &a, CreateUserTokenRequest &b) {
   using ::std::swap;
   swap(a.userId, b.userId);
+  swap(a.lifetime, b.lifetime);
   swap(a.__isset, b.__isset);
 }
 
 CreateUserTokenRequest::CreateUserTokenRequest(const CreateUserTokenRequest& other0) {
   userId = other0.userId;
+  lifetime = other0.lifetime;
   __isset = other0.__isset;
 }
 CreateUserTokenRequest& CreateUserTokenRequest::operator=(const CreateUserTokenRequest& other1) {
   userId = other1.userId;
+  lifetime = other1.lifetime;
   __isset = other1.__isset;
   return *this;
 }
@@ -96,6 +115,7 @@ void CreateUserTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "CreateUserTokenRequest(";
   out << "userId=" << to_string(userId);
+  out << ", " << "lifetime=" << to_string(lifetime);
   out << ")";
 }
 
@@ -190,11 +210,117 @@ CreateApplicationTokenRequest::~CreateApplicationTokenRequest() throw() {
 }
 
 
-void CreateApplicationTokenRequest::__set_token(const ApplicationToken& val) {
-  this->token = val;
+void CreateApplicationTokenRequest::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+}
+
+void CreateApplicationTokenRequest::__set_lifetime(const TimePeriod& val) {
+  this->lifetime = val;
 }
 
 uint32_t CreateApplicationTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->lifetime.read(iprot);
+          this->__isset.lifetime = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t CreateApplicationTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("CreateApplicationTokenRequest");
+
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->lifetime.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(CreateApplicationTokenRequest &a, CreateApplicationTokenRequest &b) {
+  using ::std::swap;
+  swap(a.applicationId, b.applicationId);
+  swap(a.lifetime, b.lifetime);
+  swap(a.__isset, b.__isset);
+}
+
+CreateApplicationTokenRequest::CreateApplicationTokenRequest(const CreateApplicationTokenRequest& other4) {
+  applicationId = other4.applicationId;
+  lifetime = other4.lifetime;
+  __isset = other4.__isset;
+}
+CreateApplicationTokenRequest& CreateApplicationTokenRequest::operator=(const CreateApplicationTokenRequest& other5) {
+  applicationId = other5.applicationId;
+  lifetime = other5.lifetime;
+  __isset = other5.__isset;
+  return *this;
+}
+void CreateApplicationTokenRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "CreateApplicationTokenRequest(";
+  out << "applicationId=" << to_string(applicationId);
+  out << ", " << "lifetime=" << to_string(lifetime);
+  out << ")";
+}
+
+
+CreateApplicationTokenResponse::~CreateApplicationTokenResponse() throw() {
+}
+
+
+void CreateApplicationTokenResponse::__set_token(const ApplicationToken& val) {
+  this->token = val;
+}
+
+uint32_t CreateApplicationTokenResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -235,10 +361,10 @@ uint32_t CreateApplicationTokenRequest::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t CreateApplicationTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CreateApplicationTokenResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("CreateApplicationTokenRequest");
+  xfer += oprot->writeStructBegin("CreateApplicationTokenResponse");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->token.write(oprot);
@@ -249,24 +375,24 @@ uint32_t CreateApplicationTokenRequest::write(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-void swap(CreateApplicationTokenRequest &a, CreateApplicationTokenRequest &b) {
+void swap(CreateApplicationTokenResponse &a, CreateApplicationTokenResponse &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.__isset, b.__isset);
 }
 
-CreateApplicationTokenRequest::CreateApplicationTokenRequest(const CreateApplicationTokenRequest& other4) {
-  token = other4.token;
-  __isset = other4.__isset;
+CreateApplicationTokenResponse::CreateApplicationTokenResponse(const CreateApplicationTokenResponse& other6) {
+  token = other6.token;
+  __isset = other6.__isset;
 }
-CreateApplicationTokenRequest& CreateApplicationTokenRequest::operator=(const CreateApplicationTokenRequest& other5) {
-  token = other5.token;
-  __isset = other5.__isset;
+CreateApplicationTokenResponse& CreateApplicationTokenResponse::operator=(const CreateApplicationTokenResponse& other7) {
+  token = other7.token;
+  __isset = other7.__isset;
   return *this;
 }
-void CreateApplicationTokenRequest::printTo(std::ostream& out) const {
+void CreateApplicationTokenResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "CreateApplicationTokenRequest(";
+  out << "CreateApplicationTokenResponse(";
   out << "token=" << to_string(token);
   out << ")";
 }
@@ -341,13 +467,13 @@ void swap(InvalidateApplicationTokenRequest &a, InvalidateApplicationTokenReques
   swap(a.__isset, b.__isset);
 }
 
-InvalidateApplicationTokenRequest::InvalidateApplicationTokenRequest(const InvalidateApplicationTokenRequest& other6) {
-  token = other6.token;
-  __isset = other6.__isset;
+InvalidateApplicationTokenRequest::InvalidateApplicationTokenRequest(const InvalidateApplicationTokenRequest& other8) {
+  token = other8.token;
+  __isset = other8.__isset;
 }
-InvalidateApplicationTokenRequest& InvalidateApplicationTokenRequest::operator=(const InvalidateApplicationTokenRequest& other7) {
-  token = other7.token;
-  __isset = other7.__isset;
+InvalidateApplicationTokenRequest& InvalidateApplicationTokenRequest::operator=(const InvalidateApplicationTokenRequest& other9) {
+  token = other9.token;
+  __isset = other9.__isset;
   return *this;
 }
 void InvalidateApplicationTokenRequest::printTo(std::ostream& out) const {
@@ -406,11 +532,11 @@ void swap(InvalidateApplicationTokenResponse &a, InvalidateApplicationTokenRespo
   (void) b;
 }
 
-InvalidateApplicationTokenResponse::InvalidateApplicationTokenResponse(const InvalidateApplicationTokenResponse& other8) {
-  (void) other8;
+InvalidateApplicationTokenResponse::InvalidateApplicationTokenResponse(const InvalidateApplicationTokenResponse& other10) {
+  (void) other10;
 }
-InvalidateApplicationTokenResponse& InvalidateApplicationTokenResponse::operator=(const InvalidateApplicationTokenResponse& other9) {
-  (void) other9;
+InvalidateApplicationTokenResponse& InvalidateApplicationTokenResponse::operator=(const InvalidateApplicationTokenResponse& other11) {
+  (void) other11;
   return *this;
 }
 void InvalidateApplicationTokenResponse::printTo(std::ostream& out) const {
@@ -489,13 +615,13 @@ void swap(InvalidateUserTokenRequest &a, InvalidateUserTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-InvalidateUserTokenRequest::InvalidateUserTokenRequest(const InvalidateUserTokenRequest& other10) {
-  token = other10.token;
-  __isset = other10.__isset;
+InvalidateUserTokenRequest::InvalidateUserTokenRequest(const InvalidateUserTokenRequest& other12) {
+  token = other12.token;
+  __isset = other12.__isset;
 }
-InvalidateUserTokenRequest& InvalidateUserTokenRequest::operator=(const InvalidateUserTokenRequest& other11) {
-  token = other11.token;
-  __isset = other11.__isset;
+InvalidateUserTokenRequest& InvalidateUserTokenRequest::operator=(const InvalidateUserTokenRequest& other13) {
+  token = other13.token;
+  __isset = other13.__isset;
   return *this;
 }
 void InvalidateUserTokenRequest::printTo(std::ostream& out) const {
@@ -554,11 +680,11 @@ void swap(InvalidateUserTokenResponse &a, InvalidateUserTokenResponse &b) {
   (void) b;
 }
 
-InvalidateUserTokenResponse::InvalidateUserTokenResponse(const InvalidateUserTokenResponse& other12) {
-  (void) other12;
+InvalidateUserTokenResponse::InvalidateUserTokenResponse(const InvalidateUserTokenResponse& other14) {
+  (void) other14;
 }
-InvalidateUserTokenResponse& InvalidateUserTokenResponse::operator=(const InvalidateUserTokenResponse& other13) {
-  (void) other13;
+InvalidateUserTokenResponse& InvalidateUserTokenResponse::operator=(const InvalidateUserTokenResponse& other15) {
+  (void) other15;
   return *this;
 }
 void InvalidateUserTokenResponse::printTo(std::ostream& out) const {
@@ -637,13 +763,13 @@ void swap(VerifyUserTokenRequest &a, VerifyUserTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyUserTokenRequest::VerifyUserTokenRequest(const VerifyUserTokenRequest& other14) {
-  token = other14.token;
-  __isset = other14.__isset;
+VerifyUserTokenRequest::VerifyUserTokenRequest(const VerifyUserTokenRequest& other16) {
+  token = other16.token;
+  __isset = other16.__isset;
 }
-VerifyUserTokenRequest& VerifyUserTokenRequest::operator=(const VerifyUserTokenRequest& other15) {
-  token = other15.token;
-  __isset = other15.__isset;
+VerifyUserTokenRequest& VerifyUserTokenRequest::operator=(const VerifyUserTokenRequest& other17) {
+  token = other17.token;
+  __isset = other17.__isset;
   return *this;
 }
 void VerifyUserTokenRequest::printTo(std::ostream& out) const {
@@ -723,13 +849,13 @@ void swap(VerifyUserTokenResponse &a, VerifyUserTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyUserTokenResponse::VerifyUserTokenResponse(const VerifyUserTokenResponse& other16) {
-  message = other16.message;
-  __isset = other16.__isset;
+VerifyUserTokenResponse::VerifyUserTokenResponse(const VerifyUserTokenResponse& other18) {
+  message = other18.message;
+  __isset = other18.__isset;
 }
-VerifyUserTokenResponse& VerifyUserTokenResponse::operator=(const VerifyUserTokenResponse& other17) {
-  message = other17.message;
-  __isset = other17.__isset;
+VerifyUserTokenResponse& VerifyUserTokenResponse::operator=(const VerifyUserTokenResponse& other19) {
+  message = other19.message;
+  __isset = other19.__isset;
   return *this;
 }
 void VerifyUserTokenResponse::printTo(std::ostream& out) const {
@@ -809,13 +935,13 @@ void swap(VerifyApplicationTokenRequest &a, VerifyApplicationTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyApplicationTokenRequest::VerifyApplicationTokenRequest(const VerifyApplicationTokenRequest& other18) {
-  token = other18.token;
-  __isset = other18.__isset;
+VerifyApplicationTokenRequest::VerifyApplicationTokenRequest(const VerifyApplicationTokenRequest& other20) {
+  token = other20.token;
+  __isset = other20.__isset;
 }
-VerifyApplicationTokenRequest& VerifyApplicationTokenRequest::operator=(const VerifyApplicationTokenRequest& other19) {
-  token = other19.token;
-  __isset = other19.__isset;
+VerifyApplicationTokenRequest& VerifyApplicationTokenRequest::operator=(const VerifyApplicationTokenRequest& other21) {
+  token = other21.token;
+  __isset = other21.__isset;
   return *this;
 }
 void VerifyApplicationTokenRequest::printTo(std::ostream& out) const {
@@ -895,13 +1021,13 @@ void swap(VerifyApplicationTokenResponse &a, VerifyApplicationTokenResponse &b) 
   swap(a.__isset, b.__isset);
 }
 
-VerifyApplicationTokenResponse::VerifyApplicationTokenResponse(const VerifyApplicationTokenResponse& other20) {
-  message = other20.message;
-  __isset = other20.__isset;
+VerifyApplicationTokenResponse::VerifyApplicationTokenResponse(const VerifyApplicationTokenResponse& other22) {
+  message = other22.message;
+  __isset = other22.__isset;
 }
-VerifyApplicationTokenResponse& VerifyApplicationTokenResponse::operator=(const VerifyApplicationTokenResponse& other21) {
-  message = other21.message;
-  __isset = other21.__isset;
+VerifyApplicationTokenResponse& VerifyApplicationTokenResponse::operator=(const VerifyApplicationTokenResponse& other23) {
+  message = other23.message;
+  __isset = other23.__isset;
   return *this;
 }
 void VerifyApplicationTokenResponse::printTo(std::ostream& out) const {

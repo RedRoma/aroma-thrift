@@ -35,11 +35,13 @@
   return self;
 }
 
-- (id) initWithUserId: (NSString *) userId
+- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_TimePeriod) lifetime
 {
   self = [super init];
   __userId = [userId retain_stub];
   __userId_isset = YES;
+  __lifetime = [lifetime retain_stub];
+  __lifetime_isset = YES;
   return self;
 }
 
@@ -51,6 +53,11 @@
     __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
     __userId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"lifetime"])
+  {
+    __lifetime = [[decoder decodeObjectForKey: @"lifetime"] retain_stub];
+    __lifetime_isset = YES;
+  }
   return self;
 }
 
@@ -59,6 +66,10 @@
   if (__userId_isset)
   {
     [encoder encodeObject: __userId forKey: @"userId"];
+  }
+  if (__lifetime_isset)
+  {
+    [encoder encodeObject: __lifetime forKey: @"lifetime"];
   }
 }
 
@@ -69,6 +80,11 @@
   if (__userId_isset)
   {
     hash = (hash * 31) ^ [__userId hash];
+  }
+  hash = (hash * 31) ^ __lifetime_isset ? 2654435761 : 0;
+  if (__lifetime_isset)
+  {
+    hash = (hash * 31) ^ [__lifetime hash];
   }
   return hash;
 }
@@ -86,12 +102,17 @@
       (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
+  if ((__lifetime_isset != other->__lifetime_isset) ||
+      (__lifetime_isset && ((__lifetime || other->__lifetime) && ![__lifetime isEqual:other->__lifetime]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__userId release_stub];
+  [__lifetime release_stub];
   [super dealloc_stub];
 }
 
@@ -114,6 +135,27 @@
   [__userId release_stub];
   __userId = nil;
   __userId_isset = NO;
+}
+
+- (Banana_TimePeriod *) lifetime {
+  return [[__lifetime retain_stub] autorelease_stub];
+}
+
+- (void) setLifetime: (Banana_TimePeriod *) lifetime {
+  [lifetime retain_stub];
+  [__lifetime release_stub];
+  __lifetime = lifetime;
+  __lifetime_isset = YES;
+}
+
+- (BOOL) lifetimeIsSet {
+  return __lifetime_isset;
+}
+
+- (void) unsetLifetime {
+  [__lifetime release_stub];
+  __lifetime = nil;
+  __lifetime_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -139,6 +181,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
+          [fieldValue read: inProtocol];
+          [self setLifetime: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -157,6 +209,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__lifetime_isset) {
+    if (__lifetime != nil) {
+      [outProtocol writeFieldBeginWithName: @"lifetime" type: TType_STRUCT fieldID: 2];
+      [__lifetime write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -169,6 +228,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateUserTokenRequest("];
   [ms appendString: @"userId:"];
   [ms appendFormat: @"\"%@\"", __userId];
+  [ms appendString: @",lifetime:"];
+  [ms appendFormat: @"%@", __lifetime];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -337,6 +398,217 @@
   return self;
 }
 
+- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_TimePeriod) lifetime
+{
+  self = [super init];
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __lifetime = [lifetime retain_stub];
+  __lifetime_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"lifetime"])
+  {
+    __lifetime = [[decoder decodeObjectForKey: @"lifetime"] retain_stub];
+    __lifetime_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__lifetime_isset)
+  {
+    [encoder encodeObject: __lifetime forKey: @"lifetime"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __lifetime_isset ? 2654435761 : 0;
+  if (__lifetime_isset)
+  {
+    hash = (hash * 31) ^ [__lifetime hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationTokenRequest class]]) {
+    return NO;
+  }
+  AuthenticationService_CreateApplicationTokenRequest *other = (AuthenticationService_CreateApplicationTokenRequest *)anObject;
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__lifetime_isset != other->__lifetime_isset) ||
+      (__lifetime_isset && ((__lifetime || other->__lifetime) && ![__lifetime isEqual:other->__lifetime]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationId release_stub];
+  [__lifetime release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (Banana_TimePeriod *) lifetime {
+  return [[__lifetime retain_stub] autorelease_stub];
+}
+
+- (void) setLifetime: (Banana_TimePeriod *) lifetime {
+  [lifetime retain_stub];
+  [__lifetime release_stub];
+  __lifetime = lifetime;
+  __lifetime_isset = YES;
+}
+
+- (BOOL) lifetimeIsSet {
+  return __lifetime_isset;
+}
+
+- (void) unsetLifetime {
+  [__lifetime release_stub];
+  __lifetime = nil;
+  __lifetime_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
+          [fieldValue read: inProtocol];
+          [self setLifetime: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"CreateApplicationTokenRequest"];
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__lifetime_isset) {
+    if (__lifetime != nil) {
+      [outProtocol writeFieldBeginWithName: @"lifetime" type: TType_STRUCT fieldID: 2];
+      [__lifetime write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationTokenRequest("];
+  [ms appendString: @"applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",lifetime:"];
+  [ms appendFormat: @"%@", __lifetime];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AuthenticationService_CreateApplicationTokenResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
 - (id) initWithToken: (AuthenticationService_ApplicationToken) token
 {
   self = [super init];
@@ -380,10 +652,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationTokenResponse class]]) {
     return NO;
   }
-  AuthenticationService_CreateApplicationTokenRequest *other = (AuthenticationService_CreateApplicationTokenRequest *)anObject;
+  AuthenticationService_CreateApplicationTokenResponse *other = (AuthenticationService_CreateApplicationTokenResponse *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -453,7 +725,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateApplicationTokenRequest"];
+  [outProtocol writeStructBeginWithName: @"CreateApplicationTokenResponse"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
@@ -470,7 +742,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationTokenResponse("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
