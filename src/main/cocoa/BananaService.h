@@ -647,24 +647,24 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   BananaService_ApplicationToken __applicationToken;
-  Banana_TimePeriod * __timePeriod;
+  Banana_LengthOfTime * __newLifetime;
   NSString * __applicationId;
 
   BOOL __token_isset;
   BOOL __applicationToken_isset;
-  BOOL __timePeriod_isset;
+  BOOL __newLifetime_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=timePeriod, setter=setTimePeriod:) Banana_TimePeriod * timePeriod;
+@property (nonatomic, retain, getter=newLifetime, setter=setNewLifetime:) Banana_LengthOfTime * newLifetime;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod applicationId: (NSString *) applicationId;
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -684,10 +684,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_TimePeriod *) timePeriod;
-- (void) setTimePeriod: (Banana_TimePeriod *) timePeriod;
+- (Banana_LengthOfTime *) newLifetime;
+- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime;
 #endif
-- (BOOL) timePeriodIsSet;
+- (BOOL) newLifetimeIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) applicationId;

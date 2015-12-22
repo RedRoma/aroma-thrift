@@ -996,10 +996,10 @@ inline std::ostream& operator<<(std::ostream& out, const RemoveSavedChannelRespo
 }
 
 typedef struct _RenewApplicationTokenRequest__isset {
-  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), timePeriod(false), applicationId(false) {}
+  _RenewApplicationTokenRequest__isset() : token(false), applicationToken(false), newLifetime(false), applicationId(false) {}
   bool token :1;
   bool applicationToken :1;
-  bool timePeriod :1;
+  bool newLifetime :1;
   bool applicationId :1;
 } _RenewApplicationTokenRequest__isset;
 
@@ -1014,7 +1014,7 @@ class RenewApplicationTokenRequest {
   virtual ~RenewApplicationTokenRequest() throw();
   UserToken token;
   ApplicationToken applicationToken;
-   ::aroma::banana::thrift::TimePeriod timePeriod;
+   ::aroma::banana::thrift::LengthOfTime newLifetime;
   std::string applicationId;
 
   _RenewApplicationTokenRequest__isset __isset;
@@ -1023,7 +1023,7 @@ class RenewApplicationTokenRequest {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val);
+  void __set_newLifetime(const  ::aroma::banana::thrift::LengthOfTime& val);
 
   void __set_applicationId(const std::string& val);
 
@@ -1033,7 +1033,7 @@ class RenewApplicationTokenRequest {
       return false;
     if (!(applicationToken == rhs.applicationToken))
       return false;
-    if (!(timePeriod == rhs.timePeriod))
+    if (!(newLifetime == rhs.newLifetime))
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;

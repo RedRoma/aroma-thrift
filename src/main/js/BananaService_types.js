@@ -1165,7 +1165,7 @@ RemoveSavedChannelResponse.prototype.write = function(output) {
 RenewApplicationTokenRequest = function(args) {
   this.token = null;
   this.applicationToken = null;
-  this.timePeriod = null;
+  this.newLifetime = null;
   this.applicationId = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -1174,8 +1174,8 @@ RenewApplicationTokenRequest = function(args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
     }
-    if (args.timePeriod !== undefined && args.timePeriod !== null) {
-      this.timePeriod = new TimePeriod(args.timePeriod);
+    if (args.newLifetime !== undefined && args.newLifetime !== null) {
+      this.newLifetime = new LengthOfTime(args.newLifetime);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -1214,8 +1214,8 @@ RenewApplicationTokenRequest.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
-        this.timePeriod = new TimePeriod();
-        this.timePeriod.read(input);
+        this.newLifetime = new LengthOfTime();
+        this.newLifetime.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1248,9 +1248,9 @@ RenewApplicationTokenRequest.prototype.write = function(output) {
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.timePeriod !== null && this.timePeriod !== undefined) {
-    output.writeFieldBegin('timePeriod', Thrift.Type.STRUCT, 3);
-    this.timePeriod.write(output);
+  if (this.newLifetime !== null && this.newLifetime !== undefined) {
+    output.writeFieldBegin('newLifetime', Thrift.Type.STRUCT, 3);
+    this.newLifetime.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationId !== null && this.applicationId !== undefined) {

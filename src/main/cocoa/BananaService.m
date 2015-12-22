@@ -3569,15 +3569,15 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __applicationToken = [applicationToken retain_stub];
   __applicationToken_isset = YES;
-  __timePeriod = [timePeriod retain_stub];
-  __timePeriod_isset = YES;
+  __newLifetime = [newLifetime retain_stub];
+  __newLifetime_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
   return self;
@@ -3596,10 +3596,10 @@
     __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
     __applicationToken_isset = YES;
   }
-  if ([decoder containsValueForKey: @"timePeriod"])
+  if ([decoder containsValueForKey: @"newLifetime"])
   {
-    __timePeriod = [[decoder decodeObjectForKey: @"timePeriod"] retain_stub];
-    __timePeriod_isset = YES;
+    __newLifetime = [[decoder decodeObjectForKey: @"newLifetime"] retain_stub];
+    __newLifetime_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationId"])
   {
@@ -3619,9 +3619,9 @@
   {
     [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
   }
-  if (__timePeriod_isset)
+  if (__newLifetime_isset)
   {
-    [encoder encodeObject: __timePeriod forKey: @"timePeriod"];
+    [encoder encodeObject: __newLifetime forKey: @"newLifetime"];
   }
   if (__applicationId_isset)
   {
@@ -3642,10 +3642,10 @@
   {
     hash = (hash * 31) ^ [__applicationToken hash];
   }
-  hash = (hash * 31) ^ __timePeriod_isset ? 2654435761 : 0;
-  if (__timePeriod_isset)
+  hash = (hash * 31) ^ __newLifetime_isset ? 2654435761 : 0;
+  if (__newLifetime_isset)
   {
-    hash = (hash * 31) ^ [__timePeriod hash];
+    hash = (hash * 31) ^ [__newLifetime hash];
   }
   hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
   if (__applicationId_isset)
@@ -3672,8 +3672,8 @@
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
   }
-  if ((__timePeriod_isset != other->__timePeriod_isset) ||
-      (__timePeriod_isset && ((__timePeriod || other->__timePeriod) && ![__timePeriod isEqual:other->__timePeriod]))) {
+  if ((__newLifetime_isset != other->__newLifetime_isset) ||
+      (__newLifetime_isset && ((__newLifetime || other->__newLifetime) && ![__newLifetime isEqual:other->__newLifetime]))) {
     return NO;
   }
   if ((__applicationId_isset != other->__applicationId_isset) ||
@@ -3687,7 +3687,7 @@
 {
   [__token release_stub];
   [__applicationToken release_stub];
-  [__timePeriod release_stub];
+  [__newLifetime release_stub];
   [__applicationId release_stub];
   [super dealloc_stub];
 }
@@ -3734,25 +3734,25 @@
   __applicationToken_isset = NO;
 }
 
-- (Banana_TimePeriod *) timePeriod {
-  return [[__timePeriod retain_stub] autorelease_stub];
+- (Banana_LengthOfTime *) newLifetime {
+  return [[__newLifetime retain_stub] autorelease_stub];
 }
 
-- (void) setTimePeriod: (Banana_TimePeriod *) timePeriod {
-  [timePeriod retain_stub];
-  [__timePeriod release_stub];
-  __timePeriod = timePeriod;
-  __timePeriod_isset = YES;
+- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime {
+  [newLifetime retain_stub];
+  [__newLifetime release_stub];
+  __newLifetime = newLifetime;
+  __newLifetime_isset = YES;
 }
 
-- (BOOL) timePeriodIsSet {
-  return __timePeriod_isset;
+- (BOOL) newLifetimeIsSet {
+  return __newLifetime_isset;
 }
 
-- (void) unsetTimePeriod {
-  [__timePeriod release_stub];
-  __timePeriod = nil;
-  __timePeriod_isset = NO;
+- (void) unsetNewLifetime {
+  [__newLifetime release_stub];
+  __newLifetime = nil;
+  __newLifetime_isset = NO;
 }
 
 - (NSString *) applicationId {
@@ -3813,9 +3813,9 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
+          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
-          [self setTimePeriod: fieldValue];
+          [self setNewLifetime: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -3854,10 +3854,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__timePeriod_isset) {
-    if (__timePeriod != nil) {
-      [outProtocol writeFieldBeginWithName: @"timePeriod" type: TType_STRUCT fieldID: 3];
-      [__timePeriod write: outProtocol];
+  if (__newLifetime_isset) {
+    if (__newLifetime != nil) {
+      [outProtocol writeFieldBeginWithName: @"newLifetime" type: TType_STRUCT fieldID: 3];
+      [__newLifetime write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3882,8 +3882,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
-  [ms appendString: @",timePeriod:"];
-  [ms appendFormat: @"%@", __timePeriod];
+  [ms appendString: @",newLifetime:"];
+  [ms appendFormat: @"%@", __newLifetime];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @")"];

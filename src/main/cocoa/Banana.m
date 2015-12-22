@@ -565,7 +565,7 @@
 
 @end
 
-@implementation Banana_TimePeriod
+@implementation Banana_LengthOfTime
 
 - (id) init
 {
@@ -575,7 +575,7 @@
   return self;
 }
 
-- (id) initWithUnit: (int) unit value: (Banana_int) value
+- (id) initWithUnit: (int) unit value: (Banana_long) value
 {
   self = [super init];
   __unit = unit;
@@ -595,7 +595,7 @@
   }
   if ([decoder containsValueForKey: @"value"])
   {
-    __value = [decoder decodeInt32ForKey: @"value"];
+    __value = [decoder decodeInt64ForKey: @"value"];
     __value_isset = YES;
   }
   return self;
@@ -609,7 +609,7 @@
   }
   if (__value_isset)
   {
-    [encoder encodeInt32: __value forKey: @"value"];
+    [encoder encodeInt64: __value forKey: @"value"];
   }
 }
 
@@ -634,10 +634,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_TimePeriod class]]) {
+  if (![anObject isKindOfClass:[Banana_LengthOfTime class]]) {
     return NO;
   }
-  Banana_TimePeriod *other = (Banana_TimePeriod *)anObject;
+  Banana_LengthOfTime *other = (Banana_LengthOfTime *)anObject;
   if ((__unit_isset != other->__unit_isset) ||
       (__unit_isset && (__unit != other->__unit))) {
     return NO;
@@ -671,11 +671,11 @@
   __unit_isset = NO;
 }
 
-- (int32_t) value {
+- (int64_t) value {
   return __value;
 }
 
-- (void) setValue: (int32_t) value {
+- (void) setValue: (int64_t) value {
   __value = value;
   __value_isset = YES;
 }
@@ -712,8 +712,8 @@
         }
         break;
       case 2:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
           [self setValue: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -729,15 +729,15 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"TimePeriod"];
+  [outProtocol writeStructBeginWithName: @"LengthOfTime"];
   if (__unit_isset) {
     [outProtocol writeFieldBeginWithName: @"unit" type: TType_I32 fieldID: 1];
     [outProtocol writeI32: __unit];
     [outProtocol writeFieldEnd];
   }
   if (__value_isset) {
-    [outProtocol writeFieldBeginWithName: @"value" type: TType_I32 fieldID: 2];
-    [outProtocol writeI32: __value];
+    [outProtocol writeFieldBeginWithName: @"value" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __value];
     [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
@@ -757,11 +757,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_TimePeriod("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_LengthOfTime("];
   [ms appendString: @"unit:"];
   [ms appendFormat: @"%i", __unit];
   [ms appendString: @",value:"];
-  [ms appendFormat: @"%i", __value];
+  [ms appendFormat: @"%qi", __value];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

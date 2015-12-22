@@ -26,7 +26,7 @@ CreateUserTokenRequest = module.exports.CreateUserTokenRequest = function(args) 
       this.userId = args.userId;
     }
     if (args.lifetime !== undefined && args.lifetime !== null) {
-      this.lifetime = new Banana_ttypes.TimePeriod(args.lifetime);
+      this.lifetime = new Banana_ttypes.LengthOfTime(args.lifetime);
     }
   }
 };
@@ -53,7 +53,7 @@ CreateUserTokenRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.lifetime = new Banana_ttypes.TimePeriod();
+        this.lifetime = new Banana_ttypes.LengthOfTime();
         this.lifetime.read(input);
       } else {
         input.skip(ftype);
@@ -147,7 +147,7 @@ CreateApplicationTokenRequest = module.exports.CreateApplicationTokenRequest = f
       this.applicationId = args.applicationId;
     }
     if (args.lifetime !== undefined && args.lifetime !== null) {
-      this.lifetime = new Banana_ttypes.TimePeriod(args.lifetime);
+      this.lifetime = new Banana_ttypes.LengthOfTime(args.lifetime);
     }
   }
 };
@@ -174,7 +174,7 @@ CreateApplicationTokenRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.lifetime = new Banana_ttypes.TimePeriod();
+        this.lifetime = new Banana_ttypes.LengthOfTime();
         this.lifetime.read(input);
       } else {
         input.skip(ftype);

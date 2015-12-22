@@ -64,11 +64,11 @@ enum TimeUnit
 /**
  * Defines a Period of Time, or a Length of Time.
  */
-struct TimePeriod
+struct LengthOfTime
 {
     1: required TimeUnit unit;
     /** The Value must be non-negative */
-    2: required int value;
+    2: required long value;
 }
 
 enum ImageType

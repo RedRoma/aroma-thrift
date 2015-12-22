@@ -38,7 +38,7 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::TimePeriod TimePeriod;
+typedef class  ::aroma::banana::thrift::LengthOfTime LengthOfTime;
 
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 
@@ -104,13 +104,13 @@ class CreateUserTokenRequest {
 
   virtual ~CreateUserTokenRequest() throw();
   std::string userId;
-  TimePeriod lifetime;
+  LengthOfTime lifetime;
 
   _CreateUserTokenRequest__isset __isset;
 
   void __set_userId(const std::string& val);
 
-  void __set_lifetime(const TimePeriod& val);
+  void __set_lifetime(const LengthOfTime& val);
 
   bool operator == (const CreateUserTokenRequest & rhs) const
   {
@@ -202,13 +202,13 @@ class CreateApplicationTokenRequest {
 
   virtual ~CreateApplicationTokenRequest() throw();
   std::string applicationId;
-  TimePeriod lifetime;
+  LengthOfTime lifetime;
 
   _CreateApplicationTokenRequest__isset __isset;
 
   void __set_applicationId(const std::string& val);
 
-  void __set_lifetime(const TimePeriod& val);
+  void __set_lifetime(const LengthOfTime& val);
 
   bool operator == (const CreateApplicationTokenRequest & rhs) const
   {

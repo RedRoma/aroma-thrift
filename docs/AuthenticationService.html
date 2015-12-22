@@ -224,8 +224,8 @@ code { line-height: 20px; }
 <a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a><br/>
 <a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a><br/>
 <a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a><br/>
+<a href="#Typedef_LengthOfTime">LengthOfTime</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="#Typedef_TimePeriod">TimePeriod</a><br/>
 <a href="#Enum_TokenType">TokenType</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
@@ -264,8 +264,8 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_TimePeriod">Typedef: TimePeriod</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_TimePeriod">Banana.TimePeriod</a></code></p>
+<div class="definition"><h3 id="Typedef_LengthOfTime">Typedef: LengthOfTime</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -295,14 +295,14 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Struct_CreateUserTokenRequest">Struct: CreateUserTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_TimePeriod">TimePeriod</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_CreateUserTokenResponse">Struct: CreateUserTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_CreateApplicationTokenRequest">Struct: CreateApplicationTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_TimePeriod">TimePeriod</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_CreateApplicationTokenResponse">Struct: CreateApplicationTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>

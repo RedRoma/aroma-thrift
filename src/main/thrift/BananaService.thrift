@@ -241,7 +241,7 @@ struct RenewApplicationTokenRequest
     /** The Token to renew */
     2: ApplicationToken applicationToken;
     /** Defines for how long to extend a Token. */
-    3: Banana.TimePeriod timePeriod;
+    3: Banana.LengthOfTime newLifetime;
     4: string applicationId;
 }
 

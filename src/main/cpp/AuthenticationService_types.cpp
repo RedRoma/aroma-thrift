@@ -32,7 +32,7 @@ void CreateUserTokenRequest::__set_userId(const std::string& val) {
   this->userId = val;
 }
 
-void CreateUserTokenRequest::__set_lifetime(const TimePeriod& val) {
+void CreateUserTokenRequest::__set_lifetime(const LengthOfTime& val) {
   this->lifetime = val;
 }
 
@@ -224,7 +224,7 @@ void CreateApplicationTokenRequest::__set_applicationId(const std::string& val) 
   this->applicationId = val;
 }
 
-void CreateApplicationTokenRequest::__set_lifetime(const TimePeriod& val) {
+void CreateApplicationTokenRequest::__set_lifetime(const LengthOfTime& val) {
   this->lifetime = val;
 }
 

@@ -211,7 +211,7 @@ Message.prototype.write = function(output) {
   return;
 };
 
-TimePeriod = module.exports.TimePeriod = function(args) {
+LengthOfTime = module.exports.LengthOfTime = function(args) {
   this.unit = null;
   this.value = null;
   if (args) {
@@ -227,8 +227,8 @@ TimePeriod = module.exports.TimePeriod = function(args) {
     }
   }
 };
-TimePeriod.prototype = {};
-TimePeriod.prototype.read = function(input) {
+LengthOfTime.prototype = {};
+LengthOfTime.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -249,8 +249,8 @@ TimePeriod.prototype.read = function(input) {
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.I32) {
-        this.value = input.readI32();
+      if (ftype == Thrift.Type.I64) {
+        this.value = input.readI64();
       } else {
         input.skip(ftype);
       }
@@ -264,16 +264,16 @@ TimePeriod.prototype.read = function(input) {
   return;
 };
 
-TimePeriod.prototype.write = function(output) {
-  output.writeStructBegin('TimePeriod');
+LengthOfTime.prototype.write = function(output) {
+  output.writeStructBegin('LengthOfTime');
   if (this.unit !== null && this.unit !== undefined) {
     output.writeFieldBegin('unit', Thrift.Type.I32, 1);
     output.writeI32(this.unit);
     output.writeFieldEnd();
   }
   if (this.value !== null && this.value !== undefined) {
-    output.writeFieldBegin('value', Thrift.Type.I32, 2);
-    output.writeI32(this.value);
+    output.writeFieldBegin('value', Thrift.Type.I64, 2);
+    output.writeI64(this.value);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

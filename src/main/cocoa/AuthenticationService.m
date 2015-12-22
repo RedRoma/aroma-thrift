@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_TimePeriod) lifetime
+- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime
 {
   self = [super init];
   __userId = [userId retain_stub];
@@ -137,11 +137,11 @@
   __userId_isset = NO;
 }
 
-- (Banana_TimePeriod *) lifetime {
+- (Banana_LengthOfTime *) lifetime {
   return [[__lifetime retain_stub] autorelease_stub];
 }
 
-- (void) setLifetime: (Banana_TimePeriod *) lifetime {
+- (void) setLifetime: (Banana_LengthOfTime *) lifetime {
   [lifetime retain_stub];
   [__lifetime release_stub];
   __lifetime = lifetime;
@@ -183,7 +183,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
+          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
           [self setLifetime: fieldValue];
           [fieldValue release_stub];
@@ -398,7 +398,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_TimePeriod) lifetime
+- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_LengthOfTime) lifetime
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -500,11 +500,11 @@
   __applicationId_isset = NO;
 }
 
-- (Banana_TimePeriod *) lifetime {
+- (Banana_LengthOfTime *) lifetime {
   return [[__lifetime retain_stub] autorelease_stub];
 }
 
-- (void) setLifetime: (Banana_TimePeriod *) lifetime {
+- (void) setLifetime: (Banana_LengthOfTime *) lifetime {
   [lifetime retain_stub];
   [__lifetime release_stub];
   __lifetime = lifetime;
@@ -546,7 +546,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
+          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
           [self setLifetime: fieldValue];
           [fieldValue release_stub];

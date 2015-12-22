@@ -1800,8 +1800,8 @@ void RenewApplicationTokenRequest::__set_applicationToken(const ApplicationToken
   this->applicationToken = val;
 }
 
-void RenewApplicationTokenRequest::__set_timePeriod(const  ::aroma::banana::thrift::TimePeriod& val) {
-  this->timePeriod = val;
+void RenewApplicationTokenRequest::__set_newLifetime(const  ::aroma::banana::thrift::LengthOfTime& val) {
+  this->newLifetime = val;
 }
 
 void RenewApplicationTokenRequest::__set_applicationId(const std::string& val) {
@@ -1847,8 +1847,8 @@ uint32_t RenewApplicationTokenRequest::read(::apache::thrift::protocol::TProtoco
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->timePeriod.read(iprot);
-          this->__isset.timePeriod = true;
+          xfer += this->newLifetime.read(iprot);
+          this->__isset.newLifetime = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1886,8 +1886,8 @@ uint32_t RenewApplicationTokenRequest::write(::apache::thrift::protocol::TProtoc
   xfer += this->applicationToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("timePeriod", ::apache::thrift::protocol::T_STRUCT, 3);
-  xfer += this->timePeriod.write(oprot);
+  xfer += oprot->writeFieldBegin("newLifetime", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->newLifetime.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 4);
@@ -1903,7 +1903,7 @@ void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.applicationToken, b.applicationToken);
-  swap(a.timePeriod, b.timePeriod);
+  swap(a.newLifetime, b.newLifetime);
   swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
 }
@@ -1911,14 +1911,14 @@ void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b) {
 RenewApplicationTokenRequest::RenewApplicationTokenRequest(const RenewApplicationTokenRequest& other43) {
   token = other43.token;
   applicationToken = other43.applicationToken;
-  timePeriod = other43.timePeriod;
+  newLifetime = other43.newLifetime;
   applicationId = other43.applicationId;
   __isset = other43.__isset;
 }
 RenewApplicationTokenRequest& RenewApplicationTokenRequest::operator=(const RenewApplicationTokenRequest& other44) {
   token = other44.token;
   applicationToken = other44.applicationToken;
-  timePeriod = other44.timePeriod;
+  newLifetime = other44.newLifetime;
   applicationId = other44.applicationId;
   __isset = other44.__isset;
   return *this;
@@ -1928,7 +1928,7 @@ void RenewApplicationTokenRequest::printTo(std::ostream& out) const {
   out << "RenewApplicationTokenRequest(";
   out << "token=" << to_string(token);
   out << ", " << "applicationToken=" << to_string(applicationToken);
-  out << ", " << "timePeriod=" << to_string(timePeriod);
+  out << ", " << "newLifetime=" << to_string(newLifetime);
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ")";
 }

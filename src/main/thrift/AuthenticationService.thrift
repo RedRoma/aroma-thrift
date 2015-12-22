@@ -22,7 +22,7 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
-typedef Banana.TimePeriod TimePeriod;
+typedef Banana.LengthOfTime LengthOfTime;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
@@ -55,7 +55,7 @@ enum TokenType
 struct CreateUserTokenRequest
 {
     1: string userId;
-    2: TimePeriod lifetime;
+    2: LengthOfTime lifetime;
 }
 
 struct CreateUserTokenResponse
@@ -66,7 +66,7 @@ struct CreateUserTokenResponse
 struct CreateApplicationTokenRequest
 {
     1: string applicationId;
-    2: TimePeriod lifetime;
+    2: LengthOfTime lifetime;
 }
 
 struct CreateApplicationTokenResponse

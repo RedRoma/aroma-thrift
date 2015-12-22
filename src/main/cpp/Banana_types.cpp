@@ -336,19 +336,19 @@ void Message::printTo(std::ostream& out) const {
 }
 
 
-TimePeriod::~TimePeriod() throw() {
+LengthOfTime::~LengthOfTime() throw() {
 }
 
 
-void TimePeriod::__set_unit(const TimeUnit::type val) {
+void LengthOfTime::__set_unit(const TimeUnit::type val) {
   this->unit = val;
 }
 
-void TimePeriod::__set_value(const int val) {
+void LengthOfTime::__set_value(const long val) {
   this->value = val;
 }
 
-uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t LengthOfTime::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -382,8 +382,8 @@ uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          xfer += iprot->readI32(this->value);
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->value);
           isset_value = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -405,17 +405,17 @@ uint32_t TimePeriod::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t TimePeriod::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t LengthOfTime::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("TimePeriod");
+  xfer += oprot->writeStructBegin("LengthOfTime");
 
   xfer += oprot->writeFieldBegin("unit", ::apache::thrift::protocol::T_I32, 1);
   xfer += oprot->writeI32((int32_t)this->unit);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("value", ::apache::thrift::protocol::T_I32, 2);
-  xfer += oprot->writeI32(this->value);
+  xfer += oprot->writeFieldBegin("value", ::apache::thrift::protocol::T_I64, 2);
+  xfer += oprot->writeI64(this->value);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -423,24 +423,24 @@ uint32_t TimePeriod::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(TimePeriod &a, TimePeriod &b) {
+void swap(LengthOfTime &a, LengthOfTime &b) {
   using ::std::swap;
   swap(a.unit, b.unit);
   swap(a.value, b.value);
 }
 
-TimePeriod::TimePeriod(const TimePeriod& other4) {
+LengthOfTime::LengthOfTime(const LengthOfTime& other4) {
   unit = other4.unit;
   value = other4.value;
 }
-TimePeriod& TimePeriod::operator=(const TimePeriod& other5) {
+LengthOfTime& LengthOfTime::operator=(const LengthOfTime& other5) {
   unit = other5.unit;
   value = other5.value;
   return *this;
 }
-void TimePeriod::printTo(std::ostream& out) const {
+void LengthOfTime::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "TimePeriod(";
+  out << "LengthOfTime(";
   out << "unit=" << to_string(unit);
   out << ", " << "value=" << to_string(value);
   out << ")";

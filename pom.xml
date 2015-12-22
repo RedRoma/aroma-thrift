@@ -56,12 +56,68 @@
     </properties>
 
     <dependencies>
+        
+        <!--UNIT TESTING-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <scope>test</scope>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--====================-->
 
+        <!--ALCHEMY-->
+        <dependency>
+            <groupId>tech.sirwellington.alchemy</groupId>
+            <artifactId>alchemy-annotations</artifactId>
+        </dependency>
+       
+        <dependency>
+            <groupId>tech.sirwellington.alchemy</groupId>
+            <artifactId>alchemy-arguments</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>tech.sirwellington.alchemy</groupId>
+            <artifactId>alchemy-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--====================-->
+
+
+        <!--THRIFT-->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!--====================-->
+        
+        <!--APACHE HTTP CORE-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+        <!--====================-->
 
+      
     </dependencies>
 
     <build>

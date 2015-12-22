@@ -159,9 +159,9 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_TimePeriod : NSObject <TBase, NSCoding> {
+@interface Banana_LengthOfTime : NSObject <TBase, NSCoding> {
   int __unit;
-  Banana_int __value;
+  Banana_long __value;
 
   BOOL __unit_isset;
   BOOL __value_isset;
@@ -169,11 +169,11 @@ typedef int64_t Banana_timestamp;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=unit, setter=setUnit:) int unit;
-@property (nonatomic, getter=value, setter=setValue:) Banana_int value;
+@property (nonatomic, getter=value, setter=setValue:) Banana_long value;
 #endif
 
 - (id) init;
-- (id) initWithUnit: (int) unit value: (Banana_int) value;
+- (id) initWithUnit: (int) unit value: (Banana_long) value;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -187,8 +187,8 @@ typedef int64_t Banana_timestamp;
 - (BOOL) unitIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_int) value;
-- (void) setValue: (Banana_int) value;
+- (Banana_long) value;
+- (void) setValue: (Banana_long) value;
 #endif
 - (BOOL) valueIsSet;
 

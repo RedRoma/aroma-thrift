@@ -92,7 +92,7 @@ typedef int64_t timestamp;
 
 class Message;
 
-class TimePeriod;
+class LengthOfTime;
 
 class Dimension;
 
@@ -199,23 +199,23 @@ inline std::ostream& operator<<(std::ostream& out, const Message& obj)
 }
 
 
-class TimePeriod {
+class LengthOfTime {
  public:
 
-  TimePeriod(const TimePeriod&);
-  TimePeriod& operator=(const TimePeriod&);
-  TimePeriod() : unit((TimeUnit::type)0), value(0) {
+  LengthOfTime(const LengthOfTime&);
+  LengthOfTime& operator=(const LengthOfTime&);
+  LengthOfTime() : unit((TimeUnit::type)0), value(0) {
   }
 
-  virtual ~TimePeriod() throw();
+  virtual ~LengthOfTime() throw();
   TimeUnit::type unit;
-  int value;
+  long value;
 
   void __set_unit(const TimeUnit::type val);
 
-  void __set_value(const int val);
+  void __set_value(const long val);
 
-  bool operator == (const TimePeriod & rhs) const
+  bool operator == (const LengthOfTime & rhs) const
   {
     if (!(unit == rhs.unit))
       return false;
@@ -223,11 +223,11 @@ class TimePeriod {
       return false;
     return true;
   }
-  bool operator != (const TimePeriod &rhs) const {
+  bool operator != (const LengthOfTime &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const TimePeriod & ) const;
+  bool operator < (const LengthOfTime & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -235,9 +235,9 @@ class TimePeriod {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(TimePeriod &a, TimePeriod &b);
+void swap(LengthOfTime &a, LengthOfTime &b);
 
-inline std::ostream& operator<<(std::ostream& out, const TimePeriod& obj)
+inline std::ostream& operator<<(std::ostream& out, const LengthOfTime& obj)
 {
   obj.printTo(out);
   return out;
