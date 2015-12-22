@@ -87,7 +87,10 @@ service ApplicationService
                                                                            3 : InvalidCredentialsException ex3)
 
     /**
-     *
+     * Fire-And-Forget version of sendMessage() ;
+     * With this operation, the client does not wait for the server
+     * to finish processing. The only guarantees provided is that
+     * the Message was successfully sent over the Transport.
      */
     oneway void sendMessageAsync(1 : SendMessageRequest request)
 

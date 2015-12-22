@@ -296,5 +296,8 @@ This is where Incoming Messages are accepted, processed, and stored.
 </pre>Send a Message from your Application to the Banana Service.
 <br/></div><div class="definition"><h4 id="Fn_ApplicationService_sendMessageAsync">Function: ApplicationService.sendMessageAsync</h4>
 <pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-</pre>
+</pre>Fire-And-Forget version of sendMessage() ;
+With this operation, the client does not wait for the server
+to finish processing. The only guarantees provided is that
+the Message was successfully sent over the Transport.
 <br/></div></div></body></html>
