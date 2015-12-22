@@ -16,16 +16,16 @@ AuthenticationServiceConstants::AuthenticationServiceConstants() {
   SERVICE_PORT = 6001;
 
   PRODUCTION_ENDPOINT.hostname = "authentication-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp24;
-  tmp24 = 6001;
+   ::aroma::banana::thrift::endpoint::int tmp32;
+  tmp32 = 6001;
 
-  PRODUCTION_ENDPOINT.port = tmp24;
+  PRODUCTION_ENDPOINT.port = tmp32;
 
   BETA_ENDPOINT.hostname = "authentication-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp25;
-  tmp25 = 6001;
+   ::aroma::banana::thrift::endpoint::int tmp33;
+  tmp33 = 6001;
 
-  BETA_ENDPOINT.port = tmp25;
+  BETA_ENDPOINT.port = tmp33;
 
 }
 

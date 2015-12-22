@@ -247,6 +247,220 @@ CreateApplicationTokenResponse.prototype.write = function(output) {
   return;
 };
 
+GetApplicationTokenInfoRequest = function(args) {
+  this.tokenId = null;
+  if (args) {
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
+    }
+  }
+};
+GetApplicationTokenInfoRequest.prototype = {};
+GetApplicationTokenInfoRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.tokenId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationTokenInfoRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationTokenInfoRequest');
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetApplicationTokenInfoResponse = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new ApplicationToken(args.token);
+    }
+  }
+};
+GetApplicationTokenInfoResponse.prototype = {};
+GetApplicationTokenInfoResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new ApplicationToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationTokenInfoResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationTokenInfoResponse');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetUserTokenInfoRequest = function(args) {
+  this.tokenId = null;
+  if (args) {
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
+    }
+  }
+};
+GetUserTokenInfoRequest.prototype = {};
+GetUserTokenInfoRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.tokenId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetUserTokenInfoRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetUserTokenInfoRequest');
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetUserTokenInfoResponse = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+  }
+};
+GetUserTokenInfoResponse.prototype = {};
+GetUserTokenInfoResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetUserTokenInfoResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetUserTokenInfoResponse');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 InvalidateApplicationTokenRequest = function(args) {
   this.token = null;
   if (args) {

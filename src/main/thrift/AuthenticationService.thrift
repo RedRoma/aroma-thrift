@@ -67,6 +67,26 @@ struct CreateApplicationTokenResponse
     1: ApplicationToken token;
 }
 
+struct GetApplicationTokenInfoRequest
+{
+    1: string tokenId;
+}
+
+struct GetApplicationTokenInfoResponse
+{
+    1: ApplicationToken token;
+}
+
+struct GetUserTokenInfoRequest
+{
+    1: string tokenId;
+}
+
+struct GetUserTokenInfoResponse
+{
+    1: UserToken token;
+}
+
 struct InvalidateApplicationTokenRequest
 {
     1: ApplicationToken token;
