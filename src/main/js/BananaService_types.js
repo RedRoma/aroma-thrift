@@ -3395,6 +3395,7 @@ SearchForApplicationsResponse.prototype.write = function(output) {
 };
 
 API_VERSION = 1.4;
+SERVICE_PORT = 7001;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
 BETA_ENDPOINT = new TcpEndpoint({

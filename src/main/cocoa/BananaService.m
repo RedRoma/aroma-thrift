@@ -10019,6 +10019,7 @@
 @end
 
 static double BananaService_API_VERSION = 1.4;
+static BananaService_int BananaService_SERVICE_PORT = 7001;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 static Banana_Dimension * BananaService_MAX_APPLICATION_ICON_DIMENSION;
@@ -10051,6 +10052,9 @@ static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 1
 }
 + (double) API_VERSION{
   return BananaService_API_VERSION;
+}
++ (BananaService_int) SERVICE_PORT{
+  return BananaService_SERVICE_PORT;
 }
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return BananaService_PRODUCTION_ENDPOINT;

@@ -1730,6 +1730,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_BananaServiceConstants : NSObject {
 }
 + (double) API_VERSION;
++ (BananaService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
 + (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
