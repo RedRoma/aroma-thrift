@@ -108,7 +108,7 @@ enum Role
 }
 
 /**
- * A User represents a Human who is a user of the Service.
+ * A User represents a Human who is a uses the Service.
  */
 struct User
 {

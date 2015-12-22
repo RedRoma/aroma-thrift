@@ -82,6 +82,10 @@ struct HealthPokeResponse
     2: bool healthy;
 }
 
+/**
+ * This service is implemented by Applications wishing to be "poked"
+ * for health checks.
+ */
 service ApplicationEndpoint
 {
     

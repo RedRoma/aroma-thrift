@@ -264,7 +264,9 @@ to poke for health status.
 </td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_ApplicationEndpoint">Service: ApplicationEndpoint</h3>
-<div class="definition"><h4 id="Fn_ApplicationEndpoint_healthPoke">Function: ApplicationEndpoint.healthPoke</h4>
+This service is implemented by Applications wishing to be "poked"
+for health checks.
+<br/><div class="definition"><h4 id="Fn_ApplicationEndpoint_healthPoke">Function: ApplicationEndpoint.healthPoke</h4>
 <pre><code><a href="#Struct_HealthPokeResponse">HealthPokeResponse</a></code> healthPoke(<code><a href="#Struct_HealthPokeRequest">HealthPokeRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
 </pre></div></div></body></html>
