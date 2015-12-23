@@ -261,6 +261,59 @@ CreateApplicationTokenResponse.prototype.write = function(output) {
 };
 
 GetApplicationTokenInfoRequest = module.exports.GetApplicationTokenInfoRequest = function(args) {
+  this.tokenId = null;
+  if (args) {
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
+    }
+  }
+};
+GetApplicationTokenInfoRequest.prototype = {};
+GetApplicationTokenInfoRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.tokenId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetApplicationTokenInfoRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationTokenInfoRequest');
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetApplicationTokenInfoResponse = module.exports.GetApplicationTokenInfoResponse = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -268,8 +321,8 @@ GetApplicationTokenInfoRequest = module.exports.GetApplicationTokenInfoRequest =
     }
   }
 };
-GetApplicationTokenInfoRequest.prototype = {};
-GetApplicationTokenInfoRequest.prototype.read = function(input) {
+GetApplicationTokenInfoResponse.prototype = {};
+GetApplicationTokenInfoResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -302,8 +355,8 @@ GetApplicationTokenInfoRequest.prototype.read = function(input) {
   return;
 };
 
-GetApplicationTokenInfoRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationTokenInfoRequest');
+GetApplicationTokenInfoResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetApplicationTokenInfoResponse');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
@@ -314,16 +367,16 @@ GetApplicationTokenInfoRequest.prototype.write = function(output) {
   return;
 };
 
-GetApplicationTokenInfoResponse = module.exports.GetApplicationTokenInfoResponse = function(args) {
-  this.applicationId = null;
+GetUserTokenInfoRequest = module.exports.GetUserTokenInfoRequest = function(args) {
+  this.tokenId = null;
   if (args) {
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
     }
   }
 };
-GetApplicationTokenInfoResponse.prototype = {};
-GetApplicationTokenInfoResponse.prototype.read = function(input) {
+GetUserTokenInfoRequest.prototype = {};
+GetUserTokenInfoRequest.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -338,7 +391,7 @@ GetApplicationTokenInfoResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
+        this.tokenId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -355,11 +408,11 @@ GetApplicationTokenInfoResponse.prototype.read = function(input) {
   return;
 };
 
-GetApplicationTokenInfoResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationTokenInfoResponse');
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
-    output.writeString(this.applicationId);
+GetUserTokenInfoRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetUserTokenInfoRequest');
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -367,7 +420,7 @@ GetApplicationTokenInfoResponse.prototype.write = function(output) {
   return;
 };
 
-GetUserTokenInfoRequest = module.exports.GetUserTokenInfoRequest = function(args) {
+GetUserTokenInfoResponse = module.exports.GetUserTokenInfoResponse = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -375,8 +428,8 @@ GetUserTokenInfoRequest = module.exports.GetUserTokenInfoRequest = function(args
     }
   }
 };
-GetUserTokenInfoRequest.prototype = {};
-GetUserTokenInfoRequest.prototype.read = function(input) {
+GetUserTokenInfoResponse.prototype = {};
+GetUserTokenInfoResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -409,64 +462,11 @@ GetUserTokenInfoRequest.prototype.read = function(input) {
   return;
 };
 
-GetUserTokenInfoRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetUserTokenInfoRequest');
+GetUserTokenInfoResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetUserTokenInfoResponse');
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetUserTokenInfoResponse = module.exports.GetUserTokenInfoResponse = function(args) {
-  this.userId = null;
-  if (args) {
-    if (args.userId !== undefined && args.userId !== null) {
-      this.userId = args.userId;
-    }
-  }
-};
-GetUserTokenInfoResponse.prototype = {};
-GetUserTokenInfoResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.userId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetUserTokenInfoResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetUserTokenInfoResponse');
-  if (this.userId !== null && this.userId !== undefined) {
-    output.writeFieldBegin('userId', Thrift.Type.STRING, 1);
-    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

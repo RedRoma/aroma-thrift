@@ -285,8 +285,8 @@ inline std::ostream& operator<<(std::ostream& out, const CreateApplicationTokenR
 }
 
 typedef struct _GetApplicationTokenInfoRequest__isset {
-  _GetApplicationTokenInfoRequest__isset() : token(false) {}
-  bool token :1;
+  _GetApplicationTokenInfoRequest__isset() : tokenId(false) {}
+  bool tokenId :1;
 } _GetApplicationTokenInfoRequest__isset;
 
 class GetApplicationTokenInfoRequest {
@@ -294,19 +294,19 @@ class GetApplicationTokenInfoRequest {
 
   GetApplicationTokenInfoRequest(const GetApplicationTokenInfoRequest&);
   GetApplicationTokenInfoRequest& operator=(const GetApplicationTokenInfoRequest&);
-  GetApplicationTokenInfoRequest() {
+  GetApplicationTokenInfoRequest() : tokenId() {
   }
 
   virtual ~GetApplicationTokenInfoRequest() throw();
-  ApplicationToken token;
+  std::string tokenId;
 
   _GetApplicationTokenInfoRequest__isset __isset;
 
-  void __set_token(const ApplicationToken& val);
+  void __set_tokenId(const std::string& val);
 
   bool operator == (const GetApplicationTokenInfoRequest & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(tokenId == rhs.tokenId))
       return false;
     return true;
   }
@@ -331,8 +331,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationTokenInfo
 }
 
 typedef struct _GetApplicationTokenInfoResponse__isset {
-  _GetApplicationTokenInfoResponse__isset() : applicationId(false) {}
-  bool applicationId :1;
+  _GetApplicationTokenInfoResponse__isset() : token(false) {}
+  bool token :1;
 } _GetApplicationTokenInfoResponse__isset;
 
 class GetApplicationTokenInfoResponse {
@@ -340,19 +340,19 @@ class GetApplicationTokenInfoResponse {
 
   GetApplicationTokenInfoResponse(const GetApplicationTokenInfoResponse&);
   GetApplicationTokenInfoResponse& operator=(const GetApplicationTokenInfoResponse&);
-  GetApplicationTokenInfoResponse() : applicationId() {
+  GetApplicationTokenInfoResponse() {
   }
 
   virtual ~GetApplicationTokenInfoResponse() throw();
-  std::string applicationId;
+  ApplicationToken token;
 
   _GetApplicationTokenInfoResponse__isset __isset;
 
-  void __set_applicationId(const std::string& val);
+  void __set_token(const ApplicationToken& val);
 
   bool operator == (const GetApplicationTokenInfoResponse & rhs) const
   {
-    if (!(applicationId == rhs.applicationId))
+    if (!(token == rhs.token))
       return false;
     return true;
   }
@@ -377,8 +377,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationTokenInfo
 }
 
 typedef struct _GetUserTokenInfoRequest__isset {
-  _GetUserTokenInfoRequest__isset() : token(false) {}
-  bool token :1;
+  _GetUserTokenInfoRequest__isset() : tokenId(false) {}
+  bool tokenId :1;
 } _GetUserTokenInfoRequest__isset;
 
 class GetUserTokenInfoRequest {
@@ -386,19 +386,19 @@ class GetUserTokenInfoRequest {
 
   GetUserTokenInfoRequest(const GetUserTokenInfoRequest&);
   GetUserTokenInfoRequest& operator=(const GetUserTokenInfoRequest&);
-  GetUserTokenInfoRequest() {
+  GetUserTokenInfoRequest() : tokenId() {
   }
 
   virtual ~GetUserTokenInfoRequest() throw();
-  UserToken token;
+  std::string tokenId;
 
   _GetUserTokenInfoRequest__isset __isset;
 
-  void __set_token(const UserToken& val);
+  void __set_tokenId(const std::string& val);
 
   bool operator == (const GetUserTokenInfoRequest & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(tokenId == rhs.tokenId))
       return false;
     return true;
   }
@@ -423,8 +423,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetUserTokenInfoRequest
 }
 
 typedef struct _GetUserTokenInfoResponse__isset {
-  _GetUserTokenInfoResponse__isset() : userId(false) {}
-  bool userId :1;
+  _GetUserTokenInfoResponse__isset() : token(false) {}
+  bool token :1;
 } _GetUserTokenInfoResponse__isset;
 
 class GetUserTokenInfoResponse {
@@ -432,19 +432,19 @@ class GetUserTokenInfoResponse {
 
   GetUserTokenInfoResponse(const GetUserTokenInfoResponse&);
   GetUserTokenInfoResponse& operator=(const GetUserTokenInfoResponse&);
-  GetUserTokenInfoResponse() : userId() {
+  GetUserTokenInfoResponse() {
   }
 
   virtual ~GetUserTokenInfoResponse() throw();
-  std::string userId;
+  UserToken token;
 
   _GetUserTokenInfoResponse__isset __isset;
 
-  void __set_userId(const std::string& val);
+  void __set_token(const UserToken& val);
 
   bool operator == (const GetUserTokenInfoResponse & rhs) const
   {
-    if (!(userId == rhs.userId))
+    if (!(token == rhs.token))
       return false;
     return true;
   }

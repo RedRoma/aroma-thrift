@@ -76,22 +76,22 @@ struct CreateApplicationTokenResponse
 
 struct GetApplicationTokenInfoRequest
 {
-    1: ApplicationToken token;
+    1: string tokenId;
 }
 
 struct GetApplicationTokenInfoResponse
 {
-    1: string applicationId;
+    1: ApplicationToken token;
 }
 
 struct GetUserTokenInfoRequest
 {
-    1: UserToken token;
+    1: string tokenId;
 }
 
 struct GetUserTokenInfoResponse
 {
-    1: string userId;
+    1: UserToken token;
 }
 
 struct InvalidateApplicationTokenRequest
