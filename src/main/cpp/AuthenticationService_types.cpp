@@ -134,8 +134,8 @@ CreateTokenRequest::~CreateTokenRequest() throw() {
 }
 
 
-void CreateTokenRequest::__set_userId(const std::string& val) {
-  this->userId = val;
+void CreateTokenRequest::__set_ownerId(const std::string& val) {
+  this->ownerId = val;
 }
 
 void CreateTokenRequest::__set_lifetime(const LengthOfTime& val) {
@@ -169,8 +169,8 @@ uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->userId);
-          this->__isset.userId = true;
+          xfer += iprot->readString(this->ownerId);
+          this->__isset.ownerId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -210,8 +210,8 @@ uint32_t CreateTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("CreateTokenRequest");
 
-  xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->userId);
+  xfer += oprot->writeFieldBegin("ownerId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->ownerId);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
@@ -229,20 +229,20 @@ uint32_t CreateTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot)
 
 void swap(CreateTokenRequest &a, CreateTokenRequest &b) {
   using ::std::swap;
-  swap(a.userId, b.userId);
+  swap(a.ownerId, b.ownerId);
   swap(a.lifetime, b.lifetime);
   swap(a.desiredTokenType, b.desiredTokenType);
   swap(a.__isset, b.__isset);
 }
 
 CreateTokenRequest::CreateTokenRequest(const CreateTokenRequest& other3) {
-  userId = other3.userId;
+  ownerId = other3.ownerId;
   lifetime = other3.lifetime;
   desiredTokenType = other3.desiredTokenType;
   __isset = other3.__isset;
 }
 CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& other4) {
-  userId = other4.userId;
+  ownerId = other4.ownerId;
   lifetime = other4.lifetime;
   desiredTokenType = other4.desiredTokenType;
   __isset = other4.__isset;
@@ -251,7 +251,7 @@ CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& othe
 void CreateTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "CreateTokenRequest(";
-  out << "userId=" << to_string(userId);
+  out << "ownerId=" << to_string(ownerId);
   out << ", " << "lifetime=" << to_string(lifetime);
   out << ", " << "desiredTokenType=" << to_string(desiredTokenType);
   out << ")";

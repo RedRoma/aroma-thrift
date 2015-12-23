@@ -248,11 +248,11 @@
   return self;
 }
 
-- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType
+- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType
 {
   self = [super init];
-  __userId = [userId retain_stub];
-  __userId_isset = YES;
+  __ownerId = [ownerId retain_stub];
+  __ownerId_isset = YES;
   __lifetime = [lifetime retain_stub];
   __lifetime_isset = YES;
   __desiredTokenType = desiredTokenType;
@@ -263,10 +263,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"userId"])
+  if ([decoder containsValueForKey: @"ownerId"])
   {
-    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
-    __userId_isset = YES;
+    __ownerId = [[decoder decodeObjectForKey: @"ownerId"] retain_stub];
+    __ownerId_isset = YES;
   }
   if ([decoder containsValueForKey: @"lifetime"])
   {
@@ -283,9 +283,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__userId_isset)
+  if (__ownerId_isset)
   {
-    [encoder encodeObject: __userId forKey: @"userId"];
+    [encoder encodeObject: __ownerId forKey: @"ownerId"];
   }
   if (__lifetime_isset)
   {
@@ -300,10 +300,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
-  if (__userId_isset)
+  hash = (hash * 31) ^ __ownerId_isset ? 2654435761 : 0;
+  if (__ownerId_isset)
   {
-    hash = (hash * 31) ^ [__userId hash];
+    hash = (hash * 31) ^ [__ownerId hash];
   }
   hash = (hash * 31) ^ __lifetime_isset ? 2654435761 : 0;
   if (__lifetime_isset)
@@ -327,8 +327,8 @@
     return NO;
   }
   AuthenticationService_CreateTokenRequest *other = (AuthenticationService_CreateTokenRequest *)anObject;
-  if ((__userId_isset != other->__userId_isset) ||
-      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
+  if ((__ownerId_isset != other->__ownerId_isset) ||
+      (__ownerId_isset && ((__ownerId || other->__ownerId) && ![__ownerId isEqual:other->__ownerId]))) {
     return NO;
   }
   if ((__lifetime_isset != other->__lifetime_isset) ||
@@ -344,30 +344,30 @@
 
 - (void) dealloc
 {
-  [__userId release_stub];
+  [__ownerId release_stub];
   [__lifetime release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) userId {
-  return [[__userId retain_stub] autorelease_stub];
+- (NSString *) ownerId {
+  return [[__ownerId retain_stub] autorelease_stub];
 }
 
-- (void) setUserId: (NSString *) userId {
-  [userId retain_stub];
-  [__userId release_stub];
-  __userId = userId;
-  __userId_isset = YES;
+- (void) setOwnerId: (NSString *) ownerId {
+  [ownerId retain_stub];
+  [__ownerId release_stub];
+  __ownerId = ownerId;
+  __ownerId_isset = YES;
 }
 
-- (BOOL) userIdIsSet {
-  return __userId_isset;
+- (BOOL) ownerIdIsSet {
+  return __ownerId_isset;
 }
 
-- (void) unsetUserId {
-  [__userId release_stub];
-  __userId = nil;
-  __userId_isset = NO;
+- (void) unsetOwnerId {
+  [__ownerId release_stub];
+  __ownerId = nil;
+  __ownerId_isset = NO;
 }
 
 - (Banana_LengthOfTime *) lifetime {
@@ -426,7 +426,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setUserId: fieldValue];
+          [self setOwnerId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -460,10 +460,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"CreateTokenRequest"];
-  if (__userId_isset) {
-    if (__userId != nil) {
-      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __userId];
+  if (__ownerId_isset) {
+    if (__ownerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __ownerId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -489,8 +489,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateTokenRequest("];
-  [ms appendString: @"userId:"];
-  [ms appendFormat: @"\"%@\"", __userId];
+  [ms appendString: @"ownerId:"];
+  [ms appendFormat: @"\"%@\"", __ownerId];
   [ms appendString: @",lifetime:"];
   [ms appendFormat: @"%@", __lifetime];
   [ms appendString: @",desiredTokenType:"];

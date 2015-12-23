@@ -88,23 +88,23 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 @end
 
 @interface AuthenticationService_CreateTokenRequest : NSObject <TBase, NSCoding> {
-  NSString * __userId;
+  NSString * __ownerId;
   AuthenticationService_LengthOfTime __lifetime;
   int __desiredTokenType;
 
-  BOOL __userId_isset;
+  BOOL __ownerId_isset;
   BOOL __lifetime_isset;
   BOOL __desiredTokenType_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
 @property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_LengthOfTime lifetime;
 @property (nonatomic, getter=desiredTokenType, setter=setDesiredTokenType:) int desiredTokenType;
 #endif
 
 - (id) init;
-- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType;
+- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -112,10 +112,10 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) userId;
-- (void) setUserId: (NSString *) userId;
+- (NSString *) ownerId;
+- (void) setOwnerId: (NSString *) ownerId;
 #endif
-- (BOOL) userIdIsSet;
+- (BOOL) ownerIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (AuthenticationService_LengthOfTime) lifetime;

@@ -78,12 +78,12 @@ AuthenticationToken.prototype.write = function(output) {
 };
 
 CreateTokenRequest = function(args) {
-  this.userId = null;
+  this.ownerId = null;
   this.lifetime = null;
   this.desiredTokenType = null;
   if (args) {
-    if (args.userId !== undefined && args.userId !== null) {
-      this.userId = args.userId;
+    if (args.ownerId !== undefined && args.ownerId !== null) {
+      this.ownerId = args.ownerId;
     }
     if (args.lifetime !== undefined && args.lifetime !== null) {
       this.lifetime = new LengthOfTime(args.lifetime);
@@ -109,7 +109,7 @@ CreateTokenRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.userId = input.readString().value;
+        this.ownerId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -140,9 +140,9 @@ CreateTokenRequest.prototype.read = function(input) {
 
 CreateTokenRequest.prototype.write = function(output) {
   output.writeStructBegin('CreateTokenRequest');
-  if (this.userId !== null && this.userId !== undefined) {
-    output.writeFieldBegin('userId', Thrift.Type.STRING, 1);
-    output.writeString(this.userId);
+  if (this.ownerId !== null && this.ownerId !== undefined) {
+    output.writeFieldBegin('ownerId', Thrift.Type.STRING, 1);
+    output.writeString(this.ownerId);
     output.writeFieldEnd();
   }
   if (this.lifetime !== null && this.lifetime !== undefined) {

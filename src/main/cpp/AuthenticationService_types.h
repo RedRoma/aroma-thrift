@@ -127,8 +127,8 @@ inline std::ostream& operator<<(std::ostream& out, const AuthenticationToken& ob
 }
 
 typedef struct _CreateTokenRequest__isset {
-  _CreateTokenRequest__isset() : userId(false), lifetime(false), desiredTokenType(false) {}
-  bool userId :1;
+  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false) {}
+  bool ownerId :1;
   bool lifetime :1;
   bool desiredTokenType :1;
 } _CreateTokenRequest__isset;
@@ -138,17 +138,17 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : userId(), desiredTokenType((TokenType::type)0) {
+  CreateTokenRequest() : ownerId(), desiredTokenType((TokenType::type)0) {
   }
 
   virtual ~CreateTokenRequest() throw();
-  std::string userId;
+  std::string ownerId;
   LengthOfTime lifetime;
   TokenType::type desiredTokenType;
 
   _CreateTokenRequest__isset __isset;
 
-  void __set_userId(const std::string& val);
+  void __set_ownerId(const std::string& val);
 
   void __set_lifetime(const LengthOfTime& val);
 
@@ -156,7 +156,7 @@ class CreateTokenRequest {
 
   bool operator == (const CreateTokenRequest & rhs) const
   {
-    if (!(userId == rhs.userId))
+    if (!(ownerId == rhs.ownerId))
       return false;
     if (!(lifetime == rhs.lifetime))
       return false;

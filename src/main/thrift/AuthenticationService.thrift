@@ -65,7 +65,7 @@ struct CreateTokenRequest
      * For Application tokens, this is the Application ID.
      * For User Tokens, this is the userId.
      */
-    1: string userId;
+    1: string ownerId;
     /** The desired length of time to keep the Token alive and valid. */
     2: LengthOfTime lifetime;
     /** This is required, and determines the kind of Token created. */
