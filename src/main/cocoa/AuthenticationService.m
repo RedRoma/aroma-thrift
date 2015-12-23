@@ -25,7 +25,7 @@
 
 #import "AuthenticationService.h"
 
-@implementation AuthenticationService_CreateUserTokenRequest
+@implementation AuthenticationService_AuthenticationToken
 
 - (id) init
 {
@@ -35,13 +35,228 @@
   return self;
 }
 
-- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime
+- (id) initWithApplicationToken: (AuthenticationService_ApplicationToken) applicationToken userToken: (AuthenticationService_UserToken) userToken
+{
+  self = [super init];
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationToken"])
+  {
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"userToken"])
+  {
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationToken_isset)
+  {
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__userToken_isset)
+  {
+    [encoder encodeObject: __userToken forKey: @"userToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
+  {
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
+  {
+    hash = (hash * 31) ^ [__userToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AuthenticationService_AuthenticationToken class]]) {
+    return NO;
+  }
+  AuthenticationService_AuthenticationToken *other = (AuthenticationService_AuthenticationToken *)anObject;
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationToken release_stub];
+  [__userToken release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
+}
+
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
+}
+
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (BananaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
+}
+
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
+}
+
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
+}
+
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setUserToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"AuthenticationToken"];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 2];
+      [__userToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_AuthenticationToken("];
+  [ms appendString: @"applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",userToken:"];
+  [ms appendFormat: @"%@", __userToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AuthenticationService_CreateTokenRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType
 {
   self = [super init];
   __userId = [userId retain_stub];
   __userId_isset = YES;
   __lifetime = [lifetime retain_stub];
   __lifetime_isset = YES;
+  __desiredTokenType = desiredTokenType;
+  __desiredTokenType_isset = YES;
   return self;
 }
 
@@ -58,6 +273,11 @@
     __lifetime = [[decoder decodeObjectForKey: @"lifetime"] retain_stub];
     __lifetime_isset = YES;
   }
+  if ([decoder containsValueForKey: @"desiredTokenType"])
+  {
+    __desiredTokenType = [decoder decodeIntForKey: @"desiredTokenType"];
+    __desiredTokenType_isset = YES;
+  }
   return self;
 }
 
@@ -70,6 +290,10 @@
   if (__lifetime_isset)
   {
     [encoder encodeObject: __lifetime forKey: @"lifetime"];
+  }
+  if (__desiredTokenType_isset)
+  {
+    [encoder encodeInt: __desiredTokenType forKey: @"desiredTokenType"];
   }
 }
 
@@ -86,6 +310,11 @@
   {
     hash = (hash * 31) ^ [__lifetime hash];
   }
+  hash = (hash * 31) ^ __desiredTokenType_isset ? 2654435761 : 0;
+  if (__desiredTokenType_isset)
+  {
+    hash = (hash * 31) ^ [@(__desiredTokenType) hash];
+  }
   return hash;
 }
 
@@ -94,16 +323,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateUserTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_CreateTokenRequest class]]) {
     return NO;
   }
-  AuthenticationService_CreateUserTokenRequest *other = (AuthenticationService_CreateUserTokenRequest *)anObject;
+  AuthenticationService_CreateTokenRequest *other = (AuthenticationService_CreateTokenRequest *)anObject;
   if ((__userId_isset != other->__userId_isset) ||
       (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
   if ((__lifetime_isset != other->__lifetime_isset) ||
       (__lifetime_isset && ((__lifetime || other->__lifetime) && ![__lifetime isEqual:other->__lifetime]))) {
+    return NO;
+  }
+  if ((__desiredTokenType_isset != other->__desiredTokenType_isset) ||
+      (__desiredTokenType_isset && (__desiredTokenType != other->__desiredTokenType))) {
     return NO;
   }
   return YES;
@@ -158,6 +391,23 @@
   __lifetime_isset = NO;
 }
 
+- (int) desiredTokenType {
+  return __desiredTokenType;
+}
+
+- (void) setDesiredTokenType: (int) desiredTokenType {
+  __desiredTokenType = desiredTokenType;
+  __desiredTokenType_isset = YES;
+}
+
+- (BOOL) desiredTokenTypeIsSet {
+  return __desiredTokenType_isset;
+}
+
+- (void) unsetDesiredTokenType {
+  __desiredTokenType_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -191,6 +441,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setDesiredTokenType: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -201,7 +459,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateUserTokenRequest"];
+  [outProtocol writeStructBeginWithName: @"CreateTokenRequest"];
   if (__userId_isset) {
     if (__userId != nil) {
       [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 1];
@@ -216,6 +474,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__desiredTokenType_isset) {
+    [outProtocol writeFieldBeginWithName: @"desiredTokenType" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __desiredTokenType];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -225,18 +488,20 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateUserTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateTokenRequest("];
   [ms appendString: @"userId:"];
   [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @",lifetime:"];
   [ms appendFormat: @"%@", __lifetime];
+  [ms appendString: @",desiredTokenType:"];
+  [ms appendFormat: @"%i", __desiredTokenType];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation AuthenticationService_CreateUserTokenResponse
+@implementation AuthenticationService_CreateTokenResponse
 
 - (id) init
 {
@@ -246,7 +511,7 @@
   return self;
 }
 
-- (id) initWithToken: (AuthenticationService_UserToken) token
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -289,10 +554,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateUserTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_CreateTokenResponse class]]) {
     return NO;
   }
-  AuthenticationService_CreateUserTokenResponse *other = (AuthenticationService_CreateUserTokenResponse *)anObject;
+  AuthenticationService_CreateTokenResponse *other = (AuthenticationService_CreateTokenResponse *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -306,11 +571,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (AuthenticationService_AuthenticationToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -344,7 +609,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          AuthenticationService_AuthenticationToken *fieldValue = [[AuthenticationService_AuthenticationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -362,7 +627,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateUserTokenResponse"];
+  [outProtocol writeStructBeginWithName: @"CreateTokenResponse"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
@@ -379,7 +644,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateUserTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateTokenResponse("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -388,7 +653,7 @@
 
 @end
 
-@implementation AuthenticationService_CreateApplicationTokenRequest
+@implementation AuthenticationService_GetTokenInfoRequest
 
 - (id) init
 {
@@ -398,374 +663,13 @@
   return self;
 }
 
-- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_LengthOfTime) lifetime
-{
-  self = [super init];
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __lifetime = [lifetime retain_stub];
-  __lifetime_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"lifetime"])
-  {
-    __lifetime = [[decoder decodeObjectForKey: @"lifetime"] retain_stub];
-    __lifetime_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__lifetime_isset)
-  {
-    [encoder encodeObject: __lifetime forKey: @"lifetime"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __lifetime_isset ? 2654435761 : 0;
-  if (__lifetime_isset)
-  {
-    hash = (hash * 31) ^ [__lifetime hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationTokenRequest class]]) {
-    return NO;
-  }
-  AuthenticationService_CreateApplicationTokenRequest *other = (AuthenticationService_CreateApplicationTokenRequest *)anObject;
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__lifetime_isset != other->__lifetime_isset) ||
-      (__lifetime_isset && ((__lifetime || other->__lifetime) && ![__lifetime isEqual:other->__lifetime]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__applicationId release_stub];
-  [__lifetime release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (Banana_LengthOfTime *) lifetime {
-  return [[__lifetime retain_stub] autorelease_stub];
-}
-
-- (void) setLifetime: (Banana_LengthOfTime *) lifetime {
-  [lifetime retain_stub];
-  [__lifetime release_stub];
-  __lifetime = lifetime;
-  __lifetime_isset = YES;
-}
-
-- (BOOL) lifetimeIsSet {
-  return __lifetime_isset;
-}
-
-- (void) unsetLifetime {
-  [__lifetime release_stub];
-  __lifetime = nil;
-  __lifetime_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
-          [fieldValue read: inProtocol];
-          [self setLifetime: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateApplicationTokenRequest"];
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__lifetime_isset) {
-    if (__lifetime != nil) {
-      [outProtocol writeFieldBeginWithName: @"lifetime" type: TType_STRUCT fieldID: 2];
-      [__lifetime write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationTokenRequest("];
-  [ms appendString: @"applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",lifetime:"];
-  [ms appendFormat: @"%@", __lifetime];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_CreateApplicationTokenResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationTokenResponse class]]) {
-    return NO;
-  }
-  AuthenticationService_CreateApplicationTokenResponse *other = (AuthenticationService_CreateApplicationTokenResponse *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_ApplicationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateApplicationTokenResponse"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationTokenResponse("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_GetApplicationTokenInfoRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithTokenId: (NSString *) tokenId
+- (id) initWithTokenId: (NSString *) tokenId tokenType: (int) tokenType
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
   __tokenId_isset = YES;
+  __tokenType = tokenType;
+  __tokenType_isset = YES;
   return self;
 }
 
@@ -777,6 +681,11 @@
     __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
     __tokenId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"tokenType"])
+  {
+    __tokenType = [decoder decodeIntForKey: @"tokenType"];
+    __tokenType_isset = YES;
+  }
   return self;
 }
 
@@ -785,6 +694,10 @@
   if (__tokenId_isset)
   {
     [encoder encodeObject: __tokenId forKey: @"tokenId"];
+  }
+  if (__tokenType_isset)
+  {
+    [encoder encodeInt: __tokenType forKey: @"tokenType"];
   }
 }
 
@@ -796,6 +709,11 @@
   {
     hash = (hash * 31) ^ [__tokenId hash];
   }
+  hash = (hash * 31) ^ __tokenType_isset ? 2654435761 : 0;
+  if (__tokenType_isset)
+  {
+    hash = (hash * 31) ^ [@(__tokenType) hash];
+  }
   return hash;
 }
 
@@ -804,12 +722,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_GetApplicationTokenInfoRequest class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_GetTokenInfoRequest class]]) {
     return NO;
   }
-  AuthenticationService_GetApplicationTokenInfoRequest *other = (AuthenticationService_GetApplicationTokenInfoRequest *)anObject;
+  AuthenticationService_GetTokenInfoRequest *other = (AuthenticationService_GetTokenInfoRequest *)anObject;
   if ((__tokenId_isset != other->__tokenId_isset) ||
       (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
+    return NO;
+  }
+  if ((__tokenType_isset != other->__tokenType_isset) ||
+      (__tokenType_isset && (__tokenType != other->__tokenType))) {
     return NO;
   }
   return YES;
@@ -842,306 +764,21 @@
   __tokenId_isset = NO;
 }
 
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setTokenId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
+- (int) tokenType {
+  return __tokenType;
 }
 
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetApplicationTokenInfoRequest"];
-  if (__tokenId_isset) {
-    if (__tokenId != nil) {
-      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __tokenId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
+- (void) setTokenType: (int) tokenType {
+  __tokenType = tokenType;
+  __tokenType_isset = YES;
 }
 
-- (void) validate {
-  // check for required fields
+- (BOOL) tokenTypeIsSet {
+  return __tokenType_isset;
 }
 
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetApplicationTokenInfoRequest("];
-  [ms appendString: @"tokenId:"];
-  [ms appendFormat: @"\"%@\"", __tokenId];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_GetApplicationTokenInfoResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_GetApplicationTokenInfoResponse class]]) {
-    return NO;
-  }
-  AuthenticationService_GetApplicationTokenInfoResponse *other = (AuthenticationService_GetApplicationTokenInfoResponse *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_ApplicationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetApplicationTokenInfoResponse"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetApplicationTokenInfoResponse("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_GetUserTokenInfoRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithTokenId: (NSString *) tokenId
-{
-  self = [super init];
-  __tokenId = [tokenId retain_stub];
-  __tokenId_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"tokenId"])
-  {
-    __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
-    __tokenId_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__tokenId_isset)
-  {
-    [encoder encodeObject: __tokenId forKey: @"tokenId"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __tokenId_isset ? 2654435761 : 0;
-  if (__tokenId_isset)
-  {
-    hash = (hash * 31) ^ [__tokenId hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_GetUserTokenInfoRequest class]]) {
-    return NO;
-  }
-  AuthenticationService_GetUserTokenInfoRequest *other = (AuthenticationService_GetUserTokenInfoRequest *)anObject;
-  if ((__tokenId_isset != other->__tokenId_isset) ||
-      (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__tokenId release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) tokenId {
-  return [[__tokenId retain_stub] autorelease_stub];
-}
-
-- (void) setTokenId: (NSString *) tokenId {
-  [tokenId retain_stub];
-  [__tokenId release_stub];
-  __tokenId = tokenId;
-  __tokenId_isset = YES;
-}
-
-- (BOOL) tokenIdIsSet {
-  return __tokenId_isset;
-}
-
-- (void) unsetTokenId {
-  [__tokenId release_stub];
-  __tokenId = nil;
-  __tokenId_isset = NO;
+- (void) unsetTokenType {
+  __tokenType_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1163,820 +800,14 @@
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setTokenId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetUserTokenInfoRequest"];
-  if (__tokenId_isset) {
-    if (__tokenId != nil) {
-      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __tokenId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetUserTokenInfoRequest("];
-  [ms appendString: @"tokenId:"];
-  [ms appendFormat: @"\"%@\"", __tokenId];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_GetUserTokenInfoResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_UserToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_GetUserTokenInfoResponse class]]) {
-    return NO;
-  }
-  AuthenticationService_GetUserTokenInfoResponse *other = (AuthenticationService_GetUserTokenInfoResponse *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetUserTokenInfoResponse"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetUserTokenInfoResponse("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_InvalidateApplicationTokenRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateApplicationTokenRequest class]]) {
-    return NO;
-  }
-  AuthenticationService_InvalidateApplicationTokenRequest *other = (AuthenticationService_InvalidateApplicationTokenRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_ApplicationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateApplicationTokenRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateApplicationTokenRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_InvalidateApplicationTokenResponse
-
-- (id) init
-{
-  self = [super init];
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateApplicationTokenResponse class]]) {
-    return NO;
-  }
-  AuthenticationService_InvalidateApplicationTokenResponse *other = (AuthenticationService_InvalidateApplicationTokenResponse *)anObject;
-  return YES;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateApplicationTokenResponse"];
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateApplicationTokenResponse("];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_InvalidateUserTokenRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateUserTokenRequest class]]) {
-    return NO;
-  }
-  AuthenticationService_InvalidateUserTokenRequest *other = (AuthenticationService_InvalidateUserTokenRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_ApplicationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateUserTokenRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateUserTokenRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_InvalidateUserTokenResponse
-
-- (id) init
-{
-  self = [super init];
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateUserTokenResponse class]]) {
-    return NO;
-  }
-  AuthenticationService_InvalidateUserTokenResponse *other = (AuthenticationService_InvalidateUserTokenResponse *)anObject;
-  return YES;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateUserTokenResponse"];
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateUserTokenResponse("];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation AuthenticationService_VerifyUserTokenRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (AuthenticationService_UserToken) token userId: (NSString *) userId
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __userId = [userId retain_stub];
-  __userId_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"userId"])
-  {
-    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
-    __userId_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__userId_isset)
-  {
-    [encoder encodeObject: __userId forKey: @"userId"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
-  if (__userId_isset)
-  {
-    hash = (hash * 31) ^ [__userId hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyUserTokenRequest class]]) {
-    return NO;
-  }
-  AuthenticationService_VerifyUserTokenRequest *other = (AuthenticationService_VerifyUserTokenRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__userId_isset != other->__userId_isset) ||
-      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__userId release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_UserToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_UserToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (NSString *) userId {
-  return [[__userId retain_stub] autorelease_stub];
-}
-
-- (void) setUserId: (NSString *) userId {
-  [userId retain_stub];
-  [__userId release_stub];
-  __userId = userId;
-  __userId_isset = YES;
-}
-
-- (BOOL) userIdIsSet {
-  return __userId_isset;
-}
-
-- (void) unsetUserId {
-  [__userId release_stub];
-  __userId = nil;
-  __userId_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setUserId: fieldValue];
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setTokenType: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1991,18 +822,170 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyUserTokenRequest"];
+  [outProtocol writeStructBeginWithName: @"GetTokenInfoRequest"];
+  if (__tokenId_isset) {
+    if (__tokenId != nil) {
+      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __tokenId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__tokenType_isset) {
+    [outProtocol writeFieldBeginWithName: @"tokenType" type: TType_I32 fieldID: 2];
+    [outProtocol writeI32: __tokenType];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetTokenInfoRequest("];
+  [ms appendString: @"tokenId:"];
+  [ms appendFormat: @"\"%@\"", __tokenId];
+  [ms appendString: @",tokenType:"];
+  [ms appendFormat: @"%i", __tokenType];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AuthenticationService_GetTokenInfoResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AuthenticationService_GetTokenInfoResponse class]]) {
+    return NO;
+  }
+  AuthenticationService_GetTokenInfoResponse *other = (AuthenticationService_GetTokenInfoResponse *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (AuthenticationService_AuthenticationToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AuthenticationService_AuthenticationToken *fieldValue = [[AuthenticationService_AuthenticationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetTokenInfoResponse"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
       [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__userId_isset) {
-    if (__userId != nil) {
-      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __userId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2015,23 +998,175 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyUserTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetTokenInfoResponse("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
-  [ms appendString: @",userId:"];
-  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation AuthenticationService_VerifyUserTokenResponse
+@implementation AuthenticationService_InvalidateTokenRequest
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AuthenticationService_InvalidateTokenRequest class]]) {
+    return NO;
+  }
+  AuthenticationService_InvalidateTokenRequest *other = (AuthenticationService_InvalidateTokenRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (AuthenticationService_AuthenticationToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AuthenticationService_AuthenticationToken *fieldValue = [[AuthenticationService_AuthenticationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"InvalidateTokenRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateTokenRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AuthenticationService_InvalidateTokenResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Operation completed successfully";
+
 #endif
   return self;
 }
@@ -2079,10 +1214,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyUserTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_InvalidateTokenResponse class]]) {
     return NO;
   }
-  AuthenticationService_VerifyUserTokenResponse *other = (AuthenticationService_VerifyUserTokenResponse *)anObject;
+  AuthenticationService_InvalidateTokenResponse *other = (AuthenticationService_InvalidateTokenResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2150,7 +1285,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyUserTokenResponse"];
+  [outProtocol writeStructBeginWithName: @"InvalidateTokenResponse"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
@@ -2167,7 +1302,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyUserTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateTokenResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -2176,7 +1311,7 @@
 
 @end
 
-@implementation AuthenticationService_VerifyApplicationTokenRequest
+@implementation AuthenticationService_VerifyTokenRequest
 
 - (id) init
 {
@@ -2186,56 +1321,56 @@
   return self;
 }
 
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token applicationId: (NSString *) applicationId
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (NSString *) ownerId
 {
   self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
+  __tokenId = [tokenId retain_stub];
+  __tokenId_isset = YES;
+  __ownerId = [ownerId retain_stub];
+  __ownerId_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"token"])
+  if ([decoder containsValueForKey: @"tokenId"])
   {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
+    __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
+    __tokenId_isset = YES;
   }
-  if ([decoder containsValueForKey: @"applicationId"])
+  if ([decoder containsValueForKey: @"ownerId"])
   {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
+    __ownerId = [[decoder decodeObjectForKey: @"ownerId"] retain_stub];
+    __ownerId_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__token_isset)
+  if (__tokenId_isset)
   {
-    [encoder encodeObject: __token forKey: @"token"];
+    [encoder encodeObject: __tokenId forKey: @"tokenId"];
   }
-  if (__applicationId_isset)
+  if (__ownerId_isset)
   {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+    [encoder encodeObject: __ownerId forKey: @"ownerId"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
+  hash = (hash * 31) ^ __tokenId_isset ? 2654435761 : 0;
+  if (__tokenId_isset)
   {
-    hash = (hash * 31) ^ [__token hash];
+    hash = (hash * 31) ^ [__tokenId hash];
   }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
+  hash = (hash * 31) ^ __ownerId_isset ? 2654435761 : 0;
+  if (__ownerId_isset)
   {
-    hash = (hash * 31) ^ [__applicationId hash];
+    hash = (hash * 31) ^ [__ownerId hash];
   }
   return hash;
 }
@@ -2245,16 +1380,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyApplicationTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_VerifyTokenRequest class]]) {
     return NO;
   }
-  AuthenticationService_VerifyApplicationTokenRequest *other = (AuthenticationService_VerifyApplicationTokenRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+  AuthenticationService_VerifyTokenRequest *other = (AuthenticationService_VerifyTokenRequest *)anObject;
+  if ((__tokenId_isset != other->__tokenId_isset) ||
+      (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
   }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+  if ((__ownerId_isset != other->__ownerId_isset) ||
+      (__ownerId_isset && ((__ownerId || other->__ownerId) && ![__ownerId isEqual:other->__ownerId]))) {
     return NO;
   }
   return YES;
@@ -2262,51 +1397,51 @@
 
 - (void) dealloc
 {
-  [__token release_stub];
-  [__applicationId release_stub];
+  [__tokenId release_stub];
+  [__ownerId release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
+- (NSString *) tokenId {
+  return [[__tokenId retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_ApplicationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
+- (void) setTokenId: (NSString *) tokenId {
+  [tokenId retain_stub];
+  [__tokenId release_stub];
+  __tokenId = tokenId;
+  __tokenId_isset = YES;
 }
 
-- (BOOL) tokenIsSet {
-  return __token_isset;
+- (BOOL) tokenIdIsSet {
+  return __tokenId_isset;
 }
 
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
+- (void) unsetTokenId {
+  [__tokenId release_stub];
+  __tokenId = nil;
+  __tokenId_isset = NO;
 }
 
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
+- (NSString *) ownerId {
+  return [[__ownerId retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
+- (void) setOwnerId: (NSString *) ownerId {
+  [ownerId retain_stub];
+  [__ownerId release_stub];
+  __ownerId = ownerId;
+  __ownerId_isset = YES;
 }
 
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
+- (BOOL) ownerIdIsSet {
+  return __ownerId_isset;
 }
 
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
+- (void) unsetOwnerId {
+  [__ownerId release_stub];
+  __ownerId = nil;
+  __ownerId_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2325,11 +1460,9 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTokenId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2337,7 +1470,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
+          [self setOwnerId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2352,18 +1485,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyApplicationTokenRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
+  [outProtocol writeStructBeginWithName: @"VerifyTokenRequest"];
+  if (__tokenId_isset) {
+    if (__tokenId != nil) {
+      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __tokenId];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationId];
+  if (__ownerId_isset) {
+    if (__ownerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __ownerId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2376,18 +1509,18 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyApplicationTokenRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyTokenRequest("];
+  [ms appendString: @"tokenId:"];
+  [ms appendFormat: @"\"%@\"", __tokenId];
+  [ms appendString: @",ownerId:"];
+  [ms appendFormat: @"\"%@\"", __ownerId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation AuthenticationService_VerifyApplicationTokenResponse
+@implementation AuthenticationService_VerifyTokenResponse
 
 - (id) init
 {
@@ -2440,10 +1573,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyApplicationTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_VerifyTokenResponse class]]) {
     return NO;
   }
-  AuthenticationService_VerifyApplicationTokenResponse *other = (AuthenticationService_VerifyApplicationTokenResponse *)anObject;
+  AuthenticationService_VerifyTokenResponse *other = (AuthenticationService_VerifyTokenResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2511,7 +1644,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyApplicationTokenResponse"];
+  [outProtocol writeStructBeginWithName: @"VerifyTokenResponse"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
@@ -2528,7 +1661,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyApplicationTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyTokenResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -2829,18 +1962,18 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_createApplicationToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_CreateApplicationTokenRequest * __request;
+@interface AuthenticationService_createToken_args : NSObject <TBase, NSCoding> {
+  AuthenticationService_CreateTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_CreateApplicationTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_CreateTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AuthenticationService_CreateApplicationTokenRequest *) request;
+- (id) initWithRequest: (AuthenticationService_CreateTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2848,14 +1981,14 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_CreateApplicationTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_CreateApplicationTokenRequest *) request;
+- (AuthenticationService_CreateTokenRequest *) request;
+- (void) setRequest: (AuthenticationService_CreateTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AuthenticationService_createApplicationToken_args
+@implementation AuthenticationService_createToken_args
 
 - (id) init
 {
@@ -2865,7 +1998,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (AuthenticationService_CreateApplicationTokenRequest *) request
+- (id) initWithRequest: (AuthenticationService_CreateTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -2908,10 +2041,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_createApplicationToken_args class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_createToken_args class]]) {
     return NO;
   }
-  AuthenticationService_createApplicationToken_args *other = (AuthenticationService_createApplicationToken_args *)anObject;
+  AuthenticationService_createToken_args *other = (AuthenticationService_createToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -2925,11 +2058,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_CreateApplicationTokenRequest *) request {
+- (AuthenticationService_CreateTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AuthenticationService_CreateApplicationTokenRequest *) request {
+- (void) setRequest: (AuthenticationService_CreateTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -2963,7 +2096,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_CreateApplicationTokenRequest *fieldValue = [[AuthenticationService_CreateApplicationTokenRequest alloc] init];
+          AuthenticationService_CreateTokenRequest *fieldValue = [[AuthenticationService_CreateTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -2981,7 +2114,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"createApplicationToken_args"];
+  [outProtocol writeStructBeginWithName: @"createToken_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -2998,7 +2131,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_createApplicationToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_createToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -3007,8 +2140,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_CreateApplicationToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_CreateApplicationTokenResponse * __success;
+@interface AuthenticationService_CreateToken_result : NSObject <TBase, NSCoding> {
+  AuthenticationService_CreateTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex;
 
   BOOL __success_isset;
@@ -3016,12 +2149,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_CreateApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_CreateTokenResponse * success;
 @property (nonatomic, retain, getter=ex, setter=setEx:) AuthenticationService_OperationFailedException ex;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_CreateApplicationTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex;
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3029,8 +2162,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_CreateApplicationTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_CreateApplicationTokenResponse *) success;
+- (AuthenticationService_CreateTokenResponse *) success;
+- (void) setSuccess: (AuthenticationService_CreateTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -3042,7 +2175,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@implementation AuthenticationService_CreateApplicationToken_result
+@implementation AuthenticationService_CreateToken_result
 
 - (id) init
 {
@@ -3052,7 +2185,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_CreateApplicationTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3111,10 +2244,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateApplicationToken_result class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_CreateToken_result class]]) {
     return NO;
   }
-  AuthenticationService_CreateApplicationToken_result *other = (AuthenticationService_CreateApplicationToken_result *)anObject;
+  AuthenticationService_CreateToken_result *other = (AuthenticationService_CreateToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -3133,11 +2266,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_CreateApplicationTokenResponse *) success {
+- (AuthenticationService_CreateTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AuthenticationService_CreateApplicationTokenResponse *) success {
+- (void) setSuccess: (AuthenticationService_CreateTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -3192,7 +2325,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_CreateApplicationTokenResponse *fieldValue = [[AuthenticationService_CreateApplicationTokenResponse alloc] init];
+          AuthenticationService_CreateTokenResponse *fieldValue = [[AuthenticationService_CreateTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -3220,7 +2353,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateApplicationToken_result"];
+  [outProtocol writeStructBeginWithName: @"CreateToken_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -3244,7 +2377,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateApplicationToken_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex:"];
@@ -3255,18 +2388,18 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_createUserToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_CreateUserTokenRequest * __request;
+@interface AuthenticationService_getTokenInfo_args : NSObject <TBase, NSCoding> {
+  AuthenticationService_GetTokenInfoRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_CreateUserTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_GetTokenInfoRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AuthenticationService_CreateUserTokenRequest *) request;
+- (id) initWithRequest: (AuthenticationService_GetTokenInfoRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3274,14 +2407,14 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_CreateUserTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_CreateUserTokenRequest *) request;
+- (AuthenticationService_GetTokenInfoRequest *) request;
+- (void) setRequest: (AuthenticationService_GetTokenInfoRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AuthenticationService_createUserToken_args
+@implementation AuthenticationService_getTokenInfo_args
 
 - (id) init
 {
@@ -3291,7 +2424,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (AuthenticationService_CreateUserTokenRequest *) request
+- (id) initWithRequest: (AuthenticationService_GetTokenInfoRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -3334,10 +2467,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_createUserToken_args class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_getTokenInfo_args class]]) {
     return NO;
   }
-  AuthenticationService_createUserToken_args *other = (AuthenticationService_createUserToken_args *)anObject;
+  AuthenticationService_getTokenInfo_args *other = (AuthenticationService_getTokenInfo_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -3351,11 +2484,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_CreateUserTokenRequest *) request {
+- (AuthenticationService_GetTokenInfoRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AuthenticationService_CreateUserTokenRequest *) request {
+- (void) setRequest: (AuthenticationService_GetTokenInfoRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -3389,7 +2522,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_CreateUserTokenRequest *fieldValue = [[AuthenticationService_CreateUserTokenRequest alloc] init];
+          AuthenticationService_GetTokenInfoRequest *fieldValue = [[AuthenticationService_GetTokenInfoRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -3407,7 +2540,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"createUserToken_args"];
+  [outProtocol writeStructBeginWithName: @"getTokenInfo_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -3424,7 +2557,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_createUserToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_getTokenInfo_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -3433,434 +2566,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_CreateUserToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_CreateUserTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex;
-
-  BOOL __success_isset;
-  BOOL __ex_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_CreateUserTokenResponse * success;
-@property (nonatomic, retain, getter=ex, setter=setEx:) AuthenticationService_OperationFailedException ex;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AuthenticationService_CreateUserTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_CreateUserTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_CreateUserTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex;
-- (void) setEx: (AuthenticationService_OperationFailedException) ex;
-#endif
-- (BOOL) exIsSet;
-
-@end
-
-@implementation AuthenticationService_CreateUserToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AuthenticationService_CreateUserTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex = [ex retain_stub];
-  __ex_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex"])
-  {
-    __ex = [[decoder decodeObjectForKey: @"ex"] retain_stub];
-    __ex_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex_isset)
-  {
-    [encoder encodeObject: __ex forKey: @"ex"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex_isset ? 2654435761 : 0;
-  if (__ex_isset)
-  {
-    hash = (hash * 31) ^ [__ex hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_CreateUserToken_result class]]) {
-    return NO;
-  }
-  AuthenticationService_CreateUserToken_result *other = (AuthenticationService_CreateUserToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex_isset != other->__ex_isset) ||
-      (__ex_isset && ((__ex || other->__ex) && ![__ex isEqual:other->__ex]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_CreateUserTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AuthenticationService_CreateUserTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex {
-  return [[__ex retain_stub] autorelease_stub];
-}
-
-- (void) setEx: (BananaException_OperationFailedException *) ex {
-  [ex retain_stub];
-  [__ex release_stub];
-  __ex = ex;
-  __ex_isset = YES;
-}
-
-- (BOOL) exIsSet {
-  return __ex_isset;
-}
-
-- (void) unsetEx {
-  [__ex release_stub];
-  __ex = nil;
-  __ex_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_CreateUserTokenResponse *fieldValue = [[AuthenticationService_CreateUserTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"CreateUserToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex_isset) {
-    if (__ex != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex" type: TType_STRUCT fieldID: 1];
-      [__ex write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateUserToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex:"];
-  [ms appendFormat: @"%@", __ex];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_getApplicationTokenInfo_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_GetApplicationTokenInfoRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_GetApplicationTokenInfoRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AuthenticationService_GetApplicationTokenInfoRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_GetApplicationTokenInfoRequest *) request;
-- (void) setRequest: (AuthenticationService_GetApplicationTokenInfoRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AuthenticationService_getApplicationTokenInfo_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AuthenticationService_GetApplicationTokenInfoRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_getApplicationTokenInfo_args class]]) {
-    return NO;
-  }
-  AuthenticationService_getApplicationTokenInfo_args *other = (AuthenticationService_getApplicationTokenInfo_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_GetApplicationTokenInfoRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AuthenticationService_GetApplicationTokenInfoRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_GetApplicationTokenInfoRequest *fieldValue = [[AuthenticationService_GetApplicationTokenInfoRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getApplicationTokenInfo_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_getApplicationTokenInfo_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_GetApplicationTokenInfo_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_GetApplicationTokenInfoResponse * __success;
+@interface AuthenticationService_GetTokenInfo_result : NSObject <TBase, NSCoding> {
+  AuthenticationService_GetTokenInfoResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
 
@@ -3870,13 +2577,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_GetApplicationTokenInfoResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_GetTokenInfoResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_GetApplicationTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3884,8 +2591,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_GetApplicationTokenInfoResponse *) success;
-- (void) setSuccess: (AuthenticationService_GetApplicationTokenInfoResponse *) success;
+- (AuthenticationService_GetTokenInfoResponse *) success;
+- (void) setSuccess: (AuthenticationService_GetTokenInfoResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -3903,7 +2610,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@implementation AuthenticationService_GetApplicationTokenInfo_result
+@implementation AuthenticationService_GetTokenInfo_result
 
 - (id) init
 {
@@ -3913,7 +2620,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_GetApplicationTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3988,10 +2695,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_GetApplicationTokenInfo_result class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_GetTokenInfo_result class]]) {
     return NO;
   }
-  AuthenticationService_GetApplicationTokenInfo_result *other = (AuthenticationService_GetApplicationTokenInfo_result *)anObject;
+  AuthenticationService_GetTokenInfo_result *other = (AuthenticationService_GetTokenInfo_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -4015,11 +2722,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_GetApplicationTokenInfoResponse *) success {
+- (AuthenticationService_GetTokenInfoResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AuthenticationService_GetApplicationTokenInfoResponse *) success {
+- (void) setSuccess: (AuthenticationService_GetTokenInfoResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -4095,7 +2802,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_GetApplicationTokenInfoResponse *fieldValue = [[AuthenticationService_GetApplicationTokenInfoResponse alloc] init];
+          AuthenticationService_GetTokenInfoResponse *fieldValue = [[AuthenticationService_GetTokenInfoResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -4133,7 +2840,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetApplicationTokenInfo_result"];
+  [outProtocol writeStructBeginWithName: @"GetTokenInfo_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -4163,7 +2870,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetApplicationTokenInfo_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetTokenInfo_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -4176,18 +2883,18 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_getUserTokenInfo_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_GetUserTokenInfoRequest * __request;
+@interface AuthenticationService_invalidateToken_args : NSObject <TBase, NSCoding> {
+  AuthenticationService_InvalidateTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_GetUserTokenInfoRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_InvalidateTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AuthenticationService_GetUserTokenInfoRequest *) request;
+- (id) initWithRequest: (AuthenticationService_InvalidateTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -4195,14 +2902,14 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_GetUserTokenInfoRequest *) request;
-- (void) setRequest: (AuthenticationService_GetUserTokenInfoRequest *) request;
+- (AuthenticationService_InvalidateTokenRequest *) request;
+- (void) setRequest: (AuthenticationService_InvalidateTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AuthenticationService_getUserTokenInfo_args
+@implementation AuthenticationService_invalidateToken_args
 
 - (id) init
 {
@@ -4212,7 +2919,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (AuthenticationService_GetUserTokenInfoRequest *) request
+- (id) initWithRequest: (AuthenticationService_InvalidateTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -4255,10 +2962,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_getUserTokenInfo_args class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_invalidateToken_args class]]) {
     return NO;
   }
-  AuthenticationService_getUserTokenInfo_args *other = (AuthenticationService_getUserTokenInfo_args *)anObject;
+  AuthenticationService_invalidateToken_args *other = (AuthenticationService_invalidateToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -4272,11 +2979,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_GetUserTokenInfoRequest *) request {
+- (AuthenticationService_InvalidateTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AuthenticationService_GetUserTokenInfoRequest *) request {
+- (void) setRequest: (AuthenticationService_InvalidateTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -4310,7 +3017,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_GetUserTokenInfoRequest *fieldValue = [[AuthenticationService_GetUserTokenInfoRequest alloc] init];
+          AuthenticationService_InvalidateTokenRequest *fieldValue = [[AuthenticationService_InvalidateTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -4328,7 +3035,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getUserTokenInfo_args"];
+  [outProtocol writeStructBeginWithName: @"invalidateToken_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -4345,7 +3052,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_getUserTokenInfo_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_invalidateToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -4354,8 +3061,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_GetUserTokenInfo_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_GetUserTokenInfoResponse * __success;
+@interface AuthenticationService_InvalidateToken_result : NSObject <TBase, NSCoding> {
+  AuthenticationService_InvalidateTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
 
@@ -4365,13 +3072,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_GetUserTokenInfoResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_InvalidateTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_GetUserTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -4379,8 +3086,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_GetUserTokenInfoResponse *) success;
-- (void) setSuccess: (AuthenticationService_GetUserTokenInfoResponse *) success;
+- (AuthenticationService_InvalidateTokenResponse *) success;
+- (void) setSuccess: (AuthenticationService_InvalidateTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -4398,7 +3105,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@implementation AuthenticationService_GetUserTokenInfo_result
+@implementation AuthenticationService_InvalidateToken_result
 
 - (id) init
 {
@@ -4408,7 +3115,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_GetUserTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
 {
   self = [super init];
   __success = [success retain_stub];
@@ -4483,10 +3190,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_GetUserTokenInfo_result class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_InvalidateToken_result class]]) {
     return NO;
   }
-  AuthenticationService_GetUserTokenInfo_result *other = (AuthenticationService_GetUserTokenInfo_result *)anObject;
+  AuthenticationService_InvalidateToken_result *other = (AuthenticationService_InvalidateToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -4510,11 +3217,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_GetUserTokenInfoResponse *) success {
+- (AuthenticationService_InvalidateTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AuthenticationService_GetUserTokenInfoResponse *) success {
+- (void) setSuccess: (AuthenticationService_InvalidateTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -4590,7 +3297,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_GetUserTokenInfoResponse *fieldValue = [[AuthenticationService_GetUserTokenInfoResponse alloc] init];
+          AuthenticationService_InvalidateTokenResponse *fieldValue = [[AuthenticationService_InvalidateTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -4628,7 +3335,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetUserTokenInfo_result"];
+  [outProtocol writeStructBeginWithName: @"InvalidateToken_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -4658,7 +3365,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_GetUserTokenInfo_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -4671,18 +3378,18 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_invalidateApplicationToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_InvalidateApplicationTokenRequest * __request;
+@interface AuthenticationService_verifyToken_args : NSObject <TBase, NSCoding> {
+  AuthenticationService_VerifyTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_InvalidateApplicationTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_VerifyTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AuthenticationService_InvalidateApplicationTokenRequest *) request;
+- (id) initWithRequest: (AuthenticationService_VerifyTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -4690,14 +3397,14 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidateApplicationTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_InvalidateApplicationTokenRequest *) request;
+- (AuthenticationService_VerifyTokenRequest *) request;
+- (void) setRequest: (AuthenticationService_VerifyTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AuthenticationService_invalidateApplicationToken_args
+@implementation AuthenticationService_verifyToken_args
 
 - (id) init
 {
@@ -4707,7 +3414,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (AuthenticationService_InvalidateApplicationTokenRequest *) request
+- (id) initWithRequest: (AuthenticationService_VerifyTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -4750,10 +3457,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_invalidateApplicationToken_args class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_verifyToken_args class]]) {
     return NO;
   }
-  AuthenticationService_invalidateApplicationToken_args *other = (AuthenticationService_invalidateApplicationToken_args *)anObject;
+  AuthenticationService_verifyToken_args *other = (AuthenticationService_verifyToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -4767,11 +3474,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_InvalidateApplicationTokenRequest *) request {
+- (AuthenticationService_VerifyTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AuthenticationService_InvalidateApplicationTokenRequest *) request {
+- (void) setRequest: (AuthenticationService_VerifyTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -4805,7 +3512,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_InvalidateApplicationTokenRequest *fieldValue = [[AuthenticationService_InvalidateApplicationTokenRequest alloc] init];
+          AuthenticationService_VerifyTokenRequest *fieldValue = [[AuthenticationService_VerifyTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -4823,7 +3530,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"invalidateApplicationToken_args"];
+  [outProtocol writeStructBeginWithName: @"verifyToken_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -4840,7 +3547,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_invalidateApplicationToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_verifyToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -4849,8 +3556,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@interface AuthenticationService_InvalidateApplicationToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_InvalidateApplicationTokenResponse * __success;
+@interface AuthenticationService_VerifyToken_result : NSObject <TBase, NSCoding> {
+  AuthenticationService_VerifyTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
 
@@ -4860,13 +3567,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_InvalidateApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_VerifyTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_InvalidateApplicationTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -4874,8 +3581,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidateApplicationTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_InvalidateApplicationTokenResponse *) success;
+- (AuthenticationService_VerifyTokenResponse *) success;
+- (void) setSuccess: (AuthenticationService_VerifyTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -4893,7 +3600,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @end
 
-@implementation AuthenticationService_InvalidateApplicationToken_result
+@implementation AuthenticationService_VerifyToken_result
 
 - (id) init
 {
@@ -4903,7 +3610,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_InvalidateApplicationTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
 {
   self = [super init];
   __success = [success retain_stub];
@@ -4978,10 +3685,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateApplicationToken_result class]]) {
+  if (![anObject isKindOfClass:[AuthenticationService_VerifyToken_result class]]) {
     return NO;
   }
-  AuthenticationService_InvalidateApplicationToken_result *other = (AuthenticationService_InvalidateApplicationToken_result *)anObject;
+  AuthenticationService_VerifyToken_result *other = (AuthenticationService_VerifyToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -5005,11 +3712,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (AuthenticationService_InvalidateApplicationTokenResponse *) success {
+- (AuthenticationService_VerifyTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AuthenticationService_InvalidateApplicationTokenResponse *) success {
+- (void) setSuccess: (AuthenticationService_VerifyTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -5085,7 +3792,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AuthenticationService_InvalidateApplicationTokenResponse *fieldValue = [[AuthenticationService_InvalidateApplicationTokenResponse alloc] init];
+          AuthenticationService_VerifyTokenResponse *fieldValue = [[AuthenticationService_VerifyTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -5123,7 +3830,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateApplicationToken_result"];
+  [outProtocol writeStructBeginWithName: @"VerifyToken_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -5153,1492 +3860,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateApplicationToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_invalidateUserToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_InvalidateUserTokenRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_InvalidateUserTokenRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AuthenticationService_InvalidateUserTokenRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidateUserTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_InvalidateUserTokenRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AuthenticationService_invalidateUserToken_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AuthenticationService_InvalidateUserTokenRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_invalidateUserToken_args class]]) {
-    return NO;
-  }
-  AuthenticationService_invalidateUserToken_args *other = (AuthenticationService_invalidateUserToken_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_InvalidateUserTokenRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AuthenticationService_InvalidateUserTokenRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_InvalidateUserTokenRequest *fieldValue = [[AuthenticationService_InvalidateUserTokenRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"invalidateUserToken_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_invalidateUserToken_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_InvalidateUserToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_InvalidateUserTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex1;
-  AuthenticationService_InvalidTokenException __ex2;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_InvalidateUserTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AuthenticationService_InvalidateUserTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidateUserTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_InvalidateUserTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex1;
-- (void) setEx1: (AuthenticationService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidTokenException) ex2;
-- (void) setEx2: (AuthenticationService_InvalidTokenException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-@end
-
-@implementation AuthenticationService_InvalidateUserToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AuthenticationService_InvalidateUserTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_InvalidateUserToken_result class]]) {
-    return NO;
-  }
-  AuthenticationService_InvalidateUserToken_result *other = (AuthenticationService_InvalidateUserToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_InvalidateUserTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AuthenticationService_InvalidateUserTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidTokenException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_InvalidateUserTokenResponse *fieldValue = [[AuthenticationService_InvalidateUserTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"InvalidateUserToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateUserToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_verifyApplicationToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_VerifyApplicationTokenRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_VerifyApplicationTokenRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AuthenticationService_VerifyApplicationTokenRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_VerifyApplicationTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_VerifyApplicationTokenRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AuthenticationService_verifyApplicationToken_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AuthenticationService_VerifyApplicationTokenRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_verifyApplicationToken_args class]]) {
-    return NO;
-  }
-  AuthenticationService_verifyApplicationToken_args *other = (AuthenticationService_verifyApplicationToken_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_VerifyApplicationTokenRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AuthenticationService_VerifyApplicationTokenRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_VerifyApplicationTokenRequest *fieldValue = [[AuthenticationService_VerifyApplicationTokenRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"verifyApplicationToken_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_verifyApplicationToken_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_VerifyApplicationToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_VerifyApplicationTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex1;
-  AuthenticationService_InvalidTokenException __ex2;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_VerifyApplicationTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AuthenticationService_VerifyApplicationTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_VerifyApplicationTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_VerifyApplicationTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex1;
-- (void) setEx1: (AuthenticationService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidTokenException) ex2;
-- (void) setEx2: (AuthenticationService_InvalidTokenException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-@end
-
-@implementation AuthenticationService_VerifyApplicationToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AuthenticationService_VerifyApplicationTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyApplicationToken_result class]]) {
-    return NO;
-  }
-  AuthenticationService_VerifyApplicationToken_result *other = (AuthenticationService_VerifyApplicationToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_VerifyApplicationTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AuthenticationService_VerifyApplicationTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidTokenException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_VerifyApplicationTokenResponse *fieldValue = [[AuthenticationService_VerifyApplicationTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyApplicationToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyApplicationToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_verifyUserToken_args : NSObject <TBase, NSCoding> {
-  AuthenticationService_VerifyUserTokenRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AuthenticationService_VerifyUserTokenRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (AuthenticationService_VerifyUserTokenRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_VerifyUserTokenRequest *) request;
-- (void) setRequest: (AuthenticationService_VerifyUserTokenRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation AuthenticationService_verifyUserToken_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (AuthenticationService_VerifyUserTokenRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_verifyUserToken_args class]]) {
-    return NO;
-  }
-  AuthenticationService_verifyUserToken_args *other = (AuthenticationService_verifyUserToken_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_VerifyUserTokenRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (AuthenticationService_VerifyUserTokenRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_VerifyUserTokenRequest *fieldValue = [[AuthenticationService_VerifyUserTokenRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"verifyUserToken_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_verifyUserToken_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface AuthenticationService_VerifyUserToken_result : NSObject <TBase, NSCoding> {
-  AuthenticationService_VerifyUserTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex1;
-  AuthenticationService_InvalidTokenException __ex2;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_VerifyUserTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (AuthenticationService_VerifyUserTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_VerifyUserTokenResponse *) success;
-- (void) setSuccess: (AuthenticationService_VerifyUserTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex1;
-- (void) setEx1: (AuthenticationService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_InvalidTokenException) ex2;
-- (void) setEx2: (AuthenticationService_InvalidTokenException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-@end
-
-@implementation AuthenticationService_VerifyUserToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (AuthenticationService_VerifyUserTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[AuthenticationService_VerifyUserToken_result class]]) {
-    return NO;
-  }
-  AuthenticationService_VerifyUserToken_result *other = (AuthenticationService_VerifyUserToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [super dealloc_stub];
-}
-
-- (AuthenticationService_VerifyUserTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (AuthenticationService_VerifyUserTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidTokenException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          AuthenticationService_VerifyUserTokenResponse *fieldValue = [[AuthenticationService_VerifyUserTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"VerifyUserToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyUserToken_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_VerifyToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -6697,10 +3919,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return [self recv_getApiVersion];
 }
 
-- (void) send_createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request
+- (void) send_createToken: (AuthenticationService_CreateTokenRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"createApplicationToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"createApplicationToken_args"];
+  [outProtocol writeMessageBeginWithName: @"createToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"createToken_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -6711,13 +3933,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (AuthenticationService_CreateApplicationTokenResponse *) recv_createApplicationToken
+- (AuthenticationService_CreateTokenResponse *) recv_createToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AuthenticationService_CreateApplicationToken_result * result = [[[AuthenticationService_CreateApplicationToken_result alloc] init] autorelease_stub];
+  AuthenticationService_CreateToken_result * result = [[[AuthenticationService_CreateToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -6727,20 +3949,20 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     @throw [result ex];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"createApplicationToken failed: unknown result"];
+                                           reason: @"createToken failed: unknown result"];
 }
 
-- (AuthenticationService_CreateApplicationTokenResponse *) createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request
+- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request
 {
-  [self send_createApplicationToken : request];
+  [self send_createToken : request];
   [[outProtocol transport] flush];
-  return [self recv_createApplicationToken];
+  return [self recv_createToken];
 }
 
-- (void) send_createUserToken: (AuthenticationService_CreateUserTokenRequest *) request
+- (void) send_getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"createUserToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"createUserToken_args"];
+  [outProtocol writeMessageBeginWithName: @"getTokenInfo" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getTokenInfo_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -6751,53 +3973,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (AuthenticationService_CreateUserTokenResponse *) recv_createUserToken
+- (AuthenticationService_GetTokenInfoResponse *) recv_getTokenInfo
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AuthenticationService_CreateUserToken_result * result = [[[AuthenticationService_CreateUserToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result exIsSet]) {
-    @throw [result ex];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"createUserToken failed: unknown result"];
-}
-
-- (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request
-{
-  [self send_createUserToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_createUserToken];
-}
-
-- (void) send_getApplicationTokenInfo: (AuthenticationService_GetApplicationTokenInfoRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"getApplicationTokenInfo" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getApplicationTokenInfo_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AuthenticationService_GetApplicationTokenInfoResponse *) recv_getApplicationTokenInfo
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AuthenticationService_GetApplicationTokenInfo_result * result = [[[AuthenticationService_GetApplicationTokenInfo_result alloc] init] autorelease_stub];
+  AuthenticationService_GetTokenInfo_result * result = [[[AuthenticationService_GetTokenInfo_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -6810,20 +3992,20 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     @throw [result ex2];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getApplicationTokenInfo failed: unknown result"];
+                                           reason: @"getTokenInfo failed: unknown result"];
 }
 
-- (AuthenticationService_GetApplicationTokenInfoResponse *) getApplicationTokenInfo: (AuthenticationService_GetApplicationTokenInfoRequest *) request
+- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request
 {
-  [self send_getApplicationTokenInfo : request];
+  [self send_getTokenInfo : request];
   [[outProtocol transport] flush];
-  return [self recv_getApplicationTokenInfo];
+  return [self recv_getTokenInfo];
 }
 
-- (void) send_getUserTokenInfo: (AuthenticationService_GetUserTokenInfoRequest *) request
+- (void) send_invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"getUserTokenInfo" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getUserTokenInfo_args"];
+  [outProtocol writeMessageBeginWithName: @"invalidateToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"invalidateToken_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -6834,13 +4016,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (AuthenticationService_GetUserTokenInfoResponse *) recv_getUserTokenInfo
+- (AuthenticationService_InvalidateTokenResponse *) recv_invalidateToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AuthenticationService_GetUserTokenInfo_result * result = [[[AuthenticationService_GetUserTokenInfo_result alloc] init] autorelease_stub];
+  AuthenticationService_InvalidateToken_result * result = [[[AuthenticationService_InvalidateToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -6853,20 +4035,20 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     @throw [result ex2];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getUserTokenInfo failed: unknown result"];
+                                           reason: @"invalidateToken failed: unknown result"];
 }
 
-- (AuthenticationService_GetUserTokenInfoResponse *) getUserTokenInfo: (AuthenticationService_GetUserTokenInfoRequest *) request
+- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request
 {
-  [self send_getUserTokenInfo : request];
+  [self send_invalidateToken : request];
   [[outProtocol transport] flush];
-  return [self recv_getUserTokenInfo];
+  return [self recv_invalidateToken];
 }
 
-- (void) send_invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request
+- (void) send_verifyToken: (AuthenticationService_VerifyTokenRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"invalidateApplicationToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"invalidateApplicationToken_args"];
+  [outProtocol writeMessageBeginWithName: @"verifyToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"verifyToken_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -6877,13 +4059,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (AuthenticationService_InvalidateApplicationTokenResponse *) recv_invalidateApplicationToken
+- (AuthenticationService_VerifyTokenResponse *) recv_verifyToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AuthenticationService_InvalidateApplicationToken_result * result = [[[AuthenticationService_InvalidateApplicationToken_result alloc] init] autorelease_stub];
+  AuthenticationService_VerifyToken_result * result = [[[AuthenticationService_VerifyToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -6896,143 +4078,14 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     @throw [result ex2];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"invalidateApplicationToken failed: unknown result"];
+                                           reason: @"verifyToken failed: unknown result"];
 }
 
-- (AuthenticationService_InvalidateApplicationTokenResponse *) invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request
+- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request
 {
-  [self send_invalidateApplicationToken : request];
+  [self send_verifyToken : request];
   [[outProtocol transport] flush];
-  return [self recv_invalidateApplicationToken];
-}
-
-- (void) send_invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"invalidateUserToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"invalidateUserToken_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AuthenticationService_InvalidateUserTokenResponse *) recv_invalidateUserToken
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AuthenticationService_InvalidateUserToken_result * result = [[[AuthenticationService_InvalidateUserToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"invalidateUserToken failed: unknown result"];
-}
-
-- (AuthenticationService_InvalidateUserTokenResponse *) invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request
-{
-  [self send_invalidateUserToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_invalidateUserToken];
-}
-
-- (void) send_verifyApplicationToken: (AuthenticationService_VerifyApplicationTokenRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"verifyApplicationToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"verifyApplicationToken_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AuthenticationService_VerifyApplicationTokenResponse *) recv_verifyApplicationToken
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AuthenticationService_VerifyApplicationToken_result * result = [[[AuthenticationService_VerifyApplicationToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"verifyApplicationToken failed: unknown result"];
-}
-
-- (AuthenticationService_VerifyApplicationTokenResponse *) verifyApplicationToken: (AuthenticationService_VerifyApplicationTokenRequest *) request
-{
-  [self send_verifyApplicationToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_verifyApplicationToken];
-}
-
-- (void) send_verifyUserToken: (AuthenticationService_VerifyUserTokenRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"verifyUserToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"verifyUserToken_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (AuthenticationService_VerifyUserTokenResponse *) recv_verifyUserToken
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  AuthenticationService_VerifyUserToken_result * result = [[[AuthenticationService_VerifyUserToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"verifyUserToken failed: unknown result"];
-}
-
-- (AuthenticationService_VerifyUserTokenResponse *) verifyUserToken: (AuthenticationService_VerifyUserTokenRequest *) request
-{
-  [self send_verifyUserToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_verifyUserToken];
+  return [self recv_verifyToken];
 }
 
 @end
@@ -7056,68 +4109,36 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getApiVersion"];
 }
 {
-  SEL s = @selector(process_createApplicationToken_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_createToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"createApplicationToken"];
+  [mMethodMap setValue: invocation forKey: @"createToken"];
 }
 {
-  SEL s = @selector(process_createUserToken_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_getTokenInfo_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"createUserToken"];
+  [mMethodMap setValue: invocation forKey: @"getTokenInfo"];
 }
 {
-  SEL s = @selector(process_getApplicationTokenInfo_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_invalidateToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getApplicationTokenInfo"];
+  [mMethodMap setValue: invocation forKey: @"invalidateToken"];
 }
 {
-  SEL s = @selector(process_getUserTokenInfo_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_verifyToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getUserTokenInfo"];
-}
-{
-  SEL s = @selector(process_invalidateApplicationToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"invalidateApplicationToken"];
-}
-{
-  SEL s = @selector(process_invalidateUserToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"invalidateUserToken"];
-}
-{
-  SEL s = @selector(process_verifyApplicationToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"verifyApplicationToken"];
-}
-{
-  SEL s = @selector(process_verifyUserToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"verifyUserToken"];
+  [mMethodMap setValue: invocation forKey: @"verifyToken"];
 }
 return self;
 }
@@ -7177,14 +4198,14 @@ AuthenticationService_GetApiVersion_result * result = [[AuthenticationService_Ge
 [args release_stub];
 }
 
-- (void) process_createApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_createToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AuthenticationService_createApplicationToken_args * args = [[AuthenticationService_createApplicationToken_args alloc] init];
+AuthenticationService_createToken_args * args = [[AuthenticationService_createToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AuthenticationService_CreateApplicationToken_result * result = [[AuthenticationService_CreateApplicationToken_result alloc] init];
-[result setSuccess: [mService createApplicationToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"createApplicationToken"
+AuthenticationService_CreateToken_result * result = [[AuthenticationService_CreateToken_result alloc] init];
+[result setSuccess: [mService createToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"createToken"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -7194,14 +4215,14 @@ AuthenticationService_CreateApplicationToken_result * result = [[AuthenticationS
 [args release_stub];
 }
 
-- (void) process_createUserToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_getTokenInfo_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AuthenticationService_createUserToken_args * args = [[AuthenticationService_createUserToken_args alloc] init];
+AuthenticationService_getTokenInfo_args * args = [[AuthenticationService_getTokenInfo_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AuthenticationService_CreateUserToken_result * result = [[AuthenticationService_CreateUserToken_result alloc] init];
-[result setSuccess: [mService createUserToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"createUserToken"
+AuthenticationService_GetTokenInfo_result * result = [[AuthenticationService_GetTokenInfo_result alloc] init];
+[result setSuccess: [mService getTokenInfo: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getTokenInfo"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -7211,14 +4232,14 @@ AuthenticationService_CreateUserToken_result * result = [[AuthenticationService_
 [args release_stub];
 }
 
-- (void) process_getApplicationTokenInfo_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_invalidateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AuthenticationService_getApplicationTokenInfo_args * args = [[AuthenticationService_getApplicationTokenInfo_args alloc] init];
+AuthenticationService_invalidateToken_args * args = [[AuthenticationService_invalidateToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AuthenticationService_GetApplicationTokenInfo_result * result = [[AuthenticationService_GetApplicationTokenInfo_result alloc] init];
-[result setSuccess: [mService getApplicationTokenInfo: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getApplicationTokenInfo"
+AuthenticationService_InvalidateToken_result * result = [[AuthenticationService_InvalidateToken_result alloc] init];
+[result setSuccess: [mService invalidateToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"invalidateToken"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -7228,82 +4249,14 @@ AuthenticationService_GetApplicationTokenInfo_result * result = [[Authentication
 [args release_stub];
 }
 
-- (void) process_getUserTokenInfo_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_verifyToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AuthenticationService_getUserTokenInfo_args * args = [[AuthenticationService_getUserTokenInfo_args alloc] init];
+AuthenticationService_verifyToken_args * args = [[AuthenticationService_verifyToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AuthenticationService_GetUserTokenInfo_result * result = [[AuthenticationService_GetUserTokenInfo_result alloc] init];
-[result setSuccess: [mService getUserTokenInfo: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getUserTokenInfo"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_invalidateApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AuthenticationService_invalidateApplicationToken_args * args = [[AuthenticationService_invalidateApplicationToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AuthenticationService_InvalidateApplicationToken_result * result = [[AuthenticationService_InvalidateApplicationToken_result alloc] init];
-[result setSuccess: [mService invalidateApplicationToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"invalidateApplicationToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_invalidateUserToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AuthenticationService_invalidateUserToken_args * args = [[AuthenticationService_invalidateUserToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AuthenticationService_InvalidateUserToken_result * result = [[AuthenticationService_InvalidateUserToken_result alloc] init];
-[result setSuccess: [mService invalidateUserToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"invalidateUserToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_verifyApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AuthenticationService_verifyApplicationToken_args * args = [[AuthenticationService_verifyApplicationToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AuthenticationService_VerifyApplicationToken_result * result = [[AuthenticationService_VerifyApplicationToken_result alloc] init];
-[result setSuccess: [mService verifyApplicationToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"verifyApplicationToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_verifyUserToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-AuthenticationService_verifyUserToken_args * args = [[AuthenticationService_verifyUserToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-AuthenticationService_VerifyUserToken_result * result = [[AuthenticationService_VerifyUserToken_result alloc] init];
-[result setSuccess: [mService verifyUserToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"verifyUserToken"
+AuthenticationService_VerifyToken_result * result = [[AuthenticationService_VerifyToken_result alloc] init];
+[result setSuccess: [mService verifyToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"verifyToken"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

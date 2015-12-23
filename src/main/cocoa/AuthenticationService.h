@@ -52,21 +52,59 @@ typedef BananaException_OperationFailedException * AuthenticationService_Operati
 
 typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
 
-@interface AuthenticationService_CreateUserTokenRequest : NSObject <TBase, NSCoding> {
+@interface AuthenticationService_AuthenticationToken : NSObject <TBase, NSCoding> {
+  AuthenticationService_ApplicationToken __applicationToken;
+  AuthenticationService_UserToken __userToken;
+
+  BOOL __applicationToken_isset;
+  BOOL __userToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AuthenticationService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AuthenticationService_UserToken userToken;
+#endif
+
+- (id) init;
+- (id) initWithApplicationToken: (AuthenticationService_ApplicationToken) applicationToken userToken: (AuthenticationService_UserToken) userToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AuthenticationService_ApplicationToken) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_UserToken) userToken;
+- (void) setUserToken: (AuthenticationService_UserToken) userToken;
+#endif
+- (BOOL) userTokenIsSet;
+
+@end
+
+@interface AuthenticationService_CreateTokenRequest : NSObject <TBase, NSCoding> {
   NSString * __userId;
   AuthenticationService_LengthOfTime __lifetime;
+  int __desiredTokenType;
 
   BOOL __userId_isset;
   BOOL __lifetime_isset;
+  BOOL __desiredTokenType_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 @property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_LengthOfTime lifetime;
+@property (nonatomic, getter=desiredTokenType, setter=setDesiredTokenType:) int desiredTokenType;
 #endif
 
 - (id) init;
-- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime;
+- (id) initWithUserId: (NSString *) userId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (int) desiredTokenType;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -85,20 +123,26 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 #endif
 - (BOOL) lifetimeIsSet;
 
+#if !__has_feature(objc_arc)
+- (int) desiredTokenType;
+- (void) setDesiredTokenType: (int) desiredTokenType;
+#endif
+- (BOOL) desiredTokenTypeIsSet;
+
 @end
 
-@interface AuthenticationService_CreateUserTokenResponse : NSObject <TBase, NSCoding> {
-  AuthenticationService_UserToken __token;
+@interface AuthenticationService_CreateTokenResponse : NSObject <TBase, NSCoding> {
+  AuthenticationService_AuthenticationToken * __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_AuthenticationToken * token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_UserToken) token;
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -106,86 +150,28 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_UserToken) token;
-- (void) setToken: (AuthenticationService_UserToken) token;
+- (AuthenticationService_AuthenticationToken *) token;
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface AuthenticationService_CreateApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  NSString * __applicationId;
-  AuthenticationService_LengthOfTime __lifetime;
-
-  BOOL __applicationId_isset;
-  BOOL __lifetime_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_LengthOfTime lifetime;
-#endif
-
-- (id) init;
-- (id) initWithApplicationId: (NSString *) applicationId lifetime: (AuthenticationService_LengthOfTime) lifetime;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_LengthOfTime) lifetime;
-- (void) setLifetime: (AuthenticationService_LengthOfTime) lifetime;
-#endif
-- (BOOL) lifetimeIsSet;
-
-@end
-
-@interface AuthenticationService_CreateApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  AuthenticationService_ApplicationToken __token;
-
-  BOOL __token_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_ApplicationToken) token;
-- (void) setToken: (AuthenticationService_ApplicationToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-@end
-
-@interface AuthenticationService_GetApplicationTokenInfoRequest : NSObject <TBase, NSCoding> {
+@interface AuthenticationService_GetTokenInfoRequest : NSObject <TBase, NSCoding> {
   NSString * __tokenId;
+  int __tokenType;
 
   BOOL __tokenId_isset;
+  BOOL __tokenType_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
+@property (nonatomic, getter=tokenType, setter=setTokenType:) int tokenType;
 #endif
 
 - (id) init;
-- (id) initWithTokenId: (NSString *) tokenId;
+- (id) initWithTokenId: (NSString *) tokenId tokenType: (int) tokenType;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -198,20 +184,26 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 #endif
 - (BOOL) tokenIdIsSet;
 
+#if !__has_feature(objc_arc)
+- (int) tokenType;
+- (void) setTokenType: (int) tokenType;
+#endif
+- (BOOL) tokenTypeIsSet;
+
 @end
 
-@interface AuthenticationService_GetApplicationTokenInfoResponse : NSObject <TBase, NSCoding> {
-  AuthenticationService_ApplicationToken __token;
+@interface AuthenticationService_GetTokenInfoResponse : NSObject <TBase, NSCoding> {
+  AuthenticationService_AuthenticationToken * __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_AuthenticationToken * token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token;
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -219,51 +211,25 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_ApplicationToken) token;
-- (void) setToken: (AuthenticationService_ApplicationToken) token;
+- (AuthenticationService_AuthenticationToken *) token;
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface AuthenticationService_GetUserTokenInfoRequest : NSObject <TBase, NSCoding> {
-  NSString * __tokenId;
-
-  BOOL __tokenId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
-#endif
-
-- (id) init;
-- (id) initWithTokenId: (NSString *) tokenId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) tokenId;
-- (void) setTokenId: (NSString *) tokenId;
-#endif
-- (BOOL) tokenIdIsSet;
-
-@end
-
-@interface AuthenticationService_GetUserTokenInfoResponse : NSObject <TBase, NSCoding> {
-  AuthenticationService_UserToken __token;
+@interface AuthenticationService_InvalidateTokenRequest : NSObject <TBase, NSCoding> {
+  AuthenticationService_AuthenticationToken * __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_AuthenticationToken * token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_UserToken) token;
+- (id) initWithToken: (AuthenticationService_AuthenticationToken *) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -271,125 +237,14 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_UserToken) token;
-- (void) setToken: (AuthenticationService_UserToken) token;
+- (AuthenticationService_AuthenticationToken *) token;
+- (void) setToken: (AuthenticationService_AuthenticationToken *) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface AuthenticationService_InvalidateApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  AuthenticationService_ApplicationToken __token;
-
-  BOOL __token_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_ApplicationToken) token;
-- (void) setToken: (AuthenticationService_ApplicationToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-@end
-
-@interface AuthenticationService_InvalidateApplicationTokenResponse : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-@end
-
-@interface AuthenticationService_InvalidateUserTokenRequest : NSObject <TBase, NSCoding> {
-  AuthenticationService_ApplicationToken __token;
-
-  BOOL __token_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_ApplicationToken) token;
-- (void) setToken: (AuthenticationService_ApplicationToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-@end
-
-@interface AuthenticationService_InvalidateUserTokenResponse : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-@end
-
-@interface AuthenticationService_VerifyUserTokenRequest : NSObject <TBase, NSCoding> {
-  AuthenticationService_UserToken __token;
-  NSString * __userId;
-
-  BOOL __token_isset;
-  BOOL __userId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_UserToken token;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
-#endif
-
-- (id) init;
-- (id) initWithToken: (AuthenticationService_UserToken) token userId: (NSString *) userId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AuthenticationService_UserToken) token;
-- (void) setToken: (AuthenticationService_UserToken) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) userId;
-- (void) setUserId: (NSString *) userId;
-#endif
-- (BOOL) userIdIsSet;
-
-@end
-
-@interface AuthenticationService_VerifyUserTokenResponse : NSObject <TBase, NSCoding> {
+@interface AuthenticationService_InvalidateTokenResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -415,21 +270,21 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @end
 
-@interface AuthenticationService_VerifyApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  AuthenticationService_ApplicationToken __token;
-  NSString * __applicationId;
+@interface AuthenticationService_VerifyTokenRequest : NSObject <TBase, NSCoding> {
+  NSString * __tokenId;
+  NSString * __ownerId;
 
-  BOOL __token_isset;
-  BOOL __applicationId_isset;
+  BOOL __tokenId_isset;
+  BOOL __ownerId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_ApplicationToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_ApplicationToken) token applicationId: (NSString *) applicationId;
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (NSString *) ownerId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -437,20 +292,20 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_ApplicationToken) token;
-- (void) setToken: (AuthenticationService_ApplicationToken) token;
+- (NSString *) tokenId;
+- (void) setTokenId: (NSString *) tokenId;
 #endif
-- (BOOL) tokenIsSet;
+- (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (NSString *) ownerId;
+- (void) setOwnerId: (NSString *) ownerId;
 #endif
-- (BOOL) applicationIdIsSet;
+- (BOOL) ownerIdIsSet;
 
 @end
 
-@interface AuthenticationService_VerifyApplicationTokenResponse : NSObject <TBase, NSCoding> {
+@interface AuthenticationService_VerifyTokenResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -478,14 +333,10 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @protocol AuthenticationService_AuthenticationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (AuthenticationService_CreateApplicationTokenResponse *) createApplicationToken: (AuthenticationService_CreateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
-- (AuthenticationService_CreateUserTokenResponse *) createUserToken: (AuthenticationService_CreateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
-- (AuthenticationService_GetApplicationTokenInfoResponse *) getApplicationTokenInfo: (AuthenticationService_GetApplicationTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_GetUserTokenInfoResponse *) getUserTokenInfo: (AuthenticationService_GetUserTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_InvalidateApplicationTokenResponse *) invalidateApplicationToken: (AuthenticationService_InvalidateApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_InvalidateUserTokenResponse *) invalidateUserToken: (AuthenticationService_InvalidateUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_VerifyApplicationTokenResponse *) verifyApplicationToken: (AuthenticationService_VerifyApplicationTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_VerifyUserTokenResponse *) verifyUserToken: (AuthenticationService_VerifyUserTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
+- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

@@ -52,88 +52,61 @@ enum TokenType
     USER = 2
 }
 
-struct CreateUserTokenRequest
+union AuthenticationToken
 {
+    1: ApplicationToken applicationToken;
+    2: UserToken userToken;
+}
+
+struct CreateTokenRequest
+{
+    /** 
+     * The ID of the entity that will own the token. 
+     * For Application tokens, this is the Application ID.
+     * For User Tokens, this is the userId.
+     */
     1: string userId;
+    /** The desired length of time to keep the Token alive and valid. */
     2: LengthOfTime lifetime;
+    /** This is required, and determines the kind of Token created. */
+    3: TokenType desiredTokenType;
 }
 
-struct CreateUserTokenResponse
+struct CreateTokenResponse
 {
-    1: UserToken token;
+    1: AuthenticationToken token;
 }
 
-struct CreateApplicationTokenRequest
-{
-    1: string applicationId;
-    2: LengthOfTime lifetime;
-}
-
-struct CreateApplicationTokenResponse
-{
-    1: ApplicationToken token;
-}
-
-struct GetApplicationTokenInfoRequest
+struct GetTokenInfoRequest
 {
     1: string tokenId;
+    2: TokenType tokenType;
 }
 
-struct GetApplicationTokenInfoResponse
+struct GetTokenInfoResponse
 {
-    1: ApplicationToken token;
+    1: AuthenticationToken token;
 }
 
-struct GetUserTokenInfoRequest
+
+struct InvalidateTokenRequest
+{
+    1: AuthenticationToken token;
+}
+
+struct InvalidateTokenResponse
+{
+    1: string message = "Operation completed successfully";
+}
+
+struct VerifyTokenRequest
 {
     1: string tokenId;
+    /** If included, the operation will also verify that the token belongs to this Owner ID. */
+    2: optional string ownerId;
 }
 
-struct GetUserTokenInfoResponse
-{
-    1: UserToken token;
-}
-
-struct InvalidateApplicationTokenRequest
-{
-    1: ApplicationToken token;
-}
-
-struct InvalidateApplicationTokenResponse
-{
-    
-}
-
-struct InvalidateUserTokenRequest
-{
-    1: ApplicationToken token;
-}
-
-struct InvalidateUserTokenResponse
-{
-    
-}
-
-struct VerifyUserTokenRequest
-{
-    1: UserToken token;
-    /** If included, the operation will also verify that the token belongs to this User ID. */
-    2: optional string userId;
-}
-
-struct VerifyUserTokenResponse
-{
-    1: string message;
-}
-
-struct VerifyApplicationTokenRequest
-{
-    1: ApplicationToken token;
-    /** If included, the operation will also verify that the token belongs to this Application ID*/
-    2: optional string applicationId;
-}
-
-struct VerifyApplicationTokenResponse
+struct VerifyTokenResponse
 {
     1: string message;
 }
@@ -151,56 +124,30 @@ service AuthenticationService
     double getApiVersion()
     
     /**
-     * Create an Application Token, used to represent an Application or Computer.
+     * Create a Token, used to represent a User or an Application.
      */
-    CreateApplicationTokenResponse createApplicationToken(1: CreateApplicationTokenRequest request) throws (1: OperationFailedException ex);
+    CreateTokenResponse createToken(1: CreateTokenRequest request) throws (1: OperationFailedException ex);
     
     /**
-     * Create a User Token, used to represent a Human.
+     * Get information about a Token.
      */
-    CreateUserTokenResponse createUserToken(1: CreateUserTokenRequest request) throws (1: OperationFailedException ex);
-
-    /**
-     * Get information about an Application Token.
-     */
-    GetApplicationTokenInfoResponse getApplicationTokenInfo(1 : GetApplicationTokenInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                               2 : InvalidTokenException ex2);
-
-    /**
-     * Get information about a User Token.
-     */
-    GetUserTokenInfoResponse getUserTokenInfo(1 : GetUserTokenInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                                          2 : InvalidTokenException ex2);
-
+    GetTokenInfoResponse getTokenInfo(1 : GetTokenInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                              2 : InvalidTokenException ex2);
  
-    
     /**
      * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
      * an InvalidTokenException. 
      */
-    InvalidateApplicationTokenResponse invalidateApplicationToken(1 : InvalidateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                                        2 : InvalidTokenException ex2);
-    
-
-    
-    /**
-     * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
-     * an InvalidTokenException. 
-     */   
-    InvalidateUserTokenResponse invalidateUserToken(1 : InvalidateUserTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                   2 : InvalidTokenException ex2);
-
-
-    /**
-     * Verify that a Token is valid, and optionally, that it belongs to the specified application.
-     */
-    VerifyApplicationTokenResponse verifyApplicationToken(1 : VerifyApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                            2 : InvalidTokenException ex2);
-
-    /**
-     * Verify that a Token is valid, and optionally, that it belongs to the specified user.
-     */
-    VerifyUserTokenResponse verifyUserToken(1 : VerifyUserTokenRequest request) throws(1 : OperationFailedException ex1,
+    InvalidateTokenResponse invalidateToken(1 : InvalidateTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                        2 : InvalidTokenException ex2);
+ 
+
+
+    /**
+     * Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
+     */
+    VerifyTokenResponse verifyToken(1 : VerifyTokenRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidTokenException ex2);
+
     
    }

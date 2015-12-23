@@ -28,43 +28,23 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
   }
 
   /**
-   * Create an Application Token, used to represent an Application or Computer.
+   * Create a Token, used to represent a User or an Application.
    * 
    * @param request
    */
-  void createApplicationToken(CreateApplicationTokenResponse& _return, const CreateApplicationTokenRequest& request) {
+  void createToken(CreateTokenResponse& _return, const CreateTokenRequest& request) {
     // Your implementation goes here
-    printf("createApplicationToken\n");
+    printf("createToken\n");
   }
 
   /**
-   * Create a User Token, used to represent a Human.
+   * Get information about a Token.
    * 
    * @param request
    */
-  void createUserToken(CreateUserTokenResponse& _return, const CreateUserTokenRequest& request) {
+  void getTokenInfo(GetTokenInfoResponse& _return, const GetTokenInfoRequest& request) {
     // Your implementation goes here
-    printf("createUserToken\n");
-  }
-
-  /**
-   * Get information about an Application Token.
-   * 
-   * @param request
-   */
-  void getApplicationTokenInfo(GetApplicationTokenInfoResponse& _return, const GetApplicationTokenInfoRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationTokenInfo\n");
-  }
-
-  /**
-   * Get information about a User Token.
-   * 
-   * @param request
-   */
-  void getUserTokenInfo(GetUserTokenInfoResponse& _return, const GetUserTokenInfoRequest& request) {
-    // Your implementation goes here
-    printf("getUserTokenInfo\n");
+    printf("getTokenInfo\n");
   }
 
   /**
@@ -73,40 +53,19 @@ class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
    * 
    * @param request
    */
-  void invalidateApplicationToken(InvalidateApplicationTokenResponse& _return, const InvalidateApplicationTokenRequest& request) {
+  void invalidateToken(InvalidateTokenResponse& _return, const InvalidateTokenRequest& request) {
     // Your implementation goes here
-    printf("invalidateApplicationToken\n");
+    printf("invalidateToken\n");
   }
 
   /**
-   * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
-   * an InvalidTokenException.
+   * Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
    * 
    * @param request
    */
-  void invalidateUserToken(InvalidateUserTokenResponse& _return, const InvalidateUserTokenRequest& request) {
+  void verifyToken(VerifyTokenResponse& _return, const VerifyTokenRequest& request) {
     // Your implementation goes here
-    printf("invalidateUserToken\n");
-  }
-
-  /**
-   * Verify that a Token is valid, and optionally, that it belongs to the specified application.
-   * 
-   * @param request
-   */
-  void verifyApplicationToken(VerifyApplicationTokenResponse& _return, const VerifyApplicationTokenRequest& request) {
-    // Your implementation goes here
-    printf("verifyApplicationToken\n");
-  }
-
-  /**
-   * Verify that a Token is valid, and optionally, that it belongs to the specified user.
-   * 
-   * @param request
-   */
-  void verifyUserToken(VerifyUserTokenResponse& _return, const VerifyUserTokenRequest& request) {
-    // Your implementation goes here
-    printf("verifyUserToken\n");
+    printf("verifyToken\n");
   }
 
 };

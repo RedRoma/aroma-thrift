@@ -196,43 +196,32 @@ code { line-height: 20px; }
 <tr>
 <td>AuthenticationService</td><td><a href="#Svc_AuthenticationService">AuthenticationService</a><br/>
 <ul>
-<li><a href="#Fn_AuthenticationService_createApplicationToken">createApplicationToken</a></li>
-<li><a href="#Fn_AuthenticationService_createUserToken">createUserToken</a></li>
+<li><a href="#Fn_AuthenticationService_createToken">createToken</a></li>
 <li><a href="#Fn_AuthenticationService_getApiVersion">getApiVersion</a></li>
-<li><a href="#Fn_AuthenticationService_getApplicationTokenInfo">getApplicationTokenInfo</a></li>
-<li><a href="#Fn_AuthenticationService_getUserTokenInfo">getUserTokenInfo</a></li>
-<li><a href="#Fn_AuthenticationService_invalidateApplicationToken">invalidateApplicationToken</a></li>
-<li><a href="#Fn_AuthenticationService_invalidateUserToken">invalidateUserToken</a></li>
-<li><a href="#Fn_AuthenticationService_verifyApplicationToken">verifyApplicationToken</a></li>
-<li><a href="#Fn_AuthenticationService_verifyUserToken">verifyUserToken</a></li>
+<li><a href="#Fn_AuthenticationService_getTokenInfo">getTokenInfo</a></li>
+<li><a href="#Fn_AuthenticationService_invalidateToken">invalidateToken</a></li>
+<li><a href="#Fn_AuthenticationService_verifyToken">verifyToken</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
 <a href="#Typedef_ApplicationToken">ApplicationToken</a><br/>
-<a href="#Struct_CreateApplicationTokenRequest">CreateApplicationTokenRequest</a><br/>
-<a href="#Struct_CreateApplicationTokenResponse">CreateApplicationTokenResponse</a><br/>
-<a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a><br/>
-<a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a><br/>
-<a href="#Struct_GetApplicationTokenInfoRequest">GetApplicationTokenInfoRequest</a><br/>
-<a href="#Struct_GetApplicationTokenInfoResponse">GetApplicationTokenInfoResponse</a><br/>
-<a href="#Struct_GetUserTokenInfoRequest">GetUserTokenInfoRequest</a><br/>
-<a href="#Struct_GetUserTokenInfoResponse">GetUserTokenInfoResponse</a><br/>
+<a href="#Struct_AuthenticationToken">AuthenticationToken</a><br/>
+<a href="#Struct_CreateTokenRequest">CreateTokenRequest</a><br/>
+<a href="#Struct_CreateTokenResponse">CreateTokenResponse</a><br/>
+<a href="#Struct_GetTokenInfoRequest">GetTokenInfoRequest</a><br/>
+<a href="#Struct_GetTokenInfoResponse">GetTokenInfoResponse</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
-<a href="#Struct_InvalidateApplicationTokenRequest">InvalidateApplicationTokenRequest</a><br/>
-<a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a><br/>
-<a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a><br/>
-<a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a><br/>
+<a href="#Struct_InvalidateTokenRequest">InvalidateTokenRequest</a><br/>
+<a href="#Struct_InvalidateTokenResponse">InvalidateTokenResponse</a><br/>
 <a href="#Typedef_LengthOfTime">LengthOfTime</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Enum_TokenType">TokenType</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
-<a href="#Struct_VerifyApplicationTokenRequest">VerifyApplicationTokenRequest</a><br/>
-<a href="#Struct_VerifyApplicationTokenResponse">VerifyApplicationTokenResponse</a><br/>
-<a href="#Struct_VerifyUserTokenRequest">VerifyUserTokenRequest</a><br/>
-<a href="#Struct_VerifyUserTokenResponse">VerifyUserTokenResponse</a><br/>
+<a href="#Struct_VerifyTokenRequest">VerifyTokenRequest</a><br/>
+<a href="#Struct_VerifyTokenResponse">VerifyTokenResponse</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
@@ -292,56 +281,42 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_CreateUserTokenRequest">Struct: CreateUserTokenRequest</h3>
+<div class="definition"><h3 id="Struct_AuthenticationToken">Union: AuthenticationToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_CreateUserTokenResponse">Struct: CreateUserTokenResponse</h3>
+<tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userToken</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CreateTokenRequest">Struct: CreateTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_CreateApplicationTokenRequest">Struct: CreateApplicationTokenRequest</h3>
+<tr><td>1</td><td>userId</td><td><code>string</code></td><td>The ID of the entity that will own the token.
+For Application tokens, this is the Application ID.
+For User Tokens, this is the userId.
+</td><td>default</td><td></td></tr>
+<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td>The desired length of time to keep the Token alive and valid.
+</td><td>default</td><td></td></tr>
+<tr><td>3</td><td>desiredTokenType</td><td><code><a href="#Enum_TokenType">TokenType</a></code></td><td>This is required, and determines the kind of Token created.
+</td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_CreateTokenResponse">Struct: CreateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_CreateApplicationTokenResponse">Struct: CreateApplicationTokenResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationTokenInfoRequest">Struct: GetApplicationTokenInfoRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationTokenInfoResponse">Struct: GetApplicationTokenInfoResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetUserTokenInfoRequest">Struct: GetUserTokenInfoRequest</h3>
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetTokenInfoRequest">Struct: GetTokenInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetUserTokenInfoResponse">Struct: GetUserTokenInfoResponse</h3>
+<tr><td>2</td><td>tokenType</td><td><code><a href="#Enum_TokenType">TokenType</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetTokenInfoResponse">Struct: GetTokenInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_InvalidateApplicationTokenRequest">Struct: InvalidateApplicationTokenRequest</h3>
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateTokenRequest">Struct: InvalidateTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_InvalidateApplicationTokenResponse">Struct: InvalidateApplicationTokenResponse</h3>
+<tr><td>1</td><td>token</td><td><code><a href="#Struct_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_InvalidateTokenResponse">Struct: InvalidateTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-</table><br/></div><div class="definition"><h3 id="Struct_InvalidateUserTokenRequest">Struct: InvalidateUserTokenRequest</h3>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"Operation completed successfully"</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_VerifyTokenRequest">Struct: VerifyTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_InvalidateUserTokenResponse">Struct: InvalidateUserTokenResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-</table><br/></div><div class="definition"><h3 id="Struct_VerifyUserTokenRequest">Struct: VerifyUserTokenRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>userId</td><td><code>string</code></td><td>If included, the operation will also verify that the token belongs to this User ID.
+<tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>ownerId</td><td><code>string</code></td><td>If included, the operation will also verify that the token belongs to this Owner ID.
 </td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_VerifyUserTokenResponse">Struct: VerifyUserTokenResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_VerifyApplicationTokenRequest">Struct: VerifyApplicationTokenRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>If included, the operation will also verify that the token belongs to this Application ID
-</td><td>optional</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_VerifyApplicationTokenResponse">Struct: VerifyApplicationTokenResponse</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_VerifyTokenResponse">Struct: VerifyTokenResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
@@ -353,38 +328,21 @@ NOTE: This Service is for internal use only. It is designed to be called only by
 the Banana Service and it's supporting services.
 <br/><div class="definition"><h4 id="Fn_AuthenticationService_getApiVersion">Function: AuthenticationService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createApplicationToken">Function: AuthenticationService.createApplicationToken</h4>
-<pre><code><a href="#Struct_CreateApplicationTokenResponse">CreateApplicationTokenResponse</a></code> createApplicationToken(<code><a href="#Struct_CreateApplicationTokenRequest">CreateApplicationTokenRequest</a></code> request)
+</pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createToken">Function: AuthenticationService.createToken</h4>
+<pre><code><a href="#Struct_CreateTokenResponse">CreateTokenResponse</a></code> createToken(<code><a href="#Struct_CreateTokenRequest">CreateTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
-</pre>Create an Application Token, used to represent an Application or Computer.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_createUserToken">Function: AuthenticationService.createUserToken</h4>
-<pre><code><a href="#Struct_CreateUserTokenResponse">CreateUserTokenResponse</a></code> createUserToken(<code><a href="#Struct_CreateUserTokenRequest">CreateUserTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
-</pre>Create a User Token, used to represent a Human.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getApplicationTokenInfo">Function: AuthenticationService.getApplicationTokenInfo</h4>
-<pre><code><a href="#Struct_GetApplicationTokenInfoResponse">GetApplicationTokenInfoResponse</a></code> getApplicationTokenInfo(<code><a href="#Struct_GetApplicationTokenInfoRequest">GetApplicationTokenInfoRequest</a></code> request)
+</pre>Create a Token, used to represent a User or an Application.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getTokenInfo">Function: AuthenticationService.getTokenInfo</h4>
+<pre><code><a href="#Struct_GetTokenInfoResponse">GetTokenInfoResponse</a></code> getTokenInfo(<code><a href="#Struct_GetTokenInfoRequest">GetTokenInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Get information about an Application Token.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getUserTokenInfo">Function: AuthenticationService.getUserTokenInfo</h4>
-<pre><code><a href="#Struct_GetUserTokenInfoResponse">GetUserTokenInfoResponse</a></code> getUserTokenInfo(<code><a href="#Struct_GetUserTokenInfoRequest">GetUserTokenInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Get information about a User Token.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateApplicationToken">Function: AuthenticationService.invalidateApplicationToken</h4>
-<pre><code><a href="#Struct_InvalidateApplicationTokenResponse">InvalidateApplicationTokenResponse</a></code> invalidateApplicationToken(<code><a href="#Struct_InvalidateApplicationTokenRequest">InvalidateApplicationTokenRequest</a></code> request)
+</pre>Get information about a Token.
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateToken">Function: AuthenticationService.invalidateToken</h4>
+<pre><code><a href="#Struct_InvalidateTokenResponse">InvalidateTokenResponse</a></code> invalidateToken(<code><a href="#Struct_InvalidateTokenRequest">InvalidateTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
 an InvalidTokenException.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateUserToken">Function: AuthenticationService.invalidateUserToken</h4>
-<pre><code><a href="#Struct_InvalidateUserTokenResponse">InvalidateUserTokenResponse</a></code> invalidateUserToken(<code><a href="#Struct_InvalidateUserTokenRequest">InvalidateUserTokenRequest</a></code> request)
+<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyToken">Function: AuthenticationService.verifyToken</h4>
+<pre><code><a href="#Struct_VerifyTokenResponse">VerifyTokenResponse</a></code> verifyToken(<code><a href="#Struct_VerifyTokenRequest">VerifyTokenRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
-an InvalidTokenException.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyApplicationToken">Function: AuthenticationService.verifyApplicationToken</h4>
-<pre><code><a href="#Struct_VerifyApplicationTokenResponse">VerifyApplicationTokenResponse</a></code> verifyApplicationToken(<code><a href="#Struct_VerifyApplicationTokenRequest">VerifyApplicationTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Verify that a Token is valid, and optionally, that it belongs to the specified application.
-<br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyUserToken">Function: AuthenticationService.verifyUserToken</h4>
-<pre><code><a href="#Struct_VerifyUserTokenResponse">VerifyUserTokenResponse</a></code> verifyUserToken(<code><a href="#Struct_VerifyUserTokenRequest">VerifyUserTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre>Verify that a Token is valid, and optionally, that it belongs to the specified user.
+</pre>Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
 <br/></div></div></body></html>

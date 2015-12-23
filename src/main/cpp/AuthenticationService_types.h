@@ -56,75 +56,119 @@ typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException Ope
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-class CreateUserTokenRequest;
+class AuthenticationToken;
 
-class CreateUserTokenResponse;
+class CreateTokenRequest;
 
-class CreateApplicationTokenRequest;
+class CreateTokenResponse;
 
-class CreateApplicationTokenResponse;
+class GetTokenInfoRequest;
 
-class GetApplicationTokenInfoRequest;
+class GetTokenInfoResponse;
 
-class GetApplicationTokenInfoResponse;
+class InvalidateTokenRequest;
 
-class GetUserTokenInfoRequest;
+class InvalidateTokenResponse;
 
-class GetUserTokenInfoResponse;
+class VerifyTokenRequest;
 
-class InvalidateApplicationTokenRequest;
+class VerifyTokenResponse;
 
-class InvalidateApplicationTokenResponse;
+typedef struct _AuthenticationToken__isset {
+  _AuthenticationToken__isset() : applicationToken(false), userToken(false) {}
+  bool applicationToken :1;
+  bool userToken :1;
+} _AuthenticationToken__isset;
 
-class InvalidateUserTokenRequest;
-
-class InvalidateUserTokenResponse;
-
-class VerifyUserTokenRequest;
-
-class VerifyUserTokenResponse;
-
-class VerifyApplicationTokenRequest;
-
-class VerifyApplicationTokenResponse;
-
-typedef struct _CreateUserTokenRequest__isset {
-  _CreateUserTokenRequest__isset() : userId(false), lifetime(false) {}
-  bool userId :1;
-  bool lifetime :1;
-} _CreateUserTokenRequest__isset;
-
-class CreateUserTokenRequest {
+class AuthenticationToken {
  public:
 
-  CreateUserTokenRequest(const CreateUserTokenRequest&);
-  CreateUserTokenRequest& operator=(const CreateUserTokenRequest&);
-  CreateUserTokenRequest() : userId() {
+  AuthenticationToken(const AuthenticationToken&);
+  AuthenticationToken& operator=(const AuthenticationToken&);
+  AuthenticationToken() {
   }
 
-  virtual ~CreateUserTokenRequest() throw();
+  virtual ~AuthenticationToken() throw();
+  ApplicationToken applicationToken;
+  UserToken userToken;
+
+  _AuthenticationToken__isset __isset;
+
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_userToken(const UserToken& val);
+
+  bool operator == (const AuthenticationToken & rhs) const
+  {
+    if (!(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(userToken == rhs.userToken))
+      return false;
+    return true;
+  }
+  bool operator != (const AuthenticationToken &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AuthenticationToken & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(AuthenticationToken &a, AuthenticationToken &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AuthenticationToken& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _CreateTokenRequest__isset {
+  _CreateTokenRequest__isset() : userId(false), lifetime(false), desiredTokenType(false) {}
+  bool userId :1;
+  bool lifetime :1;
+  bool desiredTokenType :1;
+} _CreateTokenRequest__isset;
+
+class CreateTokenRequest {
+ public:
+
+  CreateTokenRequest(const CreateTokenRequest&);
+  CreateTokenRequest& operator=(const CreateTokenRequest&);
+  CreateTokenRequest() : userId(), desiredTokenType((TokenType::type)0) {
+  }
+
+  virtual ~CreateTokenRequest() throw();
   std::string userId;
   LengthOfTime lifetime;
+  TokenType::type desiredTokenType;
 
-  _CreateUserTokenRequest__isset __isset;
+  _CreateTokenRequest__isset __isset;
 
   void __set_userId(const std::string& val);
 
   void __set_lifetime(const LengthOfTime& val);
 
-  bool operator == (const CreateUserTokenRequest & rhs) const
+  void __set_desiredTokenType(const TokenType::type val);
+
+  bool operator == (const CreateTokenRequest & rhs) const
   {
     if (!(userId == rhs.userId))
       return false;
     if (!(lifetime == rhs.lifetime))
       return false;
+    if (!(desiredTokenType == rhs.desiredTokenType))
+      return false;
     return true;
   }
-  bool operator != (const CreateUserTokenRequest &rhs) const {
+  bool operator != (const CreateTokenRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const CreateUserTokenRequest & ) const;
+  bool operator < (const CreateTokenRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -132,45 +176,45 @@ class CreateUserTokenRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(CreateUserTokenRequest &a, CreateUserTokenRequest &b);
+void swap(CreateTokenRequest &a, CreateTokenRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const CreateUserTokenRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const CreateTokenRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _CreateUserTokenResponse__isset {
-  _CreateUserTokenResponse__isset() : token(false) {}
+typedef struct _CreateTokenResponse__isset {
+  _CreateTokenResponse__isset() : token(false) {}
   bool token :1;
-} _CreateUserTokenResponse__isset;
+} _CreateTokenResponse__isset;
 
-class CreateUserTokenResponse {
+class CreateTokenResponse {
  public:
 
-  CreateUserTokenResponse(const CreateUserTokenResponse&);
-  CreateUserTokenResponse& operator=(const CreateUserTokenResponse&);
-  CreateUserTokenResponse() {
+  CreateTokenResponse(const CreateTokenResponse&);
+  CreateTokenResponse& operator=(const CreateTokenResponse&);
+  CreateTokenResponse() {
   }
 
-  virtual ~CreateUserTokenResponse() throw();
-  UserToken token;
+  virtual ~CreateTokenResponse() throw();
+  AuthenticationToken token;
 
-  _CreateUserTokenResponse__isset __isset;
+  _CreateTokenResponse__isset __isset;
 
-  void __set_token(const UserToken& val);
+  void __set_token(const AuthenticationToken& val);
 
-  bool operator == (const CreateUserTokenResponse & rhs) const
+  bool operator == (const CreateTokenResponse & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     return true;
   }
-  bool operator != (const CreateUserTokenResponse &rhs) const {
+  bool operator != (const CreateTokenResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const CreateUserTokenResponse & ) const;
+  bool operator < (const CreateTokenResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -178,143 +222,51 @@ class CreateUserTokenResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(CreateUserTokenResponse &a, CreateUserTokenResponse &b);
+void swap(CreateTokenResponse &a, CreateTokenResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const CreateUserTokenResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const CreateTokenResponse& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _CreateApplicationTokenRequest__isset {
-  _CreateApplicationTokenRequest__isset() : applicationId(false), lifetime(false) {}
-  bool applicationId :1;
-  bool lifetime :1;
-} _CreateApplicationTokenRequest__isset;
-
-class CreateApplicationTokenRequest {
- public:
-
-  CreateApplicationTokenRequest(const CreateApplicationTokenRequest&);
-  CreateApplicationTokenRequest& operator=(const CreateApplicationTokenRequest&);
-  CreateApplicationTokenRequest() : applicationId() {
-  }
-
-  virtual ~CreateApplicationTokenRequest() throw();
-  std::string applicationId;
-  LengthOfTime lifetime;
-
-  _CreateApplicationTokenRequest__isset __isset;
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_lifetime(const LengthOfTime& val);
-
-  bool operator == (const CreateApplicationTokenRequest & rhs) const
-  {
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(lifetime == rhs.lifetime))
-      return false;
-    return true;
-  }
-  bool operator != (const CreateApplicationTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const CreateApplicationTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(CreateApplicationTokenRequest &a, CreateApplicationTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const CreateApplicationTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _CreateApplicationTokenResponse__isset {
-  _CreateApplicationTokenResponse__isset() : token(false) {}
-  bool token :1;
-} _CreateApplicationTokenResponse__isset;
-
-class CreateApplicationTokenResponse {
- public:
-
-  CreateApplicationTokenResponse(const CreateApplicationTokenResponse&);
-  CreateApplicationTokenResponse& operator=(const CreateApplicationTokenResponse&);
-  CreateApplicationTokenResponse() {
-  }
-
-  virtual ~CreateApplicationTokenResponse() throw();
-  ApplicationToken token;
-
-  _CreateApplicationTokenResponse__isset __isset;
-
-  void __set_token(const ApplicationToken& val);
-
-  bool operator == (const CreateApplicationTokenResponse & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    return true;
-  }
-  bool operator != (const CreateApplicationTokenResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const CreateApplicationTokenResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(CreateApplicationTokenResponse &a, CreateApplicationTokenResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const CreateApplicationTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _GetApplicationTokenInfoRequest__isset {
-  _GetApplicationTokenInfoRequest__isset() : tokenId(false) {}
+typedef struct _GetTokenInfoRequest__isset {
+  _GetTokenInfoRequest__isset() : tokenId(false), tokenType(false) {}
   bool tokenId :1;
-} _GetApplicationTokenInfoRequest__isset;
+  bool tokenType :1;
+} _GetTokenInfoRequest__isset;
 
-class GetApplicationTokenInfoRequest {
+class GetTokenInfoRequest {
  public:
 
-  GetApplicationTokenInfoRequest(const GetApplicationTokenInfoRequest&);
-  GetApplicationTokenInfoRequest& operator=(const GetApplicationTokenInfoRequest&);
-  GetApplicationTokenInfoRequest() : tokenId() {
+  GetTokenInfoRequest(const GetTokenInfoRequest&);
+  GetTokenInfoRequest& operator=(const GetTokenInfoRequest&);
+  GetTokenInfoRequest() : tokenId(), tokenType((TokenType::type)0) {
   }
 
-  virtual ~GetApplicationTokenInfoRequest() throw();
+  virtual ~GetTokenInfoRequest() throw();
   std::string tokenId;
+  TokenType::type tokenType;
 
-  _GetApplicationTokenInfoRequest__isset __isset;
+  _GetTokenInfoRequest__isset __isset;
 
   void __set_tokenId(const std::string& val);
 
-  bool operator == (const GetApplicationTokenInfoRequest & rhs) const
+  void __set_tokenType(const TokenType::type val);
+
+  bool operator == (const GetTokenInfoRequest & rhs) const
   {
     if (!(tokenId == rhs.tokenId))
       return false;
+    if (!(tokenType == rhs.tokenType))
+      return false;
     return true;
   }
-  bool operator != (const GetApplicationTokenInfoRequest &rhs) const {
+  bool operator != (const GetTokenInfoRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetApplicationTokenInfoRequest & ) const;
+  bool operator < (const GetTokenInfoRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -322,45 +274,45 @@ class GetApplicationTokenInfoRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetApplicationTokenInfoRequest &a, GetApplicationTokenInfoRequest &b);
+void swap(GetTokenInfoRequest &a, GetTokenInfoRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetApplicationTokenInfoRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetTokenInfoRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _GetApplicationTokenInfoResponse__isset {
-  _GetApplicationTokenInfoResponse__isset() : token(false) {}
+typedef struct _GetTokenInfoResponse__isset {
+  _GetTokenInfoResponse__isset() : token(false) {}
   bool token :1;
-} _GetApplicationTokenInfoResponse__isset;
+} _GetTokenInfoResponse__isset;
 
-class GetApplicationTokenInfoResponse {
+class GetTokenInfoResponse {
  public:
 
-  GetApplicationTokenInfoResponse(const GetApplicationTokenInfoResponse&);
-  GetApplicationTokenInfoResponse& operator=(const GetApplicationTokenInfoResponse&);
-  GetApplicationTokenInfoResponse() {
+  GetTokenInfoResponse(const GetTokenInfoResponse&);
+  GetTokenInfoResponse& operator=(const GetTokenInfoResponse&);
+  GetTokenInfoResponse() {
   }
 
-  virtual ~GetApplicationTokenInfoResponse() throw();
-  ApplicationToken token;
+  virtual ~GetTokenInfoResponse() throw();
+  AuthenticationToken token;
 
-  _GetApplicationTokenInfoResponse__isset __isset;
+  _GetTokenInfoResponse__isset __isset;
 
-  void __set_token(const ApplicationToken& val);
+  void __set_token(const AuthenticationToken& val);
 
-  bool operator == (const GetApplicationTokenInfoResponse & rhs) const
+  bool operator == (const GetTokenInfoResponse & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     return true;
   }
-  bool operator != (const GetApplicationTokenInfoResponse &rhs) const {
+  bool operator != (const GetTokenInfoResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetApplicationTokenInfoResponse & ) const;
+  bool operator < (const GetTokenInfoResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -368,91 +320,45 @@ class GetApplicationTokenInfoResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetApplicationTokenInfoResponse &a, GetApplicationTokenInfoResponse &b);
+void swap(GetTokenInfoResponse &a, GetTokenInfoResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetApplicationTokenInfoResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetTokenInfoResponse& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _GetUserTokenInfoRequest__isset {
-  _GetUserTokenInfoRequest__isset() : tokenId(false) {}
-  bool tokenId :1;
-} _GetUserTokenInfoRequest__isset;
-
-class GetUserTokenInfoRequest {
- public:
-
-  GetUserTokenInfoRequest(const GetUserTokenInfoRequest&);
-  GetUserTokenInfoRequest& operator=(const GetUserTokenInfoRequest&);
-  GetUserTokenInfoRequest() : tokenId() {
-  }
-
-  virtual ~GetUserTokenInfoRequest() throw();
-  std::string tokenId;
-
-  _GetUserTokenInfoRequest__isset __isset;
-
-  void __set_tokenId(const std::string& val);
-
-  bool operator == (const GetUserTokenInfoRequest & rhs) const
-  {
-    if (!(tokenId == rhs.tokenId))
-      return false;
-    return true;
-  }
-  bool operator != (const GetUserTokenInfoRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const GetUserTokenInfoRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(GetUserTokenInfoRequest &a, GetUserTokenInfoRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const GetUserTokenInfoRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _GetUserTokenInfoResponse__isset {
-  _GetUserTokenInfoResponse__isset() : token(false) {}
+typedef struct _InvalidateTokenRequest__isset {
+  _InvalidateTokenRequest__isset() : token(false) {}
   bool token :1;
-} _GetUserTokenInfoResponse__isset;
+} _InvalidateTokenRequest__isset;
 
-class GetUserTokenInfoResponse {
+class InvalidateTokenRequest {
  public:
 
-  GetUserTokenInfoResponse(const GetUserTokenInfoResponse&);
-  GetUserTokenInfoResponse& operator=(const GetUserTokenInfoResponse&);
-  GetUserTokenInfoResponse() {
+  InvalidateTokenRequest(const InvalidateTokenRequest&);
+  InvalidateTokenRequest& operator=(const InvalidateTokenRequest&);
+  InvalidateTokenRequest() {
   }
 
-  virtual ~GetUserTokenInfoResponse() throw();
-  UserToken token;
+  virtual ~InvalidateTokenRequest() throw();
+  AuthenticationToken token;
 
-  _GetUserTokenInfoResponse__isset __isset;
+  _InvalidateTokenRequest__isset __isset;
 
-  void __set_token(const UserToken& val);
+  void __set_token(const AuthenticationToken& val);
 
-  bool operator == (const GetUserTokenInfoResponse & rhs) const
+  bool operator == (const InvalidateTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     return true;
   }
-  bool operator != (const GetUserTokenInfoResponse &rhs) const {
+  bool operator != (const InvalidateTokenRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetUserTokenInfoResponse & ) const;
+  bool operator < (const InvalidateTokenRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -460,261 +366,45 @@ class GetUserTokenInfoResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetUserTokenInfoResponse &a, GetUserTokenInfoResponse &b);
+void swap(InvalidateTokenRequest &a, InvalidateTokenRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetUserTokenInfoResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const InvalidateTokenRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _InvalidateApplicationTokenRequest__isset {
-  _InvalidateApplicationTokenRequest__isset() : token(false) {}
-  bool token :1;
-} _InvalidateApplicationTokenRequest__isset;
-
-class InvalidateApplicationTokenRequest {
- public:
-
-  InvalidateApplicationTokenRequest(const InvalidateApplicationTokenRequest&);
-  InvalidateApplicationTokenRequest& operator=(const InvalidateApplicationTokenRequest&);
-  InvalidateApplicationTokenRequest() {
-  }
-
-  virtual ~InvalidateApplicationTokenRequest() throw();
-  ApplicationToken token;
-
-  _InvalidateApplicationTokenRequest__isset __isset;
-
-  void __set_token(const ApplicationToken& val);
-
-  bool operator == (const InvalidateApplicationTokenRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    return true;
-  }
-  bool operator != (const InvalidateApplicationTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const InvalidateApplicationTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(InvalidateApplicationTokenRequest &a, InvalidateApplicationTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const InvalidateApplicationTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-
-class InvalidateApplicationTokenResponse {
- public:
-
-  InvalidateApplicationTokenResponse(const InvalidateApplicationTokenResponse&);
-  InvalidateApplicationTokenResponse& operator=(const InvalidateApplicationTokenResponse&);
-  InvalidateApplicationTokenResponse() {
-  }
-
-  virtual ~InvalidateApplicationTokenResponse() throw();
-
-  bool operator == (const InvalidateApplicationTokenResponse & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const InvalidateApplicationTokenResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const InvalidateApplicationTokenResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(InvalidateApplicationTokenResponse &a, InvalidateApplicationTokenResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const InvalidateApplicationTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _InvalidateUserTokenRequest__isset {
-  _InvalidateUserTokenRequest__isset() : token(false) {}
-  bool token :1;
-} _InvalidateUserTokenRequest__isset;
-
-class InvalidateUserTokenRequest {
- public:
-
-  InvalidateUserTokenRequest(const InvalidateUserTokenRequest&);
-  InvalidateUserTokenRequest& operator=(const InvalidateUserTokenRequest&);
-  InvalidateUserTokenRequest() {
-  }
-
-  virtual ~InvalidateUserTokenRequest() throw();
-  ApplicationToken token;
-
-  _InvalidateUserTokenRequest__isset __isset;
-
-  void __set_token(const ApplicationToken& val);
-
-  bool operator == (const InvalidateUserTokenRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    return true;
-  }
-  bool operator != (const InvalidateUserTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const InvalidateUserTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(InvalidateUserTokenRequest &a, InvalidateUserTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const InvalidateUserTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-
-class InvalidateUserTokenResponse {
- public:
-
-  InvalidateUserTokenResponse(const InvalidateUserTokenResponse&);
-  InvalidateUserTokenResponse& operator=(const InvalidateUserTokenResponse&);
-  InvalidateUserTokenResponse() {
-  }
-
-  virtual ~InvalidateUserTokenResponse() throw();
-
-  bool operator == (const InvalidateUserTokenResponse & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const InvalidateUserTokenResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const InvalidateUserTokenResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(InvalidateUserTokenResponse &a, InvalidateUserTokenResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const InvalidateUserTokenResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _VerifyUserTokenRequest__isset {
-  _VerifyUserTokenRequest__isset() : token(false), userId(false) {}
-  bool token :1;
-  bool userId :1;
-} _VerifyUserTokenRequest__isset;
-
-class VerifyUserTokenRequest {
- public:
-
-  VerifyUserTokenRequest(const VerifyUserTokenRequest&);
-  VerifyUserTokenRequest& operator=(const VerifyUserTokenRequest&);
-  VerifyUserTokenRequest() : userId() {
-  }
-
-  virtual ~VerifyUserTokenRequest() throw();
-  UserToken token;
-  std::string userId;
-
-  _VerifyUserTokenRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_userId(const std::string& val);
-
-  bool operator == (const VerifyUserTokenRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (__isset.userId != rhs.__isset.userId)
-      return false;
-    else if (__isset.userId && !(userId == rhs.userId))
-      return false;
-    return true;
-  }
-  bool operator != (const VerifyUserTokenRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const VerifyUserTokenRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(VerifyUserTokenRequest &a, VerifyUserTokenRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const VerifyUserTokenRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _VerifyUserTokenResponse__isset {
-  _VerifyUserTokenResponse__isset() : message(false) {}
+typedef struct _InvalidateTokenResponse__isset {
+  _InvalidateTokenResponse__isset() : message(true) {}
   bool message :1;
-} _VerifyUserTokenResponse__isset;
+} _InvalidateTokenResponse__isset;
 
-class VerifyUserTokenResponse {
+class InvalidateTokenResponse {
  public:
 
-  VerifyUserTokenResponse(const VerifyUserTokenResponse&);
-  VerifyUserTokenResponse& operator=(const VerifyUserTokenResponse&);
-  VerifyUserTokenResponse() : message() {
+  InvalidateTokenResponse(const InvalidateTokenResponse&);
+  InvalidateTokenResponse& operator=(const InvalidateTokenResponse&);
+  InvalidateTokenResponse() : message("Operation completed successfully") {
   }
 
-  virtual ~VerifyUserTokenResponse() throw();
+  virtual ~InvalidateTokenResponse() throw();
   std::string message;
 
-  _VerifyUserTokenResponse__isset __isset;
+  _InvalidateTokenResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  bool operator == (const VerifyUserTokenResponse & rhs) const
+  bool operator == (const InvalidateTokenResponse & rhs) const
   {
     if (!(message == rhs.message))
       return false;
     return true;
   }
-  bool operator != (const VerifyUserTokenResponse &rhs) const {
+  bool operator != (const InvalidateTokenResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const VerifyUserTokenResponse & ) const;
+  bool operator < (const InvalidateTokenResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -722,53 +412,53 @@ class VerifyUserTokenResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(VerifyUserTokenResponse &a, VerifyUserTokenResponse &b);
+void swap(InvalidateTokenResponse &a, InvalidateTokenResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const VerifyUserTokenResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const InvalidateTokenResponse& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _VerifyApplicationTokenRequest__isset {
-  _VerifyApplicationTokenRequest__isset() : token(false), applicationId(false) {}
-  bool token :1;
-  bool applicationId :1;
-} _VerifyApplicationTokenRequest__isset;
+typedef struct _VerifyTokenRequest__isset {
+  _VerifyTokenRequest__isset() : tokenId(false), ownerId(false) {}
+  bool tokenId :1;
+  bool ownerId :1;
+} _VerifyTokenRequest__isset;
 
-class VerifyApplicationTokenRequest {
+class VerifyTokenRequest {
  public:
 
-  VerifyApplicationTokenRequest(const VerifyApplicationTokenRequest&);
-  VerifyApplicationTokenRequest& operator=(const VerifyApplicationTokenRequest&);
-  VerifyApplicationTokenRequest() : applicationId() {
+  VerifyTokenRequest(const VerifyTokenRequest&);
+  VerifyTokenRequest& operator=(const VerifyTokenRequest&);
+  VerifyTokenRequest() : tokenId(), ownerId() {
   }
 
-  virtual ~VerifyApplicationTokenRequest() throw();
-  ApplicationToken token;
-  std::string applicationId;
+  virtual ~VerifyTokenRequest() throw();
+  std::string tokenId;
+  std::string ownerId;
 
-  _VerifyApplicationTokenRequest__isset __isset;
+  _VerifyTokenRequest__isset __isset;
 
-  void __set_token(const ApplicationToken& val);
+  void __set_tokenId(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_ownerId(const std::string& val);
 
-  bool operator == (const VerifyApplicationTokenRequest & rhs) const
+  bool operator == (const VerifyTokenRequest & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(tokenId == rhs.tokenId))
       return false;
-    if (__isset.applicationId != rhs.__isset.applicationId)
+    if (__isset.ownerId != rhs.__isset.ownerId)
       return false;
-    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+    else if (__isset.ownerId && !(ownerId == rhs.ownerId))
       return false;
     return true;
   }
-  bool operator != (const VerifyApplicationTokenRequest &rhs) const {
+  bool operator != (const VerifyTokenRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const VerifyApplicationTokenRequest & ) const;
+  bool operator < (const VerifyTokenRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -776,45 +466,45 @@ class VerifyApplicationTokenRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(VerifyApplicationTokenRequest &a, VerifyApplicationTokenRequest &b);
+void swap(VerifyTokenRequest &a, VerifyTokenRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const VerifyApplicationTokenRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const VerifyTokenRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _VerifyApplicationTokenResponse__isset {
-  _VerifyApplicationTokenResponse__isset() : message(false) {}
+typedef struct _VerifyTokenResponse__isset {
+  _VerifyTokenResponse__isset() : message(false) {}
   bool message :1;
-} _VerifyApplicationTokenResponse__isset;
+} _VerifyTokenResponse__isset;
 
-class VerifyApplicationTokenResponse {
+class VerifyTokenResponse {
  public:
 
-  VerifyApplicationTokenResponse(const VerifyApplicationTokenResponse&);
-  VerifyApplicationTokenResponse& operator=(const VerifyApplicationTokenResponse&);
-  VerifyApplicationTokenResponse() : message() {
+  VerifyTokenResponse(const VerifyTokenResponse&);
+  VerifyTokenResponse& operator=(const VerifyTokenResponse&);
+  VerifyTokenResponse() : message() {
   }
 
-  virtual ~VerifyApplicationTokenResponse() throw();
+  virtual ~VerifyTokenResponse() throw();
   std::string message;
 
-  _VerifyApplicationTokenResponse__isset __isset;
+  _VerifyTokenResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  bool operator == (const VerifyApplicationTokenResponse & rhs) const
+  bool operator == (const VerifyTokenResponse & rhs) const
   {
     if (!(message == rhs.message))
       return false;
     return true;
   }
-  bool operator != (const VerifyApplicationTokenResponse &rhs) const {
+  bool operator != (const VerifyTokenResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const VerifyApplicationTokenResponse & ) const;
+  bool operator < (const VerifyTokenResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -822,9 +512,9 @@ class VerifyApplicationTokenResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(VerifyApplicationTokenResponse &a, VerifyApplicationTokenResponse &b);
+void swap(VerifyTokenResponse &a, VerifyTokenResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const VerifyApplicationTokenResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const VerifyTokenResponse& obj)
 {
   obj.printTo(out);
   return out;
