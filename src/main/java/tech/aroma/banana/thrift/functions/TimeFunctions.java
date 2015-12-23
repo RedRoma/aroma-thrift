@@ -71,6 +71,11 @@ public final class TimeFunctions
         
     };
     
+    public static final Function<TimeUnit, ChronoUnit> timeUnitToChronoUnit()
+    {
+        return TIME_UNIT_TO_CHRONO_UNIT;
+    }
+    
     public static final Function<LengthOfTime, Duration> LENGTH_OF_TIME_TO_DURATION = t ->
     {
         checkThat(t).is(notNull());
@@ -87,6 +92,10 @@ public final class TimeFunctions
         return chronoUnit.getDuration().multipliedBy(t.value);
     };
     
+    public static Function<LengthOfTime, Duration> lengthOfTimeToDuration()
+    {
+        return LENGTH_OF_TIME_TO_DURATION;
+    }
     
 
 }
