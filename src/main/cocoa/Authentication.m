@@ -32,11 +32,11 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
+  __tokenId = [tokenId retain_stub];
+  __tokenId_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
   __timeOfExpiration = timeOfExpiration;
@@ -51,10 +51,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"token"])
+  if ([decoder containsValueForKey: @"tokenId"])
   {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
+    __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
+    __tokenId_isset = YES;
   }
   if ([decoder containsValueForKey: @"organization"])
   {
@@ -81,9 +81,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__token_isset)
+  if (__tokenId_isset)
   {
-    [encoder encodeObject: __token forKey: @"token"];
+    [encoder encodeObject: __tokenId forKey: @"tokenId"];
   }
   if (__organization_isset)
   {
@@ -106,10 +106,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
+  hash = (hash * 31) ^ __tokenId_isset ? 2654435761 : 0;
+  if (__tokenId_isset)
   {
-    hash = (hash * 31) ^ [__token hash];
+    hash = (hash * 31) ^ [__tokenId hash];
   }
   hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
   if (__organization_isset)
@@ -143,8 +143,8 @@
     return NO;
   }
   BananaAuthentication_ApplicationToken *other = (BananaAuthentication_ApplicationToken *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+  if ((__tokenId_isset != other->__tokenId_isset) ||
+      (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
   }
   if ((__organization_isset != other->__organization_isset) ||
@@ -168,32 +168,32 @@
 
 - (void) dealloc
 {
-  [__token release_stub];
+  [__tokenId release_stub];
   [__organization release_stub];
   [__applicationId release_stub];
   [__applicationName release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) token {
-  return [[__token retain_stub] autorelease_stub];
+- (NSString *) tokenId {
+  return [[__tokenId retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (NSString *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
+- (void) setTokenId: (NSString *) tokenId {
+  [tokenId retain_stub];
+  [__tokenId release_stub];
+  __tokenId = tokenId;
+  __tokenId_isset = YES;
 }
 
-- (BOOL) tokenIsSet {
-  return __token_isset;
+- (BOOL) tokenIdIsSet {
+  return __tokenId_isset;
 }
 
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
+- (void) unsetTokenId {
+  [__tokenId release_stub];
+  __tokenId = nil;
+  __tokenId_isset = NO;
 }
 
 - (NSString *) organization {
@@ -294,7 +294,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setToken: fieldValue];
+          [self setTokenId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -342,10 +342,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"ApplicationToken"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __token];
+  if (__tokenId_isset) {
+    if (__tokenId != nil) {
+      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __tokenId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -385,8 +385,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_ApplicationToken("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"\"%@\"", __token];
+  [ms appendString: @"tokenId:"];
+  [ms appendFormat: @"\"%@\"", __tokenId];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @",timeOfExpiration:"];
@@ -413,11 +413,11 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider
 {
   self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
+  __tokenId = [tokenId retain_stub];
+  __tokenId_isset = YES;
   __timeOfExpiration = timeOfExpiration;
   __timeOfExpiration_isset = YES;
   __organization = [organization retain_stub];
@@ -432,10 +432,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"token"])
+  if ([decoder containsValueForKey: @"tokenId"])
   {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
+    __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
+    __tokenId_isset = YES;
   }
   if ([decoder containsValueForKey: @"timeOfExpiration"])
   {
@@ -462,9 +462,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__token_isset)
+  if (__tokenId_isset)
   {
-    [encoder encodeObject: __token forKey: @"token"];
+    [encoder encodeObject: __tokenId forKey: @"tokenId"];
   }
   if (__timeOfExpiration_isset)
   {
@@ -487,10 +487,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
+  hash = (hash * 31) ^ __tokenId_isset ? 2654435761 : 0;
+  if (__tokenId_isset)
   {
-    hash = (hash * 31) ^ [__token hash];
+    hash = (hash * 31) ^ [__tokenId hash];
   }
   hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
   if (__timeOfExpiration_isset)
@@ -524,8 +524,8 @@
     return NO;
   }
   BananaAuthentication_UserToken *other = (BananaAuthentication_UserToken *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+  if ((__tokenId_isset != other->__tokenId_isset) ||
+      (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
   }
   if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
@@ -549,31 +549,31 @@
 
 - (void) dealloc
 {
-  [__token release_stub];
+  [__tokenId release_stub];
   [__organization release_stub];
   [__oauthProvider release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) token {
-  return [[__token retain_stub] autorelease_stub];
+- (NSString *) tokenId {
+  return [[__tokenId retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (NSString *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
+- (void) setTokenId: (NSString *) tokenId {
+  [tokenId retain_stub];
+  [__tokenId release_stub];
+  __tokenId = tokenId;
+  __tokenId_isset = YES;
 }
 
-- (BOOL) tokenIsSet {
-  return __token_isset;
+- (BOOL) tokenIdIsSet {
+  return __tokenId_isset;
 }
 
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
+- (void) unsetTokenId {
+  [__tokenId release_stub];
+  __tokenId = nil;
+  __tokenId_isset = NO;
 }
 
 - (int64_t) timeOfExpiration {
@@ -670,7 +670,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setToken: fieldValue];
+          [self setTokenId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -718,10 +718,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"UserToken"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __token];
+  if (__tokenId_isset) {
+    if (__tokenId != nil) {
+      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __tokenId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -759,8 +759,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_UserToken("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"\"%@\"", __token];
+  [ms appendString: @"tokenId:"];
+  [ms appendFormat: @"\"%@\"", __tokenId];
   [ms appendString: @",timeOfExpiration:"];
   [ms appendFormat: @"%qi", __timeOfExpiration];
   [ms appendString: @",organization:"];

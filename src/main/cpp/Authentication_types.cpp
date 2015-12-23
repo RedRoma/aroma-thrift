@@ -18,8 +18,8 @@ ApplicationToken::~ApplicationToken() throw() {
 }
 
 
-void ApplicationToken::__set_token(const std::string& val) {
-  this->token = val;
+void ApplicationToken::__set_tokenId(const std::string& val) {
+  this->tokenId = val;
 }
 
 void ApplicationToken::__set_organization(const std::string& val) {
@@ -64,8 +64,8 @@ uint32_t ApplicationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->token);
-          this->__isset.token = true;
+          xfer += iprot->readString(this->tokenId);
+          this->__isset.tokenId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -119,8 +119,8 @@ uint32_t ApplicationToken::write(::apache::thrift::protocol::TProtocol* oprot) c
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("ApplicationToken");
 
-  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->token);
+  xfer += oprot->writeFieldBegin("tokenId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->tokenId);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.organization) {
@@ -149,7 +149,7 @@ uint32_t ApplicationToken::write(::apache::thrift::protocol::TProtocol* oprot) c
 
 void swap(ApplicationToken &a, ApplicationToken &b) {
   using ::std::swap;
-  swap(a.token, b.token);
+  swap(a.tokenId, b.tokenId);
   swap(a.organization, b.organization);
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.applicationId, b.applicationId);
@@ -158,7 +158,7 @@ void swap(ApplicationToken &a, ApplicationToken &b) {
 }
 
 ApplicationToken::ApplicationToken(const ApplicationToken& other0) {
-  token = other0.token;
+  tokenId = other0.tokenId;
   organization = other0.organization;
   timeOfExpiration = other0.timeOfExpiration;
   applicationId = other0.applicationId;
@@ -166,7 +166,7 @@ ApplicationToken::ApplicationToken(const ApplicationToken& other0) {
   __isset = other0.__isset;
 }
 ApplicationToken& ApplicationToken::operator=(const ApplicationToken& other1) {
-  token = other1.token;
+  tokenId = other1.tokenId;
   organization = other1.organization;
   timeOfExpiration = other1.timeOfExpiration;
   applicationId = other1.applicationId;
@@ -177,7 +177,7 @@ ApplicationToken& ApplicationToken::operator=(const ApplicationToken& other1) {
 void ApplicationToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ApplicationToken(";
-  out << "token=" << to_string(token);
+  out << "tokenId=" << to_string(tokenId);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "applicationId="; (__isset.applicationId ? (out << to_string(applicationId)) : (out << "<null>"));
@@ -190,8 +190,8 @@ UserToken::~UserToken() throw() {
 }
 
 
-void UserToken::__set_token(const std::string& val) {
-  this->token = val;
+void UserToken::__set_tokenId(const std::string& val) {
+  this->tokenId = val;
 }
 
 void UserToken::__set_timeOfExpiration(const timestamp val) {
@@ -236,8 +236,8 @@ uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->token);
-          this->__isset.token = true;
+          xfer += iprot->readString(this->tokenId);
+          this->__isset.tokenId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -291,8 +291,8 @@ uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("UserToken");
 
-  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->token);
+  xfer += oprot->writeFieldBegin("tokenId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->tokenId);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 2);
@@ -321,7 +321,7 @@ uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
 void swap(UserToken &a, UserToken &b) {
   using ::std::swap;
-  swap(a.token, b.token);
+  swap(a.tokenId, b.tokenId);
   swap(a.timeOfExpiration, b.timeOfExpiration);
   swap(a.organization, b.organization);
   swap(a.isOauthToken, b.isOauthToken);
@@ -330,7 +330,7 @@ void swap(UserToken &a, UserToken &b) {
 }
 
 UserToken::UserToken(const UserToken& other2) {
-  token = other2.token;
+  tokenId = other2.tokenId;
   timeOfExpiration = other2.timeOfExpiration;
   organization = other2.organization;
   isOauthToken = other2.isOauthToken;
@@ -338,7 +338,7 @@ UserToken::UserToken(const UserToken& other2) {
   __isset = other2.__isset;
 }
 UserToken& UserToken::operator=(const UserToken& other3) {
-  token = other3.token;
+  tokenId = other3.tokenId;
   timeOfExpiration = other3.timeOfExpiration;
   organization = other3.organization;
   isOauthToken = other3.isOauthToken;
@@ -349,7 +349,7 @@ UserToken& UserToken::operator=(const UserToken& other3) {
 void UserToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "UserToken(";
-  out << "token=" << to_string(token);
+  out << "tokenId=" << to_string(tokenId);
   out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
   out << ", " << "isOauthToken="; (__isset.isOauthToken ? (out << to_string(isOauthToken)) : (out << "<null>"));

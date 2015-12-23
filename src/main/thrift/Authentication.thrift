@@ -15,7 +15,7 @@ typedef Banana.timestamp timestamp;
 
 struct ApplicationToken
 {
-    1: string token;
+    1: string tokenId;
     2: optional string organization;
     3: timestamp timeOfExpiration;
     4: optional string applicationId;
@@ -24,7 +24,7 @@ struct ApplicationToken
 
 struct UserToken
 {
-    1: string token;
+    1: string tokenId;
     2: timestamp timeOfExpiration;
     3: optional string organization;
     4: optional bool isOauthToken = false;

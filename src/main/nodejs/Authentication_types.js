@@ -12,14 +12,14 @@ var Banana_ttypes = require('./Banana_types')
 
 var ttypes = module.exports = {};
 ApplicationToken = module.exports.ApplicationToken = function(args) {
-  this.token = null;
+  this.tokenId = null;
   this.organization = null;
   this.timeOfExpiration = null;
   this.applicationId = null;
   this.applicationName = null;
   if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = args.token;
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
     }
     if (args.organization !== undefined && args.organization !== null) {
       this.organization = args.organization;
@@ -51,7 +51,7 @@ ApplicationToken.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.token = input.readString();
+        this.tokenId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -95,9 +95,9 @@ ApplicationToken.prototype.read = function(input) {
 
 ApplicationToken.prototype.write = function(output) {
   output.writeStructBegin('ApplicationToken');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRING, 1);
-    output.writeString(this.token);
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
     output.writeFieldEnd();
   }
   if (this.organization !== null && this.organization !== undefined) {
@@ -126,14 +126,14 @@ ApplicationToken.prototype.write = function(output) {
 };
 
 UserToken = module.exports.UserToken = function(args) {
-  this.token = null;
+  this.tokenId = null;
   this.timeOfExpiration = null;
   this.organization = null;
   this.isOauthToken = false;
   this.oauthProvider = null;
   if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = args.token;
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
     }
     if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
       this.timeOfExpiration = args.timeOfExpiration;
@@ -165,7 +165,7 @@ UserToken.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.token = input.readString();
+        this.tokenId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -209,9 +209,9 @@ UserToken.prototype.read = function(input) {
 
 UserToken.prototype.write = function(output) {
   output.writeStructBegin('UserToken');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRING, 1);
-    output.writeString(this.token);
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
     output.writeFieldEnd();
   }
   if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
