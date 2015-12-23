@@ -26,6 +26,7 @@ import tech.sirwellington.alchemy.generator.BooleanGenerators;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.GenerateString;
+import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -80,15 +81,21 @@ public class TokenFunctionsTest
 
     }
 
+    @Repeat(100)
     @Test
     public void testExtractTokenId()
     {
         String result = TokenFunctions.extractTokenId(authenticationToken);
         assertThat(result, is(tokenId));
-        
+
+    }
+
+    @Test
+    public void testExtractTokenIdEdgeCases()
+    {
         assertThrows(() -> TokenFunctions.extractTokenId(null))
             .isInstanceOf(IllegalArgumentException.class);
-        
+
         assertThrows(() -> TokenFunctions.extractTokenId(new AuthenticationToken()))
             .isInstanceOf(IllegalArgumentException.class);
     }
