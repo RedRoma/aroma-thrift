@@ -11,7 +11,7 @@ namespace aroma { namespace banana { namespace thrift { namespace authentication
 const AuthenticationServiceConstants g_AuthenticationService_constants;
 
 AuthenticationServiceConstants::AuthenticationServiceConstants() {
-  API_VERSION = 1.4;
+  API_VERSION = 1.5;
 
   SERVICE_PORT = 6001;
 

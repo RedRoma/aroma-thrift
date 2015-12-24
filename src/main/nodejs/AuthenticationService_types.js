@@ -569,7 +569,7 @@ VerifyTokenResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.4;
+ttypes.API_VERSION = 1.5;
 ttypes.SERVICE_PORT = 6001;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});

@@ -1670,7 +1670,7 @@
 
 @end
 
-static double AuthenticationService_API_VERSION = 1.4;
+static double AuthenticationService_API_VERSION = 1.5;
 static AuthenticationService_int AuthenticationService_SERVICE_PORT = 6001;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;

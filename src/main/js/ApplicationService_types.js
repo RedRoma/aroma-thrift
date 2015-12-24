@@ -141,7 +141,7 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-API_VERSION = 1.4;
+API_VERSION = 1.5;
 SERVICE_PORT = 7005;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});

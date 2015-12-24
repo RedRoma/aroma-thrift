@@ -60,7 +60,7 @@ typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
 /** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.4;
+const double API_VERSION = 1.5;
 
 const int SERVICE_PORT = 7001;
 

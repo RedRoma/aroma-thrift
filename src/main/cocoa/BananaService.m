@@ -10018,7 +10018,7 @@
 
 @end
 
-static double BananaService_API_VERSION = 1.4;
+static double BananaService_API_VERSION = 1.5;
 static BananaService_int BananaService_SERVICE_PORT = 7001;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;

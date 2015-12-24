@@ -440,7 +440,7 @@
 
 @end
 
-static double ApplicationService_API_VERSION = 1.4;
+static double ApplicationService_API_VERSION = 1.5;
 static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
