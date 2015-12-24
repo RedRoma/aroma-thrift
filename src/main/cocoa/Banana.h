@@ -20,9 +20,9 @@
 
 
 enum Banana_Urgency {
-  Urgency_INFORMATIONAL = 1,
-  Urgency_WARNING = 2,
-  Urgency_CRITICAL = 3
+  Urgency_LOW = 1,
+  Urgency_MEDIUM = 2,
+  Urgency_HIGH = 3
 };
 
 enum Banana_TimeUnit {
@@ -74,7 +74,7 @@ typedef int64_t Banana_timestamp;
   NSString * __messageId;
   NSString * __body;
   int __urgency;
-  Banana_timestamp __timeMessageSent;
+  Banana_timestamp __timeOfCreation;
   Banana_timestamp __timeMessageReceived;
   NSString * __applicationName;
   NSString * __hostname;
@@ -83,7 +83,7 @@ typedef int64_t Banana_timestamp;
   BOOL __messageId_isset;
   BOOL __body_isset;
   BOOL __urgency_isset;
-  BOOL __timeMessageSent_isset;
+  BOOL __timeOfCreation_isset;
   BOOL __timeMessageReceived_isset;
   BOOL __applicationName_isset;
   BOOL __hostname_isset;
@@ -94,7 +94,7 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
 @property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
-@property (nonatomic, getter=timeMessageSent, setter=setTimeMessageSent:) Banana_timestamp timeMessageSent;
+@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Banana_timestamp timeOfCreation;
 @property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
@@ -102,7 +102,7 @@ typedef int64_t Banana_timestamp;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -128,10 +128,10 @@ typedef int64_t Banana_timestamp;
 - (BOOL) urgencyIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeMessageSent;
-- (void) setTimeMessageSent: (Banana_timestamp) timeMessageSent;
+- (Banana_timestamp) timeOfCreation;
+- (void) setTimeOfCreation: (Banana_timestamp) timeOfCreation;
 #endif
-- (BOOL) timeMessageSentIsSet;
+- (BOOL) timeOfCreationIsSet;
 
 #if !__has_feature(objc_arc)
 - (Banana_timestamp) timeMessageReceived;
@@ -159,9 +159,9 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_TimePeriod : NSObject <TBase, NSCoding> {
+@interface Banana_LengthOfTime : NSObject <TBase, NSCoding> {
   int __unit;
-  Banana_int __value;
+  Banana_long __value;
 
   BOOL __unit_isset;
   BOOL __value_isset;
@@ -169,11 +169,11 @@ typedef int64_t Banana_timestamp;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=unit, setter=setUnit:) int unit;
-@property (nonatomic, getter=value, setter=setValue:) Banana_int value;
+@property (nonatomic, getter=value, setter=setValue:) Banana_long value;
 #endif
 
 - (id) init;
-- (id) initWithUnit: (int) unit value: (Banana_int) value;
+- (id) initWithUnit: (int) unit value: (Banana_long) value;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -187,8 +187,8 @@ typedef int64_t Banana_timestamp;
 - (BOOL) unitIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_int) value;
-- (void) setValue: (Banana_int) value;
+- (Banana_long) value;
+- (void) setValue: (Banana_long) value;
 #endif
 - (BOOL) valueIsSet;
 
@@ -273,7 +273,7 @@ typedef int64_t Banana_timestamp;
 
 @end
 
-@interface Banana_Human : NSObject <TBase, NSCoding> {
+@interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __name;
   NSString * __username;

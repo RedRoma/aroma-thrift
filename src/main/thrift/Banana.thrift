@@ -3,10 +3,9 @@ namespace cocoa Banana_
 namespace cpp   aroma.banana.thrift
 
 /*
- * Defined in this file are the basic structures and types for 
- * the Banana Service.
+ * Defined in this file are the basic structures and types used by the Banana Services.
  * 
- * Note that Human and Person are used interchangeably.
+ * Note that Human, User, and Person are used interchangeably.
  */
 
 typedef i32 int
@@ -24,19 +23,23 @@ typedef i64 timestamp
 enum Urgency
 {
     /** Lowest level of urgency. */
-    INFORMATIONAL = 1,
+    LOW = 1,
     /** Middle level of urgency. */
-    WARNING = 2,
+    MEDIUM = 2,
     /** Highest level of urgency. */
-    CRITICAL = 3
+    HIGH = 3
 }
 
 struct Message
 {
+    /** Each message has a unique ID */
     1: string messageId;
+    /** The body represents the Message's Payload, i.e. the actual message. */
     2: string body;
-    3: Urgency urgency = Urgency.INFORMATIONAL;
-    4: timestamp timeMessageSent;
+    3: Urgency urgency = Urgency.LOW;
+    /** The time the message was created on the Application side */
+    4: timestamp timeOfCreation;
+    /** The time the message was received on the Server side */
     5: timestamp timeMessageReceived;
     /** Name of the Application that sent the message. */
     6: string applicationName;
@@ -61,11 +64,11 @@ enum TimeUnit
 /**
  * Defines a Period of Time, or a Length of Time.
  */
-struct TimePeriod
+struct LengthOfTime
 {
     1: required TimeUnit unit;
     /** The Value must be non-negative */
-    2: required int value;
+    2: required long value;
 }
 
 enum ImageType
@@ -104,9 +107,9 @@ enum Role
 }
 
 /**
- * A Human
+ * A User represents a Human who is a uses the Service.
  */
-struct Human
+struct User
 {
     /** A person's email address is also considered their identifying trait. */
     1: string email;
@@ -140,7 +143,7 @@ enum ProgrammingLanguage
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: list<Human> owners;
+    1: list<User> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
@@ -152,7 +155,7 @@ struct Application
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
     /** Defines a list of people that are subscribed to events for an Application.*/
-    8: optional list<Human> subscribers = [];
+    8: optional list<User> subscribers = [];
 }
 
 /**

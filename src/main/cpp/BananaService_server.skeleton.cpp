@@ -28,31 +28,81 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
+   * Provision a New Application to keep tabs on.
    * 
-   * #app
-   * 
-   * @param request
-   */
-  void sendMessage(SendMessageResponse& _return, const SendMessageRequest& request) {
-    // Your implementation goes here
-    printf("sendMessage\n");
-  }
-
-  /**
-   * 
-   * #app
+   * #user
    * 
    * @param request
    */
-  void sendMessageAsync(const SendMessageRequest& request) {
+  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
     // Your implementation goes here
-    printf("sendMessageAsync\n");
+    printf("provisionApplication\n");
   }
 
   /**
-   * Sign in to the App and using a valid OAUTH Token.
+   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
+   * Keep in mind that this will invalidate any prior existing Application Tokens.
+   * Only an "owner" can perform this operation.
    * 
-   * #human
+   * #owner
+   * 
+   * @param request
+   */
+  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("regenerateToken\n");
+  }
+
+  /**
+   * Register an existing Application for Health Pokes. The Banana Service
+   * will then periodically poke the Application for health status.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
+  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
+    // Your implementation goes here
+    printf("registerHealthCheck\n");
+  }
+
+  /**
+   * Removes a previously saved channel.
+   * 
+   * @param request
+   */
+  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
+    // Your implementation goes here
+    printf("removeSavedChannel\n");
+  }
+
+  /**
+   * Renew an Application Token that is close to being expired.
+   * Only an "owner" can perform this operation.
+   * 
+   * #owner
+   * 
+   * @param request
+   */
+  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
+    // Your implementation goes here
+    printf("renewApplicationToken\n");
+  }
+
+  /**
+   * Saves a user's channel for future reference.
+   * 
+   * @param request
+   */
+  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
+    // Your implementation goes here
+    printf("saveChannel\n");
+  }
+
+  /**
+   * Sign in to the App and get a User Token in return.
+   * 
+   * #user
    * 
    * @param request
    */
@@ -72,21 +122,19 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Provision a New Application to keep tabs on.
-   * 
-   * #human
+   * Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
    * 
    * @param request
    */
-  void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
+  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
     // Your implementation goes here
-    printf("provisionApplication\n");
+    printf("snoozeChannel\n");
   }
 
   /**
    * Subscribe to an existing application to get notifications.
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -96,101 +144,21 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   }
 
   /**
-   * Register an existing Application for Health Pokes. The Banana Service
-   * will then periodically poke the Application for health status.
+   * Get all of the User-Related activities that have happened recently.
    * 
-   * #human
-   * #owner
+   * #user
    * 
    * @param request
    */
-  void registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request) {
+  void getActivity(GetActivityResponse& _return, const GetActivityRequest& request) {
     // Your implementation goes here
-    printf("registerHealthCheck\n");
-  }
-
-  /**
-   * Renew an Application Token that is close to being expired.
-   * Only an "owner" can perform this operation.
-   * 
-   * #human
-   * #owner
-   * 
-   * @param request
-   */
-  void renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request) {
-    // Your implementation goes here
-    printf("renewApplicationToken\n");
-  }
-
-  /**
-   * Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
-   * Keep in mind that this will invalidate any prior existing Application Tokens.
-   * Only an "owner" can perform this operation.
-   * 
-   * #human
-   * #owner
-   * 
-   * @param request
-   */
-  void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) {
-    // Your implementation goes here
-    printf("regenerateToken\n");
-  }
-
-  /**
-   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
-   * 
-   * #human
-   * 
-   * @param request
-   */
-  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
-    // Your implementation goes here
-    printf("searchForApplications\n");
-  }
-
-  void saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request) {
-    // Your implementation goes here
-    printf("saveChannel\n");
-  }
-
-  void removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request) {
-    // Your implementation goes here
-    printf("removeSavedChannel\n");
-  }
-
-  void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request) {
-    // Your implementation goes here
-    printf("snoozeChannel\n");
-  }
-
-  /**
-   * Get a list of all Humans subscribed to an Application.
-   * 
-   * #human
-   * 
-   * @param request
-   */
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationSubscribers\n");
-  }
-
-  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
-    // Your implementation goes here
-    printf("getMySavedChannels\n");
-  }
-
-  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
-    // Your implementation goes here
-    printf("getMyApplications\n");
+    printf("getActivity\n");
   }
 
   /**
    * Get details about an Application from it's unique ID
    * 
-   * #human
+   * #user
    * 
    * @param request
    */
@@ -199,9 +167,43 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApplicationInfo\n");
   }
 
+  /**
+   * Get a list of all Users subscribed to an Application.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationSubscribers\n");
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");
+  }
+
+  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
+    // Your implementation goes here
+    printf("getMyApplications\n");
+  }
+
+  void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
+    // Your implementation goes here
+    printf("getMySavedChannels\n");
+  }
+
+  /**
+   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
+   * 
+   * #user
+   * 
+   * @param request
+   */
+  void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
+    // Your implementation goes here
+    printf("searchForApplications\n");
   }
 
 };

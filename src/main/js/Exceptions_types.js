@@ -113,6 +113,60 @@ InvalidCredentialsException.prototype.write = function(output) {
   return;
 };
 
+InvalidTokenException = function(args) {
+  this.message = 'The specified token is invalid';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(InvalidTokenException, Thrift.TException);
+InvalidTokenException.prototype.name = 'InvalidTokenException';
+InvalidTokenException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+InvalidTokenException.prototype.write = function(output) {
+  output.writeStructBegin('InvalidTokenException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 AccountAlreadyExistsException = function(args) {
   this.message = 'This email has already been registered. Reset your password if you forgot it.';
   if (args) {
@@ -535,6 +589,60 @@ ChannelDoesNotExistException.prototype.read = function(input) {
 
 ChannelDoesNotExistException.prototype.write = function(output) {
   output.writeStructBegin('ChannelDoesNotExistException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ThroughputExceeedException = function(args) {
+  this.message = 'You have surpassed your allowable rate of messages. Slow Down.';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(ThroughputExceeedException, Thrift.TException);
+ThroughputExceeedException.prototype.name = 'ThroughputExceeedException';
+ThroughputExceeedException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ThroughputExceeedException.prototype.write = function(output) {
+  output.writeStructBegin('ThroughputExceeedException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);

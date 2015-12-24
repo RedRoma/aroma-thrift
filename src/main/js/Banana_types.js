@@ -6,9 +6,9 @@
 
 
 Urgency = {
-  'INFORMATIONAL' : 1,
-  'WARNING' : 2,
-  'CRITICAL' : 3
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
 TimeUnit = {
   'MILLIS' : 0,
@@ -49,7 +49,7 @@ Message = function(args) {
   this.messageId = null;
   this.body = null;
   this.urgency = 1;
-  this.timeMessageSent = null;
+  this.timeOfCreation = null;
   this.timeMessageReceived = null;
   this.applicationName = null;
   this.hostname = null;
@@ -64,8 +64,8 @@ Message = function(args) {
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
     }
-    if (args.timeMessageSent !== undefined && args.timeMessageSent !== null) {
-      this.timeMessageSent = args.timeMessageSent;
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
     }
     if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
       this.timeMessageReceived = args.timeMessageReceived;
@@ -118,7 +118,7 @@ Message.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.I64) {
-        this.timeMessageSent = input.readI64().value;
+        this.timeOfCreation = input.readI64().value;
       } else {
         input.skip(ftype);
       }
@@ -177,9 +177,9 @@ Message.prototype.write = function(output) {
     output.writeI32(this.urgency);
     output.writeFieldEnd();
   }
-  if (this.timeMessageSent !== null && this.timeMessageSent !== undefined) {
-    output.writeFieldBegin('timeMessageSent', Thrift.Type.I64, 4);
-    output.writeI64(this.timeMessageSent);
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfCreation);
     output.writeFieldEnd();
   }
   if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
@@ -207,7 +207,7 @@ Message.prototype.write = function(output) {
   return;
 };
 
-TimePeriod = function(args) {
+LengthOfTime = function(args) {
   this.unit = null;
   this.value = null;
   if (args) {
@@ -223,8 +223,8 @@ TimePeriod = function(args) {
     }
   }
 };
-TimePeriod.prototype = {};
-TimePeriod.prototype.read = function(input) {
+LengthOfTime.prototype = {};
+LengthOfTime.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -245,8 +245,8 @@ TimePeriod.prototype.read = function(input) {
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.I32) {
-        this.value = input.readI32().value;
+      if (ftype == Thrift.Type.I64) {
+        this.value = input.readI64().value;
       } else {
         input.skip(ftype);
       }
@@ -260,16 +260,16 @@ TimePeriod.prototype.read = function(input) {
   return;
 };
 
-TimePeriod.prototype.write = function(output) {
-  output.writeStructBegin('TimePeriod');
+LengthOfTime.prototype.write = function(output) {
+  output.writeStructBegin('LengthOfTime');
   if (this.unit !== null && this.unit !== undefined) {
     output.writeFieldBegin('unit', Thrift.Type.I32, 1);
     output.writeI32(this.unit);
     output.writeFieldEnd();
   }
   if (this.value !== null && this.value !== undefined) {
-    output.writeFieldBegin('value', Thrift.Type.I32, 2);
-    output.writeI32(this.value);
+    output.writeFieldBegin('value', Thrift.Type.I64, 2);
+    output.writeI64(this.value);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -430,7 +430,7 @@ Image.prototype.write = function(output) {
   return;
 };
 
-Human = function(args) {
+User = function(args) {
   this.email = null;
   this.name = null;
   this.username = null;
@@ -450,8 +450,8 @@ Human = function(args) {
     }
   }
 };
-Human.prototype = {};
-Human.prototype.read = function(input) {
+User.prototype = {};
+User.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -514,8 +514,8 @@ Human.prototype.read = function(input) {
   return;
 };
 
-Human.prototype.write = function(output) {
-  output.writeStructBegin('Human');
+User.prototype.write = function(output) {
+  output.writeStructBegin('User');
   if (this.email !== null && this.email !== undefined) {
     output.writeFieldBegin('email', Thrift.Type.STRING, 1);
     output.writeString(this.email);
@@ -561,7 +561,7 @@ Application = function(args) {
   this.subscribers = [];
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
-      this.owners = Thrift.copyList(args.owners, [Human]);
+      this.owners = Thrift.copyList(args.owners, [User]);
     }
     if (args.timeOfProvisioning !== undefined && args.timeOfProvisioning !== null) {
       this.timeOfProvisioning = args.timeOfProvisioning;
@@ -582,7 +582,7 @@ Application = function(args) {
       this.programmingLanguage = args.programmingLanguage;
     }
     if (args.subscribers !== undefined && args.subscribers !== null) {
-      this.subscribers = Thrift.copyList(args.subscribers, [Human]);
+      this.subscribers = Thrift.copyList(args.subscribers, [User]);
     }
   }
 };
@@ -612,7 +612,7 @@ Application.prototype.read = function(input) {
         for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
           var elem14 = null;
-          elem14 = new Human();
+          elem14 = new User();
           elem14.read(input);
           this.owners.push(elem14);
         }
@@ -676,7 +676,7 @@ Application.prototype.read = function(input) {
         for (var _i20 = 0; _i20 < _size15; ++_i20)
         {
           var elem21 = null;
-          elem21 = new Human();
+          elem21 = new User();
           elem21.read(input);
           this.subscribers.push(elem21);
         }

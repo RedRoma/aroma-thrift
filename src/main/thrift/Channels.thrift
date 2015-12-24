@@ -5,7 +5,9 @@ namespace cpp   aroma.banana.thrift.channels
 /*
  * Defined in this File are the various Channels that
  * the Banana Service can send Messages to.
+ * 
  * Essentially a channel is a way to contact a person.
+ * 
  * A Person can register various channels where he/she can
  * be reached.
  */
@@ -19,8 +21,8 @@ typedef Banana.long long
 typedef Banana.timestamp timestamp
 
 /**
- * It's a bit confusing, but 
- * this references a specific Slack Channel in a Team Slack Account,
+ * It's a bit confusing, but "Channel" here refers to
+ * a specific "Slack Channel" in a Team Slack Account,
  * for example, #operations, #development.
  */
 struct SlackChannel

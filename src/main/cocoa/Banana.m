@@ -33,7 +33,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeMessageSent: (Banana_timestamp) timeMessageSent timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -42,8 +42,8 @@
   __body_isset = YES;
   __urgency = urgency;
   __urgency_isset = YES;
-  __timeMessageSent = timeMessageSent;
-  __timeMessageSent_isset = YES;
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
   __timeMessageReceived = timeMessageReceived;
   __timeMessageReceived_isset = YES;
   __applicationName = [applicationName retain_stub];
@@ -73,10 +73,10 @@
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
   }
-  if ([decoder containsValueForKey: @"timeMessageSent"])
+  if ([decoder containsValueForKey: @"timeOfCreation"])
   {
-    __timeMessageSent = [decoder decodeInt64ForKey: @"timeMessageSent"];
-    __timeMessageSent_isset = YES;
+    __timeOfCreation = [decoder decodeInt64ForKey: @"timeOfCreation"];
+    __timeOfCreation_isset = YES;
   }
   if ([decoder containsValueForKey: @"timeMessageReceived"])
   {
@@ -115,9 +115,9 @@
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
   }
-  if (__timeMessageSent_isset)
+  if (__timeOfCreation_isset)
   {
-    [encoder encodeInt64: __timeMessageSent forKey: @"timeMessageSent"];
+    [encoder encodeInt64: __timeOfCreation forKey: @"timeOfCreation"];
   }
   if (__timeMessageReceived_isset)
   {
@@ -155,10 +155,10 @@
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
   }
-  hash = (hash * 31) ^ __timeMessageSent_isset ? 2654435761 : 0;
-  if (__timeMessageSent_isset)
+  hash = (hash * 31) ^ __timeOfCreation_isset ? 2654435761 : 0;
+  if (__timeOfCreation_isset)
   {
-    hash = (hash * 31) ^ [@(__timeMessageSent) hash];
+    hash = (hash * 31) ^ [@(__timeOfCreation) hash];
   }
   hash = (hash * 31) ^ __timeMessageReceived_isset ? 2654435761 : 0;
   if (__timeMessageReceived_isset)
@@ -204,8 +204,8 @@
       (__urgency_isset && (__urgency != other->__urgency))) {
     return NO;
   }
-  if ((__timeMessageSent_isset != other->__timeMessageSent_isset) ||
-      (__timeMessageSent_isset && (__timeMessageSent != other->__timeMessageSent))) {
+  if ((__timeOfCreation_isset != other->__timeOfCreation_isset) ||
+      (__timeOfCreation_isset && (__timeOfCreation != other->__timeOfCreation))) {
     return NO;
   }
   if ((__timeMessageReceived_isset != other->__timeMessageReceived_isset) ||
@@ -296,21 +296,21 @@
   __urgency_isset = NO;
 }
 
-- (int64_t) timeMessageSent {
-  return __timeMessageSent;
+- (int64_t) timeOfCreation {
+  return __timeOfCreation;
 }
 
-- (void) setTimeMessageSent: (int64_t) timeMessageSent {
-  __timeMessageSent = timeMessageSent;
-  __timeMessageSent_isset = YES;
+- (void) setTimeOfCreation: (int64_t) timeOfCreation {
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
 }
 
-- (BOOL) timeMessageSentIsSet {
-  return __timeMessageSent_isset;
+- (BOOL) timeOfCreationIsSet {
+  return __timeOfCreation_isset;
 }
 
-- (void) unsetTimeMessageSent {
-  __timeMessageSent_isset = NO;
+- (void) unsetTimeOfCreation {
+  __timeOfCreation_isset = NO;
 }
 
 - (int64_t) timeMessageReceived {
@@ -435,7 +435,7 @@
       case 4:
         if (fieldType == TType_I64) {
           int64_t fieldValue = [inProtocol readI64];
-          [self setTimeMessageSent: fieldValue];
+          [self setTimeOfCreation: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -502,9 +502,9 @@
     [outProtocol writeI32: __urgency];
     [outProtocol writeFieldEnd];
   }
-  if (__timeMessageSent_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeMessageSent" type: TType_I64 fieldID: 4];
-    [outProtocol writeI64: __timeMessageSent];
+  if (__timeOfCreation_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfCreation" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfCreation];
     [outProtocol writeFieldEnd];
   }
   if (__timeMessageReceived_isset) {
@@ -549,8 +549,8 @@
   [ms appendFormat: @"\"%@\"", __body];
   [ms appendString: @",urgency:"];
   [ms appendFormat: @"%i", __urgency];
-  [ms appendString: @",timeMessageSent:"];
-  [ms appendFormat: @"%qi", __timeMessageSent];
+  [ms appendString: @",timeOfCreation:"];
+  [ms appendFormat: @"%qi", __timeOfCreation];
   [ms appendString: @",timeMessageReceived:"];
   [ms appendFormat: @"%qi", __timeMessageReceived];
   [ms appendString: @",applicationName:"];
@@ -565,7 +565,7 @@
 
 @end
 
-@implementation Banana_TimePeriod
+@implementation Banana_LengthOfTime
 
 - (id) init
 {
@@ -575,7 +575,7 @@
   return self;
 }
 
-- (id) initWithUnit: (int) unit value: (Banana_int) value
+- (id) initWithUnit: (int) unit value: (Banana_long) value
 {
   self = [super init];
   __unit = unit;
@@ -595,7 +595,7 @@
   }
   if ([decoder containsValueForKey: @"value"])
   {
-    __value = [decoder decodeInt32ForKey: @"value"];
+    __value = [decoder decodeInt64ForKey: @"value"];
     __value_isset = YES;
   }
   return self;
@@ -609,7 +609,7 @@
   }
   if (__value_isset)
   {
-    [encoder encodeInt32: __value forKey: @"value"];
+    [encoder encodeInt64: __value forKey: @"value"];
   }
 }
 
@@ -634,10 +634,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_TimePeriod class]]) {
+  if (![anObject isKindOfClass:[Banana_LengthOfTime class]]) {
     return NO;
   }
-  Banana_TimePeriod *other = (Banana_TimePeriod *)anObject;
+  Banana_LengthOfTime *other = (Banana_LengthOfTime *)anObject;
   if ((__unit_isset != other->__unit_isset) ||
       (__unit_isset && (__unit != other->__unit))) {
     return NO;
@@ -671,11 +671,11 @@
   __unit_isset = NO;
 }
 
-- (int32_t) value {
+- (int64_t) value {
   return __value;
 }
 
-- (void) setValue: (int32_t) value {
+- (void) setValue: (int64_t) value {
   __value = value;
   __value_isset = YES;
 }
@@ -712,8 +712,8 @@
         }
         break;
       case 2:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
           [self setValue: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -729,15 +729,15 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"TimePeriod"];
+  [outProtocol writeStructBeginWithName: @"LengthOfTime"];
   if (__unit_isset) {
     [outProtocol writeFieldBeginWithName: @"unit" type: TType_I32 fieldID: 1];
     [outProtocol writeI32: __unit];
     [outProtocol writeFieldEnd];
   }
   if (__value_isset) {
-    [outProtocol writeFieldBeginWithName: @"value" type: TType_I32 fieldID: 2];
-    [outProtocol writeI32: __value];
+    [outProtocol writeFieldBeginWithName: @"value" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __value];
     [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
@@ -757,11 +757,11 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_TimePeriod("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_LengthOfTime("];
   [ms appendString: @"unit:"];
   [ms appendFormat: @"%i", __unit];
   [ms appendString: @",value:"];
-  [ms appendFormat: @"%i", __value];
+  [ms appendFormat: @"%qi", __value];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1234,7 +1234,7 @@
 
 @end
 
-@implementation Banana_Human
+@implementation Banana_User
 
 - (id) init
 {
@@ -1338,10 +1338,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Human class]]) {
+  if (![anObject isKindOfClass:[Banana_User class]]) {
     return NO;
   }
-  Banana_Human *other = (Banana_Human *)anObject;
+  Banana_User *other = (Banana_User *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -1521,7 +1521,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Human"];
+  [outProtocol writeStructBeginWithName: @"User"];
   if (__email_isset) {
     if (__email != nil) {
       [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 1];
@@ -1567,7 +1567,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Human("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_User("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",name:"];
@@ -1977,7 +1977,7 @@
           int _i6;
           for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            Banana_Human *_elem7 = [[Banana_Human alloc] init];
+            Banana_User *_elem7 = [[Banana_User alloc] init];
             [_elem7 read: inProtocol];
             [fieldValue addObject: _elem7];
             [_elem7 release_stub];
@@ -2047,7 +2047,7 @@
           int _i9;
           for (_i9 = 0; _i9 < _size8; ++_i9)
           {
-            Banana_Human *_elem10 = [[Banana_Human alloc] init];
+            Banana_User *_elem10 = [[Banana_User alloc] init];
             [_elem10 read: inProtocol];
             [fieldValue addObject: _elem10];
             [_elem10 release_stub];

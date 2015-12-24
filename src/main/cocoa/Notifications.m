@@ -514,11 +514,11 @@
   return self;
 }
 
-- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
+- (id) initWithUser: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
 {
   self = [super init];
-  __human = [human retain_stub];
-  __human_isset = YES;
+  __user = [user retain_stub];
+  __user_isset = YES;
   __applicationToken = [applicationToken retain_stub];
   __applicationToken_isset = YES;
   __application = [application retain_stub];
@@ -529,10 +529,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"human"])
+  if ([decoder containsValueForKey: @"user"])
   {
-    __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
-    __human_isset = YES;
+    __user = [[decoder decodeObjectForKey: @"user"] retain_stub];
+    __user_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationToken"])
   {
@@ -549,9 +549,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__human_isset)
+  if (__user_isset)
   {
-    [encoder encodeObject: __human forKey: @"human"];
+    [encoder encodeObject: __user forKey: @"user"];
   }
   if (__applicationToken_isset)
   {
@@ -566,10 +566,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __human_isset ? 2654435761 : 0;
-  if (__human_isset)
+  hash = (hash * 31) ^ __user_isset ? 2654435761 : 0;
+  if (__user_isset)
   {
-    hash = (hash * 31) ^ [__human hash];
+    hash = (hash * 31) ^ [__user hash];
   }
   hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
   if (__applicationToken_isset)
@@ -593,8 +593,8 @@
     return NO;
   }
   BananaNotifications_ApplicationTokenRenewed *other = (BananaNotifications_ApplicationTokenRenewed *)anObject;
-  if ((__human_isset != other->__human_isset) ||
-      (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
+  if ((__user_isset != other->__user_isset) ||
+      (__user_isset && ((__user || other->__user) && ![__user isEqual:other->__user]))) {
     return NO;
   }
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
@@ -610,31 +610,31 @@
 
 - (void) dealloc
 {
-  [__human release_stub];
+  [__user release_stub];
   [__applicationToken release_stub];
   [__application release_stub];
   [super dealloc_stub];
 }
 
-- (Banana_Human *) human {
-  return [[__human retain_stub] autorelease_stub];
+- (Banana_User *) user {
+  return [[__user retain_stub] autorelease_stub];
 }
 
-- (void) setHuman: (Banana_Human *) human {
-  [human retain_stub];
-  [__human release_stub];
-  __human = human;
-  __human_isset = YES;
+- (void) setUser: (Banana_User *) user {
+  [user retain_stub];
+  [__user release_stub];
+  __user = user;
+  __user_isset = YES;
 }
 
-- (BOOL) humanIsSet {
-  return __human_isset;
+- (BOOL) userIsSet {
+  return __user_isset;
 }
 
-- (void) unsetHuman {
-  [__human release_stub];
-  __human = nil;
-  __human_isset = NO;
+- (void) unsetUser {
+  [__user release_stub];
+  __user = nil;
+  __user_isset = NO;
 }
 
 - (BananaAuthentication_ApplicationToken *) applicationToken {
@@ -696,9 +696,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Human *fieldValue = [[Banana_Human alloc] init];
+          Banana_User *fieldValue = [[Banana_User alloc] init];
           [fieldValue read: inProtocol];
-          [self setHuman: fieldValue];
+          [self setUser: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -735,10 +735,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"ApplicationTokenRenewed"];
-  if (__human_isset) {
-    if (__human != nil) {
-      [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
-      [__human write: outProtocol];
+  if (__user_isset) {
+    if (__user != nil) {
+      [outProtocol writeFieldBeginWithName: @"user" type: TType_STRUCT fieldID: 1];
+      [__user write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -766,8 +766,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRenewed("];
-  [ms appendString: @"human:"];
-  [ms appendFormat: @"%@", __human];
+  [ms appendString: @"user:"];
+  [ms appendFormat: @"%@", __user];
   [ms appendString: @",applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @",application:"];
@@ -788,11 +788,11 @@
   return self;
 }
 
-- (id) initWithHuman: (BananaNotifications_Human) human applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
+- (id) initWithUser: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken application: (BananaNotifications_Application) application
 {
   self = [super init];
-  __human = [human retain_stub];
-  __human_isset = YES;
+  __user = [user retain_stub];
+  __user_isset = YES;
   __applicationToken = [applicationToken retain_stub];
   __applicationToken_isset = YES;
   __application = [application retain_stub];
@@ -803,10 +803,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"human"])
+  if ([decoder containsValueForKey: @"user"])
   {
-    __human = [[decoder decodeObjectForKey: @"human"] retain_stub];
-    __human_isset = YES;
+    __user = [[decoder decodeObjectForKey: @"user"] retain_stub];
+    __user_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationToken"])
   {
@@ -823,9 +823,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__human_isset)
+  if (__user_isset)
   {
-    [encoder encodeObject: __human forKey: @"human"];
+    [encoder encodeObject: __user forKey: @"user"];
   }
   if (__applicationToken_isset)
   {
@@ -840,10 +840,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __human_isset ? 2654435761 : 0;
-  if (__human_isset)
+  hash = (hash * 31) ^ __user_isset ? 2654435761 : 0;
+  if (__user_isset)
   {
-    hash = (hash * 31) ^ [__human hash];
+    hash = (hash * 31) ^ [__user hash];
   }
   hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
   if (__applicationToken_isset)
@@ -867,8 +867,8 @@
     return NO;
   }
   BananaNotifications_ApplicationTokenRegenerated *other = (BananaNotifications_ApplicationTokenRegenerated *)anObject;
-  if ((__human_isset != other->__human_isset) ||
-      (__human_isset && ((__human || other->__human) && ![__human isEqual:other->__human]))) {
+  if ((__user_isset != other->__user_isset) ||
+      (__user_isset && ((__user || other->__user) && ![__user isEqual:other->__user]))) {
     return NO;
   }
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
@@ -884,31 +884,31 @@
 
 - (void) dealloc
 {
-  [__human release_stub];
+  [__user release_stub];
   [__applicationToken release_stub];
   [__application release_stub];
   [super dealloc_stub];
 }
 
-- (Banana_Human *) human {
-  return [[__human retain_stub] autorelease_stub];
+- (Banana_User *) user {
+  return [[__user retain_stub] autorelease_stub];
 }
 
-- (void) setHuman: (Banana_Human *) human {
-  [human retain_stub];
-  [__human release_stub];
-  __human = human;
-  __human_isset = YES;
+- (void) setUser: (Banana_User *) user {
+  [user retain_stub];
+  [__user release_stub];
+  __user = user;
+  __user_isset = YES;
 }
 
-- (BOOL) humanIsSet {
-  return __human_isset;
+- (BOOL) userIsSet {
+  return __user_isset;
 }
 
-- (void) unsetHuman {
-  [__human release_stub];
-  __human = nil;
-  __human_isset = NO;
+- (void) unsetUser {
+  [__user release_stub];
+  __user = nil;
+  __user_isset = NO;
 }
 
 - (BananaAuthentication_ApplicationToken *) applicationToken {
@@ -970,9 +970,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Human *fieldValue = [[Banana_Human alloc] init];
+          Banana_User *fieldValue = [[Banana_User alloc] init];
           [fieldValue read: inProtocol];
-          [self setHuman: fieldValue];
+          [self setUser: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1009,10 +1009,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"ApplicationTokenRegenerated"];
-  if (__human_isset) {
-    if (__human != nil) {
-      [outProtocol writeFieldBeginWithName: @"human" type: TType_STRUCT fieldID: 1];
-      [__human write: outProtocol];
+  if (__user_isset) {
+    if (__user != nil) {
+      [outProtocol writeFieldBeginWithName: @"user" type: TType_STRUCT fieldID: 1];
+      [__user write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1040,8 +1040,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRegenerated("];
-  [ms appendString: @"human:"];
-  [ms appendFormat: @"%@", __human];
+  [ms appendString: @"user:"];
+  [ms appendFormat: @"%@", __user];
   [ms appendString: @",applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @",application:"];
@@ -1265,7 +1265,7 @@
 
 @end
 
-@implementation BananaNotifications_Event
+@implementation BananaNotifications_EventType
 
 - (id) init
 {
@@ -1382,10 +1382,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_Event class]]) {
+  if (![anObject isKindOfClass:[BananaNotifications_EventType class]]) {
     return NO;
   }
-  BananaNotifications_Event *other = (BananaNotifications_Event *)anObject;
+  BananaNotifications_EventType *other = (BananaNotifications_EventType *)anObject;
   if ((__healthCheckFailed_isset != other->__healthCheckFailed_isset) ||
       (__healthCheckFailed_isset && ((__healthCheckFailed || other->__healthCheckFailed) && ![__healthCheckFailed isEqual:other->__healthCheckFailed]))) {
     return NO;
@@ -1599,7 +1599,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Event"];
+  [outProtocol writeStructBeginWithName: @"EventType"];
   if (__healthCheckFailed_isset) {
     if (__healthCheckFailed != nil) {
       [outProtocol writeFieldBeginWithName: @"healthCheckFailed" type: TType_STRUCT fieldID: 1];
@@ -1644,7 +1644,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_Event("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_EventType("];
   [ms appendString: @"healthCheckFailed:"];
   [ms appendFormat: @"%@", __healthCheckFailed];
   [ms appendString: @",healthCheckBackToNormal:"];
@@ -1661,7 +1661,7 @@
 
 @end
 
-@implementation BananaNotifications_Notification
+@implementation BananaNotifications_Event
 
 - (id) init
 {
@@ -1671,11 +1671,11 @@
   return self;
 }
 
-- (id) initWithEvent: (BananaNotifications_Event *) event timestamp: (BananaNotifications_timestamp) timestamp
+- (id) initWithEventType: (BananaNotifications_EventType *) eventType timestamp: (BananaNotifications_timestamp) timestamp
 {
   self = [super init];
-  __event = [event retain_stub];
-  __event_isset = YES;
+  __eventType = [eventType retain_stub];
+  __eventType_isset = YES;
   __timestamp = timestamp;
   __timestamp_isset = YES;
   return self;
@@ -1684,10 +1684,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"event"])
+  if ([decoder containsValueForKey: @"eventType"])
   {
-    __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
-    __event_isset = YES;
+    __eventType = [[decoder decodeObjectForKey: @"eventType"] retain_stub];
+    __eventType_isset = YES;
   }
   if ([decoder containsValueForKey: @"timestamp"])
   {
@@ -1699,9 +1699,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__event_isset)
+  if (__eventType_isset)
   {
-    [encoder encodeObject: __event forKey: @"event"];
+    [encoder encodeObject: __eventType forKey: @"eventType"];
   }
   if (__timestamp_isset)
   {
@@ -1712,10 +1712,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __event_isset ? 2654435761 : 0;
-  if (__event_isset)
+  hash = (hash * 31) ^ __eventType_isset ? 2654435761 : 0;
+  if (__eventType_isset)
   {
-    hash = (hash * 31) ^ [__event hash];
+    hash = (hash * 31) ^ [__eventType hash];
   }
   hash = (hash * 31) ^ __timestamp_isset ? 2654435761 : 0;
   if (__timestamp_isset)
@@ -1730,12 +1730,12 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_Notification class]]) {
+  if (![anObject isKindOfClass:[BananaNotifications_Event class]]) {
     return NO;
   }
-  BananaNotifications_Notification *other = (BananaNotifications_Notification *)anObject;
-  if ((__event_isset != other->__event_isset) ||
-      (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
+  BananaNotifications_Event *other = (BananaNotifications_Event *)anObject;
+  if ((__eventType_isset != other->__eventType_isset) ||
+      (__eventType_isset && ((__eventType || other->__eventType) && ![__eventType isEqual:other->__eventType]))) {
     return NO;
   }
   if ((__timestamp_isset != other->__timestamp_isset) ||
@@ -1747,29 +1747,29 @@
 
 - (void) dealloc
 {
-  [__event release_stub];
+  [__eventType release_stub];
   [super dealloc_stub];
 }
 
-- (BananaNotifications_Event *) event {
-  return [[__event retain_stub] autorelease_stub];
+- (BananaNotifications_EventType *) eventType {
+  return [[__eventType retain_stub] autorelease_stub];
 }
 
-- (void) setEvent: (BananaNotifications_Event *) event {
-  [event retain_stub];
-  [__event release_stub];
-  __event = event;
-  __event_isset = YES;
+- (void) setEventType: (BananaNotifications_EventType *) eventType {
+  [eventType retain_stub];
+  [__eventType release_stub];
+  __eventType = eventType;
+  __eventType_isset = YES;
 }
 
-- (BOOL) eventIsSet {
-  return __event_isset;
+- (BOOL) eventTypeIsSet {
+  return __eventType_isset;
 }
 
-- (void) unsetEvent {
-  [__event release_stub];
-  __event = nil;
-  __event_isset = NO;
+- (void) unsetEventType {
+  [__eventType release_stub];
+  __eventType = nil;
+  __eventType_isset = NO;
 }
 
 - (int64_t) timestamp {
@@ -1806,9 +1806,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_Event *fieldValue = [[BananaNotifications_Event alloc] init];
+          BananaNotifications_EventType *fieldValue = [[BananaNotifications_EventType alloc] init];
           [fieldValue read: inProtocol];
-          [self setEvent: fieldValue];
+          [self setEventType: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1832,11 +1832,11 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Notification"];
-  if (__event_isset) {
-    if (__event != nil) {
-      [outProtocol writeFieldBeginWithName: @"event" type: TType_STRUCT fieldID: 1];
-      [__event write: outProtocol];
+  [outProtocol writeStructBeginWithName: @"Event"];
+  if (__eventType_isset) {
+    if (__eventType != nil) {
+      [outProtocol writeFieldBeginWithName: @"eventType" type: TType_STRUCT fieldID: 1];
+      [__eventType write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1854,9 +1854,9 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_Notification("];
-  [ms appendString: @"event:"];
-  [ms appendFormat: @"%@", __event];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_Event("];
+  [ms appendString: @"eventType:"];
+  [ms appendFormat: @"%@", __eventType];
   [ms appendString: @",timestamp:"];
   [ms appendFormat: @"%qi", __timestamp];
   [ms appendString: @")"];

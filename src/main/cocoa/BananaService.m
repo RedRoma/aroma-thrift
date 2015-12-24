@@ -27,6 +27,4447 @@
 
 #import "BananaService.h"
 
+@implementation BananaService_DeleteMessageRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __messageIds = [messageIds retain_stub];
+  __messageIds_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"messageIds"])
+  {
+    __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
+    __messageIds_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__messageIds_isset)
+  {
+    [encoder encodeObject: __messageIds forKey: @"messageIds"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __messageIds_isset ? 2654435761 : 0;
+  if (__messageIds_isset)
+  {
+    hash = (hash * 31) ^ [__messageIds hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DeleteMessageRequest class]]) {
+    return NO;
+  }
+  BananaService_DeleteMessageRequest *other = (BananaService_DeleteMessageRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__messageIds_isset != other->__messageIds_isset) ||
+      (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__messageId release_stub];
+  [__applicationId release_stub];
+  [__messageIds release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSMutableArray *) messageIds {
+  return [[__messageIds retain_stub] autorelease_stub];
+}
+
+- (void) setMessageIds: (NSMutableArray *) messageIds {
+  [messageIds retain_stub];
+  [__messageIds release_stub];
+  __messageIds = messageIds;
+  __messageIds_isset = YES;
+}
+
+- (BOOL) messageIdsIsSet {
+  return __messageIds_isset;
+}
+
+- (void) unsetMessageIds {
+  [__messageIds release_stub];
+  __messageIds = nil;
+  __messageIds_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            NSString * _elem2 = [inProtocol readString];
+            [fieldValue addObject: _elem2];
+          }
+          [inProtocol readListEnd];
+          [self setMessageIds: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteMessageRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__messageIds_isset) {
+    if (__messageIds != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__messageIds count]; idx4++)
+        {
+          [outProtocol writeString: [__messageIds objectAtIndex: idx4]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",messageIds:"];
+  [ms appendFormat: @"%@", __messageIds];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DeleteMessageResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messagesDeleted = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted
+{
+  self = [super init];
+  __messagesDeleted = messagesDeleted;
+  __messagesDeleted_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messagesDeleted"])
+  {
+    __messagesDeleted = [decoder decodeInt32ForKey: @"messagesDeleted"];
+    __messagesDeleted_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messagesDeleted_isset)
+  {
+    [encoder encodeInt32: __messagesDeleted forKey: @"messagesDeleted"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messagesDeleted_isset ? 2654435761 : 0;
+  if (__messagesDeleted_isset)
+  {
+    hash = (hash * 31) ^ [@(__messagesDeleted) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DeleteMessageResponse class]]) {
+    return NO;
+  }
+  BananaService_DeleteMessageResponse *other = (BananaService_DeleteMessageResponse *)anObject;
+  if ((__messagesDeleted_isset != other->__messagesDeleted_isset) ||
+      (__messagesDeleted_isset && (__messagesDeleted != other->__messagesDeleted))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int32_t) messagesDeleted {
+  return __messagesDeleted;
+}
+
+- (void) setMessagesDeleted: (int32_t) messagesDeleted {
+  __messagesDeleted = messagesDeleted;
+  __messagesDeleted_isset = YES;
+}
+
+- (BOOL) messagesDeletedIsSet {
+  return __messagesDeleted_isset;
+}
+
+- (void) unsetMessagesDeleted {
+  __messagesDeleted_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setMessagesDeleted: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteMessageResponse"];
+  if (__messagesDeleted_isset) {
+    [outProtocol writeFieldBeginWithName: @"messagesDeleted" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __messagesDeleted];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageResponse("];
+  [ms appendString: @"messagesDeleted:"];
+  [ms appendFormat: @"%i", __messagesDeleted];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DeleteAllMessagesRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messagesDeleted = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __messagesDeleted = messagesDeleted;
+  __messagesDeleted_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"messagesDeleted"])
+  {
+    __messagesDeleted = [decoder decodeInt32ForKey: @"messagesDeleted"];
+    __messagesDeleted_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__messagesDeleted_isset)
+  {
+    [encoder encodeInt32: __messagesDeleted forKey: @"messagesDeleted"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __messagesDeleted_isset ? 2654435761 : 0;
+  if (__messagesDeleted_isset)
+  {
+    hash = (hash * 31) ^ [@(__messagesDeleted) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DeleteAllMessagesRequest class]]) {
+    return NO;
+  }
+  BananaService_DeleteAllMessagesRequest *other = (BananaService_DeleteAllMessagesRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__messagesDeleted_isset != other->__messagesDeleted_isset) ||
+      (__messagesDeleted_isset && (__messagesDeleted != other->__messagesDeleted))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationId release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (int32_t) messagesDeleted {
+  return __messagesDeleted;
+}
+
+- (void) setMessagesDeleted: (int32_t) messagesDeleted {
+  __messagesDeleted = messagesDeleted;
+  __messagesDeleted_isset = YES;
+}
+
+- (BOOL) messagesDeletedIsSet {
+  return __messagesDeleted_isset;
+}
+
+- (void) unsetMessagesDeleted {
+  __messagesDeleted_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setMessagesDeleted: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteAllMessagesRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__messagesDeleted_isset) {
+    [outProtocol writeFieldBeginWithName: @"messagesDeleted" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __messagesDeleted];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteAllMessagesRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",messagesDeleted:"];
+  [ms appendFormat: @"%i", __messagesDeleted];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DismissMessageRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __messageIds = [messageIds retain_stub];
+  __messageIds_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"messageIds"])
+  {
+    __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
+    __messageIds_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__messageIds_isset)
+  {
+    [encoder encodeObject: __messageIds forKey: @"messageIds"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __messageIds_isset ? 2654435761 : 0;
+  if (__messageIds_isset)
+  {
+    hash = (hash * 31) ^ [__messageIds hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DismissMessageRequest class]]) {
+    return NO;
+  }
+  BananaService_DismissMessageRequest *other = (BananaService_DismissMessageRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__messageIds_isset != other->__messageIds_isset) ||
+      (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__messageId release_stub];
+  [__applicationId release_stub];
+  [__messageIds release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSMutableArray *) messageIds {
+  return [[__messageIds retain_stub] autorelease_stub];
+}
+
+- (void) setMessageIds: (NSMutableArray *) messageIds {
+  [messageIds retain_stub];
+  [__messageIds release_stub];
+  __messageIds = messageIds;
+  __messageIds_isset = YES;
+}
+
+- (BOOL) messageIdsIsSet {
+  return __messageIds_isset;
+}
+
+- (void) unsetMessageIds {
+  [__messageIds release_stub];
+  __messageIds = nil;
+  __messageIds_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_LIST) {
+          int _size5;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
+          {
+            NSString * _elem7 = [inProtocol readString];
+            [fieldValue addObject: _elem7];
+          }
+          [inProtocol readListEnd];
+          [self setMessageIds: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DismissMessageRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__messageIds_isset) {
+    if (__messageIds != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
+        int idx9;
+        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
+        {
+          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",messageIds:"];
+  [ms appendFormat: @"%@", __messageIds];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DismissMessageResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messagesDismissed = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed
+{
+  self = [super init];
+  __messagesDismissed = messagesDismissed;
+  __messagesDismissed_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messagesDismissed"])
+  {
+    __messagesDismissed = [decoder decodeInt32ForKey: @"messagesDismissed"];
+    __messagesDismissed_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messagesDismissed_isset)
+  {
+    [encoder encodeInt32: __messagesDismissed forKey: @"messagesDismissed"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messagesDismissed_isset ? 2654435761 : 0;
+  if (__messagesDismissed_isset)
+  {
+    hash = (hash * 31) ^ [@(__messagesDismissed) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DismissMessageResponse class]]) {
+    return NO;
+  }
+  BananaService_DismissMessageResponse *other = (BananaService_DismissMessageResponse *)anObject;
+  if ((__messagesDismissed_isset != other->__messagesDismissed_isset) ||
+      (__messagesDismissed_isset && (__messagesDismissed != other->__messagesDismissed))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int32_t) messagesDismissed {
+  return __messagesDismissed;
+}
+
+- (void) setMessagesDismissed: (int32_t) messagesDismissed {
+  __messagesDismissed = messagesDismissed;
+  __messagesDismissed_isset = YES;
+}
+
+- (BOOL) messagesDismissedIsSet {
+  return __messagesDismissed_isset;
+}
+
+- (void) unsetMessagesDismissed {
+  __messagesDismissed_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setMessagesDismissed: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DismissMessageResponse"];
+  if (__messagesDismissed_isset) {
+    [outProtocol writeFieldBeginWithName: @"messagesDismissed" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __messagesDismissed];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageResponse("];
+  [ms appendString: @"messagesDismissed:"];
+  [ms appendFormat: @"%i", __messagesDismissed];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DismissAllMessagesRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DismissAllMessagesRequest class]]) {
+    return NO;
+  }
+  BananaService_DismissAllMessagesRequest *other = (BananaService_DismissAllMessagesRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationId release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DismissAllMessagesRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissAllMessagesRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_DismissAllMessagesResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messagesDismissed = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed
+{
+  self = [super init];
+  __messagesDismissed = messagesDismissed;
+  __messagesDismissed_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messagesDismissed"])
+  {
+    __messagesDismissed = [decoder decodeInt32ForKey: @"messagesDismissed"];
+    __messagesDismissed_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messagesDismissed_isset)
+  {
+    [encoder encodeInt32: __messagesDismissed forKey: @"messagesDismissed"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messagesDismissed_isset ? 2654435761 : 0;
+  if (__messagesDismissed_isset)
+  {
+    hash = (hash * 31) ^ [@(__messagesDismissed) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_DismissAllMessagesResponse class]]) {
+    return NO;
+  }
+  BananaService_DismissAllMessagesResponse *other = (BananaService_DismissAllMessagesResponse *)anObject;
+  if ((__messagesDismissed_isset != other->__messagesDismissed_isset) ||
+      (__messagesDismissed_isset && (__messagesDismissed != other->__messagesDismissed))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int32_t) messagesDismissed {
+  return __messagesDismissed;
+}
+
+- (void) setMessagesDismissed: (int32_t) messagesDismissed {
+  __messagesDismissed = messagesDismissed;
+  __messagesDismissed_isset = YES;
+}
+
+- (BOOL) messagesDismissedIsSet {
+  return __messagesDismissed_isset;
+}
+
+- (void) unsetMessagesDismissed {
+  __messagesDismissed_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setMessagesDismissed: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DismissAllMessagesResponse"];
+  if (__messagesDismissed_isset) {
+    [outProtocol writeFieldBeginWithName: @"messagesDismissed" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __messagesDismissed];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissAllMessagesResponse("];
+  [ms appendString: @"messagesDismissed:"];
+  [ms appendFormat: @"%i", __messagesDismissed];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_ProvisionApplicationRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __programmingLanguage = programmingLanguage;
+  __programmingLanguage_isset = YES;
+  __organization = [organization retain_stub];
+  __organization_isset = YES;
+  __icon = [icon retain_stub];
+  __icon_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"programmingLanguage"])
+  {
+    __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
+    __programmingLanguage_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organization"])
+  {
+    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
+    __organization_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"icon"])
+  {
+    __icon = [[decoder decodeObjectForKey: @"icon"] retain_stub];
+    __icon_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__programmingLanguage_isset)
+  {
+    [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
+  }
+  if (__organization_isset)
+  {
+    [encoder encodeObject: __organization forKey: @"organization"];
+  }
+  if (__icon_isset)
+  {
+    [encoder encodeObject: __icon forKey: @"icon"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __programmingLanguage_isset ? 2654435761 : 0;
+  if (__programmingLanguage_isset)
+  {
+    hash = (hash * 31) ^ [@(__programmingLanguage) hash];
+  }
+  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
+  if (__organization_isset)
+  {
+    hash = (hash * 31) ^ [__organization hash];
+  }
+  hash = (hash * 31) ^ __icon_isset ? 2654435761 : 0;
+  if (__icon_isset)
+  {
+    hash = (hash * 31) ^ [__icon hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationRequest class]]) {
+    return NO;
+  }
+  BananaService_ProvisionApplicationRequest *other = (BananaService_ProvisionApplicationRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  if ((__programmingLanguage_isset != other->__programmingLanguage_isset) ||
+      (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
+    return NO;
+  }
+  if ((__organization_isset != other->__organization_isset) ||
+      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+    return NO;
+  }
+  if ((__icon_isset != other->__icon_isset) ||
+      (__icon_isset && ((__icon || other->__icon) && ![__icon isEqual:other->__icon]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationName release_stub];
+  [__organization release_stub];
+  [__icon release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (int) programmingLanguage {
+  return __programmingLanguage;
+}
+
+- (void) setProgrammingLanguage: (int) programmingLanguage {
+  __programmingLanguage = programmingLanguage;
+  __programmingLanguage_isset = YES;
+}
+
+- (BOOL) programmingLanguageIsSet {
+  return __programmingLanguage_isset;
+}
+
+- (void) unsetProgrammingLanguage {
+  __programmingLanguage_isset = NO;
+}
+
+- (NSString *) organization {
+  return [[__organization retain_stub] autorelease_stub];
+}
+
+- (void) setOrganization: (NSString *) organization {
+  [organization retain_stub];
+  [__organization release_stub];
+  __organization = organization;
+  __organization_isset = YES;
+}
+
+- (BOOL) organizationIsSet {
+  return __organization_isset;
+}
+
+- (void) unsetOrganization {
+  [__organization release_stub];
+  __organization = nil;
+  __organization_isset = NO;
+}
+
+- (Banana_Image *) icon {
+  return [[__icon retain_stub] autorelease_stub];
+}
+
+- (void) setIcon: (Banana_Image *) icon {
+  [icon retain_stub];
+  [__icon release_stub];
+  __icon = icon;
+  __icon_isset = YES;
+}
+
+- (BOOL) iconIsSet {
+  return __icon_isset;
+}
+
+- (void) unsetIcon {
+  [__icon release_stub];
+  __icon = nil;
+  __icon_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setProgrammingLanguage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setIcon: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ProvisionApplicationRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__programmingLanguage_isset) {
+    [outProtocol writeFieldBeginWithName: @"programmingLanguage" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __programmingLanguage];
+    [outProtocol writeFieldEnd];
+  }
+  if (__organization_isset) {
+    if (__organization != nil) {
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__icon_isset) {
+    if (__icon != nil) {
+      [outProtocol writeFieldBeginWithName: @"icon" type: TType_STRUCT fieldID: 5];
+      [__icon write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",programmingLanguage:"];
+  [ms appendFormat: @"%i", __programmingLanguage];
+  [ms appendString: @",organization:"];
+  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",icon:"];
+  [ms appendFormat: @"%@", __icon];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_ProvisionApplicationResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithApplicationId: (NSString *) applicationId applicationName: (NSString *) applicationName applicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo
+{
+  self = [super init];
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __applicationInfo = [applicationInfo retain_stub];
+  __applicationInfo_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationToken"])
+  {
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationInfo"])
+  {
+    __applicationInfo = [[decoder decodeObjectForKey: @"applicationInfo"] retain_stub];
+    __applicationInfo_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__applicationToken_isset)
+  {
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__applicationInfo_isset)
+  {
+    [encoder encodeObject: __applicationInfo forKey: @"applicationInfo"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
+  {
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __applicationInfo_isset ? 2654435761 : 0;
+  if (__applicationInfo_isset)
+  {
+    hash = (hash * 31) ^ [__applicationInfo hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationResponse class]]) {
+    return NO;
+  }
+  BananaService_ProvisionApplicationResponse *other = (BananaService_ProvisionApplicationResponse *)anObject;
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__applicationInfo_isset != other->__applicationInfo_isset) ||
+      (__applicationInfo_isset && ((__applicationInfo || other->__applicationInfo) && ![__applicationInfo isEqual:other->__applicationInfo]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationId release_stub];
+  [__applicationName release_stub];
+  [__applicationToken release_stub];
+  [__applicationInfo release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
+}
+
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
+}
+
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (Banana_Application *) applicationInfo {
+  return [[__applicationInfo retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationInfo: (Banana_Application *) applicationInfo {
+  [applicationInfo retain_stub];
+  [__applicationInfo release_stub];
+  __applicationInfo = applicationInfo;
+  __applicationInfo_isset = YES;
+}
+
+- (BOOL) applicationInfoIsSet {
+  return __applicationInfo_isset;
+}
+
+- (void) unsetApplicationInfo {
+  [__applicationInfo release_stub];
+  __applicationInfo = nil;
+  __applicationInfo_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationInfo: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ProvisionApplicationResponse"];
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 3];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationInfo_isset) {
+    if (__applicationInfo != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationInfo" type: TType_STRUCT fieldID: 4];
+      [__applicationInfo write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationResponse("];
+  [ms appendString: @"applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",applicationInfo:"];
+  [ms appendFormat: @"%@", __applicationInfo];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RegenerateApplicationTokenRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenRequest class]]) {
+    return NO;
+  }
+  BananaService_RegenerateApplicationTokenRequest *other = (BananaService_RegenerateApplicationTokenRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationId release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RegenerateApplicationTokenResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken
+{
+  self = [super init];
+  __serviceToken = [serviceToken retain_stub];
+  __serviceToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"serviceToken"])
+  {
+    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
+    __serviceToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__serviceToken_isset)
+  {
+    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
+  if (__serviceToken_isset)
+  {
+    hash = (hash * 31) ^ [__serviceToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenResponse class]]) {
+    return NO;
+  }
+  BananaService_RegenerateApplicationTokenResponse *other = (BananaService_RegenerateApplicationTokenResponse *)anObject;
+  if ((__serviceToken_isset != other->__serviceToken_isset) ||
+      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__serviceToken release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_ApplicationToken *) serviceToken {
+  return [[__serviceToken retain_stub] autorelease_stub];
+}
+
+- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
+  [serviceToken retain_stub];
+  [__serviceToken release_stub];
+  __serviceToken = serviceToken;
+  __serviceToken_isset = YES;
+}
+
+- (BOOL) serviceTokenIsSet {
+  return __serviceToken_isset;
+}
+
+- (void) unsetServiceToken {
+  [__serviceToken release_stub];
+  __serviceToken = nil;
+  __serviceToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setServiceToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenResponse"];
+  if (__serviceToken_isset) {
+    if (__serviceToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 1];
+      [__serviceToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenResponse("];
+  [ms appendString: @"serviceToken:"];
+  [ms appendFormat: @"%@", __serviceToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RegisterHealthCheckRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token endpoint: (BananaService_Endpoint) endpoint
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __endpoint = [endpoint retain_stub];
+  __endpoint_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"endpoint"])
+  {
+    __endpoint = [[decoder decodeObjectForKey: @"endpoint"] retain_stub];
+    __endpoint_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__endpoint_isset)
+  {
+    [encoder encodeObject: __endpoint forKey: @"endpoint"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __endpoint_isset ? 2654435761 : 0;
+  if (__endpoint_isset)
+  {
+    hash = (hash * 31) ^ [__endpoint hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckRequest class]]) {
+    return NO;
+  }
+  BananaService_RegisterHealthCheckRequest *other = (BananaService_RegisterHealthCheckRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__endpoint_isset != other->__endpoint_isset) ||
+      (__endpoint_isset && ((__endpoint || other->__endpoint) && ![__endpoint isEqual:other->__endpoint]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__endpoint release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (BananaEndpoint_Endpoint *) endpoint {
+  return [[__endpoint retain_stub] autorelease_stub];
+}
+
+- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint {
+  [endpoint retain_stub];
+  [__endpoint release_stub];
+  __endpoint = endpoint;
+  __endpoint_isset = YES;
+}
+
+- (BOOL) endpointIsSet {
+  return __endpoint_isset;
+}
+
+- (void) unsetEndpoint {
+  [__endpoint release_stub];
+  __endpoint = nil;
+  __endpoint_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaEndpoint_Endpoint *fieldValue = [[BananaEndpoint_Endpoint alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEndpoint: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegisterHealthCheckRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__endpoint_isset) {
+    if (__endpoint != nil) {
+      [outProtocol writeFieldBeginWithName: @"endpoint" type: TType_STRUCT fieldID: 2];
+      [__endpoint write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",endpoint:"];
+  [ms appendFormat: @"%@", __endpoint];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RegisterHealthCheckResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message healthCheckToken: (NSString *) healthCheckToken
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __healthCheckToken = [healthCheckToken retain_stub];
+  __healthCheckToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"healthCheckToken"])
+  {
+    __healthCheckToken = [[decoder decodeObjectForKey: @"healthCheckToken"] retain_stub];
+    __healthCheckToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__healthCheckToken_isset)
+  {
+    [encoder encodeObject: __healthCheckToken forKey: @"healthCheckToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __healthCheckToken_isset ? 2654435761 : 0;
+  if (__healthCheckToken_isset)
+  {
+    hash = (hash * 31) ^ [__healthCheckToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckResponse class]]) {
+    return NO;
+  }
+  BananaService_RegisterHealthCheckResponse *other = (BananaService_RegisterHealthCheckResponse *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__healthCheckToken_isset != other->__healthCheckToken_isset) ||
+      (__healthCheckToken_isset && ((__healthCheckToken || other->__healthCheckToken) && ![__healthCheckToken isEqual:other->__healthCheckToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__healthCheckToken release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (NSString *) healthCheckToken {
+  return [[__healthCheckToken retain_stub] autorelease_stub];
+}
+
+- (void) setHealthCheckToken: (NSString *) healthCheckToken {
+  [healthCheckToken retain_stub];
+  [__healthCheckToken release_stub];
+  __healthCheckToken = healthCheckToken;
+  __healthCheckToken_isset = YES;
+}
+
+- (BOOL) healthCheckTokenIsSet {
+  return __healthCheckToken_isset;
+}
+
+- (void) unsetHealthCheckToken {
+  [__healthCheckToken release_stub];
+  __healthCheckToken = nil;
+  __healthCheckToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHealthCheckToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegisterHealthCheckResponse"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__healthCheckToken_isset) {
+    if (__healthCheckToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"healthCheckToken" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __healthCheckToken];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckResponse("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",healthCheckToken:"];
+  [ms appendFormat: @"\"%@\"", __healthCheckToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RemoveSavedChannelRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelRequest class]]) {
+    return NO;
+  }
+  BananaService_RemoveSavedChannelRequest *other = (BananaService_RemoveSavedChannelRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__channel release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RemoveSavedChannelResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelResponse class]]) {
+    return NO;
+  }
+  BananaService_RemoveSavedChannelResponse *other = (BananaService_RemoveSavedChannelResponse *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__channel release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelResponse"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelResponse("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RenewApplicationTokenRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (NSString *) applicationId
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __newLifetime = [newLifetime retain_stub];
+  __newLifetime_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationToken"])
+  {
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"newLifetime"])
+  {
+    __newLifetime = [[decoder decodeObjectForKey: @"newLifetime"] retain_stub];
+    __newLifetime_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__applicationToken_isset)
+  {
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__newLifetime_isset)
+  {
+    [encoder encodeObject: __newLifetime forKey: @"newLifetime"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
+  {
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __newLifetime_isset ? 2654435761 : 0;
+  if (__newLifetime_isset)
+  {
+    hash = (hash * 31) ^ [__newLifetime hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenRequest class]]) {
+    return NO;
+  }
+  BananaService_RenewApplicationTokenRequest *other = (BananaService_RenewApplicationTokenRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__newLifetime_isset != other->__newLifetime_isset) ||
+      (__newLifetime_isset && ((__newLifetime || other->__newLifetime) && ![__newLifetime isEqual:other->__newLifetime]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__applicationToken release_stub];
+  [__newLifetime release_stub];
+  [__applicationId release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
+}
+
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
+}
+
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (Banana_LengthOfTime *) newLifetime {
+  return [[__newLifetime retain_stub] autorelease_stub];
+}
+
+- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime {
+  [newLifetime retain_stub];
+  [__newLifetime release_stub];
+  __newLifetime = newLifetime;
+  __newLifetime_isset = YES;
+}
+
+- (BOOL) newLifetimeIsSet {
+  return __newLifetime_isset;
+}
+
+- (void) unsetNewLifetime {
+  [__newLifetime release_stub];
+  __newLifetime = nil;
+  __newLifetime_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
+          [fieldValue read: inProtocol];
+          [self setNewLifetime: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RenewApplicationTokenRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 2];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__newLifetime_isset) {
+    if (__newLifetime != nil) {
+      [outProtocol writeFieldBeginWithName: @"newLifetime" type: TType_STRUCT fieldID: 3];
+      [__newLifetime write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",newLifetime:"];
+  [ms appendFormat: @"%@", __newLifetime];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_RenewApplicationTokenResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken
+{
+  self = [super init];
+  __serviceToken = [serviceToken retain_stub];
+  __serviceToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"serviceToken"])
+  {
+    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
+    __serviceToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__serviceToken_isset)
+  {
+    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
+  if (__serviceToken_isset)
+  {
+    hash = (hash * 31) ^ [__serviceToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenResponse class]]) {
+    return NO;
+  }
+  BananaService_RenewApplicationTokenResponse *other = (BananaService_RenewApplicationTokenResponse *)anObject;
+  if ((__serviceToken_isset != other->__serviceToken_isset) ||
+      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__serviceToken release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_ApplicationToken *) serviceToken {
+  return [[__serviceToken retain_stub] autorelease_stub];
+}
+
+- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
+  [serviceToken retain_stub];
+  [__serviceToken release_stub];
+  __serviceToken = serviceToken;
+  __serviceToken_isset = YES;
+}
+
+- (BOOL) serviceTokenIsSet {
+  return __serviceToken_isset;
+}
+
+- (void) unsetServiceToken {
+  [__serviceToken release_stub];
+  __serviceToken = nil;
+  __serviceToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setServiceToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RenewApplicationTokenResponse"];
+  if (__serviceToken_isset) {
+    if (__serviceToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 1];
+      [__serviceToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenResponse("];
+  [ms appendString: @"serviceToken:"];
+  [ms appendFormat: @"%@", __serviceToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_SaveChannelRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SaveChannelRequest class]]) {
+    return NO;
+  }
+  BananaService_SaveChannelRequest *other = (BananaService_SaveChannelRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__channel release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SaveChannelRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_SaveChannelResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SaveChannelResponse class]]) {
+    return NO;
+  }
+  BananaService_SaveChannelResponse *other = (BananaService_SaveChannelResponse *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__channel release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SaveChannelResponse"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelResponse("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_SignInRequest
 
 - (id) init
@@ -248,40 +4689,40 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken
+- (id) initWithUserToken: (BananaService_UserToken) userToken
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"userToken"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__userToken_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __userToken forKey: @"userToken"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__userToken hash];
   }
   return hash;
 }
@@ -295,8 +4736,8 @@
     return NO;
   }
   BananaService_SignInResponse *other = (BananaService_SignInResponse *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
   }
   return YES;
@@ -304,29 +4745,29 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__userToken release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -346,9 +4787,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setUserToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -365,10 +4806,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SignInResponse"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -382,8 +4823,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignInResponse("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -788,11 +5229,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken account: (BananaAuthentication_AromaAccount *) account
+- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __userToken = [userToken retain_stub];
+  __userToken_isset = YES;
   __account = [account retain_stub];
   __account_isset = YES;
   return self;
@@ -801,10 +5242,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"userToken"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
+    __userToken_isset = YES;
   }
   if ([decoder containsValueForKey: @"account"])
   {
@@ -816,9 +5257,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__userToken_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __userToken forKey: @"userToken"];
   }
   if (__account_isset)
   {
@@ -829,10 +5270,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
+  if (__userToken_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__userToken hash];
   }
   hash = (hash * 31) ^ __account_isset ? 2654435761 : 0;
   if (__account_isset)
@@ -851,8 +5292,8 @@
     return NO;
   }
   BananaService_SignUpResponse *other = (BananaService_SignUpResponse *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__userToken_isset != other->__userToken_isset) ||
+      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
   }
   if ((__account_isset != other->__account_isset) ||
@@ -864,30 +5305,30 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__userToken release_stub];
   [__account release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) userToken {
+  return [[__userToken retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
+  [userToken retain_stub];
+  [__userToken release_stub];
+  __userToken = userToken;
+  __userToken_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) userTokenIsSet {
+  return __userToken_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetUserToken {
+  [__userToken release_stub];
+  __userToken = nil;
+  __userToken_isset = NO;
 }
 
 - (BananaAuthentication_AromaAccount *) account {
@@ -928,9 +5369,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setUserToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -957,10 +5398,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SignUpResponse"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__userToken_isset) {
+    if (__userToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 1];
+      [__userToken write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -981,8 +5422,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignUpResponse("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"userToken:"];
+  [ms appendFormat: @"%@", __userToken];
   [ms appendString: @",account:"];
   [ms appendFormat: @"%@", __account];
   [ms appendString: @")"];
@@ -991,7 +5432,7 @@
 
 @end
 
-@implementation BananaService_ProvisionApplicationRequest
+@implementation BananaService_SnoozeChannelRequest
 
 - (id) init
 {
@@ -1001,21 +5442,15 @@
   return self;
 }
 
-- (id) initWithToken: (NSString *) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon humanToken: (BananaService_HumanToken) humanToken
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
-  __programmingLanguage = programmingLanguage;
-  __programmingLanguage_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
-  __icon = [icon retain_stub];
-  __icon_isset = YES;
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
   return self;
 }
 
@@ -1027,30 +5462,15 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"applicationName"])
+  if ([decoder containsValueForKey: @"channel"])
   {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
   }
-  if ([decoder containsValueForKey: @"programmingLanguage"])
+  if ([decoder containsValueForKey: @"applicationId"])
   {
-    __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
-    __programmingLanguage_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"organization"])
-  {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"icon"])
-  {
-    __icon = [[decoder decodeObjectForKey: @"icon"] retain_stub];
-    __icon_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
   }
   return self;
 }
@@ -1061,25 +5481,13 @@
   {
     [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__applicationName_isset)
+  if (__channel_isset)
   {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+    [encoder encodeObject: __channel forKey: @"channel"];
   }
-  if (__programmingLanguage_isset)
+  if (__applicationId_isset)
   {
-    [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
-  }
-  if (__organization_isset)
-  {
-    [encoder encodeObject: __organization forKey: @"organization"];
-  }
-  if (__icon_isset)
-  {
-    [encoder encodeObject: __icon forKey: @"icon"];
-  }
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
 }
 
@@ -1091,30 +5499,15 @@
   {
     hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
   {
-    hash = (hash * 31) ^ [__applicationName hash];
+    hash = (hash * 31) ^ [__channel hash];
   }
-  hash = (hash * 31) ^ __programmingLanguage_isset ? 2654435761 : 0;
-  if (__programmingLanguage_isset)
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
   {
-    hash = (hash * 31) ^ [@(__programmingLanguage) hash];
-  }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
-  {
-    hash = (hash * 31) ^ [__organization hash];
-  }
-  hash = (hash * 31) ^ __icon_isset ? 2654435761 : 0;
-  if (__icon_isset)
-  {
-    hash = (hash * 31) ^ [__icon hash];
-  }
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__applicationId hash];
   }
   return hash;
 }
@@ -1124,32 +5517,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationRequest class]]) {
+  if (![anObject isKindOfClass:[BananaService_SnoozeChannelRequest class]]) {
     return NO;
   }
-  BananaService_ProvisionApplicationRequest *other = (BananaService_ProvisionApplicationRequest *)anObject;
+  BananaService_SnoozeChannelRequest *other = (BananaService_SnoozeChannelRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
     return NO;
   }
-  if ((__programmingLanguage_isset != other->__programmingLanguage_isset) ||
-      (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
-    return NO;
-  }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
-    return NO;
-  }
-  if ((__icon_isset != other->__icon_isset) ||
-      (__icon_isset && ((__icon || other->__icon) && ![__icon isEqual:other->__icon]))) {
-    return NO;
-  }
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
   return YES;
@@ -1158,18 +5539,16 @@
 - (void) dealloc
 {
   [__token release_stub];
-  [__applicationName release_stub];
-  [__organization release_stub];
-  [__icon release_stub];
-  [__humanToken release_stub];
+  [__channel release_stub];
+  [__applicationId release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) token {
+- (BananaAuthentication_UserToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (NSString *) token {
+- (void) setToken: (BananaAuthentication_UserToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -1186,447 +5565,25 @@
   __token_isset = NO;
 }
 
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
 }
 
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
+- (BOOL) channelIsSet {
+  return __channel_isset;
 }
 
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
-}
-
-- (int) programmingLanguage {
-  return __programmingLanguage;
-}
-
-- (void) setProgrammingLanguage: (int) programmingLanguage {
-  __programmingLanguage = programmingLanguage;
-  __programmingLanguage_isset = YES;
-}
-
-- (BOOL) programmingLanguageIsSet {
-  return __programmingLanguage_isset;
-}
-
-- (void) unsetProgrammingLanguage {
-  __programmingLanguage_isset = NO;
-}
-
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
-}
-
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
-}
-
-- (BOOL) organizationIsSet {
-  return __organization_isset;
-}
-
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
-}
-
-- (Banana_Image *) icon {
-  return [[__icon retain_stub] autorelease_stub];
-}
-
-- (void) setIcon: (Banana_Image *) icon {
-  [icon retain_stub];
-  [__icon release_stub];
-  __icon = icon;
-  __icon_isset = YES;
-}
-
-- (BOOL) iconIsSet {
-  return __icon_isset;
-}
-
-- (void) unsetIcon {
-  [__icon release_stub];
-  __icon = nil;
-  __icon_isset = NO;
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setToken: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setProgrammingLanguage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
-          [fieldValue read: inProtocol];
-          [self setIcon: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 6:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ProvisionApplicationRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __token];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__programmingLanguage_isset) {
-    [outProtocol writeFieldBeginWithName: @"programmingLanguage" type: TType_I32 fieldID: 3];
-    [outProtocol writeI32: __programmingLanguage];
-    [outProtocol writeFieldEnd];
-  }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __organization];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__icon_isset) {
-    if (__icon != nil) {
-      [outProtocol writeFieldBeginWithName: @"icon" type: TType_STRUCT fieldID: 5];
-      [__icon write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 6];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"\"%@\"", __token];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @",programmingLanguage:"];
-  [ms appendFormat: @"%i", __programmingLanguage];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
-  [ms appendString: @",icon:"];
-  [ms appendFormat: @"%@", __icon];
-  [ms appendString: @",humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_ProvisionApplicationResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithBananaToken: (NSString *) bananaToken applicationName: (NSString *) applicationName serviceToken: (BananaService_ApplicationToken) serviceToken applicationId: (NSString *) applicationId
-{
-  self = [super init];
-  __bananaToken = [bananaToken retain_stub];
-  __bananaToken_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"bananaToken"])
-  {
-    __bananaToken = [[decoder decodeObjectForKey: @"bananaToken"] retain_stub];
-    __bananaToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationName"])
-  {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"serviceToken"])
-  {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__bananaToken_isset)
-  {
-    [encoder encodeObject: __bananaToken forKey: @"bananaToken"];
-  }
-  if (__applicationName_isset)
-  {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
-  }
-  if (__serviceToken_isset)
-  {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __bananaToken_isset ? 2654435761 : 0;
-  if (__bananaToken_isset)
-  {
-    hash = (hash * 31) ^ [__bananaToken hash];
-  }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
-  {
-    hash = (hash * 31) ^ [__applicationName hash];
-  }
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
-  {
-    hash = (hash * 31) ^ [__serviceToken hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationResponse class]]) {
-    return NO;
-  }
-  BananaService_ProvisionApplicationResponse *other = (BananaService_ProvisionApplicationResponse *)anObject;
-  if ((__bananaToken_isset != other->__bananaToken_isset) ||
-      (__bananaToken_isset && ((__bananaToken || other->__bananaToken) && ![__bananaToken isEqual:other->__bananaToken]))) {
-    return NO;
-  }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
-    return NO;
-  }
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__bananaToken release_stub];
-  [__applicationName release_stub];
-  [__serviceToken release_stub];
-  [__applicationId release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) bananaToken {
-  return [[__bananaToken retain_stub] autorelease_stub];
-}
-
-- (void) setBananaToken: (NSString *) bananaToken {
-  [bananaToken retain_stub];
-  [__bananaToken release_stub];
-  __bananaToken = bananaToken;
-  __bananaToken_isset = YES;
-}
-
-- (BOOL) bananaTokenIsSet {
-  return __bananaToken_isset;
-}
-
-- (void) unsetBananaToken {
-  [__bananaToken release_stub];
-  __bananaToken = nil;
-  __bananaToken_isset = NO;
-}
-
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
-}
-
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
-}
-
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
-}
-
-- (BananaAuthentication_ApplicationToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
-}
-
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
-}
-
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
-}
-
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
 }
 
 - (NSString *) applicationId {
@@ -1666,32 +5623,26 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setBananaToken: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setApplicationId: fieldValue];
@@ -1709,31 +5660,24 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ProvisionApplicationResponse"];
-  if (__bananaToken_isset) {
-    if (__bananaToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"bananaToken" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __bananaToken];
+  [outProtocol writeStructBeginWithName: @"SnoozeChannelRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 3];
-      [__serviceToken write: outProtocol];
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
+      [__channel write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__applicationId_isset) {
     if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
       [outProtocol writeString: __applicationId];
       [outProtocol writeFieldEnd];
     }
@@ -1747,15 +5691,163 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationResponse("];
-  [ms appendString: @"bananaToken:"];
-  [ms appendFormat: @"\"%@\"", __bananaToken];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @",serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",channel:"];
+  [ms appendFormat: @"%@", __channel];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_SnoozeChannelResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SnoozeChannelResponse class]]) {
+    return NO;
+  }
+  BananaService_SnoozeChannelResponse *other = (BananaService_SnoozeChannelResponse *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SnoozeChannelResponse"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelResponse("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1774,11 +5866,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   __applicationName = [applicationName retain_stub];
   __applicationName_isset = YES;
   __applicationId = [applicationId retain_stub];
@@ -1793,10 +5885,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationName"])
   {
@@ -1823,9 +5915,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
   if (__applicationName_isset)
   {
@@ -1848,10 +5940,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
   if (__applicationName_isset)
@@ -1885,8 +5977,8 @@
     return NO;
   }
   BananaService_SubscribeToApplicationRequest *other = (BananaService_SubscribeToApplicationRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   if ((__applicationName_isset != other->__applicationName_isset) ||
@@ -1910,32 +6002,32 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [__applicationName release_stub];
   [__applicationId release_stub];
   [__organization release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (NSString *) applicationName {
@@ -2035,9 +6127,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -2086,10 +6178,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SubscribeToApplicationRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2129,8 +6221,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SubscribeToApplicationRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
   [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",applicationId:"];
@@ -2356,4405 +6448,6 @@
 
 @end
 
-@implementation BananaService_RegisterHealthCheckRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithEndpoint: (BananaService_Endpoint) endpoint humanToken: (BananaService_HumanToken) humanToken
-{
-  self = [super init];
-  __endpoint = [endpoint retain_stub];
-  __endpoint_isset = YES;
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"endpoint"])
-  {
-    __endpoint = [[decoder decodeObjectForKey: @"endpoint"] retain_stub];
-    __endpoint_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__endpoint_isset)
-  {
-    [encoder encodeObject: __endpoint forKey: @"endpoint"];
-  }
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __endpoint_isset ? 2654435761 : 0;
-  if (__endpoint_isset)
-  {
-    hash = (hash * 31) ^ [__endpoint hash];
-  }
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckRequest class]]) {
-    return NO;
-  }
-  BananaService_RegisterHealthCheckRequest *other = (BananaService_RegisterHealthCheckRequest *)anObject;
-  if ((__endpoint_isset != other->__endpoint_isset) ||
-      (__endpoint_isset && ((__endpoint || other->__endpoint) && ![__endpoint isEqual:other->__endpoint]))) {
-    return NO;
-  }
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__endpoint release_stub];
-  [__humanToken release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaEndpoint_Endpoint *) endpoint {
-  return [[__endpoint retain_stub] autorelease_stub];
-}
-
-- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint {
-  [endpoint retain_stub];
-  [__endpoint release_stub];
-  __endpoint = endpoint;
-  __endpoint_isset = YES;
-}
-
-- (BOOL) endpointIsSet {
-  return __endpoint_isset;
-}
-
-- (void) unsetEndpoint {
-  [__endpoint release_stub];
-  __endpoint = nil;
-  __endpoint_isset = NO;
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaEndpoint_Endpoint *fieldValue = [[BananaEndpoint_Endpoint alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEndpoint: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegisterHealthCheckRequest"];
-  if (__endpoint_isset) {
-    if (__endpoint != nil) {
-      [outProtocol writeFieldBeginWithName: @"endpoint" type: TType_STRUCT fieldID: 1];
-      [__endpoint write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 2];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckRequest("];
-  [ms appendString: @"endpoint:"];
-  [ms appendFormat: @"%@", __endpoint];
-  [ms appendString: @",humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RegisterHealthCheckResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message healthCheckToken: (NSString *) healthCheckToken
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __healthCheckToken = [healthCheckToken retain_stub];
-  __healthCheckToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"healthCheckToken"])
-  {
-    __healthCheckToken = [[decoder decodeObjectForKey: @"healthCheckToken"] retain_stub];
-    __healthCheckToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__healthCheckToken_isset)
-  {
-    [encoder encodeObject: __healthCheckToken forKey: @"healthCheckToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __healthCheckToken_isset ? 2654435761 : 0;
-  if (__healthCheckToken_isset)
-  {
-    hash = (hash * 31) ^ [__healthCheckToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckResponse class]]) {
-    return NO;
-  }
-  BananaService_RegisterHealthCheckResponse *other = (BananaService_RegisterHealthCheckResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__healthCheckToken_isset != other->__healthCheckToken_isset) ||
-      (__healthCheckToken_isset && ((__healthCheckToken || other->__healthCheckToken) && ![__healthCheckToken isEqual:other->__healthCheckToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__healthCheckToken release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (NSString *) healthCheckToken {
-  return [[__healthCheckToken retain_stub] autorelease_stub];
-}
-
-- (void) setHealthCheckToken: (NSString *) healthCheckToken {
-  [healthCheckToken retain_stub];
-  [__healthCheckToken release_stub];
-  __healthCheckToken = healthCheckToken;
-  __healthCheckToken_isset = YES;
-}
-
-- (BOOL) healthCheckTokenIsSet {
-  return __healthCheckToken_isset;
-}
-
-- (void) unsetHealthCheckToken {
-  [__healthCheckToken release_stub];
-  __healthCheckToken = nil;
-  __healthCheckToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setHealthCheckToken: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegisterHealthCheckResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__healthCheckToken_isset) {
-    if (__healthCheckToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"healthCheckToken" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __healthCheckToken];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",healthCheckToken:"];
-  [ms appendFormat: @"\"%@\"", __healthCheckToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RenewApplicationTokenRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod humanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId
-{
-  self = [super init];
-  __applicationToken = [applicationToken retain_stub];
-  __applicationToken_isset = YES;
-  __timePeriod = [timePeriod retain_stub];
-  __timePeriod_isset = YES;
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"applicationToken"])
-  {
-    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
-    __applicationToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"timePeriod"])
-  {
-    __timePeriod = [[decoder decodeObjectForKey: @"timePeriod"] retain_stub];
-    __timePeriod_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__applicationToken_isset)
-  {
-    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
-  }
-  if (__timePeriod_isset)
-  {
-    [encoder encodeObject: __timePeriod forKey: @"timePeriod"];
-  }
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
-  if (__applicationToken_isset)
-  {
-    hash = (hash * 31) ^ [__applicationToken hash];
-  }
-  hash = (hash * 31) ^ __timePeriod_isset ? 2654435761 : 0;
-  if (__timePeriod_isset)
-  {
-    hash = (hash * 31) ^ [__timePeriod hash];
-  }
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenRequest class]]) {
-    return NO;
-  }
-  BananaService_RenewApplicationTokenRequest *other = (BananaService_RenewApplicationTokenRequest *)anObject;
-  if ((__applicationToken_isset != other->__applicationToken_isset) ||
-      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
-    return NO;
-  }
-  if ((__timePeriod_isset != other->__timePeriod_isset) ||
-      (__timePeriod_isset && ((__timePeriod || other->__timePeriod) && ![__timePeriod isEqual:other->__timePeriod]))) {
-    return NO;
-  }
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__applicationToken release_stub];
-  [__timePeriod release_stub];
-  [__humanToken release_stub];
-  [__applicationId release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) applicationToken {
-  return [[__applicationToken retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
-  [applicationToken retain_stub];
-  [__applicationToken release_stub];
-  __applicationToken = applicationToken;
-  __applicationToken_isset = YES;
-}
-
-- (BOOL) applicationTokenIsSet {
-  return __applicationToken_isset;
-}
-
-- (void) unsetApplicationToken {
-  [__applicationToken release_stub];
-  __applicationToken = nil;
-  __applicationToken_isset = NO;
-}
-
-- (Banana_TimePeriod *) timePeriod {
-  return [[__timePeriod retain_stub] autorelease_stub];
-}
-
-- (void) setTimePeriod: (Banana_TimePeriod *) timePeriod {
-  [timePeriod retain_stub];
-  [__timePeriod release_stub];
-  __timePeriod = timePeriod;
-  __timePeriod_isset = YES;
-}
-
-- (BOOL) timePeriodIsSet {
-  return __timePeriod_isset;
-}
-
-- (void) unsetTimePeriod {
-  [__timePeriod release_stub];
-  __timePeriod = nil;
-  __timePeriod_isset = NO;
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setApplicationToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          Banana_TimePeriod *fieldValue = [[Banana_TimePeriod alloc] init];
-          [fieldValue read: inProtocol];
-          [self setTimePeriod: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RenewApplicationTokenRequest"];
-  if (__applicationToken_isset) {
-    if (__applicationToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
-      [__applicationToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__timePeriod_isset) {
-    if (__timePeriod != nil) {
-      [outProtocol writeFieldBeginWithName: @"timePeriod" type: TType_STRUCT fieldID: 2];
-      [__timePeriod write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 3];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenRequest("];
-  [ms appendString: @"applicationToken:"];
-  [ms appendFormat: @"%@", __applicationToken];
-  [ms appendString: @",timePeriod:"];
-  [ms appendFormat: @"%@", __timePeriod];
-  [ms appendString: @",humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RenewApplicationTokenResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken
-{
-  self = [super init];
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"serviceToken"])
-  {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__serviceToken_isset)
-  {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
-  {
-    hash = (hash * 31) ^ [__serviceToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenResponse class]]) {
-    return NO;
-  }
-  BananaService_RenewApplicationTokenResponse *other = (BananaService_RenewApplicationTokenResponse *)anObject;
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__serviceToken release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
-}
-
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
-}
-
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
-}
-
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RenewApplicationTokenResponse"];
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 1];
-      [__serviceToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenResponse("];
-  [ms appendString: @"serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RegenerateApplicationTokenRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithApplicationId: (NSString *) applicationId humanToken: (BananaService_HumanToken) humanToken
-{
-  self = [super init];
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenRequest class]]) {
-    return NO;
-  }
-  BananaService_RegenerateApplicationTokenRequest *other = (BananaService_RegenerateApplicationTokenRequest *)anObject;
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__applicationId release_stub];
-  [__humanToken release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenRequest"];
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 2];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenRequest("];
-  [ms appendString: @"applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RegenerateApplicationTokenResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken
-{
-  self = [super init];
-  __serviceToken = [serviceToken retain_stub];
-  __serviceToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"serviceToken"])
-  {
-    __serviceToken = [[decoder decodeObjectForKey: @"serviceToken"] retain_stub];
-    __serviceToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__serviceToken_isset)
-  {
-    [encoder encodeObject: __serviceToken forKey: @"serviceToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __serviceToken_isset ? 2654435761 : 0;
-  if (__serviceToken_isset)
-  {
-    hash = (hash * 31) ^ [__serviceToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenResponse class]]) {
-    return NO;
-  }
-  BananaService_RegenerateApplicationTokenResponse *other = (BananaService_RegenerateApplicationTokenResponse *)anObject;
-  if ((__serviceToken_isset != other->__serviceToken_isset) ||
-      (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__serviceToken release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_ApplicationToken *) serviceToken {
-  return [[__serviceToken retain_stub] autorelease_stub];
-}
-
-- (void) setServiceToken: (BananaAuthentication_ApplicationToken *) serviceToken {
-  [serviceToken retain_stub];
-  [__serviceToken release_stub];
-  __serviceToken = serviceToken;
-  __serviceToken_isset = YES;
-}
-
-- (BOOL) serviceTokenIsSet {
-  return __serviceToken_isset;
-}
-
-- (void) unsetServiceToken {
-  [__serviceToken release_stub];
-  __serviceToken = nil;
-  __serviceToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setServiceToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateApplicationTokenResponse"];
-  if (__serviceToken_isset) {
-    if (__serviceToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"serviceToken" type: TType_STRUCT fieldID: 1];
-      [__serviceToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenResponse("];
-  [ms appendString: @"serviceToken:"];
-  [ms appendFormat: @"%@", __serviceToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DeleteMessageRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
-
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __messageId = [messageId retain_stub];
-  __messageId_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __messageIds = [messageIds retain_stub];
-  __messageIds_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messageId"])
-  {
-    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
-    __messageId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messageIds"])
-  {
-    __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
-    __messageIds_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__messageId_isset)
-  {
-    [encoder encodeObject: __messageId forKey: @"messageId"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__messageIds_isset)
-  {
-    [encoder encodeObject: __messageIds forKey: @"messageIds"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
-  if (__messageId_isset)
-  {
-    hash = (hash * 31) ^ [__messageId hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __messageIds_isset ? 2654435761 : 0;
-  if (__messageIds_isset)
-  {
-    hash = (hash * 31) ^ [__messageIds hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DeleteMessageRequest class]]) {
-    return NO;
-  }
-  BananaService_DeleteMessageRequest *other = (BananaService_DeleteMessageRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__messageId_isset != other->__messageId_isset) ||
-      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__messageIds_isset != other->__messageIds_isset) ||
-      (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__messageId release_stub];
-  [__applicationId release_stub];
-  [__messageIds release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (NSString *) messageId {
-  return [[__messageId retain_stub] autorelease_stub];
-}
-
-- (void) setMessageId: (NSString *) messageId {
-  [messageId retain_stub];
-  [__messageId release_stub];
-  __messageId = messageId;
-  __messageId_isset = YES;
-}
-
-- (BOOL) messageIdIsSet {
-  return __messageId_isset;
-}
-
-- (void) unsetMessageId {
-  [__messageId release_stub];
-  __messageId = nil;
-  __messageId_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (NSMutableArray *) messageIds {
-  return [[__messageIds retain_stub] autorelease_stub];
-}
-
-- (void) setMessageIds: (NSMutableArray *) messageIds {
-  [messageIds retain_stub];
-  [__messageIds release_stub];
-  __messageIds = messageIds;
-  __messageIds_isset = YES;
-}
-
-- (BOOL) messageIdsIsSet {
-  return __messageIds_isset;
-}
-
-- (void) unsetMessageIds {
-  [__messageIds release_stub];
-  __messageIds = nil;
-  __messageIds_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessageId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
-          {
-            NSString * _elem2 = [inProtocol readString];
-            [fieldValue addObject: _elem2];
-          }
-          [inProtocol readListEnd];
-          [self setMessageIds: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DeleteMessageRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messageId_isset) {
-    if (__messageId != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __messageId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messageIds_isset) {
-    if (__messageIds != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__messageIds count]; idx4++)
-        {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx4]];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",messageId:"];
-  [ms appendFormat: @"\"%@\"", __messageId];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",messageIds:"];
-  [ms appendFormat: @"%@", __messageIds];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DeleteMessageResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messagesDeleted = 0;
-
-#endif
-  return self;
-}
-
-- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted
-{
-  self = [super init];
-  __messagesDeleted = messagesDeleted;
-  __messagesDeleted_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"messagesDeleted"])
-  {
-    __messagesDeleted = [decoder decodeInt32ForKey: @"messagesDeleted"];
-    __messagesDeleted_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__messagesDeleted_isset)
-  {
-    [encoder encodeInt32: __messagesDeleted forKey: @"messagesDeleted"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __messagesDeleted_isset ? 2654435761 : 0;
-  if (__messagesDeleted_isset)
-  {
-    hash = (hash * 31) ^ [@(__messagesDeleted) hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DeleteMessageResponse class]]) {
-    return NO;
-  }
-  BananaService_DeleteMessageResponse *other = (BananaService_DeleteMessageResponse *)anObject;
-  if ((__messagesDeleted_isset != other->__messagesDeleted_isset) ||
-      (__messagesDeleted_isset && (__messagesDeleted != other->__messagesDeleted))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [super dealloc_stub];
-}
-
-- (int32_t) messagesDeleted {
-  return __messagesDeleted;
-}
-
-- (void) setMessagesDeleted: (int32_t) messagesDeleted {
-  __messagesDeleted = messagesDeleted;
-  __messagesDeleted_isset = YES;
-}
-
-- (BOOL) messagesDeletedIsSet {
-  return __messagesDeleted_isset;
-}
-
-- (void) unsetMessagesDeleted {
-  __messagesDeleted_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
-          [self setMessagesDeleted: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DeleteMessageResponse"];
-  if (__messagesDeleted_isset) {
-    [outProtocol writeFieldBeginWithName: @"messagesDeleted" type: TType_I32 fieldID: 1];
-    [outProtocol writeI32: __messagesDeleted];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageResponse("];
-  [ms appendString: @"messagesDeleted:"];
-  [ms appendFormat: @"%i", __messagesDeleted];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DeleteAllMessagesRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messagesDeleted = 0;
-
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __messagesDeleted = messagesDeleted;
-  __messagesDeleted_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messagesDeleted"])
-  {
-    __messagesDeleted = [decoder decodeInt32ForKey: @"messagesDeleted"];
-    __messagesDeleted_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__messagesDeleted_isset)
-  {
-    [encoder encodeInt32: __messagesDeleted forKey: @"messagesDeleted"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __messagesDeleted_isset ? 2654435761 : 0;
-  if (__messagesDeleted_isset)
-  {
-    hash = (hash * 31) ^ [@(__messagesDeleted) hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DeleteAllMessagesRequest class]]) {
-    return NO;
-  }
-  BananaService_DeleteAllMessagesRequest *other = (BananaService_DeleteAllMessagesRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__messagesDeleted_isset != other->__messagesDeleted_isset) ||
-      (__messagesDeleted_isset && (__messagesDeleted != other->__messagesDeleted))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__applicationId release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (int32_t) messagesDeleted {
-  return __messagesDeleted;
-}
-
-- (void) setMessagesDeleted: (int32_t) messagesDeleted {
-  __messagesDeleted = messagesDeleted;
-  __messagesDeleted_isset = YES;
-}
-
-- (BOOL) messagesDeletedIsSet {
-  return __messagesDeleted_isset;
-}
-
-- (void) unsetMessagesDeleted {
-  __messagesDeleted_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
-          [self setMessagesDeleted: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DeleteAllMessagesRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messagesDeleted_isset) {
-    [outProtocol writeFieldBeginWithName: @"messagesDeleted" type: TType_I32 fieldID: 3];
-    [outProtocol writeI32: __messagesDeleted];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteAllMessagesRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",messagesDeleted:"];
-  [ms appendFormat: @"%i", __messagesDeleted];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DismissMessageRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
-
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __messageId = [messageId retain_stub];
-  __messageId_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __messageIds = [messageIds retain_stub];
-  __messageIds_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messageId"])
-  {
-    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
-    __messageId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messageIds"])
-  {
-    __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
-    __messageIds_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__messageId_isset)
-  {
-    [encoder encodeObject: __messageId forKey: @"messageId"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__messageIds_isset)
-  {
-    [encoder encodeObject: __messageIds forKey: @"messageIds"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
-  if (__messageId_isset)
-  {
-    hash = (hash * 31) ^ [__messageId hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __messageIds_isset ? 2654435761 : 0;
-  if (__messageIds_isset)
-  {
-    hash = (hash * 31) ^ [__messageIds hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DismissMessageRequest class]]) {
-    return NO;
-  }
-  BananaService_DismissMessageRequest *other = (BananaService_DismissMessageRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__messageId_isset != other->__messageId_isset) ||
-      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__messageIds_isset != other->__messageIds_isset) ||
-      (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__messageId release_stub];
-  [__applicationId release_stub];
-  [__messageIds release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (NSString *) messageId {
-  return [[__messageId retain_stub] autorelease_stub];
-}
-
-- (void) setMessageId: (NSString *) messageId {
-  [messageId retain_stub];
-  [__messageId release_stub];
-  __messageId = messageId;
-  __messageId_isset = YES;
-}
-
-- (BOOL) messageIdIsSet {
-  return __messageId_isset;
-}
-
-- (void) unsetMessageId {
-  [__messageId release_stub];
-  __messageId = nil;
-  __messageId_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (NSMutableArray *) messageIds {
-  return [[__messageIds retain_stub] autorelease_stub];
-}
-
-- (void) setMessageIds: (NSMutableArray *) messageIds {
-  [messageIds retain_stub];
-  [__messageIds release_stub];
-  __messageIds = messageIds;
-  __messageIds_isset = YES;
-}
-
-- (BOOL) messageIdsIsSet {
-  return __messageIds_isset;
-}
-
-- (void) unsetMessageIds {
-  [__messageIds release_stub];
-  __messageIds = nil;
-  __messageIds_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessageId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_LIST) {
-          int _size5;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
-          int _i6;
-          for (_i6 = 0; _i6 < _size5; ++_i6)
-          {
-            NSString * _elem7 = [inProtocol readString];
-            [fieldValue addObject: _elem7];
-          }
-          [inProtocol readListEnd];
-          [self setMessageIds: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DismissMessageRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messageId_isset) {
-    if (__messageId != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __messageId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messageIds_isset) {
-    if (__messageIds != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx9;
-        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
-        {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",messageId:"];
-  [ms appendFormat: @"\"%@\"", __messageId];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",messageIds:"];
-  [ms appendFormat: @"%@", __messageIds];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DismissMessageResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messagesDismissed = 0;
-
-#endif
-  return self;
-}
-
-- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed
-{
-  self = [super init];
-  __messagesDismissed = messagesDismissed;
-  __messagesDismissed_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"messagesDismissed"])
-  {
-    __messagesDismissed = [decoder decodeInt32ForKey: @"messagesDismissed"];
-    __messagesDismissed_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__messagesDismissed_isset)
-  {
-    [encoder encodeInt32: __messagesDismissed forKey: @"messagesDismissed"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __messagesDismissed_isset ? 2654435761 : 0;
-  if (__messagesDismissed_isset)
-  {
-    hash = (hash * 31) ^ [@(__messagesDismissed) hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DismissMessageResponse class]]) {
-    return NO;
-  }
-  BananaService_DismissMessageResponse *other = (BananaService_DismissMessageResponse *)anObject;
-  if ((__messagesDismissed_isset != other->__messagesDismissed_isset) ||
-      (__messagesDismissed_isset && (__messagesDismissed != other->__messagesDismissed))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [super dealloc_stub];
-}
-
-- (int32_t) messagesDismissed {
-  return __messagesDismissed;
-}
-
-- (void) setMessagesDismissed: (int32_t) messagesDismissed {
-  __messagesDismissed = messagesDismissed;
-  __messagesDismissed_isset = YES;
-}
-
-- (BOOL) messagesDismissedIsSet {
-  return __messagesDismissed_isset;
-}
-
-- (void) unsetMessagesDismissed {
-  __messagesDismissed_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
-          [self setMessagesDismissed: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DismissMessageResponse"];
-  if (__messagesDismissed_isset) {
-    [outProtocol writeFieldBeginWithName: @"messagesDismissed" type: TType_I32 fieldID: 1];
-    [outProtocol writeI32: __messagesDismissed];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageResponse("];
-  [ms appendString: @"messagesDismissed:"];
-  [ms appendFormat: @"%i", __messagesDismissed];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DismissAllMessagesRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.messagesDismissed = 0;
-
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId messagesDismissed: (BananaService_int) messagesDismissed
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __messagesDismissed = messagesDismissed;
-  __messagesDismissed_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"messagesDismissed"])
-  {
-    __messagesDismissed = [decoder decodeInt32ForKey: @"messagesDismissed"];
-    __messagesDismissed_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__messagesDismissed_isset)
-  {
-    [encoder encodeInt32: __messagesDismissed forKey: @"messagesDismissed"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __messagesDismissed_isset ? 2654435761 : 0;
-  if (__messagesDismissed_isset)
-  {
-    hash = (hash * 31) ^ [@(__messagesDismissed) hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DismissAllMessagesRequest class]]) {
-    return NO;
-  }
-  BananaService_DismissAllMessagesRequest *other = (BananaService_DismissAllMessagesRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__messagesDismissed_isset != other->__messagesDismissed_isset) ||
-      (__messagesDismissed_isset && (__messagesDismissed != other->__messagesDismissed))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__applicationId release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (int32_t) messagesDismissed {
-  return __messagesDismissed;
-}
-
-- (void) setMessagesDismissed: (int32_t) messagesDismissed {
-  __messagesDismissed = messagesDismissed;
-  __messagesDismissed_isset = YES;
-}
-
-- (BOOL) messagesDismissedIsSet {
-  return __messagesDismissed_isset;
-}
-
-- (void) unsetMessagesDismissed {
-  __messagesDismissed_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_I32) {
-          int32_t fieldValue = [inProtocol readI32];
-          [self setMessagesDismissed: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DismissAllMessagesRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__messagesDismissed_isset) {
-    [outProtocol writeFieldBeginWithName: @"messagesDismissed" type: TType_I32 fieldID: 3];
-    [outProtocol writeI32: __messagesDismissed];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissAllMessagesRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",messagesDismissed:"];
-  [ms appendFormat: @"%i", __messagesDismissed];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_DismissAllMessagesResponse
-
-- (id) init
-{
-  self = [super init];
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_DismissAllMessagesResponse class]]) {
-    return NO;
-  }
-  BananaService_DismissAllMessagesResponse *other = (BananaService_DismissAllMessagesResponse *)anObject;
-  return YES;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"DismissAllMessagesResponse"];
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissAllMessagesResponse("];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_SaveChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SaveChannelRequest class]]) {
-    return NO;
-  }
-  BananaService_SaveChannelRequest *other = (BananaService_SaveChannelRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannelRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_SaveChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SaveChannelResponse class]]) {
-    return NO;
-  }
-  BananaService_SaveChannelResponse *other = (BananaService_SaveChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RemoveSavedChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelRequest class]]) {
-    return NO;
-  }
-  BananaService_RemoveSavedChannelRequest *other = (BananaService_RemoveSavedChannelRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_RemoveSavedChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelResponse class]]) {
-    return NO;
-  }
-  BananaService_RemoveSavedChannelResponse *other = (BananaService_RemoveSavedChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_SnoozeChannelRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannelRequest class]]) {
-    return NO;
-  }
-  BananaService_SnoozeChannelRequest *other = (BananaService_SnoozeChannelRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [__channel release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannelRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_SnoozeChannelResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannelResponse class]]) {
-    return NO;
-  }
-  BananaService_SnoozeChannelResponse *other = (BananaService_SnoozeChannelResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannelResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_GetMyApplicationsRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken
-{
-  self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
-  {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__humanToken_isset)
-  {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
-  {
-    hash = (hash * 31) ^ [__humanToken hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsRequest class]]) {
-    return NO;
-  }
-  BananaService_GetMyApplicationsRequest *other = (BananaService_GetMyApplicationsRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__humanToken release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
-}
-
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
-}
-
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
-}
-
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplicationsRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaService_GetMyApplicationsResponse
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithApplications: (NSMutableArray *) applications
-{
-  self = [super init];
-  __applications = [applications retain_stub];
-  __applications_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"applications"])
-  {
-    __applications = [[decoder decodeObjectForKey: @"applications"] retain_stub];
-    __applications_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__applications_isset)
-  {
-    [encoder encodeObject: __applications forKey: @"applications"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applications_isset ? 2654435761 : 0;
-  if (__applications_isset)
-  {
-    hash = (hash * 31) ^ [__applications hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsResponse class]]) {
-    return NO;
-  }
-  BananaService_GetMyApplicationsResponse *other = (BananaService_GetMyApplicationsResponse *)anObject;
-  if ((__applications_isset != other->__applications_isset) ||
-      (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__applications release_stub];
-  [super dealloc_stub];
-}
-
-- (NSMutableArray *) applications {
-  return [[__applications retain_stub] autorelease_stub];
-}
-
-- (void) setApplications: (NSMutableArray *) applications {
-  [applications retain_stub];
-  [__applications release_stub];
-  __applications = applications;
-  __applications_isset = YES;
-}
-
-- (BOOL) applicationsIsSet {
-  return __applications_isset;
-}
-
-- (void) unsetApplications {
-  [__applications release_stub];
-  __applications = nil;
-  __applications_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_LIST) {
-          int _size10;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
-          int _i11;
-          for (_i11 = 0; _i11 < _size10; ++_i11)
-          {
-            Banana_Application *_elem12 = [[Banana_Application alloc] init];
-            [_elem12 read: inProtocol];
-            [fieldValue addObject: _elem12];
-            [_elem12 release_stub];
-          }
-          [inProtocol readListEnd];
-          [self setApplications: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplicationsResponse"];
-  if (__applications_isset) {
-    if (__applications != nil) {
-      [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx14;
-        for (idx14 = 0; idx14 < [__applications count]; idx14++)
-        {
-          [[__applications objectAtIndex: idx14] write: outProtocol];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsResponse("];
-  [ms appendString: @"applications:"];
-  [ms appendFormat: @"%@", __applications];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation BananaService_GetApplicationInfoRequest
 
 - (id) init
@@ -6765,11 +6458,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
   return self;
@@ -6778,10 +6471,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationId"])
   {
@@ -6793,9 +6486,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
   if (__applicationId_isset)
   {
@@ -6806,10 +6499,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
   if (__applicationId_isset)
@@ -6828,8 +6521,8 @@
     return NO;
   }
   BananaService_GetApplicationInfoRequest *other = (BananaService_GetApplicationInfoRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   if ((__applicationId_isset != other->__applicationId_isset) ||
@@ -6841,30 +6534,30 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [__applicationId release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (NSString *) applicationId {
@@ -6905,9 +6598,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -6932,10 +6625,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetApplicationInfoRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -6956,8 +6649,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationInfoRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @")"];
@@ -7128,40 +6821,40 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   return hash;
 }
@@ -7175,8 +6868,8 @@
     return NO;
   }
   BananaService_GetDashboardRequest *other = (BananaService_GetDashboardRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   return YES;
@@ -7184,29 +6877,29 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -7226,9 +6919,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -7245,10 +6938,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetDashboardRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -7262,8 +6955,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetDashboardRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -7521,16 +7214,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            Banana_Message *_elem17 = [[Banana_Message alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            Banana_Message *_elem12 = [[Banana_Message alloc] init];
+            [_elem12 read: inProtocol];
+            [fieldValue addObject: _elem12];
+            [_elem12 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -7570,10 +7263,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__recentMessages count]; idx19++)
+        int idx14;
+        for (idx14 = 0; idx14 < [__recentMessages count]; idx14++)
         {
-          [[__recentMessages objectAtIndex: idx19] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx14] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -7604,82 +7297,84 @@
 
 @end
 
-@implementation BananaService_SearchForApplicationsRequest
+@implementation BananaService_GetMessagesRequest
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.limit = 0;
+
 #endif
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken searchTerm: (NSString *) searchTerm organization: (NSString *) organization
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
-  __searchTerm = [searchTerm retain_stub];
-  __searchTerm_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __limit = limit;
+  __limit_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"searchTerm"])
+  if ([decoder containsValueForKey: @"applicationId"])
   {
-    __searchTerm = [[decoder decodeObjectForKey: @"searchTerm"] retain_stub];
-    __searchTerm_isset = YES;
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
   }
-  if ([decoder containsValueForKey: @"organization"])
+  if ([decoder containsValueForKey: @"limit"])
   {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
+    __limit = [decoder decodeInt32ForKey: @"limit"];
+    __limit_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__searchTerm_isset)
+  if (__applicationId_isset)
   {
-    [encoder encodeObject: __searchTerm forKey: @"searchTerm"];
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
-  if (__organization_isset)
+  if (__limit_isset)
   {
-    [encoder encodeObject: __organization forKey: @"organization"];
+    [encoder encodeInt32: __limit forKey: @"limit"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __searchTerm_isset ? 2654435761 : 0;
-  if (__searchTerm_isset)
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
   {
-    hash = (hash * 31) ^ [__searchTerm hash];
+    hash = (hash * 31) ^ [__applicationId hash];
   }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
+  hash = (hash * 31) ^ __limit_isset ? 2654435761 : 0;
+  if (__limit_isset)
   {
-    hash = (hash * 31) ^ [__organization hash];
+    hash = (hash * 31) ^ [@(__limit) hash];
   }
   return hash;
 }
@@ -7689,20 +7384,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsRequest class]]) {
+  if (![anObject isKindOfClass:[BananaService_GetMessagesRequest class]]) {
     return NO;
   }
-  BananaService_SearchForApplicationsRequest *other = (BananaService_SearchForApplicationsRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  BananaService_GetMessagesRequest *other = (BananaService_GetMessagesRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__searchTerm_isset != other->__searchTerm_isset) ||
-      (__searchTerm_isset && ((__searchTerm || other->__searchTerm) && ![__searchTerm isEqual:other->__searchTerm]))) {
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+  if ((__limit_isset != other->__limit_isset) ||
+      (__limit_isset && (__limit != other->__limit))) {
     return NO;
   }
   return YES;
@@ -7710,73 +7405,68 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
-  [__searchTerm release_stub];
-  [__organization release_stub];
+  [__token release_stub];
+  [__applicationId release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
-- (NSString *) searchTerm {
-  return [[__searchTerm retain_stub] autorelease_stub];
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
 }
 
-- (void) setSearchTerm: (NSString *) searchTerm {
-  [searchTerm retain_stub];
-  [__searchTerm release_stub];
-  __searchTerm = searchTerm;
-  __searchTerm_isset = YES;
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
 }
 
-- (BOOL) searchTermIsSet {
-  return __searchTerm_isset;
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
 }
 
-- (void) unsetSearchTerm {
-  [__searchTerm release_stub];
-  __searchTerm = nil;
-  __searchTerm_isset = NO;
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
 }
 
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
+- (int32_t) limit {
+  return __limit;
 }
 
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
+- (void) setLimit: (int32_t) limit {
+  __limit = limit;
+  __limit_isset = YES;
 }
 
-- (BOOL) organizationIsSet {
-  return __organization_isset;
+- (BOOL) limitIsSet {
+  return __limit_isset;
 }
 
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
+- (void) unsetLimit {
+  __limit_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -7796,9 +7486,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -7807,15 +7497,15 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setSearchTerm: fieldValue];
+          [self setApplicationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setLimit: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -7830,25 +7520,405 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SearchForApplicationsRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  [outProtocol writeStructBeginWithName: @"GetMessagesRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__searchTerm_isset) {
-    if (__searchTerm != nil) {
-      [outProtocol writeFieldBeginWithName: @"searchTerm" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __searchTerm];
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __organization];
+  if (__limit_isset) {
+    [outProtocol writeFieldBeginWithName: @"limit" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __limit];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMessagesRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",limit:"];
+  [ms appendFormat: @"%i", __limit];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetMessagesResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.messages = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+  self.totalMessagesMatching = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (BananaService_int) totalMessagesMatching
+{
+  self = [super init];
+  __messages = [messages retain_stub];
+  __messages_isset = YES;
+  __totalMessagesMatching = totalMessagesMatching;
+  __totalMessagesMatching_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messages"])
+  {
+    __messages = [[decoder decodeObjectForKey: @"messages"] retain_stub];
+    __messages_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"totalMessagesMatching"])
+  {
+    __totalMessagesMatching = [decoder decodeInt32ForKey: @"totalMessagesMatching"];
+    __totalMessagesMatching_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messages_isset)
+  {
+    [encoder encodeObject: __messages forKey: @"messages"];
+  }
+  if (__totalMessagesMatching_isset)
+  {
+    [encoder encodeInt32: __totalMessagesMatching forKey: @"totalMessagesMatching"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messages_isset ? 2654435761 : 0;
+  if (__messages_isset)
+  {
+    hash = (hash * 31) ^ [__messages hash];
+  }
+  hash = (hash * 31) ^ __totalMessagesMatching_isset ? 2654435761 : 0;
+  if (__totalMessagesMatching_isset)
+  {
+    hash = (hash * 31) ^ [@(__totalMessagesMatching) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMessagesResponse class]]) {
+    return NO;
+  }
+  BananaService_GetMessagesResponse *other = (BananaService_GetMessagesResponse *)anObject;
+  if ((__messages_isset != other->__messages_isset) ||
+      (__messages_isset && ((__messages || other->__messages) && ![__messages isEqual:other->__messages]))) {
+    return NO;
+  }
+  if ((__totalMessagesMatching_isset != other->__totalMessagesMatching_isset) ||
+      (__totalMessagesMatching_isset && (__totalMessagesMatching != other->__totalMessagesMatching))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__messages release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) messages {
+  return [[__messages retain_stub] autorelease_stub];
+}
+
+- (void) setMessages: (NSMutableArray *) messages {
+  [messages retain_stub];
+  [__messages release_stub];
+  __messages = messages;
+  __messages_isset = YES;
+}
+
+- (BOOL) messagesIsSet {
+  return __messages_isset;
+}
+
+- (void) unsetMessages {
+  [__messages release_stub];
+  __messages = nil;
+  __messages_isset = NO;
+}
+
+- (int32_t) totalMessagesMatching {
+  return __totalMessagesMatching;
+}
+
+- (void) setTotalMessagesMatching: (int32_t) totalMessagesMatching {
+  __totalMessagesMatching = totalMessagesMatching;
+  __totalMessagesMatching_isset = YES;
+}
+
+- (BOOL) totalMessagesMatchingIsSet {
+  return __totalMessagesMatching_isset;
+}
+
+- (void) unsetTotalMessagesMatching {
+  __totalMessagesMatching_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size15;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
+          {
+            Banana_Message *_elem17 = [[Banana_Message alloc] init];
+            [_elem17 read: inProtocol];
+            [fieldValue addObject: _elem17];
+            [_elem17 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setMessages: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalMessagesMatching: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMessagesResponse"];
+  if (__messages_isset) {
+    if (__messages != nil) {
+      [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
+        int idx19;
+        for (idx19 = 0; idx19 < [__messages count]; idx19++)
+        {
+          [[__messages objectAtIndex: idx19] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__totalMessagesMatching_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalMessagesMatching" type: TType_I32 fieldID: 2];
+    [outProtocol writeI32: __totalMessagesMatching];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMessagesResponse("];
+  [ms appendString: @"messages:"];
+  [ms appendFormat: @"%@", __messages];
+  [ms appendString: @",totalMessagesMatching:"];
+  [ms appendFormat: @"%i", __totalMessagesMatching];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetMyApplicationsRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsRequest class]]) {
+    return NO;
+  }
+  BananaService_GetMyApplicationsRequest *other = (BananaService_GetMyApplicationsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMyApplicationsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -7861,27 +7931,21 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
-  [ms appendString: @",searchTerm:"];
-  [ms appendFormat: @"\"%@\"", __searchTerm];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation BananaService_SearchForApplicationsResponse
+@implementation BananaService_GetMyApplicationsResponse
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.applications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
-
 #endif
   return self;
 }
@@ -7929,10 +7993,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsResponse class]]) {
+  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsResponse class]]) {
     return NO;
   }
-  BananaService_SearchForApplicationsResponse *other = (BananaService_SearchForApplicationsResponse *)anObject;
+  BananaService_GetMyApplicationsResponse *other = (BananaService_GetMyApplicationsResponse *)anObject;
   if ((__applications_isset != other->__applications_isset) ||
       (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
     return NO;
@@ -8012,7 +8076,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SearchForApplicationsResponse"];
+  [outProtocol writeStructBeginWithName: @"GetMyApplicationsResponse"];
   if (__applications_isset) {
     if (__applications != nil) {
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
@@ -8037,7 +8101,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
@@ -8056,11 +8120,11 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId organization: (NSString *) organization
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId organization: (NSString *) organization
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
   __organization = [organization retain_stub];
@@ -8071,10 +8135,10 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationId"])
   {
@@ -8091,9 +8155,9 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
   if (__applicationId_isset)
   {
@@ -8108,10 +8172,10 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
   if (__applicationId_isset)
@@ -8135,8 +8199,8 @@
     return NO;
   }
   BananaService_GetApplicationSubscribersRequest *other = (BananaService_GetApplicationSubscribersRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   if ((__applicationId_isset != other->__applicationId_isset) ||
@@ -8152,31 +8216,31 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [__applicationId release_stub];
   [__organization release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (NSString *) applicationId {
@@ -8238,9 +8302,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -8273,10 +8337,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetApplicationSubscribersRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -8304,8 +8368,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationSubscribersRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",organization:"];
@@ -8322,46 +8386,46 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.humans = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.subscribers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
 #endif
   return self;
 }
 
-- (id) initWithHumans: (NSMutableArray *) humans
+- (id) initWithSubscribers: (NSMutableArray *) subscribers
 {
   self = [super init];
-  __humans = [humans retain_stub];
-  __humans_isset = YES;
+  __subscribers = [subscribers retain_stub];
+  __subscribers_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humans"])
+  if ([decoder containsValueForKey: @"subscribers"])
   {
-    __humans = [[decoder decodeObjectForKey: @"humans"] retain_stub];
-    __humans_isset = YES;
+    __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
+    __subscribers_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humans_isset)
+  if (__subscribers_isset)
   {
-    [encoder encodeObject: __humans forKey: @"humans"];
+    [encoder encodeObject: __subscribers forKey: @"subscribers"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humans_isset ? 2654435761 : 0;
-  if (__humans_isset)
+  hash = (hash * 31) ^ __subscribers_isset ? 2654435761 : 0;
+  if (__subscribers_isset)
   {
-    hash = (hash * 31) ^ [__humans hash];
+    hash = (hash * 31) ^ [__subscribers hash];
   }
   return hash;
 }
@@ -8375,8 +8439,8 @@
     return NO;
   }
   BananaService_GetApplicationSubscribersResponse *other = (BananaService_GetApplicationSubscribersResponse *)anObject;
-  if ((__humans_isset != other->__humans_isset) ||
-      (__humans_isset && ((__humans || other->__humans) && ![__humans isEqual:other->__humans]))) {
+  if ((__subscribers_isset != other->__subscribers_isset) ||
+      (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
     return NO;
   }
   return YES;
@@ -8384,29 +8448,29 @@
 
 - (void) dealloc
 {
-  [__humans release_stub];
+  [__subscribers release_stub];
   [super dealloc_stub];
 }
 
-- (NSMutableArray *) humans {
-  return [[__humans retain_stub] autorelease_stub];
+- (NSMutableArray *) subscribers {
+  return [[__subscribers retain_stub] autorelease_stub];
 }
 
-- (void) setHumans: (NSMutableArray *) humans {
-  [humans retain_stub];
-  [__humans release_stub];
-  __humans = humans;
-  __humans_isset = YES;
+- (void) setSubscribers: (NSMutableArray *) subscribers {
+  [subscribers retain_stub];
+  [__subscribers release_stub];
+  __subscribers = subscribers;
+  __subscribers_isset = YES;
 }
 
-- (BOOL) humansIsSet {
-  return __humans_isset;
+- (BOOL) subscribersIsSet {
+  return __subscribers_isset;
 }
 
-- (void) unsetHumans {
-  [__humans release_stub];
-  __humans = nil;
-  __humans_isset = NO;
+- (void) unsetSubscribers {
+  [__subscribers release_stub];
+  __subscribers = nil;
+  __subscribers_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -8432,13 +8496,13 @@
           int _i26;
           for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Banana_Human *_elem27 = [[Banana_Human alloc] init];
+            Banana_User *_elem27 = [[Banana_User alloc] init];
             [_elem27 read: inProtocol];
             [fieldValue addObject: _elem27];
             [_elem27 release_stub];
           }
           [inProtocol readListEnd];
-          [self setHumans: fieldValue];
+          [self setSubscribers: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -8455,15 +8519,15 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetApplicationSubscribersResponse"];
-  if (__humans_isset) {
-    if (__humans != nil) {
-      [outProtocol writeFieldBeginWithName: @"humans" type: TType_LIST fieldID: 1];
+  if (__subscribers_isset) {
+    if (__subscribers != nil) {
+      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_LIST fieldID: 1];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__humans count]];
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__subscribers count]];
         int idx29;
-        for (idx29 = 0; idx29 < [__humans count]; idx29++)
+        for (idx29 = 0; idx29 < [__subscribers count]; idx29++)
         {
-          [[__humans objectAtIndex: idx29] write: outProtocol];
+          [[__subscribers objectAtIndex: idx29] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8480,8 +8544,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationSubscribersResponse("];
-  [ms appendString: @"humans:"];
-  [ms appendFormat: @"%@", __humans];
+  [ms appendString: @"subscribers:"];
+  [ms appendFormat: @"%@", __subscribers];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -8498,40 +8562,40 @@
   return self;
 }
 
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken
+- (id) initWithToken: (BananaService_UserToken) token
 {
   self = [super init];
-  __humanToken = [humanToken retain_stub];
-  __humanToken_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"humanToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __humanToken = [[decoder decodeObjectForKey: @"humanToken"] retain_stub];
-    __humanToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__humanToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __humanToken forKey: @"humanToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __humanToken_isset ? 2654435761 : 0;
-  if (__humanToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__humanToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
   return hash;
 }
@@ -8545,8 +8609,8 @@
     return NO;
   }
   BananaService_GetMySavedChannelsRequest *other = (BananaService_GetMySavedChannelsRequest *)anObject;
-  if ((__humanToken_isset != other->__humanToken_isset) ||
-      (__humanToken_isset && ((__humanToken || other->__humanToken) && ![__humanToken isEqual:other->__humanToken]))) {
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
   return YES;
@@ -8554,29 +8618,29 @@
 
 - (void) dealloc
 {
-  [__humanToken release_stub];
+  [__token release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_HumanToken *) humanToken {
-  return [[__humanToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setHumanToken: (BananaAuthentication_HumanToken *) humanToken {
-  [humanToken retain_stub];
-  [__humanToken release_stub];
-  __humanToken = humanToken;
-  __humanToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) humanTokenIsSet {
-  return __humanToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetHumanToken {
-  [__humanToken release_stub];
-  __humanToken = nil;
-  __humanToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -8596,9 +8660,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_HumanToken *fieldValue = [[BananaAuthentication_HumanToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setHumanToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -8615,10 +8679,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetMySavedChannelsRequest"];
-  if (__humanToken_isset) {
-    if (__humanToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"humanToken" type: TType_STRUCT fieldID: 1];
-      [__humanToken write: outProtocol];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -8632,8 +8696,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannelsRequest("];
-  [ms appendString: @"humanToken:"];
-  [ms appendFormat: @"%@", __humanToken];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -8810,27 +8874,69 @@
 
 @end
 
-@implementation BananaService_GetServiceAnnouncementsRequest
+@implementation BananaService_GetActivityRequest
 
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.limit = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __limit = limit;
+  __limit_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"limit"])
+  {
+    __limit = [decoder decodeInt32ForKey: @"limit"];
+    __limit_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__limit_isset)
+  {
+    [encoder encodeInt32: __limit forKey: @"limit"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __limit_isset ? 2654435761 : 0;
+  if (__limit_isset)
+  {
+    hash = (hash * 31) ^ [@(__limit) hash];
+  }
   return hash;
 }
 
@@ -8839,11 +8945,63 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsRequest class]]) {
+  if (![anObject isKindOfClass:[BananaService_GetActivityRequest class]]) {
     return NO;
   }
-  BananaService_GetServiceAnnouncementsRequest *other = (BananaService_GetServiceAnnouncementsRequest *)anObject;
+  BananaService_GetActivityRequest *other = (BananaService_GetActivityRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__limit_isset != other->__limit_isset) ||
+      (__limit_isset && (__limit != other->__limit))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (int32_t) limit {
+  return __limit;
+}
+
+- (void) setLimit: (int32_t) limit {
+  __limit = limit;
+  __limit_isset = YES;
+}
+
+- (BOOL) limitIsSet {
+  return __limit_isset;
+}
+
+- (void) unsetLimit {
+  __limit_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -8861,6 +9019,355 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setLimit: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetActivityRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__limit_isset) {
+    [outProtocol writeFieldBeginWithName: @"limit" type: TType_I32 fieldID: 2];
+    [outProtocol writeI32: __limit];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivityRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",limit:"];
+  [ms appendFormat: @"%i", __limit];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetActivityResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.events = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithEvents: (NSMutableArray *) events
+{
+  self = [super init];
+  __events = [events retain_stub];
+  __events_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"events"])
+  {
+    __events = [[decoder decodeObjectForKey: @"events"] retain_stub];
+    __events_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__events_isset)
+  {
+    [encoder encodeObject: __events forKey: @"events"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __events_isset ? 2654435761 : 0;
+  if (__events_isset)
+  {
+    hash = (hash * 31) ^ [__events hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetActivityResponse class]]) {
+    return NO;
+  }
+  BananaService_GetActivityResponse *other = (BananaService_GetActivityResponse *)anObject;
+  if ((__events_isset != other->__events_isset) ||
+      (__events_isset && ((__events || other->__events) && ![__events isEqual:other->__events]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__events release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) events {
+  return [[__events retain_stub] autorelease_stub];
+}
+
+- (void) setEvents: (NSMutableArray *) events {
+  [events retain_stub];
+  [__events release_stub];
+  __events = events;
+  __events_isset = YES;
+}
+
+- (BOOL) eventsIsSet {
+  return __events_isset;
+}
+
+- (void) unsetEvents {
+  [__events release_stub];
+  __events = nil;
+  __events_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
+          {
+            BananaNotifications_Event *_elem37 = [[BananaNotifications_Event alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setEvents: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetActivityResponse"];
+  if (__events_isset) {
+    if (__events != nil) {
+      [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
+        int idx39;
+        for (idx39 = 0; idx39 < [__events count]; idx39++)
+        {
+          [[__events objectAtIndex: idx39] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivityResponse("];
+  [ms appendString: @"events:"];
+  [ms appendFormat: @"%@", __events];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetServiceAnnouncementsRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsRequest class]]) {
+    return NO;
+  }
+  BananaService_GetServiceAnnouncementsRequest *other = (BananaService_GetServiceAnnouncementsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -8872,6 +9379,13 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetServiceAnnouncementsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -8882,6 +9396,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -8998,16 +9514,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size40;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
+          int _i41;
+          for (_i41 = 0; _i41 < _size40; ++_i41)
           {
-            Banana_ServiceAnnouncement *_elem37 = [[Banana_ServiceAnnouncement alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            Banana_ServiceAnnouncement *_elem42 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem42 read: inProtocol];
+            [fieldValue addObject: _elem42];
+            [_elem42 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -9032,10 +9548,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__serviceAnnouncements count]; idx39++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__serviceAnnouncements count]; idx44++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx39] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9060,84 +9576,82 @@
 
 @end
 
-@implementation BananaService_SendMessageRequest
+@implementation BananaService_SearchForApplicationsRequest
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.urgency = 1;
-
 #endif
   return self;
 }
 
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken message: (NSString *) message urgency: (BananaService_Urgency) urgency
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization
 {
   self = [super init];
-  __applicationToken = [applicationToken retain_stub];
-  __applicationToken_isset = YES;
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __urgency = urgency;
-  __urgency_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __organization = [organization retain_stub];
+  __organization_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"applicationToken"])
+  if ([decoder containsValueForKey: @"token"])
   {
-    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
-    __applicationToken_isset = YES;
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
   }
-  if ([decoder containsValueForKey: @"message"])
+  if ([decoder containsValueForKey: @"applicationName"])
   {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
   }
-  if ([decoder containsValueForKey: @"urgency"])
+  if ([decoder containsValueForKey: @"organization"])
   {
-    __urgency = [decoder decodeIntForKey: @"urgency"];
-    __urgency_isset = YES;
+    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
+    __organization_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__applicationToken_isset)
+  if (__token_isset)
   {
-    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+    [encoder encodeObject: __token forKey: @"token"];
   }
-  if (__message_isset)
+  if (__applicationName_isset)
   {
-    [encoder encodeObject: __message forKey: @"message"];
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
-  if (__urgency_isset)
+  if (__organization_isset)
   {
-    [encoder encodeInt: __urgency forKey: @"urgency"];
+    [encoder encodeObject: __organization forKey: @"organization"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
-  if (__applicationToken_isset)
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
   {
-    hash = (hash * 31) ^ [__applicationToken hash];
+    hash = (hash * 31) ^ [__token hash];
   }
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
   {
-    hash = (hash * 31) ^ [__message hash];
+    hash = (hash * 31) ^ [__applicationName hash];
   }
-  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
-  if (__urgency_isset)
+  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
+  if (__organization_isset)
   {
-    hash = (hash * 31) ^ [@(__urgency) hash];
+    hash = (hash * 31) ^ [__organization hash];
   }
   return hash;
 }
@@ -9147,20 +9661,20 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessageRequest class]]) {
+  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsRequest class]]) {
     return NO;
   }
-  BananaService_SendMessageRequest *other = (BananaService_SendMessageRequest *)anObject;
-  if ((__applicationToken_isset != other->__applicationToken_isset) ||
-      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+  BananaService_SearchForApplicationsRequest *other = (BananaService_SearchForApplicationsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
-  if ((__urgency_isset != other->__urgency_isset) ||
-      (__urgency_isset && (__urgency != other->__urgency))) {
+  if ((__organization_isset != other->__organization_isset) ||
+      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
     return NO;
   }
   return YES;
@@ -9168,68 +9682,73 @@
 
 - (void) dealloc
 {
-  [__applicationToken release_stub];
-  [__message release_stub];
+  [__token release_stub];
+  [__applicationName release_stub];
+  [__organization release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
-  return [[__applicationToken retain_stub] autorelease_stub];
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
-  [applicationToken retain_stub];
-  [__applicationToken release_stub];
-  __applicationToken = applicationToken;
-  __applicationToken_isset = YES;
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
 }
 
-- (BOOL) applicationTokenIsSet {
-  return __applicationToken_isset;
+- (BOOL) tokenIsSet {
+  return __token_isset;
 }
 
-- (void) unsetApplicationToken {
-  [__applicationToken release_stub];
-  __applicationToken = nil;
-  __applicationToken_isset = NO;
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
 }
 
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
 }
 
-- (BOOL) messageIsSet {
-  return __message_isset;
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
 }
 
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
 }
 
-- (int) urgency {
-  return __urgency;
+- (NSString *) organization {
+  return [[__organization retain_stub] autorelease_stub];
 }
 
-- (void) setUrgency: (int) urgency {
-  __urgency = urgency;
-  __urgency_isset = YES;
+- (void) setOrganization: (NSString *) organization {
+  [organization retain_stub];
+  [__organization release_stub];
+  __organization = organization;
+  __organization_isset = YES;
 }
 
-- (BOOL) urgencyIsSet {
-  return __urgency_isset;
+- (BOOL) organizationIsSet {
+  return __organization_isset;
 }
 
-- (void) unsetUrgency {
-  __urgency_isset = NO;
+- (void) unsetOrganization {
+  [__organization release_stub];
+  __organization = nil;
+  __organization_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -9249,9 +9768,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
           [fieldValue read: inProtocol];
-          [self setApplicationToken: fieldValue];
+          [self setToken: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -9260,15 +9779,15 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
+          [self setApplicationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 3:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setUrgency: fieldValue];
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -9283,25 +9802,27 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendMessageRequest"];
-  if (__applicationToken_isset) {
-    if (__applicationToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
-      [__applicationToken write: outProtocol];
+  [outProtocol writeStructBeginWithName: @"SearchForApplicationsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __message];
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationName];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__urgency_isset) {
-    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
-    [outProtocol writeI32: __urgency];
-    [outProtocol writeFieldEnd];
+  if (__organization_isset) {
+    if (__organization != nil) {
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __organization];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -9312,63 +9833,65 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessageRequest("];
-  [ms appendString: @"applicationToken:"];
-  [ms appendFormat: @"%@", __applicationToken];
-  [ms appendString: @",message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",urgency:"];
-  [ms appendFormat: @"%i", __urgency];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",organization:"];
+  [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation BananaService_SendMessageResponse
+@implementation BananaService_SearchForApplicationsResponse
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.applications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message
+- (id) initWithApplications: (NSMutableArray *) applications
 {
   self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
+  __applications = [applications retain_stub];
+  __applications_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"message"])
+  if ([decoder containsValueForKey: @"applications"])
   {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
+    __applications = [[decoder decodeObjectForKey: @"applications"] retain_stub];
+    __applications_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__message_isset)
+  if (__applications_isset)
   {
-    [encoder encodeObject: __message forKey: @"message"];
+    [encoder encodeObject: __applications forKey: @"applications"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
+  hash = (hash * 31) ^ __applications_isset ? 2654435761 : 0;
+  if (__applications_isset)
   {
-    hash = (hash * 31) ^ [__message hash];
+    hash = (hash * 31) ^ [__applications hash];
   }
   return hash;
 }
@@ -9378,12 +9901,12 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessageResponse class]]) {
+  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsResponse class]]) {
     return NO;
   }
-  BananaService_SendMessageResponse *other = (BananaService_SendMessageResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+  BananaService_SearchForApplicationsResponse *other = (BananaService_SearchForApplicationsResponse *)anObject;
+  if ((__applications_isset != other->__applications_isset) ||
+      (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
     return NO;
   }
   return YES;
@@ -9391,29 +9914,29 @@
 
 - (void) dealloc
 {
-  [__message release_stub];
+  [__applications release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
+- (NSMutableArray *) applications {
+  return [[__applications retain_stub] autorelease_stub];
 }
 
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
+- (void) setApplications: (NSMutableArray *) applications {
+  [applications retain_stub];
+  [__applications release_stub];
+  __applications = applications;
+  __applications_isset = YES;
 }
 
-- (BOOL) messageIsSet {
-  return __message_isset;
+- (BOOL) applicationsIsSet {
+  return __applications_isset;
 }
 
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
+- (void) unsetApplications {
+  [__applications release_stub];
+  __applications = nil;
+  __applications_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -9432,9 +9955,21 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
+        if (fieldType == TType_LIST) {
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
+          {
+            Banana_Application *_elem47 = [[Banana_Application alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setApplications: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -9449,11 +9984,19 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendMessageResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
+  [outProtocol writeStructBeginWithName: @"SearchForApplicationsResponse"];
+  if (__applications_isset) {
+    if (__applications != nil) {
+      [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
+        int idx49;
+        for (idx49 = 0; idx49 < [__applications count]; idx49++)
+        {
+          [[__applications objectAtIndex: idx49] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
       [outProtocol writeFieldEnd];
     }
   }
@@ -9466,41 +10009,52 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessageResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsResponse("];
+  [ms appendString: @"applications:"];
+  [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-static double BananaService_API_VERSION = 1.3;
+static double BananaService_API_VERSION = 1.4;
+static BananaService_int BananaService_SERVICE_PORT = 7001;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
-static Banana_Dimension * BananaService_MAX_ICON_DIMENSION;
-static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
+static Banana_Dimension * BananaService_MAX_APPLICATION_ICON_DIMENSION;
+static Banana_Dimension * BananaService_MAX_PROFILE_IMAGE_DIMENSION;
+static BananaService_int BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-service.aroma.tech"];
+  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-srv.banana.aroma.tech"];
   [BananaService_PRODUCTION_ENDPOINT setPort:7001];
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-service-beta.aroma.tech"];
+  [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
   [BananaService_BETA_ENDPOINT setPort:7001];
 
 ;
-  BananaService_MAX_ICON_DIMENSION = [[Banana_Dimension alloc] init];
-  [BananaService_MAX_ICON_DIMENSION setWidth:500];
-  [BananaService_MAX_ICON_DIMENSION setHeight:500];
+  BananaService_MAX_APPLICATION_ICON_DIMENSION = [[Banana_Dimension alloc] init];
+  [BananaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
+  [BananaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
+
+;
+  BananaService_MAX_PROFILE_IMAGE_DIMENSION = [[Banana_Dimension alloc] init];
+  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
+  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
 
 ;
 }
 + (double) API_VERSION{
   return BananaService_API_VERSION;
+}
++ (BananaService_int) SERVICE_PORT{
+  return BananaService_SERVICE_PORT;
 }
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return BananaService_PRODUCTION_ENDPOINT;
@@ -9508,11 +10062,17 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return BananaService_BETA_ENDPOINT;
 }
-+ (Banana_Dimension *) MAX_ICON_DIMENSION{
-  return BananaService_MAX_ICON_DIMENSION;
++ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
+  return BananaService_MAX_APPLICATION_ICON_DIMENSION;
 }
-+ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES{
-  return BananaService_MAX_ICON_SIZE_IN_KILOBYTES;
++ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION{
+  return BananaService_MAX_PROFILE_IMAGE_DIMENSION;
+}
++ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES{
+  return BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
+}
++ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
+  return BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 }
 @end
 
@@ -9776,18 +10336,18 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_sendMessage_args : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageRequest * __request;
+@interface BananaService_provisionApplication_args : NSObject <TBase, NSCoding> {
+  BananaService_ProvisionApplicationRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SendMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_ProvisionApplicationRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request;
+- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -9795,14 +10355,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageRequest *) request;
-- (void) setRequest: (BananaService_SendMessageRequest *) request;
+- (BananaService_ProvisionApplicationRequest *) request;
+- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_sendMessage_args
+@implementation BananaService_provisionApplication_args
 
 - (id) init
 {
@@ -9812,7 +10372,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request
+- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -9855,10 +10415,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_sendMessage_args class]]) {
+  if (![anObject isKindOfClass:[BananaService_provisionApplication_args class]]) {
     return NO;
   }
-  BananaService_sendMessage_args *other = (BananaService_sendMessage_args *)anObject;
+  BananaService_provisionApplication_args *other = (BananaService_provisionApplication_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -9872,11 +10432,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageRequest *) request {
+- (BananaService_ProvisionApplicationRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SendMessageRequest *) request {
+- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -9910,7 +10470,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageRequest *fieldValue = [[BananaService_SendMessageRequest alloc] init];
+          BananaService_ProvisionApplicationRequest *fieldValue = [[BananaService_ProvisionApplicationRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -9928,7 +10488,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"sendMessage_args"];
+  [outProtocol writeStructBeginWithName: @"provisionApplication_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -9945,7 +10505,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_sendMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_provisionApplication_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -9954,27 +10514,33 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_SendMessage_result : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageResponse * __success;
+@interface BananaService_ProvisionApplication_result : NSObject <TBase, NSCoding> {
+  BananaService_ProvisionApplicationResponse * __success;
   BananaService_OperationFailedException __ex1;
   BananaService_InvalidArgumentException __ex2;
   BananaService_InvalidCredentialsException __ex3;
+  BananaService_ApplicationDoesNotExistException __ex4;
+  BananaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
   BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SendMessageResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_ProvisionApplicationResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SendMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
+- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -9982,8 +10548,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageResponse *) success;
-- (void) setSuccess: (BananaService_SendMessageResponse *) success;
+- (BananaService_ProvisionApplicationResponse *) success;
+- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -10005,9 +10571,21 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 #endif
 - (BOOL) ex3IsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex5;
+- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
 @end
 
-@implementation BananaService_SendMessage_result
+@implementation BananaService_ProvisionApplication_result
 
 - (id) init
 {
@@ -10017,7 +10595,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SendMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
+- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -10028,6 +10606,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex2_isset = YES;
   __ex3 = [ex3 retain_stub];
   __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
   return self;
 }
 
@@ -10054,6 +10636,16 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
     __ex3_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
   return self;
 }
 
@@ -10074,6 +10666,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex3_isset)
   {
     [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
   }
 }
 
@@ -10100,6 +10700,16 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   {
     hash = (hash * 31) ^ [__ex3 hash];
   }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
   return hash;
 }
 
@@ -10108,10 +10718,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SendMessage_result class]]) {
+  if (![anObject isKindOfClass:[BananaService_ProvisionApplication_result class]]) {
     return NO;
   }
-  BananaService_SendMessage_result *other = (BananaService_SendMessage_result *)anObject;
+  BananaService_ProvisionApplication_result *other = (BananaService_ProvisionApplication_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -10128,6 +10738,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
     return NO;
   }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -10137,14 +10755,16 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [__ex1 release_stub];
   [__ex2 release_stub];
   [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageResponse *) success {
+- (BananaService_ProvisionApplicationResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SendMessageResponse *) success {
+- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -10224,6 +10844,48 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex3_isset = NO;
 }
 
+- (BananaException_ApplicationDoesNotExistException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -10241,7 +10903,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageResponse *fieldValue = [[BananaService_SendMessageResponse alloc] init];
+          BananaService_ProvisionApplicationResponse *fieldValue = [[BananaService_ProvisionApplicationResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -10279,6 +10941,26 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -10289,7 +10971,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendMessage_result"];
+  [outProtocol writeStructBeginWithName: @"ProvisionApplication_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -10315,6 +10997,18 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       [__ex3 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -10325,7 +11019,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SendMessage_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplication_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -10334,24 +11028,28 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [ms appendFormat: @"%@", __ex2];
   [ms appendString: @",ex3:"];
   [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@interface BananaService_sendMessageAsync_args : NSObject <TBase, NSCoding> {
-  BananaService_SendMessageRequest * __request;
+@interface BananaService_regenerateToken_args : NSObject <TBase, NSCoding> {
+  BananaService_RegenerateApplicationTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SendMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegenerateApplicationTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request;
+- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -10359,14 +11057,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SendMessageRequest *) request;
-- (void) setRequest: (BananaService_SendMessageRequest *) request;
+- (BananaService_RegenerateApplicationTokenRequest *) request;
+- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_sendMessageAsync_args
+@implementation BananaService_regenerateToken_args
 
 - (id) init
 {
@@ -10376,7 +11074,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SendMessageRequest *) request
+- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -10419,10 +11117,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_sendMessageAsync_args class]]) {
+  if (![anObject isKindOfClass:[BananaService_regenerateToken_args class]]) {
     return NO;
   }
-  BananaService_sendMessageAsync_args *other = (BananaService_sendMessageAsync_args *)anObject;
+  BananaService_regenerateToken_args *other = (BananaService_regenerateToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -10436,11 +11134,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [super dealloc_stub];
 }
 
-- (BananaService_SendMessageRequest *) request {
+- (BananaService_RegenerateApplicationTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SendMessageRequest *) request {
+- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -10474,7 +11172,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SendMessageRequest *fieldValue = [[BananaService_SendMessageRequest alloc] init];
+          BananaService_RegenerateApplicationTokenRequest *fieldValue = [[BananaService_RegenerateApplicationTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -10492,7 +11190,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"sendMessageAsync_args"];
+  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -10509,9 +11207,3272 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_sendMessageAsync_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_regenerateToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_RegenerateToken_result : NSObject <TBase, NSCoding> {
+  BananaService_RegenerateApplicationTokenResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_ApplicationDoesNotExistException __ex4;
+  BananaService_UnauthorizedException __ex5;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegenerateApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RegenerateApplicationTokenResponse *) success;
+- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex5;
+- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
+@end
+
+@implementation BananaService_RegenerateToken_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegenerateToken_result class]]) {
+    return NO;
+  }
+  BananaService_RegenerateToken_result *other = (BananaService_RegenerateToken_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RegenerateApplicationTokenResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_ApplicationDoesNotExistException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RegenerateApplicationTokenResponse *fieldValue = [[BananaService_RegenerateApplicationTokenResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegenerateToken_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateToken_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_registerHealthCheck_args : NSObject <TBase, NSCoding> {
+  BananaService_RegisterHealthCheckRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegisterHealthCheckRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RegisterHealthCheckRequest *) request;
+- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_registerHealthCheck_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_registerHealthCheck_args class]]) {
+    return NO;
+  }
+  BananaService_registerHealthCheck_args *other = (BananaService_registerHealthCheck_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RegisterHealthCheckRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RegisterHealthCheckRequest *fieldValue = [[BananaService_RegisterHealthCheckRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"registerHealthCheck_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_registerHealthCheck_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_RegisterHealthCheck_result : NSObject <TBase, NSCoding> {
+  BananaService_RegisterHealthCheckResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_ApplicationDoesNotExistException __ex4;
+  BananaService_UnauthorizedException __ex5;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegisterHealthCheckResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RegisterHealthCheckResponse *) success;
+- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex5;
+- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
+@end
+
+@implementation BananaService_RegisterHealthCheck_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheck_result class]]) {
+    return NO;
+  }
+  BananaService_RegisterHealthCheck_result *other = (BananaService_RegisterHealthCheck_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RegisterHealthCheckResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_ApplicationDoesNotExistException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RegisterHealthCheckResponse *fieldValue = [[BananaService_RegisterHealthCheckResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RegisterHealthCheck_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheck_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_removeSavedChannel_args : NSObject <TBase, NSCoding> {
+  BananaService_RemoveSavedChannelRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RemoveSavedChannelRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RemoveSavedChannelRequest *) request;
+- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_removeSavedChannel_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_removeSavedChannel_args class]]) {
+    return NO;
+  }
+  BananaService_removeSavedChannel_args *other = (BananaService_removeSavedChannel_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RemoveSavedChannelRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RemoveSavedChannelRequest *fieldValue = [[BananaService_RemoveSavedChannelRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_removeSavedChannel_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_RemoveSavedChannel_result : NSObject <TBase, NSCoding> {
+  BananaService_RemoveSavedChannelResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_UnauthorizedException __ex4;
+  BananaService_ChannelDoesNotExistException __ex5;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RemoveSavedChannelResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RemoveSavedChannelResponse *) success;
+- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex4;
+- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ChannelDoesNotExistException) ex5;
+- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
+@end
+
+@implementation BananaService_RemoveSavedChannel_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannel_result class]]) {
+    return NO;
+  }
+  BananaService_RemoveSavedChannel_result *other = (BananaService_RemoveSavedChannel_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RemoveSavedChannelResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (BananaException_ChannelDoesNotExistException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RemoveSavedChannelResponse *fieldValue = [[BananaService_RemoveSavedChannelResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RemoveSavedChannel_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannel_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_renewApplicationToken_args : NSObject <TBase, NSCoding> {
+  BananaService_RenewApplicationTokenRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RenewApplicationTokenRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RenewApplicationTokenRequest *) request;
+- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_renewApplicationToken_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_renewApplicationToken_args class]]) {
+    return NO;
+  }
+  BananaService_renewApplicationToken_args *other = (BananaService_renewApplicationToken_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RenewApplicationTokenRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RenewApplicationTokenRequest *fieldValue = [[BananaService_RenewApplicationTokenRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"renewApplicationToken_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_renewApplicationToken_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_RenewApplicationToken_result : NSObject <TBase, NSCoding> {
+  BananaService_RenewApplicationTokenResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_ApplicationDoesNotExistException __ex4;
+  BananaService_UnauthorizedException __ex5;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+  BOOL __ex5_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RenewApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_RenewApplicationTokenResponse *) success;
+- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex5;
+- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
+@end
+
+@implementation BananaService_RenewApplicationToken_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_RenewApplicationToken_result class]]) {
+    return NO;
+  }
+  BananaService_RenewApplicationToken_result *other = (BananaService_RenewApplicationToken_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [__ex5 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_RenewApplicationTokenResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_ApplicationDoesNotExistException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_RenewApplicationTokenResponse *fieldValue = [[BananaService_RenewApplicationTokenResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"RenewApplicationToken_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationToken_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_saveChannel_args : NSObject <TBase, NSCoding> {
+  BananaService_SaveChannelRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SaveChannelRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_SaveChannelRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_SaveChannelRequest *) request;
+- (void) setRequest: (BananaService_SaveChannelRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_saveChannel_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_SaveChannelRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_saveChannel_args class]]) {
+    return NO;
+  }
+  BananaService_saveChannel_args *other = (BananaService_saveChannel_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_SaveChannelRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_SaveChannelRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_SaveChannelRequest *fieldValue = [[BananaService_SaveChannelRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_saveChannel_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_SaveChannel_result : NSObject <TBase, NSCoding> {
+  BananaService_SaveChannelResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_UnauthorizedException __ex4;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SaveChannelResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_SaveChannelResponse *) success;
+- (void) setSuccess: (BananaService_SaveChannelResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex4;
+- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+@end
+
+@implementation BananaService_SaveChannel_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SaveChannel_result class]]) {
+    return NO;
+  }
+  BananaService_SaveChannel_result *other = (BananaService_SaveChannel_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_SaveChannelResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_SaveChannelResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_SaveChannelResponse *fieldValue = [[BananaService_SaveChannelResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SaveChannel_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannel_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -11715,18 +15676,18 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_provisionApplication_args : NSObject <TBase, NSCoding> {
-  BananaService_ProvisionApplicationRequest * __request;
+@interface BananaService_snoozeChannel_args : NSObject <TBase, NSCoding> {
+  BananaService_SnoozeChannelRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_ProvisionApplicationRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SnoozeChannelRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request;
+- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -11734,14 +15695,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ProvisionApplicationRequest *) request;
-- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request;
+- (BananaService_SnoozeChannelRequest *) request;
+- (void) setRequest: (BananaService_SnoozeChannelRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_provisionApplication_args
+@implementation BananaService_snoozeChannel_args
 
 - (id) init
 {
@@ -11751,7 +15712,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request
+- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -11794,10 +15755,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_provisionApplication_args class]]) {
+  if (![anObject isKindOfClass:[BananaService_snoozeChannel_args class]]) {
     return NO;
   }
-  BananaService_provisionApplication_args *other = (BananaService_provisionApplication_args *)anObject;
+  BananaService_snoozeChannel_args *other = (BananaService_snoozeChannel_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -11811,11 +15772,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [super dealloc_stub];
 }
 
-- (BananaService_ProvisionApplicationRequest *) request {
+- (BananaService_SnoozeChannelRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request {
+- (void) setRequest: (BananaService_SnoozeChannelRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -11849,7 +15810,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_ProvisionApplicationRequest *fieldValue = [[BananaService_ProvisionApplicationRequest alloc] init];
+          BananaService_SnoozeChannelRequest *fieldValue = [[BananaService_SnoozeChannelRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -11867,7 +15828,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"provisionApplication_args"];
+  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -11884,7 +15845,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_provisionApplication_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_snoozeChannel_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -11893,30 +15854,33 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_ProvisionApplication_result : NSObject <TBase, NSCoding> {
-  BananaService_ProvisionApplicationResponse * __success;
+@interface BananaService_SnoozeChannel_result : NSObject <TBase, NSCoding> {
+  BananaService_SnoozeChannelResponse * __success;
   BananaService_OperationFailedException __ex1;
   BananaService_InvalidArgumentException __ex2;
   BananaService_InvalidCredentialsException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
+  BananaService_UnauthorizedException __ex4;
+  BananaService_ChannelDoesNotExistException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
   BOOL __ex3_isset;
   BOOL __ex4_isset;
+  BOOL __ex5_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_ProvisionApplicationResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SnoozeChannelResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -11924,8 +15888,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ProvisionApplicationResponse *) success;
-- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success;
+- (BananaService_SnoozeChannelResponse *) success;
+- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -11948,14 +15912,20 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (BananaService_UnauthorizedException) ex4;
+- (void) setEx4: (BananaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaService_ChannelDoesNotExistException) ex5;
+- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
+#endif
+- (BOOL) ex5IsSet;
+
 @end
 
-@implementation BananaService_ProvisionApplication_result
+@implementation BananaService_SnoozeChannel_result
 
 - (id) init
 {
@@ -11965,7 +15935,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4
+- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -11978,6 +15948,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex3_isset = YES;
   __ex4 = [ex4 retain_stub];
   __ex4_isset = YES;
+  __ex5 = [ex5 retain_stub];
+  __ex5_isset = YES;
   return self;
 }
 
@@ -12009,6 +15981,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
     __ex4_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex5"])
+  {
+    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
+    __ex5_isset = YES;
+  }
   return self;
 }
 
@@ -12033,6 +16010,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (__ex4_isset)
   {
     [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+  if (__ex5_isset)
+  {
+    [encoder encodeObject: __ex5 forKey: @"ex5"];
   }
 }
 
@@ -12064,6 +16045,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   {
     hash = (hash * 31) ^ [__ex4 hash];
   }
+  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
+  if (__ex5_isset)
+  {
+    hash = (hash * 31) ^ [__ex5 hash];
+  }
   return hash;
 }
 
@@ -12072,10 +16058,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplication_result class]]) {
+  if (![anObject isKindOfClass:[BananaService_SnoozeChannel_result class]]) {
     return NO;
   }
-  BananaService_ProvisionApplication_result *other = (BananaService_ProvisionApplication_result *)anObject;
+  BananaService_SnoozeChannel_result *other = (BananaService_SnoozeChannel_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -12096,6 +16082,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
     return NO;
   }
+  if ((__ex5_isset != other->__ex5_isset) ||
+      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -12106,14 +16096,15 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [__ex2 release_stub];
   [__ex3 release_stub];
   [__ex4 release_stub];
+  [__ex5 release_stub];
   [super dealloc_stub];
 }
 
-- (BananaService_ProvisionApplicationResponse *) success {
+- (BananaService_SnoozeChannelResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success {
+- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -12193,11 +16184,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (BananaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -12212,6 +16203,27 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [__ex4 release_stub];
   __ex4 = nil;
   __ex4_isset = NO;
+}
+
+- (BananaException_ChannelDoesNotExistException *) ex5 {
+  return [[__ex5 retain_stub] autorelease_stub];
+}
+
+- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
+  [ex5 retain_stub];
+  [__ex5 release_stub];
+  __ex5 = ex5;
+  __ex5_isset = YES;
+}
+
+- (BOOL) ex5IsSet {
+  return __ex5_isset;
+}
+
+- (void) unsetEx5 {
+  [__ex5 release_stub];
+  __ex5 = nil;
+  __ex5_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -12231,7 +16243,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_ProvisionApplicationResponse *fieldValue = [[BananaService_ProvisionApplicationResponse alloc] init];
+          BananaService_SnoozeChannelResponse *fieldValue = [[BananaService_SnoozeChannelResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -12271,9 +16283,19 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx5: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -12289,7 +16311,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ProvisionApplication_result"];
+  [outProtocol writeStructBeginWithName: @"SnoozeChannel_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -12321,6 +16343,12 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
       [__ex4 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex5_isset) {
+    if (__ex5 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
+      [__ex5 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -12331,7 +16359,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplication_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannel_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -12342,6 +16370,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [ms appendFormat: @"%@", __ex3];
   [ms appendString: @",ex4:"];
   [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @",ex5:"];
+  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -13119,18 +17149,18 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_registerHealthCheck_args : NSObject <TBase, NSCoding> {
-  BananaService_RegisterHealthCheckRequest * __request;
+@interface BananaService_getActivity_args : NSObject <TBase, NSCoding> {
+  BananaService_GetActivityRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegisterHealthCheckRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetActivityRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request;
+- (id) initWithRequest: (BananaService_GetActivityRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -13138,14 +17168,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RegisterHealthCheckRequest *) request;
-- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request;
+- (BananaService_GetActivityRequest *) request;
+- (void) setRequest: (BananaService_GetActivityRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_registerHealthCheck_args
+@implementation BananaService_getActivity_args
 
 - (id) init
 {
@@ -13155,7 +17185,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request
+- (id) initWithRequest: (BananaService_GetActivityRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -13198,10 +17228,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_registerHealthCheck_args class]]) {
+  if (![anObject isKindOfClass:[BananaService_getActivity_args class]]) {
     return NO;
   }
-  BananaService_registerHealthCheck_args *other = (BananaService_registerHealthCheck_args *)anObject;
+  BananaService_getActivity_args *other = (BananaService_getActivity_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -13215,11 +17245,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [super dealloc_stub];
 }
 
-- (BananaService_RegisterHealthCheckRequest *) request {
+- (BananaService_GetActivityRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request {
+- (void) setRequest: (BananaService_GetActivityRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -13253,7 +17283,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_RegisterHealthCheckRequest *fieldValue = [[BananaService_RegisterHealthCheckRequest alloc] init];
+          BananaService_GetActivityRequest *fieldValue = [[BananaService_GetActivityRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -13271,7 +17301,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"registerHealthCheck_args"];
+  [outProtocol writeStructBeginWithName: @"getActivity_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -13288,7 +17318,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_registerHealthCheck_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getActivity_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -13297,5417 +17327,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@interface BananaService_RegisterHealthCheck_result : NSObject <TBase, NSCoding> {
-  BananaService_RegisterHealthCheckResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegisterHealthCheckResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RegisterHealthCheckResponse *) success;
-- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation BananaService_RegisterHealthCheck_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheck_result class]]) {
-    return NO;
-  }
-  BananaService_RegisterHealthCheck_result *other = (BananaService_RegisterHealthCheck_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RegisterHealthCheckResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RegisterHealthCheckResponse *fieldValue = [[BananaService_RegisterHealthCheckResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegisterHealthCheck_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheck_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_renewApplicationToken_args : NSObject <TBase, NSCoding> {
-  BananaService_RenewApplicationTokenRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RenewApplicationTokenRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RenewApplicationTokenRequest *) request;
-- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_renewApplicationToken_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_renewApplicationToken_args class]]) {
-    return NO;
-  }
-  BananaService_renewApplicationToken_args *other = (BananaService_renewApplicationToken_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RenewApplicationTokenRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RenewApplicationTokenRequest *fieldValue = [[BananaService_RenewApplicationTokenRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"renewApplicationToken_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_renewApplicationToken_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_RenewApplicationToken_result : NSObject <TBase, NSCoding> {
-  BananaService_RenewApplicationTokenResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RenewApplicationTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RenewApplicationTokenResponse *) success;
-- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation BananaService_RenewApplicationToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationToken_result class]]) {
-    return NO;
-  }
-  BananaService_RenewApplicationToken_result *other = (BananaService_RenewApplicationToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RenewApplicationTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RenewApplicationTokenResponse *fieldValue = [[BananaService_RenewApplicationTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RenewApplicationToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_regenerateToken_args : NSObject <TBase, NSCoding> {
-  BananaService_RegenerateApplicationTokenRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegenerateApplicationTokenRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RegenerateApplicationTokenRequest *) request;
-- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_regenerateToken_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_regenerateToken_args class]]) {
-    return NO;
-  }
-  BananaService_regenerateToken_args *other = (BananaService_regenerateToken_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RegenerateApplicationTokenRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RegenerateApplicationTokenRequest *fieldValue = [[BananaService_RegenerateApplicationTokenRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_regenerateToken_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_RegenerateToken_result : NSObject <TBase, NSCoding> {
-  BananaService_RegenerateApplicationTokenResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegenerateApplicationTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RegenerateApplicationTokenResponse *) success;
-- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation BananaService_RegenerateToken_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RegenerateToken_result class]]) {
-    return NO;
-  }
-  BananaService_RegenerateToken_result *other = (BananaService_RegenerateToken_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RegenerateApplicationTokenResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RegenerateApplicationTokenResponse *fieldValue = [[BananaService_RegenerateApplicationTokenResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RegenerateToken_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateToken_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_searchForApplications_args : NSObject <TBase, NSCoding> {
-  BananaService_SearchForApplicationsRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SearchForApplicationsRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SearchForApplicationsRequest *) request;
-- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_searchForApplications_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_searchForApplications_args class]]) {
-    return NO;
-  }
-  BananaService_searchForApplications_args *other = (BananaService_searchForApplications_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SearchForApplicationsRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SearchForApplicationsRequest *fieldValue = [[BananaService_SearchForApplicationsRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"searchForApplications_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_searchForApplications_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_SearchForApplications_result : NSObject <TBase, NSCoding> {
-  BananaService_SearchForApplicationsResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UnauthorizedException __ex4;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SearchForApplicationsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SearchForApplicationsResponse *) success;
-- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-@end
-
-@implementation BananaService_SearchForApplications_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplications_result class]]) {
-    return NO;
-  }
-  BananaService_SearchForApplications_result *other = (BananaService_SearchForApplications_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SearchForApplicationsResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SearchForApplicationsResponse *fieldValue = [[BananaService_SearchForApplicationsResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SearchForApplications_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplications_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_saveChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_SaveChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SaveChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_SaveChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SaveChannelRequest *) request;
-- (void) setRequest: (BananaService_SaveChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_saveChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_SaveChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_saveChannel_args class]]) {
-    return NO;
-  }
-  BananaService_saveChannel_args *other = (BananaService_saveChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SaveChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_SaveChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SaveChannelRequest *fieldValue = [[BananaService_SaveChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_saveChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_SaveChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_SaveChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UnauthorizedException __ex4;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SaveChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SaveChannelResponse *) success;
-- (void) setSuccess: (BananaService_SaveChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-@end
-
-@implementation BananaService_SaveChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SaveChannel_result class]]) {
-    return NO;
-  }
-  BananaService_SaveChannel_result *other = (BananaService_SaveChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SaveChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_SaveChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SaveChannelResponse *fieldValue = [[BananaService_SaveChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SaveChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_removeSavedChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_RemoveSavedChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RemoveSavedChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RemoveSavedChannelRequest *) request;
-- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_removeSavedChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_removeSavedChannel_args class]]) {
-    return NO;
-  }
-  BananaService_removeSavedChannel_args *other = (BananaService_removeSavedChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RemoveSavedChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RemoveSavedChannelRequest *fieldValue = [[BananaService_RemoveSavedChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_removeSavedChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_RemoveSavedChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_RemoveSavedChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_ChannelDoesNotExistException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RemoveSavedChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_RemoveSavedChannelResponse *) success;
-- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation BananaService_RemoveSavedChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannel_result class]]) {
-    return NO;
-  }
-  BananaService_RemoveSavedChannel_result *other = (BananaService_RemoveSavedChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_RemoveSavedChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_ChannelDoesNotExistException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_RemoveSavedChannelResponse *fieldValue = [[BananaService_RemoveSavedChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RemoveSavedChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_snoozeChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_SnoozeChannelRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SnoozeChannelRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SnoozeChannelRequest *) request;
-- (void) setRequest: (BananaService_SnoozeChannelRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_snoozeChannel_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_snoozeChannel_args class]]) {
-    return NO;
-  }
-  BananaService_snoozeChannel_args *other = (BananaService_snoozeChannel_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SnoozeChannelRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_SnoozeChannelRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SnoozeChannelRequest *fieldValue = [[BananaService_SnoozeChannelRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_snoozeChannel_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_SnoozeChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_SnoozeChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_ChannelDoesNotExistException __ex5;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SnoozeChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_SnoozeChannelResponse *) success;
-- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
-@end
-
-@implementation BananaService_SnoozeChannel_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannel_result class]]) {
-    return NO;
-  }
-  BananaService_SnoozeChannel_result *other = (BananaService_SnoozeChannel_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_SnoozeChannelResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_ChannelDoesNotExistException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_SnoozeChannelResponse *fieldValue = [[BananaService_SnoozeChannelResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SnoozeChannel_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannel_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_getApplicationSubscribers_args : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationSubscribersRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetApplicationSubscribersRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_GetApplicationSubscribersRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_GetApplicationSubscribersRequest *) request;
-- (void) setRequest: (BananaService_GetApplicationSubscribersRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_getApplicationSubscribers_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_GetApplicationSubscribersRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_getApplicationSubscribers_args class]]) {
-    return NO;
-  }
-  BananaService_getApplicationSubscribers_args *other = (BananaService_getApplicationSubscribers_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_GetApplicationSubscribersRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_GetApplicationSubscribersRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationSubscribersRequest *fieldValue = [[BananaService_GetApplicationSubscribersRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getApplicationSubscribers_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApplicationSubscribers_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_GetApplicationSubscribers_result : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationSubscribersResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UnauthorizedException __ex4;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-  BOOL __ex4_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetApplicationSubscribersResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_GetApplicationSubscribersResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_GetApplicationSubscribersResponse *) success;
-- (void) setSuccess: (BananaService_GetApplicationSubscribersResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-@end
-
-@implementation BananaService_GetApplicationSubscribers_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_GetApplicationSubscribersResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationSubscribers_result class]]) {
-    return NO;
-  }
-  BananaService_GetApplicationSubscribers_result *other = (BananaService_GetApplicationSubscribers_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [__ex4 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_GetApplicationSubscribersResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_GetApplicationSubscribersResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (BananaException_UnauthorizedException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationSubscribersResponse *fieldValue = [[BananaService_GetApplicationSubscribersResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetApplicationSubscribers_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationSubscribers_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_getMySavedChannels_args : NSObject <TBase, NSCoding> {
-  BananaService_GetMySavedChannelsRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMySavedChannelsRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_GetMySavedChannelsRequest *) request;
-- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_getMySavedChannels_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_getMySavedChannels_args class]]) {
-    return NO;
-  }
-  BananaService_getMySavedChannels_args *other = (BananaService_getMySavedChannels_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_GetMySavedChannelsRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_GetMySavedChannelsRequest *fieldValue = [[BananaService_GetMySavedChannelsRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMySavedChannels_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_GetMySavedChannels_result : NSObject <TBase, NSCoding> {
-  BananaService_GetMySavedChannelsResponse * __success;
+@interface BananaService_GetActivity_result : NSObject <TBase, NSCoding> {
+  BananaService_GetActivityResponse * __success;
   BananaService_OperationFailedException __ex1;
   BananaService_InvalidArgumentException __ex2;
   BananaService_InvalidCredentialsException __ex3;
@@ -18719,14 +17340,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMySavedChannelsResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetActivityResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
+- (id) initWithSuccess: (BananaService_GetActivityResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18734,8 +17355,8 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMySavedChannelsResponse *) success;
-- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success;
+- (BananaService_GetActivityResponse *) success;
+- (void) setSuccess: (BananaService_GetActivityResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -18759,7 +17380,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
-@implementation BananaService_GetMySavedChannels_result
+@implementation BananaService_GetActivity_result
 
 - (id) init
 {
@@ -18769,7 +17390,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
+- (id) initWithSuccess: (BananaService_GetActivityResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -18860,10 +17481,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMySavedChannels_result class]]) {
+  if (![anObject isKindOfClass:[BananaService_GetActivity_result class]]) {
     return NO;
   }
-  BananaService_GetMySavedChannels_result *other = (BananaService_GetMySavedChannels_result *)anObject;
+  BananaService_GetActivity_result *other = (BananaService_GetActivity_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -18892,11 +17513,11 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMySavedChannelsResponse *) success {
+- (BananaService_GetActivityResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success {
+- (void) setSuccess: (BananaService_GetActivityResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -18993,7 +17614,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMySavedChannelsResponse *fieldValue = [[BananaService_GetMySavedChannelsResponse alloc] init];
+          BananaService_GetActivityResponse *fieldValue = [[BananaService_GetActivityResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -19041,7 +17662,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMySavedChannels_result"];
+  [outProtocol writeStructBeginWithName: @"GetActivity_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -19077,571 +17698,7 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannels_result("];
-  [ms appendString: @"success:"];
-  [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex1:"];
-  [ms appendFormat: @"%@", __ex1];
-  [ms appendString: @",ex2:"];
-  [ms appendFormat: @"%@", __ex2];
-  [ms appendString: @",ex3:"];
-  [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_getMyApplications_args : NSObject <TBase, NSCoding> {
-  BananaService_GetMyApplicationsRequest * __request;
-
-  BOOL __request_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMyApplicationsRequest * request;
-#endif
-
-- (id) init;
-- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_GetMyApplicationsRequest *) request;
-- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request;
-#endif
-- (BOOL) requestIsSet;
-
-@end
-
-@implementation BananaService_getMyApplications_args
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request
-{
-  self = [super init];
-  __request = [request retain_stub];
-  __request_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"request"])
-  {
-    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
-    __request_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__request_isset)
-  {
-    [encoder encodeObject: __request forKey: @"request"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
-  if (__request_isset)
-  {
-    hash = (hash * 31) ^ [__request hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_getMyApplications_args class]]) {
-    return NO;
-  }
-  BananaService_getMyApplications_args *other = (BananaService_getMyApplications_args *)anObject;
-  if ((__request_isset != other->__request_isset) ||
-      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__request release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_GetMyApplicationsRequest *) request {
-  return [[__request retain_stub] autorelease_stub];
-}
-
-- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request {
-  [request retain_stub];
-  [__request release_stub];
-  __request = request;
-  __request_isset = YES;
-}
-
-- (BOOL) requestIsSet {
-  return __request_isset;
-}
-
-- (void) unsetRequest {
-  [__request release_stub];
-  __request = nil;
-  __request_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaService_GetMyApplicationsRequest *fieldValue = [[BananaService_GetMyApplicationsRequest alloc] init];
-          [fieldValue read: inProtocol];
-          [self setRequest: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
-  if (__request_isset) {
-    if (__request != nil) {
-      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-      [__request write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMyApplications_args("];
-  [ms appendString: @"request:"];
-  [ms appendFormat: @"%@", __request];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface BananaService_GetMyApplications_result : NSObject <TBase, NSCoding> {
-  BananaService_GetMyApplicationsResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-
-  BOOL __success_isset;
-  BOOL __ex1_isset;
-  BOOL __ex2_isset;
-  BOOL __ex3_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMyApplicationsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_GetMyApplicationsResponse *) success;
-- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success;
-#endif
-- (BOOL) successIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
-#endif
-- (BOOL) ex1IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
-#endif
-- (BOOL) ex2IsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
-#endif
-- (BOOL) ex3IsSet;
-
-@end
-
-@implementation BananaService_GetMyApplications_result
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
-{
-  self = [super init];
-  __success = [success retain_stub];
-  __success_isset = YES;
-  __ex1 = [ex1 retain_stub];
-  __ex1_isset = YES;
-  __ex2 = [ex2 retain_stub];
-  __ex2_isset = YES;
-  __ex3 = [ex3 retain_stub];
-  __ex3_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"success"])
-  {
-    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
-    __success_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex1"])
-  {
-    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
-    __ex1_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex2"])
-  {
-    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
-    __ex2_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex3"])
-  {
-    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
-    __ex3_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__success_isset)
-  {
-    [encoder encodeObject: __success forKey: @"success"];
-  }
-  if (__ex1_isset)
-  {
-    [encoder encodeObject: __ex1 forKey: @"ex1"];
-  }
-  if (__ex2_isset)
-  {
-    [encoder encodeObject: __ex2 forKey: @"ex2"];
-  }
-  if (__ex3_isset)
-  {
-    [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-  if (__success_isset)
-  {
-    hash = (hash * 31) ^ [__success hash];
-  }
-  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
-  if (__ex1_isset)
-  {
-    hash = (hash * 31) ^ [__ex1 hash];
-  }
-  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
-  if (__ex2_isset)
-  {
-    hash = (hash * 31) ^ [__ex2 hash];
-  }
-  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
-  if (__ex3_isset)
-  {
-    hash = (hash * 31) ^ [__ex3 hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplications_result class]]) {
-    return NO;
-  }
-  BananaService_GetMyApplications_result *other = (BananaService_GetMyApplications_result *)anObject;
-  if ((__success_isset != other->__success_isset) ||
-      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
-    return NO;
-  }
-  if ((__ex1_isset != other->__ex1_isset) ||
-      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
-    return NO;
-  }
-  if ((__ex2_isset != other->__ex2_isset) ||
-      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
-    return NO;
-  }
-  if ((__ex3_isset != other->__ex3_isset) ||
-      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__success release_stub];
-  [__ex1 release_stub];
-  [__ex2 release_stub];
-  [__ex3 release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaService_GetMyApplicationsResponse *) success {
-  return [[__success retain_stub] autorelease_stub];
-}
-
-- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success {
-  [success retain_stub];
-  [__success release_stub];
-  __success = success;
-  __success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-  return __success_isset;
-}
-
-- (void) unsetSuccess {
-  [__success release_stub];
-  __success = nil;
-  __success_isset = NO;
-}
-
-- (BananaException_OperationFailedException *) ex1 {
-  return [[__ex1 retain_stub] autorelease_stub];
-}
-
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
-  [ex1 retain_stub];
-  [__ex1 release_stub];
-  __ex1 = ex1;
-  __ex1_isset = YES;
-}
-
-- (BOOL) ex1IsSet {
-  return __ex1_isset;
-}
-
-- (void) unsetEx1 {
-  [__ex1 release_stub];
-  __ex1 = nil;
-  __ex1_isset = NO;
-}
-
-- (BananaException_InvalidArgumentException *) ex2 {
-  return [[__ex2 retain_stub] autorelease_stub];
-}
-
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
-  [ex2 retain_stub];
-  [__ex2 release_stub];
-  __ex2 = ex2;
-  __ex2_isset = YES;
-}
-
-- (BOOL) ex2IsSet {
-  return __ex2_isset;
-}
-
-- (void) unsetEx2 {
-  [__ex2 release_stub];
-  __ex2 = nil;
-  __ex2_isset = NO;
-}
-
-- (BananaException_InvalidCredentialsException *) ex3 {
-  return [[__ex3 retain_stub] autorelease_stub];
-}
-
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
-  [ex3 retain_stub];
-  [__ex3 release_stub];
-  __ex3 = ex3;
-  __ex3_isset = YES;
-}
-
-- (BOOL) ex3IsSet {
-  return __ex3_isset;
-}
-
-- (void) unsetEx3 {
-  [__ex3 release_stub];
-  __ex3 = nil;
-  __ex3_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 0:
-        if (fieldType == TType_STRUCT) {
-          BananaService_GetMyApplicationsResponse *fieldValue = [[BananaService_GetMyApplicationsResponse alloc] init];
-          [fieldValue read: inProtocol];
-          [self setSuccess: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx1: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx2: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplications_result"];
-
-  if (__success_isset) {
-    if (__success != nil) {
-      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
-      [__success write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex1_isset) {
-    if (__ex1 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
-      [__ex1 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex2_isset) {
-    if (__ex2 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
-      [__ex2 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex3_isset) {
-    if (__ex3 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
-      [__ex3 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplications_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivity_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -20358,6 +18415,639 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
+@interface BananaService_getApplicationSubscribers_args : NSObject <TBase, NSCoding> {
+  BananaService_GetApplicationSubscribersRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetApplicationSubscribersRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_GetApplicationSubscribersRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetApplicationSubscribersRequest *) request;
+- (void) setRequest: (BananaService_GetApplicationSubscribersRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_getApplicationSubscribers_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_GetApplicationSubscribersRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_getApplicationSubscribers_args class]]) {
+    return NO;
+  }
+  BananaService_getApplicationSubscribers_args *other = (BananaService_getApplicationSubscribers_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetApplicationSubscribersRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_GetApplicationSubscribersRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetApplicationSubscribersRequest *fieldValue = [[BananaService_GetApplicationSubscribersRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"getApplicationSubscribers_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApplicationSubscribers_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_GetApplicationSubscribers_result : NSObject <TBase, NSCoding> {
+  BananaService_GetApplicationSubscribersResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_UnauthorizedException __ex4;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetApplicationSubscribersResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_GetApplicationSubscribersResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetApplicationSubscribersResponse *) success;
+- (void) setSuccess: (BananaService_GetApplicationSubscribersResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex4;
+- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+@end
+
+@implementation BananaService_GetApplicationSubscribers_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_GetApplicationSubscribersResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetApplicationSubscribers_result class]]) {
+    return NO;
+  }
+  BananaService_GetApplicationSubscribers_result *other = (BananaService_GetApplicationSubscribers_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetApplicationSubscribersResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_GetApplicationSubscribersResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetApplicationSubscribersResponse *fieldValue = [[BananaService_GetApplicationSubscribersResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetApplicationSubscribers_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationSubscribers_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @interface BananaService_getDashboard_args : NSObject <TBase, NSCoding> {
   BananaService_GetDashboardRequest * __request;
 
@@ -20922,6 +19612,1767 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
 
 @end
 
+@interface BananaService_getMyApplications_args : NSObject <TBase, NSCoding> {
+  BananaService_GetMyApplicationsRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMyApplicationsRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetMyApplicationsRequest *) request;
+- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_getMyApplications_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_getMyApplications_args class]]) {
+    return NO;
+  }
+  BananaService_getMyApplications_args *other = (BananaService_getMyApplications_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetMyApplicationsRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetMyApplicationsRequest *fieldValue = [[BananaService_GetMyApplicationsRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMyApplications_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_GetMyApplications_result : NSObject <TBase, NSCoding> {
+  BananaService_GetMyApplicationsResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMyApplicationsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetMyApplicationsResponse *) success;
+- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+@end
+
+@implementation BananaService_GetMyApplications_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMyApplications_result class]]) {
+    return NO;
+  }
+  BananaService_GetMyApplications_result *other = (BananaService_GetMyApplications_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetMyApplicationsResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetMyApplicationsResponse *fieldValue = [[BananaService_GetMyApplicationsResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMyApplications_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplications_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_getMySavedChannels_args : NSObject <TBase, NSCoding> {
+  BananaService_GetMySavedChannelsRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMySavedChannelsRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetMySavedChannelsRequest *) request;
+- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_getMySavedChannels_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_getMySavedChannels_args class]]) {
+    return NO;
+  }
+  BananaService_getMySavedChannels_args *other = (BananaService_getMySavedChannels_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetMySavedChannelsRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetMySavedChannelsRequest *fieldValue = [[BananaService_GetMySavedChannelsRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMySavedChannels_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_GetMySavedChannels_result : NSObject <TBase, NSCoding> {
+  BananaService_GetMySavedChannelsResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMySavedChannelsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_GetMySavedChannelsResponse *) success;
+- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+@end
+
+@implementation BananaService_GetMySavedChannels_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetMySavedChannels_result class]]) {
+    return NO;
+  }
+  BananaService_GetMySavedChannels_result *other = (BananaService_GetMySavedChannels_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_GetMySavedChannelsResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_GetMySavedChannelsResponse *fieldValue = [[BananaService_GetMySavedChannelsResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetMySavedChannels_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannels_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_searchForApplications_args : NSObject <TBase, NSCoding> {
+  BananaService_SearchForApplicationsRequest * __request;
+
+  BOOL __request_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SearchForApplicationsRequest * request;
+#endif
+
+- (id) init;
+- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_SearchForApplicationsRequest *) request;
+- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request;
+#endif
+- (BOOL) requestIsSet;
+
+@end
+
+@implementation BananaService_searchForApplications_args
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request
+{
+  self = [super init];
+  __request = [request retain_stub];
+  __request_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"request"])
+  {
+    __request = [[decoder decodeObjectForKey: @"request"] retain_stub];
+    __request_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__request_isset)
+  {
+    [encoder encodeObject: __request forKey: @"request"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __request_isset ? 2654435761 : 0;
+  if (__request_isset)
+  {
+    hash = (hash * 31) ^ [__request hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_searchForApplications_args class]]) {
+    return NO;
+  }
+  BananaService_searchForApplications_args *other = (BananaService_searchForApplications_args *)anObject;
+  if ((__request_isset != other->__request_isset) ||
+      (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__request release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_SearchForApplicationsRequest *) request {
+  return [[__request retain_stub] autorelease_stub];
+}
+
+- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request {
+  [request retain_stub];
+  [__request release_stub];
+  __request = request;
+  __request_isset = YES;
+}
+
+- (BOOL) requestIsSet {
+  return __request_isset;
+}
+
+- (void) unsetRequest {
+  [__request release_stub];
+  __request = nil;
+  __request_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaService_SearchForApplicationsRequest *fieldValue = [[BananaService_SearchForApplicationsRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"searchForApplications_args"];
+  if (__request_isset) {
+    if (__request != nil) {
+      [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+      [__request write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_searchForApplications_args("];
+  [ms appendString: @"request:"];
+  [ms appendFormat: @"%@", __request];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface BananaService_SearchForApplications_result : NSObject <TBase, NSCoding> {
+  BananaService_SearchForApplicationsResponse * __success;
+  BananaService_OperationFailedException __ex1;
+  BananaService_InvalidArgumentException __ex2;
+  BananaService_InvalidCredentialsException __ex3;
+  BananaService_UnauthorizedException __ex4;
+
+  BOOL __success_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
+  BOOL __ex3_isset;
+  BOOL __ex4_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SearchForApplicationsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_SearchForApplicationsResponse *) success;
+- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success;
+#endif
+- (BOOL) successIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_OperationFailedException) ex1;
+- (void) setEx1: (BananaService_OperationFailedException) ex1;
+#endif
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidArgumentException) ex2;
+- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UnauthorizedException) ex4;
+- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+#endif
+- (BOOL) ex4IsSet;
+
+@end
+
+@implementation BananaService_SearchForApplications_result
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UnauthorizedException) ex4
+{
+  self = [super init];
+  __success = [success retain_stub];
+  __success_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
+  __ex4 = [ex4 retain_stub];
+  __ex4_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"success"])
+  {
+    __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
+    __success_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex1"])
+  {
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex4"])
+  {
+    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
+    __ex4_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__success_isset)
+  {
+    [encoder encodeObject: __success forKey: @"success"];
+  }
+  if (__ex1_isset)
+  {
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
+  }
+  if (__ex4_isset)
+  {
+    [encoder encodeObject: __ex4 forKey: @"ex4"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+  if (__success_isset)
+  {
+    hash = (hash * 31) ^ [__success hash];
+  }
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
+  {
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
+  }
+  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
+  if (__ex4_isset)
+  {
+    hash = (hash * 31) ^ [__ex4 hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_SearchForApplications_result class]]) {
+    return NO;
+  }
+  BananaService_SearchForApplications_result *other = (BananaService_SearchForApplications_result *)anObject;
+  if ((__success_isset != other->__success_isset) ||
+      (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
+    return NO;
+  }
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
+    return NO;
+  }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
+  if ((__ex4_isset != other->__ex4_isset) ||
+      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__success release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
+  [__ex3 release_stub];
+  [__ex4 release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaService_SearchForApplicationsResponse *) success {
+  return [[__success retain_stub] autorelease_stub];
+}
+
+- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success {
+  [success retain_stub];
+  [__success release_stub];
+  __success = success;
+  __success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+  return __success_isset;
+}
+
+- (void) unsetSuccess {
+  [__success release_stub];
+  __success = nil;
+  __success_isset = NO;
+}
+
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
+}
+
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
+}
+
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
+}
+
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
+}
+
+- (BananaException_InvalidCredentialsException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
+- (BananaException_UnauthorizedException *) ex4 {
+  return [[__ex4 retain_stub] autorelease_stub];
+}
+
+- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+  [ex4 retain_stub];
+  [__ex4 release_stub];
+  __ex4 = ex4;
+  __ex4_isset = YES;
+}
+
+- (BOOL) ex4IsSet {
+  return __ex4_isset;
+}
+
+- (void) unsetEx4 {
+  [__ex4 release_stub];
+  __ex4 = nil;
+  __ex4_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 0:
+        if (fieldType == TType_STRUCT) {
+          BananaService_SearchForApplicationsResponse *fieldValue = [[BananaService_SearchForApplicationsResponse alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSuccess: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx4: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SearchForApplications_result"];
+
+  if (__success_isset) {
+    if (__success != nil) {
+      [outProtocol writeFieldBeginWithName: @"success" type: TType_STRUCT fieldID: 0];
+      [__success write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex4_isset) {
+    if (__ex4 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
+      [__ex4 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplications_result("];
+  [ms appendString: @"success:"];
+  [ms appendFormat: @"%@", __success];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
+  [ms appendString: @",ex4:"];
+  [ms appendFormat: @"%@", __ex4];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_BananaServiceClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
@@ -20968,10 +21419,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return [self recv_getApiVersion];
 }
 
-- (void) send_sendMessage: (BananaService_SendMessageRequest *) request
+- (void) send_provisionApplication: (BananaService_ProvisionApplicationRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"sendMessage" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"sendMessage_args"];
+  [outProtocol writeMessageBeginWithName: @"provisionApplication" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"provisionApplication_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -20982,13 +21433,13 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SendMessageResponse *) recv_sendMessage
+- (BananaService_ProvisionApplicationResponse *) recv_provisionApplication
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SendMessage_result * result = [[[BananaService_SendMessage_result alloc] init] autorelease_stub];
+  BananaService_ProvisionApplication_result * result = [[[BananaService_ProvisionApplication_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -21003,21 +21454,27 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if ([result ex3IsSet]) {
     @throw [result ex3];
   }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"sendMessage failed: unknown result"];
+                                           reason: @"provisionApplication failed: unknown result"];
 }
 
-- (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request
+- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request
 {
-  [self send_sendMessage : request];
+  [self send_provisionApplication : request];
   [[outProtocol transport] flush];
-  return [self recv_sendMessage];
+  return [self recv_provisionApplication];
 }
 
-- (void) send_sendMessageAsync: (BananaService_SendMessageRequest *) request
+- (void) send_regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"sendMessageAsync" type: TMessageType_ONEWAY sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"sendMessageAsync_args"];
+  [outProtocol writeMessageBeginWithName: @"regenerateToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -21028,10 +21485,247 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [outProtocol writeMessageEnd];
 }
 
-- (void) sendMessageAsync: (BananaService_SendMessageRequest *) request
+- (BananaService_RegenerateApplicationTokenResponse *) recv_regenerateToken
 {
-  [self send_sendMessageAsync : request];
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_RegenerateToken_result * result = [[[BananaService_RegenerateToken_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"regenerateToken failed: unknown result"];
+}
+
+- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
+{
+  [self send_regenerateToken : request];
   [[outProtocol transport] flush];
+  return [self recv_regenerateToken];
+}
+
+- (void) send_registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"registerHealthCheck" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"registerHealthCheck_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_RegisterHealthCheckResponse *) recv_registerHealthCheck
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_RegisterHealthCheck_result * result = [[[BananaService_RegisterHealthCheck_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"registerHealthCheck failed: unknown result"];
+}
+
+- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
+{
+  [self send_registerHealthCheck : request];
+  [[outProtocol transport] flush];
+  return [self recv_registerHealthCheck];
+}
+
+- (void) send_removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"removeSavedChannel" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_RemoveSavedChannelResponse *) recv_removeSavedChannel
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_RemoveSavedChannel_result * result = [[[BananaService_RemoveSavedChannel_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"removeSavedChannel failed: unknown result"];
+}
+
+- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
+{
+  [self send_removeSavedChannel : request];
+  [[outProtocol transport] flush];
+  return [self recv_removeSavedChannel];
+}
+
+- (void) send_renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"renewApplicationToken" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"renewApplicationToken_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_RenewApplicationTokenResponse *) recv_renewApplicationToken
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_RenewApplicationToken_result * result = [[[BananaService_RenewApplicationToken_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"renewApplicationToken failed: unknown result"];
+}
+
+- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
+{
+  [self send_renewApplicationToken : request];
+  [[outProtocol transport] flush];
+  return [self recv_renewApplicationToken];
+}
+
+- (void) send_saveChannel: (BananaService_SaveChannelRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"saveChannel" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_SaveChannelResponse *) recv_saveChannel
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_SaveChannel_result * result = [[[BananaService_SaveChannel_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"saveChannel failed: unknown result"];
+}
+
+- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request
+{
+  [self send_saveChannel : request];
+  [[outProtocol transport] flush];
+  return [self recv_saveChannel];
 }
 
 - (void) send_signIn: (BananaService_SignInRequest *) request
@@ -21129,10 +21823,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return [self recv_signUp];
 }
 
-- (void) send_provisionApplication: (BananaService_ProvisionApplicationRequest *) request
+- (void) send_snoozeChannel: (BananaService_SnoozeChannelRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"provisionApplication" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"provisionApplication_args"];
+  [outProtocol writeMessageBeginWithName: @"snoozeChannel" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -21143,13 +21837,13 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_ProvisionApplicationResponse *) recv_provisionApplication
+- (BananaService_SnoozeChannelResponse *) recv_snoozeChannel
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_ProvisionApplication_result * result = [[[BananaService_ProvisionApplication_result alloc] init] autorelease_stub];
+  BananaService_SnoozeChannel_result * result = [[[BananaService_SnoozeChannel_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -21167,15 +21861,18 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   if ([result ex4IsSet]) {
     @throw [result ex4];
   }
+  if ([result ex5IsSet]) {
+    @throw [result ex5];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"provisionApplication failed: unknown result"];
+                                           reason: @"snoozeChannel failed: unknown result"];
 }
 
-- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request
+- (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request
 {
-  [self send_provisionApplication : request];
+  [self send_snoozeChannel : request];
   [[outProtocol transport] flush];
-  return [self recv_provisionApplication];
+  return [self recv_snoozeChannel];
 }
 
 - (void) send_subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request
@@ -21233,10 +21930,10 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return [self recv_subscribeToApplication];
 }
 
-- (void) send_registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
+- (void) send_getActivity: (BananaService_GetActivityRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"registerHealthCheck" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"registerHealthCheck_args"];
+  [outProtocol writeMessageBeginWithName: @"getActivity" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getActivity_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -21247,420 +21944,13 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_RegisterHealthCheckResponse *) recv_registerHealthCheck
+- (BananaService_GetActivityResponse *) recv_getActivity
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_RegisterHealthCheck_result * result = [[[BananaService_RegisterHealthCheck_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"registerHealthCheck failed: unknown result"];
-}
-
-- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
-{
-  [self send_registerHealthCheck : request];
-  [[outProtocol transport] flush];
-  return [self recv_registerHealthCheck];
-}
-
-- (void) send_renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"renewApplicationToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"renewApplicationToken_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_RenewApplicationTokenResponse *) recv_renewApplicationToken
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_RenewApplicationToken_result * result = [[[BananaService_RenewApplicationToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"renewApplicationToken failed: unknown result"];
-}
-
-- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
-{
-  [self send_renewApplicationToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_renewApplicationToken];
-}
-
-- (void) send_regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"regenerateToken" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_RegenerateApplicationTokenResponse *) recv_regenerateToken
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_RegenerateToken_result * result = [[[BananaService_RegenerateToken_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"regenerateToken failed: unknown result"];
-}
-
-- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
-{
-  [self send_regenerateToken : request];
-  [[outProtocol transport] flush];
-  return [self recv_regenerateToken];
-}
-
-- (void) send_searchForApplications: (BananaService_SearchForApplicationsRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"searchForApplications" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"searchForApplications_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_SearchForApplicationsResponse *) recv_searchForApplications
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_SearchForApplications_result * result = [[[BananaService_SearchForApplications_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"searchForApplications failed: unknown result"];
-}
-
-- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request
-{
-  [self send_searchForApplications : request];
-  [[outProtocol transport] flush];
-  return [self recv_searchForApplications];
-}
-
-- (void) send_saveChannel: (BananaService_SaveChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"saveChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"saveChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_SaveChannelResponse *) recv_saveChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_SaveChannel_result * result = [[[BananaService_SaveChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"saveChannel failed: unknown result"];
-}
-
-- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request
-{
-  [self send_saveChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_saveChannel];
-}
-
-- (void) send_removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"removeSavedChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_RemoveSavedChannelResponse *) recv_removeSavedChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_RemoveSavedChannel_result * result = [[[BananaService_RemoveSavedChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"removeSavedChannel failed: unknown result"];
-}
-
-- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
-{
-  [self send_removeSavedChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_removeSavedChannel];
-}
-
-- (void) send_snoozeChannel: (BananaService_SnoozeChannelRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"snoozeChannel" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_SnoozeChannelResponse *) recv_snoozeChannel
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_SnoozeChannel_result * result = [[[BananaService_SnoozeChannel_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"snoozeChannel failed: unknown result"];
-}
-
-- (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request
-{
-  [self send_snoozeChannel : request];
-  [[outProtocol transport] flush];
-  return [self recv_snoozeChannel];
-}
-
-- (void) send_getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"getApplicationSubscribers" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getApplicationSubscribers_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_GetApplicationSubscribersResponse *) recv_getApplicationSubscribers
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_GetApplicationSubscribers_result * result = [[[BananaService_GetApplicationSubscribers_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getApplicationSubscribers failed: unknown result"];
-}
-
-- (BananaService_GetApplicationSubscribersResponse *) getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request
-{
-  [self send_getApplicationSubscribers : request];
-  [[outProtocol transport] flush];
-  return [self recv_getApplicationSubscribers];
-}
-
-- (void) send_getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"getMySavedChannels" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_GetMySavedChannelsResponse *) recv_getMySavedChannels
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_GetMySavedChannels_result * result = [[[BananaService_GetMySavedChannels_result alloc] init] autorelease_stub];
+  BananaService_GetActivity_result * result = [[[BananaService_GetActivity_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -21676,60 +21966,14 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
     @throw [result ex3];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getMySavedChannels failed: unknown result"];
+                                           reason: @"getActivity failed: unknown result"];
 }
 
-- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
+- (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request
 {
-  [self send_getMySavedChannels : request];
+  [self send_getActivity : request];
   [[outProtocol transport] flush];
-  return [self recv_getMySavedChannels];
-}
-
-- (void) send_getMyApplications: (BananaService_GetMyApplicationsRequest *) request
-{
-  [outProtocol writeMessageBeginWithName: @"getMyApplications" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
-  if (request != nil)  {
-    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
-    [request write: outProtocol];
-    [outProtocol writeFieldEnd];
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-  [outProtocol writeMessageEnd];
-}
-
-- (BananaService_GetMyApplicationsResponse *) recv_getMyApplications
-{
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
-    @throw x;
-  }
-  BananaService_GetMyApplications_result * result = [[[BananaService_GetMyApplications_result alloc] init] autorelease_stub];
-  [result read: inProtocol];
-  [inProtocol readMessageEnd];
-  if ([result successIsSet]) {
-    return [result success];
-  }
-  if ([result ex1IsSet]) {
-    @throw [result ex1];
-  }
-  if ([result ex2IsSet]) {
-    @throw [result ex2];
-  }
-  if ([result ex3IsSet]) {
-    @throw [result ex3];
-  }
-  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getMyApplications failed: unknown result"];
-}
-
-- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request
-{
-  [self send_getMyApplications : request];
-  [[outProtocol transport] flush];
-  return [self recv_getMyApplications];
+  return [self recv_getActivity];
 }
 
 - (void) send_getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request
@@ -21784,6 +22028,55 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return [self recv_getApplicationInfo];
 }
 
+- (void) send_getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"getApplicationSubscribers" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getApplicationSubscribers_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_GetApplicationSubscribersResponse *) recv_getApplicationSubscribers
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_GetApplicationSubscribers_result * result = [[[BananaService_GetApplicationSubscribers_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"getApplicationSubscribers failed: unknown result"];
+}
+
+- (BananaService_GetApplicationSubscribersResponse *) getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request
+{
+  [self send_getApplicationSubscribers : request];
+  [[outProtocol transport] flush];
+  return [self recv_getApplicationSubscribers];
+}
+
 - (void) send_getDashboard: (BananaService_GetDashboardRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getDashboard" type: TMessageType_CALL sequenceID: 0];
@@ -21830,6 +22123,147 @@ static BananaService_int BananaService_MAX_ICON_SIZE_IN_KILOBYTES = 40;
   return [self recv_getDashboard];
 }
 
+- (void) send_getMyApplications: (BananaService_GetMyApplicationsRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"getMyApplications" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_GetMyApplicationsResponse *) recv_getMyApplications
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_GetMyApplications_result * result = [[[BananaService_GetMyApplications_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"getMyApplications failed: unknown result"];
+}
+
+- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request
+{
+  [self send_getMyApplications : request];
+  [[outProtocol transport] flush];
+  return [self recv_getMyApplications];
+}
+
+- (void) send_getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"getMySavedChannels" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_GetMySavedChannelsResponse *) recv_getMySavedChannels
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_GetMySavedChannels_result * result = [[[BananaService_GetMySavedChannels_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"getMySavedChannels failed: unknown result"];
+}
+
+- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
+{
+  [self send_getMySavedChannels : request];
+  [[outProtocol transport] flush];
+  return [self recv_getMySavedChannels];
+}
+
+- (void) send_searchForApplications: (BananaService_SearchForApplicationsRequest *) request
+{
+  [outProtocol writeMessageBeginWithName: @"searchForApplications" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"searchForApplications_args"];
+  if (request != nil)  {
+    [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
+    [request write: outProtocol];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+  [outProtocol writeMessageEnd];
+}
+
+- (BananaService_SearchForApplicationsResponse *) recv_searchForApplications
+{
+  TApplicationException * x = [self checkIncomingMessageException];
+  if (x != nil)  {
+    @throw x;
+  }
+  BananaService_SearchForApplications_result * result = [[[BananaService_SearchForApplications_result alloc] init] autorelease_stub];
+  [result read: inProtocol];
+  [inProtocol readMessageEnd];
+  if ([result successIsSet]) {
+    return [result success];
+  }
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
+  if ([result ex4IsSet]) {
+    @throw [result ex4];
+  }
+  @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                           reason: @"searchForApplications failed: unknown result"];
+}
+
+- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request
+{
+  [self send_searchForApplications : request];
+  [[outProtocol transport] flush];
+  return [self recv_searchForApplications];
+}
+
 @end
 
 @implementation BananaService_BananaServiceProcessor
@@ -21851,20 +22285,52 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getApiVersion"];
 }
 {
-  SEL s = @selector(process_sendMessage_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_provisionApplication_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"sendMessage"];
+  [mMethodMap setValue: invocation forKey: @"provisionApplication"];
 }
 {
-  SEL s = @selector(process_sendMessageAsync_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_regenerateToken_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"sendMessageAsync"];
+  [mMethodMap setValue: invocation forKey: @"regenerateToken"];
+}
+{
+  SEL s = @selector(process_registerHealthCheck_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"registerHealthCheck"];
+}
+{
+  SEL s = @selector(process_removeSavedChannel_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"removeSavedChannel"];
+}
+{
+  SEL s = @selector(process_renewApplicationToken_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"renewApplicationToken"];
+}
+{
+  SEL s = @selector(process_saveChannel_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"saveChannel"];
 }
 {
   SEL s = @selector(process_signIn_withSequenceID:inProtocol:outProtocol:);
@@ -21883,12 +22349,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"signUp"];
 }
 {
-  SEL s = @selector(process_provisionApplication_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_snoozeChannel_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"provisionApplication"];
+  [mMethodMap setValue: invocation forKey: @"snoozeChannel"];
 }
 {
   SEL s = @selector(process_subscribeToApplication_withSequenceID:inProtocol:outProtocol:);
@@ -21899,84 +22365,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"subscribeToApplication"];
 }
 {
-  SEL s = @selector(process_registerHealthCheck_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_getActivity_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"registerHealthCheck"];
-}
-{
-  SEL s = @selector(process_renewApplicationToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"renewApplicationToken"];
-}
-{
-  SEL s = @selector(process_regenerateToken_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"regenerateToken"];
-}
-{
-  SEL s = @selector(process_searchForApplications_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"searchForApplications"];
-}
-{
-  SEL s = @selector(process_saveChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"saveChannel"];
-}
-{
-  SEL s = @selector(process_removeSavedChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"removeSavedChannel"];
-}
-{
-  SEL s = @selector(process_snoozeChannel_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"snoozeChannel"];
-}
-{
-  SEL s = @selector(process_getApplicationSubscribers_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getApplicationSubscribers"];
-}
-{
-  SEL s = @selector(process_getMySavedChannels_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getMySavedChannels"];
-}
-{
-  SEL s = @selector(process_getMyApplications_withSequenceID:inProtocol:outProtocol:);
-  NSMethodSignature * sig = [self methodSignatureForSelector: s];
-  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-  [invocation setSelector: s];
-  [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getMyApplications"];
+  [mMethodMap setValue: invocation forKey: @"getActivity"];
 }
 {
   SEL s = @selector(process_getApplicationInfo_withSequenceID:inProtocol:outProtocol:);
@@ -21987,12 +22381,44 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getApplicationInfo"];
 }
 {
+  SEL s = @selector(process_getApplicationSubscribers_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"getApplicationSubscribers"];
+}
+{
   SEL s = @selector(process_getDashboard_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
   [mMethodMap setValue: invocation forKey: @"getDashboard"];
+}
+{
+  SEL s = @selector(process_getMyApplications_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"getMyApplications"];
+}
+{
+  SEL s = @selector(process_getMySavedChannels_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"getMySavedChannels"];
+}
+{
+  SEL s = @selector(process_searchForApplications_withSequenceID:inProtocol:outProtocol:);
+  NSMethodSignature * sig = [self methodSignatureForSelector: s];
+  NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+  [invocation setSelector: s];
+  [invocation retainArguments];
+  [mMethodMap setValue: invocation forKey: @"searchForApplications"];
 }
 return self;
 }
@@ -22052,14 +22478,14 @@ BananaService_GetApiVersion_result * result = [[BananaService_GetApiVersion_resu
 [args release_stub];
 }
 
-- (void) process_sendMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_provisionApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_sendMessage_args * args = [[BananaService_sendMessage_args alloc] init];
+BananaService_provisionApplication_args * args = [[BananaService_provisionApplication_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SendMessage_result * result = [[BananaService_SendMessage_result alloc] init];
-[result setSuccess: [mService sendMessage: [args request]]];
-[outProtocol writeMessageBeginWithName: @"sendMessage"
+BananaService_ProvisionApplication_result * result = [[BananaService_ProvisionApplication_result alloc] init];
+[result setSuccess: [mService provisionApplication: [args request]]];
+[outProtocol writeMessageBeginWithName: @"provisionApplication"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -22069,12 +22495,88 @@ BananaService_SendMessage_result * result = [[BananaService_SendMessage_result a
 [args release_stub];
 }
 
-- (void) process_sendMessageAsync_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_regenerateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_sendMessageAsync_args * args = [[BananaService_sendMessageAsync_args alloc] init];
+BananaService_regenerateToken_args * args = [[BananaService_regenerateToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-[mService sendMessageAsync: [args request]];
+BananaService_RegenerateToken_result * result = [[BananaService_RegenerateToken_result alloc] init];
+[result setSuccess: [mService regenerateToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"regenerateToken"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_registerHealthCheck_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_registerHealthCheck_args * args = [[BananaService_registerHealthCheck_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_RegisterHealthCheck_result * result = [[BananaService_RegisterHealthCheck_result alloc] init];
+[result setSuccess: [mService registerHealthCheck: [args request]]];
+[outProtocol writeMessageBeginWithName: @"registerHealthCheck"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_removeSavedChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_removeSavedChannel_args * args = [[BananaService_removeSavedChannel_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_RemoveSavedChannel_result * result = [[BananaService_RemoveSavedChannel_result alloc] init];
+[result setSuccess: [mService removeSavedChannel: [args request]]];
+[outProtocol writeMessageBeginWithName: @"removeSavedChannel"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_renewApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_renewApplicationToken_args * args = [[BananaService_renewApplicationToken_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_RenewApplicationToken_result * result = [[BananaService_RenewApplicationToken_result alloc] init];
+[result setSuccess: [mService renewApplicationToken: [args request]]];
+[outProtocol writeMessageBeginWithName: @"renewApplicationToken"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_saveChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_saveChannel_args * args = [[BananaService_saveChannel_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_SaveChannel_result * result = [[BananaService_SaveChannel_result alloc] init];
+[result setSuccess: [mService saveChannel: [args request]]];
+[outProtocol writeMessageBeginWithName: @"saveChannel"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
 [args release_stub];
 }
 
@@ -22112,14 +22614,14 @@ BananaService_SignUp_result * result = [[BananaService_SignUp_result alloc] init
 [args release_stub];
 }
 
-- (void) process_provisionApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_snoozeChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_provisionApplication_args * args = [[BananaService_provisionApplication_args alloc] init];
+BananaService_snoozeChannel_args * args = [[BananaService_snoozeChannel_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_ProvisionApplication_result * result = [[BananaService_ProvisionApplication_result alloc] init];
-[result setSuccess: [mService provisionApplication: [args request]]];
-[outProtocol writeMessageBeginWithName: @"provisionApplication"
+BananaService_SnoozeChannel_result * result = [[BananaService_SnoozeChannel_result alloc] init];
+[result setSuccess: [mService snoozeChannel: [args request]]];
+[outProtocol writeMessageBeginWithName: @"snoozeChannel"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -22146,167 +22648,14 @@ BananaService_SubscribeToApplication_result * result = [[BananaService_Subscribe
 [args release_stub];
 }
 
-- (void) process_registerHealthCheck_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_getActivity_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_registerHealthCheck_args * args = [[BananaService_registerHealthCheck_args alloc] init];
+BananaService_getActivity_args * args = [[BananaService_getActivity_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_RegisterHealthCheck_result * result = [[BananaService_RegisterHealthCheck_result alloc] init];
-[result setSuccess: [mService registerHealthCheck: [args request]]];
-[outProtocol writeMessageBeginWithName: @"registerHealthCheck"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_renewApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_renewApplicationToken_args * args = [[BananaService_renewApplicationToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_RenewApplicationToken_result * result = [[BananaService_RenewApplicationToken_result alloc] init];
-[result setSuccess: [mService renewApplicationToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"renewApplicationToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_regenerateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_regenerateToken_args * args = [[BananaService_regenerateToken_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_RegenerateToken_result * result = [[BananaService_RegenerateToken_result alloc] init];
-[result setSuccess: [mService regenerateToken: [args request]]];
-[outProtocol writeMessageBeginWithName: @"regenerateToken"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_searchForApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_searchForApplications_args * args = [[BananaService_searchForApplications_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_SearchForApplications_result * result = [[BananaService_SearchForApplications_result alloc] init];
-[result setSuccess: [mService searchForApplications: [args request]]];
-[outProtocol writeMessageBeginWithName: @"searchForApplications"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_saveChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_saveChannel_args * args = [[BananaService_saveChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_SaveChannel_result * result = [[BananaService_SaveChannel_result alloc] init];
-[result setSuccess: [mService saveChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"saveChannel"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_removeSavedChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_removeSavedChannel_args * args = [[BananaService_removeSavedChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_RemoveSavedChannel_result * result = [[BananaService_RemoveSavedChannel_result alloc] init];
-[result setSuccess: [mService removeSavedChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"removeSavedChannel"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_snoozeChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_snoozeChannel_args * args = [[BananaService_snoozeChannel_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_SnoozeChannel_result * result = [[BananaService_SnoozeChannel_result alloc] init];
-[result setSuccess: [mService snoozeChannel: [args request]]];
-[outProtocol writeMessageBeginWithName: @"snoozeChannel"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_getApplicationSubscribers_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_getApplicationSubscribers_args * args = [[BananaService_getApplicationSubscribers_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_GetApplicationSubscribers_result * result = [[BananaService_GetApplicationSubscribers_result alloc] init];
-[result setSuccess: [mService getApplicationSubscribers: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getApplicationSubscribers"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_getMySavedChannels_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_getMySavedChannels_args * args = [[BananaService_getMySavedChannels_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_GetMySavedChannels_result * result = [[BananaService_GetMySavedChannels_result alloc] init];
-[result setSuccess: [mService getMySavedChannels: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getMySavedChannels"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_getMyApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-BananaService_getMyApplications_args * args = [[BananaService_getMyApplications_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-BananaService_GetMyApplications_result * result = [[BananaService_GetMyApplications_result alloc] init];
-[result setSuccess: [mService getMyApplications: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getMyApplications"
+BananaService_GetActivity_result * result = [[BananaService_GetActivity_result alloc] init];
+[result setSuccess: [mService getActivity: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getActivity"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
@@ -22333,6 +22682,23 @@ BananaService_GetApplicationInfo_result * result = [[BananaService_GetApplicatio
 [args release_stub];
 }
 
+- (void) process_getApplicationSubscribers_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_getApplicationSubscribers_args * args = [[BananaService_getApplicationSubscribers_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_GetApplicationSubscribers_result * result = [[BananaService_GetApplicationSubscribers_result alloc] init];
+[result setSuccess: [mService getApplicationSubscribers: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getApplicationSubscribers"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
 - (void) process_getDashboard_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
 BananaService_getDashboard_args * args = [[BananaService_getDashboard_args alloc] init];
@@ -22341,6 +22707,57 @@ BananaService_getDashboard_args * args = [[BananaService_getDashboard_args alloc
 BananaService_GetDashboard_result * result = [[BananaService_GetDashboard_result alloc] init];
 [result setSuccess: [mService getDashboard: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getDashboard"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_getMyApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_getMyApplications_args * args = [[BananaService_getMyApplications_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_GetMyApplications_result * result = [[BananaService_GetMyApplications_result alloc] init];
+[result setSuccess: [mService getMyApplications: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getMyApplications"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_getMySavedChannels_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_getMySavedChannels_args * args = [[BananaService_getMySavedChannels_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_GetMySavedChannels_result * result = [[BananaService_GetMySavedChannels_result alloc] init];
+[result setSuccess: [mService getMySavedChannels: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getMySavedChannels"
+                                  type: TMessageType_REPLY
+                            sequenceID: seqID];
+[result write: outProtocol];
+[outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
+[result release_stub];
+[args release_stub];
+}
+
+- (void) process_searchForApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+{
+BananaService_searchForApplications_args * args = [[BananaService_searchForApplications_args alloc] init];
+[args read: inProtocol];
+[inProtocol readMessageEnd];
+BananaService_SearchForApplications_result * result = [[BananaService_SearchForApplications_result alloc] init];
+[result setSuccess: [mService searchForApplications: [args request]]];
+[outProtocol writeMessageBeginWithName: @"searchForApplications"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

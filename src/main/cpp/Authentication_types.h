@@ -28,7 +28,7 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 class ApplicationToken;
 
-class HumanToken;
+class UserToken;
 
 class GithubToken;
 
@@ -39,11 +39,12 @@ class AromaAccount;
 class Credentials;
 
 typedef struct _ApplicationToken__isset {
-  _ApplicationToken__isset() : token(false), applicationName(false), organization(false), timeOfExpiration(false) {}
-  bool token :1;
-  bool applicationName :1;
+  _ApplicationToken__isset() : tokenId(false), organization(false), timeOfExpiration(false), applicationId(false), applicationName(false) {}
+  bool tokenId :1;
   bool organization :1;
   bool timeOfExpiration :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _ApplicationToken__isset;
 
 class ApplicationToken {
@@ -51,36 +52,45 @@ class ApplicationToken {
 
   ApplicationToken(const ApplicationToken&);
   ApplicationToken& operator=(const ApplicationToken&);
-  ApplicationToken() : token(), applicationName(), organization(), timeOfExpiration(0) {
+  ApplicationToken() : tokenId(), organization(), timeOfExpiration(0), applicationId(), applicationName() {
   }
 
   virtual ~ApplicationToken() throw();
-  std::string token;
-  std::string applicationName;
+  std::string tokenId;
   std::string organization;
   timestamp timeOfExpiration;
+  std::string applicationId;
+  std::string applicationName;
 
   _ApplicationToken__isset __isset;
 
-  void __set_token(const std::string& val);
-
-  void __set_applicationName(const std::string& val);
+  void __set_tokenId(const std::string& val);
 
   void __set_organization(const std::string& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
   bool operator == (const ApplicationToken & rhs) const
   {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationName == rhs.applicationName))
+    if (!(tokenId == rhs.tokenId))
       return false;
     if (__isset.organization != rhs.__isset.organization)
       return false;
     else if (__isset.organization && !(organization == rhs.organization))
       return false;
     if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.applicationName != rhs.__isset.applicationName)
+      return false;
+    else if (__isset.applicationName && !(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -104,33 +114,33 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
   return out;
 }
 
-typedef struct _HumanToken__isset {
-  _HumanToken__isset() : token(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
-  bool token :1;
+typedef struct _UserToken__isset {
+  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+  bool tokenId :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
-} _HumanToken__isset;
+} _UserToken__isset;
 
-class HumanToken {
+class UserToken {
  public:
 
-  HumanToken(const HumanToken&);
-  HumanToken& operator=(const HumanToken&);
-  HumanToken() : token(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  UserToken(const UserToken&);
+  UserToken& operator=(const UserToken&);
+  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
   }
 
-  virtual ~HumanToken() throw();
-  std::string token;
+  virtual ~UserToken() throw();
+  std::string tokenId;
   timestamp timeOfExpiration;
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
 
-  _HumanToken__isset __isset;
+  _UserToken__isset __isset;
 
-  void __set_token(const std::string& val);
+  void __set_tokenId(const std::string& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
@@ -140,9 +150,9 @@ class HumanToken {
 
   void __set_oauthProvider(const std::string& val);
 
-  bool operator == (const HumanToken & rhs) const
+  bool operator == (const UserToken & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(tokenId == rhs.tokenId))
       return false;
     if (!(timeOfExpiration == rhs.timeOfExpiration))
       return false;
@@ -160,11 +170,11 @@ class HumanToken {
       return false;
     return true;
   }
-  bool operator != (const HumanToken &rhs) const {
+  bool operator != (const UserToken &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const HumanToken & ) const;
+  bool operator < (const UserToken & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -172,9 +182,9 @@ class HumanToken {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(HumanToken &a, HumanToken &b);
+void swap(UserToken &a, UserToken &b);
 
-inline std::ostream& operator<<(std::ostream& out, const HumanToken& obj)
+inline std::ostream& operator<<(std::ostream& out, const UserToken& obj)
 {
   obj.printTo(out);
   return out;

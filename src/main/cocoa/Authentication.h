@@ -27,26 +27,29 @@ typedef Banana_long BananaAuthentication_long;
 typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @interface BananaAuthentication_ApplicationToken : NSObject <TBase, NSCoding> {
-  NSString * __token;
-  NSString * __applicationName;
+  NSString * __tokenId;
   NSString * __organization;
   BananaAuthentication_timestamp __timeOfExpiration;
+  NSString * __applicationId;
+  NSString * __applicationName;
 
-  BOOL __token_isset;
-  BOOL __applicationName_isset;
+  BOOL __tokenId_isset;
   BOOL __organization_isset;
   BOOL __timeOfExpiration_isset;
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 @property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NSString *) token applicationName: (NSString *) applicationName organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration;
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -54,16 +57,10 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) token;
-- (void) setToken: (NSString *) token;
+- (NSString *) tokenId;
+- (void) setTokenId: (NSString *) tokenId;
 #endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
+- (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) organization;
@@ -77,16 +74,28 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 #endif
 - (BOOL) timeOfExpirationIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
 @end
 
-@interface BananaAuthentication_HumanToken : NSObject <TBase, NSCoding> {
-  NSString * __token;
+@interface BananaAuthentication_UserToken : NSObject <TBase, NSCoding> {
+  NSString * __tokenId;
   BananaAuthentication_timestamp __timeOfExpiration;
   NSString * __organization;
   BOOL __isOauthToken;
   NSString * __oauthProvider;
 
-  BOOL __token_isset;
+  BOOL __tokenId_isset;
   BOOL __timeOfExpiration_isset;
   BOOL __organization_isset;
   BOOL __isOauthToken_isset;
@@ -94,7 +103,7 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
+@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
 @property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 @property (nonatomic, getter=isOauthToken, setter=setIsOauthToken:) BOOL isOauthToken;
@@ -102,7 +111,7 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NSString *) token timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider;
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -110,10 +119,10 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) token;
-- (void) setToken: (NSString *) token;
+- (NSString *) tokenId;
+- (void) setTokenId: (NSString *) tokenId;
 #endif
-- (BOOL) tokenIsSet;
+- (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_timestamp) timeOfExpiration;

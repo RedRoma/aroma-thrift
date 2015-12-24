@@ -27,6 +27,14 @@ exception InvalidCredentialsException
 }
 
 /**
+ * Thrown when referencing or using an Invalid Token (Application or User).
+ */
+exception InvalidTokenException
+{
+    1: string message = "The specified token is invalid"
+}
+
+/**
  * Thrown when trying to create an account that is already registered.
  */
 exception AccountAlreadyExistsException
@@ -92,6 +100,15 @@ exception CustomChannelUnreachableException
 exception ChannelDoesNotExistException
 {
     1: string message = "The Channel specified does not exist in the System"
+}
+
+/**
+ * Thrown when an Application sends too many messages in a short period of time.
+ * This prevents against DoS attacks.
+ */
+exception ThroughputExceeedException
+{
+    1: string message = "You have surpassed your allowable rate of messages. Slow Down."
 }
 
 /**

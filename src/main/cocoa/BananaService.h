@@ -31,13 +31,13 @@ typedef Banana_long BananaService_long;
 
 typedef Banana_timestamp BananaService_timestamp;
 
-typedef BananaAuthentication_HumanToken * BananaService_HumanToken;
+typedef BananaAuthentication_UserToken * BananaService_UserToken;
 
 typedef BananaAuthentication_ApplicationToken * BananaService_ApplicationToken;
 
 typedef Banana_Image * BananaService_Image;
 
-typedef Banana_Human * BananaService_Human;
+typedef Banana_User * BananaService_User;
 
 typedef Banana_Application * BananaService_Application;
 
@@ -64,6 +64,734 @@ typedef BananaException_CustomChannelUnreachableException * BananaService_Custom
 typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoesNotExistException;
 
 typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
+
+@interface BananaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __messageId;
+  NSString * __applicationId;
+  NSMutableArray * __messageIds;
+
+  BOOL __token_isset;
+  BOOL __messageId_isset;
+  BOOL __applicationId_isset;
+  BOOL __messageIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messageIds;
+- (void) setMessageIds: (NSMutableArray *) messageIds;
+#endif
+- (BOOL) messageIdsIsSet;
+
+@end
+
+@interface BananaService_DeleteMessageResponse : NSObject <TBase, NSCoding> {
+  BananaService_int __messagesDeleted;
+
+  BOOL __messagesDeleted_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) BananaService_int messagesDeleted;
+#endif
+
+- (id) init;
+- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) messagesDeleted;
+- (void) setMessagesDeleted: (BananaService_int) messagesDeleted;
+#endif
+- (BOOL) messagesDeletedIsSet;
+
+@end
+
+@interface BananaService_DeleteAllMessagesRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationId;
+  BananaService_int __messagesDeleted;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __messagesDeleted_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) BananaService_int messagesDeleted;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) messagesDeleted;
+- (void) setMessagesDeleted: (BananaService_int) messagesDeleted;
+#endif
+- (BOOL) messagesDeletedIsSet;
+
+@end
+
+@interface BananaService_DismissMessageRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __messageId;
+  NSString * __applicationId;
+  NSMutableArray * __messageIds;
+
+  BOOL __token_isset;
+  BOOL __messageId_isset;
+  BOOL __applicationId_isset;
+  BOOL __messageIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messageIds;
+- (void) setMessageIds: (NSMutableArray *) messageIds;
+#endif
+- (BOOL) messageIdsIsSet;
+
+@end
+
+@interface BananaService_DismissMessageResponse : NSObject <TBase, NSCoding> {
+  BananaService_int __messagesDismissed;
+
+  BOOL __messagesDismissed_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) BananaService_int messagesDismissed;
+#endif
+
+- (id) init;
+- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) messagesDismissed;
+- (void) setMessagesDismissed: (BananaService_int) messagesDismissed;
+#endif
+- (BOOL) messagesDismissedIsSet;
+
+@end
+
+@interface BananaService_DismissAllMessagesRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationId;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
+@interface BananaService_DismissAllMessagesResponse : NSObject <TBase, NSCoding> {
+  BananaService_int __messagesDismissed;
+
+  BOOL __messagesDismissed_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) BananaService_int messagesDismissed;
+#endif
+
+- (id) init;
+- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) messagesDismissed;
+- (void) setMessagesDismissed: (BananaService_int) messagesDismissed;
+#endif
+- (BOOL) messagesDismissedIsSet;
+
+@end
+
+@interface BananaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationName;
+  int __programmingLanguage;
+  NSString * __organization;
+  BananaService_Image __icon;
+
+  BOOL __token_isset;
+  BOOL __applicationName_isset;
+  BOOL __programmingLanguage_isset;
+  BOOL __organization_isset;
+  BOOL __icon_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) programmingLanguage;
+- (void) setProgrammingLanguage: (int) programmingLanguage;
+#endif
+- (BOOL) programmingLanguageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organization;
+- (void) setOrganization: (NSString *) organization;
+#endif
+- (BOOL) organizationIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_Image) icon;
+- (void) setIcon: (BananaService_Image) icon;
+#endif
+- (BOOL) iconIsSet;
+
+@end
+
+@interface BananaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
+  NSString * __applicationId;
+  NSString * __applicationName;
+  BananaService_ApplicationToken __applicationToken;
+  BananaService_Application __applicationInfo;
+
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+  BOOL __applicationToken_isset;
+  BOOL __applicationInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) BananaService_Application applicationInfo;
+#endif
+
+- (id) init;
+- (id) initWithApplicationId: (NSString *) applicationId applicationName: (NSString *) applicationName applicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_Application) applicationInfo;
+- (void) setApplicationInfo: (BananaService_Application) applicationInfo;
+#endif
+- (BOOL) applicationInfoIsSet;
+
+@end
+
+@interface BananaService_RegenerateApplicationTokenRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationId;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
+@interface BananaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
+  BananaService_ApplicationToken __serviceToken;
+
+  BOOL __serviceToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
+#endif
+
+- (id) init;
+- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationToken) serviceToken;
+- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
+
+@end
+
+@interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_Endpoint __endpoint;
+
+  BOOL __token_isset;
+  BOOL __endpoint_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaService_Endpoint endpoint;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token endpoint: (BananaService_Endpoint) endpoint;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_Endpoint) endpoint;
+- (void) setEndpoint: (BananaService_Endpoint) endpoint;
+#endif
+- (BOOL) endpointIsSet;
+
+@end
+
+@interface BananaService_RegisterHealthCheckResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  NSString * __healthCheckToken;
+
+  BOOL __message_isset;
+  BOOL __healthCheckToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=healthCheckToken, setter=setHealthCheckToken:) NSString * healthCheckToken;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message healthCheckToken: (NSString *) healthCheckToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) healthCheckToken;
+- (void) setHealthCheckToken: (NSString *) healthCheckToken;
+#endif
+- (BOOL) healthCheckTokenIsSet;
+
+@end
+
+@interface BananaService_RemoveSavedChannelRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_BananaChannel __channel;
+
+  BOOL __token_isset;
+  BOOL __channel_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_BananaChannel) channel;
+- (void) setChannel: (BananaService_BananaChannel) channel;
+#endif
+- (BOOL) channelIsSet;
+
+@end
+
+@interface BananaService_RemoveSavedChannelResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  BananaService_BananaChannel __channel;
+
+  BOOL __message_isset;
+  BOOL __channel_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_BananaChannel) channel;
+- (void) setChannel: (BananaService_BananaChannel) channel;
+#endif
+- (BOOL) channelIsSet;
+
+@end
+
+@interface BananaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_ApplicationToken __applicationToken;
+  Banana_LengthOfTime * __newLifetime;
+  NSString * __applicationId;
+
+  BOOL __token_isset;
+  BOOL __applicationToken_isset;
+  BOOL __newLifetime_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=newLifetime, setter=setNewLifetime:) Banana_LengthOfTime * newLifetime;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (NSString *) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_LengthOfTime *) newLifetime;
+- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime;
+#endif
+- (BOOL) newLifetimeIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
+@interface BananaService_RenewApplicationTokenResponse : NSObject <TBase, NSCoding> {
+  BananaService_ApplicationToken __serviceToken;
+
+  BOOL __serviceToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
+#endif
+
+- (id) init;
+- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_ApplicationToken) serviceToken;
+- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
+#endif
+- (BOOL) serviceTokenIsSet;
+
+@end
+
+@interface BananaService_SaveChannelRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_BananaChannel __channel;
+
+  BOOL __token_isset;
+  BOOL __channel_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_BananaChannel) channel;
+- (void) setChannel: (BananaService_BananaChannel) channel;
+#endif
+- (BOOL) channelIsSet;
+
+@end
+
+@interface BananaService_SaveChannelResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  BananaService_BananaChannel __channel;
+
+  BOOL __message_isset;
+  BOOL __channel_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_BananaChannel) channel;
+- (void) setChannel: (BananaService_BananaChannel) channel;
+#endif
+- (BOOL) channelIsSet;
+
+@end
 
 @interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
   BananaAuthentication_Credentials * __credentials;
@@ -101,17 +829,17 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_SignInResponse : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
+  BananaService_UserToken __userToken;
 
-  BOOL __humanToken_isset;
+  BOOL __userToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaService_UserToken userToken;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken;
+- (id) initWithUserToken: (BananaService_UserToken) userToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -119,10 +847,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (BananaService_UserToken) userToken;
+- (void) setUserToken: (BananaService_UserToken) userToken;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) userTokenIsSet;
 
 @end
 
@@ -189,20 +917,20 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_SignUpResponse : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
+  BananaService_UserToken __userToken;
   BananaAuthentication_AromaAccount * __account;
 
-  BOOL __humanToken_isset;
+  BOOL __userToken_isset;
   BOOL __account_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaService_UserToken userToken;
 @property (nonatomic, retain, getter=account, setter=setAccount:) BananaAuthentication_AromaAccount * account;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken account: (BananaAuthentication_AromaAccount *) account;
+- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -210,10 +938,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (BananaService_UserToken) userToken;
+- (void) setUserToken: (BananaService_UserToken) userToken;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) userTokenIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_AromaAccount *) account;
@@ -223,98 +951,24 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
-  NSString * __token;
-  NSString * __applicationName;
-  int __programmingLanguage;
-  NSString * __organization;
-  BananaService_Image __icon;
-  BananaService_HumanToken __humanToken;
-
-  BOOL __token_isset;
-  BOOL __applicationName_isset;
-  BOOL __programmingLanguage_isset;
-  BOOL __organization_isset;
-  BOOL __icon_isset;
-  BOOL __humanToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) NSString * token;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
-@property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-#endif
-
-- (id) init;
-- (id) initWithToken: (NSString *) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon humanToken: (BananaService_HumanToken) humanToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) token;
-- (void) setToken: (NSString *) token;
-#endif
-- (BOOL) tokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) programmingLanguage;
-- (void) setProgrammingLanguage: (int) programmingLanguage;
-#endif
-- (BOOL) programmingLanguageIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) organization;
-- (void) setOrganization: (NSString *) organization;
-#endif
-- (BOOL) organizationIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_Image) icon;
-- (void) setIcon: (BananaService_Image) icon;
-#endif
-- (BOOL) iconIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-@end
-
-@interface BananaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
-  NSString * __bananaToken;
-  NSString * __applicationName;
-  BananaService_ApplicationToken __serviceToken;
+@interface BananaService_SnoozeChannelRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_BananaChannel __channel;
   NSString * __applicationId;
 
-  BOOL __bananaToken_isset;
-  BOOL __applicationName_isset;
-  BOOL __serviceToken_isset;
+  BOOL __token_isset;
+  BOOL __channel_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=bananaToken, setter=setBananaToken:) NSString * bananaToken;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithBananaToken: (NSString *) bananaToken applicationName: (NSString *) applicationName serviceToken: (BananaService_ApplicationToken) serviceToken applicationId: (NSString *) applicationId;
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -322,22 +976,16 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) bananaToken;
-- (void) setBananaToken: (NSString *) bananaToken;
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
 #endif
-- (BOOL) bananaTokenIsSet;
+- (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
+- (BananaService_BananaChannel) channel;
+- (void) setChannel: (BananaService_BananaChannel) channel;
 #endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
-#endif
-- (BOOL) serviceTokenIsSet;
+- (BOOL) channelIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) applicationId;
@@ -347,30 +995,18 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_SubscribeToApplicationRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __applicationName;
-  NSString * __applicationId;
-  NSString * __organization;
-  BOOL __shared;
+@interface BananaService_SnoozeChannelResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
 
-  BOOL __humanToken_isset;
-  BOOL __applicationName_isset;
-  BOOL __applicationId_isset;
-  BOOL __organization_isset;
-  BOOL __shared_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
-@property (nonatomic, getter=shared, setter=setShared:) BOOL shared;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -378,10 +1014,48 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) messageIsSet;
+
+@end
+
+@interface BananaService_SubscribeToApplicationRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationName;
+  NSString * __applicationId;
+  NSString * __organization;
+  BOOL __shared;
+
+  BOOL __token_isset;
+  BOOL __applicationName_isset;
+  BOOL __applicationId_isset;
+  BOOL __organization_isset;
+  BOOL __shared_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, getter=shared, setter=setShared:) BOOL shared;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) applicationName;
@@ -444,742 +1118,21 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
-  BananaService_Endpoint __endpoint;
-  BananaService_HumanToken __humanToken;
-
-  BOOL __endpoint_isset;
-  BOOL __humanToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaService_Endpoint endpoint;
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-#endif
-
-- (id) init;
-- (id) initWithEndpoint: (BananaService_Endpoint) endpoint humanToken: (BananaService_HumanToken) humanToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_Endpoint) endpoint;
-- (void) setEndpoint: (BananaService_Endpoint) endpoint;
-#endif
-- (BOOL) endpointIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-@end
-
-@interface BananaService_RegisterHealthCheckResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  NSString * __healthCheckToken;
-
-  BOOL __message_isset;
-  BOOL __healthCheckToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=healthCheckToken, setter=setHealthCheckToken:) NSString * healthCheckToken;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message healthCheckToken: (NSString *) healthCheckToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) healthCheckToken;
-- (void) setHealthCheckToken: (NSString *) healthCheckToken;
-#endif
-- (BOOL) healthCheckTokenIsSet;
-
-@end
-
-@interface BananaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __applicationToken;
-  Banana_TimePeriod * __timePeriod;
-  BananaService_HumanToken __humanToken;
-  NSString * __applicationId;
-
-  BOOL __applicationToken_isset;
-  BOOL __timePeriod_isset;
-  BOOL __humanToken_isset;
-  BOOL __applicationId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=timePeriod, setter=setTimePeriod:) Banana_TimePeriod * timePeriod;
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-#endif
-
-- (id) init;
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken timePeriod: (Banana_TimePeriod *) timePeriod humanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
-#endif
-- (BOOL) applicationTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (Banana_TimePeriod *) timePeriod;
-- (void) setTimePeriod: (Banana_TimePeriod *) timePeriod;
-#endif
-- (BOOL) timePeriodIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-@end
-
-@interface BananaService_RenewApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __serviceToken;
-
-  BOOL __serviceToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
-#endif
-
-- (id) init;
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
-#endif
-- (BOOL) serviceTokenIsSet;
-
-@end
-
-@interface BananaService_RegenerateApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  NSString * __applicationId;
-  BananaService_HumanToken __humanToken;
-
-  BOOL __applicationId_isset;
-  BOOL __humanToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-#endif
-
-- (id) init;
-- (id) initWithApplicationId: (NSString *) applicationId humanToken: (BananaService_HumanToken) humanToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-@end
-
-@interface BananaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __serviceToken;
-
-  BOOL __serviceToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
-#endif
-
-- (id) init;
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
-#endif
-- (BOOL) serviceTokenIsSet;
-
-@end
-
-@interface BananaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __messageId;
-  NSString * __applicationId;
-  NSMutableArray * __messageIds;
-
-  BOOL __humanToken_isset;
-  BOOL __messageId_isset;
-  BOOL __applicationId_isset;
-  BOOL __messageIds_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) messageId;
-- (void) setMessageId: (NSString *) messageId;
-#endif
-- (BOOL) messageIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) messageIds;
-- (void) setMessageIds: (NSMutableArray *) messageIds;
-#endif
-- (BOOL) messageIdsIsSet;
-
-@end
-
-@interface BananaService_DeleteMessageResponse : NSObject <TBase, NSCoding> {
-  BananaService_int __messagesDeleted;
-
-  BOOL __messagesDeleted_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) BananaService_int messagesDeleted;
-#endif
-
-- (id) init;
-- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_int) messagesDeleted;
-- (void) setMessagesDeleted: (BananaService_int) messagesDeleted;
-#endif
-- (BOOL) messagesDeletedIsSet;
-
-@end
-
-@interface BananaService_DeleteAllMessagesRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __applicationId;
-  BananaService_int __messagesDeleted;
-
-  BOOL __humanToken_isset;
-  BOOL __applicationId_isset;
-  BOOL __messagesDeleted_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) BananaService_int messagesDeleted;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId messagesDeleted: (BananaService_int) messagesDeleted;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_int) messagesDeleted;
-- (void) setMessagesDeleted: (BananaService_int) messagesDeleted;
-#endif
-- (BOOL) messagesDeletedIsSet;
-
-@end
-
-@interface BananaService_DismissMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __messageId;
-  NSString * __applicationId;
-  NSMutableArray * __messageIds;
-
-  BOOL __humanToken_isset;
-  BOOL __messageId_isset;
-  BOOL __applicationId_isset;
-  BOOL __messageIds_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) messageId;
-- (void) setMessageId: (NSString *) messageId;
-#endif
-- (BOOL) messageIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) messageIds;
-- (void) setMessageIds: (NSMutableArray *) messageIds;
-#endif
-- (BOOL) messageIdsIsSet;
-
-@end
-
-@interface BananaService_DismissMessageResponse : NSObject <TBase, NSCoding> {
-  BananaService_int __messagesDismissed;
-
-  BOOL __messagesDismissed_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) BananaService_int messagesDismissed;
-#endif
-
-- (id) init;
-- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_int) messagesDismissed;
-- (void) setMessagesDismissed: (BananaService_int) messagesDismissed;
-#endif
-- (BOOL) messagesDismissedIsSet;
-
-@end
-
-@interface BananaService_DismissAllMessagesRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __applicationId;
-  BananaService_int __messagesDismissed;
-
-  BOOL __humanToken_isset;
-  BOOL __applicationId_isset;
-  BOOL __messagesDismissed_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) BananaService_int messagesDismissed;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId messagesDismissed: (BananaService_int) messagesDismissed;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_int) messagesDismissed;
-- (void) setMessagesDismissed: (BananaService_int) messagesDismissed;
-#endif
-- (BOOL) messagesDismissedIsSet;
-
-@end
-
-@interface BananaService_DismissAllMessagesResponse : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-@end
-
-@interface BananaService_SaveChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  BananaService_BananaChannel __channel;
-
-  BOOL __humanToken_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface BananaService_SaveChannelResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  BananaService_BananaChannel __channel;
-
-  BOOL __message_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface BananaService_RemoveSavedChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  BananaService_BananaChannel __channel;
-
-  BOOL __humanToken_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface BananaService_RemoveSavedChannelResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  BananaService_BananaChannel __channel;
-
-  BOOL __message_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface BananaService_SnoozeChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  BananaService_BananaChannel __channel;
-
-  BOOL __humanToken_isset;
-  BOOL __channel_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken channel: (BananaService_BananaChannel) channel;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
-
-@end
-
-@interface BananaService_SnoozeChannelResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-
-  BOOL __message_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-@end
-
-@interface BananaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-
-  BOOL __humanToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-@end
-
-@interface BananaService_GetMyApplicationsResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __applications;
-
-  BOOL __applications_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
-#endif
-
-- (id) init;
-- (id) initWithApplications: (NSMutableArray *) applications;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) applications;
-- (void) setApplications: (NSMutableArray *) applications;
-#endif
-- (BOOL) applicationsIsSet;
-
-@end
-
 @interface BananaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
+  BananaService_UserToken __token;
   NSString * __applicationId;
 
-  BOOL __humanToken_isset;
+  BOOL __token_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1187,10 +1140,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) applicationId;
@@ -1227,17 +1180,17 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_GetDashboardRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
+  BananaService_UserToken __token;
 
-  BOOL __humanToken_isset;
+  BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken;
+- (id) initWithToken: (BananaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1245,10 +1198,10 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) tokenIsSet;
 
 @end
 
@@ -1305,24 +1258,24 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __searchTerm;
-  NSString * __organization;
+@interface BananaService_GetMessagesRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationId;
+  BananaService_int __limit;
 
-  BOOL __humanToken_isset;
-  BOOL __searchTerm_isset;
-  BOOL __organization_isset;
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __limit_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=searchTerm, setter=setSearchTerm:) NSString * searchTerm;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
 #endif
 
 - (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken searchTerm: (NSString *) searchTerm organization: (NSString *) organization;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1330,16 +1283,382 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
 #endif
-- (BOOL) humanTokenIsSet;
+- (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) searchTerm;
-- (void) setSearchTerm: (NSString *) searchTerm;
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
 #endif
-- (BOOL) searchTermIsSet;
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) limit;
+- (void) setLimit: (BananaService_int) limit;
+#endif
+- (BOOL) limitIsSet;
+
+@end
+
+@interface BananaService_GetMessagesResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __messages;
+  BananaService_int __totalMessagesMatching;
+
+  BOOL __messages_isset;
+  BOOL __totalMessagesMatching_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messages, setter=setMessages:) NSMutableArray * messages;
+@property (nonatomic, getter=totalMessagesMatching, setter=setTotalMessagesMatching:) BananaService_int totalMessagesMatching;
+#endif
+
+- (id) init;
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (BananaService_int) totalMessagesMatching;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messages;
+- (void) setMessages: (NSMutableArray *) messages;
+#endif
+- (BOOL) messagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) totalMessagesMatching;
+- (void) setTotalMessagesMatching: (BananaService_int) totalMessagesMatching;
+#endif
+- (BOOL) totalMessagesMatchingIsSet;
+
+@end
+
+@interface BananaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+
+  BOOL __token_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+@end
+
+@interface BananaService_GetMyApplicationsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __applications;
+
+  BOOL __applications_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applications, setter=setApplications:) NSMutableArray * applications;
+#endif
+
+- (id) init;
+- (id) initWithApplications: (NSMutableArray *) applications;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) applications;
+- (void) setApplications: (NSMutableArray *) applications;
+#endif
+- (BOOL) applicationsIsSet;
+
+@end
+
+@interface BananaService_GetApplicationSubscribersRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationId;
+  NSString * __organization;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __organization_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId organization: (NSString *) organization;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organization;
+- (void) setOrganization: (NSString *) organization;
+#endif
+- (BOOL) organizationIsSet;
+
+@end
+
+@interface BananaService_GetApplicationSubscribersResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __subscribers;
+
+  BOOL __subscribers_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableArray * subscribers;
+#endif
+
+- (id) init;
+- (id) initWithSubscribers: (NSMutableArray *) subscribers;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) subscribers;
+- (void) setSubscribers: (NSMutableArray *) subscribers;
+#endif
+- (BOOL) subscribersIsSet;
+
+@end
+
+@interface BananaService_GetMySavedChannelsRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+
+  BOOL __token_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+@end
+
+@interface BananaService_GetMySavedChannelsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __channels;
+
+  BOOL __channels_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableArray * channels;
+#endif
+
+- (id) init;
+- (id) initWithChannels: (NSMutableArray *) channels;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) channels;
+- (void) setChannels: (NSMutableArray *) channels;
+#endif
+- (BOOL) channelsIsSet;
+
+@end
+
+@interface BananaService_GetActivityRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_int __limit;
+
+  BOOL __token_isset;
+  BOOL __limit_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) limit;
+- (void) setLimit: (BananaService_int) limit;
+#endif
+- (BOOL) limitIsSet;
+
+@end
+
+@interface BananaService_GetActivityResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __events;
+
+  BOOL __events_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=events, setter=setEvents:) NSMutableArray * events;
+#endif
+
+- (id) init;
+- (id) initWithEvents: (NSMutableArray *) events;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) events;
+- (void) setEvents: (NSMutableArray *) events;
+#endif
+- (BOOL) eventsIsSet;
+
+@end
+
+@interface BananaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+
+  BOOL __token_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+@end
+
+@interface BananaService_GetServiceAnnouncementsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __serviceAnnouncements;
+
+  BOOL __serviceAnnouncements_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=serviceAnnouncements, setter=setServiceAnnouncements:) NSMutableArray * serviceAnnouncements;
+#endif
+
+- (id) init;
+- (id) initWithServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) serviceAnnouncements;
+- (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
+#endif
+- (BOOL) serviceAnnouncementsIsSet;
+
+@end
+
+@interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __applicationName;
+  NSString * __organization;
+
+  BOOL __token_isset;
+  BOOL __applicationName_isset;
+  BOOL __organization_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) organization;
@@ -1375,256 +1694,25 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
-@interface BananaService_GetApplicationSubscribersRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-  NSString * __applicationId;
-  NSString * __organization;
-
-  BOOL __humanToken_isset;
-  BOOL __applicationId_isset;
-  BOOL __organization_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken applicationId: (NSString *) applicationId organization: (NSString *) organization;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) organization;
-- (void) setOrganization: (NSString *) organization;
-#endif
-- (BOOL) organizationIsSet;
-
-@end
-
-@interface BananaService_GetApplicationSubscribersResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __humans;
-
-  BOOL __humans_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humans, setter=setHumans:) NSMutableArray * humans;
-#endif
-
-- (id) init;
-- (id) initWithHumans: (NSMutableArray *) humans;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) humans;
-- (void) setHumans: (NSMutableArray *) humans;
-#endif
-- (BOOL) humansIsSet;
-
-@end
-
-@interface BananaService_GetMySavedChannelsRequest : NSObject <TBase, NSCoding> {
-  BananaService_HumanToken __humanToken;
-
-  BOOL __humanToken_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=humanToken, setter=setHumanToken:) BananaService_HumanToken humanToken;
-#endif
-
-- (id) init;
-- (id) initWithHumanToken: (BananaService_HumanToken) humanToken;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_HumanToken) humanToken;
-- (void) setHumanToken: (BananaService_HumanToken) humanToken;
-#endif
-- (BOOL) humanTokenIsSet;
-
-@end
-
-@interface BananaService_GetMySavedChannelsResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __channels;
-
-  BOOL __channels_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableArray * channels;
-#endif
-
-- (id) init;
-- (id) initWithChannels: (NSMutableArray *) channels;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) channels;
-- (void) setChannels: (NSMutableArray *) channels;
-#endif
-- (BOOL) channelsIsSet;
-
-@end
-
-@interface BananaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-@end
-
-@interface BananaService_GetServiceAnnouncementsResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __serviceAnnouncements;
-
-  BOOL __serviceAnnouncements_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceAnnouncements, setter=setServiceAnnouncements:) NSMutableArray * serviceAnnouncements;
-#endif
-
-- (id) init;
-- (id) initWithServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) serviceAnnouncements;
-- (void) setServiceAnnouncements: (NSMutableArray *) serviceAnnouncements;
-#endif
-- (BOOL) serviceAnnouncementsIsSet;
-
-@end
-
-@interface BananaService_SendMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __applicationToken;
-  NSString * __message;
-  BananaService_Urgency __urgency;
-
-  BOOL __applicationToken_isset;
-  BOOL __message_isset;
-  BOOL __urgency_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, getter=urgency, setter=setUrgency:) BananaService_Urgency urgency;
-#endif
-
-- (id) init;
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken message: (NSString *) message urgency: (BananaService_Urgency) urgency;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
-#endif
-- (BOOL) applicationTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_Urgency) urgency;
-- (void) setUrgency: (BananaService_Urgency) urgency;
-#endif
-- (BOOL) urgencyIsSet;
-
-@end
-
-@interface BananaService_SendMessageResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
-
-  BOOL __message_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-@end
-
 @protocol BananaService_BananaService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (BananaService_SendMessageResponse *) sendMessage: (BananaService_SendMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
-- (void) sendMessageAsync: (BananaService_SendMessageRequest *) request;  // throws TException
+- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
+- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_SignUpResponse *) signUp: (BananaService_SignUpRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_AccountAlreadyExistsException, TException
-- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, TException
-- (BananaService_SubscribeToApplicationResponse *) subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_ApplicationAlreadyRegisteredException, BananaService_CustomChannelUnreachableException, TException
-- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
-- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
-- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
 - (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
-- (BananaService_GetApplicationSubscribersResponse *) getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
-- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
-- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_SubscribeToApplicationResponse *) subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_ApplicationAlreadyRegisteredException, BananaService_CustomChannelUnreachableException, TException
+- (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_GetApplicationSubscribersResponse *) getApplicationSubscribers: (BananaService_GetApplicationSubscribersRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
 - (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
 @end
 
 @interface BananaService_BananaServiceClient : TBaseClient <BananaService_BananaService> - (id) initWithProtocol: (id <TProtocol>) protocol;
@@ -1642,8 +1730,11 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @interface BananaService_BananaServiceConstants : NSObject {
 }
 + (double) API_VERSION;
++ (BananaService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Banana_Dimension *) MAX_ICON_DIMENSION;
-+ (BananaService_int) MAX_ICON_SIZE_IN_KILOBYTES;
++ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
++ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
++ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
++ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 @end

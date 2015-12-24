@@ -163,12 +163,12 @@ HealthCheckBackToNormal.prototype.write = function(output) {
 };
 
 ApplicationTokenRenewed = module.exports.ApplicationTokenRenewed = function(args) {
-  this.human = null;
+  this.user = null;
   this.applicationToken = null;
   this.application = null;
   if (args) {
-    if (args.human !== undefined && args.human !== null) {
-      this.human = new Banana_ttypes.Human(args.human);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new Banana_ttypes.User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -194,8 +194,8 @@ ApplicationTokenRenewed.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.human = new Banana_ttypes.Human();
-        this.human.read(input);
+        this.user = new Banana_ttypes.User();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -227,9 +227,9 @@ ApplicationTokenRenewed.prototype.read = function(input) {
 
 ApplicationTokenRenewed.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRenewed');
-  if (this.human !== null && this.human !== undefined) {
-    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
-    this.human.write(output);
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
@@ -248,12 +248,12 @@ ApplicationTokenRenewed.prototype.write = function(output) {
 };
 
 ApplicationTokenRegenerated = module.exports.ApplicationTokenRegenerated = function(args) {
-  this.human = null;
+  this.user = null;
   this.applicationToken = null;
   this.application = null;
   if (args) {
-    if (args.human !== undefined && args.human !== null) {
-      this.human = new Banana_ttypes.Human(args.human);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new Banana_ttypes.User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -279,8 +279,8 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.human = new Banana_ttypes.Human();
-        this.human.read(input);
+        this.user = new Banana_ttypes.User();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -312,9 +312,9 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
 
 ApplicationTokenRegenerated.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRegenerated');
-  if (this.human !== null && this.human !== undefined) {
-    output.writeFieldBegin('human', Thrift.Type.STRUCT, 1);
-    this.human.write(output);
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
@@ -400,7 +400,7 @@ ApplicationSentMessage.prototype.write = function(output) {
   return;
 };
 
-Event = module.exports.Event = function(args) {
+EventType = module.exports.EventType = function(args) {
   this.healthCheckFailed = null;
   this.healthCheckBackToNormal = null;
   this.applicationTokenRenewed = null;
@@ -424,8 +424,8 @@ Event = module.exports.Event = function(args) {
     }
   }
 };
-Event.prototype = {};
-Event.prototype.read = function(input) {
+EventType.prototype = {};
+EventType.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -487,8 +487,8 @@ Event.prototype.read = function(input) {
   return;
 };
 
-Event.prototype.write = function(output) {
-  output.writeStructBegin('Event');
+EventType.prototype.write = function(output) {
+  output.writeStructBegin('EventType');
   if (this.healthCheckFailed !== null && this.healthCheckFailed !== undefined) {
     output.writeFieldBegin('healthCheckFailed', Thrift.Type.STRUCT, 1);
     this.healthCheckFailed.write(output);
@@ -519,20 +519,20 @@ Event.prototype.write = function(output) {
   return;
 };
 
-Notification = module.exports.Notification = function(args) {
-  this.event = null;
+Event = module.exports.Event = function(args) {
+  this.eventType = null;
   this.timestamp = null;
   if (args) {
-    if (args.event !== undefined && args.event !== null) {
-      this.event = new ttypes.Event(args.event);
+    if (args.eventType !== undefined && args.eventType !== null) {
+      this.eventType = new ttypes.EventType(args.eventType);
     }
     if (args.timestamp !== undefined && args.timestamp !== null) {
       this.timestamp = args.timestamp;
     }
   }
 };
-Notification.prototype = {};
-Notification.prototype.read = function(input) {
+Event.prototype = {};
+Event.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -547,8 +547,8 @@ Notification.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.event = new ttypes.Event();
-        this.event.read(input);
+        this.eventType = new ttypes.EventType();
+        this.eventType.read(input);
       } else {
         input.skip(ftype);
       }
@@ -569,11 +569,11 @@ Notification.prototype.read = function(input) {
   return;
 };
 
-Notification.prototype.write = function(output) {
-  output.writeStructBegin('Notification');
-  if (this.event !== null && this.event !== undefined) {
-    output.writeFieldBegin('event', Thrift.Type.STRUCT, 1);
-    this.event.write(output);
+Event.prototype.write = function(output) {
+  output.writeStructBegin('Event');
+  if (this.eventType !== null && this.eventType !== undefined) {
+    output.writeFieldBegin('eventType', Thrift.Type.STRUCT, 1);
+    this.eventType.write(output);
     output.writeFieldEnd();
   }
   if (this.timestamp !== null && this.timestamp !== undefined) {

@@ -15,15 +15,16 @@ typedef Banana.timestamp timestamp;
 
 struct ApplicationToken
 {
-    1: string token;
-    2: string applicationName;
-    3: optional string organization;
-    4: timestamp timeOfExpiration;
+    1: string tokenId;
+    2: optional string organization;
+    3: timestamp timeOfExpiration;
+    4: optional string applicationId;
+    5: optional string applicationName;
 }
 
-struct HumanToken
+struct UserToken
 {
-    1: string token;
+    1: string tokenId;
     2: timestamp timeOfExpiration;
     3: optional string organization;
     4: optional bool isOauthToken = false;
@@ -47,7 +48,7 @@ struct Password
  * before sending it over the wire. Without it, passwords will
  * not be understood by the service, and will be rejected.
  */
-const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "dD2Qor6l1ZBhQh6q8X3WGwr84vBeqeEjcfoYb01xSwJBU5mFIM";
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
 
 /**
  * An Account registered with our System.
@@ -62,8 +63,8 @@ struct AromaAccount
 }
 
 /**
- * This union represents the multiple ways to Sign In and Authenticate with
- * the Banana Service.
+ * This union represents the multiple ways a User can 
+ * Sign In and Authenticate with the Banana Service.
  */
 union Credentials
 {

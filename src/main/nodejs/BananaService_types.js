@@ -16,6 +16,1453 @@ var Notifications_ttypes = require('./Notifications_types')
 
 
 var ttypes = module.exports = {};
+DeleteMessageRequest = module.exports.DeleteMessageRequest = function(args) {
+  this.token = null;
+  this.messageId = null;
+  this.applicationId = null;
+  this.messageIds = [];
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.messageIds !== undefined && args.messageIds !== null) {
+      this.messageIds = Thrift.copyList(args.messageIds, [null]);
+    }
+  }
+};
+DeleteMessageRequest.prototype = {};
+DeleteMessageRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.messageIds = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString();
+          this.messageIds.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DeleteMessageRequest.prototype.write = function(output) {
+  output.writeStructBegin('DeleteMessageRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.messageIds !== null && this.messageIds !== undefined) {
+    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
+    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
+    for (var iter7 in this.messageIds)
+    {
+      if (this.messageIds.hasOwnProperty(iter7))
+      {
+        iter7 = this.messageIds[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DeleteMessageResponse = module.exports.DeleteMessageResponse = function(args) {
+  this.messagesDeleted = 0;
+  if (args) {
+    if (args.messagesDeleted !== undefined && args.messagesDeleted !== null) {
+      this.messagesDeleted = args.messagesDeleted;
+    }
+  }
+};
+DeleteMessageResponse.prototype = {};
+DeleteMessageResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.messagesDeleted = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DeleteMessageResponse.prototype.write = function(output) {
+  output.writeStructBegin('DeleteMessageResponse');
+  if (this.messagesDeleted !== null && this.messagesDeleted !== undefined) {
+    output.writeFieldBegin('messagesDeleted', Thrift.Type.I32, 1);
+    output.writeI32(this.messagesDeleted);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DeleteAllMessagesRequest = module.exports.DeleteAllMessagesRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  this.messagesDeleted = 0;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.messagesDeleted !== undefined && args.messagesDeleted !== null) {
+      this.messagesDeleted = args.messagesDeleted;
+    }
+  }
+};
+DeleteAllMessagesRequest.prototype = {};
+DeleteAllMessagesRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I32) {
+        this.messagesDeleted = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DeleteAllMessagesRequest.prototype.write = function(output) {
+  output.writeStructBegin('DeleteAllMessagesRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.messagesDeleted !== null && this.messagesDeleted !== undefined) {
+    output.writeFieldBegin('messagesDeleted', Thrift.Type.I32, 3);
+    output.writeI32(this.messagesDeleted);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DismissMessageRequest = module.exports.DismissMessageRequest = function(args) {
+  this.token = null;
+  this.messageId = null;
+  this.applicationId = null;
+  this.messageIds = [];
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.messageIds !== undefined && args.messageIds !== null) {
+      this.messageIds = Thrift.copyList(args.messageIds, [null]);
+    }
+  }
+};
+DismissMessageRequest.prototype = {};
+DismissMessageRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.LIST) {
+        var _size8 = 0;
+        var _rtmp312;
+        this.messageIds = [];
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        {
+          var elem14 = null;
+          elem14 = input.readString();
+          this.messageIds.push(elem14);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DismissMessageRequest.prototype.write = function(output) {
+  output.writeStructBegin('DismissMessageRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.messageIds !== null && this.messageIds !== undefined) {
+    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
+    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
+    for (var iter15 in this.messageIds)
+    {
+      if (this.messageIds.hasOwnProperty(iter15))
+      {
+        iter15 = this.messageIds[iter15];
+        output.writeString(iter15);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DismissMessageResponse = module.exports.DismissMessageResponse = function(args) {
+  this.messagesDismissed = 0;
+  if (args) {
+    if (args.messagesDismissed !== undefined && args.messagesDismissed !== null) {
+      this.messagesDismissed = args.messagesDismissed;
+    }
+  }
+};
+DismissMessageResponse.prototype = {};
+DismissMessageResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.messagesDismissed = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DismissMessageResponse.prototype.write = function(output) {
+  output.writeStructBegin('DismissMessageResponse');
+  if (this.messagesDismissed !== null && this.messagesDismissed !== undefined) {
+    output.writeFieldBegin('messagesDismissed', Thrift.Type.I32, 1);
+    output.writeI32(this.messagesDismissed);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DismissAllMessagesRequest = module.exports.DismissAllMessagesRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+  }
+};
+DismissAllMessagesRequest.prototype = {};
+DismissAllMessagesRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DismissAllMessagesRequest.prototype.write = function(output) {
+  output.writeStructBegin('DismissAllMessagesRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+DismissAllMessagesResponse = module.exports.DismissAllMessagesResponse = function(args) {
+  this.messagesDismissed = 0;
+  if (args) {
+    if (args.messagesDismissed !== undefined && args.messagesDismissed !== null) {
+      this.messagesDismissed = args.messagesDismissed;
+    }
+  }
+};
+DismissAllMessagesResponse.prototype = {};
+DismissAllMessagesResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.I32) {
+        this.messagesDismissed = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DismissAllMessagesResponse.prototype.write = function(output) {
+  output.writeStructBegin('DismissAllMessagesResponse');
+  if (this.messagesDismissed !== null && this.messagesDismissed !== undefined) {
+    output.writeFieldBegin('messagesDismissed', Thrift.Type.I32, 1);
+    output.writeI32(this.messagesDismissed);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ProvisionApplicationRequest = module.exports.ProvisionApplicationRequest = function(args) {
+  this.token = null;
+  this.applicationName = null;
+  this.programmingLanguage = null;
+  this.organization = null;
+  this.icon = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
+      this.programmingLanguage = args.programmingLanguage;
+    }
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
+    }
+    if (args.icon !== undefined && args.icon !== null) {
+      this.icon = new Banana_ttypes.Image(args.icon);
+    }
+  }
+};
+ProvisionApplicationRequest.prototype = {};
+ProvisionApplicationRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I32) {
+        this.programmingLanguage = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.icon = new Banana_ttypes.Image();
+        this.icon.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ProvisionApplicationRequest.prototype.write = function(output) {
+  output.writeStructBegin('ProvisionApplicationRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.programmingLanguage !== null && this.programmingLanguage !== undefined) {
+    output.writeFieldBegin('programmingLanguage', Thrift.Type.I32, 3);
+    output.writeI32(this.programmingLanguage);
+    output.writeFieldEnd();
+  }
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeString(this.organization);
+    output.writeFieldEnd();
+  }
+  if (this.icon !== null && this.icon !== undefined) {
+    output.writeFieldBegin('icon', Thrift.Type.STRUCT, 5);
+    this.icon.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ProvisionApplicationResponse = module.exports.ProvisionApplicationResponse = function(args) {
+  this.applicationId = null;
+  this.applicationName = null;
+  this.applicationToken = null;
+  this.applicationInfo = null;
+  if (args) {
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.applicationToken !== undefined && args.applicationToken !== null) {
+      this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
+    }
+    if (args.applicationInfo !== undefined && args.applicationInfo !== null) {
+      this.applicationInfo = new Banana_ttypes.Application(args.applicationInfo);
+    }
+  }
+};
+ProvisionApplicationResponse.prototype = {};
+ProvisionApplicationResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationToken = new Authentication_ttypes.ApplicationToken();
+        this.applicationToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationInfo = new Banana_ttypes.Application();
+        this.applicationInfo.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ProvisionApplicationResponse.prototype.write = function(output) {
+  output.writeStructBegin('ProvisionApplicationResponse');
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.applicationToken !== null && this.applicationToken !== undefined) {
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 3);
+    this.applicationToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationInfo !== null && this.applicationInfo !== undefined) {
+    output.writeFieldBegin('applicationInfo', Thrift.Type.STRUCT, 4);
+    this.applicationInfo.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegenerateApplicationTokenRequest = module.exports.RegenerateApplicationTokenRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+  }
+};
+RegenerateApplicationTokenRequest.prototype = {};
+RegenerateApplicationTokenRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegenerateApplicationTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('RegenerateApplicationTokenRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegenerateApplicationTokenResponse = module.exports.RegenerateApplicationTokenResponse = function(args) {
+  this.serviceToken = null;
+  if (args) {
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
+    }
+  }
+};
+RegenerateApplicationTokenResponse.prototype = {};
+RegenerateApplicationTokenResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new Authentication_ttypes.ApplicationToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegenerateApplicationTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('RegenerateApplicationTokenResponse');
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegisterHealthCheckRequest = module.exports.RegisterHealthCheckRequest = function(args) {
+  this.token = null;
+  this.endpoint = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.endpoint !== undefined && args.endpoint !== null) {
+      this.endpoint = new Endpoint_ttypes.Endpoint(args.endpoint);
+    }
+  }
+};
+RegisterHealthCheckRequest.prototype = {};
+RegisterHealthCheckRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.endpoint = new Endpoint_ttypes.Endpoint();
+        this.endpoint.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterHealthCheckRequest.prototype.write = function(output) {
+  output.writeStructBegin('RegisterHealthCheckRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.endpoint !== null && this.endpoint !== undefined) {
+    output.writeFieldBegin('endpoint', Thrift.Type.STRUCT, 2);
+    this.endpoint.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RegisterHealthCheckResponse = module.exports.RegisterHealthCheckResponse = function(args) {
+  this.message = null;
+  this.healthCheckToken = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.healthCheckToken !== undefined && args.healthCheckToken !== null) {
+      this.healthCheckToken = args.healthCheckToken;
+    }
+  }
+};
+RegisterHealthCheckResponse.prototype = {};
+RegisterHealthCheckResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.healthCheckToken = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RegisterHealthCheckResponse.prototype.write = function(output) {
+  output.writeStructBegin('RegisterHealthCheckResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.healthCheckToken !== null && this.healthCheckToken !== undefined) {
+    output.writeFieldBegin('healthCheckToken', Thrift.Type.STRING, 2);
+    output.writeString(this.healthCheckToken);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RemoveSavedChannelRequest = module.exports.RemoveSavedChannelRequest = function(args) {
+  this.token = null;
+  this.channel = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+    }
+  }
+};
+RemoveSavedChannelRequest.prototype = {};
+RemoveSavedChannelRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RemoveSavedChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('RemoveSavedChannelRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RemoveSavedChannelResponse = module.exports.RemoveSavedChannelResponse = function(args) {
+  this.message = null;
+  this.channel = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+    }
+  }
+};
+RemoveSavedChannelResponse.prototype = {};
+RemoveSavedChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RemoveSavedChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('RemoveSavedChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RenewApplicationTokenRequest = module.exports.RenewApplicationTokenRequest = function(args) {
+  this.token = null;
+  this.applicationToken = null;
+  this.newLifetime = null;
+  this.applicationId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.applicationToken !== undefined && args.applicationToken !== null) {
+      this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
+    }
+    if (args.newLifetime !== undefined && args.newLifetime !== null) {
+      this.newLifetime = new Banana_ttypes.LengthOfTime(args.newLifetime);
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+  }
+};
+RenewApplicationTokenRequest.prototype = {};
+RenewApplicationTokenRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationToken = new Authentication_ttypes.ApplicationToken();
+        this.applicationToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.newLifetime = new Banana_ttypes.LengthOfTime();
+        this.newLifetime.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RenewApplicationTokenRequest.prototype.write = function(output) {
+  output.writeStructBegin('RenewApplicationTokenRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationToken !== null && this.applicationToken !== undefined) {
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 2);
+    this.applicationToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.newLifetime !== null && this.newLifetime !== undefined) {
+    output.writeFieldBegin('newLifetime', Thrift.Type.STRUCT, 3);
+    this.newLifetime.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+RenewApplicationTokenResponse = module.exports.RenewApplicationTokenResponse = function(args) {
+  this.serviceToken = null;
+  if (args) {
+    if (args.serviceToken !== undefined && args.serviceToken !== null) {
+      this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
+    }
+  }
+};
+RenewApplicationTokenResponse.prototype = {};
+RenewApplicationTokenResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.serviceToken = new Authentication_ttypes.ApplicationToken();
+        this.serviceToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+RenewApplicationTokenResponse.prototype.write = function(output) {
+  output.writeStructBegin('RenewApplicationTokenResponse');
+  if (this.serviceToken !== null && this.serviceToken !== undefined) {
+    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
+    this.serviceToken.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SaveChannelRequest = module.exports.SaveChannelRequest = function(args) {
+  this.token = null;
+  this.channel = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+    }
+  }
+};
+SaveChannelRequest.prototype = {};
+SaveChannelRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SaveChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('SaveChannelRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SaveChannelResponse = module.exports.SaveChannelResponse = function(args) {
+  this.message = null;
+  this.channel = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+    }
+  }
+};
+SaveChannelResponse.prototype = {};
+SaveChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SaveChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('SaveChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SignInRequest = module.exports.SignInRequest = function(args) {
   this.credentials = null;
   this.username = null;
@@ -84,10 +1531,10 @@ SignInRequest.prototype.write = function(output) {
 };
 
 SignInResponse = module.exports.SignInResponse = function(args) {
-  this.humanToken = null;
+  this.userToken = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
     }
   }
 };
@@ -107,8 +1554,8 @@ SignInResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.userToken = new Authentication_ttypes.UserToken();
+        this.userToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -127,9 +1574,9 @@ SignInResponse.prototype.read = function(input) {
 
 SignInResponse.prototype.write = function(output) {
   output.writeStructBegin('SignInResponse');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -253,11 +1700,11 @@ SignUpRequest.prototype.write = function(output) {
 };
 
 SignUpResponse = module.exports.SignUpResponse = function(args) {
-  this.humanToken = null;
+  this.userToken = null;
   this.account = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
     }
     if (args.account !== undefined && args.account !== null) {
       this.account = new Authentication_ttypes.AromaAccount(args.account);
@@ -280,8 +1727,8 @@ SignUpResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.userToken = new Authentication_ttypes.UserToken();
+        this.userToken.read(input);
       } else {
         input.skip(ftype);
       }
@@ -305,9 +1752,9 @@ SignUpResponse.prototype.read = function(input) {
 
 SignUpResponse.prototype.write = function(output) {
   output.writeStructBegin('SignUpResponse');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 1);
+    this.userToken.write(output);
     output.writeFieldEnd();
   }
   if (this.account !== null && this.account !== undefined) {
@@ -320,160 +1767,24 @@ SignUpResponse.prototype.write = function(output) {
   return;
 };
 
-ProvisionApplicationRequest = module.exports.ProvisionApplicationRequest = function(args) {
+SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
   this.token = null;
-  this.applicationName = null;
-  this.programmingLanguage = null;
-  this.organization = null;
-  this.icon = null;
-  this.humanToken = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = args.token;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-    if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
-      this.programmingLanguage = args.programmingLanguage;
-    }
-    if (args.organization !== undefined && args.organization !== null) {
-      this.organization = args.organization;
-    }
-    if (args.icon !== undefined && args.icon !== null) {
-      this.icon = new Banana_ttypes.Image(args.icon);
-    }
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-  }
-};
-ProvisionApplicationRequest.prototype = {};
-ProvisionApplicationRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.token = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.programmingLanguage = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 5:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.icon = new Banana_ttypes.Image();
-        this.icon.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 6:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-ProvisionApplicationRequest.prototype.write = function(output) {
-  output.writeStructBegin('ProvisionApplicationRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRING, 1);
-    output.writeString(this.token);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  if (this.programmingLanguage !== null && this.programmingLanguage !== undefined) {
-    output.writeFieldBegin('programmingLanguage', Thrift.Type.I32, 3);
-    output.writeI32(this.programmingLanguage);
-    output.writeFieldEnd();
-  }
-  if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
-    output.writeString(this.organization);
-    output.writeFieldEnd();
-  }
-  if (this.icon !== null && this.icon !== undefined) {
-    output.writeFieldBegin('icon', Thrift.Type.STRUCT, 5);
-    this.icon.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 6);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-ProvisionApplicationResponse = module.exports.ProvisionApplicationResponse = function(args) {
-  this.bananaToken = null;
-  this.applicationName = null;
-  this.serviceToken = null;
+  this.channel = null;
   this.applicationId = null;
   if (args) {
-    if (args.bananaToken !== undefined && args.bananaToken !== null) {
-      this.bananaToken = args.bananaToken;
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-    if (args.serviceToken !== undefined && args.serviceToken !== null) {
-      this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new Channels_ttypes.BananaChannel(args.channel);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
     }
   }
 };
-ProvisionApplicationResponse.prototype = {};
-ProvisionApplicationResponse.prototype.read = function(input) {
+SnoozeChannelRequest.prototype = {};
+SnoozeChannelRequest.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -487,28 +1798,22 @@ ProvisionApplicationResponse.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.bananaToken = input.readString();
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.serviceToken = new Authentication_ttypes.ApplicationToken();
-        this.serviceToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
       if (ftype == Thrift.Type.STRING) {
         this.applicationId = input.readString();
       } else {
@@ -524,25 +1829,20 @@ ProvisionApplicationResponse.prototype.read = function(input) {
   return;
 };
 
-ProvisionApplicationResponse.prototype.write = function(output) {
-  output.writeStructBegin('ProvisionApplicationResponse');
-  if (this.bananaToken !== null && this.bananaToken !== undefined) {
-    output.writeFieldBegin('bananaToken', Thrift.Type.STRING, 1);
-    output.writeString(this.bananaToken);
+SnoozeChannelRequest.prototype.write = function(output) {
+  output.writeStructBegin('SnoozeChannelRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  if (this.serviceToken !== null && this.serviceToken !== undefined) {
-    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 3);
-    this.serviceToken.write(output);
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
+    this.channel.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
     output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
@@ -551,15 +1851,68 @@ ProvisionApplicationResponse.prototype.write = function(output) {
   return;
 };
 
+SnoozeChannelResponse = module.exports.SnoozeChannelResponse = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+SnoozeChannelResponse.prototype = {};
+SnoozeChannelResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SnoozeChannelResponse.prototype.write = function(output) {
+  output.writeStructBegin('SnoozeChannelResponse');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 SubscribeToApplicationRequest = module.exports.SubscribeToApplicationRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   this.applicationName = null;
   this.applicationId = null;
   this.organization = null;
   this.shared = false;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
@@ -591,8 +1944,8 @@ SubscribeToApplicationRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -636,9 +1989,9 @@ SubscribeToApplicationRequest.prototype.read = function(input) {
 
 SubscribeToApplicationRequest.prototype.write = function(output) {
   output.writeStructBegin('SubscribeToApplicationRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationName !== null && this.applicationName !== undefined) {
@@ -733,1485 +2086,12 @@ SubscribeToApplicationResponse.prototype.write = function(output) {
   return;
 };
 
-RegisterHealthCheckRequest = module.exports.RegisterHealthCheckRequest = function(args) {
-  this.endpoint = null;
-  this.humanToken = null;
-  if (args) {
-    if (args.endpoint !== undefined && args.endpoint !== null) {
-      this.endpoint = new Endpoint_ttypes.Endpoint(args.endpoint);
-    }
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-  }
-};
-RegisterHealthCheckRequest.prototype = {};
-RegisterHealthCheckRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.endpoint = new Endpoint_ttypes.Endpoint();
-        this.endpoint.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegisterHealthCheckRequest.prototype.write = function(output) {
-  output.writeStructBegin('RegisterHealthCheckRequest');
-  if (this.endpoint !== null && this.endpoint !== undefined) {
-    output.writeFieldBegin('endpoint', Thrift.Type.STRUCT, 1);
-    this.endpoint.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 2);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RegisterHealthCheckResponse = module.exports.RegisterHealthCheckResponse = function(args) {
-  this.message = null;
-  this.healthCheckToken = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.healthCheckToken !== undefined && args.healthCheckToken !== null) {
-      this.healthCheckToken = args.healthCheckToken;
-    }
-  }
-};
-RegisterHealthCheckResponse.prototype = {};
-RegisterHealthCheckResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.healthCheckToken = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegisterHealthCheckResponse.prototype.write = function(output) {
-  output.writeStructBegin('RegisterHealthCheckResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.healthCheckToken !== null && this.healthCheckToken !== undefined) {
-    output.writeFieldBegin('healthCheckToken', Thrift.Type.STRING, 2);
-    output.writeString(this.healthCheckToken);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RenewApplicationTokenRequest = module.exports.RenewApplicationTokenRequest = function(args) {
-  this.applicationToken = null;
-  this.timePeriod = null;
-  this.humanToken = null;
-  this.applicationId = null;
-  if (args) {
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
-    }
-    if (args.timePeriod !== undefined && args.timePeriod !== null) {
-      this.timePeriod = new Banana_ttypes.TimePeriod(args.timePeriod);
-    }
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-  }
-};
-RenewApplicationTokenRequest.prototype = {};
-RenewApplicationTokenRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new Authentication_ttypes.ApplicationToken();
-        this.applicationToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.timePeriod = new Banana_ttypes.TimePeriod();
-        this.timePeriod.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RenewApplicationTokenRequest.prototype.write = function(output) {
-  output.writeStructBegin('RenewApplicationTokenRequest');
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
-    this.applicationToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.timePeriod !== null && this.timePeriod !== undefined) {
-    output.writeFieldBegin('timePeriod', Thrift.Type.STRUCT, 2);
-    this.timePeriod.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 3);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RenewApplicationTokenResponse = module.exports.RenewApplicationTokenResponse = function(args) {
-  this.serviceToken = null;
-  if (args) {
-    if (args.serviceToken !== undefined && args.serviceToken !== null) {
-      this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
-    }
-  }
-};
-RenewApplicationTokenResponse.prototype = {};
-RenewApplicationTokenResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.serviceToken = new Authentication_ttypes.ApplicationToken();
-        this.serviceToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RenewApplicationTokenResponse.prototype.write = function(output) {
-  output.writeStructBegin('RenewApplicationTokenResponse');
-  if (this.serviceToken !== null && this.serviceToken !== undefined) {
-    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
-    this.serviceToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RegenerateApplicationTokenRequest = module.exports.RegenerateApplicationTokenRequest = function(args) {
-  this.applicationId = null;
-  this.humanToken = null;
-  if (args) {
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-  }
-};
-RegenerateApplicationTokenRequest.prototype = {};
-RegenerateApplicationTokenRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegenerateApplicationTokenRequest.prototype.write = function(output) {
-  output.writeStructBegin('RegenerateApplicationTokenRequest');
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 2);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RegenerateApplicationTokenResponse = module.exports.RegenerateApplicationTokenResponse = function(args) {
-  this.serviceToken = null;
-  if (args) {
-    if (args.serviceToken !== undefined && args.serviceToken !== null) {
-      this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
-    }
-  }
-};
-RegenerateApplicationTokenResponse.prototype = {};
-RegenerateApplicationTokenResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.serviceToken = new Authentication_ttypes.ApplicationToken();
-        this.serviceToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RegenerateApplicationTokenResponse.prototype.write = function(output) {
-  output.writeStructBegin('RegenerateApplicationTokenResponse');
-  if (this.serviceToken !== null && this.serviceToken !== undefined) {
-    output.writeFieldBegin('serviceToken', Thrift.Type.STRUCT, 1);
-    this.serviceToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DeleteMessageRequest = module.exports.DeleteMessageRequest = function(args) {
-  this.humanToken = null;
-  this.messageId = null;
-  this.applicationId = null;
-  this.messageIds = [];
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.messageId !== undefined && args.messageId !== null) {
-      this.messageId = args.messageId;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.messageIds !== undefined && args.messageIds !== null) {
-      this.messageIds = Thrift.copyList(args.messageIds, [null]);
-    }
-  }
-};
-DeleteMessageRequest.prototype = {};
-DeleteMessageRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.messageId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
-        this.messageIds = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
-        {
-          var elem6 = null;
-          elem6 = input.readString();
-          this.messageIds.push(elem6);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DeleteMessageRequest.prototype.write = function(output) {
-  output.writeStructBegin('DeleteMessageRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.messageId !== null && this.messageId !== undefined) {
-    output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
-    output.writeString(this.messageId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.messageIds !== null && this.messageIds !== undefined) {
-    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
-    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
-    for (var iter7 in this.messageIds)
-    {
-      if (this.messageIds.hasOwnProperty(iter7))
-      {
-        iter7 = this.messageIds[iter7];
-        output.writeString(iter7);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DeleteMessageResponse = module.exports.DeleteMessageResponse = function(args) {
-  this.messagesDeleted = 0;
-  if (args) {
-    if (args.messagesDeleted !== undefined && args.messagesDeleted !== null) {
-      this.messagesDeleted = args.messagesDeleted;
-    }
-  }
-};
-DeleteMessageResponse.prototype = {};
-DeleteMessageResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.messagesDeleted = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DeleteMessageResponse.prototype.write = function(output) {
-  output.writeStructBegin('DeleteMessageResponse');
-  if (this.messagesDeleted !== null && this.messagesDeleted !== undefined) {
-    output.writeFieldBegin('messagesDeleted', Thrift.Type.I32, 1);
-    output.writeI32(this.messagesDeleted);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DeleteAllMessagesRequest = module.exports.DeleteAllMessagesRequest = function(args) {
-  this.humanToken = null;
-  this.applicationId = null;
-  this.messagesDeleted = 0;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.messagesDeleted !== undefined && args.messagesDeleted !== null) {
-      this.messagesDeleted = args.messagesDeleted;
-    }
-  }
-};
-DeleteAllMessagesRequest.prototype = {};
-DeleteAllMessagesRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.messagesDeleted = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DeleteAllMessagesRequest.prototype.write = function(output) {
-  output.writeStructBegin('DeleteAllMessagesRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.messagesDeleted !== null && this.messagesDeleted !== undefined) {
-    output.writeFieldBegin('messagesDeleted', Thrift.Type.I32, 3);
-    output.writeI32(this.messagesDeleted);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DismissMessageRequest = module.exports.DismissMessageRequest = function(args) {
-  this.humanToken = null;
-  this.messageId = null;
-  this.applicationId = null;
-  this.messageIds = [];
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.messageId !== undefined && args.messageId !== null) {
-      this.messageId = args.messageId;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.messageIds !== undefined && args.messageIds !== null) {
-      this.messageIds = Thrift.copyList(args.messageIds, [null]);
-    }
-  }
-};
-DismissMessageRequest.prototype = {};
-DismissMessageRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.messageId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.LIST) {
-        var _size8 = 0;
-        var _rtmp312;
-        this.messageIds = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
-        {
-          var elem14 = null;
-          elem14 = input.readString();
-          this.messageIds.push(elem14);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DismissMessageRequest.prototype.write = function(output) {
-  output.writeStructBegin('DismissMessageRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.messageId !== null && this.messageId !== undefined) {
-    output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
-    output.writeString(this.messageId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.messageIds !== null && this.messageIds !== undefined) {
-    output.writeFieldBegin('messageIds', Thrift.Type.LIST, 4);
-    output.writeListBegin(Thrift.Type.STRING, this.messageIds.length);
-    for (var iter15 in this.messageIds)
-    {
-      if (this.messageIds.hasOwnProperty(iter15))
-      {
-        iter15 = this.messageIds[iter15];
-        output.writeString(iter15);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DismissMessageResponse = module.exports.DismissMessageResponse = function(args) {
-  this.messagesDismissed = 0;
-  if (args) {
-    if (args.messagesDismissed !== undefined && args.messagesDismissed !== null) {
-      this.messagesDismissed = args.messagesDismissed;
-    }
-  }
-};
-DismissMessageResponse.prototype = {};
-DismissMessageResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.I32) {
-        this.messagesDismissed = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DismissMessageResponse.prototype.write = function(output) {
-  output.writeStructBegin('DismissMessageResponse');
-  if (this.messagesDismissed !== null && this.messagesDismissed !== undefined) {
-    output.writeFieldBegin('messagesDismissed', Thrift.Type.I32, 1);
-    output.writeI32(this.messagesDismissed);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DismissAllMessagesRequest = module.exports.DismissAllMessagesRequest = function(args) {
-  this.humanToken = null;
-  this.applicationId = null;
-  this.messagesDismissed = 0;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.messagesDismissed !== undefined && args.messagesDismissed !== null) {
-      this.messagesDismissed = args.messagesDismissed;
-    }
-  }
-};
-DismissAllMessagesRequest.prototype = {};
-DismissAllMessagesRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.messagesDismissed = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DismissAllMessagesRequest.prototype.write = function(output) {
-  output.writeStructBegin('DismissAllMessagesRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.messagesDismissed !== null && this.messagesDismissed !== undefined) {
-    output.writeFieldBegin('messagesDismissed', Thrift.Type.I32, 3);
-    output.writeI32(this.messagesDismissed);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-DismissAllMessagesResponse = module.exports.DismissAllMessagesResponse = function(args) {
-};
-DismissAllMessagesResponse.prototype = {};
-DismissAllMessagesResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    input.skip(ftype);
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-DismissAllMessagesResponse.prototype.write = function(output) {
-  output.writeStructBegin('DismissAllMessagesResponse');
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SaveChannelRequest = module.exports.SaveChannelRequest = function(args) {
-  this.humanToken = null;
-  this.channel = null;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
-    }
-  }
-};
-SaveChannelRequest.prototype = {};
-SaveChannelRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SaveChannelRequest.prototype.write = function(output) {
-  output.writeStructBegin('SaveChannelRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SaveChannelResponse = module.exports.SaveChannelResponse = function(args) {
-  this.message = null;
-  this.channel = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
-    }
-  }
-};
-SaveChannelResponse.prototype = {};
-SaveChannelResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SaveChannelResponse.prototype.write = function(output) {
-  output.writeStructBegin('SaveChannelResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RemoveSavedChannelRequest = module.exports.RemoveSavedChannelRequest = function(args) {
-  this.humanToken = null;
-  this.channel = null;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
-    }
-  }
-};
-RemoveSavedChannelRequest.prototype = {};
-RemoveSavedChannelRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RemoveSavedChannelRequest.prototype.write = function(output) {
-  output.writeStructBegin('RemoveSavedChannelRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-RemoveSavedChannelResponse = module.exports.RemoveSavedChannelResponse = function(args) {
-  this.message = null;
-  this.channel = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
-    }
-  }
-};
-RemoveSavedChannelResponse.prototype = {};
-RemoveSavedChannelResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-RemoveSavedChannelResponse.prototype.write = function(output) {
-  output.writeStructBegin('RemoveSavedChannelResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
-  this.humanToken = null;
-  this.channel = null;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-    if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
-    }
-  }
-};
-SnoozeChannelRequest.prototype = {};
-SnoozeChannelRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
-        this.channel.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SnoozeChannelRequest.prototype.write = function(output) {
-  output.writeStructBegin('SnoozeChannelRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.channel !== null && this.channel !== undefined) {
-    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-    this.channel.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-SnoozeChannelResponse = module.exports.SnoozeChannelResponse = function(args) {
-  this.message = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-  }
-};
-SnoozeChannelResponse.prototype = {};
-SnoozeChannelResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-SnoozeChannelResponse.prototype.write = function(output) {
-  output.writeStructBegin('SnoozeChannelResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetMyApplicationsRequest = module.exports.GetMyApplicationsRequest = function(args) {
-  this.humanToken = null;
-  if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
-    }
-  }
-};
-GetMyApplicationsRequest.prototype = {};
-GetMyApplicationsRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetMyApplicationsRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetMyApplicationsRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetMyApplicationsResponse = module.exports.GetMyApplicationsResponse = function(args) {
-  this.applications = null;
-  if (args) {
-    if (args.applications !== undefined && args.applications !== null) {
-      this.applications = Thrift.copyList(args.applications, [null]);
-    }
-  }
-};
-GetMyApplicationsResponse.prototype = {};
-GetMyApplicationsResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size16 = 0;
-        var _rtmp320;
-        this.applications = [];
-        var _etype19 = 0;
-        _rtmp320 = input.readListBegin();
-        _etype19 = _rtmp320.etype;
-        _size16 = _rtmp320.size;
-        for (var _i21 = 0; _i21 < _size16; ++_i21)
-        {
-          var elem22 = null;
-          elem22 = new Banana_ttypes.Application();
-          elem22.read(input);
-          this.applications.push(elem22);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetMyApplicationsResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetMyApplicationsResponse');
-  if (this.applications !== null && this.applications !== undefined) {
-    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-    for (var iter23 in this.applications)
-    {
-      if (this.applications.hasOwnProperty(iter23))
-      {
-        iter23 = this.applications[iter23];
-        iter23.write(output);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 GetApplicationInfoRequest = module.exports.GetApplicationInfoRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   this.applicationId = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -2234,8 +2114,8 @@ GetApplicationInfoRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -2258,9 +2138,9 @@ GetApplicationInfoRequest.prototype.read = function(input) {
 
 GetApplicationInfoRequest.prototype.write = function(output) {
   output.writeStructBegin('GetApplicationInfoRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationId !== null && this.applicationId !== undefined) {
@@ -2328,10 +2208,10 @@ GetApplicationInfoResponse.prototype.write = function(output) {
 };
 
 GetDashboardRequest = module.exports.GetDashboardRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
   }
 };
@@ -2351,8 +2231,8 @@ GetDashboardRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -2371,9 +2251,9 @@ GetDashboardRequest.prototype.read = function(input) {
 
 GetDashboardRequest.prototype.write = function(output) {
   output.writeStructBegin('GetDashboardRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -2438,19 +2318,19 @@ GetDashboardResponse.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.LIST) {
-        var _size24 = 0;
-        var _rtmp328;
+        var _size16 = 0;
+        var _rtmp320;
         this.recentMessages = [];
-        var _etype27 = 0;
-        _rtmp328 = input.readListBegin();
-        _etype27 = _rtmp328.etype;
-        _size24 = _rtmp328.size;
-        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        var _etype19 = 0;
+        _rtmp320 = input.readListBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
         {
-          var elem30 = null;
-          elem30 = new Banana_ttypes.Message();
-          elem30.read(input);
-          this.recentMessages.push(elem30);
+          var elem22 = null;
+          elem22 = new Banana_ttypes.Message();
+          elem22.read(input);
+          this.recentMessages.push(elem22);
         }
         input.readListEnd();
       } else {
@@ -2486,12 +2366,12 @@ GetDashboardResponse.prototype.write = function(output) {
   if (this.recentMessages !== null && this.recentMessages !== undefined) {
     output.writeFieldBegin('recentMessages', Thrift.Type.LIST, 4);
     output.writeListBegin(Thrift.Type.STRUCT, this.recentMessages.length);
-    for (var iter31 in this.recentMessages)
+    for (var iter23 in this.recentMessages)
     {
-      if (this.recentMessages.hasOwnProperty(iter31))
+      if (this.recentMessages.hasOwnProperty(iter23))
       {
-        iter31 = this.recentMessages[iter31];
-        iter31.write(output);
+        iter23 = this.recentMessages[iter23];
+        iter23.write(output);
       }
     }
     output.writeListEnd();
@@ -2502,24 +2382,24 @@ GetDashboardResponse.prototype.write = function(output) {
   return;
 };
 
-SearchForApplicationsRequest = module.exports.SearchForApplicationsRequest = function(args) {
-  this.humanToken = null;
-  this.searchTerm = null;
-  this.organization = null;
+GetMessagesRequest = module.exports.GetMessagesRequest = function(args) {
+  this.token = null;
+  this.applicationId = null;
+  this.limit = 0;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
-    if (args.searchTerm !== undefined && args.searchTerm !== null) {
-      this.searchTerm = args.searchTerm;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
-    if (args.organization !== undefined && args.organization !== null) {
-      this.organization = args.organization;
+    if (args.limit !== undefined && args.limit !== null) {
+      this.limit = args.limit;
     }
   }
 };
-SearchForApplicationsRequest.prototype = {};
-SearchForApplicationsRequest.prototype.read = function(input) {
+GetMessagesRequest.prototype = {};
+GetMessagesRequest.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -2534,22 +2414,22 @@ SearchForApplicationsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.searchTerm = input.readString();
+        this.applicationId = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString();
+      if (ftype == Thrift.Type.I32) {
+        this.limit = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -2563,21 +2443,21 @@ SearchForApplicationsRequest.prototype.read = function(input) {
   return;
 };
 
-SearchForApplicationsRequest.prototype.write = function(output) {
-  output.writeStructBegin('SearchForApplicationsRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+GetMessagesRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetMessagesRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
-  if (this.searchTerm !== null && this.searchTerm !== undefined) {
-    output.writeFieldBegin('searchTerm', Thrift.Type.STRING, 2);
-    output.writeString(this.searchTerm);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
-  if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
-    output.writeString(this.organization);
+  if (this.limit !== null && this.limit !== undefined) {
+    output.writeFieldBegin('limit', Thrift.Type.I32, 3);
+    output.writeI32(this.limit);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -2585,16 +2465,159 @@ SearchForApplicationsRequest.prototype.write = function(output) {
   return;
 };
 
-SearchForApplicationsResponse = module.exports.SearchForApplicationsResponse = function(args) {
-  this.applications = [];
+GetMessagesResponse = module.exports.GetMessagesResponse = function(args) {
+  this.messages = [];
+  this.totalMessagesMatching = 0;
+  if (args) {
+    if (args.messages !== undefined && args.messages !== null) {
+      this.messages = Thrift.copyList(args.messages, [Banana_ttypes.Message]);
+    }
+    if (args.totalMessagesMatching !== undefined && args.totalMessagesMatching !== null) {
+      this.totalMessagesMatching = args.totalMessagesMatching;
+    }
+  }
+};
+GetMessagesResponse.prototype = {};
+GetMessagesResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size24 = 0;
+        var _rtmp328;
+        this.messages = [];
+        var _etype27 = 0;
+        _rtmp328 = input.readListBegin();
+        _etype27 = _rtmp328.etype;
+        _size24 = _rtmp328.size;
+        for (var _i29 = 0; _i29 < _size24; ++_i29)
+        {
+          var elem30 = null;
+          elem30 = new Banana_ttypes.Message();
+          elem30.read(input);
+          this.messages.push(elem30);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.totalMessagesMatching = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMessagesResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetMessagesResponse');
+  if (this.messages !== null && this.messages !== undefined) {
+    output.writeFieldBegin('messages', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.messages.length);
+    for (var iter31 in this.messages)
+    {
+      if (this.messages.hasOwnProperty(iter31))
+      {
+        iter31 = this.messages[iter31];
+        iter31.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.totalMessagesMatching !== null && this.totalMessagesMatching !== undefined) {
+    output.writeFieldBegin('totalMessagesMatching', Thrift.Type.I32, 2);
+    output.writeI32(this.totalMessagesMatching);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetMyApplicationsRequest = module.exports.GetMyApplicationsRequest = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+  }
+};
+GetMyApplicationsRequest.prototype = {};
+GetMyApplicationsRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetMyApplicationsRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetMyApplicationsRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetMyApplicationsResponse = module.exports.GetMyApplicationsResponse = function(args) {
+  this.applications = null;
   if (args) {
     if (args.applications !== undefined && args.applications !== null) {
       this.applications = Thrift.copyList(args.applications, [null]);
     }
   }
 };
-SearchForApplicationsResponse.prototype = {};
-SearchForApplicationsResponse.prototype.read = function(input) {
+GetMyApplicationsResponse.prototype = {};
+GetMyApplicationsResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -2640,8 +2663,8 @@ SearchForApplicationsResponse.prototype.read = function(input) {
   return;
 };
 
-SearchForApplicationsResponse.prototype.write = function(output) {
-  output.writeStructBegin('SearchForApplicationsResponse');
+GetMyApplicationsResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetMyApplicationsResponse');
   if (this.applications !== null && this.applications !== undefined) {
     output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
@@ -2662,12 +2685,12 @@ SearchForApplicationsResponse.prototype.write = function(output) {
 };
 
 GetApplicationSubscribersRequest = module.exports.GetApplicationSubscribersRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   this.applicationId = null;
   this.organization = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -2693,8 +2716,8 @@ GetApplicationSubscribersRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -2724,9 +2747,9 @@ GetApplicationSubscribersRequest.prototype.read = function(input) {
 
 GetApplicationSubscribersRequest.prototype.write = function(output) {
   output.writeStructBegin('GetApplicationSubscribersRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationId !== null && this.applicationId !== undefined) {
@@ -2745,10 +2768,10 @@ GetApplicationSubscribersRequest.prototype.write = function(output) {
 };
 
 GetApplicationSubscribersResponse = module.exports.GetApplicationSubscribersResponse = function(args) {
-  this.humans = [];
+  this.subscribers = [];
   if (args) {
-    if (args.humans !== undefined && args.humans !== null) {
-      this.humans = Thrift.copyList(args.humans, [null]);
+    if (args.subscribers !== undefined && args.subscribers !== null) {
+      this.subscribers = Thrift.copyList(args.subscribers, [null]);
     }
   }
 };
@@ -2770,7 +2793,7 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
       if (ftype == Thrift.Type.LIST) {
         var _size40 = 0;
         var _rtmp344;
-        this.humans = [];
+        this.subscribers = [];
         var _etype43 = 0;
         _rtmp344 = input.readListBegin();
         _etype43 = _rtmp344.etype;
@@ -2778,9 +2801,9 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
         for (var _i45 = 0; _i45 < _size40; ++_i45)
         {
           var elem46 = null;
-          elem46 = new Banana_ttypes.Human();
+          elem46 = new Banana_ttypes.User();
           elem46.read(input);
-          this.humans.push(elem46);
+          this.subscribers.push(elem46);
         }
         input.readListEnd();
       } else {
@@ -2801,14 +2824,14 @@ GetApplicationSubscribersResponse.prototype.read = function(input) {
 
 GetApplicationSubscribersResponse.prototype.write = function(output) {
   output.writeStructBegin('GetApplicationSubscribersResponse');
-  if (this.humans !== null && this.humans !== undefined) {
-    output.writeFieldBegin('humans', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.humans.length);
-    for (var iter47 in this.humans)
+  if (this.subscribers !== null && this.subscribers !== undefined) {
+    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
+    for (var iter47 in this.subscribers)
     {
-      if (this.humans.hasOwnProperty(iter47))
+      if (this.subscribers.hasOwnProperty(iter47))
       {
-        iter47 = this.humans[iter47];
+        iter47 = this.subscribers[iter47];
         iter47.write(output);
       }
     }
@@ -2821,10 +2844,10 @@ GetApplicationSubscribersResponse.prototype.write = function(output) {
 };
 
 GetMySavedChannelsRequest = module.exports.GetMySavedChannelsRequest = function(args) {
-  this.humanToken = null;
+  this.token = null;
   if (args) {
-    if (args.humanToken !== undefined && args.humanToken !== null) {
-      this.humanToken = new Authentication_ttypes.HumanToken(args.humanToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
   }
 };
@@ -2844,8 +2867,8 @@ GetMySavedChannelsRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.humanToken = new Authentication_ttypes.HumanToken();
-        this.humanToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
@@ -2864,9 +2887,9 @@ GetMySavedChannelsRequest.prototype.read = function(input) {
 
 GetMySavedChannelsRequest.prototype.write = function(output) {
   output.writeStructBegin('GetMySavedChannelsRequest');
-  if (this.humanToken !== null && this.humanToken !== undefined) {
-    output.writeFieldBegin('humanToken', Thrift.Type.STRUCT, 1);
-    this.humanToken.write(output);
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -2950,7 +2973,156 @@ GetMySavedChannelsResponse.prototype.write = function(output) {
   return;
 };
 
+GetActivityRequest = module.exports.GetActivityRequest = function(args) {
+  this.token = null;
+  this.limit = 0;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+    if (args.limit !== undefined && args.limit !== null) {
+      this.limit = args.limit;
+    }
+  }
+};
+GetActivityRequest.prototype = {};
+GetActivityRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I32) {
+        this.limit = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetActivityRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetActivityRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.limit !== null && this.limit !== undefined) {
+    output.writeFieldBegin('limit', Thrift.Type.I32, 2);
+    output.writeI32(this.limit);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetActivityResponse = module.exports.GetActivityResponse = function(args) {
+  this.events = [];
+  if (args) {
+    if (args.events !== undefined && args.events !== null) {
+      this.events = Thrift.copyList(args.events, [Notifications_ttypes.Event]);
+    }
+  }
+};
+GetActivityResponse.prototype = {};
+GetActivityResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size56 = 0;
+        var _rtmp360;
+        this.events = [];
+        var _etype59 = 0;
+        _rtmp360 = input.readListBegin();
+        _etype59 = _rtmp360.etype;
+        _size56 = _rtmp360.size;
+        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        {
+          var elem62 = null;
+          elem62 = new Notifications_ttypes.Event();
+          elem62.read(input);
+          this.events.push(elem62);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetActivityResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetActivityResponse');
+  if (this.events !== null && this.events !== undefined) {
+    output.writeFieldBegin('events', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.events.length);
+    for (var iter63 in this.events)
+    {
+      if (this.events.hasOwnProperty(iter63))
+      {
+        iter63 = this.events[iter63];
+        iter63.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 GetServiceAnnouncementsRequest = module.exports.GetServiceAnnouncementsRequest = function(args) {
+  this.token = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
+    }
+  }
 };
 GetServiceAnnouncementsRequest.prototype = {};
 GetServiceAnnouncementsRequest.prototype.read = function(input) {
@@ -2964,7 +3136,22 @@ GetServiceAnnouncementsRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -2973,6 +3160,11 @@ GetServiceAnnouncementsRequest.prototype.read = function(input) {
 
 GetServiceAnnouncementsRequest.prototype.write = function(output) {
   output.writeStructBegin('GetServiceAnnouncementsRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -3002,19 +3194,19 @@ GetServiceAnnouncementsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size56 = 0;
-        var _rtmp360;
+        var _size64 = 0;
+        var _rtmp368;
         this.serviceAnnouncements = [];
-        var _etype59 = 0;
-        _rtmp360 = input.readListBegin();
-        _etype59 = _rtmp360.etype;
-        _size56 = _rtmp360.size;
-        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        var _etype67 = 0;
+        _rtmp368 = input.readListBegin();
+        _etype67 = _rtmp368.etype;
+        _size64 = _rtmp368.size;
+        for (var _i69 = 0; _i69 < _size64; ++_i69)
         {
-          var elem62 = null;
-          elem62 = new Banana_ttypes.ServiceAnnouncement();
-          elem62.read(input);
-          this.serviceAnnouncements.push(elem62);
+          var elem70 = null;
+          elem70 = new Banana_ttypes.ServiceAnnouncement();
+          elem70.read(input);
+          this.serviceAnnouncements.push(elem70);
         }
         input.readListEnd();
       } else {
@@ -3038,12 +3230,12 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
   if (this.serviceAnnouncements !== null && this.serviceAnnouncements !== undefined) {
     output.writeFieldBegin('serviceAnnouncements', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.serviceAnnouncements.length);
-    for (var iter63 in this.serviceAnnouncements)
+    for (var iter71 in this.serviceAnnouncements)
     {
-      if (this.serviceAnnouncements.hasOwnProperty(iter63))
+      if (this.serviceAnnouncements.hasOwnProperty(iter71))
       {
-        iter63 = this.serviceAnnouncements[iter63];
-        iter63.write(output);
+        iter71 = this.serviceAnnouncements[iter71];
+        iter71.write(output);
       }
     }
     output.writeListEnd();
@@ -3054,24 +3246,24 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
   return;
 };
 
-SendMessageRequest = module.exports.SendMessageRequest = function(args) {
-  this.applicationToken = null;
-  this.message = null;
-  this.urgency = 1;
+SearchForApplicationsRequest = module.exports.SearchForApplicationsRequest = function(args) {
+  this.token = null;
+  this.applicationName = null;
+  this.organization = null;
   if (args) {
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.UserToken(args.token);
     }
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
-    if (args.urgency !== undefined && args.urgency !== null) {
-      this.urgency = args.urgency;
+    if (args.organization !== undefined && args.organization !== null) {
+      this.organization = args.organization;
     }
   }
 };
-SendMessageRequest.prototype = {};
-SendMessageRequest.prototype.read = function(input) {
+SearchForApplicationsRequest.prototype = {};
+SearchForApplicationsRequest.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -3086,22 +3278,22 @@ SendMessageRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new Authentication_ttypes.ApplicationToken();
-        this.applicationToken.read(input);
+        this.token = new Authentication_ttypes.UserToken();
+        this.token.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
+        this.applicationName = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.urgency = input.readI32();
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -3115,21 +3307,21 @@ SendMessageRequest.prototype.read = function(input) {
   return;
 };
 
-SendMessageRequest.prototype.write = function(output) {
-  output.writeStructBegin('SendMessageRequest');
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
-    this.applicationToken.write(output);
+SearchForApplicationsRequest.prototype.write = function(output) {
+  output.writeStructBegin('SearchForApplicationsRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
     output.writeFieldEnd();
   }
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
-    output.writeString(this.message);
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
-  if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
-    output.writeI32(this.urgency);
+  if (this.organization !== null && this.organization !== undefined) {
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
+    output.writeString(this.organization);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -3137,16 +3329,16 @@ SendMessageRequest.prototype.write = function(output) {
   return;
 };
 
-SendMessageResponse = module.exports.SendMessageResponse = function(args) {
-  this.message = null;
+SearchForApplicationsResponse = module.exports.SearchForApplicationsResponse = function(args) {
+  this.applications = [];
   if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.applications !== undefined && args.applications !== null) {
+      this.applications = Thrift.copyList(args.applications, [null]);
     }
   }
 };
-SendMessageResponse.prototype = {};
-SendMessageResponse.prototype.read = function(input) {
+SearchForApplicationsResponse.prototype = {};
+SearchForApplicationsResponse.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -3160,8 +3352,22 @@ SendMessageResponse.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
+      if (ftype == Thrift.Type.LIST) {
+        var _size72 = 0;
+        var _rtmp376;
+        this.applications = [];
+        var _etype75 = 0;
+        _rtmp376 = input.readListBegin();
+        _etype75 = _rtmp376.etype;
+        _size72 = _rtmp376.size;
+        for (var _i77 = 0; _i77 < _size72; ++_i77)
+        {
+          var elem78 = null;
+          elem78 = new Banana_ttypes.Application();
+          elem78.read(input);
+          this.applications.push(elem78);
+        }
+        input.readListEnd();
       } else {
         input.skip(ftype);
       }
@@ -3178,11 +3384,20 @@ SendMessageResponse.prototype.read = function(input) {
   return;
 };
 
-SendMessageResponse.prototype.write = function(output) {
-  output.writeStructBegin('SendMessageResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
+SearchForApplicationsResponse.prototype.write = function(output) {
+  output.writeStructBegin('SearchForApplicationsResponse');
+  if (this.applications !== null && this.applications !== undefined) {
+    output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
+    for (var iter79 in this.applications)
+    {
+      if (this.applications.hasOwnProperty(iter79))
+      {
+        iter79 = this.applications[iter79];
+        iter79.write(output);
+      }
+    }
+    output.writeListEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -3190,11 +3405,15 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.3;
+ttypes.API_VERSION = 1.4;
+ttypes.SERVICE_PORT = 7001;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-service.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-service-beta.aroma.tech','port' : 7001});
-ttypes.MAX_ICON_DIMENSION = new Banana_ttypes.Dimension({
-'width' : 500,'height' : 500});
-ttypes.MAX_ICON_SIZE_IN_KILOBYTES = 40;
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
+ttypes.MAX_APPLICATION_ICON_DIMENSION = new Banana_ttypes.Dimension({
+'width' : 1024,'height' : 1024});
+ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Banana_ttypes.Dimension({
+'width' : 1024,'height' : 1024});
+ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
