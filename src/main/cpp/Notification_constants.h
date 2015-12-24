@@ -4,20 +4,20 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef Notifications_CONSTANTS_H
-#define Notifications_CONSTANTS_H
+#ifndef Notification_CONSTANTS_H
+#define Notification_CONSTANTS_H
 
-#include "Notifications_types.h"
+#include "Notification_types.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
-class NotificationsConstants {
+class NotificationConstants {
  public:
-  NotificationsConstants();
+  NotificationConstants();
 
 };
 
-extern const NotificationsConstants g_Notifications_constants;
+extern const NotificationConstants g_Notification_constants;
 
 }}}} // namespace
 

@@ -12,7 +12,7 @@ var Banana_ttypes = require('./Banana_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var Notifications_ttypes = require('./Notifications_types')
+var Notification_ttypes = require('./Notification_types')
 
 
 var ttypes = require('./BananaService_types');

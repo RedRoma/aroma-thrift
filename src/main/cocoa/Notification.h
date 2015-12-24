@@ -332,6 +332,6 @@ typedef Banana_Application * BananaNotifications_Application;
 
 @end
 
-@interface BananaNotifications_NotificationsConstants : NSObject {
+@interface BananaNotifications_NotificationConstants : NSObject {
 }
 @end

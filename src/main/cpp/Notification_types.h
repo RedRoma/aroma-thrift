@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef Notifications_TYPES_H
-#define Notifications_TYPES_H
+#ifndef Notification_TYPES_H
+#define Notification_TYPES_H
 
 #include <iosfwd>
 

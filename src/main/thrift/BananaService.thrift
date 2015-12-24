@@ -22,7 +22,7 @@ include "Banana.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
-include "Notifications.thrift"
+include "Notification.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -431,7 +431,7 @@ struct GetActivityRequest
 
 struct GetActivityResponse
 {
-    1: list<Notifications.Event> events = [];
+    1: list<Notification.Event> events = [];
 }
 
 /**

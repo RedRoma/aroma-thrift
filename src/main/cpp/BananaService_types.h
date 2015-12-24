@@ -20,7 +20,7 @@
 #include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
-#include "Notifications_types.h"
+#include "Notification_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace service {

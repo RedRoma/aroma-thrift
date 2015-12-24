@@ -23,7 +23,7 @@
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
-#import "Notifications.h"
+#import "Notification.h"
 
 #import "BananaService.h"
 
