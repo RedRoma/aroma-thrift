@@ -66,13 +66,13 @@ struct ApplicationTokenRegenerated
 
 /**
  * An Application has sent a message.
- * 
  */
 struct ApplicationSentMessage
 {
     1: optional Banana.Message message;
     /** The Application that sent the message. */
     2: Application application;
+    3: string title ="Your Application has sent out an alert";
 }
 
 /**

@@ -203,18 +203,21 @@ typedef Banana_Application * BananaNotifications_Application;
 @interface BananaNotifications_ApplicationSentMessage : NSObject <TBase, NSCoding> {
   Banana_Message * __message;
   BananaNotifications_Application __application;
+  NSString * __title;
 
   BOOL __message_isset;
   BOOL __application_isset;
+  BOOL __title_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) Banana_Message * message;
 @property (nonatomic, retain, getter=application, setter=setApplication:) BananaNotifications_Application application;
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (Banana_Message *) message application: (BananaNotifications_Application) application;
+- (id) initWithMessage: (Banana_Message *) message application: (BananaNotifications_Application) application title: (NSString *) title;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -232,6 +235,12 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) setApplication: (BananaNotifications_Application) application;
 #endif
 - (BOOL) applicationIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
 
 @end
 

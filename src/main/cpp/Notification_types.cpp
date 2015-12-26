@@ -523,6 +523,10 @@ void ApplicationSentMessage::__set_application(const Application& val) {
   this->application = val;
 }
 
+void ApplicationSentMessage::__set_title(const std::string& val) {
+  this->title = val;
+}
+
 uint32_t ApplicationSentMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -560,6 +564,14 @@ uint32_t ApplicationSentMessage::read(::apache::thrift::protocol::TProtocol* ipr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->title);
+          this->__isset.title = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -586,6 +598,10 @@ uint32_t ApplicationSentMessage::write(::apache::thrift::protocol::TProtocol* op
   xfer += this->application.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("title", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->title);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -595,17 +611,20 @@ void swap(ApplicationSentMessage &a, ApplicationSentMessage &b) {
   using ::std::swap;
   swap(a.message, b.message);
   swap(a.application, b.application);
+  swap(a.title, b.title);
   swap(a.__isset, b.__isset);
 }
 
 ApplicationSentMessage::ApplicationSentMessage(const ApplicationSentMessage& other8) {
   message = other8.message;
   application = other8.application;
+  title = other8.title;
   __isset = other8.__isset;
 }
 ApplicationSentMessage& ApplicationSentMessage::operator=(const ApplicationSentMessage& other9) {
   message = other9.message;
   application = other9.application;
+  title = other9.title;
   __isset = other9.__isset;
   return *this;
 }
@@ -614,6 +633,7 @@ void ApplicationSentMessage::printTo(std::ostream& out) const {
   out << "ApplicationSentMessage(";
   out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ", " << "application=" << to_string(application);
+  out << ", " << "title=" << to_string(title);
   out << ")";
 }
 

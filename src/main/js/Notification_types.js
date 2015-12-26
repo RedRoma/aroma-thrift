@@ -328,12 +328,16 @@ ApplicationTokenRegenerated.prototype.write = function(output) {
 ApplicationSentMessage = function(args) {
   this.message = null;
   this.application = null;
+  this.title = 'Your Application has sent out an alert';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = new Message(args.message);
     }
     if (args.application !== undefined && args.application !== null) {
       this.application = new Application(args.application);
+    }
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
     }
   }
 };
@@ -367,6 +371,13 @@ ApplicationSentMessage.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -386,6 +397,11 @@ ApplicationSentMessage.prototype.write = function(output) {
   if (this.application !== null && this.application !== undefined) {
     output.writeFieldBegin('application', Thrift.Type.STRUCT, 2);
     this.application.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 3);
+    output.writeString(this.title);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

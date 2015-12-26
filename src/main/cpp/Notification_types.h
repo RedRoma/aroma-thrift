@@ -286,9 +286,10 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRegener
 }
 
 typedef struct _ApplicationSentMessage__isset {
-  _ApplicationSentMessage__isset() : message(false), application(false) {}
+  _ApplicationSentMessage__isset() : message(false), application(false), title(true) {}
   bool message :1;
   bool application :1;
+  bool title :1;
 } _ApplicationSentMessage__isset;
 
 class ApplicationSentMessage {
@@ -296,18 +297,21 @@ class ApplicationSentMessage {
 
   ApplicationSentMessage(const ApplicationSentMessage&);
   ApplicationSentMessage& operator=(const ApplicationSentMessage&);
-  ApplicationSentMessage() {
+  ApplicationSentMessage() : title("Your Application has sent out an alert") {
   }
 
   virtual ~ApplicationSentMessage() throw();
    ::aroma::banana::thrift::Message message;
   Application application;
+  std::string title;
 
   _ApplicationSentMessage__isset __isset;
 
   void __set_message(const  ::aroma::banana::thrift::Message& val);
 
   void __set_application(const Application& val);
+
+  void __set_title(const std::string& val);
 
   bool operator == (const ApplicationSentMessage & rhs) const
   {
@@ -316,6 +320,8 @@ class ApplicationSentMessage {
     else if (__isset.message && !(message == rhs.message))
       return false;
     if (!(application == rhs.application))
+      return false;
+    if (!(title == rhs.title))
       return false;
     return true;
   }

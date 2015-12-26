@@ -1058,17 +1058,21 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.title = @"Your Application has sent out an alert";
+
 #endif
   return self;
 }
 
-- (id) initWithMessage: (Banana_Message *) message application: (BananaNotifications_Application) application
+- (id) initWithMessage: (Banana_Message *) message application: (BananaNotifications_Application) application title: (NSString *) title
 {
   self = [super init];
   __message = [message retain_stub];
   __message_isset = YES;
   __application = [application retain_stub];
   __application_isset = YES;
+  __title = [title retain_stub];
+  __title_isset = YES;
   return self;
 }
 
@@ -1085,6 +1089,11 @@
     __application = [[decoder decodeObjectForKey: @"application"] retain_stub];
     __application_isset = YES;
   }
+  if ([decoder containsValueForKey: @"title"])
+  {
+    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
+    __title_isset = YES;
+  }
   return self;
 }
 
@@ -1097,6 +1106,10 @@
   if (__application_isset)
   {
     [encoder encodeObject: __application forKey: @"application"];
+  }
+  if (__title_isset)
+  {
+    [encoder encodeObject: __title forKey: @"title"];
   }
 }
 
@@ -1112,6 +1125,11 @@
   if (__application_isset)
   {
     hash = (hash * 31) ^ [__application hash];
+  }
+  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
+  if (__title_isset)
+  {
+    hash = (hash * 31) ^ [__title hash];
   }
   return hash;
 }
@@ -1133,6 +1151,10 @@
       (__application_isset && ((__application || other->__application) && ![__application isEqual:other->__application]))) {
     return NO;
   }
+  if ((__title_isset != other->__title_isset) ||
+      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1140,6 +1162,7 @@
 {
   [__message release_stub];
   [__application release_stub];
+  [__title release_stub];
   [super dealloc_stub];
 }
 
@@ -1185,6 +1208,27 @@
   __application_isset = NO;
 }
 
+- (NSString *) title {
+  return [[__title retain_stub] autorelease_stub];
+}
+
+- (void) setTitle: (NSString *) title {
+  [title retain_stub];
+  [__title release_stub];
+  __title = title;
+  __title_isset = YES;
+}
+
+- (BOOL) titleIsSet {
+  return __title_isset;
+}
+
+- (void) unsetTitle {
+  [__title release_stub];
+  __title = nil;
+  __title_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1220,6 +1264,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTitle: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1245,6 +1297,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__title_isset) {
+    if (__title != nil) {
+      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __title];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1259,6 +1318,8 @@
   [ms appendFormat: @"%@", __message];
   [ms appendString: @",application:"];
   [ms appendFormat: @"%@", __application];
+  [ms appendString: @",title:"];
+  [ms appendFormat: @"\"%@\"", __title];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
