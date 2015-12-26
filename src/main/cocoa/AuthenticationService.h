@@ -317,7 +317,6 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_AuthenticationServiceConstants : NSObject {
 }
-+ (double) API_VERSION;
 + (AuthenticationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;

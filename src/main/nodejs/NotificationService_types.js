@@ -176,7 +176,6 @@ SendNotificationResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.5;
 ttypes.SERVICE_PORT = 9009;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'notification-srv.banana.aroma.tech','port' : 9009});

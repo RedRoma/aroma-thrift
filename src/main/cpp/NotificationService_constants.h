@@ -15,7 +15,6 @@ class NotificationServiceConstants {
  public:
   NotificationServiceConstants();
 
-  double API_VERSION;
   int SERVICE_PORT;
    ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;

@@ -11,8 +11,6 @@ namespace aroma { namespace banana { namespace thrift { namespace notification {
 const NotificationServiceConstants g_NotificationService_constants;
 
 NotificationServiceConstants::NotificationServiceConstants() {
-  API_VERSION = 1.5;
-
   SERVICE_PORT = 9009;
 
   PRODUCTION_ENDPOINT.hostname = "notification-srv.banana.aroma.tech";

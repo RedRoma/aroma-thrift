@@ -11,8 +11,6 @@ namespace aroma { namespace banana { namespace thrift { namespace application { 
 const ApplicationServiceConstants g_ApplicationService_constants;
 
 ApplicationServiceConstants::ApplicationServiceConstants() {
-  API_VERSION = 1.5;
-
   SERVICE_PORT = 7005;
 
   PRODUCTION_ENDPOINT.hostname = "application-srv.banana.aroma.tech";

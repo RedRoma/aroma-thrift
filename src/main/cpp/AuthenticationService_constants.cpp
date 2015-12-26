@@ -11,8 +11,6 @@ namespace aroma { namespace banana { namespace thrift { namespace authentication
 const AuthenticationServiceConstants g_AuthenticationService_constants;
 
 AuthenticationServiceConstants::AuthenticationServiceConstants() {
-  API_VERSION = 1.5;
-
   SERVICE_PORT = 6001;
 
   PRODUCTION_ENDPOINT.hostname = "authentication-srv.banana.aroma.tech";

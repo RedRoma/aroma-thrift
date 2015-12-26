@@ -38,9 +38,6 @@ typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-/** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.5;
-
 const int SERVICE_PORT = 6001;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };

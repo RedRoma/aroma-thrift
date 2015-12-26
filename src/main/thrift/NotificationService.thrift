@@ -43,10 +43,6 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-
-/** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.5;
-
 const int SERVICE_PORT = 9009;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.banana.aroma.tech", "port" : SERVICE_PORT };

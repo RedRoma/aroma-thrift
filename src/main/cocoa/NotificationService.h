@@ -150,7 +150,6 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 
 @interface NotificationService_NotificationServiceConstants : NSObject {
 }
-+ (double) API_VERSION;
 + (NotificationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;

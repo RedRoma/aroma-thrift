@@ -488,7 +488,6 @@ VerifyTokenResponse.prototype.write = function(output) {
   return;
 };
 
-API_VERSION = 1.5;
 SERVICE_PORT = 6001;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});

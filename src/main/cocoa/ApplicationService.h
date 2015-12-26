@@ -143,7 +143,6 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 
 @interface ApplicationService_ApplicationServiceConstants : NSObject {
 }
-+ (double) API_VERSION;
 + (ApplicationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;

@@ -1457,7 +1457,6 @@
 
 @end
 
-static double AuthenticationService_API_VERSION = 1.5;
 static AuthenticationService_int AuthenticationService_SERVICE_PORT = 6001;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
@@ -1474,9 +1473,6 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [AuthenticationService_BETA_ENDPOINT setPort:6001];
 
 ;
-}
-+ (double) API_VERSION{
-  return AuthenticationService_API_VERSION;
 }
 + (AuthenticationService_int) SERVICE_PORT{
   return AuthenticationService_SERVICE_PORT;

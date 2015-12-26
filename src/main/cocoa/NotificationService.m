@@ -469,7 +469,6 @@
 
 @end
 
-static double NotificationService_API_VERSION = 1.5;
 static NotificationService_int NotificationService_SERVICE_PORT = 9009;
 static BananaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
@@ -486,9 +485,6 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   [NotificationService_BETA_ENDPOINT setPort:9009];
 
 ;
-}
-+ (double) API_VERSION{
-  return NotificationService_API_VERSION;
 }
 + (NotificationService_int) SERVICE_PORT{
   return NotificationService_SERVICE_PORT;
