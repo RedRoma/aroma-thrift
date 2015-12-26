@@ -9,6 +9,7 @@ var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
+var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 var Notification_ttypes = require('./Notification_types')

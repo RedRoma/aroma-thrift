@@ -20,6 +20,7 @@
 
 #import "Authentication.h"
 #import "Banana.h"
+#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 #import "Notification.h"
@@ -36,13 +37,15 @@
   return self;
 }
 
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __event = [event retain_stub];
   __event_isset = YES;
+  __channels = [channels retain_stub];
+  __channels_isset = YES;
   return self;
 }
 
@@ -59,6 +62,11 @@
     __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
     __event_isset = YES;
   }
+  if ([decoder containsValueForKey: @"channels"])
+  {
+    __channels = [[decoder decodeObjectForKey: @"channels"] retain_stub];
+    __channels_isset = YES;
+  }
   return self;
 }
 
@@ -71,6 +79,10 @@
   if (__event_isset)
   {
     [encoder encodeObject: __event forKey: @"event"];
+  }
+  if (__channels_isset)
+  {
+    [encoder encodeObject: __channels forKey: @"channels"];
   }
 }
 
@@ -86,6 +98,11 @@
   if (__event_isset)
   {
     hash = (hash * 31) ^ [__event hash];
+  }
+  hash = (hash * 31) ^ __channels_isset ? 2654435761 : 0;
+  if (__channels_isset)
+  {
+    hash = (hash * 31) ^ [__channels hash];
   }
   return hash;
 }
@@ -107,6 +124,10 @@
       (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
     return NO;
   }
+  if ((__channels_isset != other->__channels_isset) ||
+      (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -114,6 +135,7 @@
 {
   [__token release_stub];
   [__event release_stub];
+  [__channels release_stub];
   [super dealloc_stub];
 }
 
@@ -159,6 +181,27 @@
   __event_isset = NO;
 }
 
+- (NSMutableArray *) channels {
+  return [[__channels retain_stub] autorelease_stub];
+}
+
+- (void) setChannels: (NSMutableArray *) channels {
+  [channels retain_stub];
+  [__channels release_stub];
+  __channels = channels;
+  __channels_isset = YES;
+}
+
+- (BOOL) channelsIsSet {
+  return __channels_isset;
+}
+
+- (void) unsetChannels {
+  [__channels release_stub];
+  __channels = nil;
+  __channels_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -194,6 +237,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            BananaChannels_BananaChannel *_elem2 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem2 read: inProtocol];
+            [fieldValue addObject: _elem2];
+            [_elem2 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setChannels: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -219,6 +282,21 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__channels_isset) {
+    if (__channels != nil) {
+      [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 3];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__channels count]; idx4++)
+        {
+          [[__channels objectAtIndex: idx4] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -233,6 +311,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",event:"];
   [ms appendFormat: @"%@", __event];
+  [ms appendString: @",channels:"];
+  [ms appendFormat: @"%@", __channels];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -244,22 +324,46 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithNotificationId: (NSString *) notificationId
+{
+  self = [super init];
+  __notificationId = [notificationId retain_stub];
+  __notificationId_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"notificationId"])
+  {
+    __notificationId = [[decoder decodeObjectForKey: @"notificationId"] retain_stub];
+    __notificationId_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__notificationId_isset)
+  {
+    [encoder encodeObject: __notificationId forKey: @"notificationId"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __notificationId_isset ? 2654435761 : 0;
+  if (__notificationId_isset)
+  {
+    hash = (hash * 31) ^ [__notificationId hash];
+  }
   return hash;
 }
 
@@ -272,7 +376,38 @@
     return NO;
   }
   NotificationService_SendNotificationResponse *other = (NotificationService_SendNotificationResponse *)anObject;
+  if ((__notificationId_isset != other->__notificationId_isset) ||
+      (__notificationId_isset && ((__notificationId || other->__notificationId) && ![__notificationId isEqual:other->__notificationId]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__notificationId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) notificationId {
+  return [[__notificationId retain_stub] autorelease_stub];
+}
+
+- (void) setNotificationId: (NSString *) notificationId {
+  [notificationId retain_stub];
+  [__notificationId release_stub];
+  __notificationId = notificationId;
+  __notificationId_isset = YES;
+}
+
+- (BOOL) notificationIdIsSet {
+  return __notificationId_isset;
+}
+
+- (void) unsetNotificationId {
+  [__notificationId release_stub];
+  __notificationId = nil;
+  __notificationId_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -290,6 +425,14 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setNotificationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -301,6 +444,13 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SendNotificationResponse"];
+  if (__notificationId_isset) {
+    if (__notificationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"notificationId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __notificationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -311,6 +461,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendNotificationResponse("];
+  [ms appendString: @"notificationId:"];
+  [ms appendFormat: @"\"%@\"", __notificationId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

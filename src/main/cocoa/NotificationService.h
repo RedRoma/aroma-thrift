@@ -20,6 +20,7 @@
 
 #import "Authentication.h"
 #import "Banana.h"
+#import "Channels.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 #import "Notification.h"
@@ -35,6 +36,8 @@ typedef BananaAuthentication_AuthenticationToken * NotificationService_Authentic
 typedef Banana_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
+
+typedef BananaChannels_BananaChannel * NotificationService_BananaChannel;
 
 typedef BananaNotifications_Event * NotificationService_Event;
 
@@ -61,18 +64,21 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
   NotificationService_AuthenticationToken __token;
   NotificationService_Event __event;
+  NSMutableArray * __channels;
 
   BOOL __token_isset;
   BOOL __event_isset;
+  BOOL __channels_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_AuthenticationToken token;
 @property (nonatomic, retain, getter=event, setter=setEvent:) NotificationService_Event event;
+@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableArray * channels;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event;
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -91,17 +97,37 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 #endif
 - (BOOL) eventIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) channels;
+- (void) setChannels: (NSMutableArray *) channels;
+#endif
+- (BOOL) channelsIsSet;
+
 @end
 
 @interface NotificationService_SendNotificationResponse : NSObject <TBase, NSCoding> {
+  NSString * __notificationId;
+
+  BOOL __notificationId_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=notificationId, setter=setNotificationId:) NSString * notificationId;
+#endif
+
 - (id) init;
+- (id) initWithNotificationId: (NSString *) notificationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) notificationId;
+- (void) setNotificationId: (NSString *) notificationId;
+#endif
+- (BOOL) notificationIdIsSet;
 
 @end
 

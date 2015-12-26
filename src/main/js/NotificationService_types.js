@@ -8,12 +8,16 @@
 SendNotificationRequest = function(args) {
   this.token = null;
   this.event = null;
+  this.channels = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new AuthenticationToken(args.token);
     }
     if (args.event !== undefined && args.event !== null) {
       this.event = new Event(args.event);
+    }
+    if (args.channels !== undefined && args.channels !== null) {
+      this.channels = Thrift.copyList(args.channels, [null]);
     }
   }
 };
@@ -47,6 +51,27 @@ SendNotificationRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.channels = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new BananaChannel();
+          elem6.read(input);
+          this.channels.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -68,12 +93,32 @@ SendNotificationRequest.prototype.write = function(output) {
     this.event.write(output);
     output.writeFieldEnd();
   }
+  if (this.channels !== null && this.channels !== undefined) {
+    output.writeFieldBegin('channels', Thrift.Type.LIST, 3);
+    output.writeListBegin(Thrift.Type.STRUCT, this.channels.length);
+    for (var iter7 in this.channels)
+    {
+      if (this.channels.hasOwnProperty(iter7))
+      {
+        iter7 = this.channels[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
 SendNotificationResponse = function(args) {
+  this.notificationId = null;
+  if (args) {
+    if (args.notificationId !== undefined && args.notificationId !== null) {
+      this.notificationId = args.notificationId;
+    }
+  }
 };
 SendNotificationResponse.prototype = {};
 SendNotificationResponse.prototype.read = function(input) {
@@ -87,7 +132,21 @@ SendNotificationResponse.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.notificationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -96,6 +155,11 @@ SendNotificationResponse.prototype.read = function(input) {
 
 SendNotificationResponse.prototype.write = function(output) {
   output.writeStructBegin('SendNotificationResponse');
+  if (this.notificationId !== null && this.notificationId !== undefined) {
+    output.writeFieldBegin('notificationId', Thrift.Type.STRING, 1);
+    output.writeString(this.notificationId);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;

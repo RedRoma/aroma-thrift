@@ -10,6 +10,7 @@ namespace cpp   aroma.banana.thrift.notification.service
 
 include "Authentication.thrift"
 include "Banana.thrift"
+include "Channels.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 include "Notification.thrift"
@@ -27,6 +28,7 @@ typedef Banana.timestamp timestamp;
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
+typedef Channels.BananaChannel BananaChannel
 typedef Notification.Event Event
 
 //Exception Typedefs
@@ -59,10 +61,12 @@ struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
+    3: list<BananaChannel> channels;
 }
 
 struct SendNotificationResponse
 {
+    1: string notificationId;
 }
 
 

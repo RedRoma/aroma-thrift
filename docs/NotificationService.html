@@ -205,6 +205,7 @@ code { line-height: 20px; }
 <a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
+<a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Typedef_Event">Event</a><br/>
@@ -248,6 +249,9 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_Event">Typedef: Event</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Notification.html#Struct_Event">Notification.Event</a></code></p>
 </div>
@@ -286,8 +290,10 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>event</td><td><code><a href="#Typedef_Event">Event</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_BananaChannel">BananaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendNotificationResponse">Struct: SendNotificationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>notificationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_NotificationService">Service: NotificationService</h3>
 The Notification  Service sends events and Notifications to the proper channels.

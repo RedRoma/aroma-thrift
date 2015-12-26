@@ -17,6 +17,7 @@
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
 #include "Banana_types.h"
+#include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
 #include "Notification_types.h"
@@ -35,6 +36,8 @@ typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken Auth
 typedef class  ::aroma::banana::thrift::Application Application;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
+
+typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
 
 typedef class  ::aroma::banana::thrift::notifications::Event Event;
 
@@ -63,9 +66,10 @@ class SendNotificationRequest;
 class SendNotificationResponse;
 
 typedef struct _SendNotificationRequest__isset {
-  _SendNotificationRequest__isset() : token(false), event(false) {}
+  _SendNotificationRequest__isset() : token(false), event(false), channels(false) {}
   bool token :1;
   bool event :1;
+  bool channels :1;
 } _SendNotificationRequest__isset;
 
 class SendNotificationRequest {
@@ -79,6 +83,7 @@ class SendNotificationRequest {
   virtual ~SendNotificationRequest() throw();
   AuthenticationToken token;
   Event event;
+  std::vector<BananaChannel>  channels;
 
   _SendNotificationRequest__isset __isset;
 
@@ -86,11 +91,15 @@ class SendNotificationRequest {
 
   void __set_event(const Event& val);
 
+  void __set_channels(const std::vector<BananaChannel> & val);
+
   bool operator == (const SendNotificationRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(event == rhs.event))
+      return false;
+    if (!(channels == rhs.channels))
       return false;
     return true;
   }
@@ -114,19 +123,30 @@ inline std::ostream& operator<<(std::ostream& out, const SendNotificationRequest
   return out;
 }
 
+typedef struct _SendNotificationResponse__isset {
+  _SendNotificationResponse__isset() : notificationId(false) {}
+  bool notificationId :1;
+} _SendNotificationResponse__isset;
 
 class SendNotificationResponse {
  public:
 
   SendNotificationResponse(const SendNotificationResponse&);
   SendNotificationResponse& operator=(const SendNotificationResponse&);
-  SendNotificationResponse() {
+  SendNotificationResponse() : notificationId() {
   }
 
   virtual ~SendNotificationResponse() throw();
+  std::string notificationId;
 
-  bool operator == (const SendNotificationResponse & /* rhs */) const
+  _SendNotificationResponse__isset __isset;
+
+  void __set_notificationId(const std::string& val);
+
+  bool operator == (const SendNotificationResponse & rhs) const
   {
+    if (!(notificationId == rhs.notificationId))
+      return false;
     return true;
   }
   bool operator != (const SendNotificationResponse &rhs) const {

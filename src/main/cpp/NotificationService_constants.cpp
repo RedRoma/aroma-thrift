@@ -16,16 +16,16 @@ NotificationServiceConstants::NotificationServiceConstants() {
   SERVICE_PORT = 9009;
 
   PRODUCTION_ENDPOINT.hostname = "notification-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp4;
-  tmp4 = 9009;
+   ::aroma::banana::thrift::endpoint::int tmp10;
+  tmp10 = 9009;
 
-  PRODUCTION_ENDPOINT.port = tmp4;
+  PRODUCTION_ENDPOINT.port = tmp10;
 
   BETA_ENDPOINT.hostname = "notification-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp5;
-  tmp5 = 9009;
+   ::aroma::banana::thrift::endpoint::int tmp11;
+  tmp11 = 9009;
 
-  BETA_ENDPOINT.port = tmp5;
+  BETA_ENDPOINT.port = tmp11;
 
 }
 
