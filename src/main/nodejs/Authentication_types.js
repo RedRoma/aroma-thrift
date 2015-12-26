@@ -11,6 +11,10 @@ var Banana_ttypes = require('./Banana_types')
 
 
 var ttypes = module.exports = {};
+ttypes.TokenType = {
+  'APPLICATION' : 1,
+  'USER' : 2
+};
 ApplicationToken = module.exports.ApplicationToken = function(args) {
   this.tokenId = null;
   this.organization = null;
@@ -553,6 +557,74 @@ Credentials.prototype.write = function(output) {
   if (this.aromaAccount !== null && this.aromaAccount !== undefined) {
     output.writeFieldBegin('aromaAccount', Thrift.Type.STRUCT, 2);
     this.aromaAccount.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+AuthenticationToken = module.exports.AuthenticationToken = function(args) {
+  this.applicationToken = null;
+  this.userToken = null;
+  if (args) {
+    if (args.applicationToken !== undefined && args.applicationToken !== null) {
+      this.applicationToken = new ttypes.ApplicationToken(args.applicationToken);
+    }
+    if (args.userToken !== undefined && args.userToken !== null) {
+      this.userToken = new ttypes.UserToken(args.userToken);
+    }
+  }
+};
+AuthenticationToken.prototype = {};
+AuthenticationToken.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationToken = new ttypes.ApplicationToken();
+        this.applicationToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.userToken = new ttypes.UserToken();
+        this.userToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+AuthenticationToken.prototype.write = function(output) {
+  output.writeStructBegin('AuthenticationToken');
+  if (this.applicationToken !== null && this.applicationToken !== undefined) {
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
+    this.applicationToken.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userToken !== null && this.userToken !== undefined) {
+    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 2);
+    this.userToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

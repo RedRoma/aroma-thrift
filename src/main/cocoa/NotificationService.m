@@ -31,22 +31,62 @@
 - (id) init
 {
   self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __event = [event retain_stub];
+  __event_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"event"])
+  {
+    __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
+    __event_isset = YES;
+  }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__event_isset)
+  {
+    [encoder encodeObject: __event forKey: @"event"];
+  }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __event_isset ? 2654435761 : 0;
+  if (__event_isset)
+  {
+    hash = (hash * 31) ^ [__event hash];
+  }
   return hash;
 }
 
@@ -59,7 +99,64 @@
     return NO;
   }
   NotificationService_SendNotificationRequest *other = (NotificationService_SendNotificationRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__event_isset != other->__event_isset) ||
+      (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
+    return NO;
+  }
   return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__event release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_AuthenticationToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (BananaNotifications_Event *) event {
+  return [[__event retain_stub] autorelease_stub];
+}
+
+- (void) setEvent: (BananaNotifications_Event *) event {
+  [event retain_stub];
+  [__event release_stub];
+  __event = event;
+  __event_isset = YES;
+}
+
+- (BOOL) eventIsSet {
+  return __event_isset;
+}
+
+- (void) unsetEvent {
+  [__event release_stub];
+  __event = nil;
+  __event_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -77,6 +174,26 @@
     }
     switch (fieldID)
     {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_Event *fieldValue = [[BananaNotifications_Event alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEvent: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -88,6 +205,20 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SendNotificationRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__event_isset) {
+    if (__event != nil) {
+      [outProtocol writeFieldBeginWithName: @"event" type: TType_STRUCT fieldID: 2];
+      [__event write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -98,6 +229,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendNotificationRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",event:"];
+  [ms appendFormat: @"%@", __event];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

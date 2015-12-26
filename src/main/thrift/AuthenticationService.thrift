@@ -26,6 +26,8 @@ typedef Banana.LengthOfTime LengthOfTime;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
+typedef Authentication.AuthenticationToken AuthenticationToken
+typedef Authentication.TokenType TokenType
 typedef Authentication.UserToken UserToken
 
 //Exception Typedefs
@@ -45,18 +47,6 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
-
-enum TokenType
-{
-    APPLICATION = 1,
-    USER = 2
-}
-
-union AuthenticationToken
-{
-    1: ApplicationToken applicationToken;
-    2: UserToken userToken;
-}
 
 struct CreateTokenRequest
 {

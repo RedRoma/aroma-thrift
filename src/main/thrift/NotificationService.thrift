@@ -24,10 +24,10 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.ApplicationToken ApplicationToken
+typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
-typedef Notification.Notification Notification
+typedef Notification.Event Event
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -57,12 +57,12 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta
 
 struct SendNotificationRequest
 {
-    
+    1: AuthenticationToken token;
+    2: Event event;
 }
 
 struct SendNotificationResponse
 {
-    
 }
 
 

@@ -30,13 +30,13 @@ typedef Banana_long NotificationService_long;
 
 typedef Banana_timestamp NotificationService_timestamp;
 
-typedef BananaAuthentication_ApplicationToken * NotificationService_ApplicationToken;
+typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
 typedef Banana_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
 
-typedef NotificationService_Notification.Notification NotificationService_Notification;
+typedef BananaNotifications_Event * NotificationService_Event;
 
 typedef BananaException_AccountAlreadyExistsException * NotificationService_AccountAlreadyExistsException;
 
@@ -59,14 +59,37 @@ typedef BananaException_ChannelDoesNotExistException * NotificationService_Chann
 typedef BananaException_UnauthorizedException * NotificationService_UnauthorizedException;
 
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
+  NotificationService_AuthenticationToken __token;
+  NotificationService_Event __event;
+
+  BOOL __token_isset;
+  BOOL __event_isset;
 }
 
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_AuthenticationToken token;
+@property (nonatomic, retain, getter=event, setter=setEvent:) NotificationService_Event event;
+#endif
+
 - (id) init;
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_AuthenticationToken) token;
+- (void) setToken: (NotificationService_AuthenticationToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_Event) event;
+- (void) setEvent: (NotificationService_Event) event;
+#endif
+- (BOOL) eventIsSet;
 
 @end
 

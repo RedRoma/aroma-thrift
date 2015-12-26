@@ -18,6 +18,14 @@ SendNotificationRequest::~SendNotificationRequest() throw() {
 }
 
 
+void SendNotificationRequest::__set_token(const AuthenticationToken& val) {
+  this->token = val;
+}
+
+void SendNotificationRequest::__set_event(const Event& val) {
+  this->event = val;
+}
+
 uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -37,7 +45,28 @@ uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* ip
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->event.read(iprot);
+          this->__isset.event = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -51,6 +80,14 @@ uint32_t SendNotificationRequest::write(::apache::thrift::protocol::TProtocol* o
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SendNotificationRequest");
 
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("event", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->event.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -58,20 +95,27 @@ uint32_t SendNotificationRequest::write(::apache::thrift::protocol::TProtocol* o
 
 void swap(SendNotificationRequest &a, SendNotificationRequest &b) {
   using ::std::swap;
-  (void) a;
-  (void) b;
+  swap(a.token, b.token);
+  swap(a.event, b.event);
+  swap(a.__isset, b.__isset);
 }
 
 SendNotificationRequest::SendNotificationRequest(const SendNotificationRequest& other0) {
-  (void) other0;
+  token = other0.token;
+  event = other0.event;
+  __isset = other0.__isset;
 }
 SendNotificationRequest& SendNotificationRequest::operator=(const SendNotificationRequest& other1) {
-  (void) other1;
+  token = other1.token;
+  event = other1.event;
+  __isset = other1.__isset;
   return *this;
 }
 void SendNotificationRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SendNotificationRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "event=" << to_string(event);
   out << ")";
 }
 

@@ -16,6 +16,16 @@ var Notification_ttypes = require('./Notification_types')
 
 var ttypes = module.exports = {};
 SendNotificationRequest = module.exports.SendNotificationRequest = function(args) {
+  this.token = null;
+  this.event = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.AuthenticationToken(args.token);
+    }
+    if (args.event !== undefined && args.event !== null) {
+      this.event = new Notification_ttypes.Event(args.event);
+    }
+  }
 };
 SendNotificationRequest.prototype = {};
 SendNotificationRequest.prototype.read = function(input) {
@@ -29,7 +39,27 @@ SendNotificationRequest.prototype.read = function(input) {
     if (ftype == Thrift.Type.STOP) {
       break;
     }
-    input.skip(ftype);
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.AuthenticationToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.event = new Notification_ttypes.Event();
+        this.event.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
     input.readFieldEnd();
   }
   input.readStructEnd();
@@ -38,6 +68,16 @@ SendNotificationRequest.prototype.read = function(input) {
 
 SendNotificationRequest.prototype.write = function(output) {
   output.writeStructBegin('SendNotificationRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.event !== null && this.event !== undefined) {
+    output.writeFieldBegin('event', Thrift.Type.STRUCT, 2);
+    this.event.write(output);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;

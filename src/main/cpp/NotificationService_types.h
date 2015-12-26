@@ -30,13 +30,13 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
 
 typedef class  ::aroma::banana::thrift::Application Application;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
-typedef Notification.Notification Notification;
+typedef class  ::aroma::banana::thrift::notifications::Event Event;
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
@@ -62,6 +62,11 @@ class SendNotificationRequest;
 
 class SendNotificationResponse;
 
+typedef struct _SendNotificationRequest__isset {
+  _SendNotificationRequest__isset() : token(false), event(false) {}
+  bool token :1;
+  bool event :1;
+} _SendNotificationRequest__isset;
 
 class SendNotificationRequest {
  public:
@@ -72,9 +77,21 @@ class SendNotificationRequest {
   }
 
   virtual ~SendNotificationRequest() throw();
+  AuthenticationToken token;
+  Event event;
 
-  bool operator == (const SendNotificationRequest & /* rhs */) const
+  _SendNotificationRequest__isset __isset;
+
+  void __set_token(const AuthenticationToken& val);
+
+  void __set_event(const Event& val);
+
+  bool operator == (const SendNotificationRequest & rhs) const
   {
+    if (!(token == rhs.token))
+      return false;
+    if (!(event == rhs.event))
+      return false;
     return true;
   }
   bool operator != (const SendNotificationRequest &rhs) const {
