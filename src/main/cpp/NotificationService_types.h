@@ -36,6 +36,8 @@ typedef class  ::aroma::banana::thrift::Application Application;
 
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
+typedef Notification.Notification Notification;
+
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;

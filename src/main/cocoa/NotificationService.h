@@ -36,6 +36,8 @@ typedef Banana_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
 
+typedef NotificationService_Notification.Notification NotificationService_Notification;
+
 typedef BananaException_AccountAlreadyExistsException * NotificationService_AccountAlreadyExistsException;
 
 typedef BananaException_InvalidArgumentException * NotificationService_InvalidArgumentException;

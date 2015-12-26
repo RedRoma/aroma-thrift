@@ -27,6 +27,7 @@ typedef Banana.timestamp timestamp;
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
+typedef Notification.Notification Notification
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -39,6 +40,7 @@ typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistExcep
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
+
 
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.5;
