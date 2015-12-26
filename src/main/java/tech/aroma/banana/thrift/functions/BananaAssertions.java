@@ -30,9 +30,9 @@ import tech.sirwellington.alchemy.arguments.AlchemyAssertion;
 import tech.sirwellington.alchemy.arguments.ExceptionMapper;
 import tech.sirwellington.alchemy.arguments.FailedAssertionException;
 
+import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
 import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.nonEmptyString;
-import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 
 /**
  * This class contains common Assertions made on Banana Service requests and
@@ -74,7 +74,7 @@ public final class BananaAssertions
         {
             checkThat(t).is(notNull());
             
-            if (!t.isSet())
+            if (!isSet(t))
             {
                 throw new FailedAssertionException("Token Has not been set:  " + t);
             }
@@ -115,6 +115,21 @@ public final class BananaAssertions
                 throw new FailedAssertionException("Could not contact Authentication Service", ex);
             }
         };
+    }
+    
+    private static boolean isSet(AuthenticationToken token)
+    {
+        if (token.isSetApplicationToken())
+        {
+            return true;
+        }
+
+        if (token.isSetUserToken())
+        {
+            return true;
+        }
+
+        return false;
     }
     
 }
