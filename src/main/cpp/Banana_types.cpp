@@ -716,14 +716,13 @@ void User::__set_email(const std::string& val) {
   this->email = val;
 }
 
+void User::__set_userId(const std::string& val) {
+  this->userId = val;
+}
+
 void User::__set_name(const std::string& val) {
   this->name = val;
 __isset.name = true;
-}
-
-void User::__set_username(const std::string& val) {
-  this->username = val;
-__isset.username = true;
 }
 
 void User::__set_roles(const std::vector<Role::type> & val) {
@@ -761,16 +760,16 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->name);
-          this->__isset.name = true;
+          xfer += iprot->readString(this->userId);
+          this->__isset.userId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->username);
-          this->__isset.username = true;
+          xfer += iprot->readString(this->name);
+          this->__isset.name = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -818,14 +817,13 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->email);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->userId);
+  xfer += oprot->writeFieldEnd();
+
   if (this->__isset.name) {
-    xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeFieldBegin("name", ::apache::thrift::protocol::T_STRING, 3);
     xfer += oprot->writeString(this->name);
-    xfer += oprot->writeFieldEnd();
-  }
-  if (this->__isset.username) {
-    xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 3);
-    xfer += oprot->writeString(this->username);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldBegin("roles", ::apache::thrift::protocol::T_LIST, 4);
@@ -848,23 +846,23 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(User &a, User &b) {
   using ::std::swap;
   swap(a.email, b.email);
+  swap(a.userId, b.userId);
   swap(a.name, b.name);
-  swap(a.username, b.username);
   swap(a.roles, b.roles);
   swap(a.__isset, b.__isset);
 }
 
 User::User(const User& other18) {
   email = other18.email;
+  userId = other18.userId;
   name = other18.name;
-  username = other18.username;
   roles = other18.roles;
   __isset = other18.__isset;
 }
 User& User::operator=(const User& other19) {
   email = other19.email;
+  userId = other19.userId;
   name = other19.name;
-  username = other19.username;
   roles = other19.roles;
   __isset = other19.__isset;
   return *this;
@@ -873,8 +871,8 @@ void User::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "User(";
   out << "email=" << to_string(email);
+  out << ", " << "userId=" << to_string(userId);
   out << ", " << "name="; (__isset.name ? (out << to_string(name)) : (out << "<null>"));
-  out << ", " << "username="; (__isset.username ? (out << to_string(username)) : (out << "<null>"));
   out << ", " << "roles=" << to_string(roles);
   out << ")";
 }

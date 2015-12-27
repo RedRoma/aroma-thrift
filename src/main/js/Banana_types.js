@@ -448,18 +448,18 @@ Image.prototype.write = function(output) {
 
 User = function(args) {
   this.email = null;
+  this.userId = null;
   this.name = null;
-  this.username = null;
   this.roles = [1];
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
     }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
+    }
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
-    }
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
     }
     if (args.roles !== undefined && args.roles !== null) {
       this.roles = Thrift.copyList(args.roles, [null]);
@@ -489,14 +489,14 @@ User.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.name = input.readString().value;
+        this.userId = input.readString().value;
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString().value;
+        this.name = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -537,14 +537,14 @@ User.prototype.write = function(output) {
     output.writeString(this.email);
     output.writeFieldEnd();
   }
-  if (this.name !== null && this.name !== undefined) {
-    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
-    output.writeString(this.name);
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+    output.writeString(this.userId);
     output.writeFieldEnd();
   }
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
-    output.writeString(this.username);
+  if (this.name !== null && this.name !== undefined) {
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
+    output.writeString(this.name);
     output.writeFieldEnd();
   }
   if (this.roles !== null && this.roles !== undefined) {

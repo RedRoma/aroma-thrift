@@ -118,8 +118,8 @@ struct User
 {
     /** A person's email address is also considered their identifying trait. */
     1: string email;
-    2: optional string name;
-    3: optional string username;
+    2: string userId;
+    3: optional string name;
     /** A Person can be more than one thing at once. By default, we assume a developer. */
     4: list<Role> roles = [ Role.DEVELOPER ];
 }

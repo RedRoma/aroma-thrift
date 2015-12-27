@@ -284,25 +284,25 @@ typedef int64_t Banana_timestamp;
 
 @interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
+  NSString * __userId;
   NSString * __name;
-  NSString * __username;
   NSMutableArray * __roles;
 
   BOOL __email_isset;
+  BOOL __userId_isset;
   BOOL __name_isset;
-  BOOL __username_isset;
   BOOL __roles_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableArray * roles;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username roles: (NSMutableArray *) roles;
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -316,16 +316,16 @@ typedef int64_t Banana_timestamp;
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
+- (NSString *) userId;
+- (void) setUserId: (NSString *) userId;
+#endif
+- (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
 - (NSString *) name;
 - (void) setName: (NSString *) name;
 #endif
 - (BOOL) nameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
-#endif
-- (BOOL) usernameIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSMutableArray *) roles;

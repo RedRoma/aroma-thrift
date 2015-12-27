@@ -357,10 +357,10 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), name(false), username(false), roles(true) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true) {}
   bool email :1;
+  bool userId :1;
   bool name :1;
-  bool username :1;
   bool roles :1;
 } _User__isset;
 
@@ -369,24 +369,24 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), name(), username() {
+  User() : email(), userId(), name() {
     roles.push_back((Role::type)1);
 
   }
 
   virtual ~User() throw();
   std::string email;
+  std::string userId;
   std::string name;
-  std::string username;
   std::vector<Role::type>  roles;
 
   _User__isset __isset;
 
   void __set_email(const std::string& val);
 
-  void __set_name(const std::string& val);
+  void __set_userId(const std::string& val);
 
-  void __set_username(const std::string& val);
+  void __set_name(const std::string& val);
 
   void __set_roles(const std::vector<Role::type> & val);
 
@@ -394,13 +394,11 @@ class User {
   {
     if (!(email == rhs.email))
       return false;
+    if (!(userId == rhs.userId))
+      return false;
     if (__isset.name != rhs.__isset.name)
       return false;
     else if (__isset.name && !(name == rhs.name))
-      return false;
-    if (__isset.username != rhs.__isset.username)
-      return false;
-    else if (__isset.username && !(username == rhs.username))
       return false;
     if (!(roles == rhs.roles))
       return false;

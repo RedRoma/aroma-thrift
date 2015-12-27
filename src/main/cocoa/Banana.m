@@ -1301,15 +1301,15 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username roles: (NSMutableArray *) roles
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles
 {
   self = [super init];
   __email = [email retain_stub];
   __email_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
   __name = [name retain_stub];
   __name_isset = YES;
-  __username = [username retain_stub];
-  __username_isset = YES;
   __roles = [roles retain_stub];
   __roles_isset = YES;
   return self;
@@ -1323,15 +1323,15 @@
     __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
     __email_isset = YES;
   }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
   if ([decoder containsValueForKey: @"name"])
   {
     __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
     __name_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"username"])
-  {
-    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
-    __username_isset = YES;
   }
   if ([decoder containsValueForKey: @"roles"])
   {
@@ -1347,13 +1347,13 @@
   {
     [encoder encodeObject: __email forKey: @"email"];
   }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
+  }
   if (__name_isset)
   {
     [encoder encodeObject: __name forKey: @"name"];
-  }
-  if (__username_isset)
-  {
-    [encoder encodeObject: __username forKey: @"username"];
   }
   if (__roles_isset)
   {
@@ -1369,15 +1369,15 @@
   {
     hash = (hash * 31) ^ [__email hash];
   }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
+  }
   hash = (hash * 31) ^ __name_isset ? 2654435761 : 0;
   if (__name_isset)
   {
     hash = (hash * 31) ^ [__name hash];
-  }
-  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
-  if (__username_isset)
-  {
-    hash = (hash * 31) ^ [__username hash];
   }
   hash = (hash * 31) ^ __roles_isset ? 2654435761 : 0;
   if (__roles_isset)
@@ -1400,12 +1400,12 @@
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
   }
-  if ((__name_isset != other->__name_isset) ||
-      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
-  if ((__username_isset != other->__username_isset) ||
-      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+  if ((__name_isset != other->__name_isset) ||
+      (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
     return NO;
   }
   if ((__roles_isset != other->__roles_isset) ||
@@ -1418,8 +1418,8 @@
 - (void) dealloc
 {
   [__email release_stub];
+  [__userId release_stub];
   [__name release_stub];
-  [__username release_stub];
   [__roles release_stub];
   [super dealloc_stub];
 }
@@ -1445,6 +1445,27 @@
   __email_isset = NO;
 }
 
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
+}
+
 - (NSString *) name {
   return [[__name retain_stub] autorelease_stub];
 }
@@ -1464,27 +1485,6 @@
   [__name release_stub];
   __name = nil;
   __name_isset = NO;
-}
-
-- (NSString *) username {
-  return [[__username retain_stub] autorelease_stub];
-}
-
-- (void) setUsername: (NSString *) username {
-  [username retain_stub];
-  [__username release_stub];
-  __username = username;
-  __username_isset = YES;
-}
-
-- (BOOL) usernameIsSet {
-  return __username_isset;
-}
-
-- (void) unsetUsername {
-  [__username release_stub];
-  __username = nil;
-  __username_isset = NO;
 }
 
 - (NSMutableArray *) roles {
@@ -1534,7 +1534,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setName: fieldValue];
+          [self setUserId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1542,7 +1542,7 @@
       case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
+          [self setName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1583,17 +1583,17 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__name_isset) {
-    if (__name != nil) {
-      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __name];
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __userId];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__username_isset) {
-    if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __username];
+  if (__name_isset) {
+    if (__name != nil) {
+      [outProtocol writeFieldBeginWithName: @"name" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __name];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1624,10 +1624,10 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"Banana_User("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
-  [ms appendString: @",username:"];
-  [ms appendFormat: @"\"%@\"", __username];
   [ms appendString: @",roles:"];
   [ms appendFormat: @"%@", __roles];
   [ms appendString: @")"];
