@@ -114,6 +114,7 @@ void Message::__set_messageId(const std::string& val) {
 
 void Message::__set_body(const std::string& val) {
   this->body = val;
+__isset.body = true;
 }
 
 void Message::__set_urgency(const Urgency::type val) {
@@ -250,10 +251,11 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->messageId);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("body", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->body);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.body) {
+    xfer += oprot->writeFieldBegin("body", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->body);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32((int32_t)this->urgency);
   xfer += oprot->writeFieldEnd();
@@ -325,7 +327,7 @@ void Message::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Message(";
   out << "messageId=" << to_string(messageId);
-  out << ", " << "body=" << to_string(body);
+  out << ", " << "body="; (__isset.body ? (out << to_string(body)) : (out << "<null>"));
   out << ", " << "urgency=" << to_string(urgency);
   out << ", " << "timeOfCreation=" << to_string(timeOfCreation);
   out << ", " << "timeMessageReceived=" << to_string(timeMessageReceived);

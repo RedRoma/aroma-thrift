@@ -167,18 +167,6 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApplicationInfo\n");
   }
 
-  /**
-   * Get a list of all Users subscribed to an Application.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
-    // Your implementation goes here
-    printf("getApplicationSubscribers\n");
-  }
-
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");

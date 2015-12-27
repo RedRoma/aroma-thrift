@@ -137,10 +137,6 @@ class GetMyApplicationsRequest;
 
 class GetMyApplicationsResponse;
 
-class GetApplicationSubscribersRequest;
-
-class GetApplicationSubscribersResponse;
-
 class GetMySavedChannelsRequest;
 
 class GetMySavedChannelsResponse;
@@ -2102,111 +2098,6 @@ class GetMyApplicationsResponse {
 void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _GetApplicationSubscribersRequest__isset {
-  _GetApplicationSubscribersRequest__isset() : token(false), applicationId(false), organization(false) {}
-  bool token :1;
-  bool applicationId :1;
-  bool organization :1;
-} _GetApplicationSubscribersRequest__isset;
-
-class GetApplicationSubscribersRequest {
- public:
-
-  GetApplicationSubscribersRequest(const GetApplicationSubscribersRequest&);
-  GetApplicationSubscribersRequest& operator=(const GetApplicationSubscribersRequest&);
-  GetApplicationSubscribersRequest() : applicationId(), organization() {
-  }
-
-  virtual ~GetApplicationSubscribersRequest() throw();
-  UserToken token;
-  std::string applicationId;
-  std::string organization;
-
-  _GetApplicationSubscribersRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_organization(const std::string& val);
-
-  bool operator == (const GetApplicationSubscribersRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(organization == rhs.organization))
-      return false;
-    return true;
-  }
-  bool operator != (const GetApplicationSubscribersRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const GetApplicationSubscribersRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(GetApplicationSubscribersRequest &a, GetApplicationSubscribersRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const GetApplicationSubscribersRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _GetApplicationSubscribersResponse__isset {
-  _GetApplicationSubscribersResponse__isset() : subscribers(true) {}
-  bool subscribers :1;
-} _GetApplicationSubscribersResponse__isset;
-
-class GetApplicationSubscribersResponse {
- public:
-
-  GetApplicationSubscribersResponse(const GetApplicationSubscribersResponse&);
-  GetApplicationSubscribersResponse& operator=(const GetApplicationSubscribersResponse&);
-  GetApplicationSubscribersResponse() {
-
-  }
-
-  virtual ~GetApplicationSubscribersResponse() throw();
-  std::vector<User>  subscribers;
-
-  _GetApplicationSubscribersResponse__isset __isset;
-
-  void __set_subscribers(const std::vector<User> & val);
-
-  bool operator == (const GetApplicationSubscribersResponse & rhs) const
-  {
-    if (!(subscribers == rhs.subscribers))
-      return false;
-    return true;
-  }
-  bool operator != (const GetApplicationSubscribersResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const GetApplicationSubscribersResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(GetApplicationSubscribersResponse &a, GetApplicationSubscribersResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const GetApplicationSubscribersResponse& obj)
 {
   obj.printTo(out);
   return out;

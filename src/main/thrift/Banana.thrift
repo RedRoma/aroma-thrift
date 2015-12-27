@@ -34,8 +34,12 @@ struct Message
 {
     /** Each message has a unique ID */
     1: string messageId;
-    /** The body represents the Message's Payload, i.e. the actual message. */
-    2: string body;
+    /** 
+     * The body represents the Message's Payload, i.e. the actual message.
+     * If the Message Body is too long, it may be truncated. The complete
+     * body can then be loaded in a separate request.
+     */
+    2: optional string body;
     3: Urgency urgency = Urgency.LOW;
     /** The time the message was created on the Application side */
     4: timestamp timeOfCreation;

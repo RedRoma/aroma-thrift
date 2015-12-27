@@ -315,7 +315,9 @@ Milliseconds since epoch.
 <tr><td>1</td><td>messageId</td><td><code>string</code></td><td>Each message has a unique ID
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>body</td><td><code>string</code></td><td>The body represents the Message's Payload, i.e. the actual message.
-</td><td>default</td><td></td></tr>
+If the Message Body is too long, it may be truncated. The complete
+body can then be loaded in a separate request.
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>urgency</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code><code><a href="#Const_Urgency.LOW">Urgency.LOW</a></code></code></td></tr>
 <tr><td>4</td><td>timeOfCreation</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time the message was created on the Application side
 </td><td>default</td><td></td></tr>

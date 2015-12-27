@@ -388,6 +388,7 @@ struct GetMessagesResponse
     1: list<Banana.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
 }
+
 struct GetMyApplicationsRequest
 {
     1: UserToken token;
@@ -396,19 +397,6 @@ struct GetMyApplicationsRequest
 struct GetMyApplicationsResponse
 {
     1: list<Application> applications;
-}
-
-
-struct GetApplicationSubscribersRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-    3: string organization;
-}
-
-struct GetApplicationSubscribersResponse
-{
-    1: list<User> subscribers = [];
 }
 
 struct GetMySavedChannelsRequest
@@ -624,18 +612,6 @@ service BananaService
                                                                                                 3 : InvalidCredentialsException ex3,
                                                                                                 4 : ApplicationDoesNotExistException ex4,
                                                                                                 5 : UnauthorizedException ex5);
-    
-    
-
-    /**
-     * Get a list of all Users subscribed to an Application.
-     *
-     * #user
-     */
-    GetApplicationSubscribersResponse getApplicationSubscribers(1 : GetApplicationSubscribersRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                                     2 : InvalidArgumentException ex2,
-                                                                                                                     3 : InvalidCredentialsException ex3,
-                                                                                                                     4 : UnauthorizedException ex4);
     
  
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,

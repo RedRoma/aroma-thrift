@@ -199,7 +199,6 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_getActivity">getActivity</a></li>
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
-<li><a href="#Fn_BananaService_getApplicationSubscribers">getApplicationSubscribers</a></li>
 <li><a href="#Fn_BananaService_getDashboard">getDashboard</a></li>
 <li><a href="#Fn_BananaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
@@ -237,8 +236,6 @@ code { line-height: 20px; }
 <a href="#Struct_GetActivityResponse">GetActivityResponse</a><br/>
 <a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a><br/>
 <a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a><br/>
-<a href="#Struct_GetApplicationSubscribersRequest">GetApplicationSubscribersRequest</a><br/>
-<a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
 <a href="#Struct_GetDashboardResponse">GetDashboardResponse</a><br/>
 <a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
@@ -297,7 +294,7 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
 <tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.5</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
 <br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7001</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.banana.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
-<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ port = 7001, hostname = "banana-srv.beta.banana.aroma.tech" }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
+<br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.beta.banana.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with an Application.
@@ -566,14 +563,6 @@ or by a specific Application.
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsResponse">Struct: GetMyApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersRequest">Struct: GetApplicationSubscribersRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersResponse">Struct: GetApplicationSubscribersResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>subscribers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsRequest">Struct: GetMySavedChannelsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -679,12 +668,6 @@ Only an "owner" can perform this operation.
 <pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Get details about an Application from it's unique ID
-
-#user
-<br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationSubscribers">Function: BananaService.getApplicationSubscribers</h4>
-<pre><code><a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a></code> getApplicationSubscribers(<code><a href="#Struct_GetApplicationSubscribersRequest">GetApplicationSubscribersRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Get a list of all Users subscribed to an Application.
 
 #user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>

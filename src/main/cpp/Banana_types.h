@@ -158,7 +158,9 @@ class Message {
   {
     if (!(messageId == rhs.messageId))
       return false;
-    if (!(body == rhs.body))
+    if (__isset.body != rhs.__isset.body)
+      return false;
+    else if (__isset.body && !(body == rhs.body))
       return false;
     if (!(urgency == rhs.urgency))
       return false;

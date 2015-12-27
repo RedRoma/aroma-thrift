@@ -2768,165 +2768,6 @@ GetMyApplicationsResponse.prototype.write = function(output) {
   return;
 };
 
-GetApplicationSubscribersRequest = module.exports.GetApplicationSubscribersRequest = function(args) {
-  this.token = null;
-  this.applicationId = null;
-  this.organization = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new Authentication_ttypes.UserToken(args.token);
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.organization !== undefined && args.organization !== null) {
-      this.organization = args.organization;
-    }
-  }
-};
-GetApplicationSubscribersRequest.prototype = {};
-GetApplicationSubscribersRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new Authentication_ttypes.UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationSubscribersRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationSubscribersRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
-    output.writeString(this.organization);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetApplicationSubscribersResponse = module.exports.GetApplicationSubscribersResponse = function(args) {
-  this.subscribers = [];
-  if (args) {
-    if (args.subscribers !== undefined && args.subscribers !== null) {
-      this.subscribers = Thrift.copyList(args.subscribers, [null]);
-    }
-  }
-};
-GetApplicationSubscribersResponse.prototype = {};
-GetApplicationSubscribersResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size48 = 0;
-        var _rtmp352;
-        this.subscribers = [];
-        var _etype51 = 0;
-        _rtmp352 = input.readListBegin();
-        _etype51 = _rtmp352.etype;
-        _size48 = _rtmp352.size;
-        for (var _i53 = 0; _i53 < _size48; ++_i53)
-        {
-          var elem54 = null;
-          elem54 = new Banana_ttypes.User();
-          elem54.read(input);
-          this.subscribers.push(elem54);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetApplicationSubscribersResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetApplicationSubscribersResponse');
-  if (this.subscribers !== null && this.subscribers !== undefined) {
-    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
-    for (var iter55 in this.subscribers)
-    {
-      if (this.subscribers.hasOwnProperty(iter55))
-      {
-        iter55 = this.subscribers[iter55];
-        iter55.write(output);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 GetMySavedChannelsRequest = module.exports.GetMySavedChannelsRequest = function(args) {
   this.token = null;
   if (args) {
@@ -3005,19 +2846,19 @@ GetMySavedChannelsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size56 = 0;
-        var _rtmp360;
+        var _size48 = 0;
+        var _rtmp352;
         this.channels = [];
-        var _etype59 = 0;
-        _rtmp360 = input.readListBegin();
-        _etype59 = _rtmp360.etype;
-        _size56 = _rtmp360.size;
-        for (var _i61 = 0; _i61 < _size56; ++_i61)
+        var _etype51 = 0;
+        _rtmp352 = input.readListBegin();
+        _etype51 = _rtmp352.etype;
+        _size48 = _rtmp352.size;
+        for (var _i53 = 0; _i53 < _size48; ++_i53)
         {
-          var elem62 = null;
-          elem62 = new Channels_ttypes.BananaChannel();
-          elem62.read(input);
-          this.channels.push(elem62);
+          var elem54 = null;
+          elem54 = new Channels_ttypes.BananaChannel();
+          elem54.read(input);
+          this.channels.push(elem54);
         }
         input.readListEnd();
       } else {
@@ -3041,12 +2882,12 @@ GetMySavedChannelsResponse.prototype.write = function(output) {
   if (this.channels !== null && this.channels !== undefined) {
     output.writeFieldBegin('channels', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.channels.length);
-    for (var iter63 in this.channels)
+    for (var iter55 in this.channels)
     {
-      if (this.channels.hasOwnProperty(iter63))
+      if (this.channels.hasOwnProperty(iter55))
       {
-        iter63 = this.channels[iter63];
-        iter63.write(output);
+        iter55 = this.channels[iter55];
+        iter55.write(output);
       }
     }
     output.writeListEnd();
@@ -3148,19 +2989,19 @@ GetActivityResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size64 = 0;
-        var _rtmp368;
+        var _size56 = 0;
+        var _rtmp360;
         this.events = [];
-        var _etype67 = 0;
-        _rtmp368 = input.readListBegin();
-        _etype67 = _rtmp368.etype;
-        _size64 = _rtmp368.size;
-        for (var _i69 = 0; _i69 < _size64; ++_i69)
+        var _etype59 = 0;
+        _rtmp360 = input.readListBegin();
+        _etype59 = _rtmp360.etype;
+        _size56 = _rtmp360.size;
+        for (var _i61 = 0; _i61 < _size56; ++_i61)
         {
-          var elem70 = null;
-          elem70 = new Notification_ttypes.Event();
-          elem70.read(input);
-          this.events.push(elem70);
+          var elem62 = null;
+          elem62 = new Notification_ttypes.Event();
+          elem62.read(input);
+          this.events.push(elem62);
         }
         input.readListEnd();
       } else {
@@ -3184,12 +3025,12 @@ GetActivityResponse.prototype.write = function(output) {
   if (this.events !== null && this.events !== undefined) {
     output.writeFieldBegin('events', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.events.length);
-    for (var iter71 in this.events)
+    for (var iter63 in this.events)
     {
-      if (this.events.hasOwnProperty(iter71))
+      if (this.events.hasOwnProperty(iter63))
       {
-        iter71 = this.events[iter71];
-        iter71.write(output);
+        iter63 = this.events[iter63];
+        iter63.write(output);
       }
     }
     output.writeListEnd();
@@ -3278,19 +3119,19 @@ GetServiceAnnouncementsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size72 = 0;
-        var _rtmp376;
+        var _size64 = 0;
+        var _rtmp368;
         this.serviceAnnouncements = [];
-        var _etype75 = 0;
-        _rtmp376 = input.readListBegin();
-        _etype75 = _rtmp376.etype;
-        _size72 = _rtmp376.size;
-        for (var _i77 = 0; _i77 < _size72; ++_i77)
+        var _etype67 = 0;
+        _rtmp368 = input.readListBegin();
+        _etype67 = _rtmp368.etype;
+        _size64 = _rtmp368.size;
+        for (var _i69 = 0; _i69 < _size64; ++_i69)
         {
-          var elem78 = null;
-          elem78 = new Banana_ttypes.ServiceAnnouncement();
-          elem78.read(input);
-          this.serviceAnnouncements.push(elem78);
+          var elem70 = null;
+          elem70 = new Banana_ttypes.ServiceAnnouncement();
+          elem70.read(input);
+          this.serviceAnnouncements.push(elem70);
         }
         input.readListEnd();
       } else {
@@ -3314,12 +3155,12 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
   if (this.serviceAnnouncements !== null && this.serviceAnnouncements !== undefined) {
     output.writeFieldBegin('serviceAnnouncements', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.serviceAnnouncements.length);
-    for (var iter79 in this.serviceAnnouncements)
+    for (var iter71 in this.serviceAnnouncements)
     {
-      if (this.serviceAnnouncements.hasOwnProperty(iter79))
+      if (this.serviceAnnouncements.hasOwnProperty(iter71))
       {
-        iter79 = this.serviceAnnouncements[iter79];
-        iter79.write(output);
+        iter71 = this.serviceAnnouncements[iter71];
+        iter71.write(output);
       }
     }
     output.writeListEnd();
@@ -3437,19 +3278,19 @@ SearchForApplicationsResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.LIST) {
-        var _size80 = 0;
-        var _rtmp384;
+        var _size72 = 0;
+        var _rtmp376;
         this.applications = [];
-        var _etype83 = 0;
-        _rtmp384 = input.readListBegin();
-        _etype83 = _rtmp384.etype;
-        _size80 = _rtmp384.size;
-        for (var _i85 = 0; _i85 < _size80; ++_i85)
+        var _etype75 = 0;
+        _rtmp376 = input.readListBegin();
+        _etype75 = _rtmp376.etype;
+        _size72 = _rtmp376.size;
+        for (var _i77 = 0; _i77 < _size72; ++_i77)
         {
-          var elem86 = null;
-          elem86 = new Banana_ttypes.Application();
-          elem86.read(input);
-          this.applications.push(elem86);
+          var elem78 = null;
+          elem78 = new Banana_ttypes.Application();
+          elem78.read(input);
+          this.applications.push(elem78);
         }
         input.readListEnd();
       } else {
@@ -3473,12 +3314,12 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   if (this.applications !== null && this.applications !== undefined) {
     output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);
-    for (var iter87 in this.applications)
+    for (var iter79 in this.applications)
     {
-      if (this.applications.hasOwnProperty(iter87))
+      if (this.applications.hasOwnProperty(iter79))
       {
-        iter87 = this.applications[iter87];
-        iter87.write(output);
+        iter79 = this.applications[iter79];
+        iter79.write(output);
       }
     }
     output.writeListEnd();
@@ -3494,7 +3335,7 @@ ttypes.SERVICE_PORT = 7001;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'port' : 7001,'hostname' : 'banana-srv.beta.banana.aroma.tech'});
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
 ttypes.MAX_APPLICATION_ICON_DIMENSION = new Banana_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Banana_ttypes.Dimension({

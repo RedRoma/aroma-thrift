@@ -126,15 +126,6 @@ class BananaServiceIf {
    * @param request
    */
   virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
-
-  /**
-   * Get a list of all Users subscribed to an Application.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  virtual void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) = 0;
   virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
   virtual void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
@@ -214,9 +205,6 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void getApplicationInfo(GetApplicationInfoResponse& /* _return */, const GetApplicationInfoRequest& /* request */) {
-    return;
-  }
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& /* _return */, const GetApplicationSubscribersRequest& /* request */) {
     return;
   }
   void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
@@ -2013,142 +2001,6 @@ class BananaService_getApplicationInfo_presult {
 
 };
 
-typedef struct _BananaService_getApplicationSubscribers_args__isset {
-  _BananaService_getApplicationSubscribers_args__isset() : request(false) {}
-  bool request :1;
-} _BananaService_getApplicationSubscribers_args__isset;
-
-class BananaService_getApplicationSubscribers_args {
- public:
-
-  BananaService_getApplicationSubscribers_args(const BananaService_getApplicationSubscribers_args&);
-  BananaService_getApplicationSubscribers_args& operator=(const BananaService_getApplicationSubscribers_args&);
-  BananaService_getApplicationSubscribers_args() {
-  }
-
-  virtual ~BananaService_getApplicationSubscribers_args() throw();
-  GetApplicationSubscribersRequest request;
-
-  _BananaService_getApplicationSubscribers_args__isset __isset;
-
-  void __set_request(const GetApplicationSubscribersRequest& val);
-
-  bool operator == (const BananaService_getApplicationSubscribers_args & rhs) const
-  {
-    if (!(request == rhs.request))
-      return false;
-    return true;
-  }
-  bool operator != (const BananaService_getApplicationSubscribers_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const BananaService_getApplicationSubscribers_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class BananaService_getApplicationSubscribers_pargs {
- public:
-
-
-  virtual ~BananaService_getApplicationSubscribers_pargs() throw();
-  const GetApplicationSubscribersRequest* request;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _BananaService_getApplicationSubscribers_result__isset {
-  _BananaService_getApplicationSubscribers_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _BananaService_getApplicationSubscribers_result__isset;
-
-class BananaService_getApplicationSubscribers_result {
- public:
-
-  BananaService_getApplicationSubscribers_result(const BananaService_getApplicationSubscribers_result&);
-  BananaService_getApplicationSubscribers_result& operator=(const BananaService_getApplicationSubscribers_result&);
-  BananaService_getApplicationSubscribers_result() {
-  }
-
-  virtual ~BananaService_getApplicationSubscribers_result() throw();
-  GetApplicationSubscribersResponse success;
-  OperationFailedException ex1;
-  InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
-  UnauthorizedException ex4;
-
-  _BananaService_getApplicationSubscribers_result__isset __isset;
-
-  void __set_success(const GetApplicationSubscribersResponse& val);
-
-  void __set_ex1(const OperationFailedException& val);
-
-  void __set_ex2(const InvalidArgumentException& val);
-
-  void __set_ex3(const InvalidCredentialsException& val);
-
-  void __set_ex4(const UnauthorizedException& val);
-
-  bool operator == (const BananaService_getApplicationSubscribers_result & rhs) const
-  {
-    if (!(success == rhs.success))
-      return false;
-    if (!(ex1 == rhs.ex1))
-      return false;
-    if (!(ex2 == rhs.ex2))
-      return false;
-    if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    return true;
-  }
-  bool operator != (const BananaService_getApplicationSubscribers_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const BananaService_getApplicationSubscribers_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-typedef struct _BananaService_getApplicationSubscribers_presult__isset {
-  _BananaService_getApplicationSubscribers_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
-  bool success :1;
-  bool ex1 :1;
-  bool ex2 :1;
-  bool ex3 :1;
-  bool ex4 :1;
-} _BananaService_getApplicationSubscribers_presult__isset;
-
-class BananaService_getApplicationSubscribers_presult {
- public:
-
-
-  virtual ~BananaService_getApplicationSubscribers_presult() throw();
-  GetApplicationSubscribersResponse* success;
-  OperationFailedException* ex1;
-  InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
-  UnauthorizedException* ex4;
-
-  _BananaService_getApplicationSubscribers_presult__isset __isset;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
 typedef struct _BananaService_getDashboard_args__isset {
   _BananaService_getDashboard_args__isset() : request(false) {}
   bool request :1;
@@ -2733,9 +2585,6 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   void send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return);
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request);
-  void send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request);
-  void recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   void send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return);
@@ -2776,7 +2625,6 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_subscribeToApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationSubscribers(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -2797,7 +2645,6 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["subscribeToApplication"] = &BananaServiceProcessor::process_subscribeToApplication;
     processMap_["getActivity"] = &BananaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
-    processMap_["getApplicationSubscribers"] = &BananaServiceProcessor::process_getApplicationSubscribers;
     processMap_["getDashboard"] = &BananaServiceProcessor::process_getDashboard;
     processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
@@ -2959,16 +2806,6 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationSubscribers(_return, request);
-    }
-    ifaces_[i]->getApplicationSubscribers(_return, request);
-    return;
-  }
-
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -3078,9 +2915,6 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   int32_t send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid);
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request);
-  int32_t send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request);
-  void recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const int32_t seqid);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   int32_t send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid);
