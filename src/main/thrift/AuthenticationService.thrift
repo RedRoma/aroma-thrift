@@ -75,7 +75,6 @@ struct GetTokenInfoResponse
     1: AuthenticationToken token;
 }
 
-
 struct InvalidateTokenRequest
 {
     1: AuthenticationToken token;
