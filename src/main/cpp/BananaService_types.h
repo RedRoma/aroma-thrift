@@ -1268,10 +1268,11 @@ inline std::ostream& operator<<(std::ostream& out, const SignUpResponse& obj)
 }
 
 typedef struct _SnoozeChannelRequest__isset {
-  _SnoozeChannelRequest__isset() : token(false), channel(false), applicationId(false) {}
+  _SnoozeChannelRequest__isset() : token(false), channel(false), applicationId(false), lengthOfTime(true) {}
   bool token :1;
   bool channel :1;
   bool applicationId :1;
+  bool lengthOfTime :1;
 } _SnoozeChannelRequest__isset;
 
 class SnoozeChannelRequest {
@@ -1280,12 +1281,19 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
+     ::aroma::banana::thrift::long tmp53;
+    tmp53 = 4LL;
+
+    lengthOfTime.value = tmp53;
+    lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
+
   }
 
   virtual ~SnoozeChannelRequest() throw();
   UserToken token;
   BananaChannel channel;
   std::string applicationId;
+   ::aroma::banana::thrift::LengthOfTime lengthOfTime;
 
   _SnoozeChannelRequest__isset __isset;
 
@@ -1294,6 +1302,8 @@ class SnoozeChannelRequest {
   void __set_channel(const BananaChannel& val);
 
   void __set_applicationId(const std::string& val);
+
+  void __set_lengthOfTime(const  ::aroma::banana::thrift::LengthOfTime& val);
 
   bool operator == (const SnoozeChannelRequest & rhs) const
   {
@@ -1304,6 +1314,10 @@ class SnoozeChannelRequest {
     if (__isset.applicationId != rhs.__isset.applicationId)
       return false;
     else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.lengthOfTime != rhs.__isset.lengthOfTime)
+      return false;
+    else if (__isset.lengthOfTime && !(lengthOfTime == rhs.lengthOfTime))
       return false;
     return true;
   }

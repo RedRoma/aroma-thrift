@@ -4817,11 +4817,15 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.lengthOfTime = [[[Banana_LengthOfTime alloc] init] autorelease_stub];
+  [self.lengthOfTime setValue:4];
+  [self.lengthOfTime setUnit:3];
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime
 {
   self = [super init];
   __token = [token retain_stub];
@@ -4830,6 +4834,8 @@
   __channel_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
+  __lengthOfTime = [lengthOfTime retain_stub];
+  __lengthOfTime_isset = YES;
   return self;
 }
 
@@ -4851,6 +4857,11 @@
     __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
     __applicationId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"lengthOfTime"])
+  {
+    __lengthOfTime = [[decoder decodeObjectForKey: @"lengthOfTime"] retain_stub];
+    __lengthOfTime_isset = YES;
+  }
   return self;
 }
 
@@ -4867,6 +4878,10 @@
   if (__applicationId_isset)
   {
     [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__lengthOfTime_isset)
+  {
+    [encoder encodeObject: __lengthOfTime forKey: @"lengthOfTime"];
   }
 }
 
@@ -4887,6 +4902,11 @@
   if (__applicationId_isset)
   {
     hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __lengthOfTime_isset ? 2654435761 : 0;
+  if (__lengthOfTime_isset)
+  {
+    hash = (hash * 31) ^ [__lengthOfTime hash];
   }
   return hash;
 }
@@ -4912,6 +4932,10 @@
       (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
+  if ((__lengthOfTime_isset != other->__lengthOfTime_isset) ||
+      (__lengthOfTime_isset && ((__lengthOfTime || other->__lengthOfTime) && ![__lengthOfTime isEqual:other->__lengthOfTime]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -4920,6 +4944,7 @@
   [__token release_stub];
   [__channel release_stub];
   [__applicationId release_stub];
+  [__lengthOfTime release_stub];
   [super dealloc_stub];
 }
 
@@ -4986,6 +5011,27 @@
   __applicationId_isset = NO;
 }
 
+- (Banana_LengthOfTime *) lengthOfTime {
+  return [[__lengthOfTime retain_stub] autorelease_stub];
+}
+
+- (void) setLengthOfTime: (Banana_LengthOfTime *) lengthOfTime {
+  [lengthOfTime retain_stub];
+  [__lengthOfTime release_stub];
+  __lengthOfTime = lengthOfTime;
+  __lengthOfTime_isset = YES;
+}
+
+- (BOOL) lengthOfTimeIsSet {
+  return __lengthOfTime_isset;
+}
+
+- (void) unsetLengthOfTime {
+  [__lengthOfTime release_stub];
+  __lengthOfTime = nil;
+  __lengthOfTime_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -5029,6 +5075,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
+          [fieldValue read: inProtocol];
+          [self setLengthOfTime: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -5061,6 +5117,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__lengthOfTime_isset) {
+    if (__lengthOfTime != nil) {
+      [outProtocol writeFieldBeginWithName: @"lengthOfTime" type: TType_STRUCT fieldID: 4];
+      [__lengthOfTime write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -5077,6 +5140,8 @@
   [ms appendFormat: @"%@", __channel];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",lengthOfTime:"];
+  [ms appendFormat: @"%@", __lengthOfTime];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -852,20 +852,23 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
   BananaService_UserToken __token;
   BananaService_BananaChannel __channel;
   NSString * __applicationId;
+  Banana_LengthOfTime * __lengthOfTime;
 
   BOOL __token_isset;
   BOOL __channel_isset;
   BOOL __applicationId_isset;
+  BOOL __lengthOfTime_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
 @property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=lengthOfTime, setter=setLengthOfTime:) Banana_LengthOfTime * lengthOfTime;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId;
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -889,6 +892,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setApplicationId: (NSString *) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_LengthOfTime *) lengthOfTime;
+- (void) setLengthOfTime: (Banana_LengthOfTime *) lengthOfTime;
+#endif
+- (BOOL) lengthOfTimeIsSet;
 
 @end
 

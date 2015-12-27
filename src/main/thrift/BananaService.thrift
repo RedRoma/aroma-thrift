@@ -293,6 +293,8 @@ struct SnoozeChannelRequest
     2: BananaChannel channel;
     /** Optionally choose to snooze a specific Application. */
     3: optional string applicationId;
+    /** Defines how long to snooze the Channel for. */
+    4: optional Banana.LengthOfTime lengthOfTime = { "value": 4, "unit" : Banana.TimeUnit.HOURS };
 }
 
 struct SnoozeChannelResponse
