@@ -16,34 +16,34 @@ BananaServiceConstants::BananaServiceConstants() {
   SERVICE_PORT = 7001;
 
   PRODUCTION_ENDPOINT.hostname = "banana-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp151;
-  tmp151 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp145;
+  tmp145 = 7001;
 
-  PRODUCTION_ENDPOINT.port = tmp151;
+  PRODUCTION_ENDPOINT.port = tmp145;
 
   BETA_ENDPOINT.hostname = "banana-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp152;
-  tmp152 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp146;
+  tmp146 = 7001;
 
-  BETA_ENDPOINT.port = tmp152;
+  BETA_ENDPOINT.port = tmp146;
 
-   ::aroma::banana::thrift::int tmp153;
-  tmp153 = 1024;
+   ::aroma::banana::thrift::int tmp147;
+  tmp147 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp153;
-   ::aroma::banana::thrift::int tmp154;
-  tmp154 = 1024;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp147;
+   ::aroma::banana::thrift::int tmp148;
+  tmp148 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp154;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp148;
 
-   ::aroma::banana::thrift::int tmp155;
-  tmp155 = 1024;
+   ::aroma::banana::thrift::int tmp149;
+  tmp149 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp155;
-   ::aroma::banana::thrift::int tmp156;
-  tmp156 = 1024;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp149;
+   ::aroma::banana::thrift::int tmp150;
+  tmp150 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp156;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp150;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 

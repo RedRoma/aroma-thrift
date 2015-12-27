@@ -120,18 +120,6 @@ struct DeleteMessageResponse
 }
 
 /**
- * Deletes all of Applications' Messages.
- * 
- * #owner
- */
-struct DeleteAllMessagesRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-    3: optional int messagesDeleted = 0;
-}
-
-/**
  * Dismisses a Message. Dismissing is analogous to archiving
  * an email; it will no longer be visible to you, but will
  * still be visible to other subscribers.
@@ -150,20 +138,7 @@ struct DismissMessageResponse
     1: optional int messagesDismissed = 0;
 }
 
-/**
- * Dismisses all Messages. They will no longer be visible to you.
- */
-struct DismissAllMessagesRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-}
-
-struct DismissAllMessagesResponse
-{
-    1: optional int messagesDismissed = 0;
-}
-
+ 
 /**
  * Defines the required information to provision
  * an Application with the Banana Service.

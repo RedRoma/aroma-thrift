@@ -226,11 +226,8 @@ code { line-height: 20px; }
 <a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
-<a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
-<a href="#Struct_DismissAllMessagesRequest">DismissAllMessagesRequest</a><br/>
-<a href="#Struct_DismissAllMessagesResponse">DismissAllMessagesResponse</a><br/>
 <a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
 <a href="#Struct_DismissMessageResponse">DismissMessageResponse</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
@@ -385,15 +382,7 @@ getFullMessage() operation.
 <br/></div><div class="definition"><h3 id="Struct_DeleteMessageResponse">Struct: DeleteMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeleteAllMessagesRequest">Struct: DeleteAllMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/>Deletes all of Applications' Messages.
-
-#owner
-<br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -404,14 +393,6 @@ getFullMessage() operation.
 an email; it will no longer be visible to you, but will
 still be visible to other subscribers.
 <br/></div><div class="definition"><h3 id="Struct_DismissMessageResponse">Struct: DismissMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesRequest">Struct: DismissAllMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Dismisses all Messages. They will no longer be visible to you.
-<br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesResponse">Struct: DismissAllMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ProvisionApplicationRequest">Struct: ProvisionApplicationRequest</h3>

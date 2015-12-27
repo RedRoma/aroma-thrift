@@ -71,15 +71,9 @@ class DeleteMessageRequest;
 
 class DeleteMessageResponse;
 
-class DeleteAllMessagesRequest;
-
 class DismissMessageRequest;
 
 class DismissMessageResponse;
-
-class DismissAllMessagesRequest;
-
-class DismissAllMessagesResponse;
 
 class ProvisionApplicationRequest;
 
@@ -272,66 +266,6 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteMessageResponse& 
   return out;
 }
 
-typedef struct _DeleteAllMessagesRequest__isset {
-  _DeleteAllMessagesRequest__isset() : token(false), applicationId(false), messagesDeleted(true) {}
-  bool token :1;
-  bool applicationId :1;
-  bool messagesDeleted :1;
-} _DeleteAllMessagesRequest__isset;
-
-class DeleteAllMessagesRequest {
- public:
-
-  DeleteAllMessagesRequest(const DeleteAllMessagesRequest&);
-  DeleteAllMessagesRequest& operator=(const DeleteAllMessagesRequest&);
-  DeleteAllMessagesRequest() : applicationId(), messagesDeleted(0) {
-  }
-
-  virtual ~DeleteAllMessagesRequest() throw();
-  UserToken token;
-  std::string applicationId;
-  int messagesDeleted;
-
-  _DeleteAllMessagesRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_messagesDeleted(const int val);
-
-  bool operator == (const DeleteAllMessagesRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (__isset.messagesDeleted != rhs.__isset.messagesDeleted)
-      return false;
-    else if (__isset.messagesDeleted && !(messagesDeleted == rhs.messagesDeleted))
-      return false;
-    return true;
-  }
-  bool operator != (const DeleteAllMessagesRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const DeleteAllMessagesRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(DeleteAllMessagesRequest &a, DeleteAllMessagesRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const DeleteAllMessagesRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
 typedef struct _DismissMessageRequest__isset {
   _DismissMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
   bool token :1;
@@ -442,106 +376,6 @@ class DismissMessageResponse {
 void swap(DismissMessageResponse &a, DismissMessageResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const DismissMessageResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _DismissAllMessagesRequest__isset {
-  _DismissAllMessagesRequest__isset() : token(false), applicationId(false) {}
-  bool token :1;
-  bool applicationId :1;
-} _DismissAllMessagesRequest__isset;
-
-class DismissAllMessagesRequest {
- public:
-
-  DismissAllMessagesRequest(const DismissAllMessagesRequest&);
-  DismissAllMessagesRequest& operator=(const DismissAllMessagesRequest&);
-  DismissAllMessagesRequest() : applicationId() {
-  }
-
-  virtual ~DismissAllMessagesRequest() throw();
-  UserToken token;
-  std::string applicationId;
-
-  _DismissAllMessagesRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_applicationId(const std::string& val);
-
-  bool operator == (const DismissAllMessagesRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    return true;
-  }
-  bool operator != (const DismissAllMessagesRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const DismissAllMessagesRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(DismissAllMessagesRequest &a, DismissAllMessagesRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const DismissAllMessagesRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _DismissAllMessagesResponse__isset {
-  _DismissAllMessagesResponse__isset() : messagesDismissed(true) {}
-  bool messagesDismissed :1;
-} _DismissAllMessagesResponse__isset;
-
-class DismissAllMessagesResponse {
- public:
-
-  DismissAllMessagesResponse(const DismissAllMessagesResponse&);
-  DismissAllMessagesResponse& operator=(const DismissAllMessagesResponse&);
-  DismissAllMessagesResponse() : messagesDismissed(0) {
-  }
-
-  virtual ~DismissAllMessagesResponse() throw();
-  int messagesDismissed;
-
-  _DismissAllMessagesResponse__isset __isset;
-
-  void __set_messagesDismissed(const int val);
-
-  bool operator == (const DismissAllMessagesResponse & rhs) const
-  {
-    if (__isset.messagesDismissed != rhs.__isset.messagesDismissed)
-      return false;
-    else if (__isset.messagesDismissed && !(messagesDismissed == rhs.messagesDismissed))
-      return false;
-    return true;
-  }
-  bool operator != (const DismissAllMessagesResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const DismissAllMessagesResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(DismissAllMessagesResponse &a, DismissAllMessagesResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const DismissAllMessagesResponse& obj)
 {
   obj.printTo(out);
   return out;
