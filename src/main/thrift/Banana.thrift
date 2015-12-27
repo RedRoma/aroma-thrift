@@ -157,11 +157,16 @@ struct Application
     3: string name;
     /** The Automatically generated ID for the Application. */
     4: string id;
-    /** The total amount of messages that have been counted so far for the Application*/
+    /** 
+     * The total amount of messages that 
+     * have been counted so far for the Application*/
     5: long totalMessagesSent;
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
-    /** Defines a list of people that are subscribed to events for an Application.*/
+    /** 
+     * Defines a list of people that are subscribed 
+     * to events for an Application, and that are not owners.
+     */
     8: optional list<User> subscribers = [];
 }
 

@@ -1301,7 +1301,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1312,6 +1312,10 @@
   __name_isset = YES;
   __roles = [roles retain_stub];
   __roles_isset = YES;
+  __profileImage = [profileImage retain_stub];
+  __profileImage_isset = YES;
+  __profileImageLink = [profileImageLink retain_stub];
+  __profileImageLink_isset = YES;
   return self;
 }
 
@@ -1338,6 +1342,16 @@
     __roles = [[decoder decodeObjectForKey: @"roles"] retain_stub];
     __roles_isset = YES;
   }
+  if ([decoder containsValueForKey: @"profileImage"])
+  {
+    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
+    __profileImage_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"profileImageLink"])
+  {
+    __profileImageLink = [[decoder decodeObjectForKey: @"profileImageLink"] retain_stub];
+    __profileImageLink_isset = YES;
+  }
   return self;
 }
 
@@ -1358,6 +1372,14 @@
   if (__roles_isset)
   {
     [encoder encodeObject: __roles forKey: @"roles"];
+  }
+  if (__profileImage_isset)
+  {
+    [encoder encodeObject: __profileImage forKey: @"profileImage"];
+  }
+  if (__profileImageLink_isset)
+  {
+    [encoder encodeObject: __profileImageLink forKey: @"profileImageLink"];
   }
 }
 
@@ -1383,6 +1405,16 @@
   if (__roles_isset)
   {
     hash = (hash * 31) ^ [__roles hash];
+  }
+  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
+  if (__profileImage_isset)
+  {
+    hash = (hash * 31) ^ [__profileImage hash];
+  }
+  hash = (hash * 31) ^ __profileImageLink_isset ? 2654435761 : 0;
+  if (__profileImageLink_isset)
+  {
+    hash = (hash * 31) ^ [__profileImageLink hash];
   }
   return hash;
 }
@@ -1412,6 +1444,14 @@
       (__roles_isset && ((__roles || other->__roles) && ![__roles isEqual:other->__roles]))) {
     return NO;
   }
+  if ((__profileImage_isset != other->__profileImage_isset) ||
+      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
+    return NO;
+  }
+  if ((__profileImageLink_isset != other->__profileImageLink_isset) ||
+      (__profileImageLink_isset && ((__profileImageLink || other->__profileImageLink) && ![__profileImageLink isEqual:other->__profileImageLink]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1421,6 +1461,8 @@
   [__userId release_stub];
   [__name release_stub];
   [__roles release_stub];
+  [__profileImage release_stub];
+  [__profileImageLink release_stub];
   [super dealloc_stub];
 }
 
@@ -1508,6 +1550,48 @@
   __roles_isset = NO;
 }
 
+- (Banana_Image *) profileImage {
+  return [[__profileImage retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImage: (Banana_Image *) profileImage {
+  [profileImage retain_stub];
+  [__profileImage release_stub];
+  __profileImage = profileImage;
+  __profileImage_isset = YES;
+}
+
+- (BOOL) profileImageIsSet {
+  return __profileImage_isset;
+}
+
+- (void) unsetProfileImage {
+  [__profileImage release_stub];
+  __profileImage = nil;
+  __profileImage_isset = NO;
+}
+
+- (NSString *) profileImageLink {
+  return [[__profileImageLink retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImageLink: (NSString *) profileImageLink {
+  [profileImageLink retain_stub];
+  [__profileImageLink release_stub];
+  __profileImageLink = profileImageLink;
+  __profileImageLink_isset = YES;
+}
+
+- (BOOL) profileImageLinkIsSet {
+  return __profileImageLink_isset;
+}
+
+- (void) unsetProfileImageLink {
+  [__profileImageLink release_stub];
+  __profileImageLink = nil;
+  __profileImageLink_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1565,6 +1649,24 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setProfileImage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setProfileImageLink: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1612,6 +1714,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__profileImage_isset) {
+    if (__profileImage != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 5];
+      [__profileImage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__profileImageLink_isset) {
+    if (__profileImageLink != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImageLink" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __profileImageLink];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1630,6 +1746,10 @@
   [ms appendFormat: @"\"%@\"", __name];
   [ms appendString: @",roles:"];
   [ms appendFormat: @"%@", __roles];
+  [ms appendString: @",profileImage:"];
+  [ms appendFormat: @"%@", __profileImage];
+  [ms appendString: @",profileImageLink:"];
+  [ms appendFormat: @"\"%@\"", __profileImageLink];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

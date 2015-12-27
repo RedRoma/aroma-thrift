@@ -451,6 +451,8 @@ User = function(args) {
   this.userId = null;
   this.name = null;
   this.roles = [1];
+  this.profileImage = null;
+  this.profileImageLink = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -463,6 +465,12 @@ User = function(args) {
     }
     if (args.roles !== undefined && args.roles !== null) {
       this.roles = Thrift.copyList(args.roles, [null]);
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Image(args.profileImage);
+    }
+    if (args.profileImageLink !== undefined && args.profileImageLink !== null) {
+      this.profileImageLink = args.profileImageLink;
     }
   }
 };
@@ -521,6 +529,21 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Image();
+        this.profileImage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.profileImageLink = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -559,6 +582,16 @@ User.prototype.write = function(output) {
       }
     }
     output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 5);
+    this.profileImage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.profileImageLink !== null && this.profileImageLink !== undefined) {
+    output.writeFieldBegin('profileImageLink', Thrift.Type.STRING, 6);
+    output.writeString(this.profileImageLink);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

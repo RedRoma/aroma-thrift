@@ -353,6 +353,8 @@ body can then be loaded in a separate request.
 <tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>roles</td><td><code>list&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td>A Person can be more than one thing at once. By default, we assume a developer.
 </td><td>default</td><td><code>{ <code><a href="#Const_Role.DEVELOPER">Role.DEVELOPER</a></code> }</code></td></tr>
+<tr><td>5</td><td>profileImage</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>profileImageLink</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>A User represents a Human who is a uses the Service.
 <br/></div><div class="definition"><h3 id="Struct_Application">Struct: Application</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -364,11 +366,13 @@ body can then be loaded in a separate request.
 </td><td>default</td><td></td></tr>
 <tr><td>4</td><td>id</td><td><code>string</code></td><td>The Automatically generated ID for the Application.
 </td><td>default</td><td></td></tr>
-<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td>The total amount of messages that have been counted so far for the Application
+<tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td>The total amount of messages that
+have been counted so far for the Application
 </td><td>default</td><td></td></tr>
 <tr><td>6</td><td>icon</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>programmingLanguage</td><td><code><a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>8</td><td>subscribers</td><td><code>list&lt;<code><a href="#Struct_User">User</a></code>&gt;</code></td><td>Defines a list of people that are subscribed to events for an Application.
+<tr><td>8</td><td>subscribers</td><td><code>list&lt;<code><a href="#Struct_User">User</a></code>&gt;</code></td><td>Defines a list of people that are subscribed
+to events for an Application, and that are not owners.
 </td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ServiceAnnouncement">Struct: ServiceAnnouncement</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>

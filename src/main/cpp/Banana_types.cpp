@@ -729,6 +729,16 @@ void User::__set_roles(const std::vector<Role::type> & val) {
   this->roles = val;
 }
 
+void User::__set_profileImage(const Image& val) {
+  this->profileImage = val;
+__isset.profileImage = true;
+}
+
+void User::__set_profileImageLink(const std::string& val) {
+  this->profileImageLink = val;
+__isset.profileImageLink = true;
+}
+
 uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -796,6 +806,22 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->profileImage.read(iprot);
+          this->__isset.profileImage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->profileImageLink);
+          this->__isset.profileImageLink = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -838,6 +864,16 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
   }
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.profileImage) {
+    xfer += oprot->writeFieldBegin("profileImage", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->profileImage.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.profileImageLink) {
+    xfer += oprot->writeFieldBegin("profileImageLink", ::apache::thrift::protocol::T_STRING, 6);
+    xfer += oprot->writeString(this->profileImageLink);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -849,6 +885,8 @@ void swap(User &a, User &b) {
   swap(a.userId, b.userId);
   swap(a.name, b.name);
   swap(a.roles, b.roles);
+  swap(a.profileImage, b.profileImage);
+  swap(a.profileImageLink, b.profileImageLink);
   swap(a.__isset, b.__isset);
 }
 
@@ -857,6 +895,8 @@ User::User(const User& other18) {
   userId = other18.userId;
   name = other18.name;
   roles = other18.roles;
+  profileImage = other18.profileImage;
+  profileImageLink = other18.profileImageLink;
   __isset = other18.__isset;
 }
 User& User::operator=(const User& other19) {
@@ -864,6 +904,8 @@ User& User::operator=(const User& other19) {
   userId = other19.userId;
   name = other19.name;
   roles = other19.roles;
+  profileImage = other19.profileImage;
+  profileImageLink = other19.profileImageLink;
   __isset = other19.__isset;
   return *this;
 }
@@ -874,6 +916,8 @@ void User::printTo(std::ostream& out) const {
   out << ", " << "userId=" << to_string(userId);
   out << ", " << "name="; (__isset.name ? (out << to_string(name)) : (out << "<null>"));
   out << ", " << "roles=" << to_string(roles);
+  out << ", " << "profileImage="; (__isset.profileImage ? (out << to_string(profileImage)) : (out << "<null>"));
+  out << ", " << "profileImageLink="; (__isset.profileImageLink ? (out << to_string(profileImageLink)) : (out << "<null>"));
   out << ")";
 }
 

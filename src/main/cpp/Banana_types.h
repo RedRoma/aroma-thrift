@@ -357,11 +357,13 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), userId(false), name(false), roles(true) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false) {}
   bool email :1;
   bool userId :1;
   bool name :1;
   bool roles :1;
+  bool profileImage :1;
+  bool profileImageLink :1;
 } _User__isset;
 
 class User {
@@ -369,7 +371,7 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), userId(), name() {
+  User() : email(), userId(), name(), profileImageLink() {
     roles.push_back((Role::type)1);
 
   }
@@ -379,6 +381,8 @@ class User {
   std::string userId;
   std::string name;
   std::vector<Role::type>  roles;
+  Image profileImage;
+  std::string profileImageLink;
 
   _User__isset __isset;
 
@@ -389,6 +393,10 @@ class User {
   void __set_name(const std::string& val);
 
   void __set_roles(const std::vector<Role::type> & val);
+
+  void __set_profileImage(const Image& val);
+
+  void __set_profileImageLink(const std::string& val);
 
   bool operator == (const User & rhs) const
   {
@@ -401,6 +409,14 @@ class User {
     else if (__isset.name && !(name == rhs.name))
       return false;
     if (!(roles == rhs.roles))
+      return false;
+    if (__isset.profileImage != rhs.__isset.profileImage)
+      return false;
+    else if (__isset.profileImage && !(profileImage == rhs.profileImage))
+      return false;
+    if (__isset.profileImageLink != rhs.__isset.profileImageLink)
+      return false;
+    else if (__isset.profileImageLink && !(profileImageLink == rhs.profileImageLink))
       return false;
     return true;
   }

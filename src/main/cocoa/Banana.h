@@ -287,11 +287,15 @@ typedef int64_t Banana_timestamp;
   NSString * __userId;
   NSString * __name;
   NSMutableArray * __roles;
+  Banana_Image * __profileImage;
+  NSString * __profileImageLink;
 
   BOOL __email_isset;
   BOOL __userId_isset;
   BOOL __name_isset;
   BOOL __roles_isset;
+  BOOL __profileImage_isset;
+  BOOL __profileImageLink_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -299,10 +303,12 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableArray * roles;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
+@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) NSString * profileImageLink;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles;
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -332,6 +338,18 @@ typedef int64_t Banana_timestamp;
 - (void) setRoles: (NSMutableArray *) roles;
 #endif
 - (BOOL) rolesIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) profileImage;
+- (void) setProfileImage: (Banana_Image *) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) profileImageLink;
+- (void) setProfileImageLink: (NSString *) profileImageLink;
+#endif
+- (BOOL) profileImageLinkIsSet;
 
 @end
 
