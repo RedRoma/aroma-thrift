@@ -122,6 +122,8 @@ struct User
     3: optional string name;
     /** A Person can be more than one thing at once. By default, we assume a developer. */
     4: list<Role> roles = [ Role.DEVELOPER ];
+    5: optional Image profileImage;
+    6: optional string profileImageLink;
 }
 
 /**
