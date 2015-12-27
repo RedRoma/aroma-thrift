@@ -58,6 +58,7 @@ Message = module.exports.Message = function(args) {
   this.applicationName = null;
   this.hostname = null;
   this.macAddress = null;
+  this.isTruncated = false;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -82,6 +83,9 @@ Message = module.exports.Message = function(args) {
     }
     if (args.macAddress !== undefined && args.macAddress !== null) {
       this.macAddress = args.macAddress;
+    }
+    if (args.isTruncated !== undefined && args.isTruncated !== null) {
+      this.isTruncated = args.isTruncated;
     }
   }
 };
@@ -155,6 +159,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isTruncated = input.readBool();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -204,6 +215,11 @@ Message.prototype.write = function(output) {
   if (this.macAddress !== null && this.macAddress !== undefined) {
     output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
     output.writeString(this.macAddress);
+    output.writeFieldEnd();
+  }
+  if (this.isTruncated !== null && this.isTruncated !== undefined) {
+    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
+    output.writeBool(this.isTruncated);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

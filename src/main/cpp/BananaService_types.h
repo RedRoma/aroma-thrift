@@ -133,6 +133,10 @@ class GetMessagesRequest;
 
 class GetMessagesResponse;
 
+class GetFullMessageRequest;
+
+class GetFullMessageResponse;
+
 class GetMyApplicationsRequest;
 
 class GetMyApplicationsResponse;
@@ -2006,6 +2010,104 @@ class GetMessagesResponse {
 void swap(GetMessagesResponse &a, GetMessagesResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetFullMessageRequest__isset {
+  _GetFullMessageRequest__isset() : token(false), messageId(false) {}
+  bool token :1;
+  bool messageId :1;
+} _GetFullMessageRequest__isset;
+
+class GetFullMessageRequest {
+ public:
+
+  GetFullMessageRequest(const GetFullMessageRequest&);
+  GetFullMessageRequest& operator=(const GetFullMessageRequest&);
+  GetFullMessageRequest() : messageId() {
+  }
+
+  virtual ~GetFullMessageRequest() throw();
+  UserToken token;
+  std::string messageId;
+
+  _GetFullMessageRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  bool operator == (const GetFullMessageRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetFullMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetFullMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetFullMessageRequest &a, GetFullMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetFullMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetFullMessageResponse__isset {
+  _GetFullMessageResponse__isset() : fullBody(false) {}
+  bool fullBody :1;
+} _GetFullMessageResponse__isset;
+
+class GetFullMessageResponse {
+ public:
+
+  GetFullMessageResponse(const GetFullMessageResponse&);
+  GetFullMessageResponse& operator=(const GetFullMessageResponse&);
+  GetFullMessageResponse() : fullBody() {
+  }
+
+  virtual ~GetFullMessageResponse() throw();
+  std::string fullBody;
+
+  _GetFullMessageResponse__isset __isset;
+
+  void __set_fullBody(const std::string& val);
+
+  bool operator == (const GetFullMessageResponse & rhs) const
+  {
+    if (!(fullBody == rhs.fullBody))
+      return false;
+    return true;
+  }
+  bool operator != (const GetFullMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetFullMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetFullMessageResponse &a, GetFullMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetFullMessageResponse& obj)
 {
   obj.printTo(out);
   return out;

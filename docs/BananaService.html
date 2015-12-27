@@ -200,6 +200,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
 <li><a href="#Fn_BananaService_getDashboard">getDashboard</a></li>
+<li><a href="#Fn_BananaService_getFullMessage">getFullMessage</a></li>
+<li><a href="#Fn_BananaService_getMessages">getMessages</a></li>
 <li><a href="#Fn_BananaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
 <li><a href="#Fn_BananaService_provisionApplication">provisionApplication</a></li>
@@ -238,6 +240,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
 <a href="#Struct_GetDashboardResponse">GetDashboardResponse</a><br/>
+<a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a><br/>
+<a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a><br/>
 <a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
 <a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
 <a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a><br/>
@@ -284,6 +288,7 @@ code { line-height: 20px; }
 <code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_DIMENSION">MAX_APPLICATION_ICON_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES">MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</a></code><br/>
+<code><a href="#Const_MAX_MESSAGE_LENGTH">MAX_MESSAGE_LENGTH</a></code><br/>
 <code><a href="#Const_MAX_PROFILE_IMAGE_DIMENSION">MAX_PROFILE_IMAGE_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES">MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES</a></code><br/>
 <code><a href="#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
@@ -299,6 +304,9 @@ code { line-height: 20px; }
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES"><td><code>MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for a Profile Picture submitted.
+<br/></blockquote></td></tr><tr id="Const_MAX_MESSAGE_LENGTH"><td><code>MAX_MESSAGE_LENGTH</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>5000</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of messages included in a Message Object.
+If truncated, the full message can be loaded using the
+getFullMessage() operation.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
@@ -557,6 +565,13 @@ or by a specific Application.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>fullBody</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsRequest">Struct: GetMyApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -673,7 +688,16 @@ Only an "owner" can perform this operation.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_getMyApplications">Function: BananaService.getMyApplications</h4>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getMessages">Function: BananaService.getMessages</h4>
+<pre><code><a href="#Struct_GetMessagesResponse">GetMessagesResponse</a></code> getMessages(<code><a href="#Struct_GetMessagesRequest">GetMessagesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre>Get an Application's Messages.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getFullMessage">Function: BananaService.getFullMessage</h4>
+<pre><code><a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a></code> getFullMessage(<code><a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre>In case the Message body has been truncated, use this operation
+to load the full message.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getMyApplications">Function: BananaService.getMyApplications</h4>
 <pre><code><a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a></code> getMyApplications(<code><a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_getMySavedChannels">Function: BananaService.getMySavedChannels</h4>

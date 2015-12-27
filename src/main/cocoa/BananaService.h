@@ -1375,6 +1375,67 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_GetFullMessageRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __messageId;
+
+  BOOL __token_isset;
+  BOOL __messageId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+@end
+
+@interface BananaService_GetFullMessageResponse : NSObject <TBase, NSCoding> {
+  NSString * __fullBody;
+
+  BOOL __fullBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=fullBody, setter=setFullBody:) NSString * fullBody;
+#endif
+
+- (id) init;
+- (id) initWithFullBody: (NSString *) fullBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) fullBody;
+- (void) setFullBody: (NSString *) fullBody;
+#endif
+- (BOOL) fullBodyIsSet;
+
+@end
+
 @interface BananaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
 
@@ -1677,6 +1738,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_GetMessagesResponse *) getMessages: (BananaService_GetMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
+- (BananaService_GetFullMessageResponse *) getFullMessage: (BananaService_GetFullMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UnauthorizedException, TException
@@ -1704,4 +1767,5 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 + (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
 + (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
 + (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
++ (BananaService_int) MAX_MESSAGE_LENGTH;
 @end

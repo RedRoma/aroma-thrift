@@ -2682,6 +2682,342 @@ BananaService_getDashboard_result.prototype.write = function(output) {
           return;
         };
 
+BananaService_getMessages_args = function(args) {
+          this.request = null;
+          if (args) {
+                    if (args.request !== undefined && args.request !== null) {
+                              this.request = new ttypes.GetMessagesRequest(args.request);
+                    }
+          }
+};
+BananaService_getMessages_args.prototype = {};
+BananaService_getMessages_args.prototype.read = function(input) {
+          input.readStructBegin();
+          while (true)
+          {
+            var ret = input.readFieldBegin();
+            var fname = ret.fname;
+            var ftype = ret.ftype;
+            var fid = ret.fid;
+            if (ftype == Thrift.Type.STOP) {
+              break;
+            }
+            switch (fid)
+            {
+              case 1:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.request = new ttypes.GetMessagesRequest();
+                this.request.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 0:
+                input.skip(ftype);
+                break;
+              default:
+                input.skip(ftype);
+            }
+            input.readFieldEnd();
+          }
+          input.readStructEnd();
+          return;
+        };
+
+BananaService_getMessages_args.prototype.write = function(output) {
+          output.writeStructBegin('BananaService_getMessages_args');
+          if (this.request !== null && this.request !== undefined) {
+            output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+            this.request.write(output);
+            output.writeFieldEnd();
+          }
+          output.writeFieldStop();
+          output.writeStructEnd();
+          return;
+        };
+
+BananaService_getMessages_result = function(args) {
+          this.success = null;
+          this.ex1 = null;
+          this.ex2 = null;
+          this.ex3 = null;
+          if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                    this.ex1 = args;
+                    return;
+          }
+          if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                    this.ex2 = args;
+                    return;
+          }
+          if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                    this.ex3 = args;
+                    return;
+          }
+          if (args) {
+                    if (args.success !== undefined && args.success !== null) {
+                              this.success = new ttypes.GetMessagesResponse(args.success);
+                    }
+                    if (args.ex1 !== undefined && args.ex1 !== null) {
+                              this.ex1 = args.ex1;
+                    }
+                    if (args.ex2 !== undefined && args.ex2 !== null) {
+                              this.ex2 = args.ex2;
+                    }
+                    if (args.ex3 !== undefined && args.ex3 !== null) {
+                              this.ex3 = args.ex3;
+                    }
+          }
+};
+BananaService_getMessages_result.prototype = {};
+BananaService_getMessages_result.prototype.read = function(input) {
+          input.readStructBegin();
+          while (true)
+          {
+            var ret = input.readFieldBegin();
+            var fname = ret.fname;
+            var ftype = ret.ftype;
+            var fid = ret.fid;
+            if (ftype == Thrift.Type.STOP) {
+              break;
+            }
+            switch (fid)
+            {
+              case 0:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.success = new ttypes.GetMessagesResponse();
+                this.success.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 1:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                this.ex1.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 2:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                this.ex2.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 3:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                this.ex3.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              default:
+                input.skip(ftype);
+            }
+            input.readFieldEnd();
+          }
+          input.readStructEnd();
+          return;
+        };
+
+BananaService_getMessages_result.prototype.write = function(output) {
+          output.writeStructBegin('BananaService_getMessages_result');
+          if (this.success !== null && this.success !== undefined) {
+            output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+            this.success.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex1 !== null && this.ex1 !== undefined) {
+            output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+            this.ex1.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex2 !== null && this.ex2 !== undefined) {
+            output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+            this.ex2.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex3 !== null && this.ex3 !== undefined) {
+            output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+            this.ex3.write(output);
+            output.writeFieldEnd();
+          }
+          output.writeFieldStop();
+          output.writeStructEnd();
+          return;
+        };
+
+BananaService_getFullMessage_args = function(args) {
+          this.request = null;
+          if (args) {
+                    if (args.request !== undefined && args.request !== null) {
+                              this.request = new ttypes.GetFullMessageRequest(args.request);
+                    }
+          }
+};
+BananaService_getFullMessage_args.prototype = {};
+BananaService_getFullMessage_args.prototype.read = function(input) {
+          input.readStructBegin();
+          while (true)
+          {
+            var ret = input.readFieldBegin();
+            var fname = ret.fname;
+            var ftype = ret.ftype;
+            var fid = ret.fid;
+            if (ftype == Thrift.Type.STOP) {
+              break;
+            }
+            switch (fid)
+            {
+              case 1:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.request = new ttypes.GetFullMessageRequest();
+                this.request.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 0:
+                input.skip(ftype);
+                break;
+              default:
+                input.skip(ftype);
+            }
+            input.readFieldEnd();
+          }
+          input.readStructEnd();
+          return;
+        };
+
+BananaService_getFullMessage_args.prototype.write = function(output) {
+          output.writeStructBegin('BananaService_getFullMessage_args');
+          if (this.request !== null && this.request !== undefined) {
+            output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+            this.request.write(output);
+            output.writeFieldEnd();
+          }
+          output.writeFieldStop();
+          output.writeStructEnd();
+          return;
+        };
+
+BananaService_getFullMessage_result = function(args) {
+          this.success = null;
+          this.ex1 = null;
+          this.ex2 = null;
+          this.ex3 = null;
+          if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                    this.ex1 = args;
+                    return;
+          }
+          if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                    this.ex2 = args;
+                    return;
+          }
+          if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                    this.ex3 = args;
+                    return;
+          }
+          if (args) {
+                    if (args.success !== undefined && args.success !== null) {
+                              this.success = new ttypes.GetFullMessageResponse(args.success);
+                    }
+                    if (args.ex1 !== undefined && args.ex1 !== null) {
+                              this.ex1 = args.ex1;
+                    }
+                    if (args.ex2 !== undefined && args.ex2 !== null) {
+                              this.ex2 = args.ex2;
+                    }
+                    if (args.ex3 !== undefined && args.ex3 !== null) {
+                              this.ex3 = args.ex3;
+                    }
+          }
+};
+BananaService_getFullMessage_result.prototype = {};
+BananaService_getFullMessage_result.prototype.read = function(input) {
+          input.readStructBegin();
+          while (true)
+          {
+            var ret = input.readFieldBegin();
+            var fname = ret.fname;
+            var ftype = ret.ftype;
+            var fid = ret.fid;
+            if (ftype == Thrift.Type.STOP) {
+              break;
+            }
+            switch (fid)
+            {
+              case 0:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.success = new ttypes.GetFullMessageResponse();
+                this.success.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 1:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                this.ex1.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 2:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                this.ex2.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              case 3:
+              if (ftype == Thrift.Type.STRUCT) {
+                this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                this.ex3.read(input);
+              } else {
+                input.skip(ftype);
+              }
+              break;
+              default:
+                input.skip(ftype);
+            }
+            input.readFieldEnd();
+          }
+          input.readStructEnd();
+          return;
+        };
+
+BananaService_getFullMessage_result.prototype.write = function(output) {
+          output.writeStructBegin('BananaService_getFullMessage_result');
+          if (this.success !== null && this.success !== undefined) {
+            output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+            this.success.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex1 !== null && this.ex1 !== undefined) {
+            output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+            this.ex1.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex2 !== null && this.ex2 !== undefined) {
+            output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+            this.ex2.write(output);
+            output.writeFieldEnd();
+          }
+          if (this.ex3 !== null && this.ex3 !== undefined) {
+            output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+            this.ex3.write(output);
+            output.writeFieldEnd();
+          }
+          output.writeFieldStop();
+          output.writeStructEnd();
+          return;
+        };
+
 BananaService_getMyApplications_args = function(args) {
           this.request = null;
           if (args) {
@@ -4047,6 +4383,118 @@ BananaServiceClient.prototype.recv_getDashboard = function(input,mtype,rseqid) {
           }
           return callback('getDashboard failed: unknown result');
 };
+BananaServiceClient.prototype.getMessages = function(request, callback) {
+          this._seqid = this.new_seqid();
+          if (callback === undefined) {
+            var _defer = Q.defer();
+            this._reqs[this.seqid()] = function(error, result) {
+              if (error) {
+                _defer.reject(error);
+              } else {
+                _defer.resolve(result);
+              }
+            };
+            this.send_getMessages(request);
+            return _defer.promise;
+          } else {
+            this._reqs[this.seqid()] = callback;
+            this.send_getMessages(request);
+          }
+};
+
+BananaServiceClient.prototype.send_getMessages = function(request) {
+          var output = new this.pClass(this.output);
+          output.writeMessageBegin('getMessages', Thrift.MessageType.CALL, this.seqid());
+          var args = new BananaService_getMessages_args();
+          args.request = request;
+          args.write(output);
+          output.writeMessageEnd();
+          return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_getMessages = function(input,mtype,rseqid) {
+          var callback = this._reqs[rseqid] || function() {};
+          delete this._reqs[rseqid];
+          if (mtype == Thrift.MessageType.EXCEPTION) {
+            var x = new Thrift.TApplicationException();
+            x.read(input);
+            input.readMessageEnd();
+            return callback(x);
+          }
+          var result = new BananaService_getMessages_result();
+          result.read(input);
+          input.readMessageEnd();
+
+          if (null !== result.ex1) {
+            return callback(result.ex1);
+          }
+          if (null !== result.ex2) {
+            return callback(result.ex2);
+          }
+          if (null !== result.ex3) {
+            return callback(result.ex3);
+          }
+          if (null !== result.success) {
+            return callback(null, result.success);
+          }
+          return callback('getMessages failed: unknown result');
+};
+BananaServiceClient.prototype.getFullMessage = function(request, callback) {
+          this._seqid = this.new_seqid();
+          if (callback === undefined) {
+            var _defer = Q.defer();
+            this._reqs[this.seqid()] = function(error, result) {
+              if (error) {
+                _defer.reject(error);
+              } else {
+                _defer.resolve(result);
+              }
+            };
+            this.send_getFullMessage(request);
+            return _defer.promise;
+          } else {
+            this._reqs[this.seqid()] = callback;
+            this.send_getFullMessage(request);
+          }
+};
+
+BananaServiceClient.prototype.send_getFullMessage = function(request) {
+          var output = new this.pClass(this.output);
+          output.writeMessageBegin('getFullMessage', Thrift.MessageType.CALL, this.seqid());
+          var args = new BananaService_getFullMessage_args();
+          args.request = request;
+          args.write(output);
+          output.writeMessageEnd();
+          return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_getFullMessage = function(input,mtype,rseqid) {
+          var callback = this._reqs[rseqid] || function() {};
+          delete this._reqs[rseqid];
+          if (mtype == Thrift.MessageType.EXCEPTION) {
+            var x = new Thrift.TApplicationException();
+            x.read(input);
+            input.readMessageEnd();
+            return callback(x);
+          }
+          var result = new BananaService_getFullMessage_result();
+          result.read(input);
+          input.readMessageEnd();
+
+          if (null !== result.ex1) {
+            return callback(result.ex1);
+          }
+          if (null !== result.ex2) {
+            return callback(result.ex2);
+          }
+          if (null !== result.ex3) {
+            return callback(result.ex3);
+          }
+          if (null !== result.success) {
+            return callback(null, result.success);
+          }
+          return callback('getFullMessage failed: unknown result');
+};
 BananaServiceClient.prototype.getMyApplications = function(request, callback) {
           this._seqid = this.new_seqid();
           if (callback === undefined) {
@@ -4783,6 +5231,86 @@ BananaServiceProcessor = exports.Processor = function(handler)         {
               } else {
                 var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
                 output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
+              }
+              result.write(output);
+              output.writeMessageEnd();
+              output.flush();
+            });
+          }
+        }
+
+        BananaServiceProcessor.prototype.process_getMessages = function(seqid, input, output)         {
+          var args = new BananaService_getMessages_args();
+          args.read(input);
+          input.readMessageEnd();
+          if (this._handler.getMessages.length === 1) {
+            Q.fcall(this._handler.getMessages, args.request)
+              .then(function(result) {
+                var result = new BananaService_getMessages_result({success: result});
+                output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
+                result.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              }, function (err) {
+                if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  var result = new BananaService_getMessages_result(err);
+                  output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
+                } else {
+                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                  output.writeMessageBegin("getMessages", Thrift.MessageType.EXCEPTION, seqid);
+                }
+                result.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              });
+          } else {
+            this._handler.getMessages(args.request, function (err, result) {
+              if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                var result = new BananaService_getMessages_result((err != null ? err : {success: result}));
+                output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
+              } else {
+                var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                output.writeMessageBegin("getMessages", Thrift.MessageType.EXCEPTION, seqid);
+              }
+              result.write(output);
+              output.writeMessageEnd();
+              output.flush();
+            });
+          }
+        }
+
+        BananaServiceProcessor.prototype.process_getFullMessage = function(seqid, input, output)         {
+          var args = new BananaService_getFullMessage_args();
+          args.read(input);
+          input.readMessageEnd();
+          if (this._handler.getFullMessage.length === 1) {
+            Q.fcall(this._handler.getFullMessage, args.request)
+              .then(function(result) {
+                var result = new BananaService_getFullMessage_result({success: result});
+                output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                result.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              }, function (err) {
+                if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  var result = new BananaService_getFullMessage_result(err);
+                  output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                } else {
+                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                  output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
+                }
+                result.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              });
+          } else {
+            this._handler.getFullMessage(args.request, function (err, result) {
+              if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                var result = new BananaService_getFullMessage_result((err != null ? err : {success: result}));
+                output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+              } else {
+                var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
               }
               result.write(output);
               output.writeMessageEnd();

@@ -2627,6 +2627,126 @@ GetMessagesResponse.prototype.write = function(output) {
   return;
 };
 
+GetFullMessageRequest = function(args) {
+  this.token = null;
+  this.messageId = null;
+  if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new UserToken(args.token);
+    }
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+  }
+};
+GetFullMessageRequest.prototype = {};
+GetFullMessageRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new UserToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetFullMessageRequest.prototype.write = function(output) {
+  output.writeStructBegin('GetFullMessageRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+GetFullMessageResponse = function(args) {
+  this.fullBody = null;
+  if (args) {
+    if (args.fullBody !== undefined && args.fullBody !== null) {
+      this.fullBody = args.fullBody;
+    }
+  }
+};
+GetFullMessageResponse.prototype = {};
+GetFullMessageResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.fullBody = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GetFullMessageResponse.prototype.write = function(output) {
+  output.writeStructBegin('GetFullMessageResponse');
+  if (this.fullBody !== null && this.fullBody !== undefined) {
+    output.writeFieldBegin('fullBody', Thrift.Type.STRING, 1);
+    output.writeString(this.fullBody);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 GetMyApplicationsRequest = function(args) {
   this.token = null;
   if (args) {
@@ -3331,3 +3451,4 @@ MAX_PROFILE_IMAGE_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
 MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+MAX_MESSAGE_LENGTH = 5000;

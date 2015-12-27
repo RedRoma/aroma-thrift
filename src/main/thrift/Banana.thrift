@@ -50,6 +50,7 @@ struct Message
     /** The Network Hostname of the Device sending the message, ideally the FQDM. */
     7: optional string hostname;
     8: optional string macAddress;
+    9: optional bool isTruncated = false;
 }
 
 /**

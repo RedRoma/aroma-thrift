@@ -88,6 +88,13 @@ const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 /** The Maximum Filesize for a Profile Picture submitted. */
 const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
+/** 
+ * The Maximum number of messages included in a Message Object.
+ * If truncated, the full message can be loaded using the
+ * getFullMessage() operation.
+ */
+const int MAX_MESSAGE_LENGTH = 5000;
+
 //==========================================================
 // Actions
 //==========================================================
@@ -389,6 +396,17 @@ struct GetMessagesResponse
     2: optional int totalMessagesMatching = 0;
 }
 
+struct GetFullMessageRequest
+{
+    1: UserToken token;
+    2: string messageId;
+}
+
+struct GetFullMessageResponse
+{
+    1: string fullBody;
+}
+
 struct GetMyApplicationsRequest
 {
     1: UserToken token;
@@ -617,6 +635,21 @@ service BananaService
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidCredentialsException ex3);
+    
+    /**
+     * Get an Application's Messages.
+     */
+    GetMessagesResponse getMessages(1 : GetMessagesRequest request)throws(1 : OperationFailedException ex1,
+                                                                          2 : InvalidArgumentException ex2,
+                                                                          3 : InvalidCredentialsException ex3);
+
+    /**
+     * In case the Message body has been truncated, use this operation
+     * to load the full message.
+     */
+    GetFullMessageResponse getFullMessage(1 : GetFullMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                    2 : InvalidArgumentException ex2,
+                                                                                    3 : InvalidCredentialsException ex3);
     
     
     

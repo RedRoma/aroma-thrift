@@ -105,7 +105,7 @@ class Application;
 class ServiceAnnouncement;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
@@ -114,6 +114,7 @@ typedef struct _Message__isset {
   bool applicationName :1;
   bool hostname :1;
   bool macAddress :1;
+  bool isTruncated :1;
 } _Message__isset;
 
 class Message {
@@ -121,7 +122,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false) {
     urgency = (Urgency::type)1;
 
   }
@@ -135,6 +136,7 @@ class Message {
   std::string applicationName;
   std::string hostname;
   std::string macAddress;
+  bool isTruncated;
 
   _Message__isset __isset;
 
@@ -153,6 +155,8 @@ class Message {
   void __set_hostname(const std::string& val);
 
   void __set_macAddress(const std::string& val);
+
+  void __set_isTruncated(const bool val);
 
   bool operator == (const Message & rhs) const
   {
@@ -177,6 +181,10 @@ class Message {
     if (__isset.macAddress != rhs.__isset.macAddress)
       return false;
     else if (__isset.macAddress && !(macAddress == rhs.macAddress))
+      return false;
+    if (__isset.isTruncated != rhs.__isset.isTruncated)
+      return false;
+    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
       return false;
     return true;
   }

@@ -29,11 +29,13 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.urgency = 1;
 
+  self.isTruncated = NO;
+
 #endif
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -52,6 +54,8 @@
   __hostname_isset = YES;
   __macAddress = [macAddress retain_stub];
   __macAddress_isset = YES;
+  __isTruncated = isTruncated;
+  __isTruncated_isset = YES;
   return self;
 }
 
@@ -98,6 +102,11 @@
     __macAddress = [[decoder decodeObjectForKey: @"macAddress"] retain_stub];
     __macAddress_isset = YES;
   }
+  if ([decoder containsValueForKey: @"isTruncated"])
+  {
+    __isTruncated = [decoder decodeBoolForKey: @"isTruncated"];
+    __isTruncated_isset = YES;
+  }
   return self;
 }
 
@@ -134,6 +143,10 @@
   if (__macAddress_isset)
   {
     [encoder encodeObject: __macAddress forKey: @"macAddress"];
+  }
+  if (__isTruncated_isset)
+  {
+    [encoder encodeBool: __isTruncated forKey: @"isTruncated"];
   }
 }
 
@@ -180,6 +193,11 @@
   {
     hash = (hash * 31) ^ [__macAddress hash];
   }
+  hash = (hash * 31) ^ __isTruncated_isset ? 2654435761 : 0;
+  if (__isTruncated_isset)
+  {
+    hash = (hash * 31) ^ [@(__isTruncated) hash];
+  }
   return hash;
 }
 
@@ -222,6 +240,10 @@
   }
   if ((__macAddress_isset != other->__macAddress_isset) ||
       (__macAddress_isset && ((__macAddress || other->__macAddress) && ![__macAddress isEqual:other->__macAddress]))) {
+    return NO;
+  }
+  if ((__isTruncated_isset != other->__isTruncated_isset) ||
+      (__isTruncated_isset && (__isTruncated != other->__isTruncated))) {
     return NO;
   }
   return YES;
@@ -393,6 +415,23 @@
   __macAddress_isset = NO;
 }
 
+- (BOOL) isTruncated {
+  return __isTruncated;
+}
+
+- (void) setIsTruncated: (BOOL) isTruncated {
+  __isTruncated = isTruncated;
+  __isTruncated_isset = YES;
+}
+
+- (BOOL) isTruncatedIsSet {
+  return __isTruncated_isset;
+}
+
+- (void) unsetIsTruncated {
+  __isTruncated_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -472,6 +511,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 9:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIsTruncated: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -533,6 +580,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__isTruncated_isset) {
+    [outProtocol writeFieldBeginWithName: @"isTruncated" type: TType_BOOL fieldID: 9];
+    [outProtocol writeBool: __isTruncated];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -559,6 +611,8 @@
   [ms appendFormat: @"\"%@\"", __hostname];
   [ms appendString: @",macAddress:"];
   [ms appendFormat: @"\"%@\"", __macAddress];
+  [ms appendString: @",isTruncated:"];
+  [ms appendFormat: @"%i", __isTruncated];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

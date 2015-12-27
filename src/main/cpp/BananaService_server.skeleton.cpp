@@ -172,6 +172,27 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getDashboard\n");
   }
 
+  /**
+   * Get an Application's Messages.
+   * 
+   * @param request
+   */
+  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+    // Your implementation goes here
+    printf("getMessages\n");
+  }
+
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param request
+   */
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
+    // Your implementation goes here
+    printf("getFullMessage\n");
+  }
+
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
     // Your implementation goes here
     printf("getMyApplications\n");
