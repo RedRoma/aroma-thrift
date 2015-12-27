@@ -606,6 +606,112 @@ void BananaChannel::printTo(std::ostream& out) const {
 }
 
 
+ChannelInfo::~ChannelInfo() throw() {
+}
+
+
+void ChannelInfo::__set_channel(const BananaChannel& val) {
+  this->channel = val;
+}
+
+void ChannelInfo::__set_timeRegistered(const timestamp val) {
+  this->timeRegistered = val;
+}
+
+uint32_t ChannelInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->channel.read(iprot);
+          this->__isset.channel = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeRegistered);
+          this->__isset.timeRegistered = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ChannelInfo::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ChannelInfo");
+
+  xfer += oprot->writeFieldBegin("channel", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->channel.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeRegistered", ::apache::thrift::protocol::T_I64, 2);
+  xfer += oprot->writeI64(this->timeRegistered);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ChannelInfo &a, ChannelInfo &b) {
+  using ::std::swap;
+  swap(a.channel, b.channel);
+  swap(a.timeRegistered, b.timeRegistered);
+  swap(a.__isset, b.__isset);
+}
+
+ChannelInfo::ChannelInfo(const ChannelInfo& other10) {
+  channel = other10.channel;
+  timeRegistered = other10.timeRegistered;
+  __isset = other10.__isset;
+}
+ChannelInfo& ChannelInfo::operator=(const ChannelInfo& other11) {
+  channel = other11.channel;
+  timeRegistered = other11.timeRegistered;
+  __isset = other11.__isset;
+  return *this;
+}
+void ChannelInfo::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ChannelInfo(";
+  out << "channel=" << to_string(channel);
+  out << ", " << "timeRegistered=" << to_string(timeRegistered);
+  out << ")";
+}
+
+
 ReceiveMessageRequest::~ReceiveMessageRequest() throw() {
 }
 
@@ -675,13 +781,13 @@ void swap(ReceiveMessageRequest &a, ReceiveMessageRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other10) {
-  message = other10.message;
-  __isset = other10.__isset;
+ReceiveMessageRequest::ReceiveMessageRequest(const ReceiveMessageRequest& other12) {
+  message = other12.message;
+  __isset = other12.__isset;
 }
-ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other11) {
-  message = other11.message;
-  __isset = other11.__isset;
+ReceiveMessageRequest& ReceiveMessageRequest::operator=(const ReceiveMessageRequest& other13) {
+  message = other13.message;
+  __isset = other13.__isset;
   return *this;
 }
 void ReceiveMessageRequest::printTo(std::ostream& out) const {

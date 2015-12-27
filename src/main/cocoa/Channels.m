@@ -1258,6 +1258,210 @@
 
 @end
 
+@implementation BananaChannels_ChannelInfo
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithChannel: (BananaChannels_BananaChannel *) channel timeRegistered: (BananaChannels_timestamp) timeRegistered
+{
+  self = [super init];
+  __channel = [channel retain_stub];
+  __channel_isset = YES;
+  __timeRegistered = timeRegistered;
+  __timeRegistered_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"channel"])
+  {
+    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
+    __channel_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeRegistered"])
+  {
+    __timeRegistered = [decoder decodeInt64ForKey: @"timeRegistered"];
+    __timeRegistered_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__channel_isset)
+  {
+    [encoder encodeObject: __channel forKey: @"channel"];
+  }
+  if (__timeRegistered_isset)
+  {
+    [encoder encodeInt64: __timeRegistered forKey: @"timeRegistered"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
+  if (__channel_isset)
+  {
+    hash = (hash * 31) ^ [__channel hash];
+  }
+  hash = (hash * 31) ^ __timeRegistered_isset ? 2654435761 : 0;
+  if (__timeRegistered_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeRegistered) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaChannels_ChannelInfo class]]) {
+    return NO;
+  }
+  BananaChannels_ChannelInfo *other = (BananaChannels_ChannelInfo *)anObject;
+  if ((__channel_isset != other->__channel_isset) ||
+      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
+    return NO;
+  }
+  if ((__timeRegistered_isset != other->__timeRegistered_isset) ||
+      (__timeRegistered_isset && (__timeRegistered != other->__timeRegistered))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__channel release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaChannels_BananaChannel *) channel {
+  return [[__channel retain_stub] autorelease_stub];
+}
+
+- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+  [channel retain_stub];
+  [__channel release_stub];
+  __channel = channel;
+  __channel_isset = YES;
+}
+
+- (BOOL) channelIsSet {
+  return __channel_isset;
+}
+
+- (void) unsetChannel {
+  [__channel release_stub];
+  __channel = nil;
+  __channel_isset = NO;
+}
+
+- (int64_t) timeRegistered {
+  return __timeRegistered;
+}
+
+- (void) setTimeRegistered: (int64_t) timeRegistered {
+  __timeRegistered = timeRegistered;
+  __timeRegistered_isset = YES;
+}
+
+- (BOOL) timeRegisteredIsSet {
+  return __timeRegistered_isset;
+}
+
+- (void) unsetTimeRegistered {
+  __timeRegistered_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeRegistered: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ChannelInfo"];
+  if (__channel_isset) {
+    if (__channel != nil) {
+      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 1];
+      [__channel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeRegistered_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeRegistered" type: TType_I64 fieldID: 2];
+    [outProtocol writeI64: __timeRegistered];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_ChannelInfo("];
+  [ms appendString: @"channel:"];
+  [ms appendFormat: @"%@", __channel];
+  [ms appendString: @",timeRegistered:"];
+  [ms appendFormat: @"%qi", __timeRegistered];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaChannels_ReceiveMessageRequest
 
 - (id) init

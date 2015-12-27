@@ -391,6 +391,73 @@ BananaChannel.prototype.write = function(output) {
   return;
 };
 
+ChannelInfo = function(args) {
+  this.channel = null;
+  this.timeRegistered = null;
+  if (args) {
+    if (args.channel !== undefined && args.channel !== null) {
+      this.channel = new BananaChannel(args.channel);
+    }
+    if (args.timeRegistered !== undefined && args.timeRegistered !== null) {
+      this.timeRegistered = args.timeRegistered;
+    }
+  }
+};
+ChannelInfo.prototype = {};
+ChannelInfo.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.channel = new BananaChannel();
+        this.channel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.I64) {
+        this.timeRegistered = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ChannelInfo.prototype.write = function(output) {
+  output.writeStructBegin('ChannelInfo');
+  if (this.channel !== null && this.channel !== undefined) {
+    output.writeFieldBegin('channel', Thrift.Type.STRUCT, 1);
+    this.channel.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.timeRegistered !== null && this.timeRegistered !== undefined) {
+    output.writeFieldBegin('timeRegistered', Thrift.Type.I64, 2);
+    output.writeI64(this.timeRegistered);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ReceiveMessageRequest = function(args) {
   this.message = null;
   if (args) {

@@ -38,6 +38,8 @@ class CustomChannel;
 
 class BananaChannel;
 
+class ChannelInfo;
+
 class ReceiveMessageRequest;
 
 typedef struct _SlackChannel__isset {
@@ -315,6 +317,58 @@ class BananaChannel {
 void swap(BananaChannel &a, BananaChannel &b);
 
 inline std::ostream& operator<<(std::ostream& out, const BananaChannel& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ChannelInfo__isset {
+  _ChannelInfo__isset() : channel(false), timeRegistered(false) {}
+  bool channel :1;
+  bool timeRegistered :1;
+} _ChannelInfo__isset;
+
+class ChannelInfo {
+ public:
+
+  ChannelInfo(const ChannelInfo&);
+  ChannelInfo& operator=(const ChannelInfo&);
+  ChannelInfo() : timeRegistered(0) {
+  }
+
+  virtual ~ChannelInfo() throw();
+  BananaChannel channel;
+  timestamp timeRegistered;
+
+  _ChannelInfo__isset __isset;
+
+  void __set_channel(const BananaChannel& val);
+
+  void __set_timeRegistered(const timestamp val);
+
+  bool operator == (const ChannelInfo & rhs) const
+  {
+    if (!(channel == rhs.channel))
+      return false;
+    if (!(timeRegistered == rhs.timeRegistered))
+      return false;
+    return true;
+  }
+  bool operator != (const ChannelInfo &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ChannelInfo & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ChannelInfo &a, ChannelInfo &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ChannelInfo& obj)
 {
   obj.printTo(out);
   return out;
