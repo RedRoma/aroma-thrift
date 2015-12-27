@@ -39,8 +39,9 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.UserToken UserToken
 typedef Authentication.ApplicationToken ApplicationToken
+typedef Authentication.AuthenticationToken AuthenticationToken
+typedef Authentication.UserToken UserToken
 typedef Banana.Image Image
 typedef Banana.User User
 typedef Banana.Application Application
@@ -342,16 +343,16 @@ struct SubscribeToApplicationResponse
 
 struct GetApplicationInfoRequest
 {
-    1: UserToken token;
+    1: AuthenticationToken token;
     2: string applicationId;
 }
 
 struct GetApplicationInfoResponse
 {
     1: Application applicationInfo;
+    /** The Channels registered to this Application. */
+    2: list<BananaChannel> registeredChannels;
 }
-
-
 
 struct GetDashboardRequest
 {
@@ -364,7 +365,9 @@ struct GetDashboardResponse
     2: int totalMessagesLastHour = 0;
     3: int totalMessagesLast24hrs = 0;
     4: list<Banana.Message> recentMessages = [];
-    
+    5: int numberOfLowUrgencyMessages = 0;
+    6: int numberOfMediumUrgencyMessages = 0;
+    7: int numberOfHighUrgencyMessages = 0;
 }
 
 /**

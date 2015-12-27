@@ -31,9 +31,11 @@ typedef Banana_long BananaService_long;
 
 typedef Banana_timestamp BananaService_timestamp;
 
-typedef BananaAuthentication_UserToken * BananaService_UserToken;
-
 typedef BananaAuthentication_ApplicationToken * BananaService_ApplicationToken;
+
+typedef BananaAuthentication_AuthenticationToken * BananaService_AuthenticationToken;
+
+typedef BananaAuthentication_UserToken * BananaService_UserToken;
 
 typedef Banana_Image * BananaService_Image;
 
@@ -1119,7 +1121,7 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @end
 
 @interface BananaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+  BananaService_AuthenticationToken __token;
   NSString * __applicationId;
 
   BOOL __token_isset;
@@ -1127,12 +1129,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_AuthenticationToken token;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId;
+- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1140,8 +1142,8 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (BananaService_AuthenticationToken) token;
+- (void) setToken: (BananaService_AuthenticationToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
@@ -1155,16 +1157,19 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @interface BananaService_GetApplicationInfoResponse : NSObject <TBase, NSCoding> {
   BananaService_Application __applicationInfo;
+  NSMutableArray * __registeredChannels;
 
   BOOL __applicationInfo_isset;
+  BOOL __registeredChannels_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) BananaService_Application applicationInfo;
+@property (nonatomic, retain, getter=registeredChannels, setter=setRegisteredChannels:) NSMutableArray * registeredChannels;
 #endif
 
 - (id) init;
-- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo;
+- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1176,6 +1181,12 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setApplicationInfo: (BananaService_Application) applicationInfo;
 #endif
 - (BOOL) applicationInfoIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) registeredChannels;
+- (void) setRegisteredChannels: (NSMutableArray *) registeredChannels;
+#endif
+- (BOOL) registeredChannelsIsSet;
 
 @end
 
@@ -1210,11 +1221,17 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
   BananaService_int __totalMessagesLastHour;
   BananaService_int __totalMessagesLast24hrs;
   NSMutableArray * __recentMessages;
+  BananaService_int __numberOfLowUrgencyMessages;
+  BananaService_int __numberOfMediumUrgencyMessages;
+  BananaService_int __numberOfHighUrgencyMessages;
 
   BOOL __unreadMessageCount_isset;
   BOOL __totalMessagesLastHour_isset;
   BOOL __totalMessagesLast24hrs_isset;
   BOOL __recentMessages_isset;
+  BOOL __numberOfLowUrgencyMessages_isset;
+  BOOL __numberOfMediumUrgencyMessages_isset;
+  BOOL __numberOfHighUrgencyMessages_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -1222,10 +1239,13 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 @property (nonatomic, getter=totalMessagesLastHour, setter=setTotalMessagesLastHour:) BananaService_int totalMessagesLastHour;
 @property (nonatomic, getter=totalMessagesLast24hrs, setter=setTotalMessagesLast24hrs:) BananaService_int totalMessagesLast24hrs;
 @property (nonatomic, retain, getter=recentMessages, setter=setRecentMessages:) NSMutableArray * recentMessages;
+@property (nonatomic, getter=numberOfLowUrgencyMessages, setter=setNumberOfLowUrgencyMessages:) BananaService_int numberOfLowUrgencyMessages;
+@property (nonatomic, getter=numberOfMediumUrgencyMessages, setter=setNumberOfMediumUrgencyMessages:) BananaService_int numberOfMediumUrgencyMessages;
+@property (nonatomic, getter=numberOfHighUrgencyMessages, setter=setNumberOfHighUrgencyMessages:) BananaService_int numberOfHighUrgencyMessages;
 #endif
 
 - (id) init;
-- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages;
+- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1255,6 +1275,24 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 - (void) setRecentMessages: (NSMutableArray *) recentMessages;
 #endif
 - (BOOL) recentMessagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) numberOfLowUrgencyMessages;
+- (void) setNumberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages;
+#endif
+- (BOOL) numberOfLowUrgencyMessagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) numberOfMediumUrgencyMessages;
+- (void) setNumberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages;
+#endif
+- (BOOL) numberOfMediumUrgencyMessagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) numberOfHighUrgencyMessages;
+- (void) setNumberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages;
+#endif
+- (BOOL) numberOfHighUrgencyMessagesIsSet;
 
 @end
 

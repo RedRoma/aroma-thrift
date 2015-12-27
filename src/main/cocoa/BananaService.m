@@ -6458,7 +6458,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (NSString *) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6539,11 +6539,11 @@
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_UserToken *) token {
+- (BananaAuthentication_AuthenticationToken *) token {
   return [[__token retain_stub] autorelease_stub];
 }
 
-- (void) setToken: (BananaAuthentication_UserToken *) token {
+- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
   [token retain_stub];
   [__token release_stub];
   __token = token;
@@ -6598,7 +6598,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
           [fieldValue read: inProtocol];
           [self setToken: fieldValue];
           [fieldValue release_stub];
@@ -6669,11 +6669,13 @@
   return self;
 }
 
-- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo
+- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels
 {
   self = [super init];
   __applicationInfo = [applicationInfo retain_stub];
   __applicationInfo_isset = YES;
+  __registeredChannels = [registeredChannels retain_stub];
+  __registeredChannels_isset = YES;
   return self;
 }
 
@@ -6685,6 +6687,11 @@
     __applicationInfo = [[decoder decodeObjectForKey: @"applicationInfo"] retain_stub];
     __applicationInfo_isset = YES;
   }
+  if ([decoder containsValueForKey: @"registeredChannels"])
+  {
+    __registeredChannels = [[decoder decodeObjectForKey: @"registeredChannels"] retain_stub];
+    __registeredChannels_isset = YES;
+  }
   return self;
 }
 
@@ -6693,6 +6700,10 @@
   if (__applicationInfo_isset)
   {
     [encoder encodeObject: __applicationInfo forKey: @"applicationInfo"];
+  }
+  if (__registeredChannels_isset)
+  {
+    [encoder encodeObject: __registeredChannels forKey: @"registeredChannels"];
   }
 }
 
@@ -6703,6 +6714,11 @@
   if (__applicationInfo_isset)
   {
     hash = (hash * 31) ^ [__applicationInfo hash];
+  }
+  hash = (hash * 31) ^ __registeredChannels_isset ? 2654435761 : 0;
+  if (__registeredChannels_isset)
+  {
+    hash = (hash * 31) ^ [__registeredChannels hash];
   }
   return hash;
 }
@@ -6720,12 +6736,17 @@
       (__applicationInfo_isset && ((__applicationInfo || other->__applicationInfo) && ![__applicationInfo isEqual:other->__applicationInfo]))) {
     return NO;
   }
+  if ((__registeredChannels_isset != other->__registeredChannels_isset) ||
+      (__registeredChannels_isset && ((__registeredChannels || other->__registeredChannels) && ![__registeredChannels isEqual:other->__registeredChannels]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__applicationInfo release_stub];
+  [__registeredChannels release_stub];
   [super dealloc_stub];
 }
 
@@ -6748,6 +6769,27 @@
   [__applicationInfo release_stub];
   __applicationInfo = nil;
   __applicationInfo_isset = NO;
+}
+
+- (NSMutableArray *) registeredChannels {
+  return [[__registeredChannels retain_stub] autorelease_stub];
+}
+
+- (void) setRegisteredChannels: (NSMutableArray *) registeredChannels {
+  [registeredChannels retain_stub];
+  [__registeredChannels release_stub];
+  __registeredChannels = registeredChannels;
+  __registeredChannels_isset = YES;
+}
+
+- (BOOL) registeredChannelsIsSet {
+  return __registeredChannels_isset;
+}
+
+- (void) unsetRegisteredChannels {
+  [__registeredChannels release_stub];
+  __registeredChannels = nil;
+  __registeredChannels_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -6775,6 +6817,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_LIST) {
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
+          {
+            BananaChannels_BananaChannel *_elem12 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem12 read: inProtocol];
+            [fieldValue addObject: _elem12];
+            [_elem12 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setRegisteredChannels: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -6793,6 +6855,21 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__registeredChannels_isset) {
+    if (__registeredChannels != nil) {
+      [outProtocol writeFieldBeginWithName: @"registeredChannels" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__registeredChannels count]];
+        int idx14;
+        for (idx14 = 0; idx14 < [__registeredChannels count]; idx14++)
+        {
+          [[__registeredChannels objectAtIndex: idx14] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -6805,6 +6882,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationInfoResponse("];
   [ms appendString: @"applicationInfo:"];
   [ms appendFormat: @"%@", __applicationInfo];
+  [ms appendString: @",registeredChannels:"];
+  [ms appendFormat: @"%@", __registeredChannels];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -6977,11 +7056,17 @@
 
   self.recentMessages = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
+  self.numberOfLowUrgencyMessages = 0;
+
+  self.numberOfMediumUrgencyMessages = 0;
+
+  self.numberOfHighUrgencyMessages = 0;
+
 #endif
   return self;
 }
 
-- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages
+- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages
 {
   self = [super init];
   __unreadMessageCount = unreadMessageCount;
@@ -6992,6 +7077,12 @@
   __totalMessagesLast24hrs_isset = YES;
   __recentMessages = [recentMessages retain_stub];
   __recentMessages_isset = YES;
+  __numberOfLowUrgencyMessages = numberOfLowUrgencyMessages;
+  __numberOfLowUrgencyMessages_isset = YES;
+  __numberOfMediumUrgencyMessages = numberOfMediumUrgencyMessages;
+  __numberOfMediumUrgencyMessages_isset = YES;
+  __numberOfHighUrgencyMessages = numberOfHighUrgencyMessages;
+  __numberOfHighUrgencyMessages_isset = YES;
   return self;
 }
 
@@ -7018,6 +7109,21 @@
     __recentMessages = [[decoder decodeObjectForKey: @"recentMessages"] retain_stub];
     __recentMessages_isset = YES;
   }
+  if ([decoder containsValueForKey: @"numberOfLowUrgencyMessages"])
+  {
+    __numberOfLowUrgencyMessages = [decoder decodeInt32ForKey: @"numberOfLowUrgencyMessages"];
+    __numberOfLowUrgencyMessages_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"numberOfMediumUrgencyMessages"])
+  {
+    __numberOfMediumUrgencyMessages = [decoder decodeInt32ForKey: @"numberOfMediumUrgencyMessages"];
+    __numberOfMediumUrgencyMessages_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"numberOfHighUrgencyMessages"])
+  {
+    __numberOfHighUrgencyMessages = [decoder decodeInt32ForKey: @"numberOfHighUrgencyMessages"];
+    __numberOfHighUrgencyMessages_isset = YES;
+  }
   return self;
 }
 
@@ -7038,6 +7144,18 @@
   if (__recentMessages_isset)
   {
     [encoder encodeObject: __recentMessages forKey: @"recentMessages"];
+  }
+  if (__numberOfLowUrgencyMessages_isset)
+  {
+    [encoder encodeInt32: __numberOfLowUrgencyMessages forKey: @"numberOfLowUrgencyMessages"];
+  }
+  if (__numberOfMediumUrgencyMessages_isset)
+  {
+    [encoder encodeInt32: __numberOfMediumUrgencyMessages forKey: @"numberOfMediumUrgencyMessages"];
+  }
+  if (__numberOfHighUrgencyMessages_isset)
+  {
+    [encoder encodeInt32: __numberOfHighUrgencyMessages forKey: @"numberOfHighUrgencyMessages"];
   }
 }
 
@@ -7063,6 +7181,21 @@
   if (__recentMessages_isset)
   {
     hash = (hash * 31) ^ [__recentMessages hash];
+  }
+  hash = (hash * 31) ^ __numberOfLowUrgencyMessages_isset ? 2654435761 : 0;
+  if (__numberOfLowUrgencyMessages_isset)
+  {
+    hash = (hash * 31) ^ [@(__numberOfLowUrgencyMessages) hash];
+  }
+  hash = (hash * 31) ^ __numberOfMediumUrgencyMessages_isset ? 2654435761 : 0;
+  if (__numberOfMediumUrgencyMessages_isset)
+  {
+    hash = (hash * 31) ^ [@(__numberOfMediumUrgencyMessages) hash];
+  }
+  hash = (hash * 31) ^ __numberOfHighUrgencyMessages_isset ? 2654435761 : 0;
+  if (__numberOfHighUrgencyMessages_isset)
+  {
+    hash = (hash * 31) ^ [@(__numberOfHighUrgencyMessages) hash];
   }
   return hash;
 }
@@ -7090,6 +7223,18 @@
   }
   if ((__recentMessages_isset != other->__recentMessages_isset) ||
       (__recentMessages_isset && ((__recentMessages || other->__recentMessages) && ![__recentMessages isEqual:other->__recentMessages]))) {
+    return NO;
+  }
+  if ((__numberOfLowUrgencyMessages_isset != other->__numberOfLowUrgencyMessages_isset) ||
+      (__numberOfLowUrgencyMessages_isset && (__numberOfLowUrgencyMessages != other->__numberOfLowUrgencyMessages))) {
+    return NO;
+  }
+  if ((__numberOfMediumUrgencyMessages_isset != other->__numberOfMediumUrgencyMessages_isset) ||
+      (__numberOfMediumUrgencyMessages_isset && (__numberOfMediumUrgencyMessages != other->__numberOfMediumUrgencyMessages))) {
+    return NO;
+  }
+  if ((__numberOfHighUrgencyMessages_isset != other->__numberOfHighUrgencyMessages_isset) ||
+      (__numberOfHighUrgencyMessages_isset && (__numberOfHighUrgencyMessages != other->__numberOfHighUrgencyMessages))) {
     return NO;
   }
   return YES;
@@ -7173,6 +7318,57 @@
   __recentMessages_isset = NO;
 }
 
+- (int32_t) numberOfLowUrgencyMessages {
+  return __numberOfLowUrgencyMessages;
+}
+
+- (void) setNumberOfLowUrgencyMessages: (int32_t) numberOfLowUrgencyMessages {
+  __numberOfLowUrgencyMessages = numberOfLowUrgencyMessages;
+  __numberOfLowUrgencyMessages_isset = YES;
+}
+
+- (BOOL) numberOfLowUrgencyMessagesIsSet {
+  return __numberOfLowUrgencyMessages_isset;
+}
+
+- (void) unsetNumberOfLowUrgencyMessages {
+  __numberOfLowUrgencyMessages_isset = NO;
+}
+
+- (int32_t) numberOfMediumUrgencyMessages {
+  return __numberOfMediumUrgencyMessages;
+}
+
+- (void) setNumberOfMediumUrgencyMessages: (int32_t) numberOfMediumUrgencyMessages {
+  __numberOfMediumUrgencyMessages = numberOfMediumUrgencyMessages;
+  __numberOfMediumUrgencyMessages_isset = YES;
+}
+
+- (BOOL) numberOfMediumUrgencyMessagesIsSet {
+  return __numberOfMediumUrgencyMessages_isset;
+}
+
+- (void) unsetNumberOfMediumUrgencyMessages {
+  __numberOfMediumUrgencyMessages_isset = NO;
+}
+
+- (int32_t) numberOfHighUrgencyMessages {
+  return __numberOfHighUrgencyMessages;
+}
+
+- (void) setNumberOfHighUrgencyMessages: (int32_t) numberOfHighUrgencyMessages {
+  __numberOfHighUrgencyMessages = numberOfHighUrgencyMessages;
+  __numberOfHighUrgencyMessages_isset = YES;
+}
+
+- (BOOL) numberOfHighUrgencyMessagesIsSet {
+  return __numberOfHighUrgencyMessages_isset;
+}
+
+- (void) unsetNumberOfHighUrgencyMessages {
+  __numberOfHighUrgencyMessages_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -7214,20 +7410,44 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size10;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
-          int _i11;
-          for (_i11 = 0; _i11 < _size10; ++_i11)
+          int _size15;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            Banana_Message *_elem12 = [[Banana_Message alloc] init];
-            [_elem12 read: inProtocol];
-            [fieldValue addObject: _elem12];
-            [_elem12 release_stub];
+            Banana_Message *_elem17 = [[Banana_Message alloc] init];
+            [_elem17 read: inProtocol];
+            [fieldValue addObject: _elem17];
+            [_elem17 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
           [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setNumberOfLowUrgencyMessages: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setNumberOfMediumUrgencyMessages: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setNumberOfHighUrgencyMessages: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -7263,15 +7483,30 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx14;
-        for (idx14 = 0; idx14 < [__recentMessages count]; idx14++)
+        int idx19;
+        for (idx19 = 0; idx19 < [__recentMessages count]; idx19++)
         {
-          [[__recentMessages objectAtIndex: idx14] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx19] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
       [outProtocol writeFieldEnd];
     }
+  }
+  if (__numberOfLowUrgencyMessages_isset) {
+    [outProtocol writeFieldBeginWithName: @"numberOfLowUrgencyMessages" type: TType_I32 fieldID: 5];
+    [outProtocol writeI32: __numberOfLowUrgencyMessages];
+    [outProtocol writeFieldEnd];
+  }
+  if (__numberOfMediumUrgencyMessages_isset) {
+    [outProtocol writeFieldBeginWithName: @"numberOfMediumUrgencyMessages" type: TType_I32 fieldID: 6];
+    [outProtocol writeI32: __numberOfMediumUrgencyMessages];
+    [outProtocol writeFieldEnd];
+  }
+  if (__numberOfHighUrgencyMessages_isset) {
+    [outProtocol writeFieldBeginWithName: @"numberOfHighUrgencyMessages" type: TType_I32 fieldID: 7];
+    [outProtocol writeI32: __numberOfHighUrgencyMessages];
+    [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -7291,6 +7526,12 @@
   [ms appendFormat: @"%i", __totalMessagesLast24hrs];
   [ms appendString: @",recentMessages:"];
   [ms appendFormat: @"%@", __recentMessages];
+  [ms appendString: @",numberOfLowUrgencyMessages:"];
+  [ms appendFormat: @"%i", __numberOfLowUrgencyMessages];
+  [ms appendString: @",numberOfMediumUrgencyMessages:"];
+  [ms appendFormat: @"%i", __numberOfMediumUrgencyMessages];
+  [ms appendString: @",numberOfHighUrgencyMessages:"];
+  [ms appendFormat: @"%i", __numberOfHighUrgencyMessages];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -7711,16 +7952,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size20;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
+          int _i21;
+          for (_i21 = 0; _i21 < _size20; ++_i21)
           {
-            Banana_Message *_elem17 = [[Banana_Message alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            Banana_Message *_elem22 = [[Banana_Message alloc] init];
+            [_elem22 read: inProtocol];
+            [fieldValue addObject: _elem22];
+            [_elem22 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -7753,10 +7994,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__messages count]; idx19++)
+        int idx24;
+        for (idx24 = 0; idx24 < [__messages count]; idx24++)
         {
-          [[__messages objectAtIndex: idx19] write: outProtocol];
+          [[__messages objectAtIndex: idx24] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8048,16 +8289,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Banana_Application *_elem22 = [[Banana_Application alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            Banana_Application *_elem27 = [[Banana_Application alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -8082,10 +8323,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx24;
-        for (idx24 = 0; idx24 < [__applications count]; idx24++)
+        int idx29;
+        for (idx29 = 0; idx29 < [__applications count]; idx29++)
         {
-          [[__applications objectAtIndex: idx24] write: outProtocol];
+          [[__applications objectAtIndex: idx29] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8490,16 +8731,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size25;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
-          int _i26;
-          for (_i26 = 0; _i26 < _size25; ++_i26)
+          int _size30;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
+          int _i31;
+          for (_i31 = 0; _i31 < _size30; ++_i31)
           {
-            Banana_User *_elem27 = [[Banana_User alloc] init];
-            [_elem27 read: inProtocol];
-            [fieldValue addObject: _elem27];
-            [_elem27 release_stub];
+            Banana_User *_elem32 = [[Banana_User alloc] init];
+            [_elem32 read: inProtocol];
+            [fieldValue addObject: _elem32];
+            [_elem32 release_stub];
           }
           [inProtocol readListEnd];
           [self setSubscribers: fieldValue];
@@ -8524,10 +8765,10 @@
       [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__subscribers count]];
-        int idx29;
-        for (idx29 = 0; idx29 < [__subscribers count]; idx29++)
+        int idx34;
+        for (idx34 = 0; idx34 < [__subscribers count]; idx34++)
         {
-          [[__subscribers objectAtIndex: idx29] write: outProtocol];
+          [[__subscribers objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8812,16 +9053,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size30;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
-          int _i31;
-          for (_i31 = 0; _i31 < _size30; ++_i31)
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            BananaChannels_BananaChannel *_elem32 = [[BananaChannels_BananaChannel alloc] init];
-            [_elem32 read: inProtocol];
-            [fieldValue addObject: _elem32];
-            [_elem32 release_stub];
+            BananaChannels_BananaChannel *_elem37 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -8846,10 +9087,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx34;
-        for (idx34 = 0; idx34 < [__channels count]; idx34++)
+        int idx39;
+        for (idx39 = 0; idx39 < [__channels count]; idx39++)
         {
-          [[__channels objectAtIndex: idx34] write: outProtocol];
+          [[__channels objectAtIndex: idx39] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9190,16 +9431,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size40;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
+          int _i41;
+          for (_i41 = 0; _i41 < _size40; ++_i41)
           {
-            BananaNotifications_Event *_elem37 = [[BananaNotifications_Event alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            BananaNotifications_Event *_elem42 = [[BananaNotifications_Event alloc] init];
+            [_elem42 read: inProtocol];
+            [fieldValue addObject: _elem42];
+            [_elem42 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -9224,10 +9465,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__events count]; idx39++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__events count]; idx44++)
         {
-          [[__events objectAtIndex: idx39] write: outProtocol];
+          [[__events objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9514,16 +9755,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            Banana_ServiceAnnouncement *_elem42 = [[Banana_ServiceAnnouncement alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Banana_ServiceAnnouncement *_elem47 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -9548,10 +9789,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__serviceAnnouncements count]; idx44++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__serviceAnnouncements count]; idx49++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx44] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9956,16 +10197,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            Banana_Application *_elem47 = [[Banana_Application alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            Banana_Application *_elem52 = [[Banana_Application alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -9990,10 +10231,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__applications count]; idx49++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__applications count]; idx54++)
         {
-          [[__applications objectAtIndex: idx49] write: outProtocol];
+          [[__applications objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10035,8 +10276,8 @@ static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 1
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
   [BananaService_BETA_ENDPOINT setPort:7001];
+  [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
 
 ;
   BananaService_MAX_APPLICATION_ICON_DIMENSION = [[Banana_Dimension alloc] init];

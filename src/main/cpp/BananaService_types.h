@@ -31,9 +31,11 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
-
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+
+typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+
+typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
 
 typedef class  ::aroma::banana::thrift::Image Image;
 
@@ -1678,12 +1680,12 @@ class GetApplicationInfoRequest {
   }
 
   virtual ~GetApplicationInfoRequest() throw();
-  UserToken token;
+  AuthenticationToken token;
   std::string applicationId;
 
   _GetApplicationInfoRequest__isset __isset;
 
-  void __set_token(const UserToken& val);
+  void __set_token(const AuthenticationToken& val);
 
   void __set_applicationId(const std::string& val);
 
@@ -1716,8 +1718,9 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationInfoReque
 }
 
 typedef struct _GetApplicationInfoResponse__isset {
-  _GetApplicationInfoResponse__isset() : applicationInfo(false) {}
+  _GetApplicationInfoResponse__isset() : applicationInfo(false), registeredChannels(false) {}
   bool applicationInfo :1;
+  bool registeredChannels :1;
 } _GetApplicationInfoResponse__isset;
 
 class GetApplicationInfoResponse {
@@ -1730,14 +1733,19 @@ class GetApplicationInfoResponse {
 
   virtual ~GetApplicationInfoResponse() throw();
   Application applicationInfo;
+  std::vector<BananaChannel>  registeredChannels;
 
   _GetApplicationInfoResponse__isset __isset;
 
   void __set_applicationInfo(const Application& val);
 
+  void __set_registeredChannels(const std::vector<BananaChannel> & val);
+
   bool operator == (const GetApplicationInfoResponse & rhs) const
   {
     if (!(applicationInfo == rhs.applicationInfo))
+      return false;
+    if (!(registeredChannels == rhs.registeredChannels))
       return false;
     return true;
   }
@@ -1808,11 +1816,14 @@ inline std::ostream& operator<<(std::ostream& out, const GetDashboardRequest& ob
 }
 
 typedef struct _GetDashboardResponse__isset {
-  _GetDashboardResponse__isset() : unreadMessageCount(true), totalMessagesLastHour(true), totalMessagesLast24hrs(true), recentMessages(true) {}
+  _GetDashboardResponse__isset() : unreadMessageCount(true), totalMessagesLastHour(true), totalMessagesLast24hrs(true), recentMessages(true), numberOfLowUrgencyMessages(true), numberOfMediumUrgencyMessages(true), numberOfHighUrgencyMessages(true) {}
   bool unreadMessageCount :1;
   bool totalMessagesLastHour :1;
   bool totalMessagesLast24hrs :1;
   bool recentMessages :1;
+  bool numberOfLowUrgencyMessages :1;
+  bool numberOfMediumUrgencyMessages :1;
+  bool numberOfHighUrgencyMessages :1;
 } _GetDashboardResponse__isset;
 
 class GetDashboardResponse {
@@ -1820,7 +1831,7 @@ class GetDashboardResponse {
 
   GetDashboardResponse(const GetDashboardResponse&);
   GetDashboardResponse& operator=(const GetDashboardResponse&);
-  GetDashboardResponse() : unreadMessageCount(0), totalMessagesLastHour(0), totalMessagesLast24hrs(0) {
+  GetDashboardResponse() : unreadMessageCount(0), totalMessagesLastHour(0), totalMessagesLast24hrs(0), numberOfLowUrgencyMessages(0), numberOfMediumUrgencyMessages(0), numberOfHighUrgencyMessages(0) {
 
   }
 
@@ -1829,6 +1840,9 @@ class GetDashboardResponse {
   int totalMessagesLastHour;
   int totalMessagesLast24hrs;
   std::vector< ::aroma::banana::thrift::Message>  recentMessages;
+  int numberOfLowUrgencyMessages;
+  int numberOfMediumUrgencyMessages;
+  int numberOfHighUrgencyMessages;
 
   _GetDashboardResponse__isset __isset;
 
@@ -1840,6 +1854,12 @@ class GetDashboardResponse {
 
   void __set_recentMessages(const std::vector< ::aroma::banana::thrift::Message> & val);
 
+  void __set_numberOfLowUrgencyMessages(const int val);
+
+  void __set_numberOfMediumUrgencyMessages(const int val);
+
+  void __set_numberOfHighUrgencyMessages(const int val);
+
   bool operator == (const GetDashboardResponse & rhs) const
   {
     if (!(unreadMessageCount == rhs.unreadMessageCount))
@@ -1849,6 +1869,12 @@ class GetDashboardResponse {
     if (!(totalMessagesLast24hrs == rhs.totalMessagesLast24hrs))
       return false;
     if (!(recentMessages == rhs.recentMessages))
+      return false;
+    if (!(numberOfLowUrgencyMessages == rhs.numberOfLowUrgencyMessages))
+      return false;
+    if (!(numberOfMediumUrgencyMessages == rhs.numberOfMediumUrgencyMessages))
+      return false;
+    if (!(numberOfHighUrgencyMessages == rhs.numberOfHighUrgencyMessages))
       return false;
     return true;
   }
