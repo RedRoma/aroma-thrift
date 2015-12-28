@@ -372,7 +372,7 @@ class User {
   User(const User&);
   User& operator=(const User&);
   User() : email(), userId(), name(), profileImageLink() {
-    roles.push_back((Role::type)1);
+    roles.insert((Role::type)1);
 
   }
 
@@ -380,7 +380,7 @@ class User {
   std::string email;
   std::string userId;
   std::string name;
-  std::vector<Role::type>  roles;
+  std::set<Role::type>  roles;
   Image profileImage;
   std::string profileImageLink;
 
@@ -392,7 +392,7 @@ class User {
 
   void __set_name(const std::string& val);
 
-  void __set_roles(const std::vector<Role::type> & val);
+  void __set_roles(const std::set<Role::type> & val);
 
   void __set_profileImage(const Image& val);
 
@@ -462,18 +462,18 @@ class Application {
   }
 
   virtual ~Application() throw();
-  std::vector<User>  owners;
+  std::set<User>  owners;
   timestamp timeOfProvisioning;
   std::string name;
   std::string id;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::vector<User>  subscribers;
+  std::set<User>  subscribers;
 
   _Application__isset __isset;
 
-  void __set_owners(const std::vector<User> & val);
+  void __set_owners(const std::set<User> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 
@@ -487,7 +487,7 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::vector<User> & val);
+  void __set_subscribers(const std::set<User> & val);
 
   bool operator == (const Application & rhs) const
   {

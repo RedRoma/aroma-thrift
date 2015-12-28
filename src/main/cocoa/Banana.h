@@ -286,7 +286,7 @@ typedef int64_t Banana_timestamp;
   NSString * __email;
   NSString * __userId;
   NSString * __name;
-  NSMutableArray * __roles;
+  NSMutableSet * __roles;
   Banana_Image * __profileImage;
   NSString * __profileImageLink;
 
@@ -302,13 +302,13 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableArray * roles;
+@property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
 @property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
 @property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) NSString * profileImageLink;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink;
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -334,8 +334,8 @@ typedef int64_t Banana_timestamp;
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) roles;
-- (void) setRoles: (NSMutableArray *) roles;
+- (NSMutableSet *) roles;
+- (void) setRoles: (NSMutableSet *) roles;
 #endif
 - (BOOL) rolesIsSet;
 
@@ -354,14 +354,14 @@ typedef int64_t Banana_timestamp;
 @end
 
 @interface Banana_Application : NSObject <TBase, NSCoding> {
-  NSMutableArray * __owners;
+  NSMutableSet * __owners;
   Banana_timestamp __timeOfProvisioning;
   NSString * __name;
   NSString * __id;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
   int __programmingLanguage;
-  NSMutableArray * __subscribers;
+  NSMutableSet * __subscribers;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -374,18 +374,18 @@ typedef int64_t Banana_timestamp;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
 @property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Banana_timestamp timeOfProvisioning;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
-@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableArray * subscribers;
+@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableSet * subscribers;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableArray *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -393,8 +393,8 @@ typedef int64_t Banana_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) owners;
-- (void) setOwners: (NSMutableArray *) owners;
+- (NSMutableSet *) owners;
+- (void) setOwners: (NSMutableSet *) owners;
 #endif
 - (BOOL) ownersIsSet;
 
@@ -435,8 +435,8 @@ typedef int64_t Banana_timestamp;
 - (BOOL) programmingLanguageIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) subscribers;
-- (void) setSubscribers: (NSMutableArray *) subscribers;
+- (NSMutableSet *) subscribers;
+- (void) setSubscribers: (NSMutableSet *) subscribers;
 #endif
 - (BOOL) subscribersIsSet;
 

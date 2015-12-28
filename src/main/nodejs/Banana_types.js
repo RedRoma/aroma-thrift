@@ -514,12 +514,12 @@ User.prototype.read = function(input) {
       }
       break;
       case 4:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size0 = 0;
         var _rtmp34;
         this.roles = [];
         var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
+        _rtmp34 = input.readSetBegin();
         _etype3 = _rtmp34.etype;
         _size0 = _rtmp34.size;
         for (var _i5 = 0; _i5 < _size0; ++_i5)
@@ -528,7 +528,7 @@ User.prototype.read = function(input) {
           elem6 = input.readI32();
           this.roles.push(elem6);
         }
-        input.readListEnd();
+        input.readSetEnd();
       } else {
         input.skip(ftype);
       }
@@ -575,8 +575,8 @@ User.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.roles !== null && this.roles !== undefined) {
-    output.writeFieldBegin('roles', Thrift.Type.LIST, 4);
-    output.writeListBegin(Thrift.Type.I32, this.roles.length);
+    output.writeFieldBegin('roles', Thrift.Type.SET, 4);
+    output.writeSetBegin(Thrift.Type.I32, this.roles.length);
     for (var iter7 in this.roles)
     {
       if (this.roles.hasOwnProperty(iter7))
@@ -585,7 +585,7 @@ User.prototype.write = function(output) {
         output.writeI32(iter7);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
     output.writeFieldEnd();
   }
   if (this.profileImage !== null && this.profileImage !== undefined) {
@@ -654,12 +654,12 @@ Application.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size8 = 0;
         var _rtmp312;
         this.owners = [];
         var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
+        _rtmp312 = input.readSetBegin();
         _etype11 = _rtmp312.etype;
         _size8 = _rtmp312.size;
         for (var _i13 = 0; _i13 < _size8; ++_i13)
@@ -669,7 +669,7 @@ Application.prototype.read = function(input) {
           elem14.read(input);
           this.owners.push(elem14);
         }
-        input.readListEnd();
+        input.readSetEnd();
       } else {
         input.skip(ftype);
       }
@@ -718,12 +718,12 @@ Application.prototype.read = function(input) {
       }
       break;
       case 8:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size15 = 0;
         var _rtmp319;
         this.subscribers = [];
         var _etype18 = 0;
-        _rtmp319 = input.readListBegin();
+        _rtmp319 = input.readSetBegin();
         _etype18 = _rtmp319.etype;
         _size15 = _rtmp319.size;
         for (var _i20 = 0; _i20 < _size15; ++_i20)
@@ -733,7 +733,7 @@ Application.prototype.read = function(input) {
           elem21.read(input);
           this.subscribers.push(elem21);
         }
-        input.readListEnd();
+        input.readSetEnd();
       } else {
         input.skip(ftype);
       }
@@ -750,8 +750,8 @@ Application.prototype.read = function(input) {
 Application.prototype.write = function(output) {
   output.writeStructBegin('Application');
   if (this.owners !== null && this.owners !== undefined) {
-    output.writeFieldBegin('owners', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.owners.length);
+    output.writeFieldBegin('owners', Thrift.Type.SET, 1);
+    output.writeSetBegin(Thrift.Type.STRUCT, this.owners.length);
     for (var iter22 in this.owners)
     {
       if (this.owners.hasOwnProperty(iter22))
@@ -760,7 +760,7 @@ Application.prototype.write = function(output) {
         iter22.write(output);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
     output.writeFieldEnd();
   }
   if (this.timeOfProvisioning !== null && this.timeOfProvisioning !== undefined) {
@@ -794,8 +794,8 @@ Application.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.subscribers !== null && this.subscribers !== undefined) {
-    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 8);
-    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
+    output.writeFieldBegin('subscribers', Thrift.Type.SET, 8);
+    output.writeSetBegin(Thrift.Type.STRUCT, this.subscribers.length);
     for (var iter23 in this.subscribers)
     {
       if (this.subscribers.hasOwnProperty(iter23))
@@ -804,7 +804,7 @@ Application.prototype.write = function(output) {
         iter23.write(output);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
     output.writeFieldEnd();
   }
   output.writeFieldStop();

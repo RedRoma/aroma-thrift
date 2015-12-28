@@ -1294,14 +1294,14 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.roles = [[[NSMutableArray alloc] initWithCapacity:1] autorelease_stub];
+  self.roles = [[[NSMutableSet alloc] initWithCapacity:1] autorelease_stub];
   [self.roles addObject:[NSNumber numberWithInt: 1]];
 
 #endif
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableArray *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1529,11 +1529,11 @@
   __name_isset = NO;
 }
 
-- (NSMutableArray *) roles {
+- (NSMutableSet *) roles {
   return [[__roles retain_stub] autorelease_stub];
 }
 
-- (void) setRoles: (NSMutableArray *) roles {
+- (void) setRoles: (NSMutableSet *) roles {
   [roles retain_stub];
   [__roles release_stub];
   __roles = roles;
@@ -1632,17 +1632,17 @@
         }
         break;
       case 4:
-        if (fieldType == TType_LIST) {
+        if (fieldType == TType_SET) {
           int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size0];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size0];
           int _i1;
           for (_i1 = 0; _i1 < _size0; ++_i1)
           {
             int _elem2 = [inProtocol readI32];
             [fieldValue addObject: [NSNumber numberWithInt: _elem2]];
           }
-          [inProtocol readListEnd];
+          [inProtocol readSetEnd];
           [self setRoles: fieldValue];
           [fieldValue release_stub];
         } else { 
@@ -1701,15 +1701,16 @@
   }
   if (__roles_isset) {
     if (__roles != nil) {
-      [outProtocol writeFieldBeginWithName: @"roles" type: TType_LIST fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"roles" type: TType_SET fieldID: 4];
       {
-        [outProtocol writeListBeginWithElementType: TType_I32 size: [__roles count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__roles count]; idx4++)
+        [outProtocol writeSetBeginWithElementType: TType_I32 size: [__roles count]];
+        NSEnumerator * _iter3 = [__roles objectEnumerator];
+        id obj4;
+        while ((obj4 = [_iter3 nextObject]))
         {
-          [outProtocol writeI32: [[__roles objectAtIndex: idx4] intValue]];
+          [outProtocol writeI32: [obj4 intValue]];
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeSetEnd];
       }
       [outProtocol writeFieldEnd];
     }
@@ -1762,13 +1763,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.subscribers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.subscribers = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
 
 #endif
   return self;
 }
 
-- (id) initWithOwners: (NSMutableArray *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -1972,11 +1973,11 @@
   [super dealloc_stub];
 }
 
-- (NSMutableArray *) owners {
+- (NSMutableSet *) owners {
   return [[__owners retain_stub] autorelease_stub];
 }
 
-- (void) setOwners: (NSMutableArray *) owners {
+- (void) setOwners: (NSMutableSet *) owners {
   [owners retain_stub];
   [__owners release_stub];
   __owners = owners;
@@ -2107,11 +2108,11 @@
   __programmingLanguage_isset = NO;
 }
 
-- (NSMutableArray *) subscribers {
+- (NSMutableSet *) subscribers {
   return [[__subscribers retain_stub] autorelease_stub];
 }
 
-- (void) setSubscribers: (NSMutableArray *) subscribers {
+- (void) setSubscribers: (NSMutableSet *) subscribers {
   [subscribers retain_stub];
   [__subscribers release_stub];
   __subscribers = subscribers;
@@ -2144,10 +2145,10 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_LIST) {
+        if (fieldType == TType_SET) {
           int _size5;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size5];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size5];
           int _i6;
           for (_i6 = 0; _i6 < _size5; ++_i6)
           {
@@ -2156,7 +2157,7 @@
             [fieldValue addObject: _elem7];
             [_elem7 release_stub];
           }
-          [inProtocol readListEnd];
+          [inProtocol readSetEnd];
           [self setOwners: fieldValue];
           [fieldValue release_stub];
         } else { 
@@ -2214,10 +2215,10 @@
         }
         break;
       case 8:
-        if (fieldType == TType_LIST) {
+        if (fieldType == TType_SET) {
           int _size8;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size8];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size8];
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size8];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size8];
           int _i9;
           for (_i9 = 0; _i9 < _size8; ++_i9)
           {
@@ -2226,7 +2227,7 @@
             [fieldValue addObject: _elem10];
             [_elem10 release_stub];
           }
-          [inProtocol readListEnd];
+          [inProtocol readSetEnd];
           [self setSubscribers: fieldValue];
           [fieldValue release_stub];
         } else { 
@@ -2246,15 +2247,16 @@
   [outProtocol writeStructBeginWithName: @"Application"];
   if (__owners_isset) {
     if (__owners != nil) {
-      [outProtocol writeFieldBeginWithName: @"owners" type: TType_LIST fieldID: 1];
+      [outProtocol writeFieldBeginWithName: @"owners" type: TType_SET fieldID: 1];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__owners count]];
-        int idx12;
-        for (idx12 = 0; idx12 < [__owners count]; idx12++)
+        [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__owners count]];
+        NSEnumerator * _iter11 = [__owners objectEnumerator];
+        id obj12;
+        while ((obj12 = [_iter11 nextObject]))
         {
-          [[__owners objectAtIndex: idx12] write: outProtocol];
+          [obj12 write: outProtocol];
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeSetEnd];
       }
       [outProtocol writeFieldEnd];
     }
@@ -2297,15 +2299,16 @@
   }
   if (__subscribers_isset) {
     if (__subscribers != nil) {
-      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_LIST fieldID: 8];
+      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_SET fieldID: 8];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__subscribers count]];
-        int idx14;
-        for (idx14 = 0; idx14 < [__subscribers count]; idx14++)
+        [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__subscribers count]];
+        NSEnumerator * _iter13 = [__subscribers objectEnumerator];
+        id obj14;
+        while ((obj14 = [_iter13 nextObject]))
         {
-          [[__subscribers objectAtIndex: idx14] write: outProtocol];
+          [obj14 write: outProtocol];
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeSetEnd];
       }
       [outProtocol writeFieldEnd];
     }

@@ -121,7 +121,7 @@ struct User
     2: string userId;
     3: optional string name;
     /** A Person can be more than one thing at once. By default, we assume a developer. */
-    4: list<Role> roles = [ Role.DEVELOPER ];
+    4: set<Role> roles = [ Role.DEVELOPER ];
     5: optional Image profileImage;
     6: optional string profileImageLink;
 }
@@ -150,7 +150,7 @@ enum ProgrammingLanguage
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: list<User> owners;
+    1: set<User> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
@@ -167,7 +167,7 @@ struct Application
      * Defines a list of people that are subscribed 
      * to events for an Application, and that are not owners.
      */
-    8: optional list<User> subscribers = [];
+    8: optional set<User> subscribers = [];
 }
 
 /**
