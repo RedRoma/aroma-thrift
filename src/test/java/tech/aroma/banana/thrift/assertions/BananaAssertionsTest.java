@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.functions;
+package tech.aroma.banana.thrift.assertions;
 
 import org.apache.thrift.TException;
 import org.junit.Before;

@@ -14,7 +14,7 @@
   * limitations under the License.
   */
 
-package tech.aroma.banana.thrift.functions;
+package tech.aroma.banana.thrift.assertions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +24,7 @@ import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
 import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
 import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
+import tech.aroma.banana.thrift.functions.TokenFunctions;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 import tech.sirwellington.alchemy.annotations.arguments.NonNull;
 import tech.sirwellington.alchemy.arguments.AlchemyAssertion;
