@@ -23,11 +23,13 @@ typedef Banana.Application Application
  */
 struct HealthCheckFailed
 {
-    1: optional string message;
+    1: optional string message = "Application failed a Health Check";
     /** May include the name of the host that went down. */
     2: optional string hostname;
-    /** The application that failed the healthy check. */
-    3: Application application;
+    /** The application that failed the health check. */
+    3: string applicationId;
+    /** The Human-Friendly name of the Application. */
+    4: string applicationName;
 }
 
 /**
@@ -36,8 +38,9 @@ struct HealthCheckFailed
  */
 struct HealthCheckBackToNormal
 {
-    1: optional string message;
-    2: Application application;
+    1: optional string message = "Application's Health is back to normal";
+    2: string applicationId;
+    3: string applicationName;
 }
 
 /**
@@ -45,11 +48,13 @@ struct HealthCheckBackToNormal
  */
 struct ApplicationTokenRenewed
 {
+    1: optional string message = "Application Token has been renewed";
     /** The user who performed the action. */
-    1: User user;
+    2: User user;
     /** We may or may not include the new Application Token, for security reasons. */
-    2: optional ApplicationToken applicationToken;
-    3: optional Application application;
+    3: optional ApplicationToken applicationToken;
+    4: string applicationId;
+    5: string applicationName;
 }
 
 /**
@@ -58,10 +63,12 @@ struct ApplicationTokenRenewed
  */
 struct ApplicationTokenRegenerated
 {
+    1: optional string message = "Application Token has been re-created"
     /** The person who performed the action. */
-    1: User user;
-    2: optional ApplicationToken applicationToken;
-    3: Application application;
+    2: User user;
+    3: optional ApplicationToken applicationToken;
+    4: string applicationId;
+    5: string applicationName;
 }
 
 /**
@@ -69,10 +76,12 @@ struct ApplicationTokenRegenerated
  */
 struct ApplicationSentMessage
 {
-    1: optional Banana.Message message;
+    1: optional string message = "Application has sent an Alert"
+    /** The Message that the Application Sent. */
+    2: optional Banana.Message messageSentByApplication;
     /** The Application that sent the message. */
-    2: Application application;
-    3: string title ="Your Application has sent out an alert";
+    3: string applicationId;
+    4: string applicationName;
 }
 
 /**

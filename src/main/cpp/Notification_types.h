@@ -48,10 +48,11 @@ class EventType;
 class Event;
 
 typedef struct _HealthCheckFailed__isset {
-  _HealthCheckFailed__isset() : message(false), hostname(false), application(false) {}
+  _HealthCheckFailed__isset() : message(true), hostname(false), applicationId(false), applicationName(false) {}
   bool message :1;
   bool hostname :1;
-  bool application :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _HealthCheckFailed__isset;
 
 class HealthCheckFailed {
@@ -59,13 +60,14 @@ class HealthCheckFailed {
 
   HealthCheckFailed(const HealthCheckFailed&);
   HealthCheckFailed& operator=(const HealthCheckFailed&);
-  HealthCheckFailed() : message(), hostname() {
+  HealthCheckFailed() : message("Application failed a Health Check"), hostname(), applicationId(), applicationName() {
   }
 
   virtual ~HealthCheckFailed() throw();
   std::string message;
   std::string hostname;
-  Application application;
+  std::string applicationId;
+  std::string applicationName;
 
   _HealthCheckFailed__isset __isset;
 
@@ -73,7 +75,9 @@ class HealthCheckFailed {
 
   void __set_hostname(const std::string& val);
 
-  void __set_application(const Application& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const HealthCheckFailed & rhs) const
   {
@@ -85,7 +89,9 @@ class HealthCheckFailed {
       return false;
     else if (__isset.hostname && !(hostname == rhs.hostname))
       return false;
-    if (!(application == rhs.application))
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -110,9 +116,10 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckFailed& obj)
 }
 
 typedef struct _HealthCheckBackToNormal__isset {
-  _HealthCheckBackToNormal__isset() : message(false), application(false) {}
+  _HealthCheckBackToNormal__isset() : message(true), applicationId(false), applicationName(false) {}
   bool message :1;
-  bool application :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _HealthCheckBackToNormal__isset;
 
 class HealthCheckBackToNormal {
@@ -120,18 +127,21 @@ class HealthCheckBackToNormal {
 
   HealthCheckBackToNormal(const HealthCheckBackToNormal&);
   HealthCheckBackToNormal& operator=(const HealthCheckBackToNormal&);
-  HealthCheckBackToNormal() : message() {
+  HealthCheckBackToNormal() : message("Application's Health is back to normal"), applicationId(), applicationName() {
   }
 
   virtual ~HealthCheckBackToNormal() throw();
   std::string message;
-  Application application;
+  std::string applicationId;
+  std::string applicationName;
 
   _HealthCheckBackToNormal__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_application(const Application& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const HealthCheckBackToNormal & rhs) const
   {
@@ -139,7 +149,9 @@ class HealthCheckBackToNormal {
       return false;
     else if (__isset.message && !(message == rhs.message))
       return false;
-    if (!(application == rhs.application))
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -164,10 +176,12 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
 }
 
 typedef struct _ApplicationTokenRenewed__isset {
-  _ApplicationTokenRenewed__isset() : user(false), applicationToken(false), application(false) {}
+  _ApplicationTokenRenewed__isset() : message(true), user(false), applicationToken(false), applicationId(false), applicationName(false) {}
+  bool message :1;
   bool user :1;
   bool applicationToken :1;
-  bool application :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _ApplicationTokenRenewed__isset;
 
 class ApplicationTokenRenewed {
@@ -175,33 +189,43 @@ class ApplicationTokenRenewed {
 
   ApplicationTokenRenewed(const ApplicationTokenRenewed&);
   ApplicationTokenRenewed& operator=(const ApplicationTokenRenewed&);
-  ApplicationTokenRenewed() {
+  ApplicationTokenRenewed() : message("Application Token has been renewed"), applicationId(), applicationName() {
   }
 
   virtual ~ApplicationTokenRenewed() throw();
+  std::string message;
   User user;
   ApplicationToken applicationToken;
-  Application application;
+  std::string applicationId;
+  std::string applicationName;
 
   _ApplicationTokenRenewed__isset __isset;
+
+  void __set_message(const std::string& val);
 
   void __set_user(const User& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_application(const Application& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const ApplicationTokenRenewed & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
     if (!(user == rhs.user))
       return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
     else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
       return false;
-    if (__isset.application != rhs.__isset.application)
+    if (!(applicationId == rhs.applicationId))
       return false;
-    else if (__isset.application && !(application == rhs.application))
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -226,10 +250,12 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRenewed
 }
 
 typedef struct _ApplicationTokenRegenerated__isset {
-  _ApplicationTokenRegenerated__isset() : user(false), applicationToken(false), application(false) {}
+  _ApplicationTokenRegenerated__isset() : message(true), user(false), applicationToken(false), applicationId(false), applicationName(false) {}
+  bool message :1;
   bool user :1;
   bool applicationToken :1;
-  bool application :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _ApplicationTokenRegenerated__isset;
 
 class ApplicationTokenRegenerated {
@@ -237,31 +263,43 @@ class ApplicationTokenRegenerated {
 
   ApplicationTokenRegenerated(const ApplicationTokenRegenerated&);
   ApplicationTokenRegenerated& operator=(const ApplicationTokenRegenerated&);
-  ApplicationTokenRegenerated() {
+  ApplicationTokenRegenerated() : message("Application Token has been re-created"), applicationId(), applicationName() {
   }
 
   virtual ~ApplicationTokenRegenerated() throw();
+  std::string message;
   User user;
   ApplicationToken applicationToken;
-  Application application;
+  std::string applicationId;
+  std::string applicationName;
 
   _ApplicationTokenRegenerated__isset __isset;
+
+  void __set_message(const std::string& val);
 
   void __set_user(const User& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_application(const Application& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const ApplicationTokenRegenerated & rhs) const
   {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
     if (!(user == rhs.user))
       return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
     else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
       return false;
-    if (!(application == rhs.application))
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -286,10 +324,11 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRegener
 }
 
 typedef struct _ApplicationSentMessage__isset {
-  _ApplicationSentMessage__isset() : message(false), application(false), title(true) {}
+  _ApplicationSentMessage__isset() : message(true), messageSentByApplication(false), applicationId(false), applicationName(false) {}
   bool message :1;
-  bool application :1;
-  bool title :1;
+  bool messageSentByApplication :1;
+  bool applicationId :1;
+  bool applicationName :1;
 } _ApplicationSentMessage__isset;
 
 class ApplicationSentMessage {
@@ -297,21 +336,24 @@ class ApplicationSentMessage {
 
   ApplicationSentMessage(const ApplicationSentMessage&);
   ApplicationSentMessage& operator=(const ApplicationSentMessage&);
-  ApplicationSentMessage() : title("Your Application has sent out an alert") {
+  ApplicationSentMessage() : message("Application has sent an Alert"), applicationId(), applicationName() {
   }
 
   virtual ~ApplicationSentMessage() throw();
-   ::aroma::banana::thrift::Message message;
-  Application application;
-  std::string title;
+  std::string message;
+   ::aroma::banana::thrift::Message messageSentByApplication;
+  std::string applicationId;
+  std::string applicationName;
 
   _ApplicationSentMessage__isset __isset;
 
-  void __set_message(const  ::aroma::banana::thrift::Message& val);
+  void __set_message(const std::string& val);
 
-  void __set_application(const Application& val);
+  void __set_messageSentByApplication(const  ::aroma::banana::thrift::Message& val);
 
-  void __set_title(const std::string& val);
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
 
   bool operator == (const ApplicationSentMessage & rhs) const
   {
@@ -319,9 +361,13 @@ class ApplicationSentMessage {
       return false;
     else if (__isset.message && !(message == rhs.message))
       return false;
-    if (!(application == rhs.application))
+    if (__isset.messageSentByApplication != rhs.__isset.messageSentByApplication)
       return false;
-    if (!(title == rhs.title))
+    else if (__isset.messageSentByApplication && !(messageSentByApplication == rhs.messageSentByApplication))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }

@@ -19,6 +19,7 @@ package tech.aroma.banana.thrift.assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
+import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
 import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
 import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
@@ -79,6 +80,21 @@ public final class BananaAssertions
             {
                 throw new FailedAssertionException("Token Has not been set:  " + t);
             }
+        };
+    }
+    
+    public static AlchemyAssertion<UserToken> validUserTokenIn(@NonNull AuthenticationService.Iface authenticationService)
+    {
+        checkThat(authenticationService)
+            .usingMessage("authentication service is null")
+            .is(notNull());
+        
+        return token ->
+        {
+            AuthenticationToken authToken = new AuthenticationToken();
+            authToken.setUserToken(token);
+            
+            validTokenIn(authenticationService).check(authToken);
         };
     }
     

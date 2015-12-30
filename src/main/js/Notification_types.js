@@ -6,9 +6,10 @@
 
 
 HealthCheckFailed = function(args) {
-  this.message = null;
+  this.message = 'Application failed a Health Check';
   this.hostname = null;
-  this.application = null;
+  this.applicationId = null;
+  this.applicationName = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -16,8 +17,11 @@ HealthCheckFailed = function(args) {
     if (args.hostname !== undefined && args.hostname !== null) {
       this.hostname = args.hostname;
     }
-    if (args.application !== undefined && args.application !== null) {
-      this.application = new Application(args.application);
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -50,9 +54,15 @@ HealthCheckFailed.prototype.read = function(input) {
       }
       break;
       case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.application = new Application();
-        this.application.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -78,9 +88,14 @@ HealthCheckFailed.prototype.write = function(output) {
     output.writeString(this.hostname);
     output.writeFieldEnd();
   }
-  if (this.application !== null && this.application !== undefined) {
-    output.writeFieldBegin('application', Thrift.Type.STRUCT, 3);
-    this.application.write(output);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -89,14 +104,18 @@ HealthCheckFailed.prototype.write = function(output) {
 };
 
 HealthCheckBackToNormal = function(args) {
-  this.message = null;
-  this.application = null;
+  this.message = 'Application\'s Health is back to normal';
+  this.applicationId = null;
+  this.applicationName = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
     }
-    if (args.application !== undefined && args.application !== null) {
-      this.application = new Application(args.application);
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -122,9 +141,15 @@ HealthCheckBackToNormal.prototype.read = function(input) {
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.application = new Application();
-        this.application.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -145,9 +170,14 @@ HealthCheckBackToNormal.prototype.write = function(output) {
     output.writeString(this.message);
     output.writeFieldEnd();
   }
-  if (this.application !== null && this.application !== undefined) {
-    output.writeFieldBegin('application', Thrift.Type.STRUCT, 2);
-    this.application.write(output);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -156,18 +186,26 @@ HealthCheckBackToNormal.prototype.write = function(output) {
 };
 
 ApplicationTokenRenewed = function(args) {
+  this.message = 'Application Token has been renewed';
   this.user = null;
   this.applicationToken = null;
-  this.application = null;
+  this.applicationId = null;
+  this.applicationName = null;
   if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
     if (args.user !== undefined && args.user !== null) {
       this.user = new User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
     }
-    if (args.application !== undefined && args.application !== null) {
-      this.application = new Application(args.application);
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -186,6 +224,13 @@ ApplicationTokenRenewed.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
       if (ftype == Thrift.Type.STRUCT) {
         this.user = new User();
         this.user.read(input);
@@ -193,7 +238,7 @@ ApplicationTokenRenewed.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationToken = new ApplicationToken();
         this.applicationToken.read(input);
@@ -201,10 +246,16 @@ ApplicationTokenRenewed.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.application = new Application();
-        this.application.read(input);
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -220,19 +271,29 @@ ApplicationTokenRenewed.prototype.read = function(input) {
 
 ApplicationTokenRenewed.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRenewed');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
   if (this.user !== null && this.user !== undefined) {
-    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 2);
     this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 2);
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 3);
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.application !== null && this.application !== undefined) {
-    output.writeFieldBegin('application', Thrift.Type.STRUCT, 3);
-    this.application.write(output);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 5);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -241,18 +302,26 @@ ApplicationTokenRenewed.prototype.write = function(output) {
 };
 
 ApplicationTokenRegenerated = function(args) {
+  this.message = 'Application Token has been re-created';
   this.user = null;
   this.applicationToken = null;
-  this.application = null;
+  this.applicationId = null;
+  this.applicationName = null;
   if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
     if (args.user !== undefined && args.user !== null) {
       this.user = new User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
     }
-    if (args.application !== undefined && args.application !== null) {
-      this.application = new Application(args.application);
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -271,6 +340,13 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
       if (ftype == Thrift.Type.STRUCT) {
         this.user = new User();
         this.user.read(input);
@@ -278,7 +354,7 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.applicationToken = new ApplicationToken();
         this.applicationToken.read(input);
@@ -286,10 +362,16 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 3:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.application = new Application();
-        this.application.read(input);
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -305,19 +387,29 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
 
 ApplicationTokenRegenerated.prototype.write = function(output) {
   output.writeStructBegin('ApplicationTokenRegenerated');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
   if (this.user !== null && this.user !== undefined) {
-    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 2);
     this.user.write(output);
     output.writeFieldEnd();
   }
   if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 2);
+    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 3);
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.application !== null && this.application !== undefined) {
-    output.writeFieldBegin('application', Thrift.Type.STRUCT, 3);
-    this.application.write(output);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 5);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -326,18 +418,22 @@ ApplicationTokenRegenerated.prototype.write = function(output) {
 };
 
 ApplicationSentMessage = function(args) {
-  this.message = null;
-  this.application = null;
-  this.title = 'Your Application has sent out an alert';
+  this.message = 'Application has sent an Alert';
+  this.messageSentByApplication = null;
+  this.applicationId = null;
+  this.applicationName = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
-      this.message = new Message(args.message);
+      this.message = args.message;
     }
-    if (args.application !== undefined && args.application !== null) {
-      this.application = new Application(args.application);
+    if (args.messageSentByApplication !== undefined && args.messageSentByApplication !== null) {
+      this.messageSentByApplication = new Message(args.messageSentByApplication);
     }
-    if (args.title !== undefined && args.title !== null) {
-      this.title = args.title;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
     }
   }
 };
@@ -356,24 +452,30 @@ ApplicationSentMessage.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.message = new Message();
-        this.message.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.application = new Application();
-        this.application.read(input);
+        this.messageSentByApplication = new Message();
+        this.messageSentByApplication.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.title = input.readString().value;
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -390,18 +492,23 @@ ApplicationSentMessage.prototype.read = function(input) {
 ApplicationSentMessage.prototype.write = function(output) {
   output.writeStructBegin('ApplicationSentMessage');
   if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRUCT, 1);
-    this.message.write(output);
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
     output.writeFieldEnd();
   }
-  if (this.application !== null && this.application !== undefined) {
-    output.writeFieldBegin('application', Thrift.Type.STRUCT, 2);
-    this.application.write(output);
+  if (this.messageSentByApplication !== null && this.messageSentByApplication !== undefined) {
+    output.writeFieldBegin('messageSentByApplication', Thrift.Type.STRUCT, 2);
+    this.messageSentByApplication.write(output);
     output.writeFieldEnd();
   }
-  if (this.title !== null && this.title !== undefined) {
-    output.writeFieldBegin('title', Thrift.Type.STRING, 3);
-    output.writeString(this.title);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
