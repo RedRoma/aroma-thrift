@@ -30,6 +30,12 @@ enum Urgency
     HIGH = 3
 }
 
+/*
+ * TODO: Find a more distinctive name for Message.
+ * + Kik
+ * + Sok
+ * + Dice
+ */
 struct Message
 {
     /** Each message has a unique ID */
