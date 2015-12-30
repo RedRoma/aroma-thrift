@@ -9180,6 +9180,369 @@
 
 @end
 
+@implementation BananaService_GetUserInfoRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token userId: (NSString *) userId
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetUserInfoRequest class]]) {
+    return NO;
+  }
+  BananaService_GetUserInfoRequest *other = (BananaService_GetUserInfoRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__userId release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetUserInfoRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __userId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetUserInfoRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetUserInfoResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithUserInfo: (BananaService_User) userInfo
+{
+  self = [super init];
+  __userInfo = [userInfo retain_stub];
+  __userInfo_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"userInfo"])
+  {
+    __userInfo = [[decoder decodeObjectForKey: @"userInfo"] retain_stub];
+    __userInfo_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__userInfo_isset)
+  {
+    [encoder encodeObject: __userInfo forKey: @"userInfo"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __userInfo_isset ? 2654435761 : 0;
+  if (__userInfo_isset)
+  {
+    hash = (hash * 31) ^ [__userInfo hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetUserInfoResponse class]]) {
+    return NO;
+  }
+  BananaService_GetUserInfoResponse *other = (BananaService_GetUserInfoResponse *)anObject;
+  if ((__userInfo_isset != other->__userInfo_isset) ||
+      (__userInfo_isset && ((__userInfo || other->__userInfo) && ![__userInfo isEqual:other->__userInfo]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__userInfo release_stub];
+  [super dealloc_stub];
+}
+
+- (Banana_User *) userInfo {
+  return [[__userInfo retain_stub] autorelease_stub];
+}
+
+- (void) setUserInfo: (Banana_User *) userInfo {
+  [userInfo retain_stub];
+  [__userInfo release_stub];
+  __userInfo = userInfo;
+  __userInfo_isset = YES;
+}
+
+- (BOOL) userInfoIsSet {
+  return __userInfo_isset;
+}
+
+- (void) unsetUserInfo {
+  [__userInfo release_stub];
+  __userInfo = nil;
+  __userInfo_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          Banana_User *fieldValue = [[Banana_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setUserInfo: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetUserInfoResponse"];
+  if (__userInfo_isset) {
+    if (__userInfo != nil) {
+      [outProtocol writeFieldBeginWithName: @"userInfo" type: TType_STRUCT fieldID: 1];
+      [__userInfo write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetUserInfoResponse("];
+  [ms appendString: @"userInfo:"];
+  [ms appendFormat: @"%@", __userInfo];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_SearchForApplicationsRequest
 
 - (id) init

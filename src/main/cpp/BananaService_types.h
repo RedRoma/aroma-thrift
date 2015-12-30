@@ -147,6 +147,10 @@ class GetServiceAnnouncementsRequest;
 
 class GetServiceAnnouncementsResponse;
 
+class GetUserInfoRequest;
+
+class GetUserInfoResponse;
+
 class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
@@ -2336,6 +2340,104 @@ class GetServiceAnnouncementsResponse {
 void swap(GetServiceAnnouncementsResponse &a, GetServiceAnnouncementsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetServiceAnnouncementsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetUserInfoRequest__isset {
+  _GetUserInfoRequest__isset() : token(false), userId(false) {}
+  bool token :1;
+  bool userId :1;
+} _GetUserInfoRequest__isset;
+
+class GetUserInfoRequest {
+ public:
+
+  GetUserInfoRequest(const GetUserInfoRequest&);
+  GetUserInfoRequest& operator=(const GetUserInfoRequest&);
+  GetUserInfoRequest() : userId() {
+  }
+
+  virtual ~GetUserInfoRequest() throw();
+  UserToken token;
+  std::string userId;
+
+  _GetUserInfoRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_userId(const std::string& val);
+
+  bool operator == (const GetUserInfoRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(userId == rhs.userId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetUserInfoRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetUserInfoRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetUserInfoRequest &a, GetUserInfoRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetUserInfoRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetUserInfoResponse__isset {
+  _GetUserInfoResponse__isset() : userInfo(false) {}
+  bool userInfo :1;
+} _GetUserInfoResponse__isset;
+
+class GetUserInfoResponse {
+ public:
+
+  GetUserInfoResponse(const GetUserInfoResponse&);
+  GetUserInfoResponse& operator=(const GetUserInfoResponse&);
+  GetUserInfoResponse() {
+  }
+
+  virtual ~GetUserInfoResponse() throw();
+  User userInfo;
+
+  _GetUserInfoResponse__isset __isset;
+
+  void __set_userInfo(const User& val);
+
+  bool operator == (const GetUserInfoResponse & rhs) const
+  {
+    if (!(userInfo == rhs.userInfo))
+      return false;
+    return true;
+  }
+  bool operator != (const GetUserInfoResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetUserInfoResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetUserInfoResponse &a, GetUserInfoResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetUserInfoResponse& obj)
 {
   obj.printTo(out);
   return out;

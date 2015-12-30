@@ -1557,6 +1557,67 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  NSString * __userId;
+
+  BOOL __token_isset;
+  BOOL __userId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token userId: (NSString *) userId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) userId;
+- (void) setUserId: (NSString *) userId;
+#endif
+- (BOOL) userIdIsSet;
+
+@end
+
+@interface BananaService_GetUserInfoResponse : NSObject <TBase, NSCoding> {
+  BananaService_User __userInfo;
+
+  BOOL __userInfo_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userInfo, setter=setUserInfo:) BananaService_User userInfo;
+#endif
+
+- (id) init;
+- (id) initWithUserInfo: (BananaService_User) userInfo;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_User) userInfo;
+- (void) setUserInfo: (BananaService_User) userInfo;
+#endif
+- (BOOL) userInfoIsSet;
+
+@end
+
 @interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   NSString * __applicationName;

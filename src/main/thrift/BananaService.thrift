@@ -434,6 +434,17 @@ struct GetServiceAnnouncementsResponse
     1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
 }
 
+struct GetUserInfoRequest
+{
+    1: UserToken token;
+    2: string userId;
+}
+
+struct GetUserInfoResponse
+{
+    1: User userInfo;
+}
+
 /**
  * Search for Applications that match the given search terms.
  */

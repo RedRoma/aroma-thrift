@@ -3096,6 +3096,127 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
     return;
   };
 
+GetUserInfoRequest = function(args) {
+    this.token = null;
+    this.userId = null;
+    if (args) {
+        if (args.token !== undefined && args.token !== null) {
+            this.token = new UserToken(args.token);
+        }
+        if (args.userId !== undefined && args.userId !== null) {
+            this.userId = args.userId;
+        }
+    }
+};
+GetUserInfoRequest.prototype = {};
+GetUserInfoRequest.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.token = new UserToken();
+          this.token.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 2:
+        if (ftype == Thrift.Type.STRING) {
+          this.userId = input.readString().value;
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetUserInfoRequest.prototype.write = function(output) {
+    output.writeStructBegin('GetUserInfoRequest');
+    if (this.token !== null && this.token !== undefined) {
+      output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+      this.token.write(output);
+      output.writeFieldEnd();
+    }
+    if (this.userId !== null && this.userId !== undefined) {
+      output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+      output.writeString(this.userId);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
+GetUserInfoResponse = function(args) {
+    this.userInfo = null;
+    if (args) {
+        if (args.userInfo !== undefined && args.userInfo !== null) {
+            this.userInfo = new User(args.userInfo);
+        }
+    }
+};
+GetUserInfoResponse.prototype = {};
+GetUserInfoResponse.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.userInfo = new User();
+          this.userInfo.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 0:
+          input.skip(ftype);
+          break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetUserInfoResponse.prototype.write = function(output) {
+    output.writeStructBegin('GetUserInfoResponse');
+    if (this.userInfo !== null && this.userInfo !== undefined) {
+      output.writeFieldBegin('userInfo', Thrift.Type.STRUCT, 1);
+      this.userInfo.write(output);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
 SearchForApplicationsRequest = function(args) {
     this.token = null;
     this.applicationName = null;

@@ -247,6 +247,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
 <a href="#Struct_GetServiceAnnouncementsResponse">GetServiceAnnouncementsResponse</a><br/>
+<a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a><br/>
+<a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a><br/>
 <a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
@@ -585,6 +587,13 @@ from the Team @ Aroma Tech.
 <br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoRequest">Struct: GetUserInfoRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoResponse">Struct: GetUserInfoResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>userInfo</td><td><code><a href="#Typedef_User">User</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
