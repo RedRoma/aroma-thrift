@@ -12,8 +12,8 @@ include "Authentication.thrift"
 include "Banana.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
+include "Events.thrift"
 include "Exceptions.thrift"
-include "Notification.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -29,7 +29,7 @@ typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
-typedef Notification.Event Event
+typedef Events.Event Event
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException

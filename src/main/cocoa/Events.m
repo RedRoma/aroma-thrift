@@ -21,7 +21,7 @@
 #import "Authentication.h"
 #import "Banana.h"
 
-#import "Notification.h"
+#import "Events.h"
 
 @implementation BananaNotifications_HealthCheckFailed
 
@@ -2338,7 +2338,7 @@
 @end
 
 
-@implementation BananaNotifications_NotificationConstants
+@implementation BananaNotifications_EventsConstants
 + (void) initialize {
 }
 @end

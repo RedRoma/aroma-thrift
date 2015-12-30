@@ -3,8 +3,8 @@ namespace cocoa BananaNotifications_
 namespace cpp   aroma.banana.thrift.notifications
 
 /*
- * Defined in this File are the Banana Service Notifications
- * and Event types that can be sent to a User.
+ * Defined in this File are the Banana Service Events
+ * that can be sent to a User via a Notification.
  */
 
 include "Authentication.thrift"

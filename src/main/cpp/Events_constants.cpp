@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "Notification_constants.h"
+#include "Events_constants.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace notifications {
 
-const NotificationConstants g_Notification_constants;
+const EventsConstants g_Events_constants;
 
-NotificationConstants::NotificationConstants() {
+EventsConstants::EventsConstants() {
 }
 
 }}}} // namespace

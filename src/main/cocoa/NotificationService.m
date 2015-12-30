@@ -22,8 +22,8 @@
 #import "Banana.h"
 #import "Channels.h"
 #import "Endpoint.h"
+#import "Events.h"
 #import "Exceptions.h"
-#import "Notification.h"
 
 #import "NotificationService.h"
 

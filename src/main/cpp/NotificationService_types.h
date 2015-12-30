@@ -19,8 +19,8 @@
 #include "Banana_types.h"
 #include "Channels_types.h"
 #include "Endpoint_types.h"
+#include "Events_types.h"
 #include "Exceptions_types.h"
-#include "Notification_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {

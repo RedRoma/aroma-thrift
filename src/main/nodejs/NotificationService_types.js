@@ -11,8 +11,8 @@ var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
+var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var Notification_ttypes = require('./Notification_types')
 
 
 var ttypes = module.exports = {};
@@ -25,7 +25,7 @@ SendNotificationRequest = module.exports.SendNotificationRequest = function(args
       this.token = new Authentication_ttypes.AuthenticationToken(args.token);
     }
     if (args.event !== undefined && args.event !== null) {
-      this.event = new Notification_ttypes.Event(args.event);
+      this.event = new Events_ttypes.Event(args.event);
     }
     if (args.channels !== undefined && args.channels !== null) {
       this.channels = Thrift.copyList(args.channels, [null]);
@@ -56,7 +56,7 @@ SendNotificationRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.event = new Notification_ttypes.Event();
+        this.event = new Events_ttypes.Event();
         this.event.read(input);
       } else {
         input.skip(ftype);

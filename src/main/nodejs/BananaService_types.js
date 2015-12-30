@@ -11,8 +11,8 @@ var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
+var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var Notification_ttypes = require('./Notification_types')
 
 
 var ttypes = module.exports = {};
@@ -2905,7 +2905,7 @@ GetActivityResponse = module.exports.GetActivityResponse = function(args) {
     this.events = [];
     if (args) {
         if (args.events !== undefined && args.events !== null) {
-            this.events = Thrift.copyList(args.events, [Notification_ttypes.Event]);
+            this.events = Thrift.copyList(args.events, [Events_ttypes.Event]);
         }
     }
 };
@@ -2935,7 +2935,7 @@ GetActivityResponse.prototype.read = function(input) {
           for (var _i61 = 0; _i61 < _size56; ++_i61)
           {
             var elem62 = null;
-            elem62 = new Notification_ttypes.Event();
+            elem62 = new Events_ttypes.Event();
             elem62.read(input);
             this.events.push(elem62);
           }
