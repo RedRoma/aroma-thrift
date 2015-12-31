@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.notifications
-namespace cocoa BananaNotifications_
-namespace cpp   aroma.banana.thrift.notifications
+namespace java  tech.aroma.banana.thrift.events
+namespace cocoa BananaEvents_
+namespace cpp   aroma.banana.thrift.events
 
 /*
  * Defined in this File are the Banana Service Events

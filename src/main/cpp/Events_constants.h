@@ -9,7 +9,7 @@
 
 #include "Events_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace events {
 
 class EventsConstants {
  public:

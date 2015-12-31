@@ -39,7 +39,7 @@ typedef  ::aroma::banana::thrift::Urgency::type Urgency;
 
 typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
 
-typedef class  ::aroma::banana::thrift::notifications::Event Event;
+typedef class  ::aroma::banana::thrift::events::Event Event;
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 

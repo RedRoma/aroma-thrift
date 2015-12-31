@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace events {
 
 
 ApplicationTokenRenewed::~ApplicationTokenRenewed() throw() {

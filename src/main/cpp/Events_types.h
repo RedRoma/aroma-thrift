@@ -19,7 +19,7 @@
 #include "Banana_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace events {
 
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 

@@ -39,7 +39,7 @@ typedef int NotificationService_Urgency;
 
 typedef BananaChannels_BananaChannel * NotificationService_BananaChannel;
 
-typedef BananaNotifications_Event * NotificationService_Event;
+typedef BananaEvents_Event * NotificationService_Event;
 
 typedef BananaException_AccountAlreadyExistsException * NotificationService_AccountAlreadyExistsException;
 

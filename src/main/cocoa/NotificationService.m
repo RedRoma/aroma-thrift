@@ -160,11 +160,11 @@
   __token_isset = NO;
 }
 
-- (BananaNotifications_Event *) event {
+- (BananaEvents_Event *) event {
   return [[__event retain_stub] autorelease_stub];
 }
 
-- (void) setEvent: (BananaNotifications_Event *) event {
+- (void) setEvent: (BananaEvents_Event *) event {
   [event retain_stub];
   [__event release_stub];
   __event = event;
@@ -229,7 +229,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_Event *fieldValue = [[BananaNotifications_Event alloc] init];
+          BananaEvents_Event *fieldValue = [[BananaEvents_Event alloc] init];
           [fieldValue read: inProtocol];
           [self setEvent: fieldValue];
           [fieldValue release_stub];

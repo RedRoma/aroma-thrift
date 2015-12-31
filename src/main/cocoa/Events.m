@@ -23,7 +23,7 @@
 
 #import "Events.h"
 
-@implementation BananaNotifications_ApplicationTokenRenewed
+@implementation BananaEvents_ApplicationTokenRenewed
 
 - (id) init
 {
@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -142,10 +142,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ApplicationTokenRenewed class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_ApplicationTokenRenewed class]]) {
     return NO;
   }
-  BananaNotifications_ApplicationTokenRenewed *other = (BananaNotifications_ApplicationTokenRenewed *)anObject;
+  BananaEvents_ApplicationTokenRenewed *other = (BananaEvents_ApplicationTokenRenewed *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -398,7 +398,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRenewed("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationTokenRenewed("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",user:"];
@@ -415,7 +415,7 @@
 
 @end
 
-@implementation BananaNotifications_ApplicationTokenRegenerated
+@implementation BananaEvents_ApplicationTokenRegenerated
 
 - (id) init
 {
@@ -427,7 +427,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaNotifications_User) user applicationToken: (BananaNotifications_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -534,10 +534,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ApplicationTokenRegenerated class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_ApplicationTokenRegenerated class]]) {
     return NO;
   }
-  BananaNotifications_ApplicationTokenRegenerated *other = (BananaNotifications_ApplicationTokenRegenerated *)anObject;
+  BananaEvents_ApplicationTokenRegenerated *other = (BananaEvents_ApplicationTokenRegenerated *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -790,7 +790,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationTokenRegenerated("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationTokenRegenerated("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",user:"];
@@ -807,7 +807,7 @@
 
 @end
 
-@implementation BananaNotifications_ApplicationSentMessage
+@implementation BananaEvents_ApplicationSentMessage
 
 - (id) init
 {
@@ -910,10 +910,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_ApplicationSentMessage class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_ApplicationSentMessage class]]) {
     return NO;
   }
-  BananaNotifications_ApplicationSentMessage *other = (BananaNotifications_ApplicationSentMessage *)anObject;
+  BananaEvents_ApplicationSentMessage *other = (BananaEvents_ApplicationSentMessage *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1123,7 +1123,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_ApplicationSentMessage("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationSentMessage("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",messageSentByApplication:"];
@@ -1138,7 +1138,7 @@
 
 @end
 
-@implementation BananaNotifications_HealthCheckFailed
+@implementation BananaEvents_HealthCheckFailed
 
 - (id) init
 {
@@ -1241,10 +1241,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckFailed class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_HealthCheckFailed class]]) {
     return NO;
   }
-  BananaNotifications_HealthCheckFailed *other = (BananaNotifications_HealthCheckFailed *)anObject;
+  BananaEvents_HealthCheckFailed *other = (BananaEvents_HealthCheckFailed *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1452,7 +1452,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckFailed("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_HealthCheckFailed("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",hostname:"];
@@ -1467,7 +1467,7 @@
 
 @end
 
-@implementation BananaNotifications_HealthCheckBackToNormal
+@implementation BananaEvents_HealthCheckBackToNormal
 
 - (id) init
 {
@@ -1554,10 +1554,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckBackToNormal class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_HealthCheckBackToNormal class]]) {
     return NO;
   }
-  BananaNotifications_HealthCheckBackToNormal *other = (BananaNotifications_HealthCheckBackToNormal *)anObject;
+  BananaEvents_HealthCheckBackToNormal *other = (BananaEvents_HealthCheckBackToNormal *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1724,7 +1724,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckBackToNormal("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_HealthCheckBackToNormal("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
@@ -1737,7 +1737,7 @@
 
 @end
 
-@implementation BananaNotifications_OwnerApprovedRequest
+@implementation BananaEvents_OwnerApprovedRequest
 
 - (id) init
 {
@@ -1749,7 +1749,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaNotifications_User) owner
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1840,10 +1840,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_OwnerApprovedRequest class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_OwnerApprovedRequest class]]) {
     return NO;
   }
-  BananaNotifications_OwnerApprovedRequest *other = (BananaNotifications_OwnerApprovedRequest *)anObject;
+  BananaEvents_OwnerApprovedRequest *other = (BananaEvents_OwnerApprovedRequest *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2053,7 +2053,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_OwnerApprovedRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_OwnerApprovedRequest("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
@@ -2068,7 +2068,7 @@
 
 @end
 
-@implementation BananaNotifications_EventType
+@implementation BananaEvents_EventType
 
 - (id) init
 {
@@ -2078,7 +2078,7 @@
   return self;
 }
 
-- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest
+- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest
 {
   self = [super init];
   __healthCheckFailed = [healthCheckFailed retain_stub];
@@ -2201,10 +2201,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_EventType class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_EventType class]]) {
     return NO;
   }
-  BananaNotifications_EventType *other = (BananaNotifications_EventType *)anObject;
+  BananaEvents_EventType *other = (BananaEvents_EventType *)anObject;
   if ((__healthCheckFailed_isset != other->__healthCheckFailed_isset) ||
       (__healthCheckFailed_isset && ((__healthCheckFailed || other->__healthCheckFailed) && ![__healthCheckFailed isEqual:other->__healthCheckFailed]))) {
     return NO;
@@ -2243,11 +2243,11 @@
   [super dealloc_stub];
 }
 
-- (BananaNotifications_HealthCheckFailed *) healthCheckFailed {
+- (BananaEvents_HealthCheckFailed *) healthCheckFailed {
   return [[__healthCheckFailed retain_stub] autorelease_stub];
 }
 
-- (void) setHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed {
+- (void) setHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed {
   [healthCheckFailed retain_stub];
   [__healthCheckFailed release_stub];
   __healthCheckFailed = healthCheckFailed;
@@ -2264,11 +2264,11 @@
   __healthCheckFailed_isset = NO;
 }
 
-- (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal {
+- (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
   return [[__healthCheckBackToNormal retain_stub] autorelease_stub];
 }
 
-- (void) setHealthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal {
+- (void) setHealthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
   [healthCheckBackToNormal retain_stub];
   [__healthCheckBackToNormal release_stub];
   __healthCheckBackToNormal = healthCheckBackToNormal;
@@ -2285,11 +2285,11 @@
   __healthCheckBackToNormal_isset = NO;
 }
 
-- (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed {
+- (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
   return [[__applicationTokenRenewed retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed {
+- (void) setApplicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
   [applicationTokenRenewed retain_stub];
   [__applicationTokenRenewed release_stub];
   __applicationTokenRenewed = applicationTokenRenewed;
@@ -2306,11 +2306,11 @@
   __applicationTokenRenewed_isset = NO;
 }
 
-- (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+- (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
   return [[__applicationTokenRegenerated retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+- (void) setApplicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
   [applicationTokenRegenerated retain_stub];
   [__applicationTokenRegenerated release_stub];
   __applicationTokenRegenerated = applicationTokenRegenerated;
@@ -2327,11 +2327,11 @@
   __applicationTokenRegenerated_isset = NO;
 }
 
-- (BananaNotifications_ApplicationSentMessage *) applicationSentMessage {
+- (BananaEvents_ApplicationSentMessage *) applicationSentMessage {
   return [[__applicationSentMessage retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage {
+- (void) setApplicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage {
   [applicationSentMessage retain_stub];
   [__applicationSentMessage release_stub];
   __applicationSentMessage = applicationSentMessage;
@@ -2348,11 +2348,11 @@
   __applicationSentMessage_isset = NO;
 }
 
-- (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest {
+- (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
   return [[__ownerApprovedRequest retain_stub] autorelease_stub];
 }
 
-- (void) setOwnerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest {
+- (void) setOwnerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
   [ownerApprovedRequest retain_stub];
   [__ownerApprovedRequest release_stub];
   __ownerApprovedRequest = ownerApprovedRequest;
@@ -2386,7 +2386,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_HealthCheckFailed *fieldValue = [[BananaNotifications_HealthCheckFailed alloc] init];
+          BananaEvents_HealthCheckFailed *fieldValue = [[BananaEvents_HealthCheckFailed alloc] init];
           [fieldValue read: inProtocol];
           [self setHealthCheckFailed: fieldValue];
           [fieldValue release_stub];
@@ -2396,7 +2396,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_HealthCheckBackToNormal *fieldValue = [[BananaNotifications_HealthCheckBackToNormal alloc] init];
+          BananaEvents_HealthCheckBackToNormal *fieldValue = [[BananaEvents_HealthCheckBackToNormal alloc] init];
           [fieldValue read: inProtocol];
           [self setHealthCheckBackToNormal: fieldValue];
           [fieldValue release_stub];
@@ -2406,7 +2406,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_ApplicationTokenRenewed *fieldValue = [[BananaNotifications_ApplicationTokenRenewed alloc] init];
+          BananaEvents_ApplicationTokenRenewed *fieldValue = [[BananaEvents_ApplicationTokenRenewed alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationTokenRenewed: fieldValue];
           [fieldValue release_stub];
@@ -2416,7 +2416,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_ApplicationTokenRegenerated *fieldValue = [[BananaNotifications_ApplicationTokenRegenerated alloc] init];
+          BananaEvents_ApplicationTokenRegenerated *fieldValue = [[BananaEvents_ApplicationTokenRegenerated alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationTokenRegenerated: fieldValue];
           [fieldValue release_stub];
@@ -2426,7 +2426,7 @@
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_ApplicationSentMessage *fieldValue = [[BananaNotifications_ApplicationSentMessage alloc] init];
+          BananaEvents_ApplicationSentMessage *fieldValue = [[BananaEvents_ApplicationSentMessage alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationSentMessage: fieldValue];
           [fieldValue release_stub];
@@ -2436,7 +2436,7 @@
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_OwnerApprovedRequest *fieldValue = [[BananaNotifications_OwnerApprovedRequest alloc] init];
+          BananaEvents_OwnerApprovedRequest *fieldValue = [[BananaEvents_OwnerApprovedRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setOwnerApprovedRequest: fieldValue];
           [fieldValue release_stub];
@@ -2506,7 +2506,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_EventType("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_EventType("];
   [ms appendString: @"healthCheckFailed:"];
   [ms appendFormat: @"%@", __healthCheckFailed];
   [ms appendString: @",healthCheckBackToNormal:"];
@@ -2525,7 +2525,7 @@
 
 @end
 
-@implementation BananaNotifications_Event
+@implementation BananaEvents_Event
 
 - (id) init
 {
@@ -2535,7 +2535,7 @@
   return self;
 }
 
-- (id) initWithEventType: (BananaNotifications_EventType *) eventType timestamp: (BananaNotifications_timestamp) timestamp
+- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp
 {
   self = [super init];
   __eventType = [eventType retain_stub];
@@ -2594,10 +2594,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaNotifications_Event class]]) {
+  if (![anObject isKindOfClass:[BananaEvents_Event class]]) {
     return NO;
   }
-  BananaNotifications_Event *other = (BananaNotifications_Event *)anObject;
+  BananaEvents_Event *other = (BananaEvents_Event *)anObject;
   if ((__eventType_isset != other->__eventType_isset) ||
       (__eventType_isset && ((__eventType || other->__eventType) && ![__eventType isEqual:other->__eventType]))) {
     return NO;
@@ -2615,11 +2615,11 @@
   [super dealloc_stub];
 }
 
-- (BananaNotifications_EventType *) eventType {
+- (BananaEvents_EventType *) eventType {
   return [[__eventType retain_stub] autorelease_stub];
 }
 
-- (void) setEventType: (BananaNotifications_EventType *) eventType {
+- (void) setEventType: (BananaEvents_EventType *) eventType {
   [eventType retain_stub];
   [__eventType release_stub];
   __eventType = eventType;
@@ -2670,7 +2670,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaNotifications_EventType *fieldValue = [[BananaNotifications_EventType alloc] init];
+          BananaEvents_EventType *fieldValue = [[BananaEvents_EventType alloc] init];
           [fieldValue read: inProtocol];
           [self setEventType: fieldValue];
           [fieldValue release_stub];
@@ -2718,7 +2718,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_Event("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_Event("];
   [ms appendString: @"eventType:"];
   [ms appendFormat: @"%@", __eventType];
   [ms appendString: @",timestamp:"];
@@ -2730,7 +2730,7 @@
 @end
 
 
-@implementation BananaNotifications_EventsConstants
+@implementation BananaEvents_EventsConstants
 + (void) initialize {
 }
 @end

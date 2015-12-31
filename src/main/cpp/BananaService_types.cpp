@@ -4378,7 +4378,7 @@ GetActivityResponse::~GetActivityResponse() throw() {
 }
 
 
-void GetActivityResponse::__set_events(const std::vector< ::aroma::banana::thrift::notifications::Event> & val) {
+void GetActivityResponse::__set_events(const std::vector< ::aroma::banana::thrift::events::Event> & val) {
   this->events = val;
 }
 
@@ -4443,7 +4443,7 @@ uint32_t GetActivityResponse::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeFieldBegin("events", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->events.size()));
-    std::vector< ::aroma::banana::thrift::notifications::Event> ::const_iterator _iter123;
+    std::vector< ::aroma::banana::thrift::events::Event> ::const_iterator _iter123;
     for (_iter123 = this->events.begin(); _iter123 != this->events.end(); ++_iter123)
     {
       xfer += (*_iter123).write(oprot);

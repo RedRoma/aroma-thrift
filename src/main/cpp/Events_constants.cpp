@@ -6,7 +6,7 @@
  */
 #include "Events_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace notifications {
+namespace aroma { namespace banana { namespace thrift { namespace events {
 
 const EventsConstants g_Events_constants;
 

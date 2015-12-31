@@ -2218,11 +2218,11 @@ class GetActivityResponse {
   }
 
   virtual ~GetActivityResponse() throw();
-  std::vector< ::aroma::banana::thrift::notifications::Event>  events;
+  std::vector< ::aroma::banana::thrift::events::Event>  events;
 
   _GetActivityResponse__isset __isset;
 
-  void __set_events(const std::vector< ::aroma::banana::thrift::notifications::Event> & val);
+  void __set_events(const std::vector< ::aroma::banana::thrift::events::Event> & val);
 
   bool operator == (const GetActivityResponse & rhs) const
   {

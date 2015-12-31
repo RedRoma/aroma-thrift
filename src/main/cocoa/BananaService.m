@@ -8800,7 +8800,7 @@
           int _i36;
           for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            BananaNotifications_Event *_elem37 = [[BananaNotifications_Event alloc] init];
+            BananaEvents_Event *_elem37 = [[BananaEvents_Event alloc] init];
             [_elem37 read: inProtocol];
             [fieldValue addObject: _elem37];
             [_elem37 release_stub];
