@@ -33,103 +33,6 @@ typedef Banana_User * BananaNotifications_User;
 
 typedef Banana_Application * BananaNotifications_Application;
 
-@interface BananaNotifications_HealthCheckFailed : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  NSString * __hostname;
-  NSString * __applicationId;
-  NSString * __applicationName;
-
-  BOOL __message_isset;
-  BOOL __hostname_isset;
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) hostname;
-- (void) setHostname: (NSString *) hostname;
-#endif
-- (BOOL) hostnameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-@end
-
-@interface BananaNotifications_HealthCheckBackToNormal : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  NSString * __applicationId;
-  NSString * __applicationName;
-
-  BOOL __message_isset;
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-@end
-
 @interface BananaNotifications_ApplicationTokenRenewed : NSObject <TBase, NSCoding> {
   NSString * __message;
   BananaNotifications_User __user;
@@ -292,6 +195,103 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) setMessageSentByApplication: (Banana_Message *) messageSentByApplication;
 #endif
 - (BOOL) messageSentByApplicationIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+@end
+
+@interface BananaNotifications_HealthCheckFailed : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  NSString * __hostname;
+  NSString * __applicationId;
+  NSString * __applicationName;
+
+  BOOL __message_isset;
+  BOOL __hostname_isset;
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) hostname;
+- (void) setHostname: (NSString *) hostname;
+#endif
+- (BOOL) hostnameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+@end
+
+@interface BananaNotifications_HealthCheckBackToNormal : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  NSString * __applicationId;
+  NSString * __applicationName;
+
+  BOOL __message_isset;
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) applicationId;

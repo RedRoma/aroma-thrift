@@ -23,605 +23,6 @@
 
 #import "Events.h"
 
-@implementation BananaNotifications_HealthCheckFailed
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.message = @"Application failed a Health Check";
-
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __hostname = [hostname retain_stub];
-  __hostname_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"hostname"])
-  {
-    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
-    __hostname_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationName"])
-  {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__hostname_isset)
-  {
-    [encoder encodeObject: __hostname forKey: @"hostname"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__applicationName_isset)
-  {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
-  if (__hostname_isset)
-  {
-    hash = (hash * 31) ^ [__hostname hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
-  {
-    hash = (hash * 31) ^ [__applicationName hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckFailed class]]) {
-    return NO;
-  }
-  BananaNotifications_HealthCheckFailed *other = (BananaNotifications_HealthCheckFailed *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__hostname_isset != other->__hostname_isset) ||
-      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__hostname release_stub];
-  [__applicationId release_stub];
-  [__applicationName release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (NSString *) hostname {
-  return [[__hostname retain_stub] autorelease_stub];
-}
-
-- (void) setHostname: (NSString *) hostname {
-  [hostname retain_stub];
-  [__hostname release_stub];
-  __hostname = hostname;
-  __hostname_isset = YES;
-}
-
-- (BOOL) hostnameIsSet {
-  return __hostname_isset;
-}
-
-- (void) unsetHostname {
-  [__hostname release_stub];
-  __hostname = nil;
-  __hostname_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
-}
-
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
-}
-
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setHostname: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"HealthCheckFailed"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__hostname_isset) {
-    if (__hostname != nil) {
-      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __hostname];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckFailed("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",hostname:"];
-  [ms appendFormat: @"\"%@\"", __hostname];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation BananaNotifications_HealthCheckBackToNormal
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.message = @"Application's Health is back to normal";
-
-#endif
-  return self;
-}
-
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
-{
-  self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
-  __applicationId = [applicationId retain_stub];
-  __applicationId_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"message"])
-  {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationId"])
-  {
-    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
-    __applicationId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationName"])
-  {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__message_isset)
-  {
-    [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__applicationId_isset)
-  {
-    [encoder encodeObject: __applicationId forKey: @"applicationId"];
-  }
-  if (__applicationName_isset)
-  {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
-  {
-    hash = (hash * 31) ^ [__message hash];
-  }
-  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
-  if (__applicationId_isset)
-  {
-    hash = (hash * 31) ^ [__applicationId hash];
-  }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
-  {
-    hash = (hash * 31) ^ [__applicationName hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckBackToNormal class]]) {
-    return NO;
-  }
-  BananaNotifications_HealthCheckBackToNormal *other = (BananaNotifications_HealthCheckBackToNormal *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__applicationId_isset != other->__applicationId_isset) ||
-      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
-    return NO;
-  }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__message release_stub];
-  [__applicationId release_stub];
-  [__applicationName release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
-}
-
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
-}
-
-- (BOOL) messageIsSet {
-  return __message_isset;
-}
-
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
-}
-
-- (NSString *) applicationId {
-  return [[__applicationId retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationId: (NSString *) applicationId {
-  [applicationId retain_stub];
-  [__applicationId release_stub];
-  __applicationId = applicationId;
-  __applicationId_isset = YES;
-}
-
-- (BOOL) applicationIdIsSet {
-  return __applicationId_isset;
-}
-
-- (void) unsetApplicationId {
-  [__applicationId release_stub];
-  __applicationId = nil;
-  __applicationId_isset = NO;
-}
-
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
-}
-
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
-}
-
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"HealthCheckBackToNormal"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationId_isset) {
-    if (__applicationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __applicationId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckBackToNormal("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",applicationId:"];
-  [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation BananaNotifications_ApplicationTokenRenewed
 
 - (id) init
@@ -1727,6 +1128,605 @@
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",messageSentByApplication:"];
   [ms appendFormat: @"%@", __messageSentByApplication];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaNotifications_HealthCheckFailed
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Application failed a Health Check";
+
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __hostname = [hostname retain_stub];
+  __hostname_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostname"])
+  {
+    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
+    __hostname_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__hostname_isset)
+  {
+    [encoder encodeObject: __hostname forKey: @"hostname"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
+  if (__hostname_isset)
+  {
+    hash = (hash * 31) ^ [__hostname hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckFailed class]]) {
+    return NO;
+  }
+  BananaNotifications_HealthCheckFailed *other = (BananaNotifications_HealthCheckFailed *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__hostname_isset != other->__hostname_isset) ||
+      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__hostname release_stub];
+  [__applicationId release_stub];
+  [__applicationName release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (NSString *) hostname {
+  return [[__hostname retain_stub] autorelease_stub];
+}
+
+- (void) setHostname: (NSString *) hostname {
+  [hostname retain_stub];
+  [__hostname release_stub];
+  __hostname = hostname;
+  __hostname_isset = YES;
+}
+
+- (BOOL) hostnameIsSet {
+  return __hostname_isset;
+}
+
+- (void) unsetHostname {
+  [__hostname release_stub];
+  __hostname = nil;
+  __hostname_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHostname: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"HealthCheckFailed"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostname_isset) {
+    if (__hostname != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __hostname];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckFailed("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",hostname:"];
+  [ms appendFormat: @"\"%@\"", __hostname];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaNotifications_HealthCheckBackToNormal
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Application's Health is back to normal";
+
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaNotifications_HealthCheckBackToNormal class]]) {
+    return NO;
+  }
+  BananaNotifications_HealthCheckBackToNormal *other = (BananaNotifications_HealthCheckBackToNormal *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__applicationId release_stub];
+  [__applicationName release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"HealthCheckBackToNormal"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_HealthCheckBackToNormal("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",applicationName:"];

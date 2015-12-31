@@ -33,147 +33,19 @@ typedef class  ::aroma::banana::thrift::User User;
 
 typedef class  ::aroma::banana::thrift::Application Application;
 
-class HealthCheckFailed;
-
-class HealthCheckBackToNormal;
-
 class ApplicationTokenRenewed;
 
 class ApplicationTokenRegenerated;
 
 class ApplicationSentMessage;
 
+class HealthCheckFailed;
+
+class HealthCheckBackToNormal;
+
 class EventType;
 
 class Event;
-
-typedef struct _HealthCheckFailed__isset {
-  _HealthCheckFailed__isset() : message(true), hostname(false), applicationId(false), applicationName(false) {}
-  bool message :1;
-  bool hostname :1;
-  bool applicationId :1;
-  bool applicationName :1;
-} _HealthCheckFailed__isset;
-
-class HealthCheckFailed {
- public:
-
-  HealthCheckFailed(const HealthCheckFailed&);
-  HealthCheckFailed& operator=(const HealthCheckFailed&);
-  HealthCheckFailed() : message("Application failed a Health Check"), hostname(), applicationId(), applicationName() {
-  }
-
-  virtual ~HealthCheckFailed() throw();
-  std::string message;
-  std::string hostname;
-  std::string applicationId;
-  std::string applicationName;
-
-  _HealthCheckFailed__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_hostname(const std::string& val);
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_applicationName(const std::string& val);
-
-  bool operator == (const HealthCheckFailed & rhs) const
-  {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (__isset.hostname != rhs.__isset.hostname)
-      return false;
-    else if (__isset.hostname && !(hostname == rhs.hostname))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    return true;
-  }
-  bool operator != (const HealthCheckFailed &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const HealthCheckFailed & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(HealthCheckFailed &a, HealthCheckFailed &b);
-
-inline std::ostream& operator<<(std::ostream& out, const HealthCheckFailed& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _HealthCheckBackToNormal__isset {
-  _HealthCheckBackToNormal__isset() : message(true), applicationId(false), applicationName(false) {}
-  bool message :1;
-  bool applicationId :1;
-  bool applicationName :1;
-} _HealthCheckBackToNormal__isset;
-
-class HealthCheckBackToNormal {
- public:
-
-  HealthCheckBackToNormal(const HealthCheckBackToNormal&);
-  HealthCheckBackToNormal& operator=(const HealthCheckBackToNormal&);
-  HealthCheckBackToNormal() : message("Application's Health is back to normal"), applicationId(), applicationName() {
-  }
-
-  virtual ~HealthCheckBackToNormal() throw();
-  std::string message;
-  std::string applicationId;
-  std::string applicationName;
-
-  _HealthCheckBackToNormal__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_applicationId(const std::string& val);
-
-  void __set_applicationName(const std::string& val);
-
-  bool operator == (const HealthCheckBackToNormal & rhs) const
-  {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    return true;
-  }
-  bool operator != (const HealthCheckBackToNormal &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const HealthCheckBackToNormal & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(HealthCheckBackToNormal &a, HealthCheckBackToNormal &b);
-
-inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal& obj)
-{
-  obj.printTo(out);
-  return out;
-}
 
 typedef struct _ApplicationTokenRenewed__isset {
   _ApplicationTokenRenewed__isset() : message(true), user(false), applicationToken(false), applicationId(false), applicationName(false) {}
@@ -386,6 +258,134 @@ class ApplicationSentMessage {
 void swap(ApplicationSentMessage &a, ApplicationSentMessage &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ApplicationSentMessage& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _HealthCheckFailed__isset {
+  _HealthCheckFailed__isset() : message(true), hostname(false), applicationId(false), applicationName(false) {}
+  bool message :1;
+  bool hostname :1;
+  bool applicationId :1;
+  bool applicationName :1;
+} _HealthCheckFailed__isset;
+
+class HealthCheckFailed {
+ public:
+
+  HealthCheckFailed(const HealthCheckFailed&);
+  HealthCheckFailed& operator=(const HealthCheckFailed&);
+  HealthCheckFailed() : message("Application failed a Health Check"), hostname(), applicationId(), applicationName() {
+  }
+
+  virtual ~HealthCheckFailed() throw();
+  std::string message;
+  std::string hostname;
+  std::string applicationId;
+  std::string applicationName;
+
+  _HealthCheckFailed__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_hostname(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
+  bool operator == (const HealthCheckFailed & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (__isset.hostname != rhs.__isset.hostname)
+      return false;
+    else if (__isset.hostname && !(hostname == rhs.hostname))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    return true;
+  }
+  bool operator != (const HealthCheckFailed &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HealthCheckFailed & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HealthCheckFailed &a, HealthCheckFailed &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HealthCheckFailed& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _HealthCheckBackToNormal__isset {
+  _HealthCheckBackToNormal__isset() : message(true), applicationId(false), applicationName(false) {}
+  bool message :1;
+  bool applicationId :1;
+  bool applicationName :1;
+} _HealthCheckBackToNormal__isset;
+
+class HealthCheckBackToNormal {
+ public:
+
+  HealthCheckBackToNormal(const HealthCheckBackToNormal&);
+  HealthCheckBackToNormal& operator=(const HealthCheckBackToNormal&);
+  HealthCheckBackToNormal() : message("Application's Health is back to normal"), applicationId(), applicationName() {
+  }
+
+  virtual ~HealthCheckBackToNormal() throw();
+  std::string message;
+  std::string applicationId;
+  std::string applicationName;
+
+  _HealthCheckBackToNormal__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
+  bool operator == (const HealthCheckBackToNormal & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    return true;
+  }
+  bool operator != (const HealthCheckBackToNormal &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const HealthCheckBackToNormal & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(HealthCheckBackToNormal &a, HealthCheckBackToNormal &b);
+
+inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal& obj)
 {
   obj.printTo(out);
   return out;

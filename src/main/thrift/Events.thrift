@@ -18,30 +18,6 @@ typedef Banana.timestamp timestamp;
 typedef Banana.User User
 typedef Banana.Application Application
 
-/**
- * A Health Poke returned a failure.
- */
-struct HealthCheckFailed
-{
-    1: optional string message = "Application failed a Health Check";
-    /** May include the name of the host that went down. */
-    2: optional string hostname;
-    /** The application that failed the health check. */
-    3: string applicationId;
-    /** The Human-Friendly name of the Application. */
-    4: string applicationName;
-}
-
-/**
- * An Application that was previously unhealthy
- * is now healthy.
- */
-struct HealthCheckBackToNormal
-{
-    1: optional string message = "Application's Health is back to normal";
-    2: string applicationId;
-    3: string applicationName;
-}
 
 /**
  * An Application's Token has been renewed.
@@ -83,6 +59,32 @@ struct ApplicationSentMessage
     3: string applicationId;
     4: string applicationName;
 }
+
+/**
+ * A Health Poke returned a failure.
+ */
+struct HealthCheckFailed
+{
+    1: optional string message = "Application failed a Health Check";
+    /** May include the name of the host that went down. */
+    2: optional string hostname;
+    /** The application that failed the health check. */
+    3: string applicationId;
+    /** The Human-Friendly name of the Application. */
+    4: string applicationName;
+}
+
+/**
+ * An Application that was previously unhealthy
+ * is now healthy.
+ */
+struct HealthCheckBackToNormal
+{
+    1: optional string message = "Application's Health is back to normal";
+    2: string applicationId;
+    3: string applicationName;
+}
+
 
 /**
  * An Event represents the different types of events that can

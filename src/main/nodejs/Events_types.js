@@ -12,186 +12,6 @@ var Banana_ttypes = require('./Banana_types')
 
 
 var ttypes = module.exports = {};
-HealthCheckFailed = module.exports.HealthCheckFailed = function(args) {
-  this.message = 'Application failed a Health Check';
-  this.hostname = null;
-  this.applicationId = null;
-  this.applicationName = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.hostname !== undefined && args.hostname !== null) {
-      this.hostname = args.hostname;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-  }
-};
-HealthCheckFailed.prototype = {};
-HealthCheckFailed.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.hostname = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-HealthCheckFailed.prototype.write = function(output) {
-  output.writeStructBegin('HealthCheckFailed');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.hostname !== null && this.hostname !== undefined) {
-    output.writeFieldBegin('hostname', Thrift.Type.STRING, 2);
-    output.writeString(this.hostname);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-HealthCheckBackToNormal = module.exports.HealthCheckBackToNormal = function(args) {
-  this.message = 'Application\'s Health is back to normal';
-  this.applicationId = null;
-  this.applicationName = null;
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-    if (args.applicationId !== undefined && args.applicationId !== null) {
-      this.applicationId = args.applicationId;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-  }
-};
-HealthCheckBackToNormal.prototype = {};
-HealthCheckBackToNormal.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-HealthCheckBackToNormal.prototype.write = function(output) {
-  output.writeStructBegin('HealthCheckBackToNormal');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  if (this.applicationId !== null && this.applicationId !== undefined) {
-    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
-    output.writeString(this.applicationId);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 ApplicationTokenRenewed = module.exports.ApplicationTokenRenewed = function(args) {
   this.message = 'Application Token has been renewed';
   this.user = null;
@@ -515,6 +335,186 @@ ApplicationSentMessage.prototype.write = function(output) {
   }
   if (this.applicationName !== null && this.applicationName !== undefined) {
     output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HealthCheckFailed = module.exports.HealthCheckFailed = function(args) {
+  this.message = 'Application failed a Health Check';
+  this.hostname = null;
+  this.applicationId = null;
+  this.applicationName = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+  }
+};
+HealthCheckFailed.prototype = {};
+HealthCheckFailed.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+HealthCheckFailed.prototype.write = function(output) {
+  output.writeStructBegin('HealthCheckFailed');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 2);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+HealthCheckBackToNormal = module.exports.HealthCheckBackToNormal = function(args) {
+  this.message = 'Application\'s Health is back to normal';
+  this.applicationId = null;
+  this.applicationName = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+  }
+};
+HealthCheckBackToNormal.prototype = {};
+HealthCheckBackToNormal.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+HealthCheckBackToNormal.prototype.write = function(output) {
+  output.writeStructBegin('HealthCheckBackToNormal');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
     output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
