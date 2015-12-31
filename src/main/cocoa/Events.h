@@ -311,23 +311,23 @@ typedef Banana_Application * BananaNotifications_Application;
   NSString * __message;
   NSString * __applicationId;
   NSString * __applicationName;
-  NSString * __ownerId;
+  BananaNotifications_User __owner;
 
   BOOL __message_isset;
   BOOL __applicationId_isset;
   BOOL __applicationName_isset;
-  BOOL __ownerId_isset;
+  BOOL __owner_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
+@property (nonatomic, retain, getter=owner, setter=setOwner:) BananaNotifications_User owner;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName ownerId: (NSString *) ownerId;
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaNotifications_User) owner;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -353,10 +353,10 @@ typedef Banana_Application * BananaNotifications_Application;
 - (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) ownerId;
-- (void) setOwnerId: (NSString *) ownerId;
+- (BananaNotifications_User) owner;
+- (void) setOwner: (BananaNotifications_User) owner;
 #endif
-- (BOOL) ownerIdIsSet;
+- (BOOL) ownerIsSet;
 
 @end
 

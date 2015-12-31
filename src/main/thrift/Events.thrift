@@ -94,8 +94,8 @@ struct OwnerApprovedRequest
     1: optional string message = "Application Owner approved your request";
     2: string applicationId;
     3: string applicationName;
-    /** userId of the Owner who approved. */
-    4: string ownerId;
+    /** The Owner who approved. */
+    4: User owner;
 }
 
 /**

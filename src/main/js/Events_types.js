@@ -520,7 +520,7 @@ OwnerApprovedRequest = function(args) {
   this.message = 'Application Owner approved your request';
   this.applicationId = null;
   this.applicationName = null;
-  this.ownerId = null;
+  this.owner = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -531,8 +531,8 @@ OwnerApprovedRequest = function(args) {
     if (args.applicationName !== undefined && args.applicationName !== null) {
       this.applicationName = args.applicationName;
     }
-    if (args.ownerId !== undefined && args.ownerId !== null) {
-      this.ownerId = args.ownerId;
+    if (args.owner !== undefined && args.owner !== null) {
+      this.owner = new User(args.owner);
     }
   }
 };
@@ -572,8 +572,9 @@ OwnerApprovedRequest.prototype.read = function(input) {
       }
       break;
       case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.ownerId = input.readString().value;
+      if (ftype == Thrift.Type.STRUCT) {
+        this.owner = new User();
+        this.owner.read(input);
       } else {
         input.skip(ftype);
       }
@@ -604,9 +605,9 @@ OwnerApprovedRequest.prototype.write = function(output) {
     output.writeString(this.applicationName);
     output.writeFieldEnd();
   }
-  if (this.ownerId !== null && this.ownerId !== undefined) {
-    output.writeFieldBegin('ownerId', Thrift.Type.STRING, 4);
-    output.writeString(this.ownerId);
+  if (this.owner !== null && this.owner !== undefined) {
+    output.writeFieldBegin('owner', Thrift.Type.STRUCT, 4);
+    this.owner.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

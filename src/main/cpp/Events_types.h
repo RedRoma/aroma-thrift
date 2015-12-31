@@ -394,11 +394,11 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
 }
 
 typedef struct _OwnerApprovedRequest__isset {
-  _OwnerApprovedRequest__isset() : message(true), applicationId(false), applicationName(false), ownerId(false) {}
+  _OwnerApprovedRequest__isset() : message(true), applicationId(false), applicationName(false), owner(false) {}
   bool message :1;
   bool applicationId :1;
   bool applicationName :1;
-  bool ownerId :1;
+  bool owner :1;
 } _OwnerApprovedRequest__isset;
 
 class OwnerApprovedRequest {
@@ -406,14 +406,14 @@ class OwnerApprovedRequest {
 
   OwnerApprovedRequest(const OwnerApprovedRequest&);
   OwnerApprovedRequest& operator=(const OwnerApprovedRequest&);
-  OwnerApprovedRequest() : message("Application Owner approved your request"), applicationId(), applicationName(), ownerId() {
+  OwnerApprovedRequest() : message("Application Owner approved your request"), applicationId(), applicationName() {
   }
 
   virtual ~OwnerApprovedRequest() throw();
   std::string message;
   std::string applicationId;
   std::string applicationName;
-  std::string ownerId;
+  User owner;
 
   _OwnerApprovedRequest__isset __isset;
 
@@ -423,7 +423,7 @@ class OwnerApprovedRequest {
 
   void __set_applicationName(const std::string& val);
 
-  void __set_ownerId(const std::string& val);
+  void __set_owner(const User& val);
 
   bool operator == (const OwnerApprovedRequest & rhs) const
   {
@@ -435,7 +435,7 @@ class OwnerApprovedRequest {
       return false;
     if (!(applicationName == rhs.applicationName))
       return false;
-    if (!(ownerId == rhs.ownerId))
+    if (!(owner == rhs.owner))
       return false;
     return true;
   }

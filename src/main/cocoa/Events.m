@@ -1749,7 +1749,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName ownerId: (NSString *) ownerId
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaNotifications_User) owner
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1758,8 +1758,8 @@
   __applicationId_isset = YES;
   __applicationName = [applicationName retain_stub];
   __applicationName_isset = YES;
-  __ownerId = [ownerId retain_stub];
-  __ownerId_isset = YES;
+  __owner = [owner retain_stub];
+  __owner_isset = YES;
   return self;
 }
 
@@ -1781,10 +1781,10 @@
     __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
     __applicationName_isset = YES;
   }
-  if ([decoder containsValueForKey: @"ownerId"])
+  if ([decoder containsValueForKey: @"owner"])
   {
-    __ownerId = [[decoder decodeObjectForKey: @"ownerId"] retain_stub];
-    __ownerId_isset = YES;
+    __owner = [[decoder decodeObjectForKey: @"owner"] retain_stub];
+    __owner_isset = YES;
   }
   return self;
 }
@@ -1803,9 +1803,9 @@
   {
     [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
-  if (__ownerId_isset)
+  if (__owner_isset)
   {
-    [encoder encodeObject: __ownerId forKey: @"ownerId"];
+    [encoder encodeObject: __owner forKey: @"owner"];
   }
 }
 
@@ -1827,10 +1827,10 @@
   {
     hash = (hash * 31) ^ [__applicationName hash];
   }
-  hash = (hash * 31) ^ __ownerId_isset ? 2654435761 : 0;
-  if (__ownerId_isset)
+  hash = (hash * 31) ^ __owner_isset ? 2654435761 : 0;
+  if (__owner_isset)
   {
-    hash = (hash * 31) ^ [__ownerId hash];
+    hash = (hash * 31) ^ [__owner hash];
   }
   return hash;
 }
@@ -1856,8 +1856,8 @@
       (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
-  if ((__ownerId_isset != other->__ownerId_isset) ||
-      (__ownerId_isset && ((__ownerId || other->__ownerId) && ![__ownerId isEqual:other->__ownerId]))) {
+  if ((__owner_isset != other->__owner_isset) ||
+      (__owner_isset && ((__owner || other->__owner) && ![__owner isEqual:other->__owner]))) {
     return NO;
   }
   return YES;
@@ -1868,7 +1868,7 @@
   [__message release_stub];
   [__applicationId release_stub];
   [__applicationName release_stub];
-  [__ownerId release_stub];
+  [__owner release_stub];
   [super dealloc_stub];
 }
 
@@ -1935,25 +1935,25 @@
   __applicationName_isset = NO;
 }
 
-- (NSString *) ownerId {
-  return [[__ownerId retain_stub] autorelease_stub];
+- (Banana_User *) owner {
+  return [[__owner retain_stub] autorelease_stub];
 }
 
-- (void) setOwnerId: (NSString *) ownerId {
-  [ownerId retain_stub];
-  [__ownerId release_stub];
-  __ownerId = ownerId;
-  __ownerId_isset = YES;
+- (void) setOwner: (Banana_User *) owner {
+  [owner retain_stub];
+  [__owner release_stub];
+  __owner = owner;
+  __owner_isset = YES;
 }
 
-- (BOOL) ownerIdIsSet {
-  return __ownerId_isset;
+- (BOOL) ownerIsSet {
+  return __owner_isset;
 }
 
-- (void) unsetOwnerId {
-  [__ownerId release_stub];
-  __ownerId = nil;
-  __ownerId_isset = NO;
+- (void) unsetOwner {
+  [__owner release_stub];
+  __owner = nil;
+  __owner_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1996,9 +1996,11 @@
         }
         break;
       case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setOwnerId: fieldValue];
+        if (fieldType == TType_STRUCT) {
+          Banana_User *fieldValue = [[Banana_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setOwner: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2035,10 +2037,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__ownerId_isset) {
-    if (__ownerId != nil) {
-      [outProtocol writeFieldBeginWithName: @"ownerId" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __ownerId];
+  if (__owner_isset) {
+    if (__owner != nil) {
+      [outProtocol writeFieldBeginWithName: @"owner" type: TType_STRUCT fieldID: 4];
+      [__owner write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2058,8 +2060,8 @@
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",applicationName:"];
   [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @",ownerId:"];
-  [ms appendFormat: @"\"%@\"", __ownerId];
+  [ms appendString: @",owner:"];
+  [ms appendFormat: @"%@", __owner];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

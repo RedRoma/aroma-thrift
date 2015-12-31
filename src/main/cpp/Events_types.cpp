@@ -799,8 +799,8 @@ void OwnerApprovedRequest::__set_applicationName(const std::string& val) {
   this->applicationName = val;
 }
 
-void OwnerApprovedRequest::__set_ownerId(const std::string& val) {
-  this->ownerId = val;
+void OwnerApprovedRequest::__set_owner(const User& val) {
+  this->owner = val;
 }
 
 uint32_t OwnerApprovedRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -849,9 +849,9 @@ uint32_t OwnerApprovedRequest::read(::apache::thrift::protocol::TProtocol* iprot
         }
         break;
       case 4:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->ownerId);
-          this->__isset.ownerId = true;
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->owner.read(iprot);
+          this->__isset.owner = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -886,8 +886,8 @@ uint32_t OwnerApprovedRequest::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("ownerId", ::apache::thrift::protocol::T_STRING, 4);
-  xfer += oprot->writeString(this->ownerId);
+  xfer += oprot->writeFieldBegin("owner", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += this->owner.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -900,7 +900,7 @@ void swap(OwnerApprovedRequest &a, OwnerApprovedRequest &b) {
   swap(a.message, b.message);
   swap(a.applicationId, b.applicationId);
   swap(a.applicationName, b.applicationName);
-  swap(a.ownerId, b.ownerId);
+  swap(a.owner, b.owner);
   swap(a.__isset, b.__isset);
 }
 
@@ -908,14 +908,14 @@ OwnerApprovedRequest::OwnerApprovedRequest(const OwnerApprovedRequest& other10) 
   message = other10.message;
   applicationId = other10.applicationId;
   applicationName = other10.applicationName;
-  ownerId = other10.ownerId;
+  owner = other10.owner;
   __isset = other10.__isset;
 }
 OwnerApprovedRequest& OwnerApprovedRequest::operator=(const OwnerApprovedRequest& other11) {
   message = other11.message;
   applicationId = other11.applicationId;
   applicationName = other11.applicationName;
-  ownerId = other11.ownerId;
+  owner = other11.owner;
   __isset = other11.__isset;
   return *this;
 }
@@ -925,7 +925,7 @@ void OwnerApprovedRequest::printTo(std::ostream& out) const {
   out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "applicationName=" << to_string(applicationName);
-  out << ", " << "ownerId=" << to_string(ownerId);
+  out << ", " << "owner=" << to_string(owner);
   out << ")";
 }
 
