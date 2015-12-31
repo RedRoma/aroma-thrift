@@ -523,12 +523,111 @@ HealthCheckBackToNormal.prototype.write = function(output) {
   return;
 };
 
+OwnerApprovedRequest = module.exports.OwnerApprovedRequest = function(args) {
+  this.message = 'Application Owner approved your request';
+  this.applicationId = null;
+  this.applicationName = null;
+  this.ownerId = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.ownerId !== undefined && args.ownerId !== null) {
+      this.ownerId = args.ownerId;
+    }
+  }
+};
+OwnerApprovedRequest.prototype = {};
+OwnerApprovedRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+OwnerApprovedRequest.prototype.write = function(output) {
+  output.writeStructBegin('OwnerApprovedRequest');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 3);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.ownerId !== null && this.ownerId !== undefined) {
+    output.writeFieldBegin('ownerId', Thrift.Type.STRING, 4);
+    output.writeString(this.ownerId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 EventType = module.exports.EventType = function(args) {
   this.healthCheckFailed = null;
   this.healthCheckBackToNormal = null;
   this.applicationTokenRenewed = null;
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
+  this.ownerApprovedRequest = null;
   if (args) {
     if (args.healthCheckFailed !== undefined && args.healthCheckFailed !== null) {
       this.healthCheckFailed = new ttypes.HealthCheckFailed(args.healthCheckFailed);
@@ -544,6 +643,9 @@ EventType = module.exports.EventType = function(args) {
     }
     if (args.applicationSentMessage !== undefined && args.applicationSentMessage !== null) {
       this.applicationSentMessage = new ttypes.ApplicationSentMessage(args.applicationSentMessage);
+    }
+    if (args.ownerApprovedRequest !== undefined && args.ownerApprovedRequest !== null) {
+      this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest(args.ownerApprovedRequest);
     }
   }
 };
@@ -601,6 +703,14 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest();
+        this.ownerApprovedRequest.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -635,6 +745,11 @@ EventType.prototype.write = function(output) {
   if (this.applicationSentMessage !== null && this.applicationSentMessage !== undefined) {
     output.writeFieldBegin('applicationSentMessage', Thrift.Type.STRUCT, 5);
     this.applicationSentMessage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.ownerApprovedRequest !== null && this.ownerApprovedRequest !== undefined) {
+    output.writeFieldBegin('ownerApprovedRequest', Thrift.Type.STRUCT, 6);
+    this.ownerApprovedRequest.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

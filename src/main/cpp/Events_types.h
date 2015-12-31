@@ -43,6 +43,8 @@ class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
 
+class OwnerApprovedRequest;
+
 class EventType;
 
 class Event;
@@ -391,13 +393,80 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
   return out;
 }
 
+typedef struct _OwnerApprovedRequest__isset {
+  _OwnerApprovedRequest__isset() : message(true), applicationId(false), applicationName(false), ownerId(false) {}
+  bool message :1;
+  bool applicationId :1;
+  bool applicationName :1;
+  bool ownerId :1;
+} _OwnerApprovedRequest__isset;
+
+class OwnerApprovedRequest {
+ public:
+
+  OwnerApprovedRequest(const OwnerApprovedRequest&);
+  OwnerApprovedRequest& operator=(const OwnerApprovedRequest&);
+  OwnerApprovedRequest() : message("Application Owner approved your request"), applicationId(), applicationName(), ownerId() {
+  }
+
+  virtual ~OwnerApprovedRequest() throw();
+  std::string message;
+  std::string applicationId;
+  std::string applicationName;
+  std::string ownerId;
+
+  _OwnerApprovedRequest__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
+  void __set_ownerId(const std::string& val);
+
+  bool operator == (const OwnerApprovedRequest & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (!(ownerId == rhs.ownerId))
+      return false;
+    return true;
+  }
+  bool operator != (const OwnerApprovedRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const OwnerApprovedRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(OwnerApprovedRequest &a, OwnerApprovedRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const OwnerApprovedRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _EventType__isset {
-  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false) {}
+  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false) {}
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
+  bool ownerApprovedRequest :1;
 } _EventType__isset;
 
 class EventType {
@@ -414,6 +483,7 @@ class EventType {
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
+  OwnerApprovedRequest ownerApprovedRequest;
 
   _EventType__isset __isset;
 
@@ -427,6 +497,8 @@ class EventType {
 
   void __set_applicationSentMessage(const ApplicationSentMessage& val);
 
+  void __set_ownerApprovedRequest(const OwnerApprovedRequest& val);
+
   bool operator == (const EventType & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
@@ -438,6 +510,8 @@ class EventType {
     if (!(applicationTokenRegenerated == rhs.applicationTokenRegenerated))
       return false;
     if (!(applicationSentMessage == rhs.applicationSentMessage))
+      return false;
+    if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
       return false;
     return true;
   }

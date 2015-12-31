@@ -85,6 +85,18 @@ struct HealthCheckBackToNormal
     3: string applicationName;
 }
 
+/**
+ * An Application Owner has approved a request to Follow or perform
+ * some other action on an Application by a non-owner.
+ */
+struct OwnerApprovedRequest
+{
+    1: optional string message = "Application Owner approved your request";
+    2: string applicationId;
+    3: string applicationName;
+    /** userId of the Owner who approved. */
+    4: string ownerId;
+}
 
 /**
  * An Event represents the different types of events that can
@@ -97,6 +109,7 @@ union EventType
     3: ApplicationTokenRenewed applicationTokenRenewed;
     4: ApplicationTokenRegenerated applicationTokenRegenerated;
     5: ApplicationSentMessage applicationSentMessage;
+    6: OwnerApprovedRequest ownerApprovedRequest;
 }
 
 /**

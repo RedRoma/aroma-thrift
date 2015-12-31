@@ -307,18 +307,73 @@ typedef Banana_Application * BananaNotifications_Application;
 
 @end
 
+@interface BananaNotifications_OwnerApprovedRequest : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  NSString * __applicationId;
+  NSString * __applicationName;
+  NSString * __ownerId;
+
+  BOOL __message_isset;
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+  BOOL __ownerId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName ownerId: (NSString *) ownerId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) ownerId;
+- (void) setOwnerId: (NSString *) ownerId;
+#endif
+- (BOOL) ownerIdIsSet;
+
+@end
+
 @interface BananaNotifications_EventType : NSObject <TBase, NSCoding> {
   BananaNotifications_HealthCheckFailed * __healthCheckFailed;
   BananaNotifications_HealthCheckBackToNormal * __healthCheckBackToNormal;
   BananaNotifications_ApplicationTokenRenewed * __applicationTokenRenewed;
   BananaNotifications_ApplicationTokenRegenerated * __applicationTokenRegenerated;
   BananaNotifications_ApplicationSentMessage * __applicationSentMessage;
+  BananaNotifications_OwnerApprovedRequest * __ownerApprovedRequest;
 
   BOOL __healthCheckFailed_isset;
   BOOL __healthCheckBackToNormal_isset;
   BOOL __applicationTokenRenewed_isset;
   BOOL __applicationTokenRegenerated_isset;
   BOOL __applicationSentMessage_isset;
+  BOOL __ownerApprovedRequest_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -327,10 +382,11 @@ typedef Banana_Application * BananaNotifications_Application;
 @property (nonatomic, retain, getter=applicationTokenRenewed, setter=setApplicationTokenRenewed:) BananaNotifications_ApplicationTokenRenewed * applicationTokenRenewed;
 @property (nonatomic, retain, getter=applicationTokenRegenerated, setter=setApplicationTokenRegenerated:) BananaNotifications_ApplicationTokenRegenerated * applicationTokenRegenerated;
 @property (nonatomic, retain, getter=applicationSentMessage, setter=setApplicationSentMessage:) BananaNotifications_ApplicationSentMessage * applicationSentMessage;
+@property (nonatomic, retain, getter=ownerApprovedRequest, setter=setOwnerApprovedRequest:) BananaNotifications_OwnerApprovedRequest * ownerApprovedRequest;
 #endif
 
 - (id) init;
-- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage;
+- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -366,6 +422,12 @@ typedef Banana_Application * BananaNotifications_Application;
 - (void) setApplicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage;
 #endif
 - (BOOL) applicationSentMessageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest;
+- (void) setOwnerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest;
+#endif
+- (BOOL) ownerApprovedRequestIsSet;
 
 @end
 

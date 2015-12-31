@@ -1737,6 +1737,335 @@
 
 @end
 
+@implementation BananaNotifications_OwnerApprovedRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Application Owner approved your request";
+
+#endif
+  return self;
+}
+
+- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName ownerId: (NSString *) ownerId
+{
+  self = [super init];
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __ownerId = [ownerId retain_stub];
+  __ownerId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ownerId"])
+  {
+    __ownerId = [[decoder decodeObjectForKey: @"ownerId"] retain_stub];
+    __ownerId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__ownerId_isset)
+  {
+    [encoder encodeObject: __ownerId forKey: @"ownerId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __ownerId_isset ? 2654435761 : 0;
+  if (__ownerId_isset)
+  {
+    hash = (hash * 31) ^ [__ownerId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaNotifications_OwnerApprovedRequest class]]) {
+    return NO;
+  }
+  BananaNotifications_OwnerApprovedRequest *other = (BananaNotifications_OwnerApprovedRequest *)anObject;
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  if ((__ownerId_isset != other->__ownerId_isset) ||
+      (__ownerId_isset && ((__ownerId || other->__ownerId) && ![__ownerId isEqual:other->__ownerId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [__applicationId release_stub];
+  [__applicationName release_stub];
+  [__ownerId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (NSString *) ownerId {
+  return [[__ownerId retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerId: (NSString *) ownerId {
+  [ownerId retain_stub];
+  [__ownerId release_stub];
+  __ownerId = ownerId;
+  __ownerId_isset = YES;
+}
+
+- (BOOL) ownerIdIsSet {
+  return __ownerId_isset;
+}
+
+- (void) unsetOwnerId {
+  [__ownerId release_stub];
+  __ownerId = nil;
+  __ownerId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOwnerId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"OwnerApprovedRequest"];
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__ownerId_isset) {
+    if (__ownerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __ownerId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaNotifications_OwnerApprovedRequest("];
+  [ms appendString: @"message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",ownerId:"];
+  [ms appendFormat: @"\"%@\"", __ownerId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaNotifications_EventType
 
 - (id) init
@@ -1747,7 +2076,7 @@
   return self;
 }
 
-- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage
+- (id) initWithHealthCheckFailed: (BananaNotifications_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaNotifications_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaNotifications_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaNotifications_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaNotifications_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest
 {
   self = [super init];
   __healthCheckFailed = [healthCheckFailed retain_stub];
@@ -1760,6 +2089,8 @@
   __applicationTokenRegenerated_isset = YES;
   __applicationSentMessage = [applicationSentMessage retain_stub];
   __applicationSentMessage_isset = YES;
+  __ownerApprovedRequest = [ownerApprovedRequest retain_stub];
+  __ownerApprovedRequest_isset = YES;
   return self;
 }
 
@@ -1791,6 +2122,11 @@
     __applicationSentMessage = [[decoder decodeObjectForKey: @"applicationSentMessage"] retain_stub];
     __applicationSentMessage_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ownerApprovedRequest"])
+  {
+    __ownerApprovedRequest = [[decoder decodeObjectForKey: @"ownerApprovedRequest"] retain_stub];
+    __ownerApprovedRequest_isset = YES;
+  }
   return self;
 }
 
@@ -1815,6 +2151,10 @@
   if (__applicationSentMessage_isset)
   {
     [encoder encodeObject: __applicationSentMessage forKey: @"applicationSentMessage"];
+  }
+  if (__ownerApprovedRequest_isset)
+  {
+    [encoder encodeObject: __ownerApprovedRequest forKey: @"ownerApprovedRequest"];
   }
 }
 
@@ -1845,6 +2185,11 @@
   if (__applicationSentMessage_isset)
   {
     hash = (hash * 31) ^ [__applicationSentMessage hash];
+  }
+  hash = (hash * 31) ^ __ownerApprovedRequest_isset ? 2654435761 : 0;
+  if (__ownerApprovedRequest_isset)
+  {
+    hash = (hash * 31) ^ [__ownerApprovedRequest hash];
   }
   return hash;
 }
@@ -1878,6 +2223,10 @@
       (__applicationSentMessage_isset && ((__applicationSentMessage || other->__applicationSentMessage) && ![__applicationSentMessage isEqual:other->__applicationSentMessage]))) {
     return NO;
   }
+  if ((__ownerApprovedRequest_isset != other->__ownerApprovedRequest_isset) ||
+      (__ownerApprovedRequest_isset && ((__ownerApprovedRequest || other->__ownerApprovedRequest) && ![__ownerApprovedRequest isEqual:other->__ownerApprovedRequest]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1888,6 +2237,7 @@
   [__applicationTokenRenewed release_stub];
   [__applicationTokenRegenerated release_stub];
   [__applicationSentMessage release_stub];
+  [__ownerApprovedRequest release_stub];
   [super dealloc_stub];
 }
 
@@ -1996,6 +2346,27 @@
   __applicationSentMessage_isset = NO;
 }
 
+- (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest {
+  return [[__ownerApprovedRequest retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerApprovedRequest: (BananaNotifications_OwnerApprovedRequest *) ownerApprovedRequest {
+  [ownerApprovedRequest retain_stub];
+  [__ownerApprovedRequest release_stub];
+  __ownerApprovedRequest = ownerApprovedRequest;
+  __ownerApprovedRequest_isset = YES;
+}
+
+- (BOOL) ownerApprovedRequestIsSet {
+  return __ownerApprovedRequest_isset;
+}
+
+- (void) unsetOwnerApprovedRequest {
+  [__ownerApprovedRequest release_stub];
+  __ownerApprovedRequest = nil;
+  __ownerApprovedRequest_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2061,6 +2432,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRUCT) {
+          BananaNotifications_OwnerApprovedRequest *fieldValue = [[BananaNotifications_OwnerApprovedRequest alloc] init];
+          [fieldValue read: inProtocol];
+          [self setOwnerApprovedRequest: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2107,6 +2488,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__ownerApprovedRequest_isset) {
+    if (__ownerApprovedRequest != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerApprovedRequest" type: TType_STRUCT fieldID: 6];
+      [__ownerApprovedRequest write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2127,6 +2515,8 @@
   [ms appendFormat: @"%@", __applicationTokenRegenerated];
   [ms appendString: @",applicationSentMessage:"];
   [ms appendFormat: @"%@", __applicationSentMessage];
+  [ms appendString: @",ownerApprovedRequest:"];
+  [ms appendFormat: @"%@", __ownerApprovedRequest];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
