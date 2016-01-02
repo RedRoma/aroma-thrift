@@ -203,6 +203,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getMySavedChannels\n");
   }
 
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
+    // Your implementation goes here
+    printf("getUserInfo\n");
+  }
+
   /**
    * Perform a Search on all the applications registered to the Banana Service by searching for its title.
    * 

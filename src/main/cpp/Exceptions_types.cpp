@@ -790,6 +790,103 @@ const char* ApplicationAlreadyRegisteredException::what() const throw() {
 }
 
 
+UserDoesNotExistException::~UserDoesNotExistException() throw() {
+}
+
+
+void UserDoesNotExistException::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t UserDoesNotExistException::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t UserDoesNotExistException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("UserDoesNotExistException");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(UserDoesNotExistException &a, UserDoesNotExistException &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+UserDoesNotExistException::UserDoesNotExistException(const UserDoesNotExistException& other16) : TException() {
+  message = other16.message;
+  __isset = other16.__isset;
+}
+UserDoesNotExistException& UserDoesNotExistException::operator=(const UserDoesNotExistException& other17) {
+  message = other17.message;
+  __isset = other17.__isset;
+  return *this;
+}
+void UserDoesNotExistException::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "UserDoesNotExistException(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+const char* UserDoesNotExistException::what() const throw() {
+  try {
+    std::stringstream ss;
+    ss << "TException - service has thrown: " << *this;
+    this->thriftTExceptionMessageHolder_ = ss.str();
+    return this->thriftTExceptionMessageHolder_.c_str();
+  } catch (const std::exception&) {
+    return "TException - service has thrown: UserDoesNotExistException";
+  }
+}
+
+
 ThroughoutExceededException::~ThroughoutExceededException() throw() {
 }
 
@@ -859,13 +956,13 @@ void swap(ThroughoutExceededException &a, ThroughoutExceededException &b) {
   swap(a.__isset, b.__isset);
 }
 
-ThroughoutExceededException::ThroughoutExceededException(const ThroughoutExceededException& other16) : TException() {
-  message = other16.message;
-  __isset = other16.__isset;
+ThroughoutExceededException::ThroughoutExceededException(const ThroughoutExceededException& other18) : TException() {
+  message = other18.message;
+  __isset = other18.__isset;
 }
-ThroughoutExceededException& ThroughoutExceededException::operator=(const ThroughoutExceededException& other17) {
-  message = other17.message;
-  __isset = other17.__isset;
+ThroughoutExceededException& ThroughoutExceededException::operator=(const ThroughoutExceededException& other19) {
+  message = other19.message;
+  __isset = other19.__isset;
   return *this;
 }
 void ThroughoutExceededException::printTo(std::ostream& out) const {
@@ -956,13 +1053,13 @@ void swap(CustomChannelUnreachableException &a, CustomChannelUnreachableExceptio
   swap(a.__isset, b.__isset);
 }
 
-CustomChannelUnreachableException::CustomChannelUnreachableException(const CustomChannelUnreachableException& other18) : TException() {
-  message = other18.message;
-  __isset = other18.__isset;
+CustomChannelUnreachableException::CustomChannelUnreachableException(const CustomChannelUnreachableException& other20) : TException() {
+  message = other20.message;
+  __isset = other20.__isset;
 }
-CustomChannelUnreachableException& CustomChannelUnreachableException::operator=(const CustomChannelUnreachableException& other19) {
-  message = other19.message;
-  __isset = other19.__isset;
+CustomChannelUnreachableException& CustomChannelUnreachableException::operator=(const CustomChannelUnreachableException& other21) {
+  message = other21.message;
+  __isset = other21.__isset;
   return *this;
 }
 void CustomChannelUnreachableException::printTo(std::ostream& out) const {
@@ -1053,13 +1150,13 @@ void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b) {
   swap(a.__isset, b.__isset);
 }
 
-ChannelDoesNotExistException::ChannelDoesNotExistException(const ChannelDoesNotExistException& other20) : TException() {
-  message = other20.message;
-  __isset = other20.__isset;
+ChannelDoesNotExistException::ChannelDoesNotExistException(const ChannelDoesNotExistException& other22) : TException() {
+  message = other22.message;
+  __isset = other22.__isset;
 }
-ChannelDoesNotExistException& ChannelDoesNotExistException::operator=(const ChannelDoesNotExistException& other21) {
-  message = other21.message;
-  __isset = other21.__isset;
+ChannelDoesNotExistException& ChannelDoesNotExistException::operator=(const ChannelDoesNotExistException& other23) {
+  message = other23.message;
+  __isset = other23.__isset;
   return *this;
 }
 void ChannelDoesNotExistException::printTo(std::ostream& out) const {
@@ -1077,103 +1174,6 @@ const char* ChannelDoesNotExistException::what() const throw() {
     return this->thriftTExceptionMessageHolder_.c_str();
   } catch (const std::exception&) {
     return "TException - service has thrown: ChannelDoesNotExistException";
-  }
-}
-
-
-ThroughputExceeedException::~ThroughputExceeedException() throw() {
-}
-
-
-void ThroughputExceeedException::__set_message(const std::string& val) {
-  this->message = val;
-}
-
-uint32_t ThroughputExceeedException::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->message);
-          this->__isset.message = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t ThroughputExceeedException::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ThroughputExceeedException");
-
-  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->message);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(ThroughputExceeedException &a, ThroughputExceeedException &b) {
-  using ::std::swap;
-  swap(a.message, b.message);
-  swap(a.__isset, b.__isset);
-}
-
-ThroughputExceeedException::ThroughputExceeedException(const ThroughputExceeedException& other22) : TException() {
-  message = other22.message;
-  __isset = other22.__isset;
-}
-ThroughputExceeedException& ThroughputExceeedException::operator=(const ThroughputExceeedException& other23) {
-  message = other23.message;
-  __isset = other23.__isset;
-  return *this;
-}
-void ThroughputExceeedException::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "ThroughputExceeedException(";
-  out << "message=" << to_string(message);
-  out << ")";
-}
-
-const char* ThroughputExceeedException::what() const throw() {
-  try {
-    std::stringstream ss;
-    ss << "TException - service has thrown: " << *this;
-    this->thriftTExceptionMessageHolder_ = ss.str();
-    return this->thriftTExceptionMessageHolder_.c_str();
-  } catch (const std::exception&) {
-    return "TException - service has thrown: ThroughputExceeedException";
   }
 }
 

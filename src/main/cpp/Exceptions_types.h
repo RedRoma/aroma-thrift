@@ -36,13 +36,13 @@ class ApplicationDoesNotExistException;
 
 class ApplicationAlreadyRegisteredException;
 
+class UserDoesNotExistException;
+
 class ThroughoutExceededException;
 
 class CustomChannelUnreachableException;
 
 class ChannelDoesNotExistException;
-
-class ThroughputExceeedException;
 
 class OperationFailedException;
 
@@ -344,7 +344,7 @@ class ApplicationDoesNotExistException : public ::apache::thrift::TException {
 
   ApplicationDoesNotExistException(const ApplicationDoesNotExistException&);
   ApplicationDoesNotExistException& operator=(const ApplicationDoesNotExistException&);
-  ApplicationDoesNotExistException() : message("The Specified Application does not exist") {
+  ApplicationDoesNotExistException() : message("The Specified Application does not exist.") {
   }
 
   virtual ~ApplicationDoesNotExistException() throw();
@@ -392,7 +392,7 @@ class ApplicationAlreadyRegisteredException : public ::apache::thrift::TExceptio
 
   ApplicationAlreadyRegisteredException(const ApplicationAlreadyRegisteredException&);
   ApplicationAlreadyRegisteredException& operator=(const ApplicationAlreadyRegisteredException&);
-  ApplicationAlreadyRegisteredException() : message("This Channel has already been registered for this Application") {
+  ApplicationAlreadyRegisteredException() : message("This Channel has already been registered for this Application.") {
   }
 
   virtual ~ApplicationAlreadyRegisteredException() throw();
@@ -430,6 +430,54 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationAlreadyRegis
   return out;
 }
 
+typedef struct _UserDoesNotExistException__isset {
+  _UserDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _UserDoesNotExistException__isset;
+
+class UserDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  UserDoesNotExistException(const UserDoesNotExistException&);
+  UserDoesNotExistException& operator=(const UserDoesNotExistException&);
+  UserDoesNotExistException() : message("The User you're referring to does not exist.") {
+  }
+
+  virtual ~UserDoesNotExistException() throw();
+  std::string message;
+
+  _UserDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const UserDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const UserDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UserDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(UserDoesNotExistException &a, UserDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UserDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _ThroughoutExceededException__isset {
   _ThroughoutExceededException__isset() : message(true) {}
   bool message :1;
@@ -440,7 +488,7 @@ class ThroughoutExceededException : public ::apache::thrift::TException {
 
   ThroughoutExceededException(const ThroughoutExceededException&);
   ThroughoutExceededException& operator=(const ThroughoutExceededException&);
-  ThroughoutExceededException() : message("You have exceeded your allocated throughput. Buy more or slow down") {
+  ThroughoutExceededException() : message("You have exceeded your allocated throughput. Buy more or slow down.") {
   }
 
   virtual ~ThroughoutExceededException() throw();
@@ -536,7 +584,7 @@ class ChannelDoesNotExistException : public ::apache::thrift::TException {
 
   ChannelDoesNotExistException(const ChannelDoesNotExistException&);
   ChannelDoesNotExistException& operator=(const ChannelDoesNotExistException&);
-  ChannelDoesNotExistException() : message("The Channel specified does not exist in the System") {
+  ChannelDoesNotExistException() : message("The Channel specified does not exist in the System.") {
   }
 
   virtual ~ChannelDoesNotExistException() throw();
@@ -569,54 +617,6 @@ class ChannelDoesNotExistException : public ::apache::thrift::TException {
 void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ChannelDoesNotExistException& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _ThroughputExceeedException__isset {
-  _ThroughputExceeedException__isset() : message(true) {}
-  bool message :1;
-} _ThroughputExceeedException__isset;
-
-class ThroughputExceeedException : public ::apache::thrift::TException {
- public:
-
-  ThroughputExceeedException(const ThroughputExceeedException&);
-  ThroughputExceeedException& operator=(const ThroughputExceeedException&);
-  ThroughputExceeedException() : message("You have surpassed your allowable rate of messages. Slow Down.") {
-  }
-
-  virtual ~ThroughputExceeedException() throw();
-  std::string message;
-
-  _ThroughputExceeedException__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  bool operator == (const ThroughputExceeedException & rhs) const
-  {
-    if (!(message == rhs.message))
-      return false;
-    return true;
-  }
-  bool operator != (const ThroughputExceeedException &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const ThroughputExceeedException & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-  mutable std::string thriftTExceptionMessageHolder_;
-  const char* what() const throw();
-};
-
-void swap(ThroughputExceeedException &a, ThroughputExceeedException &b);
-
-inline std::ostream& operator<<(std::ostream& out, const ThroughputExceeedException& obj)
 {
   obj.printTo(out);
   return out;

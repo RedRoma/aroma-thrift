@@ -204,6 +204,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_getMessages">getMessages</a></li>
 <li><a href="#Fn_BananaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
+<li><a href="#Fn_BananaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_BananaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
@@ -711,6 +712,9 @@ to load the full message.
 </pre></div><div class="definition"><h4 id="Fn_BananaService_getMySavedChannels">Function: BananaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getUserInfo">Function: BananaService.getUserInfo</h4>
+<pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_searchForApplications">Function: BananaService.searchForApplications</h4>
 <pre><code><a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a></code> searchForApplications(<code><a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>

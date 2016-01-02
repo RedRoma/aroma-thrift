@@ -144,6 +144,7 @@ class BananaServiceIf {
   virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
   virtual void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
+  virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
   /**
    * Perform a Search on all the applications registered to the Banana Service by searching for its title.
@@ -235,6 +236,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
+    return;
+  }
+  void getUserInfo(GetUserInfoResponse& /* _return */, const GetUserInfoRequest& /* request */) {
     return;
   }
   void searchForApplications(SearchForApplicationsResponse& /* _return */, const SearchForApplicationsRequest& /* request */) {
@@ -2662,6 +2666,142 @@ class BananaService_getMySavedChannels_presult {
 
 };
 
+typedef struct _BananaService_getUserInfo_args__isset {
+  _BananaService_getUserInfo_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getUserInfo_args__isset;
+
+class BananaService_getUserInfo_args {
+ public:
+
+  BananaService_getUserInfo_args(const BananaService_getUserInfo_args&);
+  BananaService_getUserInfo_args& operator=(const BananaService_getUserInfo_args&);
+  BananaService_getUserInfo_args() {
+  }
+
+  virtual ~BananaService_getUserInfo_args() throw();
+  GetUserInfoRequest request;
+
+  _BananaService_getUserInfo_args__isset __isset;
+
+  void __set_request(const GetUserInfoRequest& val);
+
+  bool operator == (const BananaService_getUserInfo_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getUserInfo_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getUserInfo_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getUserInfo_pargs {
+ public:
+
+
+  virtual ~BananaService_getUserInfo_pargs() throw();
+  const GetUserInfoRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getUserInfo_result__isset {
+  _BananaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _BananaService_getUserInfo_result__isset;
+
+class BananaService_getUserInfo_result {
+ public:
+
+  BananaService_getUserInfo_result(const BananaService_getUserInfo_result&);
+  BananaService_getUserInfo_result& operator=(const BananaService_getUserInfo_result&);
+  BananaService_getUserInfo_result() {
+  }
+
+  virtual ~BananaService_getUserInfo_result() throw();
+  GetUserInfoResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidCredentialsException ex3;
+  UnauthorizedException ex4;
+
+  _BananaService_getUserInfo_result__isset __isset;
+
+  void __set_success(const GetUserInfoResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidCredentialsException& val);
+
+  void __set_ex4(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_getUserInfo_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getUserInfo_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getUserInfo_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getUserInfo_presult__isset {
+  _BananaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _BananaService_getUserInfo_presult__isset;
+
+class BananaService_getUserInfo_presult {
+ public:
+
+
+  virtual ~BananaService_getUserInfo_presult() throw();
+  GetUserInfoResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidCredentialsException* ex3;
+  UnauthorizedException* ex4;
+
+  _BananaService_getUserInfo_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _BananaService_searchForApplications_args__isset {
   _BananaService_searchForApplications_args__isset() : request(false) {}
   bool request :1;
@@ -2877,6 +3017,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  void send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return);
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
   void send_searchForApplications(const SearchForApplicationsRequest& request);
   void recv_searchForApplications(SearchForApplicationsResponse& _return);
@@ -2913,6 +3056,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
@@ -2935,6 +3079,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getFullMessage"] = &BananaServiceProcessor::process_getFullMessage;
     processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
+    processMap_["getUserInfo"] = &BananaServiceProcessor::process_getUserInfo;
     processMap_["searchForApplications"] = &BananaServiceProcessor::process_searchForApplications;
   }
 
@@ -3143,6 +3288,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getUserInfo(_return, request);
+    }
+    ifaces_[i]->getUserInfo(_return, request);
+    return;
+  }
+
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -3237,6 +3392,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  int32_t send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid);
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
   int32_t send_searchForApplications(const SearchForApplicationsRequest& request);
   void recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid);
