@@ -1769,7 +1769,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers description: (NSString *) description
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -1788,6 +1788,8 @@
   __programmingLanguage_isset = YES;
   __subscribers = [subscribers retain_stub];
   __subscribers_isset = YES;
+  __description = [description retain_stub];
+  __description_isset = YES;
   return self;
 }
 
@@ -1834,6 +1836,11 @@
     __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
     __subscribers_isset = YES;
   }
+  if ([decoder containsValueForKey: @"description"])
+  {
+    __description = [[decoder decodeObjectForKey: @"description"] retain_stub];
+    __description_isset = YES;
+  }
   return self;
 }
 
@@ -1870,6 +1877,10 @@
   if (__subscribers_isset)
   {
     [encoder encodeObject: __subscribers forKey: @"subscribers"];
+  }
+  if (__description_isset)
+  {
+    [encoder encodeObject: __description forKey: @"description"];
   }
 }
 
@@ -1916,6 +1927,11 @@
   {
     hash = (hash * 31) ^ [__subscribers hash];
   }
+  hash = (hash * 31) ^ __description_isset ? 2654435761 : 0;
+  if (__description_isset)
+  {
+    hash = (hash * 31) ^ [__description hash];
+  }
   return hash;
 }
 
@@ -1960,6 +1976,10 @@
       (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
     return NO;
   }
+  if ((__description_isset != other->__description_isset) ||
+      (__description_isset && ((__description || other->__description) && ![__description isEqual:other->__description]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1970,6 +1990,7 @@
   [__id release_stub];
   [__icon release_stub];
   [__subscribers release_stub];
+  [__description release_stub];
   [super dealloc_stub];
 }
 
@@ -2129,6 +2150,27 @@
   __subscribers_isset = NO;
 }
 
+- (NSString *) description {
+  return [[__description retain_stub] autorelease_stub];
+}
+
+- (void) setDescription: (NSString *) description {
+  [description retain_stub];
+  [__description release_stub];
+  __description = description;
+  __description_isset = YES;
+}
+
+- (BOOL) descriptionIsSet {
+  return __description_isset;
+}
+
+- (void) unsetDescription {
+  [__description release_stub];
+  __description = nil;
+  __description_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2234,6 +2276,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 9:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDescription: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2313,6 +2363,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__description_isset) {
+    if (__description != nil) {
+      [outProtocol writeFieldBeginWithName: @"description" type: TType_STRING fieldID: 9];
+      [outProtocol writeString: __description];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2339,6 +2396,8 @@
   [ms appendFormat: @"%i", __programmingLanguage];
   [ms appendString: @",subscribers:"];
   [ms appendFormat: @"%@", __subscribers];
+  [ms appendString: @",description:"];
+  [ms appendFormat: @"\"%@\"", __description];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

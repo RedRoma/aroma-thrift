@@ -608,6 +608,7 @@ Application = function(args) {
   this.icon = null;
   this.programmingLanguage = null;
   this.subscribers = [];
+  this.description = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [User]);
@@ -632,6 +633,9 @@ Application = function(args) {
     }
     if (args.subscribers !== undefined && args.subscribers !== null) {
       this.subscribers = Thrift.copyList(args.subscribers, [User]);
+    }
+    if (args.description !== undefined && args.description !== null) {
+      this.description = args.description;
     }
   }
 };
@@ -734,6 +738,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.description = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -801,6 +812,11 @@ Application.prototype.write = function(output) {
       }
     }
     output.writeSetEnd();
+    output.writeFieldEnd();
+  }
+  if (this.description !== null && this.description !== undefined) {
+    output.writeFieldBegin('description', Thrift.Type.STRING, 9);
+    output.writeString(this.description);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

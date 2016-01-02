@@ -174,6 +174,7 @@ struct Application
      * to events for an Application, and that are not owners.
      */
     8: optional set<User> subscribers = [];
+    9: string description;
 }
 
 /**

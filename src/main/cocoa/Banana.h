@@ -362,6 +362,7 @@ typedef int64_t Banana_timestamp;
   Banana_Image * __icon;
   int __programmingLanguage;
   NSMutableSet * __subscribers;
+  NSString * __description;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -371,6 +372,7 @@ typedef int64_t Banana_timestamp;
   BOOL __icon_isset;
   BOOL __programmingLanguage_isset;
   BOOL __subscribers_isset;
+  BOOL __description_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -382,10 +384,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableSet * subscribers;
+@property (nonatomic, retain, getter=description, setter=setDescription:) NSString * description;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers description: (NSString *) description;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -439,6 +442,12 @@ typedef int64_t Banana_timestamp;
 - (void) setSubscribers: (NSMutableSet *) subscribers;
 #endif
 - (BOOL) subscribersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) description;
+- (void) setDescription: (NSString *) description;
+#endif
+- (BOOL) descriptionIsSet;
 
 @end
 
