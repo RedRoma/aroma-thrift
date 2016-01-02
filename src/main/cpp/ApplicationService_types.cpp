@@ -146,8 +146,8 @@ SendMessageResponse::~SendMessageResponse() throw() {
 }
 
 
-void SendMessageResponse::__set_message(const std::string& val) {
-  this->message = val;
+void SendMessageResponse::__set_messageId(const std::string& val) {
+  this->messageId = val;
 }
 
 uint32_t SendMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -173,8 +173,8 @@ uint32_t SendMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot)
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->message);
-          this->__isset.message = true;
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -196,8 +196,8 @@ uint32_t SendMessageResponse::write(::apache::thrift::protocol::TProtocol* oprot
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SendMessageResponse");
 
-  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->messageId);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -207,23 +207,23 @@ uint32_t SendMessageResponse::write(::apache::thrift::protocol::TProtocol* oprot
 
 void swap(SendMessageResponse &a, SendMessageResponse &b) {
   using ::std::swap;
-  swap(a.message, b.message);
+  swap(a.messageId, b.messageId);
   swap(a.__isset, b.__isset);
 }
 
 SendMessageResponse::SendMessageResponse(const SendMessageResponse& other3) {
-  message = other3.message;
+  messageId = other3.messageId;
   __isset = other3.__isset;
 }
 SendMessageResponse& SendMessageResponse::operator=(const SendMessageResponse& other4) {
-  message = other4.message;
+  messageId = other4.messageId;
   __isset = other4.__isset;
   return *this;
 }
 void SendMessageResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SendMessageResponse(";
-  out << "message=" << to_string(message);
+  out << "messageId=" << to_string(messageId);
   out << ")";
 }
 

@@ -98,10 +98,10 @@ SendMessageRequest.prototype.write = function(output) {
 };
 
 SendMessageResponse = module.exports.SendMessageResponse = function(args) {
-  this.message = null;
+  this.messageId = null;
   if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
     }
   }
 };
@@ -121,7 +121,7 @@ SendMessageResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
+        this.messageId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -140,9 +140,9 @@ SendMessageResponse.prototype.read = function(input) {
 
 SendMessageResponse.prototype.write = function(output) {
   output.writeStructBegin('SendMessageResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

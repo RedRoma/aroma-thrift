@@ -747,7 +747,7 @@ void ApplicationServiceProcessor::process_sendMessage(int32_t seqid, ::apache::t
   } catch (InvalidArgumentException &ex2) {
     result.ex2 = ex2;
     result.__isset.ex2 = true;
-  } catch (InvalidCredentialsException &ex3) {
+  } catch (InvalidTokenException &ex3) {
     result.ex3 = ex3;
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {

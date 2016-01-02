@@ -54,12 +54,14 @@ typedef Events.HealthCheckFailed HealthCheckFailed
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
+typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
 typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
+typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.5;
@@ -499,7 +501,7 @@ service BananaService
      */
     ProvisionApplicationResponse provisionApplication(1 : ProvisionApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                       2 : InvalidArgumentException ex2,
-                                                                                                      3 : InvalidCredentialsException ex3,
+                                                                                                      3 : InvalidTokenException ex3,
                                                                                                       4 : ApplicationDoesNotExistException ex4,
                                                                                                       5 : UnauthorizedException ex5);
                                                                                                         
@@ -514,7 +516,7 @@ service BananaService
      */
     RegenerateApplicationTokenResponse regenerateToken(1 : RegenerateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                                              2 : InvalidArgumentException ex2,
-                                                                                                             3 : InvalidCredentialsException ex3,
+                                                                                                             3 : InvalidTokenException ex3,
                                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                                              5 : UnauthorizedException ex5);
     
@@ -526,7 +528,7 @@ service BananaService
      */
     RegisterHealthCheckResponse registerHealthCheck(1 : RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
                                                                                                    2 : InvalidArgumentException ex2,
-                                                                                                   3 : InvalidCredentialsException ex3,
+                                                                                                   3 : InvalidTokenException ex3,
                                                                                                    4 : ApplicationDoesNotExistException ex4,
                                                                                                    5 : UnauthorizedException ex5);
     
@@ -536,7 +538,7 @@ service BananaService
      */
     RemoveSavedChannelResponse removeSavedChannel(1 : RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                3 : InvalidTokenException ex3,
                                                                                                 4 : UnauthorizedException ex4,
                                                                                                 5 : ChannelDoesNotExistException ex5);
     
@@ -550,7 +552,7 @@ service BananaService
      */
     RenewApplicationTokenResponse renewApplicationToken(1 : RenewApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,
-                                                                                                         3 : InvalidCredentialsException ex3
+                                                                                                         3 : InvalidTokenException ex3
                                                                                                          4 : ApplicationDoesNotExistException ex4,
                                                                                                          5 : UnauthorizedException ex5);
                                                                                                          
@@ -561,7 +563,7 @@ service BananaService
      */
     SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3,
+                                                                           3 : InvalidTokenException ex3,
                                                                            4 : UnauthorizedException ex4);                                                                                        
    
     
@@ -590,7 +592,7 @@ service BananaService
      */
     SnoozeChannelResponse snoozeChannel(1 : SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
-                                                                                 3 : InvalidCredentialsException ex3,
+                                                                                 3 : InvalidTokenException ex3,
                                                                                  4 : UnauthorizedException ex4,
                                                                                  5 : ChannelDoesNotExistException ex5);
     
@@ -602,7 +604,7 @@ service BananaService
      */
     SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
-                                                                                                            3 : InvalidCredentialsException ex3,
+                                                                                                            3 : InvalidTokenException ex3,
                                                                                                             4 : ApplicationDoesNotExistException ex4,
                                                                                                             5 : ApplicationAlreadyRegisteredException ex5,
                                                                                                             6 : CustomChannelUnreachableException ex6);
@@ -622,7 +624,7 @@ service BananaService
      */
     GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3);
+                                                                           3 : InvalidTokenException ex3);
     
    
     /**
@@ -632,21 +634,27 @@ service BananaService
      */
     GetApplicationInfoResponse getApplicationInfo(1 : GetApplicationInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                3 : InvalidTokenException ex3,
                                                                                                 4 : ApplicationDoesNotExistException ex4,
                                                                                                 5 : UnauthorizedException ex5);
     
+    GetBuzzResponse getBuzz(1 : GetBuzzRequest request) throws(1 : OperationFailedException ex1,
+                                                               2 : InvalidArgumentException ex2,
+                                                               3 : InvalidTokenException ex3,
+                                                               4 : ApplicationDoesNotExistException ex4,
+                                                               5 : UnauthorizedException ex5);
+ 
  
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
-                                                                              3 : InvalidCredentialsException ex3);
+                                                                              3 : InvalidTokenException ex3);
     
     /**
      * Get an Application's Messages.
      */
     GetMessagesResponse getMessages(1 : GetMessagesRequest request)throws(1 : OperationFailedException ex1,
                                                                           2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidCredentialsException ex3);
+                                                                          3 : InvalidTokenException ex3);
 
     /**
      * In case the Message body has been truncated, use this operation
@@ -654,23 +662,24 @@ service BananaService
      */
     GetFullMessageResponse getFullMessage(1 : GetFullMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
-                                                                                    3 : InvalidCredentialsException ex3);
+                                                                                    3 : InvalidTokenException ex3);
     
     
     
     GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,
-                                                                                             3 : InvalidCredentialsException ex3);
+                                                                                             3 : InvalidTokenException ex3);
     
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3);
-    
-    GetUserInfoResponse getUserInfo(1: GetUserInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                         2 : InvalidArgumentException ex2,
-                                                                                                         3 : InvalidCredentialsException ex3,
-                                                                                                         4 : UnauthorizedException ex4);
+                                                                                                3 : InvalidTokenException ex3);
+
+    GetUserInfoResponse getUserInfo(1 : GetUserInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidArgumentException ex2,
+                                                                           3 : InvalidTokenException ex3,
+                                                                           4 : UnauthorizedException ex4,
+                                                                           5 : UserDoesNotExistException ex5);
     
     /**
      * Perform a Search on all the applications registered to the Banana Service by searching for its title.
@@ -679,6 +688,6 @@ service BananaService
      */
     SearchForApplicationsResponse searchForApplications(1 : SearchForApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,
-                                                                                                         3 : InvalidCredentialsException ex3,
+                                                                                                         3 : InvalidTokenException ex3,
                                                                                                          4 : UnauthorizedException ex4);
 }

@@ -168,7 +168,7 @@ BananaService_provisionApplication_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -241,7 +241,7 @@ BananaService_provisionApplication_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -378,7 +378,7 @@ BananaService_regenerateToken_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -451,7 +451,7 @@ BananaService_regenerateToken_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -588,7 +588,7 @@ BananaService_registerHealthCheck_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -661,7 +661,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -798,7 +798,7 @@ BananaService_removeSavedChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -871,7 +871,7 @@ BananaService_removeSavedChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1008,7 +1008,7 @@ BananaService_renewApplicationToken_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1081,7 +1081,7 @@ BananaService_renewApplicationToken_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1217,7 +1217,7 @@ BananaService_saveChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1283,7 +1283,7 @@ BananaService_saveChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1764,7 +1764,7 @@ BananaService_snoozeChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1837,7 +1837,7 @@ BananaService_snoozeChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1975,7 +1975,7 @@ BananaService_subscribeToApplication_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2055,7 +2055,7 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2203,7 +2203,7 @@ BananaService_getActivity_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2262,7 +2262,7 @@ BananaService_getActivity_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2373,7 +2373,7 @@ BananaService_getApplicationInfo_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2446,7 +2446,7 @@ BananaService_getApplicationInfo_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2479,6 +2479,216 @@ BananaService_getApplicationInfo_result.prototype.read = function(input) {
 
 BananaService_getApplicationInfo_result.prototype.write = function(output) {
             output.writeStructBegin('BananaService_getApplicationInfo_result');
+            if (this.success !== null && this.success !== undefined) {
+              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+              this.success.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex1 !== null && this.ex1 !== undefined) {
+              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+              this.ex1.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex2 !== null && this.ex2 !== undefined) {
+              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+              this.ex2.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex3 !== null && this.ex3 !== undefined) {
+              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+              this.ex3.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex4 !== null && this.ex4 !== undefined) {
+              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+              this.ex4.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex5 !== null && this.ex5 !== undefined) {
+              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+              this.ex5.write(output);
+              output.writeFieldEnd();
+            }
+            output.writeFieldStop();
+            output.writeStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_args = function(args) {
+            this.request = null;
+            if (args) {
+                        if (args.request !== undefined && args.request !== null) {
+                                    this.request = new ttypes.GetBuzzRequest(args.request);
+                        }
+            }
+};
+BananaService_getBuzz_args.prototype = {};
+BananaService_getBuzz_args.prototype.read = function(input) {
+            input.readStructBegin();
+            while (true)
+            {
+              var ret = input.readFieldBegin();
+              var fname = ret.fname;
+              var ftype = ret.ftype;
+              var fid = ret.fid;
+              if (ftype == Thrift.Type.STOP) {
+                break;
+              }
+              switch (fid)
+              {
+                case 1:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.request = new ttypes.GetBuzzRequest();
+                  this.request.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 0:
+                  input.skip(ftype);
+                  break;
+                default:
+                  input.skip(ftype);
+              }
+              input.readFieldEnd();
+            }
+            input.readStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_args.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_getBuzz_args');
+            if (this.request !== null && this.request !== undefined) {
+              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+              this.request.write(output);
+              output.writeFieldEnd();
+            }
+            output.writeFieldStop();
+            output.writeStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_result = function(args) {
+            this.success = null;
+            this.ex1 = null;
+            this.ex2 = null;
+            this.ex3 = null;
+            this.ex4 = null;
+            this.ex5 = null;
+            if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                        this.ex1 = args;
+                        return;
+            }
+            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                        this.ex2 = args;
+                        return;
+            }
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                        this.ex3 = args;
+                        return;
+            }
+            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                        this.ex4 = args;
+                        return;
+            }
+            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                        this.ex5 = args;
+                        return;
+            }
+            if (args) {
+                        if (args.success !== undefined && args.success !== null) {
+                                    this.success = new ttypes.GetBuzzResponse(args.success);
+                        }
+                        if (args.ex1 !== undefined && args.ex1 !== null) {
+                                    this.ex1 = args.ex1;
+                        }
+                        if (args.ex2 !== undefined && args.ex2 !== null) {
+                                    this.ex2 = args.ex2;
+                        }
+                        if (args.ex3 !== undefined && args.ex3 !== null) {
+                                    this.ex3 = args.ex3;
+                        }
+                        if (args.ex4 !== undefined && args.ex4 !== null) {
+                                    this.ex4 = args.ex4;
+                        }
+                        if (args.ex5 !== undefined && args.ex5 !== null) {
+                                    this.ex5 = args.ex5;
+                        }
+            }
+};
+BananaService_getBuzz_result.prototype = {};
+BananaService_getBuzz_result.prototype.read = function(input) {
+            input.readStructBegin();
+            while (true)
+            {
+              var ret = input.readFieldBegin();
+              var fname = ret.fname;
+              var ftype = ret.ftype;
+              var fid = ret.fid;
+              if (ftype == Thrift.Type.STOP) {
+                break;
+              }
+              switch (fid)
+              {
+                case 0:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.success = new ttypes.GetBuzzResponse();
+                  this.success.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 1:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                  this.ex1.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 2:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                  this.ex2.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 3:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                  this.ex3.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 4:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                  this.ex4.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 5:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                  this.ex5.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                default:
+                  input.skip(ftype);
+              }
+              input.readFieldEnd();
+            }
+            input.readStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_result.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_getBuzz_result');
             if (this.success !== null && this.success !== undefined) {
               output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
               this.success.write(output);
@@ -2581,7 +2791,7 @@ BananaService_getDashboard_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2640,7 +2850,7 @@ BananaService_getDashboard_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2749,7 +2959,7 @@ BananaService_getMessages_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2808,7 +3018,7 @@ BananaService_getMessages_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2917,7 +3127,7 @@ BananaService_getFullMessage_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2976,7 +3186,7 @@ BananaService_getFullMessage_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3085,7 +3295,7 @@ BananaService_getMyApplications_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3144,7 +3354,7 @@ BananaService_getMyApplications_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3253,7 +3463,7 @@ BananaService_getMySavedChannels_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3312,7 +3522,7 @@ BananaService_getMySavedChannels_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3414,6 +3624,7 @@ BananaService_getUserInfo_result = function(args) {
             this.ex2 = null;
             this.ex3 = null;
             this.ex4 = null;
+            this.ex5 = null;
             if (args instanceof Exceptions_ttypes.OperationFailedException) {
                         this.ex1 = args;
                         return;
@@ -3422,12 +3633,16 @@ BananaService_getUserInfo_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
             if (args instanceof Exceptions_ttypes.UnauthorizedException) {
                         this.ex4 = args;
+                        return;
+            }
+            if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                        this.ex5 = args;
                         return;
             }
             if (args) {
@@ -3445,6 +3660,9 @@ BananaService_getUserInfo_result = function(args) {
                         }
                         if (args.ex4 !== undefined && args.ex4 !== null) {
                                     this.ex4 = args.ex4;
+                        }
+                        if (args.ex5 !== undefined && args.ex5 !== null) {
+                                    this.ex5 = args.ex5;
                         }
             }
 };
@@ -3488,7 +3706,7 @@ BananaService_getUserInfo_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3498,6 +3716,14 @@ BananaService_getUserInfo_result.prototype.read = function(input) {
                 if (ftype == Thrift.Type.STRUCT) {
                   this.ex4 = new Exceptions_ttypes.UnauthorizedException();
                   this.ex4.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 5:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex5 = new Exceptions_ttypes.UserDoesNotExistException();
+                  this.ex5.read(input);
                 } else {
                   input.skip(ftype);
                 }
@@ -3536,6 +3762,11 @@ BananaService_getUserInfo_result.prototype.write = function(output) {
             if (this.ex4 !== null && this.ex4 !== undefined) {
               output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
               this.ex4.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex5 !== null && this.ex5 !== undefined) {
+              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+              this.ex5.write(output);
               output.writeFieldEnd();
             }
             output.writeFieldStop();
@@ -3611,7 +3842,7 @@ BananaService_searchForApplications_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3677,7 +3908,7 @@ BananaService_searchForApplications_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -4516,6 +4747,68 @@ BananaServiceClient.prototype.recv_getApplicationInfo = function(input,mtype,rse
             }
             return callback('getApplicationInfo failed: unknown result');
 };
+BananaServiceClient.prototype.getBuzz = function(request, callback) {
+            this._seqid = this.new_seqid();
+            if (callback === undefined) {
+              var _defer = Q.defer();
+              this._reqs[this.seqid()] = function(error, result) {
+                if (error) {
+                  _defer.reject(error);
+                } else {
+                  _defer.resolve(result);
+                }
+              };
+              this.send_getBuzz(request);
+              return _defer.promise;
+            } else {
+              this._reqs[this.seqid()] = callback;
+              this.send_getBuzz(request);
+            }
+};
+
+BananaServiceClient.prototype.send_getBuzz = function(request) {
+            var output = new this.pClass(this.output);
+            output.writeMessageBegin('getBuzz', Thrift.MessageType.CALL, this.seqid());
+            var args = new BananaService_getBuzz_args();
+            args.request = request;
+            args.write(output);
+            output.writeMessageEnd();
+            return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_getBuzz = function(input,mtype,rseqid) {
+            var callback = this._reqs[rseqid] || function() {};
+            delete this._reqs[rseqid];
+            if (mtype == Thrift.MessageType.EXCEPTION) {
+              var x = new Thrift.TApplicationException();
+              x.read(input);
+              input.readMessageEnd();
+              return callback(x);
+            }
+            var result = new BananaService_getBuzz_result();
+            result.read(input);
+            input.readMessageEnd();
+
+            if (null !== result.ex1) {
+              return callback(result.ex1);
+            }
+            if (null !== result.ex2) {
+              return callback(result.ex2);
+            }
+            if (null !== result.ex3) {
+              return callback(result.ex3);
+            }
+            if (null !== result.ex4) {
+              return callback(result.ex4);
+            }
+            if (null !== result.ex5) {
+              return callback(result.ex5);
+            }
+            if (null !== result.success) {
+              return callback(null, result.success);
+            }
+            return callback('getBuzz failed: unknown result');
+};
 BananaServiceClient.prototype.getDashboard = function(request, callback) {
             this._seqid = this.new_seqid();
             if (callback === undefined) {
@@ -4850,6 +5143,9 @@ BananaServiceClient.prototype.recv_getUserInfo = function(input,mtype,rseqid) {
             if (null !== result.ex4) {
               return callback(result.ex4);
             }
+            if (null !== result.ex5) {
+              return callback(result.ex5);
+            }
             if (null !== result.success) {
               return callback(null, result.success);
             }
@@ -4980,7 +5276,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_provisionApplication_result(err);
                     output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -4993,7 +5289,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.provisionApplication(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_provisionApplication_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5020,7 +5316,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_regenerateToken_result(err);
                     output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5033,7 +5329,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.regenerateToken(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_regenerateToken_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5060,7 +5356,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_registerHealthCheck_result(err);
                     output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5073,7 +5369,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.registerHealthCheck(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_registerHealthCheck_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5100,7 +5396,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
                     var result = new BananaService_removeSavedChannel_result(err);
                     output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5113,7 +5409,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.removeSavedChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
                   var result = new BananaService_removeSavedChannel_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5140,7 +5436,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_renewApplicationToken_result(err);
                     output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5153,7 +5449,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.renewApplicationToken(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_renewApplicationToken_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5180,7 +5476,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_saveChannel_result(err);
                     output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5193,7 +5489,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.saveChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_saveChannel_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5300,7 +5596,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
                     var result = new BananaService_snoozeChannel_result(err);
                     output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5313,7 +5609,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.snoozeChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
                   var result = new BananaService_snoozeChannel_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5340,7 +5636,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
                     var result = new BananaService_subscribeToApplication_result(err);
                     output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5353,7 +5649,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.subscribeToApplication(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
                   var result = new BananaService_subscribeToApplication_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5380,7 +5676,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getActivity_result(err);
                     output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5393,7 +5689,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getActivity(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getActivity_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5420,7 +5716,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_getApplicationInfo_result(err);
                     output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5433,12 +5729,52 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getApplicationInfo(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_getApplicationInfo_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                 } else {
                   var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
                   output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
+                }
+                result.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              });
+            }
+          }
+
+          BananaServiceProcessor.prototype.process_getBuzz = function(seqid, input, output)           {
+            var args = new BananaService_getBuzz_args();
+            args.read(input);
+            input.readMessageEnd();
+            if (this._handler.getBuzz.length === 1) {
+              Q.fcall(this._handler.getBuzz, args.request)
+                .then(function(result) {
+                  var result = new BananaService_getBuzz_result({success: result});
+                  output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                }, function (err) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_getBuzz_result(err);
+                    output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getBuzz", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+            } else {
+              this._handler.getBuzz(args.request, function (err, result) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  var result = new BananaService_getBuzz_result((err != null ? err : {success: result}));
+                  output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
+                } else {
+                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                  output.writeMessageBegin("getBuzz", Thrift.MessageType.EXCEPTION, seqid);
                 }
                 result.write(output);
                 output.writeMessageEnd();
@@ -5460,7 +5796,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getDashboard_result(err);
                     output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5473,7 +5809,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getDashboard(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getDashboard_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5500,7 +5836,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getMessages_result(err);
                     output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5513,7 +5849,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getMessages(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getMessages_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5540,7 +5876,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getFullMessage_result(err);
                     output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5553,7 +5889,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getFullMessage(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getFullMessage_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5580,7 +5916,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getMyApplications_result(err);
                     output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5593,7 +5929,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getMyApplications(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getMyApplications_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5620,7 +5956,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                     var result = new BananaService_getMySavedChannels_result(err);
                     output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5633,7 +5969,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getMySavedChannels(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
                   var result = new BananaService_getMySavedChannels_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5660,7 +5996,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
                     var result = new BananaService_getUserInfo_result(err);
                     output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5673,7 +6009,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.getUserInfo(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
                   var result = new BananaService_getUserInfo_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
                 } else {
@@ -5700,7 +6036,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                     var result = new BananaService_searchForApplications_result(err);
                     output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                   } else {
@@ -5713,7 +6049,7 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                 });
             } else {
               this._handler.searchForApplications(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
                   var result = new BananaService_searchForApplications_result((err != null ? err : {success: result}));
                   output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                 } else {

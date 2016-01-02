@@ -57,6 +57,8 @@ typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException Inv
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
+typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
 typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
@@ -68,6 +70,8 @@ typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableExce
 typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+
+typedef class  ::aroma::banana::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
 
 class DeleteMessageRequest;
 

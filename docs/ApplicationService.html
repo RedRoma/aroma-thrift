@@ -209,7 +209,7 @@ code { line-height: 20px; }
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
-<a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
 <a href="#Struct_SendMessageResponse">SendMessageResponse</a><br/>
@@ -251,8 +251,8 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
+<div class="definition"><h3 id="Typedef_InvalidTokenException">Typedef: InvalidTokenException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidTokenException">Exceptions.InvalidTokenException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
@@ -281,7 +281,7 @@ code { line-height: 20px; }
 </table><br/>Send a Message to the Banana Service.
 <br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_ApplicationService">Service: ApplicationService</h3>
 The Application  Service is designed to be called by Applications, to send messages
@@ -291,7 +291,7 @@ This is where Incoming Messages are accepted, processed, and stored.
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_ApplicationService_sendMessage">Function: ApplicationService.sendMessage</h4>
 <pre><code><a href="#Struct_SendMessageResponse">SendMessageResponse</a></code> sendMessage(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Send a Message from your Application to the Banana Service.
 <br/></div><div class="definition"><h4 id="Fn_ApplicationService_sendMessageAsync">Function: ApplicationService.sendMessageAsync</h4>
 <pre><code>void</code> sendMessageAsync(<code><a href="#Struct_SendMessageRequest">SendMessageRequest</a></code> request)

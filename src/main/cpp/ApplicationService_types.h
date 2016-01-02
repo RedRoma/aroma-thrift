@@ -39,7 +39,7 @@ typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsExceptio
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
@@ -118,8 +118,8 @@ inline std::ostream& operator<<(std::ostream& out, const SendMessageRequest& obj
 }
 
 typedef struct _SendMessageResponse__isset {
-  _SendMessageResponse__isset() : message(false) {}
-  bool message :1;
+  _SendMessageResponse__isset() : messageId(false) {}
+  bool messageId :1;
 } _SendMessageResponse__isset;
 
 class SendMessageResponse {
@@ -127,19 +127,19 @@ class SendMessageResponse {
 
   SendMessageResponse(const SendMessageResponse&);
   SendMessageResponse& operator=(const SendMessageResponse&);
-  SendMessageResponse() : message() {
+  SendMessageResponse() : messageId() {
   }
 
   virtual ~SendMessageResponse() throw();
-  std::string message;
+  std::string messageId;
 
   _SendMessageResponse__isset __isset;
 
-  void __set_message(const std::string& val);
+  void __set_messageId(const std::string& val);
 
   bool operator == (const SendMessageResponse & rhs) const
   {
-    if (!(message == rhs.message))
+    if (!(messageId == rhs.messageId))
       return false;
     return true;
   }

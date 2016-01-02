@@ -157,7 +157,7 @@ BananaService_provisionApplication_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -230,7 +230,7 @@ BananaService_provisionApplication_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -367,7 +367,7 @@ BananaService_regenerateToken_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -440,7 +440,7 @@ BananaService_regenerateToken_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -577,7 +577,7 @@ BananaService_registerHealthCheck_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -650,7 +650,7 @@ BananaService_registerHealthCheck_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -787,7 +787,7 @@ BananaService_removeSavedChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -860,7 +860,7 @@ BananaService_removeSavedChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -997,7 +997,7 @@ BananaService_renewApplicationToken_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1070,7 +1070,7 @@ BananaService_renewApplicationToken_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1206,7 +1206,7 @@ BananaService_saveChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1272,7 +1272,7 @@ BananaService_saveChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1753,7 +1753,7 @@ BananaService_snoozeChannel_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -1826,7 +1826,7 @@ BananaService_snoozeChannel_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -1964,7 +1964,7 @@ BananaService_subscribeToApplication_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2044,7 +2044,7 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2192,7 +2192,7 @@ BananaService_getActivity_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2251,7 +2251,7 @@ BananaService_getActivity_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2362,7 +2362,7 @@ BananaService_getApplicationInfo_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2435,7 +2435,7 @@ BananaService_getApplicationInfo_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2468,6 +2468,216 @@ BananaService_getApplicationInfo_result.prototype.read = function(input) {
 
 BananaService_getApplicationInfo_result.prototype.write = function(output) {
             output.writeStructBegin('BananaService_getApplicationInfo_result');
+            if (this.success !== null && this.success !== undefined) {
+              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+              this.success.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex1 !== null && this.ex1 !== undefined) {
+              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+              this.ex1.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex2 !== null && this.ex2 !== undefined) {
+              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+              this.ex2.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex3 !== null && this.ex3 !== undefined) {
+              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+              this.ex3.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex4 !== null && this.ex4 !== undefined) {
+              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+              this.ex4.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex5 !== null && this.ex5 !== undefined) {
+              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+              this.ex5.write(output);
+              output.writeFieldEnd();
+            }
+            output.writeFieldStop();
+            output.writeStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_args = function(args) {
+            this.request = null;
+            if (args) {
+                        if (args.request !== undefined && args.request !== null) {
+                                    this.request = new GetBuzzRequest(args.request);
+                        }
+            }
+};
+BananaService_getBuzz_args.prototype = {};
+BananaService_getBuzz_args.prototype.read = function(input) {
+            input.readStructBegin();
+            while (true)
+            {
+              var ret = input.readFieldBegin();
+              var fname = ret.fname;
+              var ftype = ret.ftype;
+              var fid = ret.fid;
+              if (ftype == Thrift.Type.STOP) {
+                break;
+              }
+              switch (fid)
+              {
+                case 1:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.request = new GetBuzzRequest();
+                  this.request.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 0:
+                  input.skip(ftype);
+                  break;
+                default:
+                  input.skip(ftype);
+              }
+              input.readFieldEnd();
+            }
+            input.readStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_args.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_getBuzz_args');
+            if (this.request !== null && this.request !== undefined) {
+              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+              this.request.write(output);
+              output.writeFieldEnd();
+            }
+            output.writeFieldStop();
+            output.writeStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_result = function(args) {
+            this.success = null;
+            this.ex1 = null;
+            this.ex2 = null;
+            this.ex3 = null;
+            this.ex4 = null;
+            this.ex5 = null;
+            if (args instanceof OperationFailedException) {
+                        this.ex1 = args;
+                        return;
+            }
+            if (args instanceof InvalidArgumentException) {
+                        this.ex2 = args;
+                        return;
+            }
+            if (args instanceof InvalidTokenException) {
+                        this.ex3 = args;
+                        return;
+            }
+            if (args instanceof ApplicationDoesNotExistException) {
+                        this.ex4 = args;
+                        return;
+            }
+            if (args instanceof UnauthorizedException) {
+                        this.ex5 = args;
+                        return;
+            }
+            if (args) {
+                        if (args.success !== undefined && args.success !== null) {
+                                    this.success = new GetBuzzResponse(args.success);
+                        }
+                        if (args.ex1 !== undefined && args.ex1 !== null) {
+                                    this.ex1 = args.ex1;
+                        }
+                        if (args.ex2 !== undefined && args.ex2 !== null) {
+                                    this.ex2 = args.ex2;
+                        }
+                        if (args.ex3 !== undefined && args.ex3 !== null) {
+                                    this.ex3 = args.ex3;
+                        }
+                        if (args.ex4 !== undefined && args.ex4 !== null) {
+                                    this.ex4 = args.ex4;
+                        }
+                        if (args.ex5 !== undefined && args.ex5 !== null) {
+                                    this.ex5 = args.ex5;
+                        }
+            }
+};
+BananaService_getBuzz_result.prototype = {};
+BananaService_getBuzz_result.prototype.read = function(input) {
+            input.readStructBegin();
+            while (true)
+            {
+              var ret = input.readFieldBegin();
+              var fname = ret.fname;
+              var ftype = ret.ftype;
+              var fid = ret.fid;
+              if (ftype == Thrift.Type.STOP) {
+                break;
+              }
+              switch (fid)
+              {
+                case 0:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.success = new GetBuzzResponse();
+                  this.success.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 1:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex1 = new OperationFailedException();
+                  this.ex1.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 2:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex2 = new InvalidArgumentException();
+                  this.ex2.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 3:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex3 = new InvalidTokenException();
+                  this.ex3.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 4:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex4 = new ApplicationDoesNotExistException();
+                  this.ex4.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 5:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex5 = new UnauthorizedException();
+                  this.ex5.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                default:
+                  input.skip(ftype);
+              }
+              input.readFieldEnd();
+            }
+            input.readStructEnd();
+            return;
+          };
+
+BananaService_getBuzz_result.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_getBuzz_result');
             if (this.success !== null && this.success !== undefined) {
               output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
               this.success.write(output);
@@ -2570,7 +2780,7 @@ BananaService_getDashboard_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2629,7 +2839,7 @@ BananaService_getDashboard_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2738,7 +2948,7 @@ BananaService_getMessages_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2797,7 +3007,7 @@ BananaService_getMessages_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -2906,7 +3116,7 @@ BananaService_getFullMessage_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -2965,7 +3175,7 @@ BananaService_getFullMessage_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3074,7 +3284,7 @@ BananaService_getMyApplications_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3133,7 +3343,7 @@ BananaService_getMyApplications_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3242,7 +3452,7 @@ BananaService_getMySavedChannels_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3301,7 +3511,7 @@ BananaService_getMySavedChannels_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3403,6 +3613,7 @@ BananaService_getUserInfo_result = function(args) {
             this.ex2 = null;
             this.ex3 = null;
             this.ex4 = null;
+            this.ex5 = null;
             if (args instanceof OperationFailedException) {
                         this.ex1 = args;
                         return;
@@ -3411,12 +3622,16 @@ BananaService_getUserInfo_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
             if (args instanceof UnauthorizedException) {
                         this.ex4 = args;
+                        return;
+            }
+            if (args instanceof UserDoesNotExistException) {
+                        this.ex5 = args;
                         return;
             }
             if (args) {
@@ -3434,6 +3649,9 @@ BananaService_getUserInfo_result = function(args) {
                         }
                         if (args.ex4 !== undefined && args.ex4 !== null) {
                                     this.ex4 = args.ex4;
+                        }
+                        if (args.ex5 !== undefined && args.ex5 !== null) {
+                                    this.ex5 = args.ex5;
                         }
             }
 };
@@ -3477,7 +3695,7 @@ BananaService_getUserInfo_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -3487,6 +3705,14 @@ BananaService_getUserInfo_result.prototype.read = function(input) {
                 if (ftype == Thrift.Type.STRUCT) {
                   this.ex4 = new UnauthorizedException();
                   this.ex4.read(input);
+                } else {
+                  input.skip(ftype);
+                }
+                break;
+                case 5:
+                if (ftype == Thrift.Type.STRUCT) {
+                  this.ex5 = new UserDoesNotExistException();
+                  this.ex5.read(input);
                 } else {
                   input.skip(ftype);
                 }
@@ -3525,6 +3751,11 @@ BananaService_getUserInfo_result.prototype.write = function(output) {
             if (this.ex4 !== null && this.ex4 !== undefined) {
               output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
               this.ex4.write(output);
+              output.writeFieldEnd();
+            }
+            if (this.ex5 !== null && this.ex5 !== undefined) {
+              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+              this.ex5.write(output);
               output.writeFieldEnd();
             }
             output.writeFieldStop();
@@ -3600,7 +3831,7 @@ BananaService_searchForApplications_result = function(args) {
                         this.ex2 = args;
                         return;
             }
-            if (args instanceof InvalidCredentialsException) {
+            if (args instanceof InvalidTokenException) {
                         this.ex3 = args;
                         return;
             }
@@ -3666,7 +3897,7 @@ BananaService_searchForApplications_result.prototype.read = function(input) {
                 break;
                 case 3:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new InvalidCredentialsException();
+                  this.ex3 = new InvalidTokenException();
                   this.ex3.read(input);
                 } else {
                   input.skip(ftype);
@@ -4528,6 +4759,70 @@ BananaServiceClient.prototype.recv_getApplicationInfo = function() {
             }
             throw 'getApplicationInfo failed: unknown result';
 };
+BananaServiceClient.prototype.getBuzz = function(request, callback) {
+            this.send_getBuzz(request, callback); 
+            if (!callback) {
+              return this.recv_getBuzz();
+            }
+};
+
+BananaServiceClient.prototype.send_getBuzz = function(request, callback) {
+            this.output.writeMessageBegin('getBuzz', Thrift.MessageType.CALL, this.seqid);
+            var args = new BananaService_getBuzz_args();
+            args.request = request;
+            args.write(this.output);
+            this.output.writeMessageEnd();
+            if (callback) {
+              var self = this;
+              this.output.getTransport().flush(true, function() {
+                var result = null;
+                try {
+                  result = self.recv_getBuzz();
+                } catch (e) {
+                  result = e;
+                }
+                callback(result);
+              });
+            } else {
+              return this.output.getTransport().flush();
+            }
+};
+
+BananaServiceClient.prototype.recv_getBuzz = function() {
+            var ret = this.input.readMessageBegin();
+            var fname = ret.fname;
+            var mtype = ret.mtype;
+            var rseqid = ret.rseqid;
+            if (mtype == Thrift.MessageType.EXCEPTION) {
+              var x = new Thrift.TApplicationException();
+              x.read(this.input);
+              this.input.readMessageEnd();
+              throw x;
+            }
+            var result = new BananaService_getBuzz_result();
+            result.read(this.input);
+            this.input.readMessageEnd();
+
+            if (null !== result.ex1) {
+              throw result.ex1;
+            }
+            if (null !== result.ex2) {
+              throw result.ex2;
+            }
+            if (null !== result.ex3) {
+              throw result.ex3;
+            }
+            if (null !== result.ex4) {
+              throw result.ex4;
+            }
+            if (null !== result.ex5) {
+              throw result.ex5;
+            }
+            if (null !== result.success) {
+              return result.success;
+            }
+            throw 'getBuzz failed: unknown result';
+};
 BananaServiceClient.prototype.getDashboard = function(request, callback) {
             this.send_getDashboard(request, callback); 
             if (!callback) {
@@ -4873,6 +5168,9 @@ BananaServiceClient.prototype.recv_getUserInfo = function() {
             }
             if (null !== result.ex4) {
               throw result.ex4;
+            }
+            if (null !== result.ex5) {
+              throw result.ex5;
             }
             if (null !== result.success) {
               return result.success;

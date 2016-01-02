@@ -164,7 +164,7 @@ ApplicationService_sendMessage_result = function(args) {
             this.ex2 = args;
             return;
       }
-      if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+      if (args instanceof Exceptions_ttypes.InvalidTokenException) {
             this.ex3 = args;
             return;
       }
@@ -223,7 +223,7 @@ ApplicationService_sendMessage_result.prototype.read = function(input) {
           break;
           case 3:
           if (ftype == Thrift.Type.STRUCT) {
-            this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+            this.ex3 = new Exceptions_ttypes.InvalidTokenException();
             this.ex3.read(input);
           } else {
             input.skip(ftype);
@@ -552,7 +552,7 @@ ApplicationServiceProcessor = exports.Processor = function(handler)     {
             output.writeMessageEnd();
             output.flush();
           }, function (err) {
-            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
               var result = new ApplicationService_sendMessage_result(err);
               output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
             } else {
@@ -565,7 +565,7 @@ ApplicationServiceProcessor = exports.Processor = function(handler)     {
           });
       } else {
         this._handler.sendMessage(args.request, function (err, result) {
-          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
+          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
             var result = new ApplicationService_sendMessage_result((err != null ? err : {success: result}));
             output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
           } else {

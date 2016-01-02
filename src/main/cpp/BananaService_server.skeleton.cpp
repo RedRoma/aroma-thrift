@@ -167,6 +167,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApplicationInfo\n");
   }
 
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) {
+    // Your implementation goes here
+    printf("getBuzz\n");
+  }
+
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");
