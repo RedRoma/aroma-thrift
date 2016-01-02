@@ -49,6 +49,8 @@ typedef BananaChannels_BananaChannel * BananaService_BananaChannel;
 
 typedef BananaEndpoint_Endpoint * BananaService_Endpoint;
 
+typedef BananaEvents_HealthCheckFailed * BananaService_HealthCheckFailed;
+
 typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
 
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;

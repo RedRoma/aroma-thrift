@@ -2125,7 +2125,7 @@ GetBuzzResponse = module.exports.GetBuzzResponse = function(args) {
             this.newApplications = Thrift.copyList(args.newApplications, [null]);
         }
         if (args.failedHealthChecks !== undefined && args.failedHealthChecks !== null) {
-            this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [Events_ttypes.HealthCheckFailed]);
+            this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [null]);
         }
     }
 };

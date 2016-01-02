@@ -3218,7 +3218,7 @@ void GetBuzzResponse::__set_newApplications(const std::vector<Application> & val
   this->newApplications = val;
 }
 
-void GetBuzzResponse::__set_failedHealthChecks(const std::vector< ::aroma::banana::thrift::events::HealthCheckFailed> & val) {
+void GetBuzzResponse::__set_failedHealthChecks(const std::vector<HealthCheckFailed> & val) {
   this->failedHealthChecks = val;
 }
 
@@ -3347,7 +3347,7 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("failedHealthChecks", ::apache::thrift::protocol::T_LIST, 3);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->failedHealthChecks.size()));
-    std::vector< ::aroma::banana::thrift::events::HealthCheckFailed> ::const_iterator _iter91;
+    std::vector<HealthCheckFailed> ::const_iterator _iter91;
     for (_iter91 = this->failedHealthChecks.begin(); _iter91 != this->failedHealthChecks.end(); ++_iter91)
     {
       xfer += (*_iter91).write(oprot);

@@ -2114,7 +2114,7 @@ GetBuzzResponse = function(args) {
             this.newApplications = Thrift.copyList(args.newApplications, [null]);
         }
         if (args.failedHealthChecks !== undefined && args.failedHealthChecks !== null) {
-            this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [HealthCheckFailed]);
+            this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [null]);
         }
     }
 };

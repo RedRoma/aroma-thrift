@@ -49,6 +49,8 @@ typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
 
 typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
 
+typedef class  ::aroma::banana::thrift::events::HealthCheckFailed HealthCheckFailed;
+
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
@@ -1692,7 +1694,7 @@ class GetBuzzResponse {
   virtual ~GetBuzzResponse() throw();
   std::vector<User>  newUsers;
   std::vector<Application>  newApplications;
-  std::vector< ::aroma::banana::thrift::events::HealthCheckFailed>  failedHealthChecks;
+  std::vector<HealthCheckFailed>  failedHealthChecks;
 
   _GetBuzzResponse__isset __isset;
 
@@ -1700,7 +1702,7 @@ class GetBuzzResponse {
 
   void __set_newApplications(const std::vector<Application> & val);
 
-  void __set_failedHealthChecks(const std::vector< ::aroma::banana::thrift::events::HealthCheckFailed> & val);
+  void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {
