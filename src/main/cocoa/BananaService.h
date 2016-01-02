@@ -1094,6 +1094,76 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 @end
 
+@interface BananaService_GetBuzzRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+
+  BOOL __token_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+@end
+
+@interface BananaService_GetBuzzResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __newUsers;
+  NSMutableArray * __newApplications;
+  NSMutableArray * __failedHealthChecks;
+
+  BOOL __newUsers_isset;
+  BOOL __newApplications_isset;
+  BOOL __failedHealthChecks_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=newUsers, setter=setNewUsers:) NSMutableArray * newUsers;
+@property (nonatomic, retain, getter=newApplications, setter=setNewApplications:) NSMutableArray * newApplications;
+@property (nonatomic, retain, getter=failedHealthChecks, setter=setFailedHealthChecks:) NSMutableArray * failedHealthChecks;
+#endif
+
+- (id) init;
+- (id) initWithNewUsers: (NSMutableArray *) newUsers newApplications: (NSMutableArray *) newApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) newUsers;
+- (void) setNewUsers: (NSMutableArray *) newUsers;
+#endif
+- (BOOL) newUsersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) newApplications;
+- (void) setNewApplications: (NSMutableArray *) newApplications;
+#endif
+- (BOOL) newApplicationsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) failedHealthChecks;
+- (void) setFailedHealthChecks: (NSMutableArray *) failedHealthChecks;
+#endif
+- (BOOL) failedHealthChecksIsSet;
+
+@end
+
 @interface BananaService_GetDashboardRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
 

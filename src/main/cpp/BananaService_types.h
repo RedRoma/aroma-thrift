@@ -119,6 +119,10 @@ class GetApplicationInfoRequest;
 
 class GetApplicationInfoResponse;
 
+class GetBuzzRequest;
+
+class GetBuzzResponse;
+
 class GetDashboardRequest;
 
 class GetDashboardResponse;
@@ -1616,6 +1620,113 @@ class GetApplicationInfoResponse {
 void swap(GetApplicationInfoResponse &a, GetApplicationInfoResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetApplicationInfoResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetBuzzRequest__isset {
+  _GetBuzzRequest__isset() : token(false) {}
+  bool token :1;
+} _GetBuzzRequest__isset;
+
+class GetBuzzRequest {
+ public:
+
+  GetBuzzRequest(const GetBuzzRequest&);
+  GetBuzzRequest& operator=(const GetBuzzRequest&);
+  GetBuzzRequest() {
+  }
+
+  virtual ~GetBuzzRequest() throw();
+  UserToken token;
+
+  _GetBuzzRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  bool operator == (const GetBuzzRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    return true;
+  }
+  bool operator != (const GetBuzzRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetBuzzRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetBuzzRequest &a, GetBuzzRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetBuzzRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetBuzzResponse__isset {
+  _GetBuzzResponse__isset() : newUsers(true), newApplications(true), failedHealthChecks(true) {}
+  bool newUsers :1;
+  bool newApplications :1;
+  bool failedHealthChecks :1;
+} _GetBuzzResponse__isset;
+
+class GetBuzzResponse {
+ public:
+
+  GetBuzzResponse(const GetBuzzResponse&);
+  GetBuzzResponse& operator=(const GetBuzzResponse&);
+  GetBuzzResponse() {
+
+
+
+  }
+
+  virtual ~GetBuzzResponse() throw();
+  std::vector<User>  newUsers;
+  std::vector<Application>  newApplications;
+  std::vector< ::aroma::banana::thrift::events::HealthCheckFailed>  failedHealthChecks;
+
+  _GetBuzzResponse__isset __isset;
+
+  void __set_newUsers(const std::vector<User> & val);
+
+  void __set_newApplications(const std::vector<Application> & val);
+
+  void __set_failedHealthChecks(const std::vector< ::aroma::banana::thrift::events::HealthCheckFailed> & val);
+
+  bool operator == (const GetBuzzResponse & rhs) const
+  {
+    if (!(newUsers == rhs.newUsers))
+      return false;
+    if (!(newApplications == rhs.newApplications))
+      return false;
+    if (!(failedHealthChecks == rhs.failedHealthChecks))
+      return false;
+    return true;
+  }
+  bool operator != (const GetBuzzResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetBuzzResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetBuzzResponse &a, GetBuzzResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetBuzzResponse& obj)
 {
   obj.printTo(out);
   return out;

@@ -6334,6 +6334,492 @@
 
 @end
 
+@implementation BananaService_GetBuzzRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (BananaService_UserToken) token
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetBuzzRequest class]]) {
+    return NO;
+  }
+  BananaService_GetBuzzRequest *other = (BananaService_GetBuzzRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetBuzzRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzzRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_GetBuzzResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.newUsers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+  self.newApplications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+  self.failedHealthChecks = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithNewUsers: (NSMutableArray *) newUsers newApplications: (NSMutableArray *) newApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks
+{
+  self = [super init];
+  __newUsers = [newUsers retain_stub];
+  __newUsers_isset = YES;
+  __newApplications = [newApplications retain_stub];
+  __newApplications_isset = YES;
+  __failedHealthChecks = [failedHealthChecks retain_stub];
+  __failedHealthChecks_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"newUsers"])
+  {
+    __newUsers = [[decoder decodeObjectForKey: @"newUsers"] retain_stub];
+    __newUsers_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"newApplications"])
+  {
+    __newApplications = [[decoder decodeObjectForKey: @"newApplications"] retain_stub];
+    __newApplications_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"failedHealthChecks"])
+  {
+    __failedHealthChecks = [[decoder decodeObjectForKey: @"failedHealthChecks"] retain_stub];
+    __failedHealthChecks_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__newUsers_isset)
+  {
+    [encoder encodeObject: __newUsers forKey: @"newUsers"];
+  }
+  if (__newApplications_isset)
+  {
+    [encoder encodeObject: __newApplications forKey: @"newApplications"];
+  }
+  if (__failedHealthChecks_isset)
+  {
+    [encoder encodeObject: __failedHealthChecks forKey: @"failedHealthChecks"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __newUsers_isset ? 2654435761 : 0;
+  if (__newUsers_isset)
+  {
+    hash = (hash * 31) ^ [__newUsers hash];
+  }
+  hash = (hash * 31) ^ __newApplications_isset ? 2654435761 : 0;
+  if (__newApplications_isset)
+  {
+    hash = (hash * 31) ^ [__newApplications hash];
+  }
+  hash = (hash * 31) ^ __failedHealthChecks_isset ? 2654435761 : 0;
+  if (__failedHealthChecks_isset)
+  {
+    hash = (hash * 31) ^ [__failedHealthChecks hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_GetBuzzResponse class]]) {
+    return NO;
+  }
+  BananaService_GetBuzzResponse *other = (BananaService_GetBuzzResponse *)anObject;
+  if ((__newUsers_isset != other->__newUsers_isset) ||
+      (__newUsers_isset && ((__newUsers || other->__newUsers) && ![__newUsers isEqual:other->__newUsers]))) {
+    return NO;
+  }
+  if ((__newApplications_isset != other->__newApplications_isset) ||
+      (__newApplications_isset && ((__newApplications || other->__newApplications) && ![__newApplications isEqual:other->__newApplications]))) {
+    return NO;
+  }
+  if ((__failedHealthChecks_isset != other->__failedHealthChecks_isset) ||
+      (__failedHealthChecks_isset && ((__failedHealthChecks || other->__failedHealthChecks) && ![__failedHealthChecks isEqual:other->__failedHealthChecks]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__newUsers release_stub];
+  [__newApplications release_stub];
+  [__failedHealthChecks release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) newUsers {
+  return [[__newUsers retain_stub] autorelease_stub];
+}
+
+- (void) setNewUsers: (NSMutableArray *) newUsers {
+  [newUsers retain_stub];
+  [__newUsers release_stub];
+  __newUsers = newUsers;
+  __newUsers_isset = YES;
+}
+
+- (BOOL) newUsersIsSet {
+  return __newUsers_isset;
+}
+
+- (void) unsetNewUsers {
+  [__newUsers release_stub];
+  __newUsers = nil;
+  __newUsers_isset = NO;
+}
+
+- (NSMutableArray *) newApplications {
+  return [[__newApplications retain_stub] autorelease_stub];
+}
+
+- (void) setNewApplications: (NSMutableArray *) newApplications {
+  [newApplications retain_stub];
+  [__newApplications release_stub];
+  __newApplications = newApplications;
+  __newApplications_isset = YES;
+}
+
+- (BOOL) newApplicationsIsSet {
+  return __newApplications_isset;
+}
+
+- (void) unsetNewApplications {
+  [__newApplications release_stub];
+  __newApplications = nil;
+  __newApplications_isset = NO;
+}
+
+- (NSMutableArray *) failedHealthChecks {
+  return [[__failedHealthChecks retain_stub] autorelease_stub];
+}
+
+- (void) setFailedHealthChecks: (NSMutableArray *) failedHealthChecks {
+  [failedHealthChecks retain_stub];
+  [__failedHealthChecks release_stub];
+  __failedHealthChecks = failedHealthChecks;
+  __failedHealthChecks_isset = YES;
+}
+
+- (BOOL) failedHealthChecksIsSet {
+  return __failedHealthChecks_isset;
+}
+
+- (void) unsetFailedHealthChecks {
+  [__failedHealthChecks release_stub];
+  __failedHealthChecks = nil;
+  __failedHealthChecks_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size15;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
+          {
+            Banana_User *_elem17 = [[Banana_User alloc] init];
+            [_elem17 read: inProtocol];
+            [fieldValue addObject: _elem17];
+            [_elem17 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setNewUsers: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_LIST) {
+          int _size18;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size18];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size18];
+          int _i19;
+          for (_i19 = 0; _i19 < _size18; ++_i19)
+          {
+            Banana_Application *_elem20 = [[Banana_Application alloc] init];
+            [_elem20 read: inProtocol];
+            [fieldValue addObject: _elem20];
+            [_elem20 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setNewApplications: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_LIST) {
+          int _size21;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size21];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size21];
+          int _i22;
+          for (_i22 = 0; _i22 < _size21; ++_i22)
+          {
+            BananaEvents_HealthCheckFailed *_elem23 = [[BananaEvents_HealthCheckFailed alloc] init];
+            [_elem23 read: inProtocol];
+            [fieldValue addObject: _elem23];
+            [_elem23 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setFailedHealthChecks: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetBuzzResponse"];
+  if (__newUsers_isset) {
+    if (__newUsers != nil) {
+      [outProtocol writeFieldBeginWithName: @"newUsers" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__newUsers count]];
+        int idx25;
+        for (idx25 = 0; idx25 < [__newUsers count]; idx25++)
+        {
+          [[__newUsers objectAtIndex: idx25] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__newApplications_isset) {
+    if (__newApplications != nil) {
+      [outProtocol writeFieldBeginWithName: @"newApplications" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__newApplications count]];
+        int idx27;
+        for (idx27 = 0; idx27 < [__newApplications count]; idx27++)
+        {
+          [[__newApplications objectAtIndex: idx27] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__failedHealthChecks_isset) {
+    if (__failedHealthChecks != nil) {
+      [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
+        int idx29;
+        for (idx29 = 0; idx29 < [__failedHealthChecks count]; idx29++)
+        {
+          [[__failedHealthChecks objectAtIndex: idx29] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzzResponse("];
+  [ms appendString: @"newUsers:"];
+  [ms appendFormat: @"%@", __newUsers];
+  [ms appendString: @",newApplications:"];
+  [ms appendFormat: @"%@", __newApplications];
+  [ms appendString: @",failedHealthChecks:"];
+  [ms appendFormat: @"%@", __failedHealthChecks];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_GetDashboardRequest
 
 - (id) init
@@ -6854,16 +7340,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size30;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
+          int _i31;
+          for (_i31 = 0; _i31 < _size30; ++_i31)
           {
-            Banana_Message *_elem17 = [[Banana_Message alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            Banana_Message *_elem32 = [[Banana_Message alloc] init];
+            [_elem32 read: inProtocol];
+            [fieldValue addObject: _elem32];
+            [_elem32 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -6927,10 +7413,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__recentMessages count]; idx19++)
+        int idx34;
+        for (idx34 = 0; idx34 < [__recentMessages count]; idx34++)
         {
-          [[__recentMessages objectAtIndex: idx19] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -7396,16 +7882,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            Banana_Message *_elem22 = [[Banana_Message alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            Banana_Message *_elem37 = [[Banana_Message alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -7438,10 +7924,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx24;
-        for (idx24 = 0; idx24 < [__messages count]; idx24++)
+        int idx39;
+        for (idx39 = 0; idx39 < [__messages count]; idx39++)
         {
-          [[__messages objectAtIndex: idx24] write: outProtocol];
+          [[__messages objectAtIndex: idx39] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8094,16 +8580,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size25;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
-          int _i26;
-          for (_i26 = 0; _i26 < _size25; ++_i26)
+          int _size40;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
+          int _i41;
+          for (_i41 = 0; _i41 < _size40; ++_i41)
           {
-            Banana_Application *_elem27 = [[Banana_Application alloc] init];
-            [_elem27 read: inProtocol];
-            [fieldValue addObject: _elem27];
-            [_elem27 release_stub];
+            Banana_Application *_elem42 = [[Banana_Application alloc] init];
+            [_elem42 read: inProtocol];
+            [fieldValue addObject: _elem42];
+            [_elem42 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -8128,10 +8614,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx29;
-        for (idx29 = 0; idx29 < [__applications count]; idx29++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__applications count]; idx44++)
         {
-          [[__applications objectAtIndex: idx29] write: outProtocol];
+          [[__applications objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8416,16 +8902,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size30;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
-          int _i31;
-          for (_i31 = 0; _i31 < _size30; ++_i31)
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            BananaChannels_BananaChannel *_elem32 = [[BananaChannels_BananaChannel alloc] init];
-            [_elem32 read: inProtocol];
-            [fieldValue addObject: _elem32];
-            [_elem32 release_stub];
+            BananaChannels_BananaChannel *_elem47 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -8450,10 +8936,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx34;
-        for (idx34 = 0; idx34 < [__channels count]; idx34++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__channels count]; idx49++)
         {
-          [[__channels objectAtIndex: idx34] write: outProtocol];
+          [[__channels objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8794,16 +9280,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            BananaEvents_Event *_elem37 = [[BananaEvents_Event alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            BananaEvents_Event *_elem52 = [[BananaEvents_Event alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -8828,10 +9314,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__events count]; idx39++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__events count]; idx54++)
         {
-          [[__events objectAtIndex: idx39] write: outProtocol];
+          [[__events objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9118,16 +9604,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Banana_ServiceAnnouncement *_elem42 = [[Banana_ServiceAnnouncement alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Banana_ServiceAnnouncement *_elem57 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -9152,10 +9638,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__serviceAnnouncements count]; idx44++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__serviceAnnouncements count]; idx59++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx44] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9923,16 +10409,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Banana_Application *_elem47 = [[Banana_Application alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            Banana_Application *_elem62 = [[Banana_Application alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -9957,10 +10443,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__applications count]; idx49++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__applications count]; idx64++)
         {
-          [[__applications objectAtIndex: idx49] write: outProtocol];
+          [[__applications objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }

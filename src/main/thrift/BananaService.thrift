@@ -48,6 +48,7 @@ typedef Banana.Application Application
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
+typedef Events.HealthCheckFailed HealthCheckFailed
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -336,6 +337,22 @@ struct GetApplicationInfoResponse
     1: Application applicationInfo;
     /** The Channels registered to this Application. */
     2: list<BananaChannel> registeredChannels;
+}
+
+/**
+ * Buzz is like the latest news happening around
+ * Banana.
+ */
+struct GetBuzzRequest
+{
+    1: UserToken token;
+}
+
+struct GetBuzzResponse
+{
+    1: list<User> newUsers = [];
+    2: list<Application> newApplications = [];
+    3: list<HealthCheckFailed> failedHealthChecks = [];
 }
 
 struct GetDashboardRequest
