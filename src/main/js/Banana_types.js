@@ -608,7 +608,7 @@ Application = function(args) {
   this.icon = null;
   this.programmingLanguage = null;
   this.subscribers = [];
-  this.description = null;
+  this.applicationDescription = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [User]);
@@ -634,8 +634,8 @@ Application = function(args) {
     if (args.subscribers !== undefined && args.subscribers !== null) {
       this.subscribers = Thrift.copyList(args.subscribers, [User]);
     }
-    if (args.description !== undefined && args.description !== null) {
-      this.description = args.description;
+    if (args.applicationDescription !== undefined && args.applicationDescription !== null) {
+      this.applicationDescription = args.applicationDescription;
     }
   }
 };
@@ -740,7 +740,7 @@ Application.prototype.read = function(input) {
       break;
       case 9:
       if (ftype == Thrift.Type.STRING) {
-        this.description = input.readString().value;
+        this.applicationDescription = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -814,9 +814,9 @@ Application.prototype.write = function(output) {
     output.writeSetEnd();
     output.writeFieldEnd();
   }
-  if (this.description !== null && this.description !== undefined) {
-    output.writeFieldBegin('description', Thrift.Type.STRING, 9);
-    output.writeString(this.description);
+  if (this.applicationDescription !== null && this.applicationDescription !== undefined) {
+    output.writeFieldBegin('applicationDescription', Thrift.Type.STRING, 9);
+    output.writeString(this.applicationDescription);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

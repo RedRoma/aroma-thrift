@@ -1769,7 +1769,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers description: (NSString *) description
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -1788,8 +1788,8 @@
   __programmingLanguage_isset = YES;
   __subscribers = [subscribers retain_stub];
   __subscribers_isset = YES;
-  __description = [description retain_stub];
-  __description_isset = YES;
+  __applicationDescription = [applicationDescription retain_stub];
+  __applicationDescription_isset = YES;
   return self;
 }
 
@@ -1836,10 +1836,10 @@
     __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
     __subscribers_isset = YES;
   }
-  if ([decoder containsValueForKey: @"description"])
+  if ([decoder containsValueForKey: @"applicationDescription"])
   {
-    __description = [[decoder decodeObjectForKey: @"description"] retain_stub];
-    __description_isset = YES;
+    __applicationDescription = [[decoder decodeObjectForKey: @"applicationDescription"] retain_stub];
+    __applicationDescription_isset = YES;
   }
   return self;
 }
@@ -1878,9 +1878,9 @@
   {
     [encoder encodeObject: __subscribers forKey: @"subscribers"];
   }
-  if (__description_isset)
+  if (__applicationDescription_isset)
   {
-    [encoder encodeObject: __description forKey: @"description"];
+    [encoder encodeObject: __applicationDescription forKey: @"applicationDescription"];
   }
 }
 
@@ -1927,10 +1927,10 @@
   {
     hash = (hash * 31) ^ [__subscribers hash];
   }
-  hash = (hash * 31) ^ __description_isset ? 2654435761 : 0;
-  if (__description_isset)
+  hash = (hash * 31) ^ __applicationDescription_isset ? 2654435761 : 0;
+  if (__applicationDescription_isset)
   {
-    hash = (hash * 31) ^ [__description hash];
+    hash = (hash * 31) ^ [__applicationDescription hash];
   }
   return hash;
 }
@@ -1976,8 +1976,8 @@
       (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
     return NO;
   }
-  if ((__description_isset != other->__description_isset) ||
-      (__description_isset && ((__description || other->__description) && ![__description isEqual:other->__description]))) {
+  if ((__applicationDescription_isset != other->__applicationDescription_isset) ||
+      (__applicationDescription_isset && ((__applicationDescription || other->__applicationDescription) && ![__applicationDescription isEqual:other->__applicationDescription]))) {
     return NO;
   }
   return YES;
@@ -1990,7 +1990,7 @@
   [__id release_stub];
   [__icon release_stub];
   [__subscribers release_stub];
-  [__description release_stub];
+  [__applicationDescription release_stub];
   [super dealloc_stub];
 }
 
@@ -2150,25 +2150,25 @@
   __subscribers_isset = NO;
 }
 
-- (NSString *) description {
-  return [[__description retain_stub] autorelease_stub];
+- (NSString *) applicationDescription {
+  return [[__applicationDescription retain_stub] autorelease_stub];
 }
 
-- (void) setDescription: (NSString *) description {
-  [description retain_stub];
-  [__description release_stub];
-  __description = description;
-  __description_isset = YES;
+- (void) setApplicationDescription: (NSString *) applicationDescription {
+  [applicationDescription retain_stub];
+  [__applicationDescription release_stub];
+  __applicationDescription = applicationDescription;
+  __applicationDescription_isset = YES;
 }
 
-- (BOOL) descriptionIsSet {
-  return __description_isset;
+- (BOOL) applicationDescriptionIsSet {
+  return __applicationDescription_isset;
 }
 
-- (void) unsetDescription {
-  [__description release_stub];
-  __description = nil;
-  __description_isset = NO;
+- (void) unsetApplicationDescription {
+  [__applicationDescription release_stub];
+  __applicationDescription = nil;
+  __applicationDescription_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2279,7 +2279,7 @@
       case 9:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setDescription: fieldValue];
+          [self setApplicationDescription: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2363,10 +2363,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__description_isset) {
-    if (__description != nil) {
-      [outProtocol writeFieldBeginWithName: @"description" type: TType_STRING fieldID: 9];
-      [outProtocol writeString: __description];
+  if (__applicationDescription_isset) {
+    if (__applicationDescription != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationDescription" type: TType_STRING fieldID: 9];
+      [outProtocol writeString: __applicationDescription];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2396,8 +2396,8 @@
   [ms appendFormat: @"%i", __programmingLanguage];
   [ms appendString: @",subscribers:"];
   [ms appendFormat: @"%@", __subscribers];
-  [ms appendString: @",description:"];
-  [ms appendFormat: @"\"%@\"", __description];
+  [ms appendString: @",applicationDescription:"];
+  [ms appendFormat: @"\"%@\"", __applicationDescription];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

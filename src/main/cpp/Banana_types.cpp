@@ -962,8 +962,8 @@ void Application::__set_subscribers(const std::set<User> & val) {
 __isset.subscribers = true;
 }
 
-void Application::__set_description(const std::string& val) {
-  this->description = val;
+void Application::__set_applicationDescription(const std::string& val) {
+  this->applicationDescription = val;
 }
 
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1081,8 +1081,8 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 9:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->description);
-          this->__isset.description = true;
+          xfer += iprot->readString(this->applicationDescription);
+          this->__isset.applicationDescription = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1155,8 +1155,8 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     }
     xfer += oprot->writeFieldEnd();
   }
-  xfer += oprot->writeFieldBegin("description", ::apache::thrift::protocol::T_STRING, 9);
-  xfer += oprot->writeString(this->description);
+  xfer += oprot->writeFieldBegin("applicationDescription", ::apache::thrift::protocol::T_STRING, 9);
+  xfer += oprot->writeString(this->applicationDescription);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -1174,7 +1174,7 @@ void swap(Application &a, Application &b) {
   swap(a.icon, b.icon);
   swap(a.programmingLanguage, b.programmingLanguage);
   swap(a.subscribers, b.subscribers);
-  swap(a.description, b.description);
+  swap(a.applicationDescription, b.applicationDescription);
   swap(a.__isset, b.__isset);
 }
 
@@ -1187,7 +1187,7 @@ Application::Application(const Application& other36) {
   icon = other36.icon;
   programmingLanguage = other36.programmingLanguage;
   subscribers = other36.subscribers;
-  description = other36.description;
+  applicationDescription = other36.applicationDescription;
   __isset = other36.__isset;
 }
 Application& Application::operator=(const Application& other37) {
@@ -1199,7 +1199,7 @@ Application& Application::operator=(const Application& other37) {
   icon = other37.icon;
   programmingLanguage = other37.programmingLanguage;
   subscribers = other37.subscribers;
-  description = other37.description;
+  applicationDescription = other37.applicationDescription;
   __isset = other37.__isset;
   return *this;
 }
@@ -1214,7 +1214,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
   out << ", " << "subscribers="; (__isset.subscribers ? (out << to_string(subscribers)) : (out << "<null>"));
-  out << ", " << "description=" << to_string(description);
+  out << ", " << "applicationDescription=" << to_string(applicationDescription);
   out << ")";
 }
 
