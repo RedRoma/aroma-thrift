@@ -4,7 +4,29 @@ jdk:
 - oraclejdk8
 before_install:
   - sudo apt-get update -qq
+  #INSTALL JAVA
+  - sudo apt-get update && sudo apt-get install oracle-java8-installer
+
   - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev ant
+  - sudo apt-get install -qq libcommons-lang3-java ant
+  - sudo apt-get install -qq python-all python-all-dev python-all-dbg
+ # Perl
+  - sudo apt-get install -qq libbit-vector-perl
+ # PHP
+  - sudo apt-get install -qq php5-dev php5-cli phpunit
+ # c_glib
+  - sudo apt-get install -qq libglib2.0-dev
+ # Erlang
+  - sudo apt-get install -qq erlang-base erlang-eunit erlang-dev
+ # Csharp
+  - sudo apt-get install -qq mono-gmcs mono-devel libmono-system-web2.0-cil nunit nunit-console
+ # Haskell
+  - sudo apt-get install -qq ghc6 cabal-install libghc6-binary-dev libghc6-network-dev libghc6-http-dev
+
+ #DOWNLOAD THRIFT
   - wget http://www.us.apache.org/dist/thrift/0.9.3/thrift-0.9.3.tar.gz
   - tar xfz thrift-0.9.3.tar.gz
-  - cd thrift-0.9.3 && ./configure && sudo make install
+  - cd thrift-0.9.3
+  - sh configure --without-ruby --without-haskell --without-perl --without-php  --without-python
+  - make -j$NUM_CPU && make dist
+  - make check -j$NUM_CPU && sh test/test.sh
