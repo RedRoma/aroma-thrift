@@ -30,3 +30,4 @@ before_install:
   - sh configure --without-ruby --without-haskell --without-perl --without-php  --without-python
   - make -j$NUM_CPU
   - sudo make install
+  - thrift -version
