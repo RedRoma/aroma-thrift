@@ -7,7 +7,6 @@ before_install:
   #INSTALL JAVA
   - sudo apt-get update && sudo apt-get install oracle-java8-installer
 
-install:
   - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev ant
   - sudo apt-get install -qq libcommons-lang3-java ant
   - sudo apt-get install -qq python-all python-all-dev python-all-dbg
@@ -29,5 +28,5 @@ install:
   - tar xfz thrift-0.9.3.tar.gz
   - cd thrift-0.9.3
   - sh configure --without-ruby --without-haskell --without-perl --without-php  --without-python
-  - make -j$NUM_CPU && make dist
-  - make check -j$NUM_CPU
+  - make -j$NUM_CPU
+  - make install
