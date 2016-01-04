@@ -23,6 +23,7 @@ class BananaServiceConstants {
    ::aroma::banana::thrift::Dimension MAX_PROFILE_IMAGE_DIMENSION;
   int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
+  int MAX_MESSAGE_LENGTH;
 };
 
 extern const BananaServiceConstants g_BananaService_constants;

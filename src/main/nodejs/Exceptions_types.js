@@ -350,7 +350,7 @@ UnauthorizedException.prototype.write = function(output) {
 ApplicationDoesNotExistException = module.exports.ApplicationDoesNotExistException = function(args) {
   Thrift.TException.call(this, "ApplicationDoesNotExistException")
   this.name = "ApplicationDoesNotExistException"
-  this.message = 'The Specified Application does not exist';
+  this.message = 'The Specified Application does not exist.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -406,7 +406,7 @@ ApplicationDoesNotExistException.prototype.write = function(output) {
 ApplicationAlreadyRegisteredException = module.exports.ApplicationAlreadyRegisteredException = function(args) {
   Thrift.TException.call(this, "ApplicationAlreadyRegisteredException")
   this.name = "ApplicationAlreadyRegisteredException"
-  this.message = 'This Channel has already been registered for this Application';
+  this.message = 'This Channel has already been registered for this Application.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -459,10 +459,66 @@ ApplicationAlreadyRegisteredException.prototype.write = function(output) {
   return;
 };
 
+UserDoesNotExistException = module.exports.UserDoesNotExistException = function(args) {
+  Thrift.TException.call(this, "UserDoesNotExistException")
+  this.name = "UserDoesNotExistException"
+  this.message = 'The User you\'re referring to does not exist.';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(UserDoesNotExistException, Thrift.TException);
+UserDoesNotExistException.prototype.name = 'UserDoesNotExistException';
+UserDoesNotExistException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+UserDoesNotExistException.prototype.write = function(output) {
+  output.writeStructBegin('UserDoesNotExistException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ThroughoutExceededException = module.exports.ThroughoutExceededException = function(args) {
   Thrift.TException.call(this, "ThroughoutExceededException")
   this.name = "ThroughoutExceededException"
-  this.message = 'You have exceeded your allocated throughput. Buy more or slow down';
+  this.message = 'You have exceeded your allocated throughput. Buy more or slow down.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -574,7 +630,7 @@ CustomChannelUnreachableException.prototype.write = function(output) {
 ChannelDoesNotExistException = module.exports.ChannelDoesNotExistException = function(args) {
   Thrift.TException.call(this, "ChannelDoesNotExistException")
   this.name = "ChannelDoesNotExistException"
-  this.message = 'The Channel specified does not exist in the System';
+  this.message = 'The Channel specified does not exist in the System.';
   if (args) {
     if (args.message !== undefined && args.message !== null) {
       this.message = args.message;
@@ -617,62 +673,6 @@ ChannelDoesNotExistException.prototype.read = function(input) {
 
 ChannelDoesNotExistException.prototype.write = function(output) {
   output.writeStructBegin('ChannelDoesNotExistException');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-ThroughputExceeedException = module.exports.ThroughputExceeedException = function(args) {
-  Thrift.TException.call(this, "ThroughputExceeedException")
-  this.name = "ThroughputExceeedException"
-  this.message = 'You have surpassed your allowable rate of messages. Slow Down.';
-  if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
-    }
-  }
-};
-Thrift.inherits(ThroughputExceeedException, Thrift.TException);
-ThroughputExceeedException.prototype.name = 'ThroughputExceeedException';
-ThroughputExceeedException.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-ThroughputExceeedException.prototype.write = function(output) {
-  output.writeStructBegin('ThroughputExceeedException');
   if (this.message !== null && this.message !== undefined) {
     output.writeFieldBegin('message', Thrift.Type.STRING, 1);
     output.writeString(this.message);

@@ -241,7 +241,7 @@ class ApplicationService_sendMessage_result {
   SendMessageResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
 
   _ApplicationService_sendMessage_result__isset __isset;
 
@@ -251,7 +251,7 @@ class ApplicationService_sendMessage_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   bool operator == (const ApplicationService_sendMessage_result & rhs) const
   {
@@ -292,7 +292,7 @@ class ApplicationService_sendMessage_presult {
   SendMessageResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
 
   _ApplicationService_sendMessage_presult__isset __isset;
 

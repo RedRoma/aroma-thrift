@@ -199,10 +199,13 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_getActivity">getActivity</a></li>
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
-<li><a href="#Fn_BananaService_getApplicationSubscribers">getApplicationSubscribers</a></li>
+<li><a href="#Fn_BananaService_getBuzz">getBuzz</a></li>
 <li><a href="#Fn_BananaService_getDashboard">getDashboard</a></li>
+<li><a href="#Fn_BananaService_getFullMessage">getFullMessage</a></li>
+<li><a href="#Fn_BananaService_getMessages">getMessages</a></li>
 <li><a href="#Fn_BananaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
+<li><a href="#Fn_BananaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_BananaService_provisionApplication">provisionApplication</a></li>
 <li><a href="#Fn_BananaService_regenerateToken">regenerateToken</a></li>
 <li><a href="#Fn_BananaService_registerHealthCheck">registerHealthCheck</a></li>
@@ -221,14 +224,12 @@ code { line-height: 20px; }
 <a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="#Typedef_ApplicationToken">ApplicationToken</a><br/>
+<a href="#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
 <a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
-<a href="#Struct_DeleteAllMessagesRequest">DeleteAllMessagesRequest</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
-<a href="#Struct_DismissAllMessagesRequest">DismissAllMessagesRequest</a><br/>
-<a href="#Struct_DismissAllMessagesResponse">DismissAllMessagesResponse</a><br/>
 <a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
 <a href="#Struct_DismissMessageResponse">DismissMessageResponse</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
@@ -236,10 +237,12 @@ code { line-height: 20px; }
 <a href="#Struct_GetActivityResponse">GetActivityResponse</a><br/>
 <a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a><br/>
 <a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a><br/>
-<a href="#Struct_GetApplicationSubscribersRequest">GetApplicationSubscribersRequest</a><br/>
-<a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a><br/>
+<a href="#Struct_GetBuzzRequest">GetBuzzRequest</a><br/>
+<a href="#Struct_GetBuzzResponse">GetBuzzResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
 <a href="#Struct_GetDashboardResponse">GetDashboardResponse</a><br/>
+<a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a><br/>
+<a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a><br/>
 <a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
 <a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
 <a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a><br/>
@@ -248,9 +251,13 @@ code { line-height: 20px; }
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
 <a href="#Struct_GetServiceAnnouncementsResponse">GetServiceAnnouncementsResponse</a><br/>
+<a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a><br/>
+<a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a><br/>
+<a href="#Typedef_HealthCheckFailed">HealthCheckFailed</a><br/>
 <a href="#Typedef_Image">Image</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a><br/>
 <a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a><br/>
@@ -277,6 +284,7 @@ code { line-height: 20px; }
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_User">User</a><br/>
+<a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
@@ -286,6 +294,7 @@ code { line-height: 20px; }
 <code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_DIMENSION">MAX_APPLICATION_ICON_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES">MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</a></code><br/>
+<code><a href="#Const_MAX_MESSAGE_LENGTH">MAX_MESSAGE_LENGTH</a></code><br/>
 <code><a href="#Const_MAX_PROFILE_IMAGE_DIMENSION">MAX_PROFILE_IMAGE_DIMENSION</a></code><br/>
 <code><a href="#Const_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES">MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES</a></code><br/>
 <code><a href="#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
@@ -294,13 +303,16 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.4</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
+<tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.5</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
 <br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7001</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.banana.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
 <br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.beta.banana.aroma.tech", port = 7001 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES"><td><code>MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for a Profile Picture submitted.
+<br/></blockquote></td></tr><tr id="Const_MAX_MESSAGE_LENGTH"><td><code>MAX_MESSAGE_LENGTH</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>5000</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of messages included in a Message Object.
+If truncated, the full message can be loaded using the
+getFullMessage() operation.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
@@ -311,11 +323,14 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_UserToken">Typedef: UserToken</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_AuthenticationToken">Typedef: AuthenticationToken</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_AuthenticationToken">Authentication.AuthenticationToken</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_UserToken">Typedef: UserToken</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
@@ -335,6 +350,9 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_Endpoint">Typedef: Endpoint</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_HealthCheckFailed">Typedef: HealthCheckFailed</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Events.html#Struct_HealthCheckFailed">Events.HealthCheckFailed</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
 </div>
@@ -343,6 +361,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_InvalidTokenException">Typedef: InvalidTokenException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidTokenException">Exceptions.InvalidTokenException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
@@ -362,6 +383,9 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_UserDoesNotExistException">Typedef: UserDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UserDoesNotExistException">Exceptions.UserDoesNotExistException</a></code></p>
+</div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -376,15 +400,7 @@ code { line-height: 20px; }
 <br/></div><div class="definition"><h3 id="Struct_DeleteMessageResponse">Struct: DeleteMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeleteAllMessagesRequest">Struct: DeleteAllMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/>Deletes all of Applications' Messages.
-
-#owner
-<br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -395,14 +411,6 @@ code { line-height: 20px; }
 an email; it will no longer be visible to you, but will
 still be visible to other subscribers.
 <br/></div><div class="definition"><h3 id="Struct_DismissMessageResponse">Struct: DismissMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesRequest">Struct: DismissAllMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Dismisses all Messages. They will no longer be visible to you.
-<br/></div><div class="definition"><h3 id="Struct_DismissAllMessagesResponse">Struct: DismissAllMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ProvisionApplicationRequest">Struct: ProvisionApplicationRequest</h3>
@@ -505,6 +513,8 @@ Additional Charges may apply.
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code>string</code></td><td>Optionally choose to snooze a specific Application.
 </td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>lengthOfTime</td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td>Defines how long to snooze the Channel for.
+</td><td>optional</td><td><code>{ value = 4, unit = <code><a href="#Const_Banana.TimeUnit.HOURS">Banana.TimeUnit.HOURS</a></code> }</code></td></tr>
 </table><br/>A Snoozed Channel will not receive Notifications
 for a set time period.
 <br/></div><div class="definition"><h3 id="Struct_SnoozeChannelResponse">Struct: SnoozeChannelResponse</h3>
@@ -524,11 +534,23 @@ for a set time period.
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoRequest">Struct: GetApplicationInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoResponse">Struct: GetApplicationInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applicationInfo</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>registeredChannels</td><td><code>list&lt;<code><a href="#Typedef_BananaChannel">BananaChannel</a></code>&gt;</code></td><td>The Channels registered to this Application.
+</td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetBuzzRequest">Struct: GetBuzzRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Buzz is like the latest news happening around
+Banana.
+<br/></div><div class="definition"><h3 id="Struct_GetBuzzResponse">Struct: GetBuzzResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>newUsers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>2</td><td>newApplications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>3</td><td>failedHealthChecks</td><td><code>list&lt;<code><a href="#Typedef_HealthCheckFailed">HealthCheckFailed</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetDashboardRequest">Struct: GetDashboardRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -538,6 +560,9 @@ for a set time period.
 <tr><td>2</td><td>totalMessagesLastHour</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>3</td><td>totalMessagesLast24hrs</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>4</td><td>recentMessages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>5</td><td>numberOfLowUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
+<tr><td>6</td><td>numberOfMediumUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
+<tr><td>7</td><td>numberOfHighUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -551,20 +576,19 @@ or by a specific Application.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>fullBody</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsRequest">Struct: GetMyApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsResponse">Struct: GetMyApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersRequest">Struct: GetApplicationSubscribersRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationSubscribersResponse">Struct: GetApplicationSubscribersResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>subscribers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsRequest">Struct: GetMySavedChannelsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -580,7 +604,7 @@ An Activity is an event that resulted from a person's
 action, and not an application or machine.
 <br/></div><div class="definition"><h3 id="Struct_GetActivityResponse">Struct: GetActivityResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>events</td><td><code>list&lt;<code><a href="Notifications.html#Struct_Event">Notifications.Event</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>events</td><td><code>list&lt;<code><a href="Events.html#Struct_Event">Events.Event</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsRequest">Struct: GetServiceAnnouncementsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -589,6 +613,13 @@ from the Team @ Aroma Tech.
 <br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoRequest">Struct: GetUserInfoRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoResponse">Struct: GetUserInfoResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>userInfo</td><td><code><a href="#Typedef_User">User</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsRequest">Struct: SearchForApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -606,13 +637,13 @@ They provide query interfaces and Authentication/Authorization over Data.
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_BananaService_provisionApplication">Function: BananaService.provisionApplication</h4>
 <pre><code><a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a></code> provisionApplication(<code><a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Provision a New Application to keep tabs on.
 
 #user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_regenerateToken">Function: BananaService.regenerateToken</h4>
 <pre><code><a href="#Struct_RegenerateApplicationTokenResponse">RegenerateApplicationTokenResponse</a></code> regenerateToken(<code><a href="#Struct_RegenerateApplicationTokenRequest">RegenerateApplicationTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Regenerate an Application Token in case the existing one is lost, forgotten, or compromised.
 Keep in mind that this will invalidate any prior existing Application Tokens.
 Only an "owner" can perform this operation.
@@ -620,25 +651,25 @@ Only an "owner" can perform this operation.
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_registerHealthCheck">Function: BananaService.registerHealthCheck</h4>
 <pre><code><a href="#Struct_RegisterHealthCheckResponse">RegisterHealthCheckResponse</a></code> registerHealthCheck(<code><a href="#Struct_RegisterHealthCheckRequest">RegisterHealthCheckRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Register an existing Application for Health Pokes. The Banana Service
 will then periodically poke the Application for health status.
 
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_removeSavedChannel">Function: BananaService.removeSavedChannel</h4>
 <pre><code><a href="#Struct_RemoveSavedChannelResponse">RemoveSavedChannelResponse</a></code> removeSavedChannel(<code><a href="#Struct_RemoveSavedChannelRequest">RemoveSavedChannelRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
 </pre>Removes a previously saved channel.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_renewApplicationToken">Function: BananaService.renewApplicationToken</h4>
 <pre><code><a href="#Struct_RenewApplicationTokenResponse">RenewApplicationTokenResponse</a></code> renewApplicationToken(<code><a href="#Struct_RenewApplicationTokenRequest">RenewApplicationTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Renew an Application Token that is close to being expired.
 Only an "owner" can perform this operation.
 
 #owner
 <br/></div><div class="definition"><h4 id="Fn_BananaService_saveChannel">Function: BananaService.saveChannel</h4>
 <pre><code><a href="#Struct_SaveChannelResponse">SaveChannelResponse</a></code> saveChannel(<code><a href="#Struct_SaveChannelRequest">SaveChannelRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Saves a user's channel for future reference.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_signIn">Function: BananaService.signIn</h4>
 <pre><code><a href="#Struct_SignInResponse">SignInResponse</a></code> signIn(<code><a href="#Struct_SignInRequest">SignInRequest</a></code> request)
@@ -652,44 +683,53 @@ Only an "owner" can perform this operation.
 </pre>Sign Up for an Aroma Account.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_snoozeChannel">Function: BananaService.snoozeChannel</h4>
 <pre><code><a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a></code> snoozeChannel(<code><a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
 </pre>Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
 <br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToApplication">Function: BananaService.subscribeToApplication</h4>
 <pre><code><a href="#Struct_SubscribeToApplicationResponse">SubscribeToApplicationResponse</a></code> subscribeToApplication(<code><a href="#Struct_SubscribeToApplicationRequest">SubscribeToApplicationRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
 </pre>Subscribe to an existing application to get notifications.
 
 #user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getActivity">Function: BananaService.getActivity</h4>
 <pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre>Get all of the User-Related activities that have happened recently.
 
 #user
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationInfo">Function: BananaService.getApplicationInfo</h4>
 <pre><code><a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a></code> getApplicationInfo(<code><a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Get details about an Application from it's unique ID
 
 #user
-<br/></div><div class="definition"><h4 id="Fn_BananaService_getApplicationSubscribers">Function: BananaService.getApplicationSubscribers</h4>
-<pre><code><a href="#Struct_GetApplicationSubscribersResponse">GetApplicationSubscribersResponse</a></code> getApplicationSubscribers(<code><a href="#Struct_GetApplicationSubscribersRequest">GetApplicationSubscribersRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
-</pre>Get a list of all Users subscribed to an Application.
-
-#user
-<br/></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getBuzz">Function: BananaService.getBuzz</h4>
+<pre><code><a href="#Struct_GetBuzzResponse">GetBuzzResponse</a></code> getBuzz(<code><a href="#Struct_GetBuzzRequest">GetBuzzRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_getMyApplications">Function: BananaService.getMyApplications</h4>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getMessages">Function: BananaService.getMessages</h4>
+<pre><code><a href="#Struct_GetMessagesResponse">GetMessagesResponse</a></code> getMessages(<code><a href="#Struct_GetMessagesRequest">GetMessagesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Get an Application's Messages.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getFullMessage">Function: BananaService.getFullMessage</h4>
+<pre><code><a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a></code> getFullMessage(<code><a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>In case the Message body has been truncated, use this operation
+to load the full message.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getMyApplications">Function: BananaService.getMyApplications</h4>
 <pre><code><a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a></code> getMyApplications(<code><a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_getMySavedChannels">Function: BananaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getUserInfo">Function: BananaService.getUserInfo</h4>
+<pre><code><a href="#Struct_GetUserInfoResponse">GetUserInfoResponse</a></code> getUserInfo(<code><a href="#Struct_GetUserInfoRequest">GetUserInfoRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_UserDoesNotExistException">UserDoesNotExistException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_searchForApplications">Function: BananaService.searchForApplications</h4>
 <pre><code><a href="#Struct_SearchForApplicationsResponse">SearchForApplicationsResponse</a></code> searchForApplications(<code><a href="#Struct_SearchForApplicationsRequest">SearchForApplicationsRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Perform a Search on all the applications registered to the Banana Service by searching for its title.
 
 #user

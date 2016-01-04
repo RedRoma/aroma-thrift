@@ -13,6 +13,16 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
+int _kTokenTypeValues[] = {
+  TokenType::APPLICATION,
+  TokenType::USER
+};
+const char* _kTokenTypeNames[] = {
+  "APPLICATION",
+  "USER"
+};
+const std::map<int, const char*> _TokenType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTokenTypeValues, _kTokenTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 ApplicationToken::~ApplicationToken() throw() {
 }
@@ -845,6 +855,112 @@ void Credentials::printTo(std::ostream& out) const {
   out << "Credentials(";
   out << "githubToken=" << to_string(githubToken);
   out << ", " << "aromaAccount=" << to_string(aromaAccount);
+  out << ")";
+}
+
+
+AuthenticationToken::~AuthenticationToken() throw() {
+}
+
+
+void AuthenticationToken::__set_applicationToken(const ApplicationToken& val) {
+  this->applicationToken = val;
+}
+
+void AuthenticationToken::__set_userToken(const UserToken& val) {
+  this->userToken = val;
+}
+
+uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationToken.read(iprot);
+          this->__isset.applicationToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->userToken.read(iprot);
+          this->__isset.userToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("AuthenticationToken");
+
+  xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->applicationToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("userToken", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->userToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(AuthenticationToken &a, AuthenticationToken &b) {
+  using ::std::swap;
+  swap(a.applicationToken, b.applicationToken);
+  swap(a.userToken, b.userToken);
+  swap(a.__isset, b.__isset);
+}
+
+AuthenticationToken::AuthenticationToken(const AuthenticationToken& other13) {
+  applicationToken = other13.applicationToken;
+  userToken = other13.userToken;
+  __isset = other13.__isset;
+}
+AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other14) {
+  applicationToken = other14.applicationToken;
+  userToken = other14.userToken;
+  __isset = other14.__isset;
+  return *this;
+}
+void AuthenticationToken::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "AuthenticationToken(";
+  out << "applicationToken=" << to_string(applicationToken);
+  out << ", " << "userToken=" << to_string(userToken);
   out << ")";
 }
 

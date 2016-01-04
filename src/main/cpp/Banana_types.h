@@ -105,7 +105,7 @@ class Application;
 class ServiceAnnouncement;
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
@@ -114,6 +114,7 @@ typedef struct _Message__isset {
   bool applicationName :1;
   bool hostname :1;
   bool macAddress :1;
+  bool isTruncated :1;
 } _Message__isset;
 
 class Message {
@@ -121,7 +122,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false) {
     urgency = (Urgency::type)1;
 
   }
@@ -135,6 +136,7 @@ class Message {
   std::string applicationName;
   std::string hostname;
   std::string macAddress;
+  bool isTruncated;
 
   _Message__isset __isset;
 
@@ -154,11 +156,15 @@ class Message {
 
   void __set_macAddress(const std::string& val);
 
+  void __set_isTruncated(const bool val);
+
   bool operator == (const Message & rhs) const
   {
     if (!(messageId == rhs.messageId))
       return false;
-    if (!(body == rhs.body))
+    if (__isset.body != rhs.__isset.body)
+      return false;
+    else if (__isset.body && !(body == rhs.body))
       return false;
     if (!(urgency == rhs.urgency))
       return false;
@@ -175,6 +181,10 @@ class Message {
     if (__isset.macAddress != rhs.__isset.macAddress)
       return false;
     else if (__isset.macAddress && !(macAddress == rhs.macAddress))
+      return false;
+    if (__isset.isTruncated != rhs.__isset.isTruncated)
+      return false;
+    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
       return false;
     return true;
   }
@@ -347,11 +357,13 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), name(false), username(false), roles(true) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false) {}
   bool email :1;
+  bool userId :1;
   bool name :1;
-  bool username :1;
   bool roles :1;
+  bool profileImage :1;
+  bool profileImageLink :1;
 } _User__isset;
 
 class User {
@@ -359,40 +371,52 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), name(), username() {
-    roles.push_back((Role::type)1);
+  User() : email(), userId(), name(), profileImageLink() {
+    roles.insert((Role::type)1);
 
   }
 
   virtual ~User() throw();
   std::string email;
+  std::string userId;
   std::string name;
-  std::string username;
-  std::vector<Role::type>  roles;
+  std::set<Role::type>  roles;
+  Image profileImage;
+  std::string profileImageLink;
 
   _User__isset __isset;
 
   void __set_email(const std::string& val);
 
+  void __set_userId(const std::string& val);
+
   void __set_name(const std::string& val);
 
-  void __set_username(const std::string& val);
+  void __set_roles(const std::set<Role::type> & val);
 
-  void __set_roles(const std::vector<Role::type> & val);
+  void __set_profileImage(const Image& val);
+
+  void __set_profileImageLink(const std::string& val);
 
   bool operator == (const User & rhs) const
   {
     if (!(email == rhs.email))
       return false;
+    if (!(userId == rhs.userId))
+      return false;
     if (__isset.name != rhs.__isset.name)
       return false;
     else if (__isset.name && !(name == rhs.name))
       return false;
-    if (__isset.username != rhs.__isset.username)
-      return false;
-    else if (__isset.username && !(username == rhs.username))
-      return false;
     if (!(roles == rhs.roles))
+      return false;
+    if (__isset.profileImage != rhs.__isset.profileImage)
+      return false;
+    else if (__isset.profileImage && !(profileImage == rhs.profileImage))
+      return false;
+    if (__isset.profileImageLink != rhs.__isset.profileImageLink)
+      return false;
+    else if (__isset.profileImageLink && !(profileImageLink == rhs.profileImageLink))
       return false;
     return true;
   }
@@ -417,7 +441,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -426,6 +450,7 @@ typedef struct _Application__isset {
   bool icon :1;
   bool programmingLanguage :1;
   bool subscribers :1;
+  bool applicationDescription :1;
 } _Application__isset;
 
 class Application {
@@ -433,23 +458,24 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0) {
+  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription() {
 
   }
 
   virtual ~Application() throw();
-  std::vector<User>  owners;
+  std::set<User>  owners;
   timestamp timeOfProvisioning;
   std::string name;
   std::string id;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::vector<User>  subscribers;
+  std::set<User>  subscribers;
+  std::string applicationDescription;
 
   _Application__isset __isset;
 
-  void __set_owners(const std::vector<User> & val);
+  void __set_owners(const std::set<User> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 
@@ -463,7 +489,9 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::vector<User> & val);
+  void __set_subscribers(const std::set<User> & val);
+
+  void __set_applicationDescription(const std::string& val);
 
   bool operator == (const Application & rhs) const
   {
@@ -488,6 +516,8 @@ class Application {
     if (__isset.subscribers != rhs.__isset.subscribers)
       return false;
     else if (__isset.subscribers && !(subscribers == rhs.subscribers))
+      return false;
+    if (!(applicationDescription == rhs.applicationDescription))
       return false;
     return true;
   }

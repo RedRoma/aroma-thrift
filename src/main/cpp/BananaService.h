@@ -126,18 +126,26 @@ class BananaServiceIf {
    * @param request
    */
   virtual void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request) = 0;
+  virtual void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) = 0;
+  virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
 
   /**
-   * Get a list of all Users subscribed to an Application.
-   * 
-   * #user
+   * Get an Application's Messages.
    * 
    * @param request
    */
-  virtual void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) = 0;
-  virtual void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) = 0;
+  virtual void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) = 0;
+
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param request
+   */
+  virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
   virtual void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
+  virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
   /**
    * Perform a Search on all the applications registered to the Banana Service by searching for its title.
@@ -216,16 +224,25 @@ class BananaServiceNull : virtual public BananaServiceIf {
   void getApplicationInfo(GetApplicationInfoResponse& /* _return */, const GetApplicationInfoRequest& /* request */) {
     return;
   }
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& /* _return */, const GetApplicationSubscribersRequest& /* request */) {
+  void getBuzz(GetBuzzResponse& /* _return */, const GetBuzzRequest& /* request */) {
     return;
   }
   void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
+    return;
+  }
+  void getMessages(GetMessagesResponse& /* _return */, const GetMessagesRequest& /* request */) {
+    return;
+  }
+  void getFullMessage(GetFullMessageResponse& /* _return */, const GetFullMessageRequest& /* request */) {
     return;
   }
   void getMyApplications(GetMyApplicationsResponse& /* _return */, const GetMyApplicationsRequest& /* request */) {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
+    return;
+  }
+  void getUserInfo(GetUserInfoResponse& /* _return */, const GetUserInfoRequest& /* request */) {
     return;
   }
   void searchForApplications(SearchForApplicationsResponse& /* _return */, const SearchForApplicationsRequest& /* request */) {
@@ -396,7 +413,7 @@ class BananaService_provisionApplication_result {
   ProvisionApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
@@ -408,7 +425,7 @@ class BananaService_provisionApplication_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -459,7 +476,7 @@ class BananaService_provisionApplication_presult {
   ProvisionApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
@@ -540,7 +557,7 @@ class BananaService_regenerateToken_result {
   RegenerateApplicationTokenResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
@@ -552,7 +569,7 @@ class BananaService_regenerateToken_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -603,7 +620,7 @@ class BananaService_regenerateToken_presult {
   RegenerateApplicationTokenResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
@@ -684,7 +701,7 @@ class BananaService_registerHealthCheck_result {
   RegisterHealthCheckResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
@@ -696,7 +713,7 @@ class BananaService_registerHealthCheck_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -747,7 +764,7 @@ class BananaService_registerHealthCheck_presult {
   RegisterHealthCheckResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
@@ -828,7 +845,7 @@ class BananaService_removeSavedChannel_result {
   RemoveSavedChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   UnauthorizedException ex4;
   ChannelDoesNotExistException ex5;
 
@@ -840,7 +857,7 @@ class BananaService_removeSavedChannel_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const UnauthorizedException& val);
 
@@ -891,7 +908,7 @@ class BananaService_removeSavedChannel_presult {
   RemoveSavedChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   UnauthorizedException* ex4;
   ChannelDoesNotExistException* ex5;
 
@@ -972,7 +989,7 @@ class BananaService_renewApplicationToken_result {
   RenewApplicationTokenResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
@@ -984,7 +1001,7 @@ class BananaService_renewApplicationToken_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -1035,7 +1052,7 @@ class BananaService_renewApplicationToken_presult {
   RenewApplicationTokenResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
@@ -1115,7 +1132,7 @@ class BananaService_saveChannel_result {
   SaveChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   UnauthorizedException ex4;
 
   _BananaService_saveChannel_result__isset __isset;
@@ -1126,7 +1143,7 @@ class BananaService_saveChannel_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const UnauthorizedException& val);
 
@@ -1172,7 +1189,7 @@ class BananaService_saveChannel_presult {
   SaveChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   UnauthorizedException* ex4;
 
   _BananaService_saveChannel_presult__isset __isset;
@@ -1516,7 +1533,7 @@ class BananaService_snoozeChannel_result {
   SnoozeChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   UnauthorizedException ex4;
   ChannelDoesNotExistException ex5;
 
@@ -1528,7 +1545,7 @@ class BananaService_snoozeChannel_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const UnauthorizedException& val);
 
@@ -1579,7 +1596,7 @@ class BananaService_snoozeChannel_presult {
   SnoozeChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   UnauthorizedException* ex4;
   ChannelDoesNotExistException* ex5;
 
@@ -1661,7 +1678,7 @@ class BananaService_subscribeToApplication_result {
   SubscribeToApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   ApplicationAlreadyRegisteredException ex5;
   CustomChannelUnreachableException ex6;
@@ -1674,7 +1691,7 @@ class BananaService_subscribeToApplication_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -1730,7 +1747,7 @@ class BananaService_subscribeToApplication_presult {
   SubscribeToApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   ApplicationAlreadyRegisteredException* ex5;
   CustomChannelUnreachableException* ex6;
@@ -1810,7 +1827,7 @@ class BananaService_getActivity_result {
   GetActivityResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
 
   _BananaService_getActivity_result__isset __isset;
 
@@ -1820,7 +1837,7 @@ class BananaService_getActivity_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   bool operator == (const BananaService_getActivity_result & rhs) const
   {
@@ -1861,7 +1878,7 @@ class BananaService_getActivity_presult {
   GetActivityResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
 
   _BananaService_getActivity_presult__isset __isset;
 
@@ -1940,7 +1957,7 @@ class BananaService_getApplicationInfo_result {
   GetApplicationInfoResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
@@ -1952,7 +1969,7 @@ class BananaService_getApplicationInfo_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
@@ -2003,7 +2020,7 @@ class BananaService_getApplicationInfo_presult {
   GetApplicationInfoResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
@@ -2013,37 +2030,37 @@ class BananaService_getApplicationInfo_presult {
 
 };
 
-typedef struct _BananaService_getApplicationSubscribers_args__isset {
-  _BananaService_getApplicationSubscribers_args__isset() : request(false) {}
+typedef struct _BananaService_getBuzz_args__isset {
+  _BananaService_getBuzz_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getApplicationSubscribers_args__isset;
+} _BananaService_getBuzz_args__isset;
 
-class BananaService_getApplicationSubscribers_args {
+class BananaService_getBuzz_args {
  public:
 
-  BananaService_getApplicationSubscribers_args(const BananaService_getApplicationSubscribers_args&);
-  BananaService_getApplicationSubscribers_args& operator=(const BananaService_getApplicationSubscribers_args&);
-  BananaService_getApplicationSubscribers_args() {
+  BananaService_getBuzz_args(const BananaService_getBuzz_args&);
+  BananaService_getBuzz_args& operator=(const BananaService_getBuzz_args&);
+  BananaService_getBuzz_args() {
   }
 
-  virtual ~BananaService_getApplicationSubscribers_args() throw();
-  GetApplicationSubscribersRequest request;
+  virtual ~BananaService_getBuzz_args() throw();
+  GetBuzzRequest request;
 
-  _BananaService_getApplicationSubscribers_args__isset __isset;
+  _BananaService_getBuzz_args__isset __isset;
 
-  void __set_request(const GetApplicationSubscribersRequest& val);
+  void __set_request(const GetBuzzRequest& val);
 
-  bool operator == (const BananaService_getApplicationSubscribers_args & rhs) const
+  bool operator == (const BananaService_getBuzz_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationSubscribers_args &rhs) const {
+  bool operator != (const BananaService_getBuzz_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationSubscribers_args & ) const;
+  bool operator < (const BananaService_getBuzz_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2051,54 +2068,58 @@ class BananaService_getApplicationSubscribers_args {
 };
 
 
-class BananaService_getApplicationSubscribers_pargs {
+class BananaService_getBuzz_pargs {
  public:
 
 
-  virtual ~BananaService_getApplicationSubscribers_pargs() throw();
-  const GetApplicationSubscribersRequest* request;
+  virtual ~BananaService_getBuzz_pargs() throw();
+  const GetBuzzRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationSubscribers_result__isset {
-  _BananaService_getApplicationSubscribers_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _BananaService_getBuzz_result__isset {
+  _BananaService_getBuzz_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_getApplicationSubscribers_result__isset;
+  bool ex5 :1;
+} _BananaService_getBuzz_result__isset;
 
-class BananaService_getApplicationSubscribers_result {
+class BananaService_getBuzz_result {
  public:
 
-  BananaService_getApplicationSubscribers_result(const BananaService_getApplicationSubscribers_result&);
-  BananaService_getApplicationSubscribers_result& operator=(const BananaService_getApplicationSubscribers_result&);
-  BananaService_getApplicationSubscribers_result() {
+  BananaService_getBuzz_result(const BananaService_getBuzz_result&);
+  BananaService_getBuzz_result& operator=(const BananaService_getBuzz_result&);
+  BananaService_getBuzz_result() {
   }
 
-  virtual ~BananaService_getApplicationSubscribers_result() throw();
-  GetApplicationSubscribersResponse success;
+  virtual ~BananaService_getBuzz_result() throw();
+  GetBuzzResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
-  UnauthorizedException ex4;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
 
-  _BananaService_getApplicationSubscribers_result__isset __isset;
+  _BananaService_getBuzz_result__isset __isset;
 
-  void __set_success(const GetApplicationSubscribersResponse& val);
+  void __set_success(const GetBuzzResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const UnauthorizedException& val);
+  void __set_ex4(const ApplicationDoesNotExistException& val);
 
-  bool operator == (const BananaService_getApplicationSubscribers_result & rhs) const
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_getBuzz_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2110,40 +2131,44 @@ class BananaService_getApplicationSubscribers_result {
       return false;
     if (!(ex4 == rhs.ex4))
       return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationSubscribers_result &rhs) const {
+  bool operator != (const BananaService_getBuzz_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationSubscribers_result & ) const;
+  bool operator < (const BananaService_getBuzz_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationSubscribers_presult__isset {
-  _BananaService_getApplicationSubscribers_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _BananaService_getBuzz_presult__isset {
+  _BananaService_getBuzz_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_getApplicationSubscribers_presult__isset;
+  bool ex5 :1;
+} _BananaService_getBuzz_presult__isset;
 
-class BananaService_getApplicationSubscribers_presult {
+class BananaService_getBuzz_presult {
  public:
 
 
-  virtual ~BananaService_getApplicationSubscribers_presult() throw();
-  GetApplicationSubscribersResponse* success;
+  virtual ~BananaService_getBuzz_presult() throw();
+  GetBuzzResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
-  UnauthorizedException* ex4;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
 
-  _BananaService_getApplicationSubscribers_presult__isset __isset;
+  _BananaService_getBuzz_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2218,7 +2243,7 @@ class BananaService_getDashboard_result {
   GetDashboardResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
 
   _BananaService_getDashboard_result__isset __isset;
 
@@ -2228,7 +2253,7 @@ class BananaService_getDashboard_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   bool operator == (const BananaService_getDashboard_result & rhs) const
   {
@@ -2269,9 +2294,265 @@ class BananaService_getDashboard_presult {
   GetDashboardResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
 
   _BananaService_getDashboard_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getMessages_args__isset {
+  _BananaService_getMessages_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getMessages_args__isset;
+
+class BananaService_getMessages_args {
+ public:
+
+  BananaService_getMessages_args(const BananaService_getMessages_args&);
+  BananaService_getMessages_args& operator=(const BananaService_getMessages_args&);
+  BananaService_getMessages_args() {
+  }
+
+  virtual ~BananaService_getMessages_args() throw();
+  GetMessagesRequest request;
+
+  _BananaService_getMessages_args__isset __isset;
+
+  void __set_request(const GetMessagesRequest& val);
+
+  bool operator == (const BananaService_getMessages_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMessages_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMessages_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getMessages_pargs {
+ public:
+
+
+  virtual ~BananaService_getMessages_pargs() throw();
+  const GetMessagesRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMessages_result__isset {
+  _BananaService_getMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getMessages_result__isset;
+
+class BananaService_getMessages_result {
+ public:
+
+  BananaService_getMessages_result(const BananaService_getMessages_result&);
+  BananaService_getMessages_result& operator=(const BananaService_getMessages_result&);
+  BananaService_getMessages_result() {
+  }
+
+  virtual ~BananaService_getMessages_result() throw();
+  GetMessagesResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _BananaService_getMessages_result__isset __isset;
+
+  void __set_success(const GetMessagesResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const BananaService_getMessages_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMessages_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMessages_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMessages_presult__isset {
+  _BananaService_getMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getMessages_presult__isset;
+
+class BananaService_getMessages_presult {
+ public:
+
+
+  virtual ~BananaService_getMessages_presult() throw();
+  GetMessagesResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _BananaService_getMessages_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getFullMessage_args__isset {
+  _BananaService_getFullMessage_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getFullMessage_args__isset;
+
+class BananaService_getFullMessage_args {
+ public:
+
+  BananaService_getFullMessage_args(const BananaService_getFullMessage_args&);
+  BananaService_getFullMessage_args& operator=(const BananaService_getFullMessage_args&);
+  BananaService_getFullMessage_args() {
+  }
+
+  virtual ~BananaService_getFullMessage_args() throw();
+  GetFullMessageRequest request;
+
+  _BananaService_getFullMessage_args__isset __isset;
+
+  void __set_request(const GetFullMessageRequest& val);
+
+  bool operator == (const BananaService_getFullMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getFullMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getFullMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getFullMessage_pargs {
+ public:
+
+
+  virtual ~BananaService_getFullMessage_pargs() throw();
+  const GetFullMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getFullMessage_result__isset {
+  _BananaService_getFullMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getFullMessage_result__isset;
+
+class BananaService_getFullMessage_result {
+ public:
+
+  BananaService_getFullMessage_result(const BananaService_getFullMessage_result&);
+  BananaService_getFullMessage_result& operator=(const BananaService_getFullMessage_result&);
+  BananaService_getFullMessage_result() {
+  }
+
+  virtual ~BananaService_getFullMessage_result() throw();
+  GetFullMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _BananaService_getFullMessage_result__isset __isset;
+
+  void __set_success(const GetFullMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const BananaService_getFullMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getFullMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getFullMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getFullMessage_presult__isset {
+  _BananaService_getFullMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getFullMessage_presult__isset;
+
+class BananaService_getFullMessage_presult {
+ public:
+
+
+  virtual ~BananaService_getFullMessage_presult() throw();
+  GetFullMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+
+  _BananaService_getFullMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2346,7 +2627,7 @@ class BananaService_getMyApplications_result {
   GetMyApplicationsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
 
   _BananaService_getMyApplications_result__isset __isset;
 
@@ -2356,7 +2637,7 @@ class BananaService_getMyApplications_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   bool operator == (const BananaService_getMyApplications_result & rhs) const
   {
@@ -2397,7 +2678,7 @@ class BananaService_getMyApplications_presult {
   GetMyApplicationsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
 
   _BananaService_getMyApplications_presult__isset __isset;
 
@@ -2474,7 +2755,7 @@ class BananaService_getMySavedChannels_result {
   GetMySavedChannelsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
 
   _BananaService_getMySavedChannels_result__isset __isset;
 
@@ -2484,7 +2765,7 @@ class BananaService_getMySavedChannels_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   bool operator == (const BananaService_getMySavedChannels_result & rhs) const
   {
@@ -2525,9 +2806,153 @@ class BananaService_getMySavedChannels_presult {
   GetMySavedChannelsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
 
   _BananaService_getMySavedChannels_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getUserInfo_args__isset {
+  _BananaService_getUserInfo_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getUserInfo_args__isset;
+
+class BananaService_getUserInfo_args {
+ public:
+
+  BananaService_getUserInfo_args(const BananaService_getUserInfo_args&);
+  BananaService_getUserInfo_args& operator=(const BananaService_getUserInfo_args&);
+  BananaService_getUserInfo_args() {
+  }
+
+  virtual ~BananaService_getUserInfo_args() throw();
+  GetUserInfoRequest request;
+
+  _BananaService_getUserInfo_args__isset __isset;
+
+  void __set_request(const GetUserInfoRequest& val);
+
+  bool operator == (const BananaService_getUserInfo_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getUserInfo_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getUserInfo_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getUserInfo_pargs {
+ public:
+
+
+  virtual ~BananaService_getUserInfo_pargs() throw();
+  const GetUserInfoRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getUserInfo_result__isset {
+  _BananaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_getUserInfo_result__isset;
+
+class BananaService_getUserInfo_result {
+ public:
+
+  BananaService_getUserInfo_result(const BananaService_getUserInfo_result&);
+  BananaService_getUserInfo_result& operator=(const BananaService_getUserInfo_result&);
+  BananaService_getUserInfo_result() {
+  }
+
+  virtual ~BananaService_getUserInfo_result() throw();
+  GetUserInfoResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  UnauthorizedException ex4;
+  UserDoesNotExistException ex5;
+
+  _BananaService_getUserInfo_result__isset __isset;
+
+  void __set_success(const GetUserInfoResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const UnauthorizedException& val);
+
+  void __set_ex5(const UserDoesNotExistException& val);
+
+  bool operator == (const BananaService_getUserInfo_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getUserInfo_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getUserInfo_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getUserInfo_presult__isset {
+  _BananaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_getUserInfo_presult__isset;
+
+class BananaService_getUserInfo_presult {
+ public:
+
+
+  virtual ~BananaService_getUserInfo_presult() throw();
+  GetUserInfoResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex4;
+  UserDoesNotExistException* ex5;
+
+  _BananaService_getUserInfo_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -2603,7 +3028,7 @@ class BananaService_searchForApplications_result {
   SearchForApplicationsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
-  InvalidCredentialsException ex3;
+  InvalidTokenException ex3;
   UnauthorizedException ex4;
 
   _BananaService_searchForApplications_result__isset __isset;
@@ -2614,7 +3039,7 @@ class BananaService_searchForApplications_result {
 
   void __set_ex2(const InvalidArgumentException& val);
 
-  void __set_ex3(const InvalidCredentialsException& val);
+  void __set_ex3(const InvalidTokenException& val);
 
   void __set_ex4(const UnauthorizedException& val);
 
@@ -2660,7 +3085,7 @@ class BananaService_searchForApplications_presult {
   SearchForApplicationsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
-  InvalidCredentialsException* ex3;
+  InvalidTokenException* ex3;
   UnauthorizedException* ex4;
 
   _BananaService_searchForApplications_presult__isset __isset;
@@ -2733,18 +3158,27 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   void send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return);
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request);
-  void send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request);
-  void recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return);
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
+  void send_getBuzz(const GetBuzzRequest& request);
+  void recv_getBuzz(GetBuzzResponse& _return);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   void send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return);
+  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request);
+  void send_getMessages(const GetMessagesRequest& request);
+  void recv_getMessages(GetMessagesResponse& _return);
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
+  void send_getFullMessage(const GetFullMessageRequest& request);
+  void recv_getFullMessage(GetFullMessageResponse& _return);
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
   void send_getMyApplications(const GetMyApplicationsRequest& request);
   void recv_getMyApplications(GetMyApplicationsResponse& _return);
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  void send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return);
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
   void send_searchForApplications(const SearchForApplicationsRequest& request);
   void recv_searchForApplications(SearchForApplicationsResponse& _return);
@@ -2776,10 +3210,13 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_subscribeToApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getApplicationSubscribers(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
@@ -2797,10 +3234,13 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["subscribeToApplication"] = &BananaServiceProcessor::process_subscribeToApplication;
     processMap_["getActivity"] = &BananaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
-    processMap_["getApplicationSubscribers"] = &BananaServiceProcessor::process_getApplicationSubscribers;
+    processMap_["getBuzz"] = &BananaServiceProcessor::process_getBuzz;
     processMap_["getDashboard"] = &BananaServiceProcessor::process_getDashboard;
+    processMap_["getMessages"] = &BananaServiceProcessor::process_getMessages;
+    processMap_["getFullMessage"] = &BananaServiceProcessor::process_getFullMessage;
     processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
+    processMap_["getUserInfo"] = &BananaServiceProcessor::process_getUserInfo;
     processMap_["searchForApplications"] = &BananaServiceProcessor::process_searchForApplications;
   }
 
@@ -2959,13 +3399,13 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getApplicationSubscribers(_return, request);
+      ifaces_[i]->getBuzz(_return, request);
     }
-    ifaces_[i]->getApplicationSubscribers(_return, request);
+    ifaces_[i]->getBuzz(_return, request);
     return;
   }
 
@@ -2976,6 +3416,26 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
       ifaces_[i]->getDashboard(_return, request);
     }
     ifaces_[i]->getDashboard(_return, request);
+    return;
+  }
+
+  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getMessages(_return, request);
+    }
+    ifaces_[i]->getMessages(_return, request);
+    return;
+  }
+
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getFullMessage(_return, request);
+    }
+    ifaces_[i]->getFullMessage(_return, request);
     return;
   }
 
@@ -2996,6 +3456,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
       ifaces_[i]->getMySavedChannels(_return, request);
     }
     ifaces_[i]->getMySavedChannels(_return, request);
+    return;
+  }
+
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getUserInfo(_return, request);
+    }
+    ifaces_[i]->getUserInfo(_return, request);
     return;
   }
 
@@ -3078,18 +3548,27 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request);
   int32_t send_getApplicationInfo(const GetApplicationInfoRequest& request);
   void recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid);
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request);
-  int32_t send_getApplicationSubscribers(const GetApplicationSubscribersRequest& request);
-  void recv_getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const int32_t seqid);
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request);
+  int32_t send_getBuzz(const GetBuzzRequest& request);
+  void recv_getBuzz(GetBuzzResponse& _return, const int32_t seqid);
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   int32_t send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid);
+  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request);
+  int32_t send_getMessages(const GetMessagesRequest& request);
+  void recv_getMessages(GetMessagesResponse& _return, const int32_t seqid);
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
+  int32_t send_getFullMessage(const GetFullMessageRequest& request);
+  void recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid);
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
   int32_t send_getMyApplications(const GetMyApplicationsRequest& request);
   void recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid);
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request);
+  int32_t send_getUserInfo(const GetUserInfoRequest& request);
+  void recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid);
   void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request);
   int32_t send_searchForApplications(const SearchForApplicationsRequest& request);
   void recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid);

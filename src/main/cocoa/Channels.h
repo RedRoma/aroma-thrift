@@ -230,6 +230,41 @@ typedef Banana_timestamp BananaChannels_timestamp;
 
 @end
 
+@interface BananaChannels_ChannelInfo : NSObject <TBase, NSCoding> {
+  BananaChannels_BananaChannel * __channel;
+  BananaChannels_timestamp __timeRegistered;
+
+  BOOL __channel_isset;
+  BOOL __timeRegistered_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaChannels_BananaChannel * channel;
+@property (nonatomic, getter=timeRegistered, setter=setTimeRegistered:) BananaChannels_timestamp timeRegistered;
+#endif
+
+- (id) init;
+- (id) initWithChannel: (BananaChannels_BananaChannel *) channel timeRegistered: (BananaChannels_timestamp) timeRegistered;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaChannels_BananaChannel *) channel;
+- (void) setChannel: (BananaChannels_BananaChannel *) channel;
+#endif
+- (BOOL) channelIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaChannels_timestamp) timeRegistered;
+- (void) setTimeRegistered: (BananaChannels_timestamp) timeRegistered;
+#endif
+- (BOOL) timeRegisteredIsSet;
+
+@end
+
 @interface BananaChannels_ReceiveMessageRequest : NSObject <TBase, NSCoding> {
   Banana_Message * __message;
 

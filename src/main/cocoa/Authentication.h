@@ -20,6 +20,11 @@
 
 #import "Banana.h"
 
+enum BananaAuthentication_TokenType {
+  TokenType_APPLICATION = 1,
+  TokenType_USER = 2
+};
+
 typedef Banana_int BananaAuthentication_int;
 
 typedef Banana_long BananaAuthentication_long;
@@ -314,6 +319,41 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
 #endif
 - (BOOL) aromaAccountIsSet;
+
+@end
+
+@interface BananaAuthentication_AuthenticationToken : NSObject <TBase, NSCoding> {
+  BananaAuthentication_ApplicationToken * __applicationToken;
+  BananaAuthentication_UserToken * __userToken;
+
+  BOOL __applicationToken_isset;
+  BOOL __userToken_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaAuthentication_ApplicationToken * applicationToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaAuthentication_UserToken * userToken;
+#endif
+
+- (id) init;
+- (id) initWithApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken userToken: (BananaAuthentication_UserToken *) userToken;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_ApplicationToken *) applicationToken;
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_UserToken *) userToken;
+- (void) setUserToken: (BananaAuthentication_UserToken *) userToken;
+#endif
+- (BOOL) userTokenIsSet;
 
 @end
 

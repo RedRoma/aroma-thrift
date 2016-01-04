@@ -300,40 +300,40 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message
+- (id) initWithMessageId: (NSString *) messageId
 {
   self = [super init];
-  __message = [message retain_stub];
-  __message_isset = YES;
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"message"])
+  if ([decoder containsValueForKey: @"messageId"])
   {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__message_isset)
+  if (__messageId_isset)
   {
-    [encoder encodeObject: __message forKey: @"message"];
+    [encoder encodeObject: __messageId forKey: @"messageId"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
   {
-    hash = (hash * 31) ^ [__message hash];
+    hash = (hash * 31) ^ [__messageId hash];
   }
   return hash;
 }
@@ -347,8 +347,8 @@
     return NO;
   }
   ApplicationService_SendMessageResponse *other = (ApplicationService_SendMessageResponse *)anObject;
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
     return NO;
   }
   return YES;
@@ -356,29 +356,29 @@
 
 - (void) dealloc
 {
-  [__message release_stub];
+  [__messageId release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
 }
 
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
 }
 
-- (BOOL) messageIsSet {
-  return __message_isset;
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
 }
 
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -399,7 +399,7 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
+          [self setMessageId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -415,10 +415,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SendMessageResponse"];
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __message];
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -432,15 +432,14 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageResponse("];
-  [ms appendString: @"message:"];
-  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @"messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-static double ApplicationService_API_VERSION = 1.4;
 static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
@@ -457,9 +456,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [ApplicationService_BETA_ENDPOINT setPort:7005];
 
 ;
-}
-+ (double) API_VERSION{
-  return ApplicationService_API_VERSION;
 }
 + (ApplicationService_int) SERVICE_PORT{
   return ApplicationService_SERVICE_PORT;
@@ -914,7 +910,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   ApplicationService_SendMessageResponse * __success;
   ApplicationService_OperationFailedException __ex1;
   ApplicationService_InvalidArgumentException __ex2;
-  ApplicationService_InvalidCredentialsException __ex3;
+  ApplicationService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -926,11 +922,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 @property (nonatomic, retain, getter=success, setter=setSuccess:) ApplicationService_SendMessageResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) ApplicationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) ApplicationService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) ApplicationService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) ApplicationService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidCredentialsException) ex3;
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -956,8 +952,8 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (ApplicationService_InvalidCredentialsException) ex3;
-- (void) setEx3: (ApplicationService_InvalidCredentialsException) ex3;
+- (ApplicationService_InvalidTokenException) ex3;
+- (void) setEx3: (ApplicationService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
@@ -973,7 +969,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidCredentialsException) ex3
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -1159,11 +1155,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidCredentialsException *) ex3 {
+- (BananaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -1227,7 +1223,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];

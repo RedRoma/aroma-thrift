@@ -20,6 +20,15 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication {
 
+struct TokenType {
+  enum type {
+    APPLICATION = 1,
+    USER = 2
+  };
+};
+
+extern const std::map<int, const char*> _TokenType_VALUES_TO_NAMES;
+
 typedef  ::aroma::banana::thrift::int int;
 
 typedef  ::aroma::banana::thrift::long long;
@@ -37,6 +46,8 @@ class Password;
 class AromaAccount;
 
 class Credentials;
+
+class AuthenticationToken;
 
 typedef struct _ApplicationToken__isset {
   _ApplicationToken__isset() : tokenId(false), organization(false), timeOfExpiration(false), applicationId(false), applicationName(false) {}
@@ -412,6 +423,58 @@ class Credentials {
 void swap(Credentials &a, Credentials &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Credentials& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _AuthenticationToken__isset {
+  _AuthenticationToken__isset() : applicationToken(false), userToken(false) {}
+  bool applicationToken :1;
+  bool userToken :1;
+} _AuthenticationToken__isset;
+
+class AuthenticationToken {
+ public:
+
+  AuthenticationToken(const AuthenticationToken&);
+  AuthenticationToken& operator=(const AuthenticationToken&);
+  AuthenticationToken() {
+  }
+
+  virtual ~AuthenticationToken() throw();
+  ApplicationToken applicationToken;
+  UserToken userToken;
+
+  _AuthenticationToken__isset __isset;
+
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_userToken(const UserToken& val);
+
+  bool operator == (const AuthenticationToken & rhs) const
+  {
+    if (!(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(userToken == rhs.userToken))
+      return false;
+    return true;
+  }
+  bool operator != (const AuthenticationToken &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AuthenticationToken & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(AuthenticationToken &a, AuthenticationToken &b);
+
+inline std::ostream& operator<<(std::ostream& out, const AuthenticationToken& obj)
 {
   obj.printTo(out);
   return out;

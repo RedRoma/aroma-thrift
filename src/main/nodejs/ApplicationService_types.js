@@ -98,10 +98,10 @@ SendMessageRequest.prototype.write = function(output) {
 };
 
 SendMessageResponse = module.exports.SendMessageResponse = function(args) {
-  this.message = null;
+  this.messageId = null;
   if (args) {
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
     }
   }
 };
@@ -121,7 +121,7 @@ SendMessageResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString();
+        this.messageId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -140,9 +140,9 @@ SendMessageResponse.prototype.read = function(input) {
 
 SendMessageResponse.prototype.write = function(output) {
   output.writeStructBegin('SendMessageResponse');
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
-    output.writeString(this.message);
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -150,7 +150,6 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.4;
 ttypes.SERVICE_PORT = 7005;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});

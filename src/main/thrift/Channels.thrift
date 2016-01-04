@@ -73,6 +73,12 @@ union BananaChannel
     4: CustomChannel customChannel;
 }
 
+struct ChannelInfo
+{
+    1: BananaChannel channel;
+    2: timestamp timeRegistered;
+}
+
 /**
  * This is the Request Body that will be sent to any 
  * Custom Channels registered to a service.

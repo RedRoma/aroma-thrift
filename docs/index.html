@@ -190,29 +190,46 @@ code { line-height: 20px; }
 <h1>All Thrift declarations</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>Notifications</td><td></td>
-<td><a href="Notifications.html#Typedef_Application">Application</a><br/>
-<a href="Notifications.html#Struct_ApplicationSentMessage">ApplicationSentMessage</a><br/>
-<a href="Notifications.html#Typedef_ApplicationToken">ApplicationToken</a><br/>
-<a href="Notifications.html#Struct_ApplicationTokenRegenerated">ApplicationTokenRegenerated</a><br/>
-<a href="Notifications.html#Struct_ApplicationTokenRenewed">ApplicationTokenRenewed</a><br/>
-<a href="Notifications.html#Struct_Event">Event</a><br/>
-<a href="Notifications.html#Struct_EventType">EventType</a><br/>
-<a href="Notifications.html#Struct_HealthCheckBackToNormal">HealthCheckBackToNormal</a><br/>
-<a href="Notifications.html#Struct_HealthCheckFailed">HealthCheckFailed</a><br/>
-<a href="Notifications.html#Typedef_User">User</a><br/>
-<a href="Notifications.html#Typedef_int">int</a><br/>
-<a href="Notifications.html#Typedef_long">long</a><br/>
-<a href="Notifications.html#Typedef_timestamp">timestamp</a><br/>
+<td>NotificationService</td><td><a href="NotificationService.html#Svc_NotificationService">NotificationService</a><br/>
+<ul>
+<li><a href="NotificationService.html#Fn_NotificationService_getApiVersion">getApiVersion</a></li>
+<li><a href="NotificationService.html#Fn_NotificationService_sendNotification">sendNotification</a></li>
+</ul>
 </td>
-<td></code></td>
+<td><a href="NotificationService.html#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
+<a href="NotificationService.html#Typedef_Application">Application</a><br/>
+<a href="NotificationService.html#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
+<a href="NotificationService.html#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
+<a href="NotificationService.html#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
+<a href="NotificationService.html#Typedef_BananaChannel">BananaChannel</a><br/>
+<a href="NotificationService.html#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
+<a href="NotificationService.html#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="NotificationService.html#Typedef_Event">Event</a><br/>
+<a href="NotificationService.html#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
+<a href="NotificationService.html#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="NotificationService.html#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
+<a href="NotificationService.html#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="NotificationService.html#Struct_SendNotificationRequest">SendNotificationRequest</a><br/>
+<a href="NotificationService.html#Struct_SendNotificationResponse">SendNotificationResponse</a><br/>
+<a href="NotificationService.html#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
+<a href="NotificationService.html#Typedef_Urgency">Urgency</a><br/>
+<a href="NotificationService.html#Typedef_int">int</a><br/>
+<a href="NotificationService.html#Typedef_long">long</a><br/>
+<a href="NotificationService.html#Typedef_timestamp">timestamp</a><br/>
+</td>
+<td><code><a href="NotificationService.html#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
+<code><a href="NotificationService.html#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
+<code><a href="NotificationService.html#Const_SERVICE_PORT">SERVICE_PORT</a></code><br/>
+</code></td>
 </tr><tr>
 <td>Authentication</td><td></td>
 <td><a href="Authentication.html#Struct_ApplicationToken">ApplicationToken</a><br/>
 <a href="Authentication.html#Struct_AromaAccount">AromaAccount</a><br/>
+<a href="Authentication.html#Struct_AuthenticationToken">AuthenticationToken</a><br/>
 <a href="Authentication.html#Struct_Credentials">Credentials</a><br/>
 <a href="Authentication.html#Struct_GithubToken">GithubToken</a><br/>
 <a href="Authentication.html#Struct_Password">Password</a><br/>
+<a href="Authentication.html#Enum_TokenType">TokenType</a><br/>
 <a href="Authentication.html#Struct_UserToken">UserToken</a><br/>
 <a href="Authentication.html#Typedef_int">int</a><br/>
 <a href="Authentication.html#Typedef_long">long</a><br/>
@@ -237,6 +254,76 @@ code { line-height: 20px; }
 <a href="Banana.html#Typedef_int">int</a><br/>
 <a href="Banana.html#Typedef_long">long</a><br/>
 <a href="Banana.html#Typedef_timestamp">timestamp</a><br/>
+</td>
+<td></code></td>
+</tr><tr>
+<td>Channels</td><td><a href="Channels.html#Svc_CustomBananaChannel">CustomBananaChannel</a><br/>
+<ul>
+<li><a href="Channels.html#Fn_CustomBananaChannel_ping">ping</a></li>
+<li><a href="Channels.html#Fn_CustomBananaChannel_receiveMessage">receiveMessage</a></li>
+</ul>
+</td>
+<td><a href="Channels.html#Struct_BananaChannel">BananaChannel</a><br/>
+<a href="Channels.html#Struct_ChannelInfo">ChannelInfo</a><br/>
+<a href="Channels.html#Struct_CustomChannel">CustomChannel</a><br/>
+<a href="Channels.html#Struct_Email">Email</a><br/>
+<a href="Channels.html#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a><br/>
+<a href="Channels.html#Struct_SlackChannel">SlackChannel</a><br/>
+<a href="Channels.html#Struct_SlackUsername">SlackUsername</a><br/>
+<a href="Channels.html#Typedef_int">int</a><br/>
+<a href="Channels.html#Typedef_long">long</a><br/>
+<a href="Channels.html#Typedef_timestamp">timestamp</a><br/>
+</td>
+<td></code></td>
+</tr><tr>
+<td>Endpoint</td><td><a href="Endpoint.html#Svc_ApplicationEndpoint">ApplicationEndpoint</a><br/>
+<ul>
+<li><a href="Endpoint.html#Fn_ApplicationEndpoint_healthPoke">healthPoke</a></li>
+</ul>
+</td>
+<td><a href="Endpoint.html#Struct_Endpoint">Endpoint</a><br/>
+<a href="Endpoint.html#Struct_HealthPokeRequest">HealthPokeRequest</a><br/>
+<a href="Endpoint.html#Struct_HealthPokeResponse">HealthPokeResponse</a><br/>
+<a href="Endpoint.html#Typedef_OperationFailedException">OperationFailedException</a><br/>
+<a href="Endpoint.html#Struct_RestHttpEndpoint">RestHttpEndpoint</a><br/>
+<a href="Endpoint.html#Struct_TcpEndpoint">TcpEndpoint</a><br/>
+<a href="Endpoint.html#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a><br/>
+<a href="Endpoint.html#Typedef_int">int</a><br/>
+</td>
+<td></code></td>
+</tr><tr>
+<td>Exceptions</td><td></td>
+<td><a href="Exceptions.html#Struct_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
+<a href="Exceptions.html#Struct_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
+<a href="Exceptions.html#Struct_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
+<a href="Exceptions.html#Struct_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
+<a href="Exceptions.html#Struct_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="Exceptions.html#Struct_InvalidArgumentException">InvalidArgumentException</a><br/>
+<a href="Exceptions.html#Struct_InvalidCodeException">InvalidCodeException</a><br/>
+<a href="Exceptions.html#Struct_InvalidCredentialsException">InvalidCredentialsException</a><br/>
+<a href="Exceptions.html#Struct_InvalidTokenException">InvalidTokenException</a><br/>
+<a href="Exceptions.html#Struct_OperationFailedException">OperationFailedException</a><br/>
+<a href="Exceptions.html#Struct_ThroughoutExceededException">ThroughoutExceededException</a><br/>
+<a href="Exceptions.html#Struct_UnauthorizedException">UnauthorizedException</a><br/>
+<a href="Exceptions.html#Struct_UserDoesNotExistException">UserDoesNotExistException</a><br/>
+</td>
+<td></code></td>
+</tr><tr>
+<td>Events</td><td></td>
+<td><a href="Events.html#Typedef_Application">Application</a><br/>
+<a href="Events.html#Struct_ApplicationSentMessage">ApplicationSentMessage</a><br/>
+<a href="Events.html#Typedef_ApplicationToken">ApplicationToken</a><br/>
+<a href="Events.html#Struct_ApplicationTokenRegenerated">ApplicationTokenRegenerated</a><br/>
+<a href="Events.html#Struct_ApplicationTokenRenewed">ApplicationTokenRenewed</a><br/>
+<a href="Events.html#Struct_Event">Event</a><br/>
+<a href="Events.html#Struct_EventType">EventType</a><br/>
+<a href="Events.html#Struct_HealthCheckBackToNormal">HealthCheckBackToNormal</a><br/>
+<a href="Events.html#Struct_HealthCheckFailed">HealthCheckFailed</a><br/>
+<a href="Events.html#Struct_OwnerApprovedRequest">OwnerApprovedRequest</a><br/>
+<a href="Events.html#Typedef_User">User</a><br/>
+<a href="Events.html#Typedef_int">int</a><br/>
+<a href="Events.html#Typedef_long">long</a><br/>
+<a href="Events.html#Typedef_timestamp">timestamp</a><br/>
 </td>
 <td></code></td>
 </tr></table>

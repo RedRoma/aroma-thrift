@@ -71,3 +71,19 @@ union Credentials
     1: GithubToken githubToken;
     2: AromaAccount aromaAccount;
 }
+
+enum TokenType
+{
+    APPLICATION = 1,
+    USER = 2
+}
+
+/** 
+ * Represents a Generic Authentication Token
+ * that is accepted by the Authentication Service.
+ */
+union AuthenticationToken
+{
+    1: ApplicationToken applicationToken;
+    2: UserToken userToken;
+}

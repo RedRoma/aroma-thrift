@@ -39,7 +39,7 @@ typedef BananaException_AccountAlreadyExistsException * ApplicationService_Accou
 
 typedef BananaException_InvalidArgumentException * ApplicationService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * ApplicationService_InvalidCredentialsException;
+typedef BananaException_InvalidTokenException * ApplicationService_InvalidTokenException;
 
 typedef BananaException_OperationFailedException * ApplicationService_OperationFailedException;
 
@@ -98,17 +98,17 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 @end
 
 @interface ApplicationService_SendMessageResponse : NSObject <TBase, NSCoding> {
-  NSString * __message;
+  NSString * __messageId;
 
-  BOOL __message_isset;
+  BOOL __messageId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message;
+- (id) initWithMessageId: (NSString *) messageId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -116,16 +116,16 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
 #endif
-- (BOOL) messageIsSet;
+- (BOOL) messageIdIsSet;
 
 @end
 
 @protocol ApplicationService_ApplicationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request;  // throws ApplicationService_OperationFailedException, ApplicationService_InvalidArgumentException, ApplicationService_InvalidCredentialsException, TException
+- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request;  // throws ApplicationService_OperationFailedException, ApplicationService_InvalidArgumentException, ApplicationService_InvalidTokenException, TException
 - (void) sendMessageAsync: (ApplicationService_SendMessageRequest *) request;  // throws TException
 @end
 
@@ -143,7 +143,6 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 
 @interface ApplicationService_ApplicationServiceConstants : NSObject {
 }
-+ (double) API_VERSION;
 + (ApplicationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;

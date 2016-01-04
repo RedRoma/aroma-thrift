@@ -30,12 +30,22 @@ enum Urgency
     HIGH = 3
 }
 
+/*
+ * TODO: Find a more distinctive name for Message.
+ * + Kik
+ * + Sok
+ * + Dice
+ */
 struct Message
 {
     /** Each message has a unique ID */
     1: string messageId;
-    /** The body represents the Message's Payload, i.e. the actual message. */
-    2: string body;
+    /** 
+     * The body represents the Message's Payload, i.e. the actual message.
+     * If the Message Body is too long, it may be truncated. The complete
+     * body can then be loaded in a separate request.
+     */
+    2: optional string body;
     3: Urgency urgency = Urgency.LOW;
     /** The time the message was created on the Application side */
     4: timestamp timeOfCreation;
@@ -46,6 +56,7 @@ struct Message
     /** The Network Hostname of the Device sending the message, ideally the FQDM. */
     7: optional string hostname;
     8: optional string macAddress;
+    9: optional bool isTruncated = false;
 }
 
 /**
@@ -113,10 +124,12 @@ struct User
 {
     /** A person's email address is also considered their identifying trait. */
     1: string email;
-    2: optional string name;
-    3: optional string username;
+    2: string userId;
+    3: optional string name;
     /** A Person can be more than one thing at once. By default, we assume a developer. */
-    4: list<Role> roles = [ Role.DEVELOPER ];
+    4: set<Role> roles = [ Role.DEVELOPER ];
+    5: optional Image profileImage;
+    6: optional string profileImageLink;
 }
 
 /**
@@ -143,19 +156,25 @@ enum ProgrammingLanguage
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: list<User> owners;
+    1: set<User> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
     3: string name;
     /** The Automatically generated ID for the Application. */
     4: string id;
-    /** The total amount of messages that have been counted so far for the Application*/
+    /** 
+     * The total amount of messages that 
+     * have been counted so far for the Application*/
     5: long totalMessagesSent;
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
-    /** Defines a list of people that are subscribed to events for an Application.*/
-    8: optional list<User> subscribers = [];
+    /** 
+     * Defines a list of people that are subscribed 
+     * to events for an Application, and that are not owners.
+     */
+    8: optional set<User> subscribers = [];
+    9: string applicationDescription;
 }
 
 /**

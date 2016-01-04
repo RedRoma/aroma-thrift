@@ -13,122 +13,6 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
 
-int _kTokenTypeValues[] = {
-  TokenType::APPLICATION,
-  TokenType::USER
-};
-const char* _kTokenTypeNames[] = {
-  "APPLICATION",
-  "USER"
-};
-const std::map<int, const char*> _TokenType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTokenTypeValues, _kTokenTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
-
-
-AuthenticationToken::~AuthenticationToken() throw() {
-}
-
-
-void AuthenticationToken::__set_applicationToken(const ApplicationToken& val) {
-  this->applicationToken = val;
-}
-
-void AuthenticationToken::__set_userToken(const UserToken& val) {
-  this->userToken = val;
-}
-
-uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->applicationToken.read(iprot);
-          this->__isset.applicationToken = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->userToken.read(iprot);
-          this->__isset.userToken = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AuthenticationToken");
-
-  xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->applicationToken.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("userToken", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->userToken.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(AuthenticationToken &a, AuthenticationToken &b) {
-  using ::std::swap;
-  swap(a.applicationToken, b.applicationToken);
-  swap(a.userToken, b.userToken);
-  swap(a.__isset, b.__isset);
-}
-
-AuthenticationToken::AuthenticationToken(const AuthenticationToken& other0) {
-  applicationToken = other0.applicationToken;
-  userToken = other0.userToken;
-  __isset = other0.__isset;
-}
-AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other1) {
-  applicationToken = other1.applicationToken;
-  userToken = other1.userToken;
-  __isset = other1.__isset;
-  return *this;
-}
-void AuthenticationToken::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "AuthenticationToken(";
-  out << "applicationToken=" << to_string(applicationToken);
-  out << ", " << "userToken=" << to_string(userToken);
-  out << ")";
-}
-
 
 CreateTokenRequest::~CreateTokenRequest() throw() {
 }
@@ -142,7 +26,7 @@ void CreateTokenRequest::__set_lifetime(const LengthOfTime& val) {
   this->lifetime = val;
 }
 
-void CreateTokenRequest::__set_desiredTokenType(const TokenType::type val) {
+void CreateTokenRequest::__set_desiredTokenType(const TokenType val) {
   this->desiredTokenType = val;
 }
 
@@ -185,9 +69,9 @@ uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast2;
-          xfer += iprot->readI32(ecast2);
-          this->desiredTokenType = (TokenType::type)ecast2;
+          int32_t ecast0;
+          xfer += iprot->readI32(ecast0);
+          this->desiredTokenType = ( ::aroma::banana::thrift::authentication::TokenType::type)ecast0;
           this->__isset.desiredTokenType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -235,17 +119,17 @@ void swap(CreateTokenRequest &a, CreateTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-CreateTokenRequest::CreateTokenRequest(const CreateTokenRequest& other3) {
-  ownerId = other3.ownerId;
-  lifetime = other3.lifetime;
-  desiredTokenType = other3.desiredTokenType;
-  __isset = other3.__isset;
+CreateTokenRequest::CreateTokenRequest(const CreateTokenRequest& other1) {
+  ownerId = other1.ownerId;
+  lifetime = other1.lifetime;
+  desiredTokenType = other1.desiredTokenType;
+  __isset = other1.__isset;
 }
-CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& other4) {
-  ownerId = other4.ownerId;
-  lifetime = other4.lifetime;
-  desiredTokenType = other4.desiredTokenType;
-  __isset = other4.__isset;
+CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& other2) {
+  ownerId = other2.ownerId;
+  lifetime = other2.lifetime;
+  desiredTokenType = other2.desiredTokenType;
+  __isset = other2.__isset;
   return *this;
 }
 void CreateTokenRequest::printTo(std::ostream& out) const {
@@ -327,13 +211,13 @@ void swap(CreateTokenResponse &a, CreateTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-CreateTokenResponse::CreateTokenResponse(const CreateTokenResponse& other5) {
-  token = other5.token;
-  __isset = other5.__isset;
+CreateTokenResponse::CreateTokenResponse(const CreateTokenResponse& other3) {
+  token = other3.token;
+  __isset = other3.__isset;
 }
-CreateTokenResponse& CreateTokenResponse::operator=(const CreateTokenResponse& other6) {
-  token = other6.token;
-  __isset = other6.__isset;
+CreateTokenResponse& CreateTokenResponse::operator=(const CreateTokenResponse& other4) {
+  token = other4.token;
+  __isset = other4.__isset;
   return *this;
 }
 void CreateTokenResponse::printTo(std::ostream& out) const {
@@ -352,7 +236,7 @@ void GetTokenInfoRequest::__set_tokenId(const std::string& val) {
   this->tokenId = val;
 }
 
-void GetTokenInfoRequest::__set_tokenType(const TokenType::type val) {
+void GetTokenInfoRequest::__set_tokenType(const TokenType val) {
   this->tokenType = val;
 }
 
@@ -387,9 +271,9 @@ uint32_t GetTokenInfoRequest::read(::apache::thrift::protocol::TProtocol* iprot)
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast7;
-          xfer += iprot->readI32(ecast7);
-          this->tokenType = (TokenType::type)ecast7;
+          int32_t ecast5;
+          xfer += iprot->readI32(ecast5);
+          this->tokenType = ( ::aroma::banana::thrift::authentication::TokenType::type)ecast5;
           this->__isset.tokenType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -432,15 +316,15 @@ void swap(GetTokenInfoRequest &a, GetTokenInfoRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetTokenInfoRequest::GetTokenInfoRequest(const GetTokenInfoRequest& other8) {
-  tokenId = other8.tokenId;
-  tokenType = other8.tokenType;
-  __isset = other8.__isset;
+GetTokenInfoRequest::GetTokenInfoRequest(const GetTokenInfoRequest& other6) {
+  tokenId = other6.tokenId;
+  tokenType = other6.tokenType;
+  __isset = other6.__isset;
 }
-GetTokenInfoRequest& GetTokenInfoRequest::operator=(const GetTokenInfoRequest& other9) {
-  tokenId = other9.tokenId;
-  tokenType = other9.tokenType;
-  __isset = other9.__isset;
+GetTokenInfoRequest& GetTokenInfoRequest::operator=(const GetTokenInfoRequest& other7) {
+  tokenId = other7.tokenId;
+  tokenType = other7.tokenType;
+  __isset = other7.__isset;
   return *this;
 }
 void GetTokenInfoRequest::printTo(std::ostream& out) const {
@@ -521,13 +405,13 @@ void swap(GetTokenInfoResponse &a, GetTokenInfoResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetTokenInfoResponse::GetTokenInfoResponse(const GetTokenInfoResponse& other10) {
-  token = other10.token;
-  __isset = other10.__isset;
+GetTokenInfoResponse::GetTokenInfoResponse(const GetTokenInfoResponse& other8) {
+  token = other8.token;
+  __isset = other8.__isset;
 }
-GetTokenInfoResponse& GetTokenInfoResponse::operator=(const GetTokenInfoResponse& other11) {
-  token = other11.token;
-  __isset = other11.__isset;
+GetTokenInfoResponse& GetTokenInfoResponse::operator=(const GetTokenInfoResponse& other9) {
+  token = other9.token;
+  __isset = other9.__isset;
   return *this;
 }
 void GetTokenInfoResponse::printTo(std::ostream& out) const {
@@ -607,13 +491,13 @@ void swap(InvalidateTokenRequest &a, InvalidateTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other12) {
-  token = other12.token;
-  __isset = other12.__isset;
+InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other10) {
+  token = other10.token;
+  __isset = other10.__isset;
 }
-InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other13) {
-  token = other13.token;
-  __isset = other13.__isset;
+InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other11) {
+  token = other11.token;
+  __isset = other11.__isset;
   return *this;
 }
 void InvalidateTokenRequest::printTo(std::ostream& out) const {
@@ -693,13 +577,13 @@ void swap(InvalidateTokenResponse &a, InvalidateTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other14) {
-  message = other14.message;
-  __isset = other14.__isset;
+InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other12) {
+  message = other12.message;
+  __isset = other12.__isset;
 }
-InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other15) {
-  message = other15.message;
-  __isset = other15.__isset;
+InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other13) {
+  message = other13.message;
+  __isset = other13.__isset;
   return *this;
 }
 void InvalidateTokenResponse::printTo(std::ostream& out) const {
@@ -798,15 +682,15 @@ void swap(VerifyTokenRequest &a, VerifyTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other16) {
-  tokenId = other16.tokenId;
-  ownerId = other16.ownerId;
-  __isset = other16.__isset;
+VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other14) {
+  tokenId = other14.tokenId;
+  ownerId = other14.ownerId;
+  __isset = other14.__isset;
 }
-VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other17) {
-  tokenId = other17.tokenId;
-  ownerId = other17.ownerId;
-  __isset = other17.__isset;
+VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other15) {
+  tokenId = other15.tokenId;
+  ownerId = other15.ownerId;
+  __isset = other15.__isset;
   return *this;
 }
 void VerifyTokenRequest::printTo(std::ostream& out) const {
@@ -887,13 +771,13 @@ void swap(VerifyTokenResponse &a, VerifyTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other18) {
-  message = other18.message;
-  __isset = other18.__isset;
+VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other16) {
+  message = other16.message;
+  __isset = other16.__isset;
 }
-VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other19) {
-  message = other19.message;
-  __isset = other19.__isset;
+VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other17) {
+  message = other17.message;
+  __isset = other17.__isset;
   return *this;
 }
 void VerifyTokenResponse::printTo(std::ostream& out) const {

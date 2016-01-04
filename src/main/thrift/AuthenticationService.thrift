@@ -26,6 +26,8 @@ typedef Banana.LengthOfTime LengthOfTime;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
+typedef Authentication.AuthenticationToken AuthenticationToken
+typedef Authentication.TokenType TokenType
 typedef Authentication.UserToken UserToken
 
 //Exception Typedefs
@@ -36,27 +38,12 @@ typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-/** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.4;
-
 const int SERVICE_PORT = 6001;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
-
-enum TokenType
-{
-    APPLICATION = 1,
-    USER = 2
-}
-
-union AuthenticationToken
-{
-    1: ApplicationToken applicationToken;
-    2: UserToken userToken;
-}
 
 struct CreateTokenRequest
 {
@@ -87,7 +74,6 @@ struct GetTokenInfoResponse
 {
     1: AuthenticationToken token;
 }
-
 
 struct InvalidateTokenRequest
 {

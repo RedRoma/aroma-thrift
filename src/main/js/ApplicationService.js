@@ -155,7 +155,7 @@ ApplicationService_sendMessage_result = function(args) {
             this.ex2 = args;
             return;
       }
-      if (args instanceof InvalidCredentialsException) {
+      if (args instanceof InvalidTokenException) {
             this.ex3 = args;
             return;
       }
@@ -214,7 +214,7 @@ ApplicationService_sendMessage_result.prototype.read = function(input) {
           break;
           case 3:
           if (ftype == Thrift.Type.STRUCT) {
-            this.ex3 = new InvalidCredentialsException();
+            this.ex3 = new InvalidTokenException();
             this.ex3.read(input);
           } else {
             input.skip(ftype);

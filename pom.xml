@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>banana-thrift</artifactId>
-    <version>1.4</version>
+    <version>1.5</version>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
@@ -57,7 +57,9 @@
 
     <dependencies>
         
+        <!--=======================-->
         <!--UNIT TESTING-->
+        <!--=======================-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -75,9 +77,11 @@
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--====================-->
 
+
+        <!--=======================-->
         <!--ALCHEMY-->
+        <!--=======================-->
         <dependency>
             <groupId>tech.sirwellington.alchemy</groupId>
             <artifactId>alchemy-annotations</artifactId>
@@ -93,10 +97,11 @@
             <artifactId>alchemy-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--====================-->
 
 
+        <!--=======================-->
         <!--THRIFT-->
+        <!--=======================-->
         <dependency>
             <groupId>org.apache.thrift</groupId>
             <artifactId>libthrift</artifactId>
@@ -107,16 +112,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--====================-->
         
+
+        <!--=======================-->
         <!--APACHE HTTP CORE-->
+        <!--=======================-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>4.4.3</version>
         </dependency>
-        <!--====================-->
-
       
     </dependencies>
 

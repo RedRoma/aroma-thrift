@@ -30,16 +30,13 @@ typedef Banana.Urgency Urgency
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
-typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
+typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
 typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
-
-/** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.4;
 
 const int SERVICE_PORT = 7005;
 
@@ -63,7 +60,7 @@ struct SendMessageRequest
 
 struct SendMessageResponse
 {
-    1: string message;
+    1: string messageId;
 }
 
 /**
@@ -86,7 +83,7 @@ service ApplicationService
      */
     SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3)
+                                                                           3 : InvalidTokenException ex3)
 
     /**
      * Fire-And-Forget version of sendMessage() ;

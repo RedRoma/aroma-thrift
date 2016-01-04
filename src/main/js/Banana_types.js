@@ -54,6 +54,7 @@ Message = function(args) {
   this.applicationName = null;
   this.hostname = null;
   this.macAddress = null;
+  this.isTruncated = false;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -78,6 +79,9 @@ Message = function(args) {
     }
     if (args.macAddress !== undefined && args.macAddress !== null) {
       this.macAddress = args.macAddress;
+    }
+    if (args.isTruncated !== undefined && args.isTruncated !== null) {
+      this.isTruncated = args.isTruncated;
     }
   }
 };
@@ -151,6 +155,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isTruncated = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -200,6 +211,11 @@ Message.prototype.write = function(output) {
   if (this.macAddress !== null && this.macAddress !== undefined) {
     output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
     output.writeString(this.macAddress);
+    output.writeFieldEnd();
+  }
+  if (this.isTruncated !== null && this.isTruncated !== undefined) {
+    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
+    output.writeBool(this.isTruncated);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -432,21 +448,29 @@ Image.prototype.write = function(output) {
 
 User = function(args) {
   this.email = null;
+  this.userId = null;
   this.name = null;
-  this.username = null;
   this.roles = [1];
+  this.profileImage = null;
+  this.profileImageLink = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
     }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
+    }
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
     }
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
-    }
     if (args.roles !== undefined && args.roles !== null) {
       this.roles = Thrift.copyList(args.roles, [null]);
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Image(args.profileImage);
+    }
+    if (args.profileImageLink !== undefined && args.profileImageLink !== null) {
+      this.profileImageLink = args.profileImageLink;
     }
   }
 };
@@ -473,25 +497,25 @@ User.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.name = input.readString().value;
+        this.userId = input.readString().value;
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString().value;
+        this.name = input.readString().value;
       } else {
         input.skip(ftype);
       }
       break;
       case 4:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size0 = 0;
         var _rtmp34;
         this.roles = [];
         var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
+        _rtmp34 = input.readSetBegin();
         _etype3 = _rtmp34.etype;
         _size0 = _rtmp34.size;
         for (var _i5 = 0; _i5 < _size0; ++_i5)
@@ -500,7 +524,22 @@ User.prototype.read = function(input) {
           elem6 = input.readI32().value;
           this.roles.push(elem6);
         }
-        input.readListEnd();
+        input.readSetEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Image();
+        this.profileImage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.profileImageLink = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -521,19 +560,19 @@ User.prototype.write = function(output) {
     output.writeString(this.email);
     output.writeFieldEnd();
   }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+    output.writeString(this.userId);
+    output.writeFieldEnd();
+  }
   if (this.name !== null && this.name !== undefined) {
-    output.writeFieldBegin('name', Thrift.Type.STRING, 2);
+    output.writeFieldBegin('name', Thrift.Type.STRING, 3);
     output.writeString(this.name);
     output.writeFieldEnd();
   }
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
-    output.writeString(this.username);
-    output.writeFieldEnd();
-  }
   if (this.roles !== null && this.roles !== undefined) {
-    output.writeFieldBegin('roles', Thrift.Type.LIST, 4);
-    output.writeListBegin(Thrift.Type.I32, this.roles.length);
+    output.writeFieldBegin('roles', Thrift.Type.SET, 4);
+    output.writeSetBegin(Thrift.Type.I32, this.roles.length);
     for (var iter7 in this.roles)
     {
       if (this.roles.hasOwnProperty(iter7))
@@ -542,7 +581,17 @@ User.prototype.write = function(output) {
         output.writeI32(iter7);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 5);
+    this.profileImage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.profileImageLink !== null && this.profileImageLink !== undefined) {
+    output.writeFieldBegin('profileImageLink', Thrift.Type.STRING, 6);
+    output.writeString(this.profileImageLink);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -559,6 +608,7 @@ Application = function(args) {
   this.icon = null;
   this.programmingLanguage = null;
   this.subscribers = [];
+  this.applicationDescription = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [User]);
@@ -584,6 +634,9 @@ Application = function(args) {
     if (args.subscribers !== undefined && args.subscribers !== null) {
       this.subscribers = Thrift.copyList(args.subscribers, [User]);
     }
+    if (args.applicationDescription !== undefined && args.applicationDescription !== null) {
+      this.applicationDescription = args.applicationDescription;
+    }
   }
 };
 Application.prototype = {};
@@ -601,12 +654,12 @@ Application.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size8 = 0;
         var _rtmp312;
         this.owners = [];
         var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
+        _rtmp312 = input.readSetBegin();
         _etype11 = _rtmp312.etype;
         _size8 = _rtmp312.size;
         for (var _i13 = 0; _i13 < _size8; ++_i13)
@@ -616,7 +669,7 @@ Application.prototype.read = function(input) {
           elem14.read(input);
           this.owners.push(elem14);
         }
-        input.readListEnd();
+        input.readSetEnd();
       } else {
         input.skip(ftype);
       }
@@ -665,12 +718,12 @@ Application.prototype.read = function(input) {
       }
       break;
       case 8:
-      if (ftype == Thrift.Type.LIST) {
+      if (ftype == Thrift.Type.SET) {
         var _size15 = 0;
         var _rtmp319;
         this.subscribers = [];
         var _etype18 = 0;
-        _rtmp319 = input.readListBegin();
+        _rtmp319 = input.readSetBegin();
         _etype18 = _rtmp319.etype;
         _size15 = _rtmp319.size;
         for (var _i20 = 0; _i20 < _size15; ++_i20)
@@ -680,7 +733,14 @@ Application.prototype.read = function(input) {
           elem21.read(input);
           this.subscribers.push(elem21);
         }
-        input.readListEnd();
+        input.readSetEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationDescription = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -697,8 +757,8 @@ Application.prototype.read = function(input) {
 Application.prototype.write = function(output) {
   output.writeStructBegin('Application');
   if (this.owners !== null && this.owners !== undefined) {
-    output.writeFieldBegin('owners', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.owners.length);
+    output.writeFieldBegin('owners', Thrift.Type.SET, 1);
+    output.writeSetBegin(Thrift.Type.STRUCT, this.owners.length);
     for (var iter22 in this.owners)
     {
       if (this.owners.hasOwnProperty(iter22))
@@ -707,7 +767,7 @@ Application.prototype.write = function(output) {
         iter22.write(output);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
     output.writeFieldEnd();
   }
   if (this.timeOfProvisioning !== null && this.timeOfProvisioning !== undefined) {
@@ -741,8 +801,8 @@ Application.prototype.write = function(output) {
     output.writeFieldEnd();
   }
   if (this.subscribers !== null && this.subscribers !== undefined) {
-    output.writeFieldBegin('subscribers', Thrift.Type.LIST, 8);
-    output.writeListBegin(Thrift.Type.STRUCT, this.subscribers.length);
+    output.writeFieldBegin('subscribers', Thrift.Type.SET, 8);
+    output.writeSetBegin(Thrift.Type.STRUCT, this.subscribers.length);
     for (var iter23 in this.subscribers)
     {
       if (this.subscribers.hasOwnProperty(iter23))
@@ -751,7 +811,12 @@ Application.prototype.write = function(output) {
         iter23.write(output);
       }
     }
-    output.writeListEnd();
+    output.writeSetEnd();
+    output.writeFieldEnd();
+  }
+  if (this.applicationDescription !== null && this.applicationDescription !== undefined) {
+    output.writeFieldBegin('applicationDescription', Thrift.Type.STRING, 9);
+    output.writeString(this.applicationDescription);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

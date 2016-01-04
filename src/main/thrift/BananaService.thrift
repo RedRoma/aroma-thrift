@@ -21,8 +21,8 @@ include "Authentication.thrift"
 include "Banana.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
+include "Events.thrift"
 include "Exceptions.thrift"
-include "Notifications.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -39,28 +39,32 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
-typedef Authentication.UserToken UserToken
 typedef Authentication.ApplicationToken ApplicationToken
+typedef Authentication.AuthenticationToken AuthenticationToken
+typedef Authentication.UserToken UserToken
 typedef Banana.Image Image
 typedef Banana.User User
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
+typedef Events.HealthCheckFailed HealthCheckFailed
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
+typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
 typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
+typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
 /** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.4;
+const double API_VERSION = 1.5;
 
 const int SERVICE_PORT = 7001;
 
@@ -87,6 +91,13 @@ const int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 /** The Maximum Filesize for a Profile Picture submitted. */
 const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
+/** 
+ * The Maximum number of messages included in a Message Object.
+ * If truncated, the full message can be loaded using the
+ * getFullMessage() operation.
+ */
+const int MAX_MESSAGE_LENGTH = 5000;
+
 //==========================================================
 // Actions
 //==========================================================
@@ -112,18 +123,6 @@ struct DeleteMessageResponse
 }
 
 /**
- * Deletes all of Applications' Messages.
- * 
- * #owner
- */
-struct DeleteAllMessagesRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-    3: optional int messagesDeleted = 0;
-}
-
-/**
  * Dismisses a Message. Dismissing is analogous to archiving
  * an email; it will no longer be visible to you, but will
  * still be visible to other subscribers.
@@ -142,20 +141,7 @@ struct DismissMessageResponse
     1: optional int messagesDismissed = 0;
 }
 
-/**
- * Dismisses all Messages. They will no longer be visible to you.
- */
-struct DismissAllMessagesRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-}
-
-struct DismissAllMessagesResponse
-{
-    1: optional int messagesDismissed = 0;
-}
-
+ 
 /**
  * Defines the required information to provision
  * an Application with the Banana Service.
@@ -310,6 +296,8 @@ struct SnoozeChannelRequest
     2: BananaChannel channel;
     /** Optionally choose to snooze a specific Application. */
     3: optional string applicationId;
+    /** Defines how long to snooze the Channel for. */
+    4: optional Banana.LengthOfTime lengthOfTime = { "value": 4, "unit" : Banana.TimeUnit.HOURS };
 }
 
 struct SnoozeChannelResponse
@@ -342,16 +330,32 @@ struct SubscribeToApplicationResponse
 
 struct GetApplicationInfoRequest
 {
-    1: UserToken token;
+    1: AuthenticationToken token;
     2: string applicationId;
 }
 
 struct GetApplicationInfoResponse
 {
     1: Application applicationInfo;
+    /** The Channels registered to this Application. */
+    2: list<BananaChannel> registeredChannels;
 }
 
+/**
+ * Buzz is like the latest news happening around
+ * Banana.
+ */
+struct GetBuzzRequest
+{
+    1: UserToken token;
+}
 
+struct GetBuzzResponse
+{
+    1: list<User> newUsers = [];
+    2: list<Application> newApplications = [];
+    3: list<HealthCheckFailed> failedHealthChecks = [];
+}
 
 struct GetDashboardRequest
 {
@@ -364,7 +368,9 @@ struct GetDashboardResponse
     2: int totalMessagesLastHour = 0;
     3: int totalMessagesLast24hrs = 0;
     4: list<Banana.Message> recentMessages = [];
-    
+    5: int numberOfLowUrgencyMessages = 0;
+    6: int numberOfMediumUrgencyMessages = 0;
+    7: int numberOfHighUrgencyMessages = 0;
 }
 
 /**
@@ -385,6 +391,18 @@ struct GetMessagesResponse
     1: list<Banana.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
 }
+
+struct GetFullMessageRequest
+{
+    1: UserToken token;
+    2: string messageId;
+}
+
+struct GetFullMessageResponse
+{
+    1: string fullBody;
+}
+
 struct GetMyApplicationsRequest
 {
     1: UserToken token;
@@ -393,19 +411,6 @@ struct GetMyApplicationsRequest
 struct GetMyApplicationsResponse
 {
     1: list<Application> applications;
-}
-
-
-struct GetApplicationSubscribersRequest
-{
-    1: UserToken token;
-    2: string applicationId;
-    3: string organization;
-}
-
-struct GetApplicationSubscribersResponse
-{
-    1: list<User> subscribers = [];
 }
 
 struct GetMySavedChannelsRequest
@@ -431,7 +436,7 @@ struct GetActivityRequest
 
 struct GetActivityResponse
 {
-    1: list<Notifications.Event> events = [];
+    1: list<Events.Event> events = [];
 }
 
 /**
@@ -446,6 +451,17 @@ struct GetServiceAnnouncementsRequest
 struct GetServiceAnnouncementsResponse
 {
     1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
+}
+
+struct GetUserInfoRequest
+{
+    1: UserToken token;
+    2: string userId;
+}
+
+struct GetUserInfoResponse
+{
+    1: User userInfo;
 }
 
 /**
@@ -485,7 +501,7 @@ service BananaService
      */
     ProvisionApplicationResponse provisionApplication(1 : ProvisionApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                       2 : InvalidArgumentException ex2,
-                                                                                                      3 : InvalidCredentialsException ex3,
+                                                                                                      3 : InvalidTokenException ex3,
                                                                                                       4 : ApplicationDoesNotExistException ex4,
                                                                                                       5 : UnauthorizedException ex5);
                                                                                                         
@@ -500,7 +516,7 @@ service BananaService
      */
     RegenerateApplicationTokenResponse regenerateToken(1 : RegenerateApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                                              2 : InvalidArgumentException ex2,
-                                                                                                             3 : InvalidCredentialsException ex3,
+                                                                                                             3 : InvalidTokenException ex3,
                                                                                                              4 : ApplicationDoesNotExistException ex4,
                                                                                                              5 : UnauthorizedException ex5);
     
@@ -512,7 +528,7 @@ service BananaService
      */
     RegisterHealthCheckResponse registerHealthCheck(1 : RegisterHealthCheckRequest request) throws(1 : OperationFailedException ex1,
                                                                                                    2 : InvalidArgumentException ex2,
-                                                                                                   3 : InvalidCredentialsException ex3,
+                                                                                                   3 : InvalidTokenException ex3,
                                                                                                    4 : ApplicationDoesNotExistException ex4,
                                                                                                    5 : UnauthorizedException ex5);
     
@@ -522,7 +538,7 @@ service BananaService
      */
     RemoveSavedChannelResponse removeSavedChannel(1 : RemoveSavedChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                3 : InvalidTokenException ex3,
                                                                                                 4 : UnauthorizedException ex4,
                                                                                                 5 : ChannelDoesNotExistException ex5);
     
@@ -536,7 +552,7 @@ service BananaService
      */
     RenewApplicationTokenResponse renewApplicationToken(1 : RenewApplicationTokenRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,
-                                                                                                         3 : InvalidCredentialsException ex3
+                                                                                                         3 : InvalidTokenException ex3
                                                                                                          4 : ApplicationDoesNotExistException ex4,
                                                                                                          5 : UnauthorizedException ex5);
                                                                                                          
@@ -547,7 +563,7 @@ service BananaService
      */
     SaveChannelResponse saveChannel(1 : SaveChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3,
+                                                                           3 : InvalidTokenException ex3,
                                                                            4 : UnauthorizedException ex4);                                                                                        
    
     
@@ -576,7 +592,7 @@ service BananaService
      */
     SnoozeChannelResponse snoozeChannel(1 : SnoozeChannelRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
-                                                                                 3 : InvalidCredentialsException ex3,
+                                                                                 3 : InvalidTokenException ex3,
                                                                                  4 : UnauthorizedException ex4,
                                                                                  5 : ChannelDoesNotExistException ex5);
     
@@ -588,7 +604,7 @@ service BananaService
      */
     SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
-                                                                                                            3 : InvalidCredentialsException ex3,
+                                                                                                            3 : InvalidTokenException ex3,
                                                                                                             4 : ApplicationDoesNotExistException ex4,
                                                                                                             5 : ApplicationAlreadyRegisteredException ex5,
                                                                                                             6 : CustomChannelUnreachableException ex6);
@@ -608,7 +624,7 @@ service BananaService
      */
     GetActivityResponse getActivity(1 : GetActivityRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidCredentialsException ex3);
+                                                                           3 : InvalidTokenException ex3);
     
    
     /**
@@ -618,38 +634,52 @@ service BananaService
      */
     GetApplicationInfoResponse getApplicationInfo(1 : GetApplicationInfoRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3,
+                                                                                                3 : InvalidTokenException ex3,
                                                                                                 4 : ApplicationDoesNotExistException ex4,
                                                                                                 5 : UnauthorizedException ex5);
     
-    
-
-    /**
-     * Get a list of all Users subscribed to an Application.
-     *
-     * #user
-     */
-    GetApplicationSubscribersResponse getApplicationSubscribers(1 : GetApplicationSubscribersRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                                     2 : InvalidArgumentException ex2,
-                                                                                                                     3 : InvalidCredentialsException ex3,
-                                                                                                                     4 : UnauthorizedException ex4);
-    
+    GetBuzzResponse getBuzz(1 : GetBuzzRequest request) throws(1 : OperationFailedException ex1,
+                                                               2 : InvalidArgumentException ex2,
+                                                               3 : InvalidTokenException ex3,
+                                                               4 : ApplicationDoesNotExistException ex4,
+                                                               5 : UnauthorizedException ex5);
+ 
  
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
-                                                                              3 : InvalidCredentialsException ex3);
+                                                                              3 : InvalidTokenException ex3);
+    
+    /**
+     * Get an Application's Messages.
+     */
+    GetMessagesResponse getMessages(1 : GetMessagesRequest request)throws(1 : OperationFailedException ex1,
+                                                                          2 : InvalidArgumentException ex2,
+                                                                          3 : InvalidTokenException ex3);
+
+    /**
+     * In case the Message body has been truncated, use this operation
+     * to load the full message.
+     */
+    GetFullMessageResponse getFullMessage(1 : GetFullMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                    2 : InvalidArgumentException ex2,
+                                                                                    3 : InvalidTokenException ex3);
     
     
     
     GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,
-                                                                                             3 : InvalidCredentialsException ex3);
+                                                                                             3 : InvalidTokenException ex3);
     
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,
-                                                                                                3 : InvalidCredentialsException ex3);
-    
+                                                                                                3 : InvalidTokenException ex3);
+
+    GetUserInfoResponse getUserInfo(1 : GetUserInfoRequest request) throws(1 : OperationFailedException ex1,
+                                                                           2 : InvalidArgumentException ex2,
+                                                                           3 : InvalidTokenException ex3,
+                                                                           4 : UnauthorizedException ex4,
+                                                                           5 : UserDoesNotExistException ex5);
     
     /**
      * Perform a Search on all the applications registered to the Banana Service by searching for its title.
@@ -658,6 +688,6 @@ service BananaService
      */
     SearchForApplicationsResponse searchForApplications(1 : SearchForApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                          2 : InvalidArgumentException ex2,
-                                                                                                         3 : InvalidCredentialsException ex3,
+                                                                                                         3 : InvalidTokenException ex3,
                                                                                                          4 : UnauthorizedException ex4);
 }

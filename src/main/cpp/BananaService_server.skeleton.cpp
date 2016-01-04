@@ -167,21 +167,35 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApplicationInfo\n");
   }
 
-  /**
-   * Get a list of all Users subscribed to an Application.
-   * 
-   * #user
-   * 
-   * @param request
-   */
-  void getApplicationSubscribers(GetApplicationSubscribersResponse& _return, const GetApplicationSubscribersRequest& request) {
+  void getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request) {
     // Your implementation goes here
-    printf("getApplicationSubscribers\n");
+    printf("getBuzz\n");
   }
 
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request) {
     // Your implementation goes here
     printf("getDashboard\n");
+  }
+
+  /**
+   * Get an Application's Messages.
+   * 
+   * @param request
+   */
+  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+    // Your implementation goes here
+    printf("getMessages\n");
+  }
+
+  /**
+   * In case the Message body has been truncated, use this operation
+   * to load the full message.
+   * 
+   * @param request
+   */
+  void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
+    // Your implementation goes here
+    printf("getFullMessage\n");
   }
 
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
@@ -192,6 +206,11 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
     // Your implementation goes here
     printf("getMySavedChannels\n");
+  }
+
+  void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) {
+    // Your implementation goes here
+    printf("getUserInfo\n");
   }
 
   /**

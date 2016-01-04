@@ -23,15 +23,6 @@
 
 namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
 
-struct TokenType {
-  enum type {
-    APPLICATION = 1,
-    USER = 2
-  };
-};
-
-extern const std::map<int, const char*> _TokenType_VALUES_TO_NAMES;
-
 typedef  ::aroma::banana::thrift::int int;
 
 typedef  ::aroma::banana::thrift::long long;
@@ -41,6 +32,10 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 typedef class  ::aroma::banana::thrift::LengthOfTime LengthOfTime;
 
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+
+typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+
+typedef  ::aroma::banana::thrift::authentication::TokenType::type TokenType;
 
 typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
 
@@ -55,8 +50,6 @@ typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException Invali
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
-
-class AuthenticationToken;
 
 class CreateTokenRequest;
 
@@ -74,58 +67,6 @@ class VerifyTokenRequest;
 
 class VerifyTokenResponse;
 
-typedef struct _AuthenticationToken__isset {
-  _AuthenticationToken__isset() : applicationToken(false), userToken(false) {}
-  bool applicationToken :1;
-  bool userToken :1;
-} _AuthenticationToken__isset;
-
-class AuthenticationToken {
- public:
-
-  AuthenticationToken(const AuthenticationToken&);
-  AuthenticationToken& operator=(const AuthenticationToken&);
-  AuthenticationToken() {
-  }
-
-  virtual ~AuthenticationToken() throw();
-  ApplicationToken applicationToken;
-  UserToken userToken;
-
-  _AuthenticationToken__isset __isset;
-
-  void __set_applicationToken(const ApplicationToken& val);
-
-  void __set_userToken(const UserToken& val);
-
-  bool operator == (const AuthenticationToken & rhs) const
-  {
-    if (!(applicationToken == rhs.applicationToken))
-      return false;
-    if (!(userToken == rhs.userToken))
-      return false;
-    return true;
-  }
-  bool operator != (const AuthenticationToken &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const AuthenticationToken & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(AuthenticationToken &a, AuthenticationToken &b);
-
-inline std::ostream& operator<<(std::ostream& out, const AuthenticationToken& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
 typedef struct _CreateTokenRequest__isset {
   _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false) {}
   bool ownerId :1;
@@ -138,13 +79,13 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : ownerId(), desiredTokenType((TokenType::type)0) {
+  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0) {
   }
 
   virtual ~CreateTokenRequest() throw();
   std::string ownerId;
   LengthOfTime lifetime;
-  TokenType::type desiredTokenType;
+  TokenType desiredTokenType;
 
   _CreateTokenRequest__isset __isset;
 
@@ -152,7 +93,7 @@ class CreateTokenRequest {
 
   void __set_lifetime(const LengthOfTime& val);
 
-  void __set_desiredTokenType(const TokenType::type val);
+  void __set_desiredTokenType(const TokenType val);
 
   bool operator == (const CreateTokenRequest & rhs) const
   {
@@ -241,18 +182,18 @@ class GetTokenInfoRequest {
 
   GetTokenInfoRequest(const GetTokenInfoRequest&);
   GetTokenInfoRequest& operator=(const GetTokenInfoRequest&);
-  GetTokenInfoRequest() : tokenId(), tokenType((TokenType::type)0) {
+  GetTokenInfoRequest() : tokenId(), tokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0) {
   }
 
   virtual ~GetTokenInfoRequest() throw();
   std::string tokenId;
-  TokenType::type tokenType;
+  TokenType tokenType;
 
   _GetTokenInfoRequest__isset __isset;
 
   void __set_tokenId(const std::string& val);
 
-  void __set_tokenType(const TokenType::type val);
+  void __set_tokenType(const TokenType val);
 
   bool operator == (const GetTokenInfoRequest & rhs) const
   {

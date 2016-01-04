@@ -14,78 +14,6 @@ var Exceptions_ttypes = require('./Exceptions_types')
 
 
 var ttypes = module.exports = {};
-ttypes.TokenType = {
-  'APPLICATION' : 1,
-  'USER' : 2
-};
-AuthenticationToken = module.exports.AuthenticationToken = function(args) {
-  this.applicationToken = null;
-  this.userToken = null;
-  if (args) {
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
-    }
-    if (args.userToken !== undefined && args.userToken !== null) {
-      this.userToken = new Authentication_ttypes.UserToken(args.userToken);
-    }
-  }
-};
-AuthenticationToken.prototype = {};
-AuthenticationToken.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new Authentication_ttypes.ApplicationToken();
-        this.applicationToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.userToken = new Authentication_ttypes.UserToken();
-        this.userToken.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-AuthenticationToken.prototype.write = function(output) {
-  output.writeStructBegin('AuthenticationToken');
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
-    this.applicationToken.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.userToken !== null && this.userToken !== undefined) {
-    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 2);
-    this.userToken.write(output);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
   this.ownerId = null;
   this.lifetime = null;
@@ -173,7 +101,7 @@ CreateTokenResponse = module.exports.CreateTokenResponse = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new ttypes.AuthenticationToken(args.token);
+      this.token = new Authentication_ttypes.AuthenticationToken(args.token);
     }
   }
 };
@@ -193,7 +121,7 @@ CreateTokenResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new ttypes.AuthenticationToken();
+        this.token = new Authentication_ttypes.AuthenticationToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -293,7 +221,7 @@ GetTokenInfoResponse = module.exports.GetTokenInfoResponse = function(args) {
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new ttypes.AuthenticationToken(args.token);
+      this.token = new Authentication_ttypes.AuthenticationToken(args.token);
     }
   }
 };
@@ -313,7 +241,7 @@ GetTokenInfoResponse.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new ttypes.AuthenticationToken();
+        this.token = new Authentication_ttypes.AuthenticationToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -347,7 +275,7 @@ InvalidateTokenRequest = module.exports.InvalidateTokenRequest = function(args) 
   this.token = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
-      this.token = new ttypes.AuthenticationToken(args.token);
+      this.token = new Authentication_ttypes.AuthenticationToken(args.token);
     }
   }
 };
@@ -367,7 +295,7 @@ InvalidateTokenRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.token = new ttypes.AuthenticationToken();
+        this.token = new Authentication_ttypes.AuthenticationToken();
         this.token.read(input);
       } else {
         input.skip(ftype);
@@ -569,7 +497,6 @@ VerifyTokenResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.API_VERSION = 1.4;
 ttypes.SERVICE_PORT = 6001;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});

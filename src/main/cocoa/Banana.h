@@ -79,6 +79,7 @@ typedef int64_t Banana_timestamp;
   NSString * __applicationName;
   NSString * __hostname;
   NSString * __macAddress;
+  BOOL __isTruncated;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -88,6 +89,7 @@ typedef int64_t Banana_timestamp;
   BOOL __applicationName_isset;
   BOOL __hostname_isset;
   BOOL __macAddress_isset;
+  BOOL __isTruncated_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -99,10 +101,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
 @property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
+@property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -156,6 +159,12 @@ typedef int64_t Banana_timestamp;
 - (void) setMacAddress: (NSString *) macAddress;
 #endif
 - (BOOL) macAddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) isTruncated;
+- (void) setIsTruncated: (BOOL) isTruncated;
+#endif
+- (BOOL) isTruncatedIsSet;
 
 @end
 
@@ -275,25 +284,31 @@ typedef int64_t Banana_timestamp;
 
 @interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
+  NSString * __userId;
   NSString * __name;
-  NSString * __username;
-  NSMutableArray * __roles;
+  NSMutableSet * __roles;
+  Banana_Image * __profileImage;
+  NSString * __profileImageLink;
 
   BOOL __email_isset;
+  BOOL __userId_isset;
   BOOL __name_isset;
-  BOOL __username_isset;
   BOOL __roles_isset;
+  BOOL __profileImage_isset;
+  BOOL __profileImageLink_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableArray * roles;
+@property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
+@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) NSString * profileImageLink;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username roles: (NSMutableArray *) roles;
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -307,34 +322,47 @@ typedef int64_t Banana_timestamp;
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
+- (NSString *) userId;
+- (void) setUserId: (NSString *) userId;
+#endif
+- (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
 - (NSString *) name;
 - (void) setName: (NSString *) name;
 #endif
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
-#endif
-- (BOOL) usernameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSMutableArray *) roles;
-- (void) setRoles: (NSMutableArray *) roles;
+- (NSMutableSet *) roles;
+- (void) setRoles: (NSMutableSet *) roles;
 #endif
 - (BOOL) rolesIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) profileImage;
+- (void) setProfileImage: (Banana_Image *) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) profileImageLink;
+- (void) setProfileImageLink: (NSString *) profileImageLink;
+#endif
+- (BOOL) profileImageLinkIsSet;
 
 @end
 
 @interface Banana_Application : NSObject <TBase, NSCoding> {
-  NSMutableArray * __owners;
+  NSMutableSet * __owners;
   Banana_timestamp __timeOfProvisioning;
   NSString * __name;
   NSString * __id;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
   int __programmingLanguage;
-  NSMutableArray * __subscribers;
+  NSMutableSet * __subscribers;
+  NSString * __applicationDescription;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -344,21 +372,23 @@ typedef int64_t Banana_timestamp;
   BOOL __icon_isset;
   BOOL __programmingLanguage_isset;
   BOOL __subscribers_isset;
+  BOOL __applicationDescription_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
 @property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Banana_timestamp timeOfProvisioning;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
-@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableArray * subscribers;
+@property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableSet * subscribers;
+@property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableArray *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableArray *) subscribers;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -366,8 +396,8 @@ typedef int64_t Banana_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) owners;
-- (void) setOwners: (NSMutableArray *) owners;
+- (NSMutableSet *) owners;
+- (void) setOwners: (NSMutableSet *) owners;
 #endif
 - (BOOL) ownersIsSet;
 
@@ -408,10 +438,16 @@ typedef int64_t Banana_timestamp;
 - (BOOL) programmingLanguageIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) subscribers;
-- (void) setSubscribers: (NSMutableArray *) subscribers;
+- (NSMutableSet *) subscribers;
+- (void) setSubscribers: (NSMutableSet *) subscribers;
 #endif
 - (BOOL) subscribersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationDescription;
+- (void) setApplicationDescription: (NSString *) applicationDescription;
+#endif
+- (BOOL) applicationDescriptionIsSet;
 
 @end
 

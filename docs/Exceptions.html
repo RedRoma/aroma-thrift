@@ -206,8 +206,8 @@ code { line-height: 20px; }
 <a href="#Struct_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Struct_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ThroughoutExceededException">ThroughoutExceededException</a><br/>
-<a href="#Struct_ThroughputExceeedException">ThroughputExceeedException</a><br/>
 <a href="#Struct_UnauthorizedException">UnauthorizedException</a><br/>
+<a href="#Struct_UserDoesNotExistException">UserDoesNotExistException</a><br/>
 </td>
 <td></code></td>
 </tr></table>
@@ -240,18 +240,22 @@ or validated.
 that only an "Owner" can do.
 <br/></div><div class="definition"><h3 id="Struct_ApplicationDoesNotExistException">Exception: ApplicationDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Specified Application does not exist"</code></td></tr>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Specified Application does not exist."</code></td></tr>
 </table><br/>Thrown when referring to a service that does not exist.
 <br/></div><div class="definition"><h3 id="Struct_ApplicationAlreadyRegisteredException">Exception: ApplicationAlreadyRegisteredException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"This Channel has already been registered for this Application"</code></td></tr>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"This Channel has already been registered for this Application."</code></td></tr>
 </table><br/>Thrown when trying to register a Channel for an Application that
 has already been registered before, either by the current Person
 or by someone else.
-<br/></div><div class="definition"><h3 id="Struct_ThroughoutExceededException">Exception: ThroughoutExceededException</h3>
+<br/></div><div class="definition"><h3 id="Struct_UserDoesNotExistException">Exception: UserDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"You have exceeded your allocated throughput. Buy more or slow down"</code></td></tr>
-</table><br/>Thrown when an Application's provisioned Throughout has been exceeded.
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The User you&apos;re referring to does not exist."</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ThroughoutExceededException">Exception: ThroughoutExceededException</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"You have exceeded your allocated throughput. Buy more or slow down."</code></td></tr>
+</table><br/>Thrown when an Application sends too many messages in a short period of time.
+This helps combat DoS attacks.
 <br/></div><div class="definition"><h3 id="Struct_CustomChannelUnreachableException">Exception: CustomChannelUnreachableException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Custom Channel you&apos;ve supplied could not be reached. Please ensure the Application is reachable and operational."</code></td></tr>
@@ -259,13 +263,8 @@ or by someone else.
 be reached by the Banana Service.
 <br/></div><div class="definition"><h3 id="Struct_ChannelDoesNotExistException">Exception: ChannelDoesNotExistException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Channel specified does not exist in the System"</code></td></tr>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Channel specified does not exist in the System."</code></td></tr>
 </table><br/>Thrown when referencing a Developer's saved Channel that does not exist.
-<br/></div><div class="definition"><h3 id="Struct_ThroughputExceeedException">Exception: ThroughputExceeedException</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"You have surpassed your allowable rate of messages. Slow Down."</code></td></tr>
-</table><br/>Thrown when an Application sends too many messages in a short period of time.
-This prevents against DoS attacks.
 <br/></div><div class="definition"><h3 id="Struct_OperationFailedException">Exception: OperationFailedException</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td><code>"The Operation could not be completed"</code></td></tr>

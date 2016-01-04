@@ -64,7 +64,7 @@ exception UnauthorizedException
  */
 exception ApplicationDoesNotExistException
 {
-    1: string message = "The Specified Application does not exist"
+    1: string message = "The Specified Application does not exist."
 }
 
 /**
@@ -74,15 +74,21 @@ exception ApplicationDoesNotExistException
  */
 exception ApplicationAlreadyRegisteredException
 {
-    1: string message = "This Channel has already been registered for this Application"
+    1: string message = "This Channel has already been registered for this Application."
+}
+
+exception UserDoesNotExistException
+{
+    1: string message = "The User you're referring to does not exist."
 }
 
 /**
- * Thrown when an Application's provisioned Throughout has been exceeded.
+ * Thrown when an Application sends too many messages in a short period of time.
+ * This helps combat DoS attacks.
  */
 exception ThroughoutExceededException
 {
-    1: string message = "You have exceeded your allocated throughput. Buy more or slow down"
+    1: string message = "You have exceeded your allocated throughput. Buy more or slow down."
 }
 
 /**
@@ -99,16 +105,7 @@ exception CustomChannelUnreachableException
  */
 exception ChannelDoesNotExistException
 {
-    1: string message = "The Channel specified does not exist in the System"
-}
-
-/**
- * Thrown when an Application sends too many messages in a short period of time.
- * This prevents against DoS attacks.
- */
-exception ThroughputExceeedException
-{
-    1: string message = "You have surpassed your allowable rate of messages. Slow Down."
+    1: string message = "The Channel specified does not exist in the System."
 }
 
 /**
