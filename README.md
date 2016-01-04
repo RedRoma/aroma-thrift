@@ -20,7 +20,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma.banana</groupId>
 	<artifactId>banana-thrift</artifactId>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.5</version>
 </dependency>
 ```
 
