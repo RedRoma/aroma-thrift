@@ -30,4 +30,4 @@ install:
   - cd thrift-0.9.3
   - sh configure --without-ruby --without-haskell --without-perl --without-php  --without-python
   - make -j$NUM_CPU && make dist
-  - make check -j$NUM_CPU && sh test/test.sh
+  - make check -j$NUM_CPU
