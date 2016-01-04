@@ -20,7 +20,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma.banana</groupId>
 	<artifactId>banana-thrift</artifactId>
-	<version>1.4</version>
+	<version>1.5-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -38,7 +38,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma.banana</groupId>
 	<artifactId>banana-thrift</artifactId>
-	<version>1.5-SNAPSHOT</version>
+	<version>1.6-SNAPSHOT</version>
 </dependency>
 ```
 
