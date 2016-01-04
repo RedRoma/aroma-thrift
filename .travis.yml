@@ -31,3 +31,6 @@ before_install:
   - make -j$NUM_CPU
   - sudo make install
   - thrift -version
+
+script:
+  - mvn clean package
