@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get update && sudo apt-get install oracle-java8-installer
 
   - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev ant
-  - sudo apt-get install -qq libcommons-lang3-java ant maven
+  - sudo apt-get install -qq libcommons-lang3ava ant maven
   - sudo apt-get install -qq python-all python-all-dev python-all-dbg
  # Perl
   - sudo apt-get install -qq libbit-vector-perl
@@ -31,6 +31,7 @@ before_install:
   - make -j$NUM_CPU
   - sudo make install
   - thrift -version
+  - cd ..
 
 script:
   - mvn clean package
