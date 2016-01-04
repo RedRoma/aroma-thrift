@@ -29,4 +29,4 @@ before_install:
   - cd thrift-0.9.3
   - sh configure --without-ruby --without-haskell --without-perl --without-php  --without-python
   - make -j$NUM_CPU
-  - make install
+  - sudo make install
