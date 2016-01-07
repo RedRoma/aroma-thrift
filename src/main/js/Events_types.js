@@ -754,12 +754,16 @@ EventType.prototype.write = function(output) {
 Event = function(args) {
   this.eventType = null;
   this.timestamp = null;
+  this.eventId = null;
   if (args) {
     if (args.eventType !== undefined && args.eventType !== null) {
       this.eventType = new EventType(args.eventType);
     }
     if (args.timestamp !== undefined && args.timestamp !== null) {
       this.timestamp = args.timestamp;
+    }
+    if (args.eventId !== undefined && args.eventId !== null) {
+      this.eventId = args.eventId;
     }
   }
 };
@@ -792,6 +796,13 @@ Event.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.eventId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -811,6 +822,11 @@ Event.prototype.write = function(output) {
   if (this.timestamp !== null && this.timestamp !== undefined) {
     output.writeFieldBegin('timestamp', Thrift.Type.I64, 2);
     output.writeI64(this.timestamp);
+    output.writeFieldEnd();
+  }
+  if (this.eventId !== null && this.eventId !== undefined) {
+    output.writeFieldBegin('eventId', Thrift.Type.STRING, 3);
+    output.writeString(this.eventId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -536,9 +536,10 @@ inline std::ostream& operator<<(std::ostream& out, const EventType& obj)
 }
 
 typedef struct _Event__isset {
-  _Event__isset() : eventType(false), timestamp(false) {}
+  _Event__isset() : eventType(false), timestamp(false), eventId(false) {}
   bool eventType :1;
   bool timestamp :1;
+  bool eventId :1;
 } _Event__isset;
 
 class Event {
@@ -546,12 +547,13 @@ class Event {
 
   Event(const Event&);
   Event& operator=(const Event&);
-  Event() : timestamp(0) {
+  Event() : timestamp(0), eventId() {
   }
 
   virtual ~Event() throw();
   EventType eventType;
   timestamp timestamp;
+  std::string eventId;
 
   _Event__isset __isset;
 
@@ -559,11 +561,15 @@ class Event {
 
   void __set_timestamp(const timestamp val);
 
+  void __set_eventId(const std::string& val);
+
   bool operator == (const Event & rhs) const
   {
     if (!(eventType == rhs.eventType))
       return false;
     if (!(timestamp == rhs.timestamp))
+      return false;
+    if (!(eventId == rhs.eventId))
       return false;
     return true;
   }

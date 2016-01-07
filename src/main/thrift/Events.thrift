@@ -119,4 +119,5 @@ struct Event
 {
     1: EventType eventType;
     2: timestamp timestamp;
+    3: string eventId;
 }

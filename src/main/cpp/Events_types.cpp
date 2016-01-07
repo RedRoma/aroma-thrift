@@ -1128,6 +1128,10 @@ void Event::__set_timestamp(const timestamp val) {
   this->timestamp = val;
 }
 
+void Event::__set_eventId(const std::string& val) {
+  this->eventId = val;
+}
+
 uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1165,6 +1169,14 @@ uint32_t Event::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->eventId);
+          this->__isset.eventId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1190,6 +1202,10 @@ uint32_t Event::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI64(this->timestamp);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("eventId", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->eventId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1199,17 +1215,20 @@ void swap(Event &a, Event &b) {
   using ::std::swap;
   swap(a.eventType, b.eventType);
   swap(a.timestamp, b.timestamp);
+  swap(a.eventId, b.eventId);
   swap(a.__isset, b.__isset);
 }
 
 Event::Event(const Event& other14) {
   eventType = other14.eventType;
   timestamp = other14.timestamp;
+  eventId = other14.eventId;
   __isset = other14.__isset;
 }
 Event& Event::operator=(const Event& other15) {
   eventType = other15.eventType;
   timestamp = other15.timestamp;
+  eventId = other15.eventId;
   __isset = other15.__isset;
   return *this;
 }
@@ -1218,6 +1237,7 @@ void Event::printTo(std::ostream& out) const {
   out << "Event(";
   out << "eventType=" << to_string(eventType);
   out << ", " << "timestamp=" << to_string(timestamp);
+  out << ", " << "eventId=" << to_string(eventId);
   out << ")";
 }
 

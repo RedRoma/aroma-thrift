@@ -434,18 +434,21 @@ typedef Banana_Application * BananaEvents_Application;
 @interface BananaEvents_Event : NSObject <TBase, NSCoding> {
   BananaEvents_EventType * __eventType;
   BananaEvents_timestamp __timestamp;
+  NSString * __eventId;
 
   BOOL __eventType_isset;
   BOOL __timestamp_isset;
+  BOOL __eventId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=eventType, setter=setEventType:) BananaEvents_EventType * eventType;
 @property (nonatomic, getter=timestamp, setter=setTimestamp:) BananaEvents_timestamp timestamp;
+@property (nonatomic, retain, getter=eventId, setter=setEventId:) NSString * eventId;
 #endif
 
 - (id) init;
-- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp;
+- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (NSString *) eventId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -463,6 +466,12 @@ typedef Banana_Application * BananaEvents_Application;
 - (void) setTimestamp: (BananaEvents_timestamp) timestamp;
 #endif
 - (BOOL) timestampIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) eventId;
+- (void) setEventId: (NSString *) eventId;
+#endif
+- (BOOL) eventIdIsSet;
 
 @end
 

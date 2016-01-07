@@ -2535,13 +2535,15 @@
   return self;
 }
 
-- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp
+- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (NSString *) eventId
 {
   self = [super init];
   __eventType = [eventType retain_stub];
   __eventType_isset = YES;
   __timestamp = timestamp;
   __timestamp_isset = YES;
+  __eventId = [eventId retain_stub];
+  __eventId_isset = YES;
   return self;
 }
 
@@ -2558,6 +2560,11 @@
     __timestamp = [decoder decodeInt64ForKey: @"timestamp"];
     __timestamp_isset = YES;
   }
+  if ([decoder containsValueForKey: @"eventId"])
+  {
+    __eventId = [[decoder decodeObjectForKey: @"eventId"] retain_stub];
+    __eventId_isset = YES;
+  }
   return self;
 }
 
@@ -2570,6 +2577,10 @@
   if (__timestamp_isset)
   {
     [encoder encodeInt64: __timestamp forKey: @"timestamp"];
+  }
+  if (__eventId_isset)
+  {
+    [encoder encodeObject: __eventId forKey: @"eventId"];
   }
 }
 
@@ -2585,6 +2596,11 @@
   if (__timestamp_isset)
   {
     hash = (hash * 31) ^ [@(__timestamp) hash];
+  }
+  hash = (hash * 31) ^ __eventId_isset ? 2654435761 : 0;
+  if (__eventId_isset)
+  {
+    hash = (hash * 31) ^ [__eventId hash];
   }
   return hash;
 }
@@ -2606,12 +2622,17 @@
       (__timestamp_isset && (__timestamp != other->__timestamp))) {
     return NO;
   }
+  if ((__eventId_isset != other->__eventId_isset) ||
+      (__eventId_isset && ((__eventId || other->__eventId) && ![__eventId isEqual:other->__eventId]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__eventType release_stub];
+  [__eventId release_stub];
   [super dealloc_stub];
 }
 
@@ -2653,6 +2674,27 @@
   __timestamp_isset = NO;
 }
 
+- (NSString *) eventId {
+  return [[__eventId retain_stub] autorelease_stub];
+}
+
+- (void) setEventId: (NSString *) eventId {
+  [eventId retain_stub];
+  [__eventId release_stub];
+  __eventId = eventId;
+  __eventId_isset = YES;
+}
+
+- (BOOL) eventIdIsSet {
+  return __eventId_isset;
+}
+
+- (void) unsetEventId {
+  [__eventId release_stub];
+  __eventId = nil;
+  __eventId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2686,6 +2728,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEventId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2709,6 +2759,13 @@
     [outProtocol writeI64: __timestamp];
     [outProtocol writeFieldEnd];
   }
+  if (__eventId_isset) {
+    if (__eventId != nil) {
+      [outProtocol writeFieldBeginWithName: @"eventId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __eventId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2723,6 +2780,8 @@
   [ms appendFormat: @"%@", __eventType];
   [ms appendString: @",timestamp:"];
   [ms appendFormat: @"%qi", __timestamp];
+  [ms appendString: @",eventId:"];
+  [ms appendFormat: @"\"%@\"", __eventId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
