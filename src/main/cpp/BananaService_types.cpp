@@ -3210,12 +3210,12 @@ GetBuzzResponse::~GetBuzzResponse() throw() {
 }
 
 
-void GetBuzzResponse::__set_newUsers(const std::vector<User> & val) {
-  this->newUsers = val;
+void GetBuzzResponse::__set_freshUsers(const std::vector<User> & val) {
+  this->freshUsers = val;
 }
 
-void GetBuzzResponse::__set_newApplications(const std::vector<Application> & val) {
-  this->newApplications = val;
+void GetBuzzResponse::__set_freshApplications(const std::vector<Application> & val) {
+  this->freshApplications = val;
 }
 
 void GetBuzzResponse::__set_failedHealthChecks(const std::vector<HealthCheckFailed> & val) {
@@ -3246,19 +3246,19 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
-            this->newUsers.clear();
+            this->freshUsers.clear();
             uint32_t _size74;
             ::apache::thrift::protocol::TType _etype77;
             xfer += iprot->readListBegin(_etype77, _size74);
-            this->newUsers.resize(_size74);
+            this->freshUsers.resize(_size74);
             uint32_t _i78;
             for (_i78 = 0; _i78 < _size74; ++_i78)
             {
-              xfer += this->newUsers[_i78].read(iprot);
+              xfer += this->freshUsers[_i78].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
-          this->__isset.newUsers = true;
+          this->__isset.freshUsers = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -3266,19 +3266,19 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
       case 2:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
-            this->newApplications.clear();
+            this->freshApplications.clear();
             uint32_t _size79;
             ::apache::thrift::protocol::TType _etype82;
             xfer += iprot->readListBegin(_etype82, _size79);
-            this->newApplications.resize(_size79);
+            this->freshApplications.resize(_size79);
             uint32_t _i83;
             for (_i83 = 0; _i83 < _size79; ++_i83)
             {
-              xfer += this->newApplications[_i83].read(iprot);
+              xfer += this->freshApplications[_i83].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
-          this->__isset.newApplications = true;
+          this->__isset.freshApplications = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -3320,11 +3320,11 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetBuzzResponse");
 
-  xfer += oprot->writeFieldBegin("newUsers", ::apache::thrift::protocol::T_LIST, 1);
+  xfer += oprot->writeFieldBegin("freshUsers", ::apache::thrift::protocol::T_LIST, 1);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->newUsers.size()));
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->freshUsers.size()));
     std::vector<User> ::const_iterator _iter89;
-    for (_iter89 = this->newUsers.begin(); _iter89 != this->newUsers.end(); ++_iter89)
+    for (_iter89 = this->freshUsers.begin(); _iter89 != this->freshUsers.end(); ++_iter89)
     {
       xfer += (*_iter89).write(oprot);
     }
@@ -3332,11 +3332,11 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   }
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("newApplications", ::apache::thrift::protocol::T_LIST, 2);
+  xfer += oprot->writeFieldBegin("freshApplications", ::apache::thrift::protocol::T_LIST, 2);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->newApplications.size()));
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->freshApplications.size()));
     std::vector<Application> ::const_iterator _iter90;
-    for (_iter90 = this->newApplications.begin(); _iter90 != this->newApplications.end(); ++_iter90)
+    for (_iter90 = this->freshApplications.begin(); _iter90 != this->freshApplications.end(); ++_iter90)
     {
       xfer += (*_iter90).write(oprot);
     }
@@ -3363,21 +3363,21 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
 
 void swap(GetBuzzResponse &a, GetBuzzResponse &b) {
   using ::std::swap;
-  swap(a.newUsers, b.newUsers);
-  swap(a.newApplications, b.newApplications);
+  swap(a.freshUsers, b.freshUsers);
+  swap(a.freshApplications, b.freshApplications);
   swap(a.failedHealthChecks, b.failedHealthChecks);
   swap(a.__isset, b.__isset);
 }
 
 GetBuzzResponse::GetBuzzResponse(const GetBuzzResponse& other92) {
-  newUsers = other92.newUsers;
-  newApplications = other92.newApplications;
+  freshUsers = other92.freshUsers;
+  freshApplications = other92.freshApplications;
   failedHealthChecks = other92.failedHealthChecks;
   __isset = other92.__isset;
 }
 GetBuzzResponse& GetBuzzResponse::operator=(const GetBuzzResponse& other93) {
-  newUsers = other93.newUsers;
-  newApplications = other93.newApplications;
+  freshUsers = other93.freshUsers;
+  freshApplications = other93.freshApplications;
   failedHealthChecks = other93.failedHealthChecks;
   __isset = other93.__isset;
   return *this;
@@ -3385,8 +3385,8 @@ GetBuzzResponse& GetBuzzResponse::operator=(const GetBuzzResponse& other93) {
 void GetBuzzResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetBuzzResponse(";
-  out << "newUsers=" << to_string(newUsers);
-  out << ", " << "newApplications=" << to_string(newApplications);
+  out << "freshUsers=" << to_string(freshUsers);
+  out << ", " << "freshApplications=" << to_string(freshApplications);
   out << ", " << "failedHealthChecks=" << to_string(failedHealthChecks);
   out << ")";
 }

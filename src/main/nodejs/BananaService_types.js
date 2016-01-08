@@ -2114,15 +2114,15 @@ GetBuzzRequest.prototype.write = function(output) {
   };
 
 GetBuzzResponse = module.exports.GetBuzzResponse = function(args) {
-    this.newUsers = [];
-    this.newApplications = [];
+    this.freshUsers = [];
+    this.freshApplications = [];
     this.failedHealthChecks = [];
     if (args) {
-        if (args.newUsers !== undefined && args.newUsers !== null) {
-            this.newUsers = Thrift.copyList(args.newUsers, [null]);
+        if (args.freshUsers !== undefined && args.freshUsers !== null) {
+            this.freshUsers = Thrift.copyList(args.freshUsers, [null]);
         }
-        if (args.newApplications !== undefined && args.newApplications !== null) {
-            this.newApplications = Thrift.copyList(args.newApplications, [null]);
+        if (args.freshApplications !== undefined && args.freshApplications !== null) {
+            this.freshApplications = Thrift.copyList(args.freshApplications, [null]);
         }
         if (args.failedHealthChecks !== undefined && args.failedHealthChecks !== null) {
             this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [null]);
@@ -2147,7 +2147,7 @@ GetBuzzResponse.prototype.read = function(input) {
         if (ftype == Thrift.Type.LIST) {
           var _size24 = 0;
           var _rtmp328;
-          this.newUsers = [];
+          this.freshUsers = [];
           var _etype27 = 0;
           _rtmp328 = input.readListBegin();
           _etype27 = _rtmp328.etype;
@@ -2157,7 +2157,7 @@ GetBuzzResponse.prototype.read = function(input) {
             var elem30 = null;
             elem30 = new Banana_ttypes.User();
             elem30.read(input);
-            this.newUsers.push(elem30);
+            this.freshUsers.push(elem30);
           }
           input.readListEnd();
         } else {
@@ -2168,7 +2168,7 @@ GetBuzzResponse.prototype.read = function(input) {
         if (ftype == Thrift.Type.LIST) {
           var _size31 = 0;
           var _rtmp335;
-          this.newApplications = [];
+          this.freshApplications = [];
           var _etype34 = 0;
           _rtmp335 = input.readListBegin();
           _etype34 = _rtmp335.etype;
@@ -2178,7 +2178,7 @@ GetBuzzResponse.prototype.read = function(input) {
             var elem37 = null;
             elem37 = new Banana_ttypes.Application();
             elem37.read(input);
-            this.newApplications.push(elem37);
+            this.freshApplications.push(elem37);
           }
           input.readListEnd();
         } else {
@@ -2217,28 +2217,28 @@ GetBuzzResponse.prototype.read = function(input) {
 
 GetBuzzResponse.prototype.write = function(output) {
     output.writeStructBegin('GetBuzzResponse');
-    if (this.newUsers !== null && this.newUsers !== undefined) {
-      output.writeFieldBegin('newUsers', Thrift.Type.LIST, 1);
-      output.writeListBegin(Thrift.Type.STRUCT, this.newUsers.length);
-      for (var iter45 in this.newUsers)
+    if (this.freshUsers !== null && this.freshUsers !== undefined) {
+      output.writeFieldBegin('freshUsers', Thrift.Type.LIST, 1);
+      output.writeListBegin(Thrift.Type.STRUCT, this.freshUsers.length);
+      for (var iter45 in this.freshUsers)
       {
-        if (this.newUsers.hasOwnProperty(iter45))
+        if (this.freshUsers.hasOwnProperty(iter45))
         {
-          iter45 = this.newUsers[iter45];
+          iter45 = this.freshUsers[iter45];
           iter45.write(output);
         }
       }
       output.writeListEnd();
       output.writeFieldEnd();
     }
-    if (this.newApplications !== null && this.newApplications !== undefined) {
-      output.writeFieldBegin('newApplications', Thrift.Type.LIST, 2);
-      output.writeListBegin(Thrift.Type.STRUCT, this.newApplications.length);
-      for (var iter46 in this.newApplications)
+    if (this.freshApplications !== null && this.freshApplications !== undefined) {
+      output.writeFieldBegin('freshApplications', Thrift.Type.LIST, 2);
+      output.writeListBegin(Thrift.Type.STRUCT, this.freshApplications.length);
+      for (var iter46 in this.freshApplications)
       {
-        if (this.newApplications.hasOwnProperty(iter46))
+        if (this.freshApplications.hasOwnProperty(iter46))
         {
-          iter46 = this.newApplications[iter46];
+          iter46 = this.freshApplications[iter46];
           iter46.write(output);
         }
       }

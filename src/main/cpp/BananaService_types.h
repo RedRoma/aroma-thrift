@@ -1678,9 +1678,9 @@ inline std::ostream& operator<<(std::ostream& out, const GetBuzzRequest& obj)
 }
 
 typedef struct _GetBuzzResponse__isset {
-  _GetBuzzResponse__isset() : newUsers(true), newApplications(true), failedHealthChecks(true) {}
-  bool newUsers :1;
-  bool newApplications :1;
+  _GetBuzzResponse__isset() : freshUsers(true), freshApplications(true), failedHealthChecks(true) {}
+  bool freshUsers :1;
+  bool freshApplications :1;
   bool failedHealthChecks :1;
 } _GetBuzzResponse__isset;
 
@@ -1696,23 +1696,23 @@ class GetBuzzResponse {
   }
 
   virtual ~GetBuzzResponse() throw();
-  std::vector<User>  newUsers;
-  std::vector<Application>  newApplications;
+  std::vector<User>  freshUsers;
+  std::vector<Application>  freshApplications;
   std::vector<HealthCheckFailed>  failedHealthChecks;
 
   _GetBuzzResponse__isset __isset;
 
-  void __set_newUsers(const std::vector<User> & val);
+  void __set_freshUsers(const std::vector<User> & val);
 
-  void __set_newApplications(const std::vector<Application> & val);
+  void __set_freshApplications(const std::vector<Application> & val);
 
   void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {
-    if (!(newUsers == rhs.newUsers))
+    if (!(freshUsers == rhs.freshUsers))
       return false;
-    if (!(newApplications == rhs.newApplications))
+    if (!(freshApplications == rhs.freshApplications))
       return false;
     if (!(failedHealthChecks == rhs.failedHealthChecks))
       return false;

@@ -1127,23 +1127,23 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @end
 
 @interface BananaService_GetBuzzResponse : NSObject <TBase, NSCoding> {
-  NSMutableArray * __newUsers;
-  NSMutableArray * __newApplications;
+  NSMutableArray * __freshUsers;
+  NSMutableArray * __freshApplications;
   NSMutableArray * __failedHealthChecks;
 
-  BOOL __newUsers_isset;
-  BOOL __newApplications_isset;
+  BOOL __freshUsers_isset;
+  BOOL __freshApplications_isset;
   BOOL __failedHealthChecks_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=newUsers, setter=setNewUsers:) NSMutableArray * newUsers;
-@property (nonatomic, retain, getter=newApplications, setter=setNewApplications:) NSMutableArray * newApplications;
+@property (nonatomic, retain, getter=freshUsers, setter=setFreshUsers:) NSMutableArray * freshUsers;
+@property (nonatomic, retain, getter=freshApplications, setter=setFreshApplications:) NSMutableArray * freshApplications;
 @property (nonatomic, retain, getter=failedHealthChecks, setter=setFailedHealthChecks:) NSMutableArray * failedHealthChecks;
 #endif
 
 - (id) init;
-- (id) initWithNewUsers: (NSMutableArray *) newUsers newApplications: (NSMutableArray *) newApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks;
+- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1151,16 +1151,16 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) newUsers;
-- (void) setNewUsers: (NSMutableArray *) newUsers;
+- (NSMutableArray *) freshUsers;
+- (void) setFreshUsers: (NSMutableArray *) freshUsers;
 #endif
-- (BOOL) newUsersIsSet;
+- (BOOL) freshUsersIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) newApplications;
-- (void) setNewApplications: (NSMutableArray *) newApplications;
+- (NSMutableArray *) freshApplications;
+- (void) setFreshApplications: (NSMutableArray *) freshApplications;
 #endif
-- (BOOL) newApplicationsIsSet;
+- (BOOL) freshApplicationsIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSMutableArray *) failedHealthChecks;

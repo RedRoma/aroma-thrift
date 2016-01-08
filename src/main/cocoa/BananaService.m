@@ -6492,9 +6492,9 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.newUsers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.freshUsers = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
-  self.newApplications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.freshApplications = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
   self.failedHealthChecks = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
@@ -6502,13 +6502,13 @@
   return self;
 }
 
-- (id) initWithNewUsers: (NSMutableArray *) newUsers newApplications: (NSMutableArray *) newApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks
+- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks
 {
   self = [super init];
-  __newUsers = [newUsers retain_stub];
-  __newUsers_isset = YES;
-  __newApplications = [newApplications retain_stub];
-  __newApplications_isset = YES;
+  __freshUsers = [freshUsers retain_stub];
+  __freshUsers_isset = YES;
+  __freshApplications = [freshApplications retain_stub];
+  __freshApplications_isset = YES;
   __failedHealthChecks = [failedHealthChecks retain_stub];
   __failedHealthChecks_isset = YES;
   return self;
@@ -6517,15 +6517,15 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"newUsers"])
+  if ([decoder containsValueForKey: @"freshUsers"])
   {
-    __newUsers = [[decoder decodeObjectForKey: @"newUsers"] retain_stub];
-    __newUsers_isset = YES;
+    __freshUsers = [[decoder decodeObjectForKey: @"freshUsers"] retain_stub];
+    __freshUsers_isset = YES;
   }
-  if ([decoder containsValueForKey: @"newApplications"])
+  if ([decoder containsValueForKey: @"freshApplications"])
   {
-    __newApplications = [[decoder decodeObjectForKey: @"newApplications"] retain_stub];
-    __newApplications_isset = YES;
+    __freshApplications = [[decoder decodeObjectForKey: @"freshApplications"] retain_stub];
+    __freshApplications_isset = YES;
   }
   if ([decoder containsValueForKey: @"failedHealthChecks"])
   {
@@ -6537,13 +6537,13 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__newUsers_isset)
+  if (__freshUsers_isset)
   {
-    [encoder encodeObject: __newUsers forKey: @"newUsers"];
+    [encoder encodeObject: __freshUsers forKey: @"freshUsers"];
   }
-  if (__newApplications_isset)
+  if (__freshApplications_isset)
   {
-    [encoder encodeObject: __newApplications forKey: @"newApplications"];
+    [encoder encodeObject: __freshApplications forKey: @"freshApplications"];
   }
   if (__failedHealthChecks_isset)
   {
@@ -6554,15 +6554,15 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __newUsers_isset ? 2654435761 : 0;
-  if (__newUsers_isset)
+  hash = (hash * 31) ^ __freshUsers_isset ? 2654435761 : 0;
+  if (__freshUsers_isset)
   {
-    hash = (hash * 31) ^ [__newUsers hash];
+    hash = (hash * 31) ^ [__freshUsers hash];
   }
-  hash = (hash * 31) ^ __newApplications_isset ? 2654435761 : 0;
-  if (__newApplications_isset)
+  hash = (hash * 31) ^ __freshApplications_isset ? 2654435761 : 0;
+  if (__freshApplications_isset)
   {
-    hash = (hash * 31) ^ [__newApplications hash];
+    hash = (hash * 31) ^ [__freshApplications hash];
   }
   hash = (hash * 31) ^ __failedHealthChecks_isset ? 2654435761 : 0;
   if (__failedHealthChecks_isset)
@@ -6581,12 +6581,12 @@
     return NO;
   }
   BananaService_GetBuzzResponse *other = (BananaService_GetBuzzResponse *)anObject;
-  if ((__newUsers_isset != other->__newUsers_isset) ||
-      (__newUsers_isset && ((__newUsers || other->__newUsers) && ![__newUsers isEqual:other->__newUsers]))) {
+  if ((__freshUsers_isset != other->__freshUsers_isset) ||
+      (__freshUsers_isset && ((__freshUsers || other->__freshUsers) && ![__freshUsers isEqual:other->__freshUsers]))) {
     return NO;
   }
-  if ((__newApplications_isset != other->__newApplications_isset) ||
-      (__newApplications_isset && ((__newApplications || other->__newApplications) && ![__newApplications isEqual:other->__newApplications]))) {
+  if ((__freshApplications_isset != other->__freshApplications_isset) ||
+      (__freshApplications_isset && ((__freshApplications || other->__freshApplications) && ![__freshApplications isEqual:other->__freshApplications]))) {
     return NO;
   }
   if ((__failedHealthChecks_isset != other->__failedHealthChecks_isset) ||
@@ -6598,52 +6598,52 @@
 
 - (void) dealloc
 {
-  [__newUsers release_stub];
-  [__newApplications release_stub];
+  [__freshUsers release_stub];
+  [__freshApplications release_stub];
   [__failedHealthChecks release_stub];
   [super dealloc_stub];
 }
 
-- (NSMutableArray *) newUsers {
-  return [[__newUsers retain_stub] autorelease_stub];
+- (NSMutableArray *) freshUsers {
+  return [[__freshUsers retain_stub] autorelease_stub];
 }
 
-- (void) setNewUsers: (NSMutableArray *) newUsers {
-  [newUsers retain_stub];
-  [__newUsers release_stub];
-  __newUsers = newUsers;
-  __newUsers_isset = YES;
+- (void) setFreshUsers: (NSMutableArray *) freshUsers {
+  [freshUsers retain_stub];
+  [__freshUsers release_stub];
+  __freshUsers = freshUsers;
+  __freshUsers_isset = YES;
 }
 
-- (BOOL) newUsersIsSet {
-  return __newUsers_isset;
+- (BOOL) freshUsersIsSet {
+  return __freshUsers_isset;
 }
 
-- (void) unsetNewUsers {
-  [__newUsers release_stub];
-  __newUsers = nil;
-  __newUsers_isset = NO;
+- (void) unsetFreshUsers {
+  [__freshUsers release_stub];
+  __freshUsers = nil;
+  __freshUsers_isset = NO;
 }
 
-- (NSMutableArray *) newApplications {
-  return [[__newApplications retain_stub] autorelease_stub];
+- (NSMutableArray *) freshApplications {
+  return [[__freshApplications retain_stub] autorelease_stub];
 }
 
-- (void) setNewApplications: (NSMutableArray *) newApplications {
-  [newApplications retain_stub];
-  [__newApplications release_stub];
-  __newApplications = newApplications;
-  __newApplications_isset = YES;
+- (void) setFreshApplications: (NSMutableArray *) freshApplications {
+  [freshApplications retain_stub];
+  [__freshApplications release_stub];
+  __freshApplications = freshApplications;
+  __freshApplications_isset = YES;
 }
 
-- (BOOL) newApplicationsIsSet {
-  return __newApplications_isset;
+- (BOOL) freshApplicationsIsSet {
+  return __freshApplications_isset;
 }
 
-- (void) unsetNewApplications {
-  [__newApplications release_stub];
-  __newApplications = nil;
-  __newApplications_isset = NO;
+- (void) unsetFreshApplications {
+  [__freshApplications release_stub];
+  __freshApplications = nil;
+  __freshApplications_isset = NO;
 }
 
 - (NSMutableArray *) failedHealthChecks {
@@ -6696,7 +6696,7 @@
             [_elem17 release_stub];
           }
           [inProtocol readListEnd];
-          [self setNewUsers: fieldValue];
+          [self setFreshUsers: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -6716,7 +6716,7 @@
             [_elem20 release_stub];
           }
           [inProtocol readListEnd];
-          [self setNewApplications: fieldValue];
+          [self setFreshApplications: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -6753,30 +6753,30 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetBuzzResponse"];
-  if (__newUsers_isset) {
-    if (__newUsers != nil) {
-      [outProtocol writeFieldBeginWithName: @"newUsers" type: TType_LIST fieldID: 1];
+  if (__freshUsers_isset) {
+    if (__freshUsers != nil) {
+      [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__newUsers count]];
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
         int idx25;
-        for (idx25 = 0; idx25 < [__newUsers count]; idx25++)
+        for (idx25 = 0; idx25 < [__freshUsers count]; idx25++)
         {
-          [[__newUsers objectAtIndex: idx25] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx25] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
       [outProtocol writeFieldEnd];
     }
   }
-  if (__newApplications_isset) {
-    if (__newApplications != nil) {
-      [outProtocol writeFieldBeginWithName: @"newApplications" type: TType_LIST fieldID: 2];
+  if (__freshApplications_isset) {
+    if (__freshApplications != nil) {
+      [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__newApplications count]];
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
         int idx27;
-        for (idx27 = 0; idx27 < [__newApplications count]; idx27++)
+        for (idx27 = 0; idx27 < [__freshApplications count]; idx27++)
         {
-          [[__newApplications objectAtIndex: idx27] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx27] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -6808,10 +6808,10 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzzResponse("];
-  [ms appendString: @"newUsers:"];
-  [ms appendFormat: @"%@", __newUsers];
-  [ms appendString: @",newApplications:"];
-  [ms appendFormat: @"%@", __newApplications];
+  [ms appendString: @"freshUsers:"];
+  [ms appendFormat: @"%@", __freshUsers];
+  [ms appendString: @",freshApplications:"];
+  [ms appendFormat: @"%@", __freshApplications];
   [ms appendString: @",failedHealthChecks:"];
   [ms appendFormat: @"%@", __failedHealthChecks];
   [ms appendString: @")"];
