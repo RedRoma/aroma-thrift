@@ -3592,7 +3592,7 @@ SearchForApplicationsResponse.prototype.write = function(output) {
     return;
   };
 
-ttypes.API_VERSION = 1.5;
+ttypes.API_VERSION = 1.6;
 ttypes.SERVICE_PORT = 7001;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
