@@ -622,6 +622,104 @@ OwnerApprovedRequest.prototype.write = function(output) {
   return;
 };
 
+GeneralEvent = module.exports.GeneralEvent = function(args) {
+  this.applicationId = null;
+  this.applicationName = null;
+  this.message = null;
+  this.timestamp = null;
+  if (args) {
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+    if (args.timestamp !== undefined && args.timestamp !== null) {
+      this.timestamp = args.timestamp;
+    }
+  }
+};
+GeneralEvent.prototype = {};
+GeneralEvent.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timestamp = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+GeneralEvent.prototype.write = function(output) {
+  output.writeStructBegin('GeneralEvent');
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 3);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  if (this.timestamp !== null && this.timestamp !== undefined) {
+    output.writeFieldBegin('timestamp', Thrift.Type.I64, 4);
+    output.writeI64(this.timestamp);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 EventType = module.exports.EventType = function(args) {
   this.healthCheckFailed = null;
   this.healthCheckBackToNormal = null;
@@ -629,6 +727,7 @@ EventType = module.exports.EventType = function(args) {
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
   this.ownerApprovedRequest = null;
+  this.generalEvent = null;
   if (args) {
     if (args.healthCheckFailed !== undefined && args.healthCheckFailed !== null) {
       this.healthCheckFailed = new ttypes.HealthCheckFailed(args.healthCheckFailed);
@@ -647,6 +746,9 @@ EventType = module.exports.EventType = function(args) {
     }
     if (args.ownerApprovedRequest !== undefined && args.ownerApprovedRequest !== null) {
       this.ownerApprovedRequest = new ttypes.OwnerApprovedRequest(args.ownerApprovedRequest);
+    }
+    if (args.generalEvent !== undefined && args.generalEvent !== null) {
+      this.generalEvent = new ttypes.GeneralEvent(args.generalEvent);
     }
   }
 };
@@ -712,6 +814,14 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.generalEvent = new ttypes.GeneralEvent();
+        this.generalEvent.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -751,6 +861,11 @@ EventType.prototype.write = function(output) {
   if (this.ownerApprovedRequest !== null && this.ownerApprovedRequest !== undefined) {
     output.writeFieldBegin('ownerApprovedRequest', Thrift.Type.STRUCT, 6);
     this.ownerApprovedRequest.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.generalEvent !== null && this.generalEvent !== undefined) {
+    output.writeFieldBegin('generalEvent', Thrift.Type.STRUCT, 7);
+    this.generalEvent.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -99,6 +99,17 @@ struct OwnerApprovedRequest
 }
 
 /**
+ * A General Event is a less formal kind of Event.
+ */
+struct GeneralEvent
+{
+    1: string applicationId;
+    2: string applicationName;
+    3: string message;
+    4: timestamp timestamp;
+}
+
+/**
  * An Event represents the different types of events that can
  * occur within the Banana Service.
  */
@@ -110,6 +121,7 @@ union EventType
     4: ApplicationTokenRegenerated applicationTokenRegenerated;
     5: ApplicationSentMessage applicationSentMessage;
     6: OwnerApprovedRequest ownerApprovedRequest;
+    7: GeneralEvent generalEvent;
 }
 
 /**

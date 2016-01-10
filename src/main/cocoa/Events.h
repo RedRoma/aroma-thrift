@@ -360,6 +360,59 @@ typedef Banana_Application * BananaEvents_Application;
 
 @end
 
+@interface BananaEvents_GeneralEvent : NSObject <TBase, NSCoding> {
+  NSString * __applicationId;
+  NSString * __applicationName;
+  NSString * __message;
+  BananaEvents_timestamp __timestamp;
+
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+  BOOL __message_isset;
+  BOOL __timestamp_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, getter=timestamp, setter=setTimestamp:) BananaEvents_timestamp timestamp;
+#endif
+
+- (id) init;
+- (id) initWithApplicationId: (NSString *) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (BananaEvents_timestamp) timestamp;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_timestamp) timestamp;
+- (void) setTimestamp: (BananaEvents_timestamp) timestamp;
+#endif
+- (BOOL) timestampIsSet;
+
+@end
+
 @interface BananaEvents_EventType : NSObject <TBase, NSCoding> {
   BananaEvents_HealthCheckFailed * __healthCheckFailed;
   BananaEvents_HealthCheckBackToNormal * __healthCheckBackToNormal;
@@ -367,6 +420,7 @@ typedef Banana_Application * BananaEvents_Application;
   BananaEvents_ApplicationTokenRegenerated * __applicationTokenRegenerated;
   BananaEvents_ApplicationSentMessage * __applicationSentMessage;
   BananaEvents_OwnerApprovedRequest * __ownerApprovedRequest;
+  BananaEvents_GeneralEvent * __generalEvent;
 
   BOOL __healthCheckFailed_isset;
   BOOL __healthCheckBackToNormal_isset;
@@ -374,6 +428,7 @@ typedef Banana_Application * BananaEvents_Application;
   BOOL __applicationTokenRegenerated_isset;
   BOOL __applicationSentMessage_isset;
   BOOL __ownerApprovedRequest_isset;
+  BOOL __generalEvent_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -383,10 +438,11 @@ typedef Banana_Application * BananaEvents_Application;
 @property (nonatomic, retain, getter=applicationTokenRegenerated, setter=setApplicationTokenRegenerated:) BananaEvents_ApplicationTokenRegenerated * applicationTokenRegenerated;
 @property (nonatomic, retain, getter=applicationSentMessage, setter=setApplicationSentMessage:) BananaEvents_ApplicationSentMessage * applicationSentMessage;
 @property (nonatomic, retain, getter=ownerApprovedRequest, setter=setOwnerApprovedRequest:) BananaEvents_OwnerApprovedRequest * ownerApprovedRequest;
+@property (nonatomic, retain, getter=generalEvent, setter=setGeneralEvent:) BananaEvents_GeneralEvent * generalEvent;
 #endif
 
 - (id) init;
-- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest;
+- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest generalEvent: (BananaEvents_GeneralEvent *) generalEvent;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -428,6 +484,12 @@ typedef Banana_Application * BananaEvents_Application;
 - (void) setOwnerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest;
 #endif
 - (BOOL) ownerApprovedRequestIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_GeneralEvent *) generalEvent;
+- (void) setGeneralEvent: (BananaEvents_GeneralEvent *) generalEvent;
+#endif
+- (BOOL) generalEventIsSet;
 
 @end
 

@@ -6498,11 +6498,13 @@
 
   self.failedHealthChecks = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
+  self.happenings = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks
+- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks happenings: (NSMutableArray *) happenings
 {
   self = [super init];
   __freshUsers = [freshUsers retain_stub];
@@ -6511,6 +6513,8 @@
   __freshApplications_isset = YES;
   __failedHealthChecks = [failedHealthChecks retain_stub];
   __failedHealthChecks_isset = YES;
+  __happenings = [happenings retain_stub];
+  __happenings_isset = YES;
   return self;
 }
 
@@ -6532,6 +6536,11 @@
     __failedHealthChecks = [[decoder decodeObjectForKey: @"failedHealthChecks"] retain_stub];
     __failedHealthChecks_isset = YES;
   }
+  if ([decoder containsValueForKey: @"happenings"])
+  {
+    __happenings = [[decoder decodeObjectForKey: @"happenings"] retain_stub];
+    __happenings_isset = YES;
+  }
   return self;
 }
 
@@ -6548,6 +6557,10 @@
   if (__failedHealthChecks_isset)
   {
     [encoder encodeObject: __failedHealthChecks forKey: @"failedHealthChecks"];
+  }
+  if (__happenings_isset)
+  {
+    [encoder encodeObject: __happenings forKey: @"happenings"];
   }
 }
 
@@ -6568,6 +6581,11 @@
   if (__failedHealthChecks_isset)
   {
     hash = (hash * 31) ^ [__failedHealthChecks hash];
+  }
+  hash = (hash * 31) ^ __happenings_isset ? 2654435761 : 0;
+  if (__happenings_isset)
+  {
+    hash = (hash * 31) ^ [__happenings hash];
   }
   return hash;
 }
@@ -6593,6 +6611,10 @@
       (__failedHealthChecks_isset && ((__failedHealthChecks || other->__failedHealthChecks) && ![__failedHealthChecks isEqual:other->__failedHealthChecks]))) {
     return NO;
   }
+  if ((__happenings_isset != other->__happenings_isset) ||
+      (__happenings_isset && ((__happenings || other->__happenings) && ![__happenings isEqual:other->__happenings]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -6601,6 +6623,7 @@
   [__freshUsers release_stub];
   [__freshApplications release_stub];
   [__failedHealthChecks release_stub];
+  [__happenings release_stub];
   [super dealloc_stub];
 }
 
@@ -6665,6 +6688,27 @@
   [__failedHealthChecks release_stub];
   __failedHealthChecks = nil;
   __failedHealthChecks_isset = NO;
+}
+
+- (NSMutableArray *) happenings {
+  return [[__happenings retain_stub] autorelease_stub];
+}
+
+- (void) setHappenings: (NSMutableArray *) happenings {
+  [happenings retain_stub];
+  [__happenings release_stub];
+  __happenings = happenings;
+  __happenings_isset = YES;
+}
+
+- (BOOL) happeningsIsSet {
+  return __happenings_isset;
+}
+
+- (void) unsetHappenings {
+  [__happenings release_stub];
+  __happenings = nil;
+  __happenings_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -6742,6 +6786,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_LIST) {
+          int _size24;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size24];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size24];
+          int _i25;
+          for (_i25 = 0; _i25 < _size24; ++_i25)
+          {
+            BananaEvents_GeneralEvent *_elem26 = [[BananaEvents_GeneralEvent alloc] init];
+            [_elem26 read: inProtocol];
+            [fieldValue addObject: _elem26];
+            [_elem26 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setHappenings: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -6758,10 +6822,10 @@
       [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
-        int idx25;
-        for (idx25 = 0; idx25 < [__freshUsers count]; idx25++)
+        int idx28;
+        for (idx28 = 0; idx28 < [__freshUsers count]; idx28++)
         {
-          [[__freshUsers objectAtIndex: idx25] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx28] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -6773,10 +6837,10 @@
       [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
-        int idx27;
-        for (idx27 = 0; idx27 < [__freshApplications count]; idx27++)
+        int idx30;
+        for (idx30 = 0; idx30 < [__freshApplications count]; idx30++)
         {
-          [[__freshApplications objectAtIndex: idx27] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx30] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -6788,10 +6852,25 @@
       [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
-        int idx29;
-        for (idx29 = 0; idx29 < [__failedHealthChecks count]; idx29++)
+        int idx32;
+        for (idx32 = 0; idx32 < [__failedHealthChecks count]; idx32++)
         {
-          [[__failedHealthChecks objectAtIndex: idx29] write: outProtocol];
+          [[__failedHealthChecks objectAtIndex: idx32] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__happenings_isset) {
+    if (__happenings != nil) {
+      [outProtocol writeFieldBeginWithName: @"happenings" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__happenings count]];
+        int idx34;
+        for (idx34 = 0; idx34 < [__happenings count]; idx34++)
+        {
+          [[__happenings objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -6814,6 +6893,8 @@
   [ms appendFormat: @"%@", __freshApplications];
   [ms appendString: @",failedHealthChecks:"];
   [ms appendFormat: @"%@", __failedHealthChecks];
+  [ms appendString: @",happenings:"];
+  [ms appendFormat: @"%@", __happenings];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -7340,16 +7421,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size30;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size30];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size30];
-          int _i31;
-          for (_i31 = 0; _i31 < _size30; ++_i31)
+          int _size35;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
+          int _i36;
+          for (_i36 = 0; _i36 < _size35; ++_i36)
           {
-            Banana_Message *_elem32 = [[Banana_Message alloc] init];
-            [_elem32 read: inProtocol];
-            [fieldValue addObject: _elem32];
-            [_elem32 release_stub];
+            Banana_Message *_elem37 = [[Banana_Message alloc] init];
+            [_elem37 read: inProtocol];
+            [fieldValue addObject: _elem37];
+            [_elem37 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -7413,10 +7494,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx34;
-        for (idx34 = 0; idx34 < [__recentMessages count]; idx34++)
+        int idx39;
+        for (idx39 = 0; idx39 < [__recentMessages count]; idx39++)
         {
-          [[__recentMessages objectAtIndex: idx34] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx39] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -7882,16 +7963,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size35;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size35];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size35];
-          int _i36;
-          for (_i36 = 0; _i36 < _size35; ++_i36)
+          int _size40;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
+          int _i41;
+          for (_i41 = 0; _i41 < _size40; ++_i41)
           {
-            Banana_Message *_elem37 = [[Banana_Message alloc] init];
-            [_elem37 read: inProtocol];
-            [fieldValue addObject: _elem37];
-            [_elem37 release_stub];
+            Banana_Message *_elem42 = [[Banana_Message alloc] init];
+            [_elem42 read: inProtocol];
+            [fieldValue addObject: _elem42];
+            [_elem42 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -7924,10 +8005,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__messages count]; idx39++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__messages count]; idx44++)
         {
-          [[__messages objectAtIndex: idx39] write: outProtocol];
+          [[__messages objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8580,16 +8661,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            Banana_Application *_elem42 = [[Banana_Application alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Banana_Application *_elem47 = [[Banana_Application alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -8614,10 +8695,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__applications count]; idx44++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__applications count]; idx49++)
         {
-          [[__applications objectAtIndex: idx44] write: outProtocol];
+          [[__applications objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8902,16 +8983,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            BananaChannels_BananaChannel *_elem47 = [[BananaChannels_BananaChannel alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            BananaChannels_BananaChannel *_elem52 = [[BananaChannels_BananaChannel alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -8936,10 +9017,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__channels count]; idx49++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__channels count]; idx54++)
         {
-          [[__channels objectAtIndex: idx49] write: outProtocol];
+          [[__channels objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9280,16 +9361,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size50;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
-          int _i51;
-          for (_i51 = 0; _i51 < _size50; ++_i51)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            BananaEvents_Event *_elem52 = [[BananaEvents_Event alloc] init];
-            [_elem52 read: inProtocol];
-            [fieldValue addObject: _elem52];
-            [_elem52 release_stub];
+            BananaEvents_Event *_elem57 = [[BananaEvents_Event alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -9314,10 +9395,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx54;
-        for (idx54 = 0; idx54 < [__events count]; idx54++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__events count]; idx59++)
         {
-          [[__events objectAtIndex: idx54] write: outProtocol];
+          [[__events objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9604,16 +9685,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size55;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
-          int _i56;
-          for (_i56 = 0; _i56 < _size55; ++_i56)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Banana_ServiceAnnouncement *_elem57 = [[Banana_ServiceAnnouncement alloc] init];
-            [_elem57 read: inProtocol];
-            [fieldValue addObject: _elem57];
-            [_elem57 release_stub];
+            Banana_ServiceAnnouncement *_elem62 = [[Banana_ServiceAnnouncement alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -9638,10 +9719,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx59;
-        for (idx59 = 0; idx59 < [__serviceAnnouncements count]; idx59++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__serviceAnnouncements count]; idx64++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx59] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10409,16 +10490,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size60;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
-          int _i61;
-          for (_i61 = 0; _i61 < _size60; ++_i61)
+          int _size65;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
+          int _i66;
+          for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            Banana_Application *_elem62 = [[Banana_Application alloc] init];
-            [_elem62 read: inProtocol];
-            [fieldValue addObject: _elem62];
-            [_elem62 release_stub];
+            Banana_Application *_elem67 = [[Banana_Application alloc] init];
+            [_elem67 read: inProtocol];
+            [fieldValue addObject: _elem67];
+            [_elem67 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -10443,10 +10524,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx64;
-        for (idx64 = 0; idx64 < [__applications count]; idx64++)
+        int idx69;
+        for (idx69 = 0; idx69 < [__applications count]; idx69++)
         {
-          [[__applications objectAtIndex: idx64] write: outProtocol];
+          [[__applications objectAtIndex: idx69] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }

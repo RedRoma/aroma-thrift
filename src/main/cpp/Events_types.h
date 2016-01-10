@@ -45,6 +45,8 @@ class HealthCheckBackToNormal;
 
 class OwnerApprovedRequest;
 
+class GeneralEvent;
+
 class EventType;
 
 class Event;
@@ -459,14 +461,79 @@ inline std::ostream& operator<<(std::ostream& out, const OwnerApprovedRequest& o
   return out;
 }
 
+typedef struct _GeneralEvent__isset {
+  _GeneralEvent__isset() : applicationId(false), applicationName(false), message(false), timestamp(false) {}
+  bool applicationId :1;
+  bool applicationName :1;
+  bool message :1;
+  bool timestamp :1;
+} _GeneralEvent__isset;
+
+class GeneralEvent {
+ public:
+
+  GeneralEvent(const GeneralEvent&);
+  GeneralEvent& operator=(const GeneralEvent&);
+  GeneralEvent() : applicationId(), applicationName(), message(), timestamp(0) {
+  }
+
+  virtual ~GeneralEvent() throw();
+  std::string applicationId;
+  std::string applicationName;
+  std::string message;
+  timestamp timestamp;
+
+  _GeneralEvent__isset __isset;
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_applicationName(const std::string& val);
+
+  void __set_message(const std::string& val);
+
+  void __set_timestamp(const timestamp val);
+
+  bool operator == (const GeneralEvent & rhs) const
+  {
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (!(message == rhs.message))
+      return false;
+    if (!(timestamp == rhs.timestamp))
+      return false;
+    return true;
+  }
+  bool operator != (const GeneralEvent &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GeneralEvent & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GeneralEvent &a, GeneralEvent &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _EventType__isset {
-  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false) {}
+  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), generalEvent(false) {}
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
   bool ownerApprovedRequest :1;
+  bool generalEvent :1;
 } _EventType__isset;
 
 class EventType {
@@ -484,6 +551,7 @@ class EventType {
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
   OwnerApprovedRequest ownerApprovedRequest;
+  GeneralEvent generalEvent;
 
   _EventType__isset __isset;
 
@@ -499,6 +567,8 @@ class EventType {
 
   void __set_ownerApprovedRequest(const OwnerApprovedRequest& val);
 
+  void __set_generalEvent(const GeneralEvent& val);
+
   bool operator == (const EventType & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
@@ -512,6 +582,8 @@ class EventType {
     if (!(applicationSentMessage == rhs.applicationSentMessage))
       return false;
     if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
+      return false;
+    if (!(generalEvent == rhs.generalEvent))
       return false;
     return true;
   }
