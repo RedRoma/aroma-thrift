@@ -3222,8 +3222,8 @@ void GetBuzzResponse::__set_failedHealthChecks(const std::vector<HealthCheckFail
   this->failedHealthChecks = val;
 }
 
-void GetBuzzResponse::__set_happenings(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val) {
-  this->happenings = val;
+void GetBuzzResponse::__set_generalEvents(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val) {
+  this->generalEvents = val;
 }
 
 uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -3310,19 +3310,19 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
       case 4:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
-            this->happenings.clear();
+            this->generalEvents.clear();
             uint32_t _size89;
             ::apache::thrift::protocol::TType _etype92;
             xfer += iprot->readListBegin(_etype92, _size89);
-            this->happenings.resize(_size89);
+            this->generalEvents.resize(_size89);
             uint32_t _i93;
             for (_i93 = 0; _i93 < _size89; ++_i93)
             {
-              xfer += this->happenings[_i93].read(iprot);
+              xfer += this->generalEvents[_i93].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
-          this->__isset.happenings = true;
+          this->__isset.generalEvents = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -3380,11 +3380,11 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   }
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("happenings", ::apache::thrift::protocol::T_LIST, 4);
+  xfer += oprot->writeFieldBegin("generalEvents", ::apache::thrift::protocol::T_LIST, 4);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->happenings.size()));
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->generalEvents.size()));
     std::vector< ::aroma::banana::thrift::events::GeneralEvent> ::const_iterator _iter97;
-    for (_iter97 = this->happenings.begin(); _iter97 != this->happenings.end(); ++_iter97)
+    for (_iter97 = this->generalEvents.begin(); _iter97 != this->generalEvents.end(); ++_iter97)
     {
       xfer += (*_iter97).write(oprot);
     }
@@ -3402,7 +3402,7 @@ void swap(GetBuzzResponse &a, GetBuzzResponse &b) {
   swap(a.freshUsers, b.freshUsers);
   swap(a.freshApplications, b.freshApplications);
   swap(a.failedHealthChecks, b.failedHealthChecks);
-  swap(a.happenings, b.happenings);
+  swap(a.generalEvents, b.generalEvents);
   swap(a.__isset, b.__isset);
 }
 
@@ -3410,14 +3410,14 @@ GetBuzzResponse::GetBuzzResponse(const GetBuzzResponse& other98) {
   freshUsers = other98.freshUsers;
   freshApplications = other98.freshApplications;
   failedHealthChecks = other98.failedHealthChecks;
-  happenings = other98.happenings;
+  generalEvents = other98.generalEvents;
   __isset = other98.__isset;
 }
 GetBuzzResponse& GetBuzzResponse::operator=(const GetBuzzResponse& other99) {
   freshUsers = other99.freshUsers;
   freshApplications = other99.freshApplications;
   failedHealthChecks = other99.failedHealthChecks;
-  happenings = other99.happenings;
+  generalEvents = other99.generalEvents;
   __isset = other99.__isset;
   return *this;
 }
@@ -3427,7 +3427,7 @@ void GetBuzzResponse::printTo(std::ostream& out) const {
   out << "freshUsers=" << to_string(freshUsers);
   out << ", " << "freshApplications=" << to_string(freshApplications);
   out << ", " << "failedHealthChecks=" << to_string(failedHealthChecks);
-  out << ", " << "happenings=" << to_string(happenings);
+  out << ", " << "generalEvents=" << to_string(generalEvents);
   out << ")";
 }
 

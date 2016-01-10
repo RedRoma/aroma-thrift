@@ -1678,11 +1678,11 @@ inline std::ostream& operator<<(std::ostream& out, const GetBuzzRequest& obj)
 }
 
 typedef struct _GetBuzzResponse__isset {
-  _GetBuzzResponse__isset() : freshUsers(true), freshApplications(true), failedHealthChecks(true), happenings(true) {}
+  _GetBuzzResponse__isset() : freshUsers(true), freshApplications(true), failedHealthChecks(true), generalEvents(true) {}
   bool freshUsers :1;
   bool freshApplications :1;
   bool failedHealthChecks :1;
-  bool happenings :1;
+  bool generalEvents :1;
 } _GetBuzzResponse__isset;
 
 class GetBuzzResponse {
@@ -1701,7 +1701,7 @@ class GetBuzzResponse {
   std::vector<User>  freshUsers;
   std::vector<Application>  freshApplications;
   std::vector<HealthCheckFailed>  failedHealthChecks;
-  std::vector< ::aroma::banana::thrift::events::GeneralEvent>  happenings;
+  std::vector< ::aroma::banana::thrift::events::GeneralEvent>  generalEvents;
 
   _GetBuzzResponse__isset __isset;
 
@@ -1711,7 +1711,7 @@ class GetBuzzResponse {
 
   void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
-  void __set_happenings(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val);
+  void __set_generalEvents(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {
@@ -1721,7 +1721,7 @@ class GetBuzzResponse {
       return false;
     if (!(failedHealthChecks == rhs.failedHealthChecks))
       return false;
-    if (!(happenings == rhs.happenings))
+    if (!(generalEvents == rhs.generalEvents))
       return false;
     return true;
   }

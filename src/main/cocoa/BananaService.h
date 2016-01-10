@@ -1130,23 +1130,23 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   NSMutableArray * __freshUsers;
   NSMutableArray * __freshApplications;
   NSMutableArray * __failedHealthChecks;
-  NSMutableArray * __happenings;
+  NSMutableArray * __generalEvents;
 
   BOOL __freshUsers_isset;
   BOOL __freshApplications_isset;
   BOOL __failedHealthChecks_isset;
-  BOOL __happenings_isset;
+  BOOL __generalEvents_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=freshUsers, setter=setFreshUsers:) NSMutableArray * freshUsers;
 @property (nonatomic, retain, getter=freshApplications, setter=setFreshApplications:) NSMutableArray * freshApplications;
 @property (nonatomic, retain, getter=failedHealthChecks, setter=setFailedHealthChecks:) NSMutableArray * failedHealthChecks;
-@property (nonatomic, retain, getter=happenings, setter=setHappenings:) NSMutableArray * happenings;
+@property (nonatomic, retain, getter=generalEvents, setter=setGeneralEvents:) NSMutableArray * generalEvents;
 #endif
 
 - (id) init;
-- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks happenings: (NSMutableArray *) happenings;
+- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks generalEvents: (NSMutableArray *) generalEvents;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1172,10 +1172,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) failedHealthChecksIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) happenings;
-- (void) setHappenings: (NSMutableArray *) happenings;
+- (NSMutableArray *) generalEvents;
+- (void) setGeneralEvents: (NSMutableArray *) generalEvents;
 #endif
-- (BOOL) happeningsIsSet;
+- (BOOL) generalEventsIsSet;
 
 @end
 

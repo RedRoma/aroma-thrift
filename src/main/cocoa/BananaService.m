@@ -6498,13 +6498,13 @@
 
   self.failedHealthChecks = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
-  self.happenings = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+  self.generalEvents = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
 #endif
   return self;
 }
 
-- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks happenings: (NSMutableArray *) happenings
+- (id) initWithFreshUsers: (NSMutableArray *) freshUsers freshApplications: (NSMutableArray *) freshApplications failedHealthChecks: (NSMutableArray *) failedHealthChecks generalEvents: (NSMutableArray *) generalEvents
 {
   self = [super init];
   __freshUsers = [freshUsers retain_stub];
@@ -6513,8 +6513,8 @@
   __freshApplications_isset = YES;
   __failedHealthChecks = [failedHealthChecks retain_stub];
   __failedHealthChecks_isset = YES;
-  __happenings = [happenings retain_stub];
-  __happenings_isset = YES;
+  __generalEvents = [generalEvents retain_stub];
+  __generalEvents_isset = YES;
   return self;
 }
 
@@ -6536,10 +6536,10 @@
     __failedHealthChecks = [[decoder decodeObjectForKey: @"failedHealthChecks"] retain_stub];
     __failedHealthChecks_isset = YES;
   }
-  if ([decoder containsValueForKey: @"happenings"])
+  if ([decoder containsValueForKey: @"generalEvents"])
   {
-    __happenings = [[decoder decodeObjectForKey: @"happenings"] retain_stub];
-    __happenings_isset = YES;
+    __generalEvents = [[decoder decodeObjectForKey: @"generalEvents"] retain_stub];
+    __generalEvents_isset = YES;
   }
   return self;
 }
@@ -6558,9 +6558,9 @@
   {
     [encoder encodeObject: __failedHealthChecks forKey: @"failedHealthChecks"];
   }
-  if (__happenings_isset)
+  if (__generalEvents_isset)
   {
-    [encoder encodeObject: __happenings forKey: @"happenings"];
+    [encoder encodeObject: __generalEvents forKey: @"generalEvents"];
   }
 }
 
@@ -6582,10 +6582,10 @@
   {
     hash = (hash * 31) ^ [__failedHealthChecks hash];
   }
-  hash = (hash * 31) ^ __happenings_isset ? 2654435761 : 0;
-  if (__happenings_isset)
+  hash = (hash * 31) ^ __generalEvents_isset ? 2654435761 : 0;
+  if (__generalEvents_isset)
   {
-    hash = (hash * 31) ^ [__happenings hash];
+    hash = (hash * 31) ^ [__generalEvents hash];
   }
   return hash;
 }
@@ -6611,8 +6611,8 @@
       (__failedHealthChecks_isset && ((__failedHealthChecks || other->__failedHealthChecks) && ![__failedHealthChecks isEqual:other->__failedHealthChecks]))) {
     return NO;
   }
-  if ((__happenings_isset != other->__happenings_isset) ||
-      (__happenings_isset && ((__happenings || other->__happenings) && ![__happenings isEqual:other->__happenings]))) {
+  if ((__generalEvents_isset != other->__generalEvents_isset) ||
+      (__generalEvents_isset && ((__generalEvents || other->__generalEvents) && ![__generalEvents isEqual:other->__generalEvents]))) {
     return NO;
   }
   return YES;
@@ -6623,7 +6623,7 @@
   [__freshUsers release_stub];
   [__freshApplications release_stub];
   [__failedHealthChecks release_stub];
-  [__happenings release_stub];
+  [__generalEvents release_stub];
   [super dealloc_stub];
 }
 
@@ -6690,25 +6690,25 @@
   __failedHealthChecks_isset = NO;
 }
 
-- (NSMutableArray *) happenings {
-  return [[__happenings retain_stub] autorelease_stub];
+- (NSMutableArray *) generalEvents {
+  return [[__generalEvents retain_stub] autorelease_stub];
 }
 
-- (void) setHappenings: (NSMutableArray *) happenings {
-  [happenings retain_stub];
-  [__happenings release_stub];
-  __happenings = happenings;
-  __happenings_isset = YES;
+- (void) setGeneralEvents: (NSMutableArray *) generalEvents {
+  [generalEvents retain_stub];
+  [__generalEvents release_stub];
+  __generalEvents = generalEvents;
+  __generalEvents_isset = YES;
 }
 
-- (BOOL) happeningsIsSet {
-  return __happenings_isset;
+- (BOOL) generalEventsIsSet {
+  return __generalEvents_isset;
 }
 
-- (void) unsetHappenings {
-  [__happenings release_stub];
-  __happenings = nil;
-  __happenings_isset = NO;
+- (void) unsetGeneralEvents {
+  [__generalEvents release_stub];
+  __generalEvents = nil;
+  __generalEvents_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -6800,7 +6800,7 @@
             [_elem26 release_stub];
           }
           [inProtocol readListEnd];
-          [self setHappenings: fieldValue];
+          [self setGeneralEvents: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -6862,15 +6862,15 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__happenings_isset) {
-    if (__happenings != nil) {
-      [outProtocol writeFieldBeginWithName: @"happenings" type: TType_LIST fieldID: 4];
+  if (__generalEvents_isset) {
+    if (__generalEvents != nil) {
+      [outProtocol writeFieldBeginWithName: @"generalEvents" type: TType_LIST fieldID: 4];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__happenings count]];
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__generalEvents count]];
         int idx34;
-        for (idx34 = 0; idx34 < [__happenings count]; idx34++)
+        for (idx34 = 0; idx34 < [__generalEvents count]; idx34++)
         {
-          [[__happenings objectAtIndex: idx34] write: outProtocol];
+          [[__generalEvents objectAtIndex: idx34] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -6893,8 +6893,8 @@
   [ms appendFormat: @"%@", __freshApplications];
   [ms appendString: @",failedHealthChecks:"];
   [ms appendFormat: @"%@", __failedHealthChecks];
-  [ms appendString: @",happenings:"];
-  [ms appendFormat: @"%@", __happenings];
+  [ms appendString: @",generalEvents:"];
+  [ms appendFormat: @"%@", __generalEvents];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

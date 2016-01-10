@@ -2117,7 +2117,7 @@ GetBuzzResponse = module.exports.GetBuzzResponse = function(args) {
     this.freshUsers = [];
     this.freshApplications = [];
     this.failedHealthChecks = [];
-    this.happenings = [];
+    this.generalEvents = [];
     if (args) {
         if (args.freshUsers !== undefined && args.freshUsers !== null) {
             this.freshUsers = Thrift.copyList(args.freshUsers, [null]);
@@ -2128,8 +2128,8 @@ GetBuzzResponse = module.exports.GetBuzzResponse = function(args) {
         if (args.failedHealthChecks !== undefined && args.failedHealthChecks !== null) {
             this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [null]);
         }
-        if (args.happenings !== undefined && args.happenings !== null) {
-            this.happenings = Thrift.copyList(args.happenings, [Events_ttypes.GeneralEvent]);
+        if (args.generalEvents !== undefined && args.generalEvents !== null) {
+            this.generalEvents = Thrift.copyList(args.generalEvents, [Events_ttypes.GeneralEvent]);
         }
     }
 };
@@ -2214,7 +2214,7 @@ GetBuzzResponse.prototype.read = function(input) {
         if (ftype == Thrift.Type.LIST) {
           var _size45 = 0;
           var _rtmp349;
-          this.happenings = [];
+          this.generalEvents = [];
           var _etype48 = 0;
           _rtmp349 = input.readListBegin();
           _etype48 = _rtmp349.etype;
@@ -2224,7 +2224,7 @@ GetBuzzResponse.prototype.read = function(input) {
             var elem51 = null;
             elem51 = new Events_ttypes.GeneralEvent();
             elem51.read(input);
-            this.happenings.push(elem51);
+            this.generalEvents.push(elem51);
           }
           input.readListEnd();
         } else {
@@ -2284,14 +2284,14 @@ GetBuzzResponse.prototype.write = function(output) {
       output.writeListEnd();
       output.writeFieldEnd();
     }
-    if (this.happenings !== null && this.happenings !== undefined) {
-      output.writeFieldBegin('happenings', Thrift.Type.LIST, 4);
-      output.writeListBegin(Thrift.Type.STRUCT, this.happenings.length);
-      for (var iter55 in this.happenings)
+    if (this.generalEvents !== null && this.generalEvents !== undefined) {
+      output.writeFieldBegin('generalEvents', Thrift.Type.LIST, 4);
+      output.writeListBegin(Thrift.Type.STRUCT, this.generalEvents.length);
+      for (var iter55 in this.generalEvents)
       {
-        if (this.happenings.hasOwnProperty(iter55))
+        if (this.generalEvents.hasOwnProperty(iter55))
         {
-          iter55 = this.happenings[iter55];
+          iter55 = this.generalEvents[iter55];
           iter55.write(output);
         }
       }

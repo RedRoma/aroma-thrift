@@ -355,7 +355,8 @@ struct GetBuzzResponse
     1: list<User> freshUsers = [];
     2: list<Application> freshApplications = [];
     3: list<HealthCheckFailed> failedHealthChecks = [];
-    4: list<Events.GeneralEvent> happenings = [];
+    /** General events happening lately */
+    4: list<Events.GeneralEvent> generalEvents = [];
 }
 
 struct GetDashboardRequest
