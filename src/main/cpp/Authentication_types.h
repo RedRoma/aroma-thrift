@@ -377,9 +377,9 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAccount& obj)
 }
 
 typedef struct _Credentials__isset {
-  _Credentials__isset() : githubToken(false), aromaAccount(false) {}
+  _Credentials__isset() : githubToken(false), aromaPassword(false) {}
   bool githubToken :1;
-  bool aromaAccount :1;
+  bool aromaPassword :1;
 } _Credentials__isset;
 
 class Credentials {
@@ -392,19 +392,19 @@ class Credentials {
 
   virtual ~Credentials() throw();
   GithubToken githubToken;
-  AromaAccount aromaAccount;
+  Password aromaPassword;
 
   _Credentials__isset __isset;
 
   void __set_githubToken(const GithubToken& val);
 
-  void __set_aromaAccount(const AromaAccount& val);
+  void __set_aromaPassword(const Password& val);
 
   bool operator == (const Credentials & rhs) const
   {
     if (!(githubToken == rhs.githubToken))
       return false;
-    if (!(aromaAccount == rhs.aromaAccount))
+    if (!(aromaPassword == rhs.aromaPassword))
       return false;
     return true;
   }

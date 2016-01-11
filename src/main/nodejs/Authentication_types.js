@@ -498,13 +498,13 @@ AromaAccount.prototype.write = function(output) {
 
 Credentials = module.exports.Credentials = function(args) {
   this.githubToken = null;
-  this.aromaAccount = null;
+  this.aromaPassword = null;
   if (args) {
     if (args.githubToken !== undefined && args.githubToken !== null) {
       this.githubToken = new ttypes.GithubToken(args.githubToken);
     }
-    if (args.aromaAccount !== undefined && args.aromaAccount !== null) {
-      this.aromaAccount = new ttypes.AromaAccount(args.aromaAccount);
+    if (args.aromaPassword !== undefined && args.aromaPassword !== null) {
+      this.aromaPassword = new ttypes.Password(args.aromaPassword);
     }
   }
 };
@@ -532,8 +532,8 @@ Credentials.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.aromaAccount = new ttypes.AromaAccount();
-        this.aromaAccount.read(input);
+        this.aromaPassword = new ttypes.Password();
+        this.aromaPassword.read(input);
       } else {
         input.skip(ftype);
       }
@@ -554,9 +554,9 @@ Credentials.prototype.write = function(output) {
     this.githubToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.aromaAccount !== null && this.aromaAccount !== undefined) {
-    output.writeFieldBegin('aromaAccount', Thrift.Type.STRUCT, 2);
-    this.aromaAccount.write(output);
+  if (this.aromaPassword !== null && this.aromaPassword !== undefined) {
+    output.writeFieldBegin('aromaPassword', Thrift.Type.STRUCT, 2);
+    this.aromaPassword.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

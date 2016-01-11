@@ -761,8 +761,8 @@ void Credentials::__set_githubToken(const GithubToken& val) {
   this->githubToken = val;
 }
 
-void Credentials::__set_aromaAccount(const AromaAccount& val) {
-  this->aromaAccount = val;
+void Credentials::__set_aromaPassword(const Password& val) {
+  this->aromaPassword = val;
 }
 
 uint32_t Credentials::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -796,8 +796,8 @@ uint32_t Credentials::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->aromaAccount.read(iprot);
-          this->__isset.aromaAccount = true;
+          xfer += this->aromaPassword.read(iprot);
+          this->__isset.aromaPassword = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -823,8 +823,8 @@ uint32_t Credentials::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += this->githubToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("aromaAccount", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->aromaAccount.write(oprot);
+  xfer += oprot->writeFieldBegin("aromaPassword", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->aromaPassword.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -835,18 +835,18 @@ uint32_t Credentials::write(::apache::thrift::protocol::TProtocol* oprot) const 
 void swap(Credentials &a, Credentials &b) {
   using ::std::swap;
   swap(a.githubToken, b.githubToken);
-  swap(a.aromaAccount, b.aromaAccount);
+  swap(a.aromaPassword, b.aromaPassword);
   swap(a.__isset, b.__isset);
 }
 
 Credentials::Credentials(const Credentials& other11) {
   githubToken = other11.githubToken;
-  aromaAccount = other11.aromaAccount;
+  aromaPassword = other11.aromaPassword;
   __isset = other11.__isset;
 }
 Credentials& Credentials::operator=(const Credentials& other12) {
   githubToken = other12.githubToken;
-  aromaAccount = other12.aromaAccount;
+  aromaPassword = other12.aromaPassword;
   __isset = other12.__isset;
   return *this;
 }
@@ -854,7 +854,7 @@ void Credentials::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Credentials(";
   out << "githubToken=" << to_string(githubToken);
-  out << ", " << "aromaAccount=" << to_string(aromaAccount);
+  out << ", " << "aromaPassword=" << to_string(aromaPassword);
   out << ")";
 }
 

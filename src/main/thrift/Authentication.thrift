@@ -69,7 +69,7 @@ struct AromaAccount
 union Credentials
 {
     1: GithubToken githubToken;
-    2: AromaAccount aromaAccount;
+    2: Password aromaPassword;
 }
 
 enum TokenType

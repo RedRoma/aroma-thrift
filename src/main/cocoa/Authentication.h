@@ -289,19 +289,19 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 
 @interface BananaAuthentication_Credentials : NSObject <TBase, NSCoding> {
   BananaAuthentication_GithubToken * __githubToken;
-  BananaAuthentication_AromaAccount * __aromaAccount;
+  BananaAuthentication_Password * __aromaPassword;
 
   BOOL __githubToken_isset;
-  BOOL __aromaAccount_isset;
+  BOOL __aromaPassword_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=githubToken, setter=setGithubToken:) BananaAuthentication_GithubToken * githubToken;
-@property (nonatomic, retain, getter=aromaAccount, setter=setAromaAccount:) BananaAuthentication_AromaAccount * aromaAccount;
+@property (nonatomic, retain, getter=aromaPassword, setter=setAromaPassword:) BananaAuthentication_Password * aromaPassword;
 #endif
 
 - (id) init;
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaPassword: (BananaAuthentication_Password *) aromaPassword;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -315,10 +315,10 @@ typedef Banana_timestamp BananaAuthentication_timestamp;
 - (BOOL) githubTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_AromaAccount *) aromaAccount;
-- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount;
+- (BananaAuthentication_Password *) aromaPassword;
+- (void) setAromaPassword: (BananaAuthentication_Password *) aromaPassword;
 #endif
-- (BOOL) aromaAccountIsSet;
+- (BOOL) aromaPasswordIsSet;
 
 @end
 

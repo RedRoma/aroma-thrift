@@ -1590,13 +1590,13 @@
   return self;
 }
 
-- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount
+- (id) initWithGithubToken: (BananaAuthentication_GithubToken *) githubToken aromaPassword: (BananaAuthentication_Password *) aromaPassword
 {
   self = [super init];
   __githubToken = [githubToken retain_stub];
   __githubToken_isset = YES;
-  __aromaAccount = [aromaAccount retain_stub];
-  __aromaAccount_isset = YES;
+  __aromaPassword = [aromaPassword retain_stub];
+  __aromaPassword_isset = YES;
   return self;
 }
 
@@ -1608,10 +1608,10 @@
     __githubToken = [[decoder decodeObjectForKey: @"githubToken"] retain_stub];
     __githubToken_isset = YES;
   }
-  if ([decoder containsValueForKey: @"aromaAccount"])
+  if ([decoder containsValueForKey: @"aromaPassword"])
   {
-    __aromaAccount = [[decoder decodeObjectForKey: @"aromaAccount"] retain_stub];
-    __aromaAccount_isset = YES;
+    __aromaPassword = [[decoder decodeObjectForKey: @"aromaPassword"] retain_stub];
+    __aromaPassword_isset = YES;
   }
   return self;
 }
@@ -1622,9 +1622,9 @@
   {
     [encoder encodeObject: __githubToken forKey: @"githubToken"];
   }
-  if (__aromaAccount_isset)
+  if (__aromaPassword_isset)
   {
-    [encoder encodeObject: __aromaAccount forKey: @"aromaAccount"];
+    [encoder encodeObject: __aromaPassword forKey: @"aromaPassword"];
   }
 }
 
@@ -1636,10 +1636,10 @@
   {
     hash = (hash * 31) ^ [__githubToken hash];
   }
-  hash = (hash * 31) ^ __aromaAccount_isset ? 2654435761 : 0;
-  if (__aromaAccount_isset)
+  hash = (hash * 31) ^ __aromaPassword_isset ? 2654435761 : 0;
+  if (__aromaPassword_isset)
   {
-    hash = (hash * 31) ^ [__aromaAccount hash];
+    hash = (hash * 31) ^ [__aromaPassword hash];
   }
   return hash;
 }
@@ -1657,8 +1657,8 @@
       (__githubToken_isset && ((__githubToken || other->__githubToken) && ![__githubToken isEqual:other->__githubToken]))) {
     return NO;
   }
-  if ((__aromaAccount_isset != other->__aromaAccount_isset) ||
-      (__aromaAccount_isset && ((__aromaAccount || other->__aromaAccount) && ![__aromaAccount isEqual:other->__aromaAccount]))) {
+  if ((__aromaPassword_isset != other->__aromaPassword_isset) ||
+      (__aromaPassword_isset && ((__aromaPassword || other->__aromaPassword) && ![__aromaPassword isEqual:other->__aromaPassword]))) {
     return NO;
   }
   return YES;
@@ -1667,7 +1667,7 @@
 - (void) dealloc
 {
   [__githubToken release_stub];
-  [__aromaAccount release_stub];
+  [__aromaPassword release_stub];
   [super dealloc_stub];
 }
 
@@ -1692,25 +1692,25 @@
   __githubToken_isset = NO;
 }
 
-- (BananaAuthentication_AromaAccount *) aromaAccount {
-  return [[__aromaAccount retain_stub] autorelease_stub];
+- (BananaAuthentication_Password *) aromaPassword {
+  return [[__aromaPassword retain_stub] autorelease_stub];
 }
 
-- (void) setAromaAccount: (BananaAuthentication_AromaAccount *) aromaAccount {
-  [aromaAccount retain_stub];
-  [__aromaAccount release_stub];
-  __aromaAccount = aromaAccount;
-  __aromaAccount_isset = YES;
+- (void) setAromaPassword: (BananaAuthentication_Password *) aromaPassword {
+  [aromaPassword retain_stub];
+  [__aromaPassword release_stub];
+  __aromaPassword = aromaPassword;
+  __aromaPassword_isset = YES;
 }
 
-- (BOOL) aromaAccountIsSet {
-  return __aromaAccount_isset;
+- (BOOL) aromaPasswordIsSet {
+  return __aromaPassword_isset;
 }
 
-- (void) unsetAromaAccount {
-  [__aromaAccount release_stub];
-  __aromaAccount = nil;
-  __aromaAccount_isset = NO;
+- (void) unsetAromaPassword {
+  [__aromaPassword release_stub];
+  __aromaPassword = nil;
+  __aromaPassword_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1740,9 +1740,9 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AromaAccount *fieldValue = [[BananaAuthentication_AromaAccount alloc] init];
+          BananaAuthentication_Password *fieldValue = [[BananaAuthentication_Password alloc] init];
           [fieldValue read: inProtocol];
-          [self setAromaAccount: fieldValue];
+          [self setAromaPassword: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -1766,10 +1766,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__aromaAccount_isset) {
-    if (__aromaAccount != nil) {
-      [outProtocol writeFieldBeginWithName: @"aromaAccount" type: TType_STRUCT fieldID: 2];
-      [__aromaAccount write: outProtocol];
+  if (__aromaPassword_isset) {
+    if (__aromaPassword != nil) {
+      [outProtocol writeFieldBeginWithName: @"aromaPassword" type: TType_STRUCT fieldID: 2];
+      [__aromaPassword write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1785,8 +1785,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_Credentials("];
   [ms appendString: @"githubToken:"];
   [ms appendFormat: @"%@", __githubToken];
-  [ms appendString: @",aromaAccount:"];
-  [ms appendFormat: @"%@", __aromaAccount];
+  [ms appendString: @",aromaPassword:"];
+  [ms appendFormat: @"%@", __aromaPassword];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
