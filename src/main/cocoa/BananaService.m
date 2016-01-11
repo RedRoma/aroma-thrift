@@ -3857,13 +3857,13 @@
   return self;
 }
 
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials username: (NSString *) username
+- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress
 {
   self = [super init];
   __credentials = [credentials retain_stub];
   __credentials_isset = YES;
-  __username = [username retain_stub];
-  __username_isset = YES;
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
   return self;
 }
 
@@ -3875,10 +3875,10 @@
     __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
     __credentials_isset = YES;
   }
-  if ([decoder containsValueForKey: @"username"])
+  if ([decoder containsValueForKey: @"emailAddress"])
   {
-    __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
-    __username_isset = YES;
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
   }
   return self;
 }
@@ -3889,9 +3889,9 @@
   {
     [encoder encodeObject: __credentials forKey: @"credentials"];
   }
-  if (__username_isset)
+  if (__emailAddress_isset)
   {
-    [encoder encodeObject: __username forKey: @"username"];
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
   }
 }
 
@@ -3903,10 +3903,10 @@
   {
     hash = (hash * 31) ^ [__credentials hash];
   }
-  hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
-  if (__username_isset)
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
   {
-    hash = (hash * 31) ^ [__username hash];
+    hash = (hash * 31) ^ [__emailAddress hash];
   }
   return hash;
 }
@@ -3924,8 +3924,8 @@
       (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
     return NO;
   }
-  if ((__username_isset != other->__username_isset) ||
-      (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
     return NO;
   }
   return YES;
@@ -3934,7 +3934,7 @@
 - (void) dealloc
 {
   [__credentials release_stub];
-  [__username release_stub];
+  [__emailAddress release_stub];
   [super dealloc_stub];
 }
 
@@ -3959,25 +3959,25 @@
   __credentials_isset = NO;
 }
 
-- (NSString *) username {
-  return [[__username retain_stub] autorelease_stub];
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
 }
 
-- (void) setUsername: (NSString *) username {
-  [username retain_stub];
-  [__username release_stub];
-  __username = username;
-  __username_isset = YES;
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
 }
 
-- (BOOL) usernameIsSet {
-  return __username_isset;
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
 }
 
-- (void) unsetUsername {
-  [__username release_stub];
-  __username = nil;
-  __username_isset = NO;
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -4008,7 +4008,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
+          [self setEmailAddress: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -4031,10 +4031,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__username_isset) {
-    if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __username];
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __emailAddress];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4050,8 +4050,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignInRequest("];
   [ms appendString: @"credentials:"];
   [ms appendFormat: @"%@", __credentials];
-  [ms appendString: @",username:"];
-  [ms appendFormat: @"\"%@\"", __username];
+  [ms appendString: @",emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

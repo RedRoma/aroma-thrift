@@ -1262,13 +1262,13 @@ SaveChannelResponse.prototype.write = function(output) {
 
 SignInRequest = module.exports.SignInRequest = function(args) {
   this.credentials = null;
-  this.username = null;
+  this.emailAddress = null;
   if (args) {
     if (args.credentials !== undefined && args.credentials !== null) {
       this.credentials = new Authentication_ttypes.Credentials(args.credentials);
     }
-    if (args.username !== undefined && args.username !== null) {
-      this.username = args.username;
+    if (args.emailAddress !== undefined && args.emailAddress !== null) {
+      this.emailAddress = args.emailAddress;
     }
   }
 };
@@ -1296,7 +1296,7 @@ SignInRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString();
+        this.emailAddress = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -1317,9 +1317,9 @@ SignInRequest.prototype.write = function(output) {
     this.credentials.write(output);
     output.writeFieldEnd();
   }
-  if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 2);
-    output.writeString(this.username);
+  if (this.emailAddress !== null && this.emailAddress !== undefined) {
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 2);
+    output.writeString(this.emailAddress);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

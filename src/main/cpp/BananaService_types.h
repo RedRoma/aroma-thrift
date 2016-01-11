@@ -1062,9 +1062,9 @@ inline std::ostream& operator<<(std::ostream& out, const SaveChannelResponse& ob
 }
 
 typedef struct _SignInRequest__isset {
-  _SignInRequest__isset() : credentials(false), username(false) {}
+  _SignInRequest__isset() : credentials(false), emailAddress(false) {}
   bool credentials :1;
-  bool username :1;
+  bool emailAddress :1;
 } _SignInRequest__isset;
 
 class SignInRequest {
@@ -1072,24 +1072,24 @@ class SignInRequest {
 
   SignInRequest(const SignInRequest&);
   SignInRequest& operator=(const SignInRequest&);
-  SignInRequest() : username() {
+  SignInRequest() : emailAddress() {
   }
 
   virtual ~SignInRequest() throw();
    ::aroma::banana::thrift::authentication::Credentials credentials;
-  std::string username;
+  std::string emailAddress;
 
   _SignInRequest__isset __isset;
 
   void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
 
-  void __set_username(const std::string& val);
+  void __set_emailAddress(const std::string& val);
 
   bool operator == (const SignInRequest & rhs) const
   {
     if (!(credentials == rhs.credentials))
       return false;
-    if (!(username == rhs.username))
+    if (!(emailAddress == rhs.emailAddress))
       return false;
     return true;
   }

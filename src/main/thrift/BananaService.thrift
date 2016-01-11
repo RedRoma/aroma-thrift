@@ -257,7 +257,7 @@ struct SaveChannelResponse
 struct SignInRequest
 {
     1: Authentication.Credentials credentials;
-    2: string username;
+    2: string emailAddress;
 }
 
 struct SignInResponse

@@ -698,19 +698,19 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
   BananaAuthentication_Credentials * __credentials;
-  NSString * __username;
+  NSString * __emailAddress;
 
   BOOL __credentials_isset;
-  BOOL __username_isset;
+  BOOL __emailAddress_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
-@property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
+@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
 #endif
 
 - (id) init;
-- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials username: (NSString *) username;
+- (id) initWithCredentials: (BananaAuthentication_Credentials *) credentials emailAddress: (NSString *) emailAddress;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -724,10 +724,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) credentialsIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) username;
-- (void) setUsername: (NSString *) username;
+- (NSString *) emailAddress;
+- (void) setEmailAddress: (NSString *) emailAddress;
 #endif
-- (BOOL) usernameIsSet;
+- (BOOL) emailAddressIsSet;
 
 @end
 

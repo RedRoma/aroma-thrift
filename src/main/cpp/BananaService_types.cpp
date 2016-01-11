@@ -1920,8 +1920,8 @@ void SignInRequest::__set_credentials(const  ::aroma::banana::thrift::authentica
   this->credentials = val;
 }
 
-void SignInRequest::__set_username(const std::string& val) {
-  this->username = val;
+void SignInRequest::__set_emailAddress(const std::string& val) {
+  this->emailAddress = val;
 }
 
 uint32_t SignInRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1955,8 +1955,8 @@ uint32_t SignInRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->username);
-          this->__isset.username = true;
+          xfer += iprot->readString(this->emailAddress);
+          this->__isset.emailAddress = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1982,8 +1982,8 @@ uint32_t SignInRequest::write(::apache::thrift::protocol::TProtocol* oprot) cons
   xfer += this->credentials.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("username", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->username);
+  xfer += oprot->writeFieldBegin("emailAddress", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->emailAddress);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -1994,18 +1994,18 @@ uint32_t SignInRequest::write(::apache::thrift::protocol::TProtocol* oprot) cons
 void swap(SignInRequest &a, SignInRequest &b) {
   using ::std::swap;
   swap(a.credentials, b.credentials);
-  swap(a.username, b.username);
+  swap(a.emailAddress, b.emailAddress);
   swap(a.__isset, b.__isset);
 }
 
 SignInRequest::SignInRequest(const SignInRequest& other45) {
   credentials = other45.credentials;
-  username = other45.username;
+  emailAddress = other45.emailAddress;
   __isset = other45.__isset;
 }
 SignInRequest& SignInRequest::operator=(const SignInRequest& other46) {
   credentials = other46.credentials;
-  username = other46.username;
+  emailAddress = other46.emailAddress;
   __isset = other46.__isset;
   return *this;
 }
@@ -2013,7 +2013,7 @@ void SignInRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SignInRequest(";
   out << "credentials=" << to_string(credentials);
-  out << ", " << "username=" << to_string(username);
+  out << ", " << "emailAddress=" << to_string(emailAddress);
   out << ")";
 }
 
