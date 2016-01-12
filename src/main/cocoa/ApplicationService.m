@@ -37,7 +37,7 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
@@ -46,6 +46,8 @@
   __message_isset = YES;
   __urgency = urgency;
   __urgency_isset = YES;
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
   return self;
 }
 
@@ -67,6 +69,11 @@
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
   }
+  if ([decoder containsValueForKey: @"timeOfMessage"])
+  {
+    __timeOfMessage = [decoder decodeInt64ForKey: @"timeOfMessage"];
+    __timeOfMessage_isset = YES;
+  }
   return self;
 }
 
@@ -83,6 +90,10 @@
   if (__urgency_isset)
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__timeOfMessage_isset)
+  {
+    [encoder encodeInt64: __timeOfMessage forKey: @"timeOfMessage"];
   }
 }
 
@@ -103,6 +114,11 @@
   if (__urgency_isset)
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeOfMessage_isset ? 2654435761 : 0;
+  if (__timeOfMessage_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfMessage) hash];
   }
   return hash;
 }
@@ -126,6 +142,10 @@
   }
   if ((__urgency_isset != other->__urgency_isset) ||
       (__urgency_isset && (__urgency != other->__urgency))) {
+    return NO;
+  }
+  if ((__timeOfMessage_isset != other->__timeOfMessage_isset) ||
+      (__timeOfMessage_isset && (__timeOfMessage != other->__timeOfMessage))) {
     return NO;
   }
   return YES;
@@ -197,6 +217,23 @@
   __urgency_isset = NO;
 }
 
+- (int64_t) timeOfMessage {
+  return __timeOfMessage;
+}
+
+- (void) setTimeOfMessage: (int64_t) timeOfMessage {
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+}
+
+- (BOOL) timeOfMessageIsSet {
+  return __timeOfMessage_isset;
+}
+
+- (void) unsetTimeOfMessage {
+  __timeOfMessage_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -238,6 +275,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -268,6 +313,11 @@
     [outProtocol writeI32: __urgency];
     [outProtocol writeFieldEnd];
   }
+  if (__timeOfMessage_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfMessage" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfMessage];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -284,6 +334,8 @@
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",urgency:"];
   [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",timeOfMessage:"];
+  [ms appendFormat: @"%qi", __timeOfMessage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

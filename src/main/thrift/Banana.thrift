@@ -1,3 +1,4 @@
+
 namespace java  tech.aroma.banana.thrift
 namespace cocoa Banana_
 namespace cpp   aroma.banana.thrift

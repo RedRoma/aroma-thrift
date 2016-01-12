@@ -30,6 +30,11 @@ void SendMessageRequest::__set_urgency(const Urgency val) {
   this->urgency = val;
 }
 
+void SendMessageRequest::__set_timeOfMessage(const timestamp val) {
+  this->timeOfMessage = val;
+__isset.timeOfMessage = true;
+}
+
 uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -77,6 +82,14 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfMessage);
+          this->__isset.timeOfMessage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -106,6 +119,11 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeI32((int32_t)this->urgency);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.timeOfMessage) {
+    xfer += oprot->writeFieldBegin("timeOfMessage", ::apache::thrift::protocol::T_I64, 4);
+    xfer += oprot->writeI64(this->timeOfMessage);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -116,6 +134,7 @@ void swap(SendMessageRequest &a, SendMessageRequest &b) {
   swap(a.applicationToken, b.applicationToken);
   swap(a.message, b.message);
   swap(a.urgency, b.urgency);
+  swap(a.timeOfMessage, b.timeOfMessage);
   swap(a.__isset, b.__isset);
 }
 
@@ -123,12 +142,14 @@ SendMessageRequest::SendMessageRequest(const SendMessageRequest& other1) {
   applicationToken = other1.applicationToken;
   message = other1.message;
   urgency = other1.urgency;
+  timeOfMessage = other1.timeOfMessage;
   __isset = other1.__isset;
 }
 SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& other2) {
   applicationToken = other2.applicationToken;
   message = other2.message;
   urgency = other2.urgency;
+  timeOfMessage = other2.timeOfMessage;
   __isset = other2.__isset;
   return *this;
 }
@@ -138,6 +159,7 @@ void SendMessageRequest::printTo(std::ostream& out) const {
   out << "applicationToken=" << to_string(applicationToken);
   out << ", " << "message=" << to_string(message);
   out << ", " << "urgency=" << to_string(urgency);
+  out << ", " << "timeOfMessage="; (__isset.timeOfMessage ? (out << to_string(timeOfMessage)) : (out << "<null>"));
   out << ")";
 }
 

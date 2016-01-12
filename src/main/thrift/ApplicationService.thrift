@@ -56,6 +56,8 @@ struct SendMessageRequest
     1: ApplicationToken applicationToken;
     2: string message;
     3: Urgency urgency = Banana.Urgency.LOW;
+    /** The time that the message was generated on the Client Side. */
+    4: optional timestamp timeOfMessage;
 }
 
 struct SendMessageResponse

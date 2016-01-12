@@ -58,10 +58,11 @@ class SendMessageRequest;
 class SendMessageResponse;
 
 typedef struct _SendMessageRequest__isset {
-  _SendMessageRequest__isset() : applicationToken(false), message(false), urgency(true) {}
+  _SendMessageRequest__isset() : applicationToken(false), message(false), urgency(true), timeOfMessage(false) {}
   bool applicationToken :1;
   bool message :1;
   bool urgency :1;
+  bool timeOfMessage :1;
 } _SendMessageRequest__isset;
 
 class SendMessageRequest {
@@ -69,7 +70,7 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() : message(), urgency(( ::aroma::banana::thrift::Urgency::type)1) {
+  SendMessageRequest() : message(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0) {
     urgency = ( ::aroma::banana::thrift::Urgency::type)1;
 
   }
@@ -78,6 +79,7 @@ class SendMessageRequest {
   ApplicationToken applicationToken;
   std::string message;
   Urgency urgency;
+  timestamp timeOfMessage;
 
   _SendMessageRequest__isset __isset;
 
@@ -87,6 +89,8 @@ class SendMessageRequest {
 
   void __set_urgency(const Urgency val);
 
+  void __set_timeOfMessage(const timestamp val);
+
   bool operator == (const SendMessageRequest & rhs) const
   {
     if (!(applicationToken == rhs.applicationToken))
@@ -94,6 +98,10 @@ class SendMessageRequest {
     if (!(message == rhs.message))
       return false;
     if (!(urgency == rhs.urgency))
+      return false;
+    if (__isset.timeOfMessage != rhs.__isset.timeOfMessage)
+      return false;
+    else if (__isset.timeOfMessage && !(timeOfMessage == rhs.timeOfMessage))
       return false;
     return true;
   }

@@ -18,6 +18,7 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
   this.applicationToken = null;
   this.message = null;
   this.urgency = 1;
+  this.timeOfMessage = null;
   if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -27,6 +28,9 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
     }
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
+    }
+    if (args.timeOfMessage !== undefined && args.timeOfMessage !== null) {
+      this.timeOfMessage = args.timeOfMessage;
     }
   }
 };
@@ -66,6 +70,13 @@ SendMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfMessage = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -90,6 +101,11 @@ SendMessageRequest.prototype.write = function(output) {
   if (this.urgency !== null && this.urgency !== undefined) {
     output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
     output.writeI32(this.urgency);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfMessage !== null && this.timeOfMessage !== undefined) {
+    output.writeFieldBegin('timeOfMessage', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfMessage);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
