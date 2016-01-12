@@ -202,10 +202,10 @@ code { line-height: 20px; }
 <td><a href="#Struct_Endpoint">Endpoint</a><br/>
 <a href="#Struct_HealthPokeRequest">HealthPokeRequest</a><br/>
 <a href="#Struct_HealthPokeResponse">HealthPokeResponse</a><br/>
+<a href="#Struct_HttpRestEndpoint">HttpRestEndpoint</a><br/>
+<a href="#Struct_HttpThriftEndpoint">HttpThriftEndpoint</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="#Struct_RestHttpEndpoint">RestHttpEndpoint</a><br/>
 <a href="#Struct_TcpEndpoint">TcpEndpoint</a><br/>
-<a href="#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a><br/>
 <a href="#Typedef_int">int</a><br/>
 </td>
 <td></code></td>
@@ -224,12 +224,12 @@ code { line-height: 20px; }
 <tr><td>2</td><td>port</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>required</td><td><code>80</code></td></tr>
 </table><br/>A TCP Application Endpoint to Poke,
 defined in Thrift.
-<br/></div><div class="definition"><h3 id="Struct_ThriftHttpEndpoint">Struct: ThriftHttpEndpoint</h3>
+<br/></div><div class="definition"><h3 id="Struct_HttpThriftEndpoint">Struct: HttpThriftEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 </table><br/>An HTTP ApplicationEndpoint to Poke,
 defined in Thrift.
-<br/></div><div class="definition"><h3 id="Struct_RestHttpEndpoint">Struct: RestHttpEndpoint</h3>
+<br/></div><div class="definition"><h3 id="Struct_HttpRestEndpoint">Struct: HttpRestEndpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>url</td><td><code>string</code></td><td></td><td>required</td><td></td></tr>
 </table><br/>A REST HTTP Endpoint to Poke.
@@ -241,8 +241,8 @@ Examples to follow...
 <br/></div><div class="definition"><h3 id="Struct_Endpoint">Union: Endpoint</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tcp</td><td><code><a href="#Struct_TcpEndpoint">TcpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>thriftHttp</td><td><code><a href="#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>restHttp</td><td><code><a href="#Struct_RestHttpEndpoint">RestHttpEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>httpThrift</td><td><code><a href="#Struct_HttpThriftEndpoint">HttpThriftEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>httpRest</td><td><code><a href="#Struct_HttpRestEndpoint">HttpRestEndpoint</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>This union defines the multiple ways that an Endpoint can be defined
 and understood.
 <br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>

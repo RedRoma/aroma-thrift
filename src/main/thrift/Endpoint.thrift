@@ -28,7 +28,7 @@ struct TcpEndpoint
  * An HTTP ApplicationEndpoint to Poke,
  * defined in Thrift.
  */
-struct ThriftHttpEndpoint
+struct HttpThriftEndpoint
 {
     1: required string url;
 }
@@ -41,7 +41,7 @@ struct ThriftHttpEndpoint
  * 
  * Examples to follow...
  */
-struct RestHttpEndpoint
+struct HttpRestEndpoint
 {
     1: required string url;
 }
@@ -53,8 +53,8 @@ struct RestHttpEndpoint
 union Endpoint
 {
     1: TcpEndpoint tcp;
-    2: ThriftHttpEndpoint thriftHttp;
-    3: RestHttpEndpoint restHttp;
+    2: HttpThriftEndpoint httpThrift;
+    3: HttpRestEndpoint httpRest;
 }
 
 /**

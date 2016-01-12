@@ -123,15 +123,15 @@ void TcpEndpoint::printTo(std::ostream& out) const {
 }
 
 
-ThriftHttpEndpoint::~ThriftHttpEndpoint() throw() {
+HttpThriftEndpoint::~HttpThriftEndpoint() throw() {
 }
 
 
-void ThriftHttpEndpoint::__set_url(const std::string& val) {
+void HttpThriftEndpoint::__set_url(const std::string& val) {
   this->url = val;
 }
 
-uint32_t ThriftHttpEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t HttpThriftEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -175,10 +175,10 @@ uint32_t ThriftHttpEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) 
   return xfer;
 }
 
-uint32_t ThriftHttpEndpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t HttpThriftEndpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("ThriftHttpEndpoint");
+  xfer += oprot->writeStructBegin("HttpThriftEndpoint");
 
   xfer += oprot->writeFieldBegin("url", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->url);
@@ -189,35 +189,35 @@ uint32_t ThriftHttpEndpoint::write(::apache::thrift::protocol::TProtocol* oprot)
   return xfer;
 }
 
-void swap(ThriftHttpEndpoint &a, ThriftHttpEndpoint &b) {
+void swap(HttpThriftEndpoint &a, HttpThriftEndpoint &b) {
   using ::std::swap;
   swap(a.url, b.url);
 }
 
-ThriftHttpEndpoint::ThriftHttpEndpoint(const ThriftHttpEndpoint& other2) {
+HttpThriftEndpoint::HttpThriftEndpoint(const HttpThriftEndpoint& other2) {
   url = other2.url;
 }
-ThriftHttpEndpoint& ThriftHttpEndpoint::operator=(const ThriftHttpEndpoint& other3) {
+HttpThriftEndpoint& HttpThriftEndpoint::operator=(const HttpThriftEndpoint& other3) {
   url = other3.url;
   return *this;
 }
-void ThriftHttpEndpoint::printTo(std::ostream& out) const {
+void HttpThriftEndpoint::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "ThriftHttpEndpoint(";
+  out << "HttpThriftEndpoint(";
   out << "url=" << to_string(url);
   out << ")";
 }
 
 
-RestHttpEndpoint::~RestHttpEndpoint() throw() {
+HttpRestEndpoint::~HttpRestEndpoint() throw() {
 }
 
 
-void RestHttpEndpoint::__set_url(const std::string& val) {
+void HttpRestEndpoint::__set_url(const std::string& val) {
   this->url = val;
 }
 
-uint32_t RestHttpEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t HttpRestEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -261,10 +261,10 @@ uint32_t RestHttpEndpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t RestHttpEndpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t HttpRestEndpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("RestHttpEndpoint");
+  xfer += oprot->writeStructBegin("HttpRestEndpoint");
 
   xfer += oprot->writeFieldBegin("url", ::apache::thrift::protocol::T_STRING, 1);
   xfer += oprot->writeString(this->url);
@@ -275,21 +275,21 @@ uint32_t RestHttpEndpoint::write(::apache::thrift::protocol::TProtocol* oprot) c
   return xfer;
 }
 
-void swap(RestHttpEndpoint &a, RestHttpEndpoint &b) {
+void swap(HttpRestEndpoint &a, HttpRestEndpoint &b) {
   using ::std::swap;
   swap(a.url, b.url);
 }
 
-RestHttpEndpoint::RestHttpEndpoint(const RestHttpEndpoint& other4) {
+HttpRestEndpoint::HttpRestEndpoint(const HttpRestEndpoint& other4) {
   url = other4.url;
 }
-RestHttpEndpoint& RestHttpEndpoint::operator=(const RestHttpEndpoint& other5) {
+HttpRestEndpoint& HttpRestEndpoint::operator=(const HttpRestEndpoint& other5) {
   url = other5.url;
   return *this;
 }
-void RestHttpEndpoint::printTo(std::ostream& out) const {
+void HttpRestEndpoint::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "RestHttpEndpoint(";
+  out << "HttpRestEndpoint(";
   out << "url=" << to_string(url);
   out << ")";
 }
@@ -303,12 +303,12 @@ void Endpoint::__set_tcp(const TcpEndpoint& val) {
   this->tcp = val;
 }
 
-void Endpoint::__set_thriftHttp(const ThriftHttpEndpoint& val) {
-  this->thriftHttp = val;
+void Endpoint::__set_httpThrift(const HttpThriftEndpoint& val) {
+  this->httpThrift = val;
 }
 
-void Endpoint::__set_restHttp(const RestHttpEndpoint& val) {
-  this->restHttp = val;
+void Endpoint::__set_httpRest(const HttpRestEndpoint& val) {
+  this->httpRest = val;
 }
 
 uint32_t Endpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -342,16 +342,16 @@ uint32_t Endpoint::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->thriftHttp.read(iprot);
-          this->__isset.thriftHttp = true;
+          xfer += this->httpThrift.read(iprot);
+          this->__isset.httpThrift = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->restHttp.read(iprot);
-          this->__isset.restHttp = true;
+          xfer += this->httpRest.read(iprot);
+          this->__isset.httpRest = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -377,12 +377,12 @@ uint32_t Endpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += this->tcp.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("thriftHttp", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->thriftHttp.write(oprot);
+  xfer += oprot->writeFieldBegin("httpThrift", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->httpThrift.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("restHttp", ::apache::thrift::protocol::T_STRUCT, 3);
-  xfer += this->restHttp.write(oprot);
+  xfer += oprot->writeFieldBegin("httpRest", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->httpRest.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -393,21 +393,21 @@ uint32_t Endpoint::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(Endpoint &a, Endpoint &b) {
   using ::std::swap;
   swap(a.tcp, b.tcp);
-  swap(a.thriftHttp, b.thriftHttp);
-  swap(a.restHttp, b.restHttp);
+  swap(a.httpThrift, b.httpThrift);
+  swap(a.httpRest, b.httpRest);
   swap(a.__isset, b.__isset);
 }
 
 Endpoint::Endpoint(const Endpoint& other6) {
   tcp = other6.tcp;
-  thriftHttp = other6.thriftHttp;
-  restHttp = other6.restHttp;
+  httpThrift = other6.httpThrift;
+  httpRest = other6.httpRest;
   __isset = other6.__isset;
 }
 Endpoint& Endpoint::operator=(const Endpoint& other7) {
   tcp = other7.tcp;
-  thriftHttp = other7.thriftHttp;
-  restHttp = other7.restHttp;
+  httpThrift = other7.httpThrift;
+  httpRest = other7.httpRest;
   __isset = other7.__isset;
   return *this;
 }
@@ -415,8 +415,8 @@ void Endpoint::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Endpoint(";
   out << "tcp=" << to_string(tcp);
-  out << ", " << "thriftHttp=" << to_string(thriftHttp);
-  out << ", " << "restHttp=" << to_string(restHttp);
+  out << ", " << "httpThrift=" << to_string(httpThrift);
+  out << ", " << "httpRest=" << to_string(httpRest);
   out << ")";
 }
 

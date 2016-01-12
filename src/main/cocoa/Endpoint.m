@@ -236,7 +236,7 @@
 
 @end
 
-@implementation BananaEndpoint_ThriftHttpEndpoint
+@implementation BananaEndpoint_HttpThriftEndpoint
 
 - (id) init
 {
@@ -289,10 +289,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_ThriftHttpEndpoint class]]) {
+  if (![anObject isKindOfClass:[BananaEndpoint_HttpThriftEndpoint class]]) {
     return NO;
   }
-  BananaEndpoint_ThriftHttpEndpoint *other = (BananaEndpoint_ThriftHttpEndpoint *)anObject;
+  BananaEndpoint_HttpThriftEndpoint *other = (BananaEndpoint_HttpThriftEndpoint *)anObject;
   if ((__url_isset != other->__url_isset) ||
       (__url_isset && ((__url || other->__url) && ![__url isEqual:other->__url]))) {
     return NO;
@@ -360,7 +360,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"ThriftHttpEndpoint"];
+  [outProtocol writeStructBeginWithName: @"HttpThriftEndpoint"];
   if (__url_isset) {
     if (__url != nil) {
       [outProtocol writeFieldBeginWithName: @"url" type: TType_STRING fieldID: 1];
@@ -381,7 +381,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_ThriftHttpEndpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HttpThriftEndpoint("];
   [ms appendString: @"url:"];
   [ms appendFormat: @"\"%@\"", __url];
   [ms appendString: @")"];
@@ -390,7 +390,7 @@
 
 @end
 
-@implementation BananaEndpoint_RestHttpEndpoint
+@implementation BananaEndpoint_HttpRestEndpoint
 
 - (id) init
 {
@@ -443,10 +443,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_RestHttpEndpoint class]]) {
+  if (![anObject isKindOfClass:[BananaEndpoint_HttpRestEndpoint class]]) {
     return NO;
   }
-  BananaEndpoint_RestHttpEndpoint *other = (BananaEndpoint_RestHttpEndpoint *)anObject;
+  BananaEndpoint_HttpRestEndpoint *other = (BananaEndpoint_HttpRestEndpoint *)anObject;
   if ((__url_isset != other->__url_isset) ||
       (__url_isset && ((__url || other->__url) && ![__url isEqual:other->__url]))) {
     return NO;
@@ -514,7 +514,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"RestHttpEndpoint"];
+  [outProtocol writeStructBeginWithName: @"HttpRestEndpoint"];
   if (__url_isset) {
     if (__url != nil) {
       [outProtocol writeFieldBeginWithName: @"url" type: TType_STRING fieldID: 1];
@@ -535,7 +535,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_RestHttpEndpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HttpRestEndpoint("];
   [ms appendString: @"url:"];
   [ms appendFormat: @"\"%@\"", __url];
   [ms appendString: @")"];
@@ -554,15 +554,15 @@
   return self;
 }
 
-- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp thriftHttp: (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp restHttp: (BananaEndpoint_RestHttpEndpoint *) restHttp
+- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp httpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest
 {
   self = [super init];
   __tcp = [tcp retain_stub];
   __tcp_isset = YES;
-  __thriftHttp = [thriftHttp retain_stub];
-  __thriftHttp_isset = YES;
-  __restHttp = [restHttp retain_stub];
-  __restHttp_isset = YES;
+  __httpThrift = [httpThrift retain_stub];
+  __httpThrift_isset = YES;
+  __httpRest = [httpRest retain_stub];
+  __httpRest_isset = YES;
   return self;
 }
 
@@ -574,15 +574,15 @@
     __tcp = [[decoder decodeObjectForKey: @"tcp"] retain_stub];
     __tcp_isset = YES;
   }
-  if ([decoder containsValueForKey: @"thriftHttp"])
+  if ([decoder containsValueForKey: @"httpThrift"])
   {
-    __thriftHttp = [[decoder decodeObjectForKey: @"thriftHttp"] retain_stub];
-    __thriftHttp_isset = YES;
+    __httpThrift = [[decoder decodeObjectForKey: @"httpThrift"] retain_stub];
+    __httpThrift_isset = YES;
   }
-  if ([decoder containsValueForKey: @"restHttp"])
+  if ([decoder containsValueForKey: @"httpRest"])
   {
-    __restHttp = [[decoder decodeObjectForKey: @"restHttp"] retain_stub];
-    __restHttp_isset = YES;
+    __httpRest = [[decoder decodeObjectForKey: @"httpRest"] retain_stub];
+    __httpRest_isset = YES;
   }
   return self;
 }
@@ -593,13 +593,13 @@
   {
     [encoder encodeObject: __tcp forKey: @"tcp"];
   }
-  if (__thriftHttp_isset)
+  if (__httpThrift_isset)
   {
-    [encoder encodeObject: __thriftHttp forKey: @"thriftHttp"];
+    [encoder encodeObject: __httpThrift forKey: @"httpThrift"];
   }
-  if (__restHttp_isset)
+  if (__httpRest_isset)
   {
-    [encoder encodeObject: __restHttp forKey: @"restHttp"];
+    [encoder encodeObject: __httpRest forKey: @"httpRest"];
   }
 }
 
@@ -611,15 +611,15 @@
   {
     hash = (hash * 31) ^ [__tcp hash];
   }
-  hash = (hash * 31) ^ __thriftHttp_isset ? 2654435761 : 0;
-  if (__thriftHttp_isset)
+  hash = (hash * 31) ^ __httpThrift_isset ? 2654435761 : 0;
+  if (__httpThrift_isset)
   {
-    hash = (hash * 31) ^ [__thriftHttp hash];
+    hash = (hash * 31) ^ [__httpThrift hash];
   }
-  hash = (hash * 31) ^ __restHttp_isset ? 2654435761 : 0;
-  if (__restHttp_isset)
+  hash = (hash * 31) ^ __httpRest_isset ? 2654435761 : 0;
+  if (__httpRest_isset)
   {
-    hash = (hash * 31) ^ [__restHttp hash];
+    hash = (hash * 31) ^ [__httpRest hash];
   }
   return hash;
 }
@@ -637,12 +637,12 @@
       (__tcp_isset && ((__tcp || other->__tcp) && ![__tcp isEqual:other->__tcp]))) {
     return NO;
   }
-  if ((__thriftHttp_isset != other->__thriftHttp_isset) ||
-      (__thriftHttp_isset && ((__thriftHttp || other->__thriftHttp) && ![__thriftHttp isEqual:other->__thriftHttp]))) {
+  if ((__httpThrift_isset != other->__httpThrift_isset) ||
+      (__httpThrift_isset && ((__httpThrift || other->__httpThrift) && ![__httpThrift isEqual:other->__httpThrift]))) {
     return NO;
   }
-  if ((__restHttp_isset != other->__restHttp_isset) ||
-      (__restHttp_isset && ((__restHttp || other->__restHttp) && ![__restHttp isEqual:other->__restHttp]))) {
+  if ((__httpRest_isset != other->__httpRest_isset) ||
+      (__httpRest_isset && ((__httpRest || other->__httpRest) && ![__httpRest isEqual:other->__httpRest]))) {
     return NO;
   }
   return YES;
@@ -651,8 +651,8 @@
 - (void) dealloc
 {
   [__tcp release_stub];
-  [__thriftHttp release_stub];
-  [__restHttp release_stub];
+  [__httpThrift release_stub];
+  [__httpRest release_stub];
   [super dealloc_stub];
 }
 
@@ -677,46 +677,46 @@
   __tcp_isset = NO;
 }
 
-- (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp {
-  return [[__thriftHttp retain_stub] autorelease_stub];
+- (BananaEndpoint_HttpThriftEndpoint *) httpThrift {
+  return [[__httpThrift retain_stub] autorelease_stub];
 }
 
-- (void) setThriftHttp: (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp {
-  [thriftHttp retain_stub];
-  [__thriftHttp release_stub];
-  __thriftHttp = thriftHttp;
-  __thriftHttp_isset = YES;
+- (void) setHttpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift {
+  [httpThrift retain_stub];
+  [__httpThrift release_stub];
+  __httpThrift = httpThrift;
+  __httpThrift_isset = YES;
 }
 
-- (BOOL) thriftHttpIsSet {
-  return __thriftHttp_isset;
+- (BOOL) httpThriftIsSet {
+  return __httpThrift_isset;
 }
 
-- (void) unsetThriftHttp {
-  [__thriftHttp release_stub];
-  __thriftHttp = nil;
-  __thriftHttp_isset = NO;
+- (void) unsetHttpThrift {
+  [__httpThrift release_stub];
+  __httpThrift = nil;
+  __httpThrift_isset = NO;
 }
 
-- (BananaEndpoint_RestHttpEndpoint *) restHttp {
-  return [[__restHttp retain_stub] autorelease_stub];
+- (BananaEndpoint_HttpRestEndpoint *) httpRest {
+  return [[__httpRest retain_stub] autorelease_stub];
 }
 
-- (void) setRestHttp: (BananaEndpoint_RestHttpEndpoint *) restHttp {
-  [restHttp retain_stub];
-  [__restHttp release_stub];
-  __restHttp = restHttp;
-  __restHttp_isset = YES;
+- (void) setHttpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest {
+  [httpRest retain_stub];
+  [__httpRest release_stub];
+  __httpRest = httpRest;
+  __httpRest_isset = YES;
 }
 
-- (BOOL) restHttpIsSet {
-  return __restHttp_isset;
+- (BOOL) httpRestIsSet {
+  return __httpRest_isset;
 }
 
-- (void) unsetRestHttp {
-  [__restHttp release_stub];
-  __restHttp = nil;
-  __restHttp_isset = NO;
+- (void) unsetHttpRest {
+  [__httpRest release_stub];
+  __httpRest = nil;
+  __httpRest_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -746,9 +746,9 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_ThriftHttpEndpoint *fieldValue = [[BananaEndpoint_ThriftHttpEndpoint alloc] init];
+          BananaEndpoint_HttpThriftEndpoint *fieldValue = [[BananaEndpoint_HttpThriftEndpoint alloc] init];
           [fieldValue read: inProtocol];
-          [self setThriftHttp: fieldValue];
+          [self setHttpThrift: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -756,9 +756,9 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_RestHttpEndpoint *fieldValue = [[BananaEndpoint_RestHttpEndpoint alloc] init];
+          BananaEndpoint_HttpRestEndpoint *fieldValue = [[BananaEndpoint_HttpRestEndpoint alloc] init];
           [fieldValue read: inProtocol];
-          [self setRestHttp: fieldValue];
+          [self setHttpRest: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -782,17 +782,17 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__thriftHttp_isset) {
-    if (__thriftHttp != nil) {
-      [outProtocol writeFieldBeginWithName: @"thriftHttp" type: TType_STRUCT fieldID: 2];
-      [__thriftHttp write: outProtocol];
+  if (__httpThrift_isset) {
+    if (__httpThrift != nil) {
+      [outProtocol writeFieldBeginWithName: @"httpThrift" type: TType_STRUCT fieldID: 2];
+      [__httpThrift write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__restHttp_isset) {
-    if (__restHttp != nil) {
-      [outProtocol writeFieldBeginWithName: @"restHttp" type: TType_STRUCT fieldID: 3];
-      [__restHttp write: outProtocol];
+  if (__httpRest_isset) {
+    if (__httpRest != nil) {
+      [outProtocol writeFieldBeginWithName: @"httpRest" type: TType_STRUCT fieldID: 3];
+      [__httpRest write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -808,10 +808,10 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_Endpoint("];
   [ms appendString: @"tcp:"];
   [ms appendFormat: @"%@", __tcp];
-  [ms appendString: @",thriftHttp:"];
-  [ms appendFormat: @"%@", __thriftHttp];
-  [ms appendString: @",restHttp:"];
-  [ms appendFormat: @"%@", __restHttp];
+  [ms appendString: @",httpThrift:"];
+  [ms appendFormat: @"%@", __httpThrift];
+  [ms appendString: @",httpRest:"];
+  [ms appendFormat: @"%@", __httpRest];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

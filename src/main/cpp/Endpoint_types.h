@@ -28,9 +28,9 @@ typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException Ope
 
 class TcpEndpoint;
 
-class ThriftHttpEndpoint;
+class HttpThriftEndpoint;
 
-class RestHttpEndpoint;
+class HttpRestEndpoint;
 
 class Endpoint;
 
@@ -84,30 +84,30 @@ inline std::ostream& operator<<(std::ostream& out, const TcpEndpoint& obj)
 }
 
 
-class ThriftHttpEndpoint {
+class HttpThriftEndpoint {
  public:
 
-  ThriftHttpEndpoint(const ThriftHttpEndpoint&);
-  ThriftHttpEndpoint& operator=(const ThriftHttpEndpoint&);
-  ThriftHttpEndpoint() : url() {
+  HttpThriftEndpoint(const HttpThriftEndpoint&);
+  HttpThriftEndpoint& operator=(const HttpThriftEndpoint&);
+  HttpThriftEndpoint() : url() {
   }
 
-  virtual ~ThriftHttpEndpoint() throw();
+  virtual ~HttpThriftEndpoint() throw();
   std::string url;
 
   void __set_url(const std::string& val);
 
-  bool operator == (const ThriftHttpEndpoint & rhs) const
+  bool operator == (const HttpThriftEndpoint & rhs) const
   {
     if (!(url == rhs.url))
       return false;
     return true;
   }
-  bool operator != (const ThriftHttpEndpoint &rhs) const {
+  bool operator != (const HttpThriftEndpoint &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const ThriftHttpEndpoint & ) const;
+  bool operator < (const HttpThriftEndpoint & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -115,39 +115,39 @@ class ThriftHttpEndpoint {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(ThriftHttpEndpoint &a, ThriftHttpEndpoint &b);
+void swap(HttpThriftEndpoint &a, HttpThriftEndpoint &b);
 
-inline std::ostream& operator<<(std::ostream& out, const ThriftHttpEndpoint& obj)
+inline std::ostream& operator<<(std::ostream& out, const HttpThriftEndpoint& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 
-class RestHttpEndpoint {
+class HttpRestEndpoint {
  public:
 
-  RestHttpEndpoint(const RestHttpEndpoint&);
-  RestHttpEndpoint& operator=(const RestHttpEndpoint&);
-  RestHttpEndpoint() : url() {
+  HttpRestEndpoint(const HttpRestEndpoint&);
+  HttpRestEndpoint& operator=(const HttpRestEndpoint&);
+  HttpRestEndpoint() : url() {
   }
 
-  virtual ~RestHttpEndpoint() throw();
+  virtual ~HttpRestEndpoint() throw();
   std::string url;
 
   void __set_url(const std::string& val);
 
-  bool operator == (const RestHttpEndpoint & rhs) const
+  bool operator == (const HttpRestEndpoint & rhs) const
   {
     if (!(url == rhs.url))
       return false;
     return true;
   }
-  bool operator != (const RestHttpEndpoint &rhs) const {
+  bool operator != (const HttpRestEndpoint &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const RestHttpEndpoint & ) const;
+  bool operator < (const HttpRestEndpoint & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -155,19 +155,19 @@ class RestHttpEndpoint {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(RestHttpEndpoint &a, RestHttpEndpoint &b);
+void swap(HttpRestEndpoint &a, HttpRestEndpoint &b);
 
-inline std::ostream& operator<<(std::ostream& out, const RestHttpEndpoint& obj)
+inline std::ostream& operator<<(std::ostream& out, const HttpRestEndpoint& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 typedef struct _Endpoint__isset {
-  _Endpoint__isset() : tcp(false), thriftHttp(false), restHttp(false) {}
+  _Endpoint__isset() : tcp(false), httpThrift(false), httpRest(false) {}
   bool tcp :1;
-  bool thriftHttp :1;
-  bool restHttp :1;
+  bool httpThrift :1;
+  bool httpRest :1;
 } _Endpoint__isset;
 
 class Endpoint {
@@ -180,24 +180,24 @@ class Endpoint {
 
   virtual ~Endpoint() throw();
   TcpEndpoint tcp;
-  ThriftHttpEndpoint thriftHttp;
-  RestHttpEndpoint restHttp;
+  HttpThriftEndpoint httpThrift;
+  HttpRestEndpoint httpRest;
 
   _Endpoint__isset __isset;
 
   void __set_tcp(const TcpEndpoint& val);
 
-  void __set_thriftHttp(const ThriftHttpEndpoint& val);
+  void __set_httpThrift(const HttpThriftEndpoint& val);
 
-  void __set_restHttp(const RestHttpEndpoint& val);
+  void __set_httpRest(const HttpRestEndpoint& val);
 
   bool operator == (const Endpoint & rhs) const
   {
     if (!(tcp == rhs.tcp))
       return false;
-    if (!(thriftHttp == rhs.thriftHttp))
+    if (!(httpThrift == rhs.httpThrift))
       return false;
-    if (!(restHttp == rhs.restHttp))
+    if (!(httpRest == rhs.httpRest))
       return false;
     return true;
   }
