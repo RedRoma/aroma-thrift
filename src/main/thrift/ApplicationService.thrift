@@ -44,6 +44,8 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+//==========================================================
+// QUERY OPERATIONS
 
 //==========================================================
 // Operations performed by Applications

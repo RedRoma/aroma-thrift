@@ -2006,7 +2006,7 @@
 
 @end
 
-static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
+static NSString * BananaAuthentication_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = @"SDFJO3F2VDSKJFH1390VSJKNCL3CM POADMC;3 K940IFGOB JVKLSRN2389";
 
 @implementation BananaAuthentication_AuthenticationConstants
 + (void) initialize {

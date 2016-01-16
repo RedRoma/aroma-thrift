@@ -11,7 +11,7 @@ namespace aroma { namespace banana { namespace thrift { namespace authentication
 const AuthenticationConstants g_Authentication_constants;
 
 AuthenticationConstants::AuthenticationConstants() {
-  OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
+  OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "SDFJO3F2VDSKJFH1390VSJKNCL3CM POADMC;3 K940IFGOB JVKLSRN2389";
 
 }
 

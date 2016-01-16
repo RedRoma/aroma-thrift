@@ -382,7 +382,7 @@ struct GetDashboardResponse
 struct GetMessagesRequest
 {
     1: UserToken token;
-    /** Allows you to get Messages from a particular application. */
+    /** Allows you to get Messages by a particular application. */
     2: optional string applicationId;
     /** Suggests that the Service limits the results of the query.*/
     3: optional int limit = 0;

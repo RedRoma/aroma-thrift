@@ -632,4 +632,4 @@ AuthenticationToken.prototype.write = function(output) {
   return;
 };
 
-ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk';
+ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'SDFJO3F2VDSKJFH1390VSJKNCL3CM POADMC;3 K940IFGOB JVKLSRN2389';
