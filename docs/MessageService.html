@@ -204,12 +204,17 @@ code { line-height: 20px; }
 <a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
 <a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
-<a href="#Typedef_BananaChannel">BananaChannel</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
+<a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
+<a href="#Struct_DismissMessageResponse">DismissMessageResponse</a><br/>
 <a href="#Typedef_Event">Event</a><br/>
+<a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a><br/>
+<a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a><br/>
+<a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
+<a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
@@ -249,9 +254,6 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Event">Typedef: Event</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Events.html#Struct_Event">Events.Event</a></code></p>
@@ -300,6 +302,39 @@ code { line-height: 20px; }
 <br/></div><div class="definition"><h3 id="Struct_DeleteMessageResponse">Struct: DeleteMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Dismissing multiple Messages.
+</td><td>optional</td><td><code>{  }</code></td></tr>
+</table><br/>Dismisses a Message. Dismissing is analogous to archiving
+an email; it will no longer be visible to you, but will
+still be visible to other subscribers.
+<br/></div><div class="definition"><h3 id="Struct_DismissMessageResponse">Struct: DismissMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>Allows you to get Messages by a particular application.
+</td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
+</td><td>optional</td><td><code>0</code></td></tr>
+</table><br/>Query to get a User's messages, either across all Services,
+or by a specific Application.
+<br/></div><div class="definition"><h3 id="Struct_GetMessagesResponse">Struct: GetMessagesResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>fullBody</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_MessageService">Service: MessageService</h3>
 The Notification  Service sends events and Notifications to the proper channels.

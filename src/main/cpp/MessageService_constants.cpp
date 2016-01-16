@@ -14,16 +14,16 @@ MessageServiceConstants::MessageServiceConstants() {
   SERVICE_PORT = 7011;
 
   PRODUCTION_ENDPOINT.hostname = "message-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp10;
-  tmp10 = 7011;
+   ::aroma::banana::thrift::endpoint::int tmp34;
+  tmp34 = 7011;
 
-  PRODUCTION_ENDPOINT.port = tmp10;
+  PRODUCTION_ENDPOINT.port = tmp34;
 
   BETA_ENDPOINT.hostname = "message-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp11;
-  tmp11 = 7011;
+   ::aroma::banana::thrift::endpoint::int tmp35;
+  tmp35 = 7011;
 
-  BETA_ENDPOINT.port = tmp11;
+  BETA_ENDPOINT.port = tmp35;
 
 }
 

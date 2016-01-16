@@ -23,6 +23,8 @@ include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
 include "Exceptions.thrift"
+include "AuthenticationService.thrift"
+include "MessageService.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -63,6 +65,17 @@ typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
+//Request Typedefs
+typedef MessageService.DeleteMessageRequest DeleteMessageRequest
+typedef MessageService.DeleteMessageResponse DeleteMessageResponse
+typedef MessageService.DismissMessageRequest DismissMessageRequest
+typedef MessageService.DismissMessageResponse DismissMessageResponse
+typedef MessageService.GetMessagesRequest GetMessagesRequest
+typedef MessageService.GetMessagesResponse GetMessagesResponse
+typedef MessageService.GetFullMessageRequest GetFullMessageRequest
+typedef MessageService.GetFullMessageResponse GetFullMessageResponse
+
+
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.6;
 
@@ -101,45 +114,6 @@ const int MAX_MESSAGE_LENGTH = 5000;
 //==========================================================
 // Actions
 //==========================================================
-
-
-/**
- * Deletes a Message.
- * 
- * #owner
- */
-struct DeleteMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
-    /** Use for Batch Deletes. */
-    4: optional list<string> messageIds = [];
-}
-
-struct DeleteMessageResponse
-{
-    1: optional int messagesDeleted = 0;
-}
-
-/**
- * Dismisses a Message. Dismissing is analogous to archiving
- * an email; it will no longer be visible to you, but will
- * still be visible to other subscribers.
- */
-struct DismissMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
-    /** Use for Dismissing multiple Messages. */
-    4: optional list<string> messageIds = [];
-}
-
-struct DismissMessageResponse
-{
-    1: optional int messagesDismissed = 0;
-}
 
  
 /**
@@ -375,35 +349,6 @@ struct GetDashboardResponse
     7: int numberOfHighUrgencyMessages = 0;
 }
 
-/**
- * Query to get a User's messages, either across all Services,
- * or by a specific Application.
- */
-struct GetMessagesRequest
-{
-    1: UserToken token;
-    /** Allows you to get Messages by a particular application. */
-    2: optional string applicationId;
-    /** Suggests that the Service limits the results of the query.*/
-    3: optional int limit = 0;
-}
-
-struct GetMessagesResponse
-{
-    1: list<Banana.Message> messages = [];
-    2: optional int totalMessagesMatching = 0;
-}
-
-struct GetFullMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-}
-
-struct GetFullMessageResponse
-{
-    1: string fullBody;
-}
 
 struct GetMyApplicationsRequest
 {

@@ -39,8 +39,6 @@ typedef Banana_Application * MessageService_Application;
 
 typedef int MessageService_Urgency;
 
-typedef BananaChannels_BananaChannel * MessageService_BananaChannel;
-
 typedef BananaEvents_Event * MessageService_Event;
 
 typedef BananaException_AccountAlreadyExistsException * MessageService_AccountAlreadyExistsException;
@@ -139,6 +137,225 @@ typedef BananaException_UnauthorizedException * MessageService_UnauthorizedExcep
 - (void) setMessagesDeleted: (MessageService_int) messagesDeleted;
 #endif
 - (BOOL) messagesDeletedIsSet;
+
+@end
+
+@interface MessageService_DismissMessageRequest : NSObject <TBase, NSCoding> {
+  MessageService_UserToken __token;
+  NSString * __messageId;
+  NSString * __applicationId;
+  NSMutableArray * __messageIds;
+
+  BOOL __token_isset;
+  BOOL __messageId_isset;
+  BOOL __applicationId_isset;
+  BOOL __messageIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) MessageService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
+#endif
+
+- (id) init;
+- (id) initWithToken: (MessageService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (MessageService_UserToken) token;
+- (void) setToken: (MessageService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messageIds;
+- (void) setMessageIds: (NSMutableArray *) messageIds;
+#endif
+- (BOOL) messageIdsIsSet;
+
+@end
+
+@interface MessageService_DismissMessageResponse : NSObject <TBase, NSCoding> {
+  MessageService_int __messagesDismissed;
+
+  BOOL __messagesDismissed_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) MessageService_int messagesDismissed;
+#endif
+
+- (id) init;
+- (id) initWithMessagesDismissed: (MessageService_int) messagesDismissed;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (MessageService_int) messagesDismissed;
+- (void) setMessagesDismissed: (MessageService_int) messagesDismissed;
+#endif
+- (BOOL) messagesDismissedIsSet;
+
+@end
+
+@interface MessageService_GetMessagesRequest : NSObject <TBase, NSCoding> {
+  MessageService_UserToken __token;
+  NSString * __applicationId;
+  MessageService_int __limit;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __limit_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) MessageService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, getter=limit, setter=setLimit:) MessageService_int limit;
+#endif
+
+- (id) init;
+- (id) initWithToken: (MessageService_UserToken) token applicationId: (NSString *) applicationId limit: (MessageService_int) limit;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (MessageService_UserToken) token;
+- (void) setToken: (MessageService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (MessageService_int) limit;
+- (void) setLimit: (MessageService_int) limit;
+#endif
+- (BOOL) limitIsSet;
+
+@end
+
+@interface MessageService_GetMessagesResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __messages;
+  MessageService_int __totalMessagesMatching;
+
+  BOOL __messages_isset;
+  BOOL __totalMessagesMatching_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messages, setter=setMessages:) NSMutableArray * messages;
+@property (nonatomic, getter=totalMessagesMatching, setter=setTotalMessagesMatching:) MessageService_int totalMessagesMatching;
+#endif
+
+- (id) init;
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (MessageService_int) totalMessagesMatching;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messages;
+- (void) setMessages: (NSMutableArray *) messages;
+#endif
+- (BOOL) messagesIsSet;
+
+#if !__has_feature(objc_arc)
+- (MessageService_int) totalMessagesMatching;
+- (void) setTotalMessagesMatching: (MessageService_int) totalMessagesMatching;
+#endif
+- (BOOL) totalMessagesMatchingIsSet;
+
+@end
+
+@interface MessageService_GetFullMessageRequest : NSObject <TBase, NSCoding> {
+  MessageService_UserToken __token;
+  NSString * __messageId;
+
+  BOOL __token_isset;
+  BOOL __messageId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) MessageService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (MessageService_UserToken) token messageId: (NSString *) messageId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (MessageService_UserToken) token;
+- (void) setToken: (MessageService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+@end
+
+@interface MessageService_GetFullMessageResponse : NSObject <TBase, NSCoding> {
+  NSString * __fullBody;
+
+  BOOL __fullBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=fullBody, setter=setFullBody:) NSString * fullBody;
+#endif
+
+- (id) init;
+- (id) initWithFullBody: (NSString *) fullBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) fullBody;
+- (void) setFullBody: (NSString *) fullBody;
+#endif
+- (BOOL) fullBodyIsSet;
 
 @end
 

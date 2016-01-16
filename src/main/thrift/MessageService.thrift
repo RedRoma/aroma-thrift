@@ -30,7 +30,6 @@ typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
 typedef Banana.Application Application
 typedef Banana.Urgency Urgency
-typedef Channels.BananaChannel BananaChannel
 typedef Events.Event Event
 
 //Exception Typedefs
@@ -73,6 +72,58 @@ struct DeleteMessageRequest
 struct DeleteMessageResponse
 {
     1: optional int messagesDeleted = 0;
+}
+
+
+/**
+ * Dismisses a Message. Dismissing is analogous to archiving
+ * an email; it will no longer be visible to you, but will
+ * still be visible to other subscribers.
+ */
+struct DismissMessageRequest
+{
+    1: UserToken token;
+    2: string messageId;
+    3: string applicationId;
+    /** Use for Dismissing multiple Messages. */
+    4: optional list<string> messageIds = [];
+}
+
+struct DismissMessageResponse
+{
+    1: optional int messagesDismissed = 0;
+}
+
+
+
+/**
+ * Query to get a User's messages, either across all Services,
+ * or by a specific Application.
+ */
+struct GetMessagesRequest
+{
+    1: UserToken token;
+    /** Allows you to get Messages by a particular application. */
+    2: optional string applicationId;
+    /** Suggests that the Service limits the results of the query.*/
+    3: optional int limit = 0;
+}
+
+struct GetMessagesResponse
+{
+    1: list<Banana.Message> messages = [];
+    2: optional int totalMessagesMatching = 0;
+}
+
+struct GetFullMessageRequest
+{
+    1: UserToken token;
+    2: string messageId;
+}
+
+struct GetFullMessageResponse
+{
+    1: string fullBody;
 }
 
 //==========================================================
