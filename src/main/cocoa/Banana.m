@@ -3007,10 +3007,8 @@
           int _i14;
           for (_i14 = 0; _i14 < _size13; ++_i14)
           {
-            Banana_User *_elem15 = [[Banana_User alloc] init];
-            [_elem15 read: inProtocol];
+            NSString * _elem15 = [inProtocol readString];
             [fieldValue addObject: _elem15];
-            [_elem15 release_stub];
           }
           [inProtocol readSetEnd];
           [self setSubscribers: fieldValue];
@@ -3102,12 +3100,12 @@
     if (__subscribers != nil) {
       [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_SET fieldID: 8];
       {
-        [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__subscribers count]];
+        [outProtocol writeSetBeginWithElementType: TType_STRING size: [__subscribers count]];
         NSEnumerator * _iter18 = [__subscribers objectEnumerator];
         id obj19;
         while ((obj19 = [_iter18 nextObject]))
         {
-          [obj19 write: outProtocol];
+          [outProtocol writeString: obj19];
         }
         [outProtocol writeSetEnd];
       }

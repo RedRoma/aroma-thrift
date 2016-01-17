@@ -1255,7 +1255,7 @@ void Application::__set_programmingLanguage(const ProgrammingLanguage::type val)
 __isset.programmingLanguage = true;
 }
 
-void Application::__set_subscribers(const std::set<User> & val) {
+void Application::__set_subscribers(const std::set<std::string> & val) {
   this->subscribers = val;
 __isset.subscribers = true;
 }
@@ -1370,8 +1370,8 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i40;
             for (_i40 = 0; _i40 < _size36; ++_i40)
             {
-              User _elem41;
-              xfer += _elem41.read(iprot);
+              std::string _elem41;
+              xfer += iprot->readString(_elem41);
               this->subscribers.insert(_elem41);
             }
             xfer += iprot->readSetEnd();
@@ -1455,11 +1455,11 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   if (this->__isset.subscribers) {
     xfer += oprot->writeFieldBegin("subscribers", ::apache::thrift::protocol::T_SET, 8);
     {
-      xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->subscribers.size()));
-      std::set<User> ::const_iterator _iter43;
+      xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->subscribers.size()));
+      std::set<std::string> ::const_iterator _iter43;
       for (_iter43 = this->subscribers.begin(); _iter43 != this->subscribers.end(); ++_iter43)
       {
-        xfer += (*_iter43).write(oprot);
+        xfer += oprot->writeString((*_iter43));
       }
       xfer += oprot->writeSetEnd();
     }

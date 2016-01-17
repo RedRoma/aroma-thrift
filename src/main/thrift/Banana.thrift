@@ -193,7 +193,7 @@ struct Application
      * Defines a list of people that are subscribed 
      * to events for an Application, and that are not owners.
      */
-    8: optional set<User> subscribers = [];
+    8: optional set<string> subscribers = [];
     9: string applicationDescription;
     10: string organizationId;
 }

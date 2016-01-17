@@ -585,7 +585,7 @@ class Application {
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::set<User>  subscribers;
+  std::set<std::string>  subscribers;
   std::string applicationDescription;
   std::string organizationId;
 
@@ -605,7 +605,7 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::set<User> & val);
+  void __set_subscribers(const std::set<std::string> & val);
 
   void __set_applicationDescription(const std::string& val);
 
