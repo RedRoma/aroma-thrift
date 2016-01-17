@@ -462,6 +462,191 @@ Message.prototype.write = function(output) {
   return;
 };
 
+Organization = function(args) {
+  this.organizationId = null;
+  this.organizationName = null;
+  this.website = null;
+  this.logo = null;
+  this.techStack = null;
+  this.owners = null;
+  this.organizationEmail = null;
+  this.stockMarketSymbol = null;
+  if (args) {
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
+    }
+    if (args.website !== undefined && args.website !== null) {
+      this.website = args.website;
+    }
+    if (args.logo !== undefined && args.logo !== null) {
+      this.logo = new Image(args.logo);
+    }
+    if (args.techStack !== undefined && args.techStack !== null) {
+      this.techStack = args.techStack;
+    }
+    if (args.owners !== undefined && args.owners !== null) {
+      this.owners = Thrift.copyList(args.owners, [null]);
+    }
+    if (args.organizationEmail !== undefined && args.organizationEmail !== null) {
+      this.organizationEmail = args.organizationEmail;
+    }
+    if (args.stockMarketSymbol !== undefined && args.stockMarketSymbol !== null) {
+      this.stockMarketSymbol = args.stockMarketSymbol;
+    }
+  }
+};
+Organization.prototype = {};
+Organization.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.website = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.logo = new Image();
+        this.logo.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.techStack = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.owners = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.owners.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationEmail = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.stockMarketSymbol = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Organization.prototype.write = function(output) {
+  output.writeStructBegin('Organization');
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 1);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 2);
+    output.writeString(this.organizationName);
+    output.writeFieldEnd();
+  }
+  if (this.website !== null && this.website !== undefined) {
+    output.writeFieldBegin('website', Thrift.Type.STRING, 3);
+    output.writeString(this.website);
+    output.writeFieldEnd();
+  }
+  if (this.logo !== null && this.logo !== undefined) {
+    output.writeFieldBegin('logo', Thrift.Type.STRUCT, 4);
+    this.logo.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.techStack !== null && this.techStack !== undefined) {
+    output.writeFieldBegin('techStack', Thrift.Type.STRING, 5);
+    output.writeString(this.techStack);
+    output.writeFieldEnd();
+  }
+  if (this.owners !== null && this.owners !== undefined) {
+    output.writeFieldBegin('owners', Thrift.Type.LIST, 6);
+    output.writeListBegin(Thrift.Type.STRING, this.owners.length);
+    for (var iter7 in this.owners)
+    {
+      if (this.owners.hasOwnProperty(iter7))
+      {
+        iter7 = this.owners[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.organizationEmail !== null && this.organizationEmail !== undefined) {
+    output.writeFieldBegin('organizationEmail', Thrift.Type.STRING, 7);
+    output.writeString(this.organizationEmail);
+    output.writeFieldEnd();
+  }
+  if (this.stockMarketSymbol !== null && this.stockMarketSymbol !== undefined) {
+    output.writeFieldBegin('stockMarketSymbol', Thrift.Type.STRING, 8);
+    output.writeString(this.stockMarketSymbol);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 User = function(args) {
   this.email = null;
   this.userId = null;
@@ -527,18 +712,18 @@ User.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.SET) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.roles = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readSetBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readSetBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = input.readI32().value;
-          this.roles.push(elem6);
+          var elem14 = null;
+          elem14 = input.readI32().value;
+          this.roles.push(elem14);
         }
         input.readSetEnd();
       } else {
@@ -589,12 +774,12 @@ User.prototype.write = function(output) {
   if (this.roles !== null && this.roles !== undefined) {
     output.writeFieldBegin('roles', Thrift.Type.SET, 4);
     output.writeSetBegin(Thrift.Type.I32, this.roles.length);
-    for (var iter7 in this.roles)
+    for (var iter15 in this.roles)
     {
-      if (this.roles.hasOwnProperty(iter7))
+      if (this.roles.hasOwnProperty(iter15))
       {
-        iter7 = this.roles[iter7];
-        output.writeI32(iter7);
+        iter15 = this.roles[iter15];
+        output.writeI32(iter15);
       }
     }
     output.writeSetEnd();
@@ -671,19 +856,19 @@ Application.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.SET) {
-        var _size8 = 0;
-        var _rtmp312;
+        var _size16 = 0;
+        var _rtmp320;
         this.owners = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readSetBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        var _etype19 = 0;
+        _rtmp320 = input.readSetBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
         {
-          var elem14 = null;
-          elem14 = new User();
-          elem14.read(input);
-          this.owners.push(elem14);
+          var elem22 = null;
+          elem22 = new User();
+          elem22.read(input);
+          this.owners.push(elem22);
         }
         input.readSetEnd();
       } else {
@@ -735,19 +920,19 @@ Application.prototype.read = function(input) {
       break;
       case 8:
       if (ftype == Thrift.Type.SET) {
-        var _size15 = 0;
-        var _rtmp319;
+        var _size23 = 0;
+        var _rtmp327;
         this.subscribers = [];
-        var _etype18 = 0;
-        _rtmp319 = input.readSetBegin();
-        _etype18 = _rtmp319.etype;
-        _size15 = _rtmp319.size;
-        for (var _i20 = 0; _i20 < _size15; ++_i20)
+        var _etype26 = 0;
+        _rtmp327 = input.readSetBegin();
+        _etype26 = _rtmp327.etype;
+        _size23 = _rtmp327.size;
+        for (var _i28 = 0; _i28 < _size23; ++_i28)
         {
-          var elem21 = null;
-          elem21 = new User();
-          elem21.read(input);
-          this.subscribers.push(elem21);
+          var elem29 = null;
+          elem29 = new User();
+          elem29.read(input);
+          this.subscribers.push(elem29);
         }
         input.readSetEnd();
       } else {
@@ -775,12 +960,12 @@ Application.prototype.write = function(output) {
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.SET, 1);
     output.writeSetBegin(Thrift.Type.STRUCT, this.owners.length);
-    for (var iter22 in this.owners)
+    for (var iter30 in this.owners)
     {
-      if (this.owners.hasOwnProperty(iter22))
+      if (this.owners.hasOwnProperty(iter30))
       {
-        iter22 = this.owners[iter22];
-        iter22.write(output);
+        iter30 = this.owners[iter30];
+        iter30.write(output);
       }
     }
     output.writeSetEnd();
@@ -819,12 +1004,12 @@ Application.prototype.write = function(output) {
   if (this.subscribers !== null && this.subscribers !== undefined) {
     output.writeFieldBegin('subscribers', Thrift.Type.SET, 8);
     output.writeSetBegin(Thrift.Type.STRUCT, this.subscribers.length);
-    for (var iter23 in this.subscribers)
+    for (var iter31 in this.subscribers)
     {
-      if (this.subscribers.hasOwnProperty(iter23))
+      if (this.subscribers.hasOwnProperty(iter31))
       {
-        iter23 = this.subscribers[iter23];
-        iter23.write(output);
+        iter31 = this.subscribers[iter31];
+        iter31.write(output);
       }
     }
     output.writeSetEnd();

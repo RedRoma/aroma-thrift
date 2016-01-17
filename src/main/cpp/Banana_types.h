@@ -98,6 +98,8 @@ class Image;
 
 class Message;
 
+class Organization;
+
 class User;
 
 class Application;
@@ -357,6 +359,106 @@ class Message {
 void swap(Message &a, Message &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Message& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Organization__isset {
+  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false) {}
+  bool organizationId :1;
+  bool organizationName :1;
+  bool website :1;
+  bool logo :1;
+  bool techStack :1;
+  bool owners :1;
+  bool organizationEmail :1;
+  bool stockMarketSymbol :1;
+} _Organization__isset;
+
+class Organization {
+ public:
+
+  Organization(const Organization&);
+  Organization& operator=(const Organization&);
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol() {
+  }
+
+  virtual ~Organization() throw();
+  std::string organizationId;
+  std::string organizationName;
+  std::string website;
+  Image logo;
+  std::string techStack;
+  std::vector<std::string>  owners;
+  std::string organizationEmail;
+  std::string stockMarketSymbol;
+
+  _Organization__isset __isset;
+
+  void __set_organizationId(const std::string& val);
+
+  void __set_organizationName(const std::string& val);
+
+  void __set_website(const std::string& val);
+
+  void __set_logo(const Image& val);
+
+  void __set_techStack(const std::string& val);
+
+  void __set_owners(const std::vector<std::string> & val);
+
+  void __set_organizationEmail(const std::string& val);
+
+  void __set_stockMarketSymbol(const std::string& val);
+
+  bool operator == (const Organization & rhs) const
+  {
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (!(organizationName == rhs.organizationName))
+      return false;
+    if (__isset.website != rhs.__isset.website)
+      return false;
+    else if (__isset.website && !(website == rhs.website))
+      return false;
+    if (__isset.logo != rhs.__isset.logo)
+      return false;
+    else if (__isset.logo && !(logo == rhs.logo))
+      return false;
+    if (__isset.techStack != rhs.__isset.techStack)
+      return false;
+    else if (__isset.techStack && !(techStack == rhs.techStack))
+      return false;
+    if (__isset.owners != rhs.__isset.owners)
+      return false;
+    else if (__isset.owners && !(owners == rhs.owners))
+      return false;
+    if (__isset.organizationEmail != rhs.__isset.organizationEmail)
+      return false;
+    else if (__isset.organizationEmail && !(organizationEmail == rhs.organizationEmail))
+      return false;
+    if (__isset.stockMarketSymbol != rhs.__isset.stockMarketSymbol)
+      return false;
+    else if (__isset.stockMarketSymbol && !(stockMarketSymbol == rhs.stockMarketSymbol))
+      return false;
+    return true;
+  }
+  bool operator != (const Organization &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Organization & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Organization &a, Organization &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Organization& obj)
 {
   obj.printTo(out);
   return out;

@@ -201,6 +201,7 @@ code { line-height: 20px; }
 <a href="#Enum_ImageType">ImageType</a><br/>
 <a href="#Struct_LengthOfTime">LengthOfTime</a><br/>
 <a href="#Struct_Message">Message</a><br/>
+<a href="#Struct_Organization">Organization</a><br/>
 <a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a><br/>
 <a href="#Enum_Role">Role</a><br/>
 <a href="#Struct_ServiceAnnouncement">ServiceAnnouncement</a><br/>
@@ -346,7 +347,18 @@ body can then be loaded in a separate request.
 <tr><td>8</td><td>macAddress</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>9</td><td>isTruncated</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
 <tr><td>10</td><td>title</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_User">Struct: User</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_Organization">Struct: Organization</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>organizationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>organizationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>website</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>logo</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>5</td><td>techStack</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>owners</td><td><code>list&lt;<code>string</code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>7</td><td>organizationEmail</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>8</td><td>stockMarketSymbol</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/>An Organization can represent a Company or group of People.
+<br/></div><div class="definition"><h3 id="Struct_User">Struct: User</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>email</td><td><code>string</code></td><td>A person's email address is also considered their identifying trait.
 </td><td>default</td><td></td></tr>

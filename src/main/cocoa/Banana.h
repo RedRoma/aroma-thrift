@@ -291,6 +291,95 @@ typedef int64_t Banana_timestamp;
 
 @end
 
+@interface Banana_Organization : NSObject <TBase, NSCoding> {
+  NSString * __organizationId;
+  NSString * __organizationName;
+  NSString * __website;
+  Banana_Image * __logo;
+  NSString * __techStack;
+  NSMutableArray * __owners;
+  NSString * __organizationEmail;
+  NSString * __stockMarketSymbol;
+
+  BOOL __organizationId_isset;
+  BOOL __organizationName_isset;
+  BOOL __website_isset;
+  BOOL __logo_isset;
+  BOOL __techStack_isset;
+  BOOL __owners_isset;
+  BOOL __organizationEmail_isset;
+  BOOL __stockMarketSymbol_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) NSString * organizationId;
+@property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
+@property (nonatomic, retain, getter=website, setter=setWebsite:) NSString * website;
+@property (nonatomic, retain, getter=logo, setter=setLogo:) Banana_Image * logo;
+@property (nonatomic, retain, getter=techStack, setter=setTechStack:) NSString * techStack;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
+@property (nonatomic, retain, getter=organizationEmail, setter=setOrganizationEmail:) NSString * organizationEmail;
+@property (nonatomic, retain, getter=stockMarketSymbol, setter=setStockMarketSymbol:) NSString * stockMarketSymbol;
+#endif
+
+- (id) init;
+- (id) initWithOrganizationId: (NSString *) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationId;
+- (void) setOrganizationId: (NSString *) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationName;
+- (void) setOrganizationName: (NSString *) organizationName;
+#endif
+- (BOOL) organizationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) website;
+- (void) setWebsite: (NSString *) website;
+#endif
+- (BOOL) websiteIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) logo;
+- (void) setLogo: (Banana_Image *) logo;
+#endif
+- (BOOL) logoIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) techStack;
+- (void) setTechStack: (NSString *) techStack;
+#endif
+- (BOOL) techStackIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) owners;
+- (void) setOwners: (NSMutableArray *) owners;
+#endif
+- (BOOL) ownersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationEmail;
+- (void) setOrganizationEmail: (NSString *) organizationEmail;
+#endif
+- (BOOL) organizationEmailIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) stockMarketSymbol;
+- (void) setStockMarketSymbol: (NSString *) stockMarketSymbol;
+#endif
+- (BOOL) stockMarketSymbolIsSet;
+
+@end
+
 @interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __userId;

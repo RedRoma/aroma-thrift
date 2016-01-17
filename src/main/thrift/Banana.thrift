@@ -108,6 +108,21 @@ struct Message
 }
 
 /**
+ * An Organization can represent a Company or group of People.
+ */
+struct Organization
+{
+    1: string organizationId;
+    2: string organizationName;
+    3: optional string website;
+    4: optional Image logo;
+    5: optional string techStack;
+    6: optional list<string> owners;
+    7: optional string organizationEmail;
+    8: optional string stockMarketSymbol;
+}
+
+/**
  * Defines the Role(s) that a human in this system
  * can be.
  */

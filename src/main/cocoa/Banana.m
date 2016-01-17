@@ -1347,6 +1347,589 @@
 
 @end
 
+@implementation Banana_Organization
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithOrganizationId: (NSString *) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol
+{
+  self = [super init];
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
+  __organizationName = [organizationName retain_stub];
+  __organizationName_isset = YES;
+  __website = [website retain_stub];
+  __website_isset = YES;
+  __logo = [logo retain_stub];
+  __logo_isset = YES;
+  __techStack = [techStack retain_stub];
+  __techStack_isset = YES;
+  __owners = [owners retain_stub];
+  __owners_isset = YES;
+  __organizationEmail = [organizationEmail retain_stub];
+  __organizationEmail_isset = YES;
+  __stockMarketSymbol = [stockMarketSymbol retain_stub];
+  __stockMarketSymbol_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationName"])
+  {
+    __organizationName = [[decoder decodeObjectForKey: @"organizationName"] retain_stub];
+    __organizationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"website"])
+  {
+    __website = [[decoder decodeObjectForKey: @"website"] retain_stub];
+    __website_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"logo"])
+  {
+    __logo = [[decoder decodeObjectForKey: @"logo"] retain_stub];
+    __logo_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"techStack"])
+  {
+    __techStack = [[decoder decodeObjectForKey: @"techStack"] retain_stub];
+    __techStack_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"owners"])
+  {
+    __owners = [[decoder decodeObjectForKey: @"owners"] retain_stub];
+    __owners_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationEmail"])
+  {
+    __organizationEmail = [[decoder decodeObjectForKey: @"organizationEmail"] retain_stub];
+    __organizationEmail_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"stockMarketSymbol"])
+  {
+    __stockMarketSymbol = [[decoder decodeObjectForKey: @"stockMarketSymbol"] retain_stub];
+    __stockMarketSymbol_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__organizationName_isset)
+  {
+    [encoder encodeObject: __organizationName forKey: @"organizationName"];
+  }
+  if (__website_isset)
+  {
+    [encoder encodeObject: __website forKey: @"website"];
+  }
+  if (__logo_isset)
+  {
+    [encoder encodeObject: __logo forKey: @"logo"];
+  }
+  if (__techStack_isset)
+  {
+    [encoder encodeObject: __techStack forKey: @"techStack"];
+  }
+  if (__owners_isset)
+  {
+    [encoder encodeObject: __owners forKey: @"owners"];
+  }
+  if (__organizationEmail_isset)
+  {
+    [encoder encodeObject: __organizationEmail forKey: @"organizationEmail"];
+  }
+  if (__stockMarketSymbol_isset)
+  {
+    [encoder encodeObject: __stockMarketSymbol forKey: @"stockMarketSymbol"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
+  hash = (hash * 31) ^ __organizationName_isset ? 2654435761 : 0;
+  if (__organizationName_isset)
+  {
+    hash = (hash * 31) ^ [__organizationName hash];
+  }
+  hash = (hash * 31) ^ __website_isset ? 2654435761 : 0;
+  if (__website_isset)
+  {
+    hash = (hash * 31) ^ [__website hash];
+  }
+  hash = (hash * 31) ^ __logo_isset ? 2654435761 : 0;
+  if (__logo_isset)
+  {
+    hash = (hash * 31) ^ [__logo hash];
+  }
+  hash = (hash * 31) ^ __techStack_isset ? 2654435761 : 0;
+  if (__techStack_isset)
+  {
+    hash = (hash * 31) ^ [__techStack hash];
+  }
+  hash = (hash * 31) ^ __owners_isset ? 2654435761 : 0;
+  if (__owners_isset)
+  {
+    hash = (hash * 31) ^ [__owners hash];
+  }
+  hash = (hash * 31) ^ __organizationEmail_isset ? 2654435761 : 0;
+  if (__organizationEmail_isset)
+  {
+    hash = (hash * 31) ^ [__organizationEmail hash];
+  }
+  hash = (hash * 31) ^ __stockMarketSymbol_isset ? 2654435761 : 0;
+  if (__stockMarketSymbol_isset)
+  {
+    hash = (hash * 31) ^ [__stockMarketSymbol hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_Organization class]]) {
+    return NO;
+  }
+  Banana_Organization *other = (Banana_Organization *)anObject;
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__organizationName_isset != other->__organizationName_isset) ||
+      (__organizationName_isset && ((__organizationName || other->__organizationName) && ![__organizationName isEqual:other->__organizationName]))) {
+    return NO;
+  }
+  if ((__website_isset != other->__website_isset) ||
+      (__website_isset && ((__website || other->__website) && ![__website isEqual:other->__website]))) {
+    return NO;
+  }
+  if ((__logo_isset != other->__logo_isset) ||
+      (__logo_isset && ((__logo || other->__logo) && ![__logo isEqual:other->__logo]))) {
+    return NO;
+  }
+  if ((__techStack_isset != other->__techStack_isset) ||
+      (__techStack_isset && ((__techStack || other->__techStack) && ![__techStack isEqual:other->__techStack]))) {
+    return NO;
+  }
+  if ((__owners_isset != other->__owners_isset) ||
+      (__owners_isset && ((__owners || other->__owners) && ![__owners isEqual:other->__owners]))) {
+    return NO;
+  }
+  if ((__organizationEmail_isset != other->__organizationEmail_isset) ||
+      (__organizationEmail_isset && ((__organizationEmail || other->__organizationEmail) && ![__organizationEmail isEqual:other->__organizationEmail]))) {
+    return NO;
+  }
+  if ((__stockMarketSymbol_isset != other->__stockMarketSymbol_isset) ||
+      (__stockMarketSymbol_isset && ((__stockMarketSymbol || other->__stockMarketSymbol) && ![__stockMarketSymbol isEqual:other->__stockMarketSymbol]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__organizationId release_stub];
+  [__organizationName release_stub];
+  [__website release_stub];
+  [__logo release_stub];
+  [__techStack release_stub];
+  [__owners release_stub];
+  [__organizationEmail release_stub];
+  [__stockMarketSymbol release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
+- (NSString *) organizationName {
+  return [[__organizationName retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationName: (NSString *) organizationName {
+  [organizationName retain_stub];
+  [__organizationName release_stub];
+  __organizationName = organizationName;
+  __organizationName_isset = YES;
+}
+
+- (BOOL) organizationNameIsSet {
+  return __organizationName_isset;
+}
+
+- (void) unsetOrganizationName {
+  [__organizationName release_stub];
+  __organizationName = nil;
+  __organizationName_isset = NO;
+}
+
+- (NSString *) website {
+  return [[__website retain_stub] autorelease_stub];
+}
+
+- (void) setWebsite: (NSString *) website {
+  [website retain_stub];
+  [__website release_stub];
+  __website = website;
+  __website_isset = YES;
+}
+
+- (BOOL) websiteIsSet {
+  return __website_isset;
+}
+
+- (void) unsetWebsite {
+  [__website release_stub];
+  __website = nil;
+  __website_isset = NO;
+}
+
+- (Banana_Image *) logo {
+  return [[__logo retain_stub] autorelease_stub];
+}
+
+- (void) setLogo: (Banana_Image *) logo {
+  [logo retain_stub];
+  [__logo release_stub];
+  __logo = logo;
+  __logo_isset = YES;
+}
+
+- (BOOL) logoIsSet {
+  return __logo_isset;
+}
+
+- (void) unsetLogo {
+  [__logo release_stub];
+  __logo = nil;
+  __logo_isset = NO;
+}
+
+- (NSString *) techStack {
+  return [[__techStack retain_stub] autorelease_stub];
+}
+
+- (void) setTechStack: (NSString *) techStack {
+  [techStack retain_stub];
+  [__techStack release_stub];
+  __techStack = techStack;
+  __techStack_isset = YES;
+}
+
+- (BOOL) techStackIsSet {
+  return __techStack_isset;
+}
+
+- (void) unsetTechStack {
+  [__techStack release_stub];
+  __techStack = nil;
+  __techStack_isset = NO;
+}
+
+- (NSMutableArray *) owners {
+  return [[__owners retain_stub] autorelease_stub];
+}
+
+- (void) setOwners: (NSMutableArray *) owners {
+  [owners retain_stub];
+  [__owners release_stub];
+  __owners = owners;
+  __owners_isset = YES;
+}
+
+- (BOOL) ownersIsSet {
+  return __owners_isset;
+}
+
+- (void) unsetOwners {
+  [__owners release_stub];
+  __owners = nil;
+  __owners_isset = NO;
+}
+
+- (NSString *) organizationEmail {
+  return [[__organizationEmail retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationEmail: (NSString *) organizationEmail {
+  [organizationEmail retain_stub];
+  [__organizationEmail release_stub];
+  __organizationEmail = organizationEmail;
+  __organizationEmail_isset = YES;
+}
+
+- (BOOL) organizationEmailIsSet {
+  return __organizationEmail_isset;
+}
+
+- (void) unsetOrganizationEmail {
+  [__organizationEmail release_stub];
+  __organizationEmail = nil;
+  __organizationEmail_isset = NO;
+}
+
+- (NSString *) stockMarketSymbol {
+  return [[__stockMarketSymbol retain_stub] autorelease_stub];
+}
+
+- (void) setStockMarketSymbol: (NSString *) stockMarketSymbol {
+  [stockMarketSymbol retain_stub];
+  [__stockMarketSymbol release_stub];
+  __stockMarketSymbol = stockMarketSymbol;
+  __stockMarketSymbol_isset = YES;
+}
+
+- (BOOL) stockMarketSymbolIsSet {
+  return __stockMarketSymbol_isset;
+}
+
+- (void) unsetStockMarketSymbol {
+  [__stockMarketSymbol release_stub];
+  __stockMarketSymbol = nil;
+  __stockMarketSymbol_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setWebsite: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setLogo: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTechStack: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            NSString * _elem2 = [inProtocol readString];
+            [fieldValue addObject: _elem2];
+          }
+          [inProtocol readListEnd];
+          [self setOwners: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setStockMarketSymbol: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Organization"];
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationName_isset) {
+    if (__organizationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationName" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __organizationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__website_isset) {
+    if (__website != nil) {
+      [outProtocol writeFieldBeginWithName: @"website" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __website];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__logo_isset) {
+    if (__logo != nil) {
+      [outProtocol writeFieldBeginWithName: @"logo" type: TType_STRUCT fieldID: 4];
+      [__logo write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__techStack_isset) {
+    if (__techStack != nil) {
+      [outProtocol writeFieldBeginWithName: @"techStack" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __techStack];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__owners_isset) {
+    if (__owners != nil) {
+      [outProtocol writeFieldBeginWithName: @"owners" type: TType_LIST fieldID: 6];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__owners count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__owners count]; idx4++)
+        {
+          [outProtocol writeString: [__owners objectAtIndex: idx4]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationEmail_isset) {
+    if (__organizationEmail != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationEmail" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __organizationEmail];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__stockMarketSymbol_isset) {
+    if (__stockMarketSymbol != nil) {
+      [outProtocol writeFieldBeginWithName: @"stockMarketSymbol" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __stockMarketSymbol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Organization("];
+  [ms appendString: @"organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",organizationName:"];
+  [ms appendFormat: @"\"%@\"", __organizationName];
+  [ms appendString: @",website:"];
+  [ms appendFormat: @"\"%@\"", __website];
+  [ms appendString: @",logo:"];
+  [ms appendFormat: @"%@", __logo];
+  [ms appendString: @",techStack:"];
+  [ms appendFormat: @"\"%@\"", __techStack];
+  [ms appendString: @",owners:"];
+  [ms appendFormat: @"%@", __owners];
+  [ms appendString: @",organizationEmail:"];
+  [ms appendFormat: @"\"%@\"", __organizationEmail];
+  [ms appendString: @",stockMarketSymbol:"];
+  [ms appendFormat: @"\"%@\"", __stockMarketSymbol];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation Banana_User
 
 - (id) init
@@ -1692,14 +2275,14 @@
         break;
       case 4:
         if (fieldType == TType_SET) {
-          int _size0;
-          [inProtocol readSetBeginReturningElementType: NULL size: &_size0];
-          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+          int _size5;
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size5];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            int _elem2 = [inProtocol readI32];
-            [fieldValue addObject: [NSNumber numberWithInt: _elem2]];
+            int _elem7 = [inProtocol readI32];
+            [fieldValue addObject: [NSNumber numberWithInt: _elem7]];
           }
           [inProtocol readSetEnd];
           [self setRoles: fieldValue];
@@ -1763,11 +2346,11 @@
       [outProtocol writeFieldBeginWithName: @"roles" type: TType_SET fieldID: 4];
       {
         [outProtocol writeSetBeginWithElementType: TType_I32 size: [__roles count]];
-        NSEnumerator * _iter3 = [__roles objectEnumerator];
-        id obj4;
-        while ((obj4 = [_iter3 nextObject]))
+        NSEnumerator * _iter8 = [__roles objectEnumerator];
+        id obj9;
+        while ((obj9 = [_iter8 nextObject]))
         {
-          [outProtocol writeI32: [obj4 intValue]];
+          [outProtocol writeI32: [obj9 intValue]];
         }
         [outProtocol writeSetEnd];
       }
@@ -2247,16 +2830,16 @@
     {
       case 1:
         if (fieldType == TType_SET) {
-          int _size5;
-          [inProtocol readSetBeginReturningElementType: NULL size: &_size5];
-          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size5];
-          int _i6;
-          for (_i6 = 0; _i6 < _size5; ++_i6)
+          int _size10;
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size10];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            Banana_User *_elem7 = [[Banana_User alloc] init];
-            [_elem7 read: inProtocol];
-            [fieldValue addObject: _elem7];
-            [_elem7 release_stub];
+            Banana_User *_elem12 = [[Banana_User alloc] init];
+            [_elem12 read: inProtocol];
+            [fieldValue addObject: _elem12];
+            [_elem12 release_stub];
           }
           [inProtocol readSetEnd];
           [self setOwners: fieldValue];
@@ -2317,16 +2900,16 @@
         break;
       case 8:
         if (fieldType == TType_SET) {
-          int _size8;
-          [inProtocol readSetBeginReturningElementType: NULL size: &_size8];
-          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size8];
-          int _i9;
-          for (_i9 = 0; _i9 < _size8; ++_i9)
+          int _size13;
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size13];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size13];
+          int _i14;
+          for (_i14 = 0; _i14 < _size13; ++_i14)
           {
-            Banana_User *_elem10 = [[Banana_User alloc] init];
-            [_elem10 read: inProtocol];
-            [fieldValue addObject: _elem10];
-            [_elem10 release_stub];
+            Banana_User *_elem15 = [[Banana_User alloc] init];
+            [_elem15 read: inProtocol];
+            [fieldValue addObject: _elem15];
+            [_elem15 release_stub];
           }
           [inProtocol readSetEnd];
           [self setSubscribers: fieldValue];
@@ -2359,11 +2942,11 @@
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_SET fieldID: 1];
       {
         [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__owners count]];
-        NSEnumerator * _iter11 = [__owners objectEnumerator];
-        id obj12;
-        while ((obj12 = [_iter11 nextObject]))
+        NSEnumerator * _iter16 = [__owners objectEnumerator];
+        id obj17;
+        while ((obj17 = [_iter16 nextObject]))
         {
-          [obj12 write: outProtocol];
+          [obj17 write: outProtocol];
         }
         [outProtocol writeSetEnd];
       }
@@ -2411,11 +2994,11 @@
       [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_SET fieldID: 8];
       {
         [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__subscribers count]];
-        NSEnumerator * _iter13 = [__subscribers objectEnumerator];
-        id obj14;
-        while ((obj14 = [_iter13 nextObject]))
+        NSEnumerator * _iter18 = [__subscribers objectEnumerator];
+        id obj19;
+        while ((obj19 = [_iter18 nextObject]))
         {
-          [obj14 write: outProtocol];
+          [obj19 write: outProtocol];
         }
         [outProtocol writeSetEnd];
       }
