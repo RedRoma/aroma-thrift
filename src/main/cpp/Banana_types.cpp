@@ -1217,8 +1217,8 @@ void Application::__set_name(const std::string& val) {
   this->name = val;
 }
 
-void Application::__set_id(const std::string& val) {
-  this->id = val;
+void Application::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
 }
 
 void Application::__set_totalMessagesSent(const long val) {
@@ -1308,8 +1308,8 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->id);
-          this->__isset.id = true;
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1414,8 +1414,8 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeString(this->name);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 4);
-  xfer += oprot->writeString(this->id);
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->applicationId);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("totalMessagesSent", ::apache::thrift::protocol::T_I64, 5);
@@ -1463,7 +1463,7 @@ void swap(Application &a, Application &b) {
   swap(a.owners, b.owners);
   swap(a.timeOfProvisioning, b.timeOfProvisioning);
   swap(a.name, b.name);
-  swap(a.id, b.id);
+  swap(a.applicationId, b.applicationId);
   swap(a.totalMessagesSent, b.totalMessagesSent);
   swap(a.icon, b.icon);
   swap(a.programmingLanguage, b.programmingLanguage);
@@ -1477,7 +1477,7 @@ Application::Application(const Application& other44) {
   owners = other44.owners;
   timeOfProvisioning = other44.timeOfProvisioning;
   name = other44.name;
-  id = other44.id;
+  applicationId = other44.applicationId;
   totalMessagesSent = other44.totalMessagesSent;
   icon = other44.icon;
   programmingLanguage = other44.programmingLanguage;
@@ -1490,7 +1490,7 @@ Application& Application::operator=(const Application& other45) {
   owners = other45.owners;
   timeOfProvisioning = other45.timeOfProvisioning;
   name = other45.name;
-  id = other45.id;
+  applicationId = other45.applicationId;
   totalMessagesSent = other45.totalMessagesSent;
   icon = other45.icon;
   programmingLanguage = other45.programmingLanguage;
@@ -1506,7 +1506,7 @@ void Application::printTo(std::ostream& out) const {
   out << "owners=" << to_string(owners);
   out << ", " << "timeOfProvisioning=" << to_string(timeOfProvisioning);
   out << ", " << "name=" << to_string(name);
-  out << ", " << "id=" << to_string(id);
+  out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "totalMessagesSent=" << to_string(totalMessagesSent);
   out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));

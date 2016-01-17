@@ -549,11 +549,11 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false), organizationId(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false), organizationId(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
-  bool id :1;
+  bool applicationId :1;
   bool totalMessagesSent :1;
   bool icon :1;
   bool programmingLanguage :1;
@@ -567,7 +567,7 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId() {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId() {
 
   }
 
@@ -575,7 +575,7 @@ class Application {
   std::set<User>  owners;
   timestamp timeOfProvisioning;
   std::string name;
-  std::string id;
+  std::string applicationId;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
@@ -591,7 +591,7 @@ class Application {
 
   void __set_name(const std::string& val);
 
-  void __set_id(const std::string& val);
+  void __set_applicationId(const std::string& val);
 
   void __set_totalMessagesSent(const long val);
 
@@ -613,7 +613,7 @@ class Application {
       return false;
     if (!(name == rhs.name))
       return false;
-    if (!(id == rhs.id))
+    if (!(applicationId == rhs.applicationId))
       return false;
     if (!(totalMessagesSent == rhs.totalMessagesSent))
       return false;

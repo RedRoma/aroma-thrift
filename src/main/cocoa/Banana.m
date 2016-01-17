@@ -2411,7 +2411,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -2420,8 +2420,8 @@
   __timeOfProvisioning_isset = YES;
   __name = [name retain_stub];
   __name_isset = YES;
-  __id = [id retain_stub];
-  __id_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
   __totalMessagesSent = totalMessagesSent;
   __totalMessagesSent_isset = YES;
   __icon = [icon retain_stub];
@@ -2455,10 +2455,10 @@
     __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
     __name_isset = YES;
   }
-  if ([decoder containsValueForKey: @"id"])
+  if ([decoder containsValueForKey: @"applicationId"])
   {
-    __id = [[decoder decodeObjectForKey: @"id"] retain_stub];
-    __id_isset = YES;
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
   }
   if ([decoder containsValueForKey: @"totalMessagesSent"])
   {
@@ -2507,9 +2507,9 @@
   {
     [encoder encodeObject: __name forKey: @"name"];
   }
-  if (__id_isset)
+  if (__applicationId_isset)
   {
-    [encoder encodeObject: __id forKey: @"id"];
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
   if (__totalMessagesSent_isset)
   {
@@ -2555,10 +2555,10 @@
   {
     hash = (hash * 31) ^ [__name hash];
   }
-  hash = (hash * 31) ^ __id_isset ? 2654435761 : 0;
-  if (__id_isset)
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
   {
-    hash = (hash * 31) ^ [__id hash];
+    hash = (hash * 31) ^ [__applicationId hash];
   }
   hash = (hash * 31) ^ __totalMessagesSent_isset ? 2654435761 : 0;
   if (__totalMessagesSent_isset)
@@ -2614,8 +2614,8 @@
       (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
     return NO;
   }
-  if ((__id_isset != other->__id_isset) ||
-      (__id_isset && ((__id || other->__id) && ![__id isEqual:other->__id]))) {
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
   if ((__totalMessagesSent_isset != other->__totalMessagesSent_isset) ||
@@ -2649,7 +2649,7 @@
 {
   [__owners release_stub];
   [__name release_stub];
-  [__id release_stub];
+  [__applicationId release_stub];
   [__icon release_stub];
   [__subscribers release_stub];
   [__applicationDescription release_stub];
@@ -2716,25 +2716,25 @@
   __name_isset = NO;
 }
 
-- (NSString *) id {
-  return [[__id retain_stub] autorelease_stub];
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
 }
 
-- (void) setId: (NSString *) id {
-  [id retain_stub];
-  [__id release_stub];
-  __id = id;
-  __id_isset = YES;
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
 }
 
-- (BOOL) idIsSet {
-  return __id_isset;
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
 }
 
-- (void) unsetId {
-  [__id release_stub];
-  __id = nil;
-  __id_isset = NO;
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
 }
 
 - (int64_t) totalMessagesSent {
@@ -2909,7 +2909,7 @@
       case 4:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setId: fieldValue];
+          [self setApplicationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -3015,10 +3015,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__id_isset) {
-    if (__id != nil) {
-      [outProtocol writeFieldBeginWithName: @"id" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __id];
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __applicationId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3085,8 +3085,8 @@
   [ms appendFormat: @"%qi", __timeOfProvisioning];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
-  [ms appendString: @",id:"];
-  [ms appendFormat: @"\"%@\"", __id];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",totalMessagesSent:"];
   [ms appendFormat: @"%qi", __totalMessagesSent];
   [ms appendString: @",icon:"];

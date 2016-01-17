@@ -180,7 +180,7 @@ struct Application
     /** The name of the application. */
     3: string name;
     /** The Automatically generated ID for the Application. */
-    4: string id;
+    4: string applicationId;
     /** 
      * The total amount of messages that 
      * have been counted so far for the Application*/

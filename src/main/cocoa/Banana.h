@@ -455,7 +455,7 @@ typedef int64_t Banana_timestamp;
   NSMutableSet * __owners;
   Banana_timestamp __timeOfProvisioning;
   NSString * __name;
-  NSString * __id;
+  NSString * __applicationId;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
   int __programmingLanguage;
@@ -466,7 +466,7 @@ typedef int64_t Banana_timestamp;
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
   BOOL __name_isset;
-  BOOL __id_isset;
+  BOOL __applicationId_isset;
   BOOL __totalMessagesSent_isset;
   BOOL __icon_isset;
   BOOL __programmingLanguage_isset;
@@ -479,7 +479,7 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
 @property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Banana_timestamp timeOfProvisioning;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
@@ -489,7 +489,7 @@ typedef int64_t Banana_timestamp;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -515,10 +515,10 @@ typedef int64_t Banana_timestamp;
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) id;
-- (void) setId: (NSString *) id;
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
 #endif
-- (BOOL) idIsSet;
+- (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (Banana_long) totalMessagesSent;

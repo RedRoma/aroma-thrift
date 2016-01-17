@@ -804,7 +804,7 @@ Application = function(args) {
   this.owners = null;
   this.timeOfProvisioning = null;
   this.name = null;
-  this.id = null;
+  this.applicationId = null;
   this.totalMessagesSent = null;
   this.icon = null;
   this.programmingLanguage = null;
@@ -821,8 +821,8 @@ Application = function(args) {
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
     }
-    if (args.id !== undefined && args.id !== null) {
-      this.id = args.id;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
     if (args.totalMessagesSent !== undefined && args.totalMessagesSent !== null) {
       this.totalMessagesSent = args.totalMessagesSent;
@@ -895,7 +895,7 @@ Application.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRING) {
-        this.id = input.readString().value;
+        this.applicationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -992,9 +992,9 @@ Application.prototype.write = function(output) {
     output.writeString(this.name);
     output.writeFieldEnd();
   }
-  if (this.id !== null && this.id !== undefined) {
-    output.writeFieldBegin('id', Thrift.Type.STRING, 4);
-    output.writeString(this.id);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   if (this.totalMessagesSent !== null && this.totalMessagesSent !== undefined) {
