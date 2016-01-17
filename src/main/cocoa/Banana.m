@@ -2411,7 +2411,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -2432,6 +2432,8 @@
   __subscribers_isset = YES;
   __applicationDescription = [applicationDescription retain_stub];
   __applicationDescription_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
   return self;
 }
 
@@ -2483,6 +2485,11 @@
     __applicationDescription = [[decoder decodeObjectForKey: @"applicationDescription"] retain_stub];
     __applicationDescription_isset = YES;
   }
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
   return self;
 }
 
@@ -2523,6 +2530,10 @@
   if (__applicationDescription_isset)
   {
     [encoder encodeObject: __applicationDescription forKey: @"applicationDescription"];
+  }
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
   }
 }
 
@@ -2574,6 +2585,11 @@
   {
     hash = (hash * 31) ^ [__applicationDescription hash];
   }
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
   return hash;
 }
 
@@ -2622,6 +2638,10 @@
       (__applicationDescription_isset && ((__applicationDescription || other->__applicationDescription) && ![__applicationDescription isEqual:other->__applicationDescription]))) {
     return NO;
   }
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2633,6 +2653,7 @@
   [__icon release_stub];
   [__subscribers release_stub];
   [__applicationDescription release_stub];
+  [__organizationId release_stub];
   [super dealloc_stub];
 }
 
@@ -2813,6 +2834,27 @@
   __applicationDescription_isset = NO;
 }
 
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2926,6 +2968,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3012,6 +3062,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3040,6 +3097,8 @@
   [ms appendFormat: @"%@", __subscribers];
   [ms appendString: @",applicationDescription:"];
   [ms appendFormat: @"\"%@\"", __applicationDescription];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

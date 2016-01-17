@@ -193,6 +193,7 @@ struct Application
      */
     8: optional set<User> subscribers = [];
     9: string applicationDescription;
+    10: string organizationId;
 }
 
 /**

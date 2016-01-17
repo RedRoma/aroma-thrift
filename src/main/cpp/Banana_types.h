@@ -549,7 +549,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false), organizationId(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -559,6 +559,7 @@ typedef struct _Application__isset {
   bool programmingLanguage :1;
   bool subscribers :1;
   bool applicationDescription :1;
+  bool organizationId :1;
 } _Application__isset;
 
 class Application {
@@ -566,7 +567,7 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription() {
+  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId() {
 
   }
 
@@ -580,6 +581,7 @@ class Application {
   ProgrammingLanguage::type programmingLanguage;
   std::set<User>  subscribers;
   std::string applicationDescription;
+  std::string organizationId;
 
   _Application__isset __isset;
 
@@ -600,6 +602,8 @@ class Application {
   void __set_subscribers(const std::set<User> & val);
 
   void __set_applicationDescription(const std::string& val);
+
+  void __set_organizationId(const std::string& val);
 
   bool operator == (const Application & rhs) const
   {
@@ -626,6 +630,8 @@ class Application {
     else if (__isset.subscribers && !(subscribers == rhs.subscribers))
       return false;
     if (!(applicationDescription == rhs.applicationDescription))
+      return false;
+    if (!(organizationId == rhs.organizationId))
       return false;
     return true;
   }

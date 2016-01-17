@@ -461,6 +461,7 @@ typedef int64_t Banana_timestamp;
   int __programmingLanguage;
   NSMutableSet * __subscribers;
   NSString * __applicationDescription;
+  NSString * __organizationId;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -471,6 +472,7 @@ typedef int64_t Banana_timestamp;
   BOOL __programmingLanguage_isset;
   BOOL __subscribers_isset;
   BOOL __applicationDescription_isset;
+  BOOL __organizationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -483,10 +485,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=subscribers, setter=setSubscribers:) NSMutableSet * subscribers;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) NSString * organizationId;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name id: (NSString *) id totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -546,6 +549,12 @@ typedef int64_t Banana_timestamp;
 - (void) setApplicationDescription: (NSString *) applicationDescription;
 #endif
 - (BOOL) applicationDescriptionIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationId;
+- (void) setOrganizationId: (NSString *) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
 
 @end
 

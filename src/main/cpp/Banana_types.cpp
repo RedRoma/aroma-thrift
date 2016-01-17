@@ -1244,6 +1244,10 @@ void Application::__set_applicationDescription(const std::string& val) {
   this->applicationDescription = val;
 }
 
+void Application::__set_organizationId(const std::string& val) {
+  this->organizationId = val;
+}
+
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1365,6 +1369,14 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1437,6 +1449,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeString(this->applicationDescription);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 10);
+  xfer += oprot->writeString(this->organizationId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1453,6 +1469,7 @@ void swap(Application &a, Application &b) {
   swap(a.programmingLanguage, b.programmingLanguage);
   swap(a.subscribers, b.subscribers);
   swap(a.applicationDescription, b.applicationDescription);
+  swap(a.organizationId, b.organizationId);
   swap(a.__isset, b.__isset);
 }
 
@@ -1466,6 +1483,7 @@ Application::Application(const Application& other44) {
   programmingLanguage = other44.programmingLanguage;
   subscribers = other44.subscribers;
   applicationDescription = other44.applicationDescription;
+  organizationId = other44.organizationId;
   __isset = other44.__isset;
 }
 Application& Application::operator=(const Application& other45) {
@@ -1478,6 +1496,7 @@ Application& Application::operator=(const Application& other45) {
   programmingLanguage = other45.programmingLanguage;
   subscribers = other45.subscribers;
   applicationDescription = other45.applicationDescription;
+  organizationId = other45.organizationId;
   __isset = other45.__isset;
   return *this;
 }
@@ -1493,6 +1512,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
   out << ", " << "subscribers="; (__isset.subscribers ? (out << to_string(subscribers)) : (out << "<null>"));
   out << ", " << "applicationDescription=" << to_string(applicationDescription);
+  out << ", " << "organizationId=" << to_string(organizationId);
   out << ")";
 }
 

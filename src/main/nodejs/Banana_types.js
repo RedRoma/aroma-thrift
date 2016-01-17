@@ -814,6 +814,7 @@ Application = module.exports.Application = function(args) {
   this.programmingLanguage = null;
   this.subscribers = [];
   this.applicationDescription = null;
+  this.organizationId = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [ttypes.User]);
@@ -841,6 +842,9 @@ Application = module.exports.Application = function(args) {
     }
     if (args.applicationDescription !== undefined && args.applicationDescription !== null) {
       this.applicationDescription = args.applicationDescription;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
     }
   }
 };
@@ -950,6 +954,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1022,6 +1033,11 @@ Application.prototype.write = function(output) {
   if (this.applicationDescription !== null && this.applicationDescription !== undefined) {
     output.writeFieldBegin('applicationDescription', Thrift.Type.STRING, 9);
     output.writeString(this.applicationDescription);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 10);
+    output.writeString(this.organizationId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
