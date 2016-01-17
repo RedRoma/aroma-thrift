@@ -9,11 +9,6 @@ var Q = thrift.Q;
 
 
 var ttypes = module.exports = {};
-ttypes.Urgency = {
-  'LOW' : 1,
-  'MEDIUM' : 2,
-  'HIGH' : 3
-};
 ttypes.TimeUnit = {
   'MILLIS' : 0,
   'SECONDS' : 1,
@@ -25,6 +20,11 @@ ttypes.TimeUnit = {
 ttypes.ImageType = {
   'JPEG' : 1,
   'PNG' : 2
+};
+ttypes.Urgency = {
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
 ttypes.Role = {
   'DEVELOPER' : 1,
@@ -49,200 +49,6 @@ ttypes.ProgrammingLanguage = {
   'DART' : 12,
   'OTHER' : 13
 };
-Message = module.exports.Message = function(args) {
-  this.messageId = null;
-  this.body = null;
-  this.urgency = 1;
-  this.timeOfCreation = null;
-  this.timeMessageReceived = null;
-  this.applicationName = null;
-  this.hostname = null;
-  this.macAddress = null;
-  this.isTruncated = false;
-  this.title = null;
-  if (args) {
-    if (args.messageId !== undefined && args.messageId !== null) {
-      this.messageId = args.messageId;
-    }
-    if (args.body !== undefined && args.body !== null) {
-      this.body = args.body;
-    }
-    if (args.urgency !== undefined && args.urgency !== null) {
-      this.urgency = args.urgency;
-    }
-    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
-      this.timeOfCreation = args.timeOfCreation;
-    }
-    if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
-      this.timeMessageReceived = args.timeMessageReceived;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-    if (args.hostname !== undefined && args.hostname !== null) {
-      this.hostname = args.hostname;
-    }
-    if (args.macAddress !== undefined && args.macAddress !== null) {
-      this.macAddress = args.macAddress;
-    }
-    if (args.isTruncated !== undefined && args.isTruncated !== null) {
-      this.isTruncated = args.isTruncated;
-    }
-    if (args.title !== undefined && args.title !== null) {
-      this.title = args.title;
-    }
-  }
-};
-Message.prototype = {};
-Message.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.messageId = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.body = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.urgency = input.readI32();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.I64) {
-        this.timeOfCreation = input.readI64();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 5:
-      if (ftype == Thrift.Type.I64) {
-        this.timeMessageReceived = input.readI64();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 6:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 7:
-      if (ftype == Thrift.Type.STRING) {
-        this.hostname = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 8:
-      if (ftype == Thrift.Type.STRING) {
-        this.macAddress = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 9:
-      if (ftype == Thrift.Type.BOOL) {
-        this.isTruncated = input.readBool();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 10:
-      if (ftype == Thrift.Type.STRING) {
-        this.title = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-Message.prototype.write = function(output) {
-  output.writeStructBegin('Message');
-  if (this.messageId !== null && this.messageId !== undefined) {
-    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
-    output.writeString(this.messageId);
-    output.writeFieldEnd();
-  }
-  if (this.body !== null && this.body !== undefined) {
-    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
-    output.writeString(this.body);
-    output.writeFieldEnd();
-  }
-  if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
-    output.writeI32(this.urgency);
-    output.writeFieldEnd();
-  }
-  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
-    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
-    output.writeI64(this.timeOfCreation);
-    output.writeFieldEnd();
-  }
-  if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
-    output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
-    output.writeI64(this.timeMessageReceived);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  if (this.hostname !== null && this.hostname !== undefined) {
-    output.writeFieldBegin('hostname', Thrift.Type.STRING, 7);
-    output.writeString(this.hostname);
-    output.writeFieldEnd();
-  }
-  if (this.macAddress !== null && this.macAddress !== undefined) {
-    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
-    output.writeString(this.macAddress);
-    output.writeFieldEnd();
-  }
-  if (this.isTruncated !== null && this.isTruncated !== undefined) {
-    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
-    output.writeBool(this.isTruncated);
-    output.writeFieldEnd();
-  }
-  if (this.title !== null && this.title !== undefined) {
-    output.writeFieldBegin('title', Thrift.Type.STRING, 10);
-    output.writeString(this.title);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 LengthOfTime = module.exports.LengthOfTime = function(args) {
   this.unit = null;
   this.value = null;
@@ -459,6 +265,200 @@ Image.prototype.write = function(output) {
   if (this.dimension !== null && this.dimension !== undefined) {
     output.writeFieldBegin('dimension', Thrift.Type.STRUCT, 3);
     this.dimension.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Message = module.exports.Message = function(args) {
+  this.messageId = null;
+  this.body = null;
+  this.urgency = 1;
+  this.timeOfCreation = null;
+  this.timeMessageReceived = null;
+  this.applicationName = null;
+  this.hostname = null;
+  this.macAddress = null;
+  this.isTruncated = false;
+  this.title = null;
+  if (args) {
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+    if (args.body !== undefined && args.body !== null) {
+      this.body = args.body;
+    }
+    if (args.urgency !== undefined && args.urgency !== null) {
+      this.urgency = args.urgency;
+    }
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
+    }
+    if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
+      this.timeMessageReceived = args.timeMessageReceived;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.macAddress !== undefined && args.macAddress !== null) {
+      this.macAddress = args.macAddress;
+    }
+    if (args.isTruncated !== undefined && args.isTruncated !== null) {
+      this.isTruncated = args.isTruncated;
+    }
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
+    }
+  }
+};
+Message.prototype = {};
+Message.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.body = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I32) {
+        this.urgency = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfCreation = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I64) {
+        this.timeMessageReceived = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.macAddress = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isTruncated = input.readBool();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Message.prototype.write = function(output) {
+  output.writeStructBegin('Message');
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  if (this.body !== null && this.body !== undefined) {
+    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
+    output.writeString(this.body);
+    output.writeFieldEnd();
+  }
+  if (this.urgency !== null && this.urgency !== undefined) {
+    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
+    output.writeI32(this.urgency);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfCreation);
+    output.writeFieldEnd();
+  }
+  if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
+    output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
+    output.writeI64(this.timeMessageReceived);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 7);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.macAddress !== null && this.macAddress !== undefined) {
+    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
+    output.writeString(this.macAddress);
+    output.writeFieldEnd();
+  }
+  if (this.isTruncated !== null && this.isTruncated !== undefined) {
+    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
+    output.writeBool(this.isTruncated);
+    output.writeFieldEnd();
+  }
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 10);
+    output.writeString(this.title);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -13,18 +13,6 @@
 
 namespace aroma { namespace banana { namespace thrift {
 
-int _kUrgencyValues[] = {
-  Urgency::LOW,
-  Urgency::MEDIUM,
-  Urgency::HIGH
-};
-const char* _kUrgencyNames[] = {
-  "LOW",
-  "MEDIUM",
-  "HIGH"
-};
-const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
-
 int _kTimeUnitValues[] = {
   TimeUnit::MILLIS,
   TimeUnit::SECONDS,
@@ -52,6 +40,18 @@ const char* _kImageTypeNames[] = {
   "PNG"
 };
 const std::map<int, const char*> _ImageType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kImageTypeValues, _kImageTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
+int _kUrgencyValues[] = {
+  Urgency::LOW,
+  Urgency::MEDIUM,
+  Urgency::HIGH
+};
+const char* _kUrgencyNames[] = {
+  "LOW",
+  "MEDIUM",
+  "HIGH"
+};
+const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kRoleValues[] = {
   Role::DEVELOPER,
@@ -102,6 +102,354 @@ const char* _kProgrammingLanguageNames[] = {
   "OTHER"
 };
 const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(14, _kProgrammingLanguageValues, _kProgrammingLanguageNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
+
+LengthOfTime::~LengthOfTime() throw() {
+}
+
+
+void LengthOfTime::__set_unit(const TimeUnit::type val) {
+  this->unit = val;
+}
+
+void LengthOfTime::__set_value(const long val) {
+  this->value = val;
+}
+
+uint32_t LengthOfTime::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+  bool isset_unit = false;
+  bool isset_value = false;
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast0;
+          xfer += iprot->readI32(ecast0);
+          this->unit = (TimeUnit::type)ecast0;
+          isset_unit = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->value);
+          isset_value = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  if (!isset_unit)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  if (!isset_value)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  return xfer;
+}
+
+uint32_t LengthOfTime::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("LengthOfTime");
+
+  xfer += oprot->writeFieldBegin("unit", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32((int32_t)this->unit);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("value", ::apache::thrift::protocol::T_I64, 2);
+  xfer += oprot->writeI64(this->value);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(LengthOfTime &a, LengthOfTime &b) {
+  using ::std::swap;
+  swap(a.unit, b.unit);
+  swap(a.value, b.value);
+}
+
+LengthOfTime::LengthOfTime(const LengthOfTime& other1) {
+  unit = other1.unit;
+  value = other1.value;
+}
+LengthOfTime& LengthOfTime::operator=(const LengthOfTime& other2) {
+  unit = other2.unit;
+  value = other2.value;
+  return *this;
+}
+void LengthOfTime::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "LengthOfTime(";
+  out << "unit=" << to_string(unit);
+  out << ", " << "value=" << to_string(value);
+  out << ")";
+}
+
+
+Dimension::~Dimension() throw() {
+}
+
+
+void Dimension::__set_width(const int val) {
+  this->width = val;
+}
+
+void Dimension::__set_height(const int val) {
+  this->height = val;
+}
+
+uint32_t Dimension::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+  bool isset_width = false;
+  bool isset_height = false;
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->width);
+          isset_width = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->height);
+          isset_height = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  if (!isset_width)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  if (!isset_height)
+    throw TProtocolException(TProtocolException::INVALID_DATA);
+  return xfer;
+}
+
+uint32_t Dimension::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Dimension");
+
+  xfer += oprot->writeFieldBegin("width", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32(this->width);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("height", ::apache::thrift::protocol::T_I32, 2);
+  xfer += oprot->writeI32(this->height);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Dimension &a, Dimension &b) {
+  using ::std::swap;
+  swap(a.width, b.width);
+  swap(a.height, b.height);
+}
+
+Dimension::Dimension(const Dimension& other3) {
+  width = other3.width;
+  height = other3.height;
+}
+Dimension& Dimension::operator=(const Dimension& other4) {
+  width = other4.width;
+  height = other4.height;
+  return *this;
+}
+void Dimension::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Dimension(";
+  out << "width=" << to_string(width);
+  out << ", " << "height=" << to_string(height);
+  out << ")";
+}
+
+
+Image::~Image() throw() {
+}
+
+
+void Image::__set_imageType(const ImageType::type val) {
+  this->imageType = val;
+}
+
+void Image::__set_data(const std::string& val) {
+  this->data = val;
+}
+
+void Image::__set_dimension(const Dimension& val) {
+  this->dimension = val;
+}
+
+uint32_t Image::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast5;
+          xfer += iprot->readI32(ecast5);
+          this->imageType = (ImageType::type)ecast5;
+          this->__isset.imageType = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readBinary(this->data);
+          this->__isset.data = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->dimension.read(iprot);
+          this->__isset.dimension = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Image::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Image");
+
+  xfer += oprot->writeFieldBegin("imageType", ::apache::thrift::protocol::T_I32, 1);
+  xfer += oprot->writeI32((int32_t)this->imageType);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("data", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeBinary(this->data);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("dimension", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->dimension.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Image &a, Image &b) {
+  using ::std::swap;
+  swap(a.imageType, b.imageType);
+  swap(a.data, b.data);
+  swap(a.dimension, b.dimension);
+  swap(a.__isset, b.__isset);
+}
+
+Image::Image(const Image& other6) {
+  imageType = other6.imageType;
+  data = other6.data;
+  dimension = other6.dimension;
+  __isset = other6.__isset;
+}
+Image& Image::operator=(const Image& other7) {
+  imageType = other7.imageType;
+  data = other7.data;
+  dimension = other7.dimension;
+  __isset = other7.__isset;
+  return *this;
+}
+void Image::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Image(";
+  out << "imageType=" << to_string(imageType);
+  out << ", " << "data=" << to_string(data);
+  out << ", " << "dimension=" << to_string(dimension);
+  out << ")";
+}
 
 
 Message::~Message() throw() {
@@ -191,9 +539,9 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast0;
-          xfer += iprot->readI32(ecast0);
-          this->urgency = (Urgency::type)ecast0;
+          int32_t ecast8;
+          xfer += iprot->readI32(ecast8);
+          this->urgency = (Urgency::type)ecast8;
           this->__isset.urgency = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -336,31 +684,31 @@ void swap(Message &a, Message &b) {
   swap(a.__isset, b.__isset);
 }
 
-Message::Message(const Message& other1) {
-  messageId = other1.messageId;
-  body = other1.body;
-  urgency = other1.urgency;
-  timeOfCreation = other1.timeOfCreation;
-  timeMessageReceived = other1.timeMessageReceived;
-  applicationName = other1.applicationName;
-  hostname = other1.hostname;
-  macAddress = other1.macAddress;
-  isTruncated = other1.isTruncated;
-  title = other1.title;
-  __isset = other1.__isset;
+Message::Message(const Message& other9) {
+  messageId = other9.messageId;
+  body = other9.body;
+  urgency = other9.urgency;
+  timeOfCreation = other9.timeOfCreation;
+  timeMessageReceived = other9.timeMessageReceived;
+  applicationName = other9.applicationName;
+  hostname = other9.hostname;
+  macAddress = other9.macAddress;
+  isTruncated = other9.isTruncated;
+  title = other9.title;
+  __isset = other9.__isset;
 }
-Message& Message::operator=(const Message& other2) {
-  messageId = other2.messageId;
-  body = other2.body;
-  urgency = other2.urgency;
-  timeOfCreation = other2.timeOfCreation;
-  timeMessageReceived = other2.timeMessageReceived;
-  applicationName = other2.applicationName;
-  hostname = other2.hostname;
-  macAddress = other2.macAddress;
-  isTruncated = other2.isTruncated;
-  title = other2.title;
-  __isset = other2.__isset;
+Message& Message::operator=(const Message& other10) {
+  messageId = other10.messageId;
+  body = other10.body;
+  urgency = other10.urgency;
+  timeOfCreation = other10.timeOfCreation;
+  timeMessageReceived = other10.timeMessageReceived;
+  applicationName = other10.applicationName;
+  hostname = other10.hostname;
+  macAddress = other10.macAddress;
+  isTruncated = other10.isTruncated;
+  title = other10.title;
+  __isset = other10.__isset;
   return *this;
 }
 void Message::printTo(std::ostream& out) const {
@@ -376,354 +724,6 @@ void Message::printTo(std::ostream& out) const {
   out << ", " << "macAddress="; (__isset.macAddress ? (out << to_string(macAddress)) : (out << "<null>"));
   out << ", " << "isTruncated="; (__isset.isTruncated ? (out << to_string(isTruncated)) : (out << "<null>"));
   out << ", " << "title=" << to_string(title);
-  out << ")";
-}
-
-
-LengthOfTime::~LengthOfTime() throw() {
-}
-
-
-void LengthOfTime::__set_unit(const TimeUnit::type val) {
-  this->unit = val;
-}
-
-void LengthOfTime::__set_value(const long val) {
-  this->value = val;
-}
-
-uint32_t LengthOfTime::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-  bool isset_unit = false;
-  bool isset_value = false;
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast3;
-          xfer += iprot->readI32(ecast3);
-          this->unit = (TimeUnit::type)ecast3;
-          isset_unit = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_I64) {
-          xfer += iprot->readI64(this->value);
-          isset_value = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  if (!isset_unit)
-    throw TProtocolException(TProtocolException::INVALID_DATA);
-  if (!isset_value)
-    throw TProtocolException(TProtocolException::INVALID_DATA);
-  return xfer;
-}
-
-uint32_t LengthOfTime::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("LengthOfTime");
-
-  xfer += oprot->writeFieldBegin("unit", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32((int32_t)this->unit);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("value", ::apache::thrift::protocol::T_I64, 2);
-  xfer += oprot->writeI64(this->value);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(LengthOfTime &a, LengthOfTime &b) {
-  using ::std::swap;
-  swap(a.unit, b.unit);
-  swap(a.value, b.value);
-}
-
-LengthOfTime::LengthOfTime(const LengthOfTime& other4) {
-  unit = other4.unit;
-  value = other4.value;
-}
-LengthOfTime& LengthOfTime::operator=(const LengthOfTime& other5) {
-  unit = other5.unit;
-  value = other5.value;
-  return *this;
-}
-void LengthOfTime::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "LengthOfTime(";
-  out << "unit=" << to_string(unit);
-  out << ", " << "value=" << to_string(value);
-  out << ")";
-}
-
-
-Dimension::~Dimension() throw() {
-}
-
-
-void Dimension::__set_width(const int val) {
-  this->width = val;
-}
-
-void Dimension::__set_height(const int val) {
-  this->height = val;
-}
-
-uint32_t Dimension::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-  bool isset_width = false;
-  bool isset_height = false;
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          xfer += iprot->readI32(this->width);
-          isset_width = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          xfer += iprot->readI32(this->height);
-          isset_height = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  if (!isset_width)
-    throw TProtocolException(TProtocolException::INVALID_DATA);
-  if (!isset_height)
-    throw TProtocolException(TProtocolException::INVALID_DATA);
-  return xfer;
-}
-
-uint32_t Dimension::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Dimension");
-
-  xfer += oprot->writeFieldBegin("width", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32(this->width);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("height", ::apache::thrift::protocol::T_I32, 2);
-  xfer += oprot->writeI32(this->height);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(Dimension &a, Dimension &b) {
-  using ::std::swap;
-  swap(a.width, b.width);
-  swap(a.height, b.height);
-}
-
-Dimension::Dimension(const Dimension& other6) {
-  width = other6.width;
-  height = other6.height;
-}
-Dimension& Dimension::operator=(const Dimension& other7) {
-  width = other7.width;
-  height = other7.height;
-  return *this;
-}
-void Dimension::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "Dimension(";
-  out << "width=" << to_string(width);
-  out << ", " << "height=" << to_string(height);
-  out << ")";
-}
-
-
-Image::~Image() throw() {
-}
-
-
-void Image::__set_imageType(const ImageType::type val) {
-  this->imageType = val;
-}
-
-void Image::__set_data(const std::string& val) {
-  this->data = val;
-}
-
-void Image::__set_dimension(const Dimension& val) {
-  this->dimension = val;
-}
-
-uint32_t Image::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast8;
-          xfer += iprot->readI32(ecast8);
-          this->imageType = (ImageType::type)ecast8;
-          this->__isset.imageType = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readBinary(this->data);
-          this->__isset.data = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->dimension.read(iprot);
-          this->__isset.dimension = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t Image::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Image");
-
-  xfer += oprot->writeFieldBegin("imageType", ::apache::thrift::protocol::T_I32, 1);
-  xfer += oprot->writeI32((int32_t)this->imageType);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("data", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeBinary(this->data);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("dimension", ::apache::thrift::protocol::T_STRUCT, 3);
-  xfer += this->dimension.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(Image &a, Image &b) {
-  using ::std::swap;
-  swap(a.imageType, b.imageType);
-  swap(a.data, b.data);
-  swap(a.dimension, b.dimension);
-  swap(a.__isset, b.__isset);
-}
-
-Image::Image(const Image& other9) {
-  imageType = other9.imageType;
-  data = other9.data;
-  dimension = other9.dimension;
-  __isset = other9.__isset;
-}
-Image& Image::operator=(const Image& other10) {
-  imageType = other10.imageType;
-  data = other10.data;
-  dimension = other10.dimension;
-  __isset = other10.__isset;
-  return *this;
-}
-void Image::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "Image(";
-  out << "imageType=" << to_string(imageType);
-  out << ", " << "data=" << to_string(data);
-  out << ", " << "dimension=" << to_string(dimension);
   out << ")";
 }
 

@@ -19,49 +19,6 @@ typedef i64 long
 typedef i64 timestamp
 
 /**
- * Determines how Important or Severe a Message is.
- */
-enum Urgency
-{
-    /** Lowest level of urgency. */
-    LOW = 1,
-    /** Middle level of urgency. */
-    MEDIUM = 2,
-    /** Highest level of urgency. */
-    HIGH = 3
-}
-
-/*
- * TODO: Find a more distinctive name for Message.
- * + Kik
- * + Sok
- * + Dice
- */
-struct Message
-{
-    /** Each message has a unique ID */
-    1: string messageId;
-    /** 
-     * The body represents the Message's Payload, i.e. the actual message.
-     * If the Message Body is too long, it may be truncated. The complete
-     * body can then be loaded in a separate request.
-     */
-    2: optional string body;
-    3: Urgency urgency = Urgency.LOW;
-    /** The time the message was created on the Application side */
-    4: timestamp timeOfCreation;
-    /** The time the message was received on the Server side */
-    5: timestamp timeMessageReceived;
-    /** Name of the Application that sent the message. */
-    6: string applicationName;
-    /** The Network Hostname of the Device sending the message, ideally the FQDM. */
-    7: optional string hostname;
-    8: optional string macAddress;
-    9: optional bool isTruncated = false;
-    10: string title;
-}
-
-/**
  * Defines the basic Units of Time Measurement.
  */
 enum TimeUnit
@@ -104,6 +61,50 @@ struct Image
     1: ImageType imageType;
     2: binary data;
     3: Dimension dimension;
+}
+
+
+/**
+ * Determines how Important or Severe a Message is.
+ */
+enum Urgency
+{
+    /** Lowest level of urgency. */
+    LOW = 1,
+    /** Middle level of urgency. */
+    MEDIUM = 2,
+    /** Highest level of urgency. */
+    HIGH = 3
+}
+
+/*
+ * TODO: Find a more distinctive name for Message.
+ * + Kik
+ * + Sok
+ * + Dice
+ */
+struct Message
+{
+    /** Each message has a unique ID */
+    1: string messageId;
+    /** 
+     * The body represents the Message's Payload, i.e. the actual message.
+     * If the Message Body is too long, it may be truncated. The complete
+     * body can then be loaded in a separate request.
+     */
+    2: optional string body;
+    3: Urgency urgency = Urgency.LOW;
+    /** The time the message was created on the Application side */
+    4: timestamp timeOfCreation;
+    /** The time the message was received on the Server side */
+    5: timestamp timeMessageReceived;
+    /** Name of the Application that sent the message. */
+    6: string applicationName;
+    /** The Network Hostname of the Device sending the message, ideally the FQDM. */
+    7: optional string hostname;
+    8: optional string macAddress;
+    9: optional bool isTruncated = false;
+    10: string title;
 }
 
 /**

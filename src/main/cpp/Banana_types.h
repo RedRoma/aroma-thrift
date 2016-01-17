@@ -19,16 +19,6 @@
 
 namespace aroma { namespace banana { namespace thrift {
 
-struct Urgency {
-  enum type {
-    LOW = 1,
-    MEDIUM = 2,
-    HIGH = 3
-  };
-};
-
-extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
-
 struct TimeUnit {
   enum type {
     MILLIS = 0,
@@ -50,6 +40,16 @@ struct ImageType {
 };
 
 extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
+
+struct Urgency {
+  enum type {
+    LOW = 1,
+    MEDIUM = 2,
+    HIGH = 3
+  };
+};
+
+extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
 
 struct Role {
   enum type {
@@ -90,129 +90,19 @@ typedef int64_t long;
 
 typedef int64_t timestamp;
 
-class Message;
-
 class LengthOfTime;
 
 class Dimension;
 
 class Image;
 
+class Message;
+
 class User;
 
 class Application;
 
 class ServiceAnnouncement;
-
-typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false) {}
-  bool messageId :1;
-  bool body :1;
-  bool urgency :1;
-  bool timeOfCreation :1;
-  bool timeMessageReceived :1;
-  bool applicationName :1;
-  bool hostname :1;
-  bool macAddress :1;
-  bool isTruncated :1;
-  bool title :1;
-} _Message__isset;
-
-class Message {
- public:
-
-  Message(const Message&);
-  Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title() {
-    urgency = (Urgency::type)1;
-
-  }
-
-  virtual ~Message() throw();
-  std::string messageId;
-  std::string body;
-  Urgency::type urgency;
-  timestamp timeOfCreation;
-  timestamp timeMessageReceived;
-  std::string applicationName;
-  std::string hostname;
-  std::string macAddress;
-  bool isTruncated;
-  std::string title;
-
-  _Message__isset __isset;
-
-  void __set_messageId(const std::string& val);
-
-  void __set_body(const std::string& val);
-
-  void __set_urgency(const Urgency::type val);
-
-  void __set_timeOfCreation(const timestamp val);
-
-  void __set_timeMessageReceived(const timestamp val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_hostname(const std::string& val);
-
-  void __set_macAddress(const std::string& val);
-
-  void __set_isTruncated(const bool val);
-
-  void __set_title(const std::string& val);
-
-  bool operator == (const Message & rhs) const
-  {
-    if (!(messageId == rhs.messageId))
-      return false;
-    if (__isset.body != rhs.__isset.body)
-      return false;
-    else if (__isset.body && !(body == rhs.body))
-      return false;
-    if (!(urgency == rhs.urgency))
-      return false;
-    if (!(timeOfCreation == rhs.timeOfCreation))
-      return false;
-    if (!(timeMessageReceived == rhs.timeMessageReceived))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (__isset.hostname != rhs.__isset.hostname)
-      return false;
-    else if (__isset.hostname && !(hostname == rhs.hostname))
-      return false;
-    if (__isset.macAddress != rhs.__isset.macAddress)
-      return false;
-    else if (__isset.macAddress && !(macAddress == rhs.macAddress))
-      return false;
-    if (__isset.isTruncated != rhs.__isset.isTruncated)
-      return false;
-    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
-      return false;
-    if (!(title == rhs.title))
-      return false;
-    return true;
-  }
-  bool operator != (const Message &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Message & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Message &a, Message &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Message& obj)
-{
-  obj.printTo(out);
-  return out;
-}
 
 
 class LengthOfTime {
@@ -357,6 +247,116 @@ class Image {
 void swap(Image &a, Image &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Image& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Message__isset {
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false) {}
+  bool messageId :1;
+  bool body :1;
+  bool urgency :1;
+  bool timeOfCreation :1;
+  bool timeMessageReceived :1;
+  bool applicationName :1;
+  bool hostname :1;
+  bool macAddress :1;
+  bool isTruncated :1;
+  bool title :1;
+} _Message__isset;
+
+class Message {
+ public:
+
+  Message(const Message&);
+  Message& operator=(const Message&);
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title() {
+    urgency = (Urgency::type)1;
+
+  }
+
+  virtual ~Message() throw();
+  std::string messageId;
+  std::string body;
+  Urgency::type urgency;
+  timestamp timeOfCreation;
+  timestamp timeMessageReceived;
+  std::string applicationName;
+  std::string hostname;
+  std::string macAddress;
+  bool isTruncated;
+  std::string title;
+
+  _Message__isset __isset;
+
+  void __set_messageId(const std::string& val);
+
+  void __set_body(const std::string& val);
+
+  void __set_urgency(const Urgency::type val);
+
+  void __set_timeOfCreation(const timestamp val);
+
+  void __set_timeMessageReceived(const timestamp val);
+
+  void __set_applicationName(const std::string& val);
+
+  void __set_hostname(const std::string& val);
+
+  void __set_macAddress(const std::string& val);
+
+  void __set_isTruncated(const bool val);
+
+  void __set_title(const std::string& val);
+
+  bool operator == (const Message & rhs) const
+  {
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (__isset.body != rhs.__isset.body)
+      return false;
+    else if (__isset.body && !(body == rhs.body))
+      return false;
+    if (!(urgency == rhs.urgency))
+      return false;
+    if (!(timeOfCreation == rhs.timeOfCreation))
+      return false;
+    if (!(timeMessageReceived == rhs.timeMessageReceived))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (__isset.hostname != rhs.__isset.hostname)
+      return false;
+    else if (__isset.hostname && !(hostname == rhs.hostname))
+      return false;
+    if (__isset.macAddress != rhs.__isset.macAddress)
+      return false;
+    else if (__isset.macAddress && !(macAddress == rhs.macAddress))
+      return false;
+    if (__isset.isTruncated != rhs.__isset.isTruncated)
+      return false;
+    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
+      return false;
+    if (!(title == rhs.title))
+      return false;
+    return true;
+  }
+  bool operator != (const Message &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Message & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Message &a, Message &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Message& obj)
 {
   obj.printTo(out);
   return out;

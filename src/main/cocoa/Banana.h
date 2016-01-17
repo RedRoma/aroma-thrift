@@ -19,12 +19,6 @@
 #import "TBaseClient.h"
 
 
-enum Banana_Urgency {
-  Urgency_LOW = 1,
-  Urgency_MEDIUM = 2,
-  Urgency_HIGH = 3
-};
-
 enum Banana_TimeUnit {
   TimeUnit_MILLIS = 0,
   TimeUnit_SECONDS = 1,
@@ -37,6 +31,12 @@ enum Banana_TimeUnit {
 enum Banana_ImageType {
   ImageType_JPEG = 1,
   ImageType_PNG = 2
+};
+
+enum Banana_Urgency {
+  Urgency_LOW = 1,
+  Urgency_MEDIUM = 2,
+  Urgency_HIGH = 3
 };
 
 enum Banana_Role {
@@ -69,113 +69,6 @@ typedef int32_t Banana_int;
 typedef int64_t Banana_long;
 
 typedef int64_t Banana_timestamp;
-
-@interface Banana_Message : NSObject <TBase, NSCoding> {
-  NSString * __messageId;
-  NSString * __body;
-  int __urgency;
-  Banana_timestamp __timeOfCreation;
-  Banana_timestamp __timeMessageReceived;
-  NSString * __applicationName;
-  NSString * __hostname;
-  NSString * __macAddress;
-  BOOL __isTruncated;
-  NSString * __title;
-
-  BOOL __messageId_isset;
-  BOOL __body_isset;
-  BOOL __urgency_isset;
-  BOOL __timeOfCreation_isset;
-  BOOL __timeMessageReceived_isset;
-  BOOL __applicationName_isset;
-  BOOL __hostname_isset;
-  BOOL __macAddress_isset;
-  BOOL __isTruncated_isset;
-  BOOL __title_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
-@property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
-@property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
-@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Banana_timestamp timeOfCreation;
-@property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
-@property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
-@property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
-@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
-#endif
-
-- (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) messageId;
-- (void) setMessageId: (NSString *) messageId;
-#endif
-- (BOOL) messageIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) body;
-- (void) setBody: (NSString *) body;
-#endif
-- (BOOL) bodyIsSet;
-
-#if !__has_feature(objc_arc)
-- (int) urgency;
-- (void) setUrgency: (int) urgency;
-#endif
-- (BOOL) urgencyIsSet;
-
-#if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfCreation;
-- (void) setTimeOfCreation: (Banana_timestamp) timeOfCreation;
-#endif
-- (BOOL) timeOfCreationIsSet;
-
-#if !__has_feature(objc_arc)
-- (Banana_timestamp) timeMessageReceived;
-- (void) setTimeMessageReceived: (Banana_timestamp) timeMessageReceived;
-#endif
-- (BOOL) timeMessageReceivedIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) hostname;
-- (void) setHostname: (NSString *) hostname;
-#endif
-- (BOOL) hostnameIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) macAddress;
-- (void) setMacAddress: (NSString *) macAddress;
-#endif
-- (BOOL) macAddressIsSet;
-
-#if !__has_feature(objc_arc)
-- (BOOL) isTruncated;
-- (void) setIsTruncated: (BOOL) isTruncated;
-#endif
-- (BOOL) isTruncatedIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) title;
-- (void) setTitle: (NSString *) title;
-#endif
-- (BOOL) titleIsSet;
-
-@end
 
 @interface Banana_LengthOfTime : NSObject <TBase, NSCoding> {
   int __unit;
@@ -288,6 +181,113 @@ typedef int64_t Banana_timestamp;
 - (void) setDimension: (Banana_Dimension *) dimension;
 #endif
 - (BOOL) dimensionIsSet;
+
+@end
+
+@interface Banana_Message : NSObject <TBase, NSCoding> {
+  NSString * __messageId;
+  NSString * __body;
+  int __urgency;
+  Banana_timestamp __timeOfCreation;
+  Banana_timestamp __timeMessageReceived;
+  NSString * __applicationName;
+  NSString * __hostname;
+  NSString * __macAddress;
+  BOOL __isTruncated;
+  NSString * __title;
+
+  BOOL __messageId_isset;
+  BOOL __body_isset;
+  BOOL __urgency_isset;
+  BOOL __timeOfCreation_isset;
+  BOOL __timeMessageReceived_isset;
+  BOOL __applicationName_isset;
+  BOOL __hostname_isset;
+  BOOL __macAddress_isset;
+  BOOL __isTruncated_isset;
+  BOOL __title_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+@property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
+@property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
+@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Banana_timestamp timeOfCreation;
+@property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
+@property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
+@property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
+#endif
+
+- (id) init;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) body;
+- (void) setBody: (NSString *) body;
+#endif
+- (BOOL) bodyIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) urgency;
+- (void) setUrgency: (int) urgency;
+#endif
+- (BOOL) urgencyIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeOfCreation;
+- (void) setTimeOfCreation: (Banana_timestamp) timeOfCreation;
+#endif
+- (BOOL) timeOfCreationIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeMessageReceived;
+- (void) setTimeMessageReceived: (Banana_timestamp) timeMessageReceived;
+#endif
+- (BOOL) timeMessageReceivedIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) hostname;
+- (void) setHostname: (NSString *) hostname;
+#endif
+- (BOOL) hostnameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) macAddress;
+- (void) setMacAddress: (NSString *) macAddress;
+#endif
+- (BOOL) macAddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) isTruncated;
+- (void) setIsTruncated: (BOOL) isTruncated;
+#endif
+- (BOOL) isTruncatedIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
 
 @end
 

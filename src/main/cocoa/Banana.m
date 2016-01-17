@@ -21,663 +21,6 @@
 
 #import "Banana.h"
 
-@implementation Banana_Message
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.urgency = 1;
-
-  self.isTruncated = NO;
-
-#endif
-  return self;
-}
-
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title
-{
-  self = [super init];
-  __messageId = [messageId retain_stub];
-  __messageId_isset = YES;
-  __body = [body retain_stub];
-  __body_isset = YES;
-  __urgency = urgency;
-  __urgency_isset = YES;
-  __timeOfCreation = timeOfCreation;
-  __timeOfCreation_isset = YES;
-  __timeMessageReceived = timeMessageReceived;
-  __timeMessageReceived_isset = YES;
-  __applicationName = [applicationName retain_stub];
-  __applicationName_isset = YES;
-  __hostname = [hostname retain_stub];
-  __hostname_isset = YES;
-  __macAddress = [macAddress retain_stub];
-  __macAddress_isset = YES;
-  __isTruncated = isTruncated;
-  __isTruncated_isset = YES;
-  __title = [title retain_stub];
-  __title_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"messageId"])
-  {
-    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
-    __messageId_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"body"])
-  {
-    __body = [[decoder decodeObjectForKey: @"body"] retain_stub];
-    __body_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"urgency"])
-  {
-    __urgency = [decoder decodeIntForKey: @"urgency"];
-    __urgency_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"timeOfCreation"])
-  {
-    __timeOfCreation = [decoder decodeInt64ForKey: @"timeOfCreation"];
-    __timeOfCreation_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"timeMessageReceived"])
-  {
-    __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
-    __timeMessageReceived_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"applicationName"])
-  {
-    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
-    __applicationName_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"hostname"])
-  {
-    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
-    __hostname_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"macAddress"])
-  {
-    __macAddress = [[decoder decodeObjectForKey: @"macAddress"] retain_stub];
-    __macAddress_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"isTruncated"])
-  {
-    __isTruncated = [decoder decodeBoolForKey: @"isTruncated"];
-    __isTruncated_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"title"])
-  {
-    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
-    __title_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__messageId_isset)
-  {
-    [encoder encodeObject: __messageId forKey: @"messageId"];
-  }
-  if (__body_isset)
-  {
-    [encoder encodeObject: __body forKey: @"body"];
-  }
-  if (__urgency_isset)
-  {
-    [encoder encodeInt: __urgency forKey: @"urgency"];
-  }
-  if (__timeOfCreation_isset)
-  {
-    [encoder encodeInt64: __timeOfCreation forKey: @"timeOfCreation"];
-  }
-  if (__timeMessageReceived_isset)
-  {
-    [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
-  }
-  if (__applicationName_isset)
-  {
-    [encoder encodeObject: __applicationName forKey: @"applicationName"];
-  }
-  if (__hostname_isset)
-  {
-    [encoder encodeObject: __hostname forKey: @"hostname"];
-  }
-  if (__macAddress_isset)
-  {
-    [encoder encodeObject: __macAddress forKey: @"macAddress"];
-  }
-  if (__isTruncated_isset)
-  {
-    [encoder encodeBool: __isTruncated forKey: @"isTruncated"];
-  }
-  if (__title_isset)
-  {
-    [encoder encodeObject: __title forKey: @"title"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
-  if (__messageId_isset)
-  {
-    hash = (hash * 31) ^ [__messageId hash];
-  }
-  hash = (hash * 31) ^ __body_isset ? 2654435761 : 0;
-  if (__body_isset)
-  {
-    hash = (hash * 31) ^ [__body hash];
-  }
-  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
-  if (__urgency_isset)
-  {
-    hash = (hash * 31) ^ [@(__urgency) hash];
-  }
-  hash = (hash * 31) ^ __timeOfCreation_isset ? 2654435761 : 0;
-  if (__timeOfCreation_isset)
-  {
-    hash = (hash * 31) ^ [@(__timeOfCreation) hash];
-  }
-  hash = (hash * 31) ^ __timeMessageReceived_isset ? 2654435761 : 0;
-  if (__timeMessageReceived_isset)
-  {
-    hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
-  }
-  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
-  if (__applicationName_isset)
-  {
-    hash = (hash * 31) ^ [__applicationName hash];
-  }
-  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
-  if (__hostname_isset)
-  {
-    hash = (hash * 31) ^ [__hostname hash];
-  }
-  hash = (hash * 31) ^ __macAddress_isset ? 2654435761 : 0;
-  if (__macAddress_isset)
-  {
-    hash = (hash * 31) ^ [__macAddress hash];
-  }
-  hash = (hash * 31) ^ __isTruncated_isset ? 2654435761 : 0;
-  if (__isTruncated_isset)
-  {
-    hash = (hash * 31) ^ [@(__isTruncated) hash];
-  }
-  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
-  if (__title_isset)
-  {
-    hash = (hash * 31) ^ [__title hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[Banana_Message class]]) {
-    return NO;
-  }
-  Banana_Message *other = (Banana_Message *)anObject;
-  if ((__messageId_isset != other->__messageId_isset) ||
-      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
-    return NO;
-  }
-  if ((__body_isset != other->__body_isset) ||
-      (__body_isset && ((__body || other->__body) && ![__body isEqual:other->__body]))) {
-    return NO;
-  }
-  if ((__urgency_isset != other->__urgency_isset) ||
-      (__urgency_isset && (__urgency != other->__urgency))) {
-    return NO;
-  }
-  if ((__timeOfCreation_isset != other->__timeOfCreation_isset) ||
-      (__timeOfCreation_isset && (__timeOfCreation != other->__timeOfCreation))) {
-    return NO;
-  }
-  if ((__timeMessageReceived_isset != other->__timeMessageReceived_isset) ||
-      (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
-    return NO;
-  }
-  if ((__applicationName_isset != other->__applicationName_isset) ||
-      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
-    return NO;
-  }
-  if ((__hostname_isset != other->__hostname_isset) ||
-      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
-    return NO;
-  }
-  if ((__macAddress_isset != other->__macAddress_isset) ||
-      (__macAddress_isset && ((__macAddress || other->__macAddress) && ![__macAddress isEqual:other->__macAddress]))) {
-    return NO;
-  }
-  if ((__isTruncated_isset != other->__isTruncated_isset) ||
-      (__isTruncated_isset && (__isTruncated != other->__isTruncated))) {
-    return NO;
-  }
-  if ((__title_isset != other->__title_isset) ||
-      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__messageId release_stub];
-  [__body release_stub];
-  [__applicationName release_stub];
-  [__hostname release_stub];
-  [__macAddress release_stub];
-  [__title release_stub];
-  [super dealloc_stub];
-}
-
-- (NSString *) messageId {
-  return [[__messageId retain_stub] autorelease_stub];
-}
-
-- (void) setMessageId: (NSString *) messageId {
-  [messageId retain_stub];
-  [__messageId release_stub];
-  __messageId = messageId;
-  __messageId_isset = YES;
-}
-
-- (BOOL) messageIdIsSet {
-  return __messageId_isset;
-}
-
-- (void) unsetMessageId {
-  [__messageId release_stub];
-  __messageId = nil;
-  __messageId_isset = NO;
-}
-
-- (NSString *) body {
-  return [[__body retain_stub] autorelease_stub];
-}
-
-- (void) setBody: (NSString *) body {
-  [body retain_stub];
-  [__body release_stub];
-  __body = body;
-  __body_isset = YES;
-}
-
-- (BOOL) bodyIsSet {
-  return __body_isset;
-}
-
-- (void) unsetBody {
-  [__body release_stub];
-  __body = nil;
-  __body_isset = NO;
-}
-
-- (int) urgency {
-  return __urgency;
-}
-
-- (void) setUrgency: (int) urgency {
-  __urgency = urgency;
-  __urgency_isset = YES;
-}
-
-- (BOOL) urgencyIsSet {
-  return __urgency_isset;
-}
-
-- (void) unsetUrgency {
-  __urgency_isset = NO;
-}
-
-- (int64_t) timeOfCreation {
-  return __timeOfCreation;
-}
-
-- (void) setTimeOfCreation: (int64_t) timeOfCreation {
-  __timeOfCreation = timeOfCreation;
-  __timeOfCreation_isset = YES;
-}
-
-- (BOOL) timeOfCreationIsSet {
-  return __timeOfCreation_isset;
-}
-
-- (void) unsetTimeOfCreation {
-  __timeOfCreation_isset = NO;
-}
-
-- (int64_t) timeMessageReceived {
-  return __timeMessageReceived;
-}
-
-- (void) setTimeMessageReceived: (int64_t) timeMessageReceived {
-  __timeMessageReceived = timeMessageReceived;
-  __timeMessageReceived_isset = YES;
-}
-
-- (BOOL) timeMessageReceivedIsSet {
-  return __timeMessageReceived_isset;
-}
-
-- (void) unsetTimeMessageReceived {
-  __timeMessageReceived_isset = NO;
-}
-
-- (NSString *) applicationName {
-  return [[__applicationName retain_stub] autorelease_stub];
-}
-
-- (void) setApplicationName: (NSString *) applicationName {
-  [applicationName retain_stub];
-  [__applicationName release_stub];
-  __applicationName = applicationName;
-  __applicationName_isset = YES;
-}
-
-- (BOOL) applicationNameIsSet {
-  return __applicationName_isset;
-}
-
-- (void) unsetApplicationName {
-  [__applicationName release_stub];
-  __applicationName = nil;
-  __applicationName_isset = NO;
-}
-
-- (NSString *) hostname {
-  return [[__hostname retain_stub] autorelease_stub];
-}
-
-- (void) setHostname: (NSString *) hostname {
-  [hostname retain_stub];
-  [__hostname release_stub];
-  __hostname = hostname;
-  __hostname_isset = YES;
-}
-
-- (BOOL) hostnameIsSet {
-  return __hostname_isset;
-}
-
-- (void) unsetHostname {
-  [__hostname release_stub];
-  __hostname = nil;
-  __hostname_isset = NO;
-}
-
-- (NSString *) macAddress {
-  return [[__macAddress retain_stub] autorelease_stub];
-}
-
-- (void) setMacAddress: (NSString *) macAddress {
-  [macAddress retain_stub];
-  [__macAddress release_stub];
-  __macAddress = macAddress;
-  __macAddress_isset = YES;
-}
-
-- (BOOL) macAddressIsSet {
-  return __macAddress_isset;
-}
-
-- (void) unsetMacAddress {
-  [__macAddress release_stub];
-  __macAddress = nil;
-  __macAddress_isset = NO;
-}
-
-- (BOOL) isTruncated {
-  return __isTruncated;
-}
-
-- (void) setIsTruncated: (BOOL) isTruncated {
-  __isTruncated = isTruncated;
-  __isTruncated_isset = YES;
-}
-
-- (BOOL) isTruncatedIsSet {
-  return __isTruncated_isset;
-}
-
-- (void) unsetIsTruncated {
-  __isTruncated_isset = NO;
-}
-
-- (NSString *) title {
-  return [[__title retain_stub] autorelease_stub];
-}
-
-- (void) setTitle: (NSString *) title {
-  [title retain_stub];
-  [__title release_stub];
-  __title = title;
-  __title_isset = YES;
-}
-
-- (BOOL) titleIsSet {
-  return __title_isset;
-}
-
-- (void) unsetTitle {
-  [__title release_stub];
-  __title = nil;
-  __title_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMessageId: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setBody: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_I32) {
-          int fieldValue = [inProtocol readI32];
-          [self setUrgency: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_I64) {
-          int64_t fieldValue = [inProtocol readI64];
-          [self setTimeOfCreation: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_I64) {
-          int64_t fieldValue = [inProtocol readI64];
-          [self setTimeMessageReceived: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 6:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setApplicationName: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 7:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setHostname: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 8:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setMacAddress: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 9:
-        if (fieldType == TType_BOOL) {
-          BOOL fieldValue = [inProtocol readBool];
-          [self setIsTruncated: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 10:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setTitle: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Message"];
-  if (__messageId_isset) {
-    if (__messageId != nil) {
-      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __messageId];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__body_isset) {
-    if (__body != nil) {
-      [outProtocol writeFieldBeginWithName: @"body" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __body];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__urgency_isset) {
-    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
-    [outProtocol writeI32: __urgency];
-    [outProtocol writeFieldEnd];
-  }
-  if (__timeOfCreation_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeOfCreation" type: TType_I64 fieldID: 4];
-    [outProtocol writeI64: __timeOfCreation];
-    [outProtocol writeFieldEnd];
-  }
-  if (__timeMessageReceived_isset) {
-    [outProtocol writeFieldBeginWithName: @"timeMessageReceived" type: TType_I64 fieldID: 5];
-    [outProtocol writeI64: __timeMessageReceived];
-    [outProtocol writeFieldEnd];
-  }
-  if (__applicationName_isset) {
-    if (__applicationName != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 6];
-      [outProtocol writeString: __applicationName];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__hostname_isset) {
-    if (__hostname != nil) {
-      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 7];
-      [outProtocol writeString: __hostname];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__macAddress_isset) {
-    if (__macAddress != nil) {
-      [outProtocol writeFieldBeginWithName: @"macAddress" type: TType_STRING fieldID: 8];
-      [outProtocol writeString: __macAddress];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__isTruncated_isset) {
-    [outProtocol writeFieldBeginWithName: @"isTruncated" type: TType_BOOL fieldID: 9];
-    [outProtocol writeBool: __isTruncated];
-    [outProtocol writeFieldEnd];
-  }
-  if (__title_isset) {
-    if (__title != nil) {
-      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 10];
-      [outProtocol writeString: __title];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Message("];
-  [ms appendString: @"messageId:"];
-  [ms appendFormat: @"\"%@\"", __messageId];
-  [ms appendString: @",body:"];
-  [ms appendFormat: @"\"%@\"", __body];
-  [ms appendString: @",urgency:"];
-  [ms appendFormat: @"%i", __urgency];
-  [ms appendString: @",timeOfCreation:"];
-  [ms appendFormat: @"%qi", __timeOfCreation];
-  [ms appendString: @",timeMessageReceived:"];
-  [ms appendFormat: @"%qi", __timeMessageReceived];
-  [ms appendString: @",applicationName:"];
-  [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @",hostname:"];
-  [ms appendFormat: @"\"%@\"", __hostname];
-  [ms appendString: @",macAddress:"];
-  [ms appendFormat: @"\"%@\"", __macAddress];
-  [ms appendString: @",isTruncated:"];
-  [ms appendFormat: @"%i", __isTruncated];
-  [ms appendString: @",title:"];
-  [ms appendFormat: @"\"%@\"", __title];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
 @implementation Banana_LengthOfTime
 
 - (id) init
@@ -1341,6 +684,663 @@
   [ms appendFormat: @"\"%@\"", __data];
   [ms appendString: @",dimension:"];
   [ms appendFormat: @"%@", __dimension];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation Banana_Message
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.urgency = 1;
+
+  self.isTruncated = NO;
+
+#endif
+  return self;
+}
+
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title
+{
+  self = [super init];
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
+  __body = [body retain_stub];
+  __body_isset = YES;
+  __urgency = urgency;
+  __urgency_isset = YES;
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
+  __timeMessageReceived = timeMessageReceived;
+  __timeMessageReceived_isset = YES;
+  __applicationName = [applicationName retain_stub];
+  __applicationName_isset = YES;
+  __hostname = [hostname retain_stub];
+  __hostname_isset = YES;
+  __macAddress = [macAddress retain_stub];
+  __macAddress_isset = YES;
+  __isTruncated = isTruncated;
+  __isTruncated_isset = YES;
+  __title = [title retain_stub];
+  __title_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"body"])
+  {
+    __body = [[decoder decodeObjectForKey: @"body"] retain_stub];
+    __body_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"urgency"])
+  {
+    __urgency = [decoder decodeIntForKey: @"urgency"];
+    __urgency_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfCreation"])
+  {
+    __timeOfCreation = [decoder decodeInt64ForKey: @"timeOfCreation"];
+    __timeOfCreation_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeMessageReceived"])
+  {
+    __timeMessageReceived = [decoder decodeInt64ForKey: @"timeMessageReceived"];
+    __timeMessageReceived_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"applicationName"])
+  {
+    __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
+    __applicationName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostname"])
+  {
+    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
+    __hostname_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"macAddress"])
+  {
+    __macAddress = [[decoder decodeObjectForKey: @"macAddress"] retain_stub];
+    __macAddress_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"isTruncated"])
+  {
+    __isTruncated = [decoder decodeBoolForKey: @"isTruncated"];
+    __isTruncated_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"title"])
+  {
+    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
+    __title_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+  if (__body_isset)
+  {
+    [encoder encodeObject: __body forKey: @"body"];
+  }
+  if (__urgency_isset)
+  {
+    [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__timeOfCreation_isset)
+  {
+    [encoder encodeInt64: __timeOfCreation forKey: @"timeOfCreation"];
+  }
+  if (__timeMessageReceived_isset)
+  {
+    [encoder encodeInt64: __timeMessageReceived forKey: @"timeMessageReceived"];
+  }
+  if (__applicationName_isset)
+  {
+    [encoder encodeObject: __applicationName forKey: @"applicationName"];
+  }
+  if (__hostname_isset)
+  {
+    [encoder encodeObject: __hostname forKey: @"hostname"];
+  }
+  if (__macAddress_isset)
+  {
+    [encoder encodeObject: __macAddress forKey: @"macAddress"];
+  }
+  if (__isTruncated_isset)
+  {
+    [encoder encodeBool: __isTruncated forKey: @"isTruncated"];
+  }
+  if (__title_isset)
+  {
+    [encoder encodeObject: __title forKey: @"title"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
+  hash = (hash * 31) ^ __body_isset ? 2654435761 : 0;
+  if (__body_isset)
+  {
+    hash = (hash * 31) ^ [__body hash];
+  }
+  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
+  if (__urgency_isset)
+  {
+    hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeOfCreation_isset ? 2654435761 : 0;
+  if (__timeOfCreation_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfCreation) hash];
+  }
+  hash = (hash * 31) ^ __timeMessageReceived_isset ? 2654435761 : 0;
+  if (__timeMessageReceived_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeMessageReceived) hash];
+  }
+  hash = (hash * 31) ^ __applicationName_isset ? 2654435761 : 0;
+  if (__applicationName_isset)
+  {
+    hash = (hash * 31) ^ [__applicationName hash];
+  }
+  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
+  if (__hostname_isset)
+  {
+    hash = (hash * 31) ^ [__hostname hash];
+  }
+  hash = (hash * 31) ^ __macAddress_isset ? 2654435761 : 0;
+  if (__macAddress_isset)
+  {
+    hash = (hash * 31) ^ [__macAddress hash];
+  }
+  hash = (hash * 31) ^ __isTruncated_isset ? 2654435761 : 0;
+  if (__isTruncated_isset)
+  {
+    hash = (hash * 31) ^ [@(__isTruncated) hash];
+  }
+  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
+  if (__title_isset)
+  {
+    hash = (hash * 31) ^ [__title hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[Banana_Message class]]) {
+    return NO;
+  }
+  Banana_Message *other = (Banana_Message *)anObject;
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
+  if ((__body_isset != other->__body_isset) ||
+      (__body_isset && ((__body || other->__body) && ![__body isEqual:other->__body]))) {
+    return NO;
+  }
+  if ((__urgency_isset != other->__urgency_isset) ||
+      (__urgency_isset && (__urgency != other->__urgency))) {
+    return NO;
+  }
+  if ((__timeOfCreation_isset != other->__timeOfCreation_isset) ||
+      (__timeOfCreation_isset && (__timeOfCreation != other->__timeOfCreation))) {
+    return NO;
+  }
+  if ((__timeMessageReceived_isset != other->__timeMessageReceived_isset) ||
+      (__timeMessageReceived_isset && (__timeMessageReceived != other->__timeMessageReceived))) {
+    return NO;
+  }
+  if ((__applicationName_isset != other->__applicationName_isset) ||
+      (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
+    return NO;
+  }
+  if ((__hostname_isset != other->__hostname_isset) ||
+      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
+    return NO;
+  }
+  if ((__macAddress_isset != other->__macAddress_isset) ||
+      (__macAddress_isset && ((__macAddress || other->__macAddress) && ![__macAddress isEqual:other->__macAddress]))) {
+    return NO;
+  }
+  if ((__isTruncated_isset != other->__isTruncated_isset) ||
+      (__isTruncated_isset && (__isTruncated != other->__isTruncated))) {
+    return NO;
+  }
+  if ((__title_isset != other->__title_isset) ||
+      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__messageId release_stub];
+  [__body release_stub];
+  [__applicationName release_stub];
+  [__hostname release_stub];
+  [__macAddress release_stub];
+  [__title release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
+}
+
+- (NSString *) body {
+  return [[__body retain_stub] autorelease_stub];
+}
+
+- (void) setBody: (NSString *) body {
+  [body retain_stub];
+  [__body release_stub];
+  __body = body;
+  __body_isset = YES;
+}
+
+- (BOOL) bodyIsSet {
+  return __body_isset;
+}
+
+- (void) unsetBody {
+  [__body release_stub];
+  __body = nil;
+  __body_isset = NO;
+}
+
+- (int) urgency {
+  return __urgency;
+}
+
+- (void) setUrgency: (int) urgency {
+  __urgency = urgency;
+  __urgency_isset = YES;
+}
+
+- (BOOL) urgencyIsSet {
+  return __urgency_isset;
+}
+
+- (void) unsetUrgency {
+  __urgency_isset = NO;
+}
+
+- (int64_t) timeOfCreation {
+  return __timeOfCreation;
+}
+
+- (void) setTimeOfCreation: (int64_t) timeOfCreation {
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
+}
+
+- (BOOL) timeOfCreationIsSet {
+  return __timeOfCreation_isset;
+}
+
+- (void) unsetTimeOfCreation {
+  __timeOfCreation_isset = NO;
+}
+
+- (int64_t) timeMessageReceived {
+  return __timeMessageReceived;
+}
+
+- (void) setTimeMessageReceived: (int64_t) timeMessageReceived {
+  __timeMessageReceived = timeMessageReceived;
+  __timeMessageReceived_isset = YES;
+}
+
+- (BOOL) timeMessageReceivedIsSet {
+  return __timeMessageReceived_isset;
+}
+
+- (void) unsetTimeMessageReceived {
+  __timeMessageReceived_isset = NO;
+}
+
+- (NSString *) applicationName {
+  return [[__applicationName retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationName: (NSString *) applicationName {
+  [applicationName retain_stub];
+  [__applicationName release_stub];
+  __applicationName = applicationName;
+  __applicationName_isset = YES;
+}
+
+- (BOOL) applicationNameIsSet {
+  return __applicationName_isset;
+}
+
+- (void) unsetApplicationName {
+  [__applicationName release_stub];
+  __applicationName = nil;
+  __applicationName_isset = NO;
+}
+
+- (NSString *) hostname {
+  return [[__hostname retain_stub] autorelease_stub];
+}
+
+- (void) setHostname: (NSString *) hostname {
+  [hostname retain_stub];
+  [__hostname release_stub];
+  __hostname = hostname;
+  __hostname_isset = YES;
+}
+
+- (BOOL) hostnameIsSet {
+  return __hostname_isset;
+}
+
+- (void) unsetHostname {
+  [__hostname release_stub];
+  __hostname = nil;
+  __hostname_isset = NO;
+}
+
+- (NSString *) macAddress {
+  return [[__macAddress retain_stub] autorelease_stub];
+}
+
+- (void) setMacAddress: (NSString *) macAddress {
+  [macAddress retain_stub];
+  [__macAddress release_stub];
+  __macAddress = macAddress;
+  __macAddress_isset = YES;
+}
+
+- (BOOL) macAddressIsSet {
+  return __macAddress_isset;
+}
+
+- (void) unsetMacAddress {
+  [__macAddress release_stub];
+  __macAddress = nil;
+  __macAddress_isset = NO;
+}
+
+- (BOOL) isTruncated {
+  return __isTruncated;
+}
+
+- (void) setIsTruncated: (BOOL) isTruncated {
+  __isTruncated = isTruncated;
+  __isTruncated_isset = YES;
+}
+
+- (BOOL) isTruncatedIsSet {
+  return __isTruncated_isset;
+}
+
+- (void) unsetIsTruncated {
+  __isTruncated_isset = NO;
+}
+
+- (NSString *) title {
+  return [[__title retain_stub] autorelease_stub];
+}
+
+- (void) setTitle: (NSString *) title {
+  [title retain_stub];
+  [__title release_stub];
+  __title = title;
+  __title_isset = YES;
+}
+
+- (BOOL) titleIsSet {
+  return __title_isset;
+}
+
+- (void) unsetTitle {
+  [__title release_stub];
+  __title = nil;
+  __title_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setUrgency: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfCreation: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeMessageReceived: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHostname: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMacAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIsTruncated: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTitle: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Message"];
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__body_isset) {
+    if (__body != nil) {
+      [outProtocol writeFieldBeginWithName: @"body" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __body];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__urgency_isset) {
+    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __urgency];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeOfCreation_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfCreation" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfCreation];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeMessageReceived_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeMessageReceived" type: TType_I64 fieldID: 5];
+    [outProtocol writeI64: __timeMessageReceived];
+    [outProtocol writeFieldEnd];
+  }
+  if (__applicationName_isset) {
+    if (__applicationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationName" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __applicationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostname_isset) {
+    if (__hostname != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __hostname];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__macAddress_isset) {
+    if (__macAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"macAddress" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __macAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__isTruncated_isset) {
+    [outProtocol writeFieldBeginWithName: @"isTruncated" type: TType_BOOL fieldID: 9];
+    [outProtocol writeBool: __isTruncated];
+    [outProtocol writeFieldEnd];
+  }
+  if (__title_isset) {
+    if (__title != nil) {
+      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __title];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Message("];
+  [ms appendString: @"messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @",body:"];
+  [ms appendFormat: @"\"%@\"", __body];
+  [ms appendString: @",urgency:"];
+  [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",timeOfCreation:"];
+  [ms appendFormat: @"%qi", __timeOfCreation];
+  [ms appendString: @",timeMessageReceived:"];
+  [ms appendFormat: @"%qi", __timeMessageReceived];
+  [ms appendString: @",applicationName:"];
+  [ms appendFormat: @"\"%@\"", __applicationName];
+  [ms appendString: @",hostname:"];
+  [ms appendFormat: @"\"%@\"", __hostname];
+  [ms appendString: @",macAddress:"];
+  [ms appendFormat: @"\"%@\"", __macAddress];
+  [ms appendString: @",isTruncated:"];
+  [ms appendFormat: @"%i", __isTruncated];
+  [ms appendString: @",title:"];
+  [ms appendFormat: @"\"%@\"", __title];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
