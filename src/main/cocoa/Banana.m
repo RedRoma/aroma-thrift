@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -56,6 +56,8 @@
   __macAddress_isset = YES;
   __isTruncated = isTruncated;
   __isTruncated_isset = YES;
+  __title = [title retain_stub];
+  __title_isset = YES;
   return self;
 }
 
@@ -107,6 +109,11 @@
     __isTruncated = [decoder decodeBoolForKey: @"isTruncated"];
     __isTruncated_isset = YES;
   }
+  if ([decoder containsValueForKey: @"title"])
+  {
+    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
+    __title_isset = YES;
+  }
   return self;
 }
 
@@ -147,6 +154,10 @@
   if (__isTruncated_isset)
   {
     [encoder encodeBool: __isTruncated forKey: @"isTruncated"];
+  }
+  if (__title_isset)
+  {
+    [encoder encodeObject: __title forKey: @"title"];
   }
 }
 
@@ -198,6 +209,11 @@
   {
     hash = (hash * 31) ^ [@(__isTruncated) hash];
   }
+  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
+  if (__title_isset)
+  {
+    hash = (hash * 31) ^ [__title hash];
+  }
   return hash;
 }
 
@@ -246,6 +262,10 @@
       (__isTruncated_isset && (__isTruncated != other->__isTruncated))) {
     return NO;
   }
+  if ((__title_isset != other->__title_isset) ||
+      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -256,6 +276,7 @@
   [__applicationName release_stub];
   [__hostname release_stub];
   [__macAddress release_stub];
+  [__title release_stub];
   [super dealloc_stub];
 }
 
@@ -432,6 +453,27 @@
   __isTruncated_isset = NO;
 }
 
+- (NSString *) title {
+  return [[__title retain_stub] autorelease_stub];
+}
+
+- (void) setTitle: (NSString *) title {
+  [title retain_stub];
+  [__title release_stub];
+  __title = title;
+  __title_isset = YES;
+}
+
+- (BOOL) titleIsSet {
+  return __title_isset;
+}
+
+- (void) unsetTitle {
+  [__title release_stub];
+  __title = nil;
+  __title_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -519,6 +561,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTitle: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -585,6 +635,13 @@
     [outProtocol writeBool: __isTruncated];
     [outProtocol writeFieldEnd];
   }
+  if (__title_isset) {
+    if (__title != nil) {
+      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __title];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -613,6 +670,8 @@
   [ms appendFormat: @"\"%@\"", __macAddress];
   [ms appendString: @",isTruncated:"];
   [ms appendFormat: @"%i", __isTruncated];
+  [ms appendString: @",title:"];
+  [ms appendFormat: @"\"%@\"", __title];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

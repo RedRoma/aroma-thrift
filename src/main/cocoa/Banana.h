@@ -80,6 +80,7 @@ typedef int64_t Banana_timestamp;
   NSString * __hostname;
   NSString * __macAddress;
   BOOL __isTruncated;
+  NSString * __title;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -90,6 +91,7 @@ typedef int64_t Banana_timestamp;
   BOOL __hostname_isset;
   BOOL __macAddress_isset;
   BOOL __isTruncated_isset;
+  BOOL __title_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -102,10 +104,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
 @property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
 @property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -165,6 +168,12 @@ typedef int64_t Banana_timestamp;
 - (void) setIsTruncated: (BOOL) isTruncated;
 #endif
 - (BOOL) isTruncatedIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
 
 @end
 

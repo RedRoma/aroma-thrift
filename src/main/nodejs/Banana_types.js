@@ -59,6 +59,7 @@ Message = module.exports.Message = function(args) {
   this.hostname = null;
   this.macAddress = null;
   this.isTruncated = false;
+  this.title = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -86,6 +87,9 @@ Message = module.exports.Message = function(args) {
     }
     if (args.isTruncated !== undefined && args.isTruncated !== null) {
       this.isTruncated = args.isTruncated;
+    }
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
     }
   }
 };
@@ -166,6 +170,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -220,6 +231,11 @@ Message.prototype.write = function(output) {
   if (this.isTruncated !== null && this.isTruncated !== undefined) {
     output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
     output.writeBool(this.isTruncated);
+    output.writeFieldEnd();
+  }
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 10);
+    output.writeString(this.title);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

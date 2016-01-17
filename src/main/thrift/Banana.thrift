@@ -58,6 +58,7 @@ struct Message
     7: optional string hostname;
     8: optional string macAddress;
     9: optional bool isTruncated = false;
+    10: string title;
 }
 
 /**
