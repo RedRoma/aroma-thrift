@@ -27,6 +27,473 @@
 
 #import "MessageService.h"
 
+@implementation MessageService_SendMessageRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.urgency = 1;
+
+#endif
+  return self;
+}
+
+- (id) initWithApplicationToken: (MessageService_ApplicationToken) applicationToken message: (NSString *) message urgency: (MessageService_Urgency) urgency timeOfMessage: (MessageService_timestamp) timeOfMessage
+{
+  self = [super init];
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __urgency = urgency;
+  __urgency_isset = YES;
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationToken"])
+  {
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"urgency"])
+  {
+    __urgency = [decoder decodeIntForKey: @"urgency"];
+    __urgency_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfMessage"])
+  {
+    __timeOfMessage = [decoder decodeInt64ForKey: @"timeOfMessage"];
+    __timeOfMessage_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationToken_isset)
+  {
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__urgency_isset)
+  {
+    [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__timeOfMessage_isset)
+  {
+    [encoder encodeInt64: __timeOfMessage forKey: @"timeOfMessage"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
+  {
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
+  if (__urgency_isset)
+  {
+    hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeOfMessage_isset ? 2654435761 : 0;
+  if (__timeOfMessage_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfMessage) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[MessageService_SendMessageRequest class]]) {
+    return NO;
+  }
+  MessageService_SendMessageRequest *other = (MessageService_SendMessageRequest *)anObject;
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__urgency_isset != other->__urgency_isset) ||
+      (__urgency_isset && (__urgency != other->__urgency))) {
+    return NO;
+  }
+  if ((__timeOfMessage_isset != other->__timeOfMessage_isset) ||
+      (__timeOfMessage_isset && (__timeOfMessage != other->__timeOfMessage))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationToken release_stub];
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
+}
+
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
+}
+
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (int) urgency {
+  return __urgency;
+}
+
+- (void) setUrgency: (int) urgency {
+  __urgency = urgency;
+  __urgency_isset = YES;
+}
+
+- (BOOL) urgencyIsSet {
+  return __urgency_isset;
+}
+
+- (void) unsetUrgency {
+  __urgency_isset = NO;
+}
+
+- (int64_t) timeOfMessage {
+  return __timeOfMessage;
+}
+
+- (void) setTimeOfMessage: (int64_t) timeOfMessage {
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+}
+
+- (BOOL) timeOfMessageIsSet {
+  return __timeOfMessage_isset;
+}
+
+- (void) unsetTimeOfMessage {
+  __timeOfMessage_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setUrgency: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendMessageRequest"];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__urgency_isset) {
+    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __urgency];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeOfMessage_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfMessage" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfMessage];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"MessageService_SendMessageRequest("];
+  [ms appendString: @"applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",urgency:"];
+  [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",timeOfMessage:"];
+  [ms appendFormat: @"%qi", __timeOfMessage];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation MessageService_SendMessageResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessageId: (NSString *) messageId
+{
+  self = [super init];
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[MessageService_SendMessageResponse class]]) {
+    return NO;
+  }
+  MessageService_SendMessageResponse *other = (MessageService_SendMessageResponse *)anObject;
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__messageId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendMessageResponse"];
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"MessageService_SendMessageResponse("];
+  [ms appendString: @"messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation MessageService_DeleteMessageRequest
 
 - (id) init

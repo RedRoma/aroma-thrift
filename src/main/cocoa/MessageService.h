@@ -31,6 +31,8 @@ typedef Banana_long MessageService_long;
 
 typedef Banana_timestamp MessageService_timestamp;
 
+typedef BananaAuthentication_ApplicationToken * MessageService_ApplicationToken;
+
 typedef BananaAuthentication_AuthenticationToken * MessageService_AuthenticationToken;
 
 typedef BananaAuthentication_UserToken * MessageService_UserToken;
@@ -60,6 +62,85 @@ typedef BananaException_CustomChannelUnreachableException * MessageService_Custo
 typedef BananaException_ChannelDoesNotExistException * MessageService_ChannelDoesNotExistException;
 
 typedef BananaException_UnauthorizedException * MessageService_UnauthorizedException;
+
+@interface MessageService_SendMessageRequest : NSObject <TBase, NSCoding> {
+  MessageService_ApplicationToken __applicationToken;
+  NSString * __message;
+  MessageService_Urgency __urgency;
+  MessageService_timestamp __timeOfMessage;
+
+  BOOL __applicationToken_isset;
+  BOOL __message_isset;
+  BOOL __urgency_isset;
+  BOOL __timeOfMessage_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) MessageService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, getter=urgency, setter=setUrgency:) MessageService_Urgency urgency;
+@property (nonatomic, getter=timeOfMessage, setter=setTimeOfMessage:) MessageService_timestamp timeOfMessage;
+#endif
+
+- (id) init;
+- (id) initWithApplicationToken: (MessageService_ApplicationToken) applicationToken message: (NSString *) message urgency: (MessageService_Urgency) urgency timeOfMessage: (MessageService_timestamp) timeOfMessage;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (MessageService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (MessageService_ApplicationToken) applicationToken;
+#endif
+- (BOOL) applicationTokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (MessageService_Urgency) urgency;
+- (void) setUrgency: (MessageService_Urgency) urgency;
+#endif
+- (BOOL) urgencyIsSet;
+
+#if !__has_feature(objc_arc)
+- (MessageService_timestamp) timeOfMessage;
+- (void) setTimeOfMessage: (MessageService_timestamp) timeOfMessage;
+#endif
+- (BOOL) timeOfMessageIsSet;
+
+@end
+
+@interface MessageService_SendMessageResponse : NSObject <TBase, NSCoding> {
+  NSString * __messageId;
+
+  BOOL __messageId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+#endif
+
+- (id) init;
+- (id) initWithMessageId: (NSString *) messageId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageId;
+- (void) setMessageId: (NSString *) messageId;
+#endif
+- (BOOL) messageIdIsSet;
+
+@end
 
 @interface MessageService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
   MessageService_UserToken __token;

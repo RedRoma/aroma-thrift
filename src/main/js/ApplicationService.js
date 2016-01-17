@@ -147,6 +147,8 @@ ApplicationService_sendMessage_result = function(args) {
       this.ex1 = null;
       this.ex2 = null;
       this.ex3 = null;
+      this.ex4 = null;
+      this.ex5 = null;
       if (args instanceof OperationFailedException) {
             this.ex1 = args;
             return;
@@ -157,6 +159,14 @@ ApplicationService_sendMessage_result = function(args) {
       }
       if (args instanceof InvalidTokenException) {
             this.ex3 = args;
+            return;
+      }
+      if (args instanceof ApplicationDoesNotExistException) {
+            this.ex4 = args;
+            return;
+      }
+      if (args instanceof ThroughoutExceededException) {
+            this.ex5 = args;
             return;
       }
       if (args) {
@@ -171,6 +181,12 @@ ApplicationService_sendMessage_result = function(args) {
             }
             if (args.ex3 !== undefined && args.ex3 !== null) {
                   this.ex3 = args.ex3;
+            }
+            if (args.ex4 !== undefined && args.ex4 !== null) {
+                  this.ex4 = args.ex4;
+            }
+            if (args.ex5 !== undefined && args.ex5 !== null) {
+                  this.ex5 = args.ex5;
             }
       }
 };
@@ -220,6 +236,22 @@ ApplicationService_sendMessage_result.prototype.read = function(input) {
             input.skip(ftype);
           }
           break;
+          case 4:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex4 = new ApplicationDoesNotExistException();
+            this.ex4.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
+          case 5:
+          if (ftype == Thrift.Type.STRUCT) {
+            this.ex5 = new ThroughoutExceededException();
+            this.ex5.read(input);
+          } else {
+            input.skip(ftype);
+          }
+          break;
           default:
             input.skip(ftype);
         }
@@ -249,6 +281,16 @@ ApplicationService_sendMessage_result.prototype.write = function(output) {
       if (this.ex3 !== null && this.ex3 !== undefined) {
         output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
         this.ex3.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex4 !== null && this.ex4 !== undefined) {
+        output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+        this.ex4.write(output);
+        output.writeFieldEnd();
+      }
+      if (this.ex5 !== null && this.ex5 !== undefined) {
+        output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+        this.ex5.write(output);
         output.writeFieldEnd();
       }
       output.writeFieldStop();
@@ -444,6 +486,12 @@ ApplicationServiceClient.prototype.recv_sendMessage = function() {
       }
       if (null !== result.ex3) {
         throw result.ex3;
+      }
+      if (null !== result.ex4) {
+        throw result.ex4;
+      }
+      if (null !== result.ex5) {
+        throw result.ex5;
       }
       if (null !== result.success) {
         return result.success;

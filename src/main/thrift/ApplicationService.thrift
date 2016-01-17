@@ -12,6 +12,7 @@ include "Authentication.thrift"
 include "Banana.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
+include "MessageService.thrift"
 
 /*
  * These Typedefs are like import statements
@@ -36,7 +37,12 @@ typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegis
 typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
+typedef Exceptions.ThroughoutExceededException ThroughoutExceededException
 typedef Exceptions.UnauthorizedException UnauthorizedException
+
+//Service Request Typedefs
+typedef MessageService.SendMessageRequest SendMessageRequest
+typedef MessageService.SendMessageResponse SendMessageResponse
 
 const int SERVICE_PORT = 7005;
 
@@ -44,33 +50,14 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
-//==========================================================
-// QUERY OPERATIONS
-
-//==========================================================
-// Operations performed by Applications
-
-/**
- * Send a Message to the Banana Service.
- */
-struct SendMessageRequest
-{
-    1: ApplicationToken applicationToken;
-    2: string message;
-    3: Urgency urgency = Banana.Urgency.LOW;
-    /** The time that the message was generated on the Client Side. */
-    4: optional timestamp timeOfMessage;
-}
-
-struct SendMessageResponse
-{
-    1: string messageId;
-}
 
 /**
  * The Application  Service is designed to be called by Applications, to send messages
  * and report alerts to people. It is designed to be used by machines, not humans.
  * This is where Incoming Messages are accepted, processed, and stored.
+ * 
+ * The Application Service also performs rate-metering to ensure
+ * throughput limits are not exceeded.
  */
 service ApplicationService
 {
@@ -87,7 +74,9 @@ service ApplicationService
      */
     SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,
-                                                                           3 : InvalidTokenException ex3)
+                                                                           3 : InvalidTokenException ex3,
+                                                                           4 : ApplicationDoesNotExistException ex4,
+                                                                           5 : ThroughoutExceededException ex5)
 
     /**
      * Fire-And-Forget version of sendMessage() ;

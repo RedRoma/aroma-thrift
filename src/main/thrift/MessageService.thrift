@@ -26,6 +26,7 @@ typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 
 //Struct Typedefs
+typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
 typedef Banana.Application Application
@@ -52,8 +53,27 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.bana
 
 
 //==========================================================
-// SERVICE REQUESTS
+// Operations performed by Applications
 
+/**
+ * Send a Message to the Banana Service.
+ */
+struct SendMessageRequest
+{
+    1: ApplicationToken applicationToken;
+    2: string message;
+    3: Urgency urgency = Banana.Urgency.LOW;
+    /** The time that the message was generated on the Client Side. */
+    4: optional timestamp timeOfMessage;
+}
+
+struct SendMessageResponse
+{
+    1: string messageId;
+}
+
+//==========================================================
+// SERVICE REQUESTS
 
 /**
  * Deletes a Message.

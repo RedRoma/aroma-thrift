@@ -22,6 +22,7 @@
 #import "Banana.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
+#import "MessageService.h"
 
 typedef Banana_int ApplicationService_int;
 
@@ -51,91 +52,18 @@ typedef BananaException_CustomChannelUnreachableException * ApplicationService_C
 
 typedef BananaException_ChannelDoesNotExistException * ApplicationService_ChannelDoesNotExistException;
 
+typedef BananaException_ThroughoutExceededException * ApplicationService_ThroughoutExceededException;
+
 typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedException;
 
-@interface ApplicationService_SendMessageRequest : NSObject <TBase, NSCoding> {
-  ApplicationService_ApplicationToken __applicationToken;
-  NSString * __message;
-  ApplicationService_Urgency __urgency;
-  ApplicationService_timestamp __timeOfMessage;
+typedef MessageService_SendMessageRequest * ApplicationService_SendMessageRequest;
 
-  BOOL __applicationToken_isset;
-  BOOL __message_isset;
-  BOOL __urgency_isset;
-  BOOL __timeOfMessage_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) ApplicationService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, getter=urgency, setter=setUrgency:) ApplicationService_Urgency urgency;
-@property (nonatomic, getter=timeOfMessage, setter=setTimeOfMessage:) ApplicationService_timestamp timeOfMessage;
-#endif
-
-- (id) init;
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (ApplicationService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (ApplicationService_ApplicationToken) applicationToken;
-#endif
-- (BOOL) applicationTokenIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (ApplicationService_Urgency) urgency;
-- (void) setUrgency: (ApplicationService_Urgency) urgency;
-#endif
-- (BOOL) urgencyIsSet;
-
-#if !__has_feature(objc_arc)
-- (ApplicationService_timestamp) timeOfMessage;
-- (void) setTimeOfMessage: (ApplicationService_timestamp) timeOfMessage;
-#endif
-- (BOOL) timeOfMessageIsSet;
-
-@end
-
-@interface ApplicationService_SendMessageResponse : NSObject <TBase, NSCoding> {
-  NSString * __messageId;
-
-  BOOL __messageId_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
-#endif
-
-- (id) init;
-- (id) initWithMessageId: (NSString *) messageId;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) messageId;
-- (void) setMessageId: (NSString *) messageId;
-#endif
-- (BOOL) messageIdIsSet;
-
-@end
+typedef MessageService_SendMessageResponse * ApplicationService_SendMessageResponse;
 
 @protocol ApplicationService_ApplicationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request;  // throws ApplicationService_OperationFailedException, ApplicationService_InvalidArgumentException, ApplicationService_InvalidTokenException, TException
-- (void) sendMessageAsync: (ApplicationService_SendMessageRequest *) request;  // throws TException
+- (ApplicationService_SendMessageResponse) sendMessage: (ApplicationService_SendMessageRequest) request;  // throws ApplicationService_OperationFailedException, ApplicationService_InvalidArgumentException, ApplicationService_InvalidTokenException, ApplicationService_ApplicationDoesNotExistException, ApplicationService_ThroughoutExceededException, TException
+- (void) sendMessageAsync: (ApplicationService_SendMessageRequest) request;  // throws TException
 @end
 
 @interface ApplicationService_ApplicationServiceClient : TBaseClient <ApplicationService_ApplicationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

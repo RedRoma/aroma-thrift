@@ -14,16 +14,16 @@ ApplicationServiceConstants::ApplicationServiceConstants() {
   SERVICE_PORT = 7005;
 
   PRODUCTION_ENDPOINT.hostname = "application-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp5;
-  tmp5 = 7005;
+   ::aroma::banana::thrift::endpoint::int tmp0;
+  tmp0 = 7005;
 
-  PRODUCTION_ENDPOINT.port = tmp5;
+  PRODUCTION_ENDPOINT.port = tmp0;
 
   BETA_ENDPOINT.hostname = "application-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp6;
-  tmp6 = 7005;
+   ::aroma::banana::thrift::endpoint::int tmp1;
+  tmp1 = 7005;
 
-  BETA_ENDPOINT.port = tmp6;
+  BETA_ENDPOINT.port = tmp1;
 
 }
 
