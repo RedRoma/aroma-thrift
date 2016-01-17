@@ -471,13 +471,14 @@ inline std::ostream& operator<<(std::ostream& out, const Organization& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false) {}
   bool email :1;
   bool userId :1;
   bool name :1;
   bool roles :1;
   bool profileImage :1;
   bool profileImageLink :1;
+  bool githubProfile :1;
 } _User__isset;
 
 class User {
@@ -485,7 +486,7 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), userId(), name(), profileImageLink() {
+  User() : email(), userId(), name(), profileImageLink(), githubProfile() {
     roles.insert((Role::type)1);
 
   }
@@ -497,6 +498,7 @@ class User {
   std::set<Role::type>  roles;
   Image profileImage;
   std::string profileImageLink;
+  std::string githubProfile;
 
   _User__isset __isset;
 
@@ -511,6 +513,8 @@ class User {
   void __set_profileImage(const Image& val);
 
   void __set_profileImageLink(const std::string& val);
+
+  void __set_githubProfile(const std::string& val);
 
   bool operator == (const User & rhs) const
   {
@@ -531,6 +535,10 @@ class User {
     if (__isset.profileImageLink != rhs.__isset.profileImageLink)
       return false;
     else if (__isset.profileImageLink && !(profileImageLink == rhs.profileImageLink))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
       return false;
     return true;
   }

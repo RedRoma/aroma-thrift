@@ -396,6 +396,7 @@ typedef int64_t Banana_timestamp;
   NSMutableSet * __roles;
   Banana_Image * __profileImage;
   NSString * __profileImageLink;
+  NSString * __githubProfile;
 
   BOOL __email_isset;
   BOOL __userId_isset;
@@ -403,6 +404,7 @@ typedef int64_t Banana_timestamp;
   BOOL __roles_isset;
   BOOL __profileImage_isset;
   BOOL __profileImageLink_isset;
+  BOOL __githubProfile_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -412,10 +414,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
 @property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
 @property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) NSString * profileImageLink;
+@property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink;
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -457,6 +460,12 @@ typedef int64_t Banana_timestamp;
 - (void) setProfileImageLink: (NSString *) profileImageLink;
 #endif
 - (BOOL) profileImageLinkIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) githubProfile;
+- (void) setGithubProfile: (NSString *) githubProfile;
+#endif
+- (BOOL) githubProfileIsSet;
 
 @end
 

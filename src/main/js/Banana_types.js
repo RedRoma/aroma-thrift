@@ -670,6 +670,7 @@ User = function(args) {
   this.roles = [1];
   this.profileImage = null;
   this.profileImageLink = null;
+  this.githubProfile = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -688,6 +689,9 @@ User = function(args) {
     }
     if (args.profileImageLink !== undefined && args.profileImageLink !== null) {
       this.profileImageLink = args.profileImageLink;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
     }
   }
 };
@@ -761,6 +765,13 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -809,6 +820,11 @@ User.prototype.write = function(output) {
   if (this.profileImageLink !== null && this.profileImageLink !== undefined) {
     output.writeFieldBegin('profileImageLink', Thrift.Type.STRING, 6);
     output.writeString(this.profileImageLink);
+    output.writeFieldEnd();
+  }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 7);
+    output.writeString(this.githubProfile);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

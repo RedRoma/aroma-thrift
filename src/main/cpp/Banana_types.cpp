@@ -1037,6 +1037,11 @@ void User::__set_profileImageLink(const std::string& val) {
 __isset.profileImageLink = true;
 }
 
+void User::__set_githubProfile(const std::string& val) {
+  this->githubProfile = val;
+__isset.githubProfile = true;
+}
+
 uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1121,6 +1126,14 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->githubProfile);
+          this->__isset.githubProfile = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1173,6 +1186,11 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeString(this->profileImageLink);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.githubProfile) {
+    xfer += oprot->writeFieldBegin("githubProfile", ::apache::thrift::protocol::T_STRING, 7);
+    xfer += oprot->writeString(this->githubProfile);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1186,6 +1204,7 @@ void swap(User &a, User &b) {
   swap(a.roles, b.roles);
   swap(a.profileImage, b.profileImage);
   swap(a.profileImageLink, b.profileImageLink);
+  swap(a.githubProfile, b.githubProfile);
   swap(a.__isset, b.__isset);
 }
 
@@ -1196,6 +1215,7 @@ User::User(const User& other27) {
   roles = other27.roles;
   profileImage = other27.profileImage;
   profileImageLink = other27.profileImageLink;
+  githubProfile = other27.githubProfile;
   __isset = other27.__isset;
 }
 User& User::operator=(const User& other28) {
@@ -1205,6 +1225,7 @@ User& User::operator=(const User& other28) {
   roles = other28.roles;
   profileImage = other28.profileImage;
   profileImageLink = other28.profileImageLink;
+  githubProfile = other28.githubProfile;
   __isset = other28.__isset;
   return *this;
 }
@@ -1217,6 +1238,7 @@ void User::printTo(std::ostream& out) const {
   out << ", " << "roles=" << to_string(roles);
   out << ", " << "profileImage="; (__isset.profileImage ? (out << to_string(profileImage)) : (out << "<null>"));
   out << ", " << "profileImageLink="; (__isset.profileImageLink ? (out << to_string(profileImageLink)) : (out << "<null>"));
+  out << ", " << "githubProfile="; (__isset.githubProfile ? (out << to_string(githubProfile)) : (out << "<null>"));
   out << ")";
 }
 

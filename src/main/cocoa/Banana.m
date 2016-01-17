@@ -2002,7 +2002,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile
 {
   self = [super init];
   __email = [email retain_stub];
@@ -2017,6 +2017,8 @@
   __profileImage_isset = YES;
   __profileImageLink = [profileImageLink retain_stub];
   __profileImageLink_isset = YES;
+  __githubProfile = [githubProfile retain_stub];
+  __githubProfile_isset = YES;
   return self;
 }
 
@@ -2053,6 +2055,11 @@
     __profileImageLink = [[decoder decodeObjectForKey: @"profileImageLink"] retain_stub];
     __profileImageLink_isset = YES;
   }
+  if ([decoder containsValueForKey: @"githubProfile"])
+  {
+    __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
+    __githubProfile_isset = YES;
+  }
   return self;
 }
 
@@ -2081,6 +2088,10 @@
   if (__profileImageLink_isset)
   {
     [encoder encodeObject: __profileImageLink forKey: @"profileImageLink"];
+  }
+  if (__githubProfile_isset)
+  {
+    [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
   }
 }
 
@@ -2116,6 +2127,11 @@
   if (__profileImageLink_isset)
   {
     hash = (hash * 31) ^ [__profileImageLink hash];
+  }
+  hash = (hash * 31) ^ __githubProfile_isset ? 2654435761 : 0;
+  if (__githubProfile_isset)
+  {
+    hash = (hash * 31) ^ [__githubProfile hash];
   }
   return hash;
 }
@@ -2153,6 +2169,10 @@
       (__profileImageLink_isset && ((__profileImageLink || other->__profileImageLink) && ![__profileImageLink isEqual:other->__profileImageLink]))) {
     return NO;
   }
+  if ((__githubProfile_isset != other->__githubProfile_isset) ||
+      (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2164,6 +2184,7 @@
   [__roles release_stub];
   [__profileImage release_stub];
   [__profileImageLink release_stub];
+  [__githubProfile release_stub];
   [super dealloc_stub];
 }
 
@@ -2293,6 +2314,27 @@
   __profileImageLink_isset = NO;
 }
 
+- (NSString *) githubProfile {
+  return [[__githubProfile retain_stub] autorelease_stub];
+}
+
+- (void) setGithubProfile: (NSString *) githubProfile {
+  [githubProfile retain_stub];
+  [__githubProfile release_stub];
+  __githubProfile = githubProfile;
+  __githubProfile_isset = YES;
+}
+
+- (BOOL) githubProfileIsSet {
+  return __githubProfile_isset;
+}
+
+- (void) unsetGithubProfile {
+  [__githubProfile release_stub];
+  __githubProfile = nil;
+  __githubProfile_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2368,6 +2410,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setGithubProfile: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2430,6 +2480,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__githubProfile_isset) {
+    if (__githubProfile != nil) {
+      [outProtocol writeFieldBeginWithName: @"githubProfile" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __githubProfile];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2452,6 +2509,8 @@
   [ms appendFormat: @"%@", __profileImage];
   [ms appendString: @",profileImageLink:"];
   [ms appendFormat: @"\"%@\"", __profileImageLink];
+  [ms appendString: @",githubProfile:"];
+  [ms appendFormat: @"\"%@\"", __githubProfile];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

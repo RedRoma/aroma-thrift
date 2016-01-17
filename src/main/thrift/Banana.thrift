@@ -150,6 +150,7 @@ struct User
     4: set<Role> roles = [ Role.DEVELOPER ];
     5: optional Image profileImage;
     6: optional string profileImageLink;
+    7: optional string githubProfile;
 }
 
 /**
