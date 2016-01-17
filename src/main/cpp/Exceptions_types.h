@@ -44,6 +44,8 @@ class CustomChannelUnreachableException;
 
 class ChannelDoesNotExistException;
 
+class MessageDoesNotExistException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -617,6 +619,54 @@ class ChannelDoesNotExistException : public ::apache::thrift::TException {
 void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ChannelDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MessageDoesNotExistException__isset {
+  _MessageDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _MessageDoesNotExistException__isset;
+
+class MessageDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  MessageDoesNotExistException(const MessageDoesNotExistException&);
+  MessageDoesNotExistException& operator=(const MessageDoesNotExistException&);
+  MessageDoesNotExistException() : message("The Message specified does not exist.") {
+  }
+
+  virtual ~MessageDoesNotExistException() throw();
+  std::string message;
+
+  _MessageDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const MessageDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const MessageDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MessageDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(MessageDoesNotExistException &a, MessageDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MessageDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;

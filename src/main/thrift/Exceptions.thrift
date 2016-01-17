@@ -109,6 +109,14 @@ exception ChannelDoesNotExistException
 }
 
 /**
+ * Thrown when referencing a Message that does not exist.
+ */
+exception MessageDoesNotExistException
+{
+    1: string message = "The Message specified does not exist."
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  * This is like a catch-all exception
  */
