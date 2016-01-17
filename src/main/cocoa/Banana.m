@@ -2464,13 +2464,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.subscribers = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
+  self.followers = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
 
 #endif
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage subscribers: (NSMutableSet *) subscribers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -2487,8 +2487,8 @@
   __icon_isset = YES;
   __programmingLanguage = programmingLanguage;
   __programmingLanguage_isset = YES;
-  __subscribers = [subscribers retain_stub];
-  __subscribers_isset = YES;
+  __followers = [followers retain_stub];
+  __followers_isset = YES;
   __applicationDescription = [applicationDescription retain_stub];
   __applicationDescription_isset = YES;
   __organizationId = [organizationId retain_stub];
@@ -2534,10 +2534,10 @@
     __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
     __programmingLanguage_isset = YES;
   }
-  if ([decoder containsValueForKey: @"subscribers"])
+  if ([decoder containsValueForKey: @"followers"])
   {
-    __subscribers = [[decoder decodeObjectForKey: @"subscribers"] retain_stub];
-    __subscribers_isset = YES;
+    __followers = [[decoder decodeObjectForKey: @"followers"] retain_stub];
+    __followers_isset = YES;
   }
   if ([decoder containsValueForKey: @"applicationDescription"])
   {
@@ -2582,9 +2582,9 @@
   {
     [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
   }
-  if (__subscribers_isset)
+  if (__followers_isset)
   {
-    [encoder encodeObject: __subscribers forKey: @"subscribers"];
+    [encoder encodeObject: __followers forKey: @"followers"];
   }
   if (__applicationDescription_isset)
   {
@@ -2634,10 +2634,10 @@
   {
     hash = (hash * 31) ^ [@(__programmingLanguage) hash];
   }
-  hash = (hash * 31) ^ __subscribers_isset ? 2654435761 : 0;
-  if (__subscribers_isset)
+  hash = (hash * 31) ^ __followers_isset ? 2654435761 : 0;
+  if (__followers_isset)
   {
-    hash = (hash * 31) ^ [__subscribers hash];
+    hash = (hash * 31) ^ [__followers hash];
   }
   hash = (hash * 31) ^ __applicationDescription_isset ? 2654435761 : 0;
   if (__applicationDescription_isset)
@@ -2689,8 +2689,8 @@
       (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
     return NO;
   }
-  if ((__subscribers_isset != other->__subscribers_isset) ||
-      (__subscribers_isset && ((__subscribers || other->__subscribers) && ![__subscribers isEqual:other->__subscribers]))) {
+  if ((__followers_isset != other->__followers_isset) ||
+      (__followers_isset && ((__followers || other->__followers) && ![__followers isEqual:other->__followers]))) {
     return NO;
   }
   if ((__applicationDescription_isset != other->__applicationDescription_isset) ||
@@ -2710,7 +2710,7 @@
   [__name release_stub];
   [__applicationId release_stub];
   [__icon release_stub];
-  [__subscribers release_stub];
+  [__followers release_stub];
   [__applicationDescription release_stub];
   [__organizationId release_stub];
   [super dealloc_stub];
@@ -2851,25 +2851,25 @@
   __programmingLanguage_isset = NO;
 }
 
-- (NSMutableSet *) subscribers {
-  return [[__subscribers retain_stub] autorelease_stub];
+- (NSMutableSet *) followers {
+  return [[__followers retain_stub] autorelease_stub];
 }
 
-- (void) setSubscribers: (NSMutableSet *) subscribers {
-  [subscribers retain_stub];
-  [__subscribers release_stub];
-  __subscribers = subscribers;
-  __subscribers_isset = YES;
+- (void) setFollowers: (NSMutableSet *) followers {
+  [followers retain_stub];
+  [__followers release_stub];
+  __followers = followers;
+  __followers_isset = YES;
 }
 
-- (BOOL) subscribersIsSet {
-  return __subscribers_isset;
+- (BOOL) followersIsSet {
+  return __followers_isset;
 }
 
-- (void) unsetSubscribers {
-  [__subscribers release_stub];
-  __subscribers = nil;
-  __subscribers_isset = NO;
+- (void) unsetFollowers {
+  [__followers release_stub];
+  __followers = nil;
+  __followers_isset = NO;
 }
 
 - (NSString *) applicationDescription {
@@ -3011,7 +3011,7 @@
             [fieldValue addObject: _elem15];
           }
           [inProtocol readSetEnd];
-          [self setSubscribers: fieldValue];
+          [self setFollowers: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -3096,12 +3096,12 @@
     [outProtocol writeI32: __programmingLanguage];
     [outProtocol writeFieldEnd];
   }
-  if (__subscribers_isset) {
-    if (__subscribers != nil) {
-      [outProtocol writeFieldBeginWithName: @"subscribers" type: TType_SET fieldID: 8];
+  if (__followers_isset) {
+    if (__followers != nil) {
+      [outProtocol writeFieldBeginWithName: @"followers" type: TType_SET fieldID: 8];
       {
-        [outProtocol writeSetBeginWithElementType: TType_STRING size: [__subscribers count]];
-        NSEnumerator * _iter18 = [__subscribers objectEnumerator];
+        [outProtocol writeSetBeginWithElementType: TType_STRING size: [__followers count]];
+        NSEnumerator * _iter18 = [__followers objectEnumerator];
         id obj19;
         while ((obj19 = [_iter18 nextObject]))
         {
@@ -3150,8 +3150,8 @@
   [ms appendFormat: @"%@", __icon];
   [ms appendString: @",programmingLanguage:"];
   [ms appendFormat: @"%i", __programmingLanguage];
-  [ms appendString: @",subscribers:"];
-  [ms appendFormat: @"%@", __subscribers];
+  [ms appendString: @",followers:"];
+  [ms appendFormat: @"%@", __followers];
   [ms appendString: @",applicationDescription:"];
   [ms appendFormat: @"\"%@\"", __applicationDescription];
   [ms appendString: @",organizationId:"];

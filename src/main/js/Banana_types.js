@@ -824,7 +824,7 @@ Application = function(args) {
   this.totalMessagesSent = null;
   this.icon = null;
   this.programmingLanguage = null;
-  this.subscribers = [];
+  this.followers = [];
   this.applicationDescription = null;
   this.organizationId = null;
   if (args) {
@@ -849,8 +849,8 @@ Application = function(args) {
     if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
       this.programmingLanguage = args.programmingLanguage;
     }
-    if (args.subscribers !== undefined && args.subscribers !== null) {
-      this.subscribers = Thrift.copyList(args.subscribers, [null]);
+    if (args.followers !== undefined && args.followers !== null) {
+      this.followers = Thrift.copyList(args.followers, [null]);
     }
     if (args.applicationDescription !== undefined && args.applicationDescription !== null) {
       this.applicationDescription = args.applicationDescription;
@@ -942,7 +942,7 @@ Application.prototype.read = function(input) {
       if (ftype == Thrift.Type.SET) {
         var _size23 = 0;
         var _rtmp327;
-        this.subscribers = [];
+        this.followers = [];
         var _etype26 = 0;
         _rtmp327 = input.readSetBegin();
         _etype26 = _rtmp327.etype;
@@ -951,7 +951,7 @@ Application.prototype.read = function(input) {
         {
           var elem29 = null;
           elem29 = input.readString().value;
-          this.subscribers.push(elem29);
+          this.followers.push(elem29);
         }
         input.readSetEnd();
       } else {
@@ -1027,14 +1027,14 @@ Application.prototype.write = function(output) {
     output.writeI32(this.programmingLanguage);
     output.writeFieldEnd();
   }
-  if (this.subscribers !== null && this.subscribers !== undefined) {
-    output.writeFieldBegin('subscribers', Thrift.Type.SET, 8);
-    output.writeSetBegin(Thrift.Type.STRING, this.subscribers.length);
-    for (var iter31 in this.subscribers)
+  if (this.followers !== null && this.followers !== undefined) {
+    output.writeFieldBegin('followers', Thrift.Type.SET, 8);
+    output.writeSetBegin(Thrift.Type.STRING, this.followers.length);
+    for (var iter31 in this.followers)
     {
-      if (this.subscribers.hasOwnProperty(iter31))
+      if (this.followers.hasOwnProperty(iter31))
       {
-        iter31 = this.subscribers[iter31];
+        iter31 = this.followers[iter31];
         output.writeString(iter31);
       }
     }

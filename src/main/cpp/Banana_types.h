@@ -555,7 +555,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false), organizationId(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -563,7 +563,7 @@ typedef struct _Application__isset {
   bool totalMessagesSent :1;
   bool icon :1;
   bool programmingLanguage :1;
-  bool subscribers :1;
+  bool followers :1;
   bool applicationDescription :1;
   bool organizationId :1;
 } _Application__isset;
@@ -585,7 +585,7 @@ class Application {
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::set<std::string>  subscribers;
+  std::set<std::string>  followers;
   std::string applicationDescription;
   std::string organizationId;
 
@@ -605,7 +605,7 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::set<std::string> & val);
+  void __set_followers(const std::set<std::string> & val);
 
   void __set_applicationDescription(const std::string& val);
 
@@ -631,9 +631,9 @@ class Application {
       return false;
     else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
       return false;
-    if (__isset.subscribers != rhs.__isset.subscribers)
+    if (__isset.followers != rhs.__isset.followers)
       return false;
-    else if (__isset.subscribers && !(subscribers == rhs.subscribers))
+    else if (__isset.followers && !(followers == rhs.followers))
       return false;
     if (!(applicationDescription == rhs.applicationDescription))
       return false;

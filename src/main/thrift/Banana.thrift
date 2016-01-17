@@ -190,10 +190,9 @@ struct Application
     6: optional Image icon;
     7: optional ProgrammingLanguage programmingLanguage;
     /** 
-     * Defines a list of people that are subscribed 
-     * to events for an Application, and that are not owners.
+     * Defines the userIds of the people who are following this Application.
      */
-    8: optional set<string> subscribers = [];
+    8: optional set<string> followers = [];
     9: string applicationDescription;
     10: string organizationId;
 }

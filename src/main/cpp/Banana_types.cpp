@@ -1255,9 +1255,9 @@ void Application::__set_programmingLanguage(const ProgrammingLanguage::type val)
 __isset.programmingLanguage = true;
 }
 
-void Application::__set_subscribers(const std::set<std::string> & val) {
-  this->subscribers = val;
-__isset.subscribers = true;
+void Application::__set_followers(const std::set<std::string> & val) {
+  this->followers = val;
+__isset.followers = true;
 }
 
 void Application::__set_applicationDescription(const std::string& val) {
@@ -1363,7 +1363,7 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
       case 8:
         if (ftype == ::apache::thrift::protocol::T_SET) {
           {
-            this->subscribers.clear();
+            this->followers.clear();
             uint32_t _size36;
             ::apache::thrift::protocol::TType _etype39;
             xfer += iprot->readSetBegin(_etype39, _size36);
@@ -1372,11 +1372,11 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
             {
               std::string _elem41;
               xfer += iprot->readString(_elem41);
-              this->subscribers.insert(_elem41);
+              this->followers.insert(_elem41);
             }
             xfer += iprot->readSetEnd();
           }
-          this->__isset.subscribers = true;
+          this->__isset.followers = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1452,12 +1452,12 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeI32((int32_t)this->programmingLanguage);
     xfer += oprot->writeFieldEnd();
   }
-  if (this->__isset.subscribers) {
-    xfer += oprot->writeFieldBegin("subscribers", ::apache::thrift::protocol::T_SET, 8);
+  if (this->__isset.followers) {
+    xfer += oprot->writeFieldBegin("followers", ::apache::thrift::protocol::T_SET, 8);
     {
-      xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->subscribers.size()));
+      xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->followers.size()));
       std::set<std::string> ::const_iterator _iter43;
-      for (_iter43 = this->subscribers.begin(); _iter43 != this->subscribers.end(); ++_iter43)
+      for (_iter43 = this->followers.begin(); _iter43 != this->followers.end(); ++_iter43)
       {
         xfer += oprot->writeString((*_iter43));
       }
@@ -1487,7 +1487,7 @@ void swap(Application &a, Application &b) {
   swap(a.totalMessagesSent, b.totalMessagesSent);
   swap(a.icon, b.icon);
   swap(a.programmingLanguage, b.programmingLanguage);
-  swap(a.subscribers, b.subscribers);
+  swap(a.followers, b.followers);
   swap(a.applicationDescription, b.applicationDescription);
   swap(a.organizationId, b.organizationId);
   swap(a.__isset, b.__isset);
@@ -1501,7 +1501,7 @@ Application::Application(const Application& other44) {
   totalMessagesSent = other44.totalMessagesSent;
   icon = other44.icon;
   programmingLanguage = other44.programmingLanguage;
-  subscribers = other44.subscribers;
+  followers = other44.followers;
   applicationDescription = other44.applicationDescription;
   organizationId = other44.organizationId;
   __isset = other44.__isset;
@@ -1514,7 +1514,7 @@ Application& Application::operator=(const Application& other45) {
   totalMessagesSent = other45.totalMessagesSent;
   icon = other45.icon;
   programmingLanguage = other45.programmingLanguage;
-  subscribers = other45.subscribers;
+  followers = other45.followers;
   applicationDescription = other45.applicationDescription;
   organizationId = other45.organizationId;
   __isset = other45.__isset;
@@ -1530,7 +1530,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "totalMessagesSent=" << to_string(totalMessagesSent);
   out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
-  out << ", " << "subscribers="; (__isset.subscribers ? (out << to_string(subscribers)) : (out << "<null>"));
+  out << ", " << "followers="; (__isset.followers ? (out << to_string(followers)) : (out << "<null>"));
   out << ", " << "applicationDescription=" << to_string(applicationDescription);
   out << ", " << "organizationId=" << to_string(organizationId);
   out << ")";
