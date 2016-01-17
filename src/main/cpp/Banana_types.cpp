@@ -500,6 +500,10 @@ void Message::__set_title(const std::string& val) {
   this->title = val;
 }
 
+void Message::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+}
+
 uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -603,6 +607,14 @@ uint32_t Message::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -664,6 +676,10 @@ uint32_t Message::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->title);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 11);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -681,6 +697,7 @@ void swap(Message &a, Message &b) {
   swap(a.macAddress, b.macAddress);
   swap(a.isTruncated, b.isTruncated);
   swap(a.title, b.title);
+  swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
 }
 
@@ -695,6 +712,7 @@ Message::Message(const Message& other9) {
   macAddress = other9.macAddress;
   isTruncated = other9.isTruncated;
   title = other9.title;
+  applicationId = other9.applicationId;
   __isset = other9.__isset;
 }
 Message& Message::operator=(const Message& other10) {
@@ -708,6 +726,7 @@ Message& Message::operator=(const Message& other10) {
   macAddress = other10.macAddress;
   isTruncated = other10.isTruncated;
   title = other10.title;
+  applicationId = other10.applicationId;
   __isset = other10.__isset;
   return *this;
 }
@@ -724,6 +743,7 @@ void Message::printTo(std::ostream& out) const {
   out << ", " << "macAddress="; (__isset.macAddress ? (out << to_string(macAddress)) : (out << "<null>"));
   out << ", " << "isTruncated="; (__isset.isTruncated ? (out << to_string(isTruncated)) : (out << "<null>"));
   out << ", " << "title=" << to_string(title);
+  out << ", " << "applicationId=" << to_string(applicationId);
   out << ")";
 }
 

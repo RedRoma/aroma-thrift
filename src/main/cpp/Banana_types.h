@@ -255,7 +255,7 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
 }
 
 typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false) {}
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false), applicationId(false) {}
   bool messageId :1;
   bool body :1;
   bool urgency :1;
@@ -266,6 +266,7 @@ typedef struct _Message__isset {
   bool macAddress :1;
   bool isTruncated :1;
   bool title :1;
+  bool applicationId :1;
 } _Message__isset;
 
 class Message {
@@ -273,7 +274,7 @@ class Message {
 
   Message(const Message&);
   Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title() {
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title(), applicationId() {
     urgency = (Urgency::type)1;
 
   }
@@ -289,6 +290,7 @@ class Message {
   std::string macAddress;
   bool isTruncated;
   std::string title;
+  std::string applicationId;
 
   _Message__isset __isset;
 
@@ -311,6 +313,8 @@ class Message {
   void __set_isTruncated(const bool val);
 
   void __set_title(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
 
   bool operator == (const Message & rhs) const
   {
@@ -341,6 +345,8 @@ class Message {
     else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
       return false;
     if (!(title == rhs.title))
+      return false;
+    if (!(applicationId == rhs.applicationId))
       return false;
     return true;
   }

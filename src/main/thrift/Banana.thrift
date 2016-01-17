@@ -105,6 +105,8 @@ struct Message
     8: optional string macAddress;
     9: optional bool isTruncated = false;
     10: string title;
+    /** The ID of the Application the Message was sent from. */
+    11: string applicationId;
 }
 
 /**

@@ -704,7 +704,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (NSString *) applicationId
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -727,6 +727,8 @@
   __isTruncated_isset = YES;
   __title = [title retain_stub];
   __title_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
   return self;
 }
 
@@ -783,6 +785,11 @@
     __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
     __title_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
   return self;
 }
 
@@ -827,6 +834,10 @@
   if (__title_isset)
   {
     [encoder encodeObject: __title forKey: @"title"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
 }
 
@@ -883,6 +894,11 @@
   {
     hash = (hash * 31) ^ [__title hash];
   }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
   return hash;
 }
 
@@ -935,6 +951,10 @@
       (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
     return NO;
   }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -946,6 +966,7 @@
   [__hostname release_stub];
   [__macAddress release_stub];
   [__title release_stub];
+  [__applicationId release_stub];
   [super dealloc_stub];
 }
 
@@ -1143,6 +1164,27 @@
   __title_isset = NO;
 }
 
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1238,6 +1280,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 11:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1311,6 +1361,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 11];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1341,6 +1398,8 @@
   [ms appendFormat: @"%i", __isTruncated];
   [ms appendString: @",title:"];
   [ms appendFormat: @"\"%@\"", __title];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

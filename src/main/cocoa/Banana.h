@@ -195,6 +195,7 @@ typedef int64_t Banana_timestamp;
   NSString * __macAddress;
   BOOL __isTruncated;
   NSString * __title;
+  NSString * __applicationId;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -206,6 +207,7 @@ typedef int64_t Banana_timestamp;
   BOOL __macAddress_isset;
   BOOL __isTruncated_isset;
   BOOL __title_isset;
+  BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -219,10 +221,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
 @property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
 @property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title;
+- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (NSString *) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -288,6 +291,12 @@ typedef int64_t Banana_timestamp;
 - (void) setTitle: (NSString *) title;
 #endif
 - (BOOL) titleIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationId;
+- (void) setApplicationId: (NSString *) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
 
 @end
 

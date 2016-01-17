@@ -283,6 +283,7 @@ Message = module.exports.Message = function(args) {
   this.macAddress = null;
   this.isTruncated = false;
   this.title = null;
+  this.applicationId = null;
   if (args) {
     if (args.messageId !== undefined && args.messageId !== null) {
       this.messageId = args.messageId;
@@ -313,6 +314,9 @@ Message = module.exports.Message = function(args) {
     }
     if (args.title !== undefined && args.title !== null) {
       this.title = args.title;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
   }
 };
@@ -400,6 +404,13 @@ Message.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 11:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -459,6 +470,11 @@ Message.prototype.write = function(output) {
   if (this.title !== null && this.title !== undefined) {
     output.writeFieldBegin('title', Thrift.Type.STRING, 10);
     output.writeString(this.title);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 11);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
