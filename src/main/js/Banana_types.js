@@ -845,7 +845,7 @@ Application = function(args) {
   this.organizationId = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
-      this.owners = Thrift.copyList(args.owners, [User]);
+      this.owners = Thrift.copyList(args.owners, [null]);
     }
     if (args.timeOfProvisioning !== undefined && args.timeOfProvisioning !== null) {
       this.timeOfProvisioning = args.timeOfProvisioning;
@@ -902,8 +902,7 @@ Application.prototype.read = function(input) {
         for (var _i21 = 0; _i21 < _size16; ++_i21)
         {
           var elem22 = null;
-          elem22 = new User();
-          elem22.read(input);
+          elem22 = input.readString().value;
           this.owners.push(elem22);
         }
         input.readSetEnd();
@@ -1001,13 +1000,13 @@ Application.prototype.write = function(output) {
   output.writeStructBegin('Application');
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.SET, 1);
-    output.writeSetBegin(Thrift.Type.STRUCT, this.owners.length);
+    output.writeSetBegin(Thrift.Type.STRING, this.owners.length);
     for (var iter30 in this.owners)
     {
       if (this.owners.hasOwnProperty(iter30))
       {
         iter30 = this.owners[iter30];
-        iter30.write(output);
+        output.writeString(iter30);
       }
     }
     output.writeSetEnd();

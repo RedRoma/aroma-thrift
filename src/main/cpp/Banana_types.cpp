@@ -1247,7 +1247,7 @@ Application::~Application() throw() {
 }
 
 
-void Application::__set_owners(const std::set<User> & val) {
+void Application::__set_owners(const std::set<std::string> & val) {
   this->owners = val;
 }
 
@@ -1321,8 +1321,8 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i33;
             for (_i33 = 0; _i33 < _size29; ++_i33)
             {
-              User _elem34;
-              xfer += _elem34.read(iprot);
+              std::string _elem34;
+              xfer += iprot->readString(_elem34);
               this->owners.insert(_elem34);
             }
             xfer += iprot->readSetEnd();
@@ -1438,11 +1438,11 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
 
   xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_SET, 1);
   {
-    xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->owners.size()));
-    std::set<User> ::const_iterator _iter42;
+    xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->owners.size()));
+    std::set<std::string> ::const_iterator _iter42;
     for (_iter42 = this->owners.begin(); _iter42 != this->owners.end(); ++_iter42)
     {
-      xfer += (*_iter42).write(oprot);
+      xfer += oprot->writeString((*_iter42));
     }
     xfer += oprot->writeSetEnd();
   }

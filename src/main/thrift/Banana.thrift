@@ -177,7 +177,7 @@ enum ProgrammingLanguage
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: set<User> owners;
+    1: set<string> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */

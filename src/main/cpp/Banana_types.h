@@ -586,7 +586,7 @@ class Application {
   }
 
   virtual ~Application() throw();
-  std::set<User>  owners;
+  std::set<std::string>  owners;
   timestamp timeOfProvisioning;
   std::string name;
   std::string applicationId;
@@ -599,7 +599,7 @@ class Application {
 
   _Application__isset __isset;
 
-  void __set_owners(const std::set<User> & val);
+  void __set_owners(const std::set<std::string> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 

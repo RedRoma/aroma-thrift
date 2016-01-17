@@ -2996,10 +2996,8 @@
           int _i11;
           for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            Banana_User *_elem12 = [[Banana_User alloc] init];
-            [_elem12 read: inProtocol];
+            NSString * _elem12 = [inProtocol readString];
             [fieldValue addObject: _elem12];
-            [_elem12 release_stub];
           }
           [inProtocol readSetEnd];
           [self setOwners: fieldValue];
@@ -3107,12 +3105,12 @@
     if (__owners != nil) {
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_SET fieldID: 1];
       {
-        [outProtocol writeSetBeginWithElementType: TType_STRUCT size: [__owners count]];
+        [outProtocol writeSetBeginWithElementType: TType_STRING size: [__owners count]];
         NSEnumerator * _iter16 = [__owners objectEnumerator];
         id obj17;
         while ((obj17 = [_iter16 nextObject]))
         {
-          [obj17 write: outProtocol];
+          [outProtocol writeString: obj17];
         }
         [outProtocol writeSetEnd];
       }
