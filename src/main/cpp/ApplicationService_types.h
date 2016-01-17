@@ -19,7 +19,6 @@
 #include "Banana_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
-#include "MessageService_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
@@ -52,13 +51,125 @@ typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableExce
 
 typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ThroughoutExceededException ThroughoutExceededException;
-
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-typedef class  ::aroma::banana::thrift::message::service::SendMessageRequest SendMessageRequest;
+class SendMessageRequest;
 
-typedef class  ::aroma::banana::thrift::message::service::SendMessageResponse SendMessageResponse;
+class SendMessageResponse;
+
+typedef struct _SendMessageRequest__isset {
+  _SendMessageRequest__isset() : applicationToken(false), message(false), urgency(true), timeOfMessage(false) {}
+  bool applicationToken :1;
+  bool message :1;
+  bool urgency :1;
+  bool timeOfMessage :1;
+} _SendMessageRequest__isset;
+
+class SendMessageRequest {
+ public:
+
+  SendMessageRequest(const SendMessageRequest&);
+  SendMessageRequest& operator=(const SendMessageRequest&);
+  SendMessageRequest() : message(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0) {
+    urgency = ( ::aroma::banana::thrift::Urgency::type)1;
+
+  }
+
+  virtual ~SendMessageRequest() throw();
+  ApplicationToken applicationToken;
+  std::string message;
+  Urgency urgency;
+  timestamp timeOfMessage;
+
+  _SendMessageRequest__isset __isset;
+
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_message(const std::string& val);
+
+  void __set_urgency(const Urgency val);
+
+  void __set_timeOfMessage(const timestamp val);
+
+  bool operator == (const SendMessageRequest & rhs) const
+  {
+    if (!(applicationToken == rhs.applicationToken))
+      return false;
+    if (!(message == rhs.message))
+      return false;
+    if (!(urgency == rhs.urgency))
+      return false;
+    if (__isset.timeOfMessage != rhs.__isset.timeOfMessage)
+      return false;
+    else if (__isset.timeOfMessage && !(timeOfMessage == rhs.timeOfMessage))
+      return false;
+    return true;
+  }
+  bool operator != (const SendMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendMessageRequest &a, SendMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SendMessageResponse__isset {
+  _SendMessageResponse__isset() : messageId(false) {}
+  bool messageId :1;
+} _SendMessageResponse__isset;
+
+class SendMessageResponse {
+ public:
+
+  SendMessageResponse(const SendMessageResponse&);
+  SendMessageResponse& operator=(const SendMessageResponse&);
+  SendMessageResponse() : messageId() {
+  }
+
+  virtual ~SendMessageResponse() throw();
+  std::string messageId;
+
+  _SendMessageResponse__isset __isset;
+
+  void __set_messageId(const std::string& val);
+
+  bool operator == (const SendMessageResponse & rhs) const
+  {
+    if (!(messageId == rhs.messageId))
+      return false;
+    return true;
+  }
+  bool operator != (const SendMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendMessageResponse &a, SendMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 }}}}} // namespace
 

@@ -21,8 +21,6 @@
 #include "Endpoint_types.h"
 #include "Events_types.h"
 #include "Exceptions_types.h"
-#include "AuthenticationService_types.h"
-#include "MessageService_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
@@ -75,21 +73,13 @@ typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException Unauth
 
 typedef class  ::aroma::banana::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::message::service::DeleteMessageRequest DeleteMessageRequest;
+class DeleteMessageRequest;
 
-typedef class  ::aroma::banana::thrift::message::service::DeleteMessageResponse DeleteMessageResponse;
+class DeleteMessageResponse;
 
-typedef class  ::aroma::banana::thrift::message::service::DismissMessageRequest DismissMessageRequest;
+class DismissMessageRequest;
 
-typedef class  ::aroma::banana::thrift::message::service::DismissMessageResponse DismissMessageResponse;
-
-typedef class  ::aroma::banana::thrift::message::service::GetMessagesRequest GetMessagesRequest;
-
-typedef class  ::aroma::banana::thrift::message::service::GetMessagesResponse GetMessagesResponse;
-
-typedef class  ::aroma::banana::thrift::message::service::GetFullMessageRequest GetFullMessageRequest;
-
-typedef class  ::aroma::banana::thrift::message::service::GetFullMessageResponse GetFullMessageResponse;
+class DismissMessageResponse;
 
 class ProvisionApplicationRequest;
 
@@ -143,6 +133,14 @@ class GetDashboardRequest;
 
 class GetDashboardResponse;
 
+class GetMessagesRequest;
+
+class GetMessagesResponse;
+
+class GetFullMessageRequest;
+
+class GetFullMessageResponse;
+
 class GetMyApplicationsRequest;
 
 class GetMyApplicationsResponse;
@@ -166,6 +164,236 @@ class GetUserInfoResponse;
 class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
+
+typedef struct _DeleteMessageRequest__isset {
+  _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  bool token :1;
+  bool messageId :1;
+  bool applicationId :1;
+  bool messageIds :1;
+} _DeleteMessageRequest__isset;
+
+class DeleteMessageRequest {
+ public:
+
+  DeleteMessageRequest(const DeleteMessageRequest&);
+  DeleteMessageRequest& operator=(const DeleteMessageRequest&);
+  DeleteMessageRequest() : messageId(), applicationId() {
+
+  }
+
+  virtual ~DeleteMessageRequest() throw();
+  UserToken token;
+  std::string messageId;
+  std::string applicationId;
+  std::vector<std::string>  messageIds;
+
+  _DeleteMessageRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_messageIds(const std::vector<std::string> & val);
+
+  bool operator == (const DeleteMessageRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.messageIds != rhs.__isset.messageIds)
+      return false;
+    else if (__isset.messageIds && !(messageIds == rhs.messageIds))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteMessageRequest &a, DeleteMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteMessageResponse__isset {
+  _DeleteMessageResponse__isset() : messagesDeleted(true) {}
+  bool messagesDeleted :1;
+} _DeleteMessageResponse__isset;
+
+class DeleteMessageResponse {
+ public:
+
+  DeleteMessageResponse(const DeleteMessageResponse&);
+  DeleteMessageResponse& operator=(const DeleteMessageResponse&);
+  DeleteMessageResponse() : messagesDeleted(0) {
+  }
+
+  virtual ~DeleteMessageResponse() throw();
+  int messagesDeleted;
+
+  _DeleteMessageResponse__isset __isset;
+
+  void __set_messagesDeleted(const int val);
+
+  bool operator == (const DeleteMessageResponse & rhs) const
+  {
+    if (__isset.messagesDeleted != rhs.__isset.messagesDeleted)
+      return false;
+    else if (__isset.messagesDeleted && !(messagesDeleted == rhs.messagesDeleted))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteMessageResponse &a, DeleteMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DismissMessageRequest__isset {
+  _DismissMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  bool token :1;
+  bool messageId :1;
+  bool applicationId :1;
+  bool messageIds :1;
+} _DismissMessageRequest__isset;
+
+class DismissMessageRequest {
+ public:
+
+  DismissMessageRequest(const DismissMessageRequest&);
+  DismissMessageRequest& operator=(const DismissMessageRequest&);
+  DismissMessageRequest() : messageId(), applicationId() {
+
+  }
+
+  virtual ~DismissMessageRequest() throw();
+  UserToken token;
+  std::string messageId;
+  std::string applicationId;
+  std::vector<std::string>  messageIds;
+
+  _DismissMessageRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_messageIds(const std::vector<std::string> & val);
+
+  bool operator == (const DismissMessageRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.messageIds != rhs.__isset.messageIds)
+      return false;
+    else if (__isset.messageIds && !(messageIds == rhs.messageIds))
+      return false;
+    return true;
+  }
+  bool operator != (const DismissMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DismissMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DismissMessageRequest &a, DismissMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DismissMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DismissMessageResponse__isset {
+  _DismissMessageResponse__isset() : messagesDismissed(true) {}
+  bool messagesDismissed :1;
+} _DismissMessageResponse__isset;
+
+class DismissMessageResponse {
+ public:
+
+  DismissMessageResponse(const DismissMessageResponse&);
+  DismissMessageResponse& operator=(const DismissMessageResponse&);
+  DismissMessageResponse() : messagesDismissed(0) {
+  }
+
+  virtual ~DismissMessageResponse() throw();
+  int messagesDismissed;
+
+  _DismissMessageResponse__isset __isset;
+
+  void __set_messagesDismissed(const int val);
+
+  bool operator == (const DismissMessageResponse & rhs) const
+  {
+    if (__isset.messagesDismissed != rhs.__isset.messagesDismissed)
+      return false;
+    else if (__isset.messagesDismissed && !(messagesDismissed == rhs.messagesDismissed))
+      return false;
+    return true;
+  }
+  bool operator != (const DismissMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DismissMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DismissMessageResponse &a, DismissMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DismissMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _ProvisionApplicationRequest__isset {
   _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false) {}
@@ -1067,10 +1295,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp33;
-    tmp33 = 4LL;
+     ::aroma::banana::thrift::long tmp53;
+    tmp53 = 4LL;
 
-    lengthOfTime.value = tmp33;
+    lengthOfTime.value = tmp53;
     lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
 
   }
@@ -1641,6 +1869,221 @@ class GetDashboardResponse {
 void swap(GetDashboardResponse &a, GetDashboardResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMessagesRequest__isset {
+  _GetMessagesRequest__isset() : token(false), applicationId(false), limit(true) {}
+  bool token :1;
+  bool applicationId :1;
+  bool limit :1;
+} _GetMessagesRequest__isset;
+
+class GetMessagesRequest {
+ public:
+
+  GetMessagesRequest(const GetMessagesRequest&);
+  GetMessagesRequest& operator=(const GetMessagesRequest&);
+  GetMessagesRequest() : applicationId(), limit(0) {
+  }
+
+  virtual ~GetMessagesRequest() throw();
+  UserToken token;
+  std::string applicationId;
+  int limit;
+
+  _GetMessagesRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_applicationId(const std::string& val);
+
+  void __set_limit(const int val);
+
+  bool operator == (const GetMessagesRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (__isset.applicationId != rhs.__isset.applicationId)
+      return false;
+    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.limit != rhs.__isset.limit)
+      return false;
+    else if (__isset.limit && !(limit == rhs.limit))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMessagesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMessagesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMessagesRequest &a, GetMessagesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMessagesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMessagesResponse__isset {
+  _GetMessagesResponse__isset() : messages(true), totalMessagesMatching(true) {}
+  bool messages :1;
+  bool totalMessagesMatching :1;
+} _GetMessagesResponse__isset;
+
+class GetMessagesResponse {
+ public:
+
+  GetMessagesResponse(const GetMessagesResponse&);
+  GetMessagesResponse& operator=(const GetMessagesResponse&);
+  GetMessagesResponse() : totalMessagesMatching(0) {
+
+  }
+
+  virtual ~GetMessagesResponse() throw();
+  std::vector< ::aroma::banana::thrift::Message>  messages;
+  int totalMessagesMatching;
+
+  _GetMessagesResponse__isset __isset;
+
+  void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
+
+  void __set_totalMessagesMatching(const int val);
+
+  bool operator == (const GetMessagesResponse & rhs) const
+  {
+    if (!(messages == rhs.messages))
+      return false;
+    if (__isset.totalMessagesMatching != rhs.__isset.totalMessagesMatching)
+      return false;
+    else if (__isset.totalMessagesMatching && !(totalMessagesMatching == rhs.totalMessagesMatching))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMessagesResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMessagesResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMessagesResponse &a, GetMessagesResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetFullMessageRequest__isset {
+  _GetFullMessageRequest__isset() : token(false), messageId(false) {}
+  bool token :1;
+  bool messageId :1;
+} _GetFullMessageRequest__isset;
+
+class GetFullMessageRequest {
+ public:
+
+  GetFullMessageRequest(const GetFullMessageRequest&);
+  GetFullMessageRequest& operator=(const GetFullMessageRequest&);
+  GetFullMessageRequest() : messageId() {
+  }
+
+  virtual ~GetFullMessageRequest() throw();
+  UserToken token;
+  std::string messageId;
+
+  _GetFullMessageRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_messageId(const std::string& val);
+
+  bool operator == (const GetFullMessageRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(messageId == rhs.messageId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetFullMessageRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetFullMessageRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetFullMessageRequest &a, GetFullMessageRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetFullMessageRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetFullMessageResponse__isset {
+  _GetFullMessageResponse__isset() : fullBody(false) {}
+  bool fullBody :1;
+} _GetFullMessageResponse__isset;
+
+class GetFullMessageResponse {
+ public:
+
+  GetFullMessageResponse(const GetFullMessageResponse&);
+  GetFullMessageResponse& operator=(const GetFullMessageResponse&);
+  GetFullMessageResponse() : fullBody() {
+  }
+
+  virtual ~GetFullMessageResponse() throw();
+  std::string fullBody;
+
+  _GetFullMessageResponse__isset __isset;
+
+  void __set_fullBody(const std::string& val);
+
+  bool operator == (const GetFullMessageResponse & rhs) const
+  {
+    if (!(fullBody == rhs.fullBody))
+      return false;
+    return true;
+  }
+  bool operator != (const GetFullMessageResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetFullMessageResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetFullMessageResponse &a, GetFullMessageResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetFullMessageResponse& obj)
 {
   obj.printTo(out);
   return out;

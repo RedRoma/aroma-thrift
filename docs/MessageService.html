@@ -207,21 +207,21 @@ code { line-height: 20px; }
 <a href="#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
 <a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
-<a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
-<a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
-<a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
-<a href="#Struct_DismissMessageResponse">DismissMessageResponse</a><br/>
+<a href="#Typedef_DeleteMessageRequest">DeleteMessageRequest</a><br/>
+<a href="#Typedef_DeleteMessageResponse">DeleteMessageResponse</a><br/>
+<a href="#Typedef_DismissMessageRequest">DismissMessageRequest</a><br/>
+<a href="#Typedef_DismissMessageResponse">DismissMessageResponse</a><br/>
 <a href="#Typedef_Event">Event</a><br/>
-<a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a><br/>
-<a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a><br/>
-<a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
-<a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
+<a href="#Typedef_GetFullMessageRequest">GetFullMessageRequest</a><br/>
+<a href="#Typedef_GetFullMessageResponse">GetFullMessageResponse</a><br/>
+<a href="#Typedef_GetMessagesRequest">GetMessagesRequest</a><br/>
+<a href="#Typedef_GetMessagesResponse">GetMessagesResponse</a><br/>
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="#Struct_SendMessageRequest">SendMessageRequest</a><br/>
-<a href="#Struct_SendMessageResponse">SendMessageResponse</a><br/>
+<a href="#Typedef_SendMessageRequest">SendMessageRequest</a><br/>
+<a href="#Typedef_SendMessageResponse">SendMessageResponse</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_UserToken">UserToken</a><br/>
@@ -294,65 +294,37 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
 </div>
-<hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_SendMessageRequest">Struct: SendMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>urgency</td><td><code><a href="#Typedef_Urgency">Urgency</a></code></td><td></td><td>default</td><td><code>Urgency.LOW</code></td></tr>
-<tr><td>4</td><td>timeOfMessage</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time that the message was generated on the Client Side.
-</td><td>optional</td><td></td></tr>
-</table><br/>Send a Message to the Banana Service.
-<br/></div><div class="definition"><h3 id="Struct_SendMessageResponse">Struct: SendMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Batch Deletes.
-</td><td>optional</td><td><code>{  }</code></td></tr>
-</table><br/>Deletes a Message.
-
-#owner
-<br/></div><div class="definition"><h3 id="Struct_DeleteMessageResponse">Struct: DeleteMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messagesDeleted</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Dismissing multiple Messages.
-</td><td>optional</td><td><code>{  }</code></td></tr>
-</table><br/>Dismisses a Message. Dismissing is analogous to archiving
-an email; it will no longer be visible to you, but will
-still be visible to other subscribers.
-<br/></div><div class="definition"><h3 id="Struct_DismissMessageResponse">Struct: DismissMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messagesDismissed</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>Allows you to get Messages by a particular application.
-</td><td>optional</td><td></td></tr>
-<tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
-</td><td>optional</td><td><code>0</code></td></tr>
-</table><br/>Query to get a User's messages, either across all Services,
-or by a specific Application.
-<br/></div><div class="definition"><h3 id="Struct_GetMessagesResponse">Struct: GetMessagesResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-<tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
-<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>fullBody</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><hr/><h2 id="Services">Services</h2>
+<div class="definition"><h3 id="Typedef_SendMessageRequest">Typedef: SendMessageRequest</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="#Typedef_ApplicationService.ApplicationService">ApplicationService.ApplicationService</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_SendMessageResponse">Typedef: SendMessageResponse</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="#Typedef_ApplicationService.ApplicationService">ApplicationService.ApplicationService</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_DeleteMessageRequest">Typedef: DeleteMessageRequest</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DeleteMessageRequest">BananaService.DeleteMessageRequest</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_DeleteMessageResponse">Typedef: DeleteMessageResponse</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DeleteMessageResponse">BananaService.DeleteMessageResponse</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_DismissMessageRequest">Typedef: DismissMessageRequest</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DismissMessageRequest">BananaService.DismissMessageRequest</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_DismissMessageResponse">Typedef: DismissMessageResponse</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DismissMessageResponse">BananaService.DismissMessageResponse</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_GetMessagesRequest">Typedef: GetMessagesRequest</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetMessagesRequest">BananaService.GetMessagesRequest</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_GetMessagesResponse">Typedef: GetMessagesResponse</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetMessagesResponse">BananaService.GetMessagesResponse</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_GetFullMessageRequest">Typedef: GetFullMessageRequest</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetFullMessageRequest">BananaService.GetFullMessageRequest</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_GetFullMessageResponse">Typedef: GetFullMessageResponse</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetFullMessageResponse">BananaService.GetFullMessageResponse</a></code></p>
+</div>
+<hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_MessageService">Service: MessageService</h3>
 The Notification  Service sends events and Notifications to the proper channels.
 This includes Email, Slack, iOS Push Notification, etc.

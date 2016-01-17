@@ -11,7 +11,6 @@ var Authentication_ttypes = require('./Authentication_types')
 var Banana_ttypes = require('./Banana_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var MessageService_ttypes = require('./MessageService_types')
 
 
 var ttypes = require('./ApplicationService_types');
@@ -102,7 +101,7 @@ ApplicationService_sendMessage_args = function(args) {
       this.request = null;
       if (args) {
             if (args.request !== undefined && args.request !== null) {
-                  this.request = new MessageService_ttypes.SendMessageRequest(args.request);
+                  this.request = new ttypes.SendMessageRequest(args.request);
             }
       }
 };
@@ -122,7 +121,7 @@ ApplicationService_sendMessage_args.prototype.read = function(input) {
         {
           case 1:
           if (ftype == Thrift.Type.STRUCT) {
-            this.request = new MessageService_ttypes.SendMessageRequest();
+            this.request = new ttypes.SendMessageRequest();
             this.request.read(input);
           } else {
             input.skip(ftype);
@@ -157,8 +156,6 @@ ApplicationService_sendMessage_result = function(args) {
       this.ex1 = null;
       this.ex2 = null;
       this.ex3 = null;
-      this.ex4 = null;
-      this.ex5 = null;
       if (args instanceof Exceptions_ttypes.OperationFailedException) {
             this.ex1 = args;
             return;
@@ -171,17 +168,9 @@ ApplicationService_sendMessage_result = function(args) {
             this.ex3 = args;
             return;
       }
-      if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-            this.ex4 = args;
-            return;
-      }
-      if (args instanceof Exceptions_ttypes.ThroughoutExceededException) {
-            this.ex5 = args;
-            return;
-      }
       if (args) {
             if (args.success !== undefined && args.success !== null) {
-                  this.success = new MessageService_ttypes.SendMessageResponse(args.success);
+                  this.success = new ttypes.SendMessageResponse(args.success);
             }
             if (args.ex1 !== undefined && args.ex1 !== null) {
                   this.ex1 = args.ex1;
@@ -191,12 +180,6 @@ ApplicationService_sendMessage_result = function(args) {
             }
             if (args.ex3 !== undefined && args.ex3 !== null) {
                   this.ex3 = args.ex3;
-            }
-            if (args.ex4 !== undefined && args.ex4 !== null) {
-                  this.ex4 = args.ex4;
-            }
-            if (args.ex5 !== undefined && args.ex5 !== null) {
-                  this.ex5 = args.ex5;
             }
       }
 };
@@ -216,7 +199,7 @@ ApplicationService_sendMessage_result.prototype.read = function(input) {
         {
           case 0:
           if (ftype == Thrift.Type.STRUCT) {
-            this.success = new MessageService_ttypes.SendMessageResponse();
+            this.success = new ttypes.SendMessageResponse();
             this.success.read(input);
           } else {
             input.skip(ftype);
@@ -242,22 +225,6 @@ ApplicationService_sendMessage_result.prototype.read = function(input) {
           if (ftype == Thrift.Type.STRUCT) {
             this.ex3 = new Exceptions_ttypes.InvalidTokenException();
             this.ex3.read(input);
-          } else {
-            input.skip(ftype);
-          }
-          break;
-          case 4:
-          if (ftype == Thrift.Type.STRUCT) {
-            this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-            this.ex4.read(input);
-          } else {
-            input.skip(ftype);
-          }
-          break;
-          case 5:
-          if (ftype == Thrift.Type.STRUCT) {
-            this.ex5 = new Exceptions_ttypes.ThroughoutExceededException();
-            this.ex5.read(input);
           } else {
             input.skip(ftype);
           }
@@ -293,16 +260,6 @@ ApplicationService_sendMessage_result.prototype.write = function(output) {
         this.ex3.write(output);
         output.writeFieldEnd();
       }
-      if (this.ex4 !== null && this.ex4 !== undefined) {
-        output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-        this.ex4.write(output);
-        output.writeFieldEnd();
-      }
-      if (this.ex5 !== null && this.ex5 !== undefined) {
-        output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-        this.ex5.write(output);
-        output.writeFieldEnd();
-      }
       output.writeFieldStop();
       output.writeStructEnd();
       return;
@@ -312,7 +269,7 @@ ApplicationService_sendMessageAsync_args = function(args) {
       this.request = null;
       if (args) {
             if (args.request !== undefined && args.request !== null) {
-                  this.request = new MessageService_ttypes.SendMessageRequest(args.request);
+                  this.request = new ttypes.SendMessageRequest(args.request);
             }
       }
 };
@@ -332,7 +289,7 @@ ApplicationService_sendMessageAsync_args.prototype.read = function(input) {
         {
           case 1:
           if (ftype == Thrift.Type.STRUCT) {
-            this.request = new MessageService_ttypes.SendMessageRequest();
+            this.request = new ttypes.SendMessageRequest();
             this.request.read(input);
           } else {
             input.skip(ftype);
@@ -496,12 +453,6 @@ ApplicationServiceClient.prototype.recv_sendMessage = function(input,mtype,rseqi
       if (null !== result.ex3) {
         return callback(result.ex3);
       }
-      if (null !== result.ex4) {
-        return callback(result.ex4);
-      }
-      if (null !== result.ex5) {
-        return callback(result.ex5);
-      }
       if (null !== result.success) {
         return callback(null, result.success);
       }
@@ -601,7 +552,7 @@ ApplicationServiceProcessor = exports.Processor = function(handler)     {
             output.writeMessageEnd();
             output.flush();
           }, function (err) {
-            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ThroughoutExceededException) {
+            if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
               var result = new ApplicationService_sendMessage_result(err);
               output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
             } else {
@@ -614,7 +565,7 @@ ApplicationServiceProcessor = exports.Processor = function(handler)     {
           });
       } else {
         this._handler.sendMessage(args.request, function (err, result) {
-          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ThroughoutExceededException) {
+          if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
             var result = new ApplicationService_sendMessage_result((err != null ? err : {success: result}));
             output.writeMessageBegin("sendMessage", Thrift.MessageType.REPLY, seqid);
           } else {

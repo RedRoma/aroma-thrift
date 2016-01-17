@@ -222,13 +222,11 @@ class ApplicationService_sendMessage_pargs {
 };
 
 typedef struct _ApplicationService_sendMessage_result__isset {
-  _ApplicationService_sendMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  _ApplicationService_sendMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
 } _ApplicationService_sendMessage_result__isset;
 
 class ApplicationService_sendMessage_result {
@@ -244,8 +242,6 @@ class ApplicationService_sendMessage_result {
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
-  ApplicationDoesNotExistException ex4;
-  ThroughoutExceededException ex5;
 
   _ApplicationService_sendMessage_result__isset __isset;
 
@@ -257,10 +253,6 @@ class ApplicationService_sendMessage_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  void __set_ex4(const ApplicationDoesNotExistException& val);
-
-  void __set_ex5(const ThroughoutExceededException& val);
-
   bool operator == (const ApplicationService_sendMessage_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -270,10 +262,6 @@ class ApplicationService_sendMessage_result {
     if (!(ex2 == rhs.ex2))
       return false;
     if (!(ex3 == rhs.ex3))
-      return false;
-    if (!(ex4 == rhs.ex4))
-      return false;
-    if (!(ex5 == rhs.ex5))
       return false;
     return true;
   }
@@ -289,13 +277,11 @@ class ApplicationService_sendMessage_result {
 };
 
 typedef struct _ApplicationService_sendMessage_presult__isset {
-  _ApplicationService_sendMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  _ApplicationService_sendMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-  bool ex4 :1;
-  bool ex5 :1;
 } _ApplicationService_sendMessage_presult__isset;
 
 class ApplicationService_sendMessage_presult {
@@ -307,8 +293,6 @@ class ApplicationService_sendMessage_presult {
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
-  ApplicationDoesNotExistException* ex4;
-  ThroughoutExceededException* ex5;
 
   _ApplicationService_sendMessage_presult__isset __isset;
 

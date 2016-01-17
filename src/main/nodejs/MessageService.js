@@ -13,6 +13,8 @@ var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
+var ApplicationService_ttypes = require('./ApplicationService_types')
+var BananaService_ttypes = require('./BananaService_types')
 
 
 var ttypes = require('./MessageService_types');

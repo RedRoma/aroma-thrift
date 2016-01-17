@@ -14,6 +14,518 @@
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
 
+DeleteMessageRequest::~DeleteMessageRequest() throw() {
+}
+
+
+void DeleteMessageRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void DeleteMessageRequest::__set_messageId(const std::string& val) {
+  this->messageId = val;
+}
+
+void DeleteMessageRequest::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+}
+
+void DeleteMessageRequest::__set_messageIds(const std::vector<std::string> & val) {
+  this->messageIds = val;
+__isset.messageIds = true;
+}
+
+uint32_t DeleteMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->messageIds.clear();
+            uint32_t _size0;
+            ::apache::thrift::protocol::TType _etype3;
+            xfer += iprot->readListBegin(_etype3, _size0);
+            this->messageIds.resize(_size0);
+            uint32_t _i4;
+            for (_i4 = 0; _i4 < _size0; ++_i4)
+            {
+              xfer += iprot->readString(this->messageIds[_i4]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.messageIds = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DeleteMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DeleteMessageRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->messageId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.messageIds) {
+    xfer += oprot->writeFieldBegin("messageIds", ::apache::thrift::protocol::T_LIST, 4);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->messageIds.size()));
+      std::vector<std::string> ::const_iterator _iter5;
+      for (_iter5 = this->messageIds.begin(); _iter5 != this->messageIds.end(); ++_iter5)
+      {
+        xfer += oprot->writeString((*_iter5));
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DeleteMessageRequest &a, DeleteMessageRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.messageId, b.messageId);
+  swap(a.applicationId, b.applicationId);
+  swap(a.messageIds, b.messageIds);
+  swap(a.__isset, b.__isset);
+}
+
+DeleteMessageRequest::DeleteMessageRequest(const DeleteMessageRequest& other6) {
+  token = other6.token;
+  messageId = other6.messageId;
+  applicationId = other6.applicationId;
+  messageIds = other6.messageIds;
+  __isset = other6.__isset;
+}
+DeleteMessageRequest& DeleteMessageRequest::operator=(const DeleteMessageRequest& other7) {
+  token = other7.token;
+  messageId = other7.messageId;
+  applicationId = other7.applicationId;
+  messageIds = other7.messageIds;
+  __isset = other7.__isset;
+  return *this;
+}
+void DeleteMessageRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DeleteMessageRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "messageId=" << to_string(messageId);
+  out << ", " << "applicationId=" << to_string(applicationId);
+  out << ", " << "messageIds="; (__isset.messageIds ? (out << to_string(messageIds)) : (out << "<null>"));
+  out << ")";
+}
+
+
+DeleteMessageResponse::~DeleteMessageResponse() throw() {
+}
+
+
+void DeleteMessageResponse::__set_messagesDeleted(const int val) {
+  this->messagesDeleted = val;
+__isset.messagesDeleted = true;
+}
+
+uint32_t DeleteMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->messagesDeleted);
+          this->__isset.messagesDeleted = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DeleteMessageResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DeleteMessageResponse");
+
+  if (this->__isset.messagesDeleted) {
+    xfer += oprot->writeFieldBegin("messagesDeleted", ::apache::thrift::protocol::T_I32, 1);
+    xfer += oprot->writeI32(this->messagesDeleted);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DeleteMessageResponse &a, DeleteMessageResponse &b) {
+  using ::std::swap;
+  swap(a.messagesDeleted, b.messagesDeleted);
+  swap(a.__isset, b.__isset);
+}
+
+DeleteMessageResponse::DeleteMessageResponse(const DeleteMessageResponse& other8) {
+  messagesDeleted = other8.messagesDeleted;
+  __isset = other8.__isset;
+}
+DeleteMessageResponse& DeleteMessageResponse::operator=(const DeleteMessageResponse& other9) {
+  messagesDeleted = other9.messagesDeleted;
+  __isset = other9.__isset;
+  return *this;
+}
+void DeleteMessageResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DeleteMessageResponse(";
+  out << "messagesDeleted="; (__isset.messagesDeleted ? (out << to_string(messagesDeleted)) : (out << "<null>"));
+  out << ")";
+}
+
+
+DismissMessageRequest::~DismissMessageRequest() throw() {
+}
+
+
+void DismissMessageRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void DismissMessageRequest::__set_messageId(const std::string& val) {
+  this->messageId = val;
+}
+
+void DismissMessageRequest::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+}
+
+void DismissMessageRequest::__set_messageIds(const std::vector<std::string> & val) {
+  this->messageIds = val;
+__isset.messageIds = true;
+}
+
+uint32_t DismissMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->messageIds.clear();
+            uint32_t _size10;
+            ::apache::thrift::protocol::TType _etype13;
+            xfer += iprot->readListBegin(_etype13, _size10);
+            this->messageIds.resize(_size10);
+            uint32_t _i14;
+            for (_i14 = 0; _i14 < _size10; ++_i14)
+            {
+              xfer += iprot->readString(this->messageIds[_i14]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.messageIds = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DismissMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DismissMessageRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->messageId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.messageIds) {
+    xfer += oprot->writeFieldBegin("messageIds", ::apache::thrift::protocol::T_LIST, 4);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->messageIds.size()));
+      std::vector<std::string> ::const_iterator _iter15;
+      for (_iter15 = this->messageIds.begin(); _iter15 != this->messageIds.end(); ++_iter15)
+      {
+        xfer += oprot->writeString((*_iter15));
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DismissMessageRequest &a, DismissMessageRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.messageId, b.messageId);
+  swap(a.applicationId, b.applicationId);
+  swap(a.messageIds, b.messageIds);
+  swap(a.__isset, b.__isset);
+}
+
+DismissMessageRequest::DismissMessageRequest(const DismissMessageRequest& other16) {
+  token = other16.token;
+  messageId = other16.messageId;
+  applicationId = other16.applicationId;
+  messageIds = other16.messageIds;
+  __isset = other16.__isset;
+}
+DismissMessageRequest& DismissMessageRequest::operator=(const DismissMessageRequest& other17) {
+  token = other17.token;
+  messageId = other17.messageId;
+  applicationId = other17.applicationId;
+  messageIds = other17.messageIds;
+  __isset = other17.__isset;
+  return *this;
+}
+void DismissMessageRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DismissMessageRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "messageId=" << to_string(messageId);
+  out << ", " << "applicationId=" << to_string(applicationId);
+  out << ", " << "messageIds="; (__isset.messageIds ? (out << to_string(messageIds)) : (out << "<null>"));
+  out << ")";
+}
+
+
+DismissMessageResponse::~DismissMessageResponse() throw() {
+}
+
+
+void DismissMessageResponse::__set_messagesDismissed(const int val) {
+  this->messagesDismissed = val;
+__isset.messagesDismissed = true;
+}
+
+uint32_t DismissMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->messagesDismissed);
+          this->__isset.messagesDismissed = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DismissMessageResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DismissMessageResponse");
+
+  if (this->__isset.messagesDismissed) {
+    xfer += oprot->writeFieldBegin("messagesDismissed", ::apache::thrift::protocol::T_I32, 1);
+    xfer += oprot->writeI32(this->messagesDismissed);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DismissMessageResponse &a, DismissMessageResponse &b) {
+  using ::std::swap;
+  swap(a.messagesDismissed, b.messagesDismissed);
+  swap(a.__isset, b.__isset);
+}
+
+DismissMessageResponse::DismissMessageResponse(const DismissMessageResponse& other18) {
+  messagesDismissed = other18.messagesDismissed;
+  __isset = other18.__isset;
+}
+DismissMessageResponse& DismissMessageResponse::operator=(const DismissMessageResponse& other19) {
+  messagesDismissed = other19.messagesDismissed;
+  __isset = other19.__isset;
+  return *this;
+}
+void DismissMessageResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DismissMessageResponse(";
+  out << "messagesDismissed="; (__isset.messagesDismissed ? (out << to_string(messagesDismissed)) : (out << "<null>"));
+  out << ")";
+}
+
+
 ProvisionApplicationRequest::~ProvisionApplicationRequest() throw() {
 }
 
@@ -79,9 +591,9 @@ uint32_t ProvisionApplicationRequest::read(::apache::thrift::protocol::TProtocol
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast0;
-          xfer += iprot->readI32(ecast0);
-          this->programmingLanguage = ( ::aroma::banana::thrift::ProgrammingLanguage::type)ecast0;
+          int32_t ecast20;
+          xfer += iprot->readI32(ecast20);
+          this->programmingLanguage = ( ::aroma::banana::thrift::ProgrammingLanguage::type)ecast20;
           this->__isset.programmingLanguage = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -157,21 +669,21 @@ void swap(ProvisionApplicationRequest &a, ProvisionApplicationRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-ProvisionApplicationRequest::ProvisionApplicationRequest(const ProvisionApplicationRequest& other1) {
-  token = other1.token;
-  applicationName = other1.applicationName;
-  programmingLanguage = other1.programmingLanguage;
-  organization = other1.organization;
-  icon = other1.icon;
-  __isset = other1.__isset;
+ProvisionApplicationRequest::ProvisionApplicationRequest(const ProvisionApplicationRequest& other21) {
+  token = other21.token;
+  applicationName = other21.applicationName;
+  programmingLanguage = other21.programmingLanguage;
+  organization = other21.organization;
+  icon = other21.icon;
+  __isset = other21.__isset;
 }
-ProvisionApplicationRequest& ProvisionApplicationRequest::operator=(const ProvisionApplicationRequest& other2) {
-  token = other2.token;
-  applicationName = other2.applicationName;
-  programmingLanguage = other2.programmingLanguage;
-  organization = other2.organization;
-  icon = other2.icon;
-  __isset = other2.__isset;
+ProvisionApplicationRequest& ProvisionApplicationRequest::operator=(const ProvisionApplicationRequest& other22) {
+  token = other22.token;
+  applicationName = other22.applicationName;
+  programmingLanguage = other22.programmingLanguage;
+  organization = other22.organization;
+  icon = other22.icon;
+  __isset = other22.__isset;
   return *this;
 }
 void ProvisionApplicationRequest::printTo(std::ostream& out) const {
@@ -306,19 +818,19 @@ void swap(ProvisionApplicationResponse &a, ProvisionApplicationResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-ProvisionApplicationResponse::ProvisionApplicationResponse(const ProvisionApplicationResponse& other3) {
-  applicationId = other3.applicationId;
-  applicationName = other3.applicationName;
-  applicationToken = other3.applicationToken;
-  applicationInfo = other3.applicationInfo;
-  __isset = other3.__isset;
+ProvisionApplicationResponse::ProvisionApplicationResponse(const ProvisionApplicationResponse& other23) {
+  applicationId = other23.applicationId;
+  applicationName = other23.applicationName;
+  applicationToken = other23.applicationToken;
+  applicationInfo = other23.applicationInfo;
+  __isset = other23.__isset;
 }
-ProvisionApplicationResponse& ProvisionApplicationResponse::operator=(const ProvisionApplicationResponse& other4) {
-  applicationId = other4.applicationId;
-  applicationName = other4.applicationName;
-  applicationToken = other4.applicationToken;
-  applicationInfo = other4.applicationInfo;
-  __isset = other4.__isset;
+ProvisionApplicationResponse& ProvisionApplicationResponse::operator=(const ProvisionApplicationResponse& other24) {
+  applicationId = other24.applicationId;
+  applicationName = other24.applicationName;
+  applicationToken = other24.applicationToken;
+  applicationInfo = other24.applicationInfo;
+  __isset = other24.__isset;
   return *this;
 }
 void ProvisionApplicationResponse::printTo(std::ostream& out) const {
@@ -418,15 +930,15 @@ void swap(RegenerateApplicationTokenRequest &a, RegenerateApplicationTokenReques
   swap(a.__isset, b.__isset);
 }
 
-RegenerateApplicationTokenRequest::RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest& other5) {
-  token = other5.token;
-  applicationId = other5.applicationId;
-  __isset = other5.__isset;
+RegenerateApplicationTokenRequest::RegenerateApplicationTokenRequest(const RegenerateApplicationTokenRequest& other25) {
+  token = other25.token;
+  applicationId = other25.applicationId;
+  __isset = other25.__isset;
 }
-RegenerateApplicationTokenRequest& RegenerateApplicationTokenRequest::operator=(const RegenerateApplicationTokenRequest& other6) {
-  token = other6.token;
-  applicationId = other6.applicationId;
-  __isset = other6.__isset;
+RegenerateApplicationTokenRequest& RegenerateApplicationTokenRequest::operator=(const RegenerateApplicationTokenRequest& other26) {
+  token = other26.token;
+  applicationId = other26.applicationId;
+  __isset = other26.__isset;
   return *this;
 }
 void RegenerateApplicationTokenRequest::printTo(std::ostream& out) const {
@@ -507,13 +1019,13 @@ void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenRespo
   swap(a.__isset, b.__isset);
 }
 
-RegenerateApplicationTokenResponse::RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse& other7) {
-  serviceToken = other7.serviceToken;
-  __isset = other7.__isset;
+RegenerateApplicationTokenResponse::RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse& other27) {
+  serviceToken = other27.serviceToken;
+  __isset = other27.__isset;
 }
-RegenerateApplicationTokenResponse& RegenerateApplicationTokenResponse::operator=(const RegenerateApplicationTokenResponse& other8) {
-  serviceToken = other8.serviceToken;
-  __isset = other8.__isset;
+RegenerateApplicationTokenResponse& RegenerateApplicationTokenResponse::operator=(const RegenerateApplicationTokenResponse& other28) {
+  serviceToken = other28.serviceToken;
+  __isset = other28.__isset;
   return *this;
 }
 void RegenerateApplicationTokenResponse::printTo(std::ostream& out) const {
@@ -610,15 +1122,15 @@ void swap(RegisterHealthCheckRequest &a, RegisterHealthCheckRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other9) {
-  token = other9.token;
-  endpoint = other9.endpoint;
-  __isset = other9.__isset;
+RegisterHealthCheckRequest::RegisterHealthCheckRequest(const RegisterHealthCheckRequest& other29) {
+  token = other29.token;
+  endpoint = other29.endpoint;
+  __isset = other29.__isset;
 }
-RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other10) {
-  token = other10.token;
-  endpoint = other10.endpoint;
-  __isset = other10.__isset;
+RegisterHealthCheckRequest& RegisterHealthCheckRequest::operator=(const RegisterHealthCheckRequest& other30) {
+  token = other30.token;
+  endpoint = other30.endpoint;
+  __isset = other30.__isset;
   return *this;
 }
 void RegisterHealthCheckRequest::printTo(std::ostream& out) const {
@@ -720,15 +1232,15 @@ void swap(RegisterHealthCheckResponse &a, RegisterHealthCheckResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other11) {
-  message = other11.message;
-  healthCheckToken = other11.healthCheckToken;
-  __isset = other11.__isset;
+RegisterHealthCheckResponse::RegisterHealthCheckResponse(const RegisterHealthCheckResponse& other31) {
+  message = other31.message;
+  healthCheckToken = other31.healthCheckToken;
+  __isset = other31.__isset;
 }
-RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other12) {
-  message = other12.message;
-  healthCheckToken = other12.healthCheckToken;
-  __isset = other12.__isset;
+RegisterHealthCheckResponse& RegisterHealthCheckResponse::operator=(const RegisterHealthCheckResponse& other32) {
+  message = other32.message;
+  healthCheckToken = other32.healthCheckToken;
+  __isset = other32.__isset;
   return *this;
 }
 void RegisterHealthCheckResponse::printTo(std::ostream& out) const {
@@ -826,15 +1338,15 @@ void swap(RemoveSavedChannelRequest &a, RemoveSavedChannelRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-RemoveSavedChannelRequest::RemoveSavedChannelRequest(const RemoveSavedChannelRequest& other13) {
-  token = other13.token;
-  channel = other13.channel;
-  __isset = other13.__isset;
+RemoveSavedChannelRequest::RemoveSavedChannelRequest(const RemoveSavedChannelRequest& other33) {
+  token = other33.token;
+  channel = other33.channel;
+  __isset = other33.__isset;
 }
-RemoveSavedChannelRequest& RemoveSavedChannelRequest::operator=(const RemoveSavedChannelRequest& other14) {
-  token = other14.token;
-  channel = other14.channel;
-  __isset = other14.__isset;
+RemoveSavedChannelRequest& RemoveSavedChannelRequest::operator=(const RemoveSavedChannelRequest& other34) {
+  token = other34.token;
+  channel = other34.channel;
+  __isset = other34.__isset;
   return *this;
 }
 void RemoveSavedChannelRequest::printTo(std::ostream& out) const {
@@ -934,15 +1446,15 @@ void swap(RemoveSavedChannelResponse &a, RemoveSavedChannelResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-RemoveSavedChannelResponse::RemoveSavedChannelResponse(const RemoveSavedChannelResponse& other15) {
-  message = other15.message;
-  channel = other15.channel;
-  __isset = other15.__isset;
+RemoveSavedChannelResponse::RemoveSavedChannelResponse(const RemoveSavedChannelResponse& other35) {
+  message = other35.message;
+  channel = other35.channel;
+  __isset = other35.__isset;
 }
-RemoveSavedChannelResponse& RemoveSavedChannelResponse::operator=(const RemoveSavedChannelResponse& other16) {
-  message = other16.message;
-  channel = other16.channel;
-  __isset = other16.__isset;
+RemoveSavedChannelResponse& RemoveSavedChannelResponse::operator=(const RemoveSavedChannelResponse& other36) {
+  message = other36.message;
+  channel = other36.channel;
+  __isset = other36.__isset;
   return *this;
 }
 void RemoveSavedChannelResponse::printTo(std::ostream& out) const {
@@ -1074,19 +1586,19 @@ void swap(RenewApplicationTokenRequest &a, RenewApplicationTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-RenewApplicationTokenRequest::RenewApplicationTokenRequest(const RenewApplicationTokenRequest& other17) {
-  token = other17.token;
-  applicationToken = other17.applicationToken;
-  newLifetime = other17.newLifetime;
-  applicationId = other17.applicationId;
-  __isset = other17.__isset;
+RenewApplicationTokenRequest::RenewApplicationTokenRequest(const RenewApplicationTokenRequest& other37) {
+  token = other37.token;
+  applicationToken = other37.applicationToken;
+  newLifetime = other37.newLifetime;
+  applicationId = other37.applicationId;
+  __isset = other37.__isset;
 }
-RenewApplicationTokenRequest& RenewApplicationTokenRequest::operator=(const RenewApplicationTokenRequest& other18) {
-  token = other18.token;
-  applicationToken = other18.applicationToken;
-  newLifetime = other18.newLifetime;
-  applicationId = other18.applicationId;
-  __isset = other18.__isset;
+RenewApplicationTokenRequest& RenewApplicationTokenRequest::operator=(const RenewApplicationTokenRequest& other38) {
+  token = other38.token;
+  applicationToken = other38.applicationToken;
+  newLifetime = other38.newLifetime;
+  applicationId = other38.applicationId;
+  __isset = other38.__isset;
   return *this;
 }
 void RenewApplicationTokenRequest::printTo(std::ostream& out) const {
@@ -1169,13 +1681,13 @@ void swap(RenewApplicationTokenResponse &a, RenewApplicationTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-RenewApplicationTokenResponse::RenewApplicationTokenResponse(const RenewApplicationTokenResponse& other19) {
-  serviceToken = other19.serviceToken;
-  __isset = other19.__isset;
+RenewApplicationTokenResponse::RenewApplicationTokenResponse(const RenewApplicationTokenResponse& other39) {
+  serviceToken = other39.serviceToken;
+  __isset = other39.__isset;
 }
-RenewApplicationTokenResponse& RenewApplicationTokenResponse::operator=(const RenewApplicationTokenResponse& other20) {
-  serviceToken = other20.serviceToken;
-  __isset = other20.__isset;
+RenewApplicationTokenResponse& RenewApplicationTokenResponse::operator=(const RenewApplicationTokenResponse& other40) {
+  serviceToken = other40.serviceToken;
+  __isset = other40.__isset;
   return *this;
 }
 void RenewApplicationTokenResponse::printTo(std::ostream& out) const {
@@ -1272,15 +1784,15 @@ void swap(SaveChannelRequest &a, SaveChannelRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SaveChannelRequest::SaveChannelRequest(const SaveChannelRequest& other21) {
-  token = other21.token;
-  channel = other21.channel;
-  __isset = other21.__isset;
+SaveChannelRequest::SaveChannelRequest(const SaveChannelRequest& other41) {
+  token = other41.token;
+  channel = other41.channel;
+  __isset = other41.__isset;
 }
-SaveChannelRequest& SaveChannelRequest::operator=(const SaveChannelRequest& other22) {
-  token = other22.token;
-  channel = other22.channel;
-  __isset = other22.__isset;
+SaveChannelRequest& SaveChannelRequest::operator=(const SaveChannelRequest& other42) {
+  token = other42.token;
+  channel = other42.channel;
+  __isset = other42.__isset;
   return *this;
 }
 void SaveChannelRequest::printTo(std::ostream& out) const {
@@ -1380,15 +1892,15 @@ void swap(SaveChannelResponse &a, SaveChannelResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SaveChannelResponse::SaveChannelResponse(const SaveChannelResponse& other23) {
-  message = other23.message;
-  channel = other23.channel;
-  __isset = other23.__isset;
+SaveChannelResponse::SaveChannelResponse(const SaveChannelResponse& other43) {
+  message = other43.message;
+  channel = other43.channel;
+  __isset = other43.__isset;
 }
-SaveChannelResponse& SaveChannelResponse::operator=(const SaveChannelResponse& other24) {
-  message = other24.message;
-  channel = other24.channel;
-  __isset = other24.__isset;
+SaveChannelResponse& SaveChannelResponse::operator=(const SaveChannelResponse& other44) {
+  message = other44.message;
+  channel = other44.channel;
+  __isset = other44.__isset;
   return *this;
 }
 void SaveChannelResponse::printTo(std::ostream& out) const {
@@ -1486,15 +1998,15 @@ void swap(SignInRequest &a, SignInRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SignInRequest::SignInRequest(const SignInRequest& other25) {
-  credentials = other25.credentials;
-  emailAddress = other25.emailAddress;
-  __isset = other25.__isset;
+SignInRequest::SignInRequest(const SignInRequest& other45) {
+  credentials = other45.credentials;
+  emailAddress = other45.emailAddress;
+  __isset = other45.__isset;
 }
-SignInRequest& SignInRequest::operator=(const SignInRequest& other26) {
-  credentials = other26.credentials;
-  emailAddress = other26.emailAddress;
-  __isset = other26.__isset;
+SignInRequest& SignInRequest::operator=(const SignInRequest& other46) {
+  credentials = other46.credentials;
+  emailAddress = other46.emailAddress;
+  __isset = other46.__isset;
   return *this;
 }
 void SignInRequest::printTo(std::ostream& out) const {
@@ -1575,13 +2087,13 @@ void swap(SignInResponse &a, SignInResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SignInResponse::SignInResponse(const SignInResponse& other27) {
-  userToken = other27.userToken;
-  __isset = other27.__isset;
+SignInResponse::SignInResponse(const SignInResponse& other47) {
+  userToken = other47.userToken;
+  __isset = other47.__isset;
 }
-SignInResponse& SignInResponse::operator=(const SignInResponse& other28) {
-  userToken = other28.userToken;
-  __isset = other28.__isset;
+SignInResponse& SignInResponse::operator=(const SignInResponse& other48) {
+  userToken = other48.userToken;
+  __isset = other48.__isset;
   return *this;
 }
 void SignInResponse::printTo(std::ostream& out) const {
@@ -1729,21 +2241,21 @@ void swap(SignUpRequest &a, SignUpRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SignUpRequest::SignUpRequest(const SignUpRequest& other29) {
-  email = other29.email;
-  name = other29.name;
-  username = other29.username;
-  organization = other29.organization;
-  credentials = other29.credentials;
-  __isset = other29.__isset;
+SignUpRequest::SignUpRequest(const SignUpRequest& other49) {
+  email = other49.email;
+  name = other49.name;
+  username = other49.username;
+  organization = other49.organization;
+  credentials = other49.credentials;
+  __isset = other49.__isset;
 }
-SignUpRequest& SignUpRequest::operator=(const SignUpRequest& other30) {
-  email = other30.email;
-  name = other30.name;
-  username = other30.username;
-  organization = other30.organization;
-  credentials = other30.credentials;
-  __isset = other30.__isset;
+SignUpRequest& SignUpRequest::operator=(const SignUpRequest& other50) {
+  email = other50.email;
+  name = other50.name;
+  username = other50.username;
+  organization = other50.organization;
+  credentials = other50.credentials;
+  __isset = other50.__isset;
   return *this;
 }
 void SignUpRequest::printTo(std::ostream& out) const {
@@ -1844,15 +2356,15 @@ void swap(SignUpResponse &a, SignUpResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SignUpResponse::SignUpResponse(const SignUpResponse& other31) {
-  userToken = other31.userToken;
-  account = other31.account;
-  __isset = other31.__isset;
+SignUpResponse::SignUpResponse(const SignUpResponse& other51) {
+  userToken = other51.userToken;
+  account = other51.account;
+  __isset = other51.__isset;
 }
-SignUpResponse& SignUpResponse::operator=(const SignUpResponse& other32) {
-  userToken = other32.userToken;
-  account = other32.account;
-  __isset = other32.__isset;
+SignUpResponse& SignUpResponse::operator=(const SignUpResponse& other52) {
+  userToken = other52.userToken;
+  account = other52.account;
+  __isset = other52.__isset;
   return *this;
 }
 void SignUpResponse::printTo(std::ostream& out) const {
@@ -1988,19 +2500,19 @@ void swap(SnoozeChannelRequest &a, SnoozeChannelRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SnoozeChannelRequest::SnoozeChannelRequest(const SnoozeChannelRequest& other34) {
-  token = other34.token;
-  channel = other34.channel;
-  applicationId = other34.applicationId;
-  lengthOfTime = other34.lengthOfTime;
-  __isset = other34.__isset;
+SnoozeChannelRequest::SnoozeChannelRequest(const SnoozeChannelRequest& other54) {
+  token = other54.token;
+  channel = other54.channel;
+  applicationId = other54.applicationId;
+  lengthOfTime = other54.lengthOfTime;
+  __isset = other54.__isset;
 }
-SnoozeChannelRequest& SnoozeChannelRequest::operator=(const SnoozeChannelRequest& other35) {
-  token = other35.token;
-  channel = other35.channel;
-  applicationId = other35.applicationId;
-  lengthOfTime = other35.lengthOfTime;
-  __isset = other35.__isset;
+SnoozeChannelRequest& SnoozeChannelRequest::operator=(const SnoozeChannelRequest& other55) {
+  token = other55.token;
+  channel = other55.channel;
+  applicationId = other55.applicationId;
+  lengthOfTime = other55.lengthOfTime;
+  __isset = other55.__isset;
   return *this;
 }
 void SnoozeChannelRequest::printTo(std::ostream& out) const {
@@ -2083,13 +2595,13 @@ void swap(SnoozeChannelResponse &a, SnoozeChannelResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SnoozeChannelResponse::SnoozeChannelResponse(const SnoozeChannelResponse& other36) {
-  message = other36.message;
-  __isset = other36.__isset;
+SnoozeChannelResponse::SnoozeChannelResponse(const SnoozeChannelResponse& other56) {
+  message = other56.message;
+  __isset = other56.__isset;
 }
-SnoozeChannelResponse& SnoozeChannelResponse::operator=(const SnoozeChannelResponse& other37) {
-  message = other37.message;
-  __isset = other37.__isset;
+SnoozeChannelResponse& SnoozeChannelResponse::operator=(const SnoozeChannelResponse& other57) {
+  message = other57.message;
+  __isset = other57.__isset;
   return *this;
 }
 void SnoozeChannelResponse::printTo(std::ostream& out) const {
@@ -2241,21 +2753,21 @@ void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SubscribeToApplicationRequest::SubscribeToApplicationRequest(const SubscribeToApplicationRequest& other38) {
-  token = other38.token;
-  applicationName = other38.applicationName;
-  applicationId = other38.applicationId;
-  organization = other38.organization;
-  shared = other38.shared;
-  __isset = other38.__isset;
+SubscribeToApplicationRequest::SubscribeToApplicationRequest(const SubscribeToApplicationRequest& other58) {
+  token = other58.token;
+  applicationName = other58.applicationName;
+  applicationId = other58.applicationId;
+  organization = other58.organization;
+  shared = other58.shared;
+  __isset = other58.__isset;
 }
-SubscribeToApplicationRequest& SubscribeToApplicationRequest::operator=(const SubscribeToApplicationRequest& other39) {
-  token = other39.token;
-  applicationName = other39.applicationName;
-  applicationId = other39.applicationId;
-  organization = other39.organization;
-  shared = other39.shared;
-  __isset = other39.__isset;
+SubscribeToApplicationRequest& SubscribeToApplicationRequest::operator=(const SubscribeToApplicationRequest& other59) {
+  token = other59.token;
+  applicationName = other59.applicationName;
+  applicationId = other59.applicationId;
+  organization = other59.organization;
+  shared = other59.shared;
+  __isset = other59.__isset;
   return *this;
 }
 void SubscribeToApplicationRequest::printTo(std::ostream& out) const {
@@ -2356,15 +2868,15 @@ void swap(SubscribeToApplicationResponse &a, SubscribeToApplicationResponse &b) 
   swap(a.__isset, b.__isset);
 }
 
-SubscribeToApplicationResponse::SubscribeToApplicationResponse(const SubscribeToApplicationResponse& other40) {
-  message = other40.message;
-  channel = other40.channel;
-  __isset = other40.__isset;
+SubscribeToApplicationResponse::SubscribeToApplicationResponse(const SubscribeToApplicationResponse& other60) {
+  message = other60.message;
+  channel = other60.channel;
+  __isset = other60.__isset;
 }
-SubscribeToApplicationResponse& SubscribeToApplicationResponse::operator=(const SubscribeToApplicationResponse& other41) {
-  message = other41.message;
-  channel = other41.channel;
-  __isset = other41.__isset;
+SubscribeToApplicationResponse& SubscribeToApplicationResponse::operator=(const SubscribeToApplicationResponse& other61) {
+  message = other61.message;
+  channel = other61.channel;
+  __isset = other61.__isset;
   return *this;
 }
 void SubscribeToApplicationResponse::printTo(std::ostream& out) const {
@@ -2462,15 +2974,15 @@ void swap(GetApplicationInfoRequest &a, GetApplicationInfoRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetApplicationInfoRequest::GetApplicationInfoRequest(const GetApplicationInfoRequest& other42) {
-  token = other42.token;
-  applicationId = other42.applicationId;
-  __isset = other42.__isset;
+GetApplicationInfoRequest::GetApplicationInfoRequest(const GetApplicationInfoRequest& other62) {
+  token = other62.token;
+  applicationId = other62.applicationId;
+  __isset = other62.__isset;
 }
-GetApplicationInfoRequest& GetApplicationInfoRequest::operator=(const GetApplicationInfoRequest& other43) {
-  token = other43.token;
-  applicationId = other43.applicationId;
-  __isset = other43.__isset;
+GetApplicationInfoRequest& GetApplicationInfoRequest::operator=(const GetApplicationInfoRequest& other63) {
+  token = other63.token;
+  applicationId = other63.applicationId;
+  __isset = other63.__isset;
   return *this;
 }
 void GetApplicationInfoRequest::printTo(std::ostream& out) const {
@@ -2527,14 +3039,14 @@ uint32_t GetApplicationInfoResponse::read(::apache::thrift::protocol::TProtocol*
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->registeredChannels.clear();
-            uint32_t _size44;
-            ::apache::thrift::protocol::TType _etype47;
-            xfer += iprot->readListBegin(_etype47, _size44);
-            this->registeredChannels.resize(_size44);
-            uint32_t _i48;
-            for (_i48 = 0; _i48 < _size44; ++_i48)
+            uint32_t _size64;
+            ::apache::thrift::protocol::TType _etype67;
+            xfer += iprot->readListBegin(_etype67, _size64);
+            this->registeredChannels.resize(_size64);
+            uint32_t _i68;
+            for (_i68 = 0; _i68 < _size64; ++_i68)
             {
-              xfer += this->registeredChannels[_i48].read(iprot);
+              xfer += this->registeredChannels[_i68].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2567,10 +3079,10 @@ uint32_t GetApplicationInfoResponse::write(::apache::thrift::protocol::TProtocol
   xfer += oprot->writeFieldBegin("registeredChannels", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->registeredChannels.size()));
-    std::vector<BananaChannel> ::const_iterator _iter49;
-    for (_iter49 = this->registeredChannels.begin(); _iter49 != this->registeredChannels.end(); ++_iter49)
+    std::vector<BananaChannel> ::const_iterator _iter69;
+    for (_iter69 = this->registeredChannels.begin(); _iter69 != this->registeredChannels.end(); ++_iter69)
     {
-      xfer += (*_iter49).write(oprot);
+      xfer += (*_iter69).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2588,15 +3100,15 @@ void swap(GetApplicationInfoResponse &a, GetApplicationInfoResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetApplicationInfoResponse::GetApplicationInfoResponse(const GetApplicationInfoResponse& other50) {
-  applicationInfo = other50.applicationInfo;
-  registeredChannels = other50.registeredChannels;
-  __isset = other50.__isset;
+GetApplicationInfoResponse::GetApplicationInfoResponse(const GetApplicationInfoResponse& other70) {
+  applicationInfo = other70.applicationInfo;
+  registeredChannels = other70.registeredChannels;
+  __isset = other70.__isset;
 }
-GetApplicationInfoResponse& GetApplicationInfoResponse::operator=(const GetApplicationInfoResponse& other51) {
-  applicationInfo = other51.applicationInfo;
-  registeredChannels = other51.registeredChannels;
-  __isset = other51.__isset;
+GetApplicationInfoResponse& GetApplicationInfoResponse::operator=(const GetApplicationInfoResponse& other71) {
+  applicationInfo = other71.applicationInfo;
+  registeredChannels = other71.registeredChannels;
+  __isset = other71.__isset;
   return *this;
 }
 void GetApplicationInfoResponse::printTo(std::ostream& out) const {
@@ -2677,13 +3189,13 @@ void swap(GetBuzzRequest &a, GetBuzzRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetBuzzRequest::GetBuzzRequest(const GetBuzzRequest& other52) {
-  token = other52.token;
-  __isset = other52.__isset;
+GetBuzzRequest::GetBuzzRequest(const GetBuzzRequest& other72) {
+  token = other72.token;
+  __isset = other72.__isset;
 }
-GetBuzzRequest& GetBuzzRequest::operator=(const GetBuzzRequest& other53) {
-  token = other53.token;
-  __isset = other53.__isset;
+GetBuzzRequest& GetBuzzRequest::operator=(const GetBuzzRequest& other73) {
+  token = other73.token;
+  __isset = other73.__isset;
   return *this;
 }
 void GetBuzzRequest::printTo(std::ostream& out) const {
@@ -2739,14 +3251,14 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->freshUsers.clear();
-            uint32_t _size54;
-            ::apache::thrift::protocol::TType _etype57;
-            xfer += iprot->readListBegin(_etype57, _size54);
-            this->freshUsers.resize(_size54);
-            uint32_t _i58;
-            for (_i58 = 0; _i58 < _size54; ++_i58)
+            uint32_t _size74;
+            ::apache::thrift::protocol::TType _etype77;
+            xfer += iprot->readListBegin(_etype77, _size74);
+            this->freshUsers.resize(_size74);
+            uint32_t _i78;
+            for (_i78 = 0; _i78 < _size74; ++_i78)
             {
-              xfer += this->freshUsers[_i58].read(iprot);
+              xfer += this->freshUsers[_i78].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2759,14 +3271,14 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->freshApplications.clear();
-            uint32_t _size59;
-            ::apache::thrift::protocol::TType _etype62;
-            xfer += iprot->readListBegin(_etype62, _size59);
-            this->freshApplications.resize(_size59);
-            uint32_t _i63;
-            for (_i63 = 0; _i63 < _size59; ++_i63)
+            uint32_t _size79;
+            ::apache::thrift::protocol::TType _etype82;
+            xfer += iprot->readListBegin(_etype82, _size79);
+            this->freshApplications.resize(_size79);
+            uint32_t _i83;
+            for (_i83 = 0; _i83 < _size79; ++_i83)
             {
-              xfer += this->freshApplications[_i63].read(iprot);
+              xfer += this->freshApplications[_i83].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2779,14 +3291,14 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->failedHealthChecks.clear();
-            uint32_t _size64;
-            ::apache::thrift::protocol::TType _etype67;
-            xfer += iprot->readListBegin(_etype67, _size64);
-            this->failedHealthChecks.resize(_size64);
-            uint32_t _i68;
-            for (_i68 = 0; _i68 < _size64; ++_i68)
+            uint32_t _size84;
+            ::apache::thrift::protocol::TType _etype87;
+            xfer += iprot->readListBegin(_etype87, _size84);
+            this->failedHealthChecks.resize(_size84);
+            uint32_t _i88;
+            for (_i88 = 0; _i88 < _size84; ++_i88)
             {
-              xfer += this->failedHealthChecks[_i68].read(iprot);
+              xfer += this->failedHealthChecks[_i88].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2799,14 +3311,14 @@ uint32_t GetBuzzResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->generalEvents.clear();
-            uint32_t _size69;
-            ::apache::thrift::protocol::TType _etype72;
-            xfer += iprot->readListBegin(_etype72, _size69);
-            this->generalEvents.resize(_size69);
-            uint32_t _i73;
-            for (_i73 = 0; _i73 < _size69; ++_i73)
+            uint32_t _size89;
+            ::apache::thrift::protocol::TType _etype92;
+            xfer += iprot->readListBegin(_etype92, _size89);
+            this->generalEvents.resize(_size89);
+            uint32_t _i93;
+            for (_i93 = 0; _i93 < _size89; ++_i93)
             {
-              xfer += this->generalEvents[_i73].read(iprot);
+              xfer += this->generalEvents[_i93].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -2835,10 +3347,10 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("freshUsers", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->freshUsers.size()));
-    std::vector<User> ::const_iterator _iter74;
-    for (_iter74 = this->freshUsers.begin(); _iter74 != this->freshUsers.end(); ++_iter74)
+    std::vector<User> ::const_iterator _iter94;
+    for (_iter94 = this->freshUsers.begin(); _iter94 != this->freshUsers.end(); ++_iter94)
     {
-      xfer += (*_iter74).write(oprot);
+      xfer += (*_iter94).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2847,10 +3359,10 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("freshApplications", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->freshApplications.size()));
-    std::vector<Application> ::const_iterator _iter75;
-    for (_iter75 = this->freshApplications.begin(); _iter75 != this->freshApplications.end(); ++_iter75)
+    std::vector<Application> ::const_iterator _iter95;
+    for (_iter95 = this->freshApplications.begin(); _iter95 != this->freshApplications.end(); ++_iter95)
     {
-      xfer += (*_iter75).write(oprot);
+      xfer += (*_iter95).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2859,10 +3371,10 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("failedHealthChecks", ::apache::thrift::protocol::T_LIST, 3);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->failedHealthChecks.size()));
-    std::vector<HealthCheckFailed> ::const_iterator _iter76;
-    for (_iter76 = this->failedHealthChecks.begin(); _iter76 != this->failedHealthChecks.end(); ++_iter76)
+    std::vector<HealthCheckFailed> ::const_iterator _iter96;
+    for (_iter96 = this->failedHealthChecks.begin(); _iter96 != this->failedHealthChecks.end(); ++_iter96)
     {
-      xfer += (*_iter76).write(oprot);
+      xfer += (*_iter96).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2871,10 +3383,10 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("generalEvents", ::apache::thrift::protocol::T_LIST, 4);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->generalEvents.size()));
-    std::vector< ::aroma::banana::thrift::events::GeneralEvent> ::const_iterator _iter77;
-    for (_iter77 = this->generalEvents.begin(); _iter77 != this->generalEvents.end(); ++_iter77)
+    std::vector< ::aroma::banana::thrift::events::GeneralEvent> ::const_iterator _iter97;
+    for (_iter97 = this->generalEvents.begin(); _iter97 != this->generalEvents.end(); ++_iter97)
     {
-      xfer += (*_iter77).write(oprot);
+      xfer += (*_iter97).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -2894,19 +3406,19 @@ void swap(GetBuzzResponse &a, GetBuzzResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetBuzzResponse::GetBuzzResponse(const GetBuzzResponse& other78) {
-  freshUsers = other78.freshUsers;
-  freshApplications = other78.freshApplications;
-  failedHealthChecks = other78.failedHealthChecks;
-  generalEvents = other78.generalEvents;
-  __isset = other78.__isset;
+GetBuzzResponse::GetBuzzResponse(const GetBuzzResponse& other98) {
+  freshUsers = other98.freshUsers;
+  freshApplications = other98.freshApplications;
+  failedHealthChecks = other98.failedHealthChecks;
+  generalEvents = other98.generalEvents;
+  __isset = other98.__isset;
 }
-GetBuzzResponse& GetBuzzResponse::operator=(const GetBuzzResponse& other79) {
-  freshUsers = other79.freshUsers;
-  freshApplications = other79.freshApplications;
-  failedHealthChecks = other79.failedHealthChecks;
-  generalEvents = other79.generalEvents;
-  __isset = other79.__isset;
+GetBuzzResponse& GetBuzzResponse::operator=(const GetBuzzResponse& other99) {
+  freshUsers = other99.freshUsers;
+  freshApplications = other99.freshApplications;
+  failedHealthChecks = other99.failedHealthChecks;
+  generalEvents = other99.generalEvents;
+  __isset = other99.__isset;
   return *this;
 }
 void GetBuzzResponse::printTo(std::ostream& out) const {
@@ -2989,13 +3501,13 @@ void swap(GetDashboardRequest &a, GetDashboardRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetDashboardRequest::GetDashboardRequest(const GetDashboardRequest& other80) {
-  token = other80.token;
-  __isset = other80.__isset;
+GetDashboardRequest::GetDashboardRequest(const GetDashboardRequest& other100) {
+  token = other100.token;
+  __isset = other100.__isset;
 }
-GetDashboardRequest& GetDashboardRequest::operator=(const GetDashboardRequest& other81) {
-  token = other81.token;
-  __isset = other81.__isset;
+GetDashboardRequest& GetDashboardRequest::operator=(const GetDashboardRequest& other101) {
+  token = other101.token;
+  __isset = other101.__isset;
   return *this;
 }
 void GetDashboardRequest::printTo(std::ostream& out) const {
@@ -3087,14 +3599,14 @@ uint32_t GetDashboardResponse::read(::apache::thrift::protocol::TProtocol* iprot
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->recentMessages.clear();
-            uint32_t _size82;
-            ::apache::thrift::protocol::TType _etype85;
-            xfer += iprot->readListBegin(_etype85, _size82);
-            this->recentMessages.resize(_size82);
-            uint32_t _i86;
-            for (_i86 = 0; _i86 < _size82; ++_i86)
+            uint32_t _size102;
+            ::apache::thrift::protocol::TType _etype105;
+            xfer += iprot->readListBegin(_etype105, _size102);
+            this->recentMessages.resize(_size102);
+            uint32_t _i106;
+            for (_i106 = 0; _i106 < _size102; ++_i106)
             {
-              xfer += this->recentMessages[_i86].read(iprot);
+              xfer += this->recentMessages[_i106].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3159,10 +3671,10 @@ uint32_t GetDashboardResponse::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeFieldBegin("recentMessages", ::apache::thrift::protocol::T_LIST, 4);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->recentMessages.size()));
-    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter87;
-    for (_iter87 = this->recentMessages.begin(); _iter87 != this->recentMessages.end(); ++_iter87)
+    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter107;
+    for (_iter107 = this->recentMessages.begin(); _iter107 != this->recentMessages.end(); ++_iter107)
     {
-      xfer += (*_iter87).write(oprot);
+      xfer += (*_iter107).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -3197,25 +3709,25 @@ void swap(GetDashboardResponse &a, GetDashboardResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetDashboardResponse::GetDashboardResponse(const GetDashboardResponse& other88) {
-  unreadMessageCount = other88.unreadMessageCount;
-  totalMessagesLastHour = other88.totalMessagesLastHour;
-  totalMessagesLast24hrs = other88.totalMessagesLast24hrs;
-  recentMessages = other88.recentMessages;
-  numberOfLowUrgencyMessages = other88.numberOfLowUrgencyMessages;
-  numberOfMediumUrgencyMessages = other88.numberOfMediumUrgencyMessages;
-  numberOfHighUrgencyMessages = other88.numberOfHighUrgencyMessages;
-  __isset = other88.__isset;
+GetDashboardResponse::GetDashboardResponse(const GetDashboardResponse& other108) {
+  unreadMessageCount = other108.unreadMessageCount;
+  totalMessagesLastHour = other108.totalMessagesLastHour;
+  totalMessagesLast24hrs = other108.totalMessagesLast24hrs;
+  recentMessages = other108.recentMessages;
+  numberOfLowUrgencyMessages = other108.numberOfLowUrgencyMessages;
+  numberOfMediumUrgencyMessages = other108.numberOfMediumUrgencyMessages;
+  numberOfHighUrgencyMessages = other108.numberOfHighUrgencyMessages;
+  __isset = other108.__isset;
 }
-GetDashboardResponse& GetDashboardResponse::operator=(const GetDashboardResponse& other89) {
-  unreadMessageCount = other89.unreadMessageCount;
-  totalMessagesLastHour = other89.totalMessagesLastHour;
-  totalMessagesLast24hrs = other89.totalMessagesLast24hrs;
-  recentMessages = other89.recentMessages;
-  numberOfLowUrgencyMessages = other89.numberOfLowUrgencyMessages;
-  numberOfMediumUrgencyMessages = other89.numberOfMediumUrgencyMessages;
-  numberOfHighUrgencyMessages = other89.numberOfHighUrgencyMessages;
-  __isset = other89.__isset;
+GetDashboardResponse& GetDashboardResponse::operator=(const GetDashboardResponse& other109) {
+  unreadMessageCount = other109.unreadMessageCount;
+  totalMessagesLastHour = other109.totalMessagesLastHour;
+  totalMessagesLast24hrs = other109.totalMessagesLast24hrs;
+  recentMessages = other109.recentMessages;
+  numberOfLowUrgencyMessages = other109.numberOfLowUrgencyMessages;
+  numberOfMediumUrgencyMessages = other109.numberOfMediumUrgencyMessages;
+  numberOfHighUrgencyMessages = other109.numberOfHighUrgencyMessages;
+  __isset = other109.__isset;
   return *this;
 }
 void GetDashboardResponse::printTo(std::ostream& out) const {
@@ -3228,6 +3740,456 @@ void GetDashboardResponse::printTo(std::ostream& out) const {
   out << ", " << "numberOfLowUrgencyMessages=" << to_string(numberOfLowUrgencyMessages);
   out << ", " << "numberOfMediumUrgencyMessages=" << to_string(numberOfMediumUrgencyMessages);
   out << ", " << "numberOfHighUrgencyMessages=" << to_string(numberOfHighUrgencyMessages);
+  out << ")";
+}
+
+
+GetMessagesRequest::~GetMessagesRequest() throw() {
+}
+
+
+void GetMessagesRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void GetMessagesRequest::__set_applicationId(const std::string& val) {
+  this->applicationId = val;
+__isset.applicationId = true;
+}
+
+void GetMessagesRequest::__set_limit(const int val) {
+  this->limit = val;
+__isset.limit = true;
+}
+
+uint32_t GetMessagesRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->limit);
+          this->__isset.limit = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetMessagesRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetMessagesRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.applicationId) {
+    xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->applicationId);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.limit) {
+    xfer += oprot->writeFieldBegin("limit", ::apache::thrift::protocol::T_I32, 3);
+    xfer += oprot->writeI32(this->limit);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetMessagesRequest &a, GetMessagesRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.applicationId, b.applicationId);
+  swap(a.limit, b.limit);
+  swap(a.__isset, b.__isset);
+}
+
+GetMessagesRequest::GetMessagesRequest(const GetMessagesRequest& other110) {
+  token = other110.token;
+  applicationId = other110.applicationId;
+  limit = other110.limit;
+  __isset = other110.__isset;
+}
+GetMessagesRequest& GetMessagesRequest::operator=(const GetMessagesRequest& other111) {
+  token = other111.token;
+  applicationId = other111.applicationId;
+  limit = other111.limit;
+  __isset = other111.__isset;
+  return *this;
+}
+void GetMessagesRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetMessagesRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "applicationId="; (__isset.applicationId ? (out << to_string(applicationId)) : (out << "<null>"));
+  out << ", " << "limit="; (__isset.limit ? (out << to_string(limit)) : (out << "<null>"));
+  out << ")";
+}
+
+
+GetMessagesResponse::~GetMessagesResponse() throw() {
+}
+
+
+void GetMessagesResponse::__set_messages(const std::vector< ::aroma::banana::thrift::Message> & val) {
+  this->messages = val;
+}
+
+void GetMessagesResponse::__set_totalMessagesMatching(const int val) {
+  this->totalMessagesMatching = val;
+__isset.totalMessagesMatching = true;
+}
+
+uint32_t GetMessagesResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->messages.clear();
+            uint32_t _size112;
+            ::apache::thrift::protocol::TType _etype115;
+            xfer += iprot->readListBegin(_etype115, _size112);
+            this->messages.resize(_size112);
+            uint32_t _i116;
+            for (_i116 = 0; _i116 < _size112; ++_i116)
+            {
+              xfer += this->messages[_i116].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.messages = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          xfer += iprot->readI32(this->totalMessagesMatching);
+          this->__isset.totalMessagesMatching = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetMessagesResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetMessagesResponse");
+
+  xfer += oprot->writeFieldBegin("messages", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->messages.size()));
+    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter117;
+    for (_iter117 = this->messages.begin(); _iter117 != this->messages.end(); ++_iter117)
+    {
+      xfer += (*_iter117).write(oprot);
+    }
+    xfer += oprot->writeListEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.totalMessagesMatching) {
+    xfer += oprot->writeFieldBegin("totalMessagesMatching", ::apache::thrift::protocol::T_I32, 2);
+    xfer += oprot->writeI32(this->totalMessagesMatching);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetMessagesResponse &a, GetMessagesResponse &b) {
+  using ::std::swap;
+  swap(a.messages, b.messages);
+  swap(a.totalMessagesMatching, b.totalMessagesMatching);
+  swap(a.__isset, b.__isset);
+}
+
+GetMessagesResponse::GetMessagesResponse(const GetMessagesResponse& other118) {
+  messages = other118.messages;
+  totalMessagesMatching = other118.totalMessagesMatching;
+  __isset = other118.__isset;
+}
+GetMessagesResponse& GetMessagesResponse::operator=(const GetMessagesResponse& other119) {
+  messages = other119.messages;
+  totalMessagesMatching = other119.totalMessagesMatching;
+  __isset = other119.__isset;
+  return *this;
+}
+void GetMessagesResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetMessagesResponse(";
+  out << "messages=" << to_string(messages);
+  out << ", " << "totalMessagesMatching="; (__isset.totalMessagesMatching ? (out << to_string(totalMessagesMatching)) : (out << "<null>"));
+  out << ")";
+}
+
+
+GetFullMessageRequest::~GetFullMessageRequest() throw() {
+}
+
+
+void GetFullMessageRequest::__set_token(const UserToken& val) {
+  this->token = val;
+}
+
+void GetFullMessageRequest::__set_messageId(const std::string& val) {
+  this->messageId = val;
+}
+
+uint32_t GetFullMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageId);
+          this->__isset.messageId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetFullMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetFullMessageRequest");
+
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("messageId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->messageId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetFullMessageRequest &a, GetFullMessageRequest &b) {
+  using ::std::swap;
+  swap(a.token, b.token);
+  swap(a.messageId, b.messageId);
+  swap(a.__isset, b.__isset);
+}
+
+GetFullMessageRequest::GetFullMessageRequest(const GetFullMessageRequest& other120) {
+  token = other120.token;
+  messageId = other120.messageId;
+  __isset = other120.__isset;
+}
+GetFullMessageRequest& GetFullMessageRequest::operator=(const GetFullMessageRequest& other121) {
+  token = other121.token;
+  messageId = other121.messageId;
+  __isset = other121.__isset;
+  return *this;
+}
+void GetFullMessageRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetFullMessageRequest(";
+  out << "token=" << to_string(token);
+  out << ", " << "messageId=" << to_string(messageId);
+  out << ")";
+}
+
+
+GetFullMessageResponse::~GetFullMessageResponse() throw() {
+}
+
+
+void GetFullMessageResponse::__set_fullBody(const std::string& val) {
+  this->fullBody = val;
+}
+
+uint32_t GetFullMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->fullBody);
+          this->__isset.fullBody = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GetFullMessageResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GetFullMessageResponse");
+
+  xfer += oprot->writeFieldBegin("fullBody", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->fullBody);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GetFullMessageResponse &a, GetFullMessageResponse &b) {
+  using ::std::swap;
+  swap(a.fullBody, b.fullBody);
+  swap(a.__isset, b.__isset);
+}
+
+GetFullMessageResponse::GetFullMessageResponse(const GetFullMessageResponse& other122) {
+  fullBody = other122.fullBody;
+  __isset = other122.__isset;
+}
+GetFullMessageResponse& GetFullMessageResponse::operator=(const GetFullMessageResponse& other123) {
+  fullBody = other123.fullBody;
+  __isset = other123.__isset;
+  return *this;
+}
+void GetFullMessageResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GetFullMessageResponse(";
+  out << "fullBody=" << to_string(fullBody);
   out << ")";
 }
 
@@ -3301,13 +4263,13 @@ void swap(GetMyApplicationsRequest &a, GetMyApplicationsRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetMyApplicationsRequest::GetMyApplicationsRequest(const GetMyApplicationsRequest& other90) {
-  token = other90.token;
-  __isset = other90.__isset;
+GetMyApplicationsRequest::GetMyApplicationsRequest(const GetMyApplicationsRequest& other124) {
+  token = other124.token;
+  __isset = other124.__isset;
 }
-GetMyApplicationsRequest& GetMyApplicationsRequest::operator=(const GetMyApplicationsRequest& other91) {
-  token = other91.token;
-  __isset = other91.__isset;
+GetMyApplicationsRequest& GetMyApplicationsRequest::operator=(const GetMyApplicationsRequest& other125) {
+  token = other125.token;
+  __isset = other125.__isset;
   return *this;
 }
 void GetMyApplicationsRequest::printTo(std::ostream& out) const {
@@ -3351,14 +4313,14 @@ uint32_t GetMyApplicationsResponse::read(::apache::thrift::protocol::TProtocol* 
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->applications.clear();
-            uint32_t _size92;
-            ::apache::thrift::protocol::TType _etype95;
-            xfer += iprot->readListBegin(_etype95, _size92);
-            this->applications.resize(_size92);
-            uint32_t _i96;
-            for (_i96 = 0; _i96 < _size92; ++_i96)
+            uint32_t _size126;
+            ::apache::thrift::protocol::TType _etype129;
+            xfer += iprot->readListBegin(_etype129, _size126);
+            this->applications.resize(_size126);
+            uint32_t _i130;
+            for (_i130 = 0; _i130 < _size126; ++_i130)
             {
-              xfer += this->applications[_i96].read(iprot);
+              xfer += this->applications[_i130].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3387,10 +4349,10 @@ uint32_t GetMyApplicationsResponse::write(::apache::thrift::protocol::TProtocol*
   xfer += oprot->writeFieldBegin("applications", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->applications.size()));
-    std::vector<Application> ::const_iterator _iter97;
-    for (_iter97 = this->applications.begin(); _iter97 != this->applications.end(); ++_iter97)
+    std::vector<Application> ::const_iterator _iter131;
+    for (_iter131 = this->applications.begin(); _iter131 != this->applications.end(); ++_iter131)
     {
-      xfer += (*_iter97).write(oprot);
+      xfer += (*_iter131).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -3407,13 +4369,13 @@ void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetMyApplicationsResponse::GetMyApplicationsResponse(const GetMyApplicationsResponse& other98) {
-  applications = other98.applications;
-  __isset = other98.__isset;
+GetMyApplicationsResponse::GetMyApplicationsResponse(const GetMyApplicationsResponse& other132) {
+  applications = other132.applications;
+  __isset = other132.__isset;
 }
-GetMyApplicationsResponse& GetMyApplicationsResponse::operator=(const GetMyApplicationsResponse& other99) {
-  applications = other99.applications;
-  __isset = other99.__isset;
+GetMyApplicationsResponse& GetMyApplicationsResponse::operator=(const GetMyApplicationsResponse& other133) {
+  applications = other133.applications;
+  __isset = other133.__isset;
   return *this;
 }
 void GetMyApplicationsResponse::printTo(std::ostream& out) const {
@@ -3493,13 +4455,13 @@ void swap(GetMySavedChannelsRequest &a, GetMySavedChannelsRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetMySavedChannelsRequest::GetMySavedChannelsRequest(const GetMySavedChannelsRequest& other100) {
-  token = other100.token;
-  __isset = other100.__isset;
+GetMySavedChannelsRequest::GetMySavedChannelsRequest(const GetMySavedChannelsRequest& other134) {
+  token = other134.token;
+  __isset = other134.__isset;
 }
-GetMySavedChannelsRequest& GetMySavedChannelsRequest::operator=(const GetMySavedChannelsRequest& other101) {
-  token = other101.token;
-  __isset = other101.__isset;
+GetMySavedChannelsRequest& GetMySavedChannelsRequest::operator=(const GetMySavedChannelsRequest& other135) {
+  token = other135.token;
+  __isset = other135.__isset;
   return *this;
 }
 void GetMySavedChannelsRequest::printTo(std::ostream& out) const {
@@ -3543,14 +4505,14 @@ uint32_t GetMySavedChannelsResponse::read(::apache::thrift::protocol::TProtocol*
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->channels.clear();
-            uint32_t _size102;
-            ::apache::thrift::protocol::TType _etype105;
-            xfer += iprot->readListBegin(_etype105, _size102);
-            this->channels.resize(_size102);
-            uint32_t _i106;
-            for (_i106 = 0; _i106 < _size102; ++_i106)
+            uint32_t _size136;
+            ::apache::thrift::protocol::TType _etype139;
+            xfer += iprot->readListBegin(_etype139, _size136);
+            this->channels.resize(_size136);
+            uint32_t _i140;
+            for (_i140 = 0; _i140 < _size136; ++_i140)
             {
-              xfer += this->channels[_i106].read(iprot);
+              xfer += this->channels[_i140].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3579,10 +4541,10 @@ uint32_t GetMySavedChannelsResponse::write(::apache::thrift::protocol::TProtocol
   xfer += oprot->writeFieldBegin("channels", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->channels.size()));
-    std::vector<BananaChannel> ::const_iterator _iter107;
-    for (_iter107 = this->channels.begin(); _iter107 != this->channels.end(); ++_iter107)
+    std::vector<BananaChannel> ::const_iterator _iter141;
+    for (_iter141 = this->channels.begin(); _iter141 != this->channels.end(); ++_iter141)
     {
-      xfer += (*_iter107).write(oprot);
+      xfer += (*_iter141).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -3599,13 +4561,13 @@ void swap(GetMySavedChannelsResponse &a, GetMySavedChannelsResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetMySavedChannelsResponse::GetMySavedChannelsResponse(const GetMySavedChannelsResponse& other108) {
-  channels = other108.channels;
-  __isset = other108.__isset;
+GetMySavedChannelsResponse::GetMySavedChannelsResponse(const GetMySavedChannelsResponse& other142) {
+  channels = other142.channels;
+  __isset = other142.__isset;
 }
-GetMySavedChannelsResponse& GetMySavedChannelsResponse::operator=(const GetMySavedChannelsResponse& other109) {
-  channels = other109.channels;
-  __isset = other109.__isset;
+GetMySavedChannelsResponse& GetMySavedChannelsResponse::operator=(const GetMySavedChannelsResponse& other143) {
+  channels = other143.channels;
+  __isset = other143.__isset;
   return *this;
 }
 void GetMySavedChannelsResponse::printTo(std::ostream& out) const {
@@ -3704,15 +4666,15 @@ void swap(GetActivityRequest &a, GetActivityRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetActivityRequest::GetActivityRequest(const GetActivityRequest& other110) {
-  token = other110.token;
-  limit = other110.limit;
-  __isset = other110.__isset;
+GetActivityRequest::GetActivityRequest(const GetActivityRequest& other144) {
+  token = other144.token;
+  limit = other144.limit;
+  __isset = other144.__isset;
 }
-GetActivityRequest& GetActivityRequest::operator=(const GetActivityRequest& other111) {
-  token = other111.token;
-  limit = other111.limit;
-  __isset = other111.__isset;
+GetActivityRequest& GetActivityRequest::operator=(const GetActivityRequest& other145) {
+  token = other145.token;
+  limit = other145.limit;
+  __isset = other145.__isset;
   return *this;
 }
 void GetActivityRequest::printTo(std::ostream& out) const {
@@ -3757,14 +4719,14 @@ uint32_t GetActivityResponse::read(::apache::thrift::protocol::TProtocol* iprot)
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->events.clear();
-            uint32_t _size112;
-            ::apache::thrift::protocol::TType _etype115;
-            xfer += iprot->readListBegin(_etype115, _size112);
-            this->events.resize(_size112);
-            uint32_t _i116;
-            for (_i116 = 0; _i116 < _size112; ++_i116)
+            uint32_t _size146;
+            ::apache::thrift::protocol::TType _etype149;
+            xfer += iprot->readListBegin(_etype149, _size146);
+            this->events.resize(_size146);
+            uint32_t _i150;
+            for (_i150 = 0; _i150 < _size146; ++_i150)
             {
-              xfer += this->events[_i116].read(iprot);
+              xfer += this->events[_i150].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3793,10 +4755,10 @@ uint32_t GetActivityResponse::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeFieldBegin("events", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->events.size()));
-    std::vector< ::aroma::banana::thrift::events::Event> ::const_iterator _iter117;
-    for (_iter117 = this->events.begin(); _iter117 != this->events.end(); ++_iter117)
+    std::vector< ::aroma::banana::thrift::events::Event> ::const_iterator _iter151;
+    for (_iter151 = this->events.begin(); _iter151 != this->events.end(); ++_iter151)
     {
-      xfer += (*_iter117).write(oprot);
+      xfer += (*_iter151).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -3813,13 +4775,13 @@ void swap(GetActivityResponse &a, GetActivityResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetActivityResponse::GetActivityResponse(const GetActivityResponse& other118) {
-  events = other118.events;
-  __isset = other118.__isset;
+GetActivityResponse::GetActivityResponse(const GetActivityResponse& other152) {
+  events = other152.events;
+  __isset = other152.__isset;
 }
-GetActivityResponse& GetActivityResponse::operator=(const GetActivityResponse& other119) {
-  events = other119.events;
-  __isset = other119.__isset;
+GetActivityResponse& GetActivityResponse::operator=(const GetActivityResponse& other153) {
+  events = other153.events;
+  __isset = other153.__isset;
   return *this;
 }
 void GetActivityResponse::printTo(std::ostream& out) const {
@@ -3899,13 +4861,13 @@ void swap(GetServiceAnnouncementsRequest &a, GetServiceAnnouncementsRequest &b) 
   swap(a.__isset, b.__isset);
 }
 
-GetServiceAnnouncementsRequest::GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest& other120) {
-  token = other120.token;
-  __isset = other120.__isset;
+GetServiceAnnouncementsRequest::GetServiceAnnouncementsRequest(const GetServiceAnnouncementsRequest& other154) {
+  token = other154.token;
+  __isset = other154.__isset;
 }
-GetServiceAnnouncementsRequest& GetServiceAnnouncementsRequest::operator=(const GetServiceAnnouncementsRequest& other121) {
-  token = other121.token;
-  __isset = other121.__isset;
+GetServiceAnnouncementsRequest& GetServiceAnnouncementsRequest::operator=(const GetServiceAnnouncementsRequest& other155) {
+  token = other155.token;
+  __isset = other155.__isset;
   return *this;
 }
 void GetServiceAnnouncementsRequest::printTo(std::ostream& out) const {
@@ -3950,14 +4912,14 @@ uint32_t GetServiceAnnouncementsResponse::read(::apache::thrift::protocol::TProt
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->serviceAnnouncements.clear();
-            uint32_t _size122;
-            ::apache::thrift::protocol::TType _etype125;
-            xfer += iprot->readListBegin(_etype125, _size122);
-            this->serviceAnnouncements.resize(_size122);
-            uint32_t _i126;
-            for (_i126 = 0; _i126 < _size122; ++_i126)
+            uint32_t _size156;
+            ::apache::thrift::protocol::TType _etype159;
+            xfer += iprot->readListBegin(_etype159, _size156);
+            this->serviceAnnouncements.resize(_size156);
+            uint32_t _i160;
+            for (_i160 = 0; _i160 < _size156; ++_i160)
             {
-              xfer += this->serviceAnnouncements[_i126].read(iprot);
+              xfer += this->serviceAnnouncements[_i160].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3987,10 +4949,10 @@ uint32_t GetServiceAnnouncementsResponse::write(::apache::thrift::protocol::TPro
     xfer += oprot->writeFieldBegin("serviceAnnouncements", ::apache::thrift::protocol::T_LIST, 1);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->serviceAnnouncements.size()));
-      std::vector< ::aroma::banana::thrift::ServiceAnnouncement> ::const_iterator _iter127;
-      for (_iter127 = this->serviceAnnouncements.begin(); _iter127 != this->serviceAnnouncements.end(); ++_iter127)
+      std::vector< ::aroma::banana::thrift::ServiceAnnouncement> ::const_iterator _iter161;
+      for (_iter161 = this->serviceAnnouncements.begin(); _iter161 != this->serviceAnnouncements.end(); ++_iter161)
       {
-        xfer += (*_iter127).write(oprot);
+        xfer += (*_iter161).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -4007,13 +4969,13 @@ void swap(GetServiceAnnouncementsResponse &a, GetServiceAnnouncementsResponse &b
   swap(a.__isset, b.__isset);
 }
 
-GetServiceAnnouncementsResponse::GetServiceAnnouncementsResponse(const GetServiceAnnouncementsResponse& other128) {
-  serviceAnnouncements = other128.serviceAnnouncements;
-  __isset = other128.__isset;
+GetServiceAnnouncementsResponse::GetServiceAnnouncementsResponse(const GetServiceAnnouncementsResponse& other162) {
+  serviceAnnouncements = other162.serviceAnnouncements;
+  __isset = other162.__isset;
 }
-GetServiceAnnouncementsResponse& GetServiceAnnouncementsResponse::operator=(const GetServiceAnnouncementsResponse& other129) {
-  serviceAnnouncements = other129.serviceAnnouncements;
-  __isset = other129.__isset;
+GetServiceAnnouncementsResponse& GetServiceAnnouncementsResponse::operator=(const GetServiceAnnouncementsResponse& other163) {
+  serviceAnnouncements = other163.serviceAnnouncements;
+  __isset = other163.__isset;
   return *this;
 }
 void GetServiceAnnouncementsResponse::printTo(std::ostream& out) const {
@@ -4110,15 +5072,15 @@ void swap(GetUserInfoRequest &a, GetUserInfoRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetUserInfoRequest::GetUserInfoRequest(const GetUserInfoRequest& other130) {
-  token = other130.token;
-  userId = other130.userId;
-  __isset = other130.__isset;
+GetUserInfoRequest::GetUserInfoRequest(const GetUserInfoRequest& other164) {
+  token = other164.token;
+  userId = other164.userId;
+  __isset = other164.__isset;
 }
-GetUserInfoRequest& GetUserInfoRequest::operator=(const GetUserInfoRequest& other131) {
-  token = other131.token;
-  userId = other131.userId;
-  __isset = other131.__isset;
+GetUserInfoRequest& GetUserInfoRequest::operator=(const GetUserInfoRequest& other165) {
+  token = other165.token;
+  userId = other165.userId;
+  __isset = other165.__isset;
   return *this;
 }
 void GetUserInfoRequest::printTo(std::ostream& out) const {
@@ -4199,13 +5161,13 @@ void swap(GetUserInfoResponse &a, GetUserInfoResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-GetUserInfoResponse::GetUserInfoResponse(const GetUserInfoResponse& other132) {
-  userInfo = other132.userInfo;
-  __isset = other132.__isset;
+GetUserInfoResponse::GetUserInfoResponse(const GetUserInfoResponse& other166) {
+  userInfo = other166.userInfo;
+  __isset = other166.__isset;
 }
-GetUserInfoResponse& GetUserInfoResponse::operator=(const GetUserInfoResponse& other133) {
-  userInfo = other133.userInfo;
-  __isset = other133.__isset;
+GetUserInfoResponse& GetUserInfoResponse::operator=(const GetUserInfoResponse& other167) {
+  userInfo = other167.userInfo;
+  __isset = other167.__isset;
   return *this;
 }
 void GetUserInfoResponse::printTo(std::ostream& out) const {
@@ -4321,17 +5283,17 @@ void swap(SearchForApplicationsRequest &a, SearchForApplicationsRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SearchForApplicationsRequest::SearchForApplicationsRequest(const SearchForApplicationsRequest& other134) {
-  token = other134.token;
-  applicationName = other134.applicationName;
-  organization = other134.organization;
-  __isset = other134.__isset;
+SearchForApplicationsRequest::SearchForApplicationsRequest(const SearchForApplicationsRequest& other168) {
+  token = other168.token;
+  applicationName = other168.applicationName;
+  organization = other168.organization;
+  __isset = other168.__isset;
 }
-SearchForApplicationsRequest& SearchForApplicationsRequest::operator=(const SearchForApplicationsRequest& other135) {
-  token = other135.token;
-  applicationName = other135.applicationName;
-  organization = other135.organization;
-  __isset = other135.__isset;
+SearchForApplicationsRequest& SearchForApplicationsRequest::operator=(const SearchForApplicationsRequest& other169) {
+  token = other169.token;
+  applicationName = other169.applicationName;
+  organization = other169.organization;
+  __isset = other169.__isset;
   return *this;
 }
 void SearchForApplicationsRequest::printTo(std::ostream& out) const {
@@ -4377,14 +5339,14 @@ uint32_t SearchForApplicationsResponse::read(::apache::thrift::protocol::TProtoc
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->applications.clear();
-            uint32_t _size136;
-            ::apache::thrift::protocol::TType _etype139;
-            xfer += iprot->readListBegin(_etype139, _size136);
-            this->applications.resize(_size136);
-            uint32_t _i140;
-            for (_i140 = 0; _i140 < _size136; ++_i140)
+            uint32_t _size170;
+            ::apache::thrift::protocol::TType _etype173;
+            xfer += iprot->readListBegin(_etype173, _size170);
+            this->applications.resize(_size170);
+            uint32_t _i174;
+            for (_i174 = 0; _i174 < _size170; ++_i174)
             {
-              xfer += this->applications[_i140].read(iprot);
+              xfer += this->applications[_i174].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -4413,10 +5375,10 @@ uint32_t SearchForApplicationsResponse::write(::apache::thrift::protocol::TProto
   xfer += oprot->writeFieldBegin("applications", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->applications.size()));
-    std::vector<Application> ::const_iterator _iter141;
-    for (_iter141 = this->applications.begin(); _iter141 != this->applications.end(); ++_iter141)
+    std::vector<Application> ::const_iterator _iter175;
+    for (_iter175 = this->applications.begin(); _iter175 != this->applications.end(); ++_iter175)
     {
-      xfer += (*_iter141).write(oprot);
+      xfer += (*_iter175).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }
@@ -4433,13 +5395,13 @@ void swap(SearchForApplicationsResponse &a, SearchForApplicationsResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SearchForApplicationsResponse::SearchForApplicationsResponse(const SearchForApplicationsResponse& other142) {
-  applications = other142.applications;
-  __isset = other142.__isset;
+SearchForApplicationsResponse::SearchForApplicationsResponse(const SearchForApplicationsResponse& other176) {
+  applications = other176.applications;
+  __isset = other176.__isset;
 }
-SearchForApplicationsResponse& SearchForApplicationsResponse::operator=(const SearchForApplicationsResponse& other143) {
-  applications = other143.applications;
-  __isset = other143.__isset;
+SearchForApplicationsResponse& SearchForApplicationsResponse::operator=(const SearchForApplicationsResponse& other177) {
+  applications = other177.applications;
+  __isset = other177.__isset;
   return *this;
 }
 void SearchForApplicationsResponse::printTo(std::ostream& out) const {

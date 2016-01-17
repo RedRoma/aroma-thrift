@@ -13,8 +13,6 @@ var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
-var AuthenticationService_ttypes = require('./AuthenticationService_types')
-var MessageService_ttypes = require('./MessageService_types')
 
 
 var ttypes = require('./BananaService_types');
@@ -2898,7 +2896,7 @@ BananaService_getMessages_args = function(args) {
             this.request = null;
             if (args) {
                         if (args.request !== undefined && args.request !== null) {
-                                    this.request = new MessageService_ttypes.GetMessagesRequest(args.request);
+                                    this.request = new ttypes.GetMessagesRequest(args.request);
                         }
             }
 };
@@ -2918,7 +2916,7 @@ BananaService_getMessages_args.prototype.read = function(input) {
               {
                 case 1:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new MessageService_ttypes.GetMessagesRequest();
+                  this.request = new ttypes.GetMessagesRequest();
                   this.request.read(input);
                 } else {
                   input.skip(ftype);
@@ -2967,7 +2965,7 @@ BananaService_getMessages_result = function(args) {
             }
             if (args) {
                         if (args.success !== undefined && args.success !== null) {
-                                    this.success = new MessageService_ttypes.GetMessagesResponse(args.success);
+                                    this.success = new ttypes.GetMessagesResponse(args.success);
                         }
                         if (args.ex1 !== undefined && args.ex1 !== null) {
                                     this.ex1 = args.ex1;
@@ -2996,7 +2994,7 @@ BananaService_getMessages_result.prototype.read = function(input) {
               {
                 case 0:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new MessageService_ttypes.GetMessagesResponse();
+                  this.success = new ttypes.GetMessagesResponse();
                   this.success.read(input);
                 } else {
                   input.skip(ftype);
@@ -3066,7 +3064,7 @@ BananaService_getFullMessage_args = function(args) {
             this.request = null;
             if (args) {
                         if (args.request !== undefined && args.request !== null) {
-                                    this.request = new MessageService_ttypes.GetFullMessageRequest(args.request);
+                                    this.request = new ttypes.GetFullMessageRequest(args.request);
                         }
             }
 };
@@ -3086,7 +3084,7 @@ BananaService_getFullMessage_args.prototype.read = function(input) {
               {
                 case 1:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new MessageService_ttypes.GetFullMessageRequest();
+                  this.request = new ttypes.GetFullMessageRequest();
                   this.request.read(input);
                 } else {
                   input.skip(ftype);
@@ -3135,7 +3133,7 @@ BananaService_getFullMessage_result = function(args) {
             }
             if (args) {
                         if (args.success !== undefined && args.success !== null) {
-                                    this.success = new MessageService_ttypes.GetFullMessageResponse(args.success);
+                                    this.success = new ttypes.GetFullMessageResponse(args.success);
                         }
                         if (args.ex1 !== undefined && args.ex1 !== null) {
                                     this.ex1 = args.ex1;
@@ -3164,7 +3162,7 @@ BananaService_getFullMessage_result.prototype.read = function(input) {
               {
                 case 0:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new MessageService_ttypes.GetFullMessageResponse();
+                  this.success = new ttypes.GetFullMessageResponse();
                   this.success.read(input);
                 } else {
                   input.skip(ftype);

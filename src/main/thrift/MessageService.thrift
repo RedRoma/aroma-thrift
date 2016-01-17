@@ -16,6 +16,9 @@ include "Endpoint.thrift"
 include "Events.thrift"
 include "Exceptions.thrift"
 
+include "ApplicationService.thrift"
+include "BananaService.thrift"
+
 /*
  * These Typedefs are like import statements
  * so  we don't have to type as much.
@@ -45,106 +48,24 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
+//Service Requests and Responses Typedefs
+typedef ApplicationService.ApplicationService SendMessageRequest
+typedef ApplicationService.ApplicationService SendMessageResponse
+
+typedef BananaService.DeleteMessageRequest DeleteMessageRequest
+typedef BananaService.DeleteMessageResponse DeleteMessageResponse
+typedef BananaService.DismissMessageRequest DismissMessageRequest
+typedef BananaService.DismissMessageResponse DismissMessageResponse
+typedef BananaService.GetMessagesRequest GetMessagesRequest
+typedef BananaService.GetMessagesResponse GetMessagesResponse
+typedef BananaService.GetFullMessageRequest GetFullMessageRequest
+typedef BananaService.GetFullMessageResponse GetFullMessageResponse
+
 const int SERVICE_PORT = 7011;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "message-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
-
-
-//==========================================================
-// Operations performed by Applications
-
-/**
- * Send a Message to the Banana Service.
- */
-struct SendMessageRequest
-{
-    1: ApplicationToken applicationToken;
-    2: string message;
-    3: Urgency urgency = Banana.Urgency.LOW;
-    /** The time that the message was generated on the Client Side. */
-    4: optional timestamp timeOfMessage;
-}
-
-struct SendMessageResponse
-{
-    1: string messageId;
-}
-
-//==========================================================
-// SERVICE REQUESTS
-
-/**
- * Deletes a Message.
- * 
- * #owner
- */
-struct DeleteMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
-    /** Use for Batch Deletes. */
-    4: optional list<string> messageIds = [];
-}
-
-struct DeleteMessageResponse
-{
-    1: optional int messagesDeleted = 0;
-}
-
-
-/**
- * Dismisses a Message. Dismissing is analogous to archiving
- * an email; it will no longer be visible to you, but will
- * still be visible to other subscribers.
- */
-struct DismissMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
-    /** Use for Dismissing multiple Messages. */
-    4: optional list<string> messageIds = [];
-}
-
-struct DismissMessageResponse
-{
-    1: optional int messagesDismissed = 0;
-}
-
-
-
-/**
- * Query to get a User's messages, either across all Services,
- * or by a specific Application.
- */
-struct GetMessagesRequest
-{
-    1: UserToken token;
-    /** Allows you to get Messages by a particular application. */
-    2: optional string applicationId;
-    /** Suggests that the Service limits the results of the query.*/
-    3: optional int limit = 0;
-}
-
-struct GetMessagesResponse
-{
-    1: list<Banana.Message> messages = [];
-    2: optional int totalMessagesMatching = 0;
-}
-
-struct GetFullMessageRequest
-{
-    1: UserToken token;
-    2: string messageId;
-}
-
-struct GetFullMessageResponse
-{
-    1: string fullBody;
-}
 
 //==========================================================
 // SERVICE DEFINITION

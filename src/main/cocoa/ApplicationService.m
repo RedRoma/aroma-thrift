@@ -22,9 +22,475 @@
 #import "Banana.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
-#import "MessageService.h"
 
 #import "ApplicationService.h"
+
+@implementation ApplicationService_SendMessageRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.urgency = 1;
+
+#endif
+  return self;
+}
+
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage
+{
+  self = [super init];
+  __applicationToken = [applicationToken retain_stub];
+  __applicationToken_isset = YES;
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __urgency = urgency;
+  __urgency_isset = YES;
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationToken"])
+  {
+    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
+    __applicationToken_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"urgency"])
+  {
+    __urgency = [decoder decodeIntForKey: @"urgency"];
+    __urgency_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfMessage"])
+  {
+    __timeOfMessage = [decoder decodeInt64ForKey: @"timeOfMessage"];
+    __timeOfMessage_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationToken_isset)
+  {
+    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+  }
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__urgency_isset)
+  {
+    [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__timeOfMessage_isset)
+  {
+    [encoder encodeInt64: __timeOfMessage forKey: @"timeOfMessage"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
+  if (__applicationToken_isset)
+  {
+    hash = (hash * 31) ^ [__applicationToken hash];
+  }
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
+  if (__urgency_isset)
+  {
+    hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeOfMessage_isset ? 2654435761 : 0;
+  if (__timeOfMessage_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfMessage) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[ApplicationService_SendMessageRequest class]]) {
+    return NO;
+  }
+  ApplicationService_SendMessageRequest *other = (ApplicationService_SendMessageRequest *)anObject;
+  if ((__applicationToken_isset != other->__applicationToken_isset) ||
+      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+    return NO;
+  }
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__urgency_isset != other->__urgency_isset) ||
+      (__urgency_isset && (__urgency != other->__urgency))) {
+    return NO;
+  }
+  if ((__timeOfMessage_isset != other->__timeOfMessage_isset) ||
+      (__timeOfMessage_isset && (__timeOfMessage != other->__timeOfMessage))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationToken release_stub];
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_ApplicationToken *) applicationToken {
+  return [[__applicationToken retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
+  [applicationToken retain_stub];
+  [__applicationToken release_stub];
+  __applicationToken = applicationToken;
+  __applicationToken_isset = YES;
+}
+
+- (BOOL) applicationTokenIsSet {
+  return __applicationToken_isset;
+}
+
+- (void) unsetApplicationToken {
+  [__applicationToken release_stub];
+  __applicationToken = nil;
+  __applicationToken_isset = NO;
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (int) urgency {
+  return __urgency;
+}
+
+- (void) setUrgency: (int) urgency {
+  __urgency = urgency;
+  __urgency_isset = YES;
+}
+
+- (BOOL) urgencyIsSet {
+  return __urgency_isset;
+}
+
+- (void) unsetUrgency {
+  __urgency_isset = NO;
+}
+
+- (int64_t) timeOfMessage {
+  return __timeOfMessage;
+}
+
+- (void) setTimeOfMessage: (int64_t) timeOfMessage {
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+}
+
+- (BOOL) timeOfMessageIsSet {
+  return __timeOfMessage_isset;
+}
+
+- (void) unsetTimeOfMessage {
+  __timeOfMessage_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setUrgency: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendMessageRequest"];
+  if (__applicationToken_isset) {
+    if (__applicationToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
+      [__applicationToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__urgency_isset) {
+    [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __urgency];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeOfMessage_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfMessage" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfMessage];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageRequest("];
+  [ms appendString: @"applicationToken:"];
+  [ms appendFormat: @"%@", __applicationToken];
+  [ms appendString: @",message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",urgency:"];
+  [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",timeOfMessage:"];
+  [ms appendFormat: @"%qi", __timeOfMessage];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation ApplicationService_SendMessageResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessageId: (NSString *) messageId
+{
+  self = [super init];
+  __messageId = [messageId retain_stub];
+  __messageId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messageId"])
+  {
+    __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
+    __messageId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messageId_isset)
+  {
+    [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messageId_isset ? 2654435761 : 0;
+  if (__messageId_isset)
+  {
+    hash = (hash * 31) ^ [__messageId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[ApplicationService_SendMessageResponse class]]) {
+    return NO;
+  }
+  ApplicationService_SendMessageResponse *other = (ApplicationService_SendMessageResponse *)anObject;
+  if ((__messageId_isset != other->__messageId_isset) ||
+      (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__messageId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) messageId {
+  return [[__messageId retain_stub] autorelease_stub];
+}
+
+- (void) setMessageId: (NSString *) messageId {
+  [messageId retain_stub];
+  [__messageId release_stub];
+  __messageId = messageId;
+  __messageId_isset = YES;
+}
+
+- (BOOL) messageIdIsSet {
+  return __messageId_isset;
+}
+
+- (void) unsetMessageId {
+  [__messageId release_stub];
+  __messageId = nil;
+  __messageId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendMessageResponse"];
+  if (__messageId_isset) {
+    if (__messageId != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageResponse("];
+  [ms appendString: @"messageId:"];
+  [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
 
 static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
@@ -315,17 +781,17 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 @end
 
 @interface ApplicationService_sendMessage_args : NSObject <TBase, NSCoding> {
-  ApplicationService_SendMessageRequest __request;
+  ApplicationService_SendMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (ApplicationService_SendMessageRequest) request;
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -333,8 +799,8 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (ApplicationService_SendMessageRequest) request;
-- (void) setRequest: (ApplicationService_SendMessageRequest) request;
+- (ApplicationService_SendMessageRequest *) request;
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
@@ -350,7 +816,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (ApplicationService_SendMessageRequest) request
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -410,11 +876,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (MessageService_SendMessageRequest *) request {
+- (ApplicationService_SendMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (MessageService_SendMessageRequest *) request {
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -448,7 +914,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          MessageService_SendMessageRequest *fieldValue = [[MessageService_SendMessageRequest alloc] init];
+          ApplicationService_SendMessageRequest *fieldValue = [[ApplicationService_SendMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -493,32 +959,26 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 @end
 
 @interface ApplicationService_SendMessage_result : NSObject <TBase, NSCoding> {
-  ApplicationService_SendMessageResponse __success;
+  ApplicationService_SendMessageResponse * __success;
   ApplicationService_OperationFailedException __ex1;
   ApplicationService_InvalidArgumentException __ex2;
   ApplicationService_InvalidTokenException __ex3;
-  ApplicationService_ApplicationDoesNotExistException __ex4;
-  ApplicationService_ThroughoutExceededException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
   BOOL __ex3_isset;
-  BOOL __ex4_isset;
-  BOOL __ex5_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) ApplicationService_SendMessageResponse success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) ApplicationService_SendMessageResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) ApplicationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) ApplicationService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) ApplicationService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) ApplicationService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) ApplicationService_ThroughoutExceededException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (ApplicationService_SendMessageResponse) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3 ex4: (ApplicationService_ApplicationDoesNotExistException) ex4 ex5: (ApplicationService_ThroughoutExceededException) ex5;
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -526,8 +986,8 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (ApplicationService_SendMessageResponse) success;
-- (void) setSuccess: (ApplicationService_SendMessageResponse) success;
+- (ApplicationService_SendMessageResponse *) success;
+- (void) setSuccess: (ApplicationService_SendMessageResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -549,18 +1009,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 #endif
 - (BOOL) ex3IsSet;
 
-#if !__has_feature(objc_arc)
-- (ApplicationService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (ApplicationService_ApplicationDoesNotExistException) ex4;
-#endif
-- (BOOL) ex4IsSet;
-
-#if !__has_feature(objc_arc)
-- (ApplicationService_ThroughoutExceededException) ex5;
-- (void) setEx5: (ApplicationService_ThroughoutExceededException) ex5;
-#endif
-- (BOOL) ex5IsSet;
-
 @end
 
 @implementation ApplicationService_SendMessage_result
@@ -573,7 +1021,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (ApplicationService_SendMessageResponse) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3 ex4: (ApplicationService_ApplicationDoesNotExistException) ex4 ex5: (ApplicationService_ThroughoutExceededException) ex5
+- (id) initWithSuccess: (ApplicationService_SendMessageResponse *) success ex1: (ApplicationService_OperationFailedException) ex1 ex2: (ApplicationService_InvalidArgumentException) ex2 ex3: (ApplicationService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -584,10 +1032,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __ex2_isset = YES;
   __ex3 = [ex3 retain_stub];
   __ex3_isset = YES;
-  __ex4 = [ex4 retain_stub];
-  __ex4_isset = YES;
-  __ex5 = [ex5 retain_stub];
-  __ex5_isset = YES;
   return self;
 }
 
@@ -614,16 +1058,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
     __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
     __ex3_isset = YES;
   }
-  if ([decoder containsValueForKey: @"ex4"])
-  {
-    __ex4 = [[decoder decodeObjectForKey: @"ex4"] retain_stub];
-    __ex4_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"ex5"])
-  {
-    __ex5 = [[decoder decodeObjectForKey: @"ex5"] retain_stub];
-    __ex5_isset = YES;
-  }
   return self;
 }
 
@@ -644,14 +1078,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   if (__ex3_isset)
   {
     [encoder encodeObject: __ex3 forKey: @"ex3"];
-  }
-  if (__ex4_isset)
-  {
-    [encoder encodeObject: __ex4 forKey: @"ex4"];
-  }
-  if (__ex5_isset)
-  {
-    [encoder encodeObject: __ex5 forKey: @"ex5"];
   }
 }
 
@@ -677,16 +1103,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   if (__ex3_isset)
   {
     hash = (hash * 31) ^ [__ex3 hash];
-  }
-  hash = (hash * 31) ^ __ex4_isset ? 2654435761 : 0;
-  if (__ex4_isset)
-  {
-    hash = (hash * 31) ^ [__ex4 hash];
-  }
-  hash = (hash * 31) ^ __ex5_isset ? 2654435761 : 0;
-  if (__ex5_isset)
-  {
-    hash = (hash * 31) ^ [__ex5 hash];
   }
   return hash;
 }
@@ -716,14 +1132,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
       (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
     return NO;
   }
-  if ((__ex4_isset != other->__ex4_isset) ||
-      (__ex4_isset && ((__ex4 || other->__ex4) && ![__ex4 isEqual:other->__ex4]))) {
-    return NO;
-  }
-  if ((__ex5_isset != other->__ex5_isset) ||
-      (__ex5_isset && ((__ex5 || other->__ex5) && ![__ex5 isEqual:other->__ex5]))) {
-    return NO;
-  }
   return YES;
 }
 
@@ -733,16 +1141,14 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [__ex1 release_stub];
   [__ex2 release_stub];
   [__ex3 release_stub];
-  [__ex4 release_stub];
-  [__ex5 release_stub];
   [super dealloc_stub];
 }
 
-- (MessageService_SendMessageResponse *) success {
+- (ApplicationService_SendMessageResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (MessageService_SendMessageResponse *) success {
+- (void) setSuccess: (ApplicationService_SendMessageResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -822,48 +1228,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
-  return [[__ex4 retain_stub] autorelease_stub];
-}
-
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
-  [ex4 retain_stub];
-  [__ex4 release_stub];
-  __ex4 = ex4;
-  __ex4_isset = YES;
-}
-
-- (BOOL) ex4IsSet {
-  return __ex4_isset;
-}
-
-- (void) unsetEx4 {
-  [__ex4 release_stub];
-  __ex4 = nil;
-  __ex4_isset = NO;
-}
-
-- (BananaException_ThroughoutExceededException *) ex5 {
-  return [[__ex5 retain_stub] autorelease_stub];
-}
-
-- (void) setEx5: (BananaException_ThroughoutExceededException *) ex5 {
-  [ex5 retain_stub];
-  [__ex5 release_stub];
-  __ex5 = ex5;
-  __ex5_isset = YES;
-}
-
-- (BOOL) ex5IsSet {
-  return __ex5_isset;
-}
-
-- (void) unsetEx5 {
-  [__ex5 release_stub];
-  __ex5 = nil;
-  __ex5_isset = NO;
-}
-
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -881,7 +1245,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          MessageService_SendMessageResponse *fieldValue = [[MessageService_SendMessageResponse alloc] init];
+          ApplicationService_SendMessageResponse *fieldValue = [[ApplicationService_SendMessageResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -914,26 +1278,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
           BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 4:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx4: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 5:
-        if (fieldType == TType_STRUCT) {
-          BananaException_ThroughoutExceededException *fieldValue = [[BananaException_ThroughoutExceededException alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEx5: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -975,18 +1319,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
       [__ex3 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
-  } else if (__ex4_isset) {
-    if (__ex4 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex4" type: TType_STRUCT fieldID: 4];
-      [__ex4 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  } else if (__ex5_isset) {
-    if (__ex5 != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex5" type: TType_STRUCT fieldID: 5];
-      [__ex5 write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -1006,10 +1338,6 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [ms appendFormat: @"%@", __ex2];
   [ms appendString: @",ex3:"];
   [ms appendFormat: @"%@", __ex3];
-  [ms appendString: @",ex4:"];
-  [ms appendFormat: @"%@", __ex4];
-  [ms appendString: @",ex5:"];
-  [ms appendFormat: @"%@", __ex5];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1017,17 +1345,17 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 @end
 
 @interface ApplicationService_sendMessageAsync_args : NSObject <TBase, NSCoding> {
-  ApplicationService_SendMessageRequest __request;
+  ApplicationService_SendMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) ApplicationService_SendMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (ApplicationService_SendMessageRequest) request;
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1035,8 +1363,8 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (ApplicationService_SendMessageRequest) request;
-- (void) setRequest: (ApplicationService_SendMessageRequest) request;
+- (ApplicationService_SendMessageRequest *) request;
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
@@ -1052,7 +1380,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (ApplicationService_SendMessageRequest) request
+- (id) initWithRequest: (ApplicationService_SendMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -1112,11 +1440,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (MessageService_SendMessageRequest *) request {
+- (ApplicationService_SendMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (MessageService_SendMessageRequest *) request {
+- (void) setRequest: (ApplicationService_SendMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -1150,7 +1478,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          MessageService_SendMessageRequest *fieldValue = [[MessageService_SendMessageRequest alloc] init];
+          ApplicationService_SendMessageRequest *fieldValue = [[ApplicationService_SendMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -1240,7 +1568,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   return [self recv_getApiVersion];
 }
 
-- (void) send_sendMessage: (ApplicationService_SendMessageRequest) request
+- (void) send_sendMessage: (ApplicationService_SendMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"sendMessage" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"sendMessage_args"];
@@ -1254,7 +1582,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (ApplicationService_SendMessageResponse) recv_sendMessage
+- (ApplicationService_SendMessageResponse *) recv_sendMessage
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
@@ -1275,24 +1603,18 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   if ([result ex3IsSet]) {
     @throw [result ex3];
   }
-  if ([result ex4IsSet]) {
-    @throw [result ex4];
-  }
-  if ([result ex5IsSet]) {
-    @throw [result ex5];
-  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"sendMessage failed: unknown result"];
 }
 
-- (ApplicationService_SendMessageResponse) sendMessage: (ApplicationService_SendMessageRequest) request
+- (ApplicationService_SendMessageResponse *) sendMessage: (ApplicationService_SendMessageRequest *) request
 {
   [self send_sendMessage : request];
   [[outProtocol transport] flush];
   return [self recv_sendMessage];
 }
 
-- (void) send_sendMessageAsync: (ApplicationService_SendMessageRequest) request
+- (void) send_sendMessageAsync: (ApplicationService_SendMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"sendMessageAsync" type: TMessageType_ONEWAY sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"sendMessageAsync_args"];
@@ -1306,7 +1628,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (void) sendMessageAsync: (ApplicationService_SendMessageRequest) request
+- (void) sendMessageAsync: (ApplicationService_SendMessageRequest *) request
 {
   [self send_sendMessageAsync : request];
   [[outProtocol transport] flush];
