@@ -471,7 +471,7 @@ inline std::ostream& operator<<(std::ostream& out, const Organization& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false), firstName(false), middleName(false), lastName(false) {}
   bool email :1;
   bool userId :1;
   bool name :1;
@@ -479,6 +479,9 @@ typedef struct _User__isset {
   bool profileImage :1;
   bool profileImageLink :1;
   bool githubProfile :1;
+  bool firstName :1;
+  bool middleName :1;
+  bool lastName :1;
 } _User__isset;
 
 class User {
@@ -486,7 +489,7 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), userId(), name(), profileImageLink(), githubProfile() {
+  User() : email(), userId(), name(), profileImageLink(), githubProfile(), firstName(), middleName(), lastName() {
     roles.insert((Role::type)1);
 
   }
@@ -499,6 +502,9 @@ class User {
   Image profileImage;
   std::string profileImageLink;
   std::string githubProfile;
+  std::string firstName;
+  std::string middleName;
+  std::string lastName;
 
   _User__isset __isset;
 
@@ -515,6 +521,12 @@ class User {
   void __set_profileImageLink(const std::string& val);
 
   void __set_githubProfile(const std::string& val);
+
+  void __set_firstName(const std::string& val);
+
+  void __set_middleName(const std::string& val);
+
+  void __set_lastName(const std::string& val);
 
   bool operator == (const User & rhs) const
   {
@@ -539,6 +551,18 @@ class User {
     if (__isset.githubProfile != rhs.__isset.githubProfile)
       return false;
     else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
+      return false;
+    if (__isset.firstName != rhs.__isset.firstName)
+      return false;
+    else if (__isset.firstName && !(firstName == rhs.firstName))
+      return false;
+    if (__isset.middleName != rhs.__isset.middleName)
+      return false;
+    else if (__isset.middleName && !(middleName == rhs.middleName))
+      return false;
+    if (__isset.lastName != rhs.__isset.lastName)
+      return false;
+    else if (__isset.lastName && !(lastName == rhs.lastName))
       return false;
     return true;
   }

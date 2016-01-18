@@ -151,6 +151,9 @@ struct User
     5: optional Image profileImage;
     6: optional string profileImageLink;
     7: optional string githubProfile;
+    8: optional string firstName;
+    9: optional string middleName;
+    10: optional string lastName;
 }
 
 /**

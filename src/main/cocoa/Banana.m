@@ -2002,7 +2002,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile
+- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName
 {
   self = [super init];
   __email = [email retain_stub];
@@ -2019,6 +2019,12 @@
   __profileImageLink_isset = YES;
   __githubProfile = [githubProfile retain_stub];
   __githubProfile_isset = YES;
+  __firstName = [firstName retain_stub];
+  __firstName_isset = YES;
+  __middleName = [middleName retain_stub];
+  __middleName_isset = YES;
+  __lastName = [lastName retain_stub];
+  __lastName_isset = YES;
   return self;
 }
 
@@ -2060,6 +2066,21 @@
     __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
     __githubProfile_isset = YES;
   }
+  if ([decoder containsValueForKey: @"firstName"])
+  {
+    __firstName = [[decoder decodeObjectForKey: @"firstName"] retain_stub];
+    __firstName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"middleName"])
+  {
+    __middleName = [[decoder decodeObjectForKey: @"middleName"] retain_stub];
+    __middleName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"lastName"])
+  {
+    __lastName = [[decoder decodeObjectForKey: @"lastName"] retain_stub];
+    __lastName_isset = YES;
+  }
   return self;
 }
 
@@ -2092,6 +2113,18 @@
   if (__githubProfile_isset)
   {
     [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
+  }
+  if (__firstName_isset)
+  {
+    [encoder encodeObject: __firstName forKey: @"firstName"];
+  }
+  if (__middleName_isset)
+  {
+    [encoder encodeObject: __middleName forKey: @"middleName"];
+  }
+  if (__lastName_isset)
+  {
+    [encoder encodeObject: __lastName forKey: @"lastName"];
   }
 }
 
@@ -2133,6 +2166,21 @@
   {
     hash = (hash * 31) ^ [__githubProfile hash];
   }
+  hash = (hash * 31) ^ __firstName_isset ? 2654435761 : 0;
+  if (__firstName_isset)
+  {
+    hash = (hash * 31) ^ [__firstName hash];
+  }
+  hash = (hash * 31) ^ __middleName_isset ? 2654435761 : 0;
+  if (__middleName_isset)
+  {
+    hash = (hash * 31) ^ [__middleName hash];
+  }
+  hash = (hash * 31) ^ __lastName_isset ? 2654435761 : 0;
+  if (__lastName_isset)
+  {
+    hash = (hash * 31) ^ [__lastName hash];
+  }
   return hash;
 }
 
@@ -2173,6 +2221,18 @@
       (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
     return NO;
   }
+  if ((__firstName_isset != other->__firstName_isset) ||
+      (__firstName_isset && ((__firstName || other->__firstName) && ![__firstName isEqual:other->__firstName]))) {
+    return NO;
+  }
+  if ((__middleName_isset != other->__middleName_isset) ||
+      (__middleName_isset && ((__middleName || other->__middleName) && ![__middleName isEqual:other->__middleName]))) {
+    return NO;
+  }
+  if ((__lastName_isset != other->__lastName_isset) ||
+      (__lastName_isset && ((__lastName || other->__lastName) && ![__lastName isEqual:other->__lastName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2185,6 +2245,9 @@
   [__profileImage release_stub];
   [__profileImageLink release_stub];
   [__githubProfile release_stub];
+  [__firstName release_stub];
+  [__middleName release_stub];
+  [__lastName release_stub];
   [super dealloc_stub];
 }
 
@@ -2335,6 +2398,69 @@
   __githubProfile_isset = NO;
 }
 
+- (NSString *) firstName {
+  return [[__firstName retain_stub] autorelease_stub];
+}
+
+- (void) setFirstName: (NSString *) firstName {
+  [firstName retain_stub];
+  [__firstName release_stub];
+  __firstName = firstName;
+  __firstName_isset = YES;
+}
+
+- (BOOL) firstNameIsSet {
+  return __firstName_isset;
+}
+
+- (void) unsetFirstName {
+  [__firstName release_stub];
+  __firstName = nil;
+  __firstName_isset = NO;
+}
+
+- (NSString *) middleName {
+  return [[__middleName retain_stub] autorelease_stub];
+}
+
+- (void) setMiddleName: (NSString *) middleName {
+  [middleName retain_stub];
+  [__middleName release_stub];
+  __middleName = middleName;
+  __middleName_isset = YES;
+}
+
+- (BOOL) middleNameIsSet {
+  return __middleName_isset;
+}
+
+- (void) unsetMiddleName {
+  [__middleName release_stub];
+  __middleName = nil;
+  __middleName_isset = NO;
+}
+
+- (NSString *) lastName {
+  return [[__lastName retain_stub] autorelease_stub];
+}
+
+- (void) setLastName: (NSString *) lastName {
+  [lastName retain_stub];
+  [__lastName release_stub];
+  __lastName = lastName;
+  __lastName_isset = YES;
+}
+
+- (BOOL) lastNameIsSet {
+  return __lastName_isset;
+}
+
+- (void) unsetLastName {
+  [__lastName release_stub];
+  __lastName = nil;
+  __lastName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2418,6 +2544,30 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setFirstName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMiddleName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setLastName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2487,6 +2637,27 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__firstName_isset) {
+    if (__firstName != nil) {
+      [outProtocol writeFieldBeginWithName: @"firstName" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __firstName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__middleName_isset) {
+    if (__middleName != nil) {
+      [outProtocol writeFieldBeginWithName: @"middleName" type: TType_STRING fieldID: 9];
+      [outProtocol writeString: __middleName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__lastName_isset) {
+    if (__lastName != nil) {
+      [outProtocol writeFieldBeginWithName: @"lastName" type: TType_STRING fieldID: 10];
+      [outProtocol writeString: __lastName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2511,6 +2682,12 @@
   [ms appendFormat: @"\"%@\"", __profileImageLink];
   [ms appendString: @",githubProfile:"];
   [ms appendFormat: @"\"%@\"", __githubProfile];
+  [ms appendString: @",firstName:"];
+  [ms appendFormat: @"\"%@\"", __firstName];
+  [ms appendString: @",middleName:"];
+  [ms appendFormat: @"\"%@\"", __middleName];
+  [ms appendString: @",lastName:"];
+  [ms appendFormat: @"\"%@\"", __lastName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

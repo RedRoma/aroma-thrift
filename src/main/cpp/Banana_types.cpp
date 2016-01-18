@@ -1042,6 +1042,21 @@ void User::__set_githubProfile(const std::string& val) {
 __isset.githubProfile = true;
 }
 
+void User::__set_firstName(const std::string& val) {
+  this->firstName = val;
+__isset.firstName = true;
+}
+
+void User::__set_middleName(const std::string& val) {
+  this->middleName = val;
+__isset.middleName = true;
+}
+
+void User::__set_lastName(const std::string& val) {
+  this->lastName = val;
+__isset.lastName = true;
+}
+
 uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1134,6 +1149,30 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->firstName);
+          this->__isset.firstName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->middleName);
+          this->__isset.middleName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->lastName);
+          this->__isset.lastName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1191,6 +1230,21 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeString(this->githubProfile);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.firstName) {
+    xfer += oprot->writeFieldBegin("firstName", ::apache::thrift::protocol::T_STRING, 8);
+    xfer += oprot->writeString(this->firstName);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.middleName) {
+    xfer += oprot->writeFieldBegin("middleName", ::apache::thrift::protocol::T_STRING, 9);
+    xfer += oprot->writeString(this->middleName);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.lastName) {
+    xfer += oprot->writeFieldBegin("lastName", ::apache::thrift::protocol::T_STRING, 10);
+    xfer += oprot->writeString(this->lastName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1205,6 +1259,9 @@ void swap(User &a, User &b) {
   swap(a.profileImage, b.profileImage);
   swap(a.profileImageLink, b.profileImageLink);
   swap(a.githubProfile, b.githubProfile);
+  swap(a.firstName, b.firstName);
+  swap(a.middleName, b.middleName);
+  swap(a.lastName, b.lastName);
   swap(a.__isset, b.__isset);
 }
 
@@ -1216,6 +1273,9 @@ User::User(const User& other27) {
   profileImage = other27.profileImage;
   profileImageLink = other27.profileImageLink;
   githubProfile = other27.githubProfile;
+  firstName = other27.firstName;
+  middleName = other27.middleName;
+  lastName = other27.lastName;
   __isset = other27.__isset;
 }
 User& User::operator=(const User& other28) {
@@ -1226,6 +1286,9 @@ User& User::operator=(const User& other28) {
   profileImage = other28.profileImage;
   profileImageLink = other28.profileImageLink;
   githubProfile = other28.githubProfile;
+  firstName = other28.firstName;
+  middleName = other28.middleName;
+  lastName = other28.lastName;
   __isset = other28.__isset;
   return *this;
 }
@@ -1239,6 +1302,9 @@ void User::printTo(std::ostream& out) const {
   out << ", " << "profileImage="; (__isset.profileImage ? (out << to_string(profileImage)) : (out << "<null>"));
   out << ", " << "profileImageLink="; (__isset.profileImageLink ? (out << to_string(profileImageLink)) : (out << "<null>"));
   out << ", " << "githubProfile="; (__isset.githubProfile ? (out << to_string(githubProfile)) : (out << "<null>"));
+  out << ", " << "firstName="; (__isset.firstName ? (out << to_string(firstName)) : (out << "<null>"));
+  out << ", " << "middleName="; (__isset.middleName ? (out << to_string(middleName)) : (out << "<null>"));
+  out << ", " << "lastName="; (__isset.lastName ? (out << to_string(lastName)) : (out << "<null>"));
   out << ")";
 }
 

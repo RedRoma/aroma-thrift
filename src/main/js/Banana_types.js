@@ -671,6 +671,9 @@ User = function(args) {
   this.profileImage = null;
   this.profileImageLink = null;
   this.githubProfile = null;
+  this.firstName = null;
+  this.middleName = null;
+  this.lastName = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -692,6 +695,15 @@ User = function(args) {
     }
     if (args.githubProfile !== undefined && args.githubProfile !== null) {
       this.githubProfile = args.githubProfile;
+    }
+    if (args.firstName !== undefined && args.firstName !== null) {
+      this.firstName = args.firstName;
+    }
+    if (args.middleName !== undefined && args.middleName !== null) {
+      this.middleName = args.middleName;
+    }
+    if (args.lastName !== undefined && args.lastName !== null) {
+      this.lastName = args.lastName;
     }
   }
 };
@@ -772,6 +784,27 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.firstName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.middleName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.lastName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -825,6 +858,21 @@ User.prototype.write = function(output) {
   if (this.githubProfile !== null && this.githubProfile !== undefined) {
     output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 7);
     output.writeString(this.githubProfile);
+    output.writeFieldEnd();
+  }
+  if (this.firstName !== null && this.firstName !== undefined) {
+    output.writeFieldBegin('firstName', Thrift.Type.STRING, 8);
+    output.writeString(this.firstName);
+    output.writeFieldEnd();
+  }
+  if (this.middleName !== null && this.middleName !== undefined) {
+    output.writeFieldBegin('middleName', Thrift.Type.STRING, 9);
+    output.writeString(this.middleName);
+    output.writeFieldEnd();
+  }
+  if (this.lastName !== null && this.lastName !== undefined) {
+    output.writeFieldBegin('lastName', Thrift.Type.STRING, 10);
+    output.writeString(this.lastName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
