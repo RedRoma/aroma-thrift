@@ -23,6 +23,7 @@ typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 typedef Banana.LengthOfTime LengthOfTime;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
@@ -52,7 +53,7 @@ struct CreateTokenRequest
      * For Application tokens, this is the Application ID.
      * For User Tokens, this is the userId.
      */
-    1: string ownerId;
+    1: uuid ownerId;
     /** The desired length of time to keep the Token alive and valid. */
     2: LengthOfTime lifetime;
     /** This is required, and determines the kind of Token created. */

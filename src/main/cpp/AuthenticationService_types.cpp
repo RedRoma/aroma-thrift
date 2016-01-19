@@ -18,7 +18,7 @@ CreateTokenRequest::~CreateTokenRequest() throw() {
 }
 
 
-void CreateTokenRequest::__set_ownerId(const std::string& val) {
+void CreateTokenRequest::__set_ownerId(const uuid& val) {
   this->ownerId = val;
 }
 

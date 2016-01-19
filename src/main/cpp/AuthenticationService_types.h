@@ -31,6 +31,8 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 typedef class  ::aroma::banana::thrift::LengthOfTime LengthOfTime;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 
 typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
@@ -83,13 +85,13 @@ class CreateTokenRequest {
   }
 
   virtual ~CreateTokenRequest() throw();
-  std::string ownerId;
+  uuid ownerId;
   LengthOfTime lifetime;
   TokenType desiredTokenType;
 
   _CreateTokenRequest__isset __isset;
 
-  void __set_ownerId(const std::string& val);
+  void __set_ownerId(const uuid& val);
 
   void __set_lifetime(const LengthOfTime& val);
 

@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType
 {
   self = [super init];
   __ownerId = [ownerId retain_stub];

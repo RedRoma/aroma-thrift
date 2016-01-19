@@ -31,6 +31,8 @@ typedef Banana_timestamp AuthenticationService_timestamp;
 
 typedef Banana_LengthOfTime * AuthenticationService_LengthOfTime;
 
+typedef Banana_uuid AuthenticationService_uuid;
+
 typedef BananaAuthentication_ApplicationToken * AuthenticationService_ApplicationToken;
 
 typedef BananaAuthentication_AuthenticationToken * AuthenticationService_AuthenticationToken;
@@ -52,7 +54,7 @@ typedef BananaException_OperationFailedException * AuthenticationService_Operati
 typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
 
 @interface AuthenticationService_CreateTokenRequest : NSObject <TBase, NSCoding> {
-  NSString * __ownerId;
+  AuthenticationService_uuid __ownerId;
   AuthenticationService_LengthOfTime __lifetime;
   AuthenticationService_TokenType __desiredTokenType;
 
@@ -62,13 +64,13 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) AuthenticationService_uuid ownerId;
 @property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_LengthOfTime lifetime;
 @property (nonatomic, getter=desiredTokenType, setter=setDesiredTokenType:) AuthenticationService_TokenType desiredTokenType;
 #endif
 
 - (id) init;
-- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType;
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -76,8 +78,8 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) ownerId;
-- (void) setOwnerId: (NSString *) ownerId;
+- (AuthenticationService_uuid) ownerId;
+- (void) setOwnerId: (AuthenticationService_uuid) ownerId;
 #endif
 - (BOOL) ownerIdIsSet;
 
