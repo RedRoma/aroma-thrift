@@ -192,7 +192,7 @@ typedef NSString * Banana_uuid;
 @end
 
 @interface Banana_Message : NSObject <TBase, NSCoding> {
-  NSString * __messageId;
+  Banana_uuid __messageId;
   NSString * __body;
   int __urgency;
   Banana_timestamp __timeOfCreation;
@@ -202,7 +202,7 @@ typedef NSString * Banana_uuid;
   NSString * __macAddress;
   BOOL __isTruncated;
   NSString * __title;
-  NSString * __applicationId;
+  Banana_uuid __applicationId;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -218,7 +218,7 @@ typedef NSString * Banana_uuid;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) NSString * messageId;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) Banana_uuid messageId;
 @property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
 @property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Banana_timestamp timeOfCreation;
@@ -228,11 +228,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
 @property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
 @property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Banana_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (NSString *) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (NSString *) applicationId;
+- (id) initWithMessageId: (Banana_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Banana_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -240,8 +240,8 @@ typedef NSString * Banana_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) messageId;
-- (void) setMessageId: (NSString *) messageId;
+- (Banana_uuid) messageId;
+- (void) setMessageId: (Banana_uuid) messageId;
 #endif
 - (BOOL) messageIdIsSet;
 
@@ -300,15 +300,15 @@ typedef NSString * Banana_uuid;
 - (BOOL) titleIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (Banana_uuid) applicationId;
+- (void) setApplicationId: (Banana_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
 @interface Banana_Organization : NSObject <TBase, NSCoding> {
-  NSString * __organizationId;
+  Banana_uuid __organizationId;
   NSString * __organizationName;
   NSString * __website;
   Banana_Image * __logo;
@@ -328,7 +328,7 @@ typedef NSString * Banana_uuid;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) NSString * organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
 @property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
 @property (nonatomic, retain, getter=website, setter=setWebsite:) NSString * website;
 @property (nonatomic, retain, getter=logo, setter=setLogo:) Banana_Image * logo;
@@ -339,7 +339,7 @@ typedef NSString * Banana_uuid;
 #endif
 
 - (id) init;
-- (id) initWithOrganizationId: (NSString *) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol;
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -347,8 +347,8 @@ typedef NSString * Banana_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) organizationId;
-- (void) setOrganizationId: (NSString *) organizationId;
+- (Banana_uuid) organizationId;
+- (void) setOrganizationId: (Banana_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -398,7 +398,7 @@ typedef NSString * Banana_uuid;
 
 @interface Banana_User : NSObject <TBase, NSCoding> {
   NSString * __email;
-  NSString * __userId;
+  Banana_uuid __userId;
   NSString * __name;
   NSMutableSet * __roles;
   Banana_Image * __profileImage;
@@ -422,7 +422,7 @@ typedef NSString * Banana_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) NSString * userId;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) Banana_uuid userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
 @property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
@@ -434,7 +434,7 @@ typedef NSString * Banana_uuid;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (NSString *) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName;
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -448,8 +448,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) userId;
-- (void) setUserId: (NSString *) userId;
+- (Banana_uuid) userId;
+- (void) setUserId: (Banana_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
 
@@ -507,13 +507,13 @@ typedef NSString * Banana_uuid;
   NSMutableSet * __owners;
   Banana_timestamp __timeOfProvisioning;
   NSString * __name;
-  NSString * __applicationId;
+  Banana_uuid __applicationId;
   Banana_long __totalMessagesSent;
   Banana_Image * __icon;
   int __programmingLanguage;
   NSMutableSet * __followers;
   NSString * __applicationDescription;
-  NSString * __organizationId;
+  Banana_uuid __organizationId;
   int __tier;
 
   BOOL __owners_isset;
@@ -533,18 +533,18 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
 @property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Banana_timestamp timeOfProvisioning;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Banana_uuid applicationId;
 @property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=followers, setter=setFollowers:) NSMutableSet * followers;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) NSString * organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId tier: (int) tier;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -570,8 +570,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (Banana_uuid) applicationId;
+- (void) setApplicationId: (Banana_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -606,8 +606,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) applicationDescriptionIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) organizationId;
-- (void) setOrganizationId: (NSString *) organizationId;
+- (Banana_uuid) organizationId;
+- (void) setOrganizationId: (Banana_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -622,7 +622,7 @@ typedef NSString * Banana_uuid;
 @interface Banana_ServiceAnnouncement : NSObject <TBase, NSCoding> {
   NSString * __message;
   int __importance;
-  NSString * __id;
+  Banana_uuid __id;
   Banana_timestamp __timeOfExpiration;
 
   BOOL __message_isset;
@@ -634,12 +634,12 @@ typedef NSString * Banana_uuid;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, getter=importance, setter=setImportance:) int importance;
-@property (nonatomic, retain, getter=id, setter=setId:) NSString * id;
+@property (nonatomic, retain, getter=id, setter=setId:) Banana_uuid id;
 @property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) Banana_timestamp timeOfExpiration;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message importance: (int) importance id: (NSString *) id timeOfExpiration: (Banana_timestamp) timeOfExpiration;
+- (id) initWithMessage: (NSString *) message importance: (int) importance id: (Banana_uuid) id timeOfExpiration: (Banana_timestamp) timeOfExpiration;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -659,8 +659,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) importanceIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) id;
-- (void) setId: (NSString *) id;
+- (Banana_uuid) id;
+- (void) setId: (Banana_uuid) id;
 #endif
 - (BOOL) idIsSet;
 

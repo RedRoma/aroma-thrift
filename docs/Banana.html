@@ -343,7 +343,7 @@ These are commonly used for ID types.
 <tr><td>3</td><td>dimension</td><td><code><a href="#Struct_Dimension">Dimension</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Message">Struct: Message</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messageId</td><td><code>string</code></td><td>Each message has a unique ID
+<tr><td>1</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Each message has a unique ID
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>body</td><td><code>string</code></td><td>The body represents the Message's Payload, i.e. the actual message.
 If the Message Body is too long, it may be truncated. The complete
@@ -361,11 +361,11 @@ body can then be loaded in a separate request.
 <tr><td>8</td><td>macAddress</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>9</td><td>isTruncated</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
 <tr><td>10</td><td>title</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>11</td><td>applicationId</td><td><code>string</code></td><td>The ID of the Application the Message was sent from.
+<tr><td>11</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The ID of the Application the Message was sent from.
 </td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Organization">Struct: Organization</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>organizationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>organizationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>website</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>logo</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
@@ -378,7 +378,7 @@ body can then be loaded in a separate request.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>email</td><td><code>string</code></td><td>A person's email address is also considered their identifying trait.
 </td><td>default</td><td></td></tr>
-<tr><td>2</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>name</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>roles</td><td><code>set&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td>A Person can be more than one thing at once. By default, we assume a developer.
 </td><td>default</td><td><code>{ <code><a href="#Const_Role.DEVELOPER">Role.DEVELOPER</a></code> }</code></td></tr>
@@ -391,29 +391,29 @@ body can then be loaded in a separate request.
 </table><br/>A User represents a Human who is a uses the Service.
 <br/></div><div class="definition"><h3 id="Struct_Application">Struct: Application</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>owners</td><td><code>set&lt;<code>string</code>&gt;</code></td><td>Owners can perform administrative actions on a service.
+<tr><td>1</td><td>owners</td><td><code>set&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Owners can perform administrative actions on a service.
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>timeOfProvisioning</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>When the application was first provisioned.
 </td><td>default</td><td></td></tr>
 <tr><td>3</td><td>name</td><td><code>string</code></td><td>The name of the application.
 </td><td>default</td><td></td></tr>
-<tr><td>4</td><td>applicationId</td><td><code>string</code></td><td>The Automatically generated ID for the Application.
+<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The Automatically generated ID for the Application.
 </td><td>default</td><td></td></tr>
 <tr><td>5</td><td>totalMessagesSent</td><td><code><a href="#Typedef_long">long</a></code></td><td>The total amount of messages that
 have been counted so far for the Application
 </td><td>default</td><td></td></tr>
 <tr><td>6</td><td>icon</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>programmingLanguage</td><td><code><a href="#Enum_ProgrammingLanguage">ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>8</td><td>followers</td><td><code>set&lt;<code>string</code>&gt;</code></td><td>Defines the userIds of the people who are following this Application.
+<tr><td>8</td><td>followers</td><td><code>set&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Defines the userIds of the people who are following this Application.
 </td><td>optional</td><td><code>{  }</code></td></tr>
 <tr><td>9</td><td>applicationDescription</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>10</td><td>organizationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>10</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>11</td><td>tier</td><td><code><a href="#Enum_Tier">Tier</a></code></td><td></td><td>optional</td><td><code><code><a href="#Const_Tier.FREE">Tier.FREE</a></code></code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ServiceAnnouncement">Struct: ServiceAnnouncement</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>importance</td><td><code><a href="#Enum_Urgency">Urgency</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>id</td><td><code>string</code></td><td>Each announcement has an ID so that it can be dismissed by users.
+<tr><td>3</td><td>id</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Each announcement has an ID so that it can be dismissed by users.
 </td><td>default</td><td></td></tr>
 <tr><td>4</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>An announcement is irrelevant after this time.
 </td><td>default</td><td></td></tr>

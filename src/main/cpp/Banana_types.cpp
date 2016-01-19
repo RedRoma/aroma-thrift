@@ -466,7 +466,7 @@ Message::~Message() throw() {
 }
 
 
-void Message::__set_messageId(const std::string& val) {
+void Message::__set_messageId(const uuid& val) {
   this->messageId = val;
 }
 
@@ -510,7 +510,7 @@ void Message::__set_title(const std::string& val) {
   this->title = val;
 }
 
-void Message::__set_applicationId(const std::string& val) {
+void Message::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -762,7 +762,7 @@ Organization::~Organization() throw() {
 }
 
 
-void Organization::__set_organizationId(const std::string& val) {
+void Organization::__set_organizationId(const uuid& val) {
   this->organizationId = val;
 }
 
@@ -1024,7 +1024,7 @@ void User::__set_email(const std::string& val) {
   this->email = val;
 }
 
-void User::__set_userId(const std::string& val) {
+void User::__set_userId(const uuid& val) {
   this->userId = val;
 }
 
@@ -1323,7 +1323,7 @@ Application::~Application() throw() {
 }
 
 
-void Application::__set_owners(const std::set<std::string> & val) {
+void Application::__set_owners(const std::set<uuid> & val) {
   this->owners = val;
 }
 
@@ -1335,7 +1335,7 @@ void Application::__set_name(const std::string& val) {
   this->name = val;
 }
 
-void Application::__set_applicationId(const std::string& val) {
+void Application::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -1353,7 +1353,7 @@ void Application::__set_programmingLanguage(const ProgrammingLanguage::type val)
 __isset.programmingLanguage = true;
 }
 
-void Application::__set_followers(const std::set<std::string> & val) {
+void Application::__set_followers(const std::set<uuid> & val) {
   this->followers = val;
 __isset.followers = true;
 }
@@ -1362,7 +1362,7 @@ void Application::__set_applicationDescription(const std::string& val) {
   this->applicationDescription = val;
 }
 
-void Application::__set_organizationId(const std::string& val) {
+void Application::__set_organizationId(const uuid& val) {
   this->organizationId = val;
 }
 
@@ -1402,7 +1402,7 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i33;
             for (_i33 = 0; _i33 < _size29; ++_i33)
             {
-              std::string _elem34;
+              uuid _elem34;
               xfer += iprot->readString(_elem34);
               this->owners.insert(_elem34);
             }
@@ -1473,7 +1473,7 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i40;
             for (_i40 = 0; _i40 < _size36; ++_i40)
             {
-              std::string _elem41;
+              uuid _elem41;
               xfer += iprot->readString(_elem41);
               this->followers.insert(_elem41);
             }
@@ -1530,7 +1530,7 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_SET, 1);
   {
     xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->owners.size()));
-    std::set<std::string> ::const_iterator _iter43;
+    std::set<uuid> ::const_iterator _iter43;
     for (_iter43 = this->owners.begin(); _iter43 != this->owners.end(); ++_iter43)
     {
       xfer += oprot->writeString((*_iter43));
@@ -1569,7 +1569,7 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeFieldBegin("followers", ::apache::thrift::protocol::T_SET, 8);
     {
       xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->followers.size()));
-      std::set<std::string> ::const_iterator _iter44;
+      std::set<uuid> ::const_iterator _iter44;
       for (_iter44 = this->followers.begin(); _iter44 != this->followers.end(); ++_iter44)
       {
         xfer += oprot->writeString((*_iter44));
@@ -1671,7 +1671,7 @@ void ServiceAnnouncement::__set_importance(const Urgency::type val) {
   this->importance = val;
 }
 
-void ServiceAnnouncement::__set_id(const std::string& val) {
+void ServiceAnnouncement::__set_id(const uuid& val) {
   this->id = val;
 }
 

@@ -291,7 +291,7 @@ class Message {
   }
 
   virtual ~Message() throw();
-  std::string messageId;
+  uuid messageId;
   std::string body;
   Urgency::type urgency;
   timestamp timeOfCreation;
@@ -301,11 +301,11 @@ class Message {
   std::string macAddress;
   bool isTruncated;
   std::string title;
-  std::string applicationId;
+  uuid applicationId;
 
   _Message__isset __isset;
 
-  void __set_messageId(const std::string& val);
+  void __set_messageId(const uuid& val);
 
   void __set_body(const std::string& val);
 
@@ -325,7 +325,7 @@ class Message {
 
   void __set_title(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   bool operator == (const Message & rhs) const
   {
@@ -402,7 +402,7 @@ class Organization {
   }
 
   virtual ~Organization() throw();
-  std::string organizationId;
+  uuid organizationId;
   std::string organizationName;
   std::string website;
   Image logo;
@@ -413,7 +413,7 @@ class Organization {
 
   _Organization__isset __isset;
 
-  void __set_organizationId(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   void __set_organizationName(const std::string& val);
 
@@ -507,7 +507,7 @@ class User {
 
   virtual ~User() throw();
   std::string email;
-  std::string userId;
+  uuid userId;
   std::string name;
   std::set<Role::type>  roles;
   Image profileImage;
@@ -521,7 +521,7 @@ class User {
 
   void __set_email(const std::string& val);
 
-  void __set_userId(const std::string& val);
+  void __set_userId(const uuid& val);
 
   void __set_name(const std::string& val);
 
@@ -624,27 +624,27 @@ class Application {
   }
 
   virtual ~Application() throw();
-  std::set<std::string>  owners;
+  std::set<uuid>  owners;
   timestamp timeOfProvisioning;
   std::string name;
-  std::string applicationId;
+  uuid applicationId;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::set<std::string>  followers;
+  std::set<uuid>  followers;
   std::string applicationDescription;
-  std::string organizationId;
+  uuid organizationId;
   Tier::type tier;
 
   _Application__isset __isset;
 
-  void __set_owners(const std::set<std::string> & val);
+  void __set_owners(const std::set<uuid> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 
   void __set_name(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_totalMessagesSent(const long val);
 
@@ -652,11 +652,11 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_followers(const std::set<std::string> & val);
+  void __set_followers(const std::set<uuid> & val);
 
   void __set_applicationDescription(const std::string& val);
 
-  void __set_organizationId(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   void __set_tier(const Tier::type val);
 
@@ -733,7 +733,7 @@ class ServiceAnnouncement {
   virtual ~ServiceAnnouncement() throw();
   std::string message;
   Urgency::type importance;
-  std::string id;
+  uuid id;
   timestamp timeOfExpiration;
 
   _ServiceAnnouncement__isset __isset;
@@ -742,7 +742,7 @@ class ServiceAnnouncement {
 
   void __set_importance(const Urgency::type val);
 
-  void __set_id(const std::string& val);
+  void __set_id(const uuid& val);
 
   void __set_timeOfExpiration(const timestamp val);
 

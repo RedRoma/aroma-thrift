@@ -92,7 +92,7 @@ enum Urgency
 struct Message
 {
     /** Each message has a unique ID */
-    1: string messageId;
+    1: uuid messageId;
     /** 
      * The body represents the Message's Payload, i.e. the actual message.
      * If the Message Body is too long, it may be truncated. The complete
@@ -112,7 +112,7 @@ struct Message
     9: optional bool isTruncated = false;
     10: string title;
     /** The ID of the Application the Message was sent from. */
-    11: string applicationId;
+    11: uuid applicationId;
 }
 
 /**
@@ -120,7 +120,7 @@ struct Message
  */
 struct Organization
 {
-    1: string organizationId;
+    1: uuid organizationId;
     2: string organizationName;
     3: optional string website;
     4: optional Image logo;
@@ -150,7 +150,7 @@ struct User
 {
     /** A person's email address is also considered their identifying trait. */
     1: string email;
-    2: string userId;
+    2: uuid userId;
     3: optional string name;
     /** A Person can be more than one thing at once. By default, we assume a developer. */
     4: set<Role> roles = [ Role.DEVELOPER ];
@@ -193,13 +193,13 @@ enum Tier
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
-    1: set<string> owners;
+    1: set<uuid> owners;
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
     3: string name;
     /** The Automatically generated ID for the Application. */
-    4: string applicationId;
+    4: uuid applicationId;
     /** 
      * The total amount of messages that 
      * have been counted so far for the Application*/
@@ -209,9 +209,9 @@ struct Application
     /** 
      * Defines the userIds of the people who are following this Application.
      */
-    8: optional set<string> followers = [];
+    8: optional set<uuid> followers = [];
     9: string applicationDescription;
-    10: string organizationId;
+    10: uuid organizationId;
     11: optional Tier tier = Tier.FREE;
 }
 
@@ -228,7 +228,7 @@ struct ServiceAnnouncement
     1: string message;
     2: Urgency importance;
     /** Each announcement has an ID so that it can be dismissed by users.*/
-    3: string id;
+    3: uuid id;
     /** An announcement is irrelevant after this time. */
     4: timestamp timeOfExpiration;
 }
