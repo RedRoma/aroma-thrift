@@ -357,7 +357,7 @@ ProvisionApplicationRequest = function(args) {
   this.token = null;
   this.applicationName = null;
   this.programmingLanguage = null;
-  this.organization = null;
+  this.organizationId = null;
   this.icon = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -369,8 +369,8 @@ ProvisionApplicationRequest = function(args) {
     if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
       this.programmingLanguage = args.programmingLanguage;
     }
-    if (args.organization !== undefined && args.organization !== null) {
-      this.organization = args.organization;
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
     }
     if (args.icon !== undefined && args.icon !== null) {
       this.icon = new Image(args.icon);
@@ -415,7 +415,7 @@ ProvisionApplicationRequest.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString().value;
+        this.organizationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -454,9 +454,9 @@ ProvisionApplicationRequest.prototype.write = function(output) {
     output.writeI32(this.programmingLanguage);
     output.writeFieldEnd();
   }
-  if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
-    output.writeString(this.organization);
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 4);
+    output.writeString(this.organizationId);
     output.writeFieldEnd();
   }
   if (this.icon !== null && this.icon !== undefined) {
@@ -1488,12 +1488,16 @@ SignUpRequest.prototype.write = function(output) {
 SignUpResponse = function(args) {
   this.userToken = null;
   this.account = null;
+  this.userId = null;
   if (args) {
     if (args.userToken !== undefined && args.userToken !== null) {
       this.userToken = new UserToken(args.userToken);
     }
     if (args.account !== undefined && args.account !== null) {
       this.account = new AromaAccount(args.account);
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
@@ -1527,6 +1531,13 @@ SignUpResponse.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1546,6 +1557,11 @@ SignUpResponse.prototype.write = function(output) {
   if (this.account !== null && this.account !== undefined) {
     output.writeFieldBegin('account', Thrift.Type.STRUCT, 2);
     this.account.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 3);
+    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -1713,7 +1729,7 @@ SubscribeToApplicationRequest = function(args) {
     this.token = null;
     this.applicationName = null;
     this.applicationId = null;
-    this.organization = null;
+    this.organizationId = null;
     this.shared = false;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
@@ -1725,8 +1741,8 @@ SubscribeToApplicationRequest = function(args) {
         if (args.applicationId !== undefined && args.applicationId !== null) {
             this.applicationId = args.applicationId;
         }
-        if (args.organization !== undefined && args.organization !== null) {
-            this.organization = args.organization;
+        if (args.organizationId !== undefined && args.organizationId !== null) {
+            this.organizationId = args.organizationId;
         }
         if (args.shared !== undefined && args.shared !== null) {
             this.shared = args.shared;
@@ -1771,7 +1787,7 @@ SubscribeToApplicationRequest.prototype.read = function(input) {
         break;
         case 4:
         if (ftype == Thrift.Type.STRING) {
-          this.organization = input.readString().value;
+          this.organizationId = input.readString().value;
         } else {
           input.skip(ftype);
         }
@@ -1809,9 +1825,9 @@ SubscribeToApplicationRequest.prototype.write = function(output) {
       output.writeString(this.applicationId);
       output.writeFieldEnd();
     }
-    if (this.organization !== null && this.organization !== undefined) {
-      output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
-      output.writeString(this.organization);
+    if (this.organizationId !== null && this.organizationId !== undefined) {
+      output.writeFieldBegin('organizationId', Thrift.Type.STRING, 4);
+      output.writeString(this.organizationId);
       output.writeFieldEnd();
     }
     if (this.shared !== null && this.shared !== undefined) {
@@ -3464,7 +3480,7 @@ GetUserInfoResponse.prototype.write = function(output) {
 SearchForApplicationsRequest = function(args) {
     this.token = null;
     this.applicationName = null;
-    this.organization = null;
+    this.organizationId = null;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new UserToken(args.token);
@@ -3472,8 +3488,8 @@ SearchForApplicationsRequest = function(args) {
         if (args.applicationName !== undefined && args.applicationName !== null) {
             this.applicationName = args.applicationName;
         }
-        if (args.organization !== undefined && args.organization !== null) {
-            this.organization = args.organization;
+        if (args.organizationId !== undefined && args.organizationId !== null) {
+            this.organizationId = args.organizationId;
         }
     }
 };
@@ -3508,7 +3524,7 @@ SearchForApplicationsRequest.prototype.read = function(input) {
         break;
         case 3:
         if (ftype == Thrift.Type.STRING) {
-          this.organization = input.readString().value;
+          this.organizationId = input.readString().value;
         } else {
           input.skip(ftype);
         }
@@ -3534,9 +3550,9 @@ SearchForApplicationsRequest.prototype.write = function(output) {
       output.writeString(this.applicationName);
       output.writeFieldEnd();
     }
-    if (this.organization !== null && this.organization !== undefined) {
-      output.writeFieldBegin('organization', Thrift.Type.STRING, 3);
-      output.writeString(this.organization);
+    if (this.organizationId !== null && this.organizationId !== undefined) {
+      output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
+      output.writeString(this.organizationId);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

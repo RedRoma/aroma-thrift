@@ -39,7 +39,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds
 {
   self = [super init];
   __token = [token retain_stub];
@@ -533,7 +533,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId applicationId: (NSString *) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds
 {
   self = [super init];
   __token = [token retain_stub];
@@ -1025,7 +1025,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organization: (NSString *) organization icon: (BananaService_Image) icon
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (BananaService_uuid) organizationId icon: (BananaService_Image) icon
 {
   self = [super init];
   __token = [token retain_stub];
@@ -1034,8 +1034,8 @@
   __applicationName_isset = YES;
   __programmingLanguage = programmingLanguage;
   __programmingLanguage_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
   __icon = [icon retain_stub];
   __icon_isset = YES;
   return self;
@@ -1059,10 +1059,10 @@
     __programmingLanguage = [decoder decodeIntForKey: @"programmingLanguage"];
     __programmingLanguage_isset = YES;
   }
-  if ([decoder containsValueForKey: @"organization"])
+  if ([decoder containsValueForKey: @"organizationId"])
   {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
   }
   if ([decoder containsValueForKey: @"icon"])
   {
@@ -1086,9 +1086,9 @@
   {
     [encoder encodeInt: __programmingLanguage forKey: @"programmingLanguage"];
   }
-  if (__organization_isset)
+  if (__organizationId_isset)
   {
-    [encoder encodeObject: __organization forKey: @"organization"];
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
   }
   if (__icon_isset)
   {
@@ -1114,10 +1114,10 @@
   {
     hash = (hash * 31) ^ [@(__programmingLanguage) hash];
   }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
   {
-    hash = (hash * 31) ^ [__organization hash];
+    hash = (hash * 31) ^ [__organizationId hash];
   }
   hash = (hash * 31) ^ __icon_isset ? 2654435761 : 0;
   if (__icon_isset)
@@ -1148,8 +1148,8 @@
       (__programmingLanguage_isset && (__programmingLanguage != other->__programmingLanguage))) {
     return NO;
   }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
     return NO;
   }
   if ((__icon_isset != other->__icon_isset) ||
@@ -1163,7 +1163,7 @@
 {
   [__token release_stub];
   [__applicationName release_stub];
-  [__organization release_stub];
+  [__organizationId release_stub];
   [__icon release_stub];
   [super dealloc_stub];
 }
@@ -1227,25 +1227,25 @@
   __programmingLanguage_isset = NO;
 }
 
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
 }
 
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
 }
 
-- (BOOL) organizationIsSet {
-  return __organization_isset;
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
 }
 
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
 }
 
 - (Banana_Image *) icon {
@@ -1313,7 +1313,7 @@
       case 4:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+          [self setOrganizationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -1358,10 +1358,10 @@
     [outProtocol writeI32: __programmingLanguage];
     [outProtocol writeFieldEnd];
   }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __organization];
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __organizationId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -1388,8 +1388,8 @@
   [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",programmingLanguage:"];
   [ms appendFormat: @"%i", __programmingLanguage];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @",icon:"];
   [ms appendFormat: @"%@", __icon];
   [ms appendString: @")"];
@@ -1408,7 +1408,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (NSString *) applicationId applicationName: (NSString *) applicationName applicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo
+- (id) initWithApplicationId: (BananaService_uuid) applicationId applicationName: (NSString *) applicationName applicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -1739,7 +1739,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -2948,7 +2948,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (BananaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -4608,13 +4608,15 @@
   return self;
 }
 
-- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account
+- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (BananaService_uuid) userId
 {
   self = [super init];
   __userToken = [userToken retain_stub];
   __userToken_isset = YES;
   __account = [account retain_stub];
   __account_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
   return self;
 }
 
@@ -4631,6 +4633,11 @@
     __account = [[decoder decodeObjectForKey: @"account"] retain_stub];
     __account_isset = YES;
   }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
   return self;
 }
 
@@ -4643,6 +4650,10 @@
   if (__account_isset)
   {
     [encoder encodeObject: __account forKey: @"account"];
+  }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
   }
 }
 
@@ -4658,6 +4669,11 @@
   if (__account_isset)
   {
     hash = (hash * 31) ^ [__account hash];
+  }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
   }
   return hash;
 }
@@ -4679,6 +4695,10 @@
       (__account_isset && ((__account || other->__account) && ![__account isEqual:other->__account]))) {
     return NO;
   }
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -4686,6 +4706,7 @@
 {
   [__userToken release_stub];
   [__account release_stub];
+  [__userId release_stub];
   [super dealloc_stub];
 }
 
@@ -4731,6 +4752,27 @@
   __account_isset = NO;
 }
 
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -4766,6 +4808,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -4791,6 +4841,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __userId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -4805,6 +4862,8 @@
   [ms appendFormat: @"%@", __userToken];
   [ms appendString: @",account:"];
   [ms appendFormat: @"%@", __account];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -4825,7 +4884,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (NSString *) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime
+- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (BananaService_uuid) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime
 {
   self = [super init];
   __token = [token retain_stub];
@@ -5310,7 +5369,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (NSString *) applicationId organization: (NSString *) organization shared: (BOOL) shared
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (BananaService_uuid) applicationId organizationId: (BananaService_uuid) organizationId shared: (BOOL) shared
 {
   self = [super init];
   __token = [token retain_stub];
@@ -5319,8 +5378,8 @@
   __applicationName_isset = YES;
   __applicationId = [applicationId retain_stub];
   __applicationId_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
   __shared = shared;
   __shared_isset = YES;
   return self;
@@ -5344,10 +5403,10 @@
     __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
     __applicationId_isset = YES;
   }
-  if ([decoder containsValueForKey: @"organization"])
+  if ([decoder containsValueForKey: @"organizationId"])
   {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
   }
   if ([decoder containsValueForKey: @"shared"])
   {
@@ -5371,9 +5430,9 @@
   {
     [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
-  if (__organization_isset)
+  if (__organizationId_isset)
   {
-    [encoder encodeObject: __organization forKey: @"organization"];
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
   }
   if (__shared_isset)
   {
@@ -5399,10 +5458,10 @@
   {
     hash = (hash * 31) ^ [__applicationId hash];
   }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
   {
-    hash = (hash * 31) ^ [__organization hash];
+    hash = (hash * 31) ^ [__organizationId hash];
   }
   hash = (hash * 31) ^ __shared_isset ? 2654435761 : 0;
   if (__shared_isset)
@@ -5433,8 +5492,8 @@
       (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
   }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
     return NO;
   }
   if ((__shared_isset != other->__shared_isset) ||
@@ -5449,7 +5508,7 @@
   [__token release_stub];
   [__applicationName release_stub];
   [__applicationId release_stub];
-  [__organization release_stub];
+  [__organizationId release_stub];
   [super dealloc_stub];
 }
 
@@ -5516,25 +5575,25 @@
   __applicationId_isset = NO;
 }
 
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
 }
 
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
 }
 
-- (BOOL) organizationIsSet {
-  return __organization_isset;
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
 }
 
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
 }
 
 - (BOOL) shared {
@@ -5598,7 +5657,7 @@
       case 4:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+          [self setOrganizationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -5643,10 +5702,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __organization];
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __organizationId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -5671,8 +5730,8 @@
   [ms appendFormat: @"\"%@\"", __applicationName];
   [ms appendString: @",applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @",shared:"];
   [ms appendFormat: @"%i", __shared];
   [ms appendString: @")"];
@@ -5902,7 +5961,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (NSString *) applicationId
+- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (BananaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -7561,7 +7620,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (NSString *) applicationId limit: (BananaService_int) limit
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId limit: (BananaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8050,7 +8109,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (NSString *) messageId
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -9757,7 +9816,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token userId: (NSString *) userId
+- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -10120,15 +10179,15 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organization: (NSString *) organization
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (BananaService_uuid) organizationId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __applicationName = [applicationName retain_stub];
   __applicationName_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
   return self;
 }
 
@@ -10145,10 +10204,10 @@
     __applicationName = [[decoder decodeObjectForKey: @"applicationName"] retain_stub];
     __applicationName_isset = YES;
   }
-  if ([decoder containsValueForKey: @"organization"])
+  if ([decoder containsValueForKey: @"organizationId"])
   {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
   }
   return self;
 }
@@ -10163,9 +10222,9 @@
   {
     [encoder encodeObject: __applicationName forKey: @"applicationName"];
   }
-  if (__organization_isset)
+  if (__organizationId_isset)
   {
-    [encoder encodeObject: __organization forKey: @"organization"];
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
   }
 }
 
@@ -10182,10 +10241,10 @@
   {
     hash = (hash * 31) ^ [__applicationName hash];
   }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
   {
-    hash = (hash * 31) ^ [__organization hash];
+    hash = (hash * 31) ^ [__organizationId hash];
   }
   return hash;
 }
@@ -10207,8 +10266,8 @@
       (__applicationName_isset && ((__applicationName || other->__applicationName) && ![__applicationName isEqual:other->__applicationName]))) {
     return NO;
   }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
     return NO;
   }
   return YES;
@@ -10218,7 +10277,7 @@
 {
   [__token release_stub];
   [__applicationName release_stub];
-  [__organization release_stub];
+  [__organizationId release_stub];
   [super dealloc_stub];
 }
 
@@ -10264,25 +10323,25 @@
   __applicationName_isset = NO;
 }
 
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
 }
 
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
 }
 
-- (BOOL) organizationIsSet {
-  return __organization_isset;
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
 }
 
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -10321,7 +10380,7 @@
       case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+          [self setOrganizationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -10351,10 +10410,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 3];
-      [outProtocol writeString: __organization];
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __organizationId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -10372,8 +10431,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
   [ms appendFormat: @"\"%@\"", __applicationName];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

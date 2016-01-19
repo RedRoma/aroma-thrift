@@ -37,6 +37,7 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
@@ -111,10 +112,10 @@ const int MAX_MESSAGE_LENGTH = 5000;
 struct DeleteMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
+    2: uuid messageId;
+    3: uuid applicationId;
     /** Use for Batch Deletes. */
-    4: optional list<string> messageIds = [];
+    4: optional list<uuid> messageIds = [];
 }
 
 struct DeleteMessageResponse
@@ -130,10 +131,10 @@ struct DeleteMessageResponse
 struct DismissMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
+    2: uuid messageId;
+    3: uuid applicationId;
     /** Use for Dismissing multiple Messages. */
-    4: optional list<string> messageIds = [];
+    4: optional list<uuid> messageIds = [];
 }
 
 struct DismissMessageResponse
@@ -151,13 +152,13 @@ struct ProvisionApplicationRequest
     1: UserToken token;
     2: string applicationName;
     3: optional Banana.ProgrammingLanguage programmingLanguage;
-    4: string organization;
+    4: uuid organizationId;
     5: optional Image icon;
 }
 
 struct ProvisionApplicationResponse
 {
-    1: string applicationId;
+    1: uuid applicationId;
     2: string applicationName;
     3: ApplicationToken applicationToken;
     4: Application applicationInfo;
@@ -177,7 +178,7 @@ struct ProvisionApplicationResponse
 struct RegenerateApplicationTokenRequest
 {
     1: UserToken token;
-    2: string applicationId;
+    2: uuid applicationId;
 }
 
 struct RegenerateApplicationTokenResponse
@@ -228,7 +229,7 @@ struct RenewApplicationTokenRequest
     2: ApplicationToken applicationToken;
     /** Defines for how long to extend a Token. */
     3: Banana.LengthOfTime newLifetime;
-    4: string applicationId;
+    4: uuid applicationId;
 }
 
 struct RenewApplicationTokenResponse
@@ -284,6 +285,7 @@ struct SignUpResponse
 {
     1: UserToken userToken;
     2: Authentication.AromaAccount account;
+    3: uuid userId;
 }
 
 /**
@@ -295,7 +297,7 @@ struct SnoozeChannelRequest
     1: UserToken token;
     2: BananaChannel channel;
     /** Optionally choose to snooze a specific Application. */
-    3: optional string applicationId;
+    3: optional uuid applicationId;
     /** Defines how long to snooze the Channel for. */
     4: optional Banana.LengthOfTime lengthOfTime = { "value": 4, "unit" : Banana.TimeUnit.HOURS };
 }
@@ -312,8 +314,8 @@ struct SubscribeToApplicationRequest
 {
     1: UserToken token;
     2: string applicationName;
-    3: string applicationId;
-    4: optional string organization;
+    3: uuid applicationId;
+    4: optional uuid organizationId;
     5: optional bool shared = false;
 }
 
@@ -331,7 +333,7 @@ struct SubscribeToApplicationResponse
 struct GetApplicationInfoRequest
 {
     1: AuthenticationToken token;
-    2: string applicationId;
+    2: uuid applicationId;
 }
 
 struct GetApplicationInfoResponse
@@ -383,7 +385,7 @@ struct GetMessagesRequest
 {
     1: UserToken token;
     /** Allows you to get Messages by a particular application. */
-    2: optional string applicationId;
+    2: optional uuid applicationId;
     /** Suggests that the Service limits the results of the query.*/
     3: optional int limit = 0;
 }
@@ -397,7 +399,7 @@ struct GetMessagesResponse
 struct GetFullMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
+    2: uuid messageId;
 }
 
 struct GetFullMessageResponse
@@ -458,7 +460,7 @@ struct GetServiceAnnouncementsResponse
 struct GetUserInfoRequest
 {
     1: UserToken token;
-    2: string userId;
+    2: uuid userId;
 }
 
 struct GetUserInfoResponse
@@ -473,7 +475,7 @@ struct SearchForApplicationsRequest
 {
     1: UserToken token;
     2: string applicationName;
-    3: optional string organization;
+    3: optional uuid organizationId;
 }
 
 struct SearchForApplicationsResponse

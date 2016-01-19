@@ -289,6 +289,7 @@ code { line-height: 20px; }
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
+<a href="#Typedef_uuid">uuid</a><br/>
 </td>
 <td><code><a href="#Const_API_VERSION">API_VERSION</a></code><br/>
 <code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
@@ -322,6 +323,9 @@ getFullMessage() operation.
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_uuid">Banana.uuid</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -390,9 +394,9 @@ getFullMessage() operation.
 <div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Batch Deletes.
+<tr><td>2</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Use for Batch Deletes.
 </td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/>Deletes a Message.
 
@@ -403,9 +407,9 @@ getFullMessage() operation.
 </table><br/></div><div class="definition"><h3 id="Struct_DismissMessageRequest">Struct: DismissMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code>string</code>&gt;</code></td><td>Use for Dismissing multiple Messages.
+<tr><td>2</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>messageIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Use for Dismissing multiple Messages.
 </td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/>Dismisses a Message. Dismissing is analogous to archiving
 an email; it will no longer be visible to you, but will
@@ -418,20 +422,20 @@ still be visible to other subscribers.
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>programmingLanguage</td><td><code><a href="Banana.html#Enum_ProgrammingLanguage">Banana.ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>icon</td><td><code><a href="#Typedef_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>Defines the required information to provision
 an Application with the Banana Service.
 <br/></div><div class="definition"><h3 id="Struct_ProvisionApplicationResponse">Struct: ProvisionApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>applicationInfo</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_RegenerateApplicationTokenRequest">Struct: RegenerateApplicationTokenRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Regenerates an Application's Token. This is usually done because the original token was:
 1: Lost or Misplaced
 2: Compromised (someone else has accessed it)
@@ -471,7 +475,7 @@ It will no longer be remembered or suggested.
 </td><td>default</td><td></td></tr>
 <tr><td>3</td><td>newLifetime</td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td>Defines for how long to extend a Token.
 </td><td>default</td><td></td></tr>
-<tr><td>4</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Renews an Application Token, effectively extending it's lifetime.
 Additional Charges may apply.
 <br/></div><div class="definition"><h3 id="Struct_RenewApplicationTokenResponse">Struct: RenewApplicationTokenResponse</h3>
@@ -506,12 +510,13 @@ Additional Charges may apply.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>userToken</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>account</td><td><code><a href="Authentication.html#Struct_AromaAccount">Authentication.AromaAccount</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Receive a User Token after Signing Up.
 <br/></div><div class="definition"><h3 id="Struct_SnoozeChannelRequest">Struct: SnoozeChannelRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td>Optionally choose to snooze a specific Application.
+<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Optionally choose to snooze a specific Application.
 </td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>lengthOfTime</td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td>Defines how long to snooze the Channel for.
 </td><td>optional</td><td><code>{ value = 4, unit = <code><a href="#Const_Banana.TimeUnit.HOURS">Banana.TimeUnit.HOURS</a></code> }</code></td></tr>
@@ -524,8 +529,8 @@ for a set time period.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>5</td><td>shared</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
 </table><br/>Subscribe to an Application to receive notifications for it.
 <br/></div><div class="definition"><h3 id="Struct_SubscribeToApplicationResponse">Struct: SubscribeToApplicationResponse</h3>
@@ -535,7 +540,7 @@ for a set time period.
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoRequest">Struct: GetApplicationInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoResponse">Struct: GetApplicationInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applicationInfo</td><td><code><a href="#Typedef_Application">Application</a></code></td><td></td><td>default</td><td></td></tr>
@@ -568,7 +573,7 @@ Banana.
 </table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code>string</code></td><td>Allows you to get Messages by a particular application.
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Allows you to get Messages by a particular application.
 </td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
 </td><td>optional</td><td><code>0</code></td></tr>
@@ -581,7 +586,7 @@ or by a specific Application.
 </table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>messageId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>messageId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>fullBody</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -618,7 +623,7 @@ from the Team @ Aroma Tech.
 </table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoRequest">Struct: GetUserInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>userId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoResponse">Struct: GetUserInfoResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>userInfo</td><td><code><a href="#Typedef_User">User</a></code></td><td></td><td>default</td><td></td></tr>
@@ -626,7 +631,7 @@ from the Team @ Aroma Tech.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>Search for Applications that match the given search terms.
 <br/></div><div class="definition"><h3 id="Struct_SearchForApplicationsResponse">Struct: SearchForApplicationsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>

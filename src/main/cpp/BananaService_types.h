@@ -31,6 +31,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 
 typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
@@ -184,19 +186,19 @@ class DeleteMessageRequest {
 
   virtual ~DeleteMessageRequest() throw();
   UserToken token;
-  std::string messageId;
-  std::string applicationId;
-  std::vector<std::string>  messageIds;
+  uuid messageId;
+  uuid applicationId;
+  std::vector<uuid>  messageIds;
 
   _DeleteMessageRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_messageId(const std::string& val);
+  void __set_messageId(const uuid& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
-  void __set_messageIds(const std::vector<std::string> & val);
+  void __set_messageIds(const std::vector<uuid> & val);
 
   bool operator == (const DeleteMessageRequest & rhs) const
   {
@@ -299,19 +301,19 @@ class DismissMessageRequest {
 
   virtual ~DismissMessageRequest() throw();
   UserToken token;
-  std::string messageId;
-  std::string applicationId;
-  std::vector<std::string>  messageIds;
+  uuid messageId;
+  uuid applicationId;
+  std::vector<uuid>  messageIds;
 
   _DismissMessageRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_messageId(const std::string& val);
+  void __set_messageId(const uuid& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
-  void __set_messageIds(const std::vector<std::string> & val);
+  void __set_messageIds(const std::vector<uuid> & val);
 
   bool operator == (const DismissMessageRequest & rhs) const
   {
@@ -396,11 +398,11 @@ inline std::ostream& operator<<(std::ostream& out, const DismissMessageResponse&
 }
 
 typedef struct _ProvisionApplicationRequest__isset {
-  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organization(false), icon(false) {}
+  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organizationId(false), icon(false) {}
   bool token :1;
   bool applicationName :1;
   bool programmingLanguage :1;
-  bool organization :1;
+  bool organizationId :1;
   bool icon :1;
 } _ProvisionApplicationRequest__isset;
 
@@ -409,14 +411,14 @@ class ProvisionApplicationRequest {
 
   ProvisionApplicationRequest(const ProvisionApplicationRequest&);
   ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organization() {
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organizationId() {
   }
 
   virtual ~ProvisionApplicationRequest() throw();
   UserToken token;
   std::string applicationName;
    ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
-  std::string organization;
+  uuid organizationId;
   Image icon;
 
   _ProvisionApplicationRequest__isset __isset;
@@ -427,7 +429,7 @@ class ProvisionApplicationRequest {
 
   void __set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val);
 
-  void __set_organization(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   void __set_icon(const Image& val);
 
@@ -441,7 +443,7 @@ class ProvisionApplicationRequest {
       return false;
     else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
       return false;
-    if (!(organization == rhs.organization))
+    if (!(organizationId == rhs.organizationId))
       return false;
     if (__isset.icon != rhs.__isset.icon)
       return false;
@@ -486,14 +488,14 @@ class ProvisionApplicationResponse {
   }
 
   virtual ~ProvisionApplicationResponse() throw();
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
   ApplicationToken applicationToken;
   Application applicationInfo;
 
   _ProvisionApplicationResponse__isset __isset;
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -549,13 +551,13 @@ class RegenerateApplicationTokenRequest {
 
   virtual ~RegenerateApplicationTokenRequest() throw();
   UserToken token;
-  std::string applicationId;
+  uuid applicationId;
 
   _RegenerateApplicationTokenRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   bool operator == (const RegenerateApplicationTokenRequest & rhs) const
   {
@@ -865,7 +867,7 @@ class RenewApplicationTokenRequest {
   UserToken token;
   ApplicationToken applicationToken;
    ::aroma::banana::thrift::LengthOfTime newLifetime;
-  std::string applicationId;
+  uuid applicationId;
 
   _RenewApplicationTokenRequest__isset __isset;
 
@@ -875,7 +877,7 @@ class RenewApplicationTokenRequest {
 
   void __set_newLifetime(const  ::aroma::banana::thrift::LengthOfTime& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   bool operator == (const RenewApplicationTokenRequest & rhs) const
   {
@@ -1230,9 +1232,10 @@ inline std::ostream& operator<<(std::ostream& out, const SignUpRequest& obj)
 }
 
 typedef struct _SignUpResponse__isset {
-  _SignUpResponse__isset() : userToken(false), account(false) {}
+  _SignUpResponse__isset() : userToken(false), account(false), userId(false) {}
   bool userToken :1;
   bool account :1;
+  bool userId :1;
 } _SignUpResponse__isset;
 
 class SignUpResponse {
@@ -1240,12 +1243,13 @@ class SignUpResponse {
 
   SignUpResponse(const SignUpResponse&);
   SignUpResponse& operator=(const SignUpResponse&);
-  SignUpResponse() {
+  SignUpResponse() : userId() {
   }
 
   virtual ~SignUpResponse() throw();
   UserToken userToken;
    ::aroma::banana::thrift::authentication::AromaAccount account;
+  uuid userId;
 
   _SignUpResponse__isset __isset;
 
@@ -1253,11 +1257,15 @@ class SignUpResponse {
 
   void __set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val);
 
+  void __set_userId(const uuid& val);
+
   bool operator == (const SignUpResponse & rhs) const
   {
     if (!(userToken == rhs.userToken))
       return false;
     if (!(account == rhs.account))
+      return false;
+    if (!(userId == rhs.userId))
       return false;
     return true;
   }
@@ -1306,7 +1314,7 @@ class SnoozeChannelRequest {
   virtual ~SnoozeChannelRequest() throw();
   UserToken token;
   BananaChannel channel;
-  std::string applicationId;
+  uuid applicationId;
    ::aroma::banana::thrift::LengthOfTime lengthOfTime;
 
   _SnoozeChannelRequest__isset __isset;
@@ -1315,7 +1323,7 @@ class SnoozeChannelRequest {
 
   void __set_channel(const BananaChannel& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_lengthOfTime(const  ::aroma::banana::thrift::LengthOfTime& val);
 
@@ -1402,11 +1410,11 @@ inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& 
 }
 
 typedef struct _SubscribeToApplicationRequest__isset {
-  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organization(false), shared(true) {}
+  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organizationId(false), shared(true) {}
   bool token :1;
   bool applicationName :1;
   bool applicationId :1;
-  bool organization :1;
+  bool organizationId :1;
   bool shared :1;
 } _SubscribeToApplicationRequest__isset;
 
@@ -1415,14 +1423,14 @@ class SubscribeToApplicationRequest {
 
   SubscribeToApplicationRequest(const SubscribeToApplicationRequest&);
   SubscribeToApplicationRequest& operator=(const SubscribeToApplicationRequest&);
-  SubscribeToApplicationRequest() : applicationName(), applicationId(), organization(), shared(false) {
+  SubscribeToApplicationRequest() : applicationName(), applicationId(), organizationId(), shared(false) {
   }
 
   virtual ~SubscribeToApplicationRequest() throw();
   UserToken token;
   std::string applicationName;
-  std::string applicationId;
-  std::string organization;
+  uuid applicationId;
+  uuid organizationId;
   bool shared;
 
   _SubscribeToApplicationRequest__isset __isset;
@@ -1431,9 +1439,9 @@ class SubscribeToApplicationRequest {
 
   void __set_applicationName(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
-  void __set_organization(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   void __set_shared(const bool val);
 
@@ -1445,9 +1453,9 @@ class SubscribeToApplicationRequest {
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;
-    if (__isset.organization != rhs.__isset.organization)
+    if (__isset.organizationId != rhs.__isset.organizationId)
       return false;
-    else if (__isset.organization && !(organization == rhs.organization))
+    else if (__isset.organizationId && !(organizationId == rhs.organizationId))
       return false;
     if (__isset.shared != rhs.__isset.shared)
       return false;
@@ -1543,13 +1551,13 @@ class GetApplicationInfoRequest {
 
   virtual ~GetApplicationInfoRequest() throw();
   AuthenticationToken token;
-  std::string applicationId;
+  uuid applicationId;
 
   _GetApplicationInfoRequest__isset __isset;
 
   void __set_token(const AuthenticationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   bool operator == (const GetApplicationInfoRequest & rhs) const
   {
@@ -1891,14 +1899,14 @@ class GetMessagesRequest {
 
   virtual ~GetMessagesRequest() throw();
   UserToken token;
-  std::string applicationId;
+  uuid applicationId;
   int limit;
 
   _GetMessagesRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_limit(const int val);
 
@@ -2007,13 +2015,13 @@ class GetFullMessageRequest {
 
   virtual ~GetFullMessageRequest() throw();
   UserToken token;
-  std::string messageId;
+  uuid messageId;
 
   _GetFullMessageRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_messageId(const std::string& val);
+  void __set_messageId(const uuid& val);
 
   bool operator == (const GetFullMessageRequest & rhs) const
   {
@@ -2485,13 +2493,13 @@ class GetUserInfoRequest {
 
   virtual ~GetUserInfoRequest() throw();
   UserToken token;
-  std::string userId;
+  uuid userId;
 
   _GetUserInfoRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_userId(const std::string& val);
+  void __set_userId(const uuid& val);
 
   bool operator == (const GetUserInfoRequest & rhs) const
   {
@@ -2568,10 +2576,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetUserInfoResponse& ob
 }
 
 typedef struct _SearchForApplicationsRequest__isset {
-  _SearchForApplicationsRequest__isset() : token(false), applicationName(false), organization(false) {}
+  _SearchForApplicationsRequest__isset() : token(false), applicationName(false), organizationId(false) {}
   bool token :1;
   bool applicationName :1;
-  bool organization :1;
+  bool organizationId :1;
 } _SearchForApplicationsRequest__isset;
 
 class SearchForApplicationsRequest {
@@ -2579,13 +2587,13 @@ class SearchForApplicationsRequest {
 
   SearchForApplicationsRequest(const SearchForApplicationsRequest&);
   SearchForApplicationsRequest& operator=(const SearchForApplicationsRequest&);
-  SearchForApplicationsRequest() : applicationName(), organization() {
+  SearchForApplicationsRequest() : applicationName(), organizationId() {
   }
 
   virtual ~SearchForApplicationsRequest() throw();
   UserToken token;
   std::string applicationName;
-  std::string organization;
+  uuid organizationId;
 
   _SearchForApplicationsRequest__isset __isset;
 
@@ -2593,7 +2601,7 @@ class SearchForApplicationsRequest {
 
   void __set_applicationName(const std::string& val);
 
-  void __set_organization(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   bool operator == (const SearchForApplicationsRequest & rhs) const
   {
@@ -2601,9 +2609,9 @@ class SearchForApplicationsRequest {
       return false;
     if (!(applicationName == rhs.applicationName))
       return false;
-    if (__isset.organization != rhs.__isset.organization)
+    if (__isset.organizationId != rhs.__isset.organizationId)
       return false;
-    else if (__isset.organization && !(organization == rhs.organization))
+    else if (__isset.organizationId && !(organizationId == rhs.organizationId))
       return false;
     return true;
   }

@@ -22,15 +22,15 @@ void DeleteMessageRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void DeleteMessageRequest::__set_messageId(const std::string& val) {
+void DeleteMessageRequest::__set_messageId(const uuid& val) {
   this->messageId = val;
 }
 
-void DeleteMessageRequest::__set_applicationId(const std::string& val) {
+void DeleteMessageRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
-void DeleteMessageRequest::__set_messageIds(const std::vector<std::string> & val) {
+void DeleteMessageRequest::__set_messageIds(const std::vector<uuid> & val) {
   this->messageIds = val;
 __isset.messageIds = true;
 }
@@ -133,7 +133,7 @@ uint32_t DeleteMessageRequest::write(::apache::thrift::protocol::TProtocol* opro
     xfer += oprot->writeFieldBegin("messageIds", ::apache::thrift::protocol::T_LIST, 4);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->messageIds.size()));
-      std::vector<std::string> ::const_iterator _iter5;
+      std::vector<uuid> ::const_iterator _iter5;
       for (_iter5 = this->messageIds.begin(); _iter5 != this->messageIds.end(); ++_iter5)
       {
         xfer += oprot->writeString((*_iter5));
@@ -278,15 +278,15 @@ void DismissMessageRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void DismissMessageRequest::__set_messageId(const std::string& val) {
+void DismissMessageRequest::__set_messageId(const uuid& val) {
   this->messageId = val;
 }
 
-void DismissMessageRequest::__set_applicationId(const std::string& val) {
+void DismissMessageRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
-void DismissMessageRequest::__set_messageIds(const std::vector<std::string> & val) {
+void DismissMessageRequest::__set_messageIds(const std::vector<uuid> & val) {
   this->messageIds = val;
 __isset.messageIds = true;
 }
@@ -389,7 +389,7 @@ uint32_t DismissMessageRequest::write(::apache::thrift::protocol::TProtocol* opr
     xfer += oprot->writeFieldBegin("messageIds", ::apache::thrift::protocol::T_LIST, 4);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->messageIds.size()));
-      std::vector<std::string> ::const_iterator _iter15;
+      std::vector<uuid> ::const_iterator _iter15;
       for (_iter15 = this->messageIds.begin(); _iter15 != this->messageIds.end(); ++_iter15)
       {
         xfer += oprot->writeString((*_iter15));
@@ -543,8 +543,8 @@ void ProvisionApplicationRequest::__set_programmingLanguage(const  ::aroma::bana
 __isset.programmingLanguage = true;
 }
 
-void ProvisionApplicationRequest::__set_organization(const std::string& val) {
-  this->organization = val;
+void ProvisionApplicationRequest::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
 }
 
 void ProvisionApplicationRequest::__set_icon(const Image& val) {
@@ -601,8 +601,8 @@ uint32_t ProvisionApplicationRequest::read(::apache::thrift::protocol::TProtocol
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->organization);
-          this->__isset.organization = true;
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -645,8 +645,8 @@ uint32_t ProvisionApplicationRequest::write(::apache::thrift::protocol::TProtoco
     xfer += oprot->writeI32((int32_t)this->programmingLanguage);
     xfer += oprot->writeFieldEnd();
   }
-  xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 4);
-  xfer += oprot->writeString(this->organization);
+  xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->organizationId);
   xfer += oprot->writeFieldEnd();
 
   if (this->__isset.icon) {
@@ -664,7 +664,7 @@ void swap(ProvisionApplicationRequest &a, ProvisionApplicationRequest &b) {
   swap(a.token, b.token);
   swap(a.applicationName, b.applicationName);
   swap(a.programmingLanguage, b.programmingLanguage);
-  swap(a.organization, b.organization);
+  swap(a.organizationId, b.organizationId);
   swap(a.icon, b.icon);
   swap(a.__isset, b.__isset);
 }
@@ -673,7 +673,7 @@ ProvisionApplicationRequest::ProvisionApplicationRequest(const ProvisionApplicat
   token = other21.token;
   applicationName = other21.applicationName;
   programmingLanguage = other21.programmingLanguage;
-  organization = other21.organization;
+  organizationId = other21.organizationId;
   icon = other21.icon;
   __isset = other21.__isset;
 }
@@ -681,7 +681,7 @@ ProvisionApplicationRequest& ProvisionApplicationRequest::operator=(const Provis
   token = other22.token;
   applicationName = other22.applicationName;
   programmingLanguage = other22.programmingLanguage;
-  organization = other22.organization;
+  organizationId = other22.organizationId;
   icon = other22.icon;
   __isset = other22.__isset;
   return *this;
@@ -692,7 +692,7 @@ void ProvisionApplicationRequest::printTo(std::ostream& out) const {
   out << "token=" << to_string(token);
   out << ", " << "applicationName=" << to_string(applicationName);
   out << ", " << "programmingLanguage="; (__isset.programmingLanguage ? (out << to_string(programmingLanguage)) : (out << "<null>"));
-  out << ", " << "organization=" << to_string(organization);
+  out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "icon="; (__isset.icon ? (out << to_string(icon)) : (out << "<null>"));
   out << ")";
 }
@@ -702,7 +702,7 @@ ProvisionApplicationResponse::~ProvisionApplicationResponse() throw() {
 }
 
 
-void ProvisionApplicationResponse::__set_applicationId(const std::string& val) {
+void ProvisionApplicationResponse::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -852,7 +852,7 @@ void RegenerateApplicationTokenRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void RegenerateApplicationTokenRequest::__set_applicationId(const std::string& val) {
+void RegenerateApplicationTokenRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -1482,7 +1482,7 @@ void RenewApplicationTokenRequest::__set_newLifetime(const  ::aroma::banana::thr
   this->newLifetime = val;
 }
 
-void RenewApplicationTokenRequest::__set_applicationId(const std::string& val) {
+void RenewApplicationTokenRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -2282,6 +2282,10 @@ void SignUpResponse::__set_account(const  ::aroma::banana::thrift::authenticatio
   this->account = val;
 }
 
+void SignUpResponse::__set_userId(const uuid& val) {
+  this->userId = val;
+}
+
 uint32_t SignUpResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -2319,6 +2323,14 @@ uint32_t SignUpResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->userId);
+          this->__isset.userId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -2344,6 +2356,10 @@ uint32_t SignUpResponse::write(::apache::thrift::protocol::TProtocol* oprot) con
   xfer += this->account.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->userId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2353,17 +2369,20 @@ void swap(SignUpResponse &a, SignUpResponse &b) {
   using ::std::swap;
   swap(a.userToken, b.userToken);
   swap(a.account, b.account);
+  swap(a.userId, b.userId);
   swap(a.__isset, b.__isset);
 }
 
 SignUpResponse::SignUpResponse(const SignUpResponse& other51) {
   userToken = other51.userToken;
   account = other51.account;
+  userId = other51.userId;
   __isset = other51.__isset;
 }
 SignUpResponse& SignUpResponse::operator=(const SignUpResponse& other52) {
   userToken = other52.userToken;
   account = other52.account;
+  userId = other52.userId;
   __isset = other52.__isset;
   return *this;
 }
@@ -2372,6 +2391,7 @@ void SignUpResponse::printTo(std::ostream& out) const {
   out << "SignUpResponse(";
   out << "userToken=" << to_string(userToken);
   out << ", " << "account=" << to_string(account);
+  out << ", " << "userId=" << to_string(userId);
   out << ")";
 }
 
@@ -2388,7 +2408,7 @@ void SnoozeChannelRequest::__set_channel(const BananaChannel& val) {
   this->channel = val;
 }
 
-void SnoozeChannelRequest::__set_applicationId(const std::string& val) {
+void SnoozeChannelRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 __isset.applicationId = true;
 }
@@ -2624,13 +2644,13 @@ void SubscribeToApplicationRequest::__set_applicationName(const std::string& val
   this->applicationName = val;
 }
 
-void SubscribeToApplicationRequest::__set_applicationId(const std::string& val) {
+void SubscribeToApplicationRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
-void SubscribeToApplicationRequest::__set_organization(const std::string& val) {
-  this->organization = val;
-__isset.organization = true;
+void SubscribeToApplicationRequest::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
+__isset.organizationId = true;
 }
 
 void SubscribeToApplicationRequest::__set_shared(const bool val) {
@@ -2685,8 +2705,8 @@ uint32_t SubscribeToApplicationRequest::read(::apache::thrift::protocol::TProtoc
         break;
       case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->organization);
-          this->__isset.organization = true;
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2728,9 +2748,9 @@ uint32_t SubscribeToApplicationRequest::write(::apache::thrift::protocol::TProto
   xfer += oprot->writeString(this->applicationId);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.organization) {
-    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 4);
-    xfer += oprot->writeString(this->organization);
+  if (this->__isset.organizationId) {
+    xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->organizationId);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.shared) {
@@ -2748,7 +2768,7 @@ void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b) {
   swap(a.token, b.token);
   swap(a.applicationName, b.applicationName);
   swap(a.applicationId, b.applicationId);
-  swap(a.organization, b.organization);
+  swap(a.organizationId, b.organizationId);
   swap(a.shared, b.shared);
   swap(a.__isset, b.__isset);
 }
@@ -2757,7 +2777,7 @@ SubscribeToApplicationRequest::SubscribeToApplicationRequest(const SubscribeToAp
   token = other58.token;
   applicationName = other58.applicationName;
   applicationId = other58.applicationId;
-  organization = other58.organization;
+  organizationId = other58.organizationId;
   shared = other58.shared;
   __isset = other58.__isset;
 }
@@ -2765,7 +2785,7 @@ SubscribeToApplicationRequest& SubscribeToApplicationRequest::operator=(const Su
   token = other59.token;
   applicationName = other59.applicationName;
   applicationId = other59.applicationId;
-  organization = other59.organization;
+  organizationId = other59.organizationId;
   shared = other59.shared;
   __isset = other59.__isset;
   return *this;
@@ -2776,7 +2796,7 @@ void SubscribeToApplicationRequest::printTo(std::ostream& out) const {
   out << "token=" << to_string(token);
   out << ", " << "applicationName=" << to_string(applicationName);
   out << ", " << "applicationId=" << to_string(applicationId);
-  out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ", " << "organizationId="; (__isset.organizationId ? (out << to_string(organizationId)) : (out << "<null>"));
   out << ", " << "shared="; (__isset.shared ? (out << to_string(shared)) : (out << "<null>"));
   out << ")";
 }
@@ -2896,7 +2916,7 @@ void GetApplicationInfoRequest::__set_token(const AuthenticationToken& val) {
   this->token = val;
 }
 
-void GetApplicationInfoRequest::__set_applicationId(const std::string& val) {
+void GetApplicationInfoRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -3752,7 +3772,7 @@ void GetMessagesRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void GetMessagesRequest::__set_applicationId(const std::string& val) {
+void GetMessagesRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 __isset.applicationId = true;
 }
@@ -4010,7 +4030,7 @@ void GetFullMessageRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void GetFullMessageRequest::__set_messageId(const std::string& val) {
+void GetFullMessageRequest::__set_messageId(const uuid& val) {
   this->messageId = val;
 }
 
@@ -4994,7 +5014,7 @@ void GetUserInfoRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void GetUserInfoRequest::__set_userId(const std::string& val) {
+void GetUserInfoRequest::__set_userId(const uuid& val) {
   this->userId = val;
 }
 
@@ -5190,9 +5210,9 @@ void SearchForApplicationsRequest::__set_applicationName(const std::string& val)
   this->applicationName = val;
 }
 
-void SearchForApplicationsRequest::__set_organization(const std::string& val) {
-  this->organization = val;
-__isset.organization = true;
+void SearchForApplicationsRequest::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
+__isset.organizationId = true;
 }
 
 uint32_t SearchForApplicationsRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -5234,8 +5254,8 @@ uint32_t SearchForApplicationsRequest::read(::apache::thrift::protocol::TProtoco
         break;
       case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->organization);
-          this->__isset.organization = true;
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -5265,9 +5285,9 @@ uint32_t SearchForApplicationsRequest::write(::apache::thrift::protocol::TProtoc
   xfer += oprot->writeString(this->applicationName);
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.organization) {
-    xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 3);
-    xfer += oprot->writeString(this->organization);
+  if (this->__isset.organizationId) {
+    xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->organizationId);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -5279,20 +5299,20 @@ void swap(SearchForApplicationsRequest &a, SearchForApplicationsRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.applicationName, b.applicationName);
-  swap(a.organization, b.organization);
+  swap(a.organizationId, b.organizationId);
   swap(a.__isset, b.__isset);
 }
 
 SearchForApplicationsRequest::SearchForApplicationsRequest(const SearchForApplicationsRequest& other168) {
   token = other168.token;
   applicationName = other168.applicationName;
-  organization = other168.organization;
+  organizationId = other168.organizationId;
   __isset = other168.__isset;
 }
 SearchForApplicationsRequest& SearchForApplicationsRequest::operator=(const SearchForApplicationsRequest& other169) {
   token = other169.token;
   applicationName = other169.applicationName;
-  organization = other169.organization;
+  organizationId = other169.organizationId;
   __isset = other169.__isset;
   return *this;
 }
@@ -5301,7 +5321,7 @@ void SearchForApplicationsRequest::printTo(std::ostream& out) const {
   out << "SearchForApplicationsRequest(";
   out << "token=" << to_string(token);
   out << ", " << "applicationName=" << to_string(applicationName);
-  out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
+  out << ", " << "organizationId="; (__isset.organizationId ? (out << to_string(organizationId)) : (out << "<null>"));
   out << ")";
 }
 
