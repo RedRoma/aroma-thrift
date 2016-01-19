@@ -207,12 +207,16 @@ code { line-height: 20px; }
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_TcpEndpoint">TcpEndpoint</a><br/>
 <a href="#Typedef_int">int</a><br/>
+<a href="#Typedef_uuid">uuid</a><br/>
 </td>
 <td></code></td>
 </tr></table>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_uuid">Banana.uuid</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
@@ -247,7 +251,7 @@ Examples to follow...
 and understood.
 <br/></div><div class="definition"><h3 id="Struct_HealthPokeRequest">Struct: HealthPokeRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationName</td><td><code>string</code></td><td>This is the name of the Application we are asking about.
+<tr><td>1</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The ID of the Application to Check.
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>serviceToken</td><td><code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></td><td>We will include your ApplicationToken so that you
 can authenticate the call if you'd like. With

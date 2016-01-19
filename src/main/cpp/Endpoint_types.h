@@ -24,6 +24,8 @@ namespace aroma { namespace banana { namespace thrift { namespace endpoint {
 
 typedef  ::aroma::banana::thrift::int int;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
 
 class TcpEndpoint;
@@ -222,8 +224,8 @@ inline std::ostream& operator<<(std::ostream& out, const Endpoint& obj)
 }
 
 typedef struct _HealthPokeRequest__isset {
-  _HealthPokeRequest__isset() : applicationName(false), serviceToken(false) {}
-  bool applicationName :1;
+  _HealthPokeRequest__isset() : applicationId(false), serviceToken(false) {}
+  bool applicationId :1;
   bool serviceToken :1;
 } _HealthPokeRequest__isset;
 
@@ -232,22 +234,22 @@ class HealthPokeRequest {
 
   HealthPokeRequest(const HealthPokeRequest&);
   HealthPokeRequest& operator=(const HealthPokeRequest&);
-  HealthPokeRequest() : applicationName() {
+  HealthPokeRequest() : applicationId() {
   }
 
   virtual ~HealthPokeRequest() throw();
-  std::string applicationName;
+  uuid applicationId;
    ::aroma::banana::thrift::authentication::ApplicationToken serviceToken;
 
   _HealthPokeRequest__isset __isset;
 
-  void __set_applicationName(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_serviceToken(const  ::aroma::banana::thrift::authentication::ApplicationToken& val);
 
   bool operator == (const HealthPokeRequest & rhs) const
   {
-    if (!(applicationName == rhs.applicationName))
+    if (!(applicationId == rhs.applicationId))
       return false;
     if (!(serviceToken == rhs.serviceToken))
       return false;

@@ -12,6 +12,8 @@ include "Banana.thrift"
 include "Exceptions.thrift"
 
 typedef Banana.int int
+typedef Banana.uuid uuid;
+
 typedef Exceptions.OperationFailedException OperationFailedException
 
 /**
@@ -63,8 +65,8 @@ union Endpoint
  */
 struct HealthPokeRequest
 {
-    /** This is the name of the Application we are asking about. */
-    1: string applicationName;
+    /** The ID of the Application to Check. */
+    1: uuid applicationId;
     /** 
      * We will include your ApplicationToken so that you 
      * can authenticate the call if you'd like. With

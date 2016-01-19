@@ -279,11 +279,11 @@ Endpoint.prototype.write = function(output) {
 };
 
 HealthPokeRequest = module.exports.HealthPokeRequest = function(args) {
-  this.applicationName = null;
+  this.applicationId = null;
   this.serviceToken = null;
   if (args) {
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new Authentication_ttypes.ApplicationToken(args.serviceToken);
@@ -306,7 +306,7 @@ HealthPokeRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString();
+        this.applicationId = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -330,9 +330,9 @@ HealthPokeRequest.prototype.read = function(input) {
 
 HealthPokeRequest.prototype.write = function(output) {
   output.writeStructBegin('HealthPokeRequest');
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 1);
-    output.writeString(this.applicationName);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   if (this.serviceToken !== null && this.serviceToken !== undefined) {

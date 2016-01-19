@@ -24,6 +24,8 @@
 
 typedef Banana_int BananaEndpoint_int;
 
+typedef Banana_uuid BananaEndpoint_uuid;
+
 typedef BananaException_OperationFailedException * BananaEndpoint_OperationFailedException;
 
 @interface BananaEndpoint_TcpEndpoint : NSObject <TBase, NSCoding> {
@@ -158,20 +160,20 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 @end
 
 @interface BananaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
-  NSString * __applicationName;
+  BananaEndpoint_uuid __applicationId;
   BananaAuthentication_ApplicationToken * __serviceToken;
 
-  BOOL __applicationName_isset;
+  BOOL __applicationId_isset;
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEndpoint_uuid applicationId;
 @property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ApplicationToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithApplicationName: (NSString *) applicationName serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
+- (id) initWithApplicationId: (BananaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -179,10 +181,10 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
+- (BananaEndpoint_uuid) applicationId;
+- (void) setApplicationId: (BananaEndpoint_uuid) applicationId;
 #endif
-- (BOOL) applicationNameIsSet;
+- (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_ApplicationToken *) serviceToken;
