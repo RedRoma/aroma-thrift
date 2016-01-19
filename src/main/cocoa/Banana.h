@@ -75,6 +75,8 @@ typedef int64_t Banana_long;
 
 typedef int64_t Banana_timestamp;
 
+typedef NSString * Banana_uuid;
+
 @interface Banana_LengthOfTime : NSObject <TBase, NSCoding> {
   int __unit;
   Banana_long __value;

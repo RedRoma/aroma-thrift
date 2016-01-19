@@ -18,6 +18,12 @@ typedef i64 long
  */
 typedef i64 timestamp
 
+/** 
+ * Defines a particular kind of string, as a Type-4 UUID.
+ * These are commonly used for ID types.
+ */
+typedef string uuid
+
 /**
  * Defines the basic Units of Time Measurement.
  */

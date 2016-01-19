@@ -99,6 +99,8 @@ typedef int64_t long;
 
 typedef int64_t timestamp;
 
+typedef std::string uuid;
+
 class LengthOfTime;
 
 class Dimension;
