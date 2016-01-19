@@ -177,6 +177,13 @@ enum ProgrammingLanguage
     OTHER
 }
 
+
+enum Tier
+{
+    FREE,
+    PAID
+}
+
 struct Application
 {
     /** Owners can perform administrative actions on a service. */
@@ -199,6 +206,7 @@ struct Application
     8: optional set<string> followers = [];
     9: string applicationDescription;
     10: string organizationId;
+    11: optional Tier tier = Tier.FREE;
 }
 
 /**

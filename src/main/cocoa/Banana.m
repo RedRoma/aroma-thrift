@@ -2702,11 +2702,13 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.followers = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
 
+  self.tier = 0;
+
 #endif
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId tier: (int) tier
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -2729,6 +2731,8 @@
   __applicationDescription_isset = YES;
   __organizationId = [organizationId retain_stub];
   __organizationId_isset = YES;
+  __tier = tier;
+  __tier_isset = YES;
   return self;
 }
 
@@ -2785,6 +2789,11 @@
     __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
     __organizationId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"tier"])
+  {
+    __tier = [decoder decodeIntForKey: @"tier"];
+    __tier_isset = YES;
+  }
   return self;
 }
 
@@ -2829,6 +2838,10 @@
   if (__organizationId_isset)
   {
     [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__tier_isset)
+  {
+    [encoder encodeInt: __tier forKey: @"tier"];
   }
 }
 
@@ -2885,6 +2898,11 @@
   {
     hash = (hash * 31) ^ [__organizationId hash];
   }
+  hash = (hash * 31) ^ __tier_isset ? 2654435761 : 0;
+  if (__tier_isset)
+  {
+    hash = (hash * 31) ^ [@(__tier) hash];
+  }
   return hash;
 }
 
@@ -2935,6 +2953,10 @@
   }
   if ((__organizationId_isset != other->__organizationId_isset) ||
       (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__tier_isset != other->__tier_isset) ||
+      (__tier_isset && (__tier != other->__tier))) {
     return NO;
   }
   return YES;
@@ -3150,6 +3172,23 @@
   __organizationId_isset = NO;
 }
 
+- (int) tier {
+  return __tier;
+}
+
+- (void) setTier: (int) tier {
+  __tier = tier;
+  __tier_isset = YES;
+}
+
+- (BOOL) tierIsSet {
+  return __tier_isset;
+}
+
+- (void) unsetTier {
+  __tier_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3267,6 +3306,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 11:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setTier: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3360,6 +3407,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__tier_isset) {
+    [outProtocol writeFieldBeginWithName: @"tier" type: TType_I32 fieldID: 11];
+    [outProtocol writeI32: __tier];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3390,6 +3442,8 @@
   [ms appendFormat: @"\"%@\"", __applicationDescription];
   [ms appendString: @",organizationId:"];
   [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",tier:"];
+  [ms appendFormat: @"%i", __tier];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

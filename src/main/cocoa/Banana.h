@@ -64,6 +64,11 @@ enum Banana_ProgrammingLanguage {
   ProgrammingLanguage_OTHER = 13
 };
 
+enum Banana_Tier {
+  Tier_FREE = 0,
+  Tier_PAID = 1
+};
+
 typedef int32_t Banana_int;
 
 typedef int64_t Banana_long;
@@ -507,6 +512,7 @@ typedef int64_t Banana_timestamp;
   NSMutableSet * __followers;
   NSString * __applicationDescription;
   NSString * __organizationId;
+  int __tier;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -518,6 +524,7 @@ typedef int64_t Banana_timestamp;
   BOOL __followers_isset;
   BOOL __applicationDescription_isset;
   BOOL __organizationId_isset;
+  BOOL __tier_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -531,10 +538,11 @@ typedef int64_t Banana_timestamp;
 @property (nonatomic, retain, getter=followers, setter=setFollowers:) NSMutableSet * followers;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) NSString * organizationId;
+@property (nonatomic, getter=tier, setter=setTier:) int tier;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (NSString *) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (NSString *) organizationId tier: (int) tier;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -600,6 +608,12 @@ typedef int64_t Banana_timestamp;
 - (void) setOrganizationId: (NSString *) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tier;
+- (void) setTier: (int) tier;
+#endif
+- (BOOL) tierIsSet;
 
 @end
 

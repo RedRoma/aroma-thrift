@@ -84,6 +84,15 @@ struct ProgrammingLanguage {
 
 extern const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES;
 
+struct Tier {
+  enum type {
+    FREE = 0,
+    PAID = 1
+  };
+};
+
+extern const std::map<int, const char*> _Tier_VALUES_TO_NAMES;
+
 typedef int32_t int;
 
 typedef int64_t long;
@@ -587,7 +596,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -598,6 +607,7 @@ typedef struct _Application__isset {
   bool followers :1;
   bool applicationDescription :1;
   bool organizationId :1;
+  bool tier :1;
 } _Application__isset;
 
 class Application {
@@ -605,7 +615,9 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId() {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0) {
+
+    tier = (Tier::type)0;
 
   }
 
@@ -620,6 +632,7 @@ class Application {
   std::set<std::string>  followers;
   std::string applicationDescription;
   std::string organizationId;
+  Tier::type tier;
 
   _Application__isset __isset;
 
@@ -642,6 +655,8 @@ class Application {
   void __set_applicationDescription(const std::string& val);
 
   void __set_organizationId(const std::string& val);
+
+  void __set_tier(const Tier::type val);
 
   bool operator == (const Application & rhs) const
   {
@@ -670,6 +685,10 @@ class Application {
     if (!(applicationDescription == rhs.applicationDescription))
       return false;
     if (!(organizationId == rhs.organizationId))
+      return false;
+    if (__isset.tier != rhs.__isset.tier)
+      return false;
+    else if (__isset.tier && !(tier == rhs.tier))
       return false;
     return true;
   }

@@ -45,6 +45,10 @@ ProgrammingLanguage = {
   'DART' : 12,
   'OTHER' : 13
 };
+Tier = {
+  'FREE' : 0,
+  'PAID' : 1
+};
 LengthOfTime = function(args) {
   this.unit = null;
   this.value = null;
@@ -891,6 +895,7 @@ Application = function(args) {
   this.followers = [];
   this.applicationDescription = null;
   this.organizationId = null;
+  this.tier = 0;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [null]);
@@ -921,6 +926,9 @@ Application = function(args) {
     }
     if (args.organizationId !== undefined && args.organizationId !== null) {
       this.organizationId = args.organizationId;
+    }
+    if (args.tier !== undefined && args.tier !== null) {
+      this.tier = args.tier;
     }
   }
 };
@@ -1035,6 +1043,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 11:
+      if (ftype == Thrift.Type.I32) {
+        this.tier = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1112,6 +1127,11 @@ Application.prototype.write = function(output) {
   if (this.organizationId !== null && this.organizationId !== undefined) {
     output.writeFieldBegin('organizationId', Thrift.Type.STRING, 10);
     output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.tier !== null && this.tier !== undefined) {
+    output.writeFieldBegin('tier', Thrift.Type.I32, 11);
+    output.writeI32(this.tier);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

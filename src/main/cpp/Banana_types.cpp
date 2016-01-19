@@ -103,6 +103,16 @@ const char* _kProgrammingLanguageNames[] = {
 };
 const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(14, _kProgrammingLanguageValues, _kProgrammingLanguageNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+int _kTierValues[] = {
+  Tier::FREE,
+  Tier::PAID
+};
+const char* _kTierNames[] = {
+  "FREE",
+  "PAID"
+};
+const std::map<int, const char*> _Tier_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTierValues, _kTierNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 
 LengthOfTime::~LengthOfTime() throw() {
 }
@@ -1356,6 +1366,11 @@ void Application::__set_organizationId(const std::string& val) {
   this->organizationId = val;
 }
 
+void Application::__set_tier(const Tier::type val) {
+  this->tier = val;
+__isset.tier = true;
+}
+
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1485,6 +1500,16 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast42;
+          xfer += iprot->readI32(ecast42);
+          this->tier = (Tier::type)ecast42;
+          this->__isset.tier = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1505,10 +1530,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_SET, 1);
   {
     xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->owners.size()));
-    std::set<std::string> ::const_iterator _iter42;
-    for (_iter42 = this->owners.begin(); _iter42 != this->owners.end(); ++_iter42)
+    std::set<std::string> ::const_iterator _iter43;
+    for (_iter43 = this->owners.begin(); _iter43 != this->owners.end(); ++_iter43)
     {
-      xfer += oprot->writeString((*_iter42));
+      xfer += oprot->writeString((*_iter43));
     }
     xfer += oprot->writeSetEnd();
   }
@@ -1544,10 +1569,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeFieldBegin("followers", ::apache::thrift::protocol::T_SET, 8);
     {
       xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->followers.size()));
-      std::set<std::string> ::const_iterator _iter43;
-      for (_iter43 = this->followers.begin(); _iter43 != this->followers.end(); ++_iter43)
+      std::set<std::string> ::const_iterator _iter44;
+      for (_iter44 = this->followers.begin(); _iter44 != this->followers.end(); ++_iter44)
       {
-        xfer += oprot->writeString((*_iter43));
+        xfer += oprot->writeString((*_iter44));
       }
       xfer += oprot->writeSetEnd();
     }
@@ -1561,6 +1586,11 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeString(this->organizationId);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.tier) {
+    xfer += oprot->writeFieldBegin("tier", ::apache::thrift::protocol::T_I32, 11);
+    xfer += oprot->writeI32((int32_t)this->tier);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1578,23 +1608,11 @@ void swap(Application &a, Application &b) {
   swap(a.followers, b.followers);
   swap(a.applicationDescription, b.applicationDescription);
   swap(a.organizationId, b.organizationId);
+  swap(a.tier, b.tier);
   swap(a.__isset, b.__isset);
 }
 
-Application::Application(const Application& other44) {
-  owners = other44.owners;
-  timeOfProvisioning = other44.timeOfProvisioning;
-  name = other44.name;
-  applicationId = other44.applicationId;
-  totalMessagesSent = other44.totalMessagesSent;
-  icon = other44.icon;
-  programmingLanguage = other44.programmingLanguage;
-  followers = other44.followers;
-  applicationDescription = other44.applicationDescription;
-  organizationId = other44.organizationId;
-  __isset = other44.__isset;
-}
-Application& Application::operator=(const Application& other45) {
+Application::Application(const Application& other45) {
   owners = other45.owners;
   timeOfProvisioning = other45.timeOfProvisioning;
   name = other45.name;
@@ -1605,7 +1623,22 @@ Application& Application::operator=(const Application& other45) {
   followers = other45.followers;
   applicationDescription = other45.applicationDescription;
   organizationId = other45.organizationId;
+  tier = other45.tier;
   __isset = other45.__isset;
+}
+Application& Application::operator=(const Application& other46) {
+  owners = other46.owners;
+  timeOfProvisioning = other46.timeOfProvisioning;
+  name = other46.name;
+  applicationId = other46.applicationId;
+  totalMessagesSent = other46.totalMessagesSent;
+  icon = other46.icon;
+  programmingLanguage = other46.programmingLanguage;
+  followers = other46.followers;
+  applicationDescription = other46.applicationDescription;
+  organizationId = other46.organizationId;
+  tier = other46.tier;
+  __isset = other46.__isset;
   return *this;
 }
 void Application::printTo(std::ostream& out) const {
@@ -1621,6 +1654,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "followers="; (__isset.followers ? (out << to_string(followers)) : (out << "<null>"));
   out << ", " << "applicationDescription=" << to_string(applicationDescription);
   out << ", " << "organizationId=" << to_string(organizationId);
+  out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
   out << ")";
 }
 
@@ -1676,9 +1710,9 @@ uint32_t ServiceAnnouncement::read(::apache::thrift::protocol::TProtocol* iprot)
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast46;
-          xfer += iprot->readI32(ecast46);
-          this->importance = (Urgency::type)ecast46;
+          int32_t ecast47;
+          xfer += iprot->readI32(ecast47);
+          this->importance = (Urgency::type)ecast47;
           this->__isset.importance = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1747,19 +1781,19 @@ void swap(ServiceAnnouncement &a, ServiceAnnouncement &b) {
   swap(a.__isset, b.__isset);
 }
 
-ServiceAnnouncement::ServiceAnnouncement(const ServiceAnnouncement& other47) {
-  message = other47.message;
-  importance = other47.importance;
-  id = other47.id;
-  timeOfExpiration = other47.timeOfExpiration;
-  __isset = other47.__isset;
-}
-ServiceAnnouncement& ServiceAnnouncement::operator=(const ServiceAnnouncement& other48) {
+ServiceAnnouncement::ServiceAnnouncement(const ServiceAnnouncement& other48) {
   message = other48.message;
   importance = other48.importance;
   id = other48.id;
   timeOfExpiration = other48.timeOfExpiration;
   __isset = other48.__isset;
+}
+ServiceAnnouncement& ServiceAnnouncement::operator=(const ServiceAnnouncement& other49) {
+  message = other49.message;
+  importance = other49.importance;
+  id = other49.id;
+  timeOfExpiration = other49.timeOfExpiration;
+  __isset = other49.__isset;
   return *this;
 }
 void ServiceAnnouncement::printTo(std::ostream& out) const {
