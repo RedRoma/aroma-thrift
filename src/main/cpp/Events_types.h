@@ -29,6 +29,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::User User;
 
 typedef class  ::aroma::banana::thrift::Application Application;
@@ -72,7 +74,7 @@ class ApplicationTokenRenewed {
   std::string message;
   User user;
   ApplicationToken applicationToken;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationTokenRenewed__isset __isset;
@@ -83,7 +85,7 @@ class ApplicationTokenRenewed {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -146,7 +148,7 @@ class ApplicationTokenRegenerated {
   std::string message;
   User user;
   ApplicationToken applicationToken;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationTokenRegenerated__isset __isset;
@@ -157,7 +159,7 @@ class ApplicationTokenRegenerated {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -218,7 +220,7 @@ class ApplicationSentMessage {
   virtual ~ApplicationSentMessage() throw();
   std::string message;
    ::aroma::banana::thrift::Message messageSentByApplication;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationSentMessage__isset __isset;
@@ -227,7 +229,7 @@ class ApplicationSentMessage {
 
   void __set_messageSentByApplication(const  ::aroma::banana::thrift::Message& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -286,7 +288,7 @@ class HealthCheckFailed {
   virtual ~HealthCheckFailed() throw();
   std::string message;
   std::string hostname;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _HealthCheckFailed__isset __isset;
@@ -295,7 +297,7 @@ class HealthCheckFailed {
 
   void __set_hostname(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -352,14 +354,14 @@ class HealthCheckBackToNormal {
 
   virtual ~HealthCheckBackToNormal() throw();
   std::string message;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _HealthCheckBackToNormal__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -413,7 +415,7 @@ class OwnerApprovedRequest {
 
   virtual ~OwnerApprovedRequest() throw();
   std::string message;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
   User owner;
 
@@ -421,7 +423,7 @@ class OwnerApprovedRequest {
 
   void __set_message(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -478,14 +480,14 @@ class GeneralEvent {
   }
 
   virtual ~GeneralEvent() throw();
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
   std::string message;
   timestamp timestamp;
 
   _GeneralEvent__isset __isset;
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -625,7 +627,7 @@ class Event {
   virtual ~Event() throw();
   EventType eventType;
   timestamp timestamp;
-  std::string eventId;
+  uuid eventId;
 
   _Event__isset __isset;
 
@@ -633,7 +635,7 @@ class Event {
 
   void __set_timestamp(const timestamp val);
 
-  void __set_eventId(const std::string& val);
+  void __set_eventId(const uuid& val);
 
   bool operator == (const Event & rhs) const
   {

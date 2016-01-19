@@ -32,7 +32,7 @@ void ApplicationTokenRenewed::__set_applicationToken(const ApplicationToken& val
 __isset.applicationToken = true;
 }
 
-void ApplicationTokenRenewed::__set_applicationId(const std::string& val) {
+void ApplicationTokenRenewed::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -202,7 +202,7 @@ void ApplicationTokenRegenerated::__set_applicationToken(const ApplicationToken&
 __isset.applicationToken = true;
 }
 
-void ApplicationTokenRegenerated::__set_applicationId(const std::string& val) {
+void ApplicationTokenRegenerated::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -368,7 +368,7 @@ void ApplicationSentMessage::__set_messageSentByApplication(const  ::aroma::bana
 __isset.messageSentByApplication = true;
 }
 
-void ApplicationSentMessage::__set_applicationId(const std::string& val) {
+void ApplicationSentMessage::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -518,7 +518,7 @@ void HealthCheckFailed::__set_hostname(const std::string& val) {
 __isset.hostname = true;
 }
 
-void HealthCheckFailed::__set_applicationId(const std::string& val) {
+void HealthCheckFailed::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -663,7 +663,7 @@ void HealthCheckBackToNormal::__set_message(const std::string& val) {
 __isset.message = true;
 }
 
-void HealthCheckBackToNormal::__set_applicationId(const std::string& val) {
+void HealthCheckBackToNormal::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -791,7 +791,7 @@ void OwnerApprovedRequest::__set_message(const std::string& val) {
 __isset.message = true;
 }
 
-void OwnerApprovedRequest::__set_applicationId(const std::string& val) {
+void OwnerApprovedRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -934,7 +934,7 @@ GeneralEvent::~GeneralEvent() throw() {
 }
 
 
-void GeneralEvent::__set_applicationId(const std::string& val) {
+void GeneralEvent::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
@@ -1294,7 +1294,7 @@ void Event::__set_timestamp(const timestamp val) {
   this->timestamp = val;
 }
 
-void Event::__set_eventId(const std::string& val) {
+void Event::__set_eventId(const uuid& val) {
   this->eventId = val;
 }
 

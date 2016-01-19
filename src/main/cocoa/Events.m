@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -427,7 +427,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -819,7 +819,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message messageSentByApplication: (Banana_Message *) messageSentByApplication applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message messageSentByApplication: (Banana_Message *) messageSentByApplication applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1150,7 +1150,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1479,7 +1479,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1749,7 +1749,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner
+- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner
 {
   self = [super init];
   __message = [message retain_stub];
@@ -2078,7 +2078,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (NSString *) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (BananaEvents_timestamp) timestamp
+- (id) initWithApplicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (BananaEvents_timestamp) timestamp
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -2916,7 +2916,7 @@
   return self;
 }
 
-- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (NSString *) eventId
+- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (BananaEvents_uuid) eventId
 {
   self = [super init];
   __eventType = [eventType retain_stub];
