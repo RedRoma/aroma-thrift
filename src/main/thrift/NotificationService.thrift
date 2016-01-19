@@ -23,6 +23,7 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
@@ -62,7 +63,7 @@ struct SendNotificationRequest
 
 struct SendNotificationResponse
 {
-    1: string notificationId;
+    1: optional uuid notificationId;
 }
 
 

@@ -329,7 +329,7 @@
   return self;
 }
 
-- (id) initWithNotificationId: (NSString *) notificationId
+- (id) initWithNotificationId: (NotificationService_uuid) notificationId
 {
   self = [super init];
   __notificationId = [notificationId retain_stub];

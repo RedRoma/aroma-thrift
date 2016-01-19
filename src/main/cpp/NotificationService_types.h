@@ -31,6 +31,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
 
 typedef class  ::aroma::banana::thrift::Application Application;
@@ -137,15 +139,17 @@ class SendNotificationResponse {
   }
 
   virtual ~SendNotificationResponse() throw();
-  std::string notificationId;
+  uuid notificationId;
 
   _SendNotificationResponse__isset __isset;
 
-  void __set_notificationId(const std::string& val);
+  void __set_notificationId(const uuid& val);
 
   bool operator == (const SendNotificationResponse & rhs) const
   {
-    if (!(notificationId == rhs.notificationId))
+    if (__isset.notificationId != rhs.__isset.notificationId)
+      return false;
+    else if (__isset.notificationId && !(notificationId == rhs.notificationId))
       return false;
     return true;
   }
