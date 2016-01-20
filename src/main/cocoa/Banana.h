@@ -407,6 +407,7 @@ typedef NSString * Banana_uuid;
   NSString * __firstName;
   NSString * __middleName;
   NSString * __lastName;
+  Banana_timestamp __birthdate;
 
   BOOL __email_isset;
   BOOL __userId_isset;
@@ -418,6 +419,7 @@ typedef NSString * Banana_uuid;
   BOOL __firstName_isset;
   BOOL __middleName_isset;
   BOOL __lastName_isset;
+  BOOL __birthdate_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -431,10 +433,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
 @property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
+@property (nonatomic, getter=birthdate, setter=setBirthdate:) Banana_timestamp birthdate;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName;
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -500,6 +503,12 @@ typedef NSString * Banana_uuid;
 - (void) setLastName: (NSString *) lastName;
 #endif
 - (BOOL) lastNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) birthdate;
+- (void) setBirthdate: (Banana_timestamp) birthdate;
+#endif
+- (BOOL) birthdateIsSet;
 
 @end
 

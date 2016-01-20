@@ -2002,7 +2002,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate
 {
   self = [super init];
   __email = [email retain_stub];
@@ -2025,6 +2025,8 @@
   __middleName_isset = YES;
   __lastName = [lastName retain_stub];
   __lastName_isset = YES;
+  __birthdate = birthdate;
+  __birthdate_isset = YES;
   return self;
 }
 
@@ -2081,6 +2083,11 @@
     __lastName = [[decoder decodeObjectForKey: @"lastName"] retain_stub];
     __lastName_isset = YES;
   }
+  if ([decoder containsValueForKey: @"birthdate"])
+  {
+    __birthdate = [decoder decodeInt64ForKey: @"birthdate"];
+    __birthdate_isset = YES;
+  }
   return self;
 }
 
@@ -2125,6 +2132,10 @@
   if (__lastName_isset)
   {
     [encoder encodeObject: __lastName forKey: @"lastName"];
+  }
+  if (__birthdate_isset)
+  {
+    [encoder encodeInt64: __birthdate forKey: @"birthdate"];
   }
 }
 
@@ -2181,6 +2192,11 @@
   {
     hash = (hash * 31) ^ [__lastName hash];
   }
+  hash = (hash * 31) ^ __birthdate_isset ? 2654435761 : 0;
+  if (__birthdate_isset)
+  {
+    hash = (hash * 31) ^ [@(__birthdate) hash];
+  }
   return hash;
 }
 
@@ -2231,6 +2247,10 @@
   }
   if ((__lastName_isset != other->__lastName_isset) ||
       (__lastName_isset && ((__lastName || other->__lastName) && ![__lastName isEqual:other->__lastName]))) {
+    return NO;
+  }
+  if ((__birthdate_isset != other->__birthdate_isset) ||
+      (__birthdate_isset && (__birthdate != other->__birthdate))) {
     return NO;
   }
   return YES;
@@ -2461,6 +2481,23 @@
   __lastName_isset = NO;
 }
 
+- (int64_t) birthdate {
+  return __birthdate;
+}
+
+- (void) setBirthdate: (int64_t) birthdate {
+  __birthdate = birthdate;
+  __birthdate_isset = YES;
+}
+
+- (BOOL) birthdateIsSet {
+  return __birthdate_isset;
+}
+
+- (void) unsetBirthdate {
+  __birthdate_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2568,6 +2605,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 11:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setBirthdate: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2658,6 +2703,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__birthdate_isset) {
+    [outProtocol writeFieldBeginWithName: @"birthdate" type: TType_I64 fieldID: 11];
+    [outProtocol writeI64: __birthdate];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2688,6 +2738,8 @@
   [ms appendFormat: @"\"%@\"", __middleName];
   [ms appendString: @",lastName:"];
   [ms appendFormat: @"\"%@\"", __lastName];
+  [ms appendString: @",birthdate:"];
+  [ms appendFormat: @"%qi", __birthdate];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

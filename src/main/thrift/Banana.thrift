@@ -160,6 +160,7 @@ struct User
     8: optional string firstName;
     9: optional string middleName;
     10: optional string lastName;
+    11: optional timestamp birthdate;
 }
 
 /**

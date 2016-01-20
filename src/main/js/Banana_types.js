@@ -678,6 +678,7 @@ User = function(args) {
   this.firstName = null;
   this.middleName = null;
   this.lastName = null;
+  this.birthdate = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -708,6 +709,9 @@ User = function(args) {
     }
     if (args.lastName !== undefined && args.lastName !== null) {
       this.lastName = args.lastName;
+    }
+    if (args.birthdate !== undefined && args.birthdate !== null) {
+      this.birthdate = args.birthdate;
     }
   }
 };
@@ -809,6 +813,13 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 11:
+      if (ftype == Thrift.Type.I64) {
+        this.birthdate = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -877,6 +888,11 @@ User.prototype.write = function(output) {
   if (this.lastName !== null && this.lastName !== undefined) {
     output.writeFieldBegin('lastName', Thrift.Type.STRING, 10);
     output.writeString(this.lastName);
+    output.writeFieldEnd();
+  }
+  if (this.birthdate !== null && this.birthdate !== undefined) {
+    output.writeFieldBegin('birthdate', Thrift.Type.I64, 11);
+    output.writeI64(this.birthdate);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -1067,6 +1067,11 @@ void User::__set_lastName(const std::string& val) {
 __isset.lastName = true;
 }
 
+void User::__set_birthdate(const timestamp val) {
+  this->birthdate = val;
+__isset.birthdate = true;
+}
+
 uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1183,6 +1188,14 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->birthdate);
+          this->__isset.birthdate = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1255,6 +1268,11 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeString(this->lastName);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.birthdate) {
+    xfer += oprot->writeFieldBegin("birthdate", ::apache::thrift::protocol::T_I64, 11);
+    xfer += oprot->writeI64(this->birthdate);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1272,6 +1290,7 @@ void swap(User &a, User &b) {
   swap(a.firstName, b.firstName);
   swap(a.middleName, b.middleName);
   swap(a.lastName, b.lastName);
+  swap(a.birthdate, b.birthdate);
   swap(a.__isset, b.__isset);
 }
 
@@ -1286,6 +1305,7 @@ User::User(const User& other27) {
   firstName = other27.firstName;
   middleName = other27.middleName;
   lastName = other27.lastName;
+  birthdate = other27.birthdate;
   __isset = other27.__isset;
 }
 User& User::operator=(const User& other28) {
@@ -1299,6 +1319,7 @@ User& User::operator=(const User& other28) {
   firstName = other28.firstName;
   middleName = other28.middleName;
   lastName = other28.lastName;
+  birthdate = other28.birthdate;
   __isset = other28.__isset;
   return *this;
 }
@@ -1315,6 +1336,7 @@ void User::printTo(std::ostream& out) const {
   out << ", " << "firstName="; (__isset.firstName ? (out << to_string(firstName)) : (out << "<null>"));
   out << ", " << "middleName="; (__isset.middleName ? (out << to_string(middleName)) : (out << "<null>"));
   out << ", " << "lastName="; (__isset.lastName ? (out << to_string(lastName)) : (out << "<null>"));
+  out << ", " << "birthdate="; (__isset.birthdate ? (out << to_string(birthdate)) : (out << "<null>"));
   out << ")";
 }
 
