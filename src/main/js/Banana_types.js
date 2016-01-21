@@ -22,6 +22,15 @@ Urgency = {
   'MEDIUM' : 2,
   'HIGH' : 3
 };
+Industry = {
+  'BANKING' : 0,
+  'ECOMMERCE' : 1,
+  'EDUCATION' : 2,
+  'GOVERMENT' : 3,
+  'MARKETING' : 4,
+  'RETAIL' : 5,
+  'TECH' : 6
+};
 Role = {
   'DEVELOPER' : 1,
   'OPERATIONS' : 2,

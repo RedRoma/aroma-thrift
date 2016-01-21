@@ -115,6 +115,17 @@ struct Message
     11: uuid applicationId;
 }
 
+enum Industry
+{
+    BANKING,
+    ECOMMERCE
+    EDUCATION,
+    GOVERMENT,
+    MARKETING,
+    RETAIL,
+    TECH
+}
+
 /**
  * An Organization can represent a Company or group of People.
  */

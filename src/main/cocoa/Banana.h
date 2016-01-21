@@ -39,6 +39,16 @@ enum Banana_Urgency {
   Urgency_HIGH = 3
 };
 
+enum Banana_Industry {
+  Industry_BANKING = 0,
+  Industry_ECOMMERCE = 1,
+  Industry_EDUCATION = 2,
+  Industry_GOVERMENT = 3,
+  Industry_MARKETING = 4,
+  Industry_RETAIL = 5,
+  Industry_TECH = 6
+};
+
 enum Banana_Role {
   Role_DEVELOPER = 1,
   Role_OPERATIONS = 2,

@@ -53,6 +53,26 @@ const char* _kUrgencyNames[] = {
 };
 const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+int _kIndustryValues[] = {
+  Industry::BANKING,
+  Industry::ECOMMERCE,
+  Industry::EDUCATION,
+  Industry::GOVERMENT,
+  Industry::MARKETING,
+  Industry::RETAIL,
+  Industry::TECH
+};
+const char* _kIndustryNames[] = {
+  "BANKING",
+  "ECOMMERCE",
+  "EDUCATION",
+  "GOVERMENT",
+  "MARKETING",
+  "RETAIL",
+  "TECH"
+};
+const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(7, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
 int _kRoleValues[] = {
   Role::DEVELOPER,
   Role::OPERATIONS,

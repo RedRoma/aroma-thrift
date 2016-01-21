@@ -51,6 +51,20 @@ struct Urgency {
 
 extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
 
+struct Industry {
+  enum type {
+    BANKING = 0,
+    ECOMMERCE = 1,
+    EDUCATION = 2,
+    GOVERMENT = 3,
+    MARKETING = 4,
+    RETAIL = 5,
+    TECH = 6
+  };
+};
+
+extern const std::map<int, const char*> _Industry_VALUES_TO_NAMES;
+
 struct Role {
   enum type {
     DEVELOPER = 1,
