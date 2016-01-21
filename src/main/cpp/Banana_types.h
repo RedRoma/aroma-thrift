@@ -396,7 +396,7 @@ inline std::ostream& operator<<(std::ostream& out, const Message& obj)
 }
 
 typedef struct _Organization__isset {
-  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false), industry(false), tier(true), organizationDescription(false) {}
+  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false), industry(false), tier(true), organizationDescription(false), githubProfile(false) {}
   bool organizationId :1;
   bool organizationName :1;
   bool website :1;
@@ -409,6 +409,7 @@ typedef struct _Organization__isset {
   bool industry :1;
   bool tier :1;
   bool organizationDescription :1;
+  bool githubProfile :1;
 } _Organization__isset;
 
 class Organization {
@@ -416,7 +417,7 @@ class Organization {
 
   Organization(const Organization&);
   Organization& operator=(const Organization&);
-  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)0), organizationDescription() {
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)0), organizationDescription(), githubProfile() {
     tier = (Tier::type)0;
 
   }
@@ -434,6 +435,7 @@ class Organization {
   Industry::type industry;
   Tier::type tier;
   std::string organizationDescription;
+  std::string githubProfile;
 
   _Organization__isset __isset;
 
@@ -460,6 +462,8 @@ class Organization {
   void __set_tier(const Tier::type val);
 
   void __set_organizationDescription(const std::string& val);
+
+  void __set_githubProfile(const std::string& val);
 
   bool operator == (const Organization & rhs) const
   {
@@ -506,6 +510,10 @@ class Organization {
     if (__isset.organizationDescription != rhs.__isset.organizationDescription)
       return false;
     else if (__isset.organizationDescription && !(organizationDescription == rhs.organizationDescription))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
       return false;
     return true;
   }

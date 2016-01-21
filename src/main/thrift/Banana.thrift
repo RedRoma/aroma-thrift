@@ -191,6 +191,8 @@ struct Organization
     10: optional Industry industry;
     11: optional Tier tier = Tier.FREE;
     12: optional string organizationDescription;
+    /** A Link to the Org's GitHub Page, if available. */
+    13: optional string githubProfile;
 }
 
 

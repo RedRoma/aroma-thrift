@@ -840,6 +840,11 @@ void Organization::__set_organizationDescription(const std::string& val) {
 __isset.organizationDescription = true;
 }
 
+void Organization::__set_githubProfile(const std::string& val) {
+  this->githubProfile = val;
+__isset.githubProfile = true;
+}
+
 uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -973,6 +978,14 @@ uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 13:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->githubProfile);
+          this->__isset.githubProfile = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1056,6 +1069,11 @@ uint32_t Organization::write(::apache::thrift::protocol::TProtocol* oprot) const
     xfer += oprot->writeString(this->organizationDescription);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.githubProfile) {
+    xfer += oprot->writeFieldBegin("githubProfile", ::apache::thrift::protocol::T_STRING, 13);
+    xfer += oprot->writeString(this->githubProfile);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1075,6 +1093,7 @@ void swap(Organization &a, Organization &b) {
   swap(a.industry, b.industry);
   swap(a.tier, b.tier);
   swap(a.organizationDescription, b.organizationDescription);
+  swap(a.githubProfile, b.githubProfile);
   swap(a.__isset, b.__isset);
 }
 
@@ -1091,6 +1110,7 @@ Organization::Organization(const Organization& other19) {
   industry = other19.industry;
   tier = other19.tier;
   organizationDescription = other19.organizationDescription;
+  githubProfile = other19.githubProfile;
   __isset = other19.__isset;
 }
 Organization& Organization::operator=(const Organization& other20) {
@@ -1106,6 +1126,7 @@ Organization& Organization::operator=(const Organization& other20) {
   industry = other20.industry;
   tier = other20.tier;
   organizationDescription = other20.organizationDescription;
+  githubProfile = other20.githubProfile;
   __isset = other20.__isset;
   return *this;
 }
@@ -1124,6 +1145,7 @@ void Organization::printTo(std::ostream& out) const {
   out << ", " << "industry="; (__isset.industry ? (out << to_string(industry)) : (out << "<null>"));
   out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
   out << ", " << "organizationDescription="; (__isset.organizationDescription ? (out << to_string(organizationDescription)) : (out << "<null>"));
+  out << ", " << "githubProfile="; (__isset.githubProfile ? (out << to_string(githubProfile)) : (out << "<null>"));
   out << ")";
 }
 

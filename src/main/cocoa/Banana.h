@@ -330,6 +330,7 @@ typedef NSString * Banana_uuid;
   int __industry;
   int __tier;
   NSString * __organizationDescription;
+  NSString * __githubProfile;
 
   BOOL __organizationId_isset;
   BOOL __organizationName_isset;
@@ -343,6 +344,7 @@ typedef NSString * Banana_uuid;
   BOOL __industry_isset;
   BOOL __tier_isset;
   BOOL __organizationDescription_isset;
+  BOOL __githubProfile_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -358,10 +360,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, getter=industry, setter=setIndustry:) int industry;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
 @property (nonatomic, retain, getter=organizationDescription, setter=setOrganizationDescription:) NSString * organizationDescription;
+@property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
 #endif
 
 - (id) init;
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription;
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -439,6 +442,12 @@ typedef NSString * Banana_uuid;
 - (void) setOrganizationDescription: (NSString *) organizationDescription;
 #endif
 - (BOOL) organizationDescriptionIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) githubProfile;
+- (void) setGithubProfile: (NSString *) githubProfile;
+#endif
+- (BOOL) githubProfileIsSet;
 
 @end
 

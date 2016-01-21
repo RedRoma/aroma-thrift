@@ -1418,7 +1418,7 @@
   return self;
 }
 
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile
 {
   self = [super init];
   __organizationId = [organizationId retain_stub];
@@ -1445,6 +1445,8 @@
   __tier_isset = YES;
   __organizationDescription = [organizationDescription retain_stub];
   __organizationDescription_isset = YES;
+  __githubProfile = [githubProfile retain_stub];
+  __githubProfile_isset = YES;
   return self;
 }
 
@@ -1511,6 +1513,11 @@
     __organizationDescription = [[decoder decodeObjectForKey: @"organizationDescription"] retain_stub];
     __organizationDescription_isset = YES;
   }
+  if ([decoder containsValueForKey: @"githubProfile"])
+  {
+    __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
+    __githubProfile_isset = YES;
+  }
   return self;
 }
 
@@ -1563,6 +1570,10 @@
   if (__organizationDescription_isset)
   {
     [encoder encodeObject: __organizationDescription forKey: @"organizationDescription"];
+  }
+  if (__githubProfile_isset)
+  {
+    [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
   }
 }
 
@@ -1629,6 +1640,11 @@
   {
     hash = (hash * 31) ^ [__organizationDescription hash];
   }
+  hash = (hash * 31) ^ __githubProfile_isset ? 2654435761 : 0;
+  if (__githubProfile_isset)
+  {
+    hash = (hash * 31) ^ [__githubProfile hash];
+  }
   return hash;
 }
 
@@ -1689,6 +1705,10 @@
       (__organizationDescription_isset && ((__organizationDescription || other->__organizationDescription) && ![__organizationDescription isEqual:other->__organizationDescription]))) {
     return NO;
   }
+  if ((__githubProfile_isset != other->__githubProfile_isset) ||
+      (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1704,6 +1724,7 @@
   [__stockMarketSymbol release_stub];
   [__logoLink release_stub];
   [__organizationDescription release_stub];
+  [__githubProfile release_stub];
   [super dealloc_stub];
 }
 
@@ -1951,6 +1972,27 @@
   __organizationDescription_isset = NO;
 }
 
+- (NSString *) githubProfile {
+  return [[__githubProfile retain_stub] autorelease_stub];
+}
+
+- (void) setGithubProfile: (NSString *) githubProfile {
+  [githubProfile retain_stub];
+  [__githubProfile release_stub];
+  __githubProfile = githubProfile;
+  __githubProfile_isset = YES;
+}
+
+- (BOOL) githubProfileIsSet {
+  return __githubProfile_isset;
+}
+
+- (void) unsetGithubProfile {
+  [__githubProfile release_stub];
+  __githubProfile = nil;
+  __githubProfile_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2074,6 +2116,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 13:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setGithubProfile: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2173,6 +2223,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__githubProfile_isset) {
+    if (__githubProfile != nil) {
+      [outProtocol writeFieldBeginWithName: @"githubProfile" type: TType_STRING fieldID: 13];
+      [outProtocol writeString: __githubProfile];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2207,6 +2264,8 @@
   [ms appendFormat: @"%i", __tier];
   [ms appendString: @",organizationDescription:"];
   [ms appendFormat: @"\"%@\"", __organizationDescription];
+  [ms appendString: @",githubProfile:"];
+  [ms appendFormat: @"\"%@\"", __githubProfile];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

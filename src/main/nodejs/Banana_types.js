@@ -508,6 +508,7 @@ Organization = module.exports.Organization = function(args) {
   this.industry = null;
   this.tier = 0;
   this.organizationDescription = null;
+  this.githubProfile = null;
   if (args) {
     if (args.organizationId !== undefined && args.organizationId !== null) {
       this.organizationId = args.organizationId;
@@ -544,6 +545,9 @@ Organization = module.exports.Organization = function(args) {
     }
     if (args.organizationDescription !== undefined && args.organizationDescription !== null) {
       this.organizationDescription = args.organizationDescription;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
     }
   }
 };
@@ -659,6 +663,13 @@ Organization.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 13:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -737,6 +748,11 @@ Organization.prototype.write = function(output) {
   if (this.organizationDescription !== null && this.organizationDescription !== undefined) {
     output.writeFieldBegin('organizationDescription', Thrift.Type.STRING, 12);
     output.writeString(this.organizationDescription);
+    output.writeFieldEnd();
+  }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 13);
+    output.writeString(this.githubProfile);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
