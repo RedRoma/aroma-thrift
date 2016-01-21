@@ -396,7 +396,7 @@ inline std::ostream& operator<<(std::ostream& out, const Message& obj)
 }
 
 typedef struct _Organization__isset {
-  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false) {}
+  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false), industry(false), tier(true), organizationDescription(false) {}
   bool organizationId :1;
   bool organizationName :1;
   bool website :1;
@@ -406,6 +406,9 @@ typedef struct _Organization__isset {
   bool organizationEmail :1;
   bool stockMarketSymbol :1;
   bool logoLink :1;
+  bool industry :1;
+  bool tier :1;
+  bool organizationDescription :1;
 } _Organization__isset;
 
 class Organization {
@@ -413,7 +416,9 @@ class Organization {
 
   Organization(const Organization&);
   Organization& operator=(const Organization&);
-  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink() {
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)0), organizationDescription() {
+    tier = (Tier::type)0;
+
   }
 
   virtual ~Organization() throw();
@@ -426,6 +431,9 @@ class Organization {
   std::string organizationEmail;
   std::string stockMarketSymbol;
   std::string logoLink;
+  Industry::type industry;
+  Tier::type tier;
+  std::string organizationDescription;
 
   _Organization__isset __isset;
 
@@ -446,6 +454,12 @@ class Organization {
   void __set_stockMarketSymbol(const std::string& val);
 
   void __set_logoLink(const std::string& val);
+
+  void __set_industry(const Industry::type val);
+
+  void __set_tier(const Tier::type val);
+
+  void __set_organizationDescription(const std::string& val);
 
   bool operator == (const Organization & rhs) const
   {
@@ -480,6 +494,18 @@ class Organization {
     if (__isset.logoLink != rhs.__isset.logoLink)
       return false;
     else if (__isset.logoLink && !(logoLink == rhs.logoLink))
+      return false;
+    if (__isset.industry != rhs.__isset.industry)
+      return false;
+    else if (__isset.industry && !(industry == rhs.industry))
+      return false;
+    if (__isset.tier != rhs.__isset.tier)
+      return false;
+    else if (__isset.tier && !(tier == rhs.tier))
+      return false;
+    if (__isset.organizationDescription != rhs.__isset.organizationDescription)
+      return false;
+    else if (__isset.organizationDescription && !(organizationDescription == rhs.organizationDescription))
       return false;
     return true;
   }

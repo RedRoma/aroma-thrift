@@ -327,6 +327,9 @@ typedef NSString * Banana_uuid;
   NSString * __organizationEmail;
   NSString * __stockMarketSymbol;
   NSString * __logoLink;
+  int __industry;
+  int __tier;
+  NSString * __organizationDescription;
 
   BOOL __organizationId_isset;
   BOOL __organizationName_isset;
@@ -337,6 +340,9 @@ typedef NSString * Banana_uuid;
   BOOL __organizationEmail_isset;
   BOOL __stockMarketSymbol_isset;
   BOOL __logoLink_isset;
+  BOOL __industry_isset;
+  BOOL __tier_isset;
+  BOOL __organizationDescription_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -349,10 +355,13 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=organizationEmail, setter=setOrganizationEmail:) NSString * organizationEmail;
 @property (nonatomic, retain, getter=stockMarketSymbol, setter=setStockMarketSymbol:) NSString * stockMarketSymbol;
 @property (nonatomic, retain, getter=logoLink, setter=setLogoLink:) NSString * logoLink;
+@property (nonatomic, getter=industry, setter=setIndustry:) int industry;
+@property (nonatomic, getter=tier, setter=setTier:) int tier;
+@property (nonatomic, retain, getter=organizationDescription, setter=setOrganizationDescription:) NSString * organizationDescription;
 #endif
 
 - (id) init;
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink;
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -412,6 +421,24 @@ typedef NSString * Banana_uuid;
 - (void) setLogoLink: (NSString *) logoLink;
 #endif
 - (BOOL) logoLinkIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) industry;
+- (void) setIndustry: (int) industry;
+#endif
+- (BOOL) industryIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tier;
+- (void) setTier: (int) tier;
+#endif
+- (BOOL) tierIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationDescription;
+- (void) setOrganizationDescription: (NSString *) organizationDescription;
+#endif
+- (BOOL) organizationDescriptionIsSet;
 
 @end
 

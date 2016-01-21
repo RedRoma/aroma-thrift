@@ -188,6 +188,9 @@ struct Organization
     7: optional string organizationEmail;
     8: optional string stockMarketSymbol;
     9: optional string logoLink;
+    10: optional Industry industry;
+    11: optional Tier tier = Tier.FREE;
+    12: optional string organizationDescription;
 }
 
 

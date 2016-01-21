@@ -501,6 +501,9 @@ Organization = function(args) {
   this.organizationEmail = null;
   this.stockMarketSymbol = null;
   this.logoLink = null;
+  this.industry = null;
+  this.tier = 0;
+  this.organizationDescription = null;
   if (args) {
     if (args.organizationId !== undefined && args.organizationId !== null) {
       this.organizationId = args.organizationId;
@@ -528,6 +531,15 @@ Organization = function(args) {
     }
     if (args.logoLink !== undefined && args.logoLink !== null) {
       this.logoLink = args.logoLink;
+    }
+    if (args.industry !== undefined && args.industry !== null) {
+      this.industry = args.industry;
+    }
+    if (args.tier !== undefined && args.tier !== null) {
+      this.tier = args.tier;
+    }
+    if (args.organizationDescription !== undefined && args.organizationDescription !== null) {
+      this.organizationDescription = args.organizationDescription;
     }
   }
 };
@@ -622,6 +634,27 @@ Organization.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 10:
+      if (ftype == Thrift.Type.I32) {
+        this.industry = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.I32) {
+        this.tier = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationDescription = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -685,6 +718,21 @@ Organization.prototype.write = function(output) {
   if (this.logoLink !== null && this.logoLink !== undefined) {
     output.writeFieldBegin('logoLink', Thrift.Type.STRING, 9);
     output.writeString(this.logoLink);
+    output.writeFieldEnd();
+  }
+  if (this.industry !== null && this.industry !== undefined) {
+    output.writeFieldBegin('industry', Thrift.Type.I32, 10);
+    output.writeI32(this.industry);
+    output.writeFieldEnd();
+  }
+  if (this.tier !== null && this.tier !== undefined) {
+    output.writeFieldBegin('tier', Thrift.Type.I32, 11);
+    output.writeI32(this.tier);
+    output.writeFieldEnd();
+  }
+  if (this.organizationDescription !== null && this.organizationDescription !== undefined) {
+    output.writeFieldBegin('organizationDescription', Thrift.Type.STRING, 12);
+    output.writeString(this.organizationDescription);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

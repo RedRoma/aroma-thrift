@@ -1412,11 +1412,13 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.tier = 0;
+
 #endif
   return self;
 }
 
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription
 {
   self = [super init];
   __organizationId = [organizationId retain_stub];
@@ -1437,6 +1439,12 @@
   __stockMarketSymbol_isset = YES;
   __logoLink = [logoLink retain_stub];
   __logoLink_isset = YES;
+  __industry = industry;
+  __industry_isset = YES;
+  __tier = tier;
+  __tier_isset = YES;
+  __organizationDescription = [organizationDescription retain_stub];
+  __organizationDescription_isset = YES;
   return self;
 }
 
@@ -1488,6 +1496,21 @@
     __logoLink = [[decoder decodeObjectForKey: @"logoLink"] retain_stub];
     __logoLink_isset = YES;
   }
+  if ([decoder containsValueForKey: @"industry"])
+  {
+    __industry = [decoder decodeIntForKey: @"industry"];
+    __industry_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"tier"])
+  {
+    __tier = [decoder decodeIntForKey: @"tier"];
+    __tier_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationDescription"])
+  {
+    __organizationDescription = [[decoder decodeObjectForKey: @"organizationDescription"] retain_stub];
+    __organizationDescription_isset = YES;
+  }
   return self;
 }
 
@@ -1528,6 +1551,18 @@
   if (__logoLink_isset)
   {
     [encoder encodeObject: __logoLink forKey: @"logoLink"];
+  }
+  if (__industry_isset)
+  {
+    [encoder encodeInt: __industry forKey: @"industry"];
+  }
+  if (__tier_isset)
+  {
+    [encoder encodeInt: __tier forKey: @"tier"];
+  }
+  if (__organizationDescription_isset)
+  {
+    [encoder encodeObject: __organizationDescription forKey: @"organizationDescription"];
   }
 }
 
@@ -1579,6 +1614,21 @@
   {
     hash = (hash * 31) ^ [__logoLink hash];
   }
+  hash = (hash * 31) ^ __industry_isset ? 2654435761 : 0;
+  if (__industry_isset)
+  {
+    hash = (hash * 31) ^ [@(__industry) hash];
+  }
+  hash = (hash * 31) ^ __tier_isset ? 2654435761 : 0;
+  if (__tier_isset)
+  {
+    hash = (hash * 31) ^ [@(__tier) hash];
+  }
+  hash = (hash * 31) ^ __organizationDescription_isset ? 2654435761 : 0;
+  if (__organizationDescription_isset)
+  {
+    hash = (hash * 31) ^ [__organizationDescription hash];
+  }
   return hash;
 }
 
@@ -1627,6 +1677,18 @@
       (__logoLink_isset && ((__logoLink || other->__logoLink) && ![__logoLink isEqual:other->__logoLink]))) {
     return NO;
   }
+  if ((__industry_isset != other->__industry_isset) ||
+      (__industry_isset && (__industry != other->__industry))) {
+    return NO;
+  }
+  if ((__tier_isset != other->__tier_isset) ||
+      (__tier_isset && (__tier != other->__tier))) {
+    return NO;
+  }
+  if ((__organizationDescription_isset != other->__organizationDescription_isset) ||
+      (__organizationDescription_isset && ((__organizationDescription || other->__organizationDescription) && ![__organizationDescription isEqual:other->__organizationDescription]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1641,6 +1703,7 @@
   [__organizationEmail release_stub];
   [__stockMarketSymbol release_stub];
   [__logoLink release_stub];
+  [__organizationDescription release_stub];
   [super dealloc_stub];
 }
 
@@ -1833,6 +1896,61 @@
   __logoLink_isset = NO;
 }
 
+- (int) industry {
+  return __industry;
+}
+
+- (void) setIndustry: (int) industry {
+  __industry = industry;
+  __industry_isset = YES;
+}
+
+- (BOOL) industryIsSet {
+  return __industry_isset;
+}
+
+- (void) unsetIndustry {
+  __industry_isset = NO;
+}
+
+- (int) tier {
+  return __tier;
+}
+
+- (void) setTier: (int) tier {
+  __tier = tier;
+  __tier_isset = YES;
+}
+
+- (BOOL) tierIsSet {
+  return __tier_isset;
+}
+
+- (void) unsetTier {
+  __tier_isset = NO;
+}
+
+- (NSString *) organizationDescription {
+  return [[__organizationDescription retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationDescription: (NSString *) organizationDescription {
+  [organizationDescription retain_stub];
+  [__organizationDescription release_stub];
+  __organizationDescription = organizationDescription;
+  __organizationDescription_isset = YES;
+}
+
+- (BOOL) organizationDescriptionIsSet {
+  return __organizationDescription_isset;
+}
+
+- (void) unsetOrganizationDescription {
+  [__organizationDescription release_stub];
+  __organizationDescription = nil;
+  __organizationDescription_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1932,6 +2050,30 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 10:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setIndustry: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 11:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setTier: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 12:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationDescription: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2014,6 +2156,23 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__industry_isset) {
+    [outProtocol writeFieldBeginWithName: @"industry" type: TType_I32 fieldID: 10];
+    [outProtocol writeI32: __industry];
+    [outProtocol writeFieldEnd];
+  }
+  if (__tier_isset) {
+    [outProtocol writeFieldBeginWithName: @"tier" type: TType_I32 fieldID: 11];
+    [outProtocol writeI32: __tier];
+    [outProtocol writeFieldEnd];
+  }
+  if (__organizationDescription_isset) {
+    if (__organizationDescription != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationDescription" type: TType_STRING fieldID: 12];
+      [outProtocol writeString: __organizationDescription];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -2042,6 +2201,12 @@
   [ms appendFormat: @"\"%@\"", __stockMarketSymbol];
   [ms appendString: @",logoLink:"];
   [ms appendFormat: @"\"%@\"", __logoLink];
+  [ms appendString: @",industry:"];
+  [ms appendFormat: @"%i", __industry];
+  [ms appendString: @",tier:"];
+  [ms appendFormat: @"%i", __tier];
+  [ms appendString: @",organizationDescription:"];
+  [ms appendFormat: @"\"%@\"", __organizationDescription];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

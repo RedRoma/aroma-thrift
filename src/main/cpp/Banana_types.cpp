@@ -825,6 +825,21 @@ void Organization::__set_logoLink(const std::string& val) {
 __isset.logoLink = true;
 }
 
+void Organization::__set_industry(const Industry::type val) {
+  this->industry = val;
+__isset.industry = true;
+}
+
+void Organization::__set_tier(const Tier::type val) {
+  this->tier = val;
+__isset.tier = true;
+}
+
+void Organization::__set_organizationDescription(const std::string& val) {
+  this->organizationDescription = val;
+__isset.organizationDescription = true;
+}
+
 uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -930,6 +945,34 @@ uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 10:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast16;
+          xfer += iprot->readI32(ecast16);
+          this->industry = (Industry::type)ecast16;
+          this->__isset.industry = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast17;
+          xfer += iprot->readI32(ecast17);
+          this->tier = (Tier::type)ecast17;
+          this->__isset.tier = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationDescription);
+          this->__isset.organizationDescription = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -974,10 +1017,10 @@ uint32_t Organization::write(::apache::thrift::protocol::TProtocol* oprot) const
     xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_LIST, 6);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->owners.size()));
-      std::vector<std::string> ::const_iterator _iter16;
-      for (_iter16 = this->owners.begin(); _iter16 != this->owners.end(); ++_iter16)
+      std::vector<std::string> ::const_iterator _iter18;
+      for (_iter18 = this->owners.begin(); _iter18 != this->owners.end(); ++_iter18)
       {
-        xfer += oprot->writeString((*_iter16));
+        xfer += oprot->writeString((*_iter18));
       }
       xfer += oprot->writeListEnd();
     }
@@ -998,6 +1041,21 @@ uint32_t Organization::write(::apache::thrift::protocol::TProtocol* oprot) const
     xfer += oprot->writeString(this->logoLink);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.industry) {
+    xfer += oprot->writeFieldBegin("industry", ::apache::thrift::protocol::T_I32, 10);
+    xfer += oprot->writeI32((int32_t)this->industry);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.tier) {
+    xfer += oprot->writeFieldBegin("tier", ::apache::thrift::protocol::T_I32, 11);
+    xfer += oprot->writeI32((int32_t)this->tier);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.organizationDescription) {
+    xfer += oprot->writeFieldBegin("organizationDescription", ::apache::thrift::protocol::T_STRING, 12);
+    xfer += oprot->writeString(this->organizationDescription);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1014,32 +1072,41 @@ void swap(Organization &a, Organization &b) {
   swap(a.organizationEmail, b.organizationEmail);
   swap(a.stockMarketSymbol, b.stockMarketSymbol);
   swap(a.logoLink, b.logoLink);
+  swap(a.industry, b.industry);
+  swap(a.tier, b.tier);
+  swap(a.organizationDescription, b.organizationDescription);
   swap(a.__isset, b.__isset);
 }
 
-Organization::Organization(const Organization& other17) {
-  organizationId = other17.organizationId;
-  organizationName = other17.organizationName;
-  website = other17.website;
-  logo = other17.logo;
-  techStack = other17.techStack;
-  owners = other17.owners;
-  organizationEmail = other17.organizationEmail;
-  stockMarketSymbol = other17.stockMarketSymbol;
-  logoLink = other17.logoLink;
-  __isset = other17.__isset;
+Organization::Organization(const Organization& other19) {
+  organizationId = other19.organizationId;
+  organizationName = other19.organizationName;
+  website = other19.website;
+  logo = other19.logo;
+  techStack = other19.techStack;
+  owners = other19.owners;
+  organizationEmail = other19.organizationEmail;
+  stockMarketSymbol = other19.stockMarketSymbol;
+  logoLink = other19.logoLink;
+  industry = other19.industry;
+  tier = other19.tier;
+  organizationDescription = other19.organizationDescription;
+  __isset = other19.__isset;
 }
-Organization& Organization::operator=(const Organization& other18) {
-  organizationId = other18.organizationId;
-  organizationName = other18.organizationName;
-  website = other18.website;
-  logo = other18.logo;
-  techStack = other18.techStack;
-  owners = other18.owners;
-  organizationEmail = other18.organizationEmail;
-  stockMarketSymbol = other18.stockMarketSymbol;
-  logoLink = other18.logoLink;
-  __isset = other18.__isset;
+Organization& Organization::operator=(const Organization& other20) {
+  organizationId = other20.organizationId;
+  organizationName = other20.organizationName;
+  website = other20.website;
+  logo = other20.logo;
+  techStack = other20.techStack;
+  owners = other20.owners;
+  organizationEmail = other20.organizationEmail;
+  stockMarketSymbol = other20.stockMarketSymbol;
+  logoLink = other20.logoLink;
+  industry = other20.industry;
+  tier = other20.tier;
+  organizationDescription = other20.organizationDescription;
+  __isset = other20.__isset;
   return *this;
 }
 void Organization::printTo(std::ostream& out) const {
@@ -1054,6 +1121,9 @@ void Organization::printTo(std::ostream& out) const {
   out << ", " << "organizationEmail="; (__isset.organizationEmail ? (out << to_string(organizationEmail)) : (out << "<null>"));
   out << ", " << "stockMarketSymbol="; (__isset.stockMarketSymbol ? (out << to_string(stockMarketSymbol)) : (out << "<null>"));
   out << ", " << "logoLink="; (__isset.logoLink ? (out << to_string(logoLink)) : (out << "<null>"));
+  out << ", " << "industry="; (__isset.industry ? (out << to_string(industry)) : (out << "<null>"));
+  out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
+  out << ", " << "organizationDescription="; (__isset.organizationDescription ? (out << to_string(organizationDescription)) : (out << "<null>"));
   out << ")";
 }
 
@@ -1163,17 +1233,17 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_SET) {
           {
             this->roles.clear();
-            uint32_t _size19;
-            ::apache::thrift::protocol::TType _etype22;
-            xfer += iprot->readSetBegin(_etype22, _size19);
-            uint32_t _i23;
-            for (_i23 = 0; _i23 < _size19; ++_i23)
+            uint32_t _size21;
+            ::apache::thrift::protocol::TType _etype24;
+            xfer += iprot->readSetBegin(_etype24, _size21);
+            uint32_t _i25;
+            for (_i25 = 0; _i25 < _size21; ++_i25)
             {
-              Role::type _elem24;
-              int32_t ecast25;
-              xfer += iprot->readI32(ecast25);
-              _elem24 = (Role::type)ecast25;
-              this->roles.insert(_elem24);
+              Role::type _elem26;
+              int32_t ecast27;
+              xfer += iprot->readI32(ecast27);
+              _elem26 = (Role::type)ecast27;
+              this->roles.insert(_elem26);
             }
             xfer += iprot->readSetEnd();
           }
@@ -1271,10 +1341,10 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeFieldBegin("roles", ::apache::thrift::protocol::T_SET, 4);
   {
     xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_I32, static_cast<uint32_t>(this->roles.size()));
-    std::set<Role::type> ::const_iterator _iter26;
-    for (_iter26 = this->roles.begin(); _iter26 != this->roles.end(); ++_iter26)
+    std::set<Role::type> ::const_iterator _iter28;
+    for (_iter28 = this->roles.begin(); _iter28 != this->roles.end(); ++_iter28)
     {
-      xfer += oprot->writeI32((int32_t)(*_iter26));
+      xfer += oprot->writeI32((int32_t)(*_iter28));
     }
     xfer += oprot->writeSetEnd();
   }
@@ -1336,33 +1406,33 @@ void swap(User &a, User &b) {
   swap(a.__isset, b.__isset);
 }
 
-User::User(const User& other27) {
-  email = other27.email;
-  userId = other27.userId;
-  name = other27.name;
-  roles = other27.roles;
-  profileImage = other27.profileImage;
-  profileImageLink = other27.profileImageLink;
-  githubProfile = other27.githubProfile;
-  firstName = other27.firstName;
-  middleName = other27.middleName;
-  lastName = other27.lastName;
-  birthdate = other27.birthdate;
-  __isset = other27.__isset;
+User::User(const User& other29) {
+  email = other29.email;
+  userId = other29.userId;
+  name = other29.name;
+  roles = other29.roles;
+  profileImage = other29.profileImage;
+  profileImageLink = other29.profileImageLink;
+  githubProfile = other29.githubProfile;
+  firstName = other29.firstName;
+  middleName = other29.middleName;
+  lastName = other29.lastName;
+  birthdate = other29.birthdate;
+  __isset = other29.__isset;
 }
-User& User::operator=(const User& other28) {
-  email = other28.email;
-  userId = other28.userId;
-  name = other28.name;
-  roles = other28.roles;
-  profileImage = other28.profileImage;
-  profileImageLink = other28.profileImageLink;
-  githubProfile = other28.githubProfile;
-  firstName = other28.firstName;
-  middleName = other28.middleName;
-  lastName = other28.lastName;
-  birthdate = other28.birthdate;
-  __isset = other28.__isset;
+User& User::operator=(const User& other30) {
+  email = other30.email;
+  userId = other30.userId;
+  name = other30.name;
+  roles = other30.roles;
+  profileImage = other30.profileImage;
+  profileImageLink = other30.profileImageLink;
+  githubProfile = other30.githubProfile;
+  firstName = other30.firstName;
+  middleName = other30.middleName;
+  lastName = other30.lastName;
+  birthdate = other30.birthdate;
+  __isset = other30.__isset;
   return *this;
 }
 void User::printTo(std::ostream& out) const {
@@ -1460,15 +1530,15 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_SET) {
           {
             this->owners.clear();
-            uint32_t _size29;
-            ::apache::thrift::protocol::TType _etype32;
-            xfer += iprot->readSetBegin(_etype32, _size29);
-            uint32_t _i33;
-            for (_i33 = 0; _i33 < _size29; ++_i33)
+            uint32_t _size31;
+            ::apache::thrift::protocol::TType _etype34;
+            xfer += iprot->readSetBegin(_etype34, _size31);
+            uint32_t _i35;
+            for (_i35 = 0; _i35 < _size31; ++_i35)
             {
-              uuid _elem34;
-              xfer += iprot->readString(_elem34);
-              this->owners.insert(_elem34);
+              uuid _elem36;
+              xfer += iprot->readString(_elem36);
+              this->owners.insert(_elem36);
             }
             xfer += iprot->readSetEnd();
           }
@@ -1519,9 +1589,9 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 7:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast35;
-          xfer += iprot->readI32(ecast35);
-          this->programmingLanguage = (ProgrammingLanguage::type)ecast35;
+          int32_t ecast37;
+          xfer += iprot->readI32(ecast37);
+          this->programmingLanguage = (ProgrammingLanguage::type)ecast37;
           this->__isset.programmingLanguage = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1531,15 +1601,15 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_SET) {
           {
             this->followers.clear();
-            uint32_t _size36;
-            ::apache::thrift::protocol::TType _etype39;
-            xfer += iprot->readSetBegin(_etype39, _size36);
-            uint32_t _i40;
-            for (_i40 = 0; _i40 < _size36; ++_i40)
+            uint32_t _size38;
+            ::apache::thrift::protocol::TType _etype41;
+            xfer += iprot->readSetBegin(_etype41, _size38);
+            uint32_t _i42;
+            for (_i42 = 0; _i42 < _size38; ++_i42)
             {
-              uuid _elem41;
-              xfer += iprot->readString(_elem41);
-              this->followers.insert(_elem41);
+              uuid _elem43;
+              xfer += iprot->readString(_elem43);
+              this->followers.insert(_elem43);
             }
             xfer += iprot->readSetEnd();
           }
@@ -1566,9 +1636,9 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 11:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast42;
-          xfer += iprot->readI32(ecast42);
-          this->tier = (Tier::type)ecast42;
+          int32_t ecast44;
+          xfer += iprot->readI32(ecast44);
+          this->tier = (Tier::type)ecast44;
           this->__isset.tier = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1594,10 +1664,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeFieldBegin("owners", ::apache::thrift::protocol::T_SET, 1);
   {
     xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->owners.size()));
-    std::set<uuid> ::const_iterator _iter43;
-    for (_iter43 = this->owners.begin(); _iter43 != this->owners.end(); ++_iter43)
+    std::set<uuid> ::const_iterator _iter45;
+    for (_iter45 = this->owners.begin(); _iter45 != this->owners.end(); ++_iter45)
     {
-      xfer += oprot->writeString((*_iter43));
+      xfer += oprot->writeString((*_iter45));
     }
     xfer += oprot->writeSetEnd();
   }
@@ -1633,10 +1703,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeFieldBegin("followers", ::apache::thrift::protocol::T_SET, 8);
     {
       xfer += oprot->writeSetBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->followers.size()));
-      std::set<uuid> ::const_iterator _iter44;
-      for (_iter44 = this->followers.begin(); _iter44 != this->followers.end(); ++_iter44)
+      std::set<uuid> ::const_iterator _iter46;
+      for (_iter46 = this->followers.begin(); _iter46 != this->followers.end(); ++_iter46)
       {
-        xfer += oprot->writeString((*_iter44));
+        xfer += oprot->writeString((*_iter46));
       }
       xfer += oprot->writeSetEnd();
     }
@@ -1676,33 +1746,33 @@ void swap(Application &a, Application &b) {
   swap(a.__isset, b.__isset);
 }
 
-Application::Application(const Application& other45) {
-  owners = other45.owners;
-  timeOfProvisioning = other45.timeOfProvisioning;
-  name = other45.name;
-  applicationId = other45.applicationId;
-  totalMessagesSent = other45.totalMessagesSent;
-  icon = other45.icon;
-  programmingLanguage = other45.programmingLanguage;
-  followers = other45.followers;
-  applicationDescription = other45.applicationDescription;
-  organizationId = other45.organizationId;
-  tier = other45.tier;
-  __isset = other45.__isset;
+Application::Application(const Application& other47) {
+  owners = other47.owners;
+  timeOfProvisioning = other47.timeOfProvisioning;
+  name = other47.name;
+  applicationId = other47.applicationId;
+  totalMessagesSent = other47.totalMessagesSent;
+  icon = other47.icon;
+  programmingLanguage = other47.programmingLanguage;
+  followers = other47.followers;
+  applicationDescription = other47.applicationDescription;
+  organizationId = other47.organizationId;
+  tier = other47.tier;
+  __isset = other47.__isset;
 }
-Application& Application::operator=(const Application& other46) {
-  owners = other46.owners;
-  timeOfProvisioning = other46.timeOfProvisioning;
-  name = other46.name;
-  applicationId = other46.applicationId;
-  totalMessagesSent = other46.totalMessagesSent;
-  icon = other46.icon;
-  programmingLanguage = other46.programmingLanguage;
-  followers = other46.followers;
-  applicationDescription = other46.applicationDescription;
-  organizationId = other46.organizationId;
-  tier = other46.tier;
-  __isset = other46.__isset;
+Application& Application::operator=(const Application& other48) {
+  owners = other48.owners;
+  timeOfProvisioning = other48.timeOfProvisioning;
+  name = other48.name;
+  applicationId = other48.applicationId;
+  totalMessagesSent = other48.totalMessagesSent;
+  icon = other48.icon;
+  programmingLanguage = other48.programmingLanguage;
+  followers = other48.followers;
+  applicationDescription = other48.applicationDescription;
+  organizationId = other48.organizationId;
+  tier = other48.tier;
+  __isset = other48.__isset;
   return *this;
 }
 void Application::printTo(std::ostream& out) const {
@@ -1774,9 +1844,9 @@ uint32_t ServiceAnnouncement::read(::apache::thrift::protocol::TProtocol* iprot)
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_I32) {
-          int32_t ecast47;
-          xfer += iprot->readI32(ecast47);
-          this->importance = (Urgency::type)ecast47;
+          int32_t ecast49;
+          xfer += iprot->readI32(ecast49);
+          this->importance = (Urgency::type)ecast49;
           this->__isset.importance = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1845,19 +1915,19 @@ void swap(ServiceAnnouncement &a, ServiceAnnouncement &b) {
   swap(a.__isset, b.__isset);
 }
 
-ServiceAnnouncement::ServiceAnnouncement(const ServiceAnnouncement& other48) {
-  message = other48.message;
-  importance = other48.importance;
-  id = other48.id;
-  timeOfExpiration = other48.timeOfExpiration;
-  __isset = other48.__isset;
+ServiceAnnouncement::ServiceAnnouncement(const ServiceAnnouncement& other50) {
+  message = other50.message;
+  importance = other50.importance;
+  id = other50.id;
+  timeOfExpiration = other50.timeOfExpiration;
+  __isset = other50.__isset;
 }
-ServiceAnnouncement& ServiceAnnouncement::operator=(const ServiceAnnouncement& other49) {
-  message = other49.message;
-  importance = other49.importance;
-  id = other49.id;
-  timeOfExpiration = other49.timeOfExpiration;
-  __isset = other49.__isset;
+ServiceAnnouncement& ServiceAnnouncement::operator=(const ServiceAnnouncement& other51) {
+  message = other51.message;
+  importance = other51.importance;
+  id = other51.id;
+  timeOfExpiration = other51.timeOfExpiration;
+  __isset = other51.__isset;
   return *this;
 }
 void ServiceAnnouncement::printTo(std::ostream& out) const {
