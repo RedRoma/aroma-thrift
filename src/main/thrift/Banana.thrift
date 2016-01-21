@@ -24,6 +24,32 @@ typedef i64 timestamp
  */
 typedef string uuid
 
+
+enum ImageType
+{
+    JPEG = 1,
+    PNG = 2
+}
+
+enum Industry
+{
+    BANKING,
+    ECOMMERCE
+    EDUCATION,
+    GOVERMENT,
+    MARKETING,
+    RETAIL,
+    TECH
+}
+
+
+enum Tier
+{
+    FREE,
+    PAID
+}
+
+
 /**
  * Defines the basic Units of Time Measurement.
  */
@@ -37,6 +63,56 @@ enum TimeUnit
     WEEKS
 }
 
+
+/**
+ * Applications are usually written in one main language.
+ */
+enum ProgrammingLanguage
+{
+    JAVA,
+    CPP,
+    C_SHARP,
+    C,
+    OBJECTIVE_C,
+    SWIFT,
+    DOT_NET,
+    RUBY,
+    GROOVY,
+    PYTHON,
+    PHP,
+    NODE,
+    DART,
+    OTHER
+}
+
+
+/**
+ * Defines the Role(s) that a human in this system
+ * can be.
+ */
+enum Role
+{
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
+}
+
+
+/**
+ * Determines how Important or Severe a Message is.
+ */
+enum Urgency
+{
+    /** Lowest level of urgency. */
+    LOW = 1,
+    /** Middle level of urgency. */
+    MEDIUM = 2,
+    /** Highest level of urgency. */
+    HIGH = 3
+}
+
 /**
  * Defines a Period of Time, or a Length of Time.
  */
@@ -47,11 +123,6 @@ struct LengthOfTime
     2: required long value;
 }
 
-enum ImageType
-{
-    JPEG = 1,
-    PNG = 2
-}
 
 /**
  * 2 Dimensional Image Size.
@@ -69,19 +140,6 @@ struct Image
     3: Dimension dimension;
 }
 
-
-/**
- * Determines how Important or Severe a Message is.
- */
-enum Urgency
-{
-    /** Lowest level of urgency. */
-    LOW = 1,
-    /** Middle level of urgency. */
-    MEDIUM = 2,
-    /** Highest level of urgency. */
-    HIGH = 3
-}
 
 /*
  * TODO: Find a more distinctive name for Message.
@@ -115,16 +173,6 @@ struct Message
     11: uuid applicationId;
 }
 
-enum Industry
-{
-    BANKING,
-    ECOMMERCE
-    EDUCATION,
-    GOVERMENT,
-    MARKETING,
-    RETAIL,
-    TECH
-}
 
 /**
  * An Organization can represent a Company or group of People.
@@ -142,18 +190,6 @@ struct Organization
     9: optional string logoLink;
 }
 
-/**
- * Defines the Role(s) that a human in this system
- * can be.
- */
-enum Role
-{
-    DEVELOPER = 1,
-    OPERATIONS = 2,
-    MANAGER = 3,
-    PRODUCT = 4,
-    QA = 5
-}
 
 /**
  * A User represents a Human who is a uses the Service.
@@ -173,34 +209,6 @@ struct User
     9: optional string middleName;
     10: optional string lastName;
     11: optional timestamp birthdate;
-}
-
-/**
- * Applications are usually written in one main language.
- */
-enum ProgrammingLanguage
-{
-    JAVA,
-    CPP,
-    C_SHARP,
-    C,
-    OBJECTIVE_C,
-    SWIFT,
-    DOT_NET,
-    RUBY,
-    GROOVY,
-    PYTHON,
-    PHP,
-    NODE,
-    DART,
-    OTHER
-}
-
-
-enum Tier
-{
-    FREE,
-    PAID
 }
 
 struct Application

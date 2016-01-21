@@ -19,19 +19,6 @@
 
 namespace aroma { namespace banana { namespace thrift {
 
-struct TimeUnit {
-  enum type {
-    MILLIS = 0,
-    SECONDS = 1,
-    MINUTES = 2,
-    HOURS = 3,
-    DAYS = 4,
-    WEEKS = 5
-  };
-};
-
-extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
-
 struct ImageType {
   enum type {
     JPEG = 1,
@@ -40,16 +27,6 @@ struct ImageType {
 };
 
 extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
-
-struct Urgency {
-  enum type {
-    LOW = 1,
-    MEDIUM = 2,
-    HIGH = 3
-  };
-};
-
-extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
 
 struct Industry {
   enum type {
@@ -65,17 +42,27 @@ struct Industry {
 
 extern const std::map<int, const char*> _Industry_VALUES_TO_NAMES;
 
-struct Role {
+struct Tier {
   enum type {
-    DEVELOPER = 1,
-    OPERATIONS = 2,
-    MANAGER = 3,
-    PRODUCT = 4,
-    QA = 5
+    FREE = 0,
+    PAID = 1
   };
 };
 
-extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
+extern const std::map<int, const char*> _Tier_VALUES_TO_NAMES;
+
+struct TimeUnit {
+  enum type {
+    MILLIS = 0,
+    SECONDS = 1,
+    MINUTES = 2,
+    HOURS = 3,
+    DAYS = 4,
+    WEEKS = 5
+  };
+};
+
+extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
 
 struct ProgrammingLanguage {
   enum type {
@@ -98,14 +85,27 @@ struct ProgrammingLanguage {
 
 extern const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES;
 
-struct Tier {
+struct Role {
   enum type {
-    FREE = 0,
-    PAID = 1
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
   };
 };
 
-extern const std::map<int, const char*> _Tier_VALUES_TO_NAMES;
+extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
+
+struct Urgency {
+  enum type {
+    LOW = 1,
+    MEDIUM = 2,
+    HIGH = 3
+  };
+};
+
+extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
 
 typedef int32_t int;
 

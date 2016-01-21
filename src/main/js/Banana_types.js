@@ -5,22 +5,9 @@
 //
 
 
-TimeUnit = {
-  'MILLIS' : 0,
-  'SECONDS' : 1,
-  'MINUTES' : 2,
-  'HOURS' : 3,
-  'DAYS' : 4,
-  'WEEKS' : 5
-};
 ImageType = {
   'JPEG' : 1,
   'PNG' : 2
-};
-Urgency = {
-  'LOW' : 1,
-  'MEDIUM' : 2,
-  'HIGH' : 3
 };
 Industry = {
   'BANKING' : 0,
@@ -31,12 +18,17 @@ Industry = {
   'RETAIL' : 5,
   'TECH' : 6
 };
-Role = {
-  'DEVELOPER' : 1,
-  'OPERATIONS' : 2,
-  'MANAGER' : 3,
-  'PRODUCT' : 4,
-  'QA' : 5
+Tier = {
+  'FREE' : 0,
+  'PAID' : 1
+};
+TimeUnit = {
+  'MILLIS' : 0,
+  'SECONDS' : 1,
+  'MINUTES' : 2,
+  'HOURS' : 3,
+  'DAYS' : 4,
+  'WEEKS' : 5
 };
 ProgrammingLanguage = {
   'JAVA' : 0,
@@ -54,9 +46,17 @@ ProgrammingLanguage = {
   'DART' : 12,
   'OTHER' : 13
 };
-Tier = {
-  'FREE' : 0,
-  'PAID' : 1
+Role = {
+  'DEVELOPER' : 1,
+  'OPERATIONS' : 2,
+  'MANAGER' : 3,
+  'PRODUCT' : 4,
+  'QA' : 5
+};
+Urgency = {
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
 LengthOfTime = function(args) {
   this.unit = null;

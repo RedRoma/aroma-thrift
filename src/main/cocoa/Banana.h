@@ -19,24 +19,9 @@
 #import "TBaseClient.h"
 
 
-enum Banana_TimeUnit {
-  TimeUnit_MILLIS = 0,
-  TimeUnit_SECONDS = 1,
-  TimeUnit_MINUTES = 2,
-  TimeUnit_HOURS = 3,
-  TimeUnit_DAYS = 4,
-  TimeUnit_WEEKS = 5
-};
-
 enum Banana_ImageType {
   ImageType_JPEG = 1,
   ImageType_PNG = 2
-};
-
-enum Banana_Urgency {
-  Urgency_LOW = 1,
-  Urgency_MEDIUM = 2,
-  Urgency_HIGH = 3
 };
 
 enum Banana_Industry {
@@ -49,12 +34,18 @@ enum Banana_Industry {
   Industry_TECH = 6
 };
 
-enum Banana_Role {
-  Role_DEVELOPER = 1,
-  Role_OPERATIONS = 2,
-  Role_MANAGER = 3,
-  Role_PRODUCT = 4,
-  Role_QA = 5
+enum Banana_Tier {
+  Tier_FREE = 0,
+  Tier_PAID = 1
+};
+
+enum Banana_TimeUnit {
+  TimeUnit_MILLIS = 0,
+  TimeUnit_SECONDS = 1,
+  TimeUnit_MINUTES = 2,
+  TimeUnit_HOURS = 3,
+  TimeUnit_DAYS = 4,
+  TimeUnit_WEEKS = 5
 };
 
 enum Banana_ProgrammingLanguage {
@@ -74,9 +65,18 @@ enum Banana_ProgrammingLanguage {
   ProgrammingLanguage_OTHER = 13
 };
 
-enum Banana_Tier {
-  Tier_FREE = 0,
-  Tier_PAID = 1
+enum Banana_Role {
+  Role_DEVELOPER = 1,
+  Role_OPERATIONS = 2,
+  Role_MANAGER = 3,
+  Role_PRODUCT = 4,
+  Role_QA = 5
+};
+
+enum Banana_Urgency {
+  Urgency_LOW = 1,
+  Urgency_MEDIUM = 2,
+  Urgency_HIGH = 3
 };
 
 typedef int32_t Banana_int;

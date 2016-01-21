@@ -9,22 +9,9 @@ var Q = thrift.Q;
 
 
 var ttypes = module.exports = {};
-ttypes.TimeUnit = {
-  'MILLIS' : 0,
-  'SECONDS' : 1,
-  'MINUTES' : 2,
-  'HOURS' : 3,
-  'DAYS' : 4,
-  'WEEKS' : 5
-};
 ttypes.ImageType = {
   'JPEG' : 1,
   'PNG' : 2
-};
-ttypes.Urgency = {
-  'LOW' : 1,
-  'MEDIUM' : 2,
-  'HIGH' : 3
 };
 ttypes.Industry = {
   'BANKING' : 0,
@@ -35,12 +22,17 @@ ttypes.Industry = {
   'RETAIL' : 5,
   'TECH' : 6
 };
-ttypes.Role = {
-  'DEVELOPER' : 1,
-  'OPERATIONS' : 2,
-  'MANAGER' : 3,
-  'PRODUCT' : 4,
-  'QA' : 5
+ttypes.Tier = {
+  'FREE' : 0,
+  'PAID' : 1
+};
+ttypes.TimeUnit = {
+  'MILLIS' : 0,
+  'SECONDS' : 1,
+  'MINUTES' : 2,
+  'HOURS' : 3,
+  'DAYS' : 4,
+  'WEEKS' : 5
 };
 ttypes.ProgrammingLanguage = {
   'JAVA' : 0,
@@ -58,9 +50,17 @@ ttypes.ProgrammingLanguage = {
   'DART' : 12,
   'OTHER' : 13
 };
-ttypes.Tier = {
-  'FREE' : 0,
-  'PAID' : 1
+ttypes.Role = {
+  'DEVELOPER' : 1,
+  'OPERATIONS' : 2,
+  'MANAGER' : 3,
+  'PRODUCT' : 4,
+  'QA' : 5
+};
+ttypes.Urgency = {
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
 LengthOfTime = module.exports.LengthOfTime = function(args) {
   this.unit = null;

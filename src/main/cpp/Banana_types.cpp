@@ -13,24 +13,6 @@
 
 namespace aroma { namespace banana { namespace thrift {
 
-int _kTimeUnitValues[] = {
-  TimeUnit::MILLIS,
-  TimeUnit::SECONDS,
-  TimeUnit::MINUTES,
-  TimeUnit::HOURS,
-  TimeUnit::DAYS,
-  TimeUnit::WEEKS
-};
-const char* _kTimeUnitNames[] = {
-  "MILLIS",
-  "SECONDS",
-  "MINUTES",
-  "HOURS",
-  "DAYS",
-  "WEEKS"
-};
-const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(6, _kTimeUnitValues, _kTimeUnitNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
-
 int _kImageTypeValues[] = {
   ImageType::JPEG,
   ImageType::PNG
@@ -40,18 +22,6 @@ const char* _kImageTypeNames[] = {
   "PNG"
 };
 const std::map<int, const char*> _ImageType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kImageTypeValues, _kImageTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
-
-int _kUrgencyValues[] = {
-  Urgency::LOW,
-  Urgency::MEDIUM,
-  Urgency::HIGH
-};
-const char* _kUrgencyNames[] = {
-  "LOW",
-  "MEDIUM",
-  "HIGH"
-};
-const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kIndustryValues[] = {
   Industry::BANKING,
@@ -73,21 +43,33 @@ const char* _kIndustryNames[] = {
 };
 const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(7, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
-int _kRoleValues[] = {
-  Role::DEVELOPER,
-  Role::OPERATIONS,
-  Role::MANAGER,
-  Role::PRODUCT,
-  Role::QA
+int _kTierValues[] = {
+  Tier::FREE,
+  Tier::PAID
 };
-const char* _kRoleNames[] = {
-  "DEVELOPER",
-  "OPERATIONS",
-  "MANAGER",
-  "PRODUCT",
-  "QA"
+const char* _kTierNames[] = {
+  "FREE",
+  "PAID"
 };
-const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(5, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+const std::map<int, const char*> _Tier_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTierValues, _kTierNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
+int _kTimeUnitValues[] = {
+  TimeUnit::MILLIS,
+  TimeUnit::SECONDS,
+  TimeUnit::MINUTES,
+  TimeUnit::HOURS,
+  TimeUnit::DAYS,
+  TimeUnit::WEEKS
+};
+const char* _kTimeUnitNames[] = {
+  "MILLIS",
+  "SECONDS",
+  "MINUTES",
+  "HOURS",
+  "DAYS",
+  "WEEKS"
+};
+const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(6, _kTimeUnitValues, _kTimeUnitNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kProgrammingLanguageValues[] = {
   ProgrammingLanguage::JAVA,
@@ -123,15 +105,33 @@ const char* _kProgrammingLanguageNames[] = {
 };
 const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(14, _kProgrammingLanguageValues, _kProgrammingLanguageNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
-int _kTierValues[] = {
-  Tier::FREE,
-  Tier::PAID
+int _kRoleValues[] = {
+  Role::DEVELOPER,
+  Role::OPERATIONS,
+  Role::MANAGER,
+  Role::PRODUCT,
+  Role::QA
 };
-const char* _kTierNames[] = {
-  "FREE",
-  "PAID"
+const char* _kRoleNames[] = {
+  "DEVELOPER",
+  "OPERATIONS",
+  "MANAGER",
+  "PRODUCT",
+  "QA"
 };
-const std::map<int, const char*> _Tier_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kTierValues, _kTierNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(5, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+
+int _kUrgencyValues[] = {
+  Urgency::LOW,
+  Urgency::MEDIUM,
+  Urgency::HIGH
+};
+const char* _kUrgencyNames[] = {
+  "LOW",
+  "MEDIUM",
+  "HIGH"
+};
+const std::map<int, const char*> _Urgency_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(3, _kUrgencyValues, _kUrgencyNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 
 LengthOfTime::~LengthOfTime() throw() {

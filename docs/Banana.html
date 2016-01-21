@@ -218,41 +218,12 @@ code { line-height: 20px; }
 <td></code></td>
 </tr></table>
 <hr/><h2 id="Enumerations">Enumerations</h2>
-<div class="definition"><h3 id="Enum_TimeUnit">Enumeration: TimeUnit</h3>
-Defines the basic Units of Time Measurement.
-<br/><br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>MILLIS</code></td><td><code>0</code></td><td>
-</td></tr>
-<tr><td><code>SECONDS</code></td><td><code>1</code></td><td>
-</td></tr>
-<tr><td><code>MINUTES</code></td><td><code>2</code></td><td>
-</td></tr>
-<tr><td><code>HOURS</code></td><td><code>3</code></td><td>
-</td></tr>
-<tr><td><code>DAYS</code></td><td><code>4</code></td><td>
-</td></tr>
-<tr><td><code>WEEKS</code></td><td><code>5</code></td><td>
-</td></tr>
-</table></div>
 <div class="definition"><h3 id="Enum_ImageType">Enumeration: ImageType</h3>
 <br/><table class="table-bordered table-striped table-condensed">
 <tr><td><code>JPEG</code></td><td><code>1</code></td><td>
 </td></tr>
 <tr><td><code>PNG</code></td><td><code>2</code></td><td>
 </td></tr>
-</table></div>
-<div class="definition"><h3 id="Enum_Urgency">Enumeration: Urgency</h3>
-Determines how Important or Severe a Message is.
-<br/><br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>LOW</code></td><td><code>1</code></td><td>
-Lowest level of urgency.
-<br/></td></tr>
-<tr><td><code>MEDIUM</code></td><td><code>2</code></td><td>
-Middle level of urgency.
-<br/></td></tr>
-<tr><td><code>HIGH</code></td><td><code>3</code></td><td>
-Highest level of urgency.
-<br/></td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_Industry">Enumeration: Industry</h3>
 <br/><table class="table-bordered table-striped table-condensed">
@@ -271,19 +242,27 @@ Highest level of urgency.
 <tr><td><code>TECH</code></td><td><code>6</code></td><td>
 </td></tr>
 </table></div>
-<div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
-Defines the Role(s) that a human in this system
-can be.
+<div class="definition"><h3 id="Enum_Tier">Enumeration: Tier</h3>
+<br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>FREE</code></td><td><code>0</code></td><td>
+</td></tr>
+<tr><td><code>PAID</code></td><td><code>1</code></td><td>
+</td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_TimeUnit">Enumeration: TimeUnit</h3>
+Defines the basic Units of Time Measurement.
 <br/><br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>DEVELOPER</code></td><td><code>1</code></td><td>
+<tr><td><code>MILLIS</code></td><td><code>0</code></td><td>
 </td></tr>
-<tr><td><code>OPERATIONS</code></td><td><code>2</code></td><td>
+<tr><td><code>SECONDS</code></td><td><code>1</code></td><td>
 </td></tr>
-<tr><td><code>MANAGER</code></td><td><code>3</code></td><td>
+<tr><td><code>MINUTES</code></td><td><code>2</code></td><td>
 </td></tr>
-<tr><td><code>PRODUCT</code></td><td><code>4</code></td><td>
+<tr><td><code>HOURS</code></td><td><code>3</code></td><td>
 </td></tr>
-<tr><td><code>QA</code></td><td><code>5</code></td><td>
+<tr><td><code>DAYS</code></td><td><code>4</code></td><td>
+</td></tr>
+<tr><td><code>WEEKS</code></td><td><code>5</code></td><td>
 </td></tr>
 </table></div>
 <div class="definition"><h3 id="Enum_ProgrammingLanguage">Enumeration: ProgrammingLanguage</h3>
@@ -318,12 +297,33 @@ Applications are usually written in one main language.
 <tr><td><code>OTHER</code></td><td><code>13</code></td><td>
 </td></tr>
 </table></div>
-<div class="definition"><h3 id="Enum_Tier">Enumeration: Tier</h3>
-<br/><table class="table-bordered table-striped table-condensed">
-<tr><td><code>FREE</code></td><td><code>0</code></td><td>
+<div class="definition"><h3 id="Enum_Role">Enumeration: Role</h3>
+Defines the Role(s) that a human in this system
+can be.
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>DEVELOPER</code></td><td><code>1</code></td><td>
 </td></tr>
-<tr><td><code>PAID</code></td><td><code>1</code></td><td>
+<tr><td><code>OPERATIONS</code></td><td><code>2</code></td><td>
 </td></tr>
+<tr><td><code>MANAGER</code></td><td><code>3</code></td><td>
+</td></tr>
+<tr><td><code>PRODUCT</code></td><td><code>4</code></td><td>
+</td></tr>
+<tr><td><code>QA</code></td><td><code>5</code></td><td>
+</td></tr>
+</table></div>
+<div class="definition"><h3 id="Enum_Urgency">Enumeration: Urgency</h3>
+Determines how Important or Severe a Message is.
+<br/><br/><table class="table-bordered table-striped table-condensed">
+<tr><td><code>LOW</code></td><td><code>1</code></td><td>
+Lowest level of urgency.
+<br/></td></tr>
+<tr><td><code>MEDIUM</code></td><td><code>2</code></td><td>
+Middle level of urgency.
+<br/></td></tr>
+<tr><td><code>HIGH</code></td><td><code>3</code></td><td>
+Highest level of urgency.
+<br/></td></tr>
 </table></div>
 <hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
