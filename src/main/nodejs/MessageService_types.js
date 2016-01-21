@@ -23,3 +23,5 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'message-srv.banana.aroma.tech','port' : 7011});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'message-srv.beta.banana.aroma.tech','port' : 7011});
+ttypes.DEFAULT_MESSAGE_LIFETIME = new Banana_ttypes.LengthOfTime({
+'value' : 1,'unit' : 4});

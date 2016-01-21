@@ -32,6 +32,7 @@
 static MessageService_int MessageService_SERVICE_PORT = 7011;
 static BananaEndpoint_TcpEndpoint * MessageService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * MessageService_BETA_ENDPOINT;
+static Banana_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
 
 @implementation MessageService_MessageServiceConstants
 + (void) initialize {
@@ -45,6 +46,11 @@ static BananaEndpoint_TcpEndpoint * MessageService_BETA_ENDPOINT;
   [MessageService_BETA_ENDPOINT setPort:7011];
 
 ;
+  MessageService_DEFAULT_MESSAGE_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  [MessageService_DEFAULT_MESSAGE_LIFETIME setValue:1];
+  [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:4];
+
+;
 }
 + (MessageService_int) SERVICE_PORT{
   return MessageService_SERVICE_PORT;
@@ -54,6 +60,9 @@ static BananaEndpoint_TcpEndpoint * MessageService_BETA_ENDPOINT;
 }
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return MessageService_BETA_ENDPOINT;
+}
++ (Banana_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME{
+  return MessageService_DEFAULT_MESSAGE_LIFETIME;
 }
 @end
 

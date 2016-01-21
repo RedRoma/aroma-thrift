@@ -106,4 +106,5 @@ typedef BananaService_GetFullMessageResponse * MessageService_GetFullMessageResp
 + (MessageService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Banana_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME;
 @end

@@ -25,6 +25,12 @@ MessageServiceConstants::MessageServiceConstants() {
 
   BETA_ENDPOINT.port = tmp1;
 
+   ::aroma::banana::thrift::long tmp2;
+  tmp2 = 1LL;
+
+  DEFAULT_MESSAGE_LIFETIME.value = tmp2;
+  DEFAULT_MESSAGE_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
+
 }
 
 }}}}} // namespace

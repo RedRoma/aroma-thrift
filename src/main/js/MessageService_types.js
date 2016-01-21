@@ -10,3 +10,5 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'message-srv.banana.aroma.tech','port' : 7011});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'message-srv.beta.banana.aroma.tech','port' : 7011});
+DEFAULT_MESSAGE_LIFETIME = new LengthOfTime({
+'value' : 1,'unit' : 4});

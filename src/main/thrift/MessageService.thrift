@@ -67,6 +67,9 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "message-srv.ban
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+/** The Default lifetime of a Regular Message sent to the Banana Service. */
+const Banana.LengthOfTime DEFAULT_MESSAGE_LIFETIME = { "value" : 1, "unit" : Banana.TimeUnit.DAYS };
+
 //==========================================================
 // SERVICE DEFINITION
 /**
