@@ -46,6 +46,8 @@ class ChannelDoesNotExistException;
 
 class MessageDoesNotExistException;
 
+class OrganizationDoesNotExistException;
+
 class OperationFailedException;
 
 typedef struct _InvalidArgumentException__isset {
@@ -667,6 +669,54 @@ class MessageDoesNotExistException : public ::apache::thrift::TException {
 void swap(MessageDoesNotExistException &a, MessageDoesNotExistException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const MessageDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _OrganizationDoesNotExistException__isset {
+  _OrganizationDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _OrganizationDoesNotExistException__isset;
+
+class OrganizationDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  OrganizationDoesNotExistException(const OrganizationDoesNotExistException&);
+  OrganizationDoesNotExistException& operator=(const OrganizationDoesNotExistException&);
+  OrganizationDoesNotExistException() : message("The Organization specified does not exist.") {
+  }
+
+  virtual ~OrganizationDoesNotExistException() throw();
+  std::string message;
+
+  _OrganizationDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const OrganizationDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const OrganizationDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const OrganizationDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(OrganizationDoesNotExistException &a, OrganizationDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const OrganizationDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;

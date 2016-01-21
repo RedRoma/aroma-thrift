@@ -1275,6 +1275,103 @@ const char* MessageDoesNotExistException::what() const throw() {
 }
 
 
+OrganizationDoesNotExistException::~OrganizationDoesNotExistException() throw() {
+}
+
+
+void OrganizationDoesNotExistException::__set_message(const std::string& val) {
+  this->message = val;
+}
+
+uint32_t OrganizationDoesNotExistException::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t OrganizationDoesNotExistException::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("OrganizationDoesNotExistException");
+
+  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(OrganizationDoesNotExistException &a, OrganizationDoesNotExistException &b) {
+  using ::std::swap;
+  swap(a.message, b.message);
+  swap(a.__isset, b.__isset);
+}
+
+OrganizationDoesNotExistException::OrganizationDoesNotExistException(const OrganizationDoesNotExistException& other26) : TException() {
+  message = other26.message;
+  __isset = other26.__isset;
+}
+OrganizationDoesNotExistException& OrganizationDoesNotExistException::operator=(const OrganizationDoesNotExistException& other27) {
+  message = other27.message;
+  __isset = other27.__isset;
+  return *this;
+}
+void OrganizationDoesNotExistException::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "OrganizationDoesNotExistException(";
+  out << "message=" << to_string(message);
+  out << ")";
+}
+
+const char* OrganizationDoesNotExistException::what() const throw() {
+  try {
+    std::stringstream ss;
+    ss << "TException - service has thrown: " << *this;
+    this->thriftTExceptionMessageHolder_ = ss.str();
+    return this->thriftTExceptionMessageHolder_.c_str();
+  } catch (const std::exception&) {
+    return "TException - service has thrown: OrganizationDoesNotExistException";
+  }
+}
+
+
 OperationFailedException::~OperationFailedException() throw() {
 }
 
@@ -1344,13 +1441,13 @@ void swap(OperationFailedException &a, OperationFailedException &b) {
   swap(a.__isset, b.__isset);
 }
 
-OperationFailedException::OperationFailedException(const OperationFailedException& other26) : TException() {
-  message = other26.message;
-  __isset = other26.__isset;
+OperationFailedException::OperationFailedException(const OperationFailedException& other28) : TException() {
+  message = other28.message;
+  __isset = other28.__isset;
 }
-OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other27) {
-  message = other27.message;
-  __isset = other27.__isset;
+OperationFailedException& OperationFailedException::operator=(const OperationFailedException& other29) {
+  message = other29.message;
+  __isset = other29.__isset;
   return *this;
 }
 void OperationFailedException::printTo(std::ostream& out) const {

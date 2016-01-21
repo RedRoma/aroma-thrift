@@ -707,6 +707,60 @@ MessageDoesNotExistException.prototype.write = function(output) {
   return;
 };
 
+OrganizationDoesNotExistException = function(args) {
+  this.message = 'The Organization specified does not exist.';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(OrganizationDoesNotExistException, Thrift.TException);
+OrganizationDoesNotExistException.prototype.name = 'OrganizationDoesNotExistException';
+OrganizationDoesNotExistException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+OrganizationDoesNotExistException.prototype.write = function(output) {
+  output.writeStructBegin('OrganizationDoesNotExistException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 OperationFailedException = function(args) {
   this.message = 'The Operation could not be completed';
   if (args) {

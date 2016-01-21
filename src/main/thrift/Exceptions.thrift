@@ -117,6 +117,14 @@ exception MessageDoesNotExistException
 }
 
 /**
+ * Thrown when referencing an Organization that does not exist.
+ */
+exception OrganizationDoesNotExistException
+{
+    1: string message = "The Organization specified does not exist."
+}
+
+/**
  * Thrown when an Operation could not be completed for any reason.
  * This is like a catch-all exception
  */
