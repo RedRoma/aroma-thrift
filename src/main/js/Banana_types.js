@@ -491,6 +491,7 @@ Organization = function(args) {
   this.owners = null;
   this.organizationEmail = null;
   this.stockMarketSymbol = null;
+  this.logoLink = null;
   if (args) {
     if (args.organizationId !== undefined && args.organizationId !== null) {
       this.organizationId = args.organizationId;
@@ -515,6 +516,9 @@ Organization = function(args) {
     }
     if (args.stockMarketSymbol !== undefined && args.stockMarketSymbol !== null) {
       this.stockMarketSymbol = args.stockMarketSymbol;
+    }
+    if (args.logoLink !== undefined && args.logoLink !== null) {
+      this.logoLink = args.logoLink;
     }
   }
 };
@@ -602,6 +606,13 @@ Organization.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.logoLink = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -660,6 +671,11 @@ Organization.prototype.write = function(output) {
   if (this.stockMarketSymbol !== null && this.stockMarketSymbol !== undefined) {
     output.writeFieldBegin('stockMarketSymbol', Thrift.Type.STRING, 8);
     output.writeString(this.stockMarketSymbol);
+    output.writeFieldEnd();
+  }
+  if (this.logoLink !== null && this.logoLink !== undefined) {
+    output.writeFieldBegin('logoLink', Thrift.Type.STRING, 9);
+    output.writeString(this.logoLink);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

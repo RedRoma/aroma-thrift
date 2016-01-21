@@ -316,6 +316,7 @@ typedef NSString * Banana_uuid;
   NSMutableArray * __owners;
   NSString * __organizationEmail;
   NSString * __stockMarketSymbol;
+  NSString * __logoLink;
 
   BOOL __organizationId_isset;
   BOOL __organizationName_isset;
@@ -325,6 +326,7 @@ typedef NSString * Banana_uuid;
   BOOL __owners_isset;
   BOOL __organizationEmail_isset;
   BOOL __stockMarketSymbol_isset;
+  BOOL __logoLink_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -336,10 +338,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
 @property (nonatomic, retain, getter=organizationEmail, setter=setOrganizationEmail:) NSString * organizationEmail;
 @property (nonatomic, retain, getter=stockMarketSymbol, setter=setStockMarketSymbol:) NSString * stockMarketSymbol;
+@property (nonatomic, retain, getter=logoLink, setter=setLogoLink:) NSString * logoLink;
 #endif
 
 - (id) init;
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol;
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -393,6 +396,12 @@ typedef NSString * Banana_uuid;
 - (void) setStockMarketSymbol: (NSString *) stockMarketSymbol;
 #endif
 - (BOOL) stockMarketSymbolIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) logoLink;
+- (void) setLogoLink: (NSString *) logoLink;
+#endif
+- (BOOL) logoLinkIsSet;
 
 @end
 

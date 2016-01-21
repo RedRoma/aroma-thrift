@@ -382,7 +382,7 @@ inline std::ostream& operator<<(std::ostream& out, const Message& obj)
 }
 
 typedef struct _Organization__isset {
-  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false) {}
+  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false) {}
   bool organizationId :1;
   bool organizationName :1;
   bool website :1;
@@ -391,6 +391,7 @@ typedef struct _Organization__isset {
   bool owners :1;
   bool organizationEmail :1;
   bool stockMarketSymbol :1;
+  bool logoLink :1;
 } _Organization__isset;
 
 class Organization {
@@ -398,7 +399,7 @@ class Organization {
 
   Organization(const Organization&);
   Organization& operator=(const Organization&);
-  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol() {
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink() {
   }
 
   virtual ~Organization() throw();
@@ -410,6 +411,7 @@ class Organization {
   std::vector<std::string>  owners;
   std::string organizationEmail;
   std::string stockMarketSymbol;
+  std::string logoLink;
 
   _Organization__isset __isset;
 
@@ -428,6 +430,8 @@ class Organization {
   void __set_organizationEmail(const std::string& val);
 
   void __set_stockMarketSymbol(const std::string& val);
+
+  void __set_logoLink(const std::string& val);
 
   bool operator == (const Organization & rhs) const
   {
@@ -458,6 +462,10 @@ class Organization {
     if (__isset.stockMarketSymbol != rhs.__isset.stockMarketSymbol)
       return false;
     else if (__isset.stockMarketSymbol && !(stockMarketSymbol == rhs.stockMarketSymbol))
+      return false;
+    if (__isset.logoLink != rhs.__isset.logoLink)
+      return false;
+    else if (__isset.logoLink && !(logoLink == rhs.logoLink))
       return false;
     return true;
   }

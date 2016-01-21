@@ -128,6 +128,7 @@ struct Organization
     6: optional list<string> owners;
     7: optional string organizationEmail;
     8: optional string stockMarketSymbol;
+    9: optional string logoLink;
 }
 
 /**

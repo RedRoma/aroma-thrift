@@ -1416,7 +1416,7 @@
   return self;
 }
 
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol
+- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink
 {
   self = [super init];
   __organizationId = [organizationId retain_stub];
@@ -1435,6 +1435,8 @@
   __organizationEmail_isset = YES;
   __stockMarketSymbol = [stockMarketSymbol retain_stub];
   __stockMarketSymbol_isset = YES;
+  __logoLink = [logoLink retain_stub];
+  __logoLink_isset = YES;
   return self;
 }
 
@@ -1481,6 +1483,11 @@
     __stockMarketSymbol = [[decoder decodeObjectForKey: @"stockMarketSymbol"] retain_stub];
     __stockMarketSymbol_isset = YES;
   }
+  if ([decoder containsValueForKey: @"logoLink"])
+  {
+    __logoLink = [[decoder decodeObjectForKey: @"logoLink"] retain_stub];
+    __logoLink_isset = YES;
+  }
   return self;
 }
 
@@ -1517,6 +1524,10 @@
   if (__stockMarketSymbol_isset)
   {
     [encoder encodeObject: __stockMarketSymbol forKey: @"stockMarketSymbol"];
+  }
+  if (__logoLink_isset)
+  {
+    [encoder encodeObject: __logoLink forKey: @"logoLink"];
   }
 }
 
@@ -1563,6 +1574,11 @@
   {
     hash = (hash * 31) ^ [__stockMarketSymbol hash];
   }
+  hash = (hash * 31) ^ __logoLink_isset ? 2654435761 : 0;
+  if (__logoLink_isset)
+  {
+    hash = (hash * 31) ^ [__logoLink hash];
+  }
   return hash;
 }
 
@@ -1607,6 +1623,10 @@
       (__stockMarketSymbol_isset && ((__stockMarketSymbol || other->__stockMarketSymbol) && ![__stockMarketSymbol isEqual:other->__stockMarketSymbol]))) {
     return NO;
   }
+  if ((__logoLink_isset != other->__logoLink_isset) ||
+      (__logoLink_isset && ((__logoLink || other->__logoLink) && ![__logoLink isEqual:other->__logoLink]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1620,6 +1640,7 @@
   [__owners release_stub];
   [__organizationEmail release_stub];
   [__stockMarketSymbol release_stub];
+  [__logoLink release_stub];
   [super dealloc_stub];
 }
 
@@ -1791,6 +1812,27 @@
   __stockMarketSymbol_isset = NO;
 }
 
+- (NSString *) logoLink {
+  return [[__logoLink retain_stub] autorelease_stub];
+}
+
+- (void) setLogoLink: (NSString *) logoLink {
+  [logoLink retain_stub];
+  [__logoLink release_stub];
+  __logoLink = logoLink;
+  __logoLink_isset = YES;
+}
+
+- (BOOL) logoLinkIsSet {
+  return __logoLink_isset;
+}
+
+- (void) unsetLogoLink {
+  [__logoLink release_stub];
+  __logoLink = nil;
+  __logoLink_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1882,6 +1924,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 9:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setLogoLink: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1957,6 +2007,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__logoLink_isset) {
+    if (__logoLink != nil) {
+      [outProtocol writeFieldBeginWithName: @"logoLink" type: TType_STRING fieldID: 9];
+      [outProtocol writeString: __logoLink];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1983,6 +2040,8 @@
   [ms appendFormat: @"\"%@\"", __organizationEmail];
   [ms appendString: @",stockMarketSymbol:"];
   [ms appendFormat: @"\"%@\"", __stockMarketSymbol];
+  [ms appendString: @",logoLink:"];
+  [ms appendFormat: @"\"%@\"", __logoLink];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

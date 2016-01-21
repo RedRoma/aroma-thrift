@@ -800,6 +800,11 @@ void Organization::__set_stockMarketSymbol(const std::string& val) {
 __isset.stockMarketSymbol = true;
 }
 
+void Organization::__set_logoLink(const std::string& val) {
+  this->logoLink = val;
+__isset.logoLink = true;
+}
+
 uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -897,6 +902,14 @@ uint32_t Organization::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 9:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->logoLink);
+          this->__isset.logoLink = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -960,6 +973,11 @@ uint32_t Organization::write(::apache::thrift::protocol::TProtocol* oprot) const
     xfer += oprot->writeString(this->stockMarketSymbol);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.logoLink) {
+    xfer += oprot->writeFieldBegin("logoLink", ::apache::thrift::protocol::T_STRING, 9);
+    xfer += oprot->writeString(this->logoLink);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -975,6 +993,7 @@ void swap(Organization &a, Organization &b) {
   swap(a.owners, b.owners);
   swap(a.organizationEmail, b.organizationEmail);
   swap(a.stockMarketSymbol, b.stockMarketSymbol);
+  swap(a.logoLink, b.logoLink);
   swap(a.__isset, b.__isset);
 }
 
@@ -987,6 +1006,7 @@ Organization::Organization(const Organization& other17) {
   owners = other17.owners;
   organizationEmail = other17.organizationEmail;
   stockMarketSymbol = other17.stockMarketSymbol;
+  logoLink = other17.logoLink;
   __isset = other17.__isset;
 }
 Organization& Organization::operator=(const Organization& other18) {
@@ -998,6 +1018,7 @@ Organization& Organization::operator=(const Organization& other18) {
   owners = other18.owners;
   organizationEmail = other18.organizationEmail;
   stockMarketSymbol = other18.stockMarketSymbol;
+  logoLink = other18.logoLink;
   __isset = other18.__isset;
   return *this;
 }
@@ -1012,6 +1033,7 @@ void Organization::printTo(std::ostream& out) const {
   out << ", " << "owners="; (__isset.owners ? (out << to_string(owners)) : (out << "<null>"));
   out << ", " << "organizationEmail="; (__isset.organizationEmail ? (out << to_string(organizationEmail)) : (out << "<null>"));
   out << ", " << "stockMarketSymbol="; (__isset.stockMarketSymbol ? (out << to_string(stockMarketSymbol)) : (out << "<null>"));
+  out << ", " << "logoLink="; (__isset.logoLink ? (out << to_string(logoLink)) : (out << "<null>"));
   out << ")";
 }
 
