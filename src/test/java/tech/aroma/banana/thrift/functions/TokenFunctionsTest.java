@@ -16,21 +16,21 @@
 
 package tech.aroma.banana.thrift.functions;
 
+import java.util.function.Function;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
 import tech.aroma.banana.thrift.authentication.UserToken;
-import tech.sirwellington.alchemy.generator.BooleanGenerators;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.GenerateString;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.HEXADECIMAL;
 import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.UUID;
@@ -39,6 +39,7 @@ import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.
  *
  * @author SirWellington
  */
+@Repeat(100)
 @RunWith(AlchemyTestRunner.class)
 public class TokenFunctionsTest
 {
@@ -55,29 +56,13 @@ public class TokenFunctionsTest
     @GeneratePojo
     private UserToken userToken;
 
+    @GeneratePojo
     private AuthenticationToken authenticationToken;
 
     @Before
     public void setUp()
     {
-        authenticationToken = new AuthenticationToken();
 
-        boolean heads = one(BooleanGenerators.booleans());
-
-        applicationToken.setTokenId(tokenId);
-        applicationToken.setApplicationId(ownerId);
-
-        userToken.setTokenId(tokenId);
-        userToken.setUserId(ownerId);
-
-        if (heads)
-        {
-            authenticationToken.setApplicationToken(applicationToken);
-        }
-        else
-        {
-            authenticationToken.setUserToken(userToken);
-        }
     }
 
     @Test
@@ -85,52 +70,71 @@ public class TokenFunctionsTest
     {
         assertThrows(() -> TokenFunctions.class.newInstance())
             .isInstanceOf(IllegalAccessException.class);
-
-    }
-
-    @Repeat(1000)
-    @Test
-    public void testExtractTokenId()
-    {
-        String result = TokenFunctions.extractTokenId(authenticationToken);
-        assertThat(result, is(tokenId));
-
     }
 
     @Test
-    public void testExtractTokenIdEdgeCases()
+    public void testAuthTokenToAppTokenFunction()
     {
-        assertThrows(() -> TokenFunctions.extractTokenId(null))
-            .isInstanceOf(IllegalArgumentException.class);
-
-        assertThrows(() -> TokenFunctions.extractTokenId(new AuthenticationToken()))
-            .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Repeat(1000)
-    @Test
-    public void testExtractOwnerId()
-    {
-        String result = TokenFunctions.extractOwnerId(authenticationToken);
-        assertThat(result, is(ownerId));
+        Function<AuthenticationToken, ApplicationToken> function = TokenFunctions.authTokenToAppTokenFunction();
+        assertThat(function, notNullValue());
+        
+        ApplicationToken result = function.apply(authenticationToken);
+        
+        assertAppTokenMatch(authenticationToken, result);
     }
 
     @Test
-    public void testExtractOwnerIdWithBadArgs()
+    public void testAppTokenToAuthTokenFunction()
     {
-        assertThrows(() -> TokenFunctions.extractOwnerId(null))
-            .isInstanceOf(IllegalArgumentException.class);
+        Function<ApplicationToken, AuthenticationToken> function = TokenFunctions.appTokenToAuthTokenFunction();
+        assertThat(function, notNullValue());
 
-        UserToken emptyUserToken = new UserToken();
-        authenticationToken.setUserToken(emptyUserToken);
-        assertThrows(() -> TokenFunctions.extractOwnerId(authenticationToken))
-            .isInstanceOf(IllegalArgumentException.class);
+        AuthenticationToken result = function.apply(applicationToken);
+        assertAppTokenMatch(result, applicationToken);
+    }
 
-        ApplicationToken emptyAppToken = new ApplicationToken();
-        authenticationToken.setApplicationToken(emptyAppToken);
-        assertThrows(() -> TokenFunctions.extractOwnerId(authenticationToken))
-            .isInstanceOf(IllegalArgumentException.class);
+    @Test
+    public void testAuthTokenToUserTokenFunction()
+    {
+        Function<AuthenticationToken, UserToken> function = TokenFunctions.authTokenToUserTokenFunction();
+        assertThat(function, notNullValue());
 
+        UserToken result = function.apply(authenticationToken);
+        assertUserTokenMatch(authenticationToken, result);
+        
+    }
+
+    @Test
+    public void testUserTokenToAuthTokenFunction()
+    {
+        Function<UserToken, AuthenticationToken> function = TokenFunctions.userTokenToAuthTokenFunction();
+        assertThat(function, notNullValue());
+
+        AuthenticationToken result = function.apply(userToken);
+        assertUserTokenMatch(result, userToken);
+    }
+
+    private void assertAppTokenMatch(AuthenticationToken auth, ApplicationToken app)
+    {
+        assertThat(auth, notNullValue());
+        assertThat(app, notNullValue());
+        
+        assertThat(auth.tokenId, is(app.tokenId));
+        assertThat(auth.ownerId, is(app.applicationId));
+        assertThat(auth.organizationId, is(app.organization));
+        assertThat(auth.timeOfExpiration, is(app.timeOfExpiration));
+        assertThat(auth.ownerName, is(app.applicationName));
+    }
+
+    private void assertUserTokenMatch(AuthenticationToken auth, UserToken user)
+    {
+        assertThat(auth, notNullValue());
+        assertThat(user, notNullValue());
+        
+        assertThat(auth.tokenId, is(user.tokenId));
+        assertThat(auth.ownerId, is(user.userId));
+        assertThat(auth.organizationId, is(user.organization));
+        assertThat(auth.timeOfExpiration, is(user.timeOfExpiration));
     }
 
 }
