@@ -22,7 +22,7 @@ import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
 import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
-import tech.sirwellington.alchemy.annotations.arguments.NonNull;
+import tech.sirwellington.alchemy.annotations.arguments.Required;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
@@ -43,7 +43,7 @@ public final class TokenFunctions
         throw new IllegalAccessException("cannot instantiate");
     }
 
-    public static String extractTokenId(@NonNull AuthenticationToken token) throws IllegalArgumentException
+    public static String extractTokenId(@Required AuthenticationToken token) throws IllegalArgumentException
     {
         checkThat(token).is(notNull());
 
