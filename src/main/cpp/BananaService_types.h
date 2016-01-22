@@ -398,12 +398,15 @@ inline std::ostream& operator<<(std::ostream& out, const DismissMessageResponse&
 }
 
 typedef struct _ProvisionApplicationRequest__isset {
-  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organizationId(false), icon(false) {}
+  _ProvisionApplicationRequest__isset() : token(false), applicationName(false), programmingLanguage(false), organizationId(false), icon(false), owners(false), applicationDescription(true), tier(true) {}
   bool token :1;
   bool applicationName :1;
   bool programmingLanguage :1;
   bool organizationId :1;
   bool icon :1;
+  bool owners :1;
+  bool applicationDescription :1;
+  bool tier :1;
 } _ProvisionApplicationRequest__isset;
 
 class ProvisionApplicationRequest {
@@ -411,7 +414,9 @@ class ProvisionApplicationRequest {
 
   ProvisionApplicationRequest(const ProvisionApplicationRequest&);
   ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organizationId() {
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organizationId(), applicationDescription(""), tier(( ::aroma::banana::thrift::Tier::type)0) {
+    tier = ( ::aroma::banana::thrift::Tier::type)0;
+
   }
 
   virtual ~ProvisionApplicationRequest() throw();
@@ -420,6 +425,9 @@ class ProvisionApplicationRequest {
    ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
   uuid organizationId;
   Image icon;
+  std::set<uuid>  owners;
+  std::string applicationDescription;
+   ::aroma::banana::thrift::Tier::type tier;
 
   _ProvisionApplicationRequest__isset __isset;
 
@@ -432,6 +440,12 @@ class ProvisionApplicationRequest {
   void __set_organizationId(const uuid& val);
 
   void __set_icon(const Image& val);
+
+  void __set_owners(const std::set<uuid> & val);
+
+  void __set_applicationDescription(const std::string& val);
+
+  void __set_tier(const  ::aroma::banana::thrift::Tier::type val);
 
   bool operator == (const ProvisionApplicationRequest & rhs) const
   {
@@ -448,6 +462,18 @@ class ProvisionApplicationRequest {
     if (__isset.icon != rhs.__isset.icon)
       return false;
     else if (__isset.icon && !(icon == rhs.icon))
+      return false;
+    if (__isset.owners != rhs.__isset.owners)
+      return false;
+    else if (__isset.owners && !(owners == rhs.owners))
+      return false;
+    if (__isset.applicationDescription != rhs.__isset.applicationDescription)
+      return false;
+    else if (__isset.applicationDescription && !(applicationDescription == rhs.applicationDescription))
+      return false;
+    if (__isset.tier != rhs.__isset.tier)
+      return false;
+    else if (__isset.tier && !(tier == rhs.tier))
       return false;
     return true;
   }
@@ -472,9 +498,7 @@ inline std::ostream& operator<<(std::ostream& out, const ProvisionApplicationReq
 }
 
 typedef struct _ProvisionApplicationResponse__isset {
-  _ProvisionApplicationResponse__isset() : applicationId(false), applicationName(false), applicationToken(false), applicationInfo(false) {}
-  bool applicationId :1;
-  bool applicationName :1;
+  _ProvisionApplicationResponse__isset() : applicationToken(false), applicationInfo(false) {}
   bool applicationToken :1;
   bool applicationInfo :1;
 } _ProvisionApplicationResponse__isset;
@@ -484,20 +508,14 @@ class ProvisionApplicationResponse {
 
   ProvisionApplicationResponse(const ProvisionApplicationResponse&);
   ProvisionApplicationResponse& operator=(const ProvisionApplicationResponse&);
-  ProvisionApplicationResponse() : applicationId(), applicationName() {
+  ProvisionApplicationResponse() {
   }
 
   virtual ~ProvisionApplicationResponse() throw();
-  uuid applicationId;
-  std::string applicationName;
   ApplicationToken applicationToken;
   Application applicationInfo;
 
   _ProvisionApplicationResponse__isset __isset;
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_applicationName(const std::string& val);
 
   void __set_applicationToken(const ApplicationToken& val);
 
@@ -505,10 +523,6 @@ class ProvisionApplicationResponse {
 
   bool operator == (const ProvisionApplicationResponse & rhs) const
   {
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
     if (!(applicationToken == rhs.applicationToken))
       return false;
     if (!(applicationInfo == rhs.applicationInfo))
@@ -1303,10 +1317,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp53;
-    tmp53 = 4LL;
+     ::aroma::banana::thrift::long tmp61;
+    tmp61 = 4LL;
 
-    lengthOfTime.value = tmp53;
+    lengthOfTime.value = tmp61;
     lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
 
   }

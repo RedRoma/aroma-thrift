@@ -154,14 +154,15 @@ struct ProvisionApplicationRequest
     3: optional Banana.ProgrammingLanguage programmingLanguage;
     4: uuid organizationId;
     5: optional Image icon;
+    6: optional set<uuid> owners;
+    7: optional string applicationDescription = "";
+    8: optional Banana.Tier tier = Banana.Tier.FREE;
 }
 
 struct ProvisionApplicationResponse
 {
-    1: uuid applicationId;
-    2: string applicationName;
-    3: ApplicationToken applicationToken;
-    4: Application applicationInfo;
+    1: ApplicationToken applicationToken;
+    2: Application applicationInfo;
 }
 
 /**

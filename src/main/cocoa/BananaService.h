@@ -239,12 +239,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   int __programmingLanguage;
   BananaService_uuid __organizationId;
   BananaService_Image __icon;
+  NSMutableSet * __owners;
+  NSString * __applicationDescription;
+  int __tier;
 
   BOOL __token_isset;
   BOOL __applicationName_isset;
   BOOL __programmingLanguage_isset;
   BOOL __organizationId_isset;
   BOOL __icon_isset;
+  BOOL __owners_isset;
+  BOOL __applicationDescription_isset;
+  BOOL __tier_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -253,10 +259,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
 @property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
+@property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
+@property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
+@property (nonatomic, getter=tier, setter=setTier:) int tier;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (BananaService_uuid) organizationId icon: (BananaService_Image) icon;
+- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (BananaService_uuid) organizationId icon: (BananaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -293,46 +302,46 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 #endif
 - (BOOL) iconIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSMutableSet *) owners;
+- (void) setOwners: (NSMutableSet *) owners;
+#endif
+- (BOOL) ownersIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationDescription;
+- (void) setApplicationDescription: (NSString *) applicationDescription;
+#endif
+- (BOOL) applicationDescriptionIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tier;
+- (void) setTier: (int) tier;
+#endif
+- (BOOL) tierIsSet;
+
 @end
 
 @interface BananaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
-  BananaService_uuid __applicationId;
-  NSString * __applicationName;
   BananaService_ApplicationToken __applicationToken;
   BananaService_Application __applicationInfo;
 
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
   BOOL __applicationToken_isset;
   BOOL __applicationInfo_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
 @property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) BananaService_Application applicationInfo;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (BananaService_uuid) applicationId applicationName: (NSString *) applicationName applicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo;
+- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaService_ApplicationToken) applicationToken;
