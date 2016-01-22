@@ -15,7 +15,7 @@
  */
 
  
-package tech.aroma.banana.thrift.notification.service;
+package tech.aroma.banana.thrift.services;
 
 
 import org.apache.thrift.TException;
@@ -24,6 +24,9 @@ import org.slf4j.LoggerFactory;
 import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
 import tech.aroma.banana.thrift.exceptions.OperationFailedException;
+import tech.aroma.banana.thrift.notification.service.NotificationService;
+import tech.aroma.banana.thrift.notification.service.SendNotificationRequest;
+import tech.aroma.banana.thrift.notification.service.SendNotificationResponse;
 import tech.aroma.banana.thrift.service.BananaServiceConstants;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
