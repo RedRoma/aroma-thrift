@@ -24,6 +24,7 @@ import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
 import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
+import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.GenerateString;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -77,10 +78,23 @@ public class TokenFunctionsTest
     {
         Function<AuthenticationToken, ApplicationToken> function = TokenFunctions.authTokenToAppTokenFunction();
         assertThat(function, notNullValue());
-        
+
         ApplicationToken result = function.apply(authenticationToken);
-        
+
         assertAppTokenMatch(authenticationToken, result);
+    }
+
+    @DontRepeat
+    @Test
+    public void testAuthTokenToAppTokenFunctionWithEmpty()
+    {
+        Function<AuthenticationToken, ApplicationToken> function = TokenFunctions.authTokenToAppTokenFunction();
+        assertThat(function, notNullValue());
+
+        AuthenticationToken emptyToken = new AuthenticationToken();
+        ApplicationToken result = function.apply(emptyToken);
+
+        assertAppTokenMatch(emptyToken, result);
     }
 
     @Test
@@ -93,6 +107,18 @@ public class TokenFunctionsTest
         assertAppTokenMatch(result, applicationToken);
     }
 
+    @DontRepeat
+    @Test
+    public void testAppTokenToAuthTokenFunctionWithEmpty()
+    {
+        Function<ApplicationToken, AuthenticationToken> function = TokenFunctions.appTokenToAuthTokenFunction();
+        assertThat(function, notNullValue());
+
+        ApplicationToken emptyToken = new ApplicationToken();
+        AuthenticationToken result = function.apply(emptyToken);
+        assertAppTokenMatch(result, emptyToken);
+    }
+
     @Test
     public void testAuthTokenToUserTokenFunction()
     {
@@ -101,7 +127,21 @@ public class TokenFunctionsTest
 
         UserToken result = function.apply(authenticationToken);
         assertUserTokenMatch(authenticationToken, result);
-        
+
+    }
+
+    @DontRepeat
+    @Test
+    public void testAuthTokenToUserTokenFunctionWithEmpty()
+    {
+        Function<AuthenticationToken, UserToken> function = TokenFunctions.authTokenToUserTokenFunction();
+        assertThat(function, notNullValue());
+
+        AuthenticationToken emptyToken = new AuthenticationToken();
+
+        UserToken result = function.apply(emptyToken);
+        assertUserTokenMatch(emptyToken, result);
+
     }
 
     @Test
@@ -114,11 +154,23 @@ public class TokenFunctionsTest
         assertUserTokenMatch(result, userToken);
     }
 
+    @DontRepeat
+    @Test
+    public void testUserTokenToAuthTokenFunctionWithEmpty()
+    {
+        Function<UserToken, AuthenticationToken> function = TokenFunctions.userTokenToAuthTokenFunction();
+        assertThat(function, notNullValue());
+
+        UserToken emptyToken = new UserToken();
+        AuthenticationToken result = function.apply(emptyToken);
+        assertUserTokenMatch(result, emptyToken);
+    }
+
     private void assertAppTokenMatch(AuthenticationToken auth, ApplicationToken app)
     {
         assertThat(auth, notNullValue());
         assertThat(app, notNullValue());
-        
+
         assertThat(auth.tokenId, is(app.tokenId));
         assertThat(auth.ownerId, is(app.applicationId));
         assertThat(auth.organizationId, is(app.organization));
@@ -130,7 +182,7 @@ public class TokenFunctionsTest
     {
         assertThat(auth, notNullValue());
         assertThat(user, notNullValue());
-        
+
         assertThat(auth.tokenId, is(user.tokenId));
         assertThat(auth.ownerId, is(user.userId));
         assertThat(auth.organizationId, is(user.organization));
