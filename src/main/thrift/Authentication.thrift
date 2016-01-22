@@ -12,13 +12,14 @@ include "Banana.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 struct ApplicationToken
 {
     1: string tokenId;
     2: optional string organization;
     3: timestamp timeOfExpiration;
-    4: optional string applicationId;
+    4: optional uuid applicationId;
     5: optional string applicationName;
 }
 
@@ -29,6 +30,7 @@ struct UserToken
     3: optional string organization;
     4: optional bool isOauthToken = false;
     5: optional string oauthProvider;
+    6: uuid userId;
 }
 
 struct GithubToken

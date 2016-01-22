@@ -32,7 +32,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName
+- (id) initWithTokenId: (NSString *) tokenId organization: (NSString *) organization timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration applicationId: (BananaAuthentication_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -413,7 +413,7 @@
   return self;
 }
 
-- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider
+- (id) initWithTokenId: (NSString *) tokenId timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration organization: (NSString *) organization isOauthToken: (BOOL) isOauthToken oauthProvider: (NSString *) oauthProvider userId: (BananaAuthentication_uuid) userId
 {
   self = [super init];
   __tokenId = [tokenId retain_stub];
@@ -426,6 +426,8 @@
   __isOauthToken_isset = YES;
   __oauthProvider = [oauthProvider retain_stub];
   __oauthProvider_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
   return self;
 }
 
@@ -457,6 +459,11 @@
     __oauthProvider = [[decoder decodeObjectForKey: @"oauthProvider"] retain_stub];
     __oauthProvider_isset = YES;
   }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
   return self;
 }
 
@@ -481,6 +488,10 @@
   if (__oauthProvider_isset)
   {
     [encoder encodeObject: __oauthProvider forKey: @"oauthProvider"];
+  }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
   }
 }
 
@@ -511,6 +522,11 @@
   if (__oauthProvider_isset)
   {
     hash = (hash * 31) ^ [__oauthProvider hash];
+  }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
   }
   return hash;
 }
@@ -544,6 +560,10 @@
       (__oauthProvider_isset && ((__oauthProvider || other->__oauthProvider) && ![__oauthProvider isEqual:other->__oauthProvider]))) {
     return NO;
   }
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -552,6 +572,7 @@
   [__tokenId release_stub];
   [__organization release_stub];
   [__oauthProvider release_stub];
+  [__userId release_stub];
   [super dealloc_stub];
 }
 
@@ -652,6 +673,27 @@
   __oauthProvider_isset = NO;
 }
 
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -707,6 +749,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -749,6 +799,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __userId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -769,6 +826,8 @@
   [ms appendFormat: @"%i", __isOauthToken];
   [ms appendString: @",oauthProvider:"];
   [ms appendFormat: @"\"%@\"", __oauthProvider];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

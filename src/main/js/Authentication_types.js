@@ -129,6 +129,7 @@ UserToken = function(args) {
   this.organization = null;
   this.isOauthToken = false;
   this.oauthProvider = null;
+  this.userId = null;
   if (args) {
     if (args.tokenId !== undefined && args.tokenId !== null) {
       this.tokenId = args.tokenId;
@@ -144,6 +145,9 @@ UserToken = function(args) {
     }
     if (args.oauthProvider !== undefined && args.oauthProvider !== null) {
       this.oauthProvider = args.oauthProvider;
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
@@ -196,6 +200,13 @@ UserToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -230,6 +241,11 @@ UserToken.prototype.write = function(output) {
   if (this.oauthProvider !== null && this.oauthProvider !== undefined) {
     output.writeFieldBegin('oauthProvider', Thrift.Type.STRING, 5);
     output.writeString(this.oauthProvider);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 6);
+    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -35,6 +35,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 class ApplicationToken;
 
 class UserToken;
@@ -70,7 +72,7 @@ class ApplicationToken {
   std::string tokenId;
   std::string organization;
   timestamp timeOfExpiration;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationToken__isset __isset;
@@ -81,7 +83,7 @@ class ApplicationToken {
 
   void __set_timeOfExpiration(const timestamp val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -126,12 +128,13 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
 }
 
 typedef struct _UserToken__isset {
-  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false), userId(false) {}
   bool tokenId :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
+  bool userId :1;
 } _UserToken__isset;
 
 class UserToken {
@@ -139,7 +142,7 @@ class UserToken {
 
   UserToken(const UserToken&);
   UserToken& operator=(const UserToken&);
-  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider(), userId() {
   }
 
   virtual ~UserToken() throw();
@@ -148,6 +151,7 @@ class UserToken {
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
+  uuid userId;
 
   _UserToken__isset __isset;
 
@@ -160,6 +164,8 @@ class UserToken {
   void __set_isOauthToken(const bool val);
 
   void __set_oauthProvider(const std::string& val);
+
+  void __set_userId(const uuid& val);
 
   bool operator == (const UserToken & rhs) const
   {
@@ -178,6 +184,8 @@ class UserToken {
     if (__isset.oauthProvider != rhs.__isset.oauthProvider)
       return false;
     else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
+      return false;
+    if (!(userId == rhs.userId))
       return false;
     return true;
   }

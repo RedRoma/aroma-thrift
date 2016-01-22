@@ -41,7 +41,7 @@ void ApplicationToken::__set_timeOfExpiration(const timestamp val) {
   this->timeOfExpiration = val;
 }
 
-void ApplicationToken::__set_applicationId(const std::string& val) {
+void ApplicationToken::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 __isset.applicationId = true;
 }
@@ -223,6 +223,10 @@ void UserToken::__set_oauthProvider(const std::string& val) {
 __isset.oauthProvider = true;
 }
 
+void UserToken::__set_userId(const uuid& val) {
+  this->userId = val;
+}
+
 uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -284,6 +288,14 @@ uint32_t UserToken::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->userId);
+          this->__isset.userId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -324,6 +336,10 @@ uint32_t UserToken::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeString(this->oauthProvider);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 6);
+  xfer += oprot->writeString(this->userId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -336,6 +352,7 @@ void swap(UserToken &a, UserToken &b) {
   swap(a.organization, b.organization);
   swap(a.isOauthToken, b.isOauthToken);
   swap(a.oauthProvider, b.oauthProvider);
+  swap(a.userId, b.userId);
   swap(a.__isset, b.__isset);
 }
 
@@ -345,6 +362,7 @@ UserToken::UserToken(const UserToken& other2) {
   organization = other2.organization;
   isOauthToken = other2.isOauthToken;
   oauthProvider = other2.oauthProvider;
+  userId = other2.userId;
   __isset = other2.__isset;
 }
 UserToken& UserToken::operator=(const UserToken& other3) {
@@ -353,6 +371,7 @@ UserToken& UserToken::operator=(const UserToken& other3) {
   organization = other3.organization;
   isOauthToken = other3.isOauthToken;
   oauthProvider = other3.oauthProvider;
+  userId = other3.userId;
   __isset = other3.__isset;
   return *this;
 }
@@ -364,6 +383,7 @@ void UserToken::printTo(std::ostream& out) const {
   out << ", " << "organization="; (__isset.organization ? (out << to_string(organization)) : (out << "<null>"));
   out << ", " << "isOauthToken="; (__isset.isOauthToken ? (out << to_string(isOauthToken)) : (out << "<null>"));
   out << ", " << "oauthProvider="; (__isset.oauthProvider ? (out << to_string(oauthProvider)) : (out << "<null>"));
+  out << ", " << "userId=" << to_string(userId);
   out << ")";
 }
 
