@@ -33,6 +33,7 @@ import static org.junit.Assert.assertThat;
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.HEXADECIMAL;
+import static tech.sirwellington.alchemy.test.junit.runners.GenerateString.Type.UUID;
 
 /**
  *
@@ -44,6 +45,9 @@ public class TokenFunctionsTest
 
     @GenerateString(HEXADECIMAL)
     private String tokenId;
+
+    @GenerateString(UUID)
+    private String ownerId;
 
     @GeneratePojo
     private ApplicationToken applicationToken;
@@ -61,7 +65,10 @@ public class TokenFunctionsTest
         boolean heads = one(BooleanGenerators.booleans());
 
         applicationToken.setTokenId(tokenId);
+        applicationToken.setApplicationId(ownerId);
+
         userToken.setTokenId(tokenId);
+        userToken.setUserId(ownerId);
 
         if (heads)
         {
@@ -81,7 +88,7 @@ public class TokenFunctionsTest
 
     }
 
-    @Repeat(100)
+    @Repeat(1000)
     @Test
     public void testExtractTokenId()
     {
@@ -98,6 +105,32 @@ public class TokenFunctionsTest
 
         assertThrows(() -> TokenFunctions.extractTokenId(new AuthenticationToken()))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Repeat(1000)
+    @Test
+    public void testExtractOwnerId()
+    {
+        String result = TokenFunctions.extractOwnerId(authenticationToken);
+        assertThat(result, is(ownerId));
+    }
+
+    @Test
+    public void testExtractOwnerIdWithBadArgs()
+    {
+        assertThrows(() -> TokenFunctions.extractOwnerId(null))
+            .isInstanceOf(IllegalArgumentException.class);
+
+        UserToken emptyUserToken = new UserToken();
+        authenticationToken.setUserToken(emptyUserToken);
+        assertThrows(() -> TokenFunctions.extractOwnerId(authenticationToken))
+            .isInstanceOf(IllegalArgumentException.class);
+
+        ApplicationToken emptyAppToken = new ApplicationToken();
+        authenticationToken.setApplicationToken(emptyAppToken);
+        assertThrows(() -> TokenFunctions.extractOwnerId(authenticationToken))
+            .isInstanceOf(IllegalArgumentException.class);
+
     }
 
 }

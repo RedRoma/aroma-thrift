@@ -71,4 +71,31 @@ public final class TokenFunctions
 
         throw new IllegalArgumentException("Unexpected Authentication Token Type:" + token);
     }
+    
+    public static String extractOwnerId(@Required AuthenticationToken token) throws IllegalArgumentException
+    {
+        checkThat(token).is(notNull());
+        
+        if (token.isSetApplicationToken())
+        {
+            String appId = token.getApplicationToken().getApplicationId();
+            checkThat(appId)
+                .usingMessage("Application Token is missing appId")
+                .is(nonEmptyString());
+            
+            return appId;
+        }
+        
+        if (token.isSetUserToken())
+        {
+            String userId = token.getUserToken().getUserId();
+            checkThat(userId)
+                .usingMessage("User Token is missing userId")
+                .is(nonEmptyString());
+            
+            return userId;
+        }
+        
+        throw new IllegalArgumentException("Unexpected Token type: " + token);
+    }
 }
