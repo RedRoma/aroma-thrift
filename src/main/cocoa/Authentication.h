@@ -334,20 +334,38 @@ typedef Banana_uuid BananaAuthentication_uuid;
 @end
 
 @interface BananaAuthentication_AuthenticationToken : NSObject <TBase, NSCoding> {
-  BananaAuthentication_ApplicationToken * __applicationToken;
-  BananaAuthentication_UserToken * __userToken;
+  NSString * __tokenId;
+  BananaAuthentication_uuid __ownerId;
+  BananaAuthentication_timestamp __timeOfCreation;
+  BananaAuthentication_timestamp __timeOfExpiration;
+  int __tokenType;
+  BananaAuthentication_uuid __organizationId;
+  NSString * __ownerName;
+  NSString * __organizationName;
 
-  BOOL __applicationToken_isset;
-  BOOL __userToken_isset;
+  BOOL __tokenId_isset;
+  BOOL __ownerId_isset;
+  BOOL __timeOfCreation_isset;
+  BOOL __timeOfExpiration_isset;
+  BOOL __tokenType_isset;
+  BOOL __organizationId_isset;
+  BOOL __ownerName_isset;
+  BOOL __organizationName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaAuthentication_ApplicationToken * applicationToken;
-@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaAuthentication_UserToken * userToken;
+@property (nonatomic, retain, getter=tokenId, setter=setTokenId:) NSString * tokenId;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) BananaAuthentication_uuid ownerId;
+@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) BananaAuthentication_timestamp timeOfCreation;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) BananaAuthentication_timestamp timeOfExpiration;
+@property (nonatomic, getter=tokenType, setter=setTokenType:) int tokenType;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaAuthentication_uuid organizationId;
+@property (nonatomic, retain, getter=ownerName, setter=setOwnerName:) NSString * ownerName;
+@property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken userToken: (BananaAuthentication_UserToken *) userToken;
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (BananaAuthentication_uuid) ownerId timeOfCreation: (BananaAuthentication_timestamp) timeOfCreation timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (BananaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -355,16 +373,52 @@ typedef Banana_uuid BananaAuthentication_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_ApplicationToken *) applicationToken;
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken;
+- (NSString *) tokenId;
+- (void) setTokenId: (NSString *) tokenId;
 #endif
-- (BOOL) applicationTokenIsSet;
+- (BOOL) tokenIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaAuthentication_UserToken *) userToken;
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken;
+- (BananaAuthentication_uuid) ownerId;
+- (void) setOwnerId: (BananaAuthentication_uuid) ownerId;
 #endif
-- (BOOL) userTokenIsSet;
+- (BOOL) ownerIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_timestamp) timeOfCreation;
+- (void) setTimeOfCreation: (BananaAuthentication_timestamp) timeOfCreation;
+#endif
+- (BOOL) timeOfCreationIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration;
+#endif
+- (BOOL) timeOfExpirationIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) tokenType;
+- (void) setTokenType: (int) tokenType;
+#endif
+- (BOOL) tokenTypeIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaAuthentication_uuid) organizationId;
+- (void) setOrganizationId: (BananaAuthentication_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) ownerName;
+- (void) setOwnerName: (NSString *) ownerName;
+#endif
+- (BOOL) ownerNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationName;
+- (void) setOrganizationName: (NSString *) organizationName;
+#endif
+- (BOOL) organizationNameIsSet;
 
 @end
 

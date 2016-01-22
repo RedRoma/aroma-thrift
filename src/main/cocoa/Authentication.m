@@ -1862,56 +1862,152 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken userToken: (BananaAuthentication_UserToken *) userToken
+- (id) initWithTokenId: (NSString *) tokenId ownerId: (BananaAuthentication_uuid) ownerId timeOfCreation: (BananaAuthentication_timestamp) timeOfCreation timeOfExpiration: (BananaAuthentication_timestamp) timeOfExpiration tokenType: (int) tokenType organizationId: (BananaAuthentication_uuid) organizationId ownerName: (NSString *) ownerName organizationName: (NSString *) organizationName
 {
   self = [super init];
-  __applicationToken = [applicationToken retain_stub];
-  __applicationToken_isset = YES;
-  __userToken = [userToken retain_stub];
-  __userToken_isset = YES;
+  __tokenId = [tokenId retain_stub];
+  __tokenId_isset = YES;
+  __ownerId = [ownerId retain_stub];
+  __ownerId_isset = YES;
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+  __tokenType = tokenType;
+  __tokenType_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
+  __ownerName = [ownerName retain_stub];
+  __ownerName_isset = YES;
+  __organizationName = [organizationName retain_stub];
+  __organizationName_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"applicationToken"])
+  if ([decoder containsValueForKey: @"tokenId"])
   {
-    __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
-    __applicationToken_isset = YES;
+    __tokenId = [[decoder decodeObjectForKey: @"tokenId"] retain_stub];
+    __tokenId_isset = YES;
   }
-  if ([decoder containsValueForKey: @"userToken"])
+  if ([decoder containsValueForKey: @"ownerId"])
   {
-    __userToken = [[decoder decodeObjectForKey: @"userToken"] retain_stub];
-    __userToken_isset = YES;
+    __ownerId = [[decoder decodeObjectForKey: @"ownerId"] retain_stub];
+    __ownerId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfCreation"])
+  {
+    __timeOfCreation = [decoder decodeInt64ForKey: @"timeOfCreation"];
+    __timeOfCreation_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfExpiration"])
+  {
+    __timeOfExpiration = [decoder decodeInt64ForKey: @"timeOfExpiration"];
+    __timeOfExpiration_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"tokenType"])
+  {
+    __tokenType = [decoder decodeIntForKey: @"tokenType"];
+    __tokenType_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ownerName"])
+  {
+    __ownerName = [[decoder decodeObjectForKey: @"ownerName"] retain_stub];
+    __ownerName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationName"])
+  {
+    __organizationName = [[decoder decodeObjectForKey: @"organizationName"] retain_stub];
+    __organizationName_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__applicationToken_isset)
+  if (__tokenId_isset)
   {
-    [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
+    [encoder encodeObject: __tokenId forKey: @"tokenId"];
   }
-  if (__userToken_isset)
+  if (__ownerId_isset)
   {
-    [encoder encodeObject: __userToken forKey: @"userToken"];
+    [encoder encodeObject: __ownerId forKey: @"ownerId"];
+  }
+  if (__timeOfCreation_isset)
+  {
+    [encoder encodeInt64: __timeOfCreation forKey: @"timeOfCreation"];
+  }
+  if (__timeOfExpiration_isset)
+  {
+    [encoder encodeInt64: __timeOfExpiration forKey: @"timeOfExpiration"];
+  }
+  if (__tokenType_isset)
+  {
+    [encoder encodeInt: __tokenType forKey: @"tokenType"];
+  }
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__ownerName_isset)
+  {
+    [encoder encodeObject: __ownerName forKey: @"ownerName"];
+  }
+  if (__organizationName_isset)
+  {
+    [encoder encodeObject: __organizationName forKey: @"organizationName"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __applicationToken_isset ? 2654435761 : 0;
-  if (__applicationToken_isset)
+  hash = (hash * 31) ^ __tokenId_isset ? 2654435761 : 0;
+  if (__tokenId_isset)
   {
-    hash = (hash * 31) ^ [__applicationToken hash];
+    hash = (hash * 31) ^ [__tokenId hash];
   }
-  hash = (hash * 31) ^ __userToken_isset ? 2654435761 : 0;
-  if (__userToken_isset)
+  hash = (hash * 31) ^ __ownerId_isset ? 2654435761 : 0;
+  if (__ownerId_isset)
   {
-    hash = (hash * 31) ^ [__userToken hash];
+    hash = (hash * 31) ^ [__ownerId hash];
+  }
+  hash = (hash * 31) ^ __timeOfCreation_isset ? 2654435761 : 0;
+  if (__timeOfCreation_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfCreation) hash];
+  }
+  hash = (hash * 31) ^ __timeOfExpiration_isset ? 2654435761 : 0;
+  if (__timeOfExpiration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfExpiration) hash];
+  }
+  hash = (hash * 31) ^ __tokenType_isset ? 2654435761 : 0;
+  if (__tokenType_isset)
+  {
+    hash = (hash * 31) ^ [@(__tokenType) hash];
+  }
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
+  hash = (hash * 31) ^ __ownerName_isset ? 2654435761 : 0;
+  if (__ownerName_isset)
+  {
+    hash = (hash * 31) ^ [__ownerName hash];
+  }
+  hash = (hash * 31) ^ __organizationName_isset ? 2654435761 : 0;
+  if (__organizationName_isset)
+  {
+    hash = (hash * 31) ^ [__organizationName hash];
   }
   return hash;
 }
@@ -1925,12 +2021,36 @@
     return NO;
   }
   BananaAuthentication_AuthenticationToken *other = (BananaAuthentication_AuthenticationToken *)anObject;
-  if ((__applicationToken_isset != other->__applicationToken_isset) ||
-      (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
+  if ((__tokenId_isset != other->__tokenId_isset) ||
+      (__tokenId_isset && ((__tokenId || other->__tokenId) && ![__tokenId isEqual:other->__tokenId]))) {
     return NO;
   }
-  if ((__userToken_isset != other->__userToken_isset) ||
-      (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
+  if ((__ownerId_isset != other->__ownerId_isset) ||
+      (__ownerId_isset && ((__ownerId || other->__ownerId) && ![__ownerId isEqual:other->__ownerId]))) {
+    return NO;
+  }
+  if ((__timeOfCreation_isset != other->__timeOfCreation_isset) ||
+      (__timeOfCreation_isset && (__timeOfCreation != other->__timeOfCreation))) {
+    return NO;
+  }
+  if ((__timeOfExpiration_isset != other->__timeOfExpiration_isset) ||
+      (__timeOfExpiration_isset && (__timeOfExpiration != other->__timeOfExpiration))) {
+    return NO;
+  }
+  if ((__tokenType_isset != other->__tokenType_isset) ||
+      (__tokenType_isset && (__tokenType != other->__tokenType))) {
+    return NO;
+  }
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__ownerName_isset != other->__ownerName_isset) ||
+      (__ownerName_isset && ((__ownerName || other->__ownerName) && ![__ownerName isEqual:other->__ownerName]))) {
+    return NO;
+  }
+  if ((__organizationName_isset != other->__organizationName_isset) ||
+      (__organizationName_isset && ((__organizationName || other->__organizationName) && ![__organizationName isEqual:other->__organizationName]))) {
     return NO;
   }
   return YES;
@@ -1938,51 +2058,168 @@
 
 - (void) dealloc
 {
-  [__applicationToken release_stub];
-  [__userToken release_stub];
+  [__tokenId release_stub];
+  [__ownerId release_stub];
+  [__organizationId release_stub];
+  [__ownerName release_stub];
+  [__organizationName release_stub];
   [super dealloc_stub];
 }
 
-- (BananaAuthentication_ApplicationToken *) applicationToken {
-  return [[__applicationToken retain_stub] autorelease_stub];
+- (NSString *) tokenId {
+  return [[__tokenId retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationToken: (BananaAuthentication_ApplicationToken *) applicationToken {
-  [applicationToken retain_stub];
-  [__applicationToken release_stub];
-  __applicationToken = applicationToken;
-  __applicationToken_isset = YES;
+- (void) setTokenId: (NSString *) tokenId {
+  [tokenId retain_stub];
+  [__tokenId release_stub];
+  __tokenId = tokenId;
+  __tokenId_isset = YES;
 }
 
-- (BOOL) applicationTokenIsSet {
-  return __applicationToken_isset;
+- (BOOL) tokenIdIsSet {
+  return __tokenId_isset;
 }
 
-- (void) unsetApplicationToken {
-  [__applicationToken release_stub];
-  __applicationToken = nil;
-  __applicationToken_isset = NO;
+- (void) unsetTokenId {
+  [__tokenId release_stub];
+  __tokenId = nil;
+  __tokenId_isset = NO;
 }
 
-- (BananaAuthentication_UserToken *) userToken {
-  return [[__userToken retain_stub] autorelease_stub];
+- (NSString *) ownerId {
+  return [[__ownerId retain_stub] autorelease_stub];
 }
 
-- (void) setUserToken: (BananaAuthentication_UserToken *) userToken {
-  [userToken retain_stub];
-  [__userToken release_stub];
-  __userToken = userToken;
-  __userToken_isset = YES;
+- (void) setOwnerId: (NSString *) ownerId {
+  [ownerId retain_stub];
+  [__ownerId release_stub];
+  __ownerId = ownerId;
+  __ownerId_isset = YES;
 }
 
-- (BOOL) userTokenIsSet {
-  return __userToken_isset;
+- (BOOL) ownerIdIsSet {
+  return __ownerId_isset;
 }
 
-- (void) unsetUserToken {
-  [__userToken release_stub];
-  __userToken = nil;
-  __userToken_isset = NO;
+- (void) unsetOwnerId {
+  [__ownerId release_stub];
+  __ownerId = nil;
+  __ownerId_isset = NO;
+}
+
+- (int64_t) timeOfCreation {
+  return __timeOfCreation;
+}
+
+- (void) setTimeOfCreation: (int64_t) timeOfCreation {
+  __timeOfCreation = timeOfCreation;
+  __timeOfCreation_isset = YES;
+}
+
+- (BOOL) timeOfCreationIsSet {
+  return __timeOfCreation_isset;
+}
+
+- (void) unsetTimeOfCreation {
+  __timeOfCreation_isset = NO;
+}
+
+- (int64_t) timeOfExpiration {
+  return __timeOfExpiration;
+}
+
+- (void) setTimeOfExpiration: (int64_t) timeOfExpiration {
+  __timeOfExpiration = timeOfExpiration;
+  __timeOfExpiration_isset = YES;
+}
+
+- (BOOL) timeOfExpirationIsSet {
+  return __timeOfExpiration_isset;
+}
+
+- (void) unsetTimeOfExpiration {
+  __timeOfExpiration_isset = NO;
+}
+
+- (int) tokenType {
+  return __tokenType;
+}
+
+- (void) setTokenType: (int) tokenType {
+  __tokenType = tokenType;
+  __tokenType_isset = YES;
+}
+
+- (BOOL) tokenTypeIsSet {
+  return __tokenType_isset;
+}
+
+- (void) unsetTokenType {
+  __tokenType_isset = NO;
+}
+
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
+- (NSString *) ownerName {
+  return [[__ownerName retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerName: (NSString *) ownerName {
+  [ownerName retain_stub];
+  [__ownerName release_stub];
+  __ownerName = ownerName;
+  __ownerName_isset = YES;
+}
+
+- (BOOL) ownerNameIsSet {
+  return __ownerName_isset;
+}
+
+- (void) unsetOwnerName {
+  [__ownerName release_stub];
+  __ownerName = nil;
+  __ownerName_isset = NO;
+}
+
+- (NSString *) organizationName {
+  return [[__organizationName retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationName: (NSString *) organizationName {
+  [organizationName retain_stub];
+  [__organizationName release_stub];
+  __organizationName = organizationName;
+  __organizationName_isset = YES;
+}
+
+- (BOOL) organizationNameIsSet {
+  return __organizationName_isset;
+}
+
+- (void) unsetOrganizationName {
+  [__organizationName release_stub];
+  __organizationName = nil;
+  __organizationName_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2001,21 +2238,65 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setApplicationToken: fieldValue];
-          [fieldValue release_stub];
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTokenId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setUserToken: fieldValue];
-          [fieldValue release_stub];
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOwnerId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfCreation: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setTokenType: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOwnerName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -2031,17 +2312,53 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"AuthenticationToken"];
-  if (__applicationToken_isset) {
-    if (__applicationToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationToken" type: TType_STRUCT fieldID: 1];
-      [__applicationToken write: outProtocol];
+  if (__tokenId_isset) {
+    if (__tokenId != nil) {
+      [outProtocol writeFieldBeginWithName: @"tokenId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __tokenId];
       [outProtocol writeFieldEnd];
     }
   }
-  if (__userToken_isset) {
-    if (__userToken != nil) {
-      [outProtocol writeFieldBeginWithName: @"userToken" type: TType_STRUCT fieldID: 2];
-      [__userToken write: outProtocol];
+  if (__ownerId_isset) {
+    if (__ownerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __ownerId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__timeOfCreation_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfCreation" type: TType_I64 fieldID: 3];
+    [outProtocol writeI64: __timeOfCreation];
+    [outProtocol writeFieldEnd];
+  }
+  if (__timeOfExpiration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfExpiration" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfExpiration];
+    [outProtocol writeFieldEnd];
+  }
+  if (__tokenType_isset) {
+    [outProtocol writeFieldBeginWithName: @"tokenType" type: TType_I32 fieldID: 5];
+    [outProtocol writeI32: __tokenType];
+    [outProtocol writeFieldEnd];
+  }
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__ownerName_isset) {
+    if (__ownerName != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerName" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __ownerName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationName_isset) {
+    if (__organizationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationName" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __organizationName];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2055,10 +2372,22 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaAuthentication_AuthenticationToken("];
-  [ms appendString: @"applicationToken:"];
-  [ms appendFormat: @"%@", __applicationToken];
-  [ms appendString: @",userToken:"];
-  [ms appendFormat: @"%@", __userToken];
+  [ms appendString: @"tokenId:"];
+  [ms appendFormat: @"\"%@\"", __tokenId];
+  [ms appendString: @",ownerId:"];
+  [ms appendFormat: @"\"%@\"", __ownerId];
+  [ms appendString: @",timeOfCreation:"];
+  [ms appendFormat: @"%qi", __timeOfCreation];
+  [ms appendString: @",timeOfExpiration:"];
+  [ms appendFormat: @"%qi", __timeOfExpiration];
+  [ms appendString: @",tokenType:"];
+  [ms appendFormat: @"%i", __tokenType];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",ownerName:"];
+  [ms appendFormat: @"\"%@\"", __ownerName];
+  [ms appendString: @",organizationName:"];
+  [ms appendFormat: @"\"%@\"", __organizationName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

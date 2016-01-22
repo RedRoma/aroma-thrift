@@ -437,9 +437,15 @@ inline std::ostream& operator<<(std::ostream& out, const Credentials& obj)
 }
 
 typedef struct _AuthenticationToken__isset {
-  _AuthenticationToken__isset() : applicationToken(false), userToken(false) {}
-  bool applicationToken :1;
-  bool userToken :1;
+  _AuthenticationToken__isset() : tokenId(false), ownerId(false), timeOfCreation(false), timeOfExpiration(false), tokenType(false), organizationId(false), ownerName(false), organizationName(false) {}
+  bool tokenId :1;
+  bool ownerId :1;
+  bool timeOfCreation :1;
+  bool timeOfExpiration :1;
+  bool tokenType :1;
+  bool organizationId :1;
+  bool ownerName :1;
+  bool organizationName :1;
 } _AuthenticationToken__isset;
 
 class AuthenticationToken {
@@ -447,24 +453,54 @@ class AuthenticationToken {
 
   AuthenticationToken(const AuthenticationToken&);
   AuthenticationToken& operator=(const AuthenticationToken&);
-  AuthenticationToken() {
+  AuthenticationToken() : tokenId(), ownerId(), timeOfCreation(0), timeOfExpiration(0), tokenType((TokenType::type)0), organizationId(), ownerName(), organizationName() {
   }
 
   virtual ~AuthenticationToken() throw();
-  ApplicationToken applicationToken;
-  UserToken userToken;
+  std::string tokenId;
+  uuid ownerId;
+  timestamp timeOfCreation;
+  timestamp timeOfExpiration;
+  TokenType::type tokenType;
+  uuid organizationId;
+  std::string ownerName;
+  std::string organizationName;
 
   _AuthenticationToken__isset __isset;
 
-  void __set_applicationToken(const ApplicationToken& val);
+  void __set_tokenId(const std::string& val);
 
-  void __set_userToken(const UserToken& val);
+  void __set_ownerId(const uuid& val);
+
+  void __set_timeOfCreation(const timestamp val);
+
+  void __set_timeOfExpiration(const timestamp val);
+
+  void __set_tokenType(const TokenType::type val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_ownerName(const std::string& val);
+
+  void __set_organizationName(const std::string& val);
 
   bool operator == (const AuthenticationToken & rhs) const
   {
-    if (!(applicationToken == rhs.applicationToken))
+    if (!(tokenId == rhs.tokenId))
       return false;
-    if (!(userToken == rhs.userToken))
+    if (!(ownerId == rhs.ownerId))
+      return false;
+    if (!(timeOfCreation == rhs.timeOfCreation))
+      return false;
+    if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    if (!(tokenType == rhs.tokenType))
+      return false;
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (!(ownerName == rhs.ownerName))
+      return false;
+    if (!(organizationName == rhs.organizationName))
       return false;
     return true;
   }

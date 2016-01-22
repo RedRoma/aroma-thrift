@@ -81,11 +81,17 @@ enum TokenType
 }
 
 /** 
- * Represents a Generic Authentication Token
- * that is accepted by the Authentication Service.
+ * Represents an Authentication Token that is used
+ * and accepted by the Authentication Service.
  */
-union AuthenticationToken
+struct AuthenticationToken
 {
-    1: ApplicationToken applicationToken;
-    2: UserToken userToken;
+    1: string tokenId;
+    2: uuid ownerId;
+    3: timestamp timeOfCreation;
+    4: timestamp timeOfExpiration;
+    5: TokenType tokenType;
+    6: uuid organizationId;
+    7: string ownerName;
+    8: string organizationName;
 }

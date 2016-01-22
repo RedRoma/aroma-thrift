@@ -883,12 +883,36 @@ AuthenticationToken::~AuthenticationToken() throw() {
 }
 
 
-void AuthenticationToken::__set_applicationToken(const ApplicationToken& val) {
-  this->applicationToken = val;
+void AuthenticationToken::__set_tokenId(const std::string& val) {
+  this->tokenId = val;
 }
 
-void AuthenticationToken::__set_userToken(const UserToken& val) {
-  this->userToken = val;
+void AuthenticationToken::__set_ownerId(const uuid& val) {
+  this->ownerId = val;
+}
+
+void AuthenticationToken::__set_timeOfCreation(const timestamp val) {
+  this->timeOfCreation = val;
+}
+
+void AuthenticationToken::__set_timeOfExpiration(const timestamp val) {
+  this->timeOfExpiration = val;
+}
+
+void AuthenticationToken::__set_tokenType(const TokenType::type val) {
+  this->tokenType = val;
+}
+
+void AuthenticationToken::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
+}
+
+void AuthenticationToken::__set_ownerName(const std::string& val) {
+  this->ownerName = val;
+}
+
+void AuthenticationToken::__set_organizationName(const std::string& val) {
+  this->organizationName = val;
 }
 
 uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -913,17 +937,67 @@ uint32_t AuthenticationToken::read(::apache::thrift::protocol::TProtocol* iprot)
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->applicationToken.read(iprot);
-          this->__isset.applicationToken = true;
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->tokenId);
+          this->__isset.tokenId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->userToken.read(iprot);
-          this->__isset.userToken = true;
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->ownerId);
+          this->__isset.ownerId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfCreation);
+          this->__isset.timeOfCreation = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfExpiration);
+          this->__isset.timeOfExpiration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I32) {
+          int32_t ecast13;
+          xfer += iprot->readI32(ecast13);
+          this->tokenType = (TokenType::type)ecast13;
+          this->__isset.tokenType = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->ownerName);
+          this->__isset.ownerName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationName);
+          this->__isset.organizationName = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -945,12 +1019,36 @@ uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("AuthenticationToken");
 
-  xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->applicationToken.write(oprot);
+  xfer += oprot->writeFieldBegin("tokenId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->tokenId);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("userToken", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->userToken.write(oprot);
+  xfer += oprot->writeFieldBegin("ownerId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->ownerId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeOfCreation", ::apache::thrift::protocol::T_I64, 3);
+  xfer += oprot->writeI64(this->timeOfCreation);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("timeOfExpiration", ::apache::thrift::protocol::T_I64, 4);
+  xfer += oprot->writeI64(this->timeOfExpiration);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("tokenType", ::apache::thrift::protocol::T_I32, 5);
+  xfer += oprot->writeI32((int32_t)this->tokenType);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 6);
+  xfer += oprot->writeString(this->organizationId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("ownerName", ::apache::thrift::protocol::T_STRING, 7);
+  xfer += oprot->writeString(this->ownerName);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("organizationName", ::apache::thrift::protocol::T_STRING, 8);
+  xfer += oprot->writeString(this->organizationName);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -960,27 +1058,51 @@ uint32_t AuthenticationToken::write(::apache::thrift::protocol::TProtocol* oprot
 
 void swap(AuthenticationToken &a, AuthenticationToken &b) {
   using ::std::swap;
-  swap(a.applicationToken, b.applicationToken);
-  swap(a.userToken, b.userToken);
+  swap(a.tokenId, b.tokenId);
+  swap(a.ownerId, b.ownerId);
+  swap(a.timeOfCreation, b.timeOfCreation);
+  swap(a.timeOfExpiration, b.timeOfExpiration);
+  swap(a.tokenType, b.tokenType);
+  swap(a.organizationId, b.organizationId);
+  swap(a.ownerName, b.ownerName);
+  swap(a.organizationName, b.organizationName);
   swap(a.__isset, b.__isset);
 }
 
-AuthenticationToken::AuthenticationToken(const AuthenticationToken& other13) {
-  applicationToken = other13.applicationToken;
-  userToken = other13.userToken;
-  __isset = other13.__isset;
-}
-AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other14) {
-  applicationToken = other14.applicationToken;
-  userToken = other14.userToken;
+AuthenticationToken::AuthenticationToken(const AuthenticationToken& other14) {
+  tokenId = other14.tokenId;
+  ownerId = other14.ownerId;
+  timeOfCreation = other14.timeOfCreation;
+  timeOfExpiration = other14.timeOfExpiration;
+  tokenType = other14.tokenType;
+  organizationId = other14.organizationId;
+  ownerName = other14.ownerName;
+  organizationName = other14.organizationName;
   __isset = other14.__isset;
+}
+AuthenticationToken& AuthenticationToken::operator=(const AuthenticationToken& other15) {
+  tokenId = other15.tokenId;
+  ownerId = other15.ownerId;
+  timeOfCreation = other15.timeOfCreation;
+  timeOfExpiration = other15.timeOfExpiration;
+  tokenType = other15.tokenType;
+  organizationId = other15.organizationId;
+  ownerName = other15.ownerName;
+  organizationName = other15.organizationName;
+  __isset = other15.__isset;
   return *this;
 }
 void AuthenticationToken::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "AuthenticationToken(";
-  out << "applicationToken=" << to_string(applicationToken);
-  out << ", " << "userToken=" << to_string(userToken);
+  out << "tokenId=" << to_string(tokenId);
+  out << ", " << "ownerId=" << to_string(ownerId);
+  out << ", " << "timeOfCreation=" << to_string(timeOfCreation);
+  out << ", " << "timeOfExpiration=" << to_string(timeOfExpiration);
+  out << ", " << "tokenType=" << to_string(tokenType);
+  out << ", " << "organizationId=" << to_string(organizationId);
+  out << ", " << "ownerName=" << to_string(ownerName);
+  out << ", " << "organizationName=" << to_string(organizationName);
   out << ")";
 }
 

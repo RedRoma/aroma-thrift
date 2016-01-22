@@ -575,14 +575,38 @@ Credentials.prototype.write = function(output) {
 };
 
 AuthenticationToken = function(args) {
-  this.applicationToken = null;
-  this.userToken = null;
+  this.tokenId = null;
+  this.ownerId = null;
+  this.timeOfCreation = null;
+  this.timeOfExpiration = null;
+  this.tokenType = null;
+  this.organizationId = null;
+  this.ownerName = null;
+  this.organizationName = null;
   if (args) {
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new ApplicationToken(args.applicationToken);
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
     }
-    if (args.userToken !== undefined && args.userToken !== null) {
-      this.userToken = new UserToken(args.userToken);
+    if (args.ownerId !== undefined && args.ownerId !== null) {
+      this.ownerId = args.ownerId;
+    }
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
+    }
+    if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
+      this.timeOfExpiration = args.timeOfExpiration;
+    }
+    if (args.tokenType !== undefined && args.tokenType !== null) {
+      this.tokenType = args.tokenType;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.ownerName !== undefined && args.ownerName !== null) {
+      this.ownerName = args.ownerName;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
     }
   }
 };
@@ -601,17 +625,57 @@ AuthenticationToken.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new ApplicationToken();
-        this.applicationToken.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.tokenId = input.readString().value;
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.userToken = new UserToken();
-        this.userToken.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfCreation = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfExpiration = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I32) {
+        this.tokenType = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -627,14 +691,44 @@ AuthenticationToken.prototype.read = function(input) {
 
 AuthenticationToken.prototype.write = function(output) {
   output.writeStructBegin('AuthenticationToken');
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
-    this.applicationToken.write(output);
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
     output.writeFieldEnd();
   }
-  if (this.userToken !== null && this.userToken !== undefined) {
-    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 2);
-    this.userToken.write(output);
+  if (this.ownerId !== null && this.ownerId !== undefined) {
+    output.writeFieldBegin('ownerId', Thrift.Type.STRING, 2);
+    output.writeString(this.ownerId);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 3);
+    output.writeI64(this.timeOfCreation);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfExpiration);
+    output.writeFieldEnd();
+  }
+  if (this.tokenType !== null && this.tokenType !== undefined) {
+    output.writeFieldBegin('tokenType', Thrift.Type.I32, 5);
+    output.writeI32(this.tokenType);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 6);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.ownerName !== null && this.ownerName !== undefined) {
+    output.writeFieldBegin('ownerName', Thrift.Type.STRING, 7);
+    output.writeString(this.ownerName);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 8);
+    output.writeString(this.organizationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

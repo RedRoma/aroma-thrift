@@ -34,14 +34,13 @@ import tech.sirwellington.alchemy.arguments.FailedAssertionException;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
+import tech.sirwellington.alchemy.test.junit.runners.GenerateString;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
-import static tech.sirwellington.alchemy.generator.BooleanGenerators.booleans;
-import static tech.sirwellington.alchemy.generator.ObjectGenerators.pojos;
 import static tech.sirwellington.alchemy.generator.StringGenerators.alphabeticString;
 import static tech.sirwellington.alchemy.generator.StringGenerators.strings;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
@@ -63,29 +62,19 @@ public class BananaAssertionsTest
     
     @GeneratePojo
     private UserToken userToken;
-    
-    private boolean useUserToken;
-    
+
+    @GeneratePojo
     private AuthenticationToken authenticationToken;
-    
+
+    @GenerateString
     private String tokenId;
     
     @Before
     public void setUp()
     {
-        authenticationToken = new AuthenticationToken();
-        
-        useUserToken = one(booleans());
-        if (useUserToken)
-        {
-            authenticationToken.setUserToken(userToken);
-            tokenId = userToken.tokenId;
-        }
-        else
-        {
-            authenticationToken.setApplicationToken(applicationToken);
-            tokenId = applicationToken.tokenId;
-        }
+        authenticationToken.tokenId = tokenId;
+        applicationToken.tokenId = tokenId;
+        userToken.tokenId = tokenId;
     }
     
     @DontRepeat
@@ -139,19 +128,13 @@ public class BananaAssertionsTest
         AlchemyAssertion<AuthenticationToken> instance = BananaAssertions.legalToken();
         assertThat(instance, notNullValue());
         
-        AuthenticationToken badAuthenticationToken = new AuthenticationToken();
-        
-        assertThrows(() -> instance.check(badAuthenticationToken))
+        assertThrows(() -> instance.check(null))
             .isInstanceOf(FailedAssertionException.class);
         
-        ApplicationToken badApplicationToken = one(pojos(ApplicationToken.class));
-        badAuthenticationToken.setApplicationToken(badApplicationToken);
-        instance.check(badAuthenticationToken);
-        
-        UserToken badUserToken = one(pojos(UserToken.class));
-        badAuthenticationToken.setUserToken(badUserToken);
-        instance.check(badAuthenticationToken);
-        
+        AuthenticationToken badAuthenticationToken = new AuthenticationToken();
+        assertThrows(() -> instance.check(badAuthenticationToken))
+            .isInstanceOf(FailedAssertionException.class);
+            
     }
     
     @Test
@@ -201,7 +184,7 @@ public class BananaAssertionsTest
         assertion.check(userToken);
         
         //When Token is bad
-        VerifyTokenRequest request = new VerifyTokenRequest(userToken.tokenId);
+        VerifyTokenRequest request = new VerifyTokenRequest(tokenId);
         when(authenticationService.verifyToken(request))
             .thenThrow(InvalidTokenException.class);
         
