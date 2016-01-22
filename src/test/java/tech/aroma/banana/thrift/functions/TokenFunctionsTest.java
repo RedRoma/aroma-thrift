@@ -95,6 +95,10 @@ public class TokenFunctionsTest
         ApplicationToken result = function.apply(emptyToken);
 
         assertAppTokenMatch(emptyToken, result);
+
+        ApplicationToken nullResult = function.apply(null);
+        assertThat(nullResult, notNullValue());
+
     }
 
     @Test
@@ -117,6 +121,9 @@ public class TokenFunctionsTest
         ApplicationToken emptyToken = new ApplicationToken();
         AuthenticationToken result = function.apply(emptyToken);
         assertAppTokenMatch(result, emptyToken);
+
+        AuthenticationToken nullResult = function.apply(null);
+        assertThat(nullResult, notNullValue());
     }
 
     @Test
@@ -142,6 +149,9 @@ public class TokenFunctionsTest
         UserToken result = function.apply(emptyToken);
         assertUserTokenMatch(emptyToken, result);
 
+        UserToken nullResult = function.apply(null);
+        assertThat(nullResult, notNullValue());
+
     }
 
     @Test
@@ -164,6 +174,9 @@ public class TokenFunctionsTest
         UserToken emptyToken = new UserToken();
         AuthenticationToken result = function.apply(emptyToken);
         assertUserTokenMatch(result, emptyToken);
+
+        AuthenticationToken nullResult = function.apply(null);
+        assertThat(nullResult, notNullValue());
     }
 
     private void assertAppTokenMatch(AuthenticationToken auth, ApplicationToken app)

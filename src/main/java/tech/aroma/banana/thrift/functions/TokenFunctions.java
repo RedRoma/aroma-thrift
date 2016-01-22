@@ -44,12 +44,17 @@ public final class TokenFunctions
     {
         return authToken ->
         {
-            ApplicationToken appToken = new ApplicationToken()
-                .setTokenId(authToken.tokenId)
-                .setApplicationId(authToken.ownerId)
-                .setOrganization(authToken.organizationId)
-                .setApplicationName(authToken.ownerName)
-                .setTimeOfExpiration(authToken.timeOfExpiration);
+            ApplicationToken appToken = new ApplicationToken();
+            
+            if (authToken != null)
+            {
+                appToken
+                    .setTokenId(authToken.tokenId)
+                    .setApplicationId(authToken.ownerId)
+                    .setOrganization(authToken.organizationId)
+                    .setApplicationName(authToken.ownerName)
+                    .setTimeOfExpiration(authToken.timeOfExpiration);
+            }
             
             return appToken;
         };
@@ -59,13 +64,20 @@ public final class TokenFunctions
     {
         return appToken ->
         {
-            return new AuthenticationToken()
-                .setTokenId(appToken.tokenId)
-                .setOwnerId(appToken.applicationId)
-                .setOwnerName(appToken.applicationName)
-                .setTimeOfExpiration(appToken.timeOfExpiration)
-                .setTokenType(TokenType.APPLICATION)
-                .setOrganizationId(appToken.organization);
+            AuthenticationToken authToken = new AuthenticationToken();
+            
+            if (appToken != null)
+            {
+                authToken
+                    .setTokenId(appToken.tokenId)
+                    .setOwnerId(appToken.applicationId)
+                    .setOwnerName(appToken.applicationName)
+                    .setTimeOfExpiration(appToken.timeOfExpiration)
+                    .setTokenType(TokenType.APPLICATION)
+                    .setOrganizationId(appToken.organization);
+            }
+            
+            return authToken;
         };
     }
     
@@ -73,11 +85,18 @@ public final class TokenFunctions
     {
         return token ->
         {
-            return new UserToken()
-                .setTokenId(token.tokenId)
-                .setUserId(token.ownerId)
-                .setOrganization(token.organizationId)
-                .setTimeOfExpiration(token.timeOfExpiration);
+            UserToken userToken = new UserToken();
+            
+            if (token != null)
+            {
+                userToken
+                    .setTokenId(token.tokenId)
+                    .setUserId(token.ownerId)
+                    .setOrganization(token.organizationId)
+                    .setTimeOfExpiration(token.timeOfExpiration);
+            }
+            
+            return userToken;
         };
     }
     
@@ -85,11 +104,18 @@ public final class TokenFunctions
     {
         return token ->
         {
-            return new AuthenticationToken()
-                .setTokenId(token.tokenId)
-                .setOwnerId(token.userId)
-                .setOrganizationId(token.organization)
-                .setTimeOfExpiration(token.timeOfExpiration);
+            AuthenticationToken authToken = new AuthenticationToken();
+         
+            if (token != null)
+            {
+                authToken
+                    .setTokenId(token.tokenId)
+                    .setOwnerId(token.userId)
+                    .setOrganizationId(token.organization)
+                    .setTimeOfExpiration(token.timeOfExpiration);
+            }
+            
+            return authToken;
         };
     }
     
