@@ -112,7 +112,8 @@ public final class TokenFunctions
                     .setTokenId(token.tokenId)
                     .setOwnerId(token.userId)
                     .setOrganizationId(token.organization)
-                    .setTimeOfExpiration(token.timeOfExpiration);
+                    .setTimeOfExpiration(token.timeOfExpiration)
+                    .setTokenType(TokenType.USER);
             }
             
             return authToken;

@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
+import tech.aroma.banana.thrift.authentication.TokenType;
 import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
@@ -98,7 +99,6 @@ public class TokenFunctionsTest
 
         ApplicationToken nullResult = function.apply(null);
         assertThat(nullResult, notNullValue());
-
     }
 
     @Test
@@ -109,6 +109,7 @@ public class TokenFunctionsTest
 
         AuthenticationToken result = function.apply(applicationToken);
         assertAppTokenMatch(result, applicationToken);
+        assertThat(result.tokenType, is(TokenType.APPLICATION));
     }
 
     @DontRepeat
@@ -162,6 +163,8 @@ public class TokenFunctionsTest
 
         AuthenticationToken result = function.apply(userToken);
         assertUserTokenMatch(result, userToken);
+        assertThat(result.tokenType, is(TokenType.USER));
+
     }
 
     @DontRepeat
