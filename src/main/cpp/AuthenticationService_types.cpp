@@ -30,6 +30,11 @@ void CreateTokenRequest::__set_desiredTokenType(const TokenType val) {
   this->desiredTokenType = val;
 }
 
+void CreateTokenRequest::__set_ownerName(const std::string& val) {
+  this->ownerName = val;
+__isset.ownerName = true;
+}
+
 uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -77,6 +82,14 @@ uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->ownerName);
+          this->__isset.ownerName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -106,6 +119,11 @@ uint32_t CreateTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeI32((int32_t)this->desiredTokenType);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.ownerName) {
+    xfer += oprot->writeFieldBegin("ownerName", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->ownerName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -116,6 +134,7 @@ void swap(CreateTokenRequest &a, CreateTokenRequest &b) {
   swap(a.ownerId, b.ownerId);
   swap(a.lifetime, b.lifetime);
   swap(a.desiredTokenType, b.desiredTokenType);
+  swap(a.ownerName, b.ownerName);
   swap(a.__isset, b.__isset);
 }
 
@@ -123,12 +142,14 @@ CreateTokenRequest::CreateTokenRequest(const CreateTokenRequest& other1) {
   ownerId = other1.ownerId;
   lifetime = other1.lifetime;
   desiredTokenType = other1.desiredTokenType;
+  ownerName = other1.ownerName;
   __isset = other1.__isset;
 }
 CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& other2) {
   ownerId = other2.ownerId;
   lifetime = other2.lifetime;
   desiredTokenType = other2.desiredTokenType;
+  ownerName = other2.ownerName;
   __isset = other2.__isset;
   return *this;
 }
@@ -138,6 +159,7 @@ void CreateTokenRequest::printTo(std::ostream& out) const {
   out << "ownerId=" << to_string(ownerId);
   out << ", " << "lifetime=" << to_string(lifetime);
   out << ", " << "desiredTokenType=" << to_string(desiredTokenType);
+  out << ", " << "ownerName="; (__isset.ownerName ? (out << to_string(ownerName)) : (out << "<null>"));
   out << ")";
 }
 

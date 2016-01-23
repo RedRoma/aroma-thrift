@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType ownerName: (NSString *) ownerName
 {
   self = [super init];
   __ownerId = [ownerId retain_stub];
@@ -44,6 +44,8 @@
   __lifetime_isset = YES;
   __desiredTokenType = desiredTokenType;
   __desiredTokenType_isset = YES;
+  __ownerName = [ownerName retain_stub];
+  __ownerName_isset = YES;
   return self;
 }
 
@@ -65,6 +67,11 @@
     __desiredTokenType = [decoder decodeIntForKey: @"desiredTokenType"];
     __desiredTokenType_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ownerName"])
+  {
+    __ownerName = [[decoder decodeObjectForKey: @"ownerName"] retain_stub];
+    __ownerName_isset = YES;
+  }
   return self;
 }
 
@@ -81,6 +88,10 @@
   if (__desiredTokenType_isset)
   {
     [encoder encodeInt: __desiredTokenType forKey: @"desiredTokenType"];
+  }
+  if (__ownerName_isset)
+  {
+    [encoder encodeObject: __ownerName forKey: @"ownerName"];
   }
 }
 
@@ -101,6 +112,11 @@
   if (__desiredTokenType_isset)
   {
     hash = (hash * 31) ^ [@(__desiredTokenType) hash];
+  }
+  hash = (hash * 31) ^ __ownerName_isset ? 2654435761 : 0;
+  if (__ownerName_isset)
+  {
+    hash = (hash * 31) ^ [__ownerName hash];
   }
   return hash;
 }
@@ -126,6 +142,10 @@
       (__desiredTokenType_isset && (__desiredTokenType != other->__desiredTokenType))) {
     return NO;
   }
+  if ((__ownerName_isset != other->__ownerName_isset) ||
+      (__ownerName_isset && ((__ownerName || other->__ownerName) && ![__ownerName isEqual:other->__ownerName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -133,6 +153,7 @@
 {
   [__ownerId release_stub];
   [__lifetime release_stub];
+  [__ownerName release_stub];
   [super dealloc_stub];
 }
 
@@ -195,6 +216,27 @@
   __desiredTokenType_isset = NO;
 }
 
+- (NSString *) ownerName {
+  return [[__ownerName retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerName: (NSString *) ownerName {
+  [ownerName retain_stub];
+  [__ownerName release_stub];
+  __ownerName = ownerName;
+  __ownerName_isset = YES;
+}
+
+- (BOOL) ownerNameIsSet {
+  return __ownerName_isset;
+}
+
+- (void) unsetOwnerName {
+  [__ownerName release_stub];
+  __ownerName = nil;
+  __ownerName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -236,6 +278,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOwnerName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -266,6 +316,13 @@
     [outProtocol writeI32: __desiredTokenType];
     [outProtocol writeFieldEnd];
   }
+  if (__ownerName_isset) {
+    if (__ownerName != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __ownerName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -282,6 +339,8 @@
   [ms appendFormat: @"%@", __lifetime];
   [ms appendString: @",desiredTokenType:"];
   [ms appendFormat: @"%i", __desiredTokenType];
+  [ms appendString: @",ownerName:"];
+  [ms appendFormat: @"\"%@\"", __ownerName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

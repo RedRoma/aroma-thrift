@@ -58,6 +58,8 @@ struct CreateTokenRequest
     2: LengthOfTime lifetime;
     /** This is required, and determines the kind of Token created. */
     3: TokenType desiredTokenType;
+    /** Optional stores the name of the entity owning the token, for instance App name or user's email. */
+    4: optional string ownerName;
 }
 
 struct CreateTokenResponse

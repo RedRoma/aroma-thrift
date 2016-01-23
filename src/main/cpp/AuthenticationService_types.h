@@ -70,10 +70,11 @@ class VerifyTokenRequest;
 class VerifyTokenResponse;
 
 typedef struct _CreateTokenRequest__isset {
-  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false) {}
+  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false), ownerName(false) {}
   bool ownerId :1;
   bool lifetime :1;
   bool desiredTokenType :1;
+  bool ownerName :1;
 } _CreateTokenRequest__isset;
 
 class CreateTokenRequest {
@@ -81,13 +82,14 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0) {
+  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName() {
   }
 
   virtual ~CreateTokenRequest() throw();
   uuid ownerId;
   LengthOfTime lifetime;
   TokenType desiredTokenType;
+  std::string ownerName;
 
   _CreateTokenRequest__isset __isset;
 
@@ -97,6 +99,8 @@ class CreateTokenRequest {
 
   void __set_desiredTokenType(const TokenType val);
 
+  void __set_ownerName(const std::string& val);
+
   bool operator == (const CreateTokenRequest & rhs) const
   {
     if (!(ownerId == rhs.ownerId))
@@ -104,6 +108,10 @@ class CreateTokenRequest {
     if (!(lifetime == rhs.lifetime))
       return false;
     if (!(desiredTokenType == rhs.desiredTokenType))
+      return false;
+    if (__isset.ownerName != rhs.__isset.ownerName)
+      return false;
+    else if (__isset.ownerName && !(ownerName == rhs.ownerName))
       return false;
     return true;
   }

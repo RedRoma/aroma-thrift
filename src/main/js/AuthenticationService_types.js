@@ -9,6 +9,7 @@ CreateTokenRequest = function(args) {
   this.ownerId = null;
   this.lifetime = null;
   this.desiredTokenType = null;
+  this.ownerName = null;
   if (args) {
     if (args.ownerId !== undefined && args.ownerId !== null) {
       this.ownerId = args.ownerId;
@@ -18,6 +19,9 @@ CreateTokenRequest = function(args) {
     }
     if (args.desiredTokenType !== undefined && args.desiredTokenType !== null) {
       this.desiredTokenType = args.desiredTokenType;
+    }
+    if (args.ownerName !== undefined && args.ownerName !== null) {
+      this.ownerName = args.ownerName;
     }
   }
 };
@@ -57,6 +61,13 @@ CreateTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -81,6 +92,11 @@ CreateTokenRequest.prototype.write = function(output) {
   if (this.desiredTokenType !== null && this.desiredTokenType !== undefined) {
     output.writeFieldBegin('desiredTokenType', Thrift.Type.I32, 3);
     output.writeI32(this.desiredTokenType);
+    output.writeFieldEnd();
+  }
+  if (this.ownerName !== null && this.ownerName !== undefined) {
+    output.writeFieldBegin('ownerName', Thrift.Type.STRING, 4);
+    output.writeString(this.ownerName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
