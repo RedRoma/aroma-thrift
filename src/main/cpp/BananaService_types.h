@@ -1176,14 +1176,14 @@ inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
 }
 
 typedef struct _SignUpRequest__isset {
-  _SignUpRequest__isset() : email(false), name(false), firstName(false), middleName(false), lastName(false), username(false), organization(false), credentials(false), mainRole(false), birthDate(false), githubProfile(false), profileImage(false) {}
+  _SignUpRequest__isset() : email(false), name(false), firstName(false), middleName(false), lastName(false), username(false), organizationId(false), credentials(false), mainRole(false), birthDate(false), githubProfile(false), profileImage(false) {}
   bool email :1;
   bool name :1;
   bool firstName :1;
   bool middleName :1;
   bool lastName :1;
   bool username :1;
-  bool organization :1;
+  bool organizationId :1;
   bool credentials :1;
   bool mainRole :1;
   bool birthDate :1;
@@ -1196,7 +1196,7 @@ class SignUpRequest {
 
   SignUpRequest(const SignUpRequest&);
   SignUpRequest& operator=(const SignUpRequest&);
-  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organization(), mainRole(( ::aroma::banana::thrift::Role::type)0), birthDate(0), githubProfile() {
+  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organizationId(), mainRole(( ::aroma::banana::thrift::Role::type)0), birthDate(0), githubProfile() {
   }
 
   virtual ~SignUpRequest() throw();
@@ -1206,7 +1206,7 @@ class SignUpRequest {
   std::string middleName;
   std::string lastName;
   std::string username;
-  std::string organization;
+  uuid organizationId;
    ::aroma::banana::thrift::authentication::Credentials credentials;
    ::aroma::banana::thrift::Role::type mainRole;
   timestamp birthDate;
@@ -1227,7 +1227,7 @@ class SignUpRequest {
 
   void __set_username(const std::string& val);
 
-  void __set_organization(const std::string& val);
+  void __set_organizationId(const uuid& val);
 
   void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
 
@@ -1253,7 +1253,7 @@ class SignUpRequest {
       return false;
     if (!(username == rhs.username))
       return false;
-    if (!(organization == rhs.organization))
+    if (!(organizationId == rhs.organizationId))
       return false;
     if (!(credentials == rhs.credentials))
       return false;

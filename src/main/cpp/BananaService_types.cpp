@@ -2181,8 +2181,8 @@ void SignUpRequest::__set_username(const std::string& val) {
   this->username = val;
 }
 
-void SignUpRequest::__set_organization(const std::string& val) {
-  this->organization = val;
+void SignUpRequest::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
 }
 
 void SignUpRequest::__set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val) {
@@ -2279,8 +2279,8 @@ uint32_t SignUpRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 7:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->organization);
-          this->__isset.organization = true;
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -2368,8 +2368,8 @@ uint32_t SignUpRequest::write(::apache::thrift::protocol::TProtocol* oprot) cons
   xfer += oprot->writeString(this->username);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("organization", ::apache::thrift::protocol::T_STRING, 7);
-  xfer += oprot->writeString(this->organization);
+  xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 7);
+  xfer += oprot->writeString(this->organizationId);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("credentials", ::apache::thrift::protocol::T_STRUCT, 8);
@@ -2408,7 +2408,7 @@ void swap(SignUpRequest &a, SignUpRequest &b) {
   swap(a.middleName, b.middleName);
   swap(a.lastName, b.lastName);
   swap(a.username, b.username);
-  swap(a.organization, b.organization);
+  swap(a.organizationId, b.organizationId);
   swap(a.credentials, b.credentials);
   swap(a.mainRole, b.mainRole);
   swap(a.birthDate, b.birthDate);
@@ -2424,7 +2424,7 @@ SignUpRequest::SignUpRequest(const SignUpRequest& other58) {
   middleName = other58.middleName;
   lastName = other58.lastName;
   username = other58.username;
-  organization = other58.organization;
+  organizationId = other58.organizationId;
   credentials = other58.credentials;
   mainRole = other58.mainRole;
   birthDate = other58.birthDate;
@@ -2439,7 +2439,7 @@ SignUpRequest& SignUpRequest::operator=(const SignUpRequest& other59) {
   middleName = other59.middleName;
   lastName = other59.lastName;
   username = other59.username;
-  organization = other59.organization;
+  organizationId = other59.organizationId;
   credentials = other59.credentials;
   mainRole = other59.mainRole;
   birthDate = other59.birthDate;
@@ -2457,7 +2457,7 @@ void SignUpRequest::printTo(std::ostream& out) const {
   out << ", " << "middleName=" << to_string(middleName);
   out << ", " << "lastName=" << to_string(lastName);
   out << ", " << "username=" << to_string(username);
-  out << ", " << "organization=" << to_string(organization);
+  out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "credentials=" << to_string(credentials);
   out << ", " << "mainRole=" << to_string(mainRole);
   out << ", " << "birthDate="; (__isset.birthDate ? (out << to_string(birthDate)) : (out << "<null>"));

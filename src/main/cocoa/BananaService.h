@@ -775,7 +775,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   NSString * __middleName;
   NSString * __lastName;
   NSString * __username;
-  NSString * __organization;
+  BananaService_uuid __organizationId;
   BananaAuthentication_Credentials * __credentials;
   int __mainRole;
   BananaService_timestamp __birthDate;
@@ -788,7 +788,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   BOOL __middleName_isset;
   BOOL __lastName_isset;
   BOOL __username_isset;
-  BOOL __organization_isset;
+  BOOL __organizationId_isset;
   BOOL __credentials_isset;
   BOOL __mainRole_isset;
   BOOL __birthDate_isset;
@@ -803,7 +803,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
 @property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
 @property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
 @property (nonatomic, getter=birthDate, setter=setBirthDate:) BananaService_timestamp birthDate;
@@ -812,7 +812,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (BananaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -856,10 +856,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) usernameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) organization;
-- (void) setOrganization: (NSString *) organization;
+- (BananaService_uuid) organizationId;
+- (void) setOrganizationId: (BananaService_uuid) organizationId;
 #endif
-- (BOOL) organizationIsSet;
+- (BOOL) organizationIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_Credentials *) credentials;

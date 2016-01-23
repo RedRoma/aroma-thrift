@@ -1415,7 +1415,7 @@ SignUpRequest = function(args) {
   this.middleName = null;
   this.lastName = null;
   this.username = null;
-  this.organization = null;
+  this.organizationId = null;
   this.credentials = null;
   this.mainRole = null;
   this.birthDate = null;
@@ -1440,8 +1440,8 @@ SignUpRequest = function(args) {
     if (args.username !== undefined && args.username !== null) {
       this.username = args.username;
     }
-    if (args.organization !== undefined && args.organization !== null) {
-      this.organization = args.organization;
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
     }
     if (args.credentials !== undefined && args.credentials !== null) {
       this.credentials = new Credentials(args.credentials);
@@ -1518,7 +1518,7 @@ SignUpRequest.prototype.read = function(input) {
       break;
       case 7:
       if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString().value;
+        this.organizationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -1601,9 +1601,9 @@ SignUpRequest.prototype.write = function(output) {
     output.writeString(this.username);
     output.writeFieldEnd();
   }
-  if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 7);
-    output.writeString(this.organization);
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 7);
+    output.writeString(this.organizationId);
     output.writeFieldEnd();
   }
   if (this.credentials !== null && this.credentials !== undefined) {

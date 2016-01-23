@@ -4295,7 +4295,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (BananaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage
 {
   self = [super init];
   __email = [email retain_stub];
@@ -4310,8 +4310,8 @@
   __lastName_isset = YES;
   __username = [username retain_stub];
   __username_isset = YES;
-  __organization = [organization retain_stub];
-  __organization_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
   __credentials = [credentials retain_stub];
   __credentials_isset = YES;
   __mainRole = mainRole;
@@ -4358,10 +4358,10 @@
     __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
     __username_isset = YES;
   }
-  if ([decoder containsValueForKey: @"organization"])
+  if ([decoder containsValueForKey: @"organizationId"])
   {
-    __organization = [[decoder decodeObjectForKey: @"organization"] retain_stub];
-    __organization_isset = YES;
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
   }
   if ([decoder containsValueForKey: @"credentials"])
   {
@@ -4417,9 +4417,9 @@
   {
     [encoder encodeObject: __username forKey: @"username"];
   }
-  if (__organization_isset)
+  if (__organizationId_isset)
   {
-    [encoder encodeObject: __organization forKey: @"organization"];
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
   }
   if (__credentials_isset)
   {
@@ -4476,10 +4476,10 @@
   {
     hash = (hash * 31) ^ [__username hash];
   }
-  hash = (hash * 31) ^ __organization_isset ? 2654435761 : 0;
-  if (__organization_isset)
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
   {
-    hash = (hash * 31) ^ [__organization hash];
+    hash = (hash * 31) ^ [__organizationId hash];
   }
   hash = (hash * 31) ^ __credentials_isset ? 2654435761 : 0;
   if (__credentials_isset)
@@ -4542,8 +4542,8 @@
       (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
     return NO;
   }
-  if ((__organization_isset != other->__organization_isset) ||
-      (__organization_isset && ((__organization || other->__organization) && ![__organization isEqual:other->__organization]))) {
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
     return NO;
   }
   if ((__credentials_isset != other->__credentials_isset) ||
@@ -4577,7 +4577,7 @@
   [__middleName release_stub];
   [__lastName release_stub];
   [__username release_stub];
-  [__organization release_stub];
+  [__organizationId release_stub];
   [__credentials release_stub];
   [__githubProfile release_stub];
   [__profileImage release_stub];
@@ -4710,25 +4710,25 @@
   __username_isset = NO;
 }
 
-- (NSString *) organization {
-  return [[__organization retain_stub] autorelease_stub];
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
 }
 
-- (void) setOrganization: (NSString *) organization {
-  [organization retain_stub];
-  [__organization release_stub];
-  __organization = organization;
-  __organization_isset = YES;
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
 }
 
-- (BOOL) organizationIsSet {
-  return __organization_isset;
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
 }
 
-- (void) unsetOrganization {
-  [__organization release_stub];
-  __organization = nil;
-  __organization_isset = NO;
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
 }
 
 - (BananaAuthentication_Credentials *) credentials {
@@ -4894,7 +4894,7 @@
       case 7:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+          [self setOrganizationId: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -4996,10 +4996,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__organization_isset) {
-    if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 7];
-      [outProtocol writeString: __organization];
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __organizationId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -5056,8 +5056,8 @@
   [ms appendFormat: @"\"%@\"", __lastName];
   [ms appendString: @",username:"];
   [ms appendFormat: @"\"%@\"", __username];
-  [ms appendString: @",organization:"];
-  [ms appendFormat: @"\"%@\"", __organization];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @",credentials:"];
   [ms appendFormat: @"%@", __credentials];
   [ms appendString: @",mainRole:"];
