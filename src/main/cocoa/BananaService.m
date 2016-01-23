@@ -4295,19 +4295,33 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage
 {
   self = [super init];
   __email = [email retain_stub];
   __email_isset = YES;
   __name = [name retain_stub];
   __name_isset = YES;
+  __firstName = [firstName retain_stub];
+  __firstName_isset = YES;
+  __middleName = [middleName retain_stub];
+  __middleName_isset = YES;
+  __lastName = [lastName retain_stub];
+  __lastName_isset = YES;
   __username = [username retain_stub];
   __username_isset = YES;
   __organization = [organization retain_stub];
   __organization_isset = YES;
   __credentials = [credentials retain_stub];
   __credentials_isset = YES;
+  __mainRole = mainRole;
+  __mainRole_isset = YES;
+  __birthDate = birthDate;
+  __birthDate_isset = YES;
+  __githubProfile = [githubProfile retain_stub];
+  __githubProfile_isset = YES;
+  __profileImage = [profileImage retain_stub];
+  __profileImage_isset = YES;
   return self;
 }
 
@@ -4324,6 +4338,21 @@
     __name = [[decoder decodeObjectForKey: @"name"] retain_stub];
     __name_isset = YES;
   }
+  if ([decoder containsValueForKey: @"firstName"])
+  {
+    __firstName = [[decoder decodeObjectForKey: @"firstName"] retain_stub];
+    __firstName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"middleName"])
+  {
+    __middleName = [[decoder decodeObjectForKey: @"middleName"] retain_stub];
+    __middleName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"lastName"])
+  {
+    __lastName = [[decoder decodeObjectForKey: @"lastName"] retain_stub];
+    __lastName_isset = YES;
+  }
   if ([decoder containsValueForKey: @"username"])
   {
     __username = [[decoder decodeObjectForKey: @"username"] retain_stub];
@@ -4339,6 +4368,26 @@
     __credentials = [[decoder decodeObjectForKey: @"credentials"] retain_stub];
     __credentials_isset = YES;
   }
+  if ([decoder containsValueForKey: @"mainRole"])
+  {
+    __mainRole = [decoder decodeIntForKey: @"mainRole"];
+    __mainRole_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"birthDate"])
+  {
+    __birthDate = [decoder decodeInt64ForKey: @"birthDate"];
+    __birthDate_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"githubProfile"])
+  {
+    __githubProfile = [[decoder decodeObjectForKey: @"githubProfile"] retain_stub];
+    __githubProfile_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"profileImage"])
+  {
+    __profileImage = [[decoder decodeObjectForKey: @"profileImage"] retain_stub];
+    __profileImage_isset = YES;
+  }
   return self;
 }
 
@@ -4352,6 +4401,18 @@
   {
     [encoder encodeObject: __name forKey: @"name"];
   }
+  if (__firstName_isset)
+  {
+    [encoder encodeObject: __firstName forKey: @"firstName"];
+  }
+  if (__middleName_isset)
+  {
+    [encoder encodeObject: __middleName forKey: @"middleName"];
+  }
+  if (__lastName_isset)
+  {
+    [encoder encodeObject: __lastName forKey: @"lastName"];
+  }
   if (__username_isset)
   {
     [encoder encodeObject: __username forKey: @"username"];
@@ -4363,6 +4424,22 @@
   if (__credentials_isset)
   {
     [encoder encodeObject: __credentials forKey: @"credentials"];
+  }
+  if (__mainRole_isset)
+  {
+    [encoder encodeInt: __mainRole forKey: @"mainRole"];
+  }
+  if (__birthDate_isset)
+  {
+    [encoder encodeInt64: __birthDate forKey: @"birthDate"];
+  }
+  if (__githubProfile_isset)
+  {
+    [encoder encodeObject: __githubProfile forKey: @"githubProfile"];
+  }
+  if (__profileImage_isset)
+  {
+    [encoder encodeObject: __profileImage forKey: @"profileImage"];
   }
 }
 
@@ -4379,6 +4456,21 @@
   {
     hash = (hash * 31) ^ [__name hash];
   }
+  hash = (hash * 31) ^ __firstName_isset ? 2654435761 : 0;
+  if (__firstName_isset)
+  {
+    hash = (hash * 31) ^ [__firstName hash];
+  }
+  hash = (hash * 31) ^ __middleName_isset ? 2654435761 : 0;
+  if (__middleName_isset)
+  {
+    hash = (hash * 31) ^ [__middleName hash];
+  }
+  hash = (hash * 31) ^ __lastName_isset ? 2654435761 : 0;
+  if (__lastName_isset)
+  {
+    hash = (hash * 31) ^ [__lastName hash];
+  }
   hash = (hash * 31) ^ __username_isset ? 2654435761 : 0;
   if (__username_isset)
   {
@@ -4393,6 +4485,26 @@
   if (__credentials_isset)
   {
     hash = (hash * 31) ^ [__credentials hash];
+  }
+  hash = (hash * 31) ^ __mainRole_isset ? 2654435761 : 0;
+  if (__mainRole_isset)
+  {
+    hash = (hash * 31) ^ [@(__mainRole) hash];
+  }
+  hash = (hash * 31) ^ __birthDate_isset ? 2654435761 : 0;
+  if (__birthDate_isset)
+  {
+    hash = (hash * 31) ^ [@(__birthDate) hash];
+  }
+  hash = (hash * 31) ^ __githubProfile_isset ? 2654435761 : 0;
+  if (__githubProfile_isset)
+  {
+    hash = (hash * 31) ^ [__githubProfile hash];
+  }
+  hash = (hash * 31) ^ __profileImage_isset ? 2654435761 : 0;
+  if (__profileImage_isset)
+  {
+    hash = (hash * 31) ^ [__profileImage hash];
   }
   return hash;
 }
@@ -4414,6 +4526,18 @@
       (__name_isset && ((__name || other->__name) && ![__name isEqual:other->__name]))) {
     return NO;
   }
+  if ((__firstName_isset != other->__firstName_isset) ||
+      (__firstName_isset && ((__firstName || other->__firstName) && ![__firstName isEqual:other->__firstName]))) {
+    return NO;
+  }
+  if ((__middleName_isset != other->__middleName_isset) ||
+      (__middleName_isset && ((__middleName || other->__middleName) && ![__middleName isEqual:other->__middleName]))) {
+    return NO;
+  }
+  if ((__lastName_isset != other->__lastName_isset) ||
+      (__lastName_isset && ((__lastName || other->__lastName) && ![__lastName isEqual:other->__lastName]))) {
+    return NO;
+  }
   if ((__username_isset != other->__username_isset) ||
       (__username_isset && ((__username || other->__username) && ![__username isEqual:other->__username]))) {
     return NO;
@@ -4426,6 +4550,22 @@
       (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
     return NO;
   }
+  if ((__mainRole_isset != other->__mainRole_isset) ||
+      (__mainRole_isset && (__mainRole != other->__mainRole))) {
+    return NO;
+  }
+  if ((__birthDate_isset != other->__birthDate_isset) ||
+      (__birthDate_isset && (__birthDate != other->__birthDate))) {
+    return NO;
+  }
+  if ((__githubProfile_isset != other->__githubProfile_isset) ||
+      (__githubProfile_isset && ((__githubProfile || other->__githubProfile) && ![__githubProfile isEqual:other->__githubProfile]))) {
+    return NO;
+  }
+  if ((__profileImage_isset != other->__profileImage_isset) ||
+      (__profileImage_isset && ((__profileImage || other->__profileImage) && ![__profileImage isEqual:other->__profileImage]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -4433,9 +4573,14 @@
 {
   [__email release_stub];
   [__name release_stub];
+  [__firstName release_stub];
+  [__middleName release_stub];
+  [__lastName release_stub];
   [__username release_stub];
   [__organization release_stub];
   [__credentials release_stub];
+  [__githubProfile release_stub];
+  [__profileImage release_stub];
   [super dealloc_stub];
 }
 
@@ -4479,6 +4624,69 @@
   [__name release_stub];
   __name = nil;
   __name_isset = NO;
+}
+
+- (NSString *) firstName {
+  return [[__firstName retain_stub] autorelease_stub];
+}
+
+- (void) setFirstName: (NSString *) firstName {
+  [firstName retain_stub];
+  [__firstName release_stub];
+  __firstName = firstName;
+  __firstName_isset = YES;
+}
+
+- (BOOL) firstNameIsSet {
+  return __firstName_isset;
+}
+
+- (void) unsetFirstName {
+  [__firstName release_stub];
+  __firstName = nil;
+  __firstName_isset = NO;
+}
+
+- (NSString *) middleName {
+  return [[__middleName retain_stub] autorelease_stub];
+}
+
+- (void) setMiddleName: (NSString *) middleName {
+  [middleName retain_stub];
+  [__middleName release_stub];
+  __middleName = middleName;
+  __middleName_isset = YES;
+}
+
+- (BOOL) middleNameIsSet {
+  return __middleName_isset;
+}
+
+- (void) unsetMiddleName {
+  [__middleName release_stub];
+  __middleName = nil;
+  __middleName_isset = NO;
+}
+
+- (NSString *) lastName {
+  return [[__lastName retain_stub] autorelease_stub];
+}
+
+- (void) setLastName: (NSString *) lastName {
+  [lastName retain_stub];
+  [__lastName release_stub];
+  __lastName = lastName;
+  __lastName_isset = YES;
+}
+
+- (BOOL) lastNameIsSet {
+  return __lastName_isset;
+}
+
+- (void) unsetLastName {
+  [__lastName release_stub];
+  __lastName = nil;
+  __lastName_isset = NO;
 }
 
 - (NSString *) username {
@@ -4544,6 +4752,82 @@
   __credentials_isset = NO;
 }
 
+- (int) mainRole {
+  return __mainRole;
+}
+
+- (void) setMainRole: (int) mainRole {
+  __mainRole = mainRole;
+  __mainRole_isset = YES;
+}
+
+- (BOOL) mainRoleIsSet {
+  return __mainRole_isset;
+}
+
+- (void) unsetMainRole {
+  __mainRole_isset = NO;
+}
+
+- (int64_t) birthDate {
+  return __birthDate;
+}
+
+- (void) setBirthDate: (int64_t) birthDate {
+  __birthDate = birthDate;
+  __birthDate_isset = YES;
+}
+
+- (BOOL) birthDateIsSet {
+  return __birthDate_isset;
+}
+
+- (void) unsetBirthDate {
+  __birthDate_isset = NO;
+}
+
+- (NSString *) githubProfile {
+  return [[__githubProfile retain_stub] autorelease_stub];
+}
+
+- (void) setGithubProfile: (NSString *) githubProfile {
+  [githubProfile retain_stub];
+  [__githubProfile release_stub];
+  __githubProfile = githubProfile;
+  __githubProfile_isset = YES;
+}
+
+- (BOOL) githubProfileIsSet {
+  return __githubProfile_isset;
+}
+
+- (void) unsetGithubProfile {
+  [__githubProfile release_stub];
+  __githubProfile = nil;
+  __githubProfile_isset = NO;
+}
+
+- (Banana_Image *) profileImage {
+  return [[__profileImage retain_stub] autorelease_stub];
+}
+
+- (void) setProfileImage: (Banana_Image *) profileImage {
+  [profileImage retain_stub];
+  [__profileImage release_stub];
+  __profileImage = profileImage;
+  __profileImage_isset = YES;
+}
+
+- (BOOL) profileImageIsSet {
+  return __profileImage_isset;
+}
+
+- (void) unsetProfileImage {
+  [__profileImage release_stub];
+  __profileImage = nil;
+  __profileImage_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -4578,7 +4862,7 @@
       case 3:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setUsername: fieldValue];
+          [self setFirstName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -4586,16 +4870,74 @@
       case 4:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setOrganization: fieldValue];
+          [self setMiddleName: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
       case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setLastName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganization: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
         if (fieldType == TType_STRUCT) {
           BananaAuthentication_Credentials *fieldValue = [[BananaAuthentication_Credentials alloc] init];
           [fieldValue read: inProtocol];
           [self setCredentials: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
+        if (fieldType == TType_I32) {
+          int fieldValue = [inProtocol readI32];
+          [self setMainRole: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 10:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setBirthDate: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 11:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setGithubProfile: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 12:
+        if (fieldType == TType_STRUCT) {
+          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          [fieldValue read: inProtocol];
+          [self setProfileImage: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -4626,24 +4968,69 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__firstName_isset) {
+    if (__firstName != nil) {
+      [outProtocol writeFieldBeginWithName: @"firstName" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __firstName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__middleName_isset) {
+    if (__middleName != nil) {
+      [outProtocol writeFieldBeginWithName: @"middleName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __middleName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__lastName_isset) {
+    if (__lastName != nil) {
+      [outProtocol writeFieldBeginWithName: @"lastName" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __lastName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__username_isset) {
     if (__username != nil) {
-      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 3];
+      [outProtocol writeFieldBeginWithName: @"username" type: TType_STRING fieldID: 6];
       [outProtocol writeString: __username];
       [outProtocol writeFieldEnd];
     }
   }
   if (__organization_isset) {
     if (__organization != nil) {
-      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"organization" type: TType_STRING fieldID: 7];
       [outProtocol writeString: __organization];
       [outProtocol writeFieldEnd];
     }
   }
   if (__credentials_isset) {
     if (__credentials != nil) {
-      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 5];
+      [outProtocol writeFieldBeginWithName: @"credentials" type: TType_STRUCT fieldID: 8];
       [__credentials write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__mainRole_isset) {
+    [outProtocol writeFieldBeginWithName: @"mainRole" type: TType_I32 fieldID: 9];
+    [outProtocol writeI32: __mainRole];
+    [outProtocol writeFieldEnd];
+  }
+  if (__birthDate_isset) {
+    [outProtocol writeFieldBeginWithName: @"birthDate" type: TType_I64 fieldID: 10];
+    [outProtocol writeI64: __birthDate];
+    [outProtocol writeFieldEnd];
+  }
+  if (__githubProfile_isset) {
+    if (__githubProfile != nil) {
+      [outProtocol writeFieldBeginWithName: @"githubProfile" type: TType_STRING fieldID: 11];
+      [outProtocol writeString: __githubProfile];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__profileImage_isset) {
+    if (__profileImage != nil) {
+      [outProtocol writeFieldBeginWithName: @"profileImage" type: TType_STRUCT fieldID: 12];
+      [__profileImage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -4661,12 +5048,26 @@
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",name:"];
   [ms appendFormat: @"\"%@\"", __name];
+  [ms appendString: @",firstName:"];
+  [ms appendFormat: @"\"%@\"", __firstName];
+  [ms appendString: @",middleName:"];
+  [ms appendFormat: @"\"%@\"", __middleName];
+  [ms appendString: @",lastName:"];
+  [ms appendFormat: @"\"%@\"", __lastName];
   [ms appendString: @",username:"];
   [ms appendFormat: @"\"%@\"", __username];
   [ms appendString: @",organization:"];
   [ms appendFormat: @"\"%@\"", __organization];
   [ms appendString: @",credentials:"];
   [ms appendFormat: @"%@", __credentials];
+  [ms appendString: @",mainRole:"];
+  [ms appendFormat: @"%i", __mainRole];
+  [ms appendString: @",birthDate:"];
+  [ms appendFormat: @"%qi", __birthDate];
+  [ms appendString: @",githubProfile:"];
+  [ms appendFormat: @"\"%@\"", __githubProfile];
+  [ms appendString: @",profileImage:"];
+  [ms appendFormat: @"%@", __profileImage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

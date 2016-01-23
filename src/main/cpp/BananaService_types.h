@@ -1176,12 +1176,19 @@ inline std::ostream& operator<<(std::ostream& out, const SignInResponse& obj)
 }
 
 typedef struct _SignUpRequest__isset {
-  _SignUpRequest__isset() : email(false), name(false), username(false), organization(false), credentials(false) {}
+  _SignUpRequest__isset() : email(false), name(false), firstName(false), middleName(false), lastName(false), username(false), organization(false), credentials(false), mainRole(false), birthDate(false), githubProfile(false), profileImage(false) {}
   bool email :1;
   bool name :1;
+  bool firstName :1;
+  bool middleName :1;
+  bool lastName :1;
   bool username :1;
   bool organization :1;
   bool credentials :1;
+  bool mainRole :1;
+  bool birthDate :1;
+  bool githubProfile :1;
+  bool profileImage :1;
 } _SignUpRequest__isset;
 
 class SignUpRequest {
@@ -1189,15 +1196,22 @@ class SignUpRequest {
 
   SignUpRequest(const SignUpRequest&);
   SignUpRequest& operator=(const SignUpRequest&);
-  SignUpRequest() : email(), name(), username(), organization() {
+  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organization(), mainRole(( ::aroma::banana::thrift::Role::type)0), birthDate(0), githubProfile() {
   }
 
   virtual ~SignUpRequest() throw();
   std::string email;
   std::string name;
+  std::string firstName;
+  std::string middleName;
+  std::string lastName;
   std::string username;
   std::string organization;
    ::aroma::banana::thrift::authentication::Credentials credentials;
+   ::aroma::banana::thrift::Role::type mainRole;
+  timestamp birthDate;
+  std::string githubProfile;
+  Image profileImage;
 
   _SignUpRequest__isset __isset;
 
@@ -1205,11 +1219,25 @@ class SignUpRequest {
 
   void __set_name(const std::string& val);
 
+  void __set_firstName(const std::string& val);
+
+  void __set_middleName(const std::string& val);
+
+  void __set_lastName(const std::string& val);
+
   void __set_username(const std::string& val);
 
   void __set_organization(const std::string& val);
 
   void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+
+  void __set_mainRole(const  ::aroma::banana::thrift::Role::type val);
+
+  void __set_birthDate(const timestamp val);
+
+  void __set_githubProfile(const std::string& val);
+
+  void __set_profileImage(const Image& val);
 
   bool operator == (const SignUpRequest & rhs) const
   {
@@ -1217,11 +1245,31 @@ class SignUpRequest {
       return false;
     if (!(name == rhs.name))
       return false;
+    if (!(firstName == rhs.firstName))
+      return false;
+    if (!(middleName == rhs.middleName))
+      return false;
+    if (!(lastName == rhs.lastName))
+      return false;
     if (!(username == rhs.username))
       return false;
     if (!(organization == rhs.organization))
       return false;
     if (!(credentials == rhs.credentials))
+      return false;
+    if (!(mainRole == rhs.mainRole))
+      return false;
+    if (__isset.birthDate != rhs.__isset.birthDate)
+      return false;
+    else if (__isset.birthDate && !(birthDate == rhs.birthDate))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
+      return false;
+    if (__isset.profileImage != rhs.__isset.profileImage)
+      return false;
+    else if (__isset.profileImage && !(profileImage == rhs.profileImage))
       return false;
     return true;
   }
@@ -1317,10 +1365,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp61;
-    tmp61 = 4LL;
+     ::aroma::banana::thrift::long tmp62;
+    tmp62 = 4LL;
 
-    lengthOfTime.value = tmp61;
+    lengthOfTime.value = tmp62;
     lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
 
   }

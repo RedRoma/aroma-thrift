@@ -771,27 +771,48 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @interface BananaService_SignUpRequest : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __name;
+  NSString * __firstName;
+  NSString * __middleName;
+  NSString * __lastName;
   NSString * __username;
   NSString * __organization;
   BananaAuthentication_Credentials * __credentials;
+  int __mainRole;
+  BananaService_timestamp __birthDate;
+  NSString * __githubProfile;
+  BananaService_Image __profileImage;
 
   BOOL __email_isset;
   BOOL __name_isset;
+  BOOL __firstName_isset;
+  BOOL __middleName_isset;
+  BOOL __lastName_isset;
   BOOL __username_isset;
   BOOL __organization_isset;
   BOOL __credentials_isset;
+  BOOL __mainRole_isset;
+  BOOL __birthDate_isset;
+  BOOL __githubProfile_isset;
+  BOOL __profileImage_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
+@property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
+@property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
+@property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
 @property (nonatomic, retain, getter=organization, setter=setOrganization:) NSString * organization;
 @property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
+@property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
+@property (nonatomic, getter=birthDate, setter=setBirthDate:) BananaService_timestamp birthDate;
+@property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) BananaService_Image profileImage;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organization: (NSString *) organization credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -811,6 +832,24 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
+- (NSString *) firstName;
+- (void) setFirstName: (NSString *) firstName;
+#endif
+- (BOOL) firstNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) middleName;
+- (void) setMiddleName: (NSString *) middleName;
+#endif
+- (BOOL) middleNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) lastName;
+- (void) setLastName: (NSString *) lastName;
+#endif
+- (BOOL) lastNameIsSet;
+
+#if !__has_feature(objc_arc)
 - (NSString *) username;
 - (void) setUsername: (NSString *) username;
 #endif
@@ -827,6 +866,30 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) setCredentials: (BananaAuthentication_Credentials *) credentials;
 #endif
 - (BOOL) credentialsIsSet;
+
+#if !__has_feature(objc_arc)
+- (int) mainRole;
+- (void) setMainRole: (int) mainRole;
+#endif
+- (BOOL) mainRoleIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_timestamp) birthDate;
+- (void) setBirthDate: (BananaService_timestamp) birthDate;
+#endif
+- (BOOL) birthDateIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) githubProfile;
+- (void) setGithubProfile: (NSString *) githubProfile;
+#endif
+- (BOOL) githubProfileIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_Image) profileImage;
+- (void) setProfileImage: (BananaService_Image) profileImage;
+#endif
+- (BOOL) profileImageIsSet;
 
 @end
 

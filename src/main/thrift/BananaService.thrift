@@ -274,9 +274,16 @@ struct SignUpRequest
 {
     1: string email;
     2: string name;
-    3: string username;
-    4: string organization;
-    5: Authentication.Credentials credentials;
+    3: string firstName;
+    4: string middleName;
+    5: string lastName;
+    6: string username;
+    7: uuid organizationId;
+    8: Authentication.Credentials credentials;
+    9: Banana.Role mainRole;
+    10: optional timestamp birthDate;
+    11: optional string githubProfile;
+    12: optional Image profileImage;
 }
 
 /**

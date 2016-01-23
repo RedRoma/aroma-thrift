@@ -1422,15 +1422,31 @@ SignInResponse.prototype.write = function(output) {
 SignUpRequest = module.exports.SignUpRequest = function(args) {
   this.email = null;
   this.name = null;
+  this.firstName = null;
+  this.middleName = null;
+  this.lastName = null;
   this.username = null;
   this.organization = null;
   this.credentials = null;
+  this.mainRole = null;
+  this.birthDate = null;
+  this.githubProfile = null;
+  this.profileImage = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
     }
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
+    }
+    if (args.firstName !== undefined && args.firstName !== null) {
+      this.firstName = args.firstName;
+    }
+    if (args.middleName !== undefined && args.middleName !== null) {
+      this.middleName = args.middleName;
+    }
+    if (args.lastName !== undefined && args.lastName !== null) {
+      this.lastName = args.lastName;
     }
     if (args.username !== undefined && args.username !== null) {
       this.username = args.username;
@@ -1440,6 +1456,18 @@ SignUpRequest = module.exports.SignUpRequest = function(args) {
     }
     if (args.credentials !== undefined && args.credentials !== null) {
       this.credentials = new Authentication_ttypes.Credentials(args.credentials);
+    }
+    if (args.mainRole !== undefined && args.mainRole !== null) {
+      this.mainRole = args.mainRole;
+    }
+    if (args.birthDate !== undefined && args.birthDate !== null) {
+      this.birthDate = args.birthDate;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
+    }
+    if (args.profileImage !== undefined && args.profileImage !== null) {
+      this.profileImage = new Banana_ttypes.Image(args.profileImage);
     }
   }
 };
@@ -1473,22 +1501,72 @@ SignUpRequest.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRING) {
-        this.username = input.readString();
+        this.firstName = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 4:
       if (ftype == Thrift.Type.STRING) {
-        this.organization = input.readString();
+        this.middleName = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.lastName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.username = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.organization = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
       if (ftype == Thrift.Type.STRUCT) {
         this.credentials = new Authentication_ttypes.Credentials();
         this.credentials.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.I32) {
+        this.mainRole = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.I64) {
+        this.birthDate = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.profileImage = new Banana_ttypes.Image();
+        this.profileImage.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1514,19 +1592,54 @@ SignUpRequest.prototype.write = function(output) {
     output.writeString(this.name);
     output.writeFieldEnd();
   }
+  if (this.firstName !== null && this.firstName !== undefined) {
+    output.writeFieldBegin('firstName', Thrift.Type.STRING, 3);
+    output.writeString(this.firstName);
+    output.writeFieldEnd();
+  }
+  if (this.middleName !== null && this.middleName !== undefined) {
+    output.writeFieldBegin('middleName', Thrift.Type.STRING, 4);
+    output.writeString(this.middleName);
+    output.writeFieldEnd();
+  }
+  if (this.lastName !== null && this.lastName !== undefined) {
+    output.writeFieldBegin('lastName', Thrift.Type.STRING, 5);
+    output.writeString(this.lastName);
+    output.writeFieldEnd();
+  }
   if (this.username !== null && this.username !== undefined) {
-    output.writeFieldBegin('username', Thrift.Type.STRING, 3);
+    output.writeFieldBegin('username', Thrift.Type.STRING, 6);
     output.writeString(this.username);
     output.writeFieldEnd();
   }
   if (this.organization !== null && this.organization !== undefined) {
-    output.writeFieldBegin('organization', Thrift.Type.STRING, 4);
+    output.writeFieldBegin('organization', Thrift.Type.STRING, 7);
     output.writeString(this.organization);
     output.writeFieldEnd();
   }
   if (this.credentials !== null && this.credentials !== undefined) {
-    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 5);
+    output.writeFieldBegin('credentials', Thrift.Type.STRUCT, 8);
     this.credentials.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.mainRole !== null && this.mainRole !== undefined) {
+    output.writeFieldBegin('mainRole', Thrift.Type.I32, 9);
+    output.writeI32(this.mainRole);
+    output.writeFieldEnd();
+  }
+  if (this.birthDate !== null && this.birthDate !== undefined) {
+    output.writeFieldBegin('birthDate', Thrift.Type.I64, 10);
+    output.writeI64(this.birthDate);
+    output.writeFieldEnd();
+  }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 11);
+    output.writeString(this.githubProfile);
+    output.writeFieldEnd();
+  }
+  if (this.profileImage !== null && this.profileImage !== undefined) {
+    output.writeFieldBegin('profileImage', Thrift.Type.STRUCT, 12);
+    this.profileImage.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
