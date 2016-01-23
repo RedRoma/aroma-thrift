@@ -81,6 +81,12 @@ public final class BananaAssertions
             checkThat(t.tokenId)
                 .usingMessage("token missing tokenId")
                 .is(nonEmptyString());
+            
+//            checkThat(t.ownerId)
+//                .usingMessage("token missing ownerId")
+//                .is(nonEmptyString())
+//                .usingMessage("token ownerId must be a UUID")
+//                .is(validUUID());
         };
     }
     
