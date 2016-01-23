@@ -24,6 +24,7 @@ void CreateTokenRequest::__set_ownerId(const uuid& val) {
 
 void CreateTokenRequest::__set_lifetime(const LengthOfTime& val) {
   this->lifetime = val;
+__isset.lifetime = true;
 }
 
 void CreateTokenRequest::__set_desiredTokenType(const TokenType val) {
@@ -137,10 +138,11 @@ uint32_t CreateTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeString(this->ownerId);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->lifetime.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.lifetime) {
+    xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->lifetime.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldBegin("desiredTokenType", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32((int32_t)this->desiredTokenType);
   xfer += oprot->writeFieldEnd();
@@ -199,7 +201,7 @@ void CreateTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "CreateTokenRequest(";
   out << "ownerId=" << to_string(ownerId);
-  out << ", " << "lifetime=" << to_string(lifetime);
+  out << ", " << "lifetime="; (__isset.lifetime ? (out << to_string(lifetime)) : (out << "<null>"));
   out << ", " << "desiredTokenType=" << to_string(desiredTokenType);
   out << ", " << "ownerName="; (__isset.ownerName ? (out << to_string(ownerName)) : (out << "<null>"));
   out << ", " << "organizationId="; (__isset.organizationId ? (out << to_string(organizationId)) : (out << "<null>"));

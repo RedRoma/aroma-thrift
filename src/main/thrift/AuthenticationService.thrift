@@ -45,6 +45,8 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+/** The Default lifetime of a Token created by the Authentication Service. */
+const Banana.LengthOfTime DEFAULT_TOKEN_LIFETIME = { "value" : 60, "unit" : Banana.TimeUnit.DAYS };
 
 struct CreateTokenRequest
 {
@@ -55,7 +57,7 @@ struct CreateTokenRequest
      */
     1: uuid ownerId;
     /** The desired length of time to keep the Token alive and valid. */
-    2: LengthOfTime lifetime;
+    2: optional LengthOfTime lifetime = DEFAULT_TOKEN_LIFETIME;
     /** This is required, and determines the kind of Token created. */
     3: TokenType desiredTokenType;
     /** Optional stores the name of the entity owning the token, for instance App name or user's email. */

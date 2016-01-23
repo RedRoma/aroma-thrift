@@ -31,6 +31,8 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.lifetime = [[[Banana_LengthOfTime alloc] init] autorelease_stub];
+
 #endif
   return self;
 }
@@ -1637,6 +1639,7 @@
 static AuthenticationService_int AuthenticationService_SERVICE_PORT = 6001;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
+static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 
 @implementation AuthenticationService_AuthenticationServiceConstants
 + (void) initialize {
@@ -1650,6 +1653,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [AuthenticationService_BETA_ENDPOINT setPort:6001];
 
 ;
+  AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setValue:60];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:4];
+
+;
 }
 + (AuthenticationService_int) SERVICE_PORT{
   return AuthenticationService_SERVICE_PORT;
@@ -1659,6 +1667,9 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return AuthenticationService_BETA_ENDPOINT;
+}
++ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME{
+  return AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 }
 @end
 

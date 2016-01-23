@@ -25,6 +25,12 @@ AuthenticationServiceConstants::AuthenticationServiceConstants() {
 
   BETA_ENDPOINT.port = tmp19;
 
+   ::aroma::banana::thrift::long tmp20;
+  tmp20 = 60LL;
+
+  DEFAULT_TOKEN_LIFETIME.value = tmp20;
+  DEFAULT_TOKEN_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
+
 }
 
 }}}}} // namespace

@@ -349,4 +349,5 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 + (AuthenticationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME;
 @end
