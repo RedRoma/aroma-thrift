@@ -70,11 +70,13 @@ class VerifyTokenRequest;
 class VerifyTokenResponse;
 
 typedef struct _CreateTokenRequest__isset {
-  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false), ownerName(false) {}
+  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false), ownerName(false), organizationId(false), organizationName(false) {}
   bool ownerId :1;
   bool lifetime :1;
   bool desiredTokenType :1;
   bool ownerName :1;
+  bool organizationId :1;
+  bool organizationName :1;
 } _CreateTokenRequest__isset;
 
 class CreateTokenRequest {
@@ -82,7 +84,7 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName() {
+  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName(), organizationId(), organizationName() {
   }
 
   virtual ~CreateTokenRequest() throw();
@@ -90,6 +92,8 @@ class CreateTokenRequest {
   LengthOfTime lifetime;
   TokenType desiredTokenType;
   std::string ownerName;
+  uuid organizationId;
+  std::string organizationName;
 
   _CreateTokenRequest__isset __isset;
 
@@ -100,6 +104,10 @@ class CreateTokenRequest {
   void __set_desiredTokenType(const TokenType val);
 
   void __set_ownerName(const std::string& val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_organizationName(const std::string& val);
 
   bool operator == (const CreateTokenRequest & rhs) const
   {
@@ -112,6 +120,14 @@ class CreateTokenRequest {
     if (__isset.ownerName != rhs.__isset.ownerName)
       return false;
     else if (__isset.ownerName && !(ownerName == rhs.ownerName))
+      return false;
+    if (__isset.organizationId != rhs.__isset.organizationId)
+      return false;
+    else if (__isset.organizationId && !(organizationId == rhs.organizationId))
+      return false;
+    if (__isset.organizationName != rhs.__isset.organizationName)
+      return false;
+    else if (__isset.organizationName && !(organizationName == rhs.organizationName))
       return false;
     return true;
   }

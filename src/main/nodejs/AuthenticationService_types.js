@@ -19,6 +19,8 @@ CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
   this.lifetime = null;
   this.desiredTokenType = null;
   this.ownerName = null;
+  this.organizationId = null;
+  this.organizationName = null;
   if (args) {
     if (args.ownerId !== undefined && args.ownerId !== null) {
       this.ownerId = args.ownerId;
@@ -31,6 +33,12 @@ CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
     }
     if (args.ownerName !== undefined && args.ownerName !== null) {
       this.ownerName = args.ownerName;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
     }
   }
 };
@@ -77,6 +85,20 @@ CreateTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -106,6 +128,16 @@ CreateTokenRequest.prototype.write = function(output) {
   if (this.ownerName !== null && this.ownerName !== undefined) {
     output.writeFieldBegin('ownerName', Thrift.Type.STRING, 4);
     output.writeString(this.ownerName);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 5);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 6);
+    output.writeString(this.organizationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

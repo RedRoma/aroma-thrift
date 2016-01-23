@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType ownerName: (NSString *) ownerName
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType ownerName: (NSString *) ownerName organizationId: (AuthenticationService_uuid) organizationId organizationName: (NSString *) organizationName
 {
   self = [super init];
   __ownerId = [ownerId retain_stub];
@@ -46,6 +46,10 @@
   __desiredTokenType_isset = YES;
   __ownerName = [ownerName retain_stub];
   __ownerName_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
+  __organizationName = [organizationName retain_stub];
+  __organizationName_isset = YES;
   return self;
 }
 
@@ -72,6 +76,16 @@
     __ownerName = [[decoder decodeObjectForKey: @"ownerName"] retain_stub];
     __ownerName_isset = YES;
   }
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationName"])
+  {
+    __organizationName = [[decoder decodeObjectForKey: @"organizationName"] retain_stub];
+    __organizationName_isset = YES;
+  }
   return self;
 }
 
@@ -92,6 +106,14 @@
   if (__ownerName_isset)
   {
     [encoder encodeObject: __ownerName forKey: @"ownerName"];
+  }
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__organizationName_isset)
+  {
+    [encoder encodeObject: __organizationName forKey: @"organizationName"];
   }
 }
 
@@ -117,6 +139,16 @@
   if (__ownerName_isset)
   {
     hash = (hash * 31) ^ [__ownerName hash];
+  }
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
+  hash = (hash * 31) ^ __organizationName_isset ? 2654435761 : 0;
+  if (__organizationName_isset)
+  {
+    hash = (hash * 31) ^ [__organizationName hash];
   }
   return hash;
 }
@@ -146,6 +178,14 @@
       (__ownerName_isset && ((__ownerName || other->__ownerName) && ![__ownerName isEqual:other->__ownerName]))) {
     return NO;
   }
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__organizationName_isset != other->__organizationName_isset) ||
+      (__organizationName_isset && ((__organizationName || other->__organizationName) && ![__organizationName isEqual:other->__organizationName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -154,6 +194,8 @@
   [__ownerId release_stub];
   [__lifetime release_stub];
   [__ownerName release_stub];
+  [__organizationId release_stub];
+  [__organizationName release_stub];
   [super dealloc_stub];
 }
 
@@ -237,6 +279,48 @@
   __ownerName_isset = NO;
 }
 
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
+- (NSString *) organizationName {
+  return [[__organizationName retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationName: (NSString *) organizationName {
+  [organizationName retain_stub];
+  [__organizationName release_stub];
+  __organizationName = organizationName;
+  __organizationName_isset = YES;
+}
+
+- (BOOL) organizationNameIsSet {
+  return __organizationName_isset;
+}
+
+- (void) unsetOrganizationName {
+  [__organizationName release_stub];
+  __organizationName = nil;
+  __organizationName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -286,6 +370,22 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -323,6 +423,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationName_isset) {
+    if (__organizationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationName" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __organizationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -341,6 +455,10 @@
   [ms appendFormat: @"%i", __desiredTokenType];
   [ms appendString: @",ownerName:"];
   [ms appendFormat: @"\"%@\"", __ownerName];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",organizationName:"];
+  [ms appendFormat: @"\"%@\"", __organizationName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

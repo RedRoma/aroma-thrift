@@ -60,6 +60,8 @@ struct CreateTokenRequest
     3: TokenType desiredTokenType;
     /** Optional stores the name of the entity owning the token, for instance App name or user's email. */
     4: optional string ownerName;
+    5: optional uuid organizationId;
+    6: optional string organizationName;
 }
 
 struct CreateTokenResponse
