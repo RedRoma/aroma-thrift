@@ -3799,11 +3799,11 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   };
 
 ttypes.API_VERSION = 1.6;
-ttypes.SERVICE_PORT = 7001;
+ttypes.SERVICE_PORT = 7000;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-srv.banana.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.banana.aroma.tech','port' : 7000});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7001});
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7000});
 ttypes.MAX_APPLICATION_ICON_DIMENSION = new Banana_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Banana_ttypes.Dimension({

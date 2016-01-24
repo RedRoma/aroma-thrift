@@ -157,8 +157,8 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-SERVICE_PORT = 7005;
+SERVICE_PORT = 7002;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.banana.aroma.tech','port' : 7002});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7002});

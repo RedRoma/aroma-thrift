@@ -492,7 +492,7 @@
 
 @end
 
-static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
+static ApplicationService_int ApplicationService_SERVICE_PORT = 7002;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 
@@ -500,12 +500,12 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 + (void) initialize {
   ApplicationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
-  [ApplicationService_PRODUCTION_ENDPOINT setPort:7005];
+  [ApplicationService_PRODUCTION_ENDPOINT setPort:7002];
 
 ;
   ApplicationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [ApplicationService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
-  [ApplicationService_BETA_ENDPOINT setPort:7005];
+  [ApplicationService_BETA_ENDPOINT setPort:7002];
 
 ;
 }

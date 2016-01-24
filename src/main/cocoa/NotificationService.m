@@ -469,7 +469,7 @@
 
 @end
 
-static NotificationService_int NotificationService_SERVICE_PORT = 9009;
+static NotificationService_int NotificationService_SERVICE_PORT = 7009;
 static BananaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
@@ -477,12 +477,12 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 + (void) initialize {
   NotificationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [NotificationService_PRODUCTION_ENDPOINT setHostname:@"notification-srv.banana.aroma.tech"];
-  [NotificationService_PRODUCTION_ENDPOINT setPort:9009];
+  [NotificationService_PRODUCTION_ENDPOINT setPort:7009];
 
 ;
   NotificationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [NotificationService_BETA_ENDPOINT setHostname:@"notification-srv.beta.banana.aroma.tech"];
-  [NotificationService_BETA_ENDPOINT setPort:9009];
+  [NotificationService_BETA_ENDPOINT setPort:7009];
 
 ;
 }

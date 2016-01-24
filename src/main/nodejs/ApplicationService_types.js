@@ -166,8 +166,8 @@ SendMessageResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.SERVICE_PORT = 7005;
+ttypes.SERVICE_PORT = 7002;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'application-srv.banana.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.banana.aroma.tech','port' : 7002});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7005});
+'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7002});

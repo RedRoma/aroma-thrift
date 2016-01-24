@@ -11,17 +11,17 @@ namespace aroma { namespace banana { namespace thrift { namespace application { 
 const ApplicationServiceConstants g_ApplicationService_constants;
 
 ApplicationServiceConstants::ApplicationServiceConstants() {
-  SERVICE_PORT = 7005;
+  SERVICE_PORT = 7002;
 
   PRODUCTION_ENDPOINT.hostname = "application-srv.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp5;
-  tmp5 = 7005;
+  tmp5 = 7002;
 
   PRODUCTION_ENDPOINT.port = tmp5;
 
   BETA_ENDPOINT.hostname = "application-srv.beta.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp6;
-  tmp6 = 7005;
+  tmp6 = 7002;
 
   BETA_ENDPOINT.port = tmp6;
 

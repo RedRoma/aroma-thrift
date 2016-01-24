@@ -39,7 +39,7 @@ typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-const int SERVICE_PORT = 6001;
+const int SERVICE_PORT = 7026;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 

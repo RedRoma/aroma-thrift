@@ -1636,7 +1636,7 @@
 
 @end
 
-static AuthenticationService_int AuthenticationService_SERVICE_PORT = 6001;
+static AuthenticationService_int AuthenticationService_SERVICE_PORT = 7026;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
@@ -1645,12 +1645,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 + (void) initialize {
   AuthenticationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [AuthenticationService_PRODUCTION_ENDPOINT setHostname:@"authentication-srv.banana.aroma.tech"];
-  [AuthenticationService_PRODUCTION_ENDPOINT setPort:6001];
+  [AuthenticationService_PRODUCTION_ENDPOINT setPort:7026];
 
 ;
   AuthenticationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [AuthenticationService_BETA_ENDPOINT setHostname:@"authentication-srv.beta.banana.aroma.tech"];
-  [AuthenticationService_BETA_ENDPOINT setPort:6001];
+  [AuthenticationService_BETA_ENDPOINT setPort:7026];
 
 ;
   AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Banana_LengthOfTime alloc] init];

@@ -13,17 +13,17 @@ const BananaServiceConstants g_BananaService_constants;
 BananaServiceConstants::BananaServiceConstants() {
   API_VERSION = 1.6;
 
-  SERVICE_PORT = 7001;
+  SERVICE_PORT = 7000;
 
   PRODUCTION_ENDPOINT.hostname = "banana-srv.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp187;
-  tmp187 = 7001;
+  tmp187 = 7000;
 
   PRODUCTION_ENDPOINT.port = tmp187;
 
   BETA_ENDPOINT.hostname = "banana-srv.beta.banana.aroma.tech";
    ::aroma::banana::thrift::endpoint::int tmp188;
-  tmp188 = 7001;
+  tmp188 = 7000;
 
   BETA_ENDPOINT.port = tmp188;
 

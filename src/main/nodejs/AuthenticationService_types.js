@@ -547,10 +547,10 @@ VerifyTokenResponse.prototype.write = function(output) {
     return;
   };
 
-ttypes.SERVICE_PORT = 6001;
+ttypes.SERVICE_PORT = 7026;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.banana.aroma.tech','port' : 7026});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 7026});
 ttypes.DEFAULT_TOKEN_LIFETIME = new Banana_ttypes.LengthOfTime({
 'value' : 60,'unit' : 4});

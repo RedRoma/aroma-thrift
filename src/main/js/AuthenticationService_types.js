@@ -538,10 +538,10 @@ VerifyTokenResponse.prototype.write = function(output) {
     return;
   };
 
-SERVICE_PORT = 6001;
+SERVICE_PORT = 7026;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.banana.aroma.tech','port' : 7026});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 7026});
 DEFAULT_TOKEN_LIFETIME = new LengthOfTime({
 'value' : 60,'unit' : 4});

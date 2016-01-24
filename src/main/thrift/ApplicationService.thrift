@@ -38,7 +38,7 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-const int SERVICE_PORT = 7005;
+const int SERVICE_PORT = 7002;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 

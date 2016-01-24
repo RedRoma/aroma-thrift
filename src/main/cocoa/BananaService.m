@@ -11088,7 +11088,7 @@
 @end
 
 static double BananaService_API_VERSION = 1.6;
-static BananaService_int BananaService_SERVICE_PORT = 7001;
+static BananaService_int BananaService_SERVICE_PORT = 7000;
 static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
 static Banana_Dimension * BananaService_MAX_APPLICATION_ICON_DIMENSION;
@@ -11101,12 +11101,12 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-srv.banana.aroma.tech"];
-  [BananaService_PRODUCTION_ENDPOINT setPort:7001];
+  [BananaService_PRODUCTION_ENDPOINT setPort:7000];
 
 ;
   BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
-  [BananaService_BETA_ENDPOINT setPort:7001];
+  [BananaService_BETA_ENDPOINT setPort:7000];
 
 ;
   BananaService_MAX_APPLICATION_ICON_DIMENSION = [[Banana_Dimension alloc] init];
