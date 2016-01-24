@@ -3788,11 +3788,11 @@ SearchForApplicationsResponse.prototype.write = function(output) {
   };
 
 API_VERSION = 1.6;
-SERVICE_PORT = 7000;
+SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-srv.banana.aroma.tech','port' : 7000});
+'hostname' : 'banana-srv.banana.aroma.tech','port' : 7010});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7000});
+'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7010});
 MAX_APPLICATION_ICON_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
 MAX_PROFILE_IMAGE_DIMENSION = new Dimension({

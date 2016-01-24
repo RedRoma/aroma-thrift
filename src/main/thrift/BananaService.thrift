@@ -67,7 +67,7 @@ typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 /** Defines the Version of the Banana Service API of this specification. */
 const double API_VERSION = 1.6;
 
-const int SERVICE_PORT = 7000;
+const int SERVICE_PORT = 7010;
 
 /**
  * This is the Banana Service Production Endpoint
