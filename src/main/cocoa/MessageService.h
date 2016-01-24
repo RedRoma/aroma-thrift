@@ -65,9 +65,9 @@ typedef BananaException_ChannelDoesNotExistException * MessageService_ChannelDoe
 
 typedef BananaException_UnauthorizedException * MessageService_UnauthorizedException;
 
-typedef MessageService_ApplicationService.ApplicationService MessageService_SendMessageRequest;
+typedef ApplicationService_SendMessageRequest * MessageService_SendMessageRequest;
 
-typedef MessageService_ApplicationService.ApplicationService MessageService_SendMessageResponse;
+typedef ApplicationService_SendMessageResponse * MessageService_SendMessageResponse;
 
 typedef BananaService_DeleteMessageRequest * MessageService_DeleteMessageRequest;
 

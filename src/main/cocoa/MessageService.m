@@ -47,7 +47,7 @@ static Banana_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
 
 ;
   MessageService_DEFAULT_MESSAGE_LIFETIME = [[Banana_LengthOfTime alloc] init];
-  [MessageService_DEFAULT_MESSAGE_LIFETIME setValue:1];
+  [MessageService_DEFAULT_MESSAGE_LIFETIME setValue:5];
   [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:4];
 
 ;

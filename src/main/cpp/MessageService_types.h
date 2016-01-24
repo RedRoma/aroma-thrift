@@ -65,9 +65,9 @@ typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-typedef ApplicationService.ApplicationService SendMessageRequest;
+typedef class  ::aroma::banana::thrift::application::service::SendMessageRequest SendMessageRequest;
 
-typedef ApplicationService.ApplicationService SendMessageResponse;
+typedef class  ::aroma::banana::thrift::application::service::SendMessageResponse SendMessageResponse;
 
 typedef class  ::aroma::banana::thrift::service::DeleteMessageRequest DeleteMessageRequest;
 
