@@ -16,6 +16,7 @@
 
 package tech.aroma.banana.thrift.services;
 
+import java.util.concurrent.TimeUnit;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
@@ -69,7 +70,8 @@ public final class Clients
     
     private static TProtocol tryCreateProtocolAt(TcpEndpoint endpoint) throws TTransportException
     {
-        TTransport transport = new TSocket(endpoint.hostname, endpoint.port, 45);
+        long timeout = TimeUnit.SECONDS.toMillis(45);
+        TTransport transport = new TSocket(endpoint.hostname, endpoint.port, (int) timeout);
         try
         {
             transport.open();

@@ -17,7 +17,6 @@
 package tech.aroma.banana.thrift.services;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
@@ -54,7 +53,6 @@ public class ClientsIT
         client.getApiVersion();
     }
 
-    @Ignore
     @Test
     public void testNewNotificationServiceClient() throws Exception
     {
