@@ -28,6 +28,8 @@ import tech.aroma.banana.thrift.authentication.service.AuthenticationServiceCons
 import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
 import tech.aroma.banana.thrift.notification.service.NotificationService;
 import tech.aroma.banana.thrift.notification.service.NotificationServiceConstants;
+import tech.aroma.banana.thrift.service.BananaService;
+import tech.aroma.banana.thrift.service.BananaServiceConstants;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 
 /**
@@ -45,26 +47,28 @@ public final class Clients
     {
         TcpEndpoint endpoint = AuthenticationServiceConstants.BETA_ENDPOINT;
 
-        TTransport transport = new TSocket(endpoint.hostname, endpoint.port, 30);
-        try
-        {
-            transport.open();
-        }
-        catch (TTransportException ex)
-        {
-            LOG.error("Failed to connect to Authentication Service at {}", endpoint, ex);
-            throw ex;
-        }
-
-        TProtocol protocol = new TBinaryProtocol(transport);
-
-        AuthenticationService.Client client = new AuthenticationService.Client(protocol);
-        return client;
+        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        return new AuthenticationService.Client(protocol);
+    }
+    
+    public static BananaService.Client newBananaServiceClient() throws TTransportException
+    {
+        TcpEndpoint endpoint = BananaServiceConstants.BETA_ENDPOINT;
+        
+        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        return new BananaService.Client(protocol);
     }
 
     public static NotificationService.Client newNotificationServiceClient() throws TTransportException
     {
         TcpEndpoint endpoint = NotificationServiceConstants.BETA_ENDPOINT;
+        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        
+        return new NotificationService.Client(protocol);
+    }
+    
+    private static TProtocol tryCreateProtocolAt(TcpEndpoint endpoint) throws TTransportException
+    {
         TTransport transport = new TSocket(endpoint.hostname, endpoint.port, 45);
         try
         {
@@ -77,9 +81,6 @@ public final class Clients
         }
         
         TProtocol protocol = new TBinaryProtocol(transport);
-        
-        NotificationService.Client client = new NotificationService.Client(protocol);
-        
-        return client;
+        return protocol;
     }
 }

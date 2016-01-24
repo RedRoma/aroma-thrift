@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
 import tech.aroma.banana.thrift.notification.service.NotificationService;
+import tech.aroma.banana.thrift.service.BananaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -58,6 +59,15 @@ public class ClientsIT
     public void testNewNotificationServiceClient() throws Exception
     {
         NotificationService.Client client = Clients.newNotificationServiceClient();
+        assertThat(client, notNullValue());
+        
+        client.getApiVersion();
+    }
+
+    @Test
+    public void testNewBananaServiceClient() throws Exception
+    {
+        BananaService.Client client = Clients.newBananaServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
