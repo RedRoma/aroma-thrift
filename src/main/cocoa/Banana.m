@@ -2285,7 +2285,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined
 {
   self = [super init];
   __email = [email retain_stub];
@@ -2310,6 +2310,8 @@
   __lastName_isset = YES;
   __birthdate = birthdate;
   __birthdate_isset = YES;
+  __timeUserJoined = timeUserJoined;
+  __timeUserJoined_isset = YES;
   return self;
 }
 
@@ -2371,6 +2373,11 @@
     __birthdate = [decoder decodeInt64ForKey: @"birthdate"];
     __birthdate_isset = YES;
   }
+  if ([decoder containsValueForKey: @"timeUserJoined"])
+  {
+    __timeUserJoined = [decoder decodeInt64ForKey: @"timeUserJoined"];
+    __timeUserJoined_isset = YES;
+  }
   return self;
 }
 
@@ -2419,6 +2426,10 @@
   if (__birthdate_isset)
   {
     [encoder encodeInt64: __birthdate forKey: @"birthdate"];
+  }
+  if (__timeUserJoined_isset)
+  {
+    [encoder encodeInt64: __timeUserJoined forKey: @"timeUserJoined"];
   }
 }
 
@@ -2480,6 +2491,11 @@
   {
     hash = (hash * 31) ^ [@(__birthdate) hash];
   }
+  hash = (hash * 31) ^ __timeUserJoined_isset ? 2654435761 : 0;
+  if (__timeUserJoined_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeUserJoined) hash];
+  }
   return hash;
 }
 
@@ -2534,6 +2550,10 @@
   }
   if ((__birthdate_isset != other->__birthdate_isset) ||
       (__birthdate_isset && (__birthdate != other->__birthdate))) {
+    return NO;
+  }
+  if ((__timeUserJoined_isset != other->__timeUserJoined_isset) ||
+      (__timeUserJoined_isset && (__timeUserJoined != other->__timeUserJoined))) {
     return NO;
   }
   return YES;
@@ -2781,6 +2801,23 @@
   __birthdate_isset = NO;
 }
 
+- (int64_t) timeUserJoined {
+  return __timeUserJoined;
+}
+
+- (void) setTimeUserJoined: (int64_t) timeUserJoined {
+  __timeUserJoined = timeUserJoined;
+  __timeUserJoined_isset = YES;
+}
+
+- (BOOL) timeUserJoinedIsSet {
+  return __timeUserJoined_isset;
+}
+
+- (void) unsetTimeUserJoined {
+  __timeUserJoined_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2896,6 +2933,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 12:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeUserJoined: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2991,6 +3036,11 @@
     [outProtocol writeI64: __birthdate];
     [outProtocol writeFieldEnd];
   }
+  if (__timeUserJoined_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeUserJoined" type: TType_I64 fieldID: 12];
+    [outProtocol writeI64: __timeUserJoined];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3023,6 +3073,8 @@
   [ms appendFormat: @"\"%@\"", __lastName];
   [ms appendString: @",birthdate:"];
   [ms appendFormat: @"%qi", __birthdate];
+  [ms appendString: @",timeUserJoined:"];
+  [ms appendFormat: @"%qi", __timeUserJoined];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

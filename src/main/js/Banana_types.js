@@ -768,6 +768,7 @@ User = function(args) {
   this.middleName = null;
   this.lastName = null;
   this.birthdate = null;
+  this.timeUserJoined = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -801,6 +802,9 @@ User = function(args) {
     }
     if (args.birthdate !== undefined && args.birthdate !== null) {
       this.birthdate = args.birthdate;
+    }
+    if (args.timeUserJoined !== undefined && args.timeUserJoined !== null) {
+      this.timeUserJoined = args.timeUserJoined;
     }
   }
 };
@@ -909,6 +913,13 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 12:
+      if (ftype == Thrift.Type.I64) {
+        this.timeUserJoined = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -982,6 +993,11 @@ User.prototype.write = function(output) {
   if (this.birthdate !== null && this.birthdate !== undefined) {
     output.writeFieldBegin('birthdate', Thrift.Type.I64, 11);
     output.writeI64(this.birthdate);
+    output.writeFieldEnd();
+  }
+  if (this.timeUserJoined !== null && this.timeUserJoined !== undefined) {
+    output.writeFieldBegin('timeUserJoined', Thrift.Type.I64, 12);
+    output.writeI64(this.timeUserJoined);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

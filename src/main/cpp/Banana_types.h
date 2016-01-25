@@ -538,7 +538,7 @@ inline std::ostream& operator<<(std::ostream& out, const Organization& obj)
 }
 
 typedef struct _User__isset {
-  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false), firstName(false), middleName(false), lastName(false), birthdate(false) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false), firstName(false), middleName(false), lastName(false), birthdate(false), timeUserJoined(false) {}
   bool email :1;
   bool userId :1;
   bool name :1;
@@ -550,6 +550,7 @@ typedef struct _User__isset {
   bool middleName :1;
   bool lastName :1;
   bool birthdate :1;
+  bool timeUserJoined :1;
 } _User__isset;
 
 class User {
@@ -557,7 +558,7 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), userId(), name(), profileImageLink(), githubProfile(), firstName(), middleName(), lastName(), birthdate(0) {
+  User() : email(), userId(), name(), profileImageLink(), githubProfile(), firstName(), middleName(), lastName(), birthdate(0), timeUserJoined(0) {
     roles.insert((Role::type)1);
 
   }
@@ -574,6 +575,7 @@ class User {
   std::string middleName;
   std::string lastName;
   timestamp birthdate;
+  timestamp timeUserJoined;
 
   _User__isset __isset;
 
@@ -598,6 +600,8 @@ class User {
   void __set_lastName(const std::string& val);
 
   void __set_birthdate(const timestamp val);
+
+  void __set_timeUserJoined(const timestamp val);
 
   bool operator == (const User & rhs) const
   {
@@ -638,6 +642,10 @@ class User {
     if (__isset.birthdate != rhs.__isset.birthdate)
       return false;
     else if (__isset.birthdate && !(birthdate == rhs.birthdate))
+      return false;
+    if (__isset.timeUserJoined != rhs.__isset.timeUserJoined)
+      return false;
+    else if (__isset.timeUserJoined && !(timeUserJoined == rhs.timeUserJoined))
       return false;
     return true;
   }

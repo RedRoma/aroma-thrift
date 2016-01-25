@@ -214,6 +214,7 @@ struct User
     9: optional string middleName;
     10: optional string lastName;
     11: optional timestamp birthdate;
+    12: optional timestamp timeUserJoined;
 }
 
 struct Application

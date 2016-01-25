@@ -1206,6 +1206,11 @@ void User::__set_birthdate(const timestamp val) {
 __isset.birthdate = true;
 }
 
+void User::__set_timeUserJoined(const timestamp val) {
+  this->timeUserJoined = val;
+__isset.timeUserJoined = true;
+}
+
 uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1330,6 +1335,14 @@ uint32_t User::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeUserJoined);
+          this->__isset.timeUserJoined = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1407,6 +1420,11 @@ uint32_t User::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeI64(this->birthdate);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.timeUserJoined) {
+    xfer += oprot->writeFieldBegin("timeUserJoined", ::apache::thrift::protocol::T_I64, 12);
+    xfer += oprot->writeI64(this->timeUserJoined);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1425,6 +1443,7 @@ void swap(User &a, User &b) {
   swap(a.middleName, b.middleName);
   swap(a.lastName, b.lastName);
   swap(a.birthdate, b.birthdate);
+  swap(a.timeUserJoined, b.timeUserJoined);
   swap(a.__isset, b.__isset);
 }
 
@@ -1440,6 +1459,7 @@ User::User(const User& other29) {
   middleName = other29.middleName;
   lastName = other29.lastName;
   birthdate = other29.birthdate;
+  timeUserJoined = other29.timeUserJoined;
   __isset = other29.__isset;
 }
 User& User::operator=(const User& other30) {
@@ -1454,6 +1474,7 @@ User& User::operator=(const User& other30) {
   middleName = other30.middleName;
   lastName = other30.lastName;
   birthdate = other30.birthdate;
+  timeUserJoined = other30.timeUserJoined;
   __isset = other30.__isset;
   return *this;
 }
@@ -1471,6 +1492,7 @@ void User::printTo(std::ostream& out) const {
   out << ", " << "middleName="; (__isset.middleName ? (out << to_string(middleName)) : (out << "<null>"));
   out << ", " << "lastName="; (__isset.lastName ? (out << to_string(lastName)) : (out << "<null>"));
   out << ", " << "birthdate="; (__isset.birthdate ? (out << to_string(birthdate)) : (out << "<null>"));
+  out << ", " << "timeUserJoined="; (__isset.timeUserJoined ? (out << to_string(timeUserJoined)) : (out << "<null>"));
   out << ")";
 }
 
