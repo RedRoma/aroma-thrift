@@ -602,8 +602,8 @@ inline std::ostream& operator<<(std::ostream& out, const RegenerateApplicationTo
 }
 
 typedef struct _RegenerateApplicationTokenResponse__isset {
-  _RegenerateApplicationTokenResponse__isset() : serviceToken(false) {}
-  bool serviceToken :1;
+  _RegenerateApplicationTokenResponse__isset() : applicationToken(false) {}
+  bool applicationToken :1;
 } _RegenerateApplicationTokenResponse__isset;
 
 class RegenerateApplicationTokenResponse {
@@ -615,15 +615,15 @@ class RegenerateApplicationTokenResponse {
   }
 
   virtual ~RegenerateApplicationTokenResponse() throw();
-  ApplicationToken serviceToken;
+  ApplicationToken applicationToken;
 
   _RegenerateApplicationTokenResponse__isset __isset;
 
-  void __set_serviceToken(const ApplicationToken& val);
+  void __set_applicationToken(const ApplicationToken& val);
 
   bool operator == (const RegenerateApplicationTokenResponse & rhs) const
   {
-    if (!(serviceToken == rhs.serviceToken))
+    if (!(applicationToken == rhs.applicationToken))
       return false;
     return true;
   }

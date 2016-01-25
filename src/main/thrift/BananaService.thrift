@@ -184,7 +184,7 @@ struct RegenerateApplicationTokenRequest
 
 struct RegenerateApplicationTokenResponse
 {
-    1: ApplicationToken serviceToken;
+    1: ApplicationToken applicationToken;
 }
 
 /**

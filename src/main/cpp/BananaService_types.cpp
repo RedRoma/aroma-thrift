@@ -1003,8 +1003,8 @@ RegenerateApplicationTokenResponse::~RegenerateApplicationTokenResponse() throw(
 }
 
 
-void RegenerateApplicationTokenResponse::__set_serviceToken(const ApplicationToken& val) {
-  this->serviceToken = val;
+void RegenerateApplicationTokenResponse::__set_applicationToken(const ApplicationToken& val) {
+  this->applicationToken = val;
 }
 
 uint32_t RegenerateApplicationTokenResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1030,8 +1030,8 @@ uint32_t RegenerateApplicationTokenResponse::read(::apache::thrift::protocol::TP
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->serviceToken.read(iprot);
-          this->__isset.serviceToken = true;
+          xfer += this->applicationToken.read(iprot);
+          this->__isset.applicationToken = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1053,8 +1053,8 @@ uint32_t RegenerateApplicationTokenResponse::write(::apache::thrift::protocol::T
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("RegenerateApplicationTokenResponse");
 
-  xfer += oprot->writeFieldBegin("serviceToken", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->serviceToken.write(oprot);
+  xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->applicationToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -1064,23 +1064,23 @@ uint32_t RegenerateApplicationTokenResponse::write(::apache::thrift::protocol::T
 
 void swap(RegenerateApplicationTokenResponse &a, RegenerateApplicationTokenResponse &b) {
   using ::std::swap;
-  swap(a.serviceToken, b.serviceToken);
+  swap(a.applicationToken, b.applicationToken);
   swap(a.__isset, b.__isset);
 }
 
 RegenerateApplicationTokenResponse::RegenerateApplicationTokenResponse(const RegenerateApplicationTokenResponse& other35) {
-  serviceToken = other35.serviceToken;
+  applicationToken = other35.applicationToken;
   __isset = other35.__isset;
 }
 RegenerateApplicationTokenResponse& RegenerateApplicationTokenResponse::operator=(const RegenerateApplicationTokenResponse& other36) {
-  serviceToken = other36.serviceToken;
+  applicationToken = other36.applicationToken;
   __isset = other36.__isset;
   return *this;
 }
 void RegenerateApplicationTokenResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "RegenerateApplicationTokenResponse(";
-  out << "serviceToken=" << to_string(serviceToken);
+  out << "applicationToken=" << to_string(applicationToken);
   out << ")";
 }
 

@@ -393,17 +393,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @end
 
 @interface BananaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __serviceToken;
+  BananaService_ApplicationToken __applicationToken;
 
-  BOOL __serviceToken_isset;
+  BOOL __applicationToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
 #endif
 
 - (id) init;
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
+- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -411,10 +411,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
+- (BananaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
 #endif
-- (BOOL) serviceTokenIsSet;
+- (BOOL) applicationTokenIsSet;
 
 @end
 
