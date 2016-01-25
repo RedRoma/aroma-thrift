@@ -290,7 +290,8 @@ For Application tokens, this is the Application ID.
 For User Tokens, this is the userId.
 </td><td>default</td><td></td></tr>
 <tr><td>2</td><td>lifetime</td><td><code><a href="#Typedef_LengthOfTime">LengthOfTime</a></code></td><td>The desired length of time to keep the Token alive and valid.
-</td><td>optional</td><td><code><code><a href="#Const_DEFAULT_TOKEN_LIFETIME">DEFAULT_TOKEN_LIFETIME</a></code></code></td></tr>
+If not present, will be set to DEFAULT_TOKEN_LIFETIME.
+</td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>desiredTokenType</td><td><code><a href="#Typedef_TokenType">TokenType</a></code></td><td>This is required, and determines the kind of Token created.
 </td><td>default</td><td></td></tr>
 <tr><td>4</td><td>ownerName</td><td><code>string</code></td><td>Optional stores the name of the entity owning the token, for instance App name or user's email.

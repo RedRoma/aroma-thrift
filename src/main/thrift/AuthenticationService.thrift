@@ -56,8 +56,10 @@ struct CreateTokenRequest
      * For User Tokens, this is the userId.
      */
     1: uuid ownerId;
-    /** The desired length of time to keep the Token alive and valid. */
-    2: optional LengthOfTime lifetime = DEFAULT_TOKEN_LIFETIME;
+    /** The desired length of time to keep the Token alive and valid. 
+     *  If not present, will be set to DEFAULT_TOKEN_LIFETIME.
+     */
+    2: optional LengthOfTime lifetime;
     /** This is required, and determines the kind of Token created. */
     3: TokenType desiredTokenType;
     /** Optional stores the name of the entity owning the token, for instance App name or user's email. */

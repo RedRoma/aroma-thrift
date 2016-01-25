@@ -70,7 +70,7 @@ class VerifyTokenRequest;
 class VerifyTokenResponse;
 
 typedef struct _CreateTokenRequest__isset {
-  _CreateTokenRequest__isset() : ownerId(false), lifetime(true), desiredTokenType(false), ownerName(false), organizationId(false), organizationName(false) {}
+  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false), ownerName(false), organizationId(false), organizationName(false) {}
   bool ownerId :1;
   bool lifetime :1;
   bool desiredTokenType :1;
@@ -85,7 +85,6 @@ class CreateTokenRequest {
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
   CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName(), organizationId(), organizationName() {
-
   }
 
   virtual ~CreateTokenRequest() throw();
