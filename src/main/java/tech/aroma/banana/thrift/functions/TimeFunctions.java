@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 import tech.aroma.banana.thrift.LengthOfTime;
 import tech.aroma.banana.thrift.TimeUnit;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
+import tech.sirwellington.alchemy.annotations.arguments.Required;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
@@ -97,5 +98,13 @@ public final class TimeFunctions
         return LENGTH_OF_TIME_TO_DURATION;
     }
     
+    public static long toSeconds(@Required LengthOfTime lengthOfTime)
+    {
+        checkThat(lengthOfTime)
+            .is(notNull());
+        
+        Duration duration = TimeFunctions.lengthOfTimeToDuration().apply(lengthOfTime);
+        return duration.getSeconds();
+    }
 
 }
