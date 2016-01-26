@@ -155,15 +155,18 @@ public final class BananaAssertions
                 .is(legalToken());
             
             String tokenId = token.getTokenId();
-            String ownerId = token.getOwnerId();
             
             checkThat(tokenId)
                 .usingMessage("tokenId is missing")
                 .is(nonEmptyString());
             
             VerifyTokenRequest request = new VerifyTokenRequest()
-                .setOwnerId(ownerId)
                 .setTokenId(tokenId);
+            
+            if (token.isSetOwnerId())
+            {
+                request.setOwnerId(token.ownerId);
+            }
             
             VerifyTokenResponse response;
             try
