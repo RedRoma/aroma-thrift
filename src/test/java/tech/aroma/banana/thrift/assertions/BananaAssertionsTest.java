@@ -169,6 +169,24 @@ public class BananaAssertionsTest
     }
     
     @Test
+    public void testValidTokenInWithoutOwnerId() throws TException
+    {
+        expectedRequest.unsetOwnerId();
+        authenticationToken.unsetOwnerId();
+        
+        // When Token is good
+        AlchemyAssertion<AuthenticationToken> assertion = BananaAssertions.validTokenIn(authenticationService);
+        assertion.check(authenticationToken);
+        
+        //When Token is bad
+        when(authenticationService.verifyToken(expectedRequest))
+            .thenThrow(new InvalidTokenException());
+        
+        assertThrows(() -> assertion.check(authenticationToken))
+            .isInstanceOf(FailedAssertionException.class);
+    }
+    
+    @Test
     public void testValidApplicationTokenIn() throws TException
     {
         AlchemyAssertion<ApplicationToken> assertion = BananaAssertions.validApplicationTokenIn(authenticationService);
