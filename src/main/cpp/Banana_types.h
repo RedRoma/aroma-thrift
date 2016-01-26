@@ -670,7 +670,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -682,6 +682,7 @@ typedef struct _Application__isset {
   bool applicationDescription :1;
   bool organizationId :1;
   bool tier :1;
+  bool timeOfTokenExpiration :1;
 } _Application__isset;
 
 class Application {
@@ -689,7 +690,7 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0) {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0), timeOfTokenExpiration(0) {
 
     tier = (Tier::type)0;
 
@@ -707,6 +708,7 @@ class Application {
   std::string applicationDescription;
   uuid organizationId;
   Tier::type tier;
+  timestamp timeOfTokenExpiration;
 
   _Application__isset __isset;
 
@@ -731,6 +733,8 @@ class Application {
   void __set_organizationId(const uuid& val);
 
   void __set_tier(const Tier::type val);
+
+  void __set_timeOfTokenExpiration(const timestamp val);
 
   bool operator == (const Application & rhs) const
   {
@@ -763,6 +767,8 @@ class Application {
     if (__isset.tier != rhs.__isset.tier)
       return false;
     else if (__isset.tier && !(tier == rhs.tier))
+      return false;
+    if (!(timeOfTokenExpiration == rhs.timeOfTokenExpiration))
       return false;
     return true;
   }

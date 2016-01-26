@@ -588,6 +588,7 @@ typedef NSString * Banana_uuid;
   NSString * __applicationDescription;
   Banana_uuid __organizationId;
   int __tier;
+  Banana_timestamp __timeOfTokenExpiration;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -600,6 +601,7 @@ typedef NSString * Banana_uuid;
   BOOL __applicationDescription_isset;
   BOOL __organizationId_isset;
   BOOL __tier_isset;
+  BOOL __timeOfTokenExpiration_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -614,10 +616,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
+@property (nonatomic, getter=timeOfTokenExpiration, setter=setTimeOfTokenExpiration:) Banana_timestamp timeOfTokenExpiration;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -689,6 +692,12 @@ typedef NSString * Banana_uuid;
 - (void) setTier: (int) tier;
 #endif
 - (BOOL) tierIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_timestamp) timeOfTokenExpiration;
+- (void) setTimeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration;
+#endif
+- (BOOL) timeOfTokenExpirationIsSet;
 
 @end
 

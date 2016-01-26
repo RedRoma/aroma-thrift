@@ -240,6 +240,8 @@ struct Application
     9: string applicationDescription;
     10: uuid organizationId;
     11: optional Tier tier = Tier.FREE;
+    /** The time the App's token will expire. */
+    12: timestamp timeOfTokenExpiration;
 }
 
 /**

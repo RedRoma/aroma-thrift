@@ -3095,7 +3095,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -3120,6 +3120,8 @@
   __organizationId_isset = YES;
   __tier = tier;
   __tier_isset = YES;
+  __timeOfTokenExpiration = timeOfTokenExpiration;
+  __timeOfTokenExpiration_isset = YES;
   return self;
 }
 
@@ -3181,6 +3183,11 @@
     __tier = [decoder decodeIntForKey: @"tier"];
     __tier_isset = YES;
   }
+  if ([decoder containsValueForKey: @"timeOfTokenExpiration"])
+  {
+    __timeOfTokenExpiration = [decoder decodeInt64ForKey: @"timeOfTokenExpiration"];
+    __timeOfTokenExpiration_isset = YES;
+  }
   return self;
 }
 
@@ -3229,6 +3236,10 @@
   if (__tier_isset)
   {
     [encoder encodeInt: __tier forKey: @"tier"];
+  }
+  if (__timeOfTokenExpiration_isset)
+  {
+    [encoder encodeInt64: __timeOfTokenExpiration forKey: @"timeOfTokenExpiration"];
   }
 }
 
@@ -3290,6 +3301,11 @@
   {
     hash = (hash * 31) ^ [@(__tier) hash];
   }
+  hash = (hash * 31) ^ __timeOfTokenExpiration_isset ? 2654435761 : 0;
+  if (__timeOfTokenExpiration_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfTokenExpiration) hash];
+  }
   return hash;
 }
 
@@ -3344,6 +3360,10 @@
   }
   if ((__tier_isset != other->__tier_isset) ||
       (__tier_isset && (__tier != other->__tier))) {
+    return NO;
+  }
+  if ((__timeOfTokenExpiration_isset != other->__timeOfTokenExpiration_isset) ||
+      (__timeOfTokenExpiration_isset && (__timeOfTokenExpiration != other->__timeOfTokenExpiration))) {
     return NO;
   }
   return YES;
@@ -3576,6 +3596,23 @@
   __tier_isset = NO;
 }
 
+- (int64_t) timeOfTokenExpiration {
+  return __timeOfTokenExpiration;
+}
+
+- (void) setTimeOfTokenExpiration: (int64_t) timeOfTokenExpiration {
+  __timeOfTokenExpiration = timeOfTokenExpiration;
+  __timeOfTokenExpiration_isset = YES;
+}
+
+- (BOOL) timeOfTokenExpirationIsSet {
+  return __timeOfTokenExpiration_isset;
+}
+
+- (void) unsetTimeOfTokenExpiration {
+  __timeOfTokenExpiration_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3701,6 +3738,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 12:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfTokenExpiration: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3799,6 +3844,11 @@
     [outProtocol writeI32: __tier];
     [outProtocol writeFieldEnd];
   }
+  if (__timeOfTokenExpiration_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfTokenExpiration" type: TType_I64 fieldID: 12];
+    [outProtocol writeI64: __timeOfTokenExpiration];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3831,6 +3881,8 @@
   [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @",tier:"];
   [ms appendFormat: @"%i", __tier];
+  [ms appendString: @",timeOfTokenExpiration:"];
+  [ms appendFormat: @"%qi", __timeOfTokenExpiration];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

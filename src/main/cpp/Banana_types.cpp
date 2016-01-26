@@ -1549,6 +1549,10 @@ void Application::__set_tier(const Tier::type val) {
 __isset.tier = true;
 }
 
+void Application::__set_timeOfTokenExpiration(const timestamp val) {
+  this->timeOfTokenExpiration = val;
+}
+
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1688,6 +1692,14 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_I64) {
+          xfer += iprot->readI64(this->timeOfTokenExpiration);
+          this->__isset.timeOfTokenExpiration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1769,6 +1781,10 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeI32((int32_t)this->tier);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("timeOfTokenExpiration", ::apache::thrift::protocol::T_I64, 12);
+  xfer += oprot->writeI64(this->timeOfTokenExpiration);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1787,6 +1803,7 @@ void swap(Application &a, Application &b) {
   swap(a.applicationDescription, b.applicationDescription);
   swap(a.organizationId, b.organizationId);
   swap(a.tier, b.tier);
+  swap(a.timeOfTokenExpiration, b.timeOfTokenExpiration);
   swap(a.__isset, b.__isset);
 }
 
@@ -1802,6 +1819,7 @@ Application::Application(const Application& other47) {
   applicationDescription = other47.applicationDescription;
   organizationId = other47.organizationId;
   tier = other47.tier;
+  timeOfTokenExpiration = other47.timeOfTokenExpiration;
   __isset = other47.__isset;
 }
 Application& Application::operator=(const Application& other48) {
@@ -1816,6 +1834,7 @@ Application& Application::operator=(const Application& other48) {
   applicationDescription = other48.applicationDescription;
   organizationId = other48.organizationId;
   tier = other48.tier;
+  timeOfTokenExpiration = other48.timeOfTokenExpiration;
   __isset = other48.__isset;
   return *this;
 }
@@ -1833,6 +1852,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "applicationDescription=" << to_string(applicationDescription);
   out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
+  out << ", " << "timeOfTokenExpiration=" << to_string(timeOfTokenExpiration);
   out << ")";
 }
 

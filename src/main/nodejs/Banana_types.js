@@ -1021,6 +1021,7 @@ Application = module.exports.Application = function(args) {
   this.applicationDescription = null;
   this.organizationId = null;
   this.tier = 0;
+  this.timeOfTokenExpiration = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [null]);
@@ -1054,6 +1055,9 @@ Application = module.exports.Application = function(args) {
     }
     if (args.tier !== undefined && args.tier !== null) {
       this.tier = args.tier;
+    }
+    if (args.timeOfTokenExpiration !== undefined && args.timeOfTokenExpiration !== null) {
+      this.timeOfTokenExpiration = args.timeOfTokenExpiration;
     }
   }
 };
@@ -1175,6 +1179,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 12:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfTokenExpiration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1257,6 +1268,11 @@ Application.prototype.write = function(output) {
   if (this.tier !== null && this.tier !== undefined) {
     output.writeFieldBegin('tier', Thrift.Type.I32, 11);
     output.writeI32(this.tier);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfTokenExpiration !== null && this.timeOfTokenExpiration !== undefined) {
+    output.writeFieldBegin('timeOfTokenExpiration', Thrift.Type.I64, 12);
+    output.writeI64(this.timeOfTokenExpiration);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
