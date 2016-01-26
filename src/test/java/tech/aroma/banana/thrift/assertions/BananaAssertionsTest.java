@@ -69,12 +69,25 @@ public class BananaAssertionsTest
     @GenerateString
     private String tokenId;
     
+    @GenerateString
+    private String ownerId;
+    private VerifyTokenRequest expectedRequest;
+    
     @Before
     public void setUp()
     {
         authenticationToken.tokenId = tokenId;
+        authenticationToken.ownerId = ownerId;
+        
         applicationToken.tokenId = tokenId;
+        applicationToken.applicationId = ownerId;
+        
         userToken.tokenId = tokenId;
+        userToken.userId = ownerId;
+        
+        expectedRequest = new VerifyTokenRequest()
+            .setOwnerId(ownerId)
+            .setTokenId(tokenId);
     }
     
     @DontRepeat
@@ -146,10 +159,9 @@ public class BananaAssertionsTest
         assertion.check(authenticationToken);
         
         //When Token is bad
-        VerifyTokenRequest request = new VerifyTokenRequest()
-            .setTokenId(tokenId);
         
-        when(authenticationService.verifyToken(request))
+        
+        when(authenticationService.verifyToken(expectedRequest))
             .thenThrow(new InvalidTokenException());
         
         assertThrows(() -> assertion.check(authenticationToken))
@@ -166,8 +178,7 @@ public class BananaAssertionsTest
         assertion.check(applicationToken);
         
         //When Token is bad
-        VerifyTokenRequest request = new VerifyTokenRequest(applicationToken.tokenId);
-        when(authenticationService.verifyToken(request))
+        when(authenticationService.verifyToken(expectedRequest))
             .thenThrow(new InvalidTokenException());
         
         assertThrows(() -> assertion.check(applicationToken))
@@ -184,8 +195,7 @@ public class BananaAssertionsTest
         assertion.check(userToken);
         
         //When Token is bad
-        VerifyTokenRequest request = new VerifyTokenRequest(tokenId);
-        when(authenticationService.verifyToken(request))
+        when(authenticationService.verifyToken(expectedRequest))
             .thenThrow(InvalidTokenException.class);
         
         assertThrows(() -> assertion.check(userToken))
