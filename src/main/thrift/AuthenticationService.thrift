@@ -87,6 +87,9 @@ struct GetTokenInfoResponse
 struct InvalidateTokenRequest
 {
     1: AuthenticationToken token;
+    2: optional list<AuthenticationToken> multipleTokens = [];
+    /** Deletes all Tokens belonging to this ownerId. */
+    3: optional uuid belongingTo;
 }
 
 struct InvalidateTokenResponse

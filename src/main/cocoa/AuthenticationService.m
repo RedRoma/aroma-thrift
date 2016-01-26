@@ -977,15 +977,21 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.multipleTokens = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (AuthenticationService_AuthenticationToken) token
+- (id) initWithToken: (AuthenticationService_AuthenticationToken) token multipleTokens: (NSMutableArray *) multipleTokens belongingTo: (AuthenticationService_uuid) belongingTo
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
+  __multipleTokens = [multipleTokens retain_stub];
+  __multipleTokens_isset = YES;
+  __belongingTo = [belongingTo retain_stub];
+  __belongingTo_isset = YES;
   return self;
 }
 
@@ -997,6 +1003,16 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
+  if ([decoder containsValueForKey: @"multipleTokens"])
+  {
+    __multipleTokens = [[decoder decodeObjectForKey: @"multipleTokens"] retain_stub];
+    __multipleTokens_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"belongingTo"])
+  {
+    __belongingTo = [[decoder decodeObjectForKey: @"belongingTo"] retain_stub];
+    __belongingTo_isset = YES;
+  }
   return self;
 }
 
@@ -1005,6 +1021,14 @@
   if (__token_isset)
   {
     [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__multipleTokens_isset)
+  {
+    [encoder encodeObject: __multipleTokens forKey: @"multipleTokens"];
+  }
+  if (__belongingTo_isset)
+  {
+    [encoder encodeObject: __belongingTo forKey: @"belongingTo"];
   }
 }
 
@@ -1015,6 +1039,16 @@
   if (__token_isset)
   {
     hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __multipleTokens_isset ? 2654435761 : 0;
+  if (__multipleTokens_isset)
+  {
+    hash = (hash * 31) ^ [__multipleTokens hash];
+  }
+  hash = (hash * 31) ^ __belongingTo_isset ? 2654435761 : 0;
+  if (__belongingTo_isset)
+  {
+    hash = (hash * 31) ^ [__belongingTo hash];
   }
   return hash;
 }
@@ -1032,12 +1066,22 @@
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
+  if ((__multipleTokens_isset != other->__multipleTokens_isset) ||
+      (__multipleTokens_isset && ((__multipleTokens || other->__multipleTokens) && ![__multipleTokens isEqual:other->__multipleTokens]))) {
+    return NO;
+  }
+  if ((__belongingTo_isset != other->__belongingTo_isset) ||
+      (__belongingTo_isset && ((__belongingTo || other->__belongingTo) && ![__belongingTo isEqual:other->__belongingTo]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__token release_stub];
+  [__multipleTokens release_stub];
+  [__belongingTo release_stub];
   [super dealloc_stub];
 }
 
@@ -1060,6 +1104,48 @@
   [__token release_stub];
   __token = nil;
   __token_isset = NO;
+}
+
+- (NSMutableArray *) multipleTokens {
+  return [[__multipleTokens retain_stub] autorelease_stub];
+}
+
+- (void) setMultipleTokens: (NSMutableArray *) multipleTokens {
+  [multipleTokens retain_stub];
+  [__multipleTokens release_stub];
+  __multipleTokens = multipleTokens;
+  __multipleTokens_isset = YES;
+}
+
+- (BOOL) multipleTokensIsSet {
+  return __multipleTokens_isset;
+}
+
+- (void) unsetMultipleTokens {
+  [__multipleTokens release_stub];
+  __multipleTokens = nil;
+  __multipleTokens_isset = NO;
+}
+
+- (NSString *) belongingTo {
+  return [[__belongingTo retain_stub] autorelease_stub];
+}
+
+- (void) setBelongingTo: (NSString *) belongingTo {
+  [belongingTo retain_stub];
+  [__belongingTo release_stub];
+  __belongingTo = belongingTo;
+  __belongingTo_isset = YES;
+}
+
+- (BOOL) belongingToIsSet {
+  return __belongingTo_isset;
+}
+
+- (void) unsetBelongingTo {
+  [__belongingTo release_stub];
+  __belongingTo = nil;
+  __belongingTo_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -1087,6 +1173,34 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            BananaAuthentication_AuthenticationToken *_elem2 = [[BananaAuthentication_AuthenticationToken alloc] init];
+            [_elem2 read: inProtocol];
+            [fieldValue addObject: _elem2];
+            [_elem2 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setMultipleTokens: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setBelongingTo: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1105,6 +1219,28 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__multipleTokens_isset) {
+    if (__multipleTokens != nil) {
+      [outProtocol writeFieldBeginWithName: @"multipleTokens" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__multipleTokens count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__multipleTokens count]; idx4++)
+        {
+          [[__multipleTokens objectAtIndex: idx4] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__belongingTo_isset) {
+    if (__belongingTo != nil) {
+      [outProtocol writeFieldBeginWithName: @"belongingTo" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __belongingTo];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1117,6 +1253,10 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
+  [ms appendString: @",multipleTokens:"];
+  [ms appendFormat: @"%@", __multipleTokens];
+  [ms appendString: @",belongingTo:"];
+  [ms appendFormat: @"\"%@\"", __belongingTo];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

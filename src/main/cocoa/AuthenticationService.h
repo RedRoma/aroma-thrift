@@ -213,16 +213,22 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_InvalidateTokenRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_AuthenticationToken __token;
+  NSMutableArray * __multipleTokens;
+  AuthenticationService_uuid __belongingTo;
 
   BOOL __token_isset;
+  BOOL __multipleTokens_isset;
+  BOOL __belongingTo_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_AuthenticationToken token;
+@property (nonatomic, retain, getter=multipleTokens, setter=setMultipleTokens:) NSMutableArray * multipleTokens;
+@property (nonatomic, retain, getter=belongingTo, setter=setBelongingTo:) AuthenticationService_uuid belongingTo;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_AuthenticationToken) token;
+- (id) initWithToken: (AuthenticationService_AuthenticationToken) token multipleTokens: (NSMutableArray *) multipleTokens belongingTo: (AuthenticationService_uuid) belongingTo;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -234,6 +240,18 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setToken: (AuthenticationService_AuthenticationToken) token;
 #endif
 - (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) multipleTokens;
+- (void) setMultipleTokens: (NSMutableArray *) multipleTokens;
+#endif
+- (BOOL) multipleTokensIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_uuid) belongingTo;
+- (void) setBelongingTo: (AuthenticationService_uuid) belongingTo;
+#endif
+- (BOOL) belongingToIsSet;
 
 @end
 

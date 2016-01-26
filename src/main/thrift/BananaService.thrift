@@ -43,24 +43,25 @@ typedef Banana.uuid uuid;
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
-typedef Banana.Image Image
-typedef Banana.User User
 typedef Banana.Application Application
+typedef Banana.Image Image
 typedef Banana.Urgency Urgency
+typedef Banana.User User
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
+typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
+typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
+typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
+typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.InvalidTokenException InvalidTokenException
+typedef Exceptions.MessageDoesNotExistException MessageDoesNotExistException
 typedef Exceptions.OperationFailedException OperationFailedException
-typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
-typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
-typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
-typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
@@ -505,6 +506,17 @@ service BananaService
     // Action Operations
     //==========================================================
     
+    DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                 2 : InvalidArgumentException ex2,
+                                                                                 3 : InvalidTokenException ex3,
+                                                                                 4 : MessageDoesNotExistException ex4,
+                                                                                 5 : UnauthorizedException ex5);
+    
+    DismissMessageResponse dismissMessage(1 : DismissMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                    2 : InvalidArgumentException ex2,
+                                                                                    3 : InvalidTokenException ex3,
+                                                                                    4 : MessageDoesNotExistException ex4,
+                                                                                    5 : UnauthorizedException ex5);
 
     /**
      * Provision a New Application to keep tabs on.

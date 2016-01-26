@@ -312,9 +312,17 @@ GetTokenInfoResponse.prototype.write = function(output) {
 
 InvalidateTokenRequest = function(args) {
   this.token = null;
+  this.multipleTokens = [];
+  this.belongingTo = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new AuthenticationToken(args.token);
+    }
+    if (args.multipleTokens !== undefined && args.multipleTokens !== null) {
+      this.multipleTokens = Thrift.copyList(args.multipleTokens, [null]);
+    }
+    if (args.belongingTo !== undefined && args.belongingTo !== null) {
+      this.belongingTo = args.belongingTo;
     }
   }
 };
@@ -340,9 +348,34 @@ InvalidateTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.multipleTokens = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new AuthenticationToken();
+          elem6.read(input);
+          this.multipleTokens.push(elem6);
+        }
+        input.readListEnd();
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.belongingTo = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -357,6 +390,25 @@ InvalidateTokenRequest.prototype.write = function(output) {
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.multipleTokens !== null && this.multipleTokens !== undefined) {
+    output.writeFieldBegin('multipleTokens', Thrift.Type.LIST, 2);
+    output.writeListBegin(Thrift.Type.STRUCT, this.multipleTokens.length);
+    for (var iter7 in this.multipleTokens)
+    {
+      if (this.multipleTokens.hasOwnProperty(iter7))
+      {
+        iter7 = this.multipleTokens[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.belongingTo !== null && this.belongingTo !== undefined) {
+    output.writeFieldBegin('belongingTo', Thrift.Type.STRING, 3);
+    output.writeString(this.belongingTo);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

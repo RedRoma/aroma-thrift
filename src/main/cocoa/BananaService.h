@@ -39,13 +39,13 @@ typedef BananaAuthentication_AuthenticationToken * BananaService_AuthenticationT
 
 typedef BananaAuthentication_UserToken * BananaService_UserToken;
 
-typedef Banana_Image * BananaService_Image;
-
-typedef Banana_User * BananaService_User;
-
 typedef Banana_Application * BananaService_Application;
 
+typedef Banana_Image * BananaService_Image;
+
 typedef int BananaService_Urgency;
+
+typedef Banana_User * BananaService_User;
 
 typedef BananaChannels_BananaChannel * BananaService_BananaChannel;
 
@@ -55,21 +55,23 @@ typedef BananaEvents_HealthCheckFailed * BananaService_HealthCheckFailed;
 
 typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
 
+typedef BananaException_ApplicationAlreadyRegisteredException * BananaService_ApplicationAlreadyRegisteredException;
+
+typedef BananaException_ApplicationDoesNotExistException * BananaService_ApplicationDoesNotExistException;
+
+typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoesNotExistException;
+
+typedef BananaException_CustomChannelUnreachableException * BananaService_CustomChannelUnreachableException;
+
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
 
 typedef BananaException_InvalidCredentialsException * BananaService_InvalidCredentialsException;
 
 typedef BananaException_InvalidTokenException * BananaService_InvalidTokenException;
 
+typedef BananaException_MessageDoesNotExistException * BananaService_MessageDoesNotExistException;
+
 typedef BananaException_OperationFailedException * BananaService_OperationFailedException;
-
-typedef BananaException_ApplicationAlreadyRegisteredException * BananaService_ApplicationAlreadyRegisteredException;
-
-typedef BananaException_ApplicationDoesNotExistException * BananaService_ApplicationDoesNotExistException;
-
-typedef BananaException_CustomChannelUnreachableException * BananaService_CustomChannelUnreachableException;
-
-typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoesNotExistException;
 
 typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
 
@@ -1858,6 +1860,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @protocol BananaService_BananaService <NSObject>
 - (double) getApiVersion;  // throws TException
+- (BananaService_DeleteMessageResponse *) deleteMessage: (BananaService_DeleteMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_MessageDoesNotExistException, BananaService_UnauthorizedException, TException
+- (BananaService_DismissMessageResponse *) dismissMessage: (BananaService_DismissMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_MessageDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException

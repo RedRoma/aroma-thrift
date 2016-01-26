@@ -39,13 +39,13 @@ typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken Auth
 
 typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
 
-typedef class  ::aroma::banana::thrift::Image Image;
-
-typedef class  ::aroma::banana::thrift::User User;
-
 typedef class  ::aroma::banana::thrift::Application Application;
 
+typedef class  ::aroma::banana::thrift::Image Image;
+
 typedef  ::aroma::banana::thrift::Urgency::type Urgency;
+
+typedef class  ::aroma::banana::thrift::User User;
 
 typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
 
@@ -55,21 +55,23 @@ typedef class  ::aroma::banana::thrift::events::HealthCheckFailed HealthCheckFai
 
 typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
+typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
+
+typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
+
+typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
+
+typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
+typedef class  ::aroma::banana::thrift::exceptions::MessageDoesNotExistException MessageDoesNotExistException;
+
 typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
-
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
-
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
-
-typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
-
-typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
 typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
 

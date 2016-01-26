@@ -196,6 +196,8 @@ code { line-height: 20px; }
 <tr>
 <td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
+<li><a href="#Fn_BananaService_deleteMessage">deleteMessage</a></li>
+<li><a href="#Fn_BananaService_dismissMessage">dismissMessage</a></li>
 <li><a href="#Fn_BananaService_getActivity">getActivity</a></li>
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
@@ -258,6 +260,7 @@ code { line-height: 20px; }
 <a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
+<a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a><br/>
 <a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
 <a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a><br/>
 <a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a><br/>
@@ -336,17 +339,17 @@ getFullMessage() operation.
 <div class="definition"><h3 id="Typedef_UserToken">Typedef: UserToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_User">Banana.User</a></code></p>
-</div>
 <div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Application">Banana.Application</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_User">Banana.User</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
@@ -360,6 +363,18 @@ getFullMessage() operation.
 <div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_ApplicationAlreadyRegisteredException">Typedef: ApplicationAlreadyRegisteredException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationAlreadyRegisteredException">Exceptions.ApplicationAlreadyRegisteredException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ApplicationDoesNotExistException">Typedef: ApplicationDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationDoesNotExistException">Exceptions.ApplicationDoesNotExistException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_ChannelDoesNotExistException">Typedef: ChannelDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ChannelDoesNotExistException">Exceptions.ChannelDoesNotExistException</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_CustomChannelUnreachableException">Typedef: CustomChannelUnreachableException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_CustomChannelUnreachableException">Exceptions.CustomChannelUnreachableException</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
 </div>
@@ -369,20 +384,11 @@ getFullMessage() operation.
 <div class="definition"><h3 id="Typedef_InvalidTokenException">Typedef: InvalidTokenException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidTokenException">Exceptions.InvalidTokenException</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_MessageDoesNotExistException">Typedef: MessageDoesNotExistException</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_MessageDoesNotExistException">Exceptions.MessageDoesNotExistException</a></code></p>
+</div>
 <div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ApplicationAlreadyRegisteredException">Typedef: ApplicationAlreadyRegisteredException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationAlreadyRegisteredException">Exceptions.ApplicationAlreadyRegisteredException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ApplicationDoesNotExistException">Typedef: ApplicationDoesNotExistException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationDoesNotExistException">Exceptions.ApplicationDoesNotExistException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_CustomChannelUnreachableException">Typedef: CustomChannelUnreachableException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_CustomChannelUnreachableException">Exceptions.CustomChannelUnreachableException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ChannelDoesNotExistException">Typedef: ChannelDoesNotExistException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ChannelDoesNotExistException">Exceptions.ChannelDoesNotExistException</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
@@ -650,6 +656,12 @@ The Banana Service is designed to be used by People, and not Applications.
 They provide query interfaces and Authentication/Authorization over Data.
 <br/><div class="definition"><h4 id="Fn_BananaService_getApiVersion">Function: BananaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
+</pre></div><div class="definition"><h4 id="Fn_BananaService_deleteMessage">Function: BananaService.deleteMessage</h4>
+<pre><code><a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a></code> deleteMessage(<code><a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_dismissMessage">Function: BananaService.dismissMessage</h4>
+<pre><code><a href="#Struct_DismissMessageResponse">DismissMessageResponse</a></code> dismissMessage(<code><a href="#Struct_DismissMessageRequest">DismissMessageRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_BananaService_provisionApplication">Function: BananaService.provisionApplication</h4>
 <pre><code><a href="#Struct_ProvisionApplicationResponse">ProvisionApplicationResponse</a></code> provisionApplication(<code><a href="#Struct_ProvisionApplicationRequest">ProvisionApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>

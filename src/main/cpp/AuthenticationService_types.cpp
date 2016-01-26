@@ -498,6 +498,16 @@ void InvalidateTokenRequest::__set_token(const AuthenticationToken& val) {
   this->token = val;
 }
 
+void InvalidateTokenRequest::__set_multipleTokens(const std::vector<AuthenticationToken> & val) {
+  this->multipleTokens = val;
+__isset.multipleTokens = true;
+}
+
+void InvalidateTokenRequest::__set_belongingTo(const uuid& val) {
+  this->belongingTo = val;
+__isset.belongingTo = true;
+}
+
 uint32_t InvalidateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -527,6 +537,34 @@ uint32_t InvalidateTokenRequest::read(::apache::thrift::protocol::TProtocol* ipr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->multipleTokens.clear();
+            uint32_t _size10;
+            ::apache::thrift::protocol::TType _etype13;
+            xfer += iprot->readListBegin(_etype13, _size10);
+            this->multipleTokens.resize(_size10);
+            uint32_t _i14;
+            for (_i14 = 0; _i14 < _size10; ++_i14)
+            {
+              xfer += this->multipleTokens[_i14].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.multipleTokens = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->belongingTo);
+          this->__isset.belongingTo = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -548,6 +586,24 @@ uint32_t InvalidateTokenRequest::write(::apache::thrift::protocol::TProtocol* op
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.multipleTokens) {
+    xfer += oprot->writeFieldBegin("multipleTokens", ::apache::thrift::protocol::T_LIST, 2);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->multipleTokens.size()));
+      std::vector<AuthenticationToken> ::const_iterator _iter15;
+      for (_iter15 = this->multipleTokens.begin(); _iter15 != this->multipleTokens.end(); ++_iter15)
+      {
+        xfer += (*_iter15).write(oprot);
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.belongingTo) {
+    xfer += oprot->writeFieldBegin("belongingTo", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->belongingTo);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -556,22 +612,30 @@ uint32_t InvalidateTokenRequest::write(::apache::thrift::protocol::TProtocol* op
 void swap(InvalidateTokenRequest &a, InvalidateTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
+  swap(a.multipleTokens, b.multipleTokens);
+  swap(a.belongingTo, b.belongingTo);
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other10) {
-  token = other10.token;
-  __isset = other10.__isset;
+InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other16) {
+  token = other16.token;
+  multipleTokens = other16.multipleTokens;
+  belongingTo = other16.belongingTo;
+  __isset = other16.__isset;
 }
-InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other11) {
-  token = other11.token;
-  __isset = other11.__isset;
+InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other17) {
+  token = other17.token;
+  multipleTokens = other17.multipleTokens;
+  belongingTo = other17.belongingTo;
+  __isset = other17.__isset;
   return *this;
 }
 void InvalidateTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "InvalidateTokenRequest(";
   out << "token=" << to_string(token);
+  out << ", " << "multipleTokens="; (__isset.multipleTokens ? (out << to_string(multipleTokens)) : (out << "<null>"));
+  out << ", " << "belongingTo="; (__isset.belongingTo ? (out << to_string(belongingTo)) : (out << "<null>"));
   out << ")";
 }
 
@@ -645,13 +709,13 @@ void swap(InvalidateTokenResponse &a, InvalidateTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other12) {
-  message = other12.message;
-  __isset = other12.__isset;
+InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other18) {
+  message = other18.message;
+  __isset = other18.__isset;
 }
-InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other13) {
-  message = other13.message;
-  __isset = other13.__isset;
+InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other19) {
+  message = other19.message;
+  __isset = other19.__isset;
   return *this;
 }
 void InvalidateTokenResponse::printTo(std::ostream& out) const {
@@ -750,15 +814,15 @@ void swap(VerifyTokenRequest &a, VerifyTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other14) {
-  tokenId = other14.tokenId;
-  ownerId = other14.ownerId;
-  __isset = other14.__isset;
+VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other20) {
+  tokenId = other20.tokenId;
+  ownerId = other20.ownerId;
+  __isset = other20.__isset;
 }
-VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other15) {
-  tokenId = other15.tokenId;
-  ownerId = other15.ownerId;
-  __isset = other15.__isset;
+VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other21) {
+  tokenId = other21.tokenId;
+  ownerId = other21.ownerId;
+  __isset = other21.__isset;
   return *this;
 }
 void VerifyTokenRequest::printTo(std::ostream& out) const {
@@ -839,13 +903,13 @@ void swap(VerifyTokenResponse &a, VerifyTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other16) {
-  message = other16.message;
-  __isset = other16.__isset;
+VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other22) {
+  message = other22.message;
+  __isset = other22.__isset;
 }
-VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other17) {
-  message = other17.message;
-  __isset = other17.__isset;
+VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other23) {
+  message = other23.message;
+  __isset = other23.__isset;
   return *this;
 }
 void VerifyTokenResponse::printTo(std::ostream& out) const {

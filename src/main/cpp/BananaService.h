@@ -22,6 +22,8 @@ class BananaServiceIf {
  public:
   virtual ~BananaServiceIf() {}
   virtual double getApiVersion() = 0;
+  virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
+  virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
 
   /**
    * Provision a New Application to keep tabs on.
@@ -188,6 +190,12 @@ class BananaServiceNull : virtual public BananaServiceIf {
     double _return = (double)0;
     return _return;
   }
+  void deleteMessage(DeleteMessageResponse& /* _return */, const DeleteMessageRequest& /* request */) {
+    return;
+  }
+  void dismissMessage(DismissMessageResponse& /* _return */, const DismissMessageRequest& /* request */) {
+    return;
+  }
   void provisionApplication(ProvisionApplicationResponse& /* _return */, const ProvisionApplicationRequest& /* request */) {
     return;
   }
@@ -337,6 +345,294 @@ class BananaService_getApiVersion_presult {
   double* success;
 
   _BananaService_getApiVersion_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_deleteMessage_args__isset {
+  _BananaService_deleteMessage_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_deleteMessage_args__isset;
+
+class BananaService_deleteMessage_args {
+ public:
+
+  BananaService_deleteMessage_args(const BananaService_deleteMessage_args&);
+  BananaService_deleteMessage_args& operator=(const BananaService_deleteMessage_args&);
+  BananaService_deleteMessage_args() {
+  }
+
+  virtual ~BananaService_deleteMessage_args() throw();
+  DeleteMessageRequest request;
+
+  _BananaService_deleteMessage_args__isset __isset;
+
+  void __set_request(const DeleteMessageRequest& val);
+
+  bool operator == (const BananaService_deleteMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_deleteMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_deleteMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_deleteMessage_pargs {
+ public:
+
+
+  virtual ~BananaService_deleteMessage_pargs() throw();
+  const DeleteMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_deleteMessage_result__isset {
+  _BananaService_deleteMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_deleteMessage_result__isset;
+
+class BananaService_deleteMessage_result {
+ public:
+
+  BananaService_deleteMessage_result(const BananaService_deleteMessage_result&);
+  BananaService_deleteMessage_result& operator=(const BananaService_deleteMessage_result&);
+  BananaService_deleteMessage_result() {
+  }
+
+  virtual ~BananaService_deleteMessage_result() throw();
+  DeleteMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  MessageDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _BananaService_deleteMessage_result__isset __isset;
+
+  void __set_success(const DeleteMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const MessageDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_deleteMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_deleteMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_deleteMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_deleteMessage_presult__isset {
+  _BananaService_deleteMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_deleteMessage_presult__isset;
+
+class BananaService_deleteMessage_presult {
+ public:
+
+
+  virtual ~BananaService_deleteMessage_presult() throw();
+  DeleteMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  MessageDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _BananaService_deleteMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_dismissMessage_args__isset {
+  _BananaService_dismissMessage_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_dismissMessage_args__isset;
+
+class BananaService_dismissMessage_args {
+ public:
+
+  BananaService_dismissMessage_args(const BananaService_dismissMessage_args&);
+  BananaService_dismissMessage_args& operator=(const BananaService_dismissMessage_args&);
+  BananaService_dismissMessage_args() {
+  }
+
+  virtual ~BananaService_dismissMessage_args() throw();
+  DismissMessageRequest request;
+
+  _BananaService_dismissMessage_args__isset __isset;
+
+  void __set_request(const DismissMessageRequest& val);
+
+  bool operator == (const BananaService_dismissMessage_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_dismissMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_dismissMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_dismissMessage_pargs {
+ public:
+
+
+  virtual ~BananaService_dismissMessage_pargs() throw();
+  const DismissMessageRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_dismissMessage_result__isset {
+  _BananaService_dismissMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_dismissMessage_result__isset;
+
+class BananaService_dismissMessage_result {
+ public:
+
+  BananaService_dismissMessage_result(const BananaService_dismissMessage_result&);
+  BananaService_dismissMessage_result& operator=(const BananaService_dismissMessage_result&);
+  BananaService_dismissMessage_result() {
+  }
+
+  virtual ~BananaService_dismissMessage_result() throw();
+  DismissMessageResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  MessageDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _BananaService_dismissMessage_result__isset __isset;
+
+  void __set_success(const DismissMessageResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const MessageDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_dismissMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_dismissMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_dismissMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_dismissMessage_presult__isset {
+  _BananaService_dismissMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_dismissMessage_presult__isset;
+
+class BananaService_dismissMessage_presult {
+ public:
+
+
+  virtual ~BananaService_dismissMessage_presult() throw();
+  DismissMessageResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  MessageDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _BananaService_dismissMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3122,6 +3418,12 @@ class BananaServiceClient : virtual public BananaServiceIf {
   double getApiVersion();
   void send_getApiVersion();
   double recv_getApiVersion();
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
+  void send_deleteMessage(const DeleteMessageRequest& request);
+  void recv_deleteMessage(DeleteMessageResponse& _return);
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
+  void send_dismissMessage(const DismissMessageRequest& request);
+  void recv_dismissMessage(DismissMessageResponse& _return);
   void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
   void send_provisionApplication(const ProvisionApplicationRequest& request);
   void recv_provisionApplication(ProvisionApplicationResponse& _return);
@@ -3198,6 +3500,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3222,6 +3526,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
     iface_(iface) {
     processMap_["getApiVersion"] = &BananaServiceProcessor::process_getApiVersion;
+    processMap_["deleteMessage"] = &BananaServiceProcessor::process_deleteMessage;
+    processMap_["dismissMessage"] = &BananaServiceProcessor::process_dismissMessage;
     processMap_["provisionApplication"] = &BananaServiceProcessor::process_provisionApplication;
     processMap_["regenerateToken"] = &BananaServiceProcessor::process_regenerateToken;
     processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
@@ -3277,6 +3583,26 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
       ifaces_[i]->getApiVersion();
     }
     return ifaces_[i]->getApiVersion();
+  }
+
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->deleteMessage(_return, request);
+    }
+    ifaces_[i]->deleteMessage(_return, request);
+    return;
+  }
+
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->dismissMessage(_return, request);
+    }
+    ifaces_[i]->dismissMessage(_return, request);
+    return;
   }
 
   void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request) {
@@ -3512,6 +3838,12 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   double getApiVersion();
   int32_t send_getApiVersion();
   double recv_getApiVersion(const int32_t seqid);
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
+  int32_t send_deleteMessage(const DeleteMessageRequest& request);
+  void recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid);
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request);
+  int32_t send_dismissMessage(const DismissMessageRequest& request);
+  void recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid);
   void provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request);
   int32_t send_provisionApplication(const ProvisionApplicationRequest& request);
   void recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid);

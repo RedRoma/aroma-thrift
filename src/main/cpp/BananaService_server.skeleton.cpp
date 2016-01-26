@@ -27,6 +27,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApiVersion\n");
   }
 
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+    // Your implementation goes here
+    printf("deleteMessage\n");
+  }
+
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+    // Your implementation goes here
+    printf("dismissMessage\n");
+  }
+
   /**
    * Provision a New Application to keep tabs on.
    * 

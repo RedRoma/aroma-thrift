@@ -298,8 +298,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetTokenInfoResponse& o
 }
 
 typedef struct _InvalidateTokenRequest__isset {
-  _InvalidateTokenRequest__isset() : token(false) {}
+  _InvalidateTokenRequest__isset() : token(false), multipleTokens(true), belongingTo(false) {}
   bool token :1;
+  bool multipleTokens :1;
+  bool belongingTo :1;
 } _InvalidateTokenRequest__isset;
 
 class InvalidateTokenRequest {
@@ -307,19 +309,34 @@ class InvalidateTokenRequest {
 
   InvalidateTokenRequest(const InvalidateTokenRequest&);
   InvalidateTokenRequest& operator=(const InvalidateTokenRequest&);
-  InvalidateTokenRequest() {
+  InvalidateTokenRequest() : belongingTo() {
+
   }
 
   virtual ~InvalidateTokenRequest() throw();
   AuthenticationToken token;
+  std::vector<AuthenticationToken>  multipleTokens;
+  uuid belongingTo;
 
   _InvalidateTokenRequest__isset __isset;
 
   void __set_token(const AuthenticationToken& val);
 
+  void __set_multipleTokens(const std::vector<AuthenticationToken> & val);
+
+  void __set_belongingTo(const uuid& val);
+
   bool operator == (const InvalidateTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
+      return false;
+    if (__isset.multipleTokens != rhs.__isset.multipleTokens)
+      return false;
+    else if (__isset.multipleTokens && !(multipleTokens == rhs.multipleTokens))
+      return false;
+    if (__isset.belongingTo != rhs.__isset.belongingTo)
+      return false;
+    else if (__isset.belongingTo && !(belongingTo == rhs.belongingTo))
       return false;
     return true;
   }
