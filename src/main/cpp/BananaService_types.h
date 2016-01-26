@@ -170,11 +170,12 @@ class SearchForApplicationsRequest;
 class SearchForApplicationsResponse;
 
 typedef struct _DeleteMessageRequest__isset {
-  _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true), deleteAll(true) {}
   bool token :1;
   bool messageId :1;
   bool applicationId :1;
   bool messageIds :1;
+  bool deleteAll :1;
 } _DeleteMessageRequest__isset;
 
 class DeleteMessageRequest {
@@ -182,7 +183,7 @@ class DeleteMessageRequest {
 
   DeleteMessageRequest(const DeleteMessageRequest&);
   DeleteMessageRequest& operator=(const DeleteMessageRequest&);
-  DeleteMessageRequest() : messageId(), applicationId() {
+  DeleteMessageRequest() : messageId(), applicationId(), deleteAll(false) {
 
   }
 
@@ -191,6 +192,7 @@ class DeleteMessageRequest {
   uuid messageId;
   uuid applicationId;
   std::vector<uuid>  messageIds;
+  bool deleteAll;
 
   _DeleteMessageRequest__isset __isset;
 
@@ -201,6 +203,8 @@ class DeleteMessageRequest {
   void __set_applicationId(const uuid& val);
 
   void __set_messageIds(const std::vector<uuid> & val);
+
+  void __set_deleteAll(const bool val);
 
   bool operator == (const DeleteMessageRequest & rhs) const
   {
@@ -213,6 +217,10 @@ class DeleteMessageRequest {
     if (__isset.messageIds != rhs.__isset.messageIds)
       return false;
     else if (__isset.messageIds && !(messageIds == rhs.messageIds))
+      return false;
+    if (__isset.deleteAll != rhs.__isset.deleteAll)
+      return false;
+    else if (__isset.deleteAll && !(deleteAll == rhs.deleteAll))
       return false;
     return true;
   }
@@ -285,11 +293,12 @@ inline std::ostream& operator<<(std::ostream& out, const DeleteMessageResponse& 
 }
 
 typedef struct _DismissMessageRequest__isset {
-  _DismissMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true) {}
+  _DismissMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true), dismissAll(true) {}
   bool token :1;
   bool messageId :1;
   bool applicationId :1;
   bool messageIds :1;
+  bool dismissAll :1;
 } _DismissMessageRequest__isset;
 
 class DismissMessageRequest {
@@ -297,7 +306,7 @@ class DismissMessageRequest {
 
   DismissMessageRequest(const DismissMessageRequest&);
   DismissMessageRequest& operator=(const DismissMessageRequest&);
-  DismissMessageRequest() : messageId(), applicationId() {
+  DismissMessageRequest() : messageId(), applicationId(), dismissAll(false) {
 
   }
 
@@ -306,6 +315,7 @@ class DismissMessageRequest {
   uuid messageId;
   uuid applicationId;
   std::vector<uuid>  messageIds;
+  bool dismissAll;
 
   _DismissMessageRequest__isset __isset;
 
@@ -316,6 +326,8 @@ class DismissMessageRequest {
   void __set_applicationId(const uuid& val);
 
   void __set_messageIds(const std::vector<uuid> & val);
+
+  void __set_dismissAll(const bool val);
 
   bool operator == (const DismissMessageRequest & rhs) const
   {
@@ -328,6 +340,10 @@ class DismissMessageRequest {
     if (__isset.messageIds != rhs.__isset.messageIds)
       return false;
     else if (__isset.messageIds && !(messageIds == rhs.messageIds))
+      return false;
+    if (__isset.dismissAll != rhs.__isset.dismissAll)
+      return false;
+    else if (__isset.dismissAll && !(dismissAll == rhs.dismissAll))
       return false;
     return true;
   }

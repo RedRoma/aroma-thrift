@@ -82,11 +82,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   BananaService_uuid __messageId;
   BananaService_uuid __applicationId;
   NSMutableArray * __messageIds;
+  BOOL __deleteAll;
 
   BOOL __token_isset;
   BOOL __messageId_isset;
   BOOL __applicationId_isset;
   BOOL __messageIds_isset;
+  BOOL __deleteAll_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -94,10 +96,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @property (nonatomic, retain, getter=messageId, setter=setMessageId:) BananaService_uuid messageId;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
 @property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
+@property (nonatomic, getter=deleteAll, setter=setDeleteAll:) BOOL deleteAll;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds;
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -127,6 +130,12 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) setMessageIds: (NSMutableArray *) messageIds;
 #endif
 - (BOOL) messageIdsIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) deleteAll;
+- (void) setDeleteAll: (BOOL) deleteAll;
+#endif
+- (BOOL) deleteAllIsSet;
 
 @end
 
@@ -161,11 +170,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
   BananaService_uuid __messageId;
   BananaService_uuid __applicationId;
   NSMutableArray * __messageIds;
+  BOOL __dismissAll;
 
   BOOL __token_isset;
   BOOL __messageId_isset;
   BOOL __applicationId_isset;
   BOOL __messageIds_isset;
+  BOOL __dismissAll_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -173,10 +184,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @property (nonatomic, retain, getter=messageId, setter=setMessageId:) BananaService_uuid messageId;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
 @property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
+@property (nonatomic, getter=dismissAll, setter=setDismissAll:) BOOL dismissAll;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds;
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -206,6 +218,12 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) setMessageIds: (NSMutableArray *) messageIds;
 #endif
 - (BOOL) messageIdsIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) dismissAll;
+- (void) setDismissAll: (BOOL) dismissAll;
+#endif
+- (BOOL) dismissAllIsSet;
 
 @end
 

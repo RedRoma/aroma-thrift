@@ -404,6 +404,10 @@ getFullMessage() operation.
 <tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>messageIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Use for Batch Deletes.
 </td><td>optional</td><td><code>{  }</code></td></tr>
+<tr><td>5</td><td>deleteAll</td><td><code>bool</code></td><td>Use for deleting all the Messages stored for
+an Application. Note that this overrides other options.
+Use with care.
+</td><td>optional</td><td><code>false</code></td></tr>
 </table><br/>Deletes a Message.
 
 #owner
@@ -417,6 +421,9 @@ getFullMessage() operation.
 <tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>messageIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td>Use for Dismissing multiple Messages.
 </td><td>optional</td><td><code>{  }</code></td></tr>
+<tr><td>5</td><td>dismissAll</td><td><code>bool</code></td><td>Use for clearing the entire Inbox.
+Note that this overrides other options.
+</td><td>optional</td><td><code>false</code></td></tr>
 </table><br/>Dismisses a Message. Dismissing is analogous to archiving
 an email; it will no longer be visible to you, but will
 still be visible to other subscribers.

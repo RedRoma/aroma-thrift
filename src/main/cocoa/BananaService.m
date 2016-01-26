@@ -35,11 +35,13 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
+  self.deleteAll = NO;
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll
 {
   self = [super init];
   __token = [token retain_stub];
@@ -50,6 +52,8 @@
   __applicationId_isset = YES;
   __messageIds = [messageIds retain_stub];
   __messageIds_isset = YES;
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
   return self;
 }
 
@@ -76,6 +80,11 @@
     __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
     __messageIds_isset = YES;
   }
+  if ([decoder containsValueForKey: @"deleteAll"])
+  {
+    __deleteAll = [decoder decodeBoolForKey: @"deleteAll"];
+    __deleteAll_isset = YES;
+  }
   return self;
 }
 
@@ -96,6 +105,10 @@
   if (__messageIds_isset)
   {
     [encoder encodeObject: __messageIds forKey: @"messageIds"];
+  }
+  if (__deleteAll_isset)
+  {
+    [encoder encodeBool: __deleteAll forKey: @"deleteAll"];
   }
 }
 
@@ -121,6 +134,11 @@
   if (__messageIds_isset)
   {
     hash = (hash * 31) ^ [__messageIds hash];
+  }
+  hash = (hash * 31) ^ __deleteAll_isset ? 2654435761 : 0;
+  if (__deleteAll_isset)
+  {
+    hash = (hash * 31) ^ [@(__deleteAll) hash];
   }
   return hash;
 }
@@ -148,6 +166,10 @@
   }
   if ((__messageIds_isset != other->__messageIds_isset) ||
       (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
+    return NO;
+  }
+  if ((__deleteAll_isset != other->__deleteAll_isset) ||
+      (__deleteAll_isset && (__deleteAll != other->__deleteAll))) {
     return NO;
   }
   return YES;
@@ -246,6 +268,23 @@
   __messageIds_isset = NO;
 }
 
+- (BOOL) deleteAll {
+  return __deleteAll;
+}
+
+- (void) setDeleteAll: (BOOL) deleteAll {
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
+}
+
+- (BOOL) deleteAllIsSet {
+  return __deleteAll_isset;
+}
+
+- (void) unsetDeleteAll {
+  __deleteAll_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -305,6 +344,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setDeleteAll: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -352,6 +399,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__deleteAll_isset) {
+    [outProtocol writeFieldBeginWithName: @"deleteAll" type: TType_BOOL fieldID: 5];
+    [outProtocol writeBool: __deleteAll];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -370,6 +422,8 @@
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",messageIds:"];
   [ms appendFormat: @"%@", __messageIds];
+  [ms appendString: @",deleteAll:"];
+  [ms appendFormat: @"%i", __deleteAll];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -529,11 +583,13 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.messageIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
 
+  self.dismissAll = NO;
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll
 {
   self = [super init];
   __token = [token retain_stub];
@@ -544,6 +600,8 @@
   __applicationId_isset = YES;
   __messageIds = [messageIds retain_stub];
   __messageIds_isset = YES;
+  __dismissAll = dismissAll;
+  __dismissAll_isset = YES;
   return self;
 }
 
@@ -570,6 +628,11 @@
     __messageIds = [[decoder decodeObjectForKey: @"messageIds"] retain_stub];
     __messageIds_isset = YES;
   }
+  if ([decoder containsValueForKey: @"dismissAll"])
+  {
+    __dismissAll = [decoder decodeBoolForKey: @"dismissAll"];
+    __dismissAll_isset = YES;
+  }
   return self;
 }
 
@@ -590,6 +653,10 @@
   if (__messageIds_isset)
   {
     [encoder encodeObject: __messageIds forKey: @"messageIds"];
+  }
+  if (__dismissAll_isset)
+  {
+    [encoder encodeBool: __dismissAll forKey: @"dismissAll"];
   }
 }
 
@@ -615,6 +682,11 @@
   if (__messageIds_isset)
   {
     hash = (hash * 31) ^ [__messageIds hash];
+  }
+  hash = (hash * 31) ^ __dismissAll_isset ? 2654435761 : 0;
+  if (__dismissAll_isset)
+  {
+    hash = (hash * 31) ^ [@(__dismissAll) hash];
   }
   return hash;
 }
@@ -642,6 +714,10 @@
   }
   if ((__messageIds_isset != other->__messageIds_isset) ||
       (__messageIds_isset && ((__messageIds || other->__messageIds) && ![__messageIds isEqual:other->__messageIds]))) {
+    return NO;
+  }
+  if ((__dismissAll_isset != other->__dismissAll_isset) ||
+      (__dismissAll_isset && (__dismissAll != other->__dismissAll))) {
     return NO;
   }
   return YES;
@@ -740,6 +816,23 @@
   __messageIds_isset = NO;
 }
 
+- (BOOL) dismissAll {
+  return __dismissAll;
+}
+
+- (void) setDismissAll: (BOOL) dismissAll {
+  __dismissAll = dismissAll;
+  __dismissAll_isset = YES;
+}
+
+- (BOOL) dismissAllIsSet {
+  return __dismissAll_isset;
+}
+
+- (void) unsetDismissAll {
+  __dismissAll_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -799,6 +892,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setDismissAll: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -846,6 +947,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__dismissAll_isset) {
+    [outProtocol writeFieldBeginWithName: @"dismissAll" type: TType_BOOL fieldID: 5];
+    [outProtocol writeBool: __dismissAll];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -864,6 +970,8 @@
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",messageIds:"];
   [ms appendFormat: @"%@", __messageIds];
+  [ms appendString: @",dismissAll:"];
+  [ms appendFormat: @"%i", __dismissAll];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

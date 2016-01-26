@@ -117,6 +117,12 @@ struct DeleteMessageRequest
     3: uuid applicationId;
     /** Use for Batch Deletes. */
     4: optional list<uuid> messageIds = [];
+    /**
+     * Use for deleting all the Messages stored for
+     * an Application. Note that this overrides other options.
+     * Use with care.
+     */
+    5: optional bool deleteAll = false;
 }
 
 struct DeleteMessageResponse
@@ -136,6 +142,11 @@ struct DismissMessageRequest
     3: uuid applicationId;
     /** Use for Dismissing multiple Messages. */
     4: optional list<uuid> messageIds = [];
+    /** 
+     * Use for clearing the entire Inbox.
+     * Note that this overrides other options.
+     */
+    5: optional bool dismissAll = false;
 }
 
 struct DismissMessageResponse

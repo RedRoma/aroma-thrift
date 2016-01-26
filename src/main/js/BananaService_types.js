@@ -10,6 +10,7 @@ DeleteMessageRequest = function(args) {
   this.messageId = null;
   this.applicationId = null;
   this.messageIds = [];
+  this.deleteAll = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new UserToken(args.token);
@@ -22,6 +23,9 @@ DeleteMessageRequest = function(args) {
     }
     if (args.messageIds !== undefined && args.messageIds !== null) {
       this.messageIds = Thrift.copyList(args.messageIds, [null]);
+    }
+    if (args.deleteAll !== undefined && args.deleteAll !== null) {
+      this.deleteAll = args.deleteAll;
     }
   }
 };
@@ -81,6 +85,13 @@ DeleteMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.BOOL) {
+        this.deleteAll = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -119,6 +130,11 @@ DeleteMessageRequest.prototype.write = function(output) {
       }
     }
     output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.deleteAll !== null && this.deleteAll !== undefined) {
+    output.writeFieldBegin('deleteAll', Thrift.Type.BOOL, 5);
+    output.writeBool(this.deleteAll);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -184,6 +200,7 @@ DismissMessageRequest = function(args) {
   this.messageId = null;
   this.applicationId = null;
   this.messageIds = [];
+  this.dismissAll = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new UserToken(args.token);
@@ -196,6 +213,9 @@ DismissMessageRequest = function(args) {
     }
     if (args.messageIds !== undefined && args.messageIds !== null) {
       this.messageIds = Thrift.copyList(args.messageIds, [null]);
+    }
+    if (args.dismissAll !== undefined && args.dismissAll !== null) {
+      this.dismissAll = args.dismissAll;
     }
   }
 };
@@ -255,6 +275,13 @@ DismissMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 5:
+      if (ftype == Thrift.Type.BOOL) {
+        this.dismissAll = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -293,6 +320,11 @@ DismissMessageRequest.prototype.write = function(output) {
       }
     }
     output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.dismissAll !== null && this.dismissAll !== undefined) {
+    output.writeFieldBegin('dismissAll', Thrift.Type.BOOL, 5);
+    output.writeBool(this.dismissAll);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

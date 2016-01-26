@@ -35,6 +35,11 @@ void DeleteMessageRequest::__set_messageIds(const std::vector<uuid> & val) {
 __isset.messageIds = true;
 }
 
+void DeleteMessageRequest::__set_deleteAll(const bool val) {
+  this->deleteAll = val;
+__isset.deleteAll = true;
+}
+
 uint32_t DeleteMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -100,6 +105,14 @@ uint32_t DeleteMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->deleteAll);
+          this->__isset.deleteAll = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -142,6 +155,11 @@ uint32_t DeleteMessageRequest::write(::apache::thrift::protocol::TProtocol* opro
     }
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.deleteAll) {
+    xfer += oprot->writeFieldBegin("deleteAll", ::apache::thrift::protocol::T_BOOL, 5);
+    xfer += oprot->writeBool(this->deleteAll);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -153,6 +171,7 @@ void swap(DeleteMessageRequest &a, DeleteMessageRequest &b) {
   swap(a.messageId, b.messageId);
   swap(a.applicationId, b.applicationId);
   swap(a.messageIds, b.messageIds);
+  swap(a.deleteAll, b.deleteAll);
   swap(a.__isset, b.__isset);
 }
 
@@ -161,6 +180,7 @@ DeleteMessageRequest::DeleteMessageRequest(const DeleteMessageRequest& other6) {
   messageId = other6.messageId;
   applicationId = other6.applicationId;
   messageIds = other6.messageIds;
+  deleteAll = other6.deleteAll;
   __isset = other6.__isset;
 }
 DeleteMessageRequest& DeleteMessageRequest::operator=(const DeleteMessageRequest& other7) {
@@ -168,6 +188,7 @@ DeleteMessageRequest& DeleteMessageRequest::operator=(const DeleteMessageRequest
   messageId = other7.messageId;
   applicationId = other7.applicationId;
   messageIds = other7.messageIds;
+  deleteAll = other7.deleteAll;
   __isset = other7.__isset;
   return *this;
 }
@@ -178,6 +199,7 @@ void DeleteMessageRequest::printTo(std::ostream& out) const {
   out << ", " << "messageId=" << to_string(messageId);
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "messageIds="; (__isset.messageIds ? (out << to_string(messageIds)) : (out << "<null>"));
+  out << ", " << "deleteAll="; (__isset.deleteAll ? (out << to_string(deleteAll)) : (out << "<null>"));
   out << ")";
 }
 
@@ -291,6 +313,11 @@ void DismissMessageRequest::__set_messageIds(const std::vector<uuid> & val) {
 __isset.messageIds = true;
 }
 
+void DismissMessageRequest::__set_dismissAll(const bool val) {
+  this->dismissAll = val;
+__isset.dismissAll = true;
+}
+
 uint32_t DismissMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -356,6 +383,14 @@ uint32_t DismissMessageRequest::read(::apache::thrift::protocol::TProtocol* ipro
           xfer += iprot->skip(ftype);
         }
         break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->dismissAll);
+          this->__isset.dismissAll = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -398,6 +433,11 @@ uint32_t DismissMessageRequest::write(::apache::thrift::protocol::TProtocol* opr
     }
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.dismissAll) {
+    xfer += oprot->writeFieldBegin("dismissAll", ::apache::thrift::protocol::T_BOOL, 5);
+    xfer += oprot->writeBool(this->dismissAll);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -409,6 +449,7 @@ void swap(DismissMessageRequest &a, DismissMessageRequest &b) {
   swap(a.messageId, b.messageId);
   swap(a.applicationId, b.applicationId);
   swap(a.messageIds, b.messageIds);
+  swap(a.dismissAll, b.dismissAll);
   swap(a.__isset, b.__isset);
 }
 
@@ -417,6 +458,7 @@ DismissMessageRequest::DismissMessageRequest(const DismissMessageRequest& other1
   messageId = other16.messageId;
   applicationId = other16.applicationId;
   messageIds = other16.messageIds;
+  dismissAll = other16.dismissAll;
   __isset = other16.__isset;
 }
 DismissMessageRequest& DismissMessageRequest::operator=(const DismissMessageRequest& other17) {
@@ -424,6 +466,7 @@ DismissMessageRequest& DismissMessageRequest::operator=(const DismissMessageRequ
   messageId = other17.messageId;
   applicationId = other17.applicationId;
   messageIds = other17.messageIds;
+  dismissAll = other17.dismissAll;
   __isset = other17.__isset;
   return *this;
 }
@@ -434,6 +477,7 @@ void DismissMessageRequest::printTo(std::ostream& out) const {
   out << ", " << "messageId=" << to_string(messageId);
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "messageIds="; (__isset.messageIds ? (out << to_string(messageIds)) : (out << "<null>"));
+  out << ", " << "dismissAll="; (__isset.dismissAll ? (out << to_string(dismissAll)) : (out << "<null>"));
   out << ")";
 }
 
