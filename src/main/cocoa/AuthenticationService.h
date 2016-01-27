@@ -344,10 +344,10 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @protocol AuthenticationService_AuthenticationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
-- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;

@@ -2251,19 +2251,22 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 
 @interface AuthenticationService_CreateToken_result : NSObject <TBase, NSCoding> {
   AuthenticationService_CreateTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex;
+  AuthenticationService_OperationFailedException __ex1;
+  AuthenticationService_InvalidArgumentException __ex2;
 
   BOOL __success_isset;
-  BOOL __ex_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_CreateTokenResponse * success;
-@property (nonatomic, retain, getter=ex, setter=setEx:) AuthenticationService_OperationFailedException ex;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidArgumentException ex2;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex;
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidArgumentException) ex2;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2277,10 +2280,16 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex;
-- (void) setEx: (AuthenticationService_OperationFailedException) ex;
+- (AuthenticationService_OperationFailedException) ex1;
+- (void) setEx1: (AuthenticationService_OperationFailedException) ex1;
 #endif
-- (BOOL) exIsSet;
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex2;
+- (void) setEx2: (AuthenticationService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
 
 @end
 
@@ -2294,13 +2303,15 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidArgumentException) ex2
 {
   self = [super init];
   __success = [success retain_stub];
   __success_isset = YES;
-  __ex = [ex retain_stub];
-  __ex_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
   return self;
 }
 
@@ -2312,10 +2323,15 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
     __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
     __success_isset = YES;
   }
-  if ([decoder containsValueForKey: @"ex"])
+  if ([decoder containsValueForKey: @"ex1"])
   {
-    __ex = [[decoder decodeObjectForKey: @"ex"] retain_stub];
-    __ex_isset = YES;
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
   }
   return self;
 }
@@ -2326,9 +2342,13 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   {
     [encoder encodeObject: __success forKey: @"success"];
   }
-  if (__ex_isset)
+  if (__ex1_isset)
   {
-    [encoder encodeObject: __ex forKey: @"ex"];
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
   }
 }
 
@@ -2340,10 +2360,15 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   {
     hash = (hash * 31) ^ [__success hash];
   }
-  hash = (hash * 31) ^ __ex_isset ? 2654435761 : 0;
-  if (__ex_isset)
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
   {
-    hash = (hash * 31) ^ [__ex hash];
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
   }
   return hash;
 }
@@ -2361,8 +2386,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
   }
-  if ((__ex_isset != other->__ex_isset) ||
-      (__ex_isset && ((__ex || other->__ex) && ![__ex isEqual:other->__ex]))) {
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
   return YES;
@@ -2371,7 +2400,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 - (void) dealloc
 {
   [__success release_stub];
-  [__ex release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
   [super dealloc_stub];
 }
 
@@ -2396,25 +2426,46 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex {
-  return [[__ex retain_stub] autorelease_stub];
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx: (BananaException_OperationFailedException *) ex {
-  [ex retain_stub];
-  [__ex release_stub];
-  __ex = ex;
-  __ex_isset = YES;
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
 }
 
-- (BOOL) exIsSet {
-  return __ex_isset;
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
 }
 
-- (void) unsetEx {
-  [__ex release_stub];
-  __ex = nil;
-  __ex_isset = NO;
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2446,7 +2497,17 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         if (fieldType == TType_STRUCT) {
           BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
-          [self setEx: fieldValue];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -2470,10 +2531,16 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       [__success write: outProtocol];
       [outProtocol writeFieldEnd];
     }
-  } else if (__ex_isset) {
-    if (__ex != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex" type: TType_STRUCT fieldID: 1];
-      [__ex write: outProtocol];
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2489,8 +2556,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex:"];
-  [ms appendFormat: @"%@", __ex];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2679,20 +2748,23 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   AuthenticationService_GetTokenInfoResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_GetTokenInfoResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2717,6 +2789,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_GetTokenInfo_result
@@ -2729,7 +2807,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -2738,6 +2816,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -2759,6 +2839,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -2775,6 +2860,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -2795,6 +2884,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -2820,6 +2914,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2828,6 +2926,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -2894,6 +2993,27 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2939,6 +3059,16 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2969,6 +3099,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -2986,6 +3122,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3174,20 +3312,23 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   AuthenticationService_InvalidateTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_InvalidateTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3212,6 +3353,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_InvalidateToken_result
@@ -3224,7 +3371,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3233,6 +3380,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -3254,6 +3403,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -3270,6 +3424,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -3290,6 +3448,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -3315,6 +3478,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3323,6 +3490,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -3389,6 +3557,27 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3434,6 +3623,16 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3464,6 +3663,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -3481,6 +3686,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3669,20 +3876,23 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   AuthenticationService_VerifyTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_VerifyTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3707,6 +3917,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_VerifyToken_result
@@ -3719,7 +3935,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3728,6 +3944,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -3749,6 +3967,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -3765,6 +3988,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -3785,6 +4012,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -3810,6 +4042,10 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3818,6 +4054,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -3884,6 +4121,27 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3929,6 +4187,16 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3959,6 +4227,12 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -3976,6 +4250,8 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -4054,8 +4330,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if ([result successIsSet]) {
     return [result success];
   }
-  if ([result exIsSet]) {
-    @throw [result ex];
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"createToken failed: unknown result"];
@@ -4100,6 +4379,9 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if ([result ex2IsSet]) {
     @throw [result ex2];
   }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"getTokenInfo failed: unknown result"];
 }
@@ -4143,6 +4425,9 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   if ([result ex2IsSet]) {
     @throw [result ex2];
   }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"invalidateToken failed: unknown result"];
 }
@@ -4185,6 +4470,9 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   }
   if ([result ex2IsSet]) {
     @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"verifyToken failed: unknown result"];

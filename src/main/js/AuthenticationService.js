@@ -144,17 +144,25 @@ AuthenticationService_createToken_args.prototype.write = function(output) {
 
 AuthenticationService_createToken_result = function(args) {
         this.success = null;
-        this.ex = null;
+        this.ex1 = null;
+        this.ex2 = null;
         if (args instanceof OperationFailedException) {
-                this.ex = args;
+                this.ex1 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex2 = args;
                 return;
         }
         if (args) {
                 if (args.success !== undefined && args.success !== null) {
                         this.success = new CreateTokenResponse(args.success);
                 }
-                if (args.ex !== undefined && args.ex !== null) {
-                        this.ex = args.ex;
+                if (args.ex1 !== undefined && args.ex1 !== null) {
+                        this.ex1 = args.ex1;
+                }
+                if (args.ex2 !== undefined && args.ex2 !== null) {
+                        this.ex2 = args.ex2;
                 }
         }
 };
@@ -182,8 +190,16 @@ AuthenticationService_createToken_result.prototype.read = function(input) {
             break;
             case 1:
             if (ftype == Thrift.Type.STRUCT) {
-              this.ex = new OperationFailedException();
-              this.ex.read(input);
+              this.ex1 = new OperationFailedException();
+              this.ex1.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
+            case 2:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex2 = new InvalidArgumentException();
+              this.ex2.read(input);
             } else {
               input.skip(ftype);
             }
@@ -204,9 +220,14 @@ AuthenticationService_createToken_result.prototype.write = function(output) {
           this.success.write(output);
           output.writeFieldEnd();
         }
-        if (this.ex !== null && this.ex !== undefined) {
-          output.writeFieldBegin('ex', Thrift.Type.STRUCT, 1);
-          this.ex.write(output);
+        if (this.ex1 !== null && this.ex1 !== undefined) {
+          output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+          this.ex1.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex2 !== null && this.ex2 !== undefined) {
+          output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+          this.ex2.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -272,12 +293,17 @@ AuthenticationService_getTokenInfo_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
+        this.ex3 = null;
         if (args instanceof OperationFailedException) {
                 this.ex1 = args;
                 return;
         }
         if (args instanceof InvalidTokenException) {
                 this.ex2 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex3 = args;
                 return;
         }
         if (args) {
@@ -289,6 +315,9 @@ AuthenticationService_getTokenInfo_result = function(args) {
                 }
                 if (args.ex2 !== undefined && args.ex2 !== null) {
                         this.ex2 = args.ex2;
+                }
+                if (args.ex3 !== undefined && args.ex3 !== null) {
+                        this.ex3 = args.ex3;
                 }
         }
 };
@@ -330,6 +359,14 @@ AuthenticationService_getTokenInfo_result.prototype.read = function(input) {
               input.skip(ftype);
             }
             break;
+            case 3:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex3 = new InvalidArgumentException();
+              this.ex3.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
             default:
               input.skip(ftype);
           }
@@ -354,6 +391,11 @@ AuthenticationService_getTokenInfo_result.prototype.write = function(output) {
         if (this.ex2 !== null && this.ex2 !== undefined) {
           output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
           this.ex2.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex3 !== null && this.ex3 !== undefined) {
+          output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+          this.ex3.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -419,12 +461,17 @@ AuthenticationService_invalidateToken_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
+        this.ex3 = null;
         if (args instanceof OperationFailedException) {
                 this.ex1 = args;
                 return;
         }
         if (args instanceof InvalidTokenException) {
                 this.ex2 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex3 = args;
                 return;
         }
         if (args) {
@@ -436,6 +483,9 @@ AuthenticationService_invalidateToken_result = function(args) {
                 }
                 if (args.ex2 !== undefined && args.ex2 !== null) {
                         this.ex2 = args.ex2;
+                }
+                if (args.ex3 !== undefined && args.ex3 !== null) {
+                        this.ex3 = args.ex3;
                 }
         }
 };
@@ -477,6 +527,14 @@ AuthenticationService_invalidateToken_result.prototype.read = function(input) {
               input.skip(ftype);
             }
             break;
+            case 3:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex3 = new InvalidArgumentException();
+              this.ex3.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
             default:
               input.skip(ftype);
           }
@@ -501,6 +559,11 @@ AuthenticationService_invalidateToken_result.prototype.write = function(output) 
         if (this.ex2 !== null && this.ex2 !== undefined) {
           output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
           this.ex2.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex3 !== null && this.ex3 !== undefined) {
+          output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+          this.ex3.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -566,12 +629,17 @@ AuthenticationService_verifyToken_result = function(args) {
         this.success = null;
         this.ex1 = null;
         this.ex2 = null;
+        this.ex3 = null;
         if (args instanceof OperationFailedException) {
                 this.ex1 = args;
                 return;
         }
         if (args instanceof InvalidTokenException) {
                 this.ex2 = args;
+                return;
+        }
+        if (args instanceof InvalidArgumentException) {
+                this.ex3 = args;
                 return;
         }
         if (args) {
@@ -583,6 +651,9 @@ AuthenticationService_verifyToken_result = function(args) {
                 }
                 if (args.ex2 !== undefined && args.ex2 !== null) {
                         this.ex2 = args.ex2;
+                }
+                if (args.ex3 !== undefined && args.ex3 !== null) {
+                        this.ex3 = args.ex3;
                 }
         }
 };
@@ -624,6 +695,14 @@ AuthenticationService_verifyToken_result.prototype.read = function(input) {
               input.skip(ftype);
             }
             break;
+            case 3:
+            if (ftype == Thrift.Type.STRUCT) {
+              this.ex3 = new InvalidArgumentException();
+              this.ex3.read(input);
+            } else {
+              input.skip(ftype);
+            }
+            break;
             default:
               input.skip(ftype);
           }
@@ -648,6 +727,11 @@ AuthenticationService_verifyToken_result.prototype.write = function(output) {
         if (this.ex2 !== null && this.ex2 !== undefined) {
           output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
           this.ex2.write(output);
+          output.writeFieldEnd();
+        }
+        if (this.ex3 !== null && this.ex3 !== undefined) {
+          output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+          this.ex3.write(output);
           output.writeFieldEnd();
         }
         output.writeFieldStop();
@@ -753,8 +837,11 @@ AuthenticationServiceClient.prototype.recv_createToken = function() {
         result.read(this.input);
         this.input.readMessageEnd();
 
-        if (null !== result.ex) {
-          throw result.ex;
+        if (null !== result.ex1) {
+          throw result.ex1;
+        }
+        if (null !== result.ex2) {
+          throw result.ex2;
         }
         if (null !== result.success) {
           return result.success;
@@ -811,6 +898,9 @@ AuthenticationServiceClient.prototype.recv_getTokenInfo = function() {
         if (null !== result.ex2) {
           throw result.ex2;
         }
+        if (null !== result.ex3) {
+          throw result.ex3;
+        }
         if (null !== result.success) {
           return result.success;
         }
@@ -866,6 +956,9 @@ AuthenticationServiceClient.prototype.recv_invalidateToken = function() {
         if (null !== result.ex2) {
           throw result.ex2;
         }
+        if (null !== result.ex3) {
+          throw result.ex3;
+        }
         if (null !== result.success) {
           return result.success;
         }
@@ -920,6 +1013,9 @@ AuthenticationServiceClient.prototype.recv_verifyToken = function() {
         }
         if (null !== result.ex2) {
           throw result.ex2;
+        }
+        if (null !== result.ex3) {
+          throw result.ex3;
         }
         if (null !== result.success) {
           return result.success;

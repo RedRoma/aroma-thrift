@@ -336,19 +336,19 @@ the Banana Service and it's supporting services.
 <pre><code>double</code> getApiVersion()
 </pre></div><div class="definition"><h4 id="Fn_AuthenticationService_createToken">Function: AuthenticationService.createToken</h4>
 <pre><code><a href="#Struct_CreateTokenResponse">CreateTokenResponse</a></code> createToken(<code><a href="#Struct_CreateTokenRequest">CreateTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
 </pre>Create a Token, used to represent a User or an Application.
 <br/></div><div class="definition"><h4 id="Fn_AuthenticationService_getTokenInfo">Function: AuthenticationService.getTokenInfo</h4>
 <pre><code><a href="#Struct_GetTokenInfoResponse">GetTokenInfoResponse</a></code> getTokenInfo(<code><a href="#Struct_GetTokenInfoRequest">GetTokenInfoRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
 </pre>Get information about a Token.
 <br/></div><div class="definition"><h4 id="Fn_AuthenticationService_invalidateToken">Function: AuthenticationService.invalidateToken</h4>
 <pre><code><a href="#Struct_InvalidateTokenResponse">InvalidateTokenResponse</a></code> invalidateToken(<code><a href="#Struct_InvalidateTokenRequest">InvalidateTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
 </pre>Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
 an InvalidTokenException.
 <br/></div><div class="definition"><h4 id="Fn_AuthenticationService_verifyToken">Function: AuthenticationService.verifyToken</h4>
 <pre><code><a href="#Struct_VerifyTokenResponse">VerifyTokenResponse</a></code> verifyToken(<code><a href="#Struct_VerifyTokenRequest">VerifyTokenRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>
 </pre>Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
 <br/></div></div></body></html>

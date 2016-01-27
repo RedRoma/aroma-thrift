@@ -124,20 +124,23 @@ service AuthenticationService
     /**
      * Create a Token, used to represent a User or an Application.
      */
-    CreateTokenResponse createToken(1: CreateTokenRequest request) throws (1: OperationFailedException ex);
+    CreateTokenResponse createToken(1: CreateTokenRequest request) throws (1: OperationFailedException ex1,
+                                                                           2: InvalidArgumentException ex2);
     
     /**
      * Get information about a Token.
      */
     GetTokenInfoResponse getTokenInfo(1 : GetTokenInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                              2 : InvalidTokenException ex2);
+                                                                              2 : InvalidTokenException ex2,
+                                                                              3 : InvalidArgumentException ex3);
  
     /**
      * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
      * an InvalidTokenException. 
      */
     InvalidateTokenResponse invalidateToken(1 : InvalidateTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                       2 : InvalidTokenException ex2);
+                                                                                       2 : InvalidTokenException ex2,
+                                                                                       3 : InvalidArgumentException ex3);
  
 
 
@@ -145,7 +148,8 @@ service AuthenticationService
      * Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
      */
     VerifyTokenResponse verifyToken(1 : VerifyTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                           2 : InvalidTokenException ex2);
+                                                                           2 : InvalidTokenException ex2,
+                                                                           3 : InvalidArgumentException ex3);
 
     
    }

@@ -240,9 +240,10 @@ class AuthenticationService_createToken_pargs {
 };
 
 typedef struct _AuthenticationService_createToken_result__isset {
-  _AuthenticationService_createToken_result__isset() : success(false), ex(false) {}
+  _AuthenticationService_createToken_result__isset() : success(false), ex1(false), ex2(false) {}
   bool success :1;
-  bool ex :1;
+  bool ex1 :1;
+  bool ex2 :1;
 } _AuthenticationService_createToken_result__isset;
 
 class AuthenticationService_createToken_result {
@@ -255,19 +256,24 @@ class AuthenticationService_createToken_result {
 
   virtual ~AuthenticationService_createToken_result() throw();
   CreateTokenResponse success;
-  OperationFailedException ex;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
 
   _AuthenticationService_createToken_result__isset __isset;
 
   void __set_success(const CreateTokenResponse& val);
 
-  void __set_ex(const OperationFailedException& val);
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
 
   bool operator == (const AuthenticationService_createToken_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
-    if (!(ex == rhs.ex))
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
       return false;
     return true;
   }
@@ -283,9 +289,10 @@ class AuthenticationService_createToken_result {
 };
 
 typedef struct _AuthenticationService_createToken_presult__isset {
-  _AuthenticationService_createToken_presult__isset() : success(false), ex(false) {}
+  _AuthenticationService_createToken_presult__isset() : success(false), ex1(false), ex2(false) {}
   bool success :1;
-  bool ex :1;
+  bool ex1 :1;
+  bool ex2 :1;
 } _AuthenticationService_createToken_presult__isset;
 
 class AuthenticationService_createToken_presult {
@@ -294,7 +301,8 @@ class AuthenticationService_createToken_presult {
 
   virtual ~AuthenticationService_createToken_presult() throw();
   CreateTokenResponse* success;
-  OperationFailedException* ex;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
 
   _AuthenticationService_createToken_presult__isset __isset;
 
@@ -352,10 +360,11 @@ class AuthenticationService_getTokenInfo_pargs {
 };
 
 typedef struct _AuthenticationService_getTokenInfo_result__isset {
-  _AuthenticationService_getTokenInfo_result__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_getTokenInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_getTokenInfo_result__isset;
 
 class AuthenticationService_getTokenInfo_result {
@@ -370,6 +379,7 @@ class AuthenticationService_getTokenInfo_result {
   GetTokenInfoResponse success;
   OperationFailedException ex1;
   InvalidTokenException ex2;
+  InvalidArgumentException ex3;
 
   _AuthenticationService_getTokenInfo_result__isset __isset;
 
@@ -379,6 +389,8 @@ class AuthenticationService_getTokenInfo_result {
 
   void __set_ex2(const InvalidTokenException& val);
 
+  void __set_ex3(const InvalidArgumentException& val);
+
   bool operator == (const AuthenticationService_getTokenInfo_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -386,6 +398,8 @@ class AuthenticationService_getTokenInfo_result {
     if (!(ex1 == rhs.ex1))
       return false;
     if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
       return false;
     return true;
   }
@@ -401,10 +415,11 @@ class AuthenticationService_getTokenInfo_result {
 };
 
 typedef struct _AuthenticationService_getTokenInfo_presult__isset {
-  _AuthenticationService_getTokenInfo_presult__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_getTokenInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_getTokenInfo_presult__isset;
 
 class AuthenticationService_getTokenInfo_presult {
@@ -415,6 +430,7 @@ class AuthenticationService_getTokenInfo_presult {
   GetTokenInfoResponse* success;
   OperationFailedException* ex1;
   InvalidTokenException* ex2;
+  InvalidArgumentException* ex3;
 
   _AuthenticationService_getTokenInfo_presult__isset __isset;
 
@@ -472,10 +488,11 @@ class AuthenticationService_invalidateToken_pargs {
 };
 
 typedef struct _AuthenticationService_invalidateToken_result__isset {
-  _AuthenticationService_invalidateToken_result__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_invalidateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_invalidateToken_result__isset;
 
 class AuthenticationService_invalidateToken_result {
@@ -490,6 +507,7 @@ class AuthenticationService_invalidateToken_result {
   InvalidateTokenResponse success;
   OperationFailedException ex1;
   InvalidTokenException ex2;
+  InvalidArgumentException ex3;
 
   _AuthenticationService_invalidateToken_result__isset __isset;
 
@@ -499,6 +517,8 @@ class AuthenticationService_invalidateToken_result {
 
   void __set_ex2(const InvalidTokenException& val);
 
+  void __set_ex3(const InvalidArgumentException& val);
+
   bool operator == (const AuthenticationService_invalidateToken_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -506,6 +526,8 @@ class AuthenticationService_invalidateToken_result {
     if (!(ex1 == rhs.ex1))
       return false;
     if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
       return false;
     return true;
   }
@@ -521,10 +543,11 @@ class AuthenticationService_invalidateToken_result {
 };
 
 typedef struct _AuthenticationService_invalidateToken_presult__isset {
-  _AuthenticationService_invalidateToken_presult__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_invalidateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_invalidateToken_presult__isset;
 
 class AuthenticationService_invalidateToken_presult {
@@ -535,6 +558,7 @@ class AuthenticationService_invalidateToken_presult {
   InvalidateTokenResponse* success;
   OperationFailedException* ex1;
   InvalidTokenException* ex2;
+  InvalidArgumentException* ex3;
 
   _AuthenticationService_invalidateToken_presult__isset __isset;
 
@@ -592,10 +616,11 @@ class AuthenticationService_verifyToken_pargs {
 };
 
 typedef struct _AuthenticationService_verifyToken_result__isset {
-  _AuthenticationService_verifyToken_result__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_verifyToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_verifyToken_result__isset;
 
 class AuthenticationService_verifyToken_result {
@@ -610,6 +635,7 @@ class AuthenticationService_verifyToken_result {
   VerifyTokenResponse success;
   OperationFailedException ex1;
   InvalidTokenException ex2;
+  InvalidArgumentException ex3;
 
   _AuthenticationService_verifyToken_result__isset __isset;
 
@@ -619,6 +645,8 @@ class AuthenticationService_verifyToken_result {
 
   void __set_ex2(const InvalidTokenException& val);
 
+  void __set_ex3(const InvalidArgumentException& val);
+
   bool operator == (const AuthenticationService_verifyToken_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -626,6 +654,8 @@ class AuthenticationService_verifyToken_result {
     if (!(ex1 == rhs.ex1))
       return false;
     if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
       return false;
     return true;
   }
@@ -641,10 +671,11 @@ class AuthenticationService_verifyToken_result {
 };
 
 typedef struct _AuthenticationService_verifyToken_presult__isset {
-  _AuthenticationService_verifyToken_presult__isset() : success(false), ex1(false), ex2(false) {}
+  _AuthenticationService_verifyToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
+  bool ex3 :1;
 } _AuthenticationService_verifyToken_presult__isset;
 
 class AuthenticationService_verifyToken_presult {
@@ -655,6 +686,7 @@ class AuthenticationService_verifyToken_presult {
   VerifyTokenResponse* success;
   OperationFailedException* ex1;
   InvalidTokenException* ex2;
+  InvalidArgumentException* ex3;
 
   _AuthenticationService_verifyToken_presult__isset __isset;
 
