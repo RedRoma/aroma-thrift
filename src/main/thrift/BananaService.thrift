@@ -493,6 +493,7 @@ struct GetUserInfoResponse
 struct SearchForApplicationsRequest
 {
     1: UserToken token;
+    /** Performs a search based on the Application name. */
     2: string applicationName;
     3: optional uuid organizationId;
 }
