@@ -1036,7 +1036,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_SubscribeToApplicationRequest : NSObject <TBase, NSCoding> {
+@interface BananaService_FollowApplicationRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   NSString * __applicationName;
   BananaService_uuid __applicationId;
@@ -1098,21 +1098,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_SubscribeToApplicationResponse : NSObject <TBase, NSCoding> {
+@interface BananaService_FollowApplicationResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
-  BananaService_BananaChannel __channel;
 
   BOOL __message_isset;
-  BOOL __channel_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1124,12 +1121,6 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
-#endif
-- (BOOL) channelIsSet;
 
 @end
 
@@ -1889,7 +1880,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, TException
 - (BananaService_SignUpResponse *) signUp: (BananaService_SignUpRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_AccountAlreadyExistsException, TException
 - (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
-- (BananaService_SubscribeToApplicationResponse *) subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_ApplicationAlreadyRegisteredException, BananaService_CustomChannelUnreachableException, TException
+- (BananaService_FollowApplicationResponse *) followApplication: (BananaService_FollowApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_ApplicationAlreadyRegisteredException, BananaService_CustomChannelUnreachableException, TException
 - (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetBuzzResponse *) getBuzz: (BananaService_GetBuzzRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException

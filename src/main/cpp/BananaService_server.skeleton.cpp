@@ -148,9 +148,9 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * 
    * @param request
    */
-  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) {
+  void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) {
     // Your implementation goes here
-    printf("subscribeToApplication\n");
+    printf("followApplication\n");
   }
 
   /**

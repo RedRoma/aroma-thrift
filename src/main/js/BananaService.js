@@ -2314,16 +2314,16 @@ BananaService_snoozeChannel_result.prototype.write = function(output) {
             return;
           };
 
-BananaService_subscribeToApplication_args = function(args) {
+BananaService_followApplication_args = function(args) {
             this.request = null;
             if (args) {
                         if (args.request !== undefined && args.request !== null) {
-                                    this.request = new SubscribeToApplicationRequest(args.request);
+                                    this.request = new FollowApplicationRequest(args.request);
                         }
             }
 };
-BananaService_subscribeToApplication_args.prototype = {};
-BananaService_subscribeToApplication_args.prototype.read = function(input) {
+BananaService_followApplication_args.prototype = {};
+BananaService_followApplication_args.prototype.read = function(input) {
             input.readStructBegin();
             while (true)
             {
@@ -2338,7 +2338,7 @@ BananaService_subscribeToApplication_args.prototype.read = function(input) {
               {
                 case 1:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new SubscribeToApplicationRequest();
+                  this.request = new FollowApplicationRequest();
                   this.request.read(input);
                 } else {
                   input.skip(ftype);
@@ -2356,8 +2356,8 @@ BananaService_subscribeToApplication_args.prototype.read = function(input) {
             return;
           };
 
-BananaService_subscribeToApplication_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_args');
+BananaService_followApplication_args.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_followApplication_args');
             if (this.request !== null && this.request !== undefined) {
               output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
               this.request.write(output);
@@ -2368,7 +2368,7 @@ BananaService_subscribeToApplication_args.prototype.write = function(output) {
             return;
           };
 
-BananaService_subscribeToApplication_result = function(args) {
+BananaService_followApplication_result = function(args) {
             this.success = null;
             this.ex1 = null;
             this.ex2 = null;
@@ -2402,7 +2402,7 @@ BananaService_subscribeToApplication_result = function(args) {
             }
             if (args) {
                         if (args.success !== undefined && args.success !== null) {
-                                    this.success = new SubscribeToApplicationResponse(args.success);
+                                    this.success = new FollowApplicationResponse(args.success);
                         }
                         if (args.ex1 !== undefined && args.ex1 !== null) {
                                     this.ex1 = args.ex1;
@@ -2424,8 +2424,8 @@ BananaService_subscribeToApplication_result = function(args) {
                         }
             }
 };
-BananaService_subscribeToApplication_result.prototype = {};
-BananaService_subscribeToApplication_result.prototype.read = function(input) {
+BananaService_followApplication_result.prototype = {};
+BananaService_followApplication_result.prototype.read = function(input) {
             input.readStructBegin();
             while (true)
             {
@@ -2440,7 +2440,7 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
               {
                 case 0:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new SubscribeToApplicationResponse();
+                  this.success = new FollowApplicationResponse();
                   this.success.read(input);
                 } else {
                   input.skip(ftype);
@@ -2503,8 +2503,8 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
             return;
           };
 
-BananaService_subscribeToApplication_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_result');
+BananaService_followApplication_result.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_followApplication_result');
             if (this.success !== null && this.success !== undefined) {
               output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
               this.success.write(output);
@@ -5118,16 +5118,16 @@ BananaServiceClient.prototype.recv_snoozeChannel = function() {
             }
             throw 'snoozeChannel failed: unknown result';
 };
-BananaServiceClient.prototype.subscribeToApplication = function(request, callback) {
-            this.send_subscribeToApplication(request, callback); 
+BananaServiceClient.prototype.followApplication = function(request, callback) {
+            this.send_followApplication(request, callback); 
             if (!callback) {
-              return this.recv_subscribeToApplication();
+              return this.recv_followApplication();
             }
 };
 
-BananaServiceClient.prototype.send_subscribeToApplication = function(request, callback) {
-            this.output.writeMessageBegin('subscribeToApplication', Thrift.MessageType.CALL, this.seqid);
-            var args = new BananaService_subscribeToApplication_args();
+BananaServiceClient.prototype.send_followApplication = function(request, callback) {
+            this.output.writeMessageBegin('followApplication', Thrift.MessageType.CALL, this.seqid);
+            var args = new BananaService_followApplication_args();
             args.request = request;
             args.write(this.output);
             this.output.writeMessageEnd();
@@ -5136,7 +5136,7 @@ BananaServiceClient.prototype.send_subscribeToApplication = function(request, ca
               this.output.getTransport().flush(true, function() {
                 var result = null;
                 try {
-                  result = self.recv_subscribeToApplication();
+                  result = self.recv_followApplication();
                 } catch (e) {
                   result = e;
                 }
@@ -5147,7 +5147,7 @@ BananaServiceClient.prototype.send_subscribeToApplication = function(request, ca
             }
 };
 
-BananaServiceClient.prototype.recv_subscribeToApplication = function() {
+BananaServiceClient.prototype.recv_followApplication = function() {
             var ret = this.input.readMessageBegin();
             var fname = ret.fname;
             var mtype = ret.mtype;
@@ -5158,7 +5158,7 @@ BananaServiceClient.prototype.recv_subscribeToApplication = function() {
               this.input.readMessageEnd();
               throw x;
             }
-            var result = new BananaService_subscribeToApplication_result();
+            var result = new BananaService_followApplication_result();
             result.read(this.input);
             this.input.readMessageEnd();
 
@@ -5183,7 +5183,7 @@ BananaServiceClient.prototype.recv_subscribeToApplication = function() {
             if (null !== result.success) {
               return result.success;
             }
-            throw 'subscribeToApplication failed: unknown result';
+            throw 'followApplication failed: unknown result';
 };
 BananaServiceClient.prototype.getActivity = function(request, callback) {
             this.send_getActivity(request, callback); 

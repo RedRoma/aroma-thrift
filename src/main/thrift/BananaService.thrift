@@ -328,9 +328,9 @@ struct SnoozeChannelResponse
 }
 
 /**
- * Subscribe to an Application to receive notifications for it.
+ * Follow an Application to receive notifications from it.
  */
-struct SubscribeToApplicationRequest
+struct FollowApplicationRequest
 {
     1: UserToken token;
     2: string applicationName;
@@ -339,10 +339,9 @@ struct SubscribeToApplicationRequest
     5: optional bool shared = false;
 }
 
-struct SubscribeToApplicationResponse
+struct FollowApplicationResponse
 {
-    1: string message;
-    2: BananaChannel channel;
+    1: optional string message = "Success";
 }
 
 
@@ -637,12 +636,12 @@ service BananaService
      *
      * #user
      */
-    SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                            2 : InvalidArgumentException ex2,
-                                                                                                            3 : InvalidTokenException ex3,
-                                                                                                            4 : ApplicationDoesNotExistException ex4,
-                                                                                                            5 : ApplicationAlreadyRegisteredException ex5,
-                                                                                                            6 : CustomChannelUnreachableException ex6);
+    FollowApplicationResponse followApplication(1 : FollowApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidTokenException ex3,
+                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                             5 : ApplicationAlreadyRegisteredException ex5,
+                                                                                             6 : CustomChannelUnreachableException ex6);
     
     
    

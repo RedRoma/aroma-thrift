@@ -2873,33 +2873,33 @@ void SnoozeChannelResponse::printTo(std::ostream& out) const {
 }
 
 
-SubscribeToApplicationRequest::~SubscribeToApplicationRequest() throw() {
+FollowApplicationRequest::~FollowApplicationRequest() throw() {
 }
 
 
-void SubscribeToApplicationRequest::__set_token(const UserToken& val) {
+void FollowApplicationRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void SubscribeToApplicationRequest::__set_applicationName(const std::string& val) {
+void FollowApplicationRequest::__set_applicationName(const std::string& val) {
   this->applicationName = val;
 }
 
-void SubscribeToApplicationRequest::__set_applicationId(const uuid& val) {
+void FollowApplicationRequest::__set_applicationId(const uuid& val) {
   this->applicationId = val;
 }
 
-void SubscribeToApplicationRequest::__set_organizationId(const uuid& val) {
+void FollowApplicationRequest::__set_organizationId(const uuid& val) {
   this->organizationId = val;
 __isset.organizationId = true;
 }
 
-void SubscribeToApplicationRequest::__set_shared(const bool val) {
+void FollowApplicationRequest::__set_shared(const bool val) {
   this->shared = val;
 __isset.shared = true;
 }
 
-uint32_t SubscribeToApplicationRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t FollowApplicationRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2972,10 +2972,10 @@ uint32_t SubscribeToApplicationRequest::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t SubscribeToApplicationRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t FollowApplicationRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("SubscribeToApplicationRequest");
+  xfer += oprot->writeStructBegin("FollowApplicationRequest");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->token.write(oprot);
@@ -3004,7 +3004,7 @@ uint32_t SubscribeToApplicationRequest::write(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b) {
+void swap(FollowApplicationRequest &a, FollowApplicationRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.applicationName, b.applicationName);
@@ -3014,7 +3014,7 @@ void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-SubscribeToApplicationRequest::SubscribeToApplicationRequest(const SubscribeToApplicationRequest& other67) {
+FollowApplicationRequest::FollowApplicationRequest(const FollowApplicationRequest& other67) {
   token = other67.token;
   applicationName = other67.applicationName;
   applicationId = other67.applicationId;
@@ -3022,7 +3022,7 @@ SubscribeToApplicationRequest::SubscribeToApplicationRequest(const SubscribeToAp
   shared = other67.shared;
   __isset = other67.__isset;
 }
-SubscribeToApplicationRequest& SubscribeToApplicationRequest::operator=(const SubscribeToApplicationRequest& other68) {
+FollowApplicationRequest& FollowApplicationRequest::operator=(const FollowApplicationRequest& other68) {
   token = other68.token;
   applicationName = other68.applicationName;
   applicationId = other68.applicationId;
@@ -3031,9 +3031,9 @@ SubscribeToApplicationRequest& SubscribeToApplicationRequest::operator=(const Su
   __isset = other68.__isset;
   return *this;
 }
-void SubscribeToApplicationRequest::printTo(std::ostream& out) const {
+void FollowApplicationRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "SubscribeToApplicationRequest(";
+  out << "FollowApplicationRequest(";
   out << "token=" << to_string(token);
   out << ", " << "applicationName=" << to_string(applicationName);
   out << ", " << "applicationId=" << to_string(applicationId);
@@ -3043,19 +3043,16 @@ void SubscribeToApplicationRequest::printTo(std::ostream& out) const {
 }
 
 
-SubscribeToApplicationResponse::~SubscribeToApplicationResponse() throw() {
+FollowApplicationResponse::~FollowApplicationResponse() throw() {
 }
 
 
-void SubscribeToApplicationResponse::__set_message(const std::string& val) {
+void FollowApplicationResponse::__set_message(const std::string& val) {
   this->message = val;
+__isset.message = true;
 }
 
-void SubscribeToApplicationResponse::__set_channel(const BananaChannel& val) {
-  this->channel = val;
-}
-
-uint32_t SubscribeToApplicationResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t FollowApplicationResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3084,14 +3081,6 @@ uint32_t SubscribeToApplicationResponse::read(::apache::thrift::protocol::TProto
           xfer += iprot->skip(ftype);
         }
         break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->channel.read(iprot);
-          this->__isset.channel = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -3104,47 +3093,40 @@ uint32_t SubscribeToApplicationResponse::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t SubscribeToApplicationResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t FollowApplicationResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("SubscribeToApplicationResponse");
+  xfer += oprot->writeStructBegin("FollowApplicationResponse");
 
-  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->message);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("channel", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->channel.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->message);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void swap(SubscribeToApplicationResponse &a, SubscribeToApplicationResponse &b) {
+void swap(FollowApplicationResponse &a, FollowApplicationResponse &b) {
   using ::std::swap;
   swap(a.message, b.message);
-  swap(a.channel, b.channel);
   swap(a.__isset, b.__isset);
 }
 
-SubscribeToApplicationResponse::SubscribeToApplicationResponse(const SubscribeToApplicationResponse& other69) {
+FollowApplicationResponse::FollowApplicationResponse(const FollowApplicationResponse& other69) {
   message = other69.message;
-  channel = other69.channel;
   __isset = other69.__isset;
 }
-SubscribeToApplicationResponse& SubscribeToApplicationResponse::operator=(const SubscribeToApplicationResponse& other70) {
+FollowApplicationResponse& FollowApplicationResponse::operator=(const FollowApplicationResponse& other70) {
   message = other70.message;
-  channel = other70.channel;
   __isset = other70.__isset;
   return *this;
 }
-void SubscribeToApplicationResponse::printTo(std::ostream& out) const {
+void FollowApplicationResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "SubscribeToApplicationResponse(";
-  out << "message=" << to_string(message);
-  out << ", " << "channel=" << to_string(channel);
+  out << "FollowApplicationResponse(";
+  out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ")";
 }
 

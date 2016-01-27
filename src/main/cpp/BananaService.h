@@ -109,7 +109,7 @@ class BananaServiceIf {
    * 
    * @param request
    */
-  virtual void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) = 0;
+  virtual void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) = 0;
 
   /**
    * Get all of the User-Related activities that have happened recently.
@@ -223,7 +223,7 @@ class BananaServiceNull : virtual public BananaServiceIf {
   void snoozeChannel(SnoozeChannelResponse& /* _return */, const SnoozeChannelRequest& /* request */) {
     return;
   }
-  void subscribeToApplication(SubscribeToApplicationResponse& /* _return */, const SubscribeToApplicationRequest& /* request */) {
+  void followApplication(FollowApplicationResponse& /* _return */, const FollowApplicationRequest& /* request */) {
     return;
   }
   void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
@@ -1902,37 +1902,37 @@ class BananaService_snoozeChannel_presult {
 
 };
 
-typedef struct _BananaService_subscribeToApplication_args__isset {
-  _BananaService_subscribeToApplication_args__isset() : request(false) {}
+typedef struct _BananaService_followApplication_args__isset {
+  _BananaService_followApplication_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_subscribeToApplication_args__isset;
+} _BananaService_followApplication_args__isset;
 
-class BananaService_subscribeToApplication_args {
+class BananaService_followApplication_args {
  public:
 
-  BananaService_subscribeToApplication_args(const BananaService_subscribeToApplication_args&);
-  BananaService_subscribeToApplication_args& operator=(const BananaService_subscribeToApplication_args&);
-  BananaService_subscribeToApplication_args() {
+  BananaService_followApplication_args(const BananaService_followApplication_args&);
+  BananaService_followApplication_args& operator=(const BananaService_followApplication_args&);
+  BananaService_followApplication_args() {
   }
 
-  virtual ~BananaService_subscribeToApplication_args() throw();
-  SubscribeToApplicationRequest request;
+  virtual ~BananaService_followApplication_args() throw();
+  FollowApplicationRequest request;
 
-  _BananaService_subscribeToApplication_args__isset __isset;
+  _BananaService_followApplication_args__isset __isset;
 
-  void __set_request(const SubscribeToApplicationRequest& val);
+  void __set_request(const FollowApplicationRequest& val);
 
-  bool operator == (const BananaService_subscribeToApplication_args & rhs) const
+  bool operator == (const BananaService_followApplication_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_subscribeToApplication_args &rhs) const {
+  bool operator != (const BananaService_followApplication_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_subscribeToApplication_args & ) const;
+  bool operator < (const BananaService_followApplication_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1940,19 +1940,19 @@ class BananaService_subscribeToApplication_args {
 };
 
 
-class BananaService_subscribeToApplication_pargs {
+class BananaService_followApplication_pargs {
  public:
 
 
-  virtual ~BananaService_subscribeToApplication_pargs() throw();
-  const SubscribeToApplicationRequest* request;
+  virtual ~BananaService_followApplication_pargs() throw();
+  const FollowApplicationRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_subscribeToApplication_result__isset {
-  _BananaService_subscribeToApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+typedef struct _BananaService_followApplication_result__isset {
+  _BananaService_followApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
@@ -1960,18 +1960,18 @@ typedef struct _BananaService_subscribeToApplication_result__isset {
   bool ex4 :1;
   bool ex5 :1;
   bool ex6 :1;
-} _BananaService_subscribeToApplication_result__isset;
+} _BananaService_followApplication_result__isset;
 
-class BananaService_subscribeToApplication_result {
+class BananaService_followApplication_result {
  public:
 
-  BananaService_subscribeToApplication_result(const BananaService_subscribeToApplication_result&);
-  BananaService_subscribeToApplication_result& operator=(const BananaService_subscribeToApplication_result&);
-  BananaService_subscribeToApplication_result() {
+  BananaService_followApplication_result(const BananaService_followApplication_result&);
+  BananaService_followApplication_result& operator=(const BananaService_followApplication_result&);
+  BananaService_followApplication_result() {
   }
 
-  virtual ~BananaService_subscribeToApplication_result() throw();
-  SubscribeToApplicationResponse success;
+  virtual ~BananaService_followApplication_result() throw();
+  FollowApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
@@ -1979,9 +1979,9 @@ class BananaService_subscribeToApplication_result {
   ApplicationAlreadyRegisteredException ex5;
   CustomChannelUnreachableException ex6;
 
-  _BananaService_subscribeToApplication_result__isset __isset;
+  _BananaService_followApplication_result__isset __isset;
 
-  void __set_success(const SubscribeToApplicationResponse& val);
+  void __set_success(const FollowApplicationResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -1995,7 +1995,7 @@ class BananaService_subscribeToApplication_result {
 
   void __set_ex6(const CustomChannelUnreachableException& val);
 
-  bool operator == (const BananaService_subscribeToApplication_result & rhs) const
+  bool operator == (const BananaService_followApplication_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2013,19 +2013,19 @@ class BananaService_subscribeToApplication_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_subscribeToApplication_result &rhs) const {
+  bool operator != (const BananaService_followApplication_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_subscribeToApplication_result & ) const;
+  bool operator < (const BananaService_followApplication_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_subscribeToApplication_presult__isset {
-  _BananaService_subscribeToApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+typedef struct _BananaService_followApplication_presult__isset {
+  _BananaService_followApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
@@ -2033,14 +2033,14 @@ typedef struct _BananaService_subscribeToApplication_presult__isset {
   bool ex4 :1;
   bool ex5 :1;
   bool ex6 :1;
-} _BananaService_subscribeToApplication_presult__isset;
+} _BananaService_followApplication_presult__isset;
 
-class BananaService_subscribeToApplication_presult {
+class BananaService_followApplication_presult {
  public:
 
 
-  virtual ~BananaService_subscribeToApplication_presult() throw();
-  SubscribeToApplicationResponse* success;
+  virtual ~BananaService_followApplication_presult() throw();
+  FollowApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
@@ -2048,7 +2048,7 @@ class BananaService_subscribeToApplication_presult {
   ApplicationAlreadyRegisteredException* ex5;
   CustomChannelUnreachableException* ex6;
 
-  _BananaService_subscribeToApplication_presult__isset __isset;
+  _BananaService_followApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3451,9 +3451,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   void send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return);
-  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request);
-  void send_subscribeToApplication(const SubscribeToApplicationRequest& request);
-  void recv_subscribeToApplication(SubscribeToApplicationResponse& _return);
+  void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
+  void send_followApplication(const FollowApplicationRequest& request);
+  void recv_followApplication(FollowApplicationResponse& _return);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   void send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return);
@@ -3511,7 +3511,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_subscribeToApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3537,7 +3537,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["signIn"] = &BananaServiceProcessor::process_signIn;
     processMap_["signUp"] = &BananaServiceProcessor::process_signUp;
     processMap_["snoozeChannel"] = &BananaServiceProcessor::process_snoozeChannel;
-    processMap_["subscribeToApplication"] = &BananaServiceProcessor::process_subscribeToApplication;
+    processMap_["followApplication"] = &BananaServiceProcessor::process_followApplication;
     processMap_["getActivity"] = &BananaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
     processMap_["getBuzz"] = &BananaServiceProcessor::process_getBuzz;
@@ -3695,13 +3695,13 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
-  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) {
+  void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->subscribeToApplication(_return, request);
+      ifaces_[i]->followApplication(_return, request);
     }
-    ifaces_[i]->subscribeToApplication(_return, request);
+    ifaces_[i]->followApplication(_return, request);
     return;
   }
 
@@ -3871,9 +3871,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request);
   int32_t send_snoozeChannel(const SnoozeChannelRequest& request);
   void recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid);
-  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request);
-  int32_t send_subscribeToApplication(const SubscribeToApplicationRequest& request);
-  void recv_subscribeToApplication(SubscribeToApplicationResponse& _return, const int32_t seqid);
+  void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
+  int32_t send_followApplication(const FollowApplicationRequest& request);
+  void recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   int32_t send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);

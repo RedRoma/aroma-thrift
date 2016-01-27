@@ -198,6 +198,7 @@ code { line-height: 20px; }
 <ul>
 <li><a href="#Fn_BananaService_deleteMessage">deleteMessage</a></li>
 <li><a href="#Fn_BananaService_dismissMessage">dismissMessage</a></li>
+<li><a href="#Fn_BananaService_followApplication">followApplication</a></li>
 <li><a href="#Fn_BananaService_getActivity">getActivity</a></li>
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
@@ -218,7 +219,6 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_signIn">signIn</a></li>
 <li><a href="#Fn_BananaService_signUp">signUp</a></li>
 <li><a href="#Fn_BananaService_snoozeChannel">snoozeChannel</a></li>
-<li><a href="#Fn_BananaService_subscribeToApplication">subscribeToApplication</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -235,6 +235,8 @@ code { line-height: 20px; }
 <a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
 <a href="#Struct_DismissMessageResponse">DismissMessageResponse</a><br/>
 <a href="#Typedef_Endpoint">Endpoint</a><br/>
+<a href="#Struct_FollowApplicationRequest">FollowApplicationRequest</a><br/>
+<a href="#Struct_FollowApplicationResponse">FollowApplicationResponse</a><br/>
 <a href="#Struct_GetActivityRequest">GetActivityRequest</a><br/>
 <a href="#Struct_GetActivityResponse">GetActivityResponse</a><br/>
 <a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a><br/>
@@ -282,8 +284,6 @@ code { line-height: 20px; }
 <a href="#Struct_SignUpResponse">SignUpResponse</a><br/>
 <a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a><br/>
 <a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a><br/>
-<a href="#Struct_SubscribeToApplicationRequest">SubscribeToApplicationRequest</a><br/>
-<a href="#Struct_SubscribeToApplicationResponse">SubscribeToApplicationResponse</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
 <a href="#Typedef_User">User</a><br/>
@@ -546,18 +546,17 @@ for a set time period.
 <br/></div><div class="definition"><h3 id="Struct_SnoozeChannelResponse">Struct: SnoozeChannelResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SubscribeToApplicationRequest">Struct: SubscribeToApplicationRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_FollowApplicationRequest">Struct: FollowApplicationRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>5</td><td>shared</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
-</table><br/>Subscribe to an Application to receive notifications for it.
-<br/></div><div class="definition"><h3 id="Struct_SubscribeToApplicationResponse">Struct: SubscribeToApplicationResponse</h3>
+</table><br/>Follow an Application to receive notifications from it.
+<br/></div><div class="definition"><h3 id="Struct_FollowApplicationResponse">Struct: FollowApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Success"</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationInfoRequest">Struct: GetApplicationInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -719,8 +718,8 @@ Only an "owner" can perform this operation.
 <pre><code><a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a></code> snoozeChannel(<code><a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>, <code><a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a></code>
 </pre>Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
-<br/></div><div class="definition"><h4 id="Fn_BananaService_subscribeToApplication">Function: BananaService.subscribeToApplication</h4>
-<pre><code><a href="#Struct_SubscribeToApplicationResponse">SubscribeToApplicationResponse</a></code> subscribeToApplication(<code><a href="#Struct_SubscribeToApplicationRequest">SubscribeToApplicationRequest</a></code> request)
+<br/></div><div class="definition"><h4 id="Fn_BananaService_followApplication">Function: BananaService.followApplication</h4>
+<pre><code><a href="#Struct_FollowApplicationResponse">FollowApplicationResponse</a></code> followApplication(<code><a href="#Struct_FollowApplicationRequest">FollowApplicationRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
 </pre>Subscribe to an existing application to get notifications.
 

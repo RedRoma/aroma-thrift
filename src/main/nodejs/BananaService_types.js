@@ -1919,7 +1919,7 @@ SnoozeChannelResponse.prototype.write = function(output) {
     return;
   };
 
-SubscribeToApplicationRequest = module.exports.SubscribeToApplicationRequest = function(args) {
+FollowApplicationRequest = module.exports.FollowApplicationRequest = function(args) {
     this.token = null;
     this.applicationName = null;
     this.applicationId = null;
@@ -1943,8 +1943,8 @@ SubscribeToApplicationRequest = module.exports.SubscribeToApplicationRequest = f
         }
     }
 };
-SubscribeToApplicationRequest.prototype = {};
-SubscribeToApplicationRequest.prototype.read = function(input) {
+FollowApplicationRequest.prototype = {};
+FollowApplicationRequest.prototype.read = function(input) {
     input.readStructBegin();
     while (true)
     {
@@ -2002,8 +2002,8 @@ SubscribeToApplicationRequest.prototype.read = function(input) {
     return;
   };
 
-SubscribeToApplicationRequest.prototype.write = function(output) {
-    output.writeStructBegin('SubscribeToApplicationRequest');
+FollowApplicationRequest.prototype.write = function(output) {
+    output.writeStructBegin('FollowApplicationRequest');
     if (this.token !== null && this.token !== undefined) {
       output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
       this.token.write(output);
@@ -2034,20 +2034,16 @@ SubscribeToApplicationRequest.prototype.write = function(output) {
     return;
   };
 
-SubscribeToApplicationResponse = module.exports.SubscribeToApplicationResponse = function(args) {
-    this.message = null;
-    this.channel = null;
+FollowApplicationResponse = module.exports.FollowApplicationResponse = function(args) {
+    this.message = 'Success';
     if (args) {
         if (args.message !== undefined && args.message !== null) {
             this.message = args.message;
         }
-        if (args.channel !== undefined && args.channel !== null) {
-            this.channel = new Channels_ttypes.BananaChannel(args.channel);
-        }
     }
 };
-SubscribeToApplicationResponse.prototype = {};
-SubscribeToApplicationResponse.prototype.read = function(input) {
+FollowApplicationResponse.prototype = {};
+FollowApplicationResponse.prototype.read = function(input) {
     input.readStructBegin();
     while (true)
     {
@@ -2067,14 +2063,9 @@ SubscribeToApplicationResponse.prototype.read = function(input) {
           input.skip(ftype);
         }
         break;
-        case 2:
-        if (ftype == Thrift.Type.STRUCT) {
-          this.channel = new Channels_ttypes.BananaChannel();
-          this.channel.read(input);
-        } else {
+        case 0:
           input.skip(ftype);
-        }
-        break;
+          break;
         default:
           input.skip(ftype);
       }
@@ -2084,16 +2075,11 @@ SubscribeToApplicationResponse.prototype.read = function(input) {
     return;
   };
 
-SubscribeToApplicationResponse.prototype.write = function(output) {
-    output.writeStructBegin('SubscribeToApplicationResponse');
+FollowApplicationResponse.prototype.write = function(output) {
+    output.writeStructBegin('FollowApplicationResponse');
     if (this.message !== null && this.message !== undefined) {
       output.writeFieldBegin('message', Thrift.Type.STRING, 1);
       output.writeString(this.message);
-      output.writeFieldEnd();
-    }
-    if (this.channel !== null && this.channel !== undefined) {
-      output.writeFieldBegin('channel', Thrift.Type.STRUCT, 2);
-      this.channel.write(output);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

@@ -2325,16 +2325,16 @@ BananaService_snoozeChannel_result.prototype.write = function(output) {
             return;
           };
 
-BananaService_subscribeToApplication_args = function(args) {
+BananaService_followApplication_args = function(args) {
             this.request = null;
             if (args) {
                         if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SubscribeToApplicationRequest(args.request);
+                                    this.request = new ttypes.FollowApplicationRequest(args.request);
                         }
             }
 };
-BananaService_subscribeToApplication_args.prototype = {};
-BananaService_subscribeToApplication_args.prototype.read = function(input) {
+BananaService_followApplication_args.prototype = {};
+BananaService_followApplication_args.prototype.read = function(input) {
             input.readStructBegin();
             while (true)
             {
@@ -2349,7 +2349,7 @@ BananaService_subscribeToApplication_args.prototype.read = function(input) {
               {
                 case 1:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SubscribeToApplicationRequest();
+                  this.request = new ttypes.FollowApplicationRequest();
                   this.request.read(input);
                 } else {
                   input.skip(ftype);
@@ -2367,8 +2367,8 @@ BananaService_subscribeToApplication_args.prototype.read = function(input) {
             return;
           };
 
-BananaService_subscribeToApplication_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_args');
+BananaService_followApplication_args.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_followApplication_args');
             if (this.request !== null && this.request !== undefined) {
               output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
               this.request.write(output);
@@ -2379,7 +2379,7 @@ BananaService_subscribeToApplication_args.prototype.write = function(output) {
             return;
           };
 
-BananaService_subscribeToApplication_result = function(args) {
+BananaService_followApplication_result = function(args) {
             this.success = null;
             this.ex1 = null;
             this.ex2 = null;
@@ -2413,7 +2413,7 @@ BananaService_subscribeToApplication_result = function(args) {
             }
             if (args) {
                         if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SubscribeToApplicationResponse(args.success);
+                                    this.success = new ttypes.FollowApplicationResponse(args.success);
                         }
                         if (args.ex1 !== undefined && args.ex1 !== null) {
                                     this.ex1 = args.ex1;
@@ -2435,8 +2435,8 @@ BananaService_subscribeToApplication_result = function(args) {
                         }
             }
 };
-BananaService_subscribeToApplication_result.prototype = {};
-BananaService_subscribeToApplication_result.prototype.read = function(input) {
+BananaService_followApplication_result.prototype = {};
+BananaService_followApplication_result.prototype.read = function(input) {
             input.readStructBegin();
             while (true)
             {
@@ -2451,7 +2451,7 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
               {
                 case 0:
                 if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SubscribeToApplicationResponse();
+                  this.success = new ttypes.FollowApplicationResponse();
                   this.success.read(input);
                 } else {
                   input.skip(ftype);
@@ -2514,8 +2514,8 @@ BananaService_subscribeToApplication_result.prototype.read = function(input) {
             return;
           };
 
-BananaService_subscribeToApplication_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_result');
+BananaService_followApplication_result.prototype.write = function(output) {
+            output.writeStructBegin('BananaService_followApplication_result');
             if (this.success !== null && this.success !== undefined) {
               output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
               this.success.write(output);
@@ -5108,7 +5108,7 @@ BananaServiceClient.prototype.recv_snoozeChannel = function(input,mtype,rseqid) 
             }
             return callback('snoozeChannel failed: unknown result');
 };
-BananaServiceClient.prototype.subscribeToApplication = function(request, callback) {
+BananaServiceClient.prototype.followApplication = function(request, callback) {
             this._seqid = this.new_seqid();
             if (callback === undefined) {
               var _defer = Q.defer();
@@ -5119,25 +5119,25 @@ BananaServiceClient.prototype.subscribeToApplication = function(request, callbac
                   _defer.resolve(result);
                 }
               };
-              this.send_subscribeToApplication(request);
+              this.send_followApplication(request);
               return _defer.promise;
             } else {
               this._reqs[this.seqid()] = callback;
-              this.send_subscribeToApplication(request);
+              this.send_followApplication(request);
             }
 };
 
-BananaServiceClient.prototype.send_subscribeToApplication = function(request) {
+BananaServiceClient.prototype.send_followApplication = function(request) {
             var output = new this.pClass(this.output);
-            output.writeMessageBegin('subscribeToApplication', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_subscribeToApplication_args();
+            output.writeMessageBegin('followApplication', Thrift.MessageType.CALL, this.seqid());
+            var args = new BananaService_followApplication_args();
             args.request = request;
             args.write(output);
             output.writeMessageEnd();
             return this.output.flush();
 };
 
-BananaServiceClient.prototype.recv_subscribeToApplication = function(input,mtype,rseqid) {
+BananaServiceClient.prototype.recv_followApplication = function(input,mtype,rseqid) {
             var callback = this._reqs[rseqid] || function() {};
             delete this._reqs[rseqid];
             if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -5146,7 +5146,7 @@ BananaServiceClient.prototype.recv_subscribeToApplication = function(input,mtype
               input.readMessageEnd();
               return callback(x);
             }
-            var result = new BananaService_subscribeToApplication_result();
+            var result = new BananaService_followApplication_result();
             result.read(input);
             input.readMessageEnd();
 
@@ -5171,7 +5171,7 @@ BananaServiceClient.prototype.recv_subscribeToApplication = function(input,mtype
             if (null !== result.success) {
               return callback(null, result.success);
             }
-            return callback('subscribeToApplication failed: unknown result');
+            return callback('followApplication failed: unknown result');
 };
 BananaServiceClient.prototype.getActivity = function(request, callback) {
             this._seqid = this.new_seqid();
@@ -6247,38 +6247,38 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
             }
           }
 
-          BananaServiceProcessor.prototype.process_subscribeToApplication = function(seqid, input, output)           {
-            var args = new BananaService_subscribeToApplication_args();
+          BananaServiceProcessor.prototype.process_followApplication = function(seqid, input, output)           {
+            var args = new BananaService_followApplication_args();
             args.read(input);
             input.readMessageEnd();
-            if (this._handler.subscribeToApplication.length === 1) {
-              Q.fcall(this._handler.subscribeToApplication, args.request)
+            if (this._handler.followApplication.length === 1) {
+              Q.fcall(this._handler.followApplication, args.request)
                 .then(function(result) {
-                  var result = new BananaService_subscribeToApplication_result({success: result});
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
+                  var result = new BananaService_followApplication_result({success: result});
+                  output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
                 }, function (err) {
                   if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
-                    var result = new BananaService_subscribeToApplication_result(err);
-                    output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
+                    var result = new BananaService_followApplication_result(err);
+                    output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("followApplication", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
                 });
             } else {
-              this._handler.subscribeToApplication(args.request, function (err, result) {
+              this._handler.followApplication(args.request, function (err, result) {
                 if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
-                  var result = new BananaService_subscribeToApplication_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
+                  var result = new BananaService_followApplication_result((err != null ? err : {success: result}));
+                  output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
                 } else {
                   var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.EXCEPTION, seqid);
+                  output.writeMessageBegin("followApplication", Thrift.MessageType.EXCEPTION, seqid);
                 }
                 result.write(output);
                 output.writeMessageEnd();

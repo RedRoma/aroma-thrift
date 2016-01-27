@@ -121,9 +121,9 @@ class SnoozeChannelRequest;
 
 class SnoozeChannelResponse;
 
-class SubscribeToApplicationRequest;
+class FollowApplicationRequest;
 
-class SubscribeToApplicationResponse;
+class FollowApplicationResponse;
 
 class GetApplicationInfoRequest;
 
@@ -1489,31 +1489,31 @@ inline std::ostream& operator<<(std::ostream& out, const SnoozeChannelResponse& 
   return out;
 }
 
-typedef struct _SubscribeToApplicationRequest__isset {
-  _SubscribeToApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organizationId(false), shared(true) {}
+typedef struct _FollowApplicationRequest__isset {
+  _FollowApplicationRequest__isset() : token(false), applicationName(false), applicationId(false), organizationId(false), shared(true) {}
   bool token :1;
   bool applicationName :1;
   bool applicationId :1;
   bool organizationId :1;
   bool shared :1;
-} _SubscribeToApplicationRequest__isset;
+} _FollowApplicationRequest__isset;
 
-class SubscribeToApplicationRequest {
+class FollowApplicationRequest {
  public:
 
-  SubscribeToApplicationRequest(const SubscribeToApplicationRequest&);
-  SubscribeToApplicationRequest& operator=(const SubscribeToApplicationRequest&);
-  SubscribeToApplicationRequest() : applicationName(), applicationId(), organizationId(), shared(false) {
+  FollowApplicationRequest(const FollowApplicationRequest&);
+  FollowApplicationRequest& operator=(const FollowApplicationRequest&);
+  FollowApplicationRequest() : applicationName(), applicationId(), organizationId(), shared(false) {
   }
 
-  virtual ~SubscribeToApplicationRequest() throw();
+  virtual ~FollowApplicationRequest() throw();
   UserToken token;
   std::string applicationName;
   uuid applicationId;
   uuid organizationId;
   bool shared;
 
-  _SubscribeToApplicationRequest__isset __isset;
+  _FollowApplicationRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
@@ -1525,7 +1525,7 @@ class SubscribeToApplicationRequest {
 
   void __set_shared(const bool val);
 
-  bool operator == (const SubscribeToApplicationRequest & rhs) const
+  bool operator == (const FollowApplicationRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
@@ -1543,11 +1543,11 @@ class SubscribeToApplicationRequest {
       return false;
     return true;
   }
-  bool operator != (const SubscribeToApplicationRequest &rhs) const {
+  bool operator != (const FollowApplicationRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SubscribeToApplicationRequest & ) const;
+  bool operator < (const FollowApplicationRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1555,51 +1555,47 @@ class SubscribeToApplicationRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SubscribeToApplicationRequest &a, SubscribeToApplicationRequest &b);
+void swap(FollowApplicationRequest &a, FollowApplicationRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const FollowApplicationRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _SubscribeToApplicationResponse__isset {
-  _SubscribeToApplicationResponse__isset() : message(false), channel(false) {}
+typedef struct _FollowApplicationResponse__isset {
+  _FollowApplicationResponse__isset() : message(true) {}
   bool message :1;
-  bool channel :1;
-} _SubscribeToApplicationResponse__isset;
+} _FollowApplicationResponse__isset;
 
-class SubscribeToApplicationResponse {
+class FollowApplicationResponse {
  public:
 
-  SubscribeToApplicationResponse(const SubscribeToApplicationResponse&);
-  SubscribeToApplicationResponse& operator=(const SubscribeToApplicationResponse&);
-  SubscribeToApplicationResponse() : message() {
+  FollowApplicationResponse(const FollowApplicationResponse&);
+  FollowApplicationResponse& operator=(const FollowApplicationResponse&);
+  FollowApplicationResponse() : message("Success") {
   }
 
-  virtual ~SubscribeToApplicationResponse() throw();
+  virtual ~FollowApplicationResponse() throw();
   std::string message;
-  BananaChannel channel;
 
-  _SubscribeToApplicationResponse__isset __isset;
+  _FollowApplicationResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_channel(const BananaChannel& val);
-
-  bool operator == (const SubscribeToApplicationResponse & rhs) const
+  bool operator == (const FollowApplicationResponse & rhs) const
   {
-    if (!(message == rhs.message))
+    if (__isset.message != rhs.__isset.message)
       return false;
-    if (!(channel == rhs.channel))
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
-  bool operator != (const SubscribeToApplicationResponse &rhs) const {
+  bool operator != (const FollowApplicationResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SubscribeToApplicationResponse & ) const;
+  bool operator < (const FollowApplicationResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1607,9 +1603,9 @@ class SubscribeToApplicationResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SubscribeToApplicationResponse &a, SubscribeToApplicationResponse &b);
+void swap(FollowApplicationResponse &a, FollowApplicationResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SubscribeToApplicationResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const FollowApplicationResponse& obj)
 {
   obj.printTo(out);
   return out;

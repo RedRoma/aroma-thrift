@@ -3252,11 +3252,11 @@ uint32_t BananaService_snoozeChannel_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_subscribeToApplication_args::~BananaService_subscribeToApplication_args() throw() {
+BananaService_followApplication_args::~BananaService_followApplication_args() throw() {
 }
 
 
-uint32_t BananaService_subscribeToApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_followApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3297,10 +3297,10 @@ uint32_t BananaService_subscribeToApplication_args::read(::apache::thrift::proto
   return xfer;
 }
 
-uint32_t BananaService_subscribeToApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_followApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_args");
+  xfer += oprot->writeStructBegin("BananaService_followApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3312,14 +3312,14 @@ uint32_t BananaService_subscribeToApplication_args::write(::apache::thrift::prot
 }
 
 
-BananaService_subscribeToApplication_pargs::~BananaService_subscribeToApplication_pargs() throw() {
+BananaService_followApplication_pargs::~BananaService_followApplication_pargs() throw() {
 }
 
 
-uint32_t BananaService_subscribeToApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_followApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_pargs");
+  xfer += oprot->writeStructBegin("BananaService_followApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3331,11 +3331,11 @@ uint32_t BananaService_subscribeToApplication_pargs::write(::apache::thrift::pro
 }
 
 
-BananaService_subscribeToApplication_result::~BananaService_subscribeToApplication_result() throw() {
+BananaService_followApplication_result::~BananaService_followApplication_result() throw() {
 }
 
 
-uint32_t BananaService_subscribeToApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_followApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3424,11 +3424,11 @@ uint32_t BananaService_subscribeToApplication_result::read(::apache::thrift::pro
   return xfer;
 }
 
-uint32_t BananaService_subscribeToApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t BananaService_followApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_subscribeToApplication_result");
+  xfer += oprot->writeStructBegin("BananaService_followApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3465,11 +3465,11 @@ uint32_t BananaService_subscribeToApplication_result::write(::apache::thrift::pr
 }
 
 
-BananaService_subscribeToApplication_presult::~BananaService_subscribeToApplication_presult() throw() {
+BananaService_followApplication_presult::~BananaService_followApplication_presult() throw() {
 }
 
 
-uint32_t BananaService_subscribeToApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t BananaService_followApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -7016,18 +7016,18 @@ void BananaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "snoozeChannel failed: unknown result");
 }
 
-void BananaServiceClient::subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request)
+void BananaServiceClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
 {
-  send_subscribeToApplication(request);
-  recv_subscribeToApplication(_return);
+  send_followApplication(request);
+  recv_followApplication(_return);
 }
 
-void BananaServiceClient::send_subscribeToApplication(const SubscribeToApplicationRequest& request)
+void BananaServiceClient::send_followApplication(const FollowApplicationRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_subscribeToApplication_pargs args;
+  BananaService_followApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7036,7 +7036,7 @@ void BananaServiceClient::send_subscribeToApplication(const SubscribeToApplicati
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_subscribeToApplication(SubscribeToApplicationResponse& _return)
+void BananaServiceClient::recv_followApplication(FollowApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7056,12 +7056,12 @@ void BananaServiceClient::recv_subscribeToApplication(SubscribeToApplicationResp
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("subscribeToApplication") != 0) {
+  if (fname.compare("followApplication") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_subscribeToApplication_presult result;
+  BananaService_followApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7089,7 +7089,7 @@ void BananaServiceClient::recv_subscribeToApplication(SubscribeToApplicationResp
   if (result.__isset.ex6) {
     throw result.ex6;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToApplication failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "followApplication failed: unknown result");
 }
 
 void BananaServiceClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
@@ -8603,30 +8603,30 @@ void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thri
   }
 }
 
-void BananaServiceProcessor::process_subscribeToApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void BananaServiceProcessor::process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.subscribeToApplication", callContext);
+    ctx = this->eventHandler_->getContext("BananaService.followApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.subscribeToApplication");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.followApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.subscribeToApplication");
+    this->eventHandler_->preRead(ctx, "BananaService.followApplication");
   }
 
-  BananaService_subscribeToApplication_args args;
+  BananaService_followApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.subscribeToApplication", bytes);
+    this->eventHandler_->postRead(ctx, "BananaService.followApplication", bytes);
   }
 
-  BananaService_subscribeToApplication_result result;
+  BananaService_followApplication_result result;
   try {
-    iface_->subscribeToApplication(result.success, args.request);
+    iface_->followApplication(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -8648,11 +8648,11 @@ void BananaServiceProcessor::process_subscribeToApplication(int32_t seqid, ::apa
     result.__isset.ex6 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.subscribeToApplication");
+      this->eventHandler_->handlerError(ctx, "BananaService.followApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -8661,17 +8661,17 @@ void BananaServiceProcessor::process_subscribeToApplication(int32_t seqid, ::apa
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.subscribeToApplication");
+    this->eventHandler_->preWrite(ctx, "BananaService.followApplication");
   }
 
-  oprot->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.subscribeToApplication", bytes);
+    this->eventHandler_->postWrite(ctx, "BananaService.followApplication", bytes);
   }
 }
 
@@ -10544,19 +10544,19 @@ void BananaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _r
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request)
+void BananaServiceConcurrentClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
 {
-  int32_t seqid = send_subscribeToApplication(request);
-  recv_subscribeToApplication(_return, seqid);
+  int32_t seqid = send_followApplication(request);
+  recv_followApplication(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_subscribeToApplication(const SubscribeToApplicationRequest& request)
+int32_t BananaServiceConcurrentClient::send_followApplication(const FollowApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("subscribeToApplication", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_subscribeToApplication_pargs args;
+  BananaService_followApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10568,7 +10568,7 @@ int32_t BananaServiceConcurrentClient::send_subscribeToApplication(const Subscri
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_subscribeToApplication(SubscribeToApplicationResponse& _return, const int32_t seqid)
+void BananaServiceConcurrentClient::recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10597,7 +10597,7 @@ void BananaServiceConcurrentClient::recv_subscribeToApplication(SubscribeToAppli
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("subscribeToApplication") != 0) {
+      if (fname.compare("followApplication") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -10606,7 +10606,7 @@ void BananaServiceConcurrentClient::recv_subscribeToApplication(SubscribeToAppli
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_subscribeToApplication_presult result;
+      BananaService_followApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10642,7 +10642,7 @@ void BananaServiceConcurrentClient::recv_subscribeToApplication(SubscribeToAppli
         throw result.ex6;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "subscribeToApplication failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "followApplication failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

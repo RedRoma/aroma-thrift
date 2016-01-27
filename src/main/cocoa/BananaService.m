@@ -5941,7 +5941,7 @@
 
 @end
 
-@implementation BananaService_SubscribeToApplicationRequest
+@implementation BananaService_FollowApplicationRequest
 
 - (id) init
 {
@@ -6060,10 +6060,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SubscribeToApplicationRequest class]]) {
+  if (![anObject isKindOfClass:[BananaService_FollowApplicationRequest class]]) {
     return NO;
   }
-  BananaService_SubscribeToApplicationRequest *other = (BananaService_SubscribeToApplicationRequest *)anObject;
+  BananaService_FollowApplicationRequest *other = (BananaService_FollowApplicationRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -6264,7 +6264,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SubscribeToApplicationRequest"];
+  [outProtocol writeStructBeginWithName: @"FollowApplicationRequest"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
@@ -6307,7 +6307,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SubscribeToApplicationRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplicationRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
@@ -6324,23 +6324,23 @@
 
 @end
 
-@implementation BananaService_SubscribeToApplicationResponse
+@implementation BananaService_FollowApplicationResponse
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Success";
+
 #endif
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
+- (id) initWithMessage: (NSString *) message
 {
   self = [super init];
   __message = [message retain_stub];
   __message_isset = YES;
-  __channel = [channel retain_stub];
-  __channel_isset = YES;
   return self;
 }
 
@@ -6352,11 +6352,6 @@
     __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
     __message_isset = YES;
   }
-  if ([decoder containsValueForKey: @"channel"])
-  {
-    __channel = [[decoder decodeObjectForKey: @"channel"] retain_stub];
-    __channel_isset = YES;
-  }
   return self;
 }
 
@@ -6365,10 +6360,6 @@
   if (__message_isset)
   {
     [encoder encodeObject: __message forKey: @"message"];
-  }
-  if (__channel_isset)
-  {
-    [encoder encodeObject: __channel forKey: @"channel"];
   }
 }
 
@@ -6380,11 +6371,6 @@
   {
     hash = (hash * 31) ^ [__message hash];
   }
-  hash = (hash * 31) ^ __channel_isset ? 2654435761 : 0;
-  if (__channel_isset)
-  {
-    hash = (hash * 31) ^ [__channel hash];
-  }
   return hash;
 }
 
@@ -6393,16 +6379,12 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SubscribeToApplicationResponse class]]) {
+  if (![anObject isKindOfClass:[BananaService_FollowApplicationResponse class]]) {
     return NO;
   }
-  BananaService_SubscribeToApplicationResponse *other = (BananaService_SubscribeToApplicationResponse *)anObject;
+  BananaService_FollowApplicationResponse *other = (BananaService_FollowApplicationResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
-    return NO;
-  }
-  if ((__channel_isset != other->__channel_isset) ||
-      (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
     return NO;
   }
   return YES;
@@ -6411,7 +6393,6 @@
 - (void) dealloc
 {
   [__message release_stub];
-  [__channel release_stub];
   [super dealloc_stub];
 }
 
@@ -6434,27 +6415,6 @@
   [__message release_stub];
   __message = nil;
   __message_isset = NO;
-}
-
-- (BananaChannels_BananaChannel *) channel {
-  return [[__channel retain_stub] autorelease_stub];
-}
-
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
-  [channel retain_stub];
-  [__channel release_stub];
-  __channel = channel;
-  __channel_isset = YES;
-}
-
-- (BOOL) channelIsSet {
-  return __channel_isset;
-}
-
-- (void) unsetChannel {
-  [__channel release_stub];
-  __channel = nil;
-  __channel_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -6480,16 +6440,6 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
-          [fieldValue read: inProtocol];
-          [self setChannel: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -6500,18 +6450,11 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SubscribeToApplicationResponse"];
+  [outProtocol writeStructBeginWithName: @"FollowApplicationResponse"];
   if (__message_isset) {
     if (__message != nil) {
       [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 1];
       [outProtocol writeString: __message];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channel_isset) {
-    if (__channel != nil) {
-      [outProtocol writeFieldBeginWithName: @"channel" type: TType_STRUCT fieldID: 2];
-      [__channel write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -6524,11 +6467,9 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SubscribeToApplicationResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplicationResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
-  [ms appendString: @",channel:"];
-  [ms appendFormat: @"%@", __channel];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -18963,18 +18904,18 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 
 @end
 
-@interface BananaService_subscribeToApplication_args : NSObject <TBase, NSCoding> {
-  BananaService_SubscribeToApplicationRequest * __request;
+@interface BananaService_followApplication_args : NSObject <TBase, NSCoding> {
+  BananaService_FollowApplicationRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SubscribeToApplicationRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_FollowApplicationRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SubscribeToApplicationRequest *) request;
+- (id) initWithRequest: (BananaService_FollowApplicationRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18982,14 +18923,14 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SubscribeToApplicationRequest *) request;
-- (void) setRequest: (BananaService_SubscribeToApplicationRequest *) request;
+- (BananaService_FollowApplicationRequest *) request;
+- (void) setRequest: (BananaService_FollowApplicationRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_subscribeToApplication_args
+@implementation BananaService_followApplication_args
 
 - (id) init
 {
@@ -18999,7 +18940,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SubscribeToApplicationRequest *) request
+- (id) initWithRequest: (BananaService_FollowApplicationRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -19042,10 +18983,10 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_subscribeToApplication_args class]]) {
+  if (![anObject isKindOfClass:[BananaService_followApplication_args class]]) {
     return NO;
   }
-  BananaService_subscribeToApplication_args *other = (BananaService_subscribeToApplication_args *)anObject;
+  BananaService_followApplication_args *other = (BananaService_followApplication_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -19059,11 +19000,11 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   [super dealloc_stub];
 }
 
-- (BananaService_SubscribeToApplicationRequest *) request {
+- (BananaService_FollowApplicationRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SubscribeToApplicationRequest *) request {
+- (void) setRequest: (BananaService_FollowApplicationRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -19097,7 +19038,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SubscribeToApplicationRequest *fieldValue = [[BananaService_SubscribeToApplicationRequest alloc] init];
+          BananaService_FollowApplicationRequest *fieldValue = [[BananaService_FollowApplicationRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -19115,7 +19056,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"subscribeToApplication_args"];
+  [outProtocol writeStructBeginWithName: @"followApplication_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -19132,7 +19073,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_subscribeToApplication_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_followApplication_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -19141,8 +19082,8 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 
 @end
 
-@interface BananaService_SubscribeToApplication_result : NSObject <TBase, NSCoding> {
-  BananaService_SubscribeToApplicationResponse * __success;
+@interface BananaService_FollowApplication_result : NSObject <TBase, NSCoding> {
+  BananaService_FollowApplicationResponse * __success;
   BananaService_OperationFailedException __ex1;
   BananaService_InvalidArgumentException __ex2;
   BananaService_InvalidTokenException __ex3;
@@ -19160,7 +19101,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SubscribeToApplicationResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_FollowApplicationResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
@@ -19170,7 +19111,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SubscribeToApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6;
+- (id) initWithSuccess: (BananaService_FollowApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -19178,8 +19119,8 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SubscribeToApplicationResponse *) success;
-- (void) setSuccess: (BananaService_SubscribeToApplicationResponse *) success;
+- (BananaService_FollowApplicationResponse *) success;
+- (void) setSuccess: (BananaService_FollowApplicationResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -19221,7 +19162,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 
 @end
 
-@implementation BananaService_SubscribeToApplication_result
+@implementation BananaService_FollowApplication_result
 
 - (id) init
 {
@@ -19231,7 +19172,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SubscribeToApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6
+- (id) initWithSuccess: (BananaService_FollowApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6
 {
   self = [super init];
   __success = [success retain_stub];
@@ -19370,10 +19311,10 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SubscribeToApplication_result class]]) {
+  if (![anObject isKindOfClass:[BananaService_FollowApplication_result class]]) {
     return NO;
   }
-  BananaService_SubscribeToApplication_result *other = (BananaService_SubscribeToApplication_result *)anObject;
+  BananaService_FollowApplication_result *other = (BananaService_FollowApplication_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -19417,11 +19358,11 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   [super dealloc_stub];
 }
 
-- (BananaService_SubscribeToApplicationResponse *) success {
+- (BananaService_FollowApplicationResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SubscribeToApplicationResponse *) success {
+- (void) setSuccess: (BananaService_FollowApplicationResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -19581,7 +19522,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SubscribeToApplicationResponse *fieldValue = [[BananaService_SubscribeToApplicationResponse alloc] init];
+          BananaService_FollowApplicationResponse *fieldValue = [[BananaService_FollowApplicationResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -19659,7 +19600,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SubscribeToApplication_result"];
+  [outProtocol writeStructBeginWithName: @"FollowApplication_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -19713,7 +19654,7 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SubscribeToApplication_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplication_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -26463,10 +26404,10 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   return [self recv_snoozeChannel];
 }
 
-- (void) send_subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request
+- (void) send_followApplication: (BananaService_FollowApplicationRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"subscribeToApplication" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"subscribeToApplication_args"];
+  [outProtocol writeMessageBeginWithName: @"followApplication" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"followApplication_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -26477,13 +26418,13 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SubscribeToApplicationResponse *) recv_subscribeToApplication
+- (BananaService_FollowApplicationResponse *) recv_followApplication
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SubscribeToApplication_result * result = [[[BananaService_SubscribeToApplication_result alloc] init] autorelease_stub];
+  BananaService_FollowApplication_result * result = [[[BananaService_FollowApplication_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -26508,14 +26449,14 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
     @throw [result ex6];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"subscribeToApplication failed: unknown result"];
+                                           reason: @"followApplication failed: unknown result"];
 }
 
-- (BananaService_SubscribeToApplicationResponse *) subscribeToApplication: (BananaService_SubscribeToApplicationRequest *) request
+- (BananaService_FollowApplicationResponse *) followApplication: (BananaService_FollowApplicationRequest *) request
 {
-  [self send_subscribeToApplication : request];
+  [self send_followApplication : request];
   [[outProtocol transport] flush];
-  return [self recv_subscribeToApplication];
+  return [self recv_followApplication];
 }
 
 - (void) send_getActivity: (BananaService_GetActivityRequest *) request
@@ -27108,12 +27049,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"snoozeChannel"];
 }
 {
-  SEL s = @selector(process_subscribeToApplication_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_followApplication_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"subscribeToApplication"];
+  [mMethodMap setValue: invocation forKey: @"followApplication"];
 }
 {
   SEL s = @selector(process_getActivity_withSequenceID:inProtocol:outProtocol:);
@@ -27440,14 +27381,14 @@ BananaService_SnoozeChannel_result * result = [[BananaService_SnoozeChannel_resu
 [args release_stub];
 }
 
-- (void) process_subscribeToApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_followApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_subscribeToApplication_args * args = [[BananaService_subscribeToApplication_args alloc] init];
+BananaService_followApplication_args * args = [[BananaService_followApplication_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SubscribeToApplication_result * result = [[BananaService_SubscribeToApplication_result alloc] init];
-[result setSuccess: [mService subscribeToApplication: [args request]]];
-[outProtocol writeMessageBeginWithName: @"subscribeToApplication"
+BananaService_FollowApplication_result * result = [[BananaService_FollowApplication_result alloc] init];
+[result setSuccess: [mService followApplication: [args request]]];
+[outProtocol writeMessageBeginWithName: @"followApplication"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
