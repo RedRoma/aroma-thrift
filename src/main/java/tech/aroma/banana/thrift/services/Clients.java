@@ -48,7 +48,7 @@ public final class Clients
     {
         TcpEndpoint endpoint = AuthenticationServiceConstants.BETA_ENDPOINT;
 
-        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        TProtocol protocol = tryCreateProtocolAt(endpoint, "Authentication Service");
         return new AuthenticationService.Client(protocol);
     }
     
@@ -56,19 +56,19 @@ public final class Clients
     {
         TcpEndpoint endpoint = BananaServiceConstants.BETA_ENDPOINT;
         
-        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        TProtocol protocol = tryCreateProtocolAt(endpoint, "Banana Service");
         return new BananaService.Client(protocol);
     }
 
     public static NotificationService.Client newNotificationServiceClient() throws TTransportException
     {
         TcpEndpoint endpoint = NotificationServiceConstants.BETA_ENDPOINT;
-        TProtocol protocol = tryCreateProtocolAt(endpoint);
+        TProtocol protocol = tryCreateProtocolAt(endpoint, "Notification Service");
         
         return new NotificationService.Client(protocol);
     }
     
-    private static TProtocol tryCreateProtocolAt(TcpEndpoint endpoint) throws TTransportException
+    private static TProtocol tryCreateProtocolAt(TcpEndpoint endpoint, String serviceName) throws TTransportException
     {
         long timeout = TimeUnit.SECONDS.toMillis(45);
         TTransport transport = new TSocket(endpoint.hostname, endpoint.port, (int) timeout);
@@ -78,7 +78,7 @@ public final class Clients
         }
         catch (TTransportException ex)
         {
-            LOG.error("Failed to connect to Notification service at {}", endpoint, ex);
+            LOG.error("Failed to connect to {} at {}", serviceName, endpoint, ex);
             throw ex;
         }
         
