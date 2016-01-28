@@ -47,6 +47,8 @@ class HealthCheckBackToNormal;
 
 class OwnerApprovedRequest;
 
+class UserFollowedApplication;
+
 class GeneralEvent;
 
 class EventType;
@@ -463,6 +465,72 @@ inline std::ostream& operator<<(std::ostream& out, const OwnerApprovedRequest& o
   return out;
 }
 
+typedef struct _UserFollowedApplication__isset {
+  _UserFollowedApplication__isset() : message(true), applicationId(false), follower(false), owner(false) {}
+  bool message :1;
+  bool applicationId :1;
+  bool follower :1;
+  bool owner :1;
+} _UserFollowedApplication__isset;
+
+class UserFollowedApplication {
+ public:
+
+  UserFollowedApplication(const UserFollowedApplication&);
+  UserFollowedApplication& operator=(const UserFollowedApplication&);
+  UserFollowedApplication() : message("Someone followed your Application"), applicationId() {
+  }
+
+  virtual ~UserFollowedApplication() throw();
+  std::string message;
+  uuid applicationId;
+  User follower;
+  User owner;
+
+  _UserFollowedApplication__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_follower(const User& val);
+
+  void __set_owner(const User& val);
+
+  bool operator == (const UserFollowedApplication & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(follower == rhs.follower))
+      return false;
+    if (!(owner == rhs.owner))
+      return false;
+    return true;
+  }
+  bool operator != (const UserFollowedApplication &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UserFollowedApplication & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UserFollowedApplication &a, UserFollowedApplication &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UserFollowedApplication& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _GeneralEvent__isset {
   _GeneralEvent__isset() : applicationId(false), applicationName(false), message(false), timestamp(false) {}
   bool applicationId :1;
@@ -528,7 +596,7 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), generalEvent(false) {}
+  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), generalEvent(false), userFollowedApplication(false) {}
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
@@ -536,6 +604,7 @@ typedef struct _EventType__isset {
   bool applicationSentMessage :1;
   bool ownerApprovedRequest :1;
   bool generalEvent :1;
+  bool userFollowedApplication :1;
 } _EventType__isset;
 
 class EventType {
@@ -554,6 +623,7 @@ class EventType {
   ApplicationSentMessage applicationSentMessage;
   OwnerApprovedRequest ownerApprovedRequest;
   GeneralEvent generalEvent;
+  UserFollowedApplication userFollowedApplication;
 
   _EventType__isset __isset;
 
@@ -571,6 +641,8 @@ class EventType {
 
   void __set_generalEvent(const GeneralEvent& val);
 
+  void __set_userFollowedApplication(const UserFollowedApplication& val);
+
   bool operator == (const EventType & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
@@ -586,6 +658,8 @@ class EventType {
     if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
       return false;
     if (!(generalEvent == rhs.generalEvent))
+      return false;
+    if (!(userFollowedApplication == rhs.userFollowedApplication))
       return false;
     return true;
   }

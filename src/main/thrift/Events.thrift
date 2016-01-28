@@ -99,6 +99,14 @@ struct OwnerApprovedRequest
     4: User owner;
 }
 
+struct UserFollowedApplication
+{
+    1: optional string message = "Someone followed your Application";
+    2: uuid applicationId;
+    3: User follower;
+    4: User owner;
+}
+
 /**
  * A General Event is a less formal kind of Event.
  */
@@ -123,6 +131,7 @@ union EventType
     5: ApplicationSentMessage applicationSentMessage;
     6: OwnerApprovedRequest ownerApprovedRequest;
     7: GeneralEvent generalEvent;
+    8: UserFollowedApplication userFollowedApplication;
 }
 
 /**
