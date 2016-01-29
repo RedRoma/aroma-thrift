@@ -33,6 +33,7 @@ import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
 import tech.aroma.banana.thrift.exceptions.OperationFailedException;
 import tech.sirwellington.alchemy.annotations.access.Internal;
+import tech.sirwellington.alchemy.annotations.concurrency.ThreadSafe;
 import tech.sirwellington.alchemy.annotations.designs.patterns.DecoratorPattern;
 
 import static tech.sirwellington.alchemy.annotations.designs.patterns.DecoratorPattern.Role.DECORATOR;
@@ -47,6 +48,7 @@ import static tech.sirwellington.alchemy.thrift.clients.Clients.attemptClose;
  * @author SirWellington
  */
 @Internal
+@ThreadSafe
 @DecoratorPattern(role = DECORATOR)
 final class PerRequestAuthenticationService implements AuthenticationService.Iface
 {
