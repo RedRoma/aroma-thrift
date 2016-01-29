@@ -23,6 +23,7 @@ import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
 import tech.aroma.banana.thrift.notification.service.NotificationService;
 import tech.aroma.banana.thrift.service.BananaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
+import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
@@ -33,6 +34,7 @@ import static org.junit.Assert.*;
  *
  * @author SirWellington
  */
+@NetworkSensitive
 @IntegrationTest
 @Repeat(5)
 @RunWith(AlchemyTestRunner.class)
@@ -66,6 +68,15 @@ public class ClientsIT
     public void testNewBananaServiceClient() throws Exception
     {
         BananaService.Client client = Clients.newBananaServiceClient();
+        assertThat(client, notNullValue());
+        
+        client.getApiVersion();
+    }
+
+    @Test
+    public void testNewPerRequestAuthenticationServiceClient() throws Exception
+    {
+        AuthenticationService.Iface client = Clients.newPerRequestAuthenticationServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();
