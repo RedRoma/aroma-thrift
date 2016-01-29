@@ -56,10 +56,11 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.
 struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;
-    2: string message;
+    2: string body;
     3: Urgency urgency = Banana.Urgency.LOW;
     /** The time that the message was generated on the Client Side. */
     4: optional timestamp timeOfMessage;
+    5: string title;
 }
 
 struct SendMessageResponse

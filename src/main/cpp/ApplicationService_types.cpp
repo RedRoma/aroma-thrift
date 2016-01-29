@@ -22,8 +22,8 @@ void SendMessageRequest::__set_applicationToken(const ApplicationToken& val) {
   this->applicationToken = val;
 }
 
-void SendMessageRequest::__set_message(const std::string& val) {
-  this->message = val;
+void SendMessageRequest::__set_body(const std::string& val) {
+  this->body = val;
 }
 
 void SendMessageRequest::__set_urgency(const Urgency val) {
@@ -33,6 +33,10 @@ void SendMessageRequest::__set_urgency(const Urgency val) {
 void SendMessageRequest::__set_timeOfMessage(const timestamp val) {
   this->timeOfMessage = val;
 __isset.timeOfMessage = true;
+}
+
+void SendMessageRequest::__set_title(const std::string& val) {
+  this->title = val;
 }
 
 uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -66,8 +70,8 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->message);
-          this->__isset.message = true;
+          xfer += iprot->readString(this->body);
+          this->__isset.body = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -86,6 +90,14 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         if (ftype == ::apache::thrift::protocol::T_I64) {
           xfer += iprot->readI64(this->timeOfMessage);
           this->__isset.timeOfMessage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->title);
+          this->__isset.title = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -111,8 +123,8 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += this->applicationToken.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->message);
+  xfer += oprot->writeFieldBegin("body", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->body);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("urgency", ::apache::thrift::protocol::T_I32, 3);
@@ -124,6 +136,10 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
     xfer += oprot->writeI64(this->timeOfMessage);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("title", ::apache::thrift::protocol::T_STRING, 5);
+  xfer += oprot->writeString(this->title);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -132,24 +148,27 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
 void swap(SendMessageRequest &a, SendMessageRequest &b) {
   using ::std::swap;
   swap(a.applicationToken, b.applicationToken);
-  swap(a.message, b.message);
+  swap(a.body, b.body);
   swap(a.urgency, b.urgency);
   swap(a.timeOfMessage, b.timeOfMessage);
+  swap(a.title, b.title);
   swap(a.__isset, b.__isset);
 }
 
 SendMessageRequest::SendMessageRequest(const SendMessageRequest& other1) {
   applicationToken = other1.applicationToken;
-  message = other1.message;
+  body = other1.body;
   urgency = other1.urgency;
   timeOfMessage = other1.timeOfMessage;
+  title = other1.title;
   __isset = other1.__isset;
 }
 SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& other2) {
   applicationToken = other2.applicationToken;
-  message = other2.message;
+  body = other2.body;
   urgency = other2.urgency;
   timeOfMessage = other2.timeOfMessage;
+  title = other2.title;
   __isset = other2.__isset;
   return *this;
 }
@@ -157,9 +176,10 @@ void SendMessageRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SendMessageRequest(";
   out << "applicationToken=" << to_string(applicationToken);
-  out << ", " << "message=" << to_string(message);
+  out << ", " << "body=" << to_string(body);
   out << ", " << "urgency=" << to_string(urgency);
   out << ", " << "timeOfMessage="; (__isset.timeOfMessage ? (out << to_string(timeOfMessage)) : (out << "<null>"));
+  out << ", " << "title=" << to_string(title);
   out << ")";
 }
 

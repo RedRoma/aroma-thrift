@@ -55,25 +55,28 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 
 @interface ApplicationService_SendMessageRequest : NSObject <TBase, NSCoding> {
   ApplicationService_ApplicationToken __applicationToken;
-  NSString * __message;
+  NSString * __body;
   ApplicationService_Urgency __urgency;
   ApplicationService_timestamp __timeOfMessage;
+  NSString * __title;
 
   BOOL __applicationToken_isset;
-  BOOL __message_isset;
+  BOOL __body_isset;
   BOOL __urgency_isset;
   BOOL __timeOfMessage_isset;
+  BOOL __title_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) ApplicationService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
 @property (nonatomic, getter=urgency, setter=setUrgency:) ApplicationService_Urgency urgency;
 @property (nonatomic, getter=timeOfMessage, setter=setTimeOfMessage:) ApplicationService_timestamp timeOfMessage;
+@property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage;
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -87,10 +90,10 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
+- (NSString *) body;
+- (void) setBody: (NSString *) body;
 #endif
-- (BOOL) messageIsSet;
+- (BOOL) bodyIsSet;
 
 #if !__has_feature(objc_arc)
 - (ApplicationService_Urgency) urgency;
@@ -103,6 +106,12 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 - (void) setTimeOfMessage: (ApplicationService_timestamp) timeOfMessage;
 #endif
 - (BOOL) timeOfMessageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) title;
+- (void) setTitle: (NSString *) title;
+#endif
+- (BOOL) titleIsSet;
 
 @end
 

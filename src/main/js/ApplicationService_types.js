@@ -7,21 +7,25 @@
 
 SendMessageRequest = function(args) {
   this.applicationToken = null;
-  this.message = null;
+  this.body = null;
   this.urgency = 1;
   this.timeOfMessage = null;
+  this.title = null;
   if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new ApplicationToken(args.applicationToken);
     }
-    if (args.message !== undefined && args.message !== null) {
-      this.message = args.message;
+    if (args.body !== undefined && args.body !== null) {
+      this.body = args.body;
     }
     if (args.urgency !== undefined && args.urgency !== null) {
       this.urgency = args.urgency;
     }
     if (args.timeOfMessage !== undefined && args.timeOfMessage !== null) {
       this.timeOfMessage = args.timeOfMessage;
+    }
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
     }
   }
 };
@@ -49,7 +53,7 @@ SendMessageRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRING) {
-        this.message = input.readString().value;
+        this.body = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -64,6 +68,13 @@ SendMessageRequest.prototype.read = function(input) {
       case 4:
       if (ftype == Thrift.Type.I64) {
         this.timeOfMessage = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -84,9 +95,9 @@ SendMessageRequest.prototype.write = function(output) {
     this.applicationToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.message !== null && this.message !== undefined) {
-    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
-    output.writeString(this.message);
+  if (this.body !== null && this.body !== undefined) {
+    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
+    output.writeString(this.body);
     output.writeFieldEnd();
   }
   if (this.urgency !== null && this.urgency !== undefined) {
@@ -97,6 +108,11 @@ SendMessageRequest.prototype.write = function(output) {
   if (this.timeOfMessage !== null && this.timeOfMessage !== undefined) {
     output.writeFieldBegin('timeOfMessage', Thrift.Type.I64, 4);
     output.writeI64(this.timeOfMessage);
+    output.writeFieldEnd();
+  }
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 5);
+    output.writeString(this.title);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

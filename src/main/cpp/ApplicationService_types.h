@@ -58,11 +58,12 @@ class SendMessageRequest;
 class SendMessageResponse;
 
 typedef struct _SendMessageRequest__isset {
-  _SendMessageRequest__isset() : applicationToken(false), message(false), urgency(true), timeOfMessage(false) {}
+  _SendMessageRequest__isset() : applicationToken(false), body(false), urgency(true), timeOfMessage(false), title(false) {}
   bool applicationToken :1;
-  bool message :1;
+  bool body :1;
   bool urgency :1;
   bool timeOfMessage :1;
+  bool title :1;
 } _SendMessageRequest__isset;
 
 class SendMessageRequest {
@@ -70,38 +71,43 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() : message(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0) {
+  SendMessageRequest() : body(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0), title() {
     urgency = ( ::aroma::banana::thrift::Urgency::type)1;
 
   }
 
   virtual ~SendMessageRequest() throw();
   ApplicationToken applicationToken;
-  std::string message;
+  std::string body;
   Urgency urgency;
   timestamp timeOfMessage;
+  std::string title;
 
   _SendMessageRequest__isset __isset;
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_message(const std::string& val);
+  void __set_body(const std::string& val);
 
   void __set_urgency(const Urgency val);
 
   void __set_timeOfMessage(const timestamp val);
 
+  void __set_title(const std::string& val);
+
   bool operator == (const SendMessageRequest & rhs) const
   {
     if (!(applicationToken == rhs.applicationToken))
       return false;
-    if (!(message == rhs.message))
+    if (!(body == rhs.body))
       return false;
     if (!(urgency == rhs.urgency))
       return false;
     if (__isset.timeOfMessage != rhs.__isset.timeOfMessage)
       return false;
     else if (__isset.timeOfMessage && !(timeOfMessage == rhs.timeOfMessage))
+      return false;
+    if (!(title == rhs.title))
       return false;
     return true;
   }
