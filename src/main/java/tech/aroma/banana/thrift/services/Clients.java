@@ -17,6 +17,7 @@
 package tech.aroma.banana.thrift.services;
 
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
@@ -50,6 +51,26 @@ public final class Clients
 
         TProtocol protocol = tryCreateProtocolAt(endpoint, "Authentication Service");
         return new AuthenticationService.Client(protocol);
+    }
+    
+    public static AuthenticationService.Iface newPerRequestAuthenticationServiceClient() throws TTransportException
+    {
+        Supplier<AuthenticationService.Iface> clientProvider = () ->
+        {
+            try
+            {
+                return newAuthenticationServiceClient();
+            }
+            catch(TTransportException ex)
+            {
+                LOG.error("Failed to created new Authentication Service client.", ex);
+                throw new RuntimeException("Could not create Authentication Service client", ex);
+            }
+        };
+        
+        PerRequestAuthenticationService decorator = new PerRequestAuthenticationService(clientProvider);
+        
+        return decorator;
     }
     
     public static BananaService.Client newBananaServiceClient() throws TTransportException
