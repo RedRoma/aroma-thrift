@@ -98,6 +98,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>tech.sirwellington.alchemy</groupId>
+            <artifactId>alchemy-thrift</artifactId>
+        </dependency>
+
 
         <!--=======================-->
         <!--THRIFT-->
