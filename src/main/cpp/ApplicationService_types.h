@@ -58,12 +58,15 @@ class SendMessageRequest;
 class SendMessageResponse;
 
 typedef struct _SendMessageRequest__isset {
-  _SendMessageRequest__isset() : applicationToken(false), body(false), urgency(true), timeOfMessage(false), title(false) {}
+  _SendMessageRequest__isset() : applicationToken(false), body(false), urgency(true), timeOfMessage(false), title(false), hostname(false), macAddress(false), ipv4Address(false) {}
   bool applicationToken :1;
   bool body :1;
   bool urgency :1;
   bool timeOfMessage :1;
   bool title :1;
+  bool hostname :1;
+  bool macAddress :1;
+  bool ipv4Address :1;
 } _SendMessageRequest__isset;
 
 class SendMessageRequest {
@@ -71,7 +74,7 @@ class SendMessageRequest {
 
   SendMessageRequest(const SendMessageRequest&);
   SendMessageRequest& operator=(const SendMessageRequest&);
-  SendMessageRequest() : body(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0), title() {
+  SendMessageRequest() : body(), urgency(( ::aroma::banana::thrift::Urgency::type)1), timeOfMessage(0), title(), hostname(), macAddress(), ipv4Address() {
     urgency = ( ::aroma::banana::thrift::Urgency::type)1;
 
   }
@@ -82,6 +85,9 @@ class SendMessageRequest {
   Urgency urgency;
   timestamp timeOfMessage;
   std::string title;
+  std::string hostname;
+  std::string macAddress;
+  std::string ipv4Address;
 
   _SendMessageRequest__isset __isset;
 
@@ -94,6 +100,12 @@ class SendMessageRequest {
   void __set_timeOfMessage(const timestamp val);
 
   void __set_title(const std::string& val);
+
+  void __set_hostname(const std::string& val);
+
+  void __set_macAddress(const std::string& val);
+
+  void __set_ipv4Address(const std::string& val);
 
   bool operator == (const SendMessageRequest & rhs) const
   {
@@ -108,6 +120,18 @@ class SendMessageRequest {
     else if (__isset.timeOfMessage && !(timeOfMessage == rhs.timeOfMessage))
       return false;
     if (!(title == rhs.title))
+      return false;
+    if (__isset.hostname != rhs.__isset.hostname)
+      return false;
+    else if (__isset.hostname && !(hostname == rhs.hostname))
+      return false;
+    if (__isset.macAddress != rhs.__isset.macAddress)
+      return false;
+    else if (__isset.macAddress && !(macAddress == rhs.macAddress))
+      return false;
+    if (__isset.ipv4Address != rhs.__isset.ipv4Address)
+      return false;
+    else if (__isset.ipv4Address && !(ipv4Address == rhs.ipv4Address))
       return false;
     return true;
   }

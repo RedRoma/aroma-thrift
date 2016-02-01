@@ -39,6 +39,21 @@ void SendMessageRequest::__set_title(const std::string& val) {
   this->title = val;
 }
 
+void SendMessageRequest::__set_hostname(const std::string& val) {
+  this->hostname = val;
+__isset.hostname = true;
+}
+
+void SendMessageRequest::__set_macAddress(const std::string& val) {
+  this->macAddress = val;
+__isset.macAddress = true;
+}
+
+void SendMessageRequest::__set_ipv4Address(const std::string& val) {
+  this->ipv4Address = val;
+__isset.ipv4Address = true;
+}
+
 uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -102,6 +117,30 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->hostname);
+          this->__isset.hostname = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->macAddress);
+          this->__isset.macAddress = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->ipv4Address);
+          this->__isset.ipv4Address = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -140,6 +179,21 @@ uint32_t SendMessageRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeString(this->title);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.hostname) {
+    xfer += oprot->writeFieldBegin("hostname", ::apache::thrift::protocol::T_STRING, 6);
+    xfer += oprot->writeString(this->hostname);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.macAddress) {
+    xfer += oprot->writeFieldBegin("macAddress", ::apache::thrift::protocol::T_STRING, 7);
+    xfer += oprot->writeString(this->macAddress);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.ipv4Address) {
+    xfer += oprot->writeFieldBegin("ipv4Address", ::apache::thrift::protocol::T_STRING, 8);
+    xfer += oprot->writeString(this->ipv4Address);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -152,6 +206,9 @@ void swap(SendMessageRequest &a, SendMessageRequest &b) {
   swap(a.urgency, b.urgency);
   swap(a.timeOfMessage, b.timeOfMessage);
   swap(a.title, b.title);
+  swap(a.hostname, b.hostname);
+  swap(a.macAddress, b.macAddress);
+  swap(a.ipv4Address, b.ipv4Address);
   swap(a.__isset, b.__isset);
 }
 
@@ -161,6 +218,9 @@ SendMessageRequest::SendMessageRequest(const SendMessageRequest& other1) {
   urgency = other1.urgency;
   timeOfMessage = other1.timeOfMessage;
   title = other1.title;
+  hostname = other1.hostname;
+  macAddress = other1.macAddress;
+  ipv4Address = other1.ipv4Address;
   __isset = other1.__isset;
 }
 SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& other2) {
@@ -169,6 +229,9 @@ SendMessageRequest& SendMessageRequest::operator=(const SendMessageRequest& othe
   urgency = other2.urgency;
   timeOfMessage = other2.timeOfMessage;
   title = other2.title;
+  hostname = other2.hostname;
+  macAddress = other2.macAddress;
+  ipv4Address = other2.ipv4Address;
   __isset = other2.__isset;
   return *this;
 }
@@ -180,6 +243,9 @@ void SendMessageRequest::printTo(std::ostream& out) const {
   out << ", " << "urgency=" << to_string(urgency);
   out << ", " << "timeOfMessage="; (__isset.timeOfMessage ? (out << to_string(timeOfMessage)) : (out << "<null>"));
   out << ", " << "title=" << to_string(title);
+  out << ", " << "hostname="; (__isset.hostname ? (out << to_string(hostname)) : (out << "<null>"));
+  out << ", " << "macAddress="; (__isset.macAddress ? (out << to_string(macAddress)) : (out << "<null>"));
+  out << ", " << "ipv4Address="; (__isset.ipv4Address ? (out << to_string(ipv4Address)) : (out << "<null>"));
   out << ")";
 }
 

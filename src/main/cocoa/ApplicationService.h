@@ -59,12 +59,18 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
   ApplicationService_Urgency __urgency;
   ApplicationService_timestamp __timeOfMessage;
   NSString * __title;
+  NSString * __hostname;
+  NSString * __macAddress;
+  NSString * __ipv4Address;
 
   BOOL __applicationToken_isset;
   BOOL __body_isset;
   BOOL __urgency_isset;
   BOOL __timeOfMessage_isset;
   BOOL __title_isset;
+  BOOL __hostname_isset;
+  BOOL __macAddress_isset;
+  BOOL __ipv4Address_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -73,10 +79,13 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 @property (nonatomic, getter=urgency, setter=setUrgency:) ApplicationService_Urgency urgency;
 @property (nonatomic, getter=timeOfMessage, setter=setTimeOfMessage:) ApplicationService_timestamp timeOfMessage;
 @property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
+@property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
+@property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
+@property (nonatomic, retain, getter=ipv4Address, setter=setIpv4Address:) NSString * ipv4Address;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title;
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title hostname: (NSString *) hostname macAddress: (NSString *) macAddress ipv4Address: (NSString *) ipv4Address;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -112,6 +121,24 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 - (void) setTitle: (NSString *) title;
 #endif
 - (BOOL) titleIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) hostname;
+- (void) setHostname: (NSString *) hostname;
+#endif
+- (BOOL) hostnameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) macAddress;
+- (void) setMacAddress: (NSString *) macAddress;
+#endif
+- (BOOL) macAddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) ipv4Address;
+- (void) setIpv4Address: (NSString *) ipv4Address;
+#endif
+- (BOOL) ipv4AddressIsSet;
 
 @end
 

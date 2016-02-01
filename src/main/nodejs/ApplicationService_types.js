@@ -20,6 +20,9 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
   this.urgency = 1;
   this.timeOfMessage = null;
   this.title = null;
+  this.hostname = null;
+  this.macAddress = null;
+  this.ipv4Address = null;
   if (args) {
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -35,6 +38,15 @@ SendMessageRequest = module.exports.SendMessageRequest = function(args) {
     }
     if (args.title !== undefined && args.title !== null) {
       this.title = args.title;
+    }
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.macAddress !== undefined && args.macAddress !== null) {
+      this.macAddress = args.macAddress;
+    }
+    if (args.ipv4Address !== undefined && args.ipv4Address !== null) {
+      this.ipv4Address = args.ipv4Address;
     }
   }
 };
@@ -88,6 +100,27 @@ SendMessageRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.macAddress = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.ipv4Address = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -122,6 +155,21 @@ SendMessageRequest.prototype.write = function(output) {
   if (this.title !== null && this.title !== undefined) {
     output.writeFieldBegin('title', Thrift.Type.STRING, 5);
     output.writeString(this.title);
+    output.writeFieldEnd();
+  }
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 6);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.macAddress !== null && this.macAddress !== undefined) {
+    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 7);
+    output.writeString(this.macAddress);
+    output.writeFieldEnd();
+  }
+  if (this.ipv4Address !== null && this.ipv4Address !== undefined) {
+    output.writeFieldBegin('ipv4Address', Thrift.Type.STRING, 8);
+    output.writeString(this.ipv4Address);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

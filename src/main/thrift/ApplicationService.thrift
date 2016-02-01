@@ -61,6 +61,9 @@ struct SendMessageRequest
     /** The time that the message was generated on the Client Side. */
     4: optional timestamp timeOfMessage;
     5: string title;
+    6: optional string hostname;
+    7: optional string macAddress;
+    8: optional string ipv4Address;
 }
 
 struct SendMessageResponse
