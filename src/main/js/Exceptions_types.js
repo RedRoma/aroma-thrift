@@ -329,6 +329,60 @@ UnauthorizedException.prototype.write = function(output) {
   return;
 };
 
+DoesNotExistException = function(args) {
+  this.message = 'The requested resource does not exist';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+Thrift.inherits(DoesNotExistException, Thrift.TException);
+DoesNotExistException.prototype.name = 'DoesNotExistException';
+DoesNotExistException.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+DoesNotExistException.prototype.write = function(output) {
+  output.writeStructBegin('DoesNotExistException');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ApplicationDoesNotExistException = function(args) {
   this.message = 'The Specified Application does not exist.';
   if (args) {

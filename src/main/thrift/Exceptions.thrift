@@ -60,6 +60,16 @@ exception UnauthorizedException
 }
 
 /**
+ * Thrown when referring to something that does not exist.
+ * This is the generic version, and is to be used with things 
+ * not covered by AppDoesNotExist, UserDoesNotExist, etc.
+ */
+exception DoesNotExistException
+{
+    1: string message = "The requested resource does not exist"
+}
+
+/**
  * Thrown when referring to a service that does not exist.
  */
 exception ApplicationDoesNotExistException

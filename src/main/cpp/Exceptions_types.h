@@ -32,6 +32,8 @@ class InvalidCodeException;
 
 class UnauthorizedException;
 
+class DoesNotExistException;
+
 class ApplicationDoesNotExistException;
 
 class ApplicationAlreadyRegisteredException;
@@ -333,6 +335,54 @@ class UnauthorizedException : public ::apache::thrift::TException {
 void swap(UnauthorizedException &a, UnauthorizedException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const UnauthorizedException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DoesNotExistException__isset {
+  _DoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _DoesNotExistException__isset;
+
+class DoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  DoesNotExistException(const DoesNotExistException&);
+  DoesNotExistException& operator=(const DoesNotExistException&);
+  DoesNotExistException() : message("The requested resource does not exist") {
+  }
+
+  virtual ~DoesNotExistException() throw();
+  std::string message;
+
+  _DoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const DoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const DoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(DoesNotExistException &a, DoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;
