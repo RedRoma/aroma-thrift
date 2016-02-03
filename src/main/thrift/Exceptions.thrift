@@ -18,8 +18,8 @@ exception InvalidArgumentException
 }
 
 /**
- * Thrown when an Operation could not be authenticated
- * or validated.
+ * Thrown when a User's credentials did not match up when attempting
+ * to Sign In.
  */
 exception InvalidCredentialsException
 {
