@@ -8904,40 +8904,40 @@
   return self;
 }
 
-- (id) initWithFullBody: (NSString *) fullBody
+- (id) initWithFullMessage: (Banana_Message *) fullMessage
 {
   self = [super init];
-  __fullBody = [fullBody retain_stub];
-  __fullBody_isset = YES;
+  __fullMessage = [fullMessage retain_stub];
+  __fullMessage_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"fullBody"])
+  if ([decoder containsValueForKey: @"fullMessage"])
   {
-    __fullBody = [[decoder decodeObjectForKey: @"fullBody"] retain_stub];
-    __fullBody_isset = YES;
+    __fullMessage = [[decoder decodeObjectForKey: @"fullMessage"] retain_stub];
+    __fullMessage_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__fullBody_isset)
+  if (__fullMessage_isset)
   {
-    [encoder encodeObject: __fullBody forKey: @"fullBody"];
+    [encoder encodeObject: __fullMessage forKey: @"fullMessage"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __fullBody_isset ? 2654435761 : 0;
-  if (__fullBody_isset)
+  hash = (hash * 31) ^ __fullMessage_isset ? 2654435761 : 0;
+  if (__fullMessage_isset)
   {
-    hash = (hash * 31) ^ [__fullBody hash];
+    hash = (hash * 31) ^ [__fullMessage hash];
   }
   return hash;
 }
@@ -8951,8 +8951,8 @@
     return NO;
   }
   BananaService_GetFullMessageResponse *other = (BananaService_GetFullMessageResponse *)anObject;
-  if ((__fullBody_isset != other->__fullBody_isset) ||
-      (__fullBody_isset && ((__fullBody || other->__fullBody) && ![__fullBody isEqual:other->__fullBody]))) {
+  if ((__fullMessage_isset != other->__fullMessage_isset) ||
+      (__fullMessage_isset && ((__fullMessage || other->__fullMessage) && ![__fullMessage isEqual:other->__fullMessage]))) {
     return NO;
   }
   return YES;
@@ -8960,29 +8960,29 @@
 
 - (void) dealloc
 {
-  [__fullBody release_stub];
+  [__fullMessage release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) fullBody {
-  return [[__fullBody retain_stub] autorelease_stub];
+- (Banana_Message *) fullMessage {
+  return [[__fullMessage retain_stub] autorelease_stub];
 }
 
-- (void) setFullBody: (NSString *) fullBody {
-  [fullBody retain_stub];
-  [__fullBody release_stub];
-  __fullBody = fullBody;
-  __fullBody_isset = YES;
+- (void) setFullMessage: (Banana_Message *) fullMessage {
+  [fullMessage retain_stub];
+  [__fullMessage release_stub];
+  __fullMessage = fullMessage;
+  __fullMessage_isset = YES;
 }
 
-- (BOOL) fullBodyIsSet {
-  return __fullBody_isset;
+- (BOOL) fullMessageIsSet {
+  return __fullMessage_isset;
 }
 
-- (void) unsetFullBody {
-  [__fullBody release_stub];
-  __fullBody = nil;
-  __fullBody_isset = NO;
+- (void) unsetFullMessage {
+  [__fullMessage release_stub];
+  __fullMessage = nil;
+  __fullMessage_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -9001,9 +9001,11 @@
     switch (fieldID)
     {
       case 1:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setFullBody: fieldValue];
+        if (fieldType == TType_STRUCT) {
+          Banana_Message *fieldValue = [[Banana_Message alloc] init];
+          [fieldValue read: inProtocol];
+          [self setFullMessage: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -9019,10 +9021,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"GetFullMessageResponse"];
-  if (__fullBody_isset) {
-    if (__fullBody != nil) {
-      [outProtocol writeFieldBeginWithName: @"fullBody" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __fullBody];
+  if (__fullMessage_isset) {
+    if (__fullMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"fullMessage" type: TType_STRUCT fieldID: 1];
+      [__fullMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -9036,8 +9038,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetFullMessageResponse("];
-  [ms appendString: @"fullBody:"];
-  [ms appendFormat: @"\"%@\"", __fullBody];
+  [ms appendString: @"fullMessage:"];
+  [ms appendFormat: @"%@", __fullMessage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

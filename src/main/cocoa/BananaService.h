@@ -1503,17 +1503,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @end
 
 @interface BananaService_GetFullMessageResponse : NSObject <TBase, NSCoding> {
-  NSString * __fullBody;
+  Banana_Message * __fullMessage;
 
-  BOOL __fullBody_isset;
+  BOOL __fullMessage_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=fullBody, setter=setFullBody:) NSString * fullBody;
+@property (nonatomic, retain, getter=fullMessage, setter=setFullMessage:) Banana_Message * fullMessage;
 #endif
 
 - (id) init;
-- (id) initWithFullBody: (NSString *) fullBody;
+- (id) initWithFullMessage: (Banana_Message *) fullMessage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1521,10 +1521,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) fullBody;
-- (void) setFullBody: (NSString *) fullBody;
+- (Banana_Message *) fullMessage;
+- (void) setFullMessage: (Banana_Message *) fullMessage;
 #endif
-- (BOOL) fullBodyIsSet;
+- (BOOL) fullMessageIsSet;
 
 @end
 

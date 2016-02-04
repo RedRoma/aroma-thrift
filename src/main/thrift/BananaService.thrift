@@ -424,7 +424,7 @@ struct GetFullMessageRequest
 
 struct GetFullMessageResponse
 {
-    1: string fullBody;
+    1: Banana.Message fullMessage;
 }
 
 struct GetMyApplicationsRequest

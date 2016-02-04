@@ -4375,8 +4375,8 @@ GetFullMessageResponse::~GetFullMessageResponse() throw() {
 }
 
 
-void GetFullMessageResponse::__set_fullBody(const std::string& val) {
-  this->fullBody = val;
+void GetFullMessageResponse::__set_fullMessage(const  ::aroma::banana::thrift::Message& val) {
+  this->fullMessage = val;
 }
 
 uint32_t GetFullMessageResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -4401,9 +4401,9 @@ uint32_t GetFullMessageResponse::read(::apache::thrift::protocol::TProtocol* ipr
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->fullBody);
-          this->__isset.fullBody = true;
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->fullMessage.read(iprot);
+          this->__isset.fullMessage = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -4425,8 +4425,8 @@ uint32_t GetFullMessageResponse::write(::apache::thrift::protocol::TProtocol* op
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("GetFullMessageResponse");
 
-  xfer += oprot->writeFieldBegin("fullBody", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->fullBody);
+  xfer += oprot->writeFieldBegin("fullMessage", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->fullMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -4436,23 +4436,23 @@ uint32_t GetFullMessageResponse::write(::apache::thrift::protocol::TProtocol* op
 
 void swap(GetFullMessageResponse &a, GetFullMessageResponse &b) {
   using ::std::swap;
-  swap(a.fullBody, b.fullBody);
+  swap(a.fullMessage, b.fullMessage);
   swap(a.__isset, b.__isset);
 }
 
 GetFullMessageResponse::GetFullMessageResponse(const GetFullMessageResponse& other131) {
-  fullBody = other131.fullBody;
+  fullMessage = other131.fullMessage;
   __isset = other131.__isset;
 }
 GetFullMessageResponse& GetFullMessageResponse::operator=(const GetFullMessageResponse& other132) {
-  fullBody = other132.fullBody;
+  fullMessage = other132.fullMessage;
   __isset = other132.__isset;
   return *this;
 }
 void GetFullMessageResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "GetFullMessageResponse(";
-  out << "fullBody=" << to_string(fullBody);
+  out << "fullMessage=" << to_string(fullMessage);
   out << ")";
 }
 

@@ -2967,10 +2967,10 @@ GetFullMessageRequest.prototype.write = function(output) {
   };
 
 GetFullMessageResponse = module.exports.GetFullMessageResponse = function(args) {
-    this.fullBody = null;
+    this.fullMessage = null;
     if (args) {
-        if (args.fullBody !== undefined && args.fullBody !== null) {
-            this.fullBody = args.fullBody;
+        if (args.fullMessage !== undefined && args.fullMessage !== null) {
+            this.fullMessage = new Banana_ttypes.Message(args.fullMessage);
         }
     }
 };
@@ -2989,8 +2989,9 @@ GetFullMessageResponse.prototype.read = function(input) {
       switch (fid)
       {
         case 1:
-        if (ftype == Thrift.Type.STRING) {
-          this.fullBody = input.readString();
+        if (ftype == Thrift.Type.STRUCT) {
+          this.fullMessage = new Banana_ttypes.Message();
+          this.fullMessage.read(input);
         } else {
           input.skip(ftype);
         }
@@ -3009,9 +3010,9 @@ GetFullMessageResponse.prototype.read = function(input) {
 
 GetFullMessageResponse.prototype.write = function(output) {
     output.writeStructBegin('GetFullMessageResponse');
-    if (this.fullBody !== null && this.fullBody !== undefined) {
-      output.writeFieldBegin('fullBody', Thrift.Type.STRING, 1);
-      output.writeString(this.fullBody);
+    if (this.fullMessage !== null && this.fullMessage !== undefined) {
+      output.writeFieldBegin('fullMessage', Thrift.Type.STRUCT, 1);
+      this.fullMessage.write(output);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

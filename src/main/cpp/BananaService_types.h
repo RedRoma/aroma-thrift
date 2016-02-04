@@ -2134,8 +2134,8 @@ inline std::ostream& operator<<(std::ostream& out, const GetFullMessageRequest& 
 }
 
 typedef struct _GetFullMessageResponse__isset {
-  _GetFullMessageResponse__isset() : fullBody(false) {}
-  bool fullBody :1;
+  _GetFullMessageResponse__isset() : fullMessage(false) {}
+  bool fullMessage :1;
 } _GetFullMessageResponse__isset;
 
 class GetFullMessageResponse {
@@ -2143,19 +2143,19 @@ class GetFullMessageResponse {
 
   GetFullMessageResponse(const GetFullMessageResponse&);
   GetFullMessageResponse& operator=(const GetFullMessageResponse&);
-  GetFullMessageResponse() : fullBody() {
+  GetFullMessageResponse() {
   }
 
   virtual ~GetFullMessageResponse() throw();
-  std::string fullBody;
+   ::aroma::banana::thrift::Message fullMessage;
 
   _GetFullMessageResponse__isset __isset;
 
-  void __set_fullBody(const std::string& val);
+  void __set_fullMessage(const  ::aroma::banana::thrift::Message& val);
 
   bool operator == (const GetFullMessageResponse & rhs) const
   {
-    if (!(fullBody == rhs.fullBody))
+    if (!(fullMessage == rhs.fullMessage))
       return false;
     return true;
   }
