@@ -8634,13 +8634,15 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId
+- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __messageId = [messageId retain_stub];
   __messageId_isset = YES;
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
   return self;
 }
 
@@ -8657,6 +8659,11 @@
     __messageId = [[decoder decodeObjectForKey: @"messageId"] retain_stub];
     __messageId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
   return self;
 }
 
@@ -8669,6 +8676,10 @@
   if (__messageId_isset)
   {
     [encoder encodeObject: __messageId forKey: @"messageId"];
+  }
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
   }
 }
 
@@ -8684,6 +8695,11 @@
   if (__messageId_isset)
   {
     hash = (hash * 31) ^ [__messageId hash];
+  }
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
   }
   return hash;
 }
@@ -8705,6 +8721,10 @@
       (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
     return NO;
   }
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -8712,6 +8732,7 @@
 {
   [__token release_stub];
   [__messageId release_stub];
+  [__applicationId release_stub];
   [super dealloc_stub];
 }
 
@@ -8757,6 +8778,27 @@
   __messageId_isset = NO;
 }
 
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -8790,6 +8832,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -8815,6 +8865,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -8829,6 +8886,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",messageId:"];
   [ms appendFormat: @"\"%@\"", __messageId];
+  [ms appendString: @",applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

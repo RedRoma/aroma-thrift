@@ -2076,9 +2076,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& ob
 }
 
 typedef struct _GetFullMessageRequest__isset {
-  _GetFullMessageRequest__isset() : token(false), messageId(false) {}
+  _GetFullMessageRequest__isset() : token(false), messageId(false), applicationId(false) {}
   bool token :1;
   bool messageId :1;
+  bool applicationId :1;
 } _GetFullMessageRequest__isset;
 
 class GetFullMessageRequest {
@@ -2086,12 +2087,13 @@ class GetFullMessageRequest {
 
   GetFullMessageRequest(const GetFullMessageRequest&);
   GetFullMessageRequest& operator=(const GetFullMessageRequest&);
-  GetFullMessageRequest() : messageId() {
+  GetFullMessageRequest() : messageId(), applicationId() {
   }
 
   virtual ~GetFullMessageRequest() throw();
   UserToken token;
   uuid messageId;
+  uuid applicationId;
 
   _GetFullMessageRequest__isset __isset;
 
@@ -2099,11 +2101,15 @@ class GetFullMessageRequest {
 
   void __set_messageId(const uuid& val);
 
+  void __set_applicationId(const uuid& val);
+
   bool operator == (const GetFullMessageRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(messageId == rhs.messageId))
+      return false;
+    if (!(applicationId == rhs.applicationId))
       return false;
     return true;
   }

@@ -419,6 +419,7 @@ struct GetFullMessageRequest
 {
     1: UserToken token;
     2: uuid messageId;
+    3: uuid applicationId;
 }
 
 struct GetFullMessageResponse

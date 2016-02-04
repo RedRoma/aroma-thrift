@@ -2886,12 +2886,16 @@ GetMessagesResponse.prototype.write = function(output) {
 GetFullMessageRequest = module.exports.GetFullMessageRequest = function(args) {
     this.token = null;
     this.messageId = null;
+    this.applicationId = null;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
         if (args.messageId !== undefined && args.messageId !== null) {
             this.messageId = args.messageId;
+        }
+        if (args.applicationId !== undefined && args.applicationId !== null) {
+            this.applicationId = args.applicationId;
         }
     }
 };
@@ -2924,6 +2928,13 @@ GetFullMessageRequest.prototype.read = function(input) {
           input.skip(ftype);
         }
         break;
+        case 3:
+        if (ftype == Thrift.Type.STRING) {
+          this.applicationId = input.readString();
+        } else {
+          input.skip(ftype);
+        }
+        break;
         default:
           input.skip(ftype);
       }
@@ -2943,6 +2954,11 @@ GetFullMessageRequest.prototype.write = function(output) {
     if (this.messageId !== null && this.messageId !== undefined) {
       output.writeFieldBegin('messageId', Thrift.Type.STRING, 2);
       output.writeString(this.messageId);
+      output.writeFieldEnd();
+    }
+    if (this.applicationId !== null && this.applicationId !== undefined) {
+      output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+      output.writeString(this.applicationId);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

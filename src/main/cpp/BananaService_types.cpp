@@ -4257,6 +4257,10 @@ void GetFullMessageRequest::__set_messageId(const uuid& val) {
   this->messageId = val;
 }
 
+void GetFullMessageRequest::__set_applicationId(const uuid& val) {
+  this->applicationId = val;
+}
+
 uint32_t GetFullMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -4294,6 +4298,14 @@ uint32_t GetFullMessageRequest::read(::apache::thrift::protocol::TProtocol* ipro
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -4319,6 +4331,10 @@ uint32_t GetFullMessageRequest::write(::apache::thrift::protocol::TProtocol* opr
   xfer += oprot->writeString(this->messageId);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -4328,17 +4344,20 @@ void swap(GetFullMessageRequest &a, GetFullMessageRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.messageId, b.messageId);
+  swap(a.applicationId, b.applicationId);
   swap(a.__isset, b.__isset);
 }
 
 GetFullMessageRequest::GetFullMessageRequest(const GetFullMessageRequest& other129) {
   token = other129.token;
   messageId = other129.messageId;
+  applicationId = other129.applicationId;
   __isset = other129.__isset;
 }
 GetFullMessageRequest& GetFullMessageRequest::operator=(const GetFullMessageRequest& other130) {
   token = other130.token;
   messageId = other130.messageId;
+  applicationId = other130.applicationId;
   __isset = other130.__isset;
   return *this;
 }
@@ -4347,6 +4366,7 @@ void GetFullMessageRequest::printTo(std::ostream& out) const {
   out << "GetFullMessageRequest(";
   out << "token=" << to_string(token);
   out << ", " << "messageId=" << to_string(messageId);
+  out << ", " << "applicationId=" << to_string(applicationId);
   out << ")";
 }
 
