@@ -24,6 +24,7 @@ class BananaServiceConstants {
   int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
   int MAX_MESSAGE_LENGTH;
+   ::aroma::banana::thrift::LengthOfTime DEFAULT_INBOX_LIFETIME;
 };
 
 extern const BananaServiceConstants g_BananaService_constants;

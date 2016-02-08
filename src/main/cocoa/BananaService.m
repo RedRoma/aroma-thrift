@@ -11206,6 +11206,7 @@ static Banana_Dimension * BananaService_MAX_PROFILE_IMAGE_DIMENSION;
 static BananaService_int BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
+static Banana_LengthOfTime * BananaService_DEFAULT_INBOX_LIFETIME;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
@@ -11227,6 +11228,11 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
   BananaService_MAX_PROFILE_IMAGE_DIMENSION = [[Banana_Dimension alloc] init];
   [BananaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
   [BananaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
+
+;
+  BananaService_DEFAULT_INBOX_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  [BananaService_DEFAULT_INBOX_LIFETIME setValue:3];
+  [BananaService_DEFAULT_INBOX_LIFETIME setUnit:4];
 
 ;
 }
@@ -11256,6 +11262,9 @@ static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 }
 + (BananaService_int) MAX_MESSAGE_LENGTH{
   return BananaService_MAX_MESSAGE_LENGTH;
+}
++ (Banana_LengthOfTime *) DEFAULT_INBOX_LIFETIME{
+  return BananaService_DEFAULT_INBOX_LIFETIME;
 }
 @end
 

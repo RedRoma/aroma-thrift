@@ -3846,3 +3846,5 @@ ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Banana_ttypes.Dimension({
 ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
+ttypes.DEFAULT_INBOX_LIFETIME = new Banana_ttypes.LengthOfTime({
+'value' : 3,'unit' : 4});

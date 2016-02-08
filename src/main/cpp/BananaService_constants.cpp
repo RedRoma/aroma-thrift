@@ -51,6 +51,12 @@ BananaServiceConstants::BananaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
+   ::aroma::banana::thrift::long tmp193;
+  tmp193 = 3LL;
+
+  DEFAULT_INBOX_LIFETIME.value = tmp193;
+  DEFAULT_INBOX_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
+
 }
 
 }}}} // namespace

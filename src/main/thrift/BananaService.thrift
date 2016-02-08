@@ -100,6 +100,10 @@ const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
  */
 const int MAX_MESSAGE_LENGTH = 5000;
 
+/** The default amount of time to save messages in a User's Inbox. */
+const Banana.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Banana.TimeUnit.DAYS };
+
+
 //==========================================================
 // Actions
 //==========================================================
