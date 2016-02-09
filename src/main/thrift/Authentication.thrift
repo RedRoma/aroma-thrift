@@ -50,7 +50,7 @@ struct Password
  * before sending it over the wire. Without it, passwords will
  * not be understood by the service, and will be rejected.
  */
-const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "SDFJO3F2VDSKJFH1390VSJKNCL3CM POADMC;3 K940IFGOB JVKLSRN2389";
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK";
 
 /**
  * An Account registered with our System.
