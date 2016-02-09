@@ -108,6 +108,16 @@ const Banana.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Banan
 // Actions
 //==========================================================
 
+struct CheckExistsRequest
+{
+    1: string emailAddress;
+}
+
+struct CheckExistsResponse
+{
+    1: bool exists;
+    2: optional string message;
+}
 
 /**
  * Deletes a Message.
