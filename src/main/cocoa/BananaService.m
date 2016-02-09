@@ -27,6 +27,358 @@
 
 #import "BananaService.h"
 
+@implementation BananaService_CheckExistsRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEmailAddress: (NSString *) emailAddress
+{
+  self = [super init];
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"emailAddress"])
+  {
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__emailAddress_isset)
+  {
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
+  {
+    hash = (hash * 31) ^ [__emailAddress hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_CheckExistsRequest class]]) {
+    return NO;
+  }
+  BananaService_CheckExistsRequest *other = (BananaService_CheckExistsRequest *)anObject;
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__emailAddress release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
+}
+
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
+}
+
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
+}
+
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmailAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"CheckExistsRequest"];
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __emailAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_CheckExistsRequest("];
+  [ms appendString: @"emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation BananaService_CheckExistsResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithExists: (BOOL) exists message: (NSString *) message
+{
+  self = [super init];
+  __exists = exists;
+  __exists_isset = YES;
+  __message = [message retain_stub];
+  __message_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"exists"])
+  {
+    __exists = [decoder decodeBoolForKey: @"exists"];
+    __exists_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__exists_isset)
+  {
+    [encoder encodeBool: __exists forKey: @"exists"];
+  }
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __exists_isset ? 2654435761 : 0;
+  if (__exists_isset)
+  {
+    hash = (hash * 31) ^ [@(__exists) hash];
+  }
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[BananaService_CheckExistsResponse class]]) {
+    return NO;
+  }
+  BananaService_CheckExistsResponse *other = (BananaService_CheckExistsResponse *)anObject;
+  if ((__exists_isset != other->__exists_isset) ||
+      (__exists_isset && (__exists != other->__exists))) {
+    return NO;
+  }
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__message release_stub];
+  [super dealloc_stub];
+}
+
+- (BOOL) exists {
+  return __exists;
+}
+
+- (void) setExists: (BOOL) exists {
+  __exists = exists;
+  __exists_isset = YES;
+}
+
+- (BOOL) existsIsSet {
+  return __exists_isset;
+}
+
+- (void) unsetExists {
+  __exists_isset = NO;
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setExists: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"CheckExistsResponse"];
+  if (__exists_isset) {
+    [outProtocol writeFieldBeginWithName: @"exists" type: TType_BOOL fieldID: 1];
+    [outProtocol writeBool: __exists];
+    [outProtocol writeFieldEnd];
+  }
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_CheckExistsResponse("];
+  [ms appendString: @"exists:"];
+  [ms appendFormat: @"%i", __exists];
+  [ms appendString: @",message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation BananaService_DeleteMessageRequest
 
 - (id) init

@@ -224,6 +224,7 @@ struct Application
     /** When the application was first provisioned. */
     2: timestamp timeOfProvisioning;
     /** The name of the application. */
+    //TODO: Rename to fullName or completeName
     3: string name;
     /** The Automatically generated ID for the Application. */
     4: uuid applicationId;

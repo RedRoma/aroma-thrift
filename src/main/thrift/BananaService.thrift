@@ -299,6 +299,7 @@ struct SignInResponse
 struct SignUpRequest
 {
     1: string email;
+    //TODO: Rename to fullName or completeName
     2: string name;
     3: string firstName;
     4: string middleName;

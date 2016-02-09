@@ -77,6 +77,10 @@ typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException Unauth
 
 typedef class  ::aroma::banana::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
 
+class CheckExistsRequest;
+
+class CheckExistsResponse;
+
 class DeleteMessageRequest;
 
 class DeleteMessageResponse;
@@ -168,6 +172,106 @@ class GetUserInfoResponse;
 class SearchForApplicationsRequest;
 
 class SearchForApplicationsResponse;
+
+typedef struct _CheckExistsRequest__isset {
+  _CheckExistsRequest__isset() : emailAddress(false) {}
+  bool emailAddress :1;
+} _CheckExistsRequest__isset;
+
+class CheckExistsRequest {
+ public:
+
+  CheckExistsRequest(const CheckExistsRequest&);
+  CheckExistsRequest& operator=(const CheckExistsRequest&);
+  CheckExistsRequest() : emailAddress() {
+  }
+
+  virtual ~CheckExistsRequest() throw();
+  std::string emailAddress;
+
+  _CheckExistsRequest__isset __isset;
+
+  void __set_emailAddress(const std::string& val);
+
+  bool operator == (const CheckExistsRequest & rhs) const
+  {
+    if (!(emailAddress == rhs.emailAddress))
+      return false;
+    return true;
+  }
+  bool operator != (const CheckExistsRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CheckExistsRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(CheckExistsRequest &a, CheckExistsRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CheckExistsRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _CheckExistsResponse__isset {
+  _CheckExistsResponse__isset() : exists(false), message(false) {}
+  bool exists :1;
+  bool message :1;
+} _CheckExistsResponse__isset;
+
+class CheckExistsResponse {
+ public:
+
+  CheckExistsResponse(const CheckExistsResponse&);
+  CheckExistsResponse& operator=(const CheckExistsResponse&);
+  CheckExistsResponse() : exists(0), message() {
+  }
+
+  virtual ~CheckExistsResponse() throw();
+  bool exists;
+  std::string message;
+
+  _CheckExistsResponse__isset __isset;
+
+  void __set_exists(const bool val);
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const CheckExistsResponse & rhs) const
+  {
+    if (!(exists == rhs.exists))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const CheckExistsResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const CheckExistsResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(CheckExistsResponse &a, CheckExistsResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const CheckExistsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _DeleteMessageRequest__isset {
   _DeleteMessageRequest__isset() : token(false), messageId(false), applicationId(false), messageIds(true), deleteAll(true) {}
@@ -1383,10 +1487,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp62;
-    tmp62 = 4LL;
+     ::aroma::banana::thrift::long tmp66;
+    tmp66 = 4LL;
 
-    lengthOfTime.value = tmp62;
+    lengthOfTime.value = tmp66;
     lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
 
   }

@@ -77,6 +77,67 @@ typedef BananaException_UnauthorizedException * BananaService_UnauthorizedExcept
 
 typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExistException;
 
+@interface BananaService_CheckExistsRequest : NSObject <TBase, NSCoding> {
+  NSString * __emailAddress;
+
+  BOOL __emailAddress_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
+#endif
+
+- (id) init;
+- (id) initWithEmailAddress: (NSString *) emailAddress;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) emailAddress;
+- (void) setEmailAddress: (NSString *) emailAddress;
+#endif
+- (BOOL) emailAddressIsSet;
+
+@end
+
+@interface BananaService_CheckExistsResponse : NSObject <TBase, NSCoding> {
+  BOOL __exists;
+  NSString * __message;
+
+  BOOL __exists_isset;
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=exists, setter=setExists:) BOOL exists;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithExists: (BOOL) exists message: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BOOL) exists;
+- (void) setExists: (BOOL) exists;
+#endif
+- (BOOL) existsIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
 @interface BananaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   BananaService_uuid __messageId;

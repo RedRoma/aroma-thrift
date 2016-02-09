@@ -16,6 +16,125 @@ var Exceptions_ttypes = require('./Exceptions_types')
 
 
 var ttypes = module.exports = {};
+CheckExistsRequest = module.exports.CheckExistsRequest = function(args) {
+  this.emailAddress = null;
+  if (args) {
+    if (args.emailAddress !== undefined && args.emailAddress !== null) {
+      this.emailAddress = args.emailAddress;
+    }
+  }
+};
+CheckExistsRequest.prototype = {};
+CheckExistsRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.emailAddress = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CheckExistsRequest.prototype.write = function(output) {
+  output.writeStructBegin('CheckExistsRequest');
+  if (this.emailAddress !== null && this.emailAddress !== undefined) {
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 1);
+    output.writeString(this.emailAddress);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+CheckExistsResponse = module.exports.CheckExistsResponse = function(args) {
+  this.exists = null;
+  this.message = null;
+  if (args) {
+    if (args.exists !== undefined && args.exists !== null) {
+      this.exists = args.exists;
+    }
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+CheckExistsResponse.prototype = {};
+CheckExistsResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.BOOL) {
+        this.exists = input.readBool();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+CheckExistsResponse.prototype.write = function(output) {
+  output.writeStructBegin('CheckExistsResponse');
+  if (this.exists !== null && this.exists !== undefined) {
+    output.writeFieldBegin('exists', Thrift.Type.BOOL, 1);
+    output.writeBool(this.exists);
+    output.writeFieldEnd();
+  }
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 2);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 DeleteMessageRequest = module.exports.DeleteMessageRequest = function(args) {
   this.token = null;
   this.messageId = null;
