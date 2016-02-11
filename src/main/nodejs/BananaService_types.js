@@ -3967,3 +3967,4 @@ ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
 ttypes.DEFAULT_INBOX_LIFETIME = new Banana_ttypes.LengthOfTime({
 'value' : 3,'unit' : 4});
+ttypes.APPLICATION_NAME_MAX_LENGTH = 20;

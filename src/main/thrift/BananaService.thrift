@@ -185,6 +185,9 @@ struct ProvisionApplicationRequest
     8: optional Banana.Tier tier = Banana.Tier.FREE;
 }
 
+/** The Maximum number of characters that can be in the Application Name. */
+const int APPLICATION_NAME_MAX_LENGTH = 20;
+
 struct ProvisionApplicationResponse
 {
     1: ApplicationToken applicationToken;
