@@ -10754,13 +10754,15 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId
+- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId email: (NSString *) email
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __userId = [userId retain_stub];
   __userId_isset = YES;
+  __email = [email retain_stub];
+  __email_isset = YES;
   return self;
 }
 
@@ -10777,6 +10779,11 @@
     __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
     __userId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"email"])
+  {
+    __email = [[decoder decodeObjectForKey: @"email"] retain_stub];
+    __email_isset = YES;
+  }
   return self;
 }
 
@@ -10789,6 +10796,10 @@
   if (__userId_isset)
   {
     [encoder encodeObject: __userId forKey: @"userId"];
+  }
+  if (__email_isset)
+  {
+    [encoder encodeObject: __email forKey: @"email"];
   }
 }
 
@@ -10804,6 +10815,11 @@
   if (__userId_isset)
   {
     hash = (hash * 31) ^ [__userId hash];
+  }
+  hash = (hash * 31) ^ __email_isset ? 2654435761 : 0;
+  if (__email_isset)
+  {
+    hash = (hash * 31) ^ [__email hash];
   }
   return hash;
 }
@@ -10825,6 +10841,10 @@
       (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
+  if ((__email_isset != other->__email_isset) ||
+      (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -10832,6 +10852,7 @@
 {
   [__token release_stub];
   [__userId release_stub];
+  [__email release_stub];
   [super dealloc_stub];
 }
 
@@ -10877,6 +10898,27 @@
   __userId_isset = NO;
 }
 
+- (NSString *) email {
+  return [[__email retain_stub] autorelease_stub];
+}
+
+- (void) setEmail: (NSString *) email {
+  [email retain_stub];
+  [__email release_stub];
+  __email = email;
+  __email_isset = YES;
+}
+
+- (BOOL) emailIsSet {
+  return __email_isset;
+}
+
+- (void) unsetEmail {
+  [__email release_stub];
+  __email = nil;
+  __email_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -10910,6 +10952,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmail: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -10935,6 +10985,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__email_isset) {
+    if (__email != nil) {
+      [outProtocol writeFieldBeginWithName: @"email" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __email];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -10949,6 +11006,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",userId:"];
   [ms appendFormat: @"\"%@\"", __userId];
+  [ms appendString: @",email:"];
+  [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

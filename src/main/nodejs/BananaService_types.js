@@ -3675,12 +3675,16 @@ GetServiceAnnouncementsResponse.prototype.write = function(output) {
 GetUserInfoRequest = module.exports.GetUserInfoRequest = function(args) {
     this.token = null;
     this.userId = null;
+    this.email = null;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
         if (args.userId !== undefined && args.userId !== null) {
             this.userId = args.userId;
+        }
+        if (args.email !== undefined && args.email !== null) {
+            this.email = args.email;
         }
     }
 };
@@ -3713,6 +3717,13 @@ GetUserInfoRequest.prototype.read = function(input) {
           input.skip(ftype);
         }
         break;
+        case 3:
+        if (ftype == Thrift.Type.STRING) {
+          this.email = input.readString();
+        } else {
+          input.skip(ftype);
+        }
+        break;
         default:
           input.skip(ftype);
       }
@@ -3732,6 +3743,11 @@ GetUserInfoRequest.prototype.write = function(output) {
     if (this.userId !== null && this.userId !== undefined) {
       output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
       output.writeString(this.userId);
+      output.writeFieldEnd();
+    }
+    if (this.email !== null && this.email !== undefined) {
+      output.writeFieldBegin('email', Thrift.Type.STRING, 3);
+      output.writeString(this.email);
       output.writeFieldEnd();
     }
     output.writeFieldStop();

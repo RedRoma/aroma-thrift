@@ -1809,18 +1809,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @interface BananaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   BananaService_uuid __userId;
+  NSString * __email;
 
   BOOL __token_isset;
   BOOL __userId_isset;
+  BOOL __email_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
 @property (nonatomic, retain, getter=userId, setter=setUserId:) BananaService_uuid userId;
+@property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId;
+- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId email: (NSString *) email;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1838,6 +1841,12 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) setUserId: (BananaService_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) email;
+- (void) setEmail: (NSString *) email;
+#endif
+- (BOOL) emailIsSet;
 
 @end
 

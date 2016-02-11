@@ -5455,6 +5455,11 @@ void GetUserInfoRequest::__set_userId(const uuid& val) {
   this->userId = val;
 }
 
+void GetUserInfoRequest::__set_email(const std::string& val) {
+  this->email = val;
+__isset.email = true;
+}
+
 uint32_t GetUserInfoRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -5492,6 +5497,14 @@ uint32_t GetUserInfoRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->email);
+          this->__isset.email = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -5517,6 +5530,11 @@ uint32_t GetUserInfoRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeString(this->userId);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.email) {
+    xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->email);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -5526,17 +5544,20 @@ void swap(GetUserInfoRequest &a, GetUserInfoRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.userId, b.userId);
+  swap(a.email, b.email);
   swap(a.__isset, b.__isset);
 }
 
 GetUserInfoRequest::GetUserInfoRequest(const GetUserInfoRequest& other177) {
   token = other177.token;
   userId = other177.userId;
+  email = other177.email;
   __isset = other177.__isset;
 }
 GetUserInfoRequest& GetUserInfoRequest::operator=(const GetUserInfoRequest& other178) {
   token = other178.token;
   userId = other178.userId;
+  email = other178.email;
   __isset = other178.__isset;
   return *this;
 }
@@ -5545,6 +5566,7 @@ void GetUserInfoRequest::printTo(std::ostream& out) const {
   out << "GetUserInfoRequest(";
   out << "token=" << to_string(token);
   out << ", " << "userId=" << to_string(userId);
+  out << ", " << "email="; (__isset.email ? (out << to_string(email)) : (out << "<null>"));
   out << ")";
 }
 

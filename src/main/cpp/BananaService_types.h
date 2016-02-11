@@ -2664,9 +2664,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetServiceAnnouncements
 }
 
 typedef struct _GetUserInfoRequest__isset {
-  _GetUserInfoRequest__isset() : token(false), userId(false) {}
+  _GetUserInfoRequest__isset() : token(false), userId(false), email(false) {}
   bool token :1;
   bool userId :1;
+  bool email :1;
 } _GetUserInfoRequest__isset;
 
 class GetUserInfoRequest {
@@ -2674,12 +2675,13 @@ class GetUserInfoRequest {
 
   GetUserInfoRequest(const GetUserInfoRequest&);
   GetUserInfoRequest& operator=(const GetUserInfoRequest&);
-  GetUserInfoRequest() : userId() {
+  GetUserInfoRequest() : userId(), email() {
   }
 
   virtual ~GetUserInfoRequest() throw();
   UserToken token;
   uuid userId;
+  std::string email;
 
   _GetUserInfoRequest__isset __isset;
 
@@ -2687,11 +2689,17 @@ class GetUserInfoRequest {
 
   void __set_userId(const uuid& val);
 
+  void __set_email(const std::string& val);
+
   bool operator == (const GetUserInfoRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
     if (!(userId == rhs.userId))
+      return false;
+    if (__isset.email != rhs.__isset.email)
+      return false;
+    else if (__isset.email && !(email == rhs.email))
       return false;
     return true;
   }

@@ -502,6 +502,8 @@ struct GetUserInfoRequest
 {
     1: UserToken token;
     2: uuid userId;
+    /** Can Optionally query by Email as well. */
+    3: optional string email;
 }
 
 struct GetUserInfoResponse
