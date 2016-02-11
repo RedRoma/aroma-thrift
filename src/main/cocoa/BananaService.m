@@ -11560,6 +11560,7 @@ static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 1
 static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
 static Banana_LengthOfTime * BananaService_DEFAULT_INBOX_LIFETIME;
 static BananaService_int BananaService_APPLICATION_NAME_MAX_LENGTH = 20;
+static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @implementation BananaService_BananaServiceConstants
 + (void) initialize {
@@ -11621,6 +11622,9 @@ static BananaService_int BananaService_APPLICATION_NAME_MAX_LENGTH = 20;
 }
 + (BananaService_int) APPLICATION_NAME_MAX_LENGTH{
   return BananaService_APPLICATION_NAME_MAX_LENGTH;
+}
++ (BananaService_int) APPLICATION_MAX_OWNERS{
+  return BananaService_APPLICATION_MAX_OWNERS;
 }
 @end
 

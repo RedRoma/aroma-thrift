@@ -1988,4 +1988,5 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 + (BananaService_int) MAX_MESSAGE_LENGTH;
 + (Banana_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
 + (BananaService_int) APPLICATION_NAME_MAX_LENGTH;
++ (BananaService_int) APPLICATION_MAX_OWNERS;
 @end

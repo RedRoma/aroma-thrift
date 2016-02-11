@@ -59,6 +59,8 @@ BananaServiceConstants::BananaServiceConstants() {
 
   APPLICATION_NAME_MAX_LENGTH = 20;
 
+  APPLICATION_MAX_OWNERS = 10;
+
 }
 
 }}}} // namespace

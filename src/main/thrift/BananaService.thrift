@@ -188,6 +188,9 @@ struct ProvisionApplicationRequest
 /** The Maximum number of characters that can be in the Application Name. */
 const int APPLICATION_NAME_MAX_LENGTH = 20;
 
+/** The Maximum number of owners that an Application can have. */
+const int APPLICATION_MAX_OWNERS = 10;
+
 struct ProvisionApplicationResponse
 {
     1: ApplicationToken applicationToken;
