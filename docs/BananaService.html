@@ -202,10 +202,11 @@ code { line-height: 20px; }
 <li><a href="#Fn_BananaService_getActivity">getActivity</a></li>
 <li><a href="#Fn_BananaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_BananaService_getApplicationInfo">getApplicationInfo</a></li>
+<li><a href="#Fn_BananaService_getApplicationMessages">getApplicationMessages</a></li>
 <li><a href="#Fn_BananaService_getBuzz">getBuzz</a></li>
 <li><a href="#Fn_BananaService_getDashboard">getDashboard</a></li>
 <li><a href="#Fn_BananaService_getFullMessage">getFullMessage</a></li>
-<li><a href="#Fn_BananaService_getMessages">getMessages</a></li>
+<li><a href="#Fn_BananaService_getInbox">getInbox</a></li>
 <li><a href="#Fn_BananaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_BananaService_getMySavedChannels">getMySavedChannels</a></li>
 <li><a href="#Fn_BananaService_getUserInfo">getUserInfo</a></li>
@@ -245,14 +246,16 @@ code { line-height: 20px; }
 <a href="#Struct_GetActivityResponse">GetActivityResponse</a><br/>
 <a href="#Struct_GetApplicationInfoRequest">GetApplicationInfoRequest</a><br/>
 <a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a><br/>
+<a href="#Struct_GetApplicationMessagesRequest">GetApplicationMessagesRequest</a><br/>
+<a href="#Struct_GetApplicationMessagesResponse">GetApplicationMessagesResponse</a><br/>
 <a href="#Struct_GetBuzzRequest">GetBuzzRequest</a><br/>
 <a href="#Struct_GetBuzzResponse">GetBuzzResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
 <a href="#Struct_GetDashboardResponse">GetDashboardResponse</a><br/>
 <a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a><br/>
 <a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a><br/>
-<a href="#Struct_GetMessagesRequest">GetMessagesRequest</a><br/>
-<a href="#Struct_GetMessagesResponse">GetMessagesResponse</a><br/>
+<a href="#Struct_GetInboxRequest">GetInboxRequest</a><br/>
+<a href="#Struct_GetInboxResponse">GetInboxResponse</a><br/>
 <a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a><br/>
 <a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a><br/>
 <a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
@@ -614,16 +617,24 @@ Banana.
 <tr><td>5</td><td>numberOfLowUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>6</td><td>numberOfMediumUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>7</td><td>numberOfHighUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMessagesRequest">Struct: GetMessagesRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_GetInboxRequest">Struct: GetInboxRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Allows you to get Messages by a particular application.
-</td><td>optional</td><td></td></tr>
+<tr><td>2</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
+</td><td>optional</td><td><code>0</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetInboxResponse">Struct: GetInboxResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesRequest">Struct: GetApplicationMessagesRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>The Application's Messages to retrieve.
+</td><td>default</td><td></td></tr>
 <tr><td>3</td><td>limit</td><td><code><a href="#Typedef_int">int</a></code></td><td>Suggests that the Service limits the results of the query.
 </td><td>optional</td><td><code>0</code></td></tr>
 </table><br/>Query to get a User's messages, either across all Services,
 or by a specific Application.
-<br/></div><div class="definition"><h3 id="Struct_GetMessagesResponse">Struct: GetMessagesResponse</h3>
+<br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesResponse">Struct: GetApplicationMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
@@ -770,10 +781,14 @@ Only an "owner" can perform this operation.
 </pre></div><div class="definition"><h4 id="Fn_BananaService_getDashboard">Function: BananaService.getDashboard</h4>
 <pre><code><a href="#Struct_GetDashboardResponse">GetDashboardResponse</a></code> getDashboard(<code><a href="#Struct_GetDashboardRequest">GetDashboardRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre></div><div class="definition"><h4 id="Fn_BananaService_getMessages">Function: BananaService.getMessages</h4>
-<pre><code><a href="#Struct_GetMessagesResponse">GetMessagesResponse</a></code> getMessages(<code><a href="#Struct_GetMessagesRequest">GetMessagesRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_BananaService_getApplicationMessages">Function: BananaService.getApplicationMessages</h4>
+<pre><code><a href="#Struct_GetApplicationMessagesResponse">GetApplicationMessagesResponse</a></code> getApplicationMessages(<code><a href="#Struct_GetApplicationMessagesRequest">GetApplicationMessagesRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Get an Application's Messages.
+<br/></div><div class="definition"><h4 id="Fn_BananaService_getInbox">Function: BananaService.getInbox</h4>
+<pre><code><a href="#Struct_GetInboxResponse">GetInboxResponse</a></code> getInbox(<code><a href="#Struct_GetInboxRequest">GetInboxRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre>Get Messages in a User's Inbox
 <br/></div><div class="definition"><h4 id="Fn_BananaService_getFullMessage">Function: BananaService.getFullMessage</h4>
 <pre><code><a href="#Struct_GetFullMessageResponse">GetFullMessageResponse</a></code> getFullMessage(<code><a href="#Struct_GetFullMessageRequest">GetFullMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>

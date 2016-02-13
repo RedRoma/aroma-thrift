@@ -1501,7 +1501,68 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetMessagesRequest : NSObject <TBase, NSCoding> {
+@interface BananaService_GetInboxRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_int __limit;
+
+  BOOL __token_isset;
+  BOOL __limit_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_int) limit;
+- (void) setLimit: (BananaService_int) limit;
+#endif
+- (BOOL) limitIsSet;
+
+@end
+
+@interface BananaService_GetInboxResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __messages;
+
+  BOOL __messages_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messages, setter=setMessages:) NSMutableArray * messages;
+#endif
+
+- (id) init;
+- (id) initWithMessages: (NSMutableArray *) messages;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) messages;
+- (void) setMessages: (NSMutableArray *) messages;
+#endif
+- (BOOL) messagesIsSet;
+
+@end
+
+@interface BananaService_GetApplicationMessagesRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   BananaService_uuid __applicationId;
   BananaService_int __limit;
@@ -1545,7 +1606,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetMessagesResponse : NSObject <TBase, NSCoding> {
+@interface BananaService_GetApplicationMessagesResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __messages;
   BananaService_int __totalMessagesMatching;
 
@@ -2025,7 +2086,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetBuzzResponse *) getBuzz: (BananaService_GetBuzzRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetMessagesResponse *) getMessages: (BananaService_GetMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
+- (BananaService_GetApplicationMessagesResponse *) getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, TException
+- (BananaService_GetInboxResponse *) getInbox: (BananaService_GetInboxRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetFullMessageResponse *) getFullMessage: (BananaService_GetFullMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException

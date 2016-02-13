@@ -136,7 +136,14 @@ class BananaServiceIf {
    * 
    * @param request
    */
-  virtual void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) = 0;
+  virtual void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) = 0;
+
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param request
+   */
+  virtual void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) = 0;
 
   /**
    * In case the Message body has been truncated, use this operation
@@ -238,7 +245,10 @@ class BananaServiceNull : virtual public BananaServiceIf {
   void getDashboard(GetDashboardResponse& /* _return */, const GetDashboardRequest& /* request */) {
     return;
   }
-  void getMessages(GetMessagesResponse& /* _return */, const GetMessagesRequest& /* request */) {
+  void getApplicationMessages(GetApplicationMessagesResponse& /* _return */, const GetApplicationMessagesRequest& /* request */) {
+    return;
+  }
+  void getInbox(GetInboxResponse& /* _return */, const GetInboxRequest& /* request */) {
     return;
   }
   void getFullMessage(GetFullMessageResponse& /* _return */, const GetFullMessageRequest& /* request */) {
@@ -2606,37 +2616,37 @@ class BananaService_getDashboard_presult {
 
 };
 
-typedef struct _BananaService_getMessages_args__isset {
-  _BananaService_getMessages_args__isset() : request(false) {}
+typedef struct _BananaService_getApplicationMessages_args__isset {
+  _BananaService_getApplicationMessages_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getMessages_args__isset;
+} _BananaService_getApplicationMessages_args__isset;
 
-class BananaService_getMessages_args {
+class BananaService_getApplicationMessages_args {
  public:
 
-  BananaService_getMessages_args(const BananaService_getMessages_args&);
-  BananaService_getMessages_args& operator=(const BananaService_getMessages_args&);
-  BananaService_getMessages_args() {
+  BananaService_getApplicationMessages_args(const BananaService_getApplicationMessages_args&);
+  BananaService_getApplicationMessages_args& operator=(const BananaService_getApplicationMessages_args&);
+  BananaService_getApplicationMessages_args() {
   }
 
-  virtual ~BananaService_getMessages_args() throw();
-  GetMessagesRequest request;
+  virtual ~BananaService_getApplicationMessages_args() throw();
+  GetApplicationMessagesRequest request;
 
-  _BananaService_getMessages_args__isset __isset;
+  _BananaService_getApplicationMessages_args__isset __isset;
 
-  void __set_request(const GetMessagesRequest& val);
+  void __set_request(const GetApplicationMessagesRequest& val);
 
-  bool operator == (const BananaService_getMessages_args & rhs) const
+  bool operator == (const BananaService_getApplicationMessages_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMessages_args &rhs) const {
+  bool operator != (const BananaService_getApplicationMessages_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMessages_args & ) const;
+  bool operator < (const BananaService_getApplicationMessages_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2644,42 +2654,44 @@ class BananaService_getMessages_args {
 };
 
 
-class BananaService_getMessages_pargs {
+class BananaService_getApplicationMessages_pargs {
  public:
 
 
-  virtual ~BananaService_getMessages_pargs() throw();
-  const GetMessagesRequest* request;
+  virtual ~BananaService_getApplicationMessages_pargs() throw();
+  const GetApplicationMessagesRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMessages_result__isset {
-  _BananaService_getMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _BananaService_getApplicationMessages_result__isset {
+  _BananaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMessages_result__isset;
+  bool ex4 :1;
+} _BananaService_getApplicationMessages_result__isset;
 
-class BananaService_getMessages_result {
+class BananaService_getApplicationMessages_result {
  public:
 
-  BananaService_getMessages_result(const BananaService_getMessages_result&);
-  BananaService_getMessages_result& operator=(const BananaService_getMessages_result&);
-  BananaService_getMessages_result() {
+  BananaService_getApplicationMessages_result(const BananaService_getApplicationMessages_result&);
+  BananaService_getApplicationMessages_result& operator=(const BananaService_getApplicationMessages_result&);
+  BananaService_getApplicationMessages_result() {
   }
 
-  virtual ~BananaService_getMessages_result() throw();
-  GetMessagesResponse success;
+  virtual ~BananaService_getApplicationMessages_result() throw();
+  GetApplicationMessagesResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
+  UnauthorizedException ex4;
 
-  _BananaService_getMessages_result__isset __isset;
+  _BananaService_getApplicationMessages_result__isset __isset;
 
-  void __set_success(const GetMessagesResponse& val);
+  void __set_success(const GetApplicationMessagesResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -2687,7 +2699,141 @@ class BananaService_getMessages_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getMessages_result & rhs) const
+  void __set_ex4(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_getApplicationMessages_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getApplicationMessages_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getApplicationMessages_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getApplicationMessages_presult__isset {
+  _BananaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+} _BananaService_getApplicationMessages_presult__isset;
+
+class BananaService_getApplicationMessages_presult {
+ public:
+
+
+  virtual ~BananaService_getApplicationMessages_presult() throw();
+  GetApplicationMessagesResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  UnauthorizedException* ex4;
+
+  _BananaService_getApplicationMessages_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getInbox_args__isset {
+  _BananaService_getInbox_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getInbox_args__isset;
+
+class BananaService_getInbox_args {
+ public:
+
+  BananaService_getInbox_args(const BananaService_getInbox_args&);
+  BananaService_getInbox_args& operator=(const BananaService_getInbox_args&);
+  BananaService_getInbox_args() {
+  }
+
+  virtual ~BananaService_getInbox_args() throw();
+  GetInboxRequest request;
+
+  _BananaService_getInbox_args__isset __isset;
+
+  void __set_request(const GetInboxRequest& val);
+
+  bool operator == (const BananaService_getInbox_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getInbox_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getInbox_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getInbox_pargs {
+ public:
+
+
+  virtual ~BananaService_getInbox_pargs() throw();
+  const GetInboxRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getInbox_result__isset {
+  _BananaService_getInbox_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+} _BananaService_getInbox_result__isset;
+
+class BananaService_getInbox_result {
+ public:
+
+  BananaService_getInbox_result(const BananaService_getInbox_result&);
+  BananaService_getInbox_result& operator=(const BananaService_getInbox_result&);
+  BananaService_getInbox_result() {
+  }
+
+  virtual ~BananaService_getInbox_result() throw();
+  GetInboxResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+
+  _BananaService_getInbox_result__isset __isset;
+
+  void __set_success(const GetInboxResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  bool operator == (const BananaService_getInbox_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2699,36 +2845,36 @@ class BananaService_getMessages_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMessages_result &rhs) const {
+  bool operator != (const BananaService_getInbox_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMessages_result & ) const;
+  bool operator < (const BananaService_getInbox_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMessages_presult__isset {
-  _BananaService_getMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _BananaService_getInbox_presult__isset {
+  _BananaService_getInbox_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMessages_presult__isset;
+} _BananaService_getInbox_presult__isset;
 
-class BananaService_getMessages_presult {
+class BananaService_getInbox_presult {
  public:
 
 
-  virtual ~BananaService_getMessages_presult() throw();
-  GetMessagesResponse* success;
+  virtual ~BananaService_getInbox_presult() throw();
+  GetInboxResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getMessages_presult__isset __isset;
+  _BananaService_getInbox_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3474,9 +3620,12 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   void send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return);
-  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request);
-  void send_getMessages(const GetMessagesRequest& request);
-  void recv_getMessages(GetMessagesResponse& _return);
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
+  void send_getApplicationMessages(const GetApplicationMessagesRequest& request);
+  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return);
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
+  void send_getInbox(const GetInboxRequest& request);
+  void recv_getInbox(GetInboxResponse& _return);
   void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
   void send_getFullMessage(const GetFullMessageRequest& request);
   void recv_getFullMessage(GetFullMessageResponse& _return);
@@ -3524,7 +3673,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3550,7 +3700,8 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
     processMap_["getBuzz"] = &BananaServiceProcessor::process_getBuzz;
     processMap_["getDashboard"] = &BananaServiceProcessor::process_getDashboard;
-    processMap_["getMessages"] = &BananaServiceProcessor::process_getMessages;
+    processMap_["getApplicationMessages"] = &BananaServiceProcessor::process_getApplicationMessages;
+    processMap_["getInbox"] = &BananaServiceProcessor::process_getInbox;
     processMap_["getFullMessage"] = &BananaServiceProcessor::process_getFullMessage;
     processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
@@ -3753,13 +3904,23 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
-  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getMessages(_return, request);
+      ifaces_[i]->getApplicationMessages(_return, request);
     }
-    ifaces_[i]->getMessages(_return, request);
+    ifaces_[i]->getApplicationMessages(_return, request);
+    return;
+  }
+
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getInbox(_return, request);
+    }
+    ifaces_[i]->getInbox(_return, request);
     return;
   }
 
@@ -3894,9 +4055,12 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request);
   int32_t send_getDashboard(const GetDashboardRequest& request);
   void recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid);
-  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request);
-  int32_t send_getMessages(const GetMessagesRequest& request);
-  void recv_getMessages(GetMessagesResponse& _return, const int32_t seqid);
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request);
+  int32_t send_getApplicationMessages(const GetApplicationMessagesRequest& request);
+  void recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid);
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request);
+  int32_t send_getInbox(const GetInboxRequest& request);
+  void recv_getInbox(GetInboxResponse& _return, const int32_t seqid);
   void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
   int32_t send_getFullMessage(const GetFullMessageRequest& request);
   void recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid);

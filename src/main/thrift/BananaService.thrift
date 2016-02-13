@@ -428,20 +428,33 @@ struct GetDashboardResponse
     7: int numberOfHighUrgencyMessages = 0;
 }
 
+
+struct GetInboxRequest
+{
+    1: UserToken token;
+    /** Suggests that the Service limits the results of the query.*/
+    2: optional int limit = 0;
+}
+
+struct GetInboxResponse
+{
+    1: list<Banana.Message> messages = [];
+}
+
 /**
  * Query to get a User's messages, either across all Services,
  * or by a specific Application.
  */
-struct GetMessagesRequest
+struct GetApplicationMessagesRequest
 {
     1: UserToken token;
-    /** Allows you to get Messages by a particular application. */
-    2: optional uuid applicationId;
+    /** The Application's Messages to retrieve. */
+    2: uuid applicationId;
     /** Suggests that the Service limits the results of the query.*/
     3: optional int limit = 0;
 }
 
-struct GetMessagesResponse
+struct GetApplicationMessagesResponse
 {
     1: list<Banana.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
@@ -719,13 +732,21 @@ service BananaService
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3);
-    
+
     /**
      * Get an Application's Messages.
      */
-    GetMessagesResponse getMessages(1 : GetMessagesRequest request)throws(1 : OperationFailedException ex1,
-                                                                          2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidTokenException ex3);
+     GetApplicationMessagesResponse getApplicationMessages(1 : GetApplicationMessagesRequest request)throws(1 : OperationFailedException ex1,
+                                                                                                            2 : InvalidArgumentException ex2,
+                                                                                                            3 : InvalidTokenException ex3,
+                                                                                                            4 : UnauthorizedException ex4);
+
+    /**
+     * Get Messages in a User's Inbox
+     */
+    GetInboxResponse getInbox(1 : GetInboxRequest request)throws(1 : OperationFailedException ex1,
+                                                                 2 : InvalidArgumentException ex2,
+                                                                 3 : InvalidTokenException ex3);
 
     /**
      * In case the Message body has been truncated, use this operation

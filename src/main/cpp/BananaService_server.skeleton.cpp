@@ -192,9 +192,19 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * 
    * @param request
    */
-  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
     // Your implementation goes here
-    printf("getMessages\n");
+    printf("getApplicationMessages\n");
+  }
+
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param request
+   */
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
+    // Your implementation goes here
+    printf("getInbox\n");
   }
 
   /**

@@ -145,9 +145,13 @@ class GetDashboardRequest;
 
 class GetDashboardResponse;
 
-class GetMessagesRequest;
+class GetInboxRequest;
 
-class GetMessagesResponse;
+class GetInboxResponse;
+
+class GetApplicationMessagesRequest;
+
+class GetApplicationMessagesResponse;
 
 class GetFullMessageRequest;
 
@@ -2166,41 +2170,33 @@ inline std::ostream& operator<<(std::ostream& out, const GetDashboardResponse& o
   return out;
 }
 
-typedef struct _GetMessagesRequest__isset {
-  _GetMessagesRequest__isset() : token(false), applicationId(false), limit(true) {}
+typedef struct _GetInboxRequest__isset {
+  _GetInboxRequest__isset() : token(false), limit(true) {}
   bool token :1;
-  bool applicationId :1;
   bool limit :1;
-} _GetMessagesRequest__isset;
+} _GetInboxRequest__isset;
 
-class GetMessagesRequest {
+class GetInboxRequest {
  public:
 
-  GetMessagesRequest(const GetMessagesRequest&);
-  GetMessagesRequest& operator=(const GetMessagesRequest&);
-  GetMessagesRequest() : applicationId(), limit(0) {
+  GetInboxRequest(const GetInboxRequest&);
+  GetInboxRequest& operator=(const GetInboxRequest&);
+  GetInboxRequest() : limit(0) {
   }
 
-  virtual ~GetMessagesRequest() throw();
+  virtual ~GetInboxRequest() throw();
   UserToken token;
-  uuid applicationId;
   int limit;
 
-  _GetMessagesRequest__isset __isset;
+  _GetInboxRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_applicationId(const uuid& val);
-
   void __set_limit(const int val);
 
-  bool operator == (const GetMessagesRequest & rhs) const
+  bool operator == (const GetInboxRequest & rhs) const
   {
     if (!(token == rhs.token))
-      return false;
-    if (__isset.applicationId != rhs.__isset.applicationId)
-      return false;
-    else if (__isset.applicationId && !(applicationId == rhs.applicationId))
       return false;
     if (__isset.limit != rhs.__isset.limit)
       return false;
@@ -2208,11 +2204,11 @@ class GetMessagesRequest {
       return false;
     return true;
   }
-  bool operator != (const GetMessagesRequest &rhs) const {
+  bool operator != (const GetInboxRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMessagesRequest & ) const;
+  bool operator < (const GetInboxRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2220,40 +2216,147 @@ class GetMessagesRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMessagesRequest &a, GetMessagesRequest &b);
+void swap(GetInboxRequest &a, GetInboxRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMessagesRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetInboxRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _GetMessagesResponse__isset {
-  _GetMessagesResponse__isset() : messages(true), totalMessagesMatching(true) {}
+typedef struct _GetInboxResponse__isset {
+  _GetInboxResponse__isset() : messages(true) {}
   bool messages :1;
-  bool totalMessagesMatching :1;
-} _GetMessagesResponse__isset;
+} _GetInboxResponse__isset;
 
-class GetMessagesResponse {
+class GetInboxResponse {
  public:
 
-  GetMessagesResponse(const GetMessagesResponse&);
-  GetMessagesResponse& operator=(const GetMessagesResponse&);
-  GetMessagesResponse() : totalMessagesMatching(0) {
+  GetInboxResponse(const GetInboxResponse&);
+  GetInboxResponse& operator=(const GetInboxResponse&);
+  GetInboxResponse() {
 
   }
 
-  virtual ~GetMessagesResponse() throw();
+  virtual ~GetInboxResponse() throw();
+  std::vector< ::aroma::banana::thrift::Message>  messages;
+
+  _GetInboxResponse__isset __isset;
+
+  void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
+
+  bool operator == (const GetInboxResponse & rhs) const
+  {
+    if (!(messages == rhs.messages))
+      return false;
+    return true;
+  }
+  bool operator != (const GetInboxResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetInboxResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetInboxResponse &a, GetInboxResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetInboxResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetApplicationMessagesRequest__isset {
+  _GetApplicationMessagesRequest__isset() : token(false), applicationId(false), limit(true) {}
+  bool token :1;
+  bool applicationId :1;
+  bool limit :1;
+} _GetApplicationMessagesRequest__isset;
+
+class GetApplicationMessagesRequest {
+ public:
+
+  GetApplicationMessagesRequest(const GetApplicationMessagesRequest&);
+  GetApplicationMessagesRequest& operator=(const GetApplicationMessagesRequest&);
+  GetApplicationMessagesRequest() : applicationId(), limit(0) {
+  }
+
+  virtual ~GetApplicationMessagesRequest() throw();
+  UserToken token;
+  uuid applicationId;
+  int limit;
+
+  _GetApplicationMessagesRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_limit(const int val);
+
+  bool operator == (const GetApplicationMessagesRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.limit != rhs.__isset.limit)
+      return false;
+    else if (__isset.limit && !(limit == rhs.limit))
+      return false;
+    return true;
+  }
+  bool operator != (const GetApplicationMessagesRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetApplicationMessagesRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetApplicationMessagesRequest &a, GetApplicationMessagesRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationMessagesRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetApplicationMessagesResponse__isset {
+  _GetApplicationMessagesResponse__isset() : messages(true), totalMessagesMatching(true) {}
+  bool messages :1;
+  bool totalMessagesMatching :1;
+} _GetApplicationMessagesResponse__isset;
+
+class GetApplicationMessagesResponse {
+ public:
+
+  GetApplicationMessagesResponse(const GetApplicationMessagesResponse&);
+  GetApplicationMessagesResponse& operator=(const GetApplicationMessagesResponse&);
+  GetApplicationMessagesResponse() : totalMessagesMatching(0) {
+
+  }
+
+  virtual ~GetApplicationMessagesResponse() throw();
   std::vector< ::aroma::banana::thrift::Message>  messages;
   int totalMessagesMatching;
 
-  _GetMessagesResponse__isset __isset;
+  _GetApplicationMessagesResponse__isset __isset;
 
   void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
 
   void __set_totalMessagesMatching(const int val);
 
-  bool operator == (const GetMessagesResponse & rhs) const
+  bool operator == (const GetApplicationMessagesResponse & rhs) const
   {
     if (!(messages == rhs.messages))
       return false;
@@ -2263,11 +2366,11 @@ class GetMessagesResponse {
       return false;
     return true;
   }
-  bool operator != (const GetMessagesResponse &rhs) const {
+  bool operator != (const GetApplicationMessagesResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMessagesResponse & ) const;
+  bool operator < (const GetApplicationMessagesResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2275,9 +2378,9 @@ class GetMessagesResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMessagesResponse &a, GetMessagesResponse &b);
+void swap(GetApplicationMessagesResponse &a, GetApplicationMessagesResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMessagesResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationMessagesResponse& obj)
 {
   obj.printTo(out);
   return out;
