@@ -208,7 +208,7 @@ struct User
     /** A Person can be more than one thing at once. By default, we assume a developer. */
     4: set<Role> roles = [ Role.DEVELOPER ];
     5: optional Image profileImage;
-    6: optional string profileImageLink;
+    6: optional uuid profileImageLink;
     7: optional string githubProfile;
     8: optional string firstName;
     9: optional string middleName;
@@ -243,6 +243,7 @@ struct Application
     11: optional Tier tier = Tier.FREE;
     /** The time the App's token will expire. */
     12: timestamp timeOfTokenExpiration;
+    13: optional uuid applicationIconMediaId;
 }
 
 /**

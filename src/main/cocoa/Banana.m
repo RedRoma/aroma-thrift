@@ -2285,7 +2285,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (Banana_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined
 {
   self = [super init];
   __email = [email retain_stub];
@@ -3095,7 +3095,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration applicationIconMediaId: (Banana_uuid) applicationIconMediaId
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -3122,6 +3122,8 @@
   __tier_isset = YES;
   __timeOfTokenExpiration = timeOfTokenExpiration;
   __timeOfTokenExpiration_isset = YES;
+  __applicationIconMediaId = [applicationIconMediaId retain_stub];
+  __applicationIconMediaId_isset = YES;
   return self;
 }
 
@@ -3188,6 +3190,11 @@
     __timeOfTokenExpiration = [decoder decodeInt64ForKey: @"timeOfTokenExpiration"];
     __timeOfTokenExpiration_isset = YES;
   }
+  if ([decoder containsValueForKey: @"applicationIconMediaId"])
+  {
+    __applicationIconMediaId = [[decoder decodeObjectForKey: @"applicationIconMediaId"] retain_stub];
+    __applicationIconMediaId_isset = YES;
+  }
   return self;
 }
 
@@ -3240,6 +3247,10 @@
   if (__timeOfTokenExpiration_isset)
   {
     [encoder encodeInt64: __timeOfTokenExpiration forKey: @"timeOfTokenExpiration"];
+  }
+  if (__applicationIconMediaId_isset)
+  {
+    [encoder encodeObject: __applicationIconMediaId forKey: @"applicationIconMediaId"];
   }
 }
 
@@ -3306,6 +3317,11 @@
   {
     hash = (hash * 31) ^ [@(__timeOfTokenExpiration) hash];
   }
+  hash = (hash * 31) ^ __applicationIconMediaId_isset ? 2654435761 : 0;
+  if (__applicationIconMediaId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationIconMediaId hash];
+  }
   return hash;
 }
 
@@ -3366,6 +3382,10 @@
       (__timeOfTokenExpiration_isset && (__timeOfTokenExpiration != other->__timeOfTokenExpiration))) {
     return NO;
   }
+  if ((__applicationIconMediaId_isset != other->__applicationIconMediaId_isset) ||
+      (__applicationIconMediaId_isset && ((__applicationIconMediaId || other->__applicationIconMediaId) && ![__applicationIconMediaId isEqual:other->__applicationIconMediaId]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3378,6 +3398,7 @@
   [__followers release_stub];
   [__applicationDescription release_stub];
   [__organizationId release_stub];
+  [__applicationIconMediaId release_stub];
   [super dealloc_stub];
 }
 
@@ -3613,6 +3634,27 @@
   __timeOfTokenExpiration_isset = NO;
 }
 
+- (NSString *) applicationIconMediaId {
+  return [[__applicationIconMediaId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationIconMediaId: (NSString *) applicationIconMediaId {
+  [applicationIconMediaId retain_stub];
+  [__applicationIconMediaId release_stub];
+  __applicationIconMediaId = applicationIconMediaId;
+  __applicationIconMediaId_isset = YES;
+}
+
+- (BOOL) applicationIconMediaIdIsSet {
+  return __applicationIconMediaId_isset;
+}
+
+- (void) unsetApplicationIconMediaId {
+  [__applicationIconMediaId release_stub];
+  __applicationIconMediaId = nil;
+  __applicationIconMediaId_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3746,6 +3788,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 13:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationIconMediaId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3849,6 +3899,13 @@
     [outProtocol writeI64: __timeOfTokenExpiration];
     [outProtocol writeFieldEnd];
   }
+  if (__applicationIconMediaId_isset) {
+    if (__applicationIconMediaId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationIconMediaId" type: TType_STRING fieldID: 13];
+      [outProtocol writeString: __applicationIconMediaId];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3883,6 +3940,8 @@
   [ms appendFormat: @"%i", __tier];
   [ms appendString: @",timeOfTokenExpiration:"];
   [ms appendFormat: @"%qi", __timeOfTokenExpiration];
+  [ms appendString: @",applicationIconMediaId:"];
+  [ms appendFormat: @"\"%@\"", __applicationIconMediaId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

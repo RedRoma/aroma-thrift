@@ -457,7 +457,7 @@ typedef NSString * Banana_uuid;
   NSString * __name;
   NSMutableSet * __roles;
   Banana_Image * __profileImage;
-  NSString * __profileImageLink;
+  Banana_uuid __profileImageLink;
   NSString * __githubProfile;
   NSString * __firstName;
   NSString * __middleName;
@@ -485,7 +485,7 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
 @property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
-@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) NSString * profileImageLink;
+@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) Banana_uuid profileImageLink;
 @property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
 @property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
 @property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
@@ -495,7 +495,7 @@ typedef NSString * Banana_uuid;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (NSString *) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined;
+- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (Banana_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -533,8 +533,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) profileImageIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) profileImageLink;
-- (void) setProfileImageLink: (NSString *) profileImageLink;
+- (Banana_uuid) profileImageLink;
+- (void) setProfileImageLink: (Banana_uuid) profileImageLink;
 #endif
 - (BOOL) profileImageLinkIsSet;
 
@@ -589,6 +589,7 @@ typedef NSString * Banana_uuid;
   Banana_uuid __organizationId;
   int __tier;
   Banana_timestamp __timeOfTokenExpiration;
+  Banana_uuid __applicationIconMediaId;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -602,6 +603,7 @@ typedef NSString * Banana_uuid;
   BOOL __organizationId_isset;
   BOOL __tier_isset;
   BOOL __timeOfTokenExpiration_isset;
+  BOOL __applicationIconMediaId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -617,10 +619,11 @@ typedef NSString * Banana_uuid;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
 @property (nonatomic, getter=timeOfTokenExpiration, setter=setTimeOfTokenExpiration:) Banana_timestamp timeOfTokenExpiration;
+@property (nonatomic, retain, getter=applicationIconMediaId, setter=setApplicationIconMediaId:) Banana_uuid applicationIconMediaId;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration applicationIconMediaId: (Banana_uuid) applicationIconMediaId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -698,6 +701,12 @@ typedef NSString * Banana_uuid;
 - (void) setTimeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration;
 #endif
 - (BOOL) timeOfTokenExpirationIsSet;
+
+#if !__has_feature(objc_arc)
+- (Banana_uuid) applicationIconMediaId;
+- (void) setApplicationIconMediaId: (Banana_uuid) applicationIconMediaId;
+#endif
+- (BOOL) applicationIconMediaIdIsSet;
 
 @end
 

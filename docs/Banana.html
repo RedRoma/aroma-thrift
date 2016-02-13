@@ -407,7 +407,7 @@ body can then be loaded in a separate request.
 <tr><td>4</td><td>roles</td><td><code>set&lt;<code><a href="#Enum_Role">Role</a></code>&gt;</code></td><td>A Person can be more than one thing at once. By default, we assume a developer.
 </td><td>default</td><td><code>{ <code><a href="#Const_Role.DEVELOPER">Role.DEVELOPER</a></code> }</code></td></tr>
 <tr><td>5</td><td>profileImage</td><td><code><a href="#Struct_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>6</td><td>profileImageLink</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>profileImageLink</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>githubProfile</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>8</td><td>firstName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>9</td><td>middleName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
@@ -437,6 +437,7 @@ have been counted so far for the Application
 <tr><td>11</td><td>tier</td><td><code><a href="#Enum_Tier">Tier</a></code></td><td></td><td>optional</td><td><code><code><a href="#Const_Tier.FREE">Tier.FREE</a></code></code></td></tr>
 <tr><td>12</td><td>timeOfTokenExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td>The time the App's token will expire.
 </td><td>default</td><td></td></tr>
+<tr><td>13</td><td>applicationIconMediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ServiceAnnouncement">Struct: ServiceAnnouncement</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>

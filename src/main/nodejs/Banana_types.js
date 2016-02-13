@@ -1022,6 +1022,7 @@ Application = module.exports.Application = function(args) {
   this.organizationId = null;
   this.tier = 0;
   this.timeOfTokenExpiration = null;
+  this.applicationIconMediaId = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [null]);
@@ -1058,6 +1059,9 @@ Application = module.exports.Application = function(args) {
     }
     if (args.timeOfTokenExpiration !== undefined && args.timeOfTokenExpiration !== null) {
       this.timeOfTokenExpiration = args.timeOfTokenExpiration;
+    }
+    if (args.applicationIconMediaId !== undefined && args.applicationIconMediaId !== null) {
+      this.applicationIconMediaId = args.applicationIconMediaId;
     }
   }
 };
@@ -1186,6 +1190,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 13:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationIconMediaId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1273,6 +1284,11 @@ Application.prototype.write = function(output) {
   if (this.timeOfTokenExpiration !== null && this.timeOfTokenExpiration !== undefined) {
     output.writeFieldBegin('timeOfTokenExpiration', Thrift.Type.I64, 12);
     output.writeI64(this.timeOfTokenExpiration);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIconMediaId !== null && this.applicationIconMediaId !== undefined) {
+    output.writeFieldBegin('applicationIconMediaId', Thrift.Type.STRING, 13);
+    output.writeString(this.applicationIconMediaId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

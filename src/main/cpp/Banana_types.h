@@ -569,7 +569,7 @@ class User {
   std::string name;
   std::set<Role::type>  roles;
   Image profileImage;
-  std::string profileImageLink;
+  uuid profileImageLink;
   std::string githubProfile;
   std::string firstName;
   std::string middleName;
@@ -589,7 +589,7 @@ class User {
 
   void __set_profileImage(const Image& val);
 
-  void __set_profileImageLink(const std::string& val);
+  void __set_profileImageLink(const uuid& val);
 
   void __set_githubProfile(const std::string& val);
 
@@ -670,7 +670,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false), applicationIconMediaId(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -683,6 +683,7 @@ typedef struct _Application__isset {
   bool organizationId :1;
   bool tier :1;
   bool timeOfTokenExpiration :1;
+  bool applicationIconMediaId :1;
 } _Application__isset;
 
 class Application {
@@ -690,7 +691,7 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0), timeOfTokenExpiration(0) {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0), timeOfTokenExpiration(0), applicationIconMediaId() {
 
     tier = (Tier::type)0;
 
@@ -709,6 +710,7 @@ class Application {
   uuid organizationId;
   Tier::type tier;
   timestamp timeOfTokenExpiration;
+  uuid applicationIconMediaId;
 
   _Application__isset __isset;
 
@@ -735,6 +737,8 @@ class Application {
   void __set_tier(const Tier::type val);
 
   void __set_timeOfTokenExpiration(const timestamp val);
+
+  void __set_applicationIconMediaId(const uuid& val);
 
   bool operator == (const Application & rhs) const
   {
@@ -769,6 +773,10 @@ class Application {
     else if (__isset.tier && !(tier == rhs.tier))
       return false;
     if (!(timeOfTokenExpiration == rhs.timeOfTokenExpiration))
+      return false;
+    if (__isset.applicationIconMediaId != rhs.__isset.applicationIconMediaId)
+      return false;
+    else if (__isset.applicationIconMediaId && !(applicationIconMediaId == rhs.applicationIconMediaId))
       return false;
     return true;
   }

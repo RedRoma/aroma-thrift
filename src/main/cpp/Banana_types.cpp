@@ -1176,7 +1176,7 @@ void User::__set_profileImage(const Image& val) {
 __isset.profileImage = true;
 }
 
-void User::__set_profileImageLink(const std::string& val) {
+void User::__set_profileImageLink(const uuid& val) {
   this->profileImageLink = val;
 __isset.profileImageLink = true;
 }
@@ -1553,6 +1553,11 @@ void Application::__set_timeOfTokenExpiration(const timestamp val) {
   this->timeOfTokenExpiration = val;
 }
 
+void Application::__set_applicationIconMediaId(const uuid& val) {
+  this->applicationIconMediaId = val;
+__isset.applicationIconMediaId = true;
+}
+
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1700,6 +1705,14 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 13:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationIconMediaId);
+          this->__isset.applicationIconMediaId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1785,6 +1798,11 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
   xfer += oprot->writeI64(this->timeOfTokenExpiration);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.applicationIconMediaId) {
+    xfer += oprot->writeFieldBegin("applicationIconMediaId", ::apache::thrift::protocol::T_STRING, 13);
+    xfer += oprot->writeString(this->applicationIconMediaId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1804,6 +1822,7 @@ void swap(Application &a, Application &b) {
   swap(a.organizationId, b.organizationId);
   swap(a.tier, b.tier);
   swap(a.timeOfTokenExpiration, b.timeOfTokenExpiration);
+  swap(a.applicationIconMediaId, b.applicationIconMediaId);
   swap(a.__isset, b.__isset);
 }
 
@@ -1820,6 +1839,7 @@ Application::Application(const Application& other47) {
   organizationId = other47.organizationId;
   tier = other47.tier;
   timeOfTokenExpiration = other47.timeOfTokenExpiration;
+  applicationIconMediaId = other47.applicationIconMediaId;
   __isset = other47.__isset;
 }
 Application& Application::operator=(const Application& other48) {
@@ -1835,6 +1855,7 @@ Application& Application::operator=(const Application& other48) {
   organizationId = other48.organizationId;
   tier = other48.tier;
   timeOfTokenExpiration = other48.timeOfTokenExpiration;
+  applicationIconMediaId = other48.applicationIconMediaId;
   __isset = other48.__isset;
   return *this;
 }
@@ -1853,6 +1874,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "organizationId=" << to_string(organizationId);
   out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
   out << ", " << "timeOfTokenExpiration=" << to_string(timeOfTokenExpiration);
+  out << ", " << "applicationIconMediaId="; (__isset.applicationIconMediaId ? (out << to_string(applicationIconMediaId)) : (out << "<null>"));
   out << ")";
 }
 
