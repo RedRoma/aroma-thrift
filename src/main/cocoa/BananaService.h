@@ -138,6 +138,67 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
+@interface BananaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_uuid __applicationId;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_uuid) applicationId;
+- (void) setApplicationId: (BananaService_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+@end
+
+@interface BananaService_DeleteApplicationResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
 @interface BananaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
   BananaService_uuid __messageId;

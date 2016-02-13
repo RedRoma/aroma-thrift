@@ -20,7 +20,7 @@ var BananaService_ttypes = require('./BananaService_types')
 var ttypes = module.exports = {};
 ttypes.SERVICE_PORT = 7011;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'message-srv.banana.aroma.tech','port' : 7011});
+'port' : 7011,'hostname' : 'message-srv.banana.aroma.tech'});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'message-srv.beta.banana.aroma.tech','port' : 7011});
 ttypes.DEFAULT_MESSAGE_LIFETIME = new Banana_ttypes.LengthOfTime({

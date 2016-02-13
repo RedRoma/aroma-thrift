@@ -119,6 +119,17 @@ struct CheckExistsResponse
     2: optional string message;
 }
 
+struct DeleteApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+}
+
+struct DeleteApplicationResponse
+{
+    1: optional string message = "Success";
+}
+
 /**
  * Deletes a Message.
  * 

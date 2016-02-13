@@ -232,6 +232,8 @@ code { line-height: 20px; }
 <a href="#Struct_CheckExistsRequest">CheckExistsRequest</a><br/>
 <a href="#Struct_CheckExistsResponse">CheckExistsResponse</a><br/>
 <a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a><br/>
+<a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a><br/>
 <a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a><br/>
 <a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a><br/>
 <a href="#Struct_DismissMessageRequest">DismissMessageRequest</a><br/>
@@ -412,6 +414,13 @@ getFullMessage() operation.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>exists</td><td><code>bool</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteApplicationRequest">Struct: DeleteApplicationRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_DeleteApplicationResponse">Struct: DeleteApplicationResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Success"</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_DeleteMessageRequest">Struct: DeleteMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>

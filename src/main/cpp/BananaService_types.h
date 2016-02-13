@@ -81,6 +81,10 @@ class CheckExistsRequest;
 
 class CheckExistsResponse;
 
+class DeleteApplicationRequest;
+
+class DeleteApplicationResponse;
+
 class DeleteMessageRequest;
 
 class DeleteMessageResponse;
@@ -268,6 +272,106 @@ class CheckExistsResponse {
 void swap(CheckExistsResponse &a, CheckExistsResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const CheckExistsResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteApplicationRequest__isset {
+  _DeleteApplicationRequest__isset() : token(false), applicationId(false) {}
+  bool token :1;
+  bool applicationId :1;
+} _DeleteApplicationRequest__isset;
+
+class DeleteApplicationRequest {
+ public:
+
+  DeleteApplicationRequest(const DeleteApplicationRequest&);
+  DeleteApplicationRequest& operator=(const DeleteApplicationRequest&);
+  DeleteApplicationRequest() : applicationId() {
+  }
+
+  virtual ~DeleteApplicationRequest() throw();
+  UserToken token;
+  uuid applicationId;
+
+  _DeleteApplicationRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_applicationId(const uuid& val);
+
+  bool operator == (const DeleteApplicationRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteApplicationRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteApplicationRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteApplicationRequest &a, DeleteApplicationRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteApplicationRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _DeleteApplicationResponse__isset {
+  _DeleteApplicationResponse__isset() : message(true) {}
+  bool message :1;
+} _DeleteApplicationResponse__isset;
+
+class DeleteApplicationResponse {
+ public:
+
+  DeleteApplicationResponse(const DeleteApplicationResponse&);
+  DeleteApplicationResponse& operator=(const DeleteApplicationResponse&);
+  DeleteApplicationResponse() : message("Success") {
+  }
+
+  virtual ~DeleteApplicationResponse() throw();
+  std::string message;
+
+  _DeleteApplicationResponse__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const DeleteApplicationResponse & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const DeleteApplicationResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DeleteApplicationResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DeleteApplicationResponse &a, DeleteApplicationResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DeleteApplicationResponse& obj)
 {
   obj.printTo(out);
   return out;
@@ -1487,10 +1591,10 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp66;
-    tmp66 = 4LL;
+     ::aroma::banana::thrift::long tmp70;
+    tmp70 = 4LL;
 
-    lengthOfTime.value = tmp66;
+    lengthOfTime.value = tmp70;
     lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
 
   }
