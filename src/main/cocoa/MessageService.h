@@ -77,9 +77,13 @@ typedef BananaService_DismissMessageRequest * MessageService_DismissMessageReque
 
 typedef BananaService_DismissMessageResponse * MessageService_DismissMessageResponse;
 
-typedef MessageService_BananaService.GetMessagesRequest MessageService_GetMessagesRequest;
+typedef BananaService_GetApplicationMessagesRequest * MessageService_GetApplicationMessagesRequest;
 
-typedef MessageService_BananaService.GetMessagesResponse MessageService_GetMessagesResponse;
+typedef BananaService_GetApplicationMessagesResponse * MessageService_GetApplicationMessagesResponse;
+
+typedef BananaService_GetInboxRequest * MessageService_GetInboxRequest;
+
+typedef BananaService_GetInboxResponse * MessageService_GetInboxResponse;
 
 typedef BananaService_GetFullMessageRequest * MessageService_GetFullMessageRequest;
 

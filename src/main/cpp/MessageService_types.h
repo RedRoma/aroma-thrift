@@ -77,9 +77,13 @@ typedef class  ::aroma::banana::thrift::service::DismissMessageRequest DismissMe
 
 typedef class  ::aroma::banana::thrift::service::DismissMessageResponse DismissMessageResponse;
 
-typedef BananaService.GetMessagesRequest GetMessagesRequest;
+typedef class  ::aroma::banana::thrift::service::GetApplicationMessagesRequest GetApplicationMessagesRequest;
 
-typedef BananaService.GetMessagesResponse GetMessagesResponse;
+typedef class  ::aroma::banana::thrift::service::GetApplicationMessagesResponse GetApplicationMessagesResponse;
+
+typedef class  ::aroma::banana::thrift::service::GetInboxRequest GetInboxRequest;
+
+typedef class  ::aroma::banana::thrift::service::GetInboxResponse GetInboxResponse;
 
 typedef class  ::aroma::banana::thrift::service::GetFullMessageRequest GetFullMessageRequest;
 
