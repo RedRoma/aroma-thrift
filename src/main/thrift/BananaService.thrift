@@ -57,6 +57,7 @@ typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegis
 typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
+typedef Exceptions.DoesNotExistException DoesNotExistException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.InvalidTokenException InvalidTokenException
@@ -472,6 +473,18 @@ struct GetFullMessageResponse
     1: Banana.Message fullMessage;
 }
 
+struct GetMediaRequest
+{
+    1: UserToken token;
+    2: uuid mediaId;
+}
+
+struct GetMediaResponse
+{
+    //For now only Images are supported
+    1: Banana.Image image;
+}
+
 struct GetMyApplicationsRequest
 {
     1: UserToken token;
@@ -739,7 +752,8 @@ service BananaService
      GetApplicationMessagesResponse getApplicationMessages(1 : GetApplicationMessagesRequest request)throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
                                                                                                             3 : InvalidTokenException ex3,
-                                                                                                            4 : UnauthorizedException ex4);
+                                                                                                            4 : UnauthorizedException ex4,
+                                                                                                            5: ApplicationDoesNotExistException ex5);
 
     /**
      * Get Messages in a User's Inbox
@@ -755,8 +769,14 @@ service BananaService
     GetFullMessageResponse getFullMessage(1 : GetFullMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3);
-    
-    
+
+
+    /** Request to get Media stored by the Aroma Service. */
+    GetMediaResponse getMedia(1 : GetMediaRequest request) throws(1 : OperationFailedException ex1,
+                                                                  2 : InvalidArgumentException ex2,
+                                                                  3 : InvalidTokenException ex3,
+                                                                  4 : DoesNotExistException ex4,
+                                                                  5 : UnauthorizedException ex5); 
     
     GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,

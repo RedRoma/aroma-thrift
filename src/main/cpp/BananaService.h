@@ -152,6 +152,13 @@ class BananaServiceIf {
    * @param request
    */
   virtual void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) = 0;
+
+  /**
+   * Request to get Media stored by the Aroma Service.
+   * 
+   * @param request
+   */
+  virtual void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) = 0;
   virtual void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
   virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
@@ -252,6 +259,9 @@ class BananaServiceNull : virtual public BananaServiceIf {
     return;
   }
   void getFullMessage(GetFullMessageResponse& /* _return */, const GetFullMessageRequest& /* request */) {
+    return;
+  }
+  void getMedia(GetMediaResponse& /* _return */, const GetMediaRequest& /* request */) {
     return;
   }
   void getMyApplications(GetMyApplicationsResponse& /* _return */, const GetMyApplicationsRequest& /* request */) {
@@ -2666,12 +2676,13 @@ class BananaService_getApplicationMessages_pargs {
 };
 
 typedef struct _BananaService_getApplicationMessages_result__isset {
-  _BananaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
+  bool ex5 :1;
 } _BananaService_getApplicationMessages_result__isset;
 
 class BananaService_getApplicationMessages_result {
@@ -2688,6 +2699,7 @@ class BananaService_getApplicationMessages_result {
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   UnauthorizedException ex4;
+  ApplicationDoesNotExistException ex5;
 
   _BananaService_getApplicationMessages_result__isset __isset;
 
@@ -2701,6 +2713,8 @@ class BananaService_getApplicationMessages_result {
 
   void __set_ex4(const UnauthorizedException& val);
 
+  void __set_ex5(const ApplicationDoesNotExistException& val);
+
   bool operator == (const BananaService_getApplicationMessages_result & rhs) const
   {
     if (!(success == rhs.success))
@@ -2712,6 +2726,8 @@ class BananaService_getApplicationMessages_result {
     if (!(ex3 == rhs.ex3))
       return false;
     if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
       return false;
     return true;
   }
@@ -2727,12 +2743,13 @@ class BananaService_getApplicationMessages_result {
 };
 
 typedef struct _BananaService_getApplicationMessages_presult__isset {
-  _BananaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+  _BananaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
+  bool ex5 :1;
 } _BananaService_getApplicationMessages_presult__isset;
 
 class BananaService_getApplicationMessages_presult {
@@ -2745,6 +2762,7 @@ class BananaService_getApplicationMessages_presult {
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   UnauthorizedException* ex4;
+  ApplicationDoesNotExistException* ex5;
 
   _BananaService_getApplicationMessages_presult__isset __isset;
 
@@ -3003,6 +3021,150 @@ class BananaService_getFullMessage_presult {
   InvalidTokenException* ex3;
 
   _BananaService_getFullMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _BananaService_getMedia_args__isset {
+  _BananaService_getMedia_args__isset() : request(false) {}
+  bool request :1;
+} _BananaService_getMedia_args__isset;
+
+class BananaService_getMedia_args {
+ public:
+
+  BananaService_getMedia_args(const BananaService_getMedia_args&);
+  BananaService_getMedia_args& operator=(const BananaService_getMedia_args&);
+  BananaService_getMedia_args() {
+  }
+
+  virtual ~BananaService_getMedia_args() throw();
+  GetMediaRequest request;
+
+  _BananaService_getMedia_args__isset __isset;
+
+  void __set_request(const GetMediaRequest& val);
+
+  bool operator == (const BananaService_getMedia_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMedia_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMedia_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class BananaService_getMedia_pargs {
+ public:
+
+
+  virtual ~BananaService_getMedia_pargs() throw();
+  const GetMediaRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMedia_result__isset {
+  _BananaService_getMedia_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_getMedia_result__isset;
+
+class BananaService_getMedia_result {
+ public:
+
+  BananaService_getMedia_result(const BananaService_getMedia_result&);
+  BananaService_getMedia_result& operator=(const BananaService_getMedia_result&);
+  BananaService_getMedia_result() {
+  }
+
+  virtual ~BananaService_getMedia_result() throw();
+  GetMediaResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  DoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _BananaService_getMedia_result__isset __isset;
+
+  void __set_success(const GetMediaResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const DoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const BananaService_getMedia_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const BananaService_getMedia_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const BananaService_getMedia_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _BananaService_getMedia_presult__isset {
+  _BananaService_getMedia_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _BananaService_getMedia_presult__isset;
+
+class BananaService_getMedia_presult {
+ public:
+
+
+  virtual ~BananaService_getMedia_presult() throw();
+  GetMediaResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  DoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _BananaService_getMedia_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3629,6 +3791,9 @@ class BananaServiceClient : virtual public BananaServiceIf {
   void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
   void send_getFullMessage(const GetFullMessageRequest& request);
   void recv_getFullMessage(GetFullMessageResponse& _return);
+  void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
+  void send_getMedia(const GetMediaRequest& request);
+  void recv_getMedia(GetMediaResponse& _return);
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
   void send_getMyApplications(const GetMyApplicationsRequest& request);
   void recv_getMyApplications(GetMyApplicationsResponse& _return);
@@ -3676,6 +3841,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3703,6 +3869,7 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getApplicationMessages"] = &BananaServiceProcessor::process_getApplicationMessages;
     processMap_["getInbox"] = &BananaServiceProcessor::process_getInbox;
     processMap_["getFullMessage"] = &BananaServiceProcessor::process_getFullMessage;
+    processMap_["getMedia"] = &BananaServiceProcessor::process_getMedia;
     processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
     processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
     processMap_["getUserInfo"] = &BananaServiceProcessor::process_getUserInfo;
@@ -3934,6 +4101,16 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
     return;
   }
 
+  void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getMedia(_return, request);
+    }
+    ifaces_[i]->getMedia(_return, request);
+    return;
+  }
+
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -4064,6 +4241,9 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request);
   int32_t send_getFullMessage(const GetFullMessageRequest& request);
   void recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid);
+  void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
+  int32_t send_getMedia(const GetMediaRequest& request);
+  void recv_getMedia(GetMediaResponse& _return, const int32_t seqid);
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
   int32_t send_getMyApplications(const GetMyApplicationsRequest& request);
   void recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid);

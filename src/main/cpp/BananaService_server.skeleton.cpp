@@ -218,6 +218,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getFullMessage\n");
   }
 
+  /**
+   * Request to get Media stored by the Aroma Service.
+   * 
+   * @param request
+   */
+  void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) {
+    // Your implementation goes here
+    printf("getMedia\n");
+  }
+
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
     // Your implementation goes here
     printf("getMyApplications\n");

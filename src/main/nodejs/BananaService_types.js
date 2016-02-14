@@ -3402,6 +3402,127 @@ GetFullMessageResponse.prototype.write = function(output) {
     return;
   };
 
+GetMediaRequest = module.exports.GetMediaRequest = function(args) {
+    this.token = null;
+    this.mediaId = null;
+    if (args) {
+        if (args.token !== undefined && args.token !== null) {
+            this.token = new Authentication_ttypes.UserToken(args.token);
+        }
+        if (args.mediaId !== undefined && args.mediaId !== null) {
+            this.mediaId = args.mediaId;
+        }
+    }
+};
+GetMediaRequest.prototype = {};
+GetMediaRequest.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.token = new Authentication_ttypes.UserToken();
+          this.token.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 2:
+        if (ftype == Thrift.Type.STRING) {
+          this.mediaId = input.readString();
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetMediaRequest.prototype.write = function(output) {
+    output.writeStructBegin('GetMediaRequest');
+    if (this.token !== null && this.token !== undefined) {
+      output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+      this.token.write(output);
+      output.writeFieldEnd();
+    }
+    if (this.mediaId !== null && this.mediaId !== undefined) {
+      output.writeFieldBegin('mediaId', Thrift.Type.STRING, 2);
+      output.writeString(this.mediaId);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
+GetMediaResponse = module.exports.GetMediaResponse = function(args) {
+    this.image = null;
+    if (args) {
+        if (args.image !== undefined && args.image !== null) {
+            this.image = new Banana_ttypes.Image(args.image);
+        }
+    }
+};
+GetMediaResponse.prototype = {};
+GetMediaResponse.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.image = new Banana_ttypes.Image();
+          this.image.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 0:
+          input.skip(ftype);
+          break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+GetMediaResponse.prototype.write = function(output) {
+    output.writeStructBegin('GetMediaResponse');
+    if (this.image !== null && this.image !== undefined) {
+      output.writeFieldBegin('image', Thrift.Type.STRUCT, 1);
+      this.image.write(output);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
 GetMyApplicationsRequest = module.exports.GetMyApplicationsRequest = function(args) {
     this.token = null;
     if (args) {

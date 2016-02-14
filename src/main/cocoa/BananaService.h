@@ -63,6 +63,8 @@ typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoes
 
 typedef BananaException_CustomChannelUnreachableException * BananaService_CustomChannelUnreachableException;
 
+typedef BananaException_DoesNotExistException * BananaService_DoesNotExistException;
+
 typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
 
 typedef BananaException_InvalidCredentialsException * BananaService_InvalidCredentialsException;
@@ -1711,6 +1713,67 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
+@interface BananaService_GetMediaRequest : NSObject <TBase, NSCoding> {
+  BananaService_UserToken __token;
+  BananaService_uuid __mediaId;
+
+  BOOL __token_isset;
+  BOOL __mediaId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=mediaId, setter=setMediaId:) BananaService_uuid mediaId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (BananaService_UserToken) token mediaId: (BananaService_uuid) mediaId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaService_UserToken) token;
+- (void) setToken: (BananaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaService_uuid) mediaId;
+- (void) setMediaId: (BananaService_uuid) mediaId;
+#endif
+- (BOOL) mediaIdIsSet;
+
+@end
+
+@interface BananaService_GetMediaResponse : NSObject <TBase, NSCoding> {
+  Banana_Image * __image;
+
+  BOOL __image_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=image, setter=setImage:) Banana_Image * image;
+#endif
+
+- (id) init;
+- (id) initWithImage: (Banana_Image *) image;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (Banana_Image *) image;
+- (void) setImage: (Banana_Image *) image;
+#endif
+- (BOOL) imageIsSet;
+
+@end
+
 @interface BananaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
   BananaService_UserToken __token;
 
@@ -2086,9 +2149,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetBuzzResponse *) getBuzz: (BananaService_GetBuzzRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetApplicationMessagesResponse *) getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, TException
+- (BananaService_GetApplicationMessagesResponse *) getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_ApplicationDoesNotExistException, TException
 - (BananaService_GetInboxResponse *) getInbox: (BananaService_GetInboxRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetFullMessageResponse *) getFullMessage: (BananaService_GetFullMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
+- (BananaService_GetMediaResponse *) getMedia: (BananaService_GetMediaRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_DoesNotExistException, BananaService_UnauthorizedException, TException
 - (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
 - (BananaService_GetUserInfoResponse *) getUserInfo: (BananaService_GetUserInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_UserDoesNotExistException, TException

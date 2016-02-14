@@ -63,6 +63,8 @@ typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException
 
 typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
 
+typedef class  ::aroma::banana::thrift::exceptions::DoesNotExistException DoesNotExistException;
+
 typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
 typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
@@ -156,6 +158,10 @@ class GetApplicationMessagesResponse;
 class GetFullMessageRequest;
 
 class GetFullMessageResponse;
+
+class GetMediaRequest;
+
+class GetMediaResponse;
 
 class GetMyApplicationsRequest;
 
@@ -2485,6 +2491,104 @@ class GetFullMessageResponse {
 void swap(GetFullMessageResponse &a, GetFullMessageResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const GetFullMessageResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMediaRequest__isset {
+  _GetMediaRequest__isset() : token(false), mediaId(false) {}
+  bool token :1;
+  bool mediaId :1;
+} _GetMediaRequest__isset;
+
+class GetMediaRequest {
+ public:
+
+  GetMediaRequest(const GetMediaRequest&);
+  GetMediaRequest& operator=(const GetMediaRequest&);
+  GetMediaRequest() : mediaId() {
+  }
+
+  virtual ~GetMediaRequest() throw();
+  UserToken token;
+  uuid mediaId;
+
+  _GetMediaRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_mediaId(const uuid& val);
+
+  bool operator == (const GetMediaRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(mediaId == rhs.mediaId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMediaRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMediaRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMediaRequest &a, GetMediaRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMediaRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetMediaResponse__isset {
+  _GetMediaResponse__isset() : image(false) {}
+  bool image :1;
+} _GetMediaResponse__isset;
+
+class GetMediaResponse {
+ public:
+
+  GetMediaResponse(const GetMediaResponse&);
+  GetMediaResponse& operator=(const GetMediaResponse&);
+  GetMediaResponse() {
+  }
+
+  virtual ~GetMediaResponse() throw();
+   ::aroma::banana::thrift::Image image;
+
+  _GetMediaResponse__isset __isset;
+
+  void __set_image(const  ::aroma::banana::thrift::Image& val);
+
+  bool operator == (const GetMediaResponse & rhs) const
+  {
+    if (!(image == rhs.image))
+      return false;
+    return true;
+  }
+  bool operator != (const GetMediaResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetMediaResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetMediaResponse &a, GetMediaResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetMediaResponse& obj)
 {
   obj.printTo(out);
   return out;
