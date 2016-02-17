@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.notification.service
+namespace java  tech.aroma.thrift.notification.service
 namespace cocoa NotificationService_
-namespace cpp   aroma.banana.thrift.notification.service
+namespace cpp   aroma.thrift.notification.service
 
 /*
  * Defined in this File is the Notification Service API.
@@ -29,7 +29,7 @@ typedef Aroma.uuid uuid;
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Aroma.Application Application
 typedef Aroma.Urgency Urgency
-typedef Channels.BananaChannel BananaChannel
+typedef Channels.AromaChannel AromaChannel
 typedef Events.Event Event
 
 //Exception Typedefs
@@ -46,9 +46,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7009;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 
 //==========================================================
@@ -58,7 +58,7 @@ struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
-    3: list<BananaChannel> channels;
+    3: list<AromaChannel> channels;
 }
 
 struct SendNotificationResponse

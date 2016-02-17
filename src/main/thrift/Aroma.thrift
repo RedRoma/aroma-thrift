@@ -1,10 +1,10 @@
 
-namespace java  tech.aroma.banana.thrift
-namespace cocoa Banana_
-namespace cpp   aroma.banana.thrift
+namespace java  tech.aroma.thrift
+namespace cocoa Aroma_
+namespace cpp   tech.aroma.thrift
 
 /*
- * Defined in this file are the basic structures and types used by the Banana Services.
+ * Defined in this file are the basic structures and types used by Aroma.
  * 
  * Note that Human, User, and Person are used interchangeably.
  */
@@ -247,7 +247,7 @@ struct Application
 }
 
 /**
- * Defines a Banana Service announcement.
+ * Defines an Aroma announcement.
  * Examples include:
  * + Going down for system maintenance
  * + Looking for feedback

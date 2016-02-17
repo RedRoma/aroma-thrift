@@ -6,12 +6,12 @@
  */
 #include "Events_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace events {
+namespace aroma { namespace thrift { namespace events {
 
 const EventsConstants g_Events_constants;
 
 EventsConstants::EventsConstants() {
 }
 
-}}}} // namespace
+}}} // namespace
 

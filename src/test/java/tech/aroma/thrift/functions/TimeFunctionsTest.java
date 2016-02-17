@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.functions;
+package tech.aroma.thrift.functions;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -23,8 +23,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import tech.aroma.banana.thrift.LengthOfTime;
-import tech.aroma.banana.thrift.TimeUnit;
+import tech.aroma.thrift.LengthOfTime;
+import tech.aroma.thrift.TimeUnit;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -32,9 +32,9 @@ import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
-import static tech.aroma.banana.thrift.TimeUnit.DAYS;
-import static tech.aroma.banana.thrift.TimeUnit.MINUTES;
-import static tech.aroma.banana.thrift.TimeUnit.SECONDS;
+import static tech.aroma.thrift.TimeUnit.DAYS;
+import static tech.aroma.thrift.TimeUnit.MINUTES;
+import static tech.aroma.thrift.TimeUnit.SECONDS;
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.generator.NumberGenerators.integers;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;

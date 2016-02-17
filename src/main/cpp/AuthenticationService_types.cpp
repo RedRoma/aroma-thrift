@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
+namespace aroma { namespace thrift { namespace authentication { namespace service {
 
 
 CreateTokenRequest::~CreateTokenRequest() throw() {
@@ -87,7 +87,7 @@ uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast0;
           xfer += iprot->readI32(ecast0);
-          this->desiredTokenType = ( ::aroma::banana::thrift::authentication::TokenType::type)ecast0;
+          this->desiredTokenType = ( ::aroma::thrift::authentication::TokenType::type)ecast0;
           this->__isset.desiredTokenType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -341,7 +341,7 @@ uint32_t GetTokenInfoRequest::read(::apache::thrift::protocol::TProtocol* iprot)
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast5;
           xfer += iprot->readI32(ecast5);
-          this->tokenType = ( ::aroma::banana::thrift::authentication::TokenType::type)ecast5;
+          this->tokenType = ( ::aroma::thrift::authentication::TokenType::type)ecast5;
           this->__isset.tokenType = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -919,4 +919,4 @@ void VerifyTokenResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

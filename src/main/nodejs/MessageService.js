@@ -14,6 +14,7 @@ var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 var ApplicationService_ttypes = require('./ApplicationService_types')
+var AromaService_ttypes = require('./AromaService_types')
 
 
 var ttypes = require('./MessageService_types');

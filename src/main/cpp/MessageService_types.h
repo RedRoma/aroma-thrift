@@ -22,72 +22,73 @@
 #include "Events_types.h"
 #include "Exceptions_types.h"
 #include "ApplicationService_types.h"
+#include "AromaService_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace message { namespace service {
+namespace aroma { namespace thrift { namespace message { namespace service {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+typedef class  ::aroma::thrift::authentication::ApplicationToken ApplicationToken;
 
-typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+typedef class  ::aroma::thrift::authentication::AuthenticationToken AuthenticationToken;
 
-typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
+typedef class  ::aroma::thrift::authentication::UserToken UserToken;
 
-typedef class  ::aroma::banana::thrift::Application Application;
+typedef class  ::tech::aroma::thrift::Application Application;
 
-typedef  ::aroma::banana::thrift::Urgency::type Urgency;
+typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
-typedef class  ::aroma::banana::thrift::events::Event Event;
+typedef class  ::aroma::thrift::events::Event Event;
 
-typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
+typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
+typedef class  ::aroma::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+typedef class  ::aroma::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
-typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
+typedef class  ::aroma::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+typedef class  ::aroma::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-typedef class  ::aroma::banana::thrift::application::service::SendMessageRequest SendMessageRequest;
+typedef class  ::aroma::thrift::application::service::SendMessageRequest SendMessageRequest;
 
-typedef class  ::aroma::banana::thrift::application::service::SendMessageResponse SendMessageResponse;
+typedef class  ::aroma::thrift::application::service::SendMessageResponse SendMessageResponse;
 
-typedef BananaService.DeleteMessageRequest DeleteMessageRequest;
+typedef class  ::aroma::thrift::service::DeleteMessageRequest DeleteMessageRequest;
 
-typedef BananaService.DeleteMessageResponse DeleteMessageResponse;
+typedef class  ::aroma::thrift::service::DeleteMessageResponse DeleteMessageResponse;
 
-typedef BananaService.DismissMessageRequest DismissMessageRequest;
+typedef class  ::aroma::thrift::service::DismissMessageRequest DismissMessageRequest;
 
-typedef BananaService.DismissMessageResponse DismissMessageResponse;
+typedef class  ::aroma::thrift::service::DismissMessageResponse DismissMessageResponse;
 
-typedef BananaService.GetApplicationMessagesRequest GetApplicationMessagesRequest;
+typedef class  ::aroma::thrift::service::GetApplicationMessagesRequest GetApplicationMessagesRequest;
 
-typedef BananaService.GetApplicationMessagesResponse GetApplicationMessagesResponse;
+typedef class  ::aroma::thrift::service::GetApplicationMessagesResponse GetApplicationMessagesResponse;
 
-typedef BananaService.GetInboxRequest GetInboxRequest;
+typedef class  ::aroma::thrift::service::GetInboxRequest GetInboxRequest;
 
-typedef BananaService.GetInboxResponse GetInboxResponse;
+typedef class  ::aroma::thrift::service::GetInboxResponse GetInboxResponse;
 
-typedef BananaService.GetFullMessageRequest GetFullMessageRequest;
+typedef class  ::aroma::thrift::service::GetFullMessageRequest GetFullMessageRequest;
 
-typedef BananaService.GetFullMessageResponse GetFullMessageResponse;
+typedef class  ::aroma::thrift::service::GetFullMessageResponse GetFullMessageResponse;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

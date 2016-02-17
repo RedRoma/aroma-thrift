@@ -6,7 +6,7 @@
  */
 #include "AuthenticationService.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
+namespace aroma { namespace thrift { namespace authentication { namespace service {
 
 
 AuthenticationService_getApiVersion_args::~AuthenticationService_getApiVersion_args() throw() {
@@ -2256,5 +2256,5 @@ void AuthenticationServiceConcurrentClient::recv_verifyToken(VerifyTokenResponse
   } // end while(true)
 }
 
-}}}}} // namespace
+}}}} // namespace
 

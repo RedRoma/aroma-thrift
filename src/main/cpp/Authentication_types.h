@@ -18,7 +18,7 @@
 #include "Aroma_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication {
+namespace aroma { namespace thrift { namespace authentication {
 
 struct TokenType {
   enum type {
@@ -29,13 +29,13 @@ struct TokenType {
 
 extern const std::map<int, const char*> _TokenType_VALUES_TO_NAMES;
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
 class ApplicationToken;
 
@@ -326,15 +326,15 @@ class AromaAccount {
 
   AromaAccount(const AromaAccount&);
   AromaAccount& operator=(const AromaAccount&);
-  AromaAccount() : email(), name(), role(( ::aroma::banana::thrift::Role::type)0) {
+  AromaAccount() : email(), name(), role(( ::tech::aroma::thrift::Role::type)0) {
   }
 
   virtual ~AromaAccount() throw();
   std::string email;
   Password password;
   std::string name;
-   ::aroma::banana::thrift::Image profileImage;
-   ::aroma::banana::thrift::Role::type role;
+   ::tech::aroma::thrift::Image profileImage;
+   ::tech::aroma::thrift::Role::type role;
 
   _AromaAccount__isset __isset;
 
@@ -344,9 +344,9 @@ class AromaAccount {
 
   void __set_name(const std::string& val);
 
-  void __set_profileImage(const  ::aroma::banana::thrift::Image& val);
+  void __set_profileImage(const  ::tech::aroma::thrift::Image& val);
 
-  void __set_role(const  ::aroma::banana::thrift::Role::type val);
+  void __set_role(const  ::tech::aroma::thrift::Role::type val);
 
   bool operator == (const AromaAccount & rhs) const
   {
@@ -524,6 +524,6 @@ inline std::ostream& operator<<(std::ostream& out, const AuthenticationToken& ob
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

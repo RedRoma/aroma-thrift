@@ -1,10 +1,10 @@
-namespace java  tech.aroma.banana.thrift.endpoint
-namespace cocoa BananaEndpoint_
-namespace cpp   aroma.banana.thrift.endpoint
+namespace java  tech.aroma.thrift.endpoint
+namespace cocoa AromaEndpoint_
+namespace cpp   aroma.thrift.endpoint
 
 /*
  * Defined in this File are names and verbs relating to Application Endpoints
- * that the Banana Service periodically "pokes" (polls) for Health Statuses.
+ * that Aroma periodically "pokes" (polls) for Health Statuses.
  */
 
 include "Authentication.thrift"
@@ -60,7 +60,7 @@ union Endpoint
 }
 
 /**
- * Sent by the Banana Service to an Application Endpoint
+ * Sent by Aroma to an Application Endpoint
  * to poke for health status.
  */
 struct HealthPokeRequest

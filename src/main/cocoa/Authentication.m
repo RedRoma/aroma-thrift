@@ -1266,7 +1266,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage role: (int) role
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role
 {
   self = [super init];
   __email = [email retain_stub];
@@ -1472,11 +1472,11 @@
   __name_isset = NO;
 }
 
-- (Banana_Image *) profileImage {
+- (Aroma_Image *) profileImage {
   return [[__profileImage retain_stub] autorelease_stub];
 }
 
-- (void) setProfileImage: (Banana_Image *) profileImage {
+- (void) setProfileImage: (Aroma_Image *) profileImage {
   [profileImage retain_stub];
   [__profileImage release_stub];
   __profileImage = profileImage;
@@ -1553,7 +1553,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setProfileImage: fieldValue];
           [fieldValue release_stub];

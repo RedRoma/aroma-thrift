@@ -23,61 +23,61 @@
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
-typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+typedef class  ::aroma::thrift::authentication::ApplicationToken ApplicationToken;
 
-typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+typedef class  ::aroma::thrift::authentication::AuthenticationToken AuthenticationToken;
 
-typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
+typedef class  ::aroma::thrift::authentication::UserToken UserToken;
 
-typedef class  ::aroma::banana::thrift::Application Application;
+typedef class  ::tech::aroma::thrift::Application Application;
 
-typedef class  ::aroma::banana::thrift::Image Image;
+typedef class  ::tech::aroma::thrift::Image Image;
 
-typedef  ::aroma::banana::thrift::Urgency::type Urgency;
+typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
-typedef class  ::aroma::banana::thrift::User User;
+typedef class  ::tech::aroma::thrift::User User;
 
-typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
+typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
-typedef class  ::aroma::banana::thrift::endpoint::Endpoint Endpoint;
+typedef class  ::aroma::thrift::endpoint::Endpoint Endpoint;
 
-typedef class  ::aroma::banana::thrift::events::HealthCheckFailed HealthCheckFailed;
+typedef class  ::aroma::thrift::events::HealthCheckFailed HealthCheckFailed;
 
-typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
+typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
+typedef class  ::aroma::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+typedef class  ::aroma::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
 
-typedef class  ::aroma::banana::thrift::exceptions::DoesNotExistException DoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::DoesNotExistException DoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
+typedef class  ::aroma::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+typedef class  ::aroma::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
-typedef class  ::aroma::banana::thrift::exceptions::MessageDoesNotExistException MessageDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::MessageDoesNotExistException MessageDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::UserDoesNotExistException UserDoesNotExistException;
 
 class CheckExistsRequest;
 
@@ -650,20 +650,20 @@ class ProvisionApplicationRequest {
 
   ProvisionApplicationRequest(const ProvisionApplicationRequest&);
   ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::aroma::banana::thrift::ProgrammingLanguage::type)0), organizationId(), applicationDescription(""), tier(( ::aroma::banana::thrift::Tier::type)0) {
-    tier = ( ::aroma::banana::thrift::Tier::type)0;
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::tech::aroma::thrift::ProgrammingLanguage::type)0), organizationId(), applicationDescription(""), tier(( ::tech::aroma::thrift::Tier::type)0) {
+    tier = ( ::tech::aroma::thrift::Tier::type)0;
 
   }
 
   virtual ~ProvisionApplicationRequest() throw();
   UserToken token;
   std::string applicationName;
-   ::aroma::banana::thrift::ProgrammingLanguage::type programmingLanguage;
+   ::tech::aroma::thrift::ProgrammingLanguage::type programmingLanguage;
   uuid organizationId;
   Image icon;
   std::set<uuid>  owners;
   std::string applicationDescription;
-   ::aroma::banana::thrift::Tier::type tier;
+   ::tech::aroma::thrift::Tier::type tier;
 
   _ProvisionApplicationRequest__isset __isset;
 
@@ -671,7 +671,7 @@ class ProvisionApplicationRequest {
 
   void __set_applicationName(const std::string& val);
 
-  void __set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val);
+  void __set_programmingLanguage(const  ::tech::aroma::thrift::ProgrammingLanguage::type val);
 
   void __set_organizationId(const uuid& val);
 
@@ -681,7 +681,7 @@ class ProvisionApplicationRequest {
 
   void __set_applicationDescription(const std::string& val);
 
-  void __set_tier(const  ::aroma::banana::thrift::Tier::type val);
+  void __set_tier(const  ::tech::aroma::thrift::Tier::type val);
 
   bool operator == (const ProvisionApplicationRequest & rhs) const
   {
@@ -1007,13 +1007,13 @@ class RemoveSavedChannelRequest {
 
   virtual ~RemoveSavedChannelRequest() throw();
   UserToken token;
-  BananaChannel channel;
+  AromaChannel channel;
 
   _RemoveSavedChannelRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   bool operator == (const RemoveSavedChannelRequest & rhs) const
   {
@@ -1059,13 +1059,13 @@ class RemoveSavedChannelResponse {
 
   virtual ~RemoveSavedChannelResponse() throw();
   std::string message;
-  BananaChannel channel;
+  AromaChannel channel;
 
   _RemoveSavedChannelResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   bool operator == (const RemoveSavedChannelResponse & rhs) const
   {
@@ -1116,7 +1116,7 @@ class RenewApplicationTokenRequest {
   virtual ~RenewApplicationTokenRequest() throw();
   UserToken token;
   ApplicationToken applicationToken;
-   ::aroma::banana::thrift::LengthOfTime newLifetime;
+   ::tech::aroma::thrift::LengthOfTime newLifetime;
   uuid applicationId;
 
   _RenewApplicationTokenRequest__isset __isset;
@@ -1125,7 +1125,7 @@ class RenewApplicationTokenRequest {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_newLifetime(const  ::aroma::banana::thrift::LengthOfTime& val);
+  void __set_newLifetime(const  ::tech::aroma::thrift::LengthOfTime& val);
 
   void __set_applicationId(const uuid& val);
 
@@ -1223,13 +1223,13 @@ class SaveChannelRequest {
 
   virtual ~SaveChannelRequest() throw();
   UserToken token;
-  BananaChannel channel;
+  AromaChannel channel;
 
   _SaveChannelRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   bool operator == (const SaveChannelRequest & rhs) const
   {
@@ -1275,13 +1275,13 @@ class SaveChannelResponse {
 
   virtual ~SaveChannelResponse() throw();
   std::string message;
-  BananaChannel channel;
+  AromaChannel channel;
 
   _SaveChannelResponse__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   bool operator == (const SaveChannelResponse & rhs) const
   {
@@ -1328,12 +1328,12 @@ class SignInRequest {
   }
 
   virtual ~SignInRequest() throw();
-   ::aroma::banana::thrift::authentication::Credentials credentials;
+   ::aroma::thrift::authentication::Credentials credentials;
   std::string emailAddress;
 
   _SignInRequest__isset __isset;
 
-  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
 
   void __set_emailAddress(const std::string& val);
 
@@ -1432,7 +1432,7 @@ class SignUpRequest {
 
   SignUpRequest(const SignUpRequest&);
   SignUpRequest& operator=(const SignUpRequest&);
-  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organizationId(), mainRole(( ::aroma::banana::thrift::Role::type)0), birthDate(0), githubProfile() {
+  SignUpRequest() : email(), name(), firstName(), middleName(), lastName(), username(), organizationId(), mainRole(( ::tech::aroma::thrift::Role::type)0), birthDate(0), githubProfile() {
   }
 
   virtual ~SignUpRequest() throw();
@@ -1443,8 +1443,8 @@ class SignUpRequest {
   std::string lastName;
   std::string username;
   uuid organizationId;
-   ::aroma::banana::thrift::authentication::Credentials credentials;
-   ::aroma::banana::thrift::Role::type mainRole;
+   ::aroma::thrift::authentication::Credentials credentials;
+   ::tech::aroma::thrift::Role::type mainRole;
   timestamp birthDate;
   std::string githubProfile;
   Image profileImage;
@@ -1465,9 +1465,9 @@ class SignUpRequest {
 
   void __set_organizationId(const uuid& val);
 
-  void __set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val);
+  void __set_credentials(const  ::aroma::thrift::authentication::Credentials& val);
 
-  void __set_mainRole(const  ::aroma::banana::thrift::Role::type val);
+  void __set_mainRole(const  ::tech::aroma::thrift::Role::type val);
 
   void __set_birthDate(const timestamp val);
 
@@ -1546,14 +1546,14 @@ class SignUpResponse {
 
   virtual ~SignUpResponse() throw();
   UserToken userToken;
-   ::aroma::banana::thrift::authentication::AromaAccount account;
+   ::aroma::thrift::authentication::AromaAccount account;
   uuid userId;
 
   _SignUpResponse__isset __isset;
 
   void __set_userToken(const UserToken& val);
 
-  void __set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val);
+  void __set_account(const  ::aroma::thrift::authentication::AromaAccount& val);
 
   void __set_userId(const uuid& val);
 
@@ -1601,29 +1601,29 @@ class SnoozeChannelRequest {
   SnoozeChannelRequest(const SnoozeChannelRequest&);
   SnoozeChannelRequest& operator=(const SnoozeChannelRequest&);
   SnoozeChannelRequest() : applicationId() {
-     ::aroma::banana::thrift::long tmp70;
+     ::tech::aroma::thrift::long tmp70;
     tmp70 = 4LL;
 
     lengthOfTime.value = tmp70;
-    lengthOfTime.unit = ( ::aroma::banana::thrift::TimeUnit::type)3;
+    lengthOfTime.unit = ( ::tech::aroma::thrift::TimeUnit::type)3;
 
   }
 
   virtual ~SnoozeChannelRequest() throw();
   UserToken token;
-  BananaChannel channel;
+  AromaChannel channel;
   uuid applicationId;
-   ::aroma::banana::thrift::LengthOfTime lengthOfTime;
+   ::tech::aroma::thrift::LengthOfTime lengthOfTime;
 
   _SnoozeChannelRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   void __set_applicationId(const uuid& val);
 
-  void __set_lengthOfTime(const  ::aroma::banana::thrift::LengthOfTime& val);
+  void __set_lengthOfTime(const  ::tech::aroma::thrift::LengthOfTime& val);
 
   bool operator == (const SnoozeChannelRequest & rhs) const
   {
@@ -1897,13 +1897,13 @@ class GetApplicationInfoResponse {
 
   virtual ~GetApplicationInfoResponse() throw();
   Application applicationInfo;
-  std::vector<BananaChannel>  registeredChannels;
+  std::vector<AromaChannel>  registeredChannels;
 
   _GetApplicationInfoResponse__isset __isset;
 
   void __set_applicationInfo(const Application& val);
 
-  void __set_registeredChannels(const std::vector<BananaChannel> & val);
+  void __set_registeredChannels(const std::vector<AromaChannel> & val);
 
   bool operator == (const GetApplicationInfoResponse & rhs) const
   {
@@ -2003,7 +2003,7 @@ class GetBuzzResponse {
   std::vector<User>  freshUsers;
   std::vector<Application>  freshApplications;
   std::vector<HealthCheckFailed>  failedHealthChecks;
-  std::vector< ::aroma::banana::thrift::events::GeneralEvent>  generalEvents;
+  std::vector< ::aroma::thrift::events::GeneralEvent>  generalEvents;
 
   _GetBuzzResponse__isset __isset;
 
@@ -2013,7 +2013,7 @@ class GetBuzzResponse {
 
   void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
-  void __set_generalEvents(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val);
+  void __set_generalEvents(const std::vector< ::aroma::thrift::events::GeneralEvent> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {
@@ -2117,7 +2117,7 @@ class GetDashboardResponse {
   int unreadMessageCount;
   int totalMessagesLastHour;
   int totalMessagesLast24hrs;
-  std::vector< ::aroma::banana::thrift::Message>  recentMessages;
+  std::vector< ::tech::aroma::thrift::Message>  recentMessages;
   int numberOfLowUrgencyMessages;
   int numberOfMediumUrgencyMessages;
   int numberOfHighUrgencyMessages;
@@ -2130,7 +2130,7 @@ class GetDashboardResponse {
 
   void __set_totalMessagesLast24hrs(const int val);
 
-  void __set_recentMessages(const std::vector< ::aroma::banana::thrift::Message> & val);
+  void __set_recentMessages(const std::vector< ::tech::aroma::thrift::Message> & val);
 
   void __set_numberOfLowUrgencyMessages(const int val);
 
@@ -2245,11 +2245,11 @@ class GetInboxResponse {
   }
 
   virtual ~GetInboxResponse() throw();
-  std::vector< ::aroma::banana::thrift::Message>  messages;
+  std::vector< ::tech::aroma::thrift::Message>  messages;
 
   _GetInboxResponse__isset __isset;
 
-  void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
+  void __set_messages(const std::vector< ::tech::aroma::thrift::Message> & val);
 
   bool operator == (const GetInboxResponse & rhs) const
   {
@@ -2353,12 +2353,12 @@ class GetApplicationMessagesResponse {
   }
 
   virtual ~GetApplicationMessagesResponse() throw();
-  std::vector< ::aroma::banana::thrift::Message>  messages;
+  std::vector< ::tech::aroma::thrift::Message>  messages;
   int totalMessagesMatching;
 
   _GetApplicationMessagesResponse__isset __isset;
 
-  void __set_messages(const std::vector< ::aroma::banana::thrift::Message> & val);
+  void __set_messages(const std::vector< ::tech::aroma::thrift::Message> & val);
 
   void __set_totalMessagesMatching(const int val);
 
@@ -2464,11 +2464,11 @@ class GetFullMessageResponse {
   }
 
   virtual ~GetFullMessageResponse() throw();
-   ::aroma::banana::thrift::Message fullMessage;
+   ::tech::aroma::thrift::Message fullMessage;
 
   _GetFullMessageResponse__isset __isset;
 
-  void __set_fullMessage(const  ::aroma::banana::thrift::Message& val);
+  void __set_fullMessage(const  ::tech::aroma::thrift::Message& val);
 
   bool operator == (const GetFullMessageResponse & rhs) const
   {
@@ -2562,11 +2562,11 @@ class GetMediaResponse {
   }
 
   virtual ~GetMediaResponse() throw();
-   ::aroma::banana::thrift::Image image;
+   ::tech::aroma::thrift::Image image;
 
   _GetMediaResponse__isset __isset;
 
-  void __set_image(const  ::aroma::banana::thrift::Image& val);
+  void __set_image(const  ::tech::aroma::thrift::Image& val);
 
   bool operator == (const GetMediaResponse & rhs) const
   {
@@ -2746,11 +2746,11 @@ class GetMySavedChannelsResponse {
   }
 
   virtual ~GetMySavedChannelsResponse() throw();
-  std::vector<BananaChannel>  channels;
+  std::vector<AromaChannel>  channels;
 
   _GetMySavedChannelsResponse__isset __isset;
 
-  void __set_channels(const std::vector<BananaChannel> & val);
+  void __set_channels(const std::vector<AromaChannel> & val);
 
   bool operator == (const GetMySavedChannelsResponse & rhs) const
   {
@@ -2847,11 +2847,11 @@ class GetActivityResponse {
   }
 
   virtual ~GetActivityResponse() throw();
-  std::vector< ::aroma::banana::thrift::events::Event>  events;
+  std::vector< ::aroma::thrift::events::Event>  events;
 
   _GetActivityResponse__isset __isset;
 
-  void __set_events(const std::vector< ::aroma::banana::thrift::events::Event> & val);
+  void __set_events(const std::vector< ::aroma::thrift::events::Event> & val);
 
   bool operator == (const GetActivityResponse & rhs) const
   {
@@ -2940,11 +2940,11 @@ class GetServiceAnnouncementsResponse {
   }
 
   virtual ~GetServiceAnnouncementsResponse() throw();
-  std::vector< ::aroma::banana::thrift::ServiceAnnouncement>  serviceAnnouncements;
+  std::vector< ::tech::aroma::thrift::ServiceAnnouncement>  serviceAnnouncements;
 
   _GetServiceAnnouncementsResponse__isset __isset;
 
-  void __set_serviceAnnouncements(const std::vector< ::aroma::banana::thrift::ServiceAnnouncement> & val);
+  void __set_serviceAnnouncements(const std::vector< ::tech::aroma::thrift::ServiceAnnouncement> & val);
 
   bool operator == (const GetServiceAnnouncementsResponse & rhs) const
   {
@@ -3187,6 +3187,6 @@ inline std::ostream& operator<<(std::ostream& out, const SearchForApplicationsRe
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

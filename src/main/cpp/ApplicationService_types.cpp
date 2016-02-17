@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
+namespace aroma { namespace thrift { namespace application { namespace service {
 
 
 SendMessageRequest::~SendMessageRequest() throw() {
@@ -95,7 +95,7 @@ uint32_t SendMessageRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast0;
           xfer += iprot->readI32(ecast0);
-          this->urgency = ( ::aroma::banana::thrift::Urgency::type)ecast0;
+          this->urgency = ( ::tech::aroma::thrift::Urgency::type)ecast0;
           this->__isset.urgency = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -335,4 +335,4 @@ void SendMessageResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

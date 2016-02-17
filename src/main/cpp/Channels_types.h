@@ -20,13 +20,13 @@
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace thrift { namespace channels {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
 class SlackChannel;
 
@@ -36,7 +36,7 @@ class Email;
 
 class CustomChannel;
 
-class BananaChannel;
+class AromaChannel;
 
 class ChannelInfo;
 
@@ -169,7 +169,7 @@ class Email {
 
   Email(const Email&);
   Email& operator=(const Email&);
-  Email() : emailAddress(), subject("Banana Service - New Message") {
+  Email() : emailAddress(), subject("Aroma - New Message") {
   }
 
   virtual ~Email() throw();
@@ -226,11 +226,11 @@ class CustomChannel {
   }
 
   virtual ~CustomChannel() throw();
-   ::aroma::banana::thrift::endpoint::Endpoint endpoint;
+   ::aroma::thrift::endpoint::Endpoint endpoint;
 
   _CustomChannel__isset __isset;
 
-  void __set_endpoint(const  ::aroma::banana::thrift::endpoint::Endpoint& val);
+  void __set_endpoint(const  ::aroma::thrift::endpoint::Endpoint& val);
 
   bool operator == (const CustomChannel & rhs) const
   {
@@ -258,29 +258,29 @@ inline std::ostream& operator<<(std::ostream& out, const CustomChannel& obj)
   return out;
 }
 
-typedef struct _BananaChannel__isset {
-  _BananaChannel__isset() : slackChannel(false), slackUsername(false), email(false), customChannel(false) {}
+typedef struct _AromaChannel__isset {
+  _AromaChannel__isset() : slackChannel(false), slackUsername(false), email(false), customChannel(false) {}
   bool slackChannel :1;
   bool slackUsername :1;
   bool email :1;
   bool customChannel :1;
-} _BananaChannel__isset;
+} _AromaChannel__isset;
 
-class BananaChannel {
+class AromaChannel {
  public:
 
-  BananaChannel(const BananaChannel&);
-  BananaChannel& operator=(const BananaChannel&);
-  BananaChannel() {
+  AromaChannel(const AromaChannel&);
+  AromaChannel& operator=(const AromaChannel&);
+  AromaChannel() {
   }
 
-  virtual ~BananaChannel() throw();
+  virtual ~AromaChannel() throw();
   SlackChannel slackChannel;
   SlackUsername slackUsername;
   Email email;
   CustomChannel customChannel;
 
-  _BananaChannel__isset __isset;
+  _AromaChannel__isset __isset;
 
   void __set_slackChannel(const SlackChannel& val);
 
@@ -290,7 +290,7 @@ class BananaChannel {
 
   void __set_customChannel(const CustomChannel& val);
 
-  bool operator == (const BananaChannel & rhs) const
+  bool operator == (const AromaChannel & rhs) const
   {
     if (!(slackChannel == rhs.slackChannel))
       return false;
@@ -302,11 +302,11 @@ class BananaChannel {
       return false;
     return true;
   }
-  bool operator != (const BananaChannel &rhs) const {
+  bool operator != (const AromaChannel &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaChannel & ) const;
+  bool operator < (const AromaChannel & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -314,9 +314,9 @@ class BananaChannel {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(BananaChannel &a, BananaChannel &b);
+void swap(AromaChannel &a, AromaChannel &b);
 
-inline std::ostream& operator<<(std::ostream& out, const BananaChannel& obj)
+inline std::ostream& operator<<(std::ostream& out, const AromaChannel& obj)
 {
   obj.printTo(out);
   return out;
@@ -337,12 +337,12 @@ class ChannelInfo {
   }
 
   virtual ~ChannelInfo() throw();
-  BananaChannel channel;
+  AromaChannel channel;
   timestamp timeRegistered;
 
   _ChannelInfo__isset __isset;
 
-  void __set_channel(const BananaChannel& val);
+  void __set_channel(const AromaChannel& val);
 
   void __set_timeRegistered(const timestamp val);
 
@@ -388,11 +388,11 @@ class ReceiveMessageRequest {
   }
 
   virtual ~ReceiveMessageRequest() throw();
-   ::aroma::banana::thrift::Message message;
+   ::tech::aroma::thrift::Message message;
 
   _ReceiveMessageRequest__isset __isset;
 
-  void __set_message(const  ::aroma::banana::thrift::Message& val);
+  void __set_message(const  ::tech::aroma::thrift::Message& val);
 
   bool operator == (const ReceiveMessageRequest & rhs) const
   {
@@ -420,6 +420,6 @@ inline std::ostream& operator<<(std::ostream& out, const ReceiveMessageRequest& 
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

@@ -7,10 +7,10 @@
 
 //HELPER FUNCTIONS AND STRUCTURES
 
-CustomBananaChannel_ping_args = function(args) {
+CustomAromaChannel_ping_args = function(args) {
 };
-CustomBananaChannel_ping_args.prototype = {};
-CustomBananaChannel_ping_args.prototype.read = function(input) {
+CustomAromaChannel_ping_args.prototype = {};
+CustomAromaChannel_ping_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -28,14 +28,14 @@ CustomBananaChannel_ping_args.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_ping_args.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_ping_args');
+CustomAromaChannel_ping_args.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_ping_args');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-CustomBananaChannel_ping_result = function(args) {
+CustomAromaChannel_ping_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -43,8 +43,8 @@ CustomBananaChannel_ping_result = function(args) {
     }
   }
 };
-CustomBananaChannel_ping_result.prototype = {};
-CustomBananaChannel_ping_result.prototype.read = function(input) {
+CustomAromaChannel_ping_result.prototype = {};
+CustomAromaChannel_ping_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -76,8 +76,8 @@ CustomBananaChannel_ping_result.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_ping_result.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_ping_result');
+CustomAromaChannel_ping_result.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_ping_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.I32, 0);
     output.writeI32(this.success);
@@ -88,7 +88,7 @@ CustomBananaChannel_ping_result.prototype.write = function(output) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_args = function(args) {
+CustomAromaChannel_receiveMessage_args = function(args) {
   this.request = null;
   if (args) {
     if (args.request !== undefined && args.request !== null) {
@@ -96,8 +96,8 @@ CustomBananaChannel_receiveMessage_args = function(args) {
     }
   }
 };
-CustomBananaChannel_receiveMessage_args.prototype = {};
-CustomBananaChannel_receiveMessage_args.prototype.read = function(input) {
+CustomAromaChannel_receiveMessage_args.prototype = {};
+CustomAromaChannel_receiveMessage_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -130,8 +130,8 @@ CustomBananaChannel_receiveMessage_args.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_args.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_receiveMessage_args');
+CustomAromaChannel_receiveMessage_args.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_receiveMessage_args');
   if (this.request !== null && this.request !== undefined) {
     output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
     this.request.write(output);
@@ -142,10 +142,10 @@ CustomBananaChannel_receiveMessage_args.prototype.write = function(output) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_result = function(args) {
+CustomAromaChannel_receiveMessage_result = function(args) {
 };
-CustomBananaChannel_receiveMessage_result.prototype = {};
-CustomBananaChannel_receiveMessage_result.prototype.read = function(input) {
+CustomAromaChannel_receiveMessage_result.prototype = {};
+CustomAromaChannel_receiveMessage_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -163,29 +163,29 @@ CustomBananaChannel_receiveMessage_result.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_result.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_receiveMessage_result');
+CustomAromaChannel_receiveMessage_result.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_receiveMessage_result');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-CustomBananaChannelClient = function(input, output) {
+CustomAromaChannelClient = function(input, output) {
     this.input = input;
     this.output = (!output) ? input : output;
     this.seqid = 0;
 };
-CustomBananaChannelClient.prototype = {};
-CustomBananaChannelClient.prototype.ping = function(callback) {
+CustomAromaChannelClient.prototype = {};
+CustomAromaChannelClient.prototype.ping = function(callback) {
   this.send_ping(callback); 
   if (!callback) {
     return this.recv_ping();
   }
 };
 
-CustomBananaChannelClient.prototype.send_ping = function(callback) {
+CustomAromaChannelClient.prototype.send_ping = function(callback) {
   this.output.writeMessageBegin('ping', Thrift.MessageType.CALL, this.seqid);
-  var args = new CustomBananaChannel_ping_args();
+  var args = new CustomAromaChannel_ping_args();
   args.write(this.output);
   this.output.writeMessageEnd();
   if (callback) {
@@ -204,7 +204,7 @@ CustomBananaChannelClient.prototype.send_ping = function(callback) {
   }
 };
 
-CustomBananaChannelClient.prototype.recv_ping = function() {
+CustomAromaChannelClient.prototype.recv_ping = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -215,7 +215,7 @@ CustomBananaChannelClient.prototype.recv_ping = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new CustomBananaChannel_ping_result();
+  var result = new CustomAromaChannel_ping_result();
   result.read(this.input);
   this.input.readMessageEnd();
 
@@ -224,13 +224,13 @@ CustomBananaChannelClient.prototype.recv_ping = function() {
   }
   throw 'ping failed: unknown result';
 };
-CustomBananaChannelClient.prototype.receiveMessage = function(request, callback) {
+CustomAromaChannelClient.prototype.receiveMessage = function(request, callback) {
   this.send_receiveMessage(request, callback); 
 };
 
-CustomBananaChannelClient.prototype.send_receiveMessage = function(request, callback) {
+CustomAromaChannelClient.prototype.send_receiveMessage = function(request, callback) {
   this.output.writeMessageBegin('receiveMessage', Thrift.MessageType.ONEWAY, this.seqid);
-  var args = new CustomBananaChannel_receiveMessage_args();
+  var args = new CustomAromaChannel_receiveMessage_args();
   args.request = request;
   args.write(this.output);
   this.output.writeMessageEnd();

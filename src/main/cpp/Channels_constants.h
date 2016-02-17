@@ -9,7 +9,7 @@
 
 #include "Channels_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace thrift { namespace channels {
 
 class ChannelsConstants {
  public:
@@ -19,6 +19,6 @@ class ChannelsConstants {
 
 extern const ChannelsConstants g_Channels_constants;
 
-}}}} // namespace
+}}} // namespace
 
 #endif

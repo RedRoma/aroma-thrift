@@ -6,7 +6,7 @@
  */
 #include "Aroma_constants.h"
 
-namespace aroma { namespace banana { namespace thrift {
+namespace tech { namespace aroma { namespace thrift {
 
 const AromaConstants g_Aroma_constants;
 

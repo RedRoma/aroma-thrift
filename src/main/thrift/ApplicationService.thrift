@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.application.service
+namespace java  tech.aroma.thrift.application.service
 namespace cocoa ApplicationService_
-namespace cpp   aroma.banana.thrift.application.service
+namespace cpp   aroma.thrift.application.service
 
 /*
  * Defined in this File is the Application Service API.
@@ -40,9 +40,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7002;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 //==========================================================
 // QUERY OPERATIONS
@@ -51,7 +51,7 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.
 // Operations performed by Applications
 
 /**
- * Send a Message to the Banana Service.
+ * Send a Message to Aroma.
  */
 struct SendMessageRequest
 {
@@ -87,7 +87,7 @@ service ApplicationService
 
 
     /**
-     * Send a Message from your Application to the Banana Service.
+     * Send a Message from your Application to Aroma.
      */
     SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,

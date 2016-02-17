@@ -15,10 +15,10 @@ var Exceptions_ttypes = require('./Exceptions_types')
 var ttypes = require('./Channels_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
-CustomBananaChannel_ping_args = function(args) {
+CustomAromaChannel_ping_args = function(args) {
 };
-CustomBananaChannel_ping_args.prototype = {};
-CustomBananaChannel_ping_args.prototype.read = function(input) {
+CustomAromaChannel_ping_args.prototype = {};
+CustomAromaChannel_ping_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -36,14 +36,14 @@ CustomBananaChannel_ping_args.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_ping_args.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_ping_args');
+CustomAromaChannel_ping_args.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_ping_args');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-CustomBananaChannel_ping_result = function(args) {
+CustomAromaChannel_ping_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -51,8 +51,8 @@ CustomBananaChannel_ping_result = function(args) {
     }
   }
 };
-CustomBananaChannel_ping_result.prototype = {};
-CustomBananaChannel_ping_result.prototype.read = function(input) {
+CustomAromaChannel_ping_result.prototype = {};
+CustomAromaChannel_ping_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -84,8 +84,8 @@ CustomBananaChannel_ping_result.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_ping_result.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_ping_result');
+CustomAromaChannel_ping_result.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_ping_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.I32, 0);
     output.writeI32(this.success);
@@ -96,7 +96,7 @@ CustomBananaChannel_ping_result.prototype.write = function(output) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_args = function(args) {
+CustomAromaChannel_receiveMessage_args = function(args) {
   this.request = null;
   if (args) {
     if (args.request !== undefined && args.request !== null) {
@@ -104,8 +104,8 @@ CustomBananaChannel_receiveMessage_args = function(args) {
     }
   }
 };
-CustomBananaChannel_receiveMessage_args.prototype = {};
-CustomBananaChannel_receiveMessage_args.prototype.read = function(input) {
+CustomAromaChannel_receiveMessage_args.prototype = {};
+CustomAromaChannel_receiveMessage_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -138,8 +138,8 @@ CustomBananaChannel_receiveMessage_args.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_args.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_receiveMessage_args');
+CustomAromaChannel_receiveMessage_args.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_receiveMessage_args');
   if (this.request !== null && this.request !== undefined) {
     output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
     this.request.write(output);
@@ -150,10 +150,10 @@ CustomBananaChannel_receiveMessage_args.prototype.write = function(output) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_result = function(args) {
+CustomAromaChannel_receiveMessage_result = function(args) {
 };
-CustomBananaChannel_receiveMessage_result.prototype = {};
-CustomBananaChannel_receiveMessage_result.prototype.read = function(input) {
+CustomAromaChannel_receiveMessage_result.prototype = {};
+CustomAromaChannel_receiveMessage_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -171,23 +171,23 @@ CustomBananaChannel_receiveMessage_result.prototype.read = function(input) {
   return;
 };
 
-CustomBananaChannel_receiveMessage_result.prototype.write = function(output) {
-  output.writeStructBegin('CustomBananaChannel_receiveMessage_result');
+CustomAromaChannel_receiveMessage_result.prototype.write = function(output) {
+  output.writeStructBegin('CustomAromaChannel_receiveMessage_result');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-CustomBananaChannelClient = exports.Client = function(output, pClass) {
+CustomAromaChannelClient = exports.Client = function(output, pClass) {
     this.output = output;
     this.pClass = pClass;
     this._seqid = 0;
     this._reqs = {};
 };
-CustomBananaChannelClient.prototype = {};
-CustomBananaChannelClient.prototype.seqid = function() { return this._seqid; }
-CustomBananaChannelClient.prototype.new_seqid = function() { return this._seqid += 1; }
-CustomBananaChannelClient.prototype.ping = function(callback) {
+CustomAromaChannelClient.prototype = {};
+CustomAromaChannelClient.prototype.seqid = function() { return this._seqid; }
+CustomAromaChannelClient.prototype.new_seqid = function() { return this._seqid += 1; }
+CustomAromaChannelClient.prototype.ping = function(callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -206,16 +206,16 @@ CustomBananaChannelClient.prototype.ping = function(callback) {
   }
 };
 
-CustomBananaChannelClient.prototype.send_ping = function() {
+CustomAromaChannelClient.prototype.send_ping = function() {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('ping', Thrift.MessageType.CALL, this.seqid());
-  var args = new CustomBananaChannel_ping_args();
+  var args = new CustomAromaChannel_ping_args();
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-CustomBananaChannelClient.prototype.recv_ping = function(input,mtype,rseqid) {
+CustomAromaChannelClient.prototype.recv_ping = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -224,7 +224,7 @@ CustomBananaChannelClient.prototype.recv_ping = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new CustomBananaChannel_ping_result();
+  var result = new CustomAromaChannel_ping_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -233,7 +233,7 @@ CustomBananaChannelClient.prototype.recv_ping = function(input,mtype,rseqid) {
   }
   return callback('ping failed: unknown result');
 };
-CustomBananaChannelClient.prototype.receiveMessage = function(request, callback) {
+CustomAromaChannelClient.prototype.receiveMessage = function(request, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -252,19 +252,19 @@ CustomBananaChannelClient.prototype.receiveMessage = function(request, callback)
   }
 };
 
-CustomBananaChannelClient.prototype.send_receiveMessage = function(request) {
+CustomAromaChannelClient.prototype.send_receiveMessage = function(request) {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('receiveMessage', Thrift.MessageType.ONEWAY, this.seqid());
-  var args = new CustomBananaChannel_receiveMessage_args();
+  var args = new CustomAromaChannel_receiveMessage_args();
   args.request = request;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
-CustomBananaChannelProcessor = exports.Processor = function(handler) {
+CustomAromaChannelProcessor = exports.Processor = function(handler) {
   this._handler = handler
 }
-CustomBananaChannelProcessor.prototype.process = function(input, output) {
+CustomAromaChannelProcessor.prototype.process = function(input, output) {
   var r = input.readMessageBegin();
   if (this['process_' + r.fname]) {
     return this['process_' + r.fname].call(this, r.rseqid, input, output);
@@ -279,14 +279,14 @@ CustomBananaChannelProcessor.prototype.process = function(input, output) {
   }
 }
 
-CustomBananaChannelProcessor.prototype.process_ping = function(seqid, input, output) {
-  var args = new CustomBananaChannel_ping_args();
+CustomAromaChannelProcessor.prototype.process_ping = function(seqid, input, output) {
+  var args = new CustomAromaChannel_ping_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.ping.length === 0) {
     Q.fcall(this._handler.ping)
       .then(function(result) {
-        var result = new CustomBananaChannel_ping_result({success: result});
+        var result = new CustomAromaChannel_ping_result({success: result});
         output.writeMessageBegin("ping", Thrift.MessageType.REPLY, seqid);
         result.write(output);
         output.writeMessageEnd();
@@ -301,7 +301,7 @@ CustomBananaChannelProcessor.prototype.process_ping = function(seqid, input, out
   } else {
     this._handler.ping(function (err, result) {
       if (err == null) {
-        var result = new CustomBananaChannel_ping_result((err != null ? err : {success: result}));
+        var result = new CustomAromaChannel_ping_result((err != null ? err : {success: result}));
         output.writeMessageBegin("ping", Thrift.MessageType.REPLY, seqid);
       } else {
         var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -314,8 +314,8 @@ CustomBananaChannelProcessor.prototype.process_ping = function(seqid, input, out
   }
 }
 
-CustomBananaChannelProcessor.prototype.process_receiveMessage = function(seqid, input, output) {
-  var args = new CustomBananaChannel_receiveMessage_args();
+CustomAromaChannelProcessor.prototype.process_receiveMessage = function(seqid, input, output) {
+  var args = new CustomAromaChannel_receiveMessage_args();
   args.read(input);
   input.readMessageEnd();
   this._handler.receiveMessage(args.request)

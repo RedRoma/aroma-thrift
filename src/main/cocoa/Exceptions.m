@@ -21,11 +21,11 @@
 
 #import "Exceptions.h"
 
-@implementation BananaException_InvalidArgumentException
+@implementation AromaException_InvalidArgumentException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_InvalidArgumentException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_InvalidArgumentException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -72,10 +72,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_InvalidArgumentException class]]) {
+  if (![anObject isKindOfClass:[AromaException_InvalidArgumentException class]]) {
     return NO;
   }
-  BananaException_InvalidArgumentException *other = (BananaException_InvalidArgumentException *)anObject;
+  AromaException_InvalidArgumentException *other = (AromaException_InvalidArgumentException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -160,7 +160,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_InvalidArgumentException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_InvalidArgumentException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -169,11 +169,11 @@
 
 @end
 
-@implementation BananaException_InvalidCredentialsException
+@implementation AromaException_InvalidCredentialsException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_InvalidCredentialsException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_InvalidCredentialsException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -220,10 +220,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_InvalidCredentialsException class]]) {
+  if (![anObject isKindOfClass:[AromaException_InvalidCredentialsException class]]) {
     return NO;
   }
-  BananaException_InvalidCredentialsException *other = (BananaException_InvalidCredentialsException *)anObject;
+  AromaException_InvalidCredentialsException *other = (AromaException_InvalidCredentialsException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -308,7 +308,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_InvalidCredentialsException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_InvalidCredentialsException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -317,11 +317,11 @@
 
 @end
 
-@implementation BananaException_InvalidTokenException
+@implementation AromaException_InvalidTokenException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_InvalidTokenException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_InvalidTokenException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -368,10 +368,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_InvalidTokenException class]]) {
+  if (![anObject isKindOfClass:[AromaException_InvalidTokenException class]]) {
     return NO;
   }
-  BananaException_InvalidTokenException *other = (BananaException_InvalidTokenException *)anObject;
+  AromaException_InvalidTokenException *other = (AromaException_InvalidTokenException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -456,7 +456,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_InvalidTokenException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_InvalidTokenException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -465,11 +465,11 @@
 
 @end
 
-@implementation BananaException_AccountAlreadyExistsException
+@implementation AromaException_AccountAlreadyExistsException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_AccountAlreadyExistsException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_AccountAlreadyExistsException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -516,10 +516,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_AccountAlreadyExistsException class]]) {
+  if (![anObject isKindOfClass:[AromaException_AccountAlreadyExistsException class]]) {
     return NO;
   }
-  BananaException_AccountAlreadyExistsException *other = (BananaException_AccountAlreadyExistsException *)anObject;
+  AromaException_AccountAlreadyExistsException *other = (AromaException_AccountAlreadyExistsException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -604,7 +604,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_AccountAlreadyExistsException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_AccountAlreadyExistsException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -613,11 +613,11 @@
 
 @end
 
-@implementation BananaException_InvalidCodeException
+@implementation AromaException_InvalidCodeException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_InvalidCodeException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_InvalidCodeException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -664,10 +664,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_InvalidCodeException class]]) {
+  if (![anObject isKindOfClass:[AromaException_InvalidCodeException class]]) {
     return NO;
   }
-  BananaException_InvalidCodeException *other = (BananaException_InvalidCodeException *)anObject;
+  AromaException_InvalidCodeException *other = (AromaException_InvalidCodeException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -752,7 +752,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_InvalidCodeException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_InvalidCodeException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -761,11 +761,11 @@
 
 @end
 
-@implementation BananaException_UnauthorizedException
+@implementation AromaException_UnauthorizedException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_UnauthorizedException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_UnauthorizedException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -812,10 +812,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_UnauthorizedException class]]) {
+  if (![anObject isKindOfClass:[AromaException_UnauthorizedException class]]) {
     return NO;
   }
-  BananaException_UnauthorizedException *other = (BananaException_UnauthorizedException *)anObject;
+  AromaException_UnauthorizedException *other = (AromaException_UnauthorizedException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -900,7 +900,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_UnauthorizedException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_UnauthorizedException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -909,11 +909,11 @@
 
 @end
 
-@implementation BananaException_DoesNotExistException
+@implementation AromaException_DoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_DoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_DoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -960,10 +960,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_DoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_DoesNotExistException class]]) {
     return NO;
   }
-  BananaException_DoesNotExistException *other = (BananaException_DoesNotExistException *)anObject;
+  AromaException_DoesNotExistException *other = (AromaException_DoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1048,7 +1048,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_DoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_DoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1057,11 +1057,11 @@
 
 @end
 
-@implementation BananaException_ApplicationDoesNotExistException
+@implementation AromaException_ApplicationDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ApplicationDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_ApplicationDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1108,10 +1108,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ApplicationDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_ApplicationDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_ApplicationDoesNotExistException *other = (BananaException_ApplicationDoesNotExistException *)anObject;
+  AromaException_ApplicationDoesNotExistException *other = (AromaException_ApplicationDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1196,7 +1196,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ApplicationDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_ApplicationDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1205,11 +1205,11 @@
 
 @end
 
-@implementation BananaException_ApplicationAlreadyRegisteredException
+@implementation AromaException_ApplicationAlreadyRegisteredException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ApplicationAlreadyRegisteredException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_ApplicationAlreadyRegisteredException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1256,10 +1256,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ApplicationAlreadyRegisteredException class]]) {
+  if (![anObject isKindOfClass:[AromaException_ApplicationAlreadyRegisteredException class]]) {
     return NO;
   }
-  BananaException_ApplicationAlreadyRegisteredException *other = (BananaException_ApplicationAlreadyRegisteredException *)anObject;
+  AromaException_ApplicationAlreadyRegisteredException *other = (AromaException_ApplicationAlreadyRegisteredException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1344,7 +1344,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ApplicationAlreadyRegisteredException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_ApplicationAlreadyRegisteredException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1353,11 +1353,11 @@
 
 @end
 
-@implementation BananaException_UserDoesNotExistException
+@implementation AromaException_UserDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_UserDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_UserDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1404,10 +1404,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_UserDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_UserDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_UserDoesNotExistException *other = (BananaException_UserDoesNotExistException *)anObject;
+  AromaException_UserDoesNotExistException *other = (AromaException_UserDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1492,7 +1492,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_UserDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_UserDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1501,11 +1501,11 @@
 
 @end
 
-@implementation BananaException_ThroughoutExceededException
+@implementation AromaException_ThroughoutExceededException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ThroughoutExceededException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_ThroughoutExceededException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1552,10 +1552,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ThroughoutExceededException class]]) {
+  if (![anObject isKindOfClass:[AromaException_ThroughoutExceededException class]]) {
     return NO;
   }
-  BananaException_ThroughoutExceededException *other = (BananaException_ThroughoutExceededException *)anObject;
+  AromaException_ThroughoutExceededException *other = (AromaException_ThroughoutExceededException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1640,7 +1640,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ThroughoutExceededException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_ThroughoutExceededException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1649,11 +1649,11 @@
 
 @end
 
-@implementation BananaException_CustomChannelUnreachableException
+@implementation AromaException_CustomChannelUnreachableException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_CustomChannelUnreachableException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_CustomChannelUnreachableException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1700,10 +1700,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_CustomChannelUnreachableException class]]) {
+  if (![anObject isKindOfClass:[AromaException_CustomChannelUnreachableException class]]) {
     return NO;
   }
-  BananaException_CustomChannelUnreachableException *other = (BananaException_CustomChannelUnreachableException *)anObject;
+  AromaException_CustomChannelUnreachableException *other = (AromaException_CustomChannelUnreachableException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1788,7 +1788,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_CustomChannelUnreachableException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_CustomChannelUnreachableException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1797,11 +1797,11 @@
 
 @end
 
-@implementation BananaException_ChannelDoesNotExistException
+@implementation AromaException_ChannelDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_ChannelDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_ChannelDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1848,10 +1848,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_ChannelDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_ChannelDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_ChannelDoesNotExistException *other = (BananaException_ChannelDoesNotExistException *)anObject;
+  AromaException_ChannelDoesNotExistException *other = (AromaException_ChannelDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1936,7 +1936,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_ChannelDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_ChannelDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -1945,11 +1945,11 @@
 
 @end
 
-@implementation BananaException_MessageDoesNotExistException
+@implementation AromaException_MessageDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_MessageDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_MessageDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -1996,10 +1996,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_MessageDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_MessageDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_MessageDoesNotExistException *other = (BananaException_MessageDoesNotExistException *)anObject;
+  AromaException_MessageDoesNotExistException *other = (AromaException_MessageDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2084,7 +2084,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_MessageDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_MessageDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -2093,11 +2093,11 @@
 
 @end
 
-@implementation BananaException_OrganizationDoesNotExistException
+@implementation AromaException_OrganizationDoesNotExistException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_OrganizationDoesNotExistException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_OrganizationDoesNotExistException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -2144,10 +2144,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_OrganizationDoesNotExistException class]]) {
+  if (![anObject isKindOfClass:[AromaException_OrganizationDoesNotExistException class]]) {
     return NO;
   }
-  BananaException_OrganizationDoesNotExistException *other = (BananaException_OrganizationDoesNotExistException *)anObject;
+  AromaException_OrganizationDoesNotExistException *other = (AromaException_OrganizationDoesNotExistException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2232,7 +2232,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_OrganizationDoesNotExistException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_OrganizationDoesNotExistException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -2241,11 +2241,11 @@
 
 @end
 
-@implementation BananaException_OperationFailedException
+@implementation AromaException_OperationFailedException
 
 - (id) init
 {
-  return [super initWithName: @"BananaException_OperationFailedException" reason: @"unknown" userInfo: nil];
+  return [super initWithName: @"AromaException_OperationFailedException" reason: @"unknown" userInfo: nil];
 }
 
 - (id) initWithMessage: (NSString *) message
@@ -2292,10 +2292,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaException_OperationFailedException class]]) {
+  if (![anObject isKindOfClass:[AromaException_OperationFailedException class]]) {
     return NO;
   }
-  BananaException_OperationFailedException *other = (BananaException_OperationFailedException *)anObject;
+  AromaException_OperationFailedException *other = (AromaException_OperationFailedException *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2380,7 +2380,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaException_OperationFailedException("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaException_OperationFailedException("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -2390,7 +2390,7 @@
 @end
 
 
-@implementation BananaException_ExceptionsConstants
+@implementation AromaException_ExceptionsConstants
 + (void) initialize {
 }
 @end

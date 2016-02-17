@@ -1,12 +1,12 @@
-namespace java  tech.aroma.banana.thrift.service
-namespace cocoa BananaService_
-namespace cpp   aroma.banana.thrift.service
+namespace java  tech.aroma.thrift.service
+namespace cocoa AromaService_
+namespace cpp   aroma.thrift.service
 
 /*
- * Defined in this File is the Banana Service API and all of the operations
+ * Defined in this File is Aroma API and all of the operations
  * that can be performed primarily by People.
  * 
- * The Banana Service can be decomposed into multiple services:
+ * The Aroma Service can be decomposed into multiple services:
  * 
  * + User Service
  * + Query Service
@@ -47,7 +47,7 @@ typedef Aroma.Application Application
 typedef Aroma.Image Image
 typedef Aroma.Urgency Urgency
 typedef Aroma.User User
-typedef Channels.BananaChannel BananaChannel
+typedef Channels.AromaChannel AromaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
 
@@ -66,20 +66,20 @@ typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
-/** Defines the Version of the Banana Service API of this specification. */
+/** Defines the Version of Aroma API of this specification. */
 const double API_VERSION = 1.7;
 
 const int SERVICE_PORT = 7010;
 
 /**
- * This is the Banana Service Production Endpoint
+ * This is Aroma Production Endpoint
  */
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "aroma-srv.aroma.tech", "port" : SERVICE_PORT };
 
 /**
- * This is the Banana Service Beta Endpoint
+ * This is Aroma Beta Endpoint
  */
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "aroma-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 /** The Maximum Dimensions for an Icon submitted with an Application. */
 const Aroma.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
@@ -183,7 +183,7 @@ struct DismissMessageResponse
  
 /**
  * Defines the required information to provision
- * an Application with the Banana Service.
+ * an Application with Aroma.
  */
 struct ProvisionApplicationRequest
 {
@@ -254,13 +254,13 @@ struct RegisterHealthCheckResponse
 struct RemoveSavedChannelRequest
 {
     1: UserToken token;
-    2: BananaChannel channel;
+    2: AromaChannel channel;
 }
 
 struct RemoveSavedChannelResponse
 {
     1: string message;
-    2: optional BananaChannel channel;
+    2: optional AromaChannel channel;
 }
 
 /**
@@ -288,17 +288,17 @@ struct RenewApplicationTokenResponse
 struct SaveChannelRequest
 {
     1: UserToken token;
-    2: BananaChannel channel;
+    2: AromaChannel channel;
 }
 
 struct SaveChannelResponse
 {
     1: string message;
-    2: optional BananaChannel channel;
+    2: optional AromaChannel channel;
 }
 
 /**
- * Sign In to the Banana Service, and get a User Token.
+ * Sign In to Aroma, and get a User Token.
  */
 struct SignInRequest
 {
@@ -312,7 +312,7 @@ struct SignInResponse
 }
 
 /**
- * Sign Up for a Banana Service Account.
+ * Sign Up for an Aroma Account.
  */
 struct SignUpRequest
 {
@@ -348,7 +348,7 @@ struct SignUpResponse
 struct SnoozeChannelRequest
 {
     1: UserToken token;
-    2: BananaChannel channel;
+    2: AromaChannel channel;
     /** Optionally choose to snooze a specific Application. */
     3: optional uuid applicationId;
     /** Defines how long to snooze the Channel for. */
@@ -392,7 +392,7 @@ struct GetApplicationInfoResponse
 {
     1: Application applicationInfo;
     /** The Channels registered to this Application. */
-    2: list<BananaChannel> registeredChannels;
+    2: list<AromaChannel> registeredChannels;
 }
 
 /**
@@ -502,7 +502,7 @@ struct GetMySavedChannelsRequest
 
 struct GetMySavedChannelsResponse
 {
-    1: list<BananaChannel> channels;
+    1: list<AromaChannel> channels;
 }
 
 /**
@@ -566,10 +566,10 @@ struct SearchForApplicationsResponse
 
 
 /**
- * The Banana Service is designed to be used by People, and not Applications.
+ * The Aroma Service is designed to be used by People, and not Applications.
  * They provide query interfaces and Authentication/Authorization over Data.
  */
-service BananaService
+service AromaService
 {
     
     double getApiVersion()
@@ -617,7 +617,7 @@ service BananaService
                                                                                                              5 : UnauthorizedException ex5);
     
     /**
-     * Register an existing Application for Health Pokes. The Banana Service
+     * Register an existing Application for Health Pokes. The Aroma Service
      * will then periodically poke the Application for health status.
      *
      * #owner
@@ -794,7 +794,7 @@ service BananaService
                                                                            5 : UserDoesNotExistException ex5);
     
     /**
-     * Perform a Search on all the applications registered to the Banana Service by searching for its title.
+     * Perform a Search on all the applications registered to Aroma by searching for its title.
      *
      * #user
      */

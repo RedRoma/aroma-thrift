@@ -1141,7 +1141,7 @@ RemoveSavedChannelRequest = function(args) {
       this.token = new UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new BananaChannel(args.channel);
+      this.channel = new AromaChannel(args.channel);
     }
   }
 };
@@ -1169,7 +1169,7 @@ RemoveSavedChannelRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new BananaChannel();
+        this.channel = new AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1209,7 +1209,7 @@ RemoveSavedChannelResponse = function(args) {
       this.message = args.message;
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new BananaChannel(args.channel);
+      this.channel = new AromaChannel(args.channel);
     }
   }
 };
@@ -1236,7 +1236,7 @@ RemoveSavedChannelResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new BananaChannel();
+        this.channel = new AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1431,7 +1431,7 @@ SaveChannelRequest = function(args) {
       this.token = new UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new BananaChannel(args.channel);
+      this.channel = new AromaChannel(args.channel);
     }
   }
 };
@@ -1459,7 +1459,7 @@ SaveChannelRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new BananaChannel();
+        this.channel = new AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1499,7 +1499,7 @@ SaveChannelResponse = function(args) {
       this.message = args.message;
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new BananaChannel(args.channel);
+      this.channel = new AromaChannel(args.channel);
     }
   }
 };
@@ -1526,7 +1526,7 @@ SaveChannelResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new BananaChannel();
+        this.channel = new AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -2003,7 +2003,7 @@ SnoozeChannelRequest = function(args) {
             this.token = new UserToken(args.token);
         }
         if (args.channel !== undefined && args.channel !== null) {
-            this.channel = new BananaChannel(args.channel);
+            this.channel = new AromaChannel(args.channel);
         }
         if (args.applicationId !== undefined && args.applicationId !== null) {
             this.applicationId = args.applicationId;
@@ -2037,7 +2037,7 @@ SnoozeChannelRequest.prototype.read = function(input) {
         break;
         case 2:
         if (ftype == Thrift.Type.STRUCT) {
-          this.channel = new BananaChannel();
+          this.channel = new AromaChannel();
           this.channel.read(input);
         } else {
           input.skip(ftype);
@@ -2428,7 +2428,7 @@ GetApplicationInfoResponse.prototype.read = function(input) {
           for (var _i29 = 0; _i29 < _size24; ++_i29)
           {
             var elem30 = null;
-            elem30 = new BananaChannel();
+            elem30 = new AromaChannel();
             elem30.read(input);
             this.registeredChannels.push(elem30);
           }
@@ -3730,7 +3730,7 @@ GetMySavedChannelsResponse.prototype.read = function(input) {
           for (var _i101 = 0; _i101 < _size96; ++_i101)
           {
             var elem102 = null;
-            elem102 = new BananaChannel();
+            elem102 = new AromaChannel();
             elem102.read(input);
             this.channels.push(elem102);
           }
@@ -4344,9 +4344,9 @@ SearchForApplicationsResponse.prototype.write = function(output) {
 API_VERSION = 1.7;
 SERVICE_PORT = 7010;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-srv.banana.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
 MAX_APPLICATION_ICON_DIMENSION = new Dimension({
 'width' : 1024,'height' : 1024});
 MAX_PROFILE_IMAGE_DIMENSION = new Dimension({

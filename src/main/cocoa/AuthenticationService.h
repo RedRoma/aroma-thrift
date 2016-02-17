@@ -23,15 +23,15 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-typedef Banana_int AuthenticationService_int;
+typedef Aroma_int AuthenticationService_int;
 
-typedef Banana_long AuthenticationService_long;
+typedef Aroma_long AuthenticationService_long;
 
-typedef Banana_timestamp AuthenticationService_timestamp;
+typedef Aroma_timestamp AuthenticationService_timestamp;
 
-typedef Banana_LengthOfTime * AuthenticationService_LengthOfTime;
+typedef Aroma_LengthOfTime * AuthenticationService_LengthOfTime;
 
-typedef Banana_uuid AuthenticationService_uuid;
+typedef Aroma_uuid AuthenticationService_uuid;
 
 typedef BananaAuthentication_ApplicationToken * AuthenticationService_ApplicationToken;
 
@@ -41,17 +41,17 @@ typedef int AuthenticationService_TokenType;
 
 typedef BananaAuthentication_UserToken * AuthenticationService_UserToken;
 
-typedef BananaException_AccountAlreadyExistsException * AuthenticationService_AccountAlreadyExistsException;
+typedef AromaException_AccountAlreadyExistsException * AuthenticationService_AccountAlreadyExistsException;
 
-typedef BananaException_InvalidArgumentException * AuthenticationService_InvalidArgumentException;
+typedef AromaException_InvalidArgumentException * AuthenticationService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * AuthenticationService_InvalidCredentialsException;
+typedef AromaException_InvalidCredentialsException * AuthenticationService_InvalidCredentialsException;
 
-typedef BananaException_InvalidTokenException * AuthenticationService_InvalidTokenException;
+typedef AromaException_InvalidTokenException * AuthenticationService_InvalidTokenException;
 
-typedef BananaException_OperationFailedException * AuthenticationService_OperationFailedException;
+typedef AromaException_OperationFailedException * AuthenticationService_OperationFailedException;
 
-typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
+typedef AromaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
 
 @interface AuthenticationService_CreateTokenRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_uuid __ownerId;
@@ -365,7 +365,7 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 @interface AuthenticationService_AuthenticationServiceConstants : NSObject {
 }
 + (AuthenticationService_int) SERVICE_PORT;
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Aroma_LengthOfTime *) DEFAULT_TOKEN_LIFETIME;
 @end

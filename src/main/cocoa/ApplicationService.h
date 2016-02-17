@@ -23,35 +23,35 @@
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-typedef Banana_int ApplicationService_int;
+typedef Aroma_int ApplicationService_int;
 
-typedef Banana_long ApplicationService_long;
+typedef Aroma_long ApplicationService_long;
 
-typedef Banana_timestamp ApplicationService_timestamp;
+typedef Aroma_timestamp ApplicationService_timestamp;
 
 typedef BananaAuthentication_ApplicationToken * ApplicationService_ApplicationToken;
 
-typedef Banana_Application * ApplicationService_Application;
+typedef Aroma_Application * ApplicationService_Application;
 
 typedef int ApplicationService_Urgency;
 
-typedef BananaException_AccountAlreadyExistsException * ApplicationService_AccountAlreadyExistsException;
+typedef AromaException_AccountAlreadyExistsException * ApplicationService_AccountAlreadyExistsException;
 
-typedef BananaException_InvalidArgumentException * ApplicationService_InvalidArgumentException;
+typedef AromaException_InvalidArgumentException * ApplicationService_InvalidArgumentException;
 
-typedef BananaException_InvalidTokenException * ApplicationService_InvalidTokenException;
+typedef AromaException_InvalidTokenException * ApplicationService_InvalidTokenException;
 
-typedef BananaException_OperationFailedException * ApplicationService_OperationFailedException;
+typedef AromaException_OperationFailedException * ApplicationService_OperationFailedException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * ApplicationService_ApplicationAlreadyRegisteredException;
+typedef AromaException_ApplicationAlreadyRegisteredException * ApplicationService_ApplicationAlreadyRegisteredException;
 
-typedef BananaException_ApplicationDoesNotExistException * ApplicationService_ApplicationDoesNotExistException;
+typedef AromaException_ApplicationDoesNotExistException * ApplicationService_ApplicationDoesNotExistException;
 
-typedef BananaException_CustomChannelUnreachableException * ApplicationService_CustomChannelUnreachableException;
+typedef AromaException_CustomChannelUnreachableException * ApplicationService_CustomChannelUnreachableException;
 
-typedef BananaException_ChannelDoesNotExistException * ApplicationService_ChannelDoesNotExistException;
+typedef AromaException_ChannelDoesNotExistException * ApplicationService_ChannelDoesNotExistException;
 
-typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedException;
+typedef AromaException_UnauthorizedException * ApplicationService_UnauthorizedException;
 
 @interface ApplicationService_SendMessageRequest : NSObject <TBase, NSCoding> {
   ApplicationService_ApplicationToken __applicationToken;
@@ -189,6 +189,6 @@ typedef BananaException_UnauthorizedException * ApplicationService_UnauthorizedE
 @interface ApplicationService_ApplicationServiceConstants : NSObject {
 }
 + (ApplicationService_int) SERVICE_PORT;
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
 @end

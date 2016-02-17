@@ -599,8 +599,8 @@ VerifyTokenResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7026;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.banana.aroma.tech','port' : 7026});
+'hostname' : 'authentication-srv.aroma.tech','port' : 7026});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 7026});
+'hostname' : 'authentication-srv.beta.aroma.tech','port' : 7026});
 ttypes.DEFAULT_TOKEN_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 60,'unit' : 4});

@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "BananaService.h"
+#include "AromaService.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
 
-BananaService_getApiVersion_args::~BananaService_getApiVersion_args() throw() {
+AromaService_getApiVersion_args::~AromaService_getApiVersion_args() throw() {
 }
 
 
-uint32_t BananaService_getApiVersion_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -41,10 +41,10 @@ uint32_t BananaService_getApiVersion_args::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_getApiVersion_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApiVersion_args");
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -52,14 +52,14 @@ uint32_t BananaService_getApiVersion_args::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getApiVersion_pargs::~BananaService_getApiVersion_pargs() throw() {
+AromaService_getApiVersion_pargs::~AromaService_getApiVersion_pargs() throw() {
 }
 
 
-uint32_t BananaService_getApiVersion_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApiVersion_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -67,11 +67,11 @@ uint32_t BananaService_getApiVersion_pargs::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getApiVersion_result::~BananaService_getApiVersion_result() throw() {
+AromaService_getApiVersion_result::~AromaService_getApiVersion_result() throw() {
 }
 
 
-uint32_t BananaService_getApiVersion_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -112,11 +112,11 @@ uint32_t BananaService_getApiVersion_result::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t BananaService_getApiVersion_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApiVersion_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getApiVersion_result");
+  xfer += oprot->writeStructBegin("AromaService_getApiVersion_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_DOUBLE, 0);
@@ -129,11 +129,11 @@ uint32_t BananaService_getApiVersion_result::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_getApiVersion_presult::~BananaService_getApiVersion_presult() throw() {
+AromaService_getApiVersion_presult::~AromaService_getApiVersion_presult() throw() {
 }
 
 
-uint32_t BananaService_getApiVersion_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApiVersion_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -175,11 +175,11 @@ uint32_t BananaService_getApiVersion_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_deleteMessage_args::~BananaService_deleteMessage_args() throw() {
+AromaService_deleteMessage_args::~AromaService_deleteMessage_args() throw() {
 }
 
 
-uint32_t BananaService_deleteMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -220,10 +220,10 @@ uint32_t BananaService_deleteMessage_args::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_deleteMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_deleteMessage_args");
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -235,14 +235,14 @@ uint32_t BananaService_deleteMessage_args::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_deleteMessage_pargs::~BananaService_deleteMessage_pargs() throw() {
+AromaService_deleteMessage_pargs::~AromaService_deleteMessage_pargs() throw() {
 }
 
 
-uint32_t BananaService_deleteMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_deleteMessage_pargs");
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -254,11 +254,11 @@ uint32_t BananaService_deleteMessage_pargs::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_deleteMessage_result::~BananaService_deleteMessage_result() throw() {
+AromaService_deleteMessage_result::~AromaService_deleteMessage_result() throw() {
 }
 
 
-uint32_t BananaService_deleteMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -339,11 +339,11 @@ uint32_t BananaService_deleteMessage_result::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t BananaService_deleteMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_deleteMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_deleteMessage_result");
+  xfer += oprot->writeStructBegin("AromaService_deleteMessage_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -376,11 +376,11 @@ uint32_t BananaService_deleteMessage_result::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_deleteMessage_presult::~BananaService_deleteMessage_presult() throw() {
+AromaService_deleteMessage_presult::~AromaService_deleteMessage_presult() throw() {
 }
 
 
-uint32_t BananaService_deleteMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_deleteMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -462,11 +462,11 @@ uint32_t BananaService_deleteMessage_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_dismissMessage_args::~BananaService_dismissMessage_args() throw() {
+AromaService_dismissMessage_args::~AromaService_dismissMessage_args() throw() {
 }
 
 
-uint32_t BananaService_dismissMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_dismissMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -507,10 +507,10 @@ uint32_t BananaService_dismissMessage_args::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t BananaService_dismissMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_dismissMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_dismissMessage_args");
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -522,14 +522,14 @@ uint32_t BananaService_dismissMessage_args::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_dismissMessage_pargs::~BananaService_dismissMessage_pargs() throw() {
+AromaService_dismissMessage_pargs::~AromaService_dismissMessage_pargs() throw() {
 }
 
 
-uint32_t BananaService_dismissMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_dismissMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_dismissMessage_pargs");
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -541,11 +541,11 @@ uint32_t BananaService_dismissMessage_pargs::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_dismissMessage_result::~BananaService_dismissMessage_result() throw() {
+AromaService_dismissMessage_result::~AromaService_dismissMessage_result() throw() {
 }
 
 
-uint32_t BananaService_dismissMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_dismissMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -626,11 +626,11 @@ uint32_t BananaService_dismissMessage_result::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t BananaService_dismissMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_dismissMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_dismissMessage_result");
+  xfer += oprot->writeStructBegin("AromaService_dismissMessage_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -663,11 +663,11 @@ uint32_t BananaService_dismissMessage_result::write(::apache::thrift::protocol::
 }
 
 
-BananaService_dismissMessage_presult::~BananaService_dismissMessage_presult() throw() {
+AromaService_dismissMessage_presult::~AromaService_dismissMessage_presult() throw() {
 }
 
 
-uint32_t BananaService_dismissMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_dismissMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -749,11 +749,11 @@ uint32_t BananaService_dismissMessage_presult::read(::apache::thrift::protocol::
 }
 
 
-BananaService_provisionApplication_args::~BananaService_provisionApplication_args() throw() {
+AromaService_provisionApplication_args::~AromaService_provisionApplication_args() throw() {
 }
 
 
-uint32_t BananaService_provisionApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_provisionApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -794,10 +794,10 @@ uint32_t BananaService_provisionApplication_args::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t BananaService_provisionApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_provisionApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_provisionApplication_args");
+  xfer += oprot->writeStructBegin("AromaService_provisionApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -809,14 +809,14 @@ uint32_t BananaService_provisionApplication_args::write(::apache::thrift::protoc
 }
 
 
-BananaService_provisionApplication_pargs::~BananaService_provisionApplication_pargs() throw() {
+AromaService_provisionApplication_pargs::~AromaService_provisionApplication_pargs() throw() {
 }
 
 
-uint32_t BananaService_provisionApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_provisionApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_provisionApplication_pargs");
+  xfer += oprot->writeStructBegin("AromaService_provisionApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -828,11 +828,11 @@ uint32_t BananaService_provisionApplication_pargs::write(::apache::thrift::proto
 }
 
 
-BananaService_provisionApplication_result::~BananaService_provisionApplication_result() throw() {
+AromaService_provisionApplication_result::~AromaService_provisionApplication_result() throw() {
 }
 
 
-uint32_t BananaService_provisionApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_provisionApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -913,11 +913,11 @@ uint32_t BananaService_provisionApplication_result::read(::apache::thrift::proto
   return xfer;
 }
 
-uint32_t BananaService_provisionApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_provisionApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_provisionApplication_result");
+  xfer += oprot->writeStructBegin("AromaService_provisionApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -950,11 +950,11 @@ uint32_t BananaService_provisionApplication_result::write(::apache::thrift::prot
 }
 
 
-BananaService_provisionApplication_presult::~BananaService_provisionApplication_presult() throw() {
+AromaService_provisionApplication_presult::~AromaService_provisionApplication_presult() throw() {
 }
 
 
-uint32_t BananaService_provisionApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_provisionApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1036,11 +1036,11 @@ uint32_t BananaService_provisionApplication_presult::read(::apache::thrift::prot
 }
 
 
-BananaService_regenerateToken_args::~BananaService_regenerateToken_args() throw() {
+AromaService_regenerateToken_args::~AromaService_regenerateToken_args() throw() {
 }
 
 
-uint32_t BananaService_regenerateToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_regenerateToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1081,10 +1081,10 @@ uint32_t BananaService_regenerateToken_args::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t BananaService_regenerateToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_regenerateToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_regenerateToken_args");
+  xfer += oprot->writeStructBegin("AromaService_regenerateToken_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1096,14 +1096,14 @@ uint32_t BananaService_regenerateToken_args::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_regenerateToken_pargs::~BananaService_regenerateToken_pargs() throw() {
+AromaService_regenerateToken_pargs::~AromaService_regenerateToken_pargs() throw() {
 }
 
 
-uint32_t BananaService_regenerateToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_regenerateToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_regenerateToken_pargs");
+  xfer += oprot->writeStructBegin("AromaService_regenerateToken_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1115,11 +1115,11 @@ uint32_t BananaService_regenerateToken_pargs::write(::apache::thrift::protocol::
 }
 
 
-BananaService_regenerateToken_result::~BananaService_regenerateToken_result() throw() {
+AromaService_regenerateToken_result::~AromaService_regenerateToken_result() throw() {
 }
 
 
-uint32_t BananaService_regenerateToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_regenerateToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1200,11 +1200,11 @@ uint32_t BananaService_regenerateToken_result::read(::apache::thrift::protocol::
   return xfer;
 }
 
-uint32_t BananaService_regenerateToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_regenerateToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_regenerateToken_result");
+  xfer += oprot->writeStructBegin("AromaService_regenerateToken_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1237,11 +1237,11 @@ uint32_t BananaService_regenerateToken_result::write(::apache::thrift::protocol:
 }
 
 
-BananaService_regenerateToken_presult::~BananaService_regenerateToken_presult() throw() {
+AromaService_regenerateToken_presult::~AromaService_regenerateToken_presult() throw() {
 }
 
 
-uint32_t BananaService_regenerateToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_regenerateToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1323,11 +1323,11 @@ uint32_t BananaService_regenerateToken_presult::read(::apache::thrift::protocol:
 }
 
 
-BananaService_registerHealthCheck_args::~BananaService_registerHealthCheck_args() throw() {
+AromaService_registerHealthCheck_args::~AromaService_registerHealthCheck_args() throw() {
 }
 
 
-uint32_t BananaService_registerHealthCheck_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1368,10 +1368,10 @@ uint32_t BananaService_registerHealthCheck_args::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t BananaService_registerHealthCheck_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_registerHealthCheck_args");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1383,14 +1383,14 @@ uint32_t BananaService_registerHealthCheck_args::write(::apache::thrift::protoco
 }
 
 
-BananaService_registerHealthCheck_pargs::~BananaService_registerHealthCheck_pargs() throw() {
+AromaService_registerHealthCheck_pargs::~AromaService_registerHealthCheck_pargs() throw() {
 }
 
 
-uint32_t BananaService_registerHealthCheck_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_registerHealthCheck_pargs");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1402,11 +1402,11 @@ uint32_t BananaService_registerHealthCheck_pargs::write(::apache::thrift::protoc
 }
 
 
-BananaService_registerHealthCheck_result::~BananaService_registerHealthCheck_result() throw() {
+AromaService_registerHealthCheck_result::~AromaService_registerHealthCheck_result() throw() {
 }
 
 
-uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1487,11 +1487,11 @@ uint32_t BananaService_registerHealthCheck_result::read(::apache::thrift::protoc
   return xfer;
 }
 
-uint32_t BananaService_registerHealthCheck_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_registerHealthCheck_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_registerHealthCheck_result");
+  xfer += oprot->writeStructBegin("AromaService_registerHealthCheck_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1524,11 +1524,11 @@ uint32_t BananaService_registerHealthCheck_result::write(::apache::thrift::proto
 }
 
 
-BananaService_registerHealthCheck_presult::~BananaService_registerHealthCheck_presult() throw() {
+AromaService_registerHealthCheck_presult::~AromaService_registerHealthCheck_presult() throw() {
 }
 
 
-uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_registerHealthCheck_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1610,11 +1610,11 @@ uint32_t BananaService_registerHealthCheck_presult::read(::apache::thrift::proto
 }
 
 
-BananaService_removeSavedChannel_args::~BananaService_removeSavedChannel_args() throw() {
+AromaService_removeSavedChannel_args::~AromaService_removeSavedChannel_args() throw() {
 }
 
 
-uint32_t BananaService_removeSavedChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_removeSavedChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1655,10 +1655,10 @@ uint32_t BananaService_removeSavedChannel_args::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t BananaService_removeSavedChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_removeSavedChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_removeSavedChannel_args");
+  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1670,14 +1670,14 @@ uint32_t BananaService_removeSavedChannel_args::write(::apache::thrift::protocol
 }
 
 
-BananaService_removeSavedChannel_pargs::~BananaService_removeSavedChannel_pargs() throw() {
+AromaService_removeSavedChannel_pargs::~AromaService_removeSavedChannel_pargs() throw() {
 }
 
 
-uint32_t BananaService_removeSavedChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_removeSavedChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_removeSavedChannel_pargs");
+  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1689,11 +1689,11 @@ uint32_t BananaService_removeSavedChannel_pargs::write(::apache::thrift::protoco
 }
 
 
-BananaService_removeSavedChannel_result::~BananaService_removeSavedChannel_result() throw() {
+AromaService_removeSavedChannel_result::~AromaService_removeSavedChannel_result() throw() {
 }
 
 
-uint32_t BananaService_removeSavedChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_removeSavedChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1774,11 +1774,11 @@ uint32_t BananaService_removeSavedChannel_result::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t BananaService_removeSavedChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_removeSavedChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_removeSavedChannel_result");
+  xfer += oprot->writeStructBegin("AromaService_removeSavedChannel_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -1811,11 +1811,11 @@ uint32_t BananaService_removeSavedChannel_result::write(::apache::thrift::protoc
 }
 
 
-BananaService_removeSavedChannel_presult::~BananaService_removeSavedChannel_presult() throw() {
+AromaService_removeSavedChannel_presult::~AromaService_removeSavedChannel_presult() throw() {
 }
 
 
-uint32_t BananaService_removeSavedChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_removeSavedChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1897,11 +1897,11 @@ uint32_t BananaService_removeSavedChannel_presult::read(::apache::thrift::protoc
 }
 
 
-BananaService_renewApplicationToken_args::~BananaService_renewApplicationToken_args() throw() {
+AromaService_renewApplicationToken_args::~AromaService_renewApplicationToken_args() throw() {
 }
 
 
-uint32_t BananaService_renewApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_renewApplicationToken_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1942,10 +1942,10 @@ uint32_t BananaService_renewApplicationToken_args::read(::apache::thrift::protoc
   return xfer;
 }
 
-uint32_t BananaService_renewApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_renewApplicationToken_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_args");
+  xfer += oprot->writeStructBegin("AromaService_renewApplicationToken_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -1957,14 +1957,14 @@ uint32_t BananaService_renewApplicationToken_args::write(::apache::thrift::proto
 }
 
 
-BananaService_renewApplicationToken_pargs::~BananaService_renewApplicationToken_pargs() throw() {
+AromaService_renewApplicationToken_pargs::~AromaService_renewApplicationToken_pargs() throw() {
 }
 
 
-uint32_t BananaService_renewApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_renewApplicationToken_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_pargs");
+  xfer += oprot->writeStructBegin("AromaService_renewApplicationToken_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -1976,11 +1976,11 @@ uint32_t BananaService_renewApplicationToken_pargs::write(::apache::thrift::prot
 }
 
 
-BananaService_renewApplicationToken_result::~BananaService_renewApplicationToken_result() throw() {
+AromaService_renewApplicationToken_result::~AromaService_renewApplicationToken_result() throw() {
 }
 
 
-uint32_t BananaService_renewApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_renewApplicationToken_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2061,11 +2061,11 @@ uint32_t BananaService_renewApplicationToken_result::read(::apache::thrift::prot
   return xfer;
 }
 
-uint32_t BananaService_renewApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_renewApplicationToken_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_renewApplicationToken_result");
+  xfer += oprot->writeStructBegin("AromaService_renewApplicationToken_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -2098,11 +2098,11 @@ uint32_t BananaService_renewApplicationToken_result::write(::apache::thrift::pro
 }
 
 
-BananaService_renewApplicationToken_presult::~BananaService_renewApplicationToken_presult() throw() {
+AromaService_renewApplicationToken_presult::~AromaService_renewApplicationToken_presult() throw() {
 }
 
 
-uint32_t BananaService_renewApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_renewApplicationToken_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2184,11 +2184,11 @@ uint32_t BananaService_renewApplicationToken_presult::read(::apache::thrift::pro
 }
 
 
-BananaService_saveChannel_args::~BananaService_saveChannel_args() throw() {
+AromaService_saveChannel_args::~AromaService_saveChannel_args() throw() {
 }
 
 
-uint32_t BananaService_saveChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_saveChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2229,10 +2229,10 @@ uint32_t BananaService_saveChannel_args::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t BananaService_saveChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_saveChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_saveChannel_args");
+  xfer += oprot->writeStructBegin("AromaService_saveChannel_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -2244,14 +2244,14 @@ uint32_t BananaService_saveChannel_args::write(::apache::thrift::protocol::TProt
 }
 
 
-BananaService_saveChannel_pargs::~BananaService_saveChannel_pargs() throw() {
+AromaService_saveChannel_pargs::~AromaService_saveChannel_pargs() throw() {
 }
 
 
-uint32_t BananaService_saveChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_saveChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_saveChannel_pargs");
+  xfer += oprot->writeStructBegin("AromaService_saveChannel_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -2263,11 +2263,11 @@ uint32_t BananaService_saveChannel_pargs::write(::apache::thrift::protocol::TPro
 }
 
 
-BananaService_saveChannel_result::~BananaService_saveChannel_result() throw() {
+AromaService_saveChannel_result::~AromaService_saveChannel_result() throw() {
 }
 
 
-uint32_t BananaService_saveChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_saveChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2340,11 +2340,11 @@ uint32_t BananaService_saveChannel_result::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_saveChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_saveChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_saveChannel_result");
+  xfer += oprot->writeStructBegin("AromaService_saveChannel_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -2373,11 +2373,11 @@ uint32_t BananaService_saveChannel_result::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_saveChannel_presult::~BananaService_saveChannel_presult() throw() {
+AromaService_saveChannel_presult::~AromaService_saveChannel_presult() throw() {
 }
 
 
-uint32_t BananaService_saveChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_saveChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2451,11 +2451,11 @@ uint32_t BananaService_saveChannel_presult::read(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_signIn_args::~BananaService_signIn_args() throw() {
+AromaService_signIn_args::~AromaService_signIn_args() throw() {
 }
 
 
-uint32_t BananaService_signIn_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signIn_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2496,10 +2496,10 @@ uint32_t BananaService_signIn_args::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t BananaService_signIn_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signIn_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_signIn_args");
+  xfer += oprot->writeStructBegin("AromaService_signIn_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -2511,14 +2511,14 @@ uint32_t BananaService_signIn_args::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-BananaService_signIn_pargs::~BananaService_signIn_pargs() throw() {
+AromaService_signIn_pargs::~AromaService_signIn_pargs() throw() {
 }
 
 
-uint32_t BananaService_signIn_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signIn_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_signIn_pargs");
+  xfer += oprot->writeStructBegin("AromaService_signIn_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -2530,11 +2530,11 @@ uint32_t BananaService_signIn_pargs::write(::apache::thrift::protocol::TProtocol
 }
 
 
-BananaService_signIn_result::~BananaService_signIn_result() throw() {
+AromaService_signIn_result::~AromaService_signIn_result() throw() {
 }
 
 
-uint32_t BananaService_signIn_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signIn_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2607,11 +2607,11 @@ uint32_t BananaService_signIn_result::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t BananaService_signIn_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signIn_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_signIn_result");
+  xfer += oprot->writeStructBegin("AromaService_signIn_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -2640,11 +2640,11 @@ uint32_t BananaService_signIn_result::write(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_signIn_presult::~BananaService_signIn_presult() throw() {
+AromaService_signIn_presult::~AromaService_signIn_presult() throw() {
 }
 
 
-uint32_t BananaService_signIn_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signIn_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2718,11 +2718,11 @@ uint32_t BananaService_signIn_presult::read(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_signUp_args::~BananaService_signUp_args() throw() {
+AromaService_signUp_args::~AromaService_signUp_args() throw() {
 }
 
 
-uint32_t BananaService_signUp_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signUp_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2763,10 +2763,10 @@ uint32_t BananaService_signUp_args::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t BananaService_signUp_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signUp_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_signUp_args");
+  xfer += oprot->writeStructBegin("AromaService_signUp_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -2778,14 +2778,14 @@ uint32_t BananaService_signUp_args::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-BananaService_signUp_pargs::~BananaService_signUp_pargs() throw() {
+AromaService_signUp_pargs::~AromaService_signUp_pargs() throw() {
 }
 
 
-uint32_t BananaService_signUp_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signUp_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_signUp_pargs");
+  xfer += oprot->writeStructBegin("AromaService_signUp_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -2797,11 +2797,11 @@ uint32_t BananaService_signUp_pargs::write(::apache::thrift::protocol::TProtocol
 }
 
 
-BananaService_signUp_result::~BananaService_signUp_result() throw() {
+AromaService_signUp_result::~AromaService_signUp_result() throw() {
 }
 
 
-uint32_t BananaService_signUp_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signUp_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2874,11 +2874,11 @@ uint32_t BananaService_signUp_result::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t BananaService_signUp_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_signUp_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_signUp_result");
+  xfer += oprot->writeStructBegin("AromaService_signUp_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -2907,11 +2907,11 @@ uint32_t BananaService_signUp_result::write(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_signUp_presult::~BananaService_signUp_presult() throw() {
+AromaService_signUp_presult::~AromaService_signUp_presult() throw() {
 }
 
 
-uint32_t BananaService_signUp_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_signUp_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -2985,11 +2985,11 @@ uint32_t BananaService_signUp_presult::read(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_snoozeChannel_args::~BananaService_snoozeChannel_args() throw() {
+AromaService_snoozeChannel_args::~AromaService_snoozeChannel_args() throw() {
 }
 
 
-uint32_t BananaService_snoozeChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_snoozeChannel_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3030,10 +3030,10 @@ uint32_t BananaService_snoozeChannel_args::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_snoozeChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_snoozeChannel_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_snoozeChannel_args");
+  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3045,14 +3045,14 @@ uint32_t BananaService_snoozeChannel_args::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_snoozeChannel_pargs::~BananaService_snoozeChannel_pargs() throw() {
+AromaService_snoozeChannel_pargs::~AromaService_snoozeChannel_pargs() throw() {
 }
 
 
-uint32_t BananaService_snoozeChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_snoozeChannel_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_snoozeChannel_pargs");
+  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3064,11 +3064,11 @@ uint32_t BananaService_snoozeChannel_pargs::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_snoozeChannel_result::~BananaService_snoozeChannel_result() throw() {
+AromaService_snoozeChannel_result::~AromaService_snoozeChannel_result() throw() {
 }
 
 
-uint32_t BananaService_snoozeChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_snoozeChannel_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3149,11 +3149,11 @@ uint32_t BananaService_snoozeChannel_result::read(::apache::thrift::protocol::TP
   return xfer;
 }
 
-uint32_t BananaService_snoozeChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_snoozeChannel_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_snoozeChannel_result");
+  xfer += oprot->writeStructBegin("AromaService_snoozeChannel_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3186,11 +3186,11 @@ uint32_t BananaService_snoozeChannel_result::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_snoozeChannel_presult::~BananaService_snoozeChannel_presult() throw() {
+AromaService_snoozeChannel_presult::~AromaService_snoozeChannel_presult() throw() {
 }
 
 
-uint32_t BananaService_snoozeChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_snoozeChannel_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3272,11 +3272,11 @@ uint32_t BananaService_snoozeChannel_presult::read(::apache::thrift::protocol::T
 }
 
 
-BananaService_followApplication_args::~BananaService_followApplication_args() throw() {
+AromaService_followApplication_args::~AromaService_followApplication_args() throw() {
 }
 
 
-uint32_t BananaService_followApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_followApplication_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3317,10 +3317,10 @@ uint32_t BananaService_followApplication_args::read(::apache::thrift::protocol::
   return xfer;
 }
 
-uint32_t BananaService_followApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_followApplication_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_followApplication_args");
+  xfer += oprot->writeStructBegin("AromaService_followApplication_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3332,14 +3332,14 @@ uint32_t BananaService_followApplication_args::write(::apache::thrift::protocol:
 }
 
 
-BananaService_followApplication_pargs::~BananaService_followApplication_pargs() throw() {
+AromaService_followApplication_pargs::~AromaService_followApplication_pargs() throw() {
 }
 
 
-uint32_t BananaService_followApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_followApplication_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_followApplication_pargs");
+  xfer += oprot->writeStructBegin("AromaService_followApplication_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3351,11 +3351,11 @@ uint32_t BananaService_followApplication_pargs::write(::apache::thrift::protocol
 }
 
 
-BananaService_followApplication_result::~BananaService_followApplication_result() throw() {
+AromaService_followApplication_result::~AromaService_followApplication_result() throw() {
 }
 
 
-uint32_t BananaService_followApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_followApplication_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3444,11 +3444,11 @@ uint32_t BananaService_followApplication_result::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t BananaService_followApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_followApplication_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_followApplication_result");
+  xfer += oprot->writeStructBegin("AromaService_followApplication_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3485,11 +3485,11 @@ uint32_t BananaService_followApplication_result::write(::apache::thrift::protoco
 }
 
 
-BananaService_followApplication_presult::~BananaService_followApplication_presult() throw() {
+AromaService_followApplication_presult::~AromaService_followApplication_presult() throw() {
 }
 
 
-uint32_t BananaService_followApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_followApplication_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3579,11 +3579,11 @@ uint32_t BananaService_followApplication_presult::read(::apache::thrift::protoco
 }
 
 
-BananaService_getActivity_args::~BananaService_getActivity_args() throw() {
+AromaService_getActivity_args::~AromaService_getActivity_args() throw() {
 }
 
 
-uint32_t BananaService_getActivity_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getActivity_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3624,10 +3624,10 @@ uint32_t BananaService_getActivity_args::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t BananaService_getActivity_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getActivity_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getActivity_args");
+  xfer += oprot->writeStructBegin("AromaService_getActivity_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3639,14 +3639,14 @@ uint32_t BananaService_getActivity_args::write(::apache::thrift::protocol::TProt
 }
 
 
-BananaService_getActivity_pargs::~BananaService_getActivity_pargs() throw() {
+AromaService_getActivity_pargs::~AromaService_getActivity_pargs() throw() {
 }
 
 
-uint32_t BananaService_getActivity_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getActivity_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getActivity_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getActivity_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3658,11 +3658,11 @@ uint32_t BananaService_getActivity_pargs::write(::apache::thrift::protocol::TPro
 }
 
 
-BananaService_getActivity_result::~BananaService_getActivity_result() throw() {
+AromaService_getActivity_result::~AromaService_getActivity_result() throw() {
 }
 
 
-uint32_t BananaService_getActivity_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getActivity_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3727,11 +3727,11 @@ uint32_t BananaService_getActivity_result::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_getActivity_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getActivity_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getActivity_result");
+  xfer += oprot->writeStructBegin("AromaService_getActivity_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -3756,11 +3756,11 @@ uint32_t BananaService_getActivity_result::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getActivity_presult::~BananaService_getActivity_presult() throw() {
+AromaService_getActivity_presult::~AromaService_getActivity_presult() throw() {
 }
 
 
-uint32_t BananaService_getActivity_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getActivity_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3826,11 +3826,11 @@ uint32_t BananaService_getActivity_presult::read(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getApplicationInfo_args::~BananaService_getApplicationInfo_args() throw() {
+AromaService_getApplicationInfo_args::~AromaService_getApplicationInfo_args() throw() {
 }
 
 
-uint32_t BananaService_getApplicationInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3871,10 +3871,10 @@ uint32_t BananaService_getApplicationInfo_args::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t BananaService_getApplicationInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_args");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -3886,14 +3886,14 @@ uint32_t BananaService_getApplicationInfo_args::write(::apache::thrift::protocol
 }
 
 
-BananaService_getApplicationInfo_pargs::~BananaService_getApplicationInfo_pargs() throw() {
+AromaService_getApplicationInfo_pargs::~AromaService_getApplicationInfo_pargs() throw() {
 }
 
 
-uint32_t BananaService_getApplicationInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -3905,11 +3905,11 @@ uint32_t BananaService_getApplicationInfo_pargs::write(::apache::thrift::protoco
 }
 
 
-BananaService_getApplicationInfo_result::~BananaService_getApplicationInfo_result() throw() {
+AromaService_getApplicationInfo_result::~AromaService_getApplicationInfo_result() throw() {
 }
 
 
-uint32_t BananaService_getApplicationInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -3990,11 +3990,11 @@ uint32_t BananaService_getApplicationInfo_result::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t BananaService_getApplicationInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getApplicationInfo_result");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationInfo_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4027,11 +4027,11 @@ uint32_t BananaService_getApplicationInfo_result::write(::apache::thrift::protoc
 }
 
 
-BananaService_getApplicationInfo_presult::~BananaService_getApplicationInfo_presult() throw() {
+AromaService_getApplicationInfo_presult::~AromaService_getApplicationInfo_presult() throw() {
 }
 
 
-uint32_t BananaService_getApplicationInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4113,11 +4113,11 @@ uint32_t BananaService_getApplicationInfo_presult::read(::apache::thrift::protoc
 }
 
 
-BananaService_getBuzz_args::~BananaService_getBuzz_args() throw() {
+AromaService_getBuzz_args::~AromaService_getBuzz_args() throw() {
 }
 
 
-uint32_t BananaService_getBuzz_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getBuzz_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4158,10 +4158,10 @@ uint32_t BananaService_getBuzz_args::read(::apache::thrift::protocol::TProtocol*
   return xfer;
 }
 
-uint32_t BananaService_getBuzz_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getBuzz_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getBuzz_args");
+  xfer += oprot->writeStructBegin("AromaService_getBuzz_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4173,14 +4173,14 @@ uint32_t BananaService_getBuzz_args::write(::apache::thrift::protocol::TProtocol
 }
 
 
-BananaService_getBuzz_pargs::~BananaService_getBuzz_pargs() throw() {
+AromaService_getBuzz_pargs::~AromaService_getBuzz_pargs() throw() {
 }
 
 
-uint32_t BananaService_getBuzz_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getBuzz_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getBuzz_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getBuzz_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4192,11 +4192,11 @@ uint32_t BananaService_getBuzz_pargs::write(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_getBuzz_result::~BananaService_getBuzz_result() throw() {
+AromaService_getBuzz_result::~AromaService_getBuzz_result() throw() {
 }
 
 
-uint32_t BananaService_getBuzz_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getBuzz_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4277,11 +4277,11 @@ uint32_t BananaService_getBuzz_result::read(::apache::thrift::protocol::TProtoco
   return xfer;
 }
 
-uint32_t BananaService_getBuzz_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getBuzz_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getBuzz_result");
+  xfer += oprot->writeStructBegin("AromaService_getBuzz_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4314,11 +4314,11 @@ uint32_t BananaService_getBuzz_result::write(::apache::thrift::protocol::TProtoc
 }
 
 
-BananaService_getBuzz_presult::~BananaService_getBuzz_presult() throw() {
+AromaService_getBuzz_presult::~AromaService_getBuzz_presult() throw() {
 }
 
 
-uint32_t BananaService_getBuzz_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getBuzz_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4400,11 +4400,11 @@ uint32_t BananaService_getBuzz_presult::read(::apache::thrift::protocol::TProtoc
 }
 
 
-BananaService_getDashboard_args::~BananaService_getDashboard_args() throw() {
+AromaService_getDashboard_args::~AromaService_getDashboard_args() throw() {
 }
 
 
-uint32_t BananaService_getDashboard_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getDashboard_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4445,10 +4445,10 @@ uint32_t BananaService_getDashboard_args::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t BananaService_getDashboard_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getDashboard_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getDashboard_args");
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4460,14 +4460,14 @@ uint32_t BananaService_getDashboard_args::write(::apache::thrift::protocol::TPro
 }
 
 
-BananaService_getDashboard_pargs::~BananaService_getDashboard_pargs() throw() {
+AromaService_getDashboard_pargs::~AromaService_getDashboard_pargs() throw() {
 }
 
 
-uint32_t BananaService_getDashboard_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getDashboard_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getDashboard_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4479,11 +4479,11 @@ uint32_t BananaService_getDashboard_pargs::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getDashboard_result::~BananaService_getDashboard_result() throw() {
+AromaService_getDashboard_result::~AromaService_getDashboard_result() throw() {
 }
 
 
-uint32_t BananaService_getDashboard_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getDashboard_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4548,11 +4548,11 @@ uint32_t BananaService_getDashboard_result::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t BananaService_getDashboard_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getDashboard_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getDashboard_result");
+  xfer += oprot->writeStructBegin("AromaService_getDashboard_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4577,11 +4577,11 @@ uint32_t BananaService_getDashboard_result::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getDashboard_presult::~BananaService_getDashboard_presult() throw() {
+AromaService_getDashboard_presult::~AromaService_getDashboard_presult() throw() {
 }
 
 
-uint32_t BananaService_getDashboard_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getDashboard_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4647,11 +4647,11 @@ uint32_t BananaService_getDashboard_presult::read(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getApplicationMessages_args::~BananaService_getApplicationMessages_args() throw() {
+AromaService_getApplicationMessages_args::~AromaService_getApplicationMessages_args() throw() {
 }
 
 
-uint32_t BananaService_getApplicationMessages_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationMessages_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4692,10 +4692,10 @@ uint32_t BananaService_getApplicationMessages_args::read(::apache::thrift::proto
   return xfer;
 }
 
-uint32_t BananaService_getApplicationMessages_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationMessages_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApplicationMessages_args");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4707,14 +4707,14 @@ uint32_t BananaService_getApplicationMessages_args::write(::apache::thrift::prot
 }
 
 
-BananaService_getApplicationMessages_pargs::~BananaService_getApplicationMessages_pargs() throw() {
+AromaService_getApplicationMessages_pargs::~AromaService_getApplicationMessages_pargs() throw() {
 }
 
 
-uint32_t BananaService_getApplicationMessages_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationMessages_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getApplicationMessages_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -4726,11 +4726,11 @@ uint32_t BananaService_getApplicationMessages_pargs::write(::apache::thrift::pro
 }
 
 
-BananaService_getApplicationMessages_result::~BananaService_getApplicationMessages_result() throw() {
+AromaService_getApplicationMessages_result::~AromaService_getApplicationMessages_result() throw() {
 }
 
 
-uint32_t BananaService_getApplicationMessages_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationMessages_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4811,11 +4811,11 @@ uint32_t BananaService_getApplicationMessages_result::read(::apache::thrift::pro
   return xfer;
 }
 
-uint32_t BananaService_getApplicationMessages_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationMessages_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getApplicationMessages_result");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationMessages_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -4848,11 +4848,11 @@ uint32_t BananaService_getApplicationMessages_result::write(::apache::thrift::pr
 }
 
 
-BananaService_getApplicationMessages_presult::~BananaService_getApplicationMessages_presult() throw() {
+AromaService_getApplicationMessages_presult::~AromaService_getApplicationMessages_presult() throw() {
 }
 
 
-uint32_t BananaService_getApplicationMessages_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationMessages_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4934,11 +4934,11 @@ uint32_t BananaService_getApplicationMessages_presult::read(::apache::thrift::pr
 }
 
 
-BananaService_getInbox_args::~BananaService_getInbox_args() throw() {
+AromaService_getInbox_args::~AromaService_getInbox_args() throw() {
 }
 
 
-uint32_t BananaService_getInbox_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getInbox_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -4979,10 +4979,10 @@ uint32_t BananaService_getInbox_args::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t BananaService_getInbox_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getInbox_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getInbox_args");
+  xfer += oprot->writeStructBegin("AromaService_getInbox_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -4994,14 +4994,14 @@ uint32_t BananaService_getInbox_args::write(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_getInbox_pargs::~BananaService_getInbox_pargs() throw() {
+AromaService_getInbox_pargs::~AromaService_getInbox_pargs() throw() {
 }
 
 
-uint32_t BananaService_getInbox_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getInbox_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getInbox_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getInbox_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -5013,11 +5013,11 @@ uint32_t BananaService_getInbox_pargs::write(::apache::thrift::protocol::TProtoc
 }
 
 
-BananaService_getInbox_result::~BananaService_getInbox_result() throw() {
+AromaService_getInbox_result::~AromaService_getInbox_result() throw() {
 }
 
 
-uint32_t BananaService_getInbox_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getInbox_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5082,11 +5082,11 @@ uint32_t BananaService_getInbox_result::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t BananaService_getInbox_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getInbox_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getInbox_result");
+  xfer += oprot->writeStructBegin("AromaService_getInbox_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5111,11 +5111,11 @@ uint32_t BananaService_getInbox_result::write(::apache::thrift::protocol::TProto
 }
 
 
-BananaService_getInbox_presult::~BananaService_getInbox_presult() throw() {
+AromaService_getInbox_presult::~AromaService_getInbox_presult() throw() {
 }
 
 
-uint32_t BananaService_getInbox_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getInbox_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5181,11 +5181,11 @@ uint32_t BananaService_getInbox_presult::read(::apache::thrift::protocol::TProto
 }
 
 
-BananaService_getFullMessage_args::~BananaService_getFullMessage_args() throw() {
+AromaService_getFullMessage_args::~AromaService_getFullMessage_args() throw() {
 }
 
 
-uint32_t BananaService_getFullMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getFullMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5226,10 +5226,10 @@ uint32_t BananaService_getFullMessage_args::read(::apache::thrift::protocol::TPr
   return xfer;
 }
 
-uint32_t BananaService_getFullMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getFullMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getFullMessage_args");
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -5241,14 +5241,14 @@ uint32_t BananaService_getFullMessage_args::write(::apache::thrift::protocol::TP
 }
 
 
-BananaService_getFullMessage_pargs::~BananaService_getFullMessage_pargs() throw() {
+AromaService_getFullMessage_pargs::~AromaService_getFullMessage_pargs() throw() {
 }
 
 
-uint32_t BananaService_getFullMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getFullMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getFullMessage_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -5260,11 +5260,11 @@ uint32_t BananaService_getFullMessage_pargs::write(::apache::thrift::protocol::T
 }
 
 
-BananaService_getFullMessage_result::~BananaService_getFullMessage_result() throw() {
+AromaService_getFullMessage_result::~AromaService_getFullMessage_result() throw() {
 }
 
 
-uint32_t BananaService_getFullMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getFullMessage_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5329,11 +5329,11 @@ uint32_t BananaService_getFullMessage_result::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t BananaService_getFullMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getFullMessage_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getFullMessage_result");
+  xfer += oprot->writeStructBegin("AromaService_getFullMessage_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5358,11 +5358,11 @@ uint32_t BananaService_getFullMessage_result::write(::apache::thrift::protocol::
 }
 
 
-BananaService_getFullMessage_presult::~BananaService_getFullMessage_presult() throw() {
+AromaService_getFullMessage_presult::~AromaService_getFullMessage_presult() throw() {
 }
 
 
-uint32_t BananaService_getFullMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getFullMessage_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5428,11 +5428,11 @@ uint32_t BananaService_getFullMessage_presult::read(::apache::thrift::protocol::
 }
 
 
-BananaService_getMedia_args::~BananaService_getMedia_args() throw() {
+AromaService_getMedia_args::~AromaService_getMedia_args() throw() {
 }
 
 
-uint32_t BananaService_getMedia_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMedia_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5473,10 +5473,10 @@ uint32_t BananaService_getMedia_args::read(::apache::thrift::protocol::TProtocol
   return xfer;
 }
 
-uint32_t BananaService_getMedia_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMedia_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMedia_args");
+  xfer += oprot->writeStructBegin("AromaService_getMedia_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -5488,14 +5488,14 @@ uint32_t BananaService_getMedia_args::write(::apache::thrift::protocol::TProtoco
 }
 
 
-BananaService_getMedia_pargs::~BananaService_getMedia_pargs() throw() {
+AromaService_getMedia_pargs::~AromaService_getMedia_pargs() throw() {
 }
 
 
-uint32_t BananaService_getMedia_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMedia_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMedia_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getMedia_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -5507,11 +5507,11 @@ uint32_t BananaService_getMedia_pargs::write(::apache::thrift::protocol::TProtoc
 }
 
 
-BananaService_getMedia_result::~BananaService_getMedia_result() throw() {
+AromaService_getMedia_result::~AromaService_getMedia_result() throw() {
 }
 
 
-uint32_t BananaService_getMedia_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMedia_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5592,11 +5592,11 @@ uint32_t BananaService_getMedia_result::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t BananaService_getMedia_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMedia_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getMedia_result");
+  xfer += oprot->writeStructBegin("AromaService_getMedia_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5629,11 +5629,11 @@ uint32_t BananaService_getMedia_result::write(::apache::thrift::protocol::TProto
 }
 
 
-BananaService_getMedia_presult::~BananaService_getMedia_presult() throw() {
+AromaService_getMedia_presult::~AromaService_getMedia_presult() throw() {
 }
 
 
-uint32_t BananaService_getMedia_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMedia_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5715,11 +5715,11 @@ uint32_t BananaService_getMedia_presult::read(::apache::thrift::protocol::TProto
 }
 
 
-BananaService_getMyApplications_args::~BananaService_getMyApplications_args() throw() {
+AromaService_getMyApplications_args::~AromaService_getMyApplications_args() throw() {
 }
 
 
-uint32_t BananaService_getMyApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMyApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5760,10 +5760,10 @@ uint32_t BananaService_getMyApplications_args::read(::apache::thrift::protocol::
   return xfer;
 }
 
-uint32_t BananaService_getMyApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMyApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMyApplications_args");
+  xfer += oprot->writeStructBegin("AromaService_getMyApplications_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -5775,14 +5775,14 @@ uint32_t BananaService_getMyApplications_args::write(::apache::thrift::protocol:
 }
 
 
-BananaService_getMyApplications_pargs::~BananaService_getMyApplications_pargs() throw() {
+AromaService_getMyApplications_pargs::~AromaService_getMyApplications_pargs() throw() {
 }
 
 
-uint32_t BananaService_getMyApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMyApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMyApplications_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getMyApplications_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -5794,11 +5794,11 @@ uint32_t BananaService_getMyApplications_pargs::write(::apache::thrift::protocol
 }
 
 
-BananaService_getMyApplications_result::~BananaService_getMyApplications_result() throw() {
+AromaService_getMyApplications_result::~AromaService_getMyApplications_result() throw() {
 }
 
 
-uint32_t BananaService_getMyApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMyApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5863,11 +5863,11 @@ uint32_t BananaService_getMyApplications_result::read(::apache::thrift::protocol
   return xfer;
 }
 
-uint32_t BananaService_getMyApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMyApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getMyApplications_result");
+  xfer += oprot->writeStructBegin("AromaService_getMyApplications_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -5892,11 +5892,11 @@ uint32_t BananaService_getMyApplications_result::write(::apache::thrift::protoco
 }
 
 
-BananaService_getMyApplications_presult::~BananaService_getMyApplications_presult() throw() {
+AromaService_getMyApplications_presult::~AromaService_getMyApplications_presult() throw() {
 }
 
 
-uint32_t BananaService_getMyApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMyApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5962,11 +5962,11 @@ uint32_t BananaService_getMyApplications_presult::read(::apache::thrift::protoco
 }
 
 
-BananaService_getMySavedChannels_args::~BananaService_getMySavedChannels_args() throw() {
+AromaService_getMySavedChannels_args::~AromaService_getMySavedChannels_args() throw() {
 }
 
 
-uint32_t BananaService_getMySavedChannels_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMySavedChannels_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6007,10 +6007,10 @@ uint32_t BananaService_getMySavedChannels_args::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t BananaService_getMySavedChannels_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMySavedChannels_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMySavedChannels_args");
+  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -6022,14 +6022,14 @@ uint32_t BananaService_getMySavedChannels_args::write(::apache::thrift::protocol
 }
 
 
-BananaService_getMySavedChannels_pargs::~BananaService_getMySavedChannels_pargs() throw() {
+AromaService_getMySavedChannels_pargs::~AromaService_getMySavedChannels_pargs() throw() {
 }
 
 
-uint32_t BananaService_getMySavedChannels_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMySavedChannels_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getMySavedChannels_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -6041,11 +6041,11 @@ uint32_t BananaService_getMySavedChannels_pargs::write(::apache::thrift::protoco
 }
 
 
-BananaService_getMySavedChannels_result::~BananaService_getMySavedChannels_result() throw() {
+AromaService_getMySavedChannels_result::~AromaService_getMySavedChannels_result() throw() {
 }
 
 
-uint32_t BananaService_getMySavedChannels_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMySavedChannels_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6110,11 +6110,11 @@ uint32_t BananaService_getMySavedChannels_result::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t BananaService_getMySavedChannels_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getMySavedChannels_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getMySavedChannels_result");
+  xfer += oprot->writeStructBegin("AromaService_getMySavedChannels_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -6139,11 +6139,11 @@ uint32_t BananaService_getMySavedChannels_result::write(::apache::thrift::protoc
 }
 
 
-BananaService_getMySavedChannels_presult::~BananaService_getMySavedChannels_presult() throw() {
+AromaService_getMySavedChannels_presult::~AromaService_getMySavedChannels_presult() throw() {
 }
 
 
-uint32_t BananaService_getMySavedChannels_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getMySavedChannels_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6209,11 +6209,11 @@ uint32_t BananaService_getMySavedChannels_presult::read(::apache::thrift::protoc
 }
 
 
-BananaService_getUserInfo_args::~BananaService_getUserInfo_args() throw() {
+AromaService_getUserInfo_args::~AromaService_getUserInfo_args() throw() {
 }
 
 
-uint32_t BananaService_getUserInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getUserInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6254,10 +6254,10 @@ uint32_t BananaService_getUserInfo_args::read(::apache::thrift::protocol::TProto
   return xfer;
 }
 
-uint32_t BananaService_getUserInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getUserInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getUserInfo_args");
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -6269,14 +6269,14 @@ uint32_t BananaService_getUserInfo_args::write(::apache::thrift::protocol::TProt
 }
 
 
-BananaService_getUserInfo_pargs::~BananaService_getUserInfo_pargs() throw() {
+AromaService_getUserInfo_pargs::~AromaService_getUserInfo_pargs() throw() {
 }
 
 
-uint32_t BananaService_getUserInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getUserInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_getUserInfo_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -6288,11 +6288,11 @@ uint32_t BananaService_getUserInfo_pargs::write(::apache::thrift::protocol::TPro
 }
 
 
-BananaService_getUserInfo_result::~BananaService_getUserInfo_result() throw() {
+AromaService_getUserInfo_result::~AromaService_getUserInfo_result() throw() {
 }
 
 
-uint32_t BananaService_getUserInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getUserInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6373,11 +6373,11 @@ uint32_t BananaService_getUserInfo_result::read(::apache::thrift::protocol::TPro
   return xfer;
 }
 
-uint32_t BananaService_getUserInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getUserInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_getUserInfo_result");
+  xfer += oprot->writeStructBegin("AromaService_getUserInfo_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -6410,11 +6410,11 @@ uint32_t BananaService_getUserInfo_result::write(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_getUserInfo_presult::~BananaService_getUserInfo_presult() throw() {
+AromaService_getUserInfo_presult::~AromaService_getUserInfo_presult() throw() {
 }
 
 
-uint32_t BananaService_getUserInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getUserInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6496,11 +6496,11 @@ uint32_t BananaService_getUserInfo_presult::read(::apache::thrift::protocol::TPr
 }
 
 
-BananaService_searchForApplications_args::~BananaService_searchForApplications_args() throw() {
+AromaService_searchForApplications_args::~AromaService_searchForApplications_args() throw() {
 }
 
 
-uint32_t BananaService_searchForApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_searchForApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6541,10 +6541,10 @@ uint32_t BananaService_searchForApplications_args::read(::apache::thrift::protoc
   return xfer;
 }
 
-uint32_t BananaService_searchForApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_searchForApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_searchForApplications_args");
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -6556,14 +6556,14 @@ uint32_t BananaService_searchForApplications_args::write(::apache::thrift::proto
 }
 
 
-BananaService_searchForApplications_pargs::~BananaService_searchForApplications_pargs() throw() {
+AromaService_searchForApplications_pargs::~AromaService_searchForApplications_pargs() throw() {
 }
 
 
-uint32_t BananaService_searchForApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_searchForApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaService_searchForApplications_pargs");
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -6575,11 +6575,11 @@ uint32_t BananaService_searchForApplications_pargs::write(::apache::thrift::prot
 }
 
 
-BananaService_searchForApplications_result::~BananaService_searchForApplications_result() throw() {
+AromaService_searchForApplications_result::~AromaService_searchForApplications_result() throw() {
 }
 
 
-uint32_t BananaService_searchForApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_searchForApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6652,11 +6652,11 @@ uint32_t BananaService_searchForApplications_result::read(::apache::thrift::prot
   return xfer;
 }
 
-uint32_t BananaService_searchForApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_searchForApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("BananaService_searchForApplications_result");
+  xfer += oprot->writeStructBegin("AromaService_searchForApplications_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -6685,11 +6685,11 @@ uint32_t BananaService_searchForApplications_result::write(::apache::thrift::pro
 }
 
 
-BananaService_searchForApplications_presult::~BananaService_searchForApplications_presult() throw() {
+AromaService_searchForApplications_presult::~AromaService_searchForApplications_presult() throw() {
 }
 
 
-uint32_t BananaService_searchForApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_searchForApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6762,18 +6762,18 @@ uint32_t BananaService_searchForApplications_presult::read(::apache::thrift::pro
   return xfer;
 }
 
-double BananaServiceClient::getApiVersion()
+double AromaServiceClient::getApiVersion()
 {
   send_getApiVersion();
   return recv_getApiVersion();
 }
 
-void BananaServiceClient::send_getApiVersion()
+void AromaServiceClient::send_getApiVersion()
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApiVersion_pargs args;
+  AromaService_getApiVersion_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -6781,7 +6781,7 @@ void BananaServiceClient::send_getApiVersion()
   oprot_->getTransport()->flush();
 }
 
-double BananaServiceClient::recv_getApiVersion()
+double AromaServiceClient::recv_getApiVersion()
 {
 
   int32_t rseqid = 0;
@@ -6807,7 +6807,7 @@ double BananaServiceClient::recv_getApiVersion()
     iprot_->getTransport()->readEnd();
   }
   double _return;
-  BananaService_getApiVersion_presult result;
+  AromaService_getApiVersion_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -6819,18 +6819,18 @@ double BananaServiceClient::recv_getApiVersion()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApiVersion failed: unknown result");
 }
 
-void BananaServiceClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+void AromaServiceClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
 {
   send_deleteMessage(request);
   recv_deleteMessage(_return);
 }
 
-void BananaServiceClient::send_deleteMessage(const DeleteMessageRequest& request)
+void AromaServiceClient::send_deleteMessage(const DeleteMessageRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_deleteMessage_pargs args;
+  AromaService_deleteMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -6839,7 +6839,7 @@ void BananaServiceClient::send_deleteMessage(const DeleteMessageRequest& request
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
+void AromaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -6864,7 +6864,7 @@ void BananaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_deleteMessage_presult result;
+  AromaService_deleteMessage_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -6892,18 +6892,18 @@ void BananaServiceClient::recv_deleteMessage(DeleteMessageResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "deleteMessage failed: unknown result");
 }
 
-void BananaServiceClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+void AromaServiceClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
 {
   send_dismissMessage(request);
   recv_dismissMessage(_return);
 }
 
-void BananaServiceClient::send_dismissMessage(const DismissMessageRequest& request)
+void AromaServiceClient::send_dismissMessage(const DismissMessageRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_dismissMessage_pargs args;
+  AromaService_dismissMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -6912,7 +6912,7 @@ void BananaServiceClient::send_dismissMessage(const DismissMessageRequest& reque
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
+void AromaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -6937,7 +6937,7 @@ void BananaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_dismissMessage_presult result;
+  AromaService_dismissMessage_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -6965,18 +6965,18 @@ void BananaServiceClient::recv_dismissMessage(DismissMessageResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "dismissMessage failed: unknown result");
 }
 
-void BananaServiceClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
+void AromaServiceClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
 {
   send_provisionApplication(request);
   recv_provisionApplication(_return);
 }
 
-void BananaServiceClient::send_provisionApplication(const ProvisionApplicationRequest& request)
+void AromaServiceClient::send_provisionApplication(const ProvisionApplicationRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_provisionApplication_pargs args;
+  AromaService_provisionApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -6985,7 +6985,7 @@ void BananaServiceClient::send_provisionApplication(const ProvisionApplicationRe
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_provisionApplication(ProvisionApplicationResponse& _return)
+void AromaServiceClient::recv_provisionApplication(ProvisionApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7010,7 +7010,7 @@ void BananaServiceClient::recv_provisionApplication(ProvisionApplicationResponse
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_provisionApplication_presult result;
+  AromaService_provisionApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7038,18 +7038,18 @@ void BananaServiceClient::recv_provisionApplication(ProvisionApplicationResponse
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "provisionApplication failed: unknown result");
 }
 
-void BananaServiceClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
+void AromaServiceClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
 {
   send_regenerateToken(request);
   recv_regenerateToken(_return);
 }
 
-void BananaServiceClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
+void AromaServiceClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("regenerateToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_regenerateToken_pargs args;
+  AromaService_regenerateToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7058,7 +7058,7 @@ void BananaServiceClient::send_regenerateToken(const RegenerateApplicationTokenR
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return)
+void AromaServiceClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7083,7 +7083,7 @@ void BananaServiceClient::recv_regenerateToken(RegenerateApplicationTokenRespons
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_regenerateToken_presult result;
+  AromaService_regenerateToken_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7111,18 +7111,18 @@ void BananaServiceClient::recv_regenerateToken(RegenerateApplicationTokenRespons
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "regenerateToken failed: unknown result");
 }
 
-void BananaServiceClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
+void AromaServiceClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
 {
   send_registerHealthCheck(request);
   recv_registerHealthCheck(_return);
 }
 
-void BananaServiceClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
+void AromaServiceClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_registerHealthCheck_pargs args;
+  AromaService_registerHealthCheck_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7131,7 +7131,7 @@ void BananaServiceClient::send_registerHealthCheck(const RegisterHealthCheckRequ
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return)
+void AromaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7156,7 +7156,7 @@ void BananaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& 
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_registerHealthCheck_presult result;
+  AromaService_registerHealthCheck_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7184,18 +7184,18 @@ void BananaServiceClient::recv_registerHealthCheck(RegisterHealthCheckResponse& 
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "registerHealthCheck failed: unknown result");
 }
 
-void BananaServiceClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
+void AromaServiceClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
 {
   send_removeSavedChannel(request);
   recv_removeSavedChannel(_return);
 }
 
-void BananaServiceClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
+void AromaServiceClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_removeSavedChannel_pargs args;
+  AromaService_removeSavedChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7204,7 +7204,7 @@ void BananaServiceClient::send_removeSavedChannel(const RemoveSavedChannelReques
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return)
+void AromaServiceClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7229,7 +7229,7 @@ void BananaServiceClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _r
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_removeSavedChannel_presult result;
+  AromaService_removeSavedChannel_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7257,18 +7257,18 @@ void BananaServiceClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _r
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "removeSavedChannel failed: unknown result");
 }
 
-void BananaServiceClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
+void AromaServiceClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
 {
   send_renewApplicationToken(request);
   recv_renewApplicationToken(_return);
 }
 
-void BananaServiceClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
+void AromaServiceClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_renewApplicationToken_pargs args;
+  AromaService_renewApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7277,7 +7277,7 @@ void BananaServiceClient::send_renewApplicationToken(const RenewApplicationToken
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return)
+void AromaServiceClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7302,7 +7302,7 @@ void BananaServiceClient::recv_renewApplicationToken(RenewApplicationTokenRespon
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_renewApplicationToken_presult result;
+  AromaService_renewApplicationToken_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7330,18 +7330,18 @@ void BananaServiceClient::recv_renewApplicationToken(RenewApplicationTokenRespon
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "renewApplicationToken failed: unknown result");
 }
 
-void BananaServiceClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
+void AromaServiceClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
 {
   send_saveChannel(request);
   recv_saveChannel(_return);
 }
 
-void BananaServiceClient::send_saveChannel(const SaveChannelRequest& request)
+void AromaServiceClient::send_saveChannel(const SaveChannelRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_saveChannel_pargs args;
+  AromaService_saveChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7350,7 +7350,7 @@ void BananaServiceClient::send_saveChannel(const SaveChannelRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
+void AromaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7375,7 +7375,7 @@ void BananaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_saveChannel_presult result;
+  AromaService_saveChannel_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7400,18 +7400,18 @@ void BananaServiceClient::recv_saveChannel(SaveChannelResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "saveChannel failed: unknown result");
 }
 
-void BananaServiceClient::signIn(SignInResponse& _return, const SignInRequest& request)
+void AromaServiceClient::signIn(SignInResponse& _return, const SignInRequest& request)
 {
   send_signIn(request);
   recv_signIn(_return);
 }
 
-void BananaServiceClient::send_signIn(const SignInRequest& request)
+void AromaServiceClient::send_signIn(const SignInRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_signIn_pargs args;
+  AromaService_signIn_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7420,7 +7420,7 @@ void BananaServiceClient::send_signIn(const SignInRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_signIn(SignInResponse& _return)
+void AromaServiceClient::recv_signIn(SignInResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7445,7 +7445,7 @@ void BananaServiceClient::recv_signIn(SignInResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_signIn_presult result;
+  AromaService_signIn_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7470,18 +7470,18 @@ void BananaServiceClient::recv_signIn(SignInResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signIn failed: unknown result");
 }
 
-void BananaServiceClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
+void AromaServiceClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
 {
   send_signUp(request);
   recv_signUp(_return);
 }
 
-void BananaServiceClient::send_signUp(const SignUpRequest& request)
+void AromaServiceClient::send_signUp(const SignUpRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_signUp_pargs args;
+  AromaService_signUp_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7490,7 +7490,7 @@ void BananaServiceClient::send_signUp(const SignUpRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_signUp(SignUpResponse& _return)
+void AromaServiceClient::recv_signUp(SignUpResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7515,7 +7515,7 @@ void BananaServiceClient::recv_signUp(SignUpResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_signUp_presult result;
+  AromaService_signUp_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7540,18 +7540,18 @@ void BananaServiceClient::recv_signUp(SignUpResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "signUp failed: unknown result");
 }
 
-void BananaServiceClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
+void AromaServiceClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
 {
   send_snoozeChannel(request);
   recv_snoozeChannel(_return);
 }
 
-void BananaServiceClient::send_snoozeChannel(const SnoozeChannelRequest& request)
+void AromaServiceClient::send_snoozeChannel(const SnoozeChannelRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_snoozeChannel_pargs args;
+  AromaService_snoozeChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7560,7 +7560,7 @@ void BananaServiceClient::send_snoozeChannel(const SnoozeChannelRequest& request
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
+void AromaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7585,7 +7585,7 @@ void BananaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_snoozeChannel_presult result;
+  AromaService_snoozeChannel_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7613,18 +7613,18 @@ void BananaServiceClient::recv_snoozeChannel(SnoozeChannelResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "snoozeChannel failed: unknown result");
 }
 
-void BananaServiceClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
+void AromaServiceClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
 {
   send_followApplication(request);
   recv_followApplication(_return);
 }
 
-void BananaServiceClient::send_followApplication(const FollowApplicationRequest& request)
+void AromaServiceClient::send_followApplication(const FollowApplicationRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_followApplication_pargs args;
+  AromaService_followApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7633,7 +7633,7 @@ void BananaServiceClient::send_followApplication(const FollowApplicationRequest&
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_followApplication(FollowApplicationResponse& _return)
+void AromaServiceClient::recv_followApplication(FollowApplicationResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7658,7 +7658,7 @@ void BananaServiceClient::recv_followApplication(FollowApplicationResponse& _ret
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_followApplication_presult result;
+  AromaService_followApplication_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7689,18 +7689,18 @@ void BananaServiceClient::recv_followApplication(FollowApplicationResponse& _ret
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "followApplication failed: unknown result");
 }
 
-void BananaServiceClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+void AromaServiceClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
 {
   send_getActivity(request);
   recv_getActivity(_return);
 }
 
-void BananaServiceClient::send_getActivity(const GetActivityRequest& request)
+void AromaServiceClient::send_getActivity(const GetActivityRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getActivity_pargs args;
+  AromaService_getActivity_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7709,7 +7709,7 @@ void BananaServiceClient::send_getActivity(const GetActivityRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getActivity(GetActivityResponse& _return)
+void AromaServiceClient::recv_getActivity(GetActivityResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7734,7 +7734,7 @@ void BananaServiceClient::recv_getActivity(GetActivityResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getActivity_presult result;
+  AromaService_getActivity_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7756,18 +7756,18 @@ void BananaServiceClient::recv_getActivity(GetActivityResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getActivity failed: unknown result");
 }
 
-void BananaServiceClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
+void AromaServiceClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
   send_getApplicationInfo(request);
   recv_getApplicationInfo(_return);
 }
 
-void BananaServiceClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
+void AromaServiceClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApplicationInfo_pargs args;
+  AromaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7776,7 +7776,7 @@ void BananaServiceClient::send_getApplicationInfo(const GetApplicationInfoReques
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return)
+void AromaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7801,7 +7801,7 @@ void BananaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _r
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getApplicationInfo_presult result;
+  AromaService_getApplicationInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7829,18 +7829,18 @@ void BananaServiceClient::recv_getApplicationInfo(GetApplicationInfoResponse& _r
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationInfo failed: unknown result");
 }
 
-void BananaServiceClient::getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request)
+void AromaServiceClient::getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request)
 {
   send_getBuzz(request);
   recv_getBuzz(_return);
 }
 
-void BananaServiceClient::send_getBuzz(const GetBuzzRequest& request)
+void AromaServiceClient::send_getBuzz(const GetBuzzRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getBuzz", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getBuzz_pargs args;
+  AromaService_getBuzz_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7849,7 +7849,7 @@ void BananaServiceClient::send_getBuzz(const GetBuzzRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getBuzz(GetBuzzResponse& _return)
+void AromaServiceClient::recv_getBuzz(GetBuzzResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7874,7 +7874,7 @@ void BananaServiceClient::recv_getBuzz(GetBuzzResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getBuzz_presult result;
+  AromaService_getBuzz_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7902,18 +7902,18 @@ void BananaServiceClient::recv_getBuzz(GetBuzzResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getBuzz failed: unknown result");
 }
 
-void BananaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+void AromaServiceClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
 {
   send_getDashboard(request);
   recv_getDashboard(_return);
 }
 
-void BananaServiceClient::send_getDashboard(const GetDashboardRequest& request)
+void AromaServiceClient::send_getDashboard(const GetDashboardRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getDashboard_pargs args;
+  AromaService_getDashboard_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7922,7 +7922,7 @@ void BananaServiceClient::send_getDashboard(const GetDashboardRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
+void AromaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -7947,7 +7947,7 @@ void BananaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getDashboard_presult result;
+  AromaService_getDashboard_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -7969,18 +7969,18 @@ void BananaServiceClient::recv_getDashboard(GetDashboardResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getDashboard failed: unknown result");
 }
 
-void BananaServiceClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+void AromaServiceClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
 {
   send_getApplicationMessages(request);
   recv_getApplicationMessages(_return);
 }
 
-void BananaServiceClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+void AromaServiceClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApplicationMessages_pargs args;
+  AromaService_getApplicationMessages_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -7989,7 +7989,7 @@ void BananaServiceClient::send_getApplicationMessages(const GetApplicationMessag
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return)
+void AromaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8014,7 +8014,7 @@ void BananaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResp
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getApplicationMessages_presult result;
+  AromaService_getApplicationMessages_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8042,18 +8042,18 @@ void BananaServiceClient::recv_getApplicationMessages(GetApplicationMessagesResp
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationMessages failed: unknown result");
 }
 
-void BananaServiceClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
+void AromaServiceClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
 {
   send_getInbox(request);
   recv_getInbox(_return);
 }
 
-void BananaServiceClient::send_getInbox(const GetInboxRequest& request)
+void AromaServiceClient::send_getInbox(const GetInboxRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getInbox_pargs args;
+  AromaService_getInbox_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8062,7 +8062,7 @@ void BananaServiceClient::send_getInbox(const GetInboxRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getInbox(GetInboxResponse& _return)
+void AromaServiceClient::recv_getInbox(GetInboxResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8087,7 +8087,7 @@ void BananaServiceClient::recv_getInbox(GetInboxResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getInbox_presult result;
+  AromaService_getInbox_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8109,18 +8109,18 @@ void BananaServiceClient::recv_getInbox(GetInboxResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getInbox failed: unknown result");
 }
 
-void BananaServiceClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
+void AromaServiceClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
 {
   send_getFullMessage(request);
   recv_getFullMessage(_return);
 }
 
-void BananaServiceClient::send_getFullMessage(const GetFullMessageRequest& request)
+void AromaServiceClient::send_getFullMessage(const GetFullMessageRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getFullMessage_pargs args;
+  AromaService_getFullMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8129,7 +8129,7 @@ void BananaServiceClient::send_getFullMessage(const GetFullMessageRequest& reque
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
+void AromaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8154,7 +8154,7 @@ void BananaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getFullMessage_presult result;
+  AromaService_getFullMessage_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8176,18 +8176,18 @@ void BananaServiceClient::recv_getFullMessage(GetFullMessageResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getFullMessage failed: unknown result");
 }
 
-void BananaServiceClient::getMedia(GetMediaResponse& _return, const GetMediaRequest& request)
+void AromaServiceClient::getMedia(GetMediaResponse& _return, const GetMediaRequest& request)
 {
   send_getMedia(request);
   recv_getMedia(_return);
 }
 
-void BananaServiceClient::send_getMedia(const GetMediaRequest& request)
+void AromaServiceClient::send_getMedia(const GetMediaRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getMedia", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMedia_pargs args;
+  AromaService_getMedia_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8196,7 +8196,7 @@ void BananaServiceClient::send_getMedia(const GetMediaRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getMedia(GetMediaResponse& _return)
+void AromaServiceClient::recv_getMedia(GetMediaResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8221,7 +8221,7 @@ void BananaServiceClient::recv_getMedia(GetMediaResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getMedia_presult result;
+  AromaService_getMedia_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8249,18 +8249,18 @@ void BananaServiceClient::recv_getMedia(GetMediaResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMedia failed: unknown result");
 }
 
-void BananaServiceClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
+void AromaServiceClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
 {
   send_getMyApplications(request);
   recv_getMyApplications(_return);
 }
 
-void BananaServiceClient::send_getMyApplications(const GetMyApplicationsRequest& request)
+void AromaServiceClient::send_getMyApplications(const GetMyApplicationsRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMyApplications_pargs args;
+  AromaService_getMyApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8269,7 +8269,7 @@ void BananaServiceClient::send_getMyApplications(const GetMyApplicationsRequest&
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _return)
+void AromaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8294,7 +8294,7 @@ void BananaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _ret
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getMyApplications_presult result;
+  AromaService_getMyApplications_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8316,18 +8316,18 @@ void BananaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _ret
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyApplications failed: unknown result");
 }
 
-void BananaServiceClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
+void AromaServiceClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
 {
   send_getMySavedChannels(request);
   recv_getMySavedChannels(_return);
 }
 
-void BananaServiceClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
+void AromaServiceClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMySavedChannels_pargs args;
+  AromaService_getMySavedChannels_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8336,7 +8336,7 @@ void BananaServiceClient::send_getMySavedChannels(const GetMySavedChannelsReques
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return)
+void AromaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8361,7 +8361,7 @@ void BananaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _r
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getMySavedChannels_presult result;
+  AromaService_getMySavedChannels_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8383,18 +8383,18 @@ void BananaServiceClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _r
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMySavedChannels failed: unknown result");
 }
 
-void BananaServiceClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
+void AromaServiceClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
 {
   send_getUserInfo(request);
   recv_getUserInfo(_return);
 }
 
-void BananaServiceClient::send_getUserInfo(const GetUserInfoRequest& request)
+void AromaServiceClient::send_getUserInfo(const GetUserInfoRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getUserInfo_pargs args;
+  AromaService_getUserInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8403,7 +8403,7 @@ void BananaServiceClient::send_getUserInfo(const GetUserInfoRequest& request)
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
+void AromaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8428,7 +8428,7 @@ void BananaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_getUserInfo_presult result;
+  AromaService_getUserInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8456,18 +8456,18 @@ void BananaServiceClient::recv_getUserInfo(GetUserInfoResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getUserInfo failed: unknown result");
 }
 
-void BananaServiceClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
+void AromaServiceClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
 {
   send_searchForApplications(request);
   recv_searchForApplications(_return);
 }
 
-void BananaServiceClient::send_searchForApplications(const SearchForApplicationsRequest& request)
+void AromaServiceClient::send_searchForApplications(const SearchForApplicationsRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_searchForApplications_pargs args;
+  AromaService_searchForApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8476,7 +8476,7 @@ void BananaServiceClient::send_searchForApplications(const SearchForApplications
   oprot_->getTransport()->flush();
 }
 
-void BananaServiceClient::recv_searchForApplications(SearchForApplicationsResponse& _return)
+void AromaServiceClient::recv_searchForApplications(SearchForApplicationsResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8501,7 +8501,7 @@ void BananaServiceClient::recv_searchForApplications(SearchForApplicationsRespon
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  BananaService_searchForApplications_presult result;
+  AromaService_searchForApplications_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -8526,7 +8526,7 @@ void BananaServiceClient::recv_searchForApplications(SearchForApplicationsRespon
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "searchForApplications failed: unknown result");
 }
 
-bool BananaServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool AromaServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -8545,34 +8545,34 @@ bool BananaServiceProcessor::dispatchCall(::apache::thrift::protocol::TProtocol*
   return true;
 }
 
-void BananaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getApiVersion", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApiVersion", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getApiVersion");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApiVersion");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getApiVersion");
+    this->eventHandler_->preRead(ctx, "AromaService.getApiVersion");
   }
 
-  BananaService_getApiVersion_args args;
+  AromaService_getApiVersion_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getApiVersion", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApiVersion", bytes);
   }
 
-  BananaService_getApiVersion_result result;
+  AromaService_getApiVersion_result result;
   try {
     result.success = iface_->getApiVersion();
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getApiVersion");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApiVersion");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8585,7 +8585,7 @@ void BananaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thri
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getApiVersion");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApiVersion");
   }
 
   oprot->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8595,32 +8595,32 @@ void BananaServiceProcessor::process_getApiVersion(int32_t seqid, ::apache::thri
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getApiVersion", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApiVersion", bytes);
   }
 }
 
-void BananaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.deleteMessage", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.deleteMessage", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.deleteMessage");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.deleteMessage");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.deleteMessage");
+    this->eventHandler_->preRead(ctx, "AromaService.deleteMessage");
   }
 
-  BananaService_deleteMessage_args args;
+  AromaService_deleteMessage_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.deleteMessage", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.deleteMessage", bytes);
   }
 
-  BananaService_deleteMessage_result result;
+  AromaService_deleteMessage_result result;
   try {
     iface_->deleteMessage(result.success, args.request);
     result.__isset.success = true;
@@ -8641,7 +8641,7 @@ void BananaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thri
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.deleteMessage");
+      this->eventHandler_->handlerError(ctx, "AromaService.deleteMessage");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8654,7 +8654,7 @@ void BananaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thri
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.deleteMessage");
+    this->eventHandler_->preWrite(ctx, "AromaService.deleteMessage");
   }
 
   oprot->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8664,32 +8664,32 @@ void BananaServiceProcessor::process_deleteMessage(int32_t seqid, ::apache::thri
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.deleteMessage", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.deleteMessage", bytes);
   }
 }
 
-void BananaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.dismissMessage", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.dismissMessage", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.dismissMessage");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.dismissMessage");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.dismissMessage");
+    this->eventHandler_->preRead(ctx, "AromaService.dismissMessage");
   }
 
-  BananaService_dismissMessage_args args;
+  AromaService_dismissMessage_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.dismissMessage", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.dismissMessage", bytes);
   }
 
-  BananaService_dismissMessage_result result;
+  AromaService_dismissMessage_result result;
   try {
     iface_->dismissMessage(result.success, args.request);
     result.__isset.success = true;
@@ -8710,7 +8710,7 @@ void BananaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thr
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.dismissMessage");
+      this->eventHandler_->handlerError(ctx, "AromaService.dismissMessage");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8723,7 +8723,7 @@ void BananaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.dismissMessage");
+    this->eventHandler_->preWrite(ctx, "AromaService.dismissMessage");
   }
 
   oprot->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8733,32 +8733,32 @@ void BananaServiceProcessor::process_dismissMessage(int32_t seqid, ::apache::thr
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.dismissMessage", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.dismissMessage", bytes);
   }
 }
 
-void BananaServiceProcessor::process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.provisionApplication", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.provisionApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.provisionApplication");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.provisionApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.provisionApplication");
+    this->eventHandler_->preRead(ctx, "AromaService.provisionApplication");
   }
 
-  BananaService_provisionApplication_args args;
+  AromaService_provisionApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.provisionApplication", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.provisionApplication", bytes);
   }
 
-  BananaService_provisionApplication_result result;
+  AromaService_provisionApplication_result result;
   try {
     iface_->provisionApplication(result.success, args.request);
     result.__isset.success = true;
@@ -8779,7 +8779,7 @@ void BananaServiceProcessor::process_provisionApplication(int32_t seqid, ::apach
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.provisionApplication");
+      this->eventHandler_->handlerError(ctx, "AromaService.provisionApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8792,7 +8792,7 @@ void BananaServiceProcessor::process_provisionApplication(int32_t seqid, ::apach
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.provisionApplication");
+    this->eventHandler_->preWrite(ctx, "AromaService.provisionApplication");
   }
 
   oprot->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8802,32 +8802,32 @@ void BananaServiceProcessor::process_provisionApplication(int32_t seqid, ::apach
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.provisionApplication", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.provisionApplication", bytes);
   }
 }
 
-void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.regenerateToken", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.regenerateToken", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.regenerateToken");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.regenerateToken");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.regenerateToken");
+    this->eventHandler_->preRead(ctx, "AromaService.regenerateToken");
   }
 
-  BananaService_regenerateToken_args args;
+  AromaService_regenerateToken_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.regenerateToken", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.regenerateToken", bytes);
   }
 
-  BananaService_regenerateToken_result result;
+  AromaService_regenerateToken_result result;
   try {
     iface_->regenerateToken(result.success, args.request);
     result.__isset.success = true;
@@ -8848,7 +8848,7 @@ void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::th
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.regenerateToken");
+      this->eventHandler_->handlerError(ctx, "AromaService.regenerateToken");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8861,7 +8861,7 @@ void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::th
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.regenerateToken");
+    this->eventHandler_->preWrite(ctx, "AromaService.regenerateToken");
   }
 
   oprot->writeMessageBegin("regenerateToken", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8871,32 +8871,32 @@ void BananaServiceProcessor::process_regenerateToken(int32_t seqid, ::apache::th
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.regenerateToken", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.regenerateToken", bytes);
   }
 }
 
-void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.registerHealthCheck", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.registerHealthCheck", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.registerHealthCheck");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.registerHealthCheck");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.registerHealthCheck");
+    this->eventHandler_->preRead(ctx, "AromaService.registerHealthCheck");
   }
 
-  BananaService_registerHealthCheck_args args;
+  AromaService_registerHealthCheck_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.registerHealthCheck", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.registerHealthCheck", bytes);
   }
 
-  BananaService_registerHealthCheck_result result;
+  AromaService_registerHealthCheck_result result;
   try {
     iface_->registerHealthCheck(result.success, args.request);
     result.__isset.success = true;
@@ -8917,7 +8917,7 @@ void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.registerHealthCheck");
+      this->eventHandler_->handlerError(ctx, "AromaService.registerHealthCheck");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8930,7 +8930,7 @@ void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.registerHealthCheck");
+    this->eventHandler_->preWrite(ctx, "AromaService.registerHealthCheck");
   }
 
   oprot->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -8940,32 +8940,32 @@ void BananaServiceProcessor::process_registerHealthCheck(int32_t seqid, ::apache
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.registerHealthCheck", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.registerHealthCheck", bytes);
   }
 }
 
-void BananaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.removeSavedChannel", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.removeSavedChannel", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.removeSavedChannel");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.removeSavedChannel");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.removeSavedChannel");
+    this->eventHandler_->preRead(ctx, "AromaService.removeSavedChannel");
   }
 
-  BananaService_removeSavedChannel_args args;
+  AromaService_removeSavedChannel_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.removeSavedChannel", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.removeSavedChannel", bytes);
   }
 
-  BananaService_removeSavedChannel_result result;
+  AromaService_removeSavedChannel_result result;
   try {
     iface_->removeSavedChannel(result.success, args.request);
     result.__isset.success = true;
@@ -8986,7 +8986,7 @@ void BananaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache:
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.removeSavedChannel");
+      this->eventHandler_->handlerError(ctx, "AromaService.removeSavedChannel");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -8999,7 +8999,7 @@ void BananaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.removeSavedChannel");
+    this->eventHandler_->preWrite(ctx, "AromaService.removeSavedChannel");
   }
 
   oprot->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9009,32 +9009,32 @@ void BananaServiceProcessor::process_removeSavedChannel(int32_t seqid, ::apache:
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.removeSavedChannel", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.removeSavedChannel", bytes);
   }
 }
 
-void BananaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.renewApplicationToken", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.renewApplicationToken", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.renewApplicationToken");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.renewApplicationToken");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.renewApplicationToken");
+    this->eventHandler_->preRead(ctx, "AromaService.renewApplicationToken");
   }
 
-  BananaService_renewApplicationToken_args args;
+  AromaService_renewApplicationToken_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.renewApplicationToken", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.renewApplicationToken", bytes);
   }
 
-  BananaService_renewApplicationToken_result result;
+  AromaService_renewApplicationToken_result result;
   try {
     iface_->renewApplicationToken(result.success, args.request);
     result.__isset.success = true;
@@ -9055,7 +9055,7 @@ void BananaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apac
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.renewApplicationToken");
+      this->eventHandler_->handlerError(ctx, "AromaService.renewApplicationToken");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9068,7 +9068,7 @@ void BananaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apac
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.renewApplicationToken");
+    this->eventHandler_->preWrite(ctx, "AromaService.renewApplicationToken");
   }
 
   oprot->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9078,32 +9078,32 @@ void BananaServiceProcessor::process_renewApplicationToken(int32_t seqid, ::apac
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.renewApplicationToken", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.renewApplicationToken", bytes);
   }
 }
 
-void BananaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.saveChannel", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.saveChannel", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.saveChannel");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.saveChannel");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.saveChannel");
+    this->eventHandler_->preRead(ctx, "AromaService.saveChannel");
   }
 
-  BananaService_saveChannel_args args;
+  AromaService_saveChannel_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.saveChannel", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.saveChannel", bytes);
   }
 
-  BananaService_saveChannel_result result;
+  AromaService_saveChannel_result result;
   try {
     iface_->saveChannel(result.success, args.request);
     result.__isset.success = true;
@@ -9121,7 +9121,7 @@ void BananaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.saveChannel");
+      this->eventHandler_->handlerError(ctx, "AromaService.saveChannel");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9134,7 +9134,7 @@ void BananaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.saveChannel");
+    this->eventHandler_->preWrite(ctx, "AromaService.saveChannel");
   }
 
   oprot->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9144,32 +9144,32 @@ void BananaServiceProcessor::process_saveChannel(int32_t seqid, ::apache::thrift
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.saveChannel", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.saveChannel", bytes);
   }
 }
 
-void BananaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.signIn", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.signIn", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.signIn");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signIn");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.signIn");
+    this->eventHandler_->preRead(ctx, "AromaService.signIn");
   }
 
-  BananaService_signIn_args args;
+  AromaService_signIn_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.signIn", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.signIn", bytes);
   }
 
-  BananaService_signIn_result result;
+  AromaService_signIn_result result;
   try {
     iface_->signIn(result.success, args.request);
     result.__isset.success = true;
@@ -9187,7 +9187,7 @@ void BananaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::pro
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.signIn");
+      this->eventHandler_->handlerError(ctx, "AromaService.signIn");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9200,7 +9200,7 @@ void BananaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::pro
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.signIn");
+    this->eventHandler_->preWrite(ctx, "AromaService.signIn");
   }
 
   oprot->writeMessageBegin("signIn", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9210,32 +9210,32 @@ void BananaServiceProcessor::process_signIn(int32_t seqid, ::apache::thrift::pro
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.signIn", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.signIn", bytes);
   }
 }
 
-void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.signUp", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.signUp", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.signUp");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.signUp");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.signUp");
+    this->eventHandler_->preRead(ctx, "AromaService.signUp");
   }
 
-  BananaService_signUp_args args;
+  AromaService_signUp_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.signUp", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.signUp", bytes);
   }
 
-  BananaService_signUp_result result;
+  AromaService_signUp_result result;
   try {
     iface_->signUp(result.success, args.request);
     result.__isset.success = true;
@@ -9253,7 +9253,7 @@ void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::pro
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.signUp");
+      this->eventHandler_->handlerError(ctx, "AromaService.signUp");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9266,7 +9266,7 @@ void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::pro
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.signUp");
+    this->eventHandler_->preWrite(ctx, "AromaService.signUp");
   }
 
   oprot->writeMessageBegin("signUp", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9276,32 +9276,32 @@ void BananaServiceProcessor::process_signUp(int32_t seqid, ::apache::thrift::pro
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.signUp", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.signUp", bytes);
   }
 }
 
-void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.snoozeChannel", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.snoozeChannel", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.snoozeChannel");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.snoozeChannel");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.snoozeChannel");
+    this->eventHandler_->preRead(ctx, "AromaService.snoozeChannel");
   }
 
-  BananaService_snoozeChannel_args args;
+  AromaService_snoozeChannel_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.snoozeChannel", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.snoozeChannel", bytes);
   }
 
-  BananaService_snoozeChannel_result result;
+  AromaService_snoozeChannel_result result;
   try {
     iface_->snoozeChannel(result.success, args.request);
     result.__isset.success = true;
@@ -9322,7 +9322,7 @@ void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thri
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.snoozeChannel");
+      this->eventHandler_->handlerError(ctx, "AromaService.snoozeChannel");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9335,7 +9335,7 @@ void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thri
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.snoozeChannel");
+    this->eventHandler_->preWrite(ctx, "AromaService.snoozeChannel");
   }
 
   oprot->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9345,32 +9345,32 @@ void BananaServiceProcessor::process_snoozeChannel(int32_t seqid, ::apache::thri
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.snoozeChannel", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.snoozeChannel", bytes);
   }
 }
 
-void BananaServiceProcessor::process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.followApplication", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.followApplication", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.followApplication");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.followApplication");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.followApplication");
+    this->eventHandler_->preRead(ctx, "AromaService.followApplication");
   }
 
-  BananaService_followApplication_args args;
+  AromaService_followApplication_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.followApplication", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.followApplication", bytes);
   }
 
-  BananaService_followApplication_result result;
+  AromaService_followApplication_result result;
   try {
     iface_->followApplication(result.success, args.request);
     result.__isset.success = true;
@@ -9394,7 +9394,7 @@ void BananaServiceProcessor::process_followApplication(int32_t seqid, ::apache::
     result.__isset.ex6 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.followApplication");
+      this->eventHandler_->handlerError(ctx, "AromaService.followApplication");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9407,7 +9407,7 @@ void BananaServiceProcessor::process_followApplication(int32_t seqid, ::apache::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.followApplication");
+    this->eventHandler_->preWrite(ctx, "AromaService.followApplication");
   }
 
   oprot->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9417,32 +9417,32 @@ void BananaServiceProcessor::process_followApplication(int32_t seqid, ::apache::
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.followApplication", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.followApplication", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getActivity", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getActivity", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getActivity");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getActivity");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getActivity");
+    this->eventHandler_->preRead(ctx, "AromaService.getActivity");
   }
 
-  BananaService_getActivity_args args;
+  AromaService_getActivity_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getActivity", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getActivity", bytes);
   }
 
-  BananaService_getActivity_result result;
+  AromaService_getActivity_result result;
   try {
     iface_->getActivity(result.success, args.request);
     result.__isset.success = true;
@@ -9457,7 +9457,7 @@ void BananaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getActivity");
+      this->eventHandler_->handlerError(ctx, "AromaService.getActivity");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9470,7 +9470,7 @@ void BananaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getActivity");
+    this->eventHandler_->preWrite(ctx, "AromaService.getActivity");
   }
 
   oprot->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9480,32 +9480,32 @@ void BananaServiceProcessor::process_getActivity(int32_t seqid, ::apache::thrift
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getActivity", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getActivity", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getApplicationInfo", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationInfo", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getApplicationInfo");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationInfo");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getApplicationInfo");
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationInfo");
   }
 
-  BananaService_getApplicationInfo_args args;
+  AromaService_getApplicationInfo_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getApplicationInfo", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationInfo", bytes);
   }
 
-  BananaService_getApplicationInfo_result result;
+  AromaService_getApplicationInfo_result result;
   try {
     iface_->getApplicationInfo(result.success, args.request);
     result.__isset.success = true;
@@ -9526,7 +9526,7 @@ void BananaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache:
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getApplicationInfo");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9539,7 +9539,7 @@ void BananaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getApplicationInfo");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationInfo");
   }
 
   oprot->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9549,32 +9549,32 @@ void BananaServiceProcessor::process_getApplicationInfo(int32_t seqid, ::apache:
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getApplicationInfo", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationInfo", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getBuzz", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getBuzz", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getBuzz");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getBuzz");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getBuzz");
+    this->eventHandler_->preRead(ctx, "AromaService.getBuzz");
   }
 
-  BananaService_getBuzz_args args;
+  AromaService_getBuzz_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getBuzz", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getBuzz", bytes);
   }
 
-  BananaService_getBuzz_result result;
+  AromaService_getBuzz_result result;
   try {
     iface_->getBuzz(result.success, args.request);
     result.__isset.success = true;
@@ -9595,7 +9595,7 @@ void BananaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::pr
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getBuzz");
+      this->eventHandler_->handlerError(ctx, "AromaService.getBuzz");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9608,7 +9608,7 @@ void BananaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::pr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getBuzz");
+    this->eventHandler_->preWrite(ctx, "AromaService.getBuzz");
   }
 
   oprot->writeMessageBegin("getBuzz", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9618,32 +9618,32 @@ void BananaServiceProcessor::process_getBuzz(int32_t seqid, ::apache::thrift::pr
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getBuzz", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getBuzz", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getDashboard", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getDashboard", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getDashboard");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getDashboard");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getDashboard");
+    this->eventHandler_->preRead(ctx, "AromaService.getDashboard");
   }
 
-  BananaService_getDashboard_args args;
+  AromaService_getDashboard_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getDashboard", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getDashboard", bytes);
   }
 
-  BananaService_getDashboard_result result;
+  AromaService_getDashboard_result result;
   try {
     iface_->getDashboard(result.success, args.request);
     result.__isset.success = true;
@@ -9658,7 +9658,7 @@ void BananaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrif
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getDashboard");
+      this->eventHandler_->handlerError(ctx, "AromaService.getDashboard");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9671,7 +9671,7 @@ void BananaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrif
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getDashboard");
+    this->eventHandler_->preWrite(ctx, "AromaService.getDashboard");
   }
 
   oprot->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9681,32 +9681,32 @@ void BananaServiceProcessor::process_getDashboard(int32_t seqid, ::apache::thrif
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getDashboard", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getDashboard", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getApplicationMessages", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationMessages", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getApplicationMessages");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationMessages");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getApplicationMessages");
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationMessages");
   }
 
-  BananaService_getApplicationMessages_args args;
+  AromaService_getApplicationMessages_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getApplicationMessages", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationMessages", bytes);
   }
 
-  BananaService_getApplicationMessages_result result;
+  AromaService_getApplicationMessages_result result;
   try {
     iface_->getApplicationMessages(result.success, args.request);
     result.__isset.success = true;
@@ -9727,7 +9727,7 @@ void BananaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apa
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getApplicationMessages");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationMessages");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9740,7 +9740,7 @@ void BananaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apa
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getApplicationMessages");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationMessages");
   }
 
   oprot->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9750,32 +9750,32 @@ void BananaServiceProcessor::process_getApplicationMessages(int32_t seqid, ::apa
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getApplicationMessages", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationMessages", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getInbox", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getInbox", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getInbox");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getInbox");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getInbox");
+    this->eventHandler_->preRead(ctx, "AromaService.getInbox");
   }
 
-  BananaService_getInbox_args args;
+  AromaService_getInbox_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getInbox", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getInbox", bytes);
   }
 
-  BananaService_getInbox_result result;
+  AromaService_getInbox_result result;
   try {
     iface_->getInbox(result.success, args.request);
     result.__isset.success = true;
@@ -9790,7 +9790,7 @@ void BananaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::p
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getInbox");
+      this->eventHandler_->handlerError(ctx, "AromaService.getInbox");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9803,7 +9803,7 @@ void BananaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::p
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getInbox");
+    this->eventHandler_->preWrite(ctx, "AromaService.getInbox");
   }
 
   oprot->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9813,32 +9813,32 @@ void BananaServiceProcessor::process_getInbox(int32_t seqid, ::apache::thrift::p
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getInbox", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getInbox", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getFullMessage", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getFullMessage", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getFullMessage");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getFullMessage");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getFullMessage");
+    this->eventHandler_->preRead(ctx, "AromaService.getFullMessage");
   }
 
-  BananaService_getFullMessage_args args;
+  AromaService_getFullMessage_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getFullMessage", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getFullMessage", bytes);
   }
 
-  BananaService_getFullMessage_result result;
+  AromaService_getFullMessage_result result;
   try {
     iface_->getFullMessage(result.success, args.request);
     result.__isset.success = true;
@@ -9853,7 +9853,7 @@ void BananaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thr
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getFullMessage");
+      this->eventHandler_->handlerError(ctx, "AromaService.getFullMessage");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9866,7 +9866,7 @@ void BananaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thr
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getFullMessage");
+    this->eventHandler_->preWrite(ctx, "AromaService.getFullMessage");
   }
 
   oprot->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9876,32 +9876,32 @@ void BananaServiceProcessor::process_getFullMessage(int32_t seqid, ::apache::thr
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getFullMessage", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getFullMessage", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getMedia", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getMedia", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getMedia");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getMedia");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getMedia");
+    this->eventHandler_->preRead(ctx, "AromaService.getMedia");
   }
 
-  BananaService_getMedia_args args;
+  AromaService_getMedia_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getMedia", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getMedia", bytes);
   }
 
-  BananaService_getMedia_result result;
+  AromaService_getMedia_result result;
   try {
     iface_->getMedia(result.success, args.request);
     result.__isset.success = true;
@@ -9922,7 +9922,7 @@ void BananaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::p
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getMedia");
+      this->eventHandler_->handlerError(ctx, "AromaService.getMedia");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9935,7 +9935,7 @@ void BananaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::p
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getMedia");
+    this->eventHandler_->preWrite(ctx, "AromaService.getMedia");
   }
 
   oprot->writeMessageBegin("getMedia", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -9945,32 +9945,32 @@ void BananaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::p
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getMedia", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getMedia", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getMyApplications", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getMyApplications", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getMyApplications");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getMyApplications");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getMyApplications");
+    this->eventHandler_->preRead(ctx, "AromaService.getMyApplications");
   }
 
-  BananaService_getMyApplications_args args;
+  AromaService_getMyApplications_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getMyApplications", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getMyApplications", bytes);
   }
 
-  BananaService_getMyApplications_result result;
+  AromaService_getMyApplications_result result;
   try {
     iface_->getMyApplications(result.success, args.request);
     result.__isset.success = true;
@@ -9985,7 +9985,7 @@ void BananaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getMyApplications");
+      this->eventHandler_->handlerError(ctx, "AromaService.getMyApplications");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -9998,7 +9998,7 @@ void BananaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getMyApplications");
+    this->eventHandler_->preWrite(ctx, "AromaService.getMyApplications");
   }
 
   oprot->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -10008,32 +10008,32 @@ void BananaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getMyApplications", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getMyApplications", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getMySavedChannels", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getMySavedChannels", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getMySavedChannels");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getMySavedChannels");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getMySavedChannels");
+    this->eventHandler_->preRead(ctx, "AromaService.getMySavedChannels");
   }
 
-  BananaService_getMySavedChannels_args args;
+  AromaService_getMySavedChannels_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getMySavedChannels", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getMySavedChannels", bytes);
   }
 
-  BananaService_getMySavedChannels_result result;
+  AromaService_getMySavedChannels_result result;
   try {
     iface_->getMySavedChannels(result.success, args.request);
     result.__isset.success = true;
@@ -10048,7 +10048,7 @@ void BananaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache:
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getMySavedChannels");
+      this->eventHandler_->handlerError(ctx, "AromaService.getMySavedChannels");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -10061,7 +10061,7 @@ void BananaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getMySavedChannels");
+    this->eventHandler_->preWrite(ctx, "AromaService.getMySavedChannels");
   }
 
   oprot->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -10071,32 +10071,32 @@ void BananaServiceProcessor::process_getMySavedChannels(int32_t seqid, ::apache:
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getMySavedChannels", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getMySavedChannels", bytes);
   }
 }
 
-void BananaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.getUserInfo", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getUserInfo", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.getUserInfo");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getUserInfo");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.getUserInfo");
+    this->eventHandler_->preRead(ctx, "AromaService.getUserInfo");
   }
 
-  BananaService_getUserInfo_args args;
+  AromaService_getUserInfo_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.getUserInfo", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getUserInfo", bytes);
   }
 
-  BananaService_getUserInfo_result result;
+  AromaService_getUserInfo_result result;
   try {
     iface_->getUserInfo(result.success, args.request);
     result.__isset.success = true;
@@ -10117,7 +10117,7 @@ void BananaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift
     result.__isset.ex5 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.getUserInfo");
+      this->eventHandler_->handlerError(ctx, "AromaService.getUserInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -10130,7 +10130,7 @@ void BananaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.getUserInfo");
+    this->eventHandler_->preWrite(ctx, "AromaService.getUserInfo");
   }
 
   oprot->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -10140,32 +10140,32 @@ void BananaServiceProcessor::process_getUserInfo(int32_t seqid, ::apache::thrift
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.getUserInfo", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getUserInfo", bytes);
   }
 }
 
-void BananaServiceProcessor::process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("BananaService.searchForApplications", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.searchForApplications", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "BananaService.searchForApplications");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.searchForApplications");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "BananaService.searchForApplications");
+    this->eventHandler_->preRead(ctx, "AromaService.searchForApplications");
   }
 
-  BananaService_searchForApplications_args args;
+  AromaService_searchForApplications_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "BananaService.searchForApplications", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.searchForApplications", bytes);
   }
 
-  BananaService_searchForApplications_result result;
+  AromaService_searchForApplications_result result;
   try {
     iface_->searchForApplications(result.success, args.request);
     result.__isset.success = true;
@@ -10183,7 +10183,7 @@ void BananaServiceProcessor::process_searchForApplications(int32_t seqid, ::apac
     result.__isset.ex4 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "BananaService.searchForApplications");
+      this->eventHandler_->handlerError(ctx, "AromaService.searchForApplications");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -10196,7 +10196,7 @@ void BananaServiceProcessor::process_searchForApplications(int32_t seqid, ::apac
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "BananaService.searchForApplications");
+    this->eventHandler_->preWrite(ctx, "AromaService.searchForApplications");
   }
 
   oprot->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -10206,30 +10206,30 @@ void BananaServiceProcessor::process_searchForApplications(int32_t seqid, ::apac
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "BananaService.searchForApplications", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.searchForApplications", bytes);
   }
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > BananaServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< BananaServiceIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< BananaServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new BananaServiceProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > AromaServiceProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< AromaServiceIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< AromaServiceIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new AromaServiceProcessor(handler));
   return processor;
 }
 
-double BananaServiceConcurrentClient::getApiVersion()
+double AromaServiceConcurrentClient::getApiVersion()
 {
   int32_t seqid = send_getApiVersion();
   return recv_getApiVersion(seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getApiVersion()
+int32_t AromaServiceConcurrentClient::send_getApiVersion()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getApiVersion", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApiVersion_pargs args;
+  AromaService_getApiVersion_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -10240,7 +10240,7 @@ int32_t BananaServiceConcurrentClient::send_getApiVersion()
   return cseqid;
 }
 
-double BananaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
+double AromaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10279,7 +10279,7 @@ double BananaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       double _return;
-      BananaService_getApiVersion_presult result;
+      AromaService_getApiVersion_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10300,19 +10300,19 @@ double BananaServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
+void AromaServiceConcurrentClient::deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request)
 {
   int32_t seqid = send_deleteMessage(request);
   recv_deleteMessage(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_deleteMessage(const DeleteMessageRequest& request)
+int32_t AromaServiceConcurrentClient::send_deleteMessage(const DeleteMessageRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("deleteMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_deleteMessage_pargs args;
+  AromaService_deleteMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10324,7 +10324,7 @@ int32_t BananaServiceConcurrentClient::send_deleteMessage(const DeleteMessageReq
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10362,7 +10362,7 @@ void BananaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _r
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_deleteMessage_presult result;
+      AromaService_deleteMessage_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10404,19 +10404,19 @@ void BananaServiceConcurrentClient::recv_deleteMessage(DeleteMessageResponse& _r
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
+void AromaServiceConcurrentClient::dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request)
 {
   int32_t seqid = send_dismissMessage(request);
   recv_dismissMessage(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_dismissMessage(const DismissMessageRequest& request)
+int32_t AromaServiceConcurrentClient::send_dismissMessage(const DismissMessageRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("dismissMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_dismissMessage_pargs args;
+  AromaService_dismissMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10428,7 +10428,7 @@ int32_t BananaServiceConcurrentClient::send_dismissMessage(const DismissMessageR
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10466,7 +10466,7 @@ void BananaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& 
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_dismissMessage_presult result;
+      AromaService_dismissMessage_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10508,19 +10508,19 @@ void BananaServiceConcurrentClient::recv_dismissMessage(DismissMessageResponse& 
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
+void AromaServiceConcurrentClient::provisionApplication(ProvisionApplicationResponse& _return, const ProvisionApplicationRequest& request)
 {
   int32_t seqid = send_provisionApplication(request);
   recv_provisionApplication(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_provisionApplication(const ProvisionApplicationRequest& request)
+int32_t AromaServiceConcurrentClient::send_provisionApplication(const ProvisionApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("provisionApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_provisionApplication_pargs args;
+  AromaService_provisionApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10532,7 +10532,7 @@ int32_t BananaServiceConcurrentClient::send_provisionApplication(const Provision
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_provisionApplication(ProvisionApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10570,7 +10570,7 @@ void BananaServiceConcurrentClient::recv_provisionApplication(ProvisionApplicati
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_provisionApplication_presult result;
+      AromaService_provisionApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10612,19 +10612,19 @@ void BananaServiceConcurrentClient::recv_provisionApplication(ProvisionApplicati
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
+void AromaServiceConcurrentClient::regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request)
 {
   int32_t seqid = send_regenerateToken(request);
   recv_regenerateToken(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
+int32_t AromaServiceConcurrentClient::send_regenerateToken(const RegenerateApplicationTokenRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("regenerateToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_regenerateToken_pargs args;
+  AromaService_regenerateToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10636,7 +10636,7 @@ int32_t BananaServiceConcurrentClient::send_regenerateToken(const RegenerateAppl
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTokenResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10674,7 +10674,7 @@ void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTo
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_regenerateToken_presult result;
+      AromaService_regenerateToken_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10716,19 +10716,19 @@ void BananaServiceConcurrentClient::recv_regenerateToken(RegenerateApplicationTo
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
+void AromaServiceConcurrentClient::registerHealthCheck(RegisterHealthCheckResponse& _return, const RegisterHealthCheckRequest& request)
 {
   int32_t seqid = send_registerHealthCheck(request);
   recv_registerHealthCheck(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
+int32_t AromaServiceConcurrentClient::send_registerHealthCheck(const RegisterHealthCheckRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("registerHealthCheck", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_registerHealthCheck_pargs args;
+  AromaService_registerHealthCheck_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10740,7 +10740,7 @@ int32_t BananaServiceConcurrentClient::send_registerHealthCheck(const RegisterHe
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheckResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10778,7 +10778,7 @@ void BananaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheck
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_registerHealthCheck_presult result;
+      AromaService_registerHealthCheck_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10820,19 +10820,19 @@ void BananaServiceConcurrentClient::recv_registerHealthCheck(RegisterHealthCheck
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
+void AromaServiceConcurrentClient::removeSavedChannel(RemoveSavedChannelResponse& _return, const RemoveSavedChannelRequest& request)
 {
   int32_t seqid = send_removeSavedChannel(request);
   recv_removeSavedChannel(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
+int32_t AromaServiceConcurrentClient::send_removeSavedChannel(const RemoveSavedChannelRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("removeSavedChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_removeSavedChannel_pargs args;
+  AromaService_removeSavedChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10844,7 +10844,7 @@ int32_t BananaServiceConcurrentClient::send_removeSavedChannel(const RemoveSaved
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_removeSavedChannel(RemoveSavedChannelResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10882,7 +10882,7 @@ void BananaServiceConcurrentClient::recv_removeSavedChannel(RemoveSavedChannelRe
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_removeSavedChannel_presult result;
+      AromaService_removeSavedChannel_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -10924,19 +10924,19 @@ void BananaServiceConcurrentClient::recv_removeSavedChannel(RemoveSavedChannelRe
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
+void AromaServiceConcurrentClient::renewApplicationToken(RenewApplicationTokenResponse& _return, const RenewApplicationTokenRequest& request)
 {
   int32_t seqid = send_renewApplicationToken(request);
   recv_renewApplicationToken(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
+int32_t AromaServiceConcurrentClient::send_renewApplicationToken(const RenewApplicationTokenRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("renewApplicationToken", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_renewApplicationToken_pargs args;
+  AromaService_renewApplicationToken_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -10948,7 +10948,7 @@ int32_t BananaServiceConcurrentClient::send_renewApplicationToken(const RenewApp
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationTokenResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -10986,7 +10986,7 @@ void BananaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationT
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_renewApplicationToken_presult result;
+      AromaService_renewApplicationToken_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11028,19 +11028,19 @@ void BananaServiceConcurrentClient::recv_renewApplicationToken(RenewApplicationT
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
+void AromaServiceConcurrentClient::saveChannel(SaveChannelResponse& _return, const SaveChannelRequest& request)
 {
   int32_t seqid = send_saveChannel(request);
   recv_saveChannel(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_saveChannel(const SaveChannelRequest& request)
+int32_t AromaServiceConcurrentClient::send_saveChannel(const SaveChannelRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("saveChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_saveChannel_pargs args;
+  AromaService_saveChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11052,7 +11052,7 @@ int32_t BananaServiceConcurrentClient::send_saveChannel(const SaveChannelRequest
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11090,7 +11090,7 @@ void BananaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _retur
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_saveChannel_presult result;
+      AromaService_saveChannel_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11128,19 +11128,19 @@ void BananaServiceConcurrentClient::recv_saveChannel(SaveChannelResponse& _retur
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::signIn(SignInResponse& _return, const SignInRequest& request)
+void AromaServiceConcurrentClient::signIn(SignInResponse& _return, const SignInRequest& request)
 {
   int32_t seqid = send_signIn(request);
   recv_signIn(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_signIn(const SignInRequest& request)
+int32_t AromaServiceConcurrentClient::send_signIn(const SignInRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("signIn", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_signIn_pargs args;
+  AromaService_signIn_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11152,7 +11152,7 @@ int32_t BananaServiceConcurrentClient::send_signIn(const SignInRequest& request)
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11190,7 +11190,7 @@ void BananaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const i
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_signIn_presult result;
+      AromaService_signIn_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11228,19 +11228,19 @@ void BananaServiceConcurrentClient::recv_signIn(SignInResponse& _return, const i
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
+void AromaServiceConcurrentClient::signUp(SignUpResponse& _return, const SignUpRequest& request)
 {
   int32_t seqid = send_signUp(request);
   recv_signUp(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_signUp(const SignUpRequest& request)
+int32_t AromaServiceConcurrentClient::send_signUp(const SignUpRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("signUp", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_signUp_pargs args;
+  AromaService_signUp_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11252,7 +11252,7 @@ int32_t BananaServiceConcurrentClient::send_signUp(const SignUpRequest& request)
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11290,7 +11290,7 @@ void BananaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const i
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_signUp_presult result;
+      AromaService_signUp_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11328,19 +11328,19 @@ void BananaServiceConcurrentClient::recv_signUp(SignUpResponse& _return, const i
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
+void AromaServiceConcurrentClient::snoozeChannel(SnoozeChannelResponse& _return, const SnoozeChannelRequest& request)
 {
   int32_t seqid = send_snoozeChannel(request);
   recv_snoozeChannel(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_snoozeChannel(const SnoozeChannelRequest& request)
+int32_t AromaServiceConcurrentClient::send_snoozeChannel(const SnoozeChannelRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("snoozeChannel", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_snoozeChannel_pargs args;
+  AromaService_snoozeChannel_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11352,7 +11352,7 @@ int32_t BananaServiceConcurrentClient::send_snoozeChannel(const SnoozeChannelReq
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11390,7 +11390,7 @@ void BananaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _r
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_snoozeChannel_presult result;
+      AromaService_snoozeChannel_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11432,19 +11432,19 @@ void BananaServiceConcurrentClient::recv_snoozeChannel(SnoozeChannelResponse& _r
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
+void AromaServiceConcurrentClient::followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request)
 {
   int32_t seqid = send_followApplication(request);
   recv_followApplication(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_followApplication(const FollowApplicationRequest& request)
+int32_t AromaServiceConcurrentClient::send_followApplication(const FollowApplicationRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("followApplication", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_followApplication_pargs args;
+  AromaService_followApplication_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11456,7 +11456,7 @@ int32_t BananaServiceConcurrentClient::send_followApplication(const FollowApplic
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11494,7 +11494,7 @@ void BananaServiceConcurrentClient::recv_followApplication(FollowApplicationResp
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_followApplication_presult result;
+      AromaService_followApplication_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11540,19 +11540,19 @@ void BananaServiceConcurrentClient::recv_followApplication(FollowApplicationResp
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
+void AromaServiceConcurrentClient::getActivity(GetActivityResponse& _return, const GetActivityRequest& request)
 {
   int32_t seqid = send_getActivity(request);
   recv_getActivity(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getActivity(const GetActivityRequest& request)
+int32_t AromaServiceConcurrentClient::send_getActivity(const GetActivityRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getActivity", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getActivity_pargs args;
+  AromaService_getActivity_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11564,7 +11564,7 @@ int32_t BananaServiceConcurrentClient::send_getActivity(const GetActivityRequest
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11602,7 +11602,7 @@ void BananaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _retur
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getActivity_presult result;
+      AromaService_getActivity_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11636,19 +11636,19 @@ void BananaServiceConcurrentClient::recv_getActivity(GetActivityResponse& _retur
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
+void AromaServiceConcurrentClient::getApplicationInfo(GetApplicationInfoResponse& _return, const GetApplicationInfoRequest& request)
 {
   int32_t seqid = send_getApplicationInfo(request);
   recv_getApplicationInfo(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApplicationInfo(const GetApplicationInfoRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getApplicationInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApplicationInfo_pargs args;
+  AromaService_getApplicationInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11660,7 +11660,7 @@ int32_t BananaServiceConcurrentClient::send_getApplicationInfo(const GetApplicat
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11698,7 +11698,7 @@ void BananaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoRe
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getApplicationInfo_presult result;
+      AromaService_getApplicationInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11740,19 +11740,19 @@ void BananaServiceConcurrentClient::recv_getApplicationInfo(GetApplicationInfoRe
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request)
+void AromaServiceConcurrentClient::getBuzz(GetBuzzResponse& _return, const GetBuzzRequest& request)
 {
   int32_t seqid = send_getBuzz(request);
   recv_getBuzz(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getBuzz(const GetBuzzRequest& request)
+int32_t AromaServiceConcurrentClient::send_getBuzz(const GetBuzzRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getBuzz", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getBuzz_pargs args;
+  AromaService_getBuzz_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11764,7 +11764,7 @@ int32_t BananaServiceConcurrentClient::send_getBuzz(const GetBuzzRequest& reques
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getBuzz(GetBuzzResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getBuzz(GetBuzzResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11802,7 +11802,7 @@ void BananaServiceConcurrentClient::recv_getBuzz(GetBuzzResponse& _return, const
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getBuzz_presult result;
+      AromaService_getBuzz_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11844,19 +11844,19 @@ void BananaServiceConcurrentClient::recv_getBuzz(GetBuzzResponse& _return, const
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
+void AromaServiceConcurrentClient::getDashboard(GetDashboardResponse& _return, const GetDashboardRequest& request)
 {
   int32_t seqid = send_getDashboard(request);
   recv_getDashboard(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getDashboard(const GetDashboardRequest& request)
+int32_t AromaServiceConcurrentClient::send_getDashboard(const GetDashboardRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getDashboard", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getDashboard_pargs args;
+  AromaService_getDashboard_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11868,7 +11868,7 @@ int32_t BananaServiceConcurrentClient::send_getDashboard(const GetDashboardReque
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -11906,7 +11906,7 @@ void BananaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _ret
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getDashboard_presult result;
+      AromaService_getDashboard_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -11940,19 +11940,19 @@ void BananaServiceConcurrentClient::recv_getDashboard(GetDashboardResponse& _ret
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
+void AromaServiceConcurrentClient::getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request)
 {
   int32_t seqid = send_getApplicationMessages(request);
   recv_getApplicationMessages(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApplicationMessages(const GetApplicationMessagesRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getApplicationMessages", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getApplicationMessages_pargs args;
+  AromaService_getApplicationMessages_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -11964,7 +11964,7 @@ int32_t BananaServiceConcurrentClient::send_getApplicationMessages(const GetAppl
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMessagesResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12002,7 +12002,7 @@ void BananaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMe
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getApplicationMessages_presult result;
+      AromaService_getApplicationMessages_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12044,19 +12044,19 @@ void BananaServiceConcurrentClient::recv_getApplicationMessages(GetApplicationMe
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
+void AromaServiceConcurrentClient::getInbox(GetInboxResponse& _return, const GetInboxRequest& request)
 {
   int32_t seqid = send_getInbox(request);
   recv_getInbox(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getInbox(const GetInboxRequest& request)
+int32_t AromaServiceConcurrentClient::send_getInbox(const GetInboxRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getInbox", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getInbox_pargs args;
+  AromaService_getInbox_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12068,7 +12068,7 @@ int32_t BananaServiceConcurrentClient::send_getInbox(const GetInboxRequest& requ
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12106,7 +12106,7 @@ void BananaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, con
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getInbox_presult result;
+      AromaService_getInbox_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12140,19 +12140,19 @@ void BananaServiceConcurrentClient::recv_getInbox(GetInboxResponse& _return, con
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
+void AromaServiceConcurrentClient::getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request)
 {
   int32_t seqid = send_getFullMessage(request);
   recv_getFullMessage(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getFullMessage(const GetFullMessageRequest& request)
+int32_t AromaServiceConcurrentClient::send_getFullMessage(const GetFullMessageRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getFullMessage", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getFullMessage_pargs args;
+  AromaService_getFullMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12164,7 +12164,7 @@ int32_t BananaServiceConcurrentClient::send_getFullMessage(const GetFullMessageR
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12202,7 +12202,7 @@ void BananaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& 
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getFullMessage_presult result;
+      AromaService_getFullMessage_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12236,19 +12236,19 @@ void BananaServiceConcurrentClient::recv_getFullMessage(GetFullMessageResponse& 
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getMedia(GetMediaResponse& _return, const GetMediaRequest& request)
+void AromaServiceConcurrentClient::getMedia(GetMediaResponse& _return, const GetMediaRequest& request)
 {
   int32_t seqid = send_getMedia(request);
   recv_getMedia(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getMedia(const GetMediaRequest& request)
+int32_t AromaServiceConcurrentClient::send_getMedia(const GetMediaRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getMedia", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMedia_pargs args;
+  AromaService_getMedia_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12260,7 +12260,7 @@ int32_t BananaServiceConcurrentClient::send_getMedia(const GetMediaRequest& requ
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12298,7 +12298,7 @@ void BananaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, con
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getMedia_presult result;
+      AromaService_getMedia_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12340,19 +12340,19 @@ void BananaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, con
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
+void AromaServiceConcurrentClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
 {
   int32_t seqid = send_getMyApplications(request);
   recv_getMyApplications(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getMyApplications(const GetMyApplicationsRequest& request)
+int32_t AromaServiceConcurrentClient::send_getMyApplications(const GetMyApplicationsRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMyApplications_pargs args;
+  AromaService_getMyApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12364,7 +12364,7 @@ int32_t BananaServiceConcurrentClient::send_getMyApplications(const GetMyApplica
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12402,7 +12402,7 @@ void BananaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResp
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getMyApplications_presult result;
+      AromaService_getMyApplications_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12436,19 +12436,19 @@ void BananaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResp
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
+void AromaServiceConcurrentClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
 {
   int32_t seqid = send_getMySavedChannels(request);
   recv_getMySavedChannels(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
+int32_t AromaServiceConcurrentClient::send_getMySavedChannels(const GetMySavedChannelsRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getMySavedChannels", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getMySavedChannels_pargs args;
+  AromaService_getMySavedChannels_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12460,7 +12460,7 @@ int32_t BananaServiceConcurrentClient::send_getMySavedChannels(const GetMySavedC
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12498,7 +12498,7 @@ void BananaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsRe
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getMySavedChannels_presult result;
+      AromaService_getMySavedChannels_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12532,19 +12532,19 @@ void BananaServiceConcurrentClient::recv_getMySavedChannels(GetMySavedChannelsRe
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
+void AromaServiceConcurrentClient::getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request)
 {
   int32_t seqid = send_getUserInfo(request);
   recv_getUserInfo(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_getUserInfo(const GetUserInfoRequest& request)
+int32_t AromaServiceConcurrentClient::send_getUserInfo(const GetUserInfoRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("getUserInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_getUserInfo_pargs args;
+  AromaService_getUserInfo_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12556,7 +12556,7 @@ int32_t BananaServiceConcurrentClient::send_getUserInfo(const GetUserInfoRequest
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12594,7 +12594,7 @@ void BananaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _retur
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_getUserInfo_presult result;
+      AromaService_getUserInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12636,19 +12636,19 @@ void BananaServiceConcurrentClient::recv_getUserInfo(GetUserInfoResponse& _retur
   } // end while(true)
 }
 
-void BananaServiceConcurrentClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
+void AromaServiceConcurrentClient::searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request)
 {
   int32_t seqid = send_searchForApplications(request);
   recv_searchForApplications(_return, seqid);
 }
 
-int32_t BananaServiceConcurrentClient::send_searchForApplications(const SearchForApplicationsRequest& request)
+int32_t AromaServiceConcurrentClient::send_searchForApplications(const SearchForApplicationsRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("searchForApplications", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  BananaService_searchForApplications_pargs args;
+  AromaService_searchForApplications_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -12660,7 +12660,7 @@ int32_t BananaServiceConcurrentClient::send_searchForApplications(const SearchFo
   return cseqid;
 }
 
-void BananaServiceConcurrentClient::recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_searchForApplications(SearchForApplicationsResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -12698,7 +12698,7 @@ void BananaServiceConcurrentClient::recv_searchForApplications(SearchForApplicat
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      BananaService_searchForApplications_presult result;
+      AromaService_searchForApplications_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -12736,5 +12736,5 @@ void BananaServiceConcurrentClient::recv_searchForApplications(SearchForApplicat
   } // end while(true)
 }
 
-}}}} // namespace
+}}} // namespace
 

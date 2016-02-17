@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
 
 CheckExistsRequest::~CheckExistsRequest() throw() {
@@ -970,7 +970,7 @@ void ProvisionApplicationRequest::__set_applicationName(const std::string& val) 
   this->applicationName = val;
 }
 
-void ProvisionApplicationRequest::__set_programmingLanguage(const  ::aroma::banana::thrift::ProgrammingLanguage::type val) {
+void ProvisionApplicationRequest::__set_programmingLanguage(const  ::tech::aroma::thrift::ProgrammingLanguage::type val) {
   this->programmingLanguage = val;
 __isset.programmingLanguage = true;
 }
@@ -994,7 +994,7 @@ void ProvisionApplicationRequest::__set_applicationDescription(const std::string
 __isset.applicationDescription = true;
 }
 
-void ProvisionApplicationRequest::__set_tier(const  ::aroma::banana::thrift::Tier::type val) {
+void ProvisionApplicationRequest::__set_tier(const  ::tech::aroma::thrift::Tier::type val) {
   this->tier = val;
 __isset.tier = true;
 }
@@ -1040,7 +1040,7 @@ uint32_t ProvisionApplicationRequest::read(::apache::thrift::protocol::TProtocol
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast28;
           xfer += iprot->readI32(ecast28);
-          this->programmingLanguage = ( ::aroma::banana::thrift::ProgrammingLanguage::type)ecast28;
+          this->programmingLanguage = ( ::tech::aroma::thrift::ProgrammingLanguage::type)ecast28;
           this->__isset.programmingLanguage = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1095,7 +1095,7 @@ uint32_t ProvisionApplicationRequest::read(::apache::thrift::protocol::TProtocol
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast35;
           xfer += iprot->readI32(ecast35);
-          this->tier = ( ::aroma::banana::thrift::Tier::type)ecast35;
+          this->tier = ( ::tech::aroma::thrift::Tier::type)ecast35;
           this->__isset.tier = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1741,7 +1741,7 @@ void RemoveSavedChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void RemoveSavedChannelRequest::__set_channel(const BananaChannel& val) {
+void RemoveSavedChannelRequest::__set_channel(const AromaChannel& val) {
   this->channel = val;
 }
 
@@ -1847,7 +1847,7 @@ void RemoveSavedChannelResponse::__set_message(const std::string& val) {
   this->message = val;
 }
 
-void RemoveSavedChannelResponse::__set_channel(const BananaChannel& val) {
+void RemoveSavedChannelResponse::__set_channel(const AromaChannel& val) {
   this->channel = val;
 __isset.channel = true;
 }
@@ -1959,7 +1959,7 @@ void RenewApplicationTokenRequest::__set_applicationToken(const ApplicationToken
   this->applicationToken = val;
 }
 
-void RenewApplicationTokenRequest::__set_newLifetime(const  ::aroma::banana::thrift::LengthOfTime& val) {
+void RenewApplicationTokenRequest::__set_newLifetime(const  ::tech::aroma::thrift::LengthOfTime& val) {
   this->newLifetime = val;
 }
 
@@ -2187,7 +2187,7 @@ void SaveChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void SaveChannelRequest::__set_channel(const BananaChannel& val) {
+void SaveChannelRequest::__set_channel(const AromaChannel& val) {
   this->channel = val;
 }
 
@@ -2293,7 +2293,7 @@ void SaveChannelResponse::__set_message(const std::string& val) {
   this->message = val;
 }
 
-void SaveChannelResponse::__set_channel(const BananaChannel& val) {
+void SaveChannelResponse::__set_channel(const AromaChannel& val) {
   this->channel = val;
 __isset.channel = true;
 }
@@ -2397,7 +2397,7 @@ SignInRequest::~SignInRequest() throw() {
 }
 
 
-void SignInRequest::__set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val) {
+void SignInRequest::__set_credentials(const  ::aroma::thrift::authentication::Credentials& val) {
   this->credentials = val;
 }
 
@@ -2617,11 +2617,11 @@ void SignUpRequest::__set_organizationId(const uuid& val) {
   this->organizationId = val;
 }
 
-void SignUpRequest::__set_credentials(const  ::aroma::banana::thrift::authentication::Credentials& val) {
+void SignUpRequest::__set_credentials(const  ::aroma::thrift::authentication::Credentials& val) {
   this->credentials = val;
 }
 
-void SignUpRequest::__set_mainRole(const  ::aroma::banana::thrift::Role::type val) {
+void SignUpRequest::__set_mainRole(const  ::tech::aroma::thrift::Role::type val) {
   this->mainRole = val;
 }
 
@@ -2729,7 +2729,7 @@ uint32_t SignUpRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast65;
           xfer += iprot->readI32(ecast65);
-          this->mainRole = ( ::aroma::banana::thrift::Role::type)ecast65;
+          this->mainRole = ( ::tech::aroma::thrift::Role::type)ecast65;
           this->__isset.mainRole = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -2907,7 +2907,7 @@ void SignUpResponse::__set_userToken(const UserToken& val) {
   this->userToken = val;
 }
 
-void SignUpResponse::__set_account(const  ::aroma::banana::thrift::authentication::AromaAccount& val) {
+void SignUpResponse::__set_account(const  ::aroma::thrift::authentication::AromaAccount& val) {
   this->account = val;
 }
 
@@ -3033,7 +3033,7 @@ void SnoozeChannelRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-void SnoozeChannelRequest::__set_channel(const BananaChannel& val) {
+void SnoozeChannelRequest::__set_channel(const AromaChannel& val) {
   this->channel = val;
 }
 
@@ -3042,7 +3042,7 @@ void SnoozeChannelRequest::__set_applicationId(const uuid& val) {
 __isset.applicationId = true;
 }
 
-void SnoozeChannelRequest::__set_lengthOfTime(const  ::aroma::banana::thrift::LengthOfTime& val) {
+void SnoozeChannelRequest::__set_lengthOfTime(const  ::tech::aroma::thrift::LengthOfTime& val) {
   this->lengthOfTime = val;
 __isset.lengthOfTime = true;
 }
@@ -3633,7 +3633,7 @@ void GetApplicationInfoResponse::__set_applicationInfo(const Application& val) {
   this->applicationInfo = val;
 }
 
-void GetApplicationInfoResponse::__set_registeredChannels(const std::vector<BananaChannel> & val) {
+void GetApplicationInfoResponse::__set_registeredChannels(const std::vector<AromaChannel> & val) {
   this->registeredChannels = val;
 }
 
@@ -3710,7 +3710,7 @@ uint32_t GetApplicationInfoResponse::write(::apache::thrift::protocol::TProtocol
   xfer += oprot->writeFieldBegin("registeredChannels", ::apache::thrift::protocol::T_LIST, 2);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->registeredChannels.size()));
-    std::vector<BananaChannel> ::const_iterator _iter86;
+    std::vector<AromaChannel> ::const_iterator _iter86;
     for (_iter86 = this->registeredChannels.begin(); _iter86 != this->registeredChannels.end(); ++_iter86)
     {
       xfer += (*_iter86).write(oprot);
@@ -3853,7 +3853,7 @@ void GetBuzzResponse::__set_failedHealthChecks(const std::vector<HealthCheckFail
   this->failedHealthChecks = val;
 }
 
-void GetBuzzResponse::__set_generalEvents(const std::vector< ::aroma::banana::thrift::events::GeneralEvent> & val) {
+void GetBuzzResponse::__set_generalEvents(const std::vector< ::aroma::thrift::events::GeneralEvent> & val) {
   this->generalEvents = val;
 }
 
@@ -4014,7 +4014,7 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("generalEvents", ::apache::thrift::protocol::T_LIST, 4);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->generalEvents.size()));
-    std::vector< ::aroma::banana::thrift::events::GeneralEvent> ::const_iterator _iter114;
+    std::vector< ::aroma::thrift::events::GeneralEvent> ::const_iterator _iter114;
     for (_iter114 = this->generalEvents.begin(); _iter114 != this->generalEvents.end(); ++_iter114)
     {
       xfer += (*_iter114).write(oprot);
@@ -4165,7 +4165,7 @@ void GetDashboardResponse::__set_totalMessagesLast24hrs(const int val) {
   this->totalMessagesLast24hrs = val;
 }
 
-void GetDashboardResponse::__set_recentMessages(const std::vector< ::aroma::banana::thrift::Message> & val) {
+void GetDashboardResponse::__set_recentMessages(const std::vector< ::tech::aroma::thrift::Message> & val) {
   this->recentMessages = val;
 }
 
@@ -4302,7 +4302,7 @@ uint32_t GetDashboardResponse::write(::apache::thrift::protocol::TProtocol* opro
   xfer += oprot->writeFieldBegin("recentMessages", ::apache::thrift::protocol::T_LIST, 4);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->recentMessages.size()));
-    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter124;
+    std::vector< ::tech::aroma::thrift::Message> ::const_iterator _iter124;
     for (_iter124 = this->recentMessages.begin(); _iter124 != this->recentMessages.end(); ++_iter124)
     {
       xfer += (*_iter124).write(oprot);
@@ -4487,7 +4487,7 @@ GetInboxResponse::~GetInboxResponse() throw() {
 }
 
 
-void GetInboxResponse::__set_messages(const std::vector< ::aroma::banana::thrift::Message> & val) {
+void GetInboxResponse::__set_messages(const std::vector< ::tech::aroma::thrift::Message> & val) {
   this->messages = val;
 }
 
@@ -4552,7 +4552,7 @@ uint32_t GetInboxResponse::write(::apache::thrift::protocol::TProtocol* oprot) c
   xfer += oprot->writeFieldBegin("messages", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->messages.size()));
-    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter134;
+    std::vector< ::tech::aroma::thrift::Message> ::const_iterator _iter134;
     for (_iter134 = this->messages.begin(); _iter134 != this->messages.end(); ++_iter134)
     {
       xfer += (*_iter134).write(oprot);
@@ -4721,7 +4721,7 @@ GetApplicationMessagesResponse::~GetApplicationMessagesResponse() throw() {
 }
 
 
-void GetApplicationMessagesResponse::__set_messages(const std::vector< ::aroma::banana::thrift::Message> & val) {
+void GetApplicationMessagesResponse::__set_messages(const std::vector< ::tech::aroma::thrift::Message> & val) {
   this->messages = val;
 }
 
@@ -4799,7 +4799,7 @@ uint32_t GetApplicationMessagesResponse::write(::apache::thrift::protocol::TProt
   xfer += oprot->writeFieldBegin("messages", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->messages.size()));
-    std::vector< ::aroma::banana::thrift::Message> ::const_iterator _iter144;
+    std::vector< ::tech::aroma::thrift::Message> ::const_iterator _iter144;
     for (_iter144 = this->messages.begin(); _iter144 != this->messages.end(); ++_iter144)
     {
       xfer += (*_iter144).write(oprot);
@@ -4975,7 +4975,7 @@ GetFullMessageResponse::~GetFullMessageResponse() throw() {
 }
 
 
-void GetFullMessageResponse::__set_fullMessage(const  ::aroma::banana::thrift::Message& val) {
+void GetFullMessageResponse::__set_fullMessage(const  ::tech::aroma::thrift::Message& val) {
   this->fullMessage = val;
 }
 
@@ -5167,7 +5167,7 @@ GetMediaResponse::~GetMediaResponse() throw() {
 }
 
 
-void GetMediaResponse::__set_image(const  ::aroma::banana::thrift::Image& val) {
+void GetMediaResponse::__set_image(const  ::tech::aroma::thrift::Image& val) {
   this->image = val;
 }
 
@@ -5531,7 +5531,7 @@ GetMySavedChannelsResponse::~GetMySavedChannelsResponse() throw() {
 }
 
 
-void GetMySavedChannelsResponse::__set_channels(const std::vector<BananaChannel> & val) {
+void GetMySavedChannelsResponse::__set_channels(const std::vector<AromaChannel> & val) {
   this->channels = val;
 }
 
@@ -5596,7 +5596,7 @@ uint32_t GetMySavedChannelsResponse::write(::apache::thrift::protocol::TProtocol
   xfer += oprot->writeFieldBegin("channels", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->channels.size()));
-    std::vector<BananaChannel> ::const_iterator _iter172;
+    std::vector<AromaChannel> ::const_iterator _iter172;
     for (_iter172 = this->channels.begin(); _iter172 != this->channels.end(); ++_iter172)
     {
       xfer += (*_iter172).write(oprot);
@@ -5745,7 +5745,7 @@ GetActivityResponse::~GetActivityResponse() throw() {
 }
 
 
-void GetActivityResponse::__set_events(const std::vector< ::aroma::banana::thrift::events::Event> & val) {
+void GetActivityResponse::__set_events(const std::vector< ::aroma::thrift::events::Event> & val) {
   this->events = val;
 }
 
@@ -5810,7 +5810,7 @@ uint32_t GetActivityResponse::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeFieldBegin("events", ::apache::thrift::protocol::T_LIST, 1);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->events.size()));
-    std::vector< ::aroma::banana::thrift::events::Event> ::const_iterator _iter182;
+    std::vector< ::aroma::thrift::events::Event> ::const_iterator _iter182;
     for (_iter182 = this->events.begin(); _iter182 != this->events.end(); ++_iter182)
     {
       xfer += (*_iter182).write(oprot);
@@ -5937,7 +5937,7 @@ GetServiceAnnouncementsResponse::~GetServiceAnnouncementsResponse() throw() {
 }
 
 
-void GetServiceAnnouncementsResponse::__set_serviceAnnouncements(const std::vector< ::aroma::banana::thrift::ServiceAnnouncement> & val) {
+void GetServiceAnnouncementsResponse::__set_serviceAnnouncements(const std::vector< ::tech::aroma::thrift::ServiceAnnouncement> & val) {
   this->serviceAnnouncements = val;
 __isset.serviceAnnouncements = true;
 }
@@ -6004,7 +6004,7 @@ uint32_t GetServiceAnnouncementsResponse::write(::apache::thrift::protocol::TPro
     xfer += oprot->writeFieldBegin("serviceAnnouncements", ::apache::thrift::protocol::T_LIST, 1);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->serviceAnnouncements.size()));
-      std::vector< ::aroma::banana::thrift::ServiceAnnouncement> ::const_iterator _iter192;
+      std::vector< ::tech::aroma::thrift::ServiceAnnouncement> ::const_iterator _iter192;
       for (_iter192 = this->serviceAnnouncements.begin(); _iter192 != this->serviceAnnouncements.end(); ++_iter192)
       {
         xfer += (*_iter192).write(oprot);
@@ -6488,4 +6488,4 @@ void SearchForApplicationsResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}} // namespace

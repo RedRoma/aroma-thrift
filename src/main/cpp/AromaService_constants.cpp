@@ -6,7 +6,7 @@
  */
 #include "AromaService_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
 const AromaServiceConstants g_AromaService_constants;
 
@@ -15,32 +15,32 @@ AromaServiceConstants::AromaServiceConstants() {
 
   SERVICE_PORT = 7010;
 
-  PRODUCTION_ENDPOINT.hostname = "banana-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp209;
+  PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
+   ::aroma::thrift::endpoint::int tmp209;
   tmp209 = 7010;
 
   PRODUCTION_ENDPOINT.port = tmp209;
 
-  BETA_ENDPOINT.hostname = "banana-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp210;
+  BETA_ENDPOINT.hostname = "aroma-srv.beta.aroma.tech";
+   ::aroma::thrift::endpoint::int tmp210;
   tmp210 = 7010;
 
   BETA_ENDPOINT.port = tmp210;
 
-   ::aroma::banana::thrift::int tmp211;
+   ::tech::aroma::thrift::int tmp211;
   tmp211 = 1024;
 
   MAX_APPLICATION_ICON_DIMENSION.width = tmp211;
-   ::aroma::banana::thrift::int tmp212;
+   ::tech::aroma::thrift::int tmp212;
   tmp212 = 1024;
 
   MAX_APPLICATION_ICON_DIMENSION.height = tmp212;
 
-   ::aroma::banana::thrift::int tmp213;
+   ::tech::aroma::thrift::int tmp213;
   tmp213 = 1024;
 
   MAX_PROFILE_IMAGE_DIMENSION.width = tmp213;
-   ::aroma::banana::thrift::int tmp214;
+   ::tech::aroma::thrift::int tmp214;
   tmp214 = 1024;
 
   MAX_PROFILE_IMAGE_DIMENSION.height = tmp214;
@@ -51,11 +51,11 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
-   ::aroma::banana::thrift::long tmp215;
+   ::tech::aroma::thrift::long tmp215;
   tmp215 = 3LL;
 
   DEFAULT_INBOX_LIFETIME.value = tmp215;
-  DEFAULT_INBOX_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
+  DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)4;
 
   APPLICATION_NAME_MAX_LENGTH = 20;
 
@@ -63,5 +63,5 @@ AromaServiceConstants::AromaServiceConstants() {
 
 }
 
-}}}} // namespace
+}}} // namespace
 

@@ -6,26 +6,26 @@
  */
 #include "NotificationService_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace notification { namespace service {
 
 const NotificationServiceConstants g_NotificationService_constants;
 
 NotificationServiceConstants::NotificationServiceConstants() {
   SERVICE_PORT = 7009;
 
-  PRODUCTION_ENDPOINT.hostname = "notification-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp10;
+  PRODUCTION_ENDPOINT.hostname = "notification-srv.aroma.tech";
+   ::aroma::thrift::endpoint::int tmp10;
   tmp10 = 7009;
 
   PRODUCTION_ENDPOINT.port = tmp10;
 
-  BETA_ENDPOINT.hostname = "notification-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp11;
+  BETA_ENDPOINT.hostname = "notification-srv.beta.aroma.tech";
+   ::aroma::thrift::endpoint::int tmp11;
   tmp11 = 7009;
 
   BETA_ENDPOINT.port = tmp11;
 
 }
 
-}}}}} // namespace
+}}}} // namespace
 

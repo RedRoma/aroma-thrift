@@ -17,7 +17,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-namespace aroma { namespace banana { namespace thrift {
+namespace tech { namespace aroma { namespace thrift {
 
 struct ImageType {
   enum type {

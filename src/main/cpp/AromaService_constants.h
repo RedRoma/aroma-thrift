@@ -9,7 +9,7 @@
 
 #include "AromaService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
 class AromaServiceConstants {
  public:
@@ -17,20 +17,20 @@ class AromaServiceConstants {
 
   double API_VERSION;
   int SERVICE_PORT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
-   ::aroma::banana::thrift::Dimension MAX_APPLICATION_ICON_DIMENSION;
-   ::aroma::banana::thrift::Dimension MAX_PROFILE_IMAGE_DIMENSION;
+   ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+   ::tech::aroma::thrift::Dimension MAX_APPLICATION_ICON_DIMENSION;
+   ::tech::aroma::thrift::Dimension MAX_PROFILE_IMAGE_DIMENSION;
   int MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
   int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
   int MAX_MESSAGE_LENGTH;
-   ::aroma::banana::thrift::LengthOfTime DEFAULT_INBOX_LIFETIME;
+   ::tech::aroma::thrift::LengthOfTime DEFAULT_INBOX_LIFETIME;
   int APPLICATION_NAME_MAX_LENGTH;
   int APPLICATION_MAX_OWNERS;
 };
 
 extern const AromaServiceConstants g_AromaService_constants;
 
-}}}} // namespace
+}}} // namespace
 
 #endif

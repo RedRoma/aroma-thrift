@@ -23,45 +23,45 @@
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace notification { namespace service {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
-typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+typedef class  ::aroma::thrift::authentication::AuthenticationToken AuthenticationToken;
 
-typedef class  ::aroma::banana::thrift::Application Application;
+typedef class  ::tech::aroma::thrift::Application Application;
 
-typedef  ::aroma::banana::thrift::Urgency::type Urgency;
+typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
-typedef class  ::aroma::banana::thrift::channels::BananaChannel BananaChannel;
+typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
-typedef class  ::aroma::banana::thrift::events::Event Event;
+typedef class  ::aroma::thrift::events::Event Event;
 
-typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
+typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
+typedef class  ::aroma::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+typedef class  ::aroma::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
-typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
+typedef class  ::aroma::thrift::exceptions::ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ApplicationDoesNotExistException ApplicationDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
+typedef class  ::aroma::thrift::exceptions::CustomChannelUnreachableException CustomChannelUnreachableException;
 
-typedef class  ::aroma::banana::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
+typedef class  ::aroma::thrift::exceptions::ChannelDoesNotExistException ChannelDoesNotExistException;
 
-typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class SendNotificationRequest;
 
@@ -85,7 +85,7 @@ class SendNotificationRequest {
   virtual ~SendNotificationRequest() throw();
   AuthenticationToken token;
   Event event;
-  std::vector<BananaChannel>  channels;
+  std::vector<AromaChannel>  channels;
 
   _SendNotificationRequest__isset __isset;
 
@@ -93,7 +93,7 @@ class SendNotificationRequest {
 
   void __set_event(const Event& val);
 
-  void __set_channels(const std::vector<BananaChannel> & val);
+  void __set_channels(const std::vector<AromaChannel> & val);
 
   bool operator == (const SendNotificationRequest & rhs) const
   {
@@ -173,6 +173,6 @@ inline std::ostream& operator<<(std::ostream& out, const SendNotificationRespons
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

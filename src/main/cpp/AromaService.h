@@ -4,23 +4,23 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaService_H
-#define BananaService_H
+#ifndef AromaService_H
+#define AromaService_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "AromaService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace service {
+namespace aroma { namespace thrift { namespace service {
 
 #ifdef _WIN32
   #pragma warning( push )
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class BananaServiceIf {
+class AromaServiceIf {
  public:
-  virtual ~BananaServiceIf() {}
+  virtual ~AromaServiceIf() {}
   virtual double getApiVersion() = 0;
   virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
   virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
@@ -46,7 +46,7 @@ class BananaServiceIf {
   virtual void regenerateToken(RegenerateApplicationTokenResponse& _return, const RegenerateApplicationTokenRequest& request) = 0;
 
   /**
-   * Register an existing Application for Health Pokes. The Banana Service
+   * Register an existing Application for Health Pokes. The Aroma Service
    * will then periodically poke the Application for health status.
    * 
    * #owner
@@ -164,7 +164,7 @@ class BananaServiceIf {
   virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
   /**
-   * Perform a Search on all the applications registered to the Banana Service by searching for its title.
+   * Perform a Search on all the applications registered to Aroma by searching for its title.
    * 
    * #user
    * 
@@ -173,33 +173,33 @@ class BananaServiceIf {
   virtual void searchForApplications(SearchForApplicationsResponse& _return, const SearchForApplicationsRequest& request) = 0;
 };
 
-class BananaServiceIfFactory {
+class AromaServiceIfFactory {
  public:
-  typedef BananaServiceIf Handler;
+  typedef AromaServiceIf Handler;
 
-  virtual ~BananaServiceIfFactory() {}
+  virtual ~AromaServiceIfFactory() {}
 
-  virtual BananaServiceIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(BananaServiceIf* /* handler */) = 0;
+  virtual AromaServiceIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(AromaServiceIf* /* handler */) = 0;
 };
 
-class BananaServiceIfSingletonFactory : virtual public BananaServiceIfFactory {
+class AromaServiceIfSingletonFactory : virtual public AromaServiceIfFactory {
  public:
-  BananaServiceIfSingletonFactory(const boost::shared_ptr<BananaServiceIf>& iface) : iface_(iface) {}
-  virtual ~BananaServiceIfSingletonFactory() {}
+  AromaServiceIfSingletonFactory(const boost::shared_ptr<AromaServiceIf>& iface) : iface_(iface) {}
+  virtual ~AromaServiceIfSingletonFactory() {}
 
-  virtual BananaServiceIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
+  virtual AromaServiceIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
     return iface_.get();
   }
-  virtual void releaseHandler(BananaServiceIf* /* handler */) {}
+  virtual void releaseHandler(AromaServiceIf* /* handler */) {}
 
  protected:
-  boost::shared_ptr<BananaServiceIf> iface_;
+  boost::shared_ptr<AromaServiceIf> iface_;
 };
 
-class BananaServiceNull : virtual public BananaServiceIf {
+class AromaServiceNull : virtual public AromaServiceIf {
  public:
-  virtual ~BananaServiceNull() {}
+  virtual ~AromaServiceNull() {}
   double getApiVersion() {
     double _return = (double)0;
     return _return;
@@ -279,25 +279,25 @@ class BananaServiceNull : virtual public BananaServiceIf {
 };
 
 
-class BananaService_getApiVersion_args {
+class AromaService_getApiVersion_args {
  public:
 
-  BananaService_getApiVersion_args(const BananaService_getApiVersion_args&);
-  BananaService_getApiVersion_args& operator=(const BananaService_getApiVersion_args&);
-  BananaService_getApiVersion_args() {
+  AromaService_getApiVersion_args(const AromaService_getApiVersion_args&);
+  AromaService_getApiVersion_args& operator=(const AromaService_getApiVersion_args&);
+  AromaService_getApiVersion_args() {
   }
 
-  virtual ~BananaService_getApiVersion_args() throw();
+  virtual ~AromaService_getApiVersion_args() throw();
 
-  bool operator == (const BananaService_getApiVersion_args & /* rhs */) const
+  bool operator == (const AromaService_getApiVersion_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const BananaService_getApiVersion_args &rhs) const {
+  bool operator != (const AromaService_getApiVersion_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApiVersion_args & ) const;
+  bool operator < (const AromaService_getApiVersion_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -305,102 +305,102 @@ class BananaService_getApiVersion_args {
 };
 
 
-class BananaService_getApiVersion_pargs {
+class AromaService_getApiVersion_pargs {
  public:
 
 
-  virtual ~BananaService_getApiVersion_pargs() throw();
+  virtual ~AromaService_getApiVersion_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApiVersion_result__isset {
-  _BananaService_getApiVersion_result__isset() : success(false) {}
+typedef struct _AromaService_getApiVersion_result__isset {
+  _AromaService_getApiVersion_result__isset() : success(false) {}
   bool success :1;
-} _BananaService_getApiVersion_result__isset;
+} _AromaService_getApiVersion_result__isset;
 
-class BananaService_getApiVersion_result {
+class AromaService_getApiVersion_result {
  public:
 
-  BananaService_getApiVersion_result(const BananaService_getApiVersion_result&);
-  BananaService_getApiVersion_result& operator=(const BananaService_getApiVersion_result&);
-  BananaService_getApiVersion_result() : success(0) {
+  AromaService_getApiVersion_result(const AromaService_getApiVersion_result&);
+  AromaService_getApiVersion_result& operator=(const AromaService_getApiVersion_result&);
+  AromaService_getApiVersion_result() : success(0) {
   }
 
-  virtual ~BananaService_getApiVersion_result() throw();
+  virtual ~AromaService_getApiVersion_result() throw();
   double success;
 
-  _BananaService_getApiVersion_result__isset __isset;
+  _AromaService_getApiVersion_result__isset __isset;
 
   void __set_success(const double val);
 
-  bool operator == (const BananaService_getApiVersion_result & rhs) const
+  bool operator == (const AromaService_getApiVersion_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApiVersion_result &rhs) const {
+  bool operator != (const AromaService_getApiVersion_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApiVersion_result & ) const;
+  bool operator < (const AromaService_getApiVersion_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApiVersion_presult__isset {
-  _BananaService_getApiVersion_presult__isset() : success(false) {}
+typedef struct _AromaService_getApiVersion_presult__isset {
+  _AromaService_getApiVersion_presult__isset() : success(false) {}
   bool success :1;
-} _BananaService_getApiVersion_presult__isset;
+} _AromaService_getApiVersion_presult__isset;
 
-class BananaService_getApiVersion_presult {
+class AromaService_getApiVersion_presult {
  public:
 
 
-  virtual ~BananaService_getApiVersion_presult() throw();
+  virtual ~AromaService_getApiVersion_presult() throw();
   double* success;
 
-  _BananaService_getApiVersion_presult__isset __isset;
+  _AromaService_getApiVersion_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_deleteMessage_args__isset {
-  _BananaService_deleteMessage_args__isset() : request(false) {}
+typedef struct _AromaService_deleteMessage_args__isset {
+  _AromaService_deleteMessage_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_deleteMessage_args__isset;
+} _AromaService_deleteMessage_args__isset;
 
-class BananaService_deleteMessage_args {
+class AromaService_deleteMessage_args {
  public:
 
-  BananaService_deleteMessage_args(const BananaService_deleteMessage_args&);
-  BananaService_deleteMessage_args& operator=(const BananaService_deleteMessage_args&);
-  BananaService_deleteMessage_args() {
+  AromaService_deleteMessage_args(const AromaService_deleteMessage_args&);
+  AromaService_deleteMessage_args& operator=(const AromaService_deleteMessage_args&);
+  AromaService_deleteMessage_args() {
   }
 
-  virtual ~BananaService_deleteMessage_args() throw();
+  virtual ~AromaService_deleteMessage_args() throw();
   DeleteMessageRequest request;
 
-  _BananaService_deleteMessage_args__isset __isset;
+  _AromaService_deleteMessage_args__isset __isset;
 
   void __set_request(const DeleteMessageRequest& val);
 
-  bool operator == (const BananaService_deleteMessage_args & rhs) const
+  bool operator == (const AromaService_deleteMessage_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_deleteMessage_args &rhs) const {
+  bool operator != (const AromaService_deleteMessage_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_deleteMessage_args & ) const;
+  bool operator < (const AromaService_deleteMessage_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -408,36 +408,36 @@ class BananaService_deleteMessage_args {
 };
 
 
-class BananaService_deleteMessage_pargs {
+class AromaService_deleteMessage_pargs {
  public:
 
 
-  virtual ~BananaService_deleteMessage_pargs() throw();
+  virtual ~AromaService_deleteMessage_pargs() throw();
   const DeleteMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_deleteMessage_result__isset {
-  _BananaService_deleteMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_deleteMessage_result__isset {
+  _AromaService_deleteMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_deleteMessage_result__isset;
+} _AromaService_deleteMessage_result__isset;
 
-class BananaService_deleteMessage_result {
+class AromaService_deleteMessage_result {
  public:
 
-  BananaService_deleteMessage_result(const BananaService_deleteMessage_result&);
-  BananaService_deleteMessage_result& operator=(const BananaService_deleteMessage_result&);
-  BananaService_deleteMessage_result() {
+  AromaService_deleteMessage_result(const AromaService_deleteMessage_result&);
+  AromaService_deleteMessage_result& operator=(const AromaService_deleteMessage_result&);
+  AromaService_deleteMessage_result() {
   }
 
-  virtual ~BananaService_deleteMessage_result() throw();
+  virtual ~AromaService_deleteMessage_result() throw();
   DeleteMessageResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -445,7 +445,7 @@ class BananaService_deleteMessage_result {
   MessageDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_deleteMessage_result__isset __isset;
+  _AromaService_deleteMessage_result__isset __isset;
 
   void __set_success(const DeleteMessageResponse& val);
 
@@ -459,7 +459,7 @@ class BananaService_deleteMessage_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_deleteMessage_result & rhs) const
+  bool operator == (const AromaService_deleteMessage_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -475,32 +475,32 @@ class BananaService_deleteMessage_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_deleteMessage_result &rhs) const {
+  bool operator != (const AromaService_deleteMessage_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_deleteMessage_result & ) const;
+  bool operator < (const AromaService_deleteMessage_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_deleteMessage_presult__isset {
-  _BananaService_deleteMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_deleteMessage_presult__isset {
+  _AromaService_deleteMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_deleteMessage_presult__isset;
+} _AromaService_deleteMessage_presult__isset;
 
-class BananaService_deleteMessage_presult {
+class AromaService_deleteMessage_presult {
  public:
 
 
-  virtual ~BananaService_deleteMessage_presult() throw();
+  virtual ~AromaService_deleteMessage_presult() throw();
   DeleteMessageResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -508,43 +508,43 @@ class BananaService_deleteMessage_presult {
   MessageDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_deleteMessage_presult__isset __isset;
+  _AromaService_deleteMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_dismissMessage_args__isset {
-  _BananaService_dismissMessage_args__isset() : request(false) {}
+typedef struct _AromaService_dismissMessage_args__isset {
+  _AromaService_dismissMessage_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_dismissMessage_args__isset;
+} _AromaService_dismissMessage_args__isset;
 
-class BananaService_dismissMessage_args {
+class AromaService_dismissMessage_args {
  public:
 
-  BananaService_dismissMessage_args(const BananaService_dismissMessage_args&);
-  BananaService_dismissMessage_args& operator=(const BananaService_dismissMessage_args&);
-  BananaService_dismissMessage_args() {
+  AromaService_dismissMessage_args(const AromaService_dismissMessage_args&);
+  AromaService_dismissMessage_args& operator=(const AromaService_dismissMessage_args&);
+  AromaService_dismissMessage_args() {
   }
 
-  virtual ~BananaService_dismissMessage_args() throw();
+  virtual ~AromaService_dismissMessage_args() throw();
   DismissMessageRequest request;
 
-  _BananaService_dismissMessage_args__isset __isset;
+  _AromaService_dismissMessage_args__isset __isset;
 
   void __set_request(const DismissMessageRequest& val);
 
-  bool operator == (const BananaService_dismissMessage_args & rhs) const
+  bool operator == (const AromaService_dismissMessage_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_dismissMessage_args &rhs) const {
+  bool operator != (const AromaService_dismissMessage_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_dismissMessage_args & ) const;
+  bool operator < (const AromaService_dismissMessage_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -552,36 +552,36 @@ class BananaService_dismissMessage_args {
 };
 
 
-class BananaService_dismissMessage_pargs {
+class AromaService_dismissMessage_pargs {
  public:
 
 
-  virtual ~BananaService_dismissMessage_pargs() throw();
+  virtual ~AromaService_dismissMessage_pargs() throw();
   const DismissMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_dismissMessage_result__isset {
-  _BananaService_dismissMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_dismissMessage_result__isset {
+  _AromaService_dismissMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_dismissMessage_result__isset;
+} _AromaService_dismissMessage_result__isset;
 
-class BananaService_dismissMessage_result {
+class AromaService_dismissMessage_result {
  public:
 
-  BananaService_dismissMessage_result(const BananaService_dismissMessage_result&);
-  BananaService_dismissMessage_result& operator=(const BananaService_dismissMessage_result&);
-  BananaService_dismissMessage_result() {
+  AromaService_dismissMessage_result(const AromaService_dismissMessage_result&);
+  AromaService_dismissMessage_result& operator=(const AromaService_dismissMessage_result&);
+  AromaService_dismissMessage_result() {
   }
 
-  virtual ~BananaService_dismissMessage_result() throw();
+  virtual ~AromaService_dismissMessage_result() throw();
   DismissMessageResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -589,7 +589,7 @@ class BananaService_dismissMessage_result {
   MessageDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_dismissMessage_result__isset __isset;
+  _AromaService_dismissMessage_result__isset __isset;
 
   void __set_success(const DismissMessageResponse& val);
 
@@ -603,7 +603,7 @@ class BananaService_dismissMessage_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_dismissMessage_result & rhs) const
+  bool operator == (const AromaService_dismissMessage_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -619,32 +619,32 @@ class BananaService_dismissMessage_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_dismissMessage_result &rhs) const {
+  bool operator != (const AromaService_dismissMessage_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_dismissMessage_result & ) const;
+  bool operator < (const AromaService_dismissMessage_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_dismissMessage_presult__isset {
-  _BananaService_dismissMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_dismissMessage_presult__isset {
+  _AromaService_dismissMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_dismissMessage_presult__isset;
+} _AromaService_dismissMessage_presult__isset;
 
-class BananaService_dismissMessage_presult {
+class AromaService_dismissMessage_presult {
  public:
 
 
-  virtual ~BananaService_dismissMessage_presult() throw();
+  virtual ~AromaService_dismissMessage_presult() throw();
   DismissMessageResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -652,43 +652,43 @@ class BananaService_dismissMessage_presult {
   MessageDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_dismissMessage_presult__isset __isset;
+  _AromaService_dismissMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_provisionApplication_args__isset {
-  _BananaService_provisionApplication_args__isset() : request(false) {}
+typedef struct _AromaService_provisionApplication_args__isset {
+  _AromaService_provisionApplication_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_provisionApplication_args__isset;
+} _AromaService_provisionApplication_args__isset;
 
-class BananaService_provisionApplication_args {
+class AromaService_provisionApplication_args {
  public:
 
-  BananaService_provisionApplication_args(const BananaService_provisionApplication_args&);
-  BananaService_provisionApplication_args& operator=(const BananaService_provisionApplication_args&);
-  BananaService_provisionApplication_args() {
+  AromaService_provisionApplication_args(const AromaService_provisionApplication_args&);
+  AromaService_provisionApplication_args& operator=(const AromaService_provisionApplication_args&);
+  AromaService_provisionApplication_args() {
   }
 
-  virtual ~BananaService_provisionApplication_args() throw();
+  virtual ~AromaService_provisionApplication_args() throw();
   ProvisionApplicationRequest request;
 
-  _BananaService_provisionApplication_args__isset __isset;
+  _AromaService_provisionApplication_args__isset __isset;
 
   void __set_request(const ProvisionApplicationRequest& val);
 
-  bool operator == (const BananaService_provisionApplication_args & rhs) const
+  bool operator == (const AromaService_provisionApplication_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_provisionApplication_args &rhs) const {
+  bool operator != (const AromaService_provisionApplication_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_provisionApplication_args & ) const;
+  bool operator < (const AromaService_provisionApplication_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -696,36 +696,36 @@ class BananaService_provisionApplication_args {
 };
 
 
-class BananaService_provisionApplication_pargs {
+class AromaService_provisionApplication_pargs {
  public:
 
 
-  virtual ~BananaService_provisionApplication_pargs() throw();
+  virtual ~AromaService_provisionApplication_pargs() throw();
   const ProvisionApplicationRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_provisionApplication_result__isset {
-  _BananaService_provisionApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_provisionApplication_result__isset {
+  _AromaService_provisionApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_provisionApplication_result__isset;
+} _AromaService_provisionApplication_result__isset;
 
-class BananaService_provisionApplication_result {
+class AromaService_provisionApplication_result {
  public:
 
-  BananaService_provisionApplication_result(const BananaService_provisionApplication_result&);
-  BananaService_provisionApplication_result& operator=(const BananaService_provisionApplication_result&);
-  BananaService_provisionApplication_result() {
+  AromaService_provisionApplication_result(const AromaService_provisionApplication_result&);
+  AromaService_provisionApplication_result& operator=(const AromaService_provisionApplication_result&);
+  AromaService_provisionApplication_result() {
   }
 
-  virtual ~BananaService_provisionApplication_result() throw();
+  virtual ~AromaService_provisionApplication_result() throw();
   ProvisionApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -733,7 +733,7 @@ class BananaService_provisionApplication_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_provisionApplication_result__isset __isset;
+  _AromaService_provisionApplication_result__isset __isset;
 
   void __set_success(const ProvisionApplicationResponse& val);
 
@@ -747,7 +747,7 @@ class BananaService_provisionApplication_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_provisionApplication_result & rhs) const
+  bool operator == (const AromaService_provisionApplication_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -763,32 +763,32 @@ class BananaService_provisionApplication_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_provisionApplication_result &rhs) const {
+  bool operator != (const AromaService_provisionApplication_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_provisionApplication_result & ) const;
+  bool operator < (const AromaService_provisionApplication_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_provisionApplication_presult__isset {
-  _BananaService_provisionApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_provisionApplication_presult__isset {
+  _AromaService_provisionApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_provisionApplication_presult__isset;
+} _AromaService_provisionApplication_presult__isset;
 
-class BananaService_provisionApplication_presult {
+class AromaService_provisionApplication_presult {
  public:
 
 
-  virtual ~BananaService_provisionApplication_presult() throw();
+  virtual ~AromaService_provisionApplication_presult() throw();
   ProvisionApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -796,43 +796,43 @@ class BananaService_provisionApplication_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_provisionApplication_presult__isset __isset;
+  _AromaService_provisionApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_regenerateToken_args__isset {
-  _BananaService_regenerateToken_args__isset() : request(false) {}
+typedef struct _AromaService_regenerateToken_args__isset {
+  _AromaService_regenerateToken_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_regenerateToken_args__isset;
+} _AromaService_regenerateToken_args__isset;
 
-class BananaService_regenerateToken_args {
+class AromaService_regenerateToken_args {
  public:
 
-  BananaService_regenerateToken_args(const BananaService_regenerateToken_args&);
-  BananaService_regenerateToken_args& operator=(const BananaService_regenerateToken_args&);
-  BananaService_regenerateToken_args() {
+  AromaService_regenerateToken_args(const AromaService_regenerateToken_args&);
+  AromaService_regenerateToken_args& operator=(const AromaService_regenerateToken_args&);
+  AromaService_regenerateToken_args() {
   }
 
-  virtual ~BananaService_regenerateToken_args() throw();
+  virtual ~AromaService_regenerateToken_args() throw();
   RegenerateApplicationTokenRequest request;
 
-  _BananaService_regenerateToken_args__isset __isset;
+  _AromaService_regenerateToken_args__isset __isset;
 
   void __set_request(const RegenerateApplicationTokenRequest& val);
 
-  bool operator == (const BananaService_regenerateToken_args & rhs) const
+  bool operator == (const AromaService_regenerateToken_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_regenerateToken_args &rhs) const {
+  bool operator != (const AromaService_regenerateToken_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_regenerateToken_args & ) const;
+  bool operator < (const AromaService_regenerateToken_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -840,36 +840,36 @@ class BananaService_regenerateToken_args {
 };
 
 
-class BananaService_regenerateToken_pargs {
+class AromaService_regenerateToken_pargs {
  public:
 
 
-  virtual ~BananaService_regenerateToken_pargs() throw();
+  virtual ~AromaService_regenerateToken_pargs() throw();
   const RegenerateApplicationTokenRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_regenerateToken_result__isset {
-  _BananaService_regenerateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_regenerateToken_result__isset {
+  _AromaService_regenerateToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_regenerateToken_result__isset;
+} _AromaService_regenerateToken_result__isset;
 
-class BananaService_regenerateToken_result {
+class AromaService_regenerateToken_result {
  public:
 
-  BananaService_regenerateToken_result(const BananaService_regenerateToken_result&);
-  BananaService_regenerateToken_result& operator=(const BananaService_regenerateToken_result&);
-  BananaService_regenerateToken_result() {
+  AromaService_regenerateToken_result(const AromaService_regenerateToken_result&);
+  AromaService_regenerateToken_result& operator=(const AromaService_regenerateToken_result&);
+  AromaService_regenerateToken_result() {
   }
 
-  virtual ~BananaService_regenerateToken_result() throw();
+  virtual ~AromaService_regenerateToken_result() throw();
   RegenerateApplicationTokenResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -877,7 +877,7 @@ class BananaService_regenerateToken_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_regenerateToken_result__isset __isset;
+  _AromaService_regenerateToken_result__isset __isset;
 
   void __set_success(const RegenerateApplicationTokenResponse& val);
 
@@ -891,7 +891,7 @@ class BananaService_regenerateToken_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_regenerateToken_result & rhs) const
+  bool operator == (const AromaService_regenerateToken_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -907,32 +907,32 @@ class BananaService_regenerateToken_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_regenerateToken_result &rhs) const {
+  bool operator != (const AromaService_regenerateToken_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_regenerateToken_result & ) const;
+  bool operator < (const AromaService_regenerateToken_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_regenerateToken_presult__isset {
-  _BananaService_regenerateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_regenerateToken_presult__isset {
+  _AromaService_regenerateToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_regenerateToken_presult__isset;
+} _AromaService_regenerateToken_presult__isset;
 
-class BananaService_regenerateToken_presult {
+class AromaService_regenerateToken_presult {
  public:
 
 
-  virtual ~BananaService_regenerateToken_presult() throw();
+  virtual ~AromaService_regenerateToken_presult() throw();
   RegenerateApplicationTokenResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -940,43 +940,43 @@ class BananaService_regenerateToken_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_regenerateToken_presult__isset __isset;
+  _AromaService_regenerateToken_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_registerHealthCheck_args__isset {
-  _BananaService_registerHealthCheck_args__isset() : request(false) {}
+typedef struct _AromaService_registerHealthCheck_args__isset {
+  _AromaService_registerHealthCheck_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_registerHealthCheck_args__isset;
+} _AromaService_registerHealthCheck_args__isset;
 
-class BananaService_registerHealthCheck_args {
+class AromaService_registerHealthCheck_args {
  public:
 
-  BananaService_registerHealthCheck_args(const BananaService_registerHealthCheck_args&);
-  BananaService_registerHealthCheck_args& operator=(const BananaService_registerHealthCheck_args&);
-  BananaService_registerHealthCheck_args() {
+  AromaService_registerHealthCheck_args(const AromaService_registerHealthCheck_args&);
+  AromaService_registerHealthCheck_args& operator=(const AromaService_registerHealthCheck_args&);
+  AromaService_registerHealthCheck_args() {
   }
 
-  virtual ~BananaService_registerHealthCheck_args() throw();
+  virtual ~AromaService_registerHealthCheck_args() throw();
   RegisterHealthCheckRequest request;
 
-  _BananaService_registerHealthCheck_args__isset __isset;
+  _AromaService_registerHealthCheck_args__isset __isset;
 
   void __set_request(const RegisterHealthCheckRequest& val);
 
-  bool operator == (const BananaService_registerHealthCheck_args & rhs) const
+  bool operator == (const AromaService_registerHealthCheck_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_registerHealthCheck_args &rhs) const {
+  bool operator != (const AromaService_registerHealthCheck_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_registerHealthCheck_args & ) const;
+  bool operator < (const AromaService_registerHealthCheck_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -984,36 +984,36 @@ class BananaService_registerHealthCheck_args {
 };
 
 
-class BananaService_registerHealthCheck_pargs {
+class AromaService_registerHealthCheck_pargs {
  public:
 
 
-  virtual ~BananaService_registerHealthCheck_pargs() throw();
+  virtual ~AromaService_registerHealthCheck_pargs() throw();
   const RegisterHealthCheckRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_registerHealthCheck_result__isset {
-  _BananaService_registerHealthCheck_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_registerHealthCheck_result__isset {
+  _AromaService_registerHealthCheck_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_registerHealthCheck_result__isset;
+} _AromaService_registerHealthCheck_result__isset;
 
-class BananaService_registerHealthCheck_result {
+class AromaService_registerHealthCheck_result {
  public:
 
-  BananaService_registerHealthCheck_result(const BananaService_registerHealthCheck_result&);
-  BananaService_registerHealthCheck_result& operator=(const BananaService_registerHealthCheck_result&);
-  BananaService_registerHealthCheck_result() {
+  AromaService_registerHealthCheck_result(const AromaService_registerHealthCheck_result&);
+  AromaService_registerHealthCheck_result& operator=(const AromaService_registerHealthCheck_result&);
+  AromaService_registerHealthCheck_result() {
   }
 
-  virtual ~BananaService_registerHealthCheck_result() throw();
+  virtual ~AromaService_registerHealthCheck_result() throw();
   RegisterHealthCheckResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -1021,7 +1021,7 @@ class BananaService_registerHealthCheck_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_registerHealthCheck_result__isset __isset;
+  _AromaService_registerHealthCheck_result__isset __isset;
 
   void __set_success(const RegisterHealthCheckResponse& val);
 
@@ -1035,7 +1035,7 @@ class BananaService_registerHealthCheck_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_registerHealthCheck_result & rhs) const
+  bool operator == (const AromaService_registerHealthCheck_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1051,32 +1051,32 @@ class BananaService_registerHealthCheck_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_registerHealthCheck_result &rhs) const {
+  bool operator != (const AromaService_registerHealthCheck_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_registerHealthCheck_result & ) const;
+  bool operator < (const AromaService_registerHealthCheck_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_registerHealthCheck_presult__isset {
-  _BananaService_registerHealthCheck_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_registerHealthCheck_presult__isset {
+  _AromaService_registerHealthCheck_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_registerHealthCheck_presult__isset;
+} _AromaService_registerHealthCheck_presult__isset;
 
-class BananaService_registerHealthCheck_presult {
+class AromaService_registerHealthCheck_presult {
  public:
 
 
-  virtual ~BananaService_registerHealthCheck_presult() throw();
+  virtual ~AromaService_registerHealthCheck_presult() throw();
   RegisterHealthCheckResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -1084,43 +1084,43 @@ class BananaService_registerHealthCheck_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_registerHealthCheck_presult__isset __isset;
+  _AromaService_registerHealthCheck_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_removeSavedChannel_args__isset {
-  _BananaService_removeSavedChannel_args__isset() : request(false) {}
+typedef struct _AromaService_removeSavedChannel_args__isset {
+  _AromaService_removeSavedChannel_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_removeSavedChannel_args__isset;
+} _AromaService_removeSavedChannel_args__isset;
 
-class BananaService_removeSavedChannel_args {
+class AromaService_removeSavedChannel_args {
  public:
 
-  BananaService_removeSavedChannel_args(const BananaService_removeSavedChannel_args&);
-  BananaService_removeSavedChannel_args& operator=(const BananaService_removeSavedChannel_args&);
-  BananaService_removeSavedChannel_args() {
+  AromaService_removeSavedChannel_args(const AromaService_removeSavedChannel_args&);
+  AromaService_removeSavedChannel_args& operator=(const AromaService_removeSavedChannel_args&);
+  AromaService_removeSavedChannel_args() {
   }
 
-  virtual ~BananaService_removeSavedChannel_args() throw();
+  virtual ~AromaService_removeSavedChannel_args() throw();
   RemoveSavedChannelRequest request;
 
-  _BananaService_removeSavedChannel_args__isset __isset;
+  _AromaService_removeSavedChannel_args__isset __isset;
 
   void __set_request(const RemoveSavedChannelRequest& val);
 
-  bool operator == (const BananaService_removeSavedChannel_args & rhs) const
+  bool operator == (const AromaService_removeSavedChannel_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_removeSavedChannel_args &rhs) const {
+  bool operator != (const AromaService_removeSavedChannel_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_removeSavedChannel_args & ) const;
+  bool operator < (const AromaService_removeSavedChannel_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1128,36 +1128,36 @@ class BananaService_removeSavedChannel_args {
 };
 
 
-class BananaService_removeSavedChannel_pargs {
+class AromaService_removeSavedChannel_pargs {
  public:
 
 
-  virtual ~BananaService_removeSavedChannel_pargs() throw();
+  virtual ~AromaService_removeSavedChannel_pargs() throw();
   const RemoveSavedChannelRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_removeSavedChannel_result__isset {
-  _BananaService_removeSavedChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_removeSavedChannel_result__isset {
+  _AromaService_removeSavedChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_removeSavedChannel_result__isset;
+} _AromaService_removeSavedChannel_result__isset;
 
-class BananaService_removeSavedChannel_result {
+class AromaService_removeSavedChannel_result {
  public:
 
-  BananaService_removeSavedChannel_result(const BananaService_removeSavedChannel_result&);
-  BananaService_removeSavedChannel_result& operator=(const BananaService_removeSavedChannel_result&);
-  BananaService_removeSavedChannel_result() {
+  AromaService_removeSavedChannel_result(const AromaService_removeSavedChannel_result&);
+  AromaService_removeSavedChannel_result& operator=(const AromaService_removeSavedChannel_result&);
+  AromaService_removeSavedChannel_result() {
   }
 
-  virtual ~BananaService_removeSavedChannel_result() throw();
+  virtual ~AromaService_removeSavedChannel_result() throw();
   RemoveSavedChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -1165,7 +1165,7 @@ class BananaService_removeSavedChannel_result {
   UnauthorizedException ex4;
   ChannelDoesNotExistException ex5;
 
-  _BananaService_removeSavedChannel_result__isset __isset;
+  _AromaService_removeSavedChannel_result__isset __isset;
 
   void __set_success(const RemoveSavedChannelResponse& val);
 
@@ -1179,7 +1179,7 @@ class BananaService_removeSavedChannel_result {
 
   void __set_ex5(const ChannelDoesNotExistException& val);
 
-  bool operator == (const BananaService_removeSavedChannel_result & rhs) const
+  bool operator == (const AromaService_removeSavedChannel_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1195,32 +1195,32 @@ class BananaService_removeSavedChannel_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_removeSavedChannel_result &rhs) const {
+  bool operator != (const AromaService_removeSavedChannel_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_removeSavedChannel_result & ) const;
+  bool operator < (const AromaService_removeSavedChannel_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_removeSavedChannel_presult__isset {
-  _BananaService_removeSavedChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_removeSavedChannel_presult__isset {
+  _AromaService_removeSavedChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_removeSavedChannel_presult__isset;
+} _AromaService_removeSavedChannel_presult__isset;
 
-class BananaService_removeSavedChannel_presult {
+class AromaService_removeSavedChannel_presult {
  public:
 
 
-  virtual ~BananaService_removeSavedChannel_presult() throw();
+  virtual ~AromaService_removeSavedChannel_presult() throw();
   RemoveSavedChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -1228,43 +1228,43 @@ class BananaService_removeSavedChannel_presult {
   UnauthorizedException* ex4;
   ChannelDoesNotExistException* ex5;
 
-  _BananaService_removeSavedChannel_presult__isset __isset;
+  _AromaService_removeSavedChannel_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_renewApplicationToken_args__isset {
-  _BananaService_renewApplicationToken_args__isset() : request(false) {}
+typedef struct _AromaService_renewApplicationToken_args__isset {
+  _AromaService_renewApplicationToken_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_renewApplicationToken_args__isset;
+} _AromaService_renewApplicationToken_args__isset;
 
-class BananaService_renewApplicationToken_args {
+class AromaService_renewApplicationToken_args {
  public:
 
-  BananaService_renewApplicationToken_args(const BananaService_renewApplicationToken_args&);
-  BananaService_renewApplicationToken_args& operator=(const BananaService_renewApplicationToken_args&);
-  BananaService_renewApplicationToken_args() {
+  AromaService_renewApplicationToken_args(const AromaService_renewApplicationToken_args&);
+  AromaService_renewApplicationToken_args& operator=(const AromaService_renewApplicationToken_args&);
+  AromaService_renewApplicationToken_args() {
   }
 
-  virtual ~BananaService_renewApplicationToken_args() throw();
+  virtual ~AromaService_renewApplicationToken_args() throw();
   RenewApplicationTokenRequest request;
 
-  _BananaService_renewApplicationToken_args__isset __isset;
+  _AromaService_renewApplicationToken_args__isset __isset;
 
   void __set_request(const RenewApplicationTokenRequest& val);
 
-  bool operator == (const BananaService_renewApplicationToken_args & rhs) const
+  bool operator == (const AromaService_renewApplicationToken_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_renewApplicationToken_args &rhs) const {
+  bool operator != (const AromaService_renewApplicationToken_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_renewApplicationToken_args & ) const;
+  bool operator < (const AromaService_renewApplicationToken_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1272,36 +1272,36 @@ class BananaService_renewApplicationToken_args {
 };
 
 
-class BananaService_renewApplicationToken_pargs {
+class AromaService_renewApplicationToken_pargs {
  public:
 
 
-  virtual ~BananaService_renewApplicationToken_pargs() throw();
+  virtual ~AromaService_renewApplicationToken_pargs() throw();
   const RenewApplicationTokenRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_renewApplicationToken_result__isset {
-  _BananaService_renewApplicationToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_renewApplicationToken_result__isset {
+  _AromaService_renewApplicationToken_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_renewApplicationToken_result__isset;
+} _AromaService_renewApplicationToken_result__isset;
 
-class BananaService_renewApplicationToken_result {
+class AromaService_renewApplicationToken_result {
  public:
 
-  BananaService_renewApplicationToken_result(const BananaService_renewApplicationToken_result&);
-  BananaService_renewApplicationToken_result& operator=(const BananaService_renewApplicationToken_result&);
-  BananaService_renewApplicationToken_result() {
+  AromaService_renewApplicationToken_result(const AromaService_renewApplicationToken_result&);
+  AromaService_renewApplicationToken_result& operator=(const AromaService_renewApplicationToken_result&);
+  AromaService_renewApplicationToken_result() {
   }
 
-  virtual ~BananaService_renewApplicationToken_result() throw();
+  virtual ~AromaService_renewApplicationToken_result() throw();
   RenewApplicationTokenResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -1309,7 +1309,7 @@ class BananaService_renewApplicationToken_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_renewApplicationToken_result__isset __isset;
+  _AromaService_renewApplicationToken_result__isset __isset;
 
   void __set_success(const RenewApplicationTokenResponse& val);
 
@@ -1323,7 +1323,7 @@ class BananaService_renewApplicationToken_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_renewApplicationToken_result & rhs) const
+  bool operator == (const AromaService_renewApplicationToken_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1339,32 +1339,32 @@ class BananaService_renewApplicationToken_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_renewApplicationToken_result &rhs) const {
+  bool operator != (const AromaService_renewApplicationToken_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_renewApplicationToken_result & ) const;
+  bool operator < (const AromaService_renewApplicationToken_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_renewApplicationToken_presult__isset {
-  _BananaService_renewApplicationToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_renewApplicationToken_presult__isset {
+  _AromaService_renewApplicationToken_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_renewApplicationToken_presult__isset;
+} _AromaService_renewApplicationToken_presult__isset;
 
-class BananaService_renewApplicationToken_presult {
+class AromaService_renewApplicationToken_presult {
  public:
 
 
-  virtual ~BananaService_renewApplicationToken_presult() throw();
+  virtual ~AromaService_renewApplicationToken_presult() throw();
   RenewApplicationTokenResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -1372,43 +1372,43 @@ class BananaService_renewApplicationToken_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_renewApplicationToken_presult__isset __isset;
+  _AromaService_renewApplicationToken_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_saveChannel_args__isset {
-  _BananaService_saveChannel_args__isset() : request(false) {}
+typedef struct _AromaService_saveChannel_args__isset {
+  _AromaService_saveChannel_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_saveChannel_args__isset;
+} _AromaService_saveChannel_args__isset;
 
-class BananaService_saveChannel_args {
+class AromaService_saveChannel_args {
  public:
 
-  BananaService_saveChannel_args(const BananaService_saveChannel_args&);
-  BananaService_saveChannel_args& operator=(const BananaService_saveChannel_args&);
-  BananaService_saveChannel_args() {
+  AromaService_saveChannel_args(const AromaService_saveChannel_args&);
+  AromaService_saveChannel_args& operator=(const AromaService_saveChannel_args&);
+  AromaService_saveChannel_args() {
   }
 
-  virtual ~BananaService_saveChannel_args() throw();
+  virtual ~AromaService_saveChannel_args() throw();
   SaveChannelRequest request;
 
-  _BananaService_saveChannel_args__isset __isset;
+  _AromaService_saveChannel_args__isset __isset;
 
   void __set_request(const SaveChannelRequest& val);
 
-  bool operator == (const BananaService_saveChannel_args & rhs) const
+  bool operator == (const AromaService_saveChannel_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_saveChannel_args &rhs) const {
+  bool operator != (const AromaService_saveChannel_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_saveChannel_args & ) const;
+  bool operator < (const AromaService_saveChannel_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1416,42 +1416,42 @@ class BananaService_saveChannel_args {
 };
 
 
-class BananaService_saveChannel_pargs {
+class AromaService_saveChannel_pargs {
  public:
 
 
-  virtual ~BananaService_saveChannel_pargs() throw();
+  virtual ~AromaService_saveChannel_pargs() throw();
   const SaveChannelRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_saveChannel_result__isset {
-  _BananaService_saveChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_saveChannel_result__isset {
+  _AromaService_saveChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_saveChannel_result__isset;
+} _AromaService_saveChannel_result__isset;
 
-class BananaService_saveChannel_result {
+class AromaService_saveChannel_result {
  public:
 
-  BananaService_saveChannel_result(const BananaService_saveChannel_result&);
-  BananaService_saveChannel_result& operator=(const BananaService_saveChannel_result&);
-  BananaService_saveChannel_result() {
+  AromaService_saveChannel_result(const AromaService_saveChannel_result&);
+  AromaService_saveChannel_result& operator=(const AromaService_saveChannel_result&);
+  AromaService_saveChannel_result() {
   }
 
-  virtual ~BananaService_saveChannel_result() throw();
+  virtual ~AromaService_saveChannel_result() throw();
   SaveChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   UnauthorizedException ex4;
 
-  _BananaService_saveChannel_result__isset __isset;
+  _AromaService_saveChannel_result__isset __isset;
 
   void __set_success(const SaveChannelResponse& val);
 
@@ -1463,7 +1463,7 @@ class BananaService_saveChannel_result {
 
   void __set_ex4(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_saveChannel_result & rhs) const
+  bool operator == (const AromaService_saveChannel_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1477,74 +1477,74 @@ class BananaService_saveChannel_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_saveChannel_result &rhs) const {
+  bool operator != (const AromaService_saveChannel_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_saveChannel_result & ) const;
+  bool operator < (const AromaService_saveChannel_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_saveChannel_presult__isset {
-  _BananaService_saveChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_saveChannel_presult__isset {
+  _AromaService_saveChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_saveChannel_presult__isset;
+} _AromaService_saveChannel_presult__isset;
 
-class BananaService_saveChannel_presult {
+class AromaService_saveChannel_presult {
  public:
 
 
-  virtual ~BananaService_saveChannel_presult() throw();
+  virtual ~AromaService_saveChannel_presult() throw();
   SaveChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   UnauthorizedException* ex4;
 
-  _BananaService_saveChannel_presult__isset __isset;
+  _AromaService_saveChannel_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_signIn_args__isset {
-  _BananaService_signIn_args__isset() : request(false) {}
+typedef struct _AromaService_signIn_args__isset {
+  _AromaService_signIn_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_signIn_args__isset;
+} _AromaService_signIn_args__isset;
 
-class BananaService_signIn_args {
+class AromaService_signIn_args {
  public:
 
-  BananaService_signIn_args(const BananaService_signIn_args&);
-  BananaService_signIn_args& operator=(const BananaService_signIn_args&);
-  BananaService_signIn_args() {
+  AromaService_signIn_args(const AromaService_signIn_args&);
+  AromaService_signIn_args& operator=(const AromaService_signIn_args&);
+  AromaService_signIn_args() {
   }
 
-  virtual ~BananaService_signIn_args() throw();
+  virtual ~AromaService_signIn_args() throw();
   SignInRequest request;
 
-  _BananaService_signIn_args__isset __isset;
+  _AromaService_signIn_args__isset __isset;
 
   void __set_request(const SignInRequest& val);
 
-  bool operator == (const BananaService_signIn_args & rhs) const
+  bool operator == (const AromaService_signIn_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_signIn_args &rhs) const {
+  bool operator != (const AromaService_signIn_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_signIn_args & ) const;
+  bool operator < (const AromaService_signIn_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1552,42 +1552,42 @@ class BananaService_signIn_args {
 };
 
 
-class BananaService_signIn_pargs {
+class AromaService_signIn_pargs {
  public:
 
 
-  virtual ~BananaService_signIn_pargs() throw();
+  virtual ~AromaService_signIn_pargs() throw();
   const SignInRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_signIn_result__isset {
-  _BananaService_signIn_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_signIn_result__isset {
+  _AromaService_signIn_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_signIn_result__isset;
+} _AromaService_signIn_result__isset;
 
-class BananaService_signIn_result {
+class AromaService_signIn_result {
  public:
 
-  BananaService_signIn_result(const BananaService_signIn_result&);
-  BananaService_signIn_result& operator=(const BananaService_signIn_result&);
-  BananaService_signIn_result() {
+  AromaService_signIn_result(const AromaService_signIn_result&);
+  AromaService_signIn_result& operator=(const AromaService_signIn_result&);
+  AromaService_signIn_result() {
   }
 
-  virtual ~BananaService_signIn_result() throw();
+  virtual ~AromaService_signIn_result() throw();
   SignInResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
   UserDoesNotExistException ex4;
 
-  _BananaService_signIn_result__isset __isset;
+  _AromaService_signIn_result__isset __isset;
 
   void __set_success(const SignInResponse& val);
 
@@ -1599,7 +1599,7 @@ class BananaService_signIn_result {
 
   void __set_ex4(const UserDoesNotExistException& val);
 
-  bool operator == (const BananaService_signIn_result & rhs) const
+  bool operator == (const AromaService_signIn_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1613,74 +1613,74 @@ class BananaService_signIn_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_signIn_result &rhs) const {
+  bool operator != (const AromaService_signIn_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_signIn_result & ) const;
+  bool operator < (const AromaService_signIn_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_signIn_presult__isset {
-  _BananaService_signIn_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_signIn_presult__isset {
+  _AromaService_signIn_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_signIn_presult__isset;
+} _AromaService_signIn_presult__isset;
 
-class BananaService_signIn_presult {
+class AromaService_signIn_presult {
  public:
 
 
-  virtual ~BananaService_signIn_presult() throw();
+  virtual ~AromaService_signIn_presult() throw();
   SignInResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
   UserDoesNotExistException* ex4;
 
-  _BananaService_signIn_presult__isset __isset;
+  _AromaService_signIn_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_signUp_args__isset {
-  _BananaService_signUp_args__isset() : request(false) {}
+typedef struct _AromaService_signUp_args__isset {
+  _AromaService_signUp_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_signUp_args__isset;
+} _AromaService_signUp_args__isset;
 
-class BananaService_signUp_args {
+class AromaService_signUp_args {
  public:
 
-  BananaService_signUp_args(const BananaService_signUp_args&);
-  BananaService_signUp_args& operator=(const BananaService_signUp_args&);
-  BananaService_signUp_args() {
+  AromaService_signUp_args(const AromaService_signUp_args&);
+  AromaService_signUp_args& operator=(const AromaService_signUp_args&);
+  AromaService_signUp_args() {
   }
 
-  virtual ~BananaService_signUp_args() throw();
+  virtual ~AromaService_signUp_args() throw();
   SignUpRequest request;
 
-  _BananaService_signUp_args__isset __isset;
+  _AromaService_signUp_args__isset __isset;
 
   void __set_request(const SignUpRequest& val);
 
-  bool operator == (const BananaService_signUp_args & rhs) const
+  bool operator == (const AromaService_signUp_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_signUp_args &rhs) const {
+  bool operator != (const AromaService_signUp_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_signUp_args & ) const;
+  bool operator < (const AromaService_signUp_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1688,42 +1688,42 @@ class BananaService_signUp_args {
 };
 
 
-class BananaService_signUp_pargs {
+class AromaService_signUp_pargs {
  public:
 
 
-  virtual ~BananaService_signUp_pargs() throw();
+  virtual ~AromaService_signUp_pargs() throw();
   const SignUpRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_signUp_result__isset {
-  _BananaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_signUp_result__isset {
+  _AromaService_signUp_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_signUp_result__isset;
+} _AromaService_signUp_result__isset;
 
-class BananaService_signUp_result {
+class AromaService_signUp_result {
  public:
 
-  BananaService_signUp_result(const BananaService_signUp_result&);
-  BananaService_signUp_result& operator=(const BananaService_signUp_result&);
-  BananaService_signUp_result() {
+  AromaService_signUp_result(const AromaService_signUp_result&);
+  AromaService_signUp_result& operator=(const AromaService_signUp_result&);
+  AromaService_signUp_result() {
   }
 
-  virtual ~BananaService_signUp_result() throw();
+  virtual ~AromaService_signUp_result() throw();
   SignUpResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidCredentialsException ex3;
   AccountAlreadyExistsException ex4;
 
-  _BananaService_signUp_result__isset __isset;
+  _AromaService_signUp_result__isset __isset;
 
   void __set_success(const SignUpResponse& val);
 
@@ -1735,7 +1735,7 @@ class BananaService_signUp_result {
 
   void __set_ex4(const AccountAlreadyExistsException& val);
 
-  bool operator == (const BananaService_signUp_result & rhs) const
+  bool operator == (const AromaService_signUp_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1749,74 +1749,74 @@ class BananaService_signUp_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_signUp_result &rhs) const {
+  bool operator != (const AromaService_signUp_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_signUp_result & ) const;
+  bool operator < (const AromaService_signUp_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_signUp_presult__isset {
-  _BananaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_signUp_presult__isset {
+  _AromaService_signUp_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_signUp_presult__isset;
+} _AromaService_signUp_presult__isset;
 
-class BananaService_signUp_presult {
+class AromaService_signUp_presult {
  public:
 
 
-  virtual ~BananaService_signUp_presult() throw();
+  virtual ~AromaService_signUp_presult() throw();
   SignUpResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidCredentialsException* ex3;
   AccountAlreadyExistsException* ex4;
 
-  _BananaService_signUp_presult__isset __isset;
+  _AromaService_signUp_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_snoozeChannel_args__isset {
-  _BananaService_snoozeChannel_args__isset() : request(false) {}
+typedef struct _AromaService_snoozeChannel_args__isset {
+  _AromaService_snoozeChannel_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_snoozeChannel_args__isset;
+} _AromaService_snoozeChannel_args__isset;
 
-class BananaService_snoozeChannel_args {
+class AromaService_snoozeChannel_args {
  public:
 
-  BananaService_snoozeChannel_args(const BananaService_snoozeChannel_args&);
-  BananaService_snoozeChannel_args& operator=(const BananaService_snoozeChannel_args&);
-  BananaService_snoozeChannel_args() {
+  AromaService_snoozeChannel_args(const AromaService_snoozeChannel_args&);
+  AromaService_snoozeChannel_args& operator=(const AromaService_snoozeChannel_args&);
+  AromaService_snoozeChannel_args() {
   }
 
-  virtual ~BananaService_snoozeChannel_args() throw();
+  virtual ~AromaService_snoozeChannel_args() throw();
   SnoozeChannelRequest request;
 
-  _BananaService_snoozeChannel_args__isset __isset;
+  _AromaService_snoozeChannel_args__isset __isset;
 
   void __set_request(const SnoozeChannelRequest& val);
 
-  bool operator == (const BananaService_snoozeChannel_args & rhs) const
+  bool operator == (const AromaService_snoozeChannel_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_snoozeChannel_args &rhs) const {
+  bool operator != (const AromaService_snoozeChannel_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_snoozeChannel_args & ) const;
+  bool operator < (const AromaService_snoozeChannel_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1824,36 +1824,36 @@ class BananaService_snoozeChannel_args {
 };
 
 
-class BananaService_snoozeChannel_pargs {
+class AromaService_snoozeChannel_pargs {
  public:
 
 
-  virtual ~BananaService_snoozeChannel_pargs() throw();
+  virtual ~AromaService_snoozeChannel_pargs() throw();
   const SnoozeChannelRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_snoozeChannel_result__isset {
-  _BananaService_snoozeChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_snoozeChannel_result__isset {
+  _AromaService_snoozeChannel_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_snoozeChannel_result__isset;
+} _AromaService_snoozeChannel_result__isset;
 
-class BananaService_snoozeChannel_result {
+class AromaService_snoozeChannel_result {
  public:
 
-  BananaService_snoozeChannel_result(const BananaService_snoozeChannel_result&);
-  BananaService_snoozeChannel_result& operator=(const BananaService_snoozeChannel_result&);
-  BananaService_snoozeChannel_result() {
+  AromaService_snoozeChannel_result(const AromaService_snoozeChannel_result&);
+  AromaService_snoozeChannel_result& operator=(const AromaService_snoozeChannel_result&);
+  AromaService_snoozeChannel_result() {
   }
 
-  virtual ~BananaService_snoozeChannel_result() throw();
+  virtual ~AromaService_snoozeChannel_result() throw();
   SnoozeChannelResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -1861,7 +1861,7 @@ class BananaService_snoozeChannel_result {
   UnauthorizedException ex4;
   ChannelDoesNotExistException ex5;
 
-  _BananaService_snoozeChannel_result__isset __isset;
+  _AromaService_snoozeChannel_result__isset __isset;
 
   void __set_success(const SnoozeChannelResponse& val);
 
@@ -1875,7 +1875,7 @@ class BananaService_snoozeChannel_result {
 
   void __set_ex5(const ChannelDoesNotExistException& val);
 
-  bool operator == (const BananaService_snoozeChannel_result & rhs) const
+  bool operator == (const AromaService_snoozeChannel_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -1891,32 +1891,32 @@ class BananaService_snoozeChannel_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_snoozeChannel_result &rhs) const {
+  bool operator != (const AromaService_snoozeChannel_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_snoozeChannel_result & ) const;
+  bool operator < (const AromaService_snoozeChannel_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_snoozeChannel_presult__isset {
-  _BananaService_snoozeChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_snoozeChannel_presult__isset {
+  _AromaService_snoozeChannel_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_snoozeChannel_presult__isset;
+} _AromaService_snoozeChannel_presult__isset;
 
-class BananaService_snoozeChannel_presult {
+class AromaService_snoozeChannel_presult {
  public:
 
 
-  virtual ~BananaService_snoozeChannel_presult() throw();
+  virtual ~AromaService_snoozeChannel_presult() throw();
   SnoozeChannelResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -1924,43 +1924,43 @@ class BananaService_snoozeChannel_presult {
   UnauthorizedException* ex4;
   ChannelDoesNotExistException* ex5;
 
-  _BananaService_snoozeChannel_presult__isset __isset;
+  _AromaService_snoozeChannel_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_followApplication_args__isset {
-  _BananaService_followApplication_args__isset() : request(false) {}
+typedef struct _AromaService_followApplication_args__isset {
+  _AromaService_followApplication_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_followApplication_args__isset;
+} _AromaService_followApplication_args__isset;
 
-class BananaService_followApplication_args {
+class AromaService_followApplication_args {
  public:
 
-  BananaService_followApplication_args(const BananaService_followApplication_args&);
-  BananaService_followApplication_args& operator=(const BananaService_followApplication_args&);
-  BananaService_followApplication_args() {
+  AromaService_followApplication_args(const AromaService_followApplication_args&);
+  AromaService_followApplication_args& operator=(const AromaService_followApplication_args&);
+  AromaService_followApplication_args() {
   }
 
-  virtual ~BananaService_followApplication_args() throw();
+  virtual ~AromaService_followApplication_args() throw();
   FollowApplicationRequest request;
 
-  _BananaService_followApplication_args__isset __isset;
+  _AromaService_followApplication_args__isset __isset;
 
   void __set_request(const FollowApplicationRequest& val);
 
-  bool operator == (const BananaService_followApplication_args & rhs) const
+  bool operator == (const AromaService_followApplication_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_followApplication_args &rhs) const {
+  bool operator != (const AromaService_followApplication_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_followApplication_args & ) const;
+  bool operator < (const AromaService_followApplication_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -1968,19 +1968,19 @@ class BananaService_followApplication_args {
 };
 
 
-class BananaService_followApplication_pargs {
+class AromaService_followApplication_pargs {
  public:
 
 
-  virtual ~BananaService_followApplication_pargs() throw();
+  virtual ~AromaService_followApplication_pargs() throw();
   const FollowApplicationRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_followApplication_result__isset {
-  _BananaService_followApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+typedef struct _AromaService_followApplication_result__isset {
+  _AromaService_followApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
@@ -1988,17 +1988,17 @@ typedef struct _BananaService_followApplication_result__isset {
   bool ex4 :1;
   bool ex5 :1;
   bool ex6 :1;
-} _BananaService_followApplication_result__isset;
+} _AromaService_followApplication_result__isset;
 
-class BananaService_followApplication_result {
+class AromaService_followApplication_result {
  public:
 
-  BananaService_followApplication_result(const BananaService_followApplication_result&);
-  BananaService_followApplication_result& operator=(const BananaService_followApplication_result&);
-  BananaService_followApplication_result() {
+  AromaService_followApplication_result(const AromaService_followApplication_result&);
+  AromaService_followApplication_result& operator=(const AromaService_followApplication_result&);
+  AromaService_followApplication_result() {
   }
 
-  virtual ~BananaService_followApplication_result() throw();
+  virtual ~AromaService_followApplication_result() throw();
   FollowApplicationResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -2007,7 +2007,7 @@ class BananaService_followApplication_result {
   ApplicationAlreadyRegisteredException ex5;
   CustomChannelUnreachableException ex6;
 
-  _BananaService_followApplication_result__isset __isset;
+  _AromaService_followApplication_result__isset __isset;
 
   void __set_success(const FollowApplicationResponse& val);
 
@@ -2023,7 +2023,7 @@ class BananaService_followApplication_result {
 
   void __set_ex6(const CustomChannelUnreachableException& val);
 
-  bool operator == (const BananaService_followApplication_result & rhs) const
+  bool operator == (const AromaService_followApplication_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2041,19 +2041,19 @@ class BananaService_followApplication_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_followApplication_result &rhs) const {
+  bool operator != (const AromaService_followApplication_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_followApplication_result & ) const;
+  bool operator < (const AromaService_followApplication_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_followApplication_presult__isset {
-  _BananaService_followApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+typedef struct _AromaService_followApplication_presult__isset {
+  _AromaService_followApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
@@ -2061,13 +2061,13 @@ typedef struct _BananaService_followApplication_presult__isset {
   bool ex4 :1;
   bool ex5 :1;
   bool ex6 :1;
-} _BananaService_followApplication_presult__isset;
+} _AromaService_followApplication_presult__isset;
 
-class BananaService_followApplication_presult {
+class AromaService_followApplication_presult {
  public:
 
 
-  virtual ~BananaService_followApplication_presult() throw();
+  virtual ~AromaService_followApplication_presult() throw();
   FollowApplicationResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -2076,43 +2076,43 @@ class BananaService_followApplication_presult {
   ApplicationAlreadyRegisteredException* ex5;
   CustomChannelUnreachableException* ex6;
 
-  _BananaService_followApplication_presult__isset __isset;
+  _AromaService_followApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getActivity_args__isset {
-  _BananaService_getActivity_args__isset() : request(false) {}
+typedef struct _AromaService_getActivity_args__isset {
+  _AromaService_getActivity_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getActivity_args__isset;
+} _AromaService_getActivity_args__isset;
 
-class BananaService_getActivity_args {
+class AromaService_getActivity_args {
  public:
 
-  BananaService_getActivity_args(const BananaService_getActivity_args&);
-  BananaService_getActivity_args& operator=(const BananaService_getActivity_args&);
-  BananaService_getActivity_args() {
+  AromaService_getActivity_args(const AromaService_getActivity_args&);
+  AromaService_getActivity_args& operator=(const AromaService_getActivity_args&);
+  AromaService_getActivity_args() {
   }
 
-  virtual ~BananaService_getActivity_args() throw();
+  virtual ~AromaService_getActivity_args() throw();
   GetActivityRequest request;
 
-  _BananaService_getActivity_args__isset __isset;
+  _AromaService_getActivity_args__isset __isset;
 
   void __set_request(const GetActivityRequest& val);
 
-  bool operator == (const BananaService_getActivity_args & rhs) const
+  bool operator == (const AromaService_getActivity_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getActivity_args &rhs) const {
+  bool operator != (const AromaService_getActivity_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getActivity_args & ) const;
+  bool operator < (const AromaService_getActivity_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2120,40 +2120,40 @@ class BananaService_getActivity_args {
 };
 
 
-class BananaService_getActivity_pargs {
+class AromaService_getActivity_pargs {
  public:
 
 
-  virtual ~BananaService_getActivity_pargs() throw();
+  virtual ~AromaService_getActivity_pargs() throw();
   const GetActivityRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getActivity_result__isset {
-  _BananaService_getActivity_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getActivity_result__isset {
+  _AromaService_getActivity_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getActivity_result__isset;
+} _AromaService_getActivity_result__isset;
 
-class BananaService_getActivity_result {
+class AromaService_getActivity_result {
  public:
 
-  BananaService_getActivity_result(const BananaService_getActivity_result&);
-  BananaService_getActivity_result& operator=(const BananaService_getActivity_result&);
-  BananaService_getActivity_result() {
+  AromaService_getActivity_result(const AromaService_getActivity_result&);
+  AromaService_getActivity_result& operator=(const AromaService_getActivity_result&);
+  AromaService_getActivity_result() {
   }
 
-  virtual ~BananaService_getActivity_result() throw();
+  virtual ~AromaService_getActivity_result() throw();
   GetActivityResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getActivity_result__isset __isset;
+  _AromaService_getActivity_result__isset __isset;
 
   void __set_success(const GetActivityResponse& val);
 
@@ -2163,7 +2163,7 @@ class BananaService_getActivity_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getActivity_result & rhs) const
+  bool operator == (const AromaService_getActivity_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2175,72 +2175,72 @@ class BananaService_getActivity_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getActivity_result &rhs) const {
+  bool operator != (const AromaService_getActivity_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getActivity_result & ) const;
+  bool operator < (const AromaService_getActivity_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getActivity_presult__isset {
-  _BananaService_getActivity_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getActivity_presult__isset {
+  _AromaService_getActivity_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getActivity_presult__isset;
+} _AromaService_getActivity_presult__isset;
 
-class BananaService_getActivity_presult {
+class AromaService_getActivity_presult {
  public:
 
 
-  virtual ~BananaService_getActivity_presult() throw();
+  virtual ~AromaService_getActivity_presult() throw();
   GetActivityResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getActivity_presult__isset __isset;
+  _AromaService_getActivity_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getApplicationInfo_args__isset {
-  _BananaService_getApplicationInfo_args__isset() : request(false) {}
+typedef struct _AromaService_getApplicationInfo_args__isset {
+  _AromaService_getApplicationInfo_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getApplicationInfo_args__isset;
+} _AromaService_getApplicationInfo_args__isset;
 
-class BananaService_getApplicationInfo_args {
+class AromaService_getApplicationInfo_args {
  public:
 
-  BananaService_getApplicationInfo_args(const BananaService_getApplicationInfo_args&);
-  BananaService_getApplicationInfo_args& operator=(const BananaService_getApplicationInfo_args&);
-  BananaService_getApplicationInfo_args() {
+  AromaService_getApplicationInfo_args(const AromaService_getApplicationInfo_args&);
+  AromaService_getApplicationInfo_args& operator=(const AromaService_getApplicationInfo_args&);
+  AromaService_getApplicationInfo_args() {
   }
 
-  virtual ~BananaService_getApplicationInfo_args() throw();
+  virtual ~AromaService_getApplicationInfo_args() throw();
   GetApplicationInfoRequest request;
 
-  _BananaService_getApplicationInfo_args__isset __isset;
+  _AromaService_getApplicationInfo_args__isset __isset;
 
   void __set_request(const GetApplicationInfoRequest& val);
 
-  bool operator == (const BananaService_getApplicationInfo_args & rhs) const
+  bool operator == (const AromaService_getApplicationInfo_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationInfo_args &rhs) const {
+  bool operator != (const AromaService_getApplicationInfo_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationInfo_args & ) const;
+  bool operator < (const AromaService_getApplicationInfo_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2248,36 +2248,36 @@ class BananaService_getApplicationInfo_args {
 };
 
 
-class BananaService_getApplicationInfo_pargs {
+class AromaService_getApplicationInfo_pargs {
  public:
 
 
-  virtual ~BananaService_getApplicationInfo_pargs() throw();
+  virtual ~AromaService_getApplicationInfo_pargs() throw();
   const GetApplicationInfoRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationInfo_result__isset {
-  _BananaService_getApplicationInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationInfo_result__isset {
+  _AromaService_getApplicationInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getApplicationInfo_result__isset;
+} _AromaService_getApplicationInfo_result__isset;
 
-class BananaService_getApplicationInfo_result {
+class AromaService_getApplicationInfo_result {
  public:
 
-  BananaService_getApplicationInfo_result(const BananaService_getApplicationInfo_result&);
-  BananaService_getApplicationInfo_result& operator=(const BananaService_getApplicationInfo_result&);
-  BananaService_getApplicationInfo_result() {
+  AromaService_getApplicationInfo_result(const AromaService_getApplicationInfo_result&);
+  AromaService_getApplicationInfo_result& operator=(const AromaService_getApplicationInfo_result&);
+  AromaService_getApplicationInfo_result() {
   }
 
-  virtual ~BananaService_getApplicationInfo_result() throw();
+  virtual ~AromaService_getApplicationInfo_result() throw();
   GetApplicationInfoResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -2285,7 +2285,7 @@ class BananaService_getApplicationInfo_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_getApplicationInfo_result__isset __isset;
+  _AromaService_getApplicationInfo_result__isset __isset;
 
   void __set_success(const GetApplicationInfoResponse& val);
 
@@ -2299,7 +2299,7 @@ class BananaService_getApplicationInfo_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_getApplicationInfo_result & rhs) const
+  bool operator == (const AromaService_getApplicationInfo_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2315,32 +2315,32 @@ class BananaService_getApplicationInfo_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationInfo_result &rhs) const {
+  bool operator != (const AromaService_getApplicationInfo_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationInfo_result & ) const;
+  bool operator < (const AromaService_getApplicationInfo_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationInfo_presult__isset {
-  _BananaService_getApplicationInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationInfo_presult__isset {
+  _AromaService_getApplicationInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getApplicationInfo_presult__isset;
+} _AromaService_getApplicationInfo_presult__isset;
 
-class BananaService_getApplicationInfo_presult {
+class AromaService_getApplicationInfo_presult {
  public:
 
 
-  virtual ~BananaService_getApplicationInfo_presult() throw();
+  virtual ~AromaService_getApplicationInfo_presult() throw();
   GetApplicationInfoResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -2348,43 +2348,43 @@ class BananaService_getApplicationInfo_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_getApplicationInfo_presult__isset __isset;
+  _AromaService_getApplicationInfo_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getBuzz_args__isset {
-  _BananaService_getBuzz_args__isset() : request(false) {}
+typedef struct _AromaService_getBuzz_args__isset {
+  _AromaService_getBuzz_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getBuzz_args__isset;
+} _AromaService_getBuzz_args__isset;
 
-class BananaService_getBuzz_args {
+class AromaService_getBuzz_args {
  public:
 
-  BananaService_getBuzz_args(const BananaService_getBuzz_args&);
-  BananaService_getBuzz_args& operator=(const BananaService_getBuzz_args&);
-  BananaService_getBuzz_args() {
+  AromaService_getBuzz_args(const AromaService_getBuzz_args&);
+  AromaService_getBuzz_args& operator=(const AromaService_getBuzz_args&);
+  AromaService_getBuzz_args() {
   }
 
-  virtual ~BananaService_getBuzz_args() throw();
+  virtual ~AromaService_getBuzz_args() throw();
   GetBuzzRequest request;
 
-  _BananaService_getBuzz_args__isset __isset;
+  _AromaService_getBuzz_args__isset __isset;
 
   void __set_request(const GetBuzzRequest& val);
 
-  bool operator == (const BananaService_getBuzz_args & rhs) const
+  bool operator == (const AromaService_getBuzz_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getBuzz_args &rhs) const {
+  bool operator != (const AromaService_getBuzz_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getBuzz_args & ) const;
+  bool operator < (const AromaService_getBuzz_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2392,36 +2392,36 @@ class BananaService_getBuzz_args {
 };
 
 
-class BananaService_getBuzz_pargs {
+class AromaService_getBuzz_pargs {
  public:
 
 
-  virtual ~BananaService_getBuzz_pargs() throw();
+  virtual ~AromaService_getBuzz_pargs() throw();
   const GetBuzzRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getBuzz_result__isset {
-  _BananaService_getBuzz_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getBuzz_result__isset {
+  _AromaService_getBuzz_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getBuzz_result__isset;
+} _AromaService_getBuzz_result__isset;
 
-class BananaService_getBuzz_result {
+class AromaService_getBuzz_result {
  public:
 
-  BananaService_getBuzz_result(const BananaService_getBuzz_result&);
-  BananaService_getBuzz_result& operator=(const BananaService_getBuzz_result&);
-  BananaService_getBuzz_result() {
+  AromaService_getBuzz_result(const AromaService_getBuzz_result&);
+  AromaService_getBuzz_result& operator=(const AromaService_getBuzz_result&);
+  AromaService_getBuzz_result() {
   }
 
-  virtual ~BananaService_getBuzz_result() throw();
+  virtual ~AromaService_getBuzz_result() throw();
   GetBuzzResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -2429,7 +2429,7 @@ class BananaService_getBuzz_result {
   ApplicationDoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_getBuzz_result__isset __isset;
+  _AromaService_getBuzz_result__isset __isset;
 
   void __set_success(const GetBuzzResponse& val);
 
@@ -2443,7 +2443,7 @@ class BananaService_getBuzz_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_getBuzz_result & rhs) const
+  bool operator == (const AromaService_getBuzz_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2459,32 +2459,32 @@ class BananaService_getBuzz_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getBuzz_result &rhs) const {
+  bool operator != (const AromaService_getBuzz_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getBuzz_result & ) const;
+  bool operator < (const AromaService_getBuzz_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getBuzz_presult__isset {
-  _BananaService_getBuzz_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getBuzz_presult__isset {
+  _AromaService_getBuzz_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getBuzz_presult__isset;
+} _AromaService_getBuzz_presult__isset;
 
-class BananaService_getBuzz_presult {
+class AromaService_getBuzz_presult {
  public:
 
 
-  virtual ~BananaService_getBuzz_presult() throw();
+  virtual ~AromaService_getBuzz_presult() throw();
   GetBuzzResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -2492,43 +2492,43 @@ class BananaService_getBuzz_presult {
   ApplicationDoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_getBuzz_presult__isset __isset;
+  _AromaService_getBuzz_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getDashboard_args__isset {
-  _BananaService_getDashboard_args__isset() : request(false) {}
+typedef struct _AromaService_getDashboard_args__isset {
+  _AromaService_getDashboard_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getDashboard_args__isset;
+} _AromaService_getDashboard_args__isset;
 
-class BananaService_getDashboard_args {
+class AromaService_getDashboard_args {
  public:
 
-  BananaService_getDashboard_args(const BananaService_getDashboard_args&);
-  BananaService_getDashboard_args& operator=(const BananaService_getDashboard_args&);
-  BananaService_getDashboard_args() {
+  AromaService_getDashboard_args(const AromaService_getDashboard_args&);
+  AromaService_getDashboard_args& operator=(const AromaService_getDashboard_args&);
+  AromaService_getDashboard_args() {
   }
 
-  virtual ~BananaService_getDashboard_args() throw();
+  virtual ~AromaService_getDashboard_args() throw();
   GetDashboardRequest request;
 
-  _BananaService_getDashboard_args__isset __isset;
+  _AromaService_getDashboard_args__isset __isset;
 
   void __set_request(const GetDashboardRequest& val);
 
-  bool operator == (const BananaService_getDashboard_args & rhs) const
+  bool operator == (const AromaService_getDashboard_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getDashboard_args &rhs) const {
+  bool operator != (const AromaService_getDashboard_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getDashboard_args & ) const;
+  bool operator < (const AromaService_getDashboard_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2536,40 +2536,40 @@ class BananaService_getDashboard_args {
 };
 
 
-class BananaService_getDashboard_pargs {
+class AromaService_getDashboard_pargs {
  public:
 
 
-  virtual ~BananaService_getDashboard_pargs() throw();
+  virtual ~AromaService_getDashboard_pargs() throw();
   const GetDashboardRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getDashboard_result__isset {
-  _BananaService_getDashboard_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getDashboard_result__isset {
+  _AromaService_getDashboard_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getDashboard_result__isset;
+} _AromaService_getDashboard_result__isset;
 
-class BananaService_getDashboard_result {
+class AromaService_getDashboard_result {
  public:
 
-  BananaService_getDashboard_result(const BananaService_getDashboard_result&);
-  BananaService_getDashboard_result& operator=(const BananaService_getDashboard_result&);
-  BananaService_getDashboard_result() {
+  AromaService_getDashboard_result(const AromaService_getDashboard_result&);
+  AromaService_getDashboard_result& operator=(const AromaService_getDashboard_result&);
+  AromaService_getDashboard_result() {
   }
 
-  virtual ~BananaService_getDashboard_result() throw();
+  virtual ~AromaService_getDashboard_result() throw();
   GetDashboardResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getDashboard_result__isset __isset;
+  _AromaService_getDashboard_result__isset __isset;
 
   void __set_success(const GetDashboardResponse& val);
 
@@ -2579,7 +2579,7 @@ class BananaService_getDashboard_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getDashboard_result & rhs) const
+  bool operator == (const AromaService_getDashboard_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2591,72 +2591,72 @@ class BananaService_getDashboard_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getDashboard_result &rhs) const {
+  bool operator != (const AromaService_getDashboard_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getDashboard_result & ) const;
+  bool operator < (const AromaService_getDashboard_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getDashboard_presult__isset {
-  _BananaService_getDashboard_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getDashboard_presult__isset {
+  _AromaService_getDashboard_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getDashboard_presult__isset;
+} _AromaService_getDashboard_presult__isset;
 
-class BananaService_getDashboard_presult {
+class AromaService_getDashboard_presult {
  public:
 
 
-  virtual ~BananaService_getDashboard_presult() throw();
+  virtual ~AromaService_getDashboard_presult() throw();
   GetDashboardResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getDashboard_presult__isset __isset;
+  _AromaService_getDashboard_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getApplicationMessages_args__isset {
-  _BananaService_getApplicationMessages_args__isset() : request(false) {}
+typedef struct _AromaService_getApplicationMessages_args__isset {
+  _AromaService_getApplicationMessages_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getApplicationMessages_args__isset;
+} _AromaService_getApplicationMessages_args__isset;
 
-class BananaService_getApplicationMessages_args {
+class AromaService_getApplicationMessages_args {
  public:
 
-  BananaService_getApplicationMessages_args(const BananaService_getApplicationMessages_args&);
-  BananaService_getApplicationMessages_args& operator=(const BananaService_getApplicationMessages_args&);
-  BananaService_getApplicationMessages_args() {
+  AromaService_getApplicationMessages_args(const AromaService_getApplicationMessages_args&);
+  AromaService_getApplicationMessages_args& operator=(const AromaService_getApplicationMessages_args&);
+  AromaService_getApplicationMessages_args() {
   }
 
-  virtual ~BananaService_getApplicationMessages_args() throw();
+  virtual ~AromaService_getApplicationMessages_args() throw();
   GetApplicationMessagesRequest request;
 
-  _BananaService_getApplicationMessages_args__isset __isset;
+  _AromaService_getApplicationMessages_args__isset __isset;
 
   void __set_request(const GetApplicationMessagesRequest& val);
 
-  bool operator == (const BananaService_getApplicationMessages_args & rhs) const
+  bool operator == (const AromaService_getApplicationMessages_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationMessages_args &rhs) const {
+  bool operator != (const AromaService_getApplicationMessages_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationMessages_args & ) const;
+  bool operator < (const AromaService_getApplicationMessages_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2664,36 +2664,36 @@ class BananaService_getApplicationMessages_args {
 };
 
 
-class BananaService_getApplicationMessages_pargs {
+class AromaService_getApplicationMessages_pargs {
  public:
 
 
-  virtual ~BananaService_getApplicationMessages_pargs() throw();
+  virtual ~AromaService_getApplicationMessages_pargs() throw();
   const GetApplicationMessagesRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationMessages_result__isset {
-  _BananaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationMessages_result__isset {
+  _AromaService_getApplicationMessages_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getApplicationMessages_result__isset;
+} _AromaService_getApplicationMessages_result__isset;
 
-class BananaService_getApplicationMessages_result {
+class AromaService_getApplicationMessages_result {
  public:
 
-  BananaService_getApplicationMessages_result(const BananaService_getApplicationMessages_result&);
-  BananaService_getApplicationMessages_result& operator=(const BananaService_getApplicationMessages_result&);
-  BananaService_getApplicationMessages_result() {
+  AromaService_getApplicationMessages_result(const AromaService_getApplicationMessages_result&);
+  AromaService_getApplicationMessages_result& operator=(const AromaService_getApplicationMessages_result&);
+  AromaService_getApplicationMessages_result() {
   }
 
-  virtual ~BananaService_getApplicationMessages_result() throw();
+  virtual ~AromaService_getApplicationMessages_result() throw();
   GetApplicationMessagesResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -2701,7 +2701,7 @@ class BananaService_getApplicationMessages_result {
   UnauthorizedException ex4;
   ApplicationDoesNotExistException ex5;
 
-  _BananaService_getApplicationMessages_result__isset __isset;
+  _AromaService_getApplicationMessages_result__isset __isset;
 
   void __set_success(const GetApplicationMessagesResponse& val);
 
@@ -2715,7 +2715,7 @@ class BananaService_getApplicationMessages_result {
 
   void __set_ex5(const ApplicationDoesNotExistException& val);
 
-  bool operator == (const BananaService_getApplicationMessages_result & rhs) const
+  bool operator == (const AromaService_getApplicationMessages_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2731,32 +2731,32 @@ class BananaService_getApplicationMessages_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getApplicationMessages_result &rhs) const {
+  bool operator != (const AromaService_getApplicationMessages_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getApplicationMessages_result & ) const;
+  bool operator < (const AromaService_getApplicationMessages_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getApplicationMessages_presult__isset {
-  _BananaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getApplicationMessages_presult__isset {
+  _AromaService_getApplicationMessages_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getApplicationMessages_presult__isset;
+} _AromaService_getApplicationMessages_presult__isset;
 
-class BananaService_getApplicationMessages_presult {
+class AromaService_getApplicationMessages_presult {
  public:
 
 
-  virtual ~BananaService_getApplicationMessages_presult() throw();
+  virtual ~AromaService_getApplicationMessages_presult() throw();
   GetApplicationMessagesResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -2764,43 +2764,43 @@ class BananaService_getApplicationMessages_presult {
   UnauthorizedException* ex4;
   ApplicationDoesNotExistException* ex5;
 
-  _BananaService_getApplicationMessages_presult__isset __isset;
+  _AromaService_getApplicationMessages_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getInbox_args__isset {
-  _BananaService_getInbox_args__isset() : request(false) {}
+typedef struct _AromaService_getInbox_args__isset {
+  _AromaService_getInbox_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getInbox_args__isset;
+} _AromaService_getInbox_args__isset;
 
-class BananaService_getInbox_args {
+class AromaService_getInbox_args {
  public:
 
-  BananaService_getInbox_args(const BananaService_getInbox_args&);
-  BananaService_getInbox_args& operator=(const BananaService_getInbox_args&);
-  BananaService_getInbox_args() {
+  AromaService_getInbox_args(const AromaService_getInbox_args&);
+  AromaService_getInbox_args& operator=(const AromaService_getInbox_args&);
+  AromaService_getInbox_args() {
   }
 
-  virtual ~BananaService_getInbox_args() throw();
+  virtual ~AromaService_getInbox_args() throw();
   GetInboxRequest request;
 
-  _BananaService_getInbox_args__isset __isset;
+  _AromaService_getInbox_args__isset __isset;
 
   void __set_request(const GetInboxRequest& val);
 
-  bool operator == (const BananaService_getInbox_args & rhs) const
+  bool operator == (const AromaService_getInbox_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getInbox_args &rhs) const {
+  bool operator != (const AromaService_getInbox_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getInbox_args & ) const;
+  bool operator < (const AromaService_getInbox_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2808,40 +2808,40 @@ class BananaService_getInbox_args {
 };
 
 
-class BananaService_getInbox_pargs {
+class AromaService_getInbox_pargs {
  public:
 
 
-  virtual ~BananaService_getInbox_pargs() throw();
+  virtual ~AromaService_getInbox_pargs() throw();
   const GetInboxRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getInbox_result__isset {
-  _BananaService_getInbox_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getInbox_result__isset {
+  _AromaService_getInbox_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getInbox_result__isset;
+} _AromaService_getInbox_result__isset;
 
-class BananaService_getInbox_result {
+class AromaService_getInbox_result {
  public:
 
-  BananaService_getInbox_result(const BananaService_getInbox_result&);
-  BananaService_getInbox_result& operator=(const BananaService_getInbox_result&);
-  BananaService_getInbox_result() {
+  AromaService_getInbox_result(const AromaService_getInbox_result&);
+  AromaService_getInbox_result& operator=(const AromaService_getInbox_result&);
+  AromaService_getInbox_result() {
   }
 
-  virtual ~BananaService_getInbox_result() throw();
+  virtual ~AromaService_getInbox_result() throw();
   GetInboxResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getInbox_result__isset __isset;
+  _AromaService_getInbox_result__isset __isset;
 
   void __set_success(const GetInboxResponse& val);
 
@@ -2851,7 +2851,7 @@ class BananaService_getInbox_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getInbox_result & rhs) const
+  bool operator == (const AromaService_getInbox_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2863,72 +2863,72 @@ class BananaService_getInbox_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getInbox_result &rhs) const {
+  bool operator != (const AromaService_getInbox_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getInbox_result & ) const;
+  bool operator < (const AromaService_getInbox_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getInbox_presult__isset {
-  _BananaService_getInbox_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getInbox_presult__isset {
+  _AromaService_getInbox_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getInbox_presult__isset;
+} _AromaService_getInbox_presult__isset;
 
-class BananaService_getInbox_presult {
+class AromaService_getInbox_presult {
  public:
 
 
-  virtual ~BananaService_getInbox_presult() throw();
+  virtual ~AromaService_getInbox_presult() throw();
   GetInboxResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getInbox_presult__isset __isset;
+  _AromaService_getInbox_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getFullMessage_args__isset {
-  _BananaService_getFullMessage_args__isset() : request(false) {}
+typedef struct _AromaService_getFullMessage_args__isset {
+  _AromaService_getFullMessage_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getFullMessage_args__isset;
+} _AromaService_getFullMessage_args__isset;
 
-class BananaService_getFullMessage_args {
+class AromaService_getFullMessage_args {
  public:
 
-  BananaService_getFullMessage_args(const BananaService_getFullMessage_args&);
-  BananaService_getFullMessage_args& operator=(const BananaService_getFullMessage_args&);
-  BananaService_getFullMessage_args() {
+  AromaService_getFullMessage_args(const AromaService_getFullMessage_args&);
+  AromaService_getFullMessage_args& operator=(const AromaService_getFullMessage_args&);
+  AromaService_getFullMessage_args() {
   }
 
-  virtual ~BananaService_getFullMessage_args() throw();
+  virtual ~AromaService_getFullMessage_args() throw();
   GetFullMessageRequest request;
 
-  _BananaService_getFullMessage_args__isset __isset;
+  _AromaService_getFullMessage_args__isset __isset;
 
   void __set_request(const GetFullMessageRequest& val);
 
-  bool operator == (const BananaService_getFullMessage_args & rhs) const
+  bool operator == (const AromaService_getFullMessage_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getFullMessage_args &rhs) const {
+  bool operator != (const AromaService_getFullMessage_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getFullMessage_args & ) const;
+  bool operator < (const AromaService_getFullMessage_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2936,40 +2936,40 @@ class BananaService_getFullMessage_args {
 };
 
 
-class BananaService_getFullMessage_pargs {
+class AromaService_getFullMessage_pargs {
  public:
 
 
-  virtual ~BananaService_getFullMessage_pargs() throw();
+  virtual ~AromaService_getFullMessage_pargs() throw();
   const GetFullMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getFullMessage_result__isset {
-  _BananaService_getFullMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getFullMessage_result__isset {
+  _AromaService_getFullMessage_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getFullMessage_result__isset;
+} _AromaService_getFullMessage_result__isset;
 
-class BananaService_getFullMessage_result {
+class AromaService_getFullMessage_result {
  public:
 
-  BananaService_getFullMessage_result(const BananaService_getFullMessage_result&);
-  BananaService_getFullMessage_result& operator=(const BananaService_getFullMessage_result&);
-  BananaService_getFullMessage_result() {
+  AromaService_getFullMessage_result(const AromaService_getFullMessage_result&);
+  AromaService_getFullMessage_result& operator=(const AromaService_getFullMessage_result&);
+  AromaService_getFullMessage_result() {
   }
 
-  virtual ~BananaService_getFullMessage_result() throw();
+  virtual ~AromaService_getFullMessage_result() throw();
   GetFullMessageResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getFullMessage_result__isset __isset;
+  _AromaService_getFullMessage_result__isset __isset;
 
   void __set_success(const GetFullMessageResponse& val);
 
@@ -2979,7 +2979,7 @@ class BananaService_getFullMessage_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getFullMessage_result & rhs) const
+  bool operator == (const AromaService_getFullMessage_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -2991,72 +2991,72 @@ class BananaService_getFullMessage_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getFullMessage_result &rhs) const {
+  bool operator != (const AromaService_getFullMessage_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getFullMessage_result & ) const;
+  bool operator < (const AromaService_getFullMessage_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getFullMessage_presult__isset {
-  _BananaService_getFullMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getFullMessage_presult__isset {
+  _AromaService_getFullMessage_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getFullMessage_presult__isset;
+} _AromaService_getFullMessage_presult__isset;
 
-class BananaService_getFullMessage_presult {
+class AromaService_getFullMessage_presult {
  public:
 
 
-  virtual ~BananaService_getFullMessage_presult() throw();
+  virtual ~AromaService_getFullMessage_presult() throw();
   GetFullMessageResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getFullMessage_presult__isset __isset;
+  _AromaService_getFullMessage_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getMedia_args__isset {
-  _BananaService_getMedia_args__isset() : request(false) {}
+typedef struct _AromaService_getMedia_args__isset {
+  _AromaService_getMedia_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getMedia_args__isset;
+} _AromaService_getMedia_args__isset;
 
-class BananaService_getMedia_args {
+class AromaService_getMedia_args {
  public:
 
-  BananaService_getMedia_args(const BananaService_getMedia_args&);
-  BananaService_getMedia_args& operator=(const BananaService_getMedia_args&);
-  BananaService_getMedia_args() {
+  AromaService_getMedia_args(const AromaService_getMedia_args&);
+  AromaService_getMedia_args& operator=(const AromaService_getMedia_args&);
+  AromaService_getMedia_args() {
   }
 
-  virtual ~BananaService_getMedia_args() throw();
+  virtual ~AromaService_getMedia_args() throw();
   GetMediaRequest request;
 
-  _BananaService_getMedia_args__isset __isset;
+  _AromaService_getMedia_args__isset __isset;
 
   void __set_request(const GetMediaRequest& val);
 
-  bool operator == (const BananaService_getMedia_args & rhs) const
+  bool operator == (const AromaService_getMedia_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMedia_args &rhs) const {
+  bool operator != (const AromaService_getMedia_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMedia_args & ) const;
+  bool operator < (const AromaService_getMedia_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3064,36 +3064,36 @@ class BananaService_getMedia_args {
 };
 
 
-class BananaService_getMedia_pargs {
+class AromaService_getMedia_pargs {
  public:
 
 
-  virtual ~BananaService_getMedia_pargs() throw();
+  virtual ~AromaService_getMedia_pargs() throw();
   const GetMediaRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMedia_result__isset {
-  _BananaService_getMedia_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getMedia_result__isset {
+  _AromaService_getMedia_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getMedia_result__isset;
+} _AromaService_getMedia_result__isset;
 
-class BananaService_getMedia_result {
+class AromaService_getMedia_result {
  public:
 
-  BananaService_getMedia_result(const BananaService_getMedia_result&);
-  BananaService_getMedia_result& operator=(const BananaService_getMedia_result&);
-  BananaService_getMedia_result() {
+  AromaService_getMedia_result(const AromaService_getMedia_result&);
+  AromaService_getMedia_result& operator=(const AromaService_getMedia_result&);
+  AromaService_getMedia_result() {
   }
 
-  virtual ~BananaService_getMedia_result() throw();
+  virtual ~AromaService_getMedia_result() throw();
   GetMediaResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -3101,7 +3101,7 @@ class BananaService_getMedia_result {
   DoesNotExistException ex4;
   UnauthorizedException ex5;
 
-  _BananaService_getMedia_result__isset __isset;
+  _AromaService_getMedia_result__isset __isset;
 
   void __set_success(const GetMediaResponse& val);
 
@@ -3115,7 +3115,7 @@ class BananaService_getMedia_result {
 
   void __set_ex5(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_getMedia_result & rhs) const
+  bool operator == (const AromaService_getMedia_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3131,32 +3131,32 @@ class BananaService_getMedia_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMedia_result &rhs) const {
+  bool operator != (const AromaService_getMedia_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMedia_result & ) const;
+  bool operator < (const AromaService_getMedia_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMedia_presult__isset {
-  _BananaService_getMedia_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getMedia_presult__isset {
+  _AromaService_getMedia_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getMedia_presult__isset;
+} _AromaService_getMedia_presult__isset;
 
-class BananaService_getMedia_presult {
+class AromaService_getMedia_presult {
  public:
 
 
-  virtual ~BananaService_getMedia_presult() throw();
+  virtual ~AromaService_getMedia_presult() throw();
   GetMediaResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -3164,43 +3164,43 @@ class BananaService_getMedia_presult {
   DoesNotExistException* ex4;
   UnauthorizedException* ex5;
 
-  _BananaService_getMedia_presult__isset __isset;
+  _AromaService_getMedia_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getMyApplications_args__isset {
-  _BananaService_getMyApplications_args__isset() : request(false) {}
+typedef struct _AromaService_getMyApplications_args__isset {
+  _AromaService_getMyApplications_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getMyApplications_args__isset;
+} _AromaService_getMyApplications_args__isset;
 
-class BananaService_getMyApplications_args {
+class AromaService_getMyApplications_args {
  public:
 
-  BananaService_getMyApplications_args(const BananaService_getMyApplications_args&);
-  BananaService_getMyApplications_args& operator=(const BananaService_getMyApplications_args&);
-  BananaService_getMyApplications_args() {
+  AromaService_getMyApplications_args(const AromaService_getMyApplications_args&);
+  AromaService_getMyApplications_args& operator=(const AromaService_getMyApplications_args&);
+  AromaService_getMyApplications_args() {
   }
 
-  virtual ~BananaService_getMyApplications_args() throw();
+  virtual ~AromaService_getMyApplications_args() throw();
   GetMyApplicationsRequest request;
 
-  _BananaService_getMyApplications_args__isset __isset;
+  _AromaService_getMyApplications_args__isset __isset;
 
   void __set_request(const GetMyApplicationsRequest& val);
 
-  bool operator == (const BananaService_getMyApplications_args & rhs) const
+  bool operator == (const AromaService_getMyApplications_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMyApplications_args &rhs) const {
+  bool operator != (const AromaService_getMyApplications_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMyApplications_args & ) const;
+  bool operator < (const AromaService_getMyApplications_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3208,40 +3208,40 @@ class BananaService_getMyApplications_args {
 };
 
 
-class BananaService_getMyApplications_pargs {
+class AromaService_getMyApplications_pargs {
  public:
 
 
-  virtual ~BananaService_getMyApplications_pargs() throw();
+  virtual ~AromaService_getMyApplications_pargs() throw();
   const GetMyApplicationsRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMyApplications_result__isset {
-  _BananaService_getMyApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getMyApplications_result__isset {
+  _AromaService_getMyApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMyApplications_result__isset;
+} _AromaService_getMyApplications_result__isset;
 
-class BananaService_getMyApplications_result {
+class AromaService_getMyApplications_result {
  public:
 
-  BananaService_getMyApplications_result(const BananaService_getMyApplications_result&);
-  BananaService_getMyApplications_result& operator=(const BananaService_getMyApplications_result&);
-  BananaService_getMyApplications_result() {
+  AromaService_getMyApplications_result(const AromaService_getMyApplications_result&);
+  AromaService_getMyApplications_result& operator=(const AromaService_getMyApplications_result&);
+  AromaService_getMyApplications_result() {
   }
 
-  virtual ~BananaService_getMyApplications_result() throw();
+  virtual ~AromaService_getMyApplications_result() throw();
   GetMyApplicationsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getMyApplications_result__isset __isset;
+  _AromaService_getMyApplications_result__isset __isset;
 
   void __set_success(const GetMyApplicationsResponse& val);
 
@@ -3251,7 +3251,7 @@ class BananaService_getMyApplications_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getMyApplications_result & rhs) const
+  bool operator == (const AromaService_getMyApplications_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3263,72 +3263,72 @@ class BananaService_getMyApplications_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMyApplications_result &rhs) const {
+  bool operator != (const AromaService_getMyApplications_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMyApplications_result & ) const;
+  bool operator < (const AromaService_getMyApplications_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMyApplications_presult__isset {
-  _BananaService_getMyApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getMyApplications_presult__isset {
+  _AromaService_getMyApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMyApplications_presult__isset;
+} _AromaService_getMyApplications_presult__isset;
 
-class BananaService_getMyApplications_presult {
+class AromaService_getMyApplications_presult {
  public:
 
 
-  virtual ~BananaService_getMyApplications_presult() throw();
+  virtual ~AromaService_getMyApplications_presult() throw();
   GetMyApplicationsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getMyApplications_presult__isset __isset;
+  _AromaService_getMyApplications_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getMySavedChannels_args__isset {
-  _BananaService_getMySavedChannels_args__isset() : request(false) {}
+typedef struct _AromaService_getMySavedChannels_args__isset {
+  _AromaService_getMySavedChannels_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getMySavedChannels_args__isset;
+} _AromaService_getMySavedChannels_args__isset;
 
-class BananaService_getMySavedChannels_args {
+class AromaService_getMySavedChannels_args {
  public:
 
-  BananaService_getMySavedChannels_args(const BananaService_getMySavedChannels_args&);
-  BananaService_getMySavedChannels_args& operator=(const BananaService_getMySavedChannels_args&);
-  BananaService_getMySavedChannels_args() {
+  AromaService_getMySavedChannels_args(const AromaService_getMySavedChannels_args&);
+  AromaService_getMySavedChannels_args& operator=(const AromaService_getMySavedChannels_args&);
+  AromaService_getMySavedChannels_args() {
   }
 
-  virtual ~BananaService_getMySavedChannels_args() throw();
+  virtual ~AromaService_getMySavedChannels_args() throw();
   GetMySavedChannelsRequest request;
 
-  _BananaService_getMySavedChannels_args__isset __isset;
+  _AromaService_getMySavedChannels_args__isset __isset;
 
   void __set_request(const GetMySavedChannelsRequest& val);
 
-  bool operator == (const BananaService_getMySavedChannels_args & rhs) const
+  bool operator == (const AromaService_getMySavedChannels_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMySavedChannels_args &rhs) const {
+  bool operator != (const AromaService_getMySavedChannels_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMySavedChannels_args & ) const;
+  bool operator < (const AromaService_getMySavedChannels_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3336,40 +3336,40 @@ class BananaService_getMySavedChannels_args {
 };
 
 
-class BananaService_getMySavedChannels_pargs {
+class AromaService_getMySavedChannels_pargs {
  public:
 
 
-  virtual ~BananaService_getMySavedChannels_pargs() throw();
+  virtual ~AromaService_getMySavedChannels_pargs() throw();
   const GetMySavedChannelsRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMySavedChannels_result__isset {
-  _BananaService_getMySavedChannels_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getMySavedChannels_result__isset {
+  _AromaService_getMySavedChannels_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMySavedChannels_result__isset;
+} _AromaService_getMySavedChannels_result__isset;
 
-class BananaService_getMySavedChannels_result {
+class AromaService_getMySavedChannels_result {
  public:
 
-  BananaService_getMySavedChannels_result(const BananaService_getMySavedChannels_result&);
-  BananaService_getMySavedChannels_result& operator=(const BananaService_getMySavedChannels_result&);
-  BananaService_getMySavedChannels_result() {
+  AromaService_getMySavedChannels_result(const AromaService_getMySavedChannels_result&);
+  AromaService_getMySavedChannels_result& operator=(const AromaService_getMySavedChannels_result&);
+  AromaService_getMySavedChannels_result() {
   }
 
-  virtual ~BananaService_getMySavedChannels_result() throw();
+  virtual ~AromaService_getMySavedChannels_result() throw();
   GetMySavedChannelsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _BananaService_getMySavedChannels_result__isset __isset;
+  _AromaService_getMySavedChannels_result__isset __isset;
 
   void __set_success(const GetMySavedChannelsResponse& val);
 
@@ -3379,7 +3379,7 @@ class BananaService_getMySavedChannels_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const BananaService_getMySavedChannels_result & rhs) const
+  bool operator == (const AromaService_getMySavedChannels_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3391,72 +3391,72 @@ class BananaService_getMySavedChannels_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getMySavedChannels_result &rhs) const {
+  bool operator != (const AromaService_getMySavedChannels_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getMySavedChannels_result & ) const;
+  bool operator < (const AromaService_getMySavedChannels_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getMySavedChannels_presult__isset {
-  _BananaService_getMySavedChannels_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getMySavedChannels_presult__isset {
+  _AromaService_getMySavedChannels_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _BananaService_getMySavedChannels_presult__isset;
+} _AromaService_getMySavedChannels_presult__isset;
 
-class BananaService_getMySavedChannels_presult {
+class AromaService_getMySavedChannels_presult {
  public:
 
 
-  virtual ~BananaService_getMySavedChannels_presult() throw();
+  virtual ~AromaService_getMySavedChannels_presult() throw();
   GetMySavedChannelsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _BananaService_getMySavedChannels_presult__isset __isset;
+  _AromaService_getMySavedChannels_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_getUserInfo_args__isset {
-  _BananaService_getUserInfo_args__isset() : request(false) {}
+typedef struct _AromaService_getUserInfo_args__isset {
+  _AromaService_getUserInfo_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_getUserInfo_args__isset;
+} _AromaService_getUserInfo_args__isset;
 
-class BananaService_getUserInfo_args {
+class AromaService_getUserInfo_args {
  public:
 
-  BananaService_getUserInfo_args(const BananaService_getUserInfo_args&);
-  BananaService_getUserInfo_args& operator=(const BananaService_getUserInfo_args&);
-  BananaService_getUserInfo_args() {
+  AromaService_getUserInfo_args(const AromaService_getUserInfo_args&);
+  AromaService_getUserInfo_args& operator=(const AromaService_getUserInfo_args&);
+  AromaService_getUserInfo_args() {
   }
 
-  virtual ~BananaService_getUserInfo_args() throw();
+  virtual ~AromaService_getUserInfo_args() throw();
   GetUserInfoRequest request;
 
-  _BananaService_getUserInfo_args__isset __isset;
+  _AromaService_getUserInfo_args__isset __isset;
 
   void __set_request(const GetUserInfoRequest& val);
 
-  bool operator == (const BananaService_getUserInfo_args & rhs) const
+  bool operator == (const AromaService_getUserInfo_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_getUserInfo_args &rhs) const {
+  bool operator != (const AromaService_getUserInfo_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getUserInfo_args & ) const;
+  bool operator < (const AromaService_getUserInfo_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3464,36 +3464,36 @@ class BananaService_getUserInfo_args {
 };
 
 
-class BananaService_getUserInfo_pargs {
+class AromaService_getUserInfo_pargs {
  public:
 
 
-  virtual ~BananaService_getUserInfo_pargs() throw();
+  virtual ~AromaService_getUserInfo_pargs() throw();
   const GetUserInfoRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getUserInfo_result__isset {
-  _BananaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getUserInfo_result__isset {
+  _AromaService_getUserInfo_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getUserInfo_result__isset;
+} _AromaService_getUserInfo_result__isset;
 
-class BananaService_getUserInfo_result {
+class AromaService_getUserInfo_result {
  public:
 
-  BananaService_getUserInfo_result(const BananaService_getUserInfo_result&);
-  BananaService_getUserInfo_result& operator=(const BananaService_getUserInfo_result&);
-  BananaService_getUserInfo_result() {
+  AromaService_getUserInfo_result(const AromaService_getUserInfo_result&);
+  AromaService_getUserInfo_result& operator=(const AromaService_getUserInfo_result&);
+  AromaService_getUserInfo_result() {
   }
 
-  virtual ~BananaService_getUserInfo_result() throw();
+  virtual ~AromaService_getUserInfo_result() throw();
   GetUserInfoResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
@@ -3501,7 +3501,7 @@ class BananaService_getUserInfo_result {
   UnauthorizedException ex4;
   UserDoesNotExistException ex5;
 
-  _BananaService_getUserInfo_result__isset __isset;
+  _AromaService_getUserInfo_result__isset __isset;
 
   void __set_success(const GetUserInfoResponse& val);
 
@@ -3515,7 +3515,7 @@ class BananaService_getUserInfo_result {
 
   void __set_ex5(const UserDoesNotExistException& val);
 
-  bool operator == (const BananaService_getUserInfo_result & rhs) const
+  bool operator == (const AromaService_getUserInfo_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3531,32 +3531,32 @@ class BananaService_getUserInfo_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_getUserInfo_result &rhs) const {
+  bool operator != (const AromaService_getUserInfo_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_getUserInfo_result & ) const;
+  bool operator < (const AromaService_getUserInfo_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_getUserInfo_presult__isset {
-  _BananaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+typedef struct _AromaService_getUserInfo_presult__isset {
+  _AromaService_getUserInfo_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-} _BananaService_getUserInfo_presult__isset;
+} _AromaService_getUserInfo_presult__isset;
 
-class BananaService_getUserInfo_presult {
+class AromaService_getUserInfo_presult {
  public:
 
 
-  virtual ~BananaService_getUserInfo_presult() throw();
+  virtual ~AromaService_getUserInfo_presult() throw();
   GetUserInfoResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
@@ -3564,43 +3564,43 @@ class BananaService_getUserInfo_presult {
   UnauthorizedException* ex4;
   UserDoesNotExistException* ex5;
 
-  _BananaService_getUserInfo_presult__isset __isset;
+  _AromaService_getUserInfo_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _BananaService_searchForApplications_args__isset {
-  _BananaService_searchForApplications_args__isset() : request(false) {}
+typedef struct _AromaService_searchForApplications_args__isset {
+  _AromaService_searchForApplications_args__isset() : request(false) {}
   bool request :1;
-} _BananaService_searchForApplications_args__isset;
+} _AromaService_searchForApplications_args__isset;
 
-class BananaService_searchForApplications_args {
+class AromaService_searchForApplications_args {
  public:
 
-  BananaService_searchForApplications_args(const BananaService_searchForApplications_args&);
-  BananaService_searchForApplications_args& operator=(const BananaService_searchForApplications_args&);
-  BananaService_searchForApplications_args() {
+  AromaService_searchForApplications_args(const AromaService_searchForApplications_args&);
+  AromaService_searchForApplications_args& operator=(const AromaService_searchForApplications_args&);
+  AromaService_searchForApplications_args() {
   }
 
-  virtual ~BananaService_searchForApplications_args() throw();
+  virtual ~AromaService_searchForApplications_args() throw();
   SearchForApplicationsRequest request;
 
-  _BananaService_searchForApplications_args__isset __isset;
+  _AromaService_searchForApplications_args__isset __isset;
 
   void __set_request(const SearchForApplicationsRequest& val);
 
-  bool operator == (const BananaService_searchForApplications_args & rhs) const
+  bool operator == (const AromaService_searchForApplications_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const BananaService_searchForApplications_args &rhs) const {
+  bool operator != (const AromaService_searchForApplications_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_searchForApplications_args & ) const;
+  bool operator < (const AromaService_searchForApplications_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3608,42 +3608,42 @@ class BananaService_searchForApplications_args {
 };
 
 
-class BananaService_searchForApplications_pargs {
+class AromaService_searchForApplications_pargs {
  public:
 
 
-  virtual ~BananaService_searchForApplications_pargs() throw();
+  virtual ~AromaService_searchForApplications_pargs() throw();
   const SearchForApplicationsRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_searchForApplications_result__isset {
-  _BananaService_searchForApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_searchForApplications_result__isset {
+  _AromaService_searchForApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_searchForApplications_result__isset;
+} _AromaService_searchForApplications_result__isset;
 
-class BananaService_searchForApplications_result {
+class AromaService_searchForApplications_result {
  public:
 
-  BananaService_searchForApplications_result(const BananaService_searchForApplications_result&);
-  BananaService_searchForApplications_result& operator=(const BananaService_searchForApplications_result&);
-  BananaService_searchForApplications_result() {
+  AromaService_searchForApplications_result(const AromaService_searchForApplications_result&);
+  AromaService_searchForApplications_result& operator=(const AromaService_searchForApplications_result&);
+  AromaService_searchForApplications_result() {
   }
 
-  virtual ~BananaService_searchForApplications_result() throw();
+  virtual ~AromaService_searchForApplications_result() throw();
   SearchForApplicationsResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   UnauthorizedException ex4;
 
-  _BananaService_searchForApplications_result__isset __isset;
+  _AromaService_searchForApplications_result__isset __isset;
 
   void __set_success(const SearchForApplicationsResponse& val);
 
@@ -3655,7 +3655,7 @@ class BananaService_searchForApplications_result {
 
   void __set_ex4(const UnauthorizedException& val);
 
-  bool operator == (const BananaService_searchForApplications_result & rhs) const
+  bool operator == (const AromaService_searchForApplications_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3669,49 +3669,49 @@ class BananaService_searchForApplications_result {
       return false;
     return true;
   }
-  bool operator != (const BananaService_searchForApplications_result &rhs) const {
+  bool operator != (const AromaService_searchForApplications_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const BananaService_searchForApplications_result & ) const;
+  bool operator < (const AromaService_searchForApplications_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _BananaService_searchForApplications_presult__isset {
-  _BananaService_searchForApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
+typedef struct _AromaService_searchForApplications_presult__isset {
+  _AromaService_searchForApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
-} _BananaService_searchForApplications_presult__isset;
+} _AromaService_searchForApplications_presult__isset;
 
-class BananaService_searchForApplications_presult {
+class AromaService_searchForApplications_presult {
  public:
 
 
-  virtual ~BananaService_searchForApplications_presult() throw();
+  virtual ~AromaService_searchForApplications_presult() throw();
   SearchForApplicationsResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   UnauthorizedException* ex4;
 
-  _BananaService_searchForApplications_presult__isset __isset;
+  _AromaService_searchForApplications_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-class BananaServiceClient : virtual public BananaServiceIf {
+class AromaServiceClient : virtual public AromaServiceIf {
  public:
-  BananaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  AromaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  BananaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  AromaServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -3813,12 +3813,12 @@ class BananaServiceClient : virtual public BananaServiceIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
+class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  boost::shared_ptr<BananaServiceIf> iface_;
+  boost::shared_ptr<AromaServiceIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext);
  private:
-  typedef  void (BananaServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (AromaServiceProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3847,58 +3847,58 @@ class BananaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
-  BananaServiceProcessor(boost::shared_ptr<BananaServiceIf> iface) :
+  AromaServiceProcessor(boost::shared_ptr<AromaServiceIf> iface) :
     iface_(iface) {
-    processMap_["getApiVersion"] = &BananaServiceProcessor::process_getApiVersion;
-    processMap_["deleteMessage"] = &BananaServiceProcessor::process_deleteMessage;
-    processMap_["dismissMessage"] = &BananaServiceProcessor::process_dismissMessage;
-    processMap_["provisionApplication"] = &BananaServiceProcessor::process_provisionApplication;
-    processMap_["regenerateToken"] = &BananaServiceProcessor::process_regenerateToken;
-    processMap_["registerHealthCheck"] = &BananaServiceProcessor::process_registerHealthCheck;
-    processMap_["removeSavedChannel"] = &BananaServiceProcessor::process_removeSavedChannel;
-    processMap_["renewApplicationToken"] = &BananaServiceProcessor::process_renewApplicationToken;
-    processMap_["saveChannel"] = &BananaServiceProcessor::process_saveChannel;
-    processMap_["signIn"] = &BananaServiceProcessor::process_signIn;
-    processMap_["signUp"] = &BananaServiceProcessor::process_signUp;
-    processMap_["snoozeChannel"] = &BananaServiceProcessor::process_snoozeChannel;
-    processMap_["followApplication"] = &BananaServiceProcessor::process_followApplication;
-    processMap_["getActivity"] = &BananaServiceProcessor::process_getActivity;
-    processMap_["getApplicationInfo"] = &BananaServiceProcessor::process_getApplicationInfo;
-    processMap_["getBuzz"] = &BananaServiceProcessor::process_getBuzz;
-    processMap_["getDashboard"] = &BananaServiceProcessor::process_getDashboard;
-    processMap_["getApplicationMessages"] = &BananaServiceProcessor::process_getApplicationMessages;
-    processMap_["getInbox"] = &BananaServiceProcessor::process_getInbox;
-    processMap_["getFullMessage"] = &BananaServiceProcessor::process_getFullMessage;
-    processMap_["getMedia"] = &BananaServiceProcessor::process_getMedia;
-    processMap_["getMyApplications"] = &BananaServiceProcessor::process_getMyApplications;
-    processMap_["getMySavedChannels"] = &BananaServiceProcessor::process_getMySavedChannels;
-    processMap_["getUserInfo"] = &BananaServiceProcessor::process_getUserInfo;
-    processMap_["searchForApplications"] = &BananaServiceProcessor::process_searchForApplications;
+    processMap_["getApiVersion"] = &AromaServiceProcessor::process_getApiVersion;
+    processMap_["deleteMessage"] = &AromaServiceProcessor::process_deleteMessage;
+    processMap_["dismissMessage"] = &AromaServiceProcessor::process_dismissMessage;
+    processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
+    processMap_["regenerateToken"] = &AromaServiceProcessor::process_regenerateToken;
+    processMap_["registerHealthCheck"] = &AromaServiceProcessor::process_registerHealthCheck;
+    processMap_["removeSavedChannel"] = &AromaServiceProcessor::process_removeSavedChannel;
+    processMap_["renewApplicationToken"] = &AromaServiceProcessor::process_renewApplicationToken;
+    processMap_["saveChannel"] = &AromaServiceProcessor::process_saveChannel;
+    processMap_["signIn"] = &AromaServiceProcessor::process_signIn;
+    processMap_["signUp"] = &AromaServiceProcessor::process_signUp;
+    processMap_["snoozeChannel"] = &AromaServiceProcessor::process_snoozeChannel;
+    processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
+    processMap_["getActivity"] = &AromaServiceProcessor::process_getActivity;
+    processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
+    processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
+    processMap_["getDashboard"] = &AromaServiceProcessor::process_getDashboard;
+    processMap_["getApplicationMessages"] = &AromaServiceProcessor::process_getApplicationMessages;
+    processMap_["getInbox"] = &AromaServiceProcessor::process_getInbox;
+    processMap_["getFullMessage"] = &AromaServiceProcessor::process_getFullMessage;
+    processMap_["getMedia"] = &AromaServiceProcessor::process_getMedia;
+    processMap_["getMyApplications"] = &AromaServiceProcessor::process_getMyApplications;
+    processMap_["getMySavedChannels"] = &AromaServiceProcessor::process_getMySavedChannels;
+    processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
+    processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
   }
 
-  virtual ~BananaServiceProcessor() {}
+  virtual ~AromaServiceProcessor() {}
 };
 
-class BananaServiceProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class AromaServiceProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  BananaServiceProcessorFactory(const ::boost::shared_ptr< BananaServiceIfFactory >& handlerFactory) :
+  AromaServiceProcessorFactory(const ::boost::shared_ptr< AromaServiceIfFactory >& handlerFactory) :
       handlerFactory_(handlerFactory) {}
 
   ::boost::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo);
 
  protected:
-  ::boost::shared_ptr< BananaServiceIfFactory > handlerFactory_;
+  ::boost::shared_ptr< AromaServiceIfFactory > handlerFactory_;
 };
 
-class BananaServiceMultiface : virtual public BananaServiceIf {
+class AromaServiceMultiface : virtual public AromaServiceIf {
  public:
-  BananaServiceMultiface(std::vector<boost::shared_ptr<BananaServiceIf> >& ifaces) : ifaces_(ifaces) {
+  AromaServiceMultiface(std::vector<boost::shared_ptr<AromaServiceIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~BananaServiceMultiface() {}
+  virtual ~AromaServiceMultiface() {}
  protected:
-  std::vector<boost::shared_ptr<BananaServiceIf> > ifaces_;
-  BananaServiceMultiface() {}
-  void add(boost::shared_ptr<BananaServiceIf> iface) {
+  std::vector<boost::shared_ptr<AromaServiceIf> > ifaces_;
+  AromaServiceMultiface() {}
+  void add(boost::shared_ptr<AromaServiceIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -4156,12 +4156,12 @@ class BananaServiceMultiface : virtual public BananaServiceIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class BananaServiceConcurrentClient : virtual public BananaServiceIf {
+class AromaServiceConcurrentClient : virtual public AromaServiceIf {
  public:
-  BananaServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  AromaServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  BananaServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  AromaServiceConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -4268,6 +4268,6 @@ class BananaServiceConcurrentClient : virtual public BananaServiceIf {
   #pragma warning( pop )
 #endif
 
-}}}} // namespace
+}}} // namespace
 
 #endif

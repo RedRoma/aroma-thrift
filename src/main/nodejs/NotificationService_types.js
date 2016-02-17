@@ -74,7 +74,7 @@ SendNotificationRequest.prototype.read = function(input) {
         for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
           var elem6 = null;
-          elem6 = new Channels_ttypes.BananaChannel();
+          elem6 = new Channels_ttypes.AromaChannel();
           elem6.read(input);
           this.channels.push(elem6);
         }
@@ -178,6 +178,6 @@ SendNotificationResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7009;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.banana.aroma.tech','port' : 7009});
+'hostname' : 'notification-srv.aroma.tech','port' : 7009});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 7009});
+'hostname' : 'notification-srv.beta.aroma.tech','port' : 7009});

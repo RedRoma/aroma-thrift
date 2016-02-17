@@ -19,12 +19,12 @@
 #import "TBaseClient.h"
 
 
-enum Banana_ImageType {
+enum Aroma_ImageType {
   ImageType_JPEG = 1,
   ImageType_PNG = 2
 };
 
-enum Banana_Industry {
+enum Aroma_Industry {
   Industry_BANKING = 0,
   Industry_ECOMMERCE = 1,
   Industry_EDUCATION = 2,
@@ -34,12 +34,12 @@ enum Banana_Industry {
   Industry_TECH = 6
 };
 
-enum Banana_Tier {
+enum Aroma_Tier {
   Tier_FREE = 0,
   Tier_PAID = 1
 };
 
-enum Banana_TimeUnit {
+enum Aroma_TimeUnit {
   TimeUnit_MILLIS = 0,
   TimeUnit_SECONDS = 1,
   TimeUnit_MINUTES = 2,
@@ -48,7 +48,7 @@ enum Banana_TimeUnit {
   TimeUnit_WEEKS = 5
 };
 
-enum Banana_ProgrammingLanguage {
+enum Aroma_ProgrammingLanguage {
   ProgrammingLanguage_JAVA = 0,
   ProgrammingLanguage_CPP = 1,
   ProgrammingLanguage_C_SHARP = 2,
@@ -65,7 +65,7 @@ enum Banana_ProgrammingLanguage {
   ProgrammingLanguage_OTHER = 13
 };
 
-enum Banana_Role {
+enum Aroma_Role {
   Role_DEVELOPER = 1,
   Role_OPERATIONS = 2,
   Role_MANAGER = 3,
@@ -73,23 +73,23 @@ enum Banana_Role {
   Role_QA = 5
 };
 
-enum Banana_Urgency {
+enum Aroma_Urgency {
   Urgency_LOW = 1,
   Urgency_MEDIUM = 2,
   Urgency_HIGH = 3
 };
 
-typedef int32_t Banana_int;
+typedef int32_t Aroma_int;
 
-typedef int64_t Banana_long;
+typedef int64_t Aroma_long;
 
-typedef int64_t Banana_timestamp;
+typedef int64_t Aroma_timestamp;
 
-typedef NSString * Banana_uuid;
+typedef NSString * Aroma_uuid;
 
-@interface Banana_LengthOfTime : NSObject <TBase, NSCoding> {
+@interface Aroma_LengthOfTime : NSObject <TBase, NSCoding> {
   int __unit;
-  Banana_long __value;
+  Aroma_long __value;
 
   BOOL __unit_isset;
   BOOL __value_isset;
@@ -97,11 +97,11 @@ typedef NSString * Banana_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=unit, setter=setUnit:) int unit;
-@property (nonatomic, getter=value, setter=setValue:) Banana_long value;
+@property (nonatomic, getter=value, setter=setValue:) Aroma_long value;
 #endif
 
 - (id) init;
-- (id) initWithUnit: (int) unit value: (Banana_long) value;
+- (id) initWithUnit: (int) unit value: (Aroma_long) value;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -115,28 +115,28 @@ typedef NSString * Banana_uuid;
 - (BOOL) unitIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_long) value;
-- (void) setValue: (Banana_long) value;
+- (Aroma_long) value;
+- (void) setValue: (Aroma_long) value;
 #endif
 - (BOOL) valueIsSet;
 
 @end
 
-@interface Banana_Dimension : NSObject <TBase, NSCoding> {
-  Banana_int __width;
-  Banana_int __height;
+@interface Aroma_Dimension : NSObject <TBase, NSCoding> {
+  Aroma_int __width;
+  Aroma_int __height;
 
   BOOL __width_isset;
   BOOL __height_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=width, setter=setWidth:) Banana_int width;
-@property (nonatomic, getter=height, setter=setHeight:) Banana_int height;
+@property (nonatomic, getter=width, setter=setWidth:) Aroma_int width;
+@property (nonatomic, getter=height, setter=setHeight:) Aroma_int height;
 #endif
 
 - (id) init;
-- (id) initWithWidth: (Banana_int) width height: (Banana_int) height;
+- (id) initWithWidth: (Aroma_int) width height: (Aroma_int) height;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -144,23 +144,23 @@ typedef NSString * Banana_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_int) width;
-- (void) setWidth: (Banana_int) width;
+- (Aroma_int) width;
+- (void) setWidth: (Aroma_int) width;
 #endif
 - (BOOL) widthIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_int) height;
-- (void) setHeight: (Banana_int) height;
+- (Aroma_int) height;
+- (void) setHeight: (Aroma_int) height;
 #endif
 - (BOOL) heightIsSet;
 
 @end
 
-@interface Banana_Image : NSObject <TBase, NSCoding> {
+@interface Aroma_Image : NSObject <TBase, NSCoding> {
   int __imageType;
   NSData * __data;
-  Banana_Dimension * __dimension;
+  Aroma_Dimension * __dimension;
 
   BOOL __imageType_isset;
   BOOL __data_isset;
@@ -170,11 +170,11 @@ typedef NSString * Banana_uuid;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, getter=imageType, setter=setImageType:) int imageType;
 @property (nonatomic, retain, getter=data, setter=setData:) NSData * data;
-@property (nonatomic, retain, getter=dimension, setter=setDimension:) Banana_Dimension * dimension;
+@property (nonatomic, retain, getter=dimension, setter=setDimension:) Aroma_Dimension * dimension;
 #endif
 
 - (id) init;
-- (id) initWithImageType: (int) imageType data: (NSData *) data dimension: (Banana_Dimension *) dimension;
+- (id) initWithImageType: (int) imageType data: (NSData *) data dimension: (Aroma_Dimension *) dimension;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -194,25 +194,25 @@ typedef NSString * Banana_uuid;
 - (BOOL) dataIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_Dimension *) dimension;
-- (void) setDimension: (Banana_Dimension *) dimension;
+- (Aroma_Dimension *) dimension;
+- (void) setDimension: (Aroma_Dimension *) dimension;
 #endif
 - (BOOL) dimensionIsSet;
 
 @end
 
-@interface Banana_Message : NSObject <TBase, NSCoding> {
-  Banana_uuid __messageId;
+@interface Aroma_Message : NSObject <TBase, NSCoding> {
+  Aroma_uuid __messageId;
   NSString * __body;
   int __urgency;
-  Banana_timestamp __timeOfCreation;
-  Banana_timestamp __timeMessageReceived;
+  Aroma_timestamp __timeOfCreation;
+  Aroma_timestamp __timeMessageReceived;
   NSString * __applicationName;
   NSString * __hostname;
   NSString * __macAddress;
   BOOL __isTruncated;
   NSString * __title;
-  Banana_uuid __applicationId;
+  Aroma_uuid __applicationId;
 
   BOOL __messageId_isset;
   BOOL __body_isset;
@@ -228,21 +228,21 @@ typedef NSString * Banana_uuid;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) Banana_uuid messageId;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) Aroma_uuid messageId;
 @property (nonatomic, retain, getter=body, setter=setBody:) NSString * body;
 @property (nonatomic, getter=urgency, setter=setUrgency:) int urgency;
-@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Banana_timestamp timeOfCreation;
-@property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Banana_timestamp timeMessageReceived;
+@property (nonatomic, getter=timeOfCreation, setter=setTimeOfCreation:) Aroma_timestamp timeOfCreation;
+@property (nonatomic, getter=timeMessageReceived, setter=setTimeMessageReceived:) Aroma_timestamp timeMessageReceived;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
 @property (nonatomic, retain, getter=macAddress, setter=setMacAddress:) NSString * macAddress;
 @property (nonatomic, getter=isTruncated, setter=setIsTruncated:) BOOL isTruncated;
 @property (nonatomic, retain, getter=title, setter=setTitle:) NSString * title;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Banana_uuid applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Aroma_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithMessageId: (Banana_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Banana_uuid) applicationId;
+- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -250,8 +250,8 @@ typedef NSString * Banana_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) messageId;
-- (void) setMessageId: (Banana_uuid) messageId;
+- (Aroma_uuid) messageId;
+- (void) setMessageId: (Aroma_uuid) messageId;
 #endif
 - (BOOL) messageIdIsSet;
 
@@ -268,14 +268,14 @@ typedef NSString * Banana_uuid;
 - (BOOL) urgencyIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfCreation;
-- (void) setTimeOfCreation: (Banana_timestamp) timeOfCreation;
+- (Aroma_timestamp) timeOfCreation;
+- (void) setTimeOfCreation: (Aroma_timestamp) timeOfCreation;
 #endif
 - (BOOL) timeOfCreationIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeMessageReceived;
-- (void) setTimeMessageReceived: (Banana_timestamp) timeMessageReceived;
+- (Aroma_timestamp) timeMessageReceived;
+- (void) setTimeMessageReceived: (Aroma_timestamp) timeMessageReceived;
 #endif
 - (BOOL) timeMessageReceivedIsSet;
 
@@ -310,18 +310,18 @@ typedef NSString * Banana_uuid;
 - (BOOL) titleIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) applicationId;
-- (void) setApplicationId: (Banana_uuid) applicationId;
+- (Aroma_uuid) applicationId;
+- (void) setApplicationId: (Aroma_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface Banana_Organization : NSObject <TBase, NSCoding> {
-  Banana_uuid __organizationId;
+@interface Aroma_Organization : NSObject <TBase, NSCoding> {
+  Aroma_uuid __organizationId;
   NSString * __organizationName;
   NSString * __website;
-  Banana_Image * __logo;
+  Aroma_Image * __logo;
   NSString * __techStack;
   NSMutableArray * __owners;
   NSString * __organizationEmail;
@@ -348,10 +348,10 @@ typedef NSString * Banana_uuid;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Aroma_uuid organizationId;
 @property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
 @property (nonatomic, retain, getter=website, setter=setWebsite:) NSString * website;
-@property (nonatomic, retain, getter=logo, setter=setLogo:) Banana_Image * logo;
+@property (nonatomic, retain, getter=logo, setter=setLogo:) Aroma_Image * logo;
 @property (nonatomic, retain, getter=techStack, setter=setTechStack:) NSString * techStack;
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableArray * owners;
 @property (nonatomic, retain, getter=organizationEmail, setter=setOrganizationEmail:) NSString * organizationEmail;
@@ -364,7 +364,7 @@ typedef NSString * Banana_uuid;
 #endif
 
 - (id) init;
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile;
+- (id) initWithOrganizationId: (Aroma_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Aroma_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -372,8 +372,8 @@ typedef NSString * Banana_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) organizationId;
-- (void) setOrganizationId: (Banana_uuid) organizationId;
+- (Aroma_uuid) organizationId;
+- (void) setOrganizationId: (Aroma_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -390,8 +390,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) websiteIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_Image *) logo;
-- (void) setLogo: (Banana_Image *) logo;
+- (Aroma_Image *) logo;
+- (void) setLogo: (Aroma_Image *) logo;
 #endif
 - (BOOL) logoIsSet;
 
@@ -451,19 +451,19 @@ typedef NSString * Banana_uuid;
 
 @end
 
-@interface Banana_User : NSObject <TBase, NSCoding> {
+@interface Aroma_User : NSObject <TBase, NSCoding> {
   NSString * __email;
-  Banana_uuid __userId;
+  Aroma_uuid __userId;
   NSString * __name;
   NSMutableSet * __roles;
-  Banana_Image * __profileImage;
-  Banana_uuid __profileImageLink;
+  Aroma_Image * __profileImage;
+  Aroma_uuid __profileImageLink;
   NSString * __githubProfile;
   NSString * __firstName;
   NSString * __middleName;
   NSString * __lastName;
-  Banana_timestamp __birthdate;
-  Banana_timestamp __timeUserJoined;
+  Aroma_timestamp __birthdate;
+  Aroma_timestamp __timeUserJoined;
 
   BOOL __email_isset;
   BOOL __userId_isset;
@@ -481,21 +481,21 @@ typedef NSString * Banana_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) Banana_uuid userId;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) Aroma_uuid userId;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
 @property (nonatomic, retain, getter=roles, setter=setRoles:) NSMutableSet * roles;
-@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
-@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) Banana_uuid profileImageLink;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Aroma_Image * profileImage;
+@property (nonatomic, retain, getter=profileImageLink, setter=setProfileImageLink:) Aroma_uuid profileImageLink;
 @property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
 @property (nonatomic, retain, getter=firstName, setter=setFirstName:) NSString * firstName;
 @property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
-@property (nonatomic, getter=birthdate, setter=setBirthdate:) Banana_timestamp birthdate;
-@property (nonatomic, getter=timeUserJoined, setter=setTimeUserJoined:) Banana_timestamp timeUserJoined;
+@property (nonatomic, getter=birthdate, setter=setBirthdate:) Aroma_timestamp birthdate;
+@property (nonatomic, getter=timeUserJoined, setter=setTimeUserJoined:) Aroma_timestamp timeUserJoined;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (Banana_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined;
+- (id) initWithEmail: (NSString *) email userId: (Aroma_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Aroma_Image *) profileImage profileImageLink: (Aroma_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Aroma_timestamp) birthdate timeUserJoined: (Aroma_timestamp) timeUserJoined;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -509,8 +509,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) userId;
-- (void) setUserId: (Banana_uuid) userId;
+- (Aroma_uuid) userId;
+- (void) setUserId: (Aroma_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
 
@@ -527,14 +527,14 @@ typedef NSString * Banana_uuid;
 - (BOOL) rolesIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_Image *) profileImage;
-- (void) setProfileImage: (Banana_Image *) profileImage;
+- (Aroma_Image *) profileImage;
+- (void) setProfileImage: (Aroma_Image *) profileImage;
 #endif
 - (BOOL) profileImageIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) profileImageLink;
-- (void) setProfileImageLink: (Banana_uuid) profileImageLink;
+- (Aroma_uuid) profileImageLink;
+- (void) setProfileImageLink: (Aroma_uuid) profileImageLink;
 #endif
 - (BOOL) profileImageLinkIsSet;
 
@@ -563,33 +563,33 @@ typedef NSString * Banana_uuid;
 - (BOOL) lastNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) birthdate;
-- (void) setBirthdate: (Banana_timestamp) birthdate;
+- (Aroma_timestamp) birthdate;
+- (void) setBirthdate: (Aroma_timestamp) birthdate;
 #endif
 - (BOOL) birthdateIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeUserJoined;
-- (void) setTimeUserJoined: (Banana_timestamp) timeUserJoined;
+- (Aroma_timestamp) timeUserJoined;
+- (void) setTimeUserJoined: (Aroma_timestamp) timeUserJoined;
 #endif
 - (BOOL) timeUserJoinedIsSet;
 
 @end
 
-@interface Banana_Application : NSObject <TBase, NSCoding> {
+@interface Aroma_Application : NSObject <TBase, NSCoding> {
   NSMutableSet * __owners;
-  Banana_timestamp __timeOfProvisioning;
+  Aroma_timestamp __timeOfProvisioning;
   NSString * __name;
-  Banana_uuid __applicationId;
-  Banana_long __totalMessagesSent;
-  Banana_Image * __icon;
+  Aroma_uuid __applicationId;
+  Aroma_long __totalMessagesSent;
+  Aroma_Image * __icon;
   int __programmingLanguage;
   NSMutableSet * __followers;
   NSString * __applicationDescription;
-  Banana_uuid __organizationId;
+  Aroma_uuid __organizationId;
   int __tier;
-  Banana_timestamp __timeOfTokenExpiration;
-  Banana_uuid __applicationIconMediaId;
+  Aroma_timestamp __timeOfTokenExpiration;
+  Aroma_uuid __applicationIconMediaId;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -608,22 +608,22 @@ typedef NSString * Banana_uuid;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
-@property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Banana_timestamp timeOfProvisioning;
+@property (nonatomic, getter=timeOfProvisioning, setter=setTimeOfProvisioning:) Aroma_timestamp timeOfProvisioning;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Banana_uuid applicationId;
-@property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Banana_long totalMessagesSent;
-@property (nonatomic, retain, getter=icon, setter=setIcon:) Banana_Image * icon;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) Aroma_uuid applicationId;
+@property (nonatomic, getter=totalMessagesSent, setter=setTotalMessagesSent:) Aroma_long totalMessagesSent;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) Aroma_Image * icon;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
 @property (nonatomic, retain, getter=followers, setter=setFollowers:) NSMutableSet * followers;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Banana_uuid organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) Aroma_uuid organizationId;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
-@property (nonatomic, getter=timeOfTokenExpiration, setter=setTimeOfTokenExpiration:) Banana_timestamp timeOfTokenExpiration;
-@property (nonatomic, retain, getter=applicationIconMediaId, setter=setApplicationIconMediaId:) Banana_uuid applicationIconMediaId;
+@property (nonatomic, getter=timeOfTokenExpiration, setter=setTimeOfTokenExpiration:) Aroma_timestamp timeOfTokenExpiration;
+@property (nonatomic, retain, getter=applicationIconMediaId, setter=setApplicationIconMediaId:) Aroma_uuid applicationIconMediaId;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration applicationIconMediaId: (Banana_uuid) applicationIconMediaId;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -637,8 +637,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) ownersIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfProvisioning;
-- (void) setTimeOfProvisioning: (Banana_timestamp) timeOfProvisioning;
+- (Aroma_timestamp) timeOfProvisioning;
+- (void) setTimeOfProvisioning: (Aroma_timestamp) timeOfProvisioning;
 #endif
 - (BOOL) timeOfProvisioningIsSet;
 
@@ -649,20 +649,20 @@ typedef NSString * Banana_uuid;
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) applicationId;
-- (void) setApplicationId: (Banana_uuid) applicationId;
+- (Aroma_uuid) applicationId;
+- (void) setApplicationId: (Aroma_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_long) totalMessagesSent;
-- (void) setTotalMessagesSent: (Banana_long) totalMessagesSent;
+- (Aroma_long) totalMessagesSent;
+- (void) setTotalMessagesSent: (Aroma_long) totalMessagesSent;
 #endif
 - (BOOL) totalMessagesSentIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_Image *) icon;
-- (void) setIcon: (Banana_Image *) icon;
+- (Aroma_Image *) icon;
+- (void) setIcon: (Aroma_Image *) icon;
 #endif
 - (BOOL) iconIsSet;
 
@@ -685,8 +685,8 @@ typedef NSString * Banana_uuid;
 - (BOOL) applicationDescriptionIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) organizationId;
-- (void) setOrganizationId: (Banana_uuid) organizationId;
+- (Aroma_uuid) organizationId;
+- (void) setOrganizationId: (Aroma_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -697,24 +697,24 @@ typedef NSString * Banana_uuid;
 - (BOOL) tierIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfTokenExpiration;
-- (void) setTimeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration;
+- (Aroma_timestamp) timeOfTokenExpiration;
+- (void) setTimeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration;
 #endif
 - (BOOL) timeOfTokenExpirationIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) applicationIconMediaId;
-- (void) setApplicationIconMediaId: (Banana_uuid) applicationIconMediaId;
+- (Aroma_uuid) applicationIconMediaId;
+- (void) setApplicationIconMediaId: (Aroma_uuid) applicationIconMediaId;
 #endif
 - (BOOL) applicationIconMediaIdIsSet;
 
 @end
 
-@interface Banana_ServiceAnnouncement : NSObject <TBase, NSCoding> {
+@interface Aroma_ServiceAnnouncement : NSObject <TBase, NSCoding> {
   NSString * __message;
   int __importance;
-  Banana_uuid __id;
-  Banana_timestamp __timeOfExpiration;
+  Aroma_uuid __id;
+  Aroma_timestamp __timeOfExpiration;
 
   BOOL __message_isset;
   BOOL __importance_isset;
@@ -725,12 +725,12 @@ typedef NSString * Banana_uuid;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, getter=importance, setter=setImportance:) int importance;
-@property (nonatomic, retain, getter=id, setter=setId:) Banana_uuid id;
-@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) Banana_timestamp timeOfExpiration;
+@property (nonatomic, retain, getter=id, setter=setId:) Aroma_uuid id;
+@property (nonatomic, getter=timeOfExpiration, setter=setTimeOfExpiration:) Aroma_timestamp timeOfExpiration;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message importance: (int) importance id: (Banana_uuid) id timeOfExpiration: (Banana_timestamp) timeOfExpiration;
+- (id) initWithMessage: (NSString *) message importance: (int) importance id: (Aroma_uuid) id timeOfExpiration: (Aroma_timestamp) timeOfExpiration;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -750,19 +750,19 @@ typedef NSString * Banana_uuid;
 - (BOOL) importanceIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_uuid) id;
-- (void) setId: (Banana_uuid) id;
+- (Aroma_uuid) id;
+- (void) setId: (Aroma_uuid) id;
 #endif
 - (BOOL) idIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_timestamp) timeOfExpiration;
-- (void) setTimeOfExpiration: (Banana_timestamp) timeOfExpiration;
+- (Aroma_timestamp) timeOfExpiration;
+- (void) setTimeOfExpiration: (Aroma_timestamp) timeOfExpiration;
 #endif
 - (BOOL) timeOfExpirationIsSet;
 
 @end
 
-@interface Banana_AromaConstants : NSObject {
+@interface Aroma_AromaConstants : NSObject {
 }
 @end

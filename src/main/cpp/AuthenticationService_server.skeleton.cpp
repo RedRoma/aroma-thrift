@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::aroma::banana::thrift::authentication::service;
+using namespace  ::aroma::thrift::authentication::service;
 
 class AuthenticationServiceHandler : virtual public AuthenticationServiceIf {
  public:

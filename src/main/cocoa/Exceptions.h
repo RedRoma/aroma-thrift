@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 
-@interface BananaException_InvalidArgumentException : NSException <TBase, NSCoding> {
+@interface AromaException_InvalidArgumentException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -45,7 +45,7 @@
 
 @end
 
-@interface BananaException_InvalidCredentialsException : NSException <TBase, NSCoding> {
+@interface AromaException_InvalidCredentialsException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -71,7 +71,7 @@
 
 @end
 
-@interface BananaException_InvalidTokenException : NSException <TBase, NSCoding> {
+@interface AromaException_InvalidTokenException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -97,7 +97,7 @@
 
 @end
 
-@interface BananaException_AccountAlreadyExistsException : NSException <TBase, NSCoding> {
+@interface AromaException_AccountAlreadyExistsException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -123,7 +123,7 @@
 
 @end
 
-@interface BananaException_InvalidCodeException : NSException <TBase, NSCoding> {
+@interface AromaException_InvalidCodeException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -149,7 +149,7 @@
 
 @end
 
-@interface BananaException_UnauthorizedException : NSException <TBase, NSCoding> {
+@interface AromaException_UnauthorizedException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -175,7 +175,7 @@
 
 @end
 
-@interface BananaException_DoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_DoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -201,7 +201,7 @@
 
 @end
 
-@interface BananaException_ApplicationDoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_ApplicationDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -227,7 +227,7 @@
 
 @end
 
-@interface BananaException_ApplicationAlreadyRegisteredException : NSException <TBase, NSCoding> {
+@interface AromaException_ApplicationAlreadyRegisteredException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -253,7 +253,7 @@
 
 @end
 
-@interface BananaException_UserDoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_UserDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -279,7 +279,7 @@
 
 @end
 
-@interface BananaException_ThroughoutExceededException : NSException <TBase, NSCoding> {
+@interface AromaException_ThroughoutExceededException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -305,7 +305,7 @@
 
 @end
 
-@interface BananaException_CustomChannelUnreachableException : NSException <TBase, NSCoding> {
+@interface AromaException_CustomChannelUnreachableException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -331,7 +331,7 @@
 
 @end
 
-@interface BananaException_ChannelDoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_ChannelDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -357,7 +357,7 @@
 
 @end
 
-@interface BananaException_MessageDoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_MessageDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -383,7 +383,7 @@
 
 @end
 
-@interface BananaException_OrganizationDoesNotExistException : NSException <TBase, NSCoding> {
+@interface AromaException_OrganizationDoesNotExistException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -409,7 +409,7 @@
 
 @end
 
-@interface BananaException_OperationFailedException : NSException <TBase, NSCoding> {
+@interface AromaException_OperationFailedException : NSException <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -435,6 +435,6 @@
 
 @end
 
-@interface BananaException_ExceptionsConstants : NSObject {
+@interface AromaException_ExceptionsConstants : NSObject {
 }
 @end

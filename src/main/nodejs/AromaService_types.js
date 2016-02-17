@@ -1152,7 +1152,7 @@ RemoveSavedChannelRequest = module.exports.RemoveSavedChannelRequest = function(
       this.token = new Authentication_ttypes.UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+      this.channel = new Channels_ttypes.AromaChannel(args.channel);
     }
   }
 };
@@ -1180,7 +1180,7 @@ RemoveSavedChannelRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel = new Channels_ttypes.AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1220,7 +1220,7 @@ RemoveSavedChannelResponse = module.exports.RemoveSavedChannelResponse = functio
       this.message = args.message;
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+      this.channel = new Channels_ttypes.AromaChannel(args.channel);
     }
   }
 };
@@ -1247,7 +1247,7 @@ RemoveSavedChannelResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel = new Channels_ttypes.AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1442,7 +1442,7 @@ SaveChannelRequest = module.exports.SaveChannelRequest = function(args) {
       this.token = new Authentication_ttypes.UserToken(args.token);
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+      this.channel = new Channels_ttypes.AromaChannel(args.channel);
     }
   }
 };
@@ -1470,7 +1470,7 @@ SaveChannelRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel = new Channels_ttypes.AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -1510,7 +1510,7 @@ SaveChannelResponse = module.exports.SaveChannelResponse = function(args) {
       this.message = args.message;
     }
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new Channels_ttypes.BananaChannel(args.channel);
+      this.channel = new Channels_ttypes.AromaChannel(args.channel);
     }
   }
 };
@@ -1537,7 +1537,7 @@ SaveChannelResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new Channels_ttypes.BananaChannel();
+        this.channel = new Channels_ttypes.AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -2014,7 +2014,7 @@ SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
         if (args.channel !== undefined && args.channel !== null) {
-            this.channel = new Channels_ttypes.BananaChannel(args.channel);
+            this.channel = new Channels_ttypes.AromaChannel(args.channel);
         }
         if (args.applicationId !== undefined && args.applicationId !== null) {
             this.applicationId = args.applicationId;
@@ -2048,7 +2048,7 @@ SnoozeChannelRequest.prototype.read = function(input) {
         break;
         case 2:
         if (ftype == Thrift.Type.STRUCT) {
-          this.channel = new Channels_ttypes.BananaChannel();
+          this.channel = new Channels_ttypes.AromaChannel();
           this.channel.read(input);
         } else {
           input.skip(ftype);
@@ -2439,7 +2439,7 @@ GetApplicationInfoResponse.prototype.read = function(input) {
           for (var _i29 = 0; _i29 < _size24; ++_i29)
           {
             var elem30 = null;
-            elem30 = new Channels_ttypes.BananaChannel();
+            elem30 = new Channels_ttypes.AromaChannel();
             elem30.read(input);
             this.registeredChannels.push(elem30);
           }
@@ -3741,7 +3741,7 @@ GetMySavedChannelsResponse.prototype.read = function(input) {
           for (var _i101 = 0; _i101 < _size96; ++_i101)
           {
             var elem102 = null;
-            elem102 = new Channels_ttypes.BananaChannel();
+            elem102 = new Channels_ttypes.AromaChannel();
             elem102.read(input);
             this.channels.push(elem102);
           }
@@ -4355,9 +4355,9 @@ SearchForApplicationsResponse.prototype.write = function(output) {
 ttypes.API_VERSION = 1.7;
 ttypes.SERVICE_PORT = 7010;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-srv.banana.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.aroma.tech','port' : 7010});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7010});
+'hostname' : 'aroma-srv.beta.aroma.tech','port' : 7010});
 ttypes.MAX_APPLICATION_ICON_DIMENSION = new Aroma_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
 ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Aroma_ttypes.Dimension({

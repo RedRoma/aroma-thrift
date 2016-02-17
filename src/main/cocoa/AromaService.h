@@ -25,61 +25,61 @@
 #import "Events.h"
 #import "Exceptions.h"
 
-typedef Banana_int BananaService_int;
+typedef Aroma_int AromaService_int;
 
-typedef Banana_long BananaService_long;
+typedef Aroma_long AromaService_long;
 
-typedef Banana_timestamp BananaService_timestamp;
+typedef Aroma_timestamp AromaService_timestamp;
 
-typedef Banana_uuid BananaService_uuid;
+typedef Aroma_uuid AromaService_uuid;
 
-typedef BananaAuthentication_ApplicationToken * BananaService_ApplicationToken;
+typedef BananaAuthentication_ApplicationToken * AromaService_ApplicationToken;
 
-typedef BananaAuthentication_AuthenticationToken * BananaService_AuthenticationToken;
+typedef BananaAuthentication_AuthenticationToken * AromaService_AuthenticationToken;
 
-typedef BananaAuthentication_UserToken * BananaService_UserToken;
+typedef BananaAuthentication_UserToken * AromaService_UserToken;
 
-typedef Banana_Application * BananaService_Application;
+typedef Aroma_Application * AromaService_Application;
 
-typedef Banana_Image * BananaService_Image;
+typedef Aroma_Image * AromaService_Image;
 
-typedef int BananaService_Urgency;
+typedef int AromaService_Urgency;
 
-typedef Banana_User * BananaService_User;
+typedef Aroma_User * AromaService_User;
 
-typedef BananaChannels_BananaChannel * BananaService_BananaChannel;
+typedef AromaChannels_AromaChannel * AromaService_AromaChannel;
 
-typedef BananaEndpoint_Endpoint * BananaService_Endpoint;
+typedef AromaEndpoint_Endpoint * AromaService_Endpoint;
 
-typedef BananaEvents_HealthCheckFailed * BananaService_HealthCheckFailed;
+typedef AromaEvents_HealthCheckFailed * AromaService_HealthCheckFailed;
 
-typedef BananaException_AccountAlreadyExistsException * BananaService_AccountAlreadyExistsException;
+typedef AromaException_AccountAlreadyExistsException * AromaService_AccountAlreadyExistsException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * BananaService_ApplicationAlreadyRegisteredException;
+typedef AromaException_ApplicationAlreadyRegisteredException * AromaService_ApplicationAlreadyRegisteredException;
 
-typedef BananaException_ApplicationDoesNotExistException * BananaService_ApplicationDoesNotExistException;
+typedef AromaException_ApplicationDoesNotExistException * AromaService_ApplicationDoesNotExistException;
 
-typedef BananaException_ChannelDoesNotExistException * BananaService_ChannelDoesNotExistException;
+typedef AromaException_ChannelDoesNotExistException * AromaService_ChannelDoesNotExistException;
 
-typedef BananaException_CustomChannelUnreachableException * BananaService_CustomChannelUnreachableException;
+typedef AromaException_CustomChannelUnreachableException * AromaService_CustomChannelUnreachableException;
 
-typedef BananaException_DoesNotExistException * BananaService_DoesNotExistException;
+typedef AromaException_DoesNotExistException * AromaService_DoesNotExistException;
 
-typedef BananaException_InvalidArgumentException * BananaService_InvalidArgumentException;
+typedef AromaException_InvalidArgumentException * AromaService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * BananaService_InvalidCredentialsException;
+typedef AromaException_InvalidCredentialsException * AromaService_InvalidCredentialsException;
 
-typedef BananaException_InvalidTokenException * BananaService_InvalidTokenException;
+typedef AromaException_InvalidTokenException * AromaService_InvalidTokenException;
 
-typedef BananaException_MessageDoesNotExistException * BananaService_MessageDoesNotExistException;
+typedef AromaException_MessageDoesNotExistException * AromaService_MessageDoesNotExistException;
 
-typedef BananaException_OperationFailedException * BananaService_OperationFailedException;
+typedef AromaException_OperationFailedException * AromaService_OperationFailedException;
 
-typedef BananaException_UnauthorizedException * BananaService_UnauthorizedException;
+typedef AromaException_UnauthorizedException * AromaService_UnauthorizedException;
 
-typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExistException;
+typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExistException;
 
-@interface BananaService_CheckExistsRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_CheckExistsRequest : NSObject <TBase, NSCoding> {
   NSString * __emailAddress;
 
   BOOL __emailAddress_isset;
@@ -105,7 +105,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_CheckExistsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_CheckExistsResponse : NSObject <TBase, NSCoding> {
   BOOL __exists;
   NSString * __message;
 
@@ -140,21 +140,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __applicationId;
+@interface AromaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __applicationId;
 
   BOOL __token_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -162,20 +162,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface BananaService_DeleteApplicationResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_DeleteApplicationResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -201,10 +201,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __messageId;
-  BananaService_uuid __applicationId;
+@interface AromaService_DeleteMessageRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __messageId;
+  AromaService_uuid __applicationId;
   NSMutableArray * __messageIds;
   BOOL __deleteAll;
 
@@ -216,15 +216,15 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) BananaService_uuid messageId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) AromaService_uuid messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 @property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
 @property (nonatomic, getter=deleteAll, setter=setDeleteAll:) BOOL deleteAll;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll;
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -232,20 +232,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) messageId;
-- (void) setMessageId: (BananaService_uuid) messageId;
+- (AromaService_uuid) messageId;
+- (void) setMessageId: (AromaService_uuid) messageId;
 #endif
 - (BOOL) messageIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -263,18 +263,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_DeleteMessageResponse : NSObject <TBase, NSCoding> {
-  BananaService_int __messagesDeleted;
+@interface AromaService_DeleteMessageResponse : NSObject <TBase, NSCoding> {
+  AromaService_int __messagesDeleted;
 
   BOOL __messagesDeleted_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) BananaService_int messagesDeleted;
+@property (nonatomic, getter=messagesDeleted, setter=setMessagesDeleted:) AromaService_int messagesDeleted;
 #endif
 
 - (id) init;
-- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted;
+- (id) initWithMessagesDeleted: (AromaService_int) messagesDeleted;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -282,17 +282,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) messagesDeleted;
-- (void) setMessagesDeleted: (BananaService_int) messagesDeleted;
+- (AromaService_int) messagesDeleted;
+- (void) setMessagesDeleted: (AromaService_int) messagesDeleted;
 #endif
 - (BOOL) messagesDeletedIsSet;
 
 @end
 
-@interface BananaService_DismissMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __messageId;
-  BananaService_uuid __applicationId;
+@interface AromaService_DismissMessageRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __messageId;
+  AromaService_uuid __applicationId;
   NSMutableArray * __messageIds;
   BOOL __dismissAll;
 
@@ -304,15 +304,15 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) BananaService_uuid messageId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) AromaService_uuid messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 @property (nonatomic, retain, getter=messageIds, setter=setMessageIds:) NSMutableArray * messageIds;
 @property (nonatomic, getter=dismissAll, setter=setDismissAll:) BOOL dismissAll;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll;
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -320,20 +320,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) messageId;
-- (void) setMessageId: (BananaService_uuid) messageId;
+- (AromaService_uuid) messageId;
+- (void) setMessageId: (AromaService_uuid) messageId;
 #endif
 - (BOOL) messageIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -351,18 +351,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_DismissMessageResponse : NSObject <TBase, NSCoding> {
-  BananaService_int __messagesDismissed;
+@interface AromaService_DismissMessageResponse : NSObject <TBase, NSCoding> {
+  AromaService_int __messagesDismissed;
 
   BOOL __messagesDismissed_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) BananaService_int messagesDismissed;
+@property (nonatomic, getter=messagesDismissed, setter=setMessagesDismissed:) AromaService_int messagesDismissed;
 #endif
 
 - (id) init;
-- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed;
+- (id) initWithMessagesDismissed: (AromaService_int) messagesDismissed;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -370,19 +370,19 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) messagesDismissed;
-- (void) setMessagesDismissed: (BananaService_int) messagesDismissed;
+- (AromaService_int) messagesDismissed;
+- (void) setMessagesDismissed: (AromaService_int) messagesDismissed;
 #endif
 - (BOOL) messagesDismissedIsSet;
 
 @end
 
-@interface BananaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_ProvisionApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
   NSString * __applicationName;
   int __programmingLanguage;
-  BananaService_uuid __organizationId;
-  BananaService_Image __icon;
+  AromaService_uuid __organizationId;
+  AromaService_Image __icon;
   NSMutableSet * __owners;
   NSString * __applicationDescription;
   int __tier;
@@ -398,18 +398,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, getter=programmingLanguage, setter=setProgrammingLanguage:) int programmingLanguage;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
-@property (nonatomic, retain, getter=icon, setter=setIcon:) BananaService_Image icon;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
+@property (nonatomic, retain, getter=icon, setter=setIcon:) AromaService_Image icon;
 @property (nonatomic, retain, getter=owners, setter=setOwners:) NSMutableSet * owners;
 @property (nonatomic, retain, getter=applicationDescription, setter=setApplicationDescription:) NSString * applicationDescription;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (BananaService_uuid) organizationId icon: (BananaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier;
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (AromaService_uuid) organizationId icon: (AromaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -417,8 +417,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
@@ -435,14 +435,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) programmingLanguageIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) organizationId;
-- (void) setOrganizationId: (BananaService_uuid) organizationId;
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Image) icon;
-- (void) setIcon: (BananaService_Image) icon;
+- (AromaService_Image) icon;
+- (void) setIcon: (AromaService_Image) icon;
 #endif
 - (BOOL) iconIsSet;
 
@@ -466,21 +466,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __applicationToken;
-  BananaService_Application __applicationInfo;
+@interface AromaService_ProvisionApplicationResponse : NSObject <TBase, NSCoding> {
+  AromaService_ApplicationToken __applicationToken;
+  AromaService_Application __applicationInfo;
 
   BOOL __applicationToken_isset;
   BOOL __applicationInfo_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) BananaService_Application applicationInfo;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo;
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken applicationInfo: (AromaService_Application) applicationInfo;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -488,34 +488,34 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+- (AromaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
 #endif
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Application) applicationInfo;
-- (void) setApplicationInfo: (BananaService_Application) applicationInfo;
+- (AromaService_Application) applicationInfo;
+- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
 #endif
 - (BOOL) applicationInfoIsSet;
 
 @end
 
-@interface BananaService_RegenerateApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __applicationId;
+@interface AromaService_RegenerateApplicationTokenRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __applicationId;
 
   BOOL __token_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -523,31 +523,31 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface BananaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __applicationToken;
+@interface AromaService_RegenerateApplicationTokenResponse : NSObject <TBase, NSCoding> {
+  AromaService_ApplicationToken __applicationToken;
 
   BOOL __applicationToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
 #endif
 
 - (id) init;
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken;
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -555,28 +555,28 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+- (AromaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
 #endif
 - (BOOL) applicationTokenIsSet;
 
 @end
 
-@interface BananaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_Endpoint __endpoint;
+@interface AromaService_RegisterHealthCheckRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_Endpoint __endpoint;
 
   BOOL __token_isset;
   BOOL __endpoint_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaService_Endpoint endpoint;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) AromaService_Endpoint endpoint;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token endpoint: (BananaService_Endpoint) endpoint;
+- (id) initWithToken: (AromaService_UserToken) token endpoint: (AromaService_Endpoint) endpoint;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -584,20 +584,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Endpoint) endpoint;
-- (void) setEndpoint: (BananaService_Endpoint) endpoint;
+- (AromaService_Endpoint) endpoint;
+- (void) setEndpoint: (AromaService_Endpoint) endpoint;
 #endif
 - (BOOL) endpointIsSet;
 
 @end
 
-@interface BananaService_RegisterHealthCheckResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_RegisterHealthCheckResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
   NSString * __healthCheckToken;
 
@@ -632,21 +632,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_RemoveSavedChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_BananaChannel __channel;
+@interface AromaService_RemoveSavedChannelRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_AromaChannel __channel;
 
   BOOL __token_isset;
   BOOL __channel_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel;
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -654,22 +654,22 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
+- (AromaService_AromaChannel) channel;
+- (void) setChannel: (AromaService_AromaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
 
 @end
 
-@interface BananaService_RemoveSavedChannelResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_RemoveSavedChannelResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
-  BananaService_BananaChannel __channel;
+  AromaService_AromaChannel __channel;
 
   BOOL __message_isset;
   BOOL __channel_isset;
@@ -677,11 +677,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
+- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -695,18 +695,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
+- (AromaService_AromaChannel) channel;
+- (void) setChannel: (AromaService_AromaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
 
 @end
 
-@interface BananaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_ApplicationToken __applicationToken;
-  Banana_LengthOfTime * __newLifetime;
-  BananaService_uuid __applicationId;
+@interface AromaService_RenewApplicationTokenRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_ApplicationToken __applicationToken;
+  Aroma_LengthOfTime * __newLifetime;
+  AromaService_uuid __applicationId;
 
   BOOL __token_isset;
   BOOL __applicationToken_isset;
@@ -715,14 +715,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaService_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=newLifetime, setter=setNewLifetime:) Banana_LengthOfTime * newLifetime;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaService_ApplicationToken applicationToken;
+@property (nonatomic, retain, getter=newLifetime, setter=setNewLifetime:) Aroma_LengthOfTime * newLifetime;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (BananaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_UserToken) token applicationToken: (AromaService_ApplicationToken) applicationToken newLifetime: (Aroma_LengthOfTime *) newLifetime applicationId: (AromaService_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -730,43 +730,43 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) applicationToken;
-- (void) setApplicationToken: (BananaService_ApplicationToken) applicationToken;
+- (AromaService_ApplicationToken) applicationToken;
+- (void) setApplicationToken: (AromaService_ApplicationToken) applicationToken;
 #endif
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_LengthOfTime *) newLifetime;
-- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime;
+- (Aroma_LengthOfTime *) newLifetime;
+- (void) setNewLifetime: (Aroma_LengthOfTime *) newLifetime;
 #endif
 - (BOOL) newLifetimeIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface BananaService_RenewApplicationTokenResponse : NSObject <TBase, NSCoding> {
-  BananaService_ApplicationToken __serviceToken;
+@interface AromaService_RenewApplicationTokenResponse : NSObject <TBase, NSCoding> {
+  AromaService_ApplicationToken __serviceToken;
 
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaService_ApplicationToken serviceToken;
+@property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) AromaService_ApplicationToken serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken;
+- (id) initWithServiceToken: (AromaService_ApplicationToken) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -774,28 +774,28 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationToken) serviceToken;
-- (void) setServiceToken: (BananaService_ApplicationToken) serviceToken;
+- (AromaService_ApplicationToken) serviceToken;
+- (void) setServiceToken: (AromaService_ApplicationToken) serviceToken;
 #endif
 - (BOOL) serviceTokenIsSet;
 
 @end
 
-@interface BananaService_SaveChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_BananaChannel __channel;
+@interface AromaService_SaveChannelRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_AromaChannel __channel;
 
   BOOL __token_isset;
   BOOL __channel_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel;
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -803,22 +803,22 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
+- (AromaService_AromaChannel) channel;
+- (void) setChannel: (AromaService_AromaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
 
 @end
 
-@interface BananaService_SaveChannelResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_SaveChannelResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
-  BananaService_BananaChannel __channel;
+  AromaService_AromaChannel __channel;
 
   BOOL __message_isset;
   BOOL __channel_isset;
@@ -826,11 +826,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel;
+- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -844,14 +844,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
+- (AromaService_AromaChannel) channel;
+- (void) setChannel: (AromaService_AromaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
 
 @end
 
-@interface BananaService_SignInRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_SignInRequest : NSObject <TBase, NSCoding> {
   BananaAuthentication_Credentials * __credentials;
   NSString * __emailAddress;
 
@@ -886,18 +886,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_SignInResponse : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __userToken;
+@interface AromaService_SignInResponse : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __userToken;
 
   BOOL __userToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaService_UserToken userToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
 #endif
 
 - (id) init;
-- (id) initWithUserToken: (BananaService_UserToken) userToken;
+- (id) initWithUserToken: (AromaService_UserToken) userToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -905,26 +905,26 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) userToken;
-- (void) setUserToken: (BananaService_UserToken) userToken;
+- (AromaService_UserToken) userToken;
+- (void) setUserToken: (AromaService_UserToken) userToken;
 #endif
 - (BOOL) userTokenIsSet;
 
 @end
 
-@interface BananaService_SignUpRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_SignUpRequest : NSObject <TBase, NSCoding> {
   NSString * __email;
   NSString * __name;
   NSString * __firstName;
   NSString * __middleName;
   NSString * __lastName;
   NSString * __username;
-  BananaService_uuid __organizationId;
+  AromaService_uuid __organizationId;
   BananaAuthentication_Credentials * __credentials;
   int __mainRole;
-  BananaService_timestamp __birthDate;
+  AromaService_timestamp __birthDate;
   NSString * __githubProfile;
-  BananaService_Image __profileImage;
+  AromaService_Image __profileImage;
 
   BOOL __email_isset;
   BOOL __name_isset;
@@ -947,16 +947,16 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 @property (nonatomic, retain, getter=middleName, setter=setMiddleName:) NSString * middleName;
 @property (nonatomic, retain, getter=lastName, setter=setLastName:) NSString * lastName;
 @property (nonatomic, retain, getter=username, setter=setUsername:) NSString * username;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
 @property (nonatomic, retain, getter=credentials, setter=setCredentials:) BananaAuthentication_Credentials * credentials;
 @property (nonatomic, getter=mainRole, setter=setMainRole:) int mainRole;
-@property (nonatomic, getter=birthDate, setter=setBirthDate:) BananaService_timestamp birthDate;
+@property (nonatomic, getter=birthDate, setter=setBirthDate:) AromaService_timestamp birthDate;
 @property (nonatomic, retain, getter=githubProfile, setter=setGithubProfile:) NSString * githubProfile;
-@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) BananaService_Image profileImage;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) AromaService_Image profileImage;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (BananaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage;
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1000,8 +1000,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) usernameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) organizationId;
-- (void) setOrganizationId: (BananaService_uuid) organizationId;
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -1018,8 +1018,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) mainRoleIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_timestamp) birthDate;
-- (void) setBirthDate: (BananaService_timestamp) birthDate;
+- (AromaService_timestamp) birthDate;
+- (void) setBirthDate: (AromaService_timestamp) birthDate;
 #endif
 - (BOOL) birthDateIsSet;
 
@@ -1030,17 +1030,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) githubProfileIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Image) profileImage;
-- (void) setProfileImage: (BananaService_Image) profileImage;
+- (AromaService_Image) profileImage;
+- (void) setProfileImage: (AromaService_Image) profileImage;
 #endif
 - (BOOL) profileImageIsSet;
 
 @end
 
-@interface BananaService_SignUpResponse : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __userToken;
+@interface AromaService_SignUpResponse : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __userToken;
   BananaAuthentication_AromaAccount * __account;
-  BananaService_uuid __userId;
+  AromaService_uuid __userId;
 
   BOOL __userToken_isset;
   BOOL __account_isset;
@@ -1048,13 +1048,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userToken, setter=setUserToken:) BananaService_UserToken userToken;
+@property (nonatomic, retain, getter=userToken, setter=setUserToken:) AromaService_UserToken userToken;
 @property (nonatomic, retain, getter=account, setter=setAccount:) BananaAuthentication_AromaAccount * account;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) BananaService_uuid userId;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
 #endif
 
 - (id) init;
-- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (BananaService_uuid) userId;
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1062,8 +1062,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) userToken;
-- (void) setUserToken: (BananaService_UserToken) userToken;
+- (AromaService_UserToken) userToken;
+- (void) setUserToken: (AromaService_UserToken) userToken;
 #endif
 - (BOOL) userTokenIsSet;
 
@@ -1074,18 +1074,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) accountIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) userId;
-- (void) setUserId: (BananaService_uuid) userId;
+- (AromaService_uuid) userId;
+- (void) setUserId: (AromaService_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
 
 @end
 
-@interface BananaService_SnoozeChannelRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_BananaChannel __channel;
-  BananaService_uuid __applicationId;
-  Banana_LengthOfTime * __lengthOfTime;
+@interface AromaService_SnoozeChannelRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_AromaChannel __channel;
+  AromaService_uuid __applicationId;
+  Aroma_LengthOfTime * __lengthOfTime;
 
   BOOL __token_isset;
   BOOL __channel_isset;
@@ -1094,14 +1094,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaService_BananaChannel channel;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
-@property (nonatomic, retain, getter=lengthOfTime, setter=setLengthOfTime:) Banana_LengthOfTime * lengthOfTime;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaService_AromaChannel channel;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, retain, getter=lengthOfTime, setter=setLengthOfTime:) Aroma_LengthOfTime * lengthOfTime;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (BananaService_uuid) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime;
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel applicationId: (AromaService_uuid) applicationId lengthOfTime: (Aroma_LengthOfTime *) lengthOfTime;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1109,32 +1109,32 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_BananaChannel) channel;
-- (void) setChannel: (BananaService_BananaChannel) channel;
+- (AromaService_AromaChannel) channel;
+- (void) setChannel: (AromaService_AromaChannel) channel;
 #endif
 - (BOOL) channelIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_LengthOfTime *) lengthOfTime;
-- (void) setLengthOfTime: (Banana_LengthOfTime *) lengthOfTime;
+- (Aroma_LengthOfTime *) lengthOfTime;
+- (void) setLengthOfTime: (Aroma_LengthOfTime *) lengthOfTime;
 #endif
 - (BOOL) lengthOfTimeIsSet;
 
 @end
 
-@interface BananaService_SnoozeChannelResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_SnoozeChannelResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -1160,11 +1160,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_FollowApplicationRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_FollowApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
   NSString * __applicationName;
-  BananaService_uuid __applicationId;
-  BananaService_uuid __organizationId;
+  AromaService_uuid __applicationId;
+  AromaService_uuid __organizationId;
   BOOL __shared;
 
   BOOL __token_isset;
@@ -1175,15 +1175,15 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
 @property (nonatomic, getter=shared, setter=setShared:) BOOL shared;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (BananaService_uuid) applicationId organizationId: (BananaService_uuid) organizationId shared: (BOOL) shared;
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (AromaService_uuid) applicationId organizationId: (AromaService_uuid) organizationId shared: (BOOL) shared;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1191,8 +1191,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
@@ -1203,14 +1203,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) organizationId;
-- (void) setOrganizationId: (BananaService_uuid) organizationId;
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
@@ -1222,7 +1222,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_FollowApplicationResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_FollowApplicationResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -1248,21 +1248,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
-  BananaService_AuthenticationToken __token;
-  BananaService_uuid __applicationId;
+@interface AromaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
+  AromaService_AuthenticationToken __token;
+  AromaService_uuid __applicationId;
 
   BOOL __token_isset;
   BOOL __applicationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_AuthenticationToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_AuthenticationToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (BananaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_AuthenticationToken) token applicationId: (AromaService_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1270,21 +1270,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_AuthenticationToken) token;
-- (void) setToken: (BananaService_AuthenticationToken) token;
+- (AromaService_AuthenticationToken) token;
+- (void) setToken: (AromaService_AuthenticationToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface BananaService_GetApplicationInfoResponse : NSObject <TBase, NSCoding> {
-  BananaService_Application __applicationInfo;
+@interface AromaService_GetApplicationInfoResponse : NSObject <TBase, NSCoding> {
+  AromaService_Application __applicationInfo;
   NSMutableArray * __registeredChannels;
 
   BOOL __applicationInfo_isset;
@@ -1292,12 +1292,12 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) BananaService_Application applicationInfo;
+@property (nonatomic, retain, getter=applicationInfo, setter=setApplicationInfo:) AromaService_Application applicationInfo;
 @property (nonatomic, retain, getter=registeredChannels, setter=setRegisteredChannels:) NSMutableArray * registeredChannels;
 #endif
 
 - (id) init;
-- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels;
+- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1305,8 +1305,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_Application) applicationInfo;
-- (void) setApplicationInfo: (BananaService_Application) applicationInfo;
+- (AromaService_Application) applicationInfo;
+- (void) setApplicationInfo: (AromaService_Application) applicationInfo;
 #endif
 - (BOOL) applicationInfoIsSet;
 
@@ -1318,18 +1318,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetBuzzRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_GetBuzzRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1337,14 +1337,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface BananaService_GetBuzzResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetBuzzResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __freshUsers;
   NSMutableArray * __freshApplications;
   NSMutableArray * __failedHealthChecks;
@@ -1397,18 +1397,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetDashboardRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_GetDashboardRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1416,21 +1416,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface BananaService_GetDashboardResponse : NSObject <TBase, NSCoding> {
-  BananaService_int __unreadMessageCount;
-  BananaService_int __totalMessagesLastHour;
-  BananaService_int __totalMessagesLast24hrs;
+@interface AromaService_GetDashboardResponse : NSObject <TBase, NSCoding> {
+  AromaService_int __unreadMessageCount;
+  AromaService_int __totalMessagesLastHour;
+  AromaService_int __totalMessagesLast24hrs;
   NSMutableArray * __recentMessages;
-  BananaService_int __numberOfLowUrgencyMessages;
-  BananaService_int __numberOfMediumUrgencyMessages;
-  BananaService_int __numberOfHighUrgencyMessages;
+  AromaService_int __numberOfLowUrgencyMessages;
+  AromaService_int __numberOfMediumUrgencyMessages;
+  AromaService_int __numberOfHighUrgencyMessages;
 
   BOOL __unreadMessageCount_isset;
   BOOL __totalMessagesLastHour_isset;
@@ -1442,17 +1442,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=unreadMessageCount, setter=setUnreadMessageCount:) BananaService_int unreadMessageCount;
-@property (nonatomic, getter=totalMessagesLastHour, setter=setTotalMessagesLastHour:) BananaService_int totalMessagesLastHour;
-@property (nonatomic, getter=totalMessagesLast24hrs, setter=setTotalMessagesLast24hrs:) BananaService_int totalMessagesLast24hrs;
+@property (nonatomic, getter=unreadMessageCount, setter=setUnreadMessageCount:) AromaService_int unreadMessageCount;
+@property (nonatomic, getter=totalMessagesLastHour, setter=setTotalMessagesLastHour:) AromaService_int totalMessagesLastHour;
+@property (nonatomic, getter=totalMessagesLast24hrs, setter=setTotalMessagesLast24hrs:) AromaService_int totalMessagesLast24hrs;
 @property (nonatomic, retain, getter=recentMessages, setter=setRecentMessages:) NSMutableArray * recentMessages;
-@property (nonatomic, getter=numberOfLowUrgencyMessages, setter=setNumberOfLowUrgencyMessages:) BananaService_int numberOfLowUrgencyMessages;
-@property (nonatomic, getter=numberOfMediumUrgencyMessages, setter=setNumberOfMediumUrgencyMessages:) BananaService_int numberOfMediumUrgencyMessages;
-@property (nonatomic, getter=numberOfHighUrgencyMessages, setter=setNumberOfHighUrgencyMessages:) BananaService_int numberOfHighUrgencyMessages;
+@property (nonatomic, getter=numberOfLowUrgencyMessages, setter=setNumberOfLowUrgencyMessages:) AromaService_int numberOfLowUrgencyMessages;
+@property (nonatomic, getter=numberOfMediumUrgencyMessages, setter=setNumberOfMediumUrgencyMessages:) AromaService_int numberOfMediumUrgencyMessages;
+@property (nonatomic, getter=numberOfHighUrgencyMessages, setter=setNumberOfHighUrgencyMessages:) AromaService_int numberOfHighUrgencyMessages;
 #endif
 
 - (id) init;
-- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages;
+- (id) initWithUnreadMessageCount: (AromaService_int) unreadMessageCount totalMessagesLastHour: (AromaService_int) totalMessagesLastHour totalMessagesLast24hrs: (AromaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (AromaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (AromaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (AromaService_int) numberOfHighUrgencyMessages;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1460,20 +1460,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) unreadMessageCount;
-- (void) setUnreadMessageCount: (BananaService_int) unreadMessageCount;
+- (AromaService_int) unreadMessageCount;
+- (void) setUnreadMessageCount: (AromaService_int) unreadMessageCount;
 #endif
 - (BOOL) unreadMessageCountIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) totalMessagesLastHour;
-- (void) setTotalMessagesLastHour: (BananaService_int) totalMessagesLastHour;
+- (AromaService_int) totalMessagesLastHour;
+- (void) setTotalMessagesLastHour: (AromaService_int) totalMessagesLastHour;
 #endif
 - (BOOL) totalMessagesLastHourIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) totalMessagesLast24hrs;
-- (void) setTotalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs;
+- (AromaService_int) totalMessagesLast24hrs;
+- (void) setTotalMessagesLast24hrs: (AromaService_int) totalMessagesLast24hrs;
 #endif
 - (BOOL) totalMessagesLast24hrsIsSet;
 
@@ -1484,40 +1484,40 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) recentMessagesIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) numberOfLowUrgencyMessages;
-- (void) setNumberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages;
+- (AromaService_int) numberOfLowUrgencyMessages;
+- (void) setNumberOfLowUrgencyMessages: (AromaService_int) numberOfLowUrgencyMessages;
 #endif
 - (BOOL) numberOfLowUrgencyMessagesIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) numberOfMediumUrgencyMessages;
-- (void) setNumberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages;
+- (AromaService_int) numberOfMediumUrgencyMessages;
+- (void) setNumberOfMediumUrgencyMessages: (AromaService_int) numberOfMediumUrgencyMessages;
 #endif
 - (BOOL) numberOfMediumUrgencyMessagesIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) numberOfHighUrgencyMessages;
-- (void) setNumberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages;
+- (AromaService_int) numberOfHighUrgencyMessages;
+- (void) setNumberOfHighUrgencyMessages: (AromaService_int) numberOfHighUrgencyMessages;
 #endif
 - (BOOL) numberOfHighUrgencyMessagesIsSet;
 
 @end
 
-@interface BananaService_GetInboxRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_int __limit;
+@interface AromaService_GetInboxRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_int __limit;
 
   BOOL __token_isset;
   BOOL __limit_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, getter=limit, setter=setLimit:) AromaService_int limit;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit;
+- (id) initWithToken: (AromaService_UserToken) token limit: (AromaService_int) limit;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1525,20 +1525,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) limit;
-- (void) setLimit: (BananaService_int) limit;
+- (AromaService_int) limit;
+- (void) setLimit: (AromaService_int) limit;
 #endif
 - (BOOL) limitIsSet;
 
 @end
 
-@interface BananaService_GetInboxResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetInboxResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __messages;
 
   BOOL __messages_isset;
@@ -1564,10 +1564,10 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetApplicationMessagesRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __applicationId;
-  BananaService_int __limit;
+@interface AromaService_GetApplicationMessagesRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __applicationId;
+  AromaService_int __limit;
 
   BOOL __token_isset;
   BOOL __applicationId_isset;
@@ -1575,13 +1575,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
-@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, getter=limit, setter=setLimit:) AromaService_int limit;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId limit: (BananaService_int) limit;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId limit: (AromaService_int) limit;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1589,28 +1589,28 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) limit;
-- (void) setLimit: (BananaService_int) limit;
+- (AromaService_int) limit;
+- (void) setLimit: (AromaService_int) limit;
 #endif
 - (BOOL) limitIsSet;
 
 @end
 
-@interface BananaService_GetApplicationMessagesResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetApplicationMessagesResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __messages;
-  BananaService_int __totalMessagesMatching;
+  AromaService_int __totalMessagesMatching;
 
   BOOL __messages_isset;
   BOOL __totalMessagesMatching_isset;
@@ -1618,11 +1618,11 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=messages, setter=setMessages:) NSMutableArray * messages;
-@property (nonatomic, getter=totalMessagesMatching, setter=setTotalMessagesMatching:) BananaService_int totalMessagesMatching;
+@property (nonatomic, getter=totalMessagesMatching, setter=setTotalMessagesMatching:) AromaService_int totalMessagesMatching;
 #endif
 
 - (id) init;
-- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (BananaService_int) totalMessagesMatching;
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (AromaService_int) totalMessagesMatching;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1636,17 +1636,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) messagesIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) totalMessagesMatching;
-- (void) setTotalMessagesMatching: (BananaService_int) totalMessagesMatching;
+- (AromaService_int) totalMessagesMatching;
+- (void) setTotalMessagesMatching: (AromaService_int) totalMessagesMatching;
 #endif
 - (BOOL) totalMessagesMatchingIsSet;
 
 @end
 
-@interface BananaService_GetFullMessageRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __messageId;
-  BananaService_uuid __applicationId;
+@interface AromaService_GetFullMessageRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __messageId;
+  AromaService_uuid __applicationId;
 
   BOOL __token_isset;
   BOOL __messageId_isset;
@@ -1654,13 +1654,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=messageId, setter=setMessageId:) BananaService_uuid messageId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaService_uuid applicationId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) AromaService_uuid messageId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId;
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1668,37 +1668,37 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) messageId;
-- (void) setMessageId: (BananaService_uuid) messageId;
+- (AromaService_uuid) messageId;
+- (void) setMessageId: (AromaService_uuid) messageId;
 #endif
 - (BOOL) messageIdIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) applicationId;
-- (void) setApplicationId: (BananaService_uuid) applicationId;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
 @end
 
-@interface BananaService_GetFullMessageResponse : NSObject <TBase, NSCoding> {
-  Banana_Message * __fullMessage;
+@interface AromaService_GetFullMessageResponse : NSObject <TBase, NSCoding> {
+  Aroma_Message * __fullMessage;
 
   BOOL __fullMessage_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=fullMessage, setter=setFullMessage:) Banana_Message * fullMessage;
+@property (nonatomic, retain, getter=fullMessage, setter=setFullMessage:) Aroma_Message * fullMessage;
 #endif
 
 - (id) init;
-- (id) initWithFullMessage: (Banana_Message *) fullMessage;
+- (id) initWithFullMessage: (Aroma_Message *) fullMessage;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1706,28 +1706,28 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_Message *) fullMessage;
-- (void) setFullMessage: (Banana_Message *) fullMessage;
+- (Aroma_Message *) fullMessage;
+- (void) setFullMessage: (Aroma_Message *) fullMessage;
 #endif
 - (BOOL) fullMessageIsSet;
 
 @end
 
-@interface BananaService_GetMediaRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __mediaId;
+@interface AromaService_GetMediaRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __mediaId;
 
   BOOL __token_isset;
   BOOL __mediaId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=mediaId, setter=setMediaId:) BananaService_uuid mediaId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=mediaId, setter=setMediaId:) AromaService_uuid mediaId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token mediaId: (BananaService_uuid) mediaId;
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1735,31 +1735,31 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) mediaId;
-- (void) setMediaId: (BananaService_uuid) mediaId;
+- (AromaService_uuid) mediaId;
+- (void) setMediaId: (AromaService_uuid) mediaId;
 #endif
 - (BOOL) mediaIdIsSet;
 
 @end
 
-@interface BananaService_GetMediaResponse : NSObject <TBase, NSCoding> {
-  Banana_Image * __image;
+@interface AromaService_GetMediaResponse : NSObject <TBase, NSCoding> {
+  Aroma_Image * __image;
 
   BOOL __image_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=image, setter=setImage:) Banana_Image * image;
+@property (nonatomic, retain, getter=image, setter=setImage:) Aroma_Image * image;
 #endif
 
 - (id) init;
-- (id) initWithImage: (Banana_Image *) image;
+- (id) initWithImage: (Aroma_Image *) image;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1767,25 +1767,25 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_Image *) image;
-- (void) setImage: (Banana_Image *) image;
+- (Aroma_Image *) image;
+- (void) setImage: (Aroma_Image *) image;
 #endif
 - (BOOL) imageIsSet;
 
 @end
 
-@interface BananaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1793,14 +1793,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface BananaService_GetMyApplicationsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetMyApplicationsResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __applications;
 
   BOOL __applications_isset;
@@ -1826,18 +1826,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetMySavedChannelsRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_GetMySavedChannelsRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1845,14 +1845,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface BananaService_GetMySavedChannelsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetMySavedChannelsResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __channels;
 
   BOOL __channels_isset;
@@ -1878,21 +1878,21 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetActivityRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_int __limit;
+@interface AromaService_GetActivityRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_int __limit;
 
   BOOL __token_isset;
   BOOL __limit_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, getter=limit, setter=setLimit:) BananaService_int limit;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, getter=limit, setter=setLimit:) AromaService_int limit;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit;
+- (id) initWithToken: (AromaService_UserToken) token limit: (AromaService_int) limit;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1900,20 +1900,20 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_int) limit;
-- (void) setLimit: (BananaService_int) limit;
+- (AromaService_int) limit;
+- (void) setLimit: (AromaService_int) limit;
 #endif
 - (BOOL) limitIsSet;
 
 @end
 
-@interface BananaService_GetActivityResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetActivityResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __events;
 
   BOOL __events_isset;
@@ -1939,18 +1939,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_GetServiceAnnouncementsRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
 
   BOOL __token_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1958,14 +1958,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 @end
 
-@interface BananaService_GetServiceAnnouncementsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetServiceAnnouncementsResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __serviceAnnouncements;
 
   BOOL __serviceAnnouncements_isset;
@@ -1991,9 +1991,9 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
-  BananaService_uuid __userId;
+@interface AromaService_GetUserInfoRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __userId;
   NSString * __email;
 
   BOOL __token_isset;
@@ -2002,13 +2002,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
-@property (nonatomic, retain, getter=userId, setter=setUserId:) BananaService_uuid userId;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId email: (NSString *) email;
+- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId email: (NSString *) email;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2016,14 +2016,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) userId;
-- (void) setUserId: (BananaService_uuid) userId;
+- (AromaService_uuid) userId;
+- (void) setUserId: (AromaService_uuid) userId;
 #endif
 - (BOOL) userIdIsSet;
 
@@ -2035,18 +2035,18 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@interface BananaService_GetUserInfoResponse : NSObject <TBase, NSCoding> {
-  BananaService_User __userInfo;
+@interface AromaService_GetUserInfoResponse : NSObject <TBase, NSCoding> {
+  AromaService_User __userInfo;
 
   BOOL __userInfo_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userInfo, setter=setUserInfo:) BananaService_User userInfo;
+@property (nonatomic, retain, getter=userInfo, setter=setUserInfo:) AromaService_User userInfo;
 #endif
 
 - (id) init;
-- (id) initWithUserInfo: (BananaService_User) userInfo;
+- (id) initWithUserInfo: (AromaService_User) userInfo;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2054,17 +2054,17 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_User) userInfo;
-- (void) setUserInfo: (BananaService_User) userInfo;
+- (AromaService_User) userInfo;
+- (void) setUserInfo: (AromaService_User) userInfo;
 #endif
 - (BOOL) userInfoIsSet;
 
 @end
 
-@interface BananaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
-  BananaService_UserToken __token;
+@interface AromaService_SearchForApplicationsRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
   NSString * __applicationName;
-  BananaService_uuid __organizationId;
+  AromaService_uuid __organizationId;
 
   BOOL __token_isset;
   BOOL __applicationName_isset;
@@ -2072,13 +2072,13 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=token, setter=setToken:) BananaService_UserToken token;
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) BananaService_uuid organizationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (BananaService_uuid) organizationId;
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (AromaService_uuid) organizationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2086,8 +2086,8 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserToken) token;
-- (void) setToken: (BananaService_UserToken) token;
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
 #endif
 - (BOOL) tokenIsSet;
 
@@ -2098,14 +2098,14 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (BOOL) applicationNameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_uuid) organizationId;
-- (void) setOrganizationId: (BananaService_uuid) organizationId;
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
 #endif
 - (BOOL) organizationIdIsSet;
 
 @end
 
-@interface BananaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_SearchForApplicationsResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __applications;
 
   BOOL __applications_isset;
@@ -2131,58 +2131,58 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 
 @end
 
-@protocol BananaService_BananaService <NSObject>
+@protocol AromaService_AromaService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (BananaService_DeleteMessageResponse *) deleteMessage: (BananaService_DeleteMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_MessageDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_DismissMessageResponse *) dismissMessage: (BananaService_DismissMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_MessageDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
-- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, TException
-- (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_UserDoesNotExistException, TException
-- (BananaService_SignUpResponse *) signUp: (BananaService_SignUpRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidCredentialsException, BananaService_AccountAlreadyExistsException, TException
-- (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_ChannelDoesNotExistException, TException
-- (BananaService_FollowApplicationResponse *) followApplication: (BananaService_FollowApplicationRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_ApplicationAlreadyRegisteredException, BananaService_CustomChannelUnreachableException, TException
-- (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_GetBuzzResponse *) getBuzz: (BananaService_GetBuzzRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_ApplicationDoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetApplicationMessagesResponse *) getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_ApplicationDoesNotExistException, TException
-- (BananaService_GetInboxResponse *) getInbox: (BananaService_GetInboxRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetFullMessageResponse *) getFullMessage: (BananaService_GetFullMessageRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetMediaResponse *) getMedia: (BananaService_GetMediaRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_DoesNotExistException, BananaService_UnauthorizedException, TException
-- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, TException
-- (BananaService_GetUserInfoResponse *) getUserInfo: (BananaService_GetUserInfoRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, BananaService_UserDoesNotExistException, TException
-- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request;  // throws BananaService_OperationFailedException, BananaService_InvalidArgumentException, BananaService_InvalidTokenException, BananaService_UnauthorizedException, TException
+- (AromaService_DeleteMessageResponse *) deleteMessage: (AromaService_DeleteMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_DismissMessageResponse *) dismissMessage: (AromaService_DismissMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_ProvisionApplicationResponse *) provisionApplication: (AromaService_ProvisionApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_RegenerateApplicationTokenResponse *) regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_RegisterHealthCheckResponse *) registerHealthCheck: (AromaService_RegisterHealthCheckRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_RemoveSavedChannelResponse *) removeSavedChannel: (AromaService_RemoveSavedChannelRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_ChannelDoesNotExistException, TException
+- (AromaService_RenewApplicationTokenResponse *) renewApplicationToken: (AromaService_RenewApplicationTokenRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_SaveChannelResponse *) saveChannel: (AromaService_SaveChannelRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, TException
+- (AromaService_SignInResponse *) signIn: (AromaService_SignInRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidCredentialsException, AromaService_UserDoesNotExistException, TException
+- (AromaService_SignUpResponse *) signUp: (AromaService_SignUpRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidCredentialsException, AromaService_AccountAlreadyExistsException, TException
+- (AromaService_SnoozeChannelResponse *) snoozeChannel: (AromaService_SnoozeChannelRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_ChannelDoesNotExistException, TException
+- (AromaService_FollowApplicationResponse *) followApplication: (AromaService_FollowApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_ApplicationAlreadyRegisteredException, AromaService_CustomChannelUnreachableException, TException
+- (AromaService_GetActivityResponse *) getActivity: (AromaService_GetActivityRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetApplicationInfoResponse *) getApplicationInfo: (AromaService_GetApplicationInfoRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_GetBuzzResponse *) getBuzz: (AromaService_GetBuzzRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_GetDashboardResponse *) getDashboard: (AromaService_GetDashboardRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetApplicationMessagesResponse *) getApplicationMessages: (AromaService_GetApplicationMessagesRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_ApplicationDoesNotExistException, TException
+- (AromaService_GetInboxResponse *) getInbox: (AromaService_GetInboxRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetFullMessageResponse *) getFullMessage: (AromaService_GetFullMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetMediaResponse *) getMedia: (AromaService_GetMediaRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_DoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_GetMyApplicationsResponse *) getMyApplications: (AromaService_GetMyApplicationsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetMySavedChannelsResponse *) getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetUserInfoResponse *) getUserInfo: (AromaService_GetUserInfoRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_UserDoesNotExistException, TException
+- (AromaService_SearchForApplicationsResponse *) searchForApplications: (AromaService_SearchForApplicationsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, TException
 @end
 
-@interface BananaService_BananaServiceClient : TBaseClient <BananaService_BananaService> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface AromaService_AromaServiceClient : TBaseClient <AromaService_AromaService> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaService_BananaServiceProcessor : NSObject <TProcessor> {
-  id <BananaService_BananaService> mService;
+@interface AromaService_AromaServiceProcessor : NSObject <TProcessor> {
+  id <AromaService_AromaService> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithBananaService: (id <BananaService_BananaService>) service;
-- (id<BananaService_BananaService>) service;
+- (id) initWithAromaService: (id <AromaService_AromaService>) service;
+- (id<AromaService_AromaService>) service;
 @end
 
-@interface BananaService_AromaServiceConstants : NSObject {
+@interface AromaService_AromaServiceConstants : NSObject {
 }
 + (double) API_VERSION;
-+ (BananaService_int) SERVICE_PORT;
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
-+ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
-+ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
-+ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
-+ (BananaService_int) MAX_MESSAGE_LENGTH;
-+ (Banana_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
-+ (BananaService_int) APPLICATION_NAME_MAX_LENGTH;
-+ (BananaService_int) APPLICATION_MAX_OWNERS;
++ (AromaService_int) SERVICE_PORT;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION;
++ (Aroma_Dimension *) MAX_PROFILE_IMAGE_DIMENSION;
++ (AromaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
++ (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
++ (AromaService_int) MAX_MESSAGE_LENGTH;
++ (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
++ (AromaService_int) APPLICATION_NAME_MAX_LENGTH;
++ (AromaService_int) APPLICATION_MAX_OWNERS;
 @end

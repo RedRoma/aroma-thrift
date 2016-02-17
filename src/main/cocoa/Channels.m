@@ -24,7 +24,7 @@
 
 #import "Channels.h"
 
-@implementation BananaChannels_SlackChannel
+@implementation AromaChannels_SlackChannel
 
 - (id) init
 {
@@ -109,10 +109,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_SlackChannel class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_SlackChannel class]]) {
     return NO;
   }
-  BananaChannels_SlackChannel *other = (BananaChannels_SlackChannel *)anObject;
+  AromaChannels_SlackChannel *other = (AromaChannels_SlackChannel *)anObject;
   if ((__domainName_isset != other->__domainName_isset) ||
       (__domainName_isset && ((__domainName || other->__domainName) && ![__domainName isEqual:other->__domainName]))) {
     return NO;
@@ -279,7 +279,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_SlackChannel("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_SlackChannel("];
   [ms appendString: @"domainName:"];
   [ms appendFormat: @"\"%@\"", __domainName];
   [ms appendString: @",channelName:"];
@@ -292,7 +292,7 @@
 
 @end
 
-@implementation BananaChannels_SlackUsername
+@implementation AromaChannels_SlackUsername
 
 - (id) init
 {
@@ -377,10 +377,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_SlackUsername class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_SlackUsername class]]) {
     return NO;
   }
-  BananaChannels_SlackUsername *other = (BananaChannels_SlackUsername *)anObject;
+  AromaChannels_SlackUsername *other = (AromaChannels_SlackUsername *)anObject;
   if ((__domainName_isset != other->__domainName_isset) ||
       (__domainName_isset && ((__domainName || other->__domainName) && ![__domainName isEqual:other->__domainName]))) {
     return NO;
@@ -547,7 +547,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_SlackUsername("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_SlackUsername("];
   [ms appendString: @"domainName:"];
   [ms appendFormat: @"\"%@\"", __domainName];
   [ms appendString: @",username:"];
@@ -560,13 +560,13 @@
 
 @end
 
-@implementation BananaChannels_Email
+@implementation AromaChannels_Email
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.subject = @"Banana Service - New Message";
+  self.subject = @"Aroma - New Message";
 
 #endif
   return self;
@@ -631,10 +631,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_Email class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_Email class]]) {
     return NO;
   }
-  BananaChannels_Email *other = (BananaChannels_Email *)anObject;
+  AromaChannels_Email *other = (AromaChannels_Email *)anObject;
   if ((__emailAddress_isset != other->__emailAddress_isset) ||
       (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
     return NO;
@@ -760,7 +760,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_Email("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_Email("];
   [ms appendString: @"emailAddress:"];
   [ms appendFormat: @"\"%@\"", __emailAddress];
   [ms appendString: @",subject:"];
@@ -771,7 +771,7 @@
 
 @end
 
-@implementation BananaChannels_CustomChannel
+@implementation AromaChannels_CustomChannel
 
 - (id) init
 {
@@ -781,7 +781,7 @@
   return self;
 }
 
-- (id) initWithEndpoint: (BananaEndpoint_Endpoint *) endpoint
+- (id) initWithEndpoint: (AromaEndpoint_Endpoint *) endpoint
 {
   self = [super init];
   __endpoint = [endpoint retain_stub];
@@ -824,10 +824,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_CustomChannel class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_CustomChannel class]]) {
     return NO;
   }
-  BananaChannels_CustomChannel *other = (BananaChannels_CustomChannel *)anObject;
+  AromaChannels_CustomChannel *other = (AromaChannels_CustomChannel *)anObject;
   if ((__endpoint_isset != other->__endpoint_isset) ||
       (__endpoint_isset && ((__endpoint || other->__endpoint) && ![__endpoint isEqual:other->__endpoint]))) {
     return NO;
@@ -841,11 +841,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEndpoint_Endpoint *) endpoint {
+- (AromaEndpoint_Endpoint *) endpoint {
   return [[__endpoint retain_stub] autorelease_stub];
 }
 
-- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint {
+- (void) setEndpoint: (AromaEndpoint_Endpoint *) endpoint {
   [endpoint retain_stub];
   [__endpoint release_stub];
   __endpoint = endpoint;
@@ -879,7 +879,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_Endpoint *fieldValue = [[BananaEndpoint_Endpoint alloc] init];
+          AromaEndpoint_Endpoint *fieldValue = [[AromaEndpoint_Endpoint alloc] init];
           [fieldValue read: inProtocol];
           [self setEndpoint: fieldValue];
           [fieldValue release_stub];
@@ -914,7 +914,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_CustomChannel("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_CustomChannel("];
   [ms appendString: @"endpoint:"];
   [ms appendFormat: @"%@", __endpoint];
   [ms appendString: @")"];
@@ -923,7 +923,7 @@
 
 @end
 
-@implementation BananaChannels_BananaChannel
+@implementation AromaChannels_AromaChannel
 
 - (id) init
 {
@@ -933,7 +933,7 @@
   return self;
 }
 
-- (id) initWithSlackChannel: (BananaChannels_SlackChannel *) slackChannel slackUsername: (BananaChannels_SlackUsername *) slackUsername email: (BananaChannels_Email *) email customChannel: (BananaChannels_CustomChannel *) customChannel
+- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel
 {
   self = [super init];
   __slackChannel = [slackChannel retain_stub];
@@ -1024,10 +1024,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_BananaChannel class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_AromaChannel class]]) {
     return NO;
   }
-  BananaChannels_BananaChannel *other = (BananaChannels_BananaChannel *)anObject;
+  AromaChannels_AromaChannel *other = (AromaChannels_AromaChannel *)anObject;
   if ((__slackChannel_isset != other->__slackChannel_isset) ||
       (__slackChannel_isset && ((__slackChannel || other->__slackChannel) && ![__slackChannel isEqual:other->__slackChannel]))) {
     return NO;
@@ -1056,11 +1056,11 @@
   [super dealloc_stub];
 }
 
-- (BananaChannels_SlackChannel *) slackChannel {
+- (AromaChannels_SlackChannel *) slackChannel {
   return [[__slackChannel retain_stub] autorelease_stub];
 }
 
-- (void) setSlackChannel: (BananaChannels_SlackChannel *) slackChannel {
+- (void) setSlackChannel: (AromaChannels_SlackChannel *) slackChannel {
   [slackChannel retain_stub];
   [__slackChannel release_stub];
   __slackChannel = slackChannel;
@@ -1077,11 +1077,11 @@
   __slackChannel_isset = NO;
 }
 
-- (BananaChannels_SlackUsername *) slackUsername {
+- (AromaChannels_SlackUsername *) slackUsername {
   return [[__slackUsername retain_stub] autorelease_stub];
 }
 
-- (void) setSlackUsername: (BananaChannels_SlackUsername *) slackUsername {
+- (void) setSlackUsername: (AromaChannels_SlackUsername *) slackUsername {
   [slackUsername retain_stub];
   [__slackUsername release_stub];
   __slackUsername = slackUsername;
@@ -1098,11 +1098,11 @@
   __slackUsername_isset = NO;
 }
 
-- (BananaChannels_Email *) email {
+- (AromaChannels_Email *) email {
   return [[__email retain_stub] autorelease_stub];
 }
 
-- (void) setEmail: (BananaChannels_Email *) email {
+- (void) setEmail: (AromaChannels_Email *) email {
   [email retain_stub];
   [__email release_stub];
   __email = email;
@@ -1119,11 +1119,11 @@
   __email_isset = NO;
 }
 
-- (BananaChannels_CustomChannel *) customChannel {
+- (AromaChannels_CustomChannel *) customChannel {
   return [[__customChannel retain_stub] autorelease_stub];
 }
 
-- (void) setCustomChannel: (BananaChannels_CustomChannel *) customChannel {
+- (void) setCustomChannel: (AromaChannels_CustomChannel *) customChannel {
   [customChannel retain_stub];
   [__customChannel release_stub];
   __customChannel = customChannel;
@@ -1157,7 +1157,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_SlackChannel *fieldValue = [[BananaChannels_SlackChannel alloc] init];
+          AromaChannels_SlackChannel *fieldValue = [[AromaChannels_SlackChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setSlackChannel: fieldValue];
           [fieldValue release_stub];
@@ -1167,7 +1167,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_SlackUsername *fieldValue = [[BananaChannels_SlackUsername alloc] init];
+          AromaChannels_SlackUsername *fieldValue = [[AromaChannels_SlackUsername alloc] init];
           [fieldValue read: inProtocol];
           [self setSlackUsername: fieldValue];
           [fieldValue release_stub];
@@ -1177,7 +1177,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_Email *fieldValue = [[BananaChannels_Email alloc] init];
+          AromaChannels_Email *fieldValue = [[AromaChannels_Email alloc] init];
           [fieldValue read: inProtocol];
           [self setEmail: fieldValue];
           [fieldValue release_stub];
@@ -1187,7 +1187,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_CustomChannel *fieldValue = [[BananaChannels_CustomChannel alloc] init];
+          AromaChannels_CustomChannel *fieldValue = [[AromaChannels_CustomChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setCustomChannel: fieldValue];
           [fieldValue release_stub];
@@ -1205,7 +1205,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"BananaChannel"];
+  [outProtocol writeStructBeginWithName: @"AromaChannel"];
   if (__slackChannel_isset) {
     if (__slackChannel != nil) {
       [outProtocol writeFieldBeginWithName: @"slackChannel" type: TType_STRUCT fieldID: 1];
@@ -1243,7 +1243,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_BananaChannel("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_AromaChannel("];
   [ms appendString: @"slackChannel:"];
   [ms appendFormat: @"%@", __slackChannel];
   [ms appendString: @",slackUsername:"];
@@ -1258,7 +1258,7 @@
 
 @end
 
-@implementation BananaChannels_ChannelInfo
+@implementation AromaChannels_ChannelInfo
 
 - (id) init
 {
@@ -1268,7 +1268,7 @@
   return self;
 }
 
-- (id) initWithChannel: (BananaChannels_BananaChannel *) channel timeRegistered: (BananaChannels_timestamp) timeRegistered
+- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered
 {
   self = [super init];
   __channel = [channel retain_stub];
@@ -1327,10 +1327,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_ChannelInfo class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_ChannelInfo class]]) {
     return NO;
   }
-  BananaChannels_ChannelInfo *other = (BananaChannels_ChannelInfo *)anObject;
+  AromaChannels_ChannelInfo *other = (AromaChannels_ChannelInfo *)anObject;
   if ((__channel_isset != other->__channel_isset) ||
       (__channel_isset && ((__channel || other->__channel) && ![__channel isEqual:other->__channel]))) {
     return NO;
@@ -1348,11 +1348,11 @@
   [super dealloc_stub];
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -1403,7 +1403,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -1451,7 +1451,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_ChannelInfo("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_ChannelInfo("];
   [ms appendString: @"channel:"];
   [ms appendFormat: @"%@", __channel];
   [ms appendString: @",timeRegistered:"];
@@ -1462,7 +1462,7 @@
 
 @end
 
-@implementation BananaChannels_ReceiveMessageRequest
+@implementation AromaChannels_ReceiveMessageRequest
 
 - (id) init
 {
@@ -1472,7 +1472,7 @@
   return self;
 }
 
-- (id) initWithMessage: (Banana_Message *) message
+- (id) initWithMessage: (Aroma_Message *) message
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1515,10 +1515,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_ReceiveMessageRequest class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_ReceiveMessageRequest class]]) {
     return NO;
   }
-  BananaChannels_ReceiveMessageRequest *other = (BananaChannels_ReceiveMessageRequest *)anObject;
+  AromaChannels_ReceiveMessageRequest *other = (AromaChannels_ReceiveMessageRequest *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1532,11 +1532,11 @@
   [super dealloc_stub];
 }
 
-- (Banana_Message *) message {
+- (Aroma_Message *) message {
   return [[__message retain_stub] autorelease_stub];
 }
 
-- (void) setMessage: (Banana_Message *) message {
+- (void) setMessage: (Aroma_Message *) message {
   [message retain_stub];
   [__message release_stub];
   __message = message;
@@ -1570,7 +1570,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Message *fieldValue = [[Banana_Message alloc] init];
+          Aroma_Message *fieldValue = [[Aroma_Message alloc] init];
           [fieldValue read: inProtocol];
           [self setMessage: fieldValue];
           [fieldValue release_stub];
@@ -1605,7 +1605,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_ReceiveMessageRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_ReceiveMessageRequest("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"%@", __message];
   [ms appendString: @")"];
@@ -1615,12 +1615,12 @@
 @end
 
 
-@implementation BananaChannels_ChannelsConstants
+@implementation AromaChannels_ChannelsConstants
 + (void) initialize {
 }
 @end
 
-@interface BananaChannels_ping_args : NSObject <TBase, NSCoding> {
+@interface AromaChannels_ping_args : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -1632,7 +1632,7 @@
 
 @end
 
-@implementation BananaChannels_ping_args
+@implementation AromaChannels_ping_args
 
 - (id) init
 {
@@ -1661,10 +1661,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_ping_args class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_ping_args class]]) {
     return NO;
   }
-  BananaChannels_ping_args *other = (BananaChannels_ping_args *)anObject;
+  AromaChannels_ping_args *other = (AromaChannels_ping_args *)anObject;
   return YES;
 }
 
@@ -1703,25 +1703,25 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_ping_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_ping_args("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@interface BananaChannels_Ping_result : NSObject <TBase, NSCoding> {
-  BananaChannels_int __success;
+@interface AromaChannels_Ping_result : NSObject <TBase, NSCoding> {
+  AromaChannels_int __success;
 
   BOOL __success_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=success, setter=setSuccess:) BananaChannels_int success;
+@property (nonatomic, getter=success, setter=setSuccess:) AromaChannels_int success;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaChannels_int) success;
+- (id) initWithSuccess: (AromaChannels_int) success;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1729,14 +1729,14 @@
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_int) success;
-- (void) setSuccess: (BananaChannels_int) success;
+- (AromaChannels_int) success;
+- (void) setSuccess: (AromaChannels_int) success;
 #endif
 - (BOOL) successIsSet;
 
 @end
 
-@implementation BananaChannels_Ping_result
+@implementation AromaChannels_Ping_result
 
 - (id) init
 {
@@ -1746,7 +1746,7 @@
   return self;
 }
 
-- (id) initWithSuccess: (BananaChannels_int) success
+- (id) initWithSuccess: (AromaChannels_int) success
 {
   self = [super init];
   __success = success;
@@ -1789,10 +1789,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_Ping_result class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_Ping_result class]]) {
     return NO;
   }
-  BananaChannels_Ping_result *other = (BananaChannels_Ping_result *)anObject;
+  AromaChannels_Ping_result *other = (AromaChannels_Ping_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && (__success != other->__success))) {
     return NO;
@@ -1871,7 +1871,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_Ping_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_Ping_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%i", __success];
   [ms appendString: @")"];
@@ -1880,18 +1880,18 @@
 
 @end
 
-@interface BananaChannels_receiveMessage_args : NSObject <TBase, NSCoding> {
-  BananaChannels_ReceiveMessageRequest * __request;
+@interface AromaChannels_receiveMessage_args : NSObject <TBase, NSCoding> {
+  AromaChannels_ReceiveMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaChannels_ReceiveMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaChannels_ReceiveMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaChannels_ReceiveMessageRequest *) request;
+- (id) initWithRequest: (AromaChannels_ReceiveMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1899,14 +1899,14 @@
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_ReceiveMessageRequest *) request;
-- (void) setRequest: (BananaChannels_ReceiveMessageRequest *) request;
+- (AromaChannels_ReceiveMessageRequest *) request;
+- (void) setRequest: (AromaChannels_ReceiveMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaChannels_receiveMessage_args
+@implementation AromaChannels_receiveMessage_args
 
 - (id) init
 {
@@ -1916,7 +1916,7 @@
   return self;
 }
 
-- (id) initWithRequest: (BananaChannels_ReceiveMessageRequest *) request
+- (id) initWithRequest: (AromaChannels_ReceiveMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -1959,10 +1959,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaChannels_receiveMessage_args class]]) {
+  if (![anObject isKindOfClass:[AromaChannels_receiveMessage_args class]]) {
     return NO;
   }
-  BananaChannels_receiveMessage_args *other = (BananaChannels_receiveMessage_args *)anObject;
+  AromaChannels_receiveMessage_args *other = (AromaChannels_receiveMessage_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -1976,11 +1976,11 @@
   [super dealloc_stub];
 }
 
-- (BananaChannels_ReceiveMessageRequest *) request {
+- (AromaChannels_ReceiveMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaChannels_ReceiveMessageRequest *) request {
+- (void) setRequest: (AromaChannels_ReceiveMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -2014,7 +2014,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_ReceiveMessageRequest *fieldValue = [[BananaChannels_ReceiveMessageRequest alloc] init];
+          AromaChannels_ReceiveMessageRequest *fieldValue = [[AromaChannels_ReceiveMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -2049,7 +2049,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaChannels_receiveMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_receiveMessage_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -2058,7 +2058,7 @@
 
 @end
 
-@implementation BananaChannels_CustomBananaChannelClient
+@implementation AromaChannels_CustomAromaChannelClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -2081,13 +2081,13 @@
   [outProtocol writeMessageEnd];
 }
 
-- (BananaChannels_int) recv_ping
+- (AromaChannels_int) recv_ping
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaChannels_Ping_result * result = [[[BananaChannels_Ping_result alloc] init] autorelease_stub];
+  AromaChannels_Ping_result * result = [[[AromaChannels_Ping_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -2097,14 +2097,14 @@
                                            reason: @"ping failed: unknown result"];
 }
 
-- (BananaChannels_int) ping
+- (AromaChannels_int) ping
 {
   [self send_ping];
   [[outProtocol transport] flush];
   return [self recv_ping];
 }
 
-- (void) send_receiveMessage: (BananaChannels_ReceiveMessageRequest *) request
+- (void) send_receiveMessage: (AromaChannels_ReceiveMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"receiveMessage" type: TMessageType_ONEWAY sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"receiveMessage_args"];
@@ -2118,7 +2118,7 @@
   [outProtocol writeMessageEnd];
 }
 
-- (void) receiveMessage: (BananaChannels_ReceiveMessageRequest *) request
+- (void) receiveMessage: (AromaChannels_ReceiveMessageRequest *) request
 {
   [self send_receiveMessage : request];
   [[outProtocol transport] flush];
@@ -2126,9 +2126,9 @@
 
 @end
 
-@implementation BananaChannels_CustomBananaChannelProcessor
+@implementation AromaChannels_CustomAromaChannelProcessor
 
-- (id) initWithCustomBananaChannel: (id <BananaChannels_CustomBananaChannel>) service
+- (id) initWithCustomAromaChannel: (id <AromaChannels_CustomAromaChannel>) service
 {
 self = [super init];
 if (!self) {
@@ -2155,7 +2155,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaChannels_CustomBananaChannel>) service
+- (id<AromaChannels_CustomAromaChannel>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }
@@ -2195,10 +2195,10 @@ return self;
 
 - (void) process_ping_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaChannels_ping_args * args = [[BananaChannels_ping_args alloc] init];
+AromaChannels_ping_args * args = [[AromaChannels_ping_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaChannels_Ping_result * result = [[BananaChannels_Ping_result alloc] init];
+AromaChannels_Ping_result * result = [[AromaChannels_Ping_result alloc] init];
 [result setSuccess: [mService ping]];
 [outProtocol writeMessageBeginWithName: @"ping"
                                   type: TMessageType_REPLY
@@ -2212,7 +2212,7 @@ BananaChannels_Ping_result * result = [[BananaChannels_Ping_result alloc] init];
 
 - (void) process_receiveMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaChannels_receiveMessage_args * args = [[BananaChannels_receiveMessage_args alloc] init];
+AromaChannels_receiveMessage_args * args = [[AromaChannels_receiveMessage_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
 [mService receiveMessage: [args request]];

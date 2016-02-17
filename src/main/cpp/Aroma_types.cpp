@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift {
+namespace tech { namespace aroma { namespace thrift {
 
 int _kImageTypeValues[] = {
   ImageType::JPEG,

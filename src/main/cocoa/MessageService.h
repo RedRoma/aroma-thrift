@@ -25,12 +25,13 @@
 #import "Events.h"
 #import "Exceptions.h"
 #import "ApplicationService.h"
+#import "AromaService.h"
 
-typedef Banana_int MessageService_int;
+typedef Aroma_int MessageService_int;
 
-typedef Banana_long MessageService_long;
+typedef Aroma_long MessageService_long;
 
-typedef Banana_timestamp MessageService_timestamp;
+typedef Aroma_timestamp MessageService_timestamp;
 
 typedef BananaAuthentication_ApplicationToken * MessageService_ApplicationToken;
 
@@ -38,55 +39,55 @@ typedef BananaAuthentication_AuthenticationToken * MessageService_Authentication
 
 typedef BananaAuthentication_UserToken * MessageService_UserToken;
 
-typedef Banana_Application * MessageService_Application;
+typedef Aroma_Application * MessageService_Application;
 
 typedef int MessageService_Urgency;
 
-typedef BananaEvents_Event * MessageService_Event;
+typedef AromaEvents_Event * MessageService_Event;
 
-typedef BananaException_AccountAlreadyExistsException * MessageService_AccountAlreadyExistsException;
+typedef AromaException_AccountAlreadyExistsException * MessageService_AccountAlreadyExistsException;
 
-typedef BananaException_InvalidArgumentException * MessageService_InvalidArgumentException;
+typedef AromaException_InvalidArgumentException * MessageService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * MessageService_InvalidCredentialsException;
+typedef AromaException_InvalidCredentialsException * MessageService_InvalidCredentialsException;
 
-typedef BananaException_InvalidTokenException * MessageService_InvalidTokenException;
+typedef AromaException_InvalidTokenException * MessageService_InvalidTokenException;
 
-typedef BananaException_OperationFailedException * MessageService_OperationFailedException;
+typedef AromaException_OperationFailedException * MessageService_OperationFailedException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * MessageService_ApplicationAlreadyRegisteredException;
+typedef AromaException_ApplicationAlreadyRegisteredException * MessageService_ApplicationAlreadyRegisteredException;
 
-typedef BananaException_ApplicationDoesNotExistException * MessageService_ApplicationDoesNotExistException;
+typedef AromaException_ApplicationDoesNotExistException * MessageService_ApplicationDoesNotExistException;
 
-typedef BananaException_CustomChannelUnreachableException * MessageService_CustomChannelUnreachableException;
+typedef AromaException_CustomChannelUnreachableException * MessageService_CustomChannelUnreachableException;
 
-typedef BananaException_ChannelDoesNotExistException * MessageService_ChannelDoesNotExistException;
+typedef AromaException_ChannelDoesNotExistException * MessageService_ChannelDoesNotExistException;
 
-typedef BananaException_UnauthorizedException * MessageService_UnauthorizedException;
+typedef AromaException_UnauthorizedException * MessageService_UnauthorizedException;
 
 typedef ApplicationService_SendMessageRequest * MessageService_SendMessageRequest;
 
 typedef ApplicationService_SendMessageResponse * MessageService_SendMessageResponse;
 
-typedef MessageService_BananaService.DeleteMessageRequest MessageService_DeleteMessageRequest;
+typedef AromaService_DeleteMessageRequest * MessageService_DeleteMessageRequest;
 
-typedef MessageService_BananaService.DeleteMessageResponse MessageService_DeleteMessageResponse;
+typedef AromaService_DeleteMessageResponse * MessageService_DeleteMessageResponse;
 
-typedef MessageService_BananaService.DismissMessageRequest MessageService_DismissMessageRequest;
+typedef AromaService_DismissMessageRequest * MessageService_DismissMessageRequest;
 
-typedef MessageService_BananaService.DismissMessageResponse MessageService_DismissMessageResponse;
+typedef AromaService_DismissMessageResponse * MessageService_DismissMessageResponse;
 
-typedef MessageService_BananaService.GetApplicationMessagesRequest MessageService_GetApplicationMessagesRequest;
+typedef AromaService_GetApplicationMessagesRequest * MessageService_GetApplicationMessagesRequest;
 
-typedef MessageService_BananaService.GetApplicationMessagesResponse MessageService_GetApplicationMessagesResponse;
+typedef AromaService_GetApplicationMessagesResponse * MessageService_GetApplicationMessagesResponse;
 
-typedef MessageService_BananaService.GetInboxRequest MessageService_GetInboxRequest;
+typedef AromaService_GetInboxRequest * MessageService_GetInboxRequest;
 
-typedef MessageService_BananaService.GetInboxResponse MessageService_GetInboxResponse;
+typedef AromaService_GetInboxResponse * MessageService_GetInboxResponse;
 
-typedef MessageService_BananaService.GetFullMessageRequest MessageService_GetFullMessageRequest;
+typedef AromaService_GetFullMessageRequest * MessageService_GetFullMessageRequest;
 
-typedef MessageService_BananaService.GetFullMessageResponse MessageService_GetFullMessageResponse;
+typedef AromaService_GetFullMessageResponse * MessageService_GetFullMessageResponse;
 
 @protocol MessageService_MessageService <NSObject>
 - (double) getApiVersion;  // throws TException
@@ -107,7 +108,7 @@ typedef MessageService_BananaService.GetFullMessageResponse MessageService_GetFu
 @interface MessageService_MessageServiceConstants : NSObject {
 }
 + (MessageService_int) SERVICE_PORT;
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
-+ (Banana_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Aroma_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME;
 @end

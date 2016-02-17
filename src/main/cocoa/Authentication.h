@@ -25,13 +25,13 @@ enum BananaAuthentication_TokenType {
   TokenType_USER = 2
 };
 
-typedef Banana_int BananaAuthentication_int;
+typedef Aroma_int BananaAuthentication_int;
 
-typedef Banana_long BananaAuthentication_long;
+typedef Aroma_long BananaAuthentication_long;
 
-typedef Banana_timestamp BananaAuthentication_timestamp;
+typedef Aroma_timestamp BananaAuthentication_timestamp;
 
-typedef Banana_uuid BananaAuthentication_uuid;
+typedef Aroma_uuid BananaAuthentication_uuid;
 
 @interface BananaAuthentication_ApplicationToken : NSObject <TBase, NSCoding> {
   NSString * __tokenId;
@@ -240,7 +240,7 @@ typedef Banana_uuid BananaAuthentication_uuid;
   NSString * __email;
   BananaAuthentication_Password * __password;
   NSString * __name;
-  Banana_Image * __profileImage;
+  Aroma_Image * __profileImage;
   int __role;
 
   BOOL __email_isset;
@@ -254,12 +254,12 @@ typedef Banana_uuid BananaAuthentication_uuid;
 @property (nonatomic, retain, getter=email, setter=setEmail:) NSString * email;
 @property (nonatomic, retain, getter=password, setter=setPassword:) BananaAuthentication_Password * password;
 @property (nonatomic, retain, getter=name, setter=setName:) NSString * name;
-@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Banana_Image * profileImage;
+@property (nonatomic, retain, getter=profileImage, setter=setProfileImage:) Aroma_Image * profileImage;
 @property (nonatomic, getter=role, setter=setRole:) int role;
 #endif
 
 - (id) init;
-- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Banana_Image *) profileImage role: (int) role;
+- (id) initWithEmail: (NSString *) email password: (BananaAuthentication_Password *) password name: (NSString *) name profileImage: (Aroma_Image *) profileImage role: (int) role;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -285,8 +285,8 @@ typedef Banana_uuid BananaAuthentication_uuid;
 - (BOOL) nameIsSet;
 
 #if !__has_feature(objc_arc)
-- (Banana_Image *) profileImage;
-- (void) setProfileImage: (Banana_Image *) profileImage;
+- (Aroma_Image *) profileImage;
+- (void) setProfileImage: (Aroma_Image *) profileImage;
 #endif
 - (BOOL) profileImageIsSet;
 

@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace thrift { namespace channels {
 
 
 SlackChannel::~SlackChannel() throw() {
@@ -378,7 +378,7 @@ CustomChannel::~CustomChannel() throw() {
 }
 
 
-void CustomChannel::__set_endpoint(const  ::aroma::banana::thrift::endpoint::Endpoint& val) {
+void CustomChannel::__set_endpoint(const  ::aroma::thrift::endpoint::Endpoint& val) {
   this->endpoint = val;
 }
 
@@ -460,27 +460,27 @@ void CustomChannel::printTo(std::ostream& out) const {
 }
 
 
-BananaChannel::~BananaChannel() throw() {
+AromaChannel::~AromaChannel() throw() {
 }
 
 
-void BananaChannel::__set_slackChannel(const SlackChannel& val) {
+void AromaChannel::__set_slackChannel(const SlackChannel& val) {
   this->slackChannel = val;
 }
 
-void BananaChannel::__set_slackUsername(const SlackUsername& val) {
+void AromaChannel::__set_slackUsername(const SlackUsername& val) {
   this->slackUsername = val;
 }
 
-void BananaChannel::__set_email(const Email& val) {
+void AromaChannel::__set_email(const Email& val) {
   this->email = val;
 }
 
-void BananaChannel::__set_customChannel(const CustomChannel& val) {
+void AromaChannel::__set_customChannel(const CustomChannel& val) {
   this->customChannel = val;
 }
 
-uint32_t BananaChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -545,10 +545,10 @@ uint32_t BananaChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t BananaChannel::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaChannel::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("BananaChannel");
+  xfer += oprot->writeStructBegin("AromaChannel");
 
   xfer += oprot->writeFieldBegin("slackChannel", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->slackChannel.write(oprot);
@@ -571,7 +571,7 @@ uint32_t BananaChannel::write(::apache::thrift::protocol::TProtocol* oprot) cons
   return xfer;
 }
 
-void swap(BananaChannel &a, BananaChannel &b) {
+void swap(AromaChannel &a, AromaChannel &b) {
   using ::std::swap;
   swap(a.slackChannel, b.slackChannel);
   swap(a.slackUsername, b.slackUsername);
@@ -580,14 +580,14 @@ void swap(BananaChannel &a, BananaChannel &b) {
   swap(a.__isset, b.__isset);
 }
 
-BananaChannel::BananaChannel(const BananaChannel& other8) {
+AromaChannel::AromaChannel(const AromaChannel& other8) {
   slackChannel = other8.slackChannel;
   slackUsername = other8.slackUsername;
   email = other8.email;
   customChannel = other8.customChannel;
   __isset = other8.__isset;
 }
-BananaChannel& BananaChannel::operator=(const BananaChannel& other9) {
+AromaChannel& AromaChannel::operator=(const AromaChannel& other9) {
   slackChannel = other9.slackChannel;
   slackUsername = other9.slackUsername;
   email = other9.email;
@@ -595,9 +595,9 @@ BananaChannel& BananaChannel::operator=(const BananaChannel& other9) {
   __isset = other9.__isset;
   return *this;
 }
-void BananaChannel::printTo(std::ostream& out) const {
+void AromaChannel::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "BananaChannel(";
+  out << "AromaChannel(";
   out << "slackChannel=" << to_string(slackChannel);
   out << ", " << "slackUsername=" << to_string(slackUsername);
   out << ", " << "email=" << to_string(email);
@@ -610,7 +610,7 @@ ChannelInfo::~ChannelInfo() throw() {
 }
 
 
-void ChannelInfo::__set_channel(const BananaChannel& val) {
+void ChannelInfo::__set_channel(const AromaChannel& val) {
   this->channel = val;
 }
 
@@ -716,7 +716,7 @@ ReceiveMessageRequest::~ReceiveMessageRequest() throw() {
 }
 
 
-void ReceiveMessageRequest::__set_message(const  ::aroma::banana::thrift::Message& val) {
+void ReceiveMessageRequest::__set_message(const  ::tech::aroma::thrift::Message& val) {
   this->message = val;
 }
 
@@ -797,4 +797,4 @@ void ReceiveMessageRequest::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}} // namespace

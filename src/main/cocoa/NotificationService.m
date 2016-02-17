@@ -160,11 +160,11 @@
   __token_isset = NO;
 }
 
-- (BananaEvents_Event *) event {
+- (AromaEvents_Event *) event {
   return [[__event retain_stub] autorelease_stub];
 }
 
-- (void) setEvent: (BananaEvents_Event *) event {
+- (void) setEvent: (AromaEvents_Event *) event {
   [event retain_stub];
   [__event release_stub];
   __event = event;
@@ -229,7 +229,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_Event *fieldValue = [[BananaEvents_Event alloc] init];
+          AromaEvents_Event *fieldValue = [[AromaEvents_Event alloc] init];
           [fieldValue read: inProtocol];
           [self setEvent: fieldValue];
           [fieldValue release_stub];
@@ -245,7 +245,7 @@
           int _i1;
           for (_i1 = 0; _i1 < _size0; ++_i1)
           {
-            BananaChannels_BananaChannel *_elem2 = [[BananaChannels_BananaChannel alloc] init];
+            AromaChannels_AromaChannel *_elem2 = [[AromaChannels_AromaChannel alloc] init];
             [_elem2 read: inProtocol];
             [fieldValue addObject: _elem2];
             [_elem2 release_stub];
@@ -470,18 +470,18 @@
 @end
 
 static NotificationService_int NotificationService_SERVICE_PORT = 7009;
-static BananaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
 @implementation NotificationService_NotificationServiceConstants
 + (void) initialize {
-  NotificationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [NotificationService_PRODUCTION_ENDPOINT setHostname:@"notification-srv.banana.aroma.tech"];
+  NotificationService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [NotificationService_PRODUCTION_ENDPOINT setHostname:@"notification-srv.aroma.tech"];
   [NotificationService_PRODUCTION_ENDPOINT setPort:7009];
 
 ;
-  NotificationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [NotificationService_BETA_ENDPOINT setHostname:@"notification-srv.beta.banana.aroma.tech"];
+  NotificationService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [NotificationService_BETA_ENDPOINT setHostname:@"notification-srv.beta.aroma.tech"];
   [NotificationService_BETA_ENDPOINT setPort:7009];
 
 ;
@@ -489,10 +489,10 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 + (NotificationService_int) SERVICE_PORT{
   return NotificationService_SERVICE_PORT;
 }
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return NotificationService_PRODUCTION_ENDPOINT;
 }
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return NotificationService_BETA_ENDPOINT;
 }
 @end
@@ -1142,11 +1142,11 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   __success_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex1 {
+- (AromaException_InvalidArgumentException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_InvalidArgumentException *) ex1 {
+- (void) setEx1: (AromaException_InvalidArgumentException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -1163,11 +1163,11 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   __ex1_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex2 {
+- (AromaException_OperationFailedException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_OperationFailedException *) ex2 {
+- (void) setEx2: (AromaException_OperationFailedException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -1184,11 +1184,11 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -1232,7 +1232,7 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -1242,7 +1242,7 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -1252,7 +1252,7 @@ static BananaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];

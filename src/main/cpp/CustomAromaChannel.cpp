@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "CustomBananaChannel.h"
+#include "CustomAromaChannel.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace thrift { namespace channels {
 
 
-CustomBananaChannel_ping_args::~CustomBananaChannel_ping_args() throw() {
+CustomAromaChannel_ping_args::~CustomAromaChannel_ping_args() throw() {
 }
 
 
-uint32_t CustomBananaChannel_ping_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t CustomAromaChannel_ping_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -41,10 +41,10 @@ uint32_t CustomBananaChannel_ping_args::read(::apache::thrift::protocol::TProtoc
   return xfer;
 }
 
-uint32_t CustomBananaChannel_ping_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CustomAromaChannel_ping_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("CustomBananaChannel_ping_args");
+  xfer += oprot->writeStructBegin("CustomAromaChannel_ping_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -52,14 +52,14 @@ uint32_t CustomBananaChannel_ping_args::write(::apache::thrift::protocol::TProto
 }
 
 
-CustomBananaChannel_ping_pargs::~CustomBananaChannel_ping_pargs() throw() {
+CustomAromaChannel_ping_pargs::~CustomAromaChannel_ping_pargs() throw() {
 }
 
 
-uint32_t CustomBananaChannel_ping_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CustomAromaChannel_ping_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("CustomBananaChannel_ping_pargs");
+  xfer += oprot->writeStructBegin("CustomAromaChannel_ping_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -67,11 +67,11 @@ uint32_t CustomBananaChannel_ping_pargs::write(::apache::thrift::protocol::TProt
 }
 
 
-CustomBananaChannel_ping_result::~CustomBananaChannel_ping_result() throw() {
+CustomAromaChannel_ping_result::~CustomAromaChannel_ping_result() throw() {
 }
 
 
-uint32_t CustomBananaChannel_ping_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t CustomAromaChannel_ping_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -112,11 +112,11 @@ uint32_t CustomBananaChannel_ping_result::read(::apache::thrift::protocol::TProt
   return xfer;
 }
 
-uint32_t CustomBananaChannel_ping_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CustomAromaChannel_ping_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("CustomBananaChannel_ping_result");
+  xfer += oprot->writeStructBegin("CustomAromaChannel_ping_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_I32, 0);
@@ -129,11 +129,11 @@ uint32_t CustomBananaChannel_ping_result::write(::apache::thrift::protocol::TPro
 }
 
 
-CustomBananaChannel_ping_presult::~CustomBananaChannel_ping_presult() throw() {
+CustomAromaChannel_ping_presult::~CustomAromaChannel_ping_presult() throw() {
 }
 
 
-uint32_t CustomBananaChannel_ping_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t CustomAromaChannel_ping_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -175,11 +175,11 @@ uint32_t CustomBananaChannel_ping_presult::read(::apache::thrift::protocol::TPro
 }
 
 
-CustomBananaChannel_receiveMessage_args::~CustomBananaChannel_receiveMessage_args() throw() {
+CustomAromaChannel_receiveMessage_args::~CustomAromaChannel_receiveMessage_args() throw() {
 }
 
 
-uint32_t CustomBananaChannel_receiveMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t CustomAromaChannel_receiveMessage_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -220,10 +220,10 @@ uint32_t CustomBananaChannel_receiveMessage_args::read(::apache::thrift::protoco
   return xfer;
 }
 
-uint32_t CustomBananaChannel_receiveMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CustomAromaChannel_receiveMessage_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("CustomBananaChannel_receiveMessage_args");
+  xfer += oprot->writeStructBegin("CustomAromaChannel_receiveMessage_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -235,14 +235,14 @@ uint32_t CustomBananaChannel_receiveMessage_args::write(::apache::thrift::protoc
 }
 
 
-CustomBananaChannel_receiveMessage_pargs::~CustomBananaChannel_receiveMessage_pargs() throw() {
+CustomAromaChannel_receiveMessage_pargs::~CustomAromaChannel_receiveMessage_pargs() throw() {
 }
 
 
-uint32_t CustomBananaChannel_receiveMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t CustomAromaChannel_receiveMessage_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("CustomBananaChannel_receiveMessage_pargs");
+  xfer += oprot->writeStructBegin("CustomAromaChannel_receiveMessage_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -253,18 +253,18 @@ uint32_t CustomBananaChannel_receiveMessage_pargs::write(::apache::thrift::proto
   return xfer;
 }
 
-int CustomBananaChannelClient::ping()
+int CustomAromaChannelClient::ping()
 {
   send_ping();
   return recv_ping();
 }
 
-void CustomBananaChannelClient::send_ping()
+void CustomAromaChannelClient::send_ping()
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("ping", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  CustomBananaChannel_ping_pargs args;
+  CustomAromaChannel_ping_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -272,7 +272,7 @@ void CustomBananaChannelClient::send_ping()
   oprot_->getTransport()->flush();
 }
 
-int CustomBananaChannelClient::recv_ping()
+int CustomAromaChannelClient::recv_ping()
 {
 
   int32_t rseqid = 0;
@@ -298,7 +298,7 @@ int CustomBananaChannelClient::recv_ping()
     iprot_->getTransport()->readEnd();
   }
   int _return;
-  CustomBananaChannel_ping_presult result;
+  CustomAromaChannel_ping_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -310,17 +310,17 @@ int CustomBananaChannelClient::recv_ping()
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "ping failed: unknown result");
 }
 
-void CustomBananaChannelClient::receiveMessage(const ReceiveMessageRequest& request)
+void CustomAromaChannelClient::receiveMessage(const ReceiveMessageRequest& request)
 {
   send_receiveMessage(request);
 }
 
-void CustomBananaChannelClient::send_receiveMessage(const ReceiveMessageRequest& request)
+void CustomAromaChannelClient::send_receiveMessage(const ReceiveMessageRequest& request)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("receiveMessage", ::apache::thrift::protocol::T_ONEWAY, cseqid);
 
-  CustomBananaChannel_receiveMessage_pargs args;
+  CustomAromaChannel_receiveMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -329,7 +329,7 @@ void CustomBananaChannelClient::send_receiveMessage(const ReceiveMessageRequest&
   oprot_->getTransport()->flush();
 }
 
-bool CustomBananaChannelProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool CustomAromaChannelProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -348,34 +348,34 @@ bool CustomBananaChannelProcessor::dispatchCall(::apache::thrift::protocol::TPro
   return true;
 }
 
-void CustomBananaChannelProcessor::process_ping(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void CustomAromaChannelProcessor::process_ping(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("CustomBananaChannel.ping", callContext);
+    ctx = this->eventHandler_->getContext("CustomAromaChannel.ping", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "CustomBananaChannel.ping");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "CustomAromaChannel.ping");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "CustomBananaChannel.ping");
+    this->eventHandler_->preRead(ctx, "CustomAromaChannel.ping");
   }
 
-  CustomBananaChannel_ping_args args;
+  CustomAromaChannel_ping_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "CustomBananaChannel.ping", bytes);
+    this->eventHandler_->postRead(ctx, "CustomAromaChannel.ping", bytes);
   }
 
-  CustomBananaChannel_ping_result result;
+  CustomAromaChannel_ping_result result;
   try {
     result.success = iface_->ping();
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "CustomBananaChannel.ping");
+      this->eventHandler_->handlerError(ctx, "CustomAromaChannel.ping");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
@@ -388,7 +388,7 @@ void CustomBananaChannelProcessor::process_ping(int32_t seqid, ::apache::thrift:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "CustomBananaChannel.ping");
+    this->eventHandler_->preWrite(ctx, "CustomAromaChannel.ping");
   }
 
   oprot->writeMessageBegin("ping", ::apache::thrift::protocol::T_REPLY, seqid);
@@ -398,67 +398,67 @@ void CustomBananaChannelProcessor::process_ping(int32_t seqid, ::apache::thrift:
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "CustomBananaChannel.ping", bytes);
+    this->eventHandler_->postWrite(ctx, "CustomAromaChannel.ping", bytes);
   }
 }
 
-void CustomBananaChannelProcessor::process_receiveMessage(int32_t, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol*, void* callContext)
+void CustomAromaChannelProcessor::process_receiveMessage(int32_t, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol*, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("CustomBananaChannel.receiveMessage", callContext);
+    ctx = this->eventHandler_->getContext("CustomAromaChannel.receiveMessage", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "CustomBananaChannel.receiveMessage");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "CustomAromaChannel.receiveMessage");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "CustomBananaChannel.receiveMessage");
+    this->eventHandler_->preRead(ctx, "CustomAromaChannel.receiveMessage");
   }
 
-  CustomBananaChannel_receiveMessage_args args;
+  CustomAromaChannel_receiveMessage_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "CustomBananaChannel.receiveMessage", bytes);
+    this->eventHandler_->postRead(ctx, "CustomAromaChannel.receiveMessage", bytes);
   }
 
   try {
     iface_->receiveMessage(args.request);
   } catch (const std::exception&) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "CustomBananaChannel.receiveMessage");
+      this->eventHandler_->handlerError(ctx, "CustomAromaChannel.receiveMessage");
     }
     return;
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->asyncComplete(ctx, "CustomBananaChannel.receiveMessage");
+    this->eventHandler_->asyncComplete(ctx, "CustomAromaChannel.receiveMessage");
   }
 
   return;
 }
 
-::boost::shared_ptr< ::apache::thrift::TProcessor > CustomBananaChannelProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< CustomBananaChannelIfFactory > cleanup(handlerFactory_);
-  ::boost::shared_ptr< CustomBananaChannelIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new CustomBananaChannelProcessor(handler));
+::boost::shared_ptr< ::apache::thrift::TProcessor > CustomAromaChannelProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< CustomAromaChannelIfFactory > cleanup(handlerFactory_);
+  ::boost::shared_ptr< CustomAromaChannelIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::boost::shared_ptr< ::apache::thrift::TProcessor > processor(new CustomAromaChannelProcessor(handler));
   return processor;
 }
 
-int CustomBananaChannelConcurrentClient::ping()
+int CustomAromaChannelConcurrentClient::ping()
 {
   int32_t seqid = send_ping();
   return recv_ping(seqid);
 }
 
-int32_t CustomBananaChannelConcurrentClient::send_ping()
+int32_t CustomAromaChannelConcurrentClient::send_ping()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("ping", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  CustomBananaChannel_ping_pargs args;
+  CustomAromaChannel_ping_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -469,7 +469,7 @@ int32_t CustomBananaChannelConcurrentClient::send_ping()
   return cseqid;
 }
 
-int CustomBananaChannelConcurrentClient::recv_ping(const int32_t seqid)
+int CustomAromaChannelConcurrentClient::recv_ping(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -508,7 +508,7 @@ int CustomBananaChannelConcurrentClient::recv_ping(const int32_t seqid)
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       int _return;
-      CustomBananaChannel_ping_presult result;
+      CustomAromaChannel_ping_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -529,18 +529,18 @@ int CustomBananaChannelConcurrentClient::recv_ping(const int32_t seqid)
   } // end while(true)
 }
 
-void CustomBananaChannelConcurrentClient::receiveMessage(const ReceiveMessageRequest& request)
+void CustomAromaChannelConcurrentClient::receiveMessage(const ReceiveMessageRequest& request)
 {
   send_receiveMessage(request);
 }
 
-void CustomBananaChannelConcurrentClient::send_receiveMessage(const ReceiveMessageRequest& request)
+void CustomAromaChannelConcurrentClient::send_receiveMessage(const ReceiveMessageRequest& request)
 {
   int32_t cseqid = 0;
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("receiveMessage", ::apache::thrift::protocol::T_ONEWAY, cseqid);
 
-  CustomBananaChannel_receiveMessage_pargs args;
+  CustomAromaChannel_receiveMessage_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -551,5 +551,5 @@ void CustomBananaChannelConcurrentClient::send_receiveMessage(const ReceiveMessa
   sentry.commit();
 }
 
-}}}} // namespace
+}}} // namespace
 

@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace notification { namespace service {
 
 
 SendNotificationRequest::~SendNotificationRequest() throw() {
@@ -26,7 +26,7 @@ void SendNotificationRequest::__set_event(const Event& val) {
   this->event = val;
 }
 
-void SendNotificationRequest::__set_channels(const std::vector<BananaChannel> & val) {
+void SendNotificationRequest::__set_channels(const std::vector<AromaChannel> & val) {
   this->channels = val;
 }
 
@@ -115,7 +115,7 @@ uint32_t SendNotificationRequest::write(::apache::thrift::protocol::TProtocol* o
   xfer += oprot->writeFieldBegin("channels", ::apache::thrift::protocol::T_LIST, 3);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->channels.size()));
-    std::vector<BananaChannel> ::const_iterator _iter5;
+    std::vector<AromaChannel> ::const_iterator _iter5;
     for (_iter5 = this->channels.begin(); _iter5 != this->channels.end(); ++_iter5)
     {
       xfer += (*_iter5).write(oprot);
@@ -247,4 +247,4 @@ void SendNotificationResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}}} // namespace
+}}}} // namespace

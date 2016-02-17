@@ -9,7 +9,7 @@
 
 #include "Aroma_types.h"
 
-namespace aroma { namespace banana { namespace thrift {
+namespace tech { namespace aroma { namespace thrift {
 
 class AromaConstants {
  public:

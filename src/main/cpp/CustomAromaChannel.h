@@ -4,32 +4,32 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef CustomBananaChannel_H
-#define CustomBananaChannel_H
+#ifndef CustomAromaChannel_H
+#define CustomAromaChannel_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "Channels_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace channels {
+namespace aroma { namespace thrift { namespace channels {
 
 #ifdef _WIN32
   #pragma warning( push )
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class CustomBananaChannelIf {
+class CustomAromaChannelIf {
  public:
-  virtual ~CustomBananaChannelIf() {}
+  virtual ~CustomAromaChannelIf() {}
 
   /**
-   * The Banana Service will first ping your Custom Channel
+   * The Aroma Service will first ping your Custom Channel
    * to make sure it is reachable and operational.
    */
   virtual int ping() = 0;
 
   /**
-   * Called each time the Banana Service receives a Message from the Application
+   * Called each time Aroma receives a Message from the Application
    * in question.
    * 
    * @param request
@@ -37,33 +37,33 @@ class CustomBananaChannelIf {
   virtual void receiveMessage(const ReceiveMessageRequest& request) = 0;
 };
 
-class CustomBananaChannelIfFactory {
+class CustomAromaChannelIfFactory {
  public:
-  typedef CustomBananaChannelIf Handler;
+  typedef CustomAromaChannelIf Handler;
 
-  virtual ~CustomBananaChannelIfFactory() {}
+  virtual ~CustomAromaChannelIfFactory() {}
 
-  virtual CustomBananaChannelIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(CustomBananaChannelIf* /* handler */) = 0;
+  virtual CustomAromaChannelIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(CustomAromaChannelIf* /* handler */) = 0;
 };
 
-class CustomBananaChannelIfSingletonFactory : virtual public CustomBananaChannelIfFactory {
+class CustomAromaChannelIfSingletonFactory : virtual public CustomAromaChannelIfFactory {
  public:
-  CustomBananaChannelIfSingletonFactory(const boost::shared_ptr<CustomBananaChannelIf>& iface) : iface_(iface) {}
-  virtual ~CustomBananaChannelIfSingletonFactory() {}
+  CustomAromaChannelIfSingletonFactory(const boost::shared_ptr<CustomAromaChannelIf>& iface) : iface_(iface) {}
+  virtual ~CustomAromaChannelIfSingletonFactory() {}
 
-  virtual CustomBananaChannelIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
+  virtual CustomAromaChannelIf* getHandler(const ::apache::thrift::TConnectionInfo&) {
     return iface_.get();
   }
-  virtual void releaseHandler(CustomBananaChannelIf* /* handler */) {}
+  virtual void releaseHandler(CustomAromaChannelIf* /* handler */) {}
 
  protected:
-  boost::shared_ptr<CustomBananaChannelIf> iface_;
+  boost::shared_ptr<CustomAromaChannelIf> iface_;
 };
 
-class CustomBananaChannelNull : virtual public CustomBananaChannelIf {
+class CustomAromaChannelNull : virtual public CustomAromaChannelIf {
  public:
-  virtual ~CustomBananaChannelNull() {}
+  virtual ~CustomAromaChannelNull() {}
   int ping() {
     int _return = 0;
     return _return;
@@ -74,25 +74,25 @@ class CustomBananaChannelNull : virtual public CustomBananaChannelIf {
 };
 
 
-class CustomBananaChannel_ping_args {
+class CustomAromaChannel_ping_args {
  public:
 
-  CustomBananaChannel_ping_args(const CustomBananaChannel_ping_args&);
-  CustomBananaChannel_ping_args& operator=(const CustomBananaChannel_ping_args&);
-  CustomBananaChannel_ping_args() {
+  CustomAromaChannel_ping_args(const CustomAromaChannel_ping_args&);
+  CustomAromaChannel_ping_args& operator=(const CustomAromaChannel_ping_args&);
+  CustomAromaChannel_ping_args() {
   }
 
-  virtual ~CustomBananaChannel_ping_args() throw();
+  virtual ~CustomAromaChannel_ping_args() throw();
 
-  bool operator == (const CustomBananaChannel_ping_args & /* rhs */) const
+  bool operator == (const CustomAromaChannel_ping_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const CustomBananaChannel_ping_args &rhs) const {
+  bool operator != (const CustomAromaChannel_ping_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const CustomBananaChannel_ping_args & ) const;
+  bool operator < (const CustomAromaChannel_ping_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -100,102 +100,102 @@ class CustomBananaChannel_ping_args {
 };
 
 
-class CustomBananaChannel_ping_pargs {
+class CustomAromaChannel_ping_pargs {
  public:
 
 
-  virtual ~CustomBananaChannel_ping_pargs() throw();
+  virtual ~CustomAromaChannel_ping_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _CustomBananaChannel_ping_result__isset {
-  _CustomBananaChannel_ping_result__isset() : success(false) {}
+typedef struct _CustomAromaChannel_ping_result__isset {
+  _CustomAromaChannel_ping_result__isset() : success(false) {}
   bool success :1;
-} _CustomBananaChannel_ping_result__isset;
+} _CustomAromaChannel_ping_result__isset;
 
-class CustomBananaChannel_ping_result {
+class CustomAromaChannel_ping_result {
  public:
 
-  CustomBananaChannel_ping_result(const CustomBananaChannel_ping_result&);
-  CustomBananaChannel_ping_result& operator=(const CustomBananaChannel_ping_result&);
-  CustomBananaChannel_ping_result() : success(0) {
+  CustomAromaChannel_ping_result(const CustomAromaChannel_ping_result&);
+  CustomAromaChannel_ping_result& operator=(const CustomAromaChannel_ping_result&);
+  CustomAromaChannel_ping_result() : success(0) {
   }
 
-  virtual ~CustomBananaChannel_ping_result() throw();
+  virtual ~CustomAromaChannel_ping_result() throw();
   int success;
 
-  _CustomBananaChannel_ping_result__isset __isset;
+  _CustomAromaChannel_ping_result__isset __isset;
 
   void __set_success(const int val);
 
-  bool operator == (const CustomBananaChannel_ping_result & rhs) const
+  bool operator == (const CustomAromaChannel_ping_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const CustomBananaChannel_ping_result &rhs) const {
+  bool operator != (const CustomAromaChannel_ping_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const CustomBananaChannel_ping_result & ) const;
+  bool operator < (const CustomAromaChannel_ping_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _CustomBananaChannel_ping_presult__isset {
-  _CustomBananaChannel_ping_presult__isset() : success(false) {}
+typedef struct _CustomAromaChannel_ping_presult__isset {
+  _CustomAromaChannel_ping_presult__isset() : success(false) {}
   bool success :1;
-} _CustomBananaChannel_ping_presult__isset;
+} _CustomAromaChannel_ping_presult__isset;
 
-class CustomBananaChannel_ping_presult {
+class CustomAromaChannel_ping_presult {
  public:
 
 
-  virtual ~CustomBananaChannel_ping_presult() throw();
+  virtual ~CustomAromaChannel_ping_presult() throw();
   int* success;
 
-  _CustomBananaChannel_ping_presult__isset __isset;
+  _CustomAromaChannel_ping_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _CustomBananaChannel_receiveMessage_args__isset {
-  _CustomBananaChannel_receiveMessage_args__isset() : request(false) {}
+typedef struct _CustomAromaChannel_receiveMessage_args__isset {
+  _CustomAromaChannel_receiveMessage_args__isset() : request(false) {}
   bool request :1;
-} _CustomBananaChannel_receiveMessage_args__isset;
+} _CustomAromaChannel_receiveMessage_args__isset;
 
-class CustomBananaChannel_receiveMessage_args {
+class CustomAromaChannel_receiveMessage_args {
  public:
 
-  CustomBananaChannel_receiveMessage_args(const CustomBananaChannel_receiveMessage_args&);
-  CustomBananaChannel_receiveMessage_args& operator=(const CustomBananaChannel_receiveMessage_args&);
-  CustomBananaChannel_receiveMessage_args() {
+  CustomAromaChannel_receiveMessage_args(const CustomAromaChannel_receiveMessage_args&);
+  CustomAromaChannel_receiveMessage_args& operator=(const CustomAromaChannel_receiveMessage_args&);
+  CustomAromaChannel_receiveMessage_args() {
   }
 
-  virtual ~CustomBananaChannel_receiveMessage_args() throw();
+  virtual ~CustomAromaChannel_receiveMessage_args() throw();
   ReceiveMessageRequest request;
 
-  _CustomBananaChannel_receiveMessage_args__isset __isset;
+  _CustomAromaChannel_receiveMessage_args__isset __isset;
 
   void __set_request(const ReceiveMessageRequest& val);
 
-  bool operator == (const CustomBananaChannel_receiveMessage_args & rhs) const
+  bool operator == (const CustomAromaChannel_receiveMessage_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const CustomBananaChannel_receiveMessage_args &rhs) const {
+  bool operator != (const CustomAromaChannel_receiveMessage_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const CustomBananaChannel_receiveMessage_args & ) const;
+  bool operator < (const CustomAromaChannel_receiveMessage_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -203,23 +203,23 @@ class CustomBananaChannel_receiveMessage_args {
 };
 
 
-class CustomBananaChannel_receiveMessage_pargs {
+class CustomAromaChannel_receiveMessage_pargs {
  public:
 
 
-  virtual ~CustomBananaChannel_receiveMessage_pargs() throw();
+  virtual ~CustomAromaChannel_receiveMessage_pargs() throw();
   const ReceiveMessageRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-class CustomBananaChannelClient : virtual public CustomBananaChannelIf {
+class CustomAromaChannelClient : virtual public CustomAromaChannelIf {
  public:
-  CustomBananaChannelClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  CustomAromaChannelClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  CustomBananaChannelClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  CustomAromaChannelClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -251,46 +251,46 @@ class CustomBananaChannelClient : virtual public CustomBananaChannelIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class CustomBananaChannelProcessor : public ::apache::thrift::TDispatchProcessor {
+class CustomAromaChannelProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  boost::shared_ptr<CustomBananaChannelIf> iface_;
+  boost::shared_ptr<CustomAromaChannelIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext);
  private:
-  typedef  void (CustomBananaChannelProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (CustomAromaChannelProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_ping(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_receiveMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
-  CustomBananaChannelProcessor(boost::shared_ptr<CustomBananaChannelIf> iface) :
+  CustomAromaChannelProcessor(boost::shared_ptr<CustomAromaChannelIf> iface) :
     iface_(iface) {
-    processMap_["ping"] = &CustomBananaChannelProcessor::process_ping;
-    processMap_["receiveMessage"] = &CustomBananaChannelProcessor::process_receiveMessage;
+    processMap_["ping"] = &CustomAromaChannelProcessor::process_ping;
+    processMap_["receiveMessage"] = &CustomAromaChannelProcessor::process_receiveMessage;
   }
 
-  virtual ~CustomBananaChannelProcessor() {}
+  virtual ~CustomAromaChannelProcessor() {}
 };
 
-class CustomBananaChannelProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class CustomAromaChannelProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  CustomBananaChannelProcessorFactory(const ::boost::shared_ptr< CustomBananaChannelIfFactory >& handlerFactory) :
+  CustomAromaChannelProcessorFactory(const ::boost::shared_ptr< CustomAromaChannelIfFactory >& handlerFactory) :
       handlerFactory_(handlerFactory) {}
 
   ::boost::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo);
 
  protected:
-  ::boost::shared_ptr< CustomBananaChannelIfFactory > handlerFactory_;
+  ::boost::shared_ptr< CustomAromaChannelIfFactory > handlerFactory_;
 };
 
-class CustomBananaChannelMultiface : virtual public CustomBananaChannelIf {
+class CustomAromaChannelMultiface : virtual public CustomAromaChannelIf {
  public:
-  CustomBananaChannelMultiface(std::vector<boost::shared_ptr<CustomBananaChannelIf> >& ifaces) : ifaces_(ifaces) {
+  CustomAromaChannelMultiface(std::vector<boost::shared_ptr<CustomAromaChannelIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~CustomBananaChannelMultiface() {}
+  virtual ~CustomAromaChannelMultiface() {}
  protected:
-  std::vector<boost::shared_ptr<CustomBananaChannelIf> > ifaces_;
-  CustomBananaChannelMultiface() {}
-  void add(boost::shared_ptr<CustomBananaChannelIf> iface) {
+  std::vector<boost::shared_ptr<CustomAromaChannelIf> > ifaces_;
+  CustomAromaChannelMultiface() {}
+  void add(boost::shared_ptr<CustomAromaChannelIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -317,12 +317,12 @@ class CustomBananaChannelMultiface : virtual public CustomBananaChannelIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class CustomBananaChannelConcurrentClient : virtual public CustomBananaChannelIf {
+class CustomAromaChannelConcurrentClient : virtual public CustomAromaChannelIf {
  public:
-  CustomBananaChannelConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  CustomAromaChannelConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  CustomBananaChannelConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  CustomAromaChannelConcurrentClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, boost::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -359,6 +359,6 @@ class CustomBananaChannelConcurrentClient : virtual public CustomBananaChannelIf
   #pragma warning( pop )
 #endif
 
-}}}} // namespace
+}}} // namespace
 
 #endif

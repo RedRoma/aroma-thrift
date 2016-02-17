@@ -9,20 +9,20 @@
 
 #include "AuthenticationService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
+namespace aroma { namespace thrift { namespace authentication { namespace service {
 
 class AuthenticationServiceConstants {
  public:
   AuthenticationServiceConstants();
 
   int SERVICE_PORT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
-   ::aroma::banana::thrift::LengthOfTime DEFAULT_TOKEN_LIFETIME;
+   ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+   ::tech::aroma::thrift::LengthOfTime DEFAULT_TOKEN_LIFETIME;
 };
 
 extern const AuthenticationServiceConstants g_AuthenticationService_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

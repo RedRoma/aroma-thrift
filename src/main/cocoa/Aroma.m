@@ -21,7 +21,7 @@
 
 #import "Aroma.h"
 
-@implementation Banana_LengthOfTime
+@implementation Aroma_LengthOfTime
 
 - (id) init
 {
@@ -31,7 +31,7 @@
   return self;
 }
 
-- (id) initWithUnit: (int) unit value: (Banana_long) value
+- (id) initWithUnit: (int) unit value: (Aroma_long) value
 {
   self = [super init];
   __unit = unit;
@@ -90,10 +90,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_LengthOfTime class]]) {
+  if (![anObject isKindOfClass:[Aroma_LengthOfTime class]]) {
     return NO;
   }
-  Banana_LengthOfTime *other = (Banana_LengthOfTime *)anObject;
+  Aroma_LengthOfTime *other = (Aroma_LengthOfTime *)anObject;
   if ((__unit_isset != other->__unit_isset) ||
       (__unit_isset && (__unit != other->__unit))) {
     return NO;
@@ -213,7 +213,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_LengthOfTime("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_LengthOfTime("];
   [ms appendString: @"unit:"];
   [ms appendFormat: @"%i", __unit];
   [ms appendString: @",value:"];
@@ -224,7 +224,7 @@
 
 @end
 
-@implementation Banana_Dimension
+@implementation Aroma_Dimension
 
 - (id) init
 {
@@ -234,7 +234,7 @@
   return self;
 }
 
-- (id) initWithWidth: (Banana_int) width height: (Banana_int) height
+- (id) initWithWidth: (Aroma_int) width height: (Aroma_int) height
 {
   self = [super init];
   __width = width;
@@ -293,10 +293,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Dimension class]]) {
+  if (![anObject isKindOfClass:[Aroma_Dimension class]]) {
     return NO;
   }
-  Banana_Dimension *other = (Banana_Dimension *)anObject;
+  Aroma_Dimension *other = (Aroma_Dimension *)anObject;
   if ((__width_isset != other->__width_isset) ||
       (__width_isset && (__width != other->__width))) {
     return NO;
@@ -416,7 +416,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Dimension("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_Dimension("];
   [ms appendString: @"width:"];
   [ms appendFormat: @"%i", __width];
   [ms appendString: @",height:"];
@@ -427,7 +427,7 @@
 
 @end
 
-@implementation Banana_Image
+@implementation Aroma_Image
 
 - (id) init
 {
@@ -437,7 +437,7 @@
   return self;
 }
 
-- (id) initWithImageType: (int) imageType data: (NSData *) data dimension: (Banana_Dimension *) dimension
+- (id) initWithImageType: (int) imageType data: (NSData *) data dimension: (Aroma_Dimension *) dimension
 {
   self = [super init];
   __imageType = imageType;
@@ -512,10 +512,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Image class]]) {
+  if (![anObject isKindOfClass:[Aroma_Image class]]) {
     return NO;
   }
-  Banana_Image *other = (Banana_Image *)anObject;
+  Aroma_Image *other = (Aroma_Image *)anObject;
   if ((__imageType_isset != other->__imageType_isset) ||
       (__imageType_isset && (__imageType != other->__imageType))) {
     return NO;
@@ -576,11 +576,11 @@
   __data_isset = NO;
 }
 
-- (Banana_Dimension *) dimension {
+- (Aroma_Dimension *) dimension {
   return [[__dimension retain_stub] autorelease_stub];
 }
 
-- (void) setDimension: (Banana_Dimension *) dimension {
+- (void) setDimension: (Aroma_Dimension *) dimension {
   [dimension retain_stub];
   [__dimension release_stub];
   __dimension = dimension;
@@ -630,7 +630,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          Banana_Dimension *fieldValue = [[Banana_Dimension alloc] init];
+          Aroma_Dimension *fieldValue = [[Aroma_Dimension alloc] init];
           [fieldValue read: inProtocol];
           [self setDimension: fieldValue];
           [fieldValue release_stub];
@@ -677,7 +677,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Image("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_Image("];
   [ms appendString: @"imageType:"];
   [ms appendFormat: @"%i", __imageType];
   [ms appendString: @",data:"];
@@ -690,7 +690,7 @@
 
 @end
 
-@implementation Banana_Message
+@implementation Aroma_Message
 
 - (id) init
 {
@@ -704,7 +704,7 @@
   return self;
 }
 
-- (id) initWithMessageId: (Banana_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Banana_timestamp) timeOfCreation timeMessageReceived: (Banana_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Banana_uuid) applicationId
+- (id) initWithMessageId: (Aroma_uuid) messageId body: (NSString *) body urgency: (int) urgency timeOfCreation: (Aroma_timestamp) timeOfCreation timeMessageReceived: (Aroma_timestamp) timeMessageReceived applicationName: (NSString *) applicationName hostname: (NSString *) hostname macAddress: (NSString *) macAddress isTruncated: (BOOL) isTruncated title: (NSString *) title applicationId: (Aroma_uuid) applicationId
 {
   self = [super init];
   __messageId = [messageId retain_stub];
@@ -907,10 +907,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Message class]]) {
+  if (![anObject isKindOfClass:[Aroma_Message class]]) {
     return NO;
   }
-  Banana_Message *other = (Banana_Message *)anObject;
+  Aroma_Message *other = (Aroma_Message *)anObject;
   if ((__messageId_isset != other->__messageId_isset) ||
       (__messageId_isset && ((__messageId || other->__messageId) && ![__messageId isEqual:other->__messageId]))) {
     return NO;
@@ -1377,7 +1377,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Message("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_Message("];
   [ms appendString: @"messageId:"];
   [ms appendFormat: @"\"%@\"", __messageId];
   [ms appendString: @",body:"];
@@ -1406,7 +1406,7 @@
 
 @end
 
-@implementation Banana_Organization
+@implementation Aroma_Organization
 
 - (id) init
 {
@@ -1418,7 +1418,7 @@
   return self;
 }
 
-- (id) initWithOrganizationId: (Banana_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Banana_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile
+- (id) initWithOrganizationId: (Aroma_uuid) organizationId organizationName: (NSString *) organizationName website: (NSString *) website logo: (Aroma_Image *) logo techStack: (NSString *) techStack owners: (NSMutableArray *) owners organizationEmail: (NSString *) organizationEmail stockMarketSymbol: (NSString *) stockMarketSymbol logoLink: (NSString *) logoLink industry: (int) industry tier: (int) tier organizationDescription: (NSString *) organizationDescription githubProfile: (NSString *) githubProfile
 {
   self = [super init];
   __organizationId = [organizationId retain_stub];
@@ -1653,10 +1653,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Organization class]]) {
+  if (![anObject isKindOfClass:[Aroma_Organization class]]) {
     return NO;
   }
-  Banana_Organization *other = (Banana_Organization *)anObject;
+  Aroma_Organization *other = (Aroma_Organization *)anObject;
   if ((__organizationId_isset != other->__organizationId_isset) ||
       (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
     return NO;
@@ -1791,11 +1791,11 @@
   __website_isset = NO;
 }
 
-- (Banana_Image *) logo {
+- (Aroma_Image *) logo {
   return [[__logo retain_stub] autorelease_stub];
 }
 
-- (void) setLogo: (Banana_Image *) logo {
+- (void) setLogo: (Aroma_Image *) logo {
   [logo retain_stub];
   [__logo release_stub];
   __logo = logo;
@@ -2034,7 +2034,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setLogo: fieldValue];
           [fieldValue release_stub];
@@ -2239,7 +2239,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Organization("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_Organization("];
   [ms appendString: @"organizationId:"];
   [ms appendFormat: @"\"%@\"", __organizationId];
   [ms appendString: @",organizationName:"];
@@ -2272,7 +2272,7 @@
 
 @end
 
-@implementation Banana_User
+@implementation Aroma_User
 
 - (id) init
 {
@@ -2285,7 +2285,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email userId: (Banana_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Banana_Image *) profileImage profileImageLink: (Banana_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Banana_timestamp) birthdate timeUserJoined: (Banana_timestamp) timeUserJoined
+- (id) initWithEmail: (NSString *) email userId: (Aroma_uuid) userId name: (NSString *) name roles: (NSMutableSet *) roles profileImage: (Aroma_Image *) profileImage profileImageLink: (Aroma_uuid) profileImageLink githubProfile: (NSString *) githubProfile firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName birthdate: (Aroma_timestamp) birthdate timeUserJoined: (Aroma_timestamp) timeUserJoined
 {
   self = [super init];
   __email = [email retain_stub];
@@ -2504,10 +2504,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_User class]]) {
+  if (![anObject isKindOfClass:[Aroma_User class]]) {
     return NO;
   }
-  Banana_User *other = (Banana_User *)anObject;
+  Aroma_User *other = (Aroma_User *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -2658,11 +2658,11 @@
   __roles_isset = NO;
 }
 
-- (Banana_Image *) profileImage {
+- (Aroma_Image *) profileImage {
   return [[__profileImage retain_stub] autorelease_stub];
 }
 
-- (void) setProfileImage: (Banana_Image *) profileImage {
+- (void) setProfileImage: (Aroma_Image *) profileImage {
   [profileImage retain_stub];
   [__profileImage release_stub];
   __profileImage = profileImage;
@@ -2877,7 +2877,7 @@
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setProfileImage: fieldValue];
           [fieldValue release_stub];
@@ -3050,7 +3050,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_User("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_User("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",userId:"];
@@ -3081,7 +3081,7 @@
 
 @end
 
-@implementation Banana_Application
+@implementation Aroma_Application
 
 - (id) init
 {
@@ -3095,7 +3095,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Banana_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Banana_uuid) applicationId totalMessagesSent: (Banana_long) totalMessagesSent icon: (Banana_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Banana_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Banana_timestamp) timeOfTokenExpiration applicationIconMediaId: (Banana_uuid) applicationIconMediaId
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -3330,10 +3330,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_Application class]]) {
+  if (![anObject isKindOfClass:[Aroma_Application class]]) {
     return NO;
   }
-  Banana_Application *other = (Banana_Application *)anObject;
+  Aroma_Application *other = (Aroma_Application *)anObject;
   if ((__owners_isset != other->__owners_isset) ||
       (__owners_isset && ((__owners || other->__owners) && ![__owners isEqual:other->__owners]))) {
     return NO;
@@ -3499,11 +3499,11 @@
   __totalMessagesSent_isset = NO;
 }
 
-- (Banana_Image *) icon {
+- (Aroma_Image *) icon {
   return [[__icon retain_stub] autorelease_stub];
 }
 
-- (void) setIcon: (Banana_Image *) icon {
+- (void) setIcon: (Aroma_Image *) icon {
   [icon retain_stub];
   [__icon release_stub];
   __icon = icon;
@@ -3722,7 +3722,7 @@
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setIcon: fieldValue];
           [fieldValue release_stub];
@@ -3915,7 +3915,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_Application("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_Application("];
   [ms appendString: @"owners:"];
   [ms appendFormat: @"%@", __owners];
   [ms appendString: @",timeOfProvisioning:"];
@@ -3948,7 +3948,7 @@
 
 @end
 
-@implementation Banana_ServiceAnnouncement
+@implementation Aroma_ServiceAnnouncement
 
 - (id) init
 {
@@ -3958,7 +3958,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message importance: (int) importance id: (Banana_uuid) id timeOfExpiration: (Banana_timestamp) timeOfExpiration
+- (id) initWithMessage: (NSString *) message importance: (int) importance id: (Aroma_uuid) id timeOfExpiration: (Aroma_timestamp) timeOfExpiration
 {
   self = [super init];
   __message = [message retain_stub];
@@ -4049,10 +4049,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[Banana_ServiceAnnouncement class]]) {
+  if (![anObject isKindOfClass:[Aroma_ServiceAnnouncement class]]) {
     return NO;
   }
-  Banana_ServiceAnnouncement *other = (Banana_ServiceAnnouncement *)anObject;
+  Aroma_ServiceAnnouncement *other = (Aroma_ServiceAnnouncement *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -4246,7 +4246,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"Banana_ServiceAnnouncement("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"Aroma_ServiceAnnouncement("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",importance:"];
@@ -4262,7 +4262,7 @@
 @end
 
 
-@implementation Banana_AromaConstants
+@implementation Aroma_AromaConstants
 + (void) initialize {
 }
 @end

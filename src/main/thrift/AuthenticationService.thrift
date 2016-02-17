@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.authentication.service
+namespace java  tech.aroma.thrift.authentication.service
 namespace cocoa AuthenticationService_
-namespace cpp   aroma.banana.thrift.authentication.service
+namespace cpp   aroma.thrift.authentication.service
 
 /*
  * Defined in this File is the Authentication Service API.
@@ -41,9 +41,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7026;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 /** The Default lifetime of a Token created by the Authentication Service. */
 const Aroma.LengthOfTime DEFAULT_TOKEN_LIFETIME = { "value" : 60, "unit" : Aroma.TimeUnit.DAYS };
@@ -114,7 +114,7 @@ struct VerifyTokenResponse
  * This Includes Application Tokens as well as User Tokens.
  * 
  * NOTE: This Service is for internal use only. It is designed to be called only by
- * the Banana Service and it's supporting services.
+ * Aroma and it's supporting services.
  */
 service AuthenticationService
 {

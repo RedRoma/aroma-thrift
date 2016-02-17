@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication {
+namespace aroma { namespace thrift { namespace authentication {
 
 int _kTokenTypeValues[] = {
   TokenType::APPLICATION,
@@ -619,11 +619,11 @@ void AromaAccount::__set_name(const std::string& val) {
   this->name = val;
 }
 
-void AromaAccount::__set_profileImage(const  ::aroma::banana::thrift::Image& val) {
+void AromaAccount::__set_profileImage(const  ::tech::aroma::thrift::Image& val) {
   this->profileImage = val;
 }
 
-void AromaAccount::__set_role(const  ::aroma::banana::thrift::Role::type val) {
+void AromaAccount::__set_role(const  ::tech::aroma::thrift::Role::type val) {
   this->role = val;
 __isset.role = true;
 }
@@ -685,7 +685,7 @@ uint32_t AromaAccount::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_I32) {
           int32_t ecast8;
           xfer += iprot->readI32(ecast8);
-          this->role = ( ::aroma::banana::thrift::Role::type)ecast8;
+          this->role = ( ::tech::aroma::thrift::Role::type)ecast8;
           this->__isset.role = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -1106,4 +1106,4 @@ void AuthenticationToken::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}} // namespace

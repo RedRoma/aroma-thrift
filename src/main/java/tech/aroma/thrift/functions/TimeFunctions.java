@@ -15,7 +15,7 @@
  */
 
  
-package tech.aroma.banana.thrift.functions;
+package tech.aroma.thrift.functions;
 
 
 import java.time.Duration;
@@ -23,8 +23,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.LengthOfTime;
-import tech.aroma.banana.thrift.TimeUnit;
+import tech.aroma.thrift.LengthOfTime;
+import tech.aroma.thrift.TimeUnit;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 import tech.sirwellington.alchemy.annotations.arguments.Required;
 

@@ -23,7 +23,7 @@
 
 #import "Events.h"
 
-@implementation BananaEvents_ApplicationTokenRenewed
+@implementation AromaEvents_ApplicationTokenRenewed
 
 - (id) init
 {
@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (AromaEvents_User) user applicationToken: (AromaEvents_ApplicationToken) applicationToken applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -142,10 +142,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_ApplicationTokenRenewed class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_ApplicationTokenRenewed class]]) {
     return NO;
   }
-  BananaEvents_ApplicationTokenRenewed *other = (BananaEvents_ApplicationTokenRenewed *)anObject;
+  AromaEvents_ApplicationTokenRenewed *other = (AromaEvents_ApplicationTokenRenewed *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -200,11 +200,11 @@
   __message_isset = NO;
 }
 
-- (Banana_User *) user {
+- (Aroma_User *) user {
   return [[__user retain_stub] autorelease_stub];
 }
 
-- (void) setUser: (Banana_User *) user {
+- (void) setUser: (Aroma_User *) user {
   [user retain_stub];
   [__user release_stub];
   __user = user;
@@ -309,7 +309,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setUser: fieldValue];
           [fieldValue release_stub];
@@ -398,7 +398,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationTokenRenewed("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_ApplicationTokenRenewed("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",user:"];
@@ -415,7 +415,7 @@
 
 @end
 
-@implementation BananaEvents_ApplicationTokenRegenerated
+@implementation AromaEvents_ApplicationTokenRegenerated
 
 - (id) init
 {
@@ -427,7 +427,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message user: (AromaEvents_User) user applicationToken: (AromaEvents_ApplicationToken) applicationToken applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -534,10 +534,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_ApplicationTokenRegenerated class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_ApplicationTokenRegenerated class]]) {
     return NO;
   }
-  BananaEvents_ApplicationTokenRegenerated *other = (BananaEvents_ApplicationTokenRegenerated *)anObject;
+  AromaEvents_ApplicationTokenRegenerated *other = (AromaEvents_ApplicationTokenRegenerated *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -592,11 +592,11 @@
   __message_isset = NO;
 }
 
-- (Banana_User *) user {
+- (Aroma_User *) user {
   return [[__user retain_stub] autorelease_stub];
 }
 
-- (void) setUser: (Banana_User *) user {
+- (void) setUser: (Aroma_User *) user {
   [user retain_stub];
   [__user release_stub];
   __user = user;
@@ -701,7 +701,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setUser: fieldValue];
           [fieldValue release_stub];
@@ -790,7 +790,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationTokenRegenerated("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_ApplicationTokenRegenerated("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",user:"];
@@ -807,7 +807,7 @@
 
 @end
 
-@implementation BananaEvents_ApplicationSentMessage
+@implementation AromaEvents_ApplicationSentMessage
 
 - (id) init
 {
@@ -819,7 +819,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message messageSentByApplication: (Banana_Message *) messageSentByApplication applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message messageSentByApplication: (Aroma_Message *) messageSentByApplication applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -910,10 +910,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_ApplicationSentMessage class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_ApplicationSentMessage class]]) {
     return NO;
   }
-  BananaEvents_ApplicationSentMessage *other = (BananaEvents_ApplicationSentMessage *)anObject;
+  AromaEvents_ApplicationSentMessage *other = (AromaEvents_ApplicationSentMessage *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -963,11 +963,11 @@
   __message_isset = NO;
 }
 
-- (Banana_Message *) messageSentByApplication {
+- (Aroma_Message *) messageSentByApplication {
   return [[__messageSentByApplication retain_stub] autorelease_stub];
 }
 
-- (void) setMessageSentByApplication: (Banana_Message *) messageSentByApplication {
+- (void) setMessageSentByApplication: (Aroma_Message *) messageSentByApplication {
   [messageSentByApplication retain_stub];
   [__messageSentByApplication release_stub];
   __messageSentByApplication = messageSentByApplication;
@@ -1051,7 +1051,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_Message *fieldValue = [[Banana_Message alloc] init];
+          Aroma_Message *fieldValue = [[Aroma_Message alloc] init];
           [fieldValue read: inProtocol];
           [self setMessageSentByApplication: fieldValue];
           [fieldValue release_stub];
@@ -1123,7 +1123,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_ApplicationSentMessage("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_ApplicationSentMessage("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",messageSentByApplication:"];
@@ -1138,7 +1138,7 @@
 
 @end
 
-@implementation BananaEvents_HealthCheckFailed
+@implementation AromaEvents_HealthCheckFailed
 
 - (id) init
 {
@@ -1150,7 +1150,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1241,10 +1241,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_HealthCheckFailed class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_HealthCheckFailed class]]) {
     return NO;
   }
-  BananaEvents_HealthCheckFailed *other = (BananaEvents_HealthCheckFailed *)anObject;
+  AromaEvents_HealthCheckFailed *other = (AromaEvents_HealthCheckFailed *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1452,7 +1452,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_HealthCheckFailed("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_HealthCheckFailed("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",hostname:"];
@@ -1467,7 +1467,7 @@
 
 @end
 
-@implementation BananaEvents_HealthCheckBackToNormal
+@implementation AromaEvents_HealthCheckBackToNormal
 
 - (id) init
 {
@@ -1479,7 +1479,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName
+- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1554,10 +1554,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_HealthCheckBackToNormal class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_HealthCheckBackToNormal class]]) {
     return NO;
   }
-  BananaEvents_HealthCheckBackToNormal *other = (BananaEvents_HealthCheckBackToNormal *)anObject;
+  AromaEvents_HealthCheckBackToNormal *other = (AromaEvents_HealthCheckBackToNormal *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1724,7 +1724,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_HealthCheckBackToNormal("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_HealthCheckBackToNormal("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
@@ -1737,7 +1737,7 @@
 
 @end
 
-@implementation BananaEvents_OwnerApprovedRequest
+@implementation AromaEvents_OwnerApprovedRequest
 
 - (id) init
 {
@@ -1749,7 +1749,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner
+- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName owner: (AromaEvents_User) owner
 {
   self = [super init];
   __message = [message retain_stub];
@@ -1840,10 +1840,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_OwnerApprovedRequest class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_OwnerApprovedRequest class]]) {
     return NO;
   }
-  BananaEvents_OwnerApprovedRequest *other = (BananaEvents_OwnerApprovedRequest *)anObject;
+  AromaEvents_OwnerApprovedRequest *other = (AromaEvents_OwnerApprovedRequest *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1935,11 +1935,11 @@
   __applicationName_isset = NO;
 }
 
-- (Banana_User *) owner {
+- (Aroma_User *) owner {
   return [[__owner retain_stub] autorelease_stub];
 }
 
-- (void) setOwner: (Banana_User *) owner {
+- (void) setOwner: (Aroma_User *) owner {
   [owner retain_stub];
   [__owner release_stub];
   __owner = owner;
@@ -1997,7 +1997,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setOwner: fieldValue];
           [fieldValue release_stub];
@@ -2053,7 +2053,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_OwnerApprovedRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_OwnerApprovedRequest("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
@@ -2068,7 +2068,7 @@
 
 @end
 
-@implementation BananaEvents_UserFollowedApplication
+@implementation AromaEvents_UserFollowedApplication
 
 - (id) init
 {
@@ -2080,7 +2080,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId follower: (BananaEvents_User) follower owner: (BananaEvents_User) owner
+- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId follower: (AromaEvents_User) follower owner: (AromaEvents_User) owner
 {
   self = [super init];
   __message = [message retain_stub];
@@ -2171,10 +2171,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_UserFollowedApplication class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_UserFollowedApplication class]]) {
     return NO;
   }
-  BananaEvents_UserFollowedApplication *other = (BananaEvents_UserFollowedApplication *)anObject;
+  AromaEvents_UserFollowedApplication *other = (AromaEvents_UserFollowedApplication *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -2245,11 +2245,11 @@
   __applicationId_isset = NO;
 }
 
-- (Banana_User *) follower {
+- (Aroma_User *) follower {
   return [[__follower retain_stub] autorelease_stub];
 }
 
-- (void) setFollower: (Banana_User *) follower {
+- (void) setFollower: (Aroma_User *) follower {
   [follower retain_stub];
   [__follower release_stub];
   __follower = follower;
@@ -2266,11 +2266,11 @@
   __follower_isset = NO;
 }
 
-- (Banana_User *) owner {
+- (Aroma_User *) owner {
   return [[__owner retain_stub] autorelease_stub];
 }
 
-- (void) setOwner: (Banana_User *) owner {
+- (void) setOwner: (Aroma_User *) owner {
   [owner retain_stub];
   [__owner release_stub];
   __owner = owner;
@@ -2320,7 +2320,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setFollower: fieldValue];
           [fieldValue release_stub];
@@ -2330,7 +2330,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setOwner: fieldValue];
           [fieldValue release_stub];
@@ -2386,7 +2386,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_UserFollowedApplication("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_UserFollowedApplication("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",applicationId:"];
@@ -2401,7 +2401,7 @@
 
 @end
 
-@implementation BananaEvents_GeneralEvent
+@implementation AromaEvents_GeneralEvent
 
 - (id) init
 {
@@ -2411,7 +2411,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (BananaEvents_timestamp) timestamp
+- (id) initWithApplicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (AromaEvents_timestamp) timestamp
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -2502,10 +2502,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_GeneralEvent class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_GeneralEvent class]]) {
     return NO;
   }
-  BananaEvents_GeneralEvent *other = (BananaEvents_GeneralEvent *)anObject;
+  AromaEvents_GeneralEvent *other = (AromaEvents_GeneralEvent *)anObject;
   if ((__applicationId_isset != other->__applicationId_isset) ||
       (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
@@ -2706,7 +2706,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_GeneralEvent("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_GeneralEvent("];
   [ms appendString: @"applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",applicationName:"];
@@ -2721,7 +2721,7 @@
 
 @end
 
-@implementation BananaEvents_EventType
+@implementation AromaEvents_EventType
 
 - (id) init
 {
@@ -2731,7 +2731,7 @@
   return self;
 }
 
-- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest generalEvent: (BananaEvents_GeneralEvent *) generalEvent userFollowedApplication: (BananaEvents_UserFollowedApplication *) userFollowedApplication
+- (id) initWithHealthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest generalEvent: (AromaEvents_GeneralEvent *) generalEvent userFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication
 {
   self = [super init];
   __healthCheckFailed = [healthCheckFailed retain_stub];
@@ -2886,10 +2886,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_EventType class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_EventType class]]) {
     return NO;
   }
-  BananaEvents_EventType *other = (BananaEvents_EventType *)anObject;
+  AromaEvents_EventType *other = (AromaEvents_EventType *)anObject;
   if ((__healthCheckFailed_isset != other->__healthCheckFailed_isset) ||
       (__healthCheckFailed_isset && ((__healthCheckFailed || other->__healthCheckFailed) && ![__healthCheckFailed isEqual:other->__healthCheckFailed]))) {
     return NO;
@@ -2938,11 +2938,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEvents_HealthCheckFailed *) healthCheckFailed {
+- (AromaEvents_HealthCheckFailed *) healthCheckFailed {
   return [[__healthCheckFailed retain_stub] autorelease_stub];
 }
 
-- (void) setHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed {
+- (void) setHealthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed {
   [healthCheckFailed retain_stub];
   [__healthCheckFailed release_stub];
   __healthCheckFailed = healthCheckFailed;
@@ -2959,11 +2959,11 @@
   __healthCheckFailed_isset = NO;
 }
 
-- (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
+- (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
   return [[__healthCheckBackToNormal retain_stub] autorelease_stub];
 }
 
-- (void) setHealthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
+- (void) setHealthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal {
   [healthCheckBackToNormal retain_stub];
   [__healthCheckBackToNormal release_stub];
   __healthCheckBackToNormal = healthCheckBackToNormal;
@@ -2980,11 +2980,11 @@
   __healthCheckBackToNormal_isset = NO;
 }
 
-- (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
+- (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
   return [[__applicationTokenRenewed retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
+- (void) setApplicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed {
   [applicationTokenRenewed retain_stub];
   [__applicationTokenRenewed release_stub];
   __applicationTokenRenewed = applicationTokenRenewed;
@@ -3001,11 +3001,11 @@
   __applicationTokenRenewed_isset = NO;
 }
 
-- (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+- (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
   return [[__applicationTokenRegenerated retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
+- (void) setApplicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated {
   [applicationTokenRegenerated retain_stub];
   [__applicationTokenRegenerated release_stub];
   __applicationTokenRegenerated = applicationTokenRegenerated;
@@ -3022,11 +3022,11 @@
   __applicationTokenRegenerated_isset = NO;
 }
 
-- (BananaEvents_ApplicationSentMessage *) applicationSentMessage {
+- (AromaEvents_ApplicationSentMessage *) applicationSentMessage {
   return [[__applicationSentMessage retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage {
+- (void) setApplicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage {
   [applicationSentMessage retain_stub];
   [__applicationSentMessage release_stub];
   __applicationSentMessage = applicationSentMessage;
@@ -3043,11 +3043,11 @@
   __applicationSentMessage_isset = NO;
 }
 
-- (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
+- (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
   return [[__ownerApprovedRequest retain_stub] autorelease_stub];
 }
 
-- (void) setOwnerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
+- (void) setOwnerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest {
   [ownerApprovedRequest retain_stub];
   [__ownerApprovedRequest release_stub];
   __ownerApprovedRequest = ownerApprovedRequest;
@@ -3064,11 +3064,11 @@
   __ownerApprovedRequest_isset = NO;
 }
 
-- (BananaEvents_GeneralEvent *) generalEvent {
+- (AromaEvents_GeneralEvent *) generalEvent {
   return [[__generalEvent retain_stub] autorelease_stub];
 }
 
-- (void) setGeneralEvent: (BananaEvents_GeneralEvent *) generalEvent {
+- (void) setGeneralEvent: (AromaEvents_GeneralEvent *) generalEvent {
   [generalEvent retain_stub];
   [__generalEvent release_stub];
   __generalEvent = generalEvent;
@@ -3085,11 +3085,11 @@
   __generalEvent_isset = NO;
 }
 
-- (BananaEvents_UserFollowedApplication *) userFollowedApplication {
+- (AromaEvents_UserFollowedApplication *) userFollowedApplication {
   return [[__userFollowedApplication retain_stub] autorelease_stub];
 }
 
-- (void) setUserFollowedApplication: (BananaEvents_UserFollowedApplication *) userFollowedApplication {
+- (void) setUserFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication {
   [userFollowedApplication retain_stub];
   [__userFollowedApplication release_stub];
   __userFollowedApplication = userFollowedApplication;
@@ -3123,7 +3123,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_HealthCheckFailed *fieldValue = [[BananaEvents_HealthCheckFailed alloc] init];
+          AromaEvents_HealthCheckFailed *fieldValue = [[AromaEvents_HealthCheckFailed alloc] init];
           [fieldValue read: inProtocol];
           [self setHealthCheckFailed: fieldValue];
           [fieldValue release_stub];
@@ -3133,7 +3133,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_HealthCheckBackToNormal *fieldValue = [[BananaEvents_HealthCheckBackToNormal alloc] init];
+          AromaEvents_HealthCheckBackToNormal *fieldValue = [[AromaEvents_HealthCheckBackToNormal alloc] init];
           [fieldValue read: inProtocol];
           [self setHealthCheckBackToNormal: fieldValue];
           [fieldValue release_stub];
@@ -3143,7 +3143,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_ApplicationTokenRenewed *fieldValue = [[BananaEvents_ApplicationTokenRenewed alloc] init];
+          AromaEvents_ApplicationTokenRenewed *fieldValue = [[AromaEvents_ApplicationTokenRenewed alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationTokenRenewed: fieldValue];
           [fieldValue release_stub];
@@ -3153,7 +3153,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_ApplicationTokenRegenerated *fieldValue = [[BananaEvents_ApplicationTokenRegenerated alloc] init];
+          AromaEvents_ApplicationTokenRegenerated *fieldValue = [[AromaEvents_ApplicationTokenRegenerated alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationTokenRegenerated: fieldValue];
           [fieldValue release_stub];
@@ -3163,7 +3163,7 @@
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_ApplicationSentMessage *fieldValue = [[BananaEvents_ApplicationSentMessage alloc] init];
+          AromaEvents_ApplicationSentMessage *fieldValue = [[AromaEvents_ApplicationSentMessage alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationSentMessage: fieldValue];
           [fieldValue release_stub];
@@ -3173,7 +3173,7 @@
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_OwnerApprovedRequest *fieldValue = [[BananaEvents_OwnerApprovedRequest alloc] init];
+          AromaEvents_OwnerApprovedRequest *fieldValue = [[AromaEvents_OwnerApprovedRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setOwnerApprovedRequest: fieldValue];
           [fieldValue release_stub];
@@ -3183,7 +3183,7 @@
         break;
       case 7:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_GeneralEvent *fieldValue = [[BananaEvents_GeneralEvent alloc] init];
+          AromaEvents_GeneralEvent *fieldValue = [[AromaEvents_GeneralEvent alloc] init];
           [fieldValue read: inProtocol];
           [self setGeneralEvent: fieldValue];
           [fieldValue release_stub];
@@ -3193,7 +3193,7 @@
         break;
       case 8:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_UserFollowedApplication *fieldValue = [[BananaEvents_UserFollowedApplication alloc] init];
+          AromaEvents_UserFollowedApplication *fieldValue = [[AromaEvents_UserFollowedApplication alloc] init];
           [fieldValue read: inProtocol];
           [self setUserFollowedApplication: fieldValue];
           [fieldValue release_stub];
@@ -3277,7 +3277,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_EventType("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_EventType("];
   [ms appendString: @"healthCheckFailed:"];
   [ms appendFormat: @"%@", __healthCheckFailed];
   [ms appendString: @",healthCheckBackToNormal:"];
@@ -3300,7 +3300,7 @@
 
 @end
 
-@implementation BananaEvents_Event
+@implementation AromaEvents_Event
 
 - (id) init
 {
@@ -3310,7 +3310,7 @@
   return self;
 }
 
-- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (BananaEvents_uuid) eventId
+- (id) initWithEventType: (AromaEvents_EventType *) eventType timestamp: (AromaEvents_timestamp) timestamp eventId: (AromaEvents_uuid) eventId
 {
   self = [super init];
   __eventType = [eventType retain_stub];
@@ -3385,10 +3385,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEvents_Event class]]) {
+  if (![anObject isKindOfClass:[AromaEvents_Event class]]) {
     return NO;
   }
-  BananaEvents_Event *other = (BananaEvents_Event *)anObject;
+  AromaEvents_Event *other = (AromaEvents_Event *)anObject;
   if ((__eventType_isset != other->__eventType_isset) ||
       (__eventType_isset && ((__eventType || other->__eventType) && ![__eventType isEqual:other->__eventType]))) {
     return NO;
@@ -3411,11 +3411,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEvents_EventType *) eventType {
+- (AromaEvents_EventType *) eventType {
   return [[__eventType retain_stub] autorelease_stub];
 }
 
-- (void) setEventType: (BananaEvents_EventType *) eventType {
+- (void) setEventType: (AromaEvents_EventType *) eventType {
   [eventType retain_stub];
   [__eventType release_stub];
   __eventType = eventType;
@@ -3487,7 +3487,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaEvents_EventType *fieldValue = [[BananaEvents_EventType alloc] init];
+          AromaEvents_EventType *fieldValue = [[AromaEvents_EventType alloc] init];
           [fieldValue read: inProtocol];
           [self setEventType: fieldValue];
           [fieldValue release_stub];
@@ -3550,7 +3550,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEvents_Event("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_Event("];
   [ms appendString: @"eventType:"];
   [ms appendFormat: @"%@", __eventType];
   [ms appendString: @",timestamp:"];
@@ -3564,7 +3564,7 @@
 @end
 
 
-@implementation BananaEvents_EventsConstants
+@implementation AromaEvents_EventsConstants
 + (void) initialize {
 }
 @end

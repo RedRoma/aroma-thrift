@@ -27,7 +27,7 @@
 
 #import "AromaService.h"
 
-@implementation BananaService_CheckExistsRequest
+@implementation AromaService_CheckExistsRequest
 
 - (id) init
 {
@@ -80,10 +80,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_CheckExistsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_CheckExistsRequest class]]) {
     return NO;
   }
-  BananaService_CheckExistsRequest *other = (BananaService_CheckExistsRequest *)anObject;
+  AromaService_CheckExistsRequest *other = (AromaService_CheckExistsRequest *)anObject;
   if ((__emailAddress_isset != other->__emailAddress_isset) ||
       (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
     return NO;
@@ -168,7 +168,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_CheckExistsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_CheckExistsRequest("];
   [ms appendString: @"emailAddress:"];
   [ms appendFormat: @"\"%@\"", __emailAddress];
   [ms appendString: @")"];
@@ -177,7 +177,7 @@
 
 @end
 
-@implementation BananaService_CheckExistsResponse
+@implementation AromaService_CheckExistsResponse
 
 - (id) init
 {
@@ -246,10 +246,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_CheckExistsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_CheckExistsResponse class]]) {
     return NO;
   }
-  BananaService_CheckExistsResponse *other = (BananaService_CheckExistsResponse *)anObject;
+  AromaService_CheckExistsResponse *other = (AromaService_CheckExistsResponse *)anObject;
   if ((__exists_isset != other->__exists_isset) ||
       (__exists_isset && (__exists != other->__exists))) {
     return NO;
@@ -368,7 +368,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_CheckExistsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_CheckExistsResponse("];
   [ms appendString: @"exists:"];
   [ms appendFormat: @"%i", __exists];
   [ms appendString: @",message:"];
@@ -379,7 +379,7 @@
 
 @end
 
-@implementation BananaService_DeleteApplicationRequest
+@implementation AromaService_DeleteApplicationRequest
 
 - (id) init
 {
@@ -389,7 +389,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -448,10 +448,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DeleteApplicationRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_DeleteApplicationRequest class]]) {
     return NO;
   }
-  BananaService_DeleteApplicationRequest *other = (BananaService_DeleteApplicationRequest *)anObject;
+  AromaService_DeleteApplicationRequest *other = (AromaService_DeleteApplicationRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -579,7 +579,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteApplicationRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteApplicationRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
@@ -590,7 +590,7 @@
 
 @end
 
-@implementation BananaService_DeleteApplicationResponse
+@implementation AromaService_DeleteApplicationResponse
 
 - (id) init
 {
@@ -645,10 +645,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DeleteApplicationResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_DeleteApplicationResponse class]]) {
     return NO;
   }
-  BananaService_DeleteApplicationResponse *other = (BananaService_DeleteApplicationResponse *)anObject;
+  AromaService_DeleteApplicationResponse *other = (AromaService_DeleteApplicationResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -733,7 +733,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteApplicationResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteApplicationResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -742,7 +742,7 @@
 
 @end
 
-@implementation BananaService_DeleteMessageRequest
+@implementation AromaService_DeleteMessageRequest
 
 - (id) init
 {
@@ -756,7 +756,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds deleteAll: (BOOL) deleteAll
 {
   self = [super init];
   __token = [token retain_stub];
@@ -863,10 +863,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DeleteMessageRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_DeleteMessageRequest class]]) {
     return NO;
   }
-  BananaService_DeleteMessageRequest *other = (BananaService_DeleteMessageRequest *)anObject;
+  AromaService_DeleteMessageRequest *other = (AromaService_DeleteMessageRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -1128,7 +1128,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteMessageRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",messageId:"];
@@ -1145,7 +1145,7 @@
 
 @end
 
-@implementation BananaService_DeleteMessageResponse
+@implementation AromaService_DeleteMessageResponse
 
 - (id) init
 {
@@ -1157,7 +1157,7 @@
   return self;
 }
 
-- (id) initWithMessagesDeleted: (BananaService_int) messagesDeleted
+- (id) initWithMessagesDeleted: (AromaService_int) messagesDeleted
 {
   self = [super init];
   __messagesDeleted = messagesDeleted;
@@ -1200,10 +1200,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DeleteMessageResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_DeleteMessageResponse class]]) {
     return NO;
   }
-  BananaService_DeleteMessageResponse *other = (BananaService_DeleteMessageResponse *)anObject;
+  AromaService_DeleteMessageResponse *other = (AromaService_DeleteMessageResponse *)anObject;
   if ((__messagesDeleted_isset != other->__messagesDeleted_isset) ||
       (__messagesDeleted_isset && (__messagesDeleted != other->__messagesDeleted))) {
     return NO;
@@ -1281,7 +1281,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessageResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteMessageResponse("];
   [ms appendString: @"messagesDeleted:"];
   [ms appendFormat: @"%i", __messagesDeleted];
   [ms appendString: @")"];
@@ -1290,7 +1290,7 @@
 
 @end
 
-@implementation BananaService_DismissMessageRequest
+@implementation AromaService_DismissMessageRequest
 
 - (id) init
 {
@@ -1304,7 +1304,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId messageIds: (NSMutableArray *) messageIds dismissAll: (BOOL) dismissAll
 {
   self = [super init];
   __token = [token retain_stub];
@@ -1411,10 +1411,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DismissMessageRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_DismissMessageRequest class]]) {
     return NO;
   }
-  BananaService_DismissMessageRequest *other = (BananaService_DismissMessageRequest *)anObject;
+  AromaService_DismissMessageRequest *other = (AromaService_DismissMessageRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -1676,7 +1676,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DismissMessageRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",messageId:"];
@@ -1693,7 +1693,7 @@
 
 @end
 
-@implementation BananaService_DismissMessageResponse
+@implementation AromaService_DismissMessageResponse
 
 - (id) init
 {
@@ -1705,7 +1705,7 @@
   return self;
 }
 
-- (id) initWithMessagesDismissed: (BananaService_int) messagesDismissed
+- (id) initWithMessagesDismissed: (AromaService_int) messagesDismissed
 {
   self = [super init];
   __messagesDismissed = messagesDismissed;
@@ -1748,10 +1748,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DismissMessageResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_DismissMessageResponse class]]) {
     return NO;
   }
-  BananaService_DismissMessageResponse *other = (BananaService_DismissMessageResponse *)anObject;
+  AromaService_DismissMessageResponse *other = (AromaService_DismissMessageResponse *)anObject;
   if ((__messagesDismissed_isset != other->__messagesDismissed_isset) ||
       (__messagesDismissed_isset && (__messagesDismissed != other->__messagesDismissed))) {
     return NO;
@@ -1829,7 +1829,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessageResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DismissMessageResponse("];
   [ms appendString: @"messagesDismissed:"];
   [ms appendFormat: @"%i", __messagesDismissed];
   [ms appendString: @")"];
@@ -1838,7 +1838,7 @@
 
 @end
 
-@implementation BananaService_ProvisionApplicationRequest
+@implementation AromaService_ProvisionApplicationRequest
 
 - (id) init
 {
@@ -1852,7 +1852,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (BananaService_uuid) organizationId icon: (BananaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName programmingLanguage: (int) programmingLanguage organizationId: (AromaService_uuid) organizationId icon: (AromaService_Image) icon owners: (NSMutableSet *) owners applicationDescription: (NSString *) applicationDescription tier: (int) tier
 {
   self = [super init];
   __token = [token retain_stub];
@@ -2007,10 +2007,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_ProvisionApplicationRequest class]]) {
     return NO;
   }
-  BananaService_ProvisionApplicationRequest *other = (BananaService_ProvisionApplicationRequest *)anObject;
+  AromaService_ProvisionApplicationRequest *other = (AromaService_ProvisionApplicationRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -2137,11 +2137,11 @@
   __organizationId_isset = NO;
 }
 
-- (Banana_Image *) icon {
+- (Aroma_Image *) icon {
   return [[__icon retain_stub] autorelease_stub];
 }
 
-- (void) setIcon: (Banana_Image *) icon {
+- (void) setIcon: (Aroma_Image *) icon {
   [icon retain_stub];
   [__icon release_stub];
   __icon = icon;
@@ -2268,7 +2268,7 @@
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setIcon: fieldValue];
           [fieldValue release_stub];
@@ -2391,7 +2391,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_ProvisionApplicationRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
@@ -2414,7 +2414,7 @@
 
 @end
 
-@implementation BananaService_ProvisionApplicationResponse
+@implementation AromaService_ProvisionApplicationResponse
 
 - (id) init
 {
@@ -2424,7 +2424,7 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken applicationInfo: (BananaService_Application) applicationInfo
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken applicationInfo: (AromaService_Application) applicationInfo
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
@@ -2483,10 +2483,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplicationResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_ProvisionApplicationResponse class]]) {
     return NO;
   }
-  BananaService_ProvisionApplicationResponse *other = (BananaService_ProvisionApplicationResponse *)anObject;
+  AromaService_ProvisionApplicationResponse *other = (AromaService_ProvisionApplicationResponse *)anObject;
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
@@ -2526,11 +2526,11 @@
   __applicationToken_isset = NO;
 }
 
-- (Banana_Application *) applicationInfo {
+- (Aroma_Application *) applicationInfo {
   return [[__applicationInfo retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationInfo: (Banana_Application *) applicationInfo {
+- (void) setApplicationInfo: (Aroma_Application *) applicationInfo {
   [applicationInfo retain_stub];
   [__applicationInfo release_stub];
   __applicationInfo = applicationInfo;
@@ -2574,7 +2574,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          Aroma_Application *fieldValue = [[Aroma_Application alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationInfo: fieldValue];
           [fieldValue release_stub];
@@ -2616,7 +2616,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplicationResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_ProvisionApplicationResponse("];
   [ms appendString: @"applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @",applicationInfo:"];
@@ -2627,7 +2627,7 @@
 
 @end
 
-@implementation BananaService_RegenerateApplicationTokenRequest
+@implementation AromaService_RegenerateApplicationTokenRequest
 
 - (id) init
 {
@@ -2637,7 +2637,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -2696,10 +2696,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegenerateApplicationTokenRequest class]]) {
     return NO;
   }
-  BananaService_RegenerateApplicationTokenRequest *other = (BananaService_RegenerateApplicationTokenRequest *)anObject;
+  AromaService_RegenerateApplicationTokenRequest *other = (AromaService_RegenerateApplicationTokenRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -2827,7 +2827,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateApplicationTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
@@ -2838,7 +2838,7 @@
 
 @end
 
-@implementation BananaService_RegenerateApplicationTokenResponse
+@implementation AromaService_RegenerateApplicationTokenResponse
 
 - (id) init
 {
@@ -2848,7 +2848,7 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (BananaService_ApplicationToken) applicationToken
+- (id) initWithApplicationToken: (AromaService_ApplicationToken) applicationToken
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
@@ -2891,10 +2891,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegenerateApplicationTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegenerateApplicationTokenResponse class]]) {
     return NO;
   }
-  BananaService_RegenerateApplicationTokenResponse *other = (BananaService_RegenerateApplicationTokenResponse *)anObject;
+  AromaService_RegenerateApplicationTokenResponse *other = (AromaService_RegenerateApplicationTokenResponse *)anObject;
   if ((__applicationToken_isset != other->__applicationToken_isset) ||
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
@@ -2981,7 +2981,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateApplicationTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateApplicationTokenResponse("];
   [ms appendString: @"applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
   [ms appendString: @")"];
@@ -2990,7 +2990,7 @@
 
 @end
 
-@implementation BananaService_RegisterHealthCheckRequest
+@implementation AromaService_RegisterHealthCheckRequest
 
 - (id) init
 {
@@ -3000,7 +3000,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token endpoint: (BananaService_Endpoint) endpoint
+- (id) initWithToken: (AromaService_UserToken) token endpoint: (AromaService_Endpoint) endpoint
 {
   self = [super init];
   __token = [token retain_stub];
@@ -3059,10 +3059,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegisterHealthCheckRequest class]]) {
     return NO;
   }
-  BananaService_RegisterHealthCheckRequest *other = (BananaService_RegisterHealthCheckRequest *)anObject;
+  AromaService_RegisterHealthCheckRequest *other = (AromaService_RegisterHealthCheckRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -3102,11 +3102,11 @@
   __token_isset = NO;
 }
 
-- (BananaEndpoint_Endpoint *) endpoint {
+- (AromaEndpoint_Endpoint *) endpoint {
   return [[__endpoint retain_stub] autorelease_stub];
 }
 
-- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint {
+- (void) setEndpoint: (AromaEndpoint_Endpoint *) endpoint {
   [endpoint retain_stub];
   [__endpoint release_stub];
   __endpoint = endpoint;
@@ -3150,7 +3150,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_Endpoint *fieldValue = [[BananaEndpoint_Endpoint alloc] init];
+          AromaEndpoint_Endpoint *fieldValue = [[AromaEndpoint_Endpoint alloc] init];
           [fieldValue read: inProtocol];
           [self setEndpoint: fieldValue];
           [fieldValue release_stub];
@@ -3192,7 +3192,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterHealthCheckRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",endpoint:"];
@@ -3203,7 +3203,7 @@
 
 @end
 
-@implementation BananaService_RegisterHealthCheckResponse
+@implementation AromaService_RegisterHealthCheckResponse
 
 - (id) init
 {
@@ -3272,10 +3272,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheckResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegisterHealthCheckResponse class]]) {
     return NO;
   }
-  BananaService_RegisterHealthCheckResponse *other = (BananaService_RegisterHealthCheckResponse *)anObject;
+  AromaService_RegisterHealthCheckResponse *other = (AromaService_RegisterHealthCheckResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -3401,7 +3401,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheckResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterHealthCheckResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",healthCheckToken:"];
@@ -3412,7 +3412,7 @@
 
 @end
 
-@implementation BananaService_RemoveSavedChannelRequest
+@implementation AromaService_RemoveSavedChannelRequest
 
 - (id) init
 {
@@ -3422,7 +3422,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel
 {
   self = [super init];
   __token = [token retain_stub];
@@ -3481,10 +3481,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannelRequest class]]) {
     return NO;
   }
-  BananaService_RemoveSavedChannelRequest *other = (BananaService_RemoveSavedChannelRequest *)anObject;
+  AromaService_RemoveSavedChannelRequest *other = (AromaService_RemoveSavedChannelRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -3524,11 +3524,11 @@
   __token_isset = NO;
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -3572,7 +3572,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -3614,7 +3614,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannelRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",channel:"];
@@ -3625,7 +3625,7 @@
 
 @end
 
-@implementation BananaService_RemoveSavedChannelResponse
+@implementation AromaService_RemoveSavedChannelResponse
 
 - (id) init
 {
@@ -3635,7 +3635,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
+- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel
 {
   self = [super init];
   __message = [message retain_stub];
@@ -3694,10 +3694,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannelResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannelResponse class]]) {
     return NO;
   }
-  BananaService_RemoveSavedChannelResponse *other = (BananaService_RemoveSavedChannelResponse *)anObject;
+  AromaService_RemoveSavedChannelResponse *other = (AromaService_RemoveSavedChannelResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -3737,11 +3737,11 @@
   __message_isset = NO;
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -3783,7 +3783,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -3825,7 +3825,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannelResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannelResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",channel:"];
@@ -3836,7 +3836,7 @@
 
 @end
 
-@implementation BananaService_RenewApplicationTokenRequest
+@implementation AromaService_RenewApplicationTokenRequest
 
 - (id) init
 {
@@ -3846,7 +3846,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationToken: (BananaService_ApplicationToken) applicationToken newLifetime: (Banana_LengthOfTime *) newLifetime applicationId: (BananaService_uuid) applicationId
+- (id) initWithToken: (AromaService_UserToken) token applicationToken: (AromaService_ApplicationToken) applicationToken newLifetime: (Aroma_LengthOfTime *) newLifetime applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -3937,10 +3937,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_RenewApplicationTokenRequest class]]) {
     return NO;
   }
-  BananaService_RenewApplicationTokenRequest *other = (BananaService_RenewApplicationTokenRequest *)anObject;
+  AromaService_RenewApplicationTokenRequest *other = (AromaService_RenewApplicationTokenRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -4011,11 +4011,11 @@
   __applicationToken_isset = NO;
 }
 
-- (Banana_LengthOfTime *) newLifetime {
+- (Aroma_LengthOfTime *) newLifetime {
   return [[__newLifetime retain_stub] autorelease_stub];
 }
 
-- (void) setNewLifetime: (Banana_LengthOfTime *) newLifetime {
+- (void) setNewLifetime: (Aroma_LengthOfTime *) newLifetime {
   [newLifetime retain_stub];
   [__newLifetime release_stub];
   __newLifetime = newLifetime;
@@ -4090,7 +4090,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
+          Aroma_LengthOfTime *fieldValue = [[Aroma_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
           [self setNewLifetime: fieldValue];
           [fieldValue release_stub];
@@ -4154,7 +4154,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationToken:"];
@@ -4169,7 +4169,7 @@
 
 @end
 
-@implementation BananaService_RenewApplicationTokenResponse
+@implementation AromaService_RenewApplicationTokenResponse
 
 - (id) init
 {
@@ -4179,7 +4179,7 @@
   return self;
 }
 
-- (id) initWithServiceToken: (BananaService_ApplicationToken) serviceToken
+- (id) initWithServiceToken: (AromaService_ApplicationToken) serviceToken
 {
   self = [super init];
   __serviceToken = [serviceToken retain_stub];
@@ -4222,10 +4222,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationTokenResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_RenewApplicationTokenResponse class]]) {
     return NO;
   }
-  BananaService_RenewApplicationTokenResponse *other = (BananaService_RenewApplicationTokenResponse *)anObject;
+  AromaService_RenewApplicationTokenResponse *other = (AromaService_RenewApplicationTokenResponse *)anObject;
   if ((__serviceToken_isset != other->__serviceToken_isset) ||
       (__serviceToken_isset && ((__serviceToken || other->__serviceToken) && ![__serviceToken isEqual:other->__serviceToken]))) {
     return NO;
@@ -4312,7 +4312,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationTokenResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationTokenResponse("];
   [ms appendString: @"serviceToken:"];
   [ms appendFormat: @"%@", __serviceToken];
   [ms appendString: @")"];
@@ -4321,7 +4321,7 @@
 
 @end
 
-@implementation BananaService_SaveChannelRequest
+@implementation AromaService_SaveChannelRequest
 
 - (id) init
 {
@@ -4331,7 +4331,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel
 {
   self = [super init];
   __token = [token retain_stub];
@@ -4390,10 +4390,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SaveChannelRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_SaveChannelRequest class]]) {
     return NO;
   }
-  BananaService_SaveChannelRequest *other = (BananaService_SaveChannelRequest *)anObject;
+  AromaService_SaveChannelRequest *other = (AromaService_SaveChannelRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -4433,11 +4433,11 @@
   __token_isset = NO;
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -4481,7 +4481,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -4523,7 +4523,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannelRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",channel:"];
@@ -4534,7 +4534,7 @@
 
 @end
 
-@implementation BananaService_SaveChannelResponse
+@implementation AromaService_SaveChannelResponse
 
 - (id) init
 {
@@ -4544,7 +4544,7 @@
   return self;
 }
 
-- (id) initWithMessage: (NSString *) message channel: (BananaService_BananaChannel) channel
+- (id) initWithMessage: (NSString *) message channel: (AromaService_AromaChannel) channel
 {
   self = [super init];
   __message = [message retain_stub];
@@ -4603,10 +4603,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SaveChannelResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_SaveChannelResponse class]]) {
     return NO;
   }
-  BananaService_SaveChannelResponse *other = (BananaService_SaveChannelResponse *)anObject;
+  AromaService_SaveChannelResponse *other = (AromaService_SaveChannelResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -4646,11 +4646,11 @@
   __message_isset = NO;
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -4692,7 +4692,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -4734,7 +4734,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannelResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannelResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",channel:"];
@@ -4745,7 +4745,7 @@
 
 @end
 
-@implementation BananaService_SignInRequest
+@implementation AromaService_SignInRequest
 
 - (id) init
 {
@@ -4814,10 +4814,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignInRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignInRequest class]]) {
     return NO;
   }
-  BananaService_SignInRequest *other = (BananaService_SignInRequest *)anObject;
+  AromaService_SignInRequest *other = (AromaService_SignInRequest *)anObject;
   if ((__credentials_isset != other->__credentials_isset) ||
       (__credentials_isset && ((__credentials || other->__credentials) && ![__credentials isEqual:other->__credentials]))) {
     return NO;
@@ -4945,7 +4945,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignInRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInRequest("];
   [ms appendString: @"credentials:"];
   [ms appendFormat: @"%@", __credentials];
   [ms appendString: @",emailAddress:"];
@@ -4956,7 +4956,7 @@
 
 @end
 
-@implementation BananaService_SignInResponse
+@implementation AromaService_SignInResponse
 
 - (id) init
 {
@@ -4966,7 +4966,7 @@
   return self;
 }
 
-- (id) initWithUserToken: (BananaService_UserToken) userToken
+- (id) initWithUserToken: (AromaService_UserToken) userToken
 {
   self = [super init];
   __userToken = [userToken retain_stub];
@@ -5009,10 +5009,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignInResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignInResponse class]]) {
     return NO;
   }
-  BananaService_SignInResponse *other = (BananaService_SignInResponse *)anObject;
+  AromaService_SignInResponse *other = (AromaService_SignInResponse *)anObject;
   if ((__userToken_isset != other->__userToken_isset) ||
       (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
@@ -5099,7 +5099,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignInResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignInResponse("];
   [ms appendString: @"userToken:"];
   [ms appendFormat: @"%@", __userToken];
   [ms appendString: @")"];
@@ -5108,7 +5108,7 @@
 
 @end
 
-@implementation BananaService_SignUpRequest
+@implementation AromaService_SignUpRequest
 
 - (id) init
 {
@@ -5118,7 +5118,7 @@
   return self;
 }
 
-- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (BananaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (BananaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (BananaService_Image) profileImage
+- (id) initWithEmail: (NSString *) email name: (NSString *) name firstName: (NSString *) firstName middleName: (NSString *) middleName lastName: (NSString *) lastName username: (NSString *) username organizationId: (AromaService_uuid) organizationId credentials: (BananaAuthentication_Credentials *) credentials mainRole: (int) mainRole birthDate: (AromaService_timestamp) birthDate githubProfile: (NSString *) githubProfile profileImage: (AromaService_Image) profileImage
 {
   self = [super init];
   __email = [email retain_stub];
@@ -5337,10 +5337,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignUpRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignUpRequest class]]) {
     return NO;
   }
-  BananaService_SignUpRequest *other = (BananaService_SignUpRequest *)anObject;
+  AromaService_SignUpRequest *other = (AromaService_SignUpRequest *)anObject;
   if ((__email_isset != other->__email_isset) ||
       (__email_isset && ((__email || other->__email) && ![__email isEqual:other->__email]))) {
     return NO;
@@ -5630,11 +5630,11 @@
   __githubProfile_isset = NO;
 }
 
-- (Banana_Image *) profileImage {
+- (Aroma_Image *) profileImage {
   return [[__profileImage retain_stub] autorelease_stub];
 }
 
-- (void) setProfileImage: (Banana_Image *) profileImage {
+- (void) setProfileImage: (Aroma_Image *) profileImage {
   [profileImage retain_stub];
   [__profileImage release_stub];
   __profileImage = profileImage;
@@ -5758,7 +5758,7 @@
         break;
       case 12:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setProfileImage: fieldValue];
           [fieldValue release_stub];
@@ -5866,7 +5866,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignUpRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpRequest("];
   [ms appendString: @"email:"];
   [ms appendFormat: @"\"%@\"", __email];
   [ms appendString: @",name:"];
@@ -5897,7 +5897,7 @@
 
 @end
 
-@implementation BananaService_SignUpResponse
+@implementation AromaService_SignUpResponse
 
 - (id) init
 {
@@ -5907,7 +5907,7 @@
   return self;
 }
 
-- (id) initWithUserToken: (BananaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (BananaService_uuid) userId
+- (id) initWithUserToken: (AromaService_UserToken) userToken account: (BananaAuthentication_AromaAccount *) account userId: (AromaService_uuid) userId
 {
   self = [super init];
   __userToken = [userToken retain_stub];
@@ -5982,10 +5982,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignUpResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignUpResponse class]]) {
     return NO;
   }
-  BananaService_SignUpResponse *other = (BananaService_SignUpResponse *)anObject;
+  AromaService_SignUpResponse *other = (AromaService_SignUpResponse *)anObject;
   if ((__userToken_isset != other->__userToken_isset) ||
       (__userToken_isset && ((__userToken || other->__userToken) && ![__userToken isEqual:other->__userToken]))) {
     return NO;
@@ -6156,7 +6156,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignUpResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUpResponse("];
   [ms appendString: @"userToken:"];
   [ms appendFormat: @"%@", __userToken];
   [ms appendString: @",account:"];
@@ -6169,13 +6169,13 @@
 
 @end
 
-@implementation BananaService_SnoozeChannelRequest
+@implementation AromaService_SnoozeChannelRequest
 
 - (id) init
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.lengthOfTime = [[[Banana_LengthOfTime alloc] init] autorelease_stub];
+  self.lengthOfTime = [[[Aroma_LengthOfTime alloc] init] autorelease_stub];
   [self.lengthOfTime setValue:4];
   [self.lengthOfTime setUnit:3];
 
@@ -6183,7 +6183,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token channel: (BananaService_BananaChannel) channel applicationId: (BananaService_uuid) applicationId lengthOfTime: (Banana_LengthOfTime *) lengthOfTime
+- (id) initWithToken: (AromaService_UserToken) token channel: (AromaService_AromaChannel) channel applicationId: (AromaService_uuid) applicationId lengthOfTime: (Aroma_LengthOfTime *) lengthOfTime
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6274,10 +6274,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannelRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_SnoozeChannelRequest class]]) {
     return NO;
   }
-  BananaService_SnoozeChannelRequest *other = (BananaService_SnoozeChannelRequest *)anObject;
+  AromaService_SnoozeChannelRequest *other = (AromaService_SnoozeChannelRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -6327,11 +6327,11 @@
   __token_isset = NO;
 }
 
-- (BananaChannels_BananaChannel *) channel {
+- (AromaChannels_AromaChannel *) channel {
   return [[__channel retain_stub] autorelease_stub];
 }
 
-- (void) setChannel: (BananaChannels_BananaChannel *) channel {
+- (void) setChannel: (AromaChannels_AromaChannel *) channel {
   [channel retain_stub];
   [__channel release_stub];
   __channel = channel;
@@ -6369,11 +6369,11 @@
   __applicationId_isset = NO;
 }
 
-- (Banana_LengthOfTime *) lengthOfTime {
+- (Aroma_LengthOfTime *) lengthOfTime {
   return [[__lengthOfTime retain_stub] autorelease_stub];
 }
 
-- (void) setLengthOfTime: (Banana_LengthOfTime *) lengthOfTime {
+- (void) setLengthOfTime: (Aroma_LengthOfTime *) lengthOfTime {
   [lengthOfTime retain_stub];
   [__lengthOfTime release_stub];
   __lengthOfTime = lengthOfTime;
@@ -6417,7 +6417,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaChannels_BananaChannel *fieldValue = [[BananaChannels_BananaChannel alloc] init];
+          AromaChannels_AromaChannel *fieldValue = [[AromaChannels_AromaChannel alloc] init];
           [fieldValue read: inProtocol];
           [self setChannel: fieldValue];
           [fieldValue release_stub];
@@ -6435,7 +6435,7 @@
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
+          Aroma_LengthOfTime *fieldValue = [[Aroma_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
           [self setLengthOfTime: fieldValue];
           [fieldValue release_stub];
@@ -6491,7 +6491,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannelRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",channel:"];
@@ -6506,7 +6506,7 @@
 
 @end
 
-@implementation BananaService_SnoozeChannelResponse
+@implementation AromaService_SnoozeChannelResponse
 
 - (id) init
 {
@@ -6559,10 +6559,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannelResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_SnoozeChannelResponse class]]) {
     return NO;
   }
-  BananaService_SnoozeChannelResponse *other = (BananaService_SnoozeChannelResponse *)anObject;
+  AromaService_SnoozeChannelResponse *other = (AromaService_SnoozeChannelResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -6647,7 +6647,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannelResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannelResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -6656,7 +6656,7 @@
 
 @end
 
-@implementation BananaService_FollowApplicationRequest
+@implementation AromaService_FollowApplicationRequest
 
 - (id) init
 {
@@ -6668,7 +6668,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (BananaService_uuid) applicationId organizationId: (BananaService_uuid) organizationId shared: (BOOL) shared
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (AromaService_uuid) applicationId organizationId: (AromaService_uuid) organizationId shared: (BOOL) shared
 {
   self = [super init];
   __token = [token retain_stub];
@@ -6775,10 +6775,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_FollowApplicationRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_FollowApplicationRequest class]]) {
     return NO;
   }
-  BananaService_FollowApplicationRequest *other = (BananaService_FollowApplicationRequest *)anObject;
+  AromaService_FollowApplicationRequest *other = (AromaService_FollowApplicationRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -7022,7 +7022,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplicationRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_FollowApplicationRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
@@ -7039,7 +7039,7 @@
 
 @end
 
-@implementation BananaService_FollowApplicationResponse
+@implementation AromaService_FollowApplicationResponse
 
 - (id) init
 {
@@ -7094,10 +7094,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_FollowApplicationResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_FollowApplicationResponse class]]) {
     return NO;
   }
-  BananaService_FollowApplicationResponse *other = (BananaService_FollowApplicationResponse *)anObject;
+  AromaService_FollowApplicationResponse *other = (AromaService_FollowApplicationResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -7182,7 +7182,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplicationResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_FollowApplicationResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @")"];
@@ -7191,7 +7191,7 @@
 
 @end
 
-@implementation BananaService_GetApplicationInfoRequest
+@implementation AromaService_GetApplicationInfoRequest
 
 - (id) init
 {
@@ -7201,7 +7201,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_AuthenticationToken) token applicationId: (BananaService_uuid) applicationId
+- (id) initWithToken: (AromaService_AuthenticationToken) token applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -7260,10 +7260,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationInfoRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationInfoRequest class]]) {
     return NO;
   }
-  BananaService_GetApplicationInfoRequest *other = (BananaService_GetApplicationInfoRequest *)anObject;
+  AromaService_GetApplicationInfoRequest *other = (AromaService_GetApplicationInfoRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -7391,7 +7391,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationInfoRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationInfoRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
@@ -7402,7 +7402,7 @@
 
 @end
 
-@implementation BananaService_GetApplicationInfoResponse
+@implementation AromaService_GetApplicationInfoResponse
 
 - (id) init
 {
@@ -7412,7 +7412,7 @@
   return self;
 }
 
-- (id) initWithApplicationInfo: (BananaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels
+- (id) initWithApplicationInfo: (AromaService_Application) applicationInfo registeredChannels: (NSMutableArray *) registeredChannels
 {
   self = [super init];
   __applicationInfo = [applicationInfo retain_stub];
@@ -7471,10 +7471,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationInfoResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationInfoResponse class]]) {
     return NO;
   }
-  BananaService_GetApplicationInfoResponse *other = (BananaService_GetApplicationInfoResponse *)anObject;
+  AromaService_GetApplicationInfoResponse *other = (AromaService_GetApplicationInfoResponse *)anObject;
   if ((__applicationInfo_isset != other->__applicationInfo_isset) ||
       (__applicationInfo_isset && ((__applicationInfo || other->__applicationInfo) && ![__applicationInfo isEqual:other->__applicationInfo]))) {
     return NO;
@@ -7493,11 +7493,11 @@
   [super dealloc_stub];
 }
 
-- (Banana_Application *) applicationInfo {
+- (Aroma_Application *) applicationInfo {
   return [[__applicationInfo retain_stub] autorelease_stub];
 }
 
-- (void) setApplicationInfo: (Banana_Application *) applicationInfo {
+- (void) setApplicationInfo: (Aroma_Application *) applicationInfo {
   [applicationInfo retain_stub];
   [__applicationInfo release_stub];
   __applicationInfo = applicationInfo;
@@ -7552,7 +7552,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Application *fieldValue = [[Banana_Application alloc] init];
+          Aroma_Application *fieldValue = [[Aroma_Application alloc] init];
           [fieldValue read: inProtocol];
           [self setApplicationInfo: fieldValue];
           [fieldValue release_stub];
@@ -7568,7 +7568,7 @@
           int _i16;
           for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            BananaChannels_BananaChannel *_elem17 = [[BananaChannels_BananaChannel alloc] init];
+            AromaChannels_AromaChannel *_elem17 = [[AromaChannels_AromaChannel alloc] init];
             [_elem17 read: inProtocol];
             [fieldValue addObject: _elem17];
             [_elem17 release_stub];
@@ -7622,7 +7622,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationInfoResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationInfoResponse("];
   [ms appendString: @"applicationInfo:"];
   [ms appendFormat: @"%@", __applicationInfo];
   [ms appendString: @",registeredChannels:"];
@@ -7633,7 +7633,7 @@
 
 @end
 
-@implementation BananaService_GetBuzzRequest
+@implementation AromaService_GetBuzzRequest
 
 - (id) init
 {
@@ -7643,7 +7643,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -7686,10 +7686,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetBuzzRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetBuzzRequest class]]) {
     return NO;
   }
-  BananaService_GetBuzzRequest *other = (BananaService_GetBuzzRequest *)anObject;
+  AromaService_GetBuzzRequest *other = (AromaService_GetBuzzRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -7776,7 +7776,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzzRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetBuzzRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -7785,7 +7785,7 @@
 
 @end
 
-@implementation BananaService_GetBuzzResponse
+@implementation AromaService_GetBuzzResponse
 
 - (id) init
 {
@@ -7894,10 +7894,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetBuzzResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetBuzzResponse class]]) {
     return NO;
   }
-  BananaService_GetBuzzResponse *other = (BananaService_GetBuzzResponse *)anObject;
+  AromaService_GetBuzzResponse *other = (AromaService_GetBuzzResponse *)anObject;
   if ((__freshUsers_isset != other->__freshUsers_isset) ||
       (__freshUsers_isset && ((__freshUsers || other->__freshUsers) && ![__freshUsers isEqual:other->__freshUsers]))) {
     return NO;
@@ -8033,7 +8033,7 @@
           int _i21;
           for (_i21 = 0; _i21 < _size20; ++_i21)
           {
-            Banana_User *_elem22 = [[Banana_User alloc] init];
+            Aroma_User *_elem22 = [[Aroma_User alloc] init];
             [_elem22 read: inProtocol];
             [fieldValue addObject: _elem22];
             [_elem22 release_stub];
@@ -8053,7 +8053,7 @@
           int _i24;
           for (_i24 = 0; _i24 < _size23; ++_i24)
           {
-            Banana_Application *_elem25 = [[Banana_Application alloc] init];
+            Aroma_Application *_elem25 = [[Aroma_Application alloc] init];
             [_elem25 read: inProtocol];
             [fieldValue addObject: _elem25];
             [_elem25 release_stub];
@@ -8073,7 +8073,7 @@
           int _i27;
           for (_i27 = 0; _i27 < _size26; ++_i27)
           {
-            BananaEvents_HealthCheckFailed *_elem28 = [[BananaEvents_HealthCheckFailed alloc] init];
+            AromaEvents_HealthCheckFailed *_elem28 = [[AromaEvents_HealthCheckFailed alloc] init];
             [_elem28 read: inProtocol];
             [fieldValue addObject: _elem28];
             [_elem28 release_stub];
@@ -8093,7 +8093,7 @@
           int _i30;
           for (_i30 = 0; _i30 < _size29; ++_i30)
           {
-            BananaEvents_GeneralEvent *_elem31 = [[BananaEvents_GeneralEvent alloc] init];
+            AromaEvents_GeneralEvent *_elem31 = [[AromaEvents_GeneralEvent alloc] init];
             [_elem31 read: inProtocol];
             [fieldValue addObject: _elem31];
             [_elem31 release_stub];
@@ -8185,7 +8185,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzzResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetBuzzResponse("];
   [ms appendString: @"freshUsers:"];
   [ms appendFormat: @"%@", __freshUsers];
   [ms appendString: @",freshApplications:"];
@@ -8200,7 +8200,7 @@
 
 @end
 
-@implementation BananaService_GetDashboardRequest
+@implementation AromaService_GetDashboardRequest
 
 - (id) init
 {
@@ -8210,7 +8210,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8253,10 +8253,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetDashboardRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetDashboardRequest class]]) {
     return NO;
   }
-  BananaService_GetDashboardRequest *other = (BananaService_GetDashboardRequest *)anObject;
+  AromaService_GetDashboardRequest *other = (AromaService_GetDashboardRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -8343,7 +8343,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetDashboardRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetDashboardRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -8352,7 +8352,7 @@
 
 @end
 
-@implementation BananaService_GetDashboardResponse
+@implementation AromaService_GetDashboardResponse
 
 - (id) init
 {
@@ -8376,7 +8376,7 @@
   return self;
 }
 
-- (id) initWithUnreadMessageCount: (BananaService_int) unreadMessageCount totalMessagesLastHour: (BananaService_int) totalMessagesLastHour totalMessagesLast24hrs: (BananaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (BananaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (BananaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (BananaService_int) numberOfHighUrgencyMessages
+- (id) initWithUnreadMessageCount: (AromaService_int) unreadMessageCount totalMessagesLastHour: (AromaService_int) totalMessagesLastHour totalMessagesLast24hrs: (AromaService_int) totalMessagesLast24hrs recentMessages: (NSMutableArray *) recentMessages numberOfLowUrgencyMessages: (AromaService_int) numberOfLowUrgencyMessages numberOfMediumUrgencyMessages: (AromaService_int) numberOfMediumUrgencyMessages numberOfHighUrgencyMessages: (AromaService_int) numberOfHighUrgencyMessages
 {
   self = [super init];
   __unreadMessageCount = unreadMessageCount;
@@ -8515,10 +8515,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetDashboardResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetDashboardResponse class]]) {
     return NO;
   }
-  BananaService_GetDashboardResponse *other = (BananaService_GetDashboardResponse *)anObject;
+  AromaService_GetDashboardResponse *other = (AromaService_GetDashboardResponse *)anObject;
   if ((__unreadMessageCount_isset != other->__unreadMessageCount_isset) ||
       (__unreadMessageCount_isset && (__unreadMessageCount != other->__unreadMessageCount))) {
     return NO;
@@ -8726,7 +8726,7 @@
           int _i41;
           for (_i41 = 0; _i41 < _size40; ++_i41)
           {
-            Banana_Message *_elem42 = [[Banana_Message alloc] init];
+            Aroma_Message *_elem42 = [[Aroma_Message alloc] init];
             [_elem42 read: inProtocol];
             [fieldValue addObject: _elem42];
             [_elem42 release_stub];
@@ -8827,7 +8827,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetDashboardResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetDashboardResponse("];
   [ms appendString: @"unreadMessageCount:"];
   [ms appendFormat: @"%i", __unreadMessageCount];
   [ms appendString: @",totalMessagesLastHour:"];
@@ -8848,7 +8848,7 @@
 
 @end
 
-@implementation BananaService_GetInboxRequest
+@implementation AromaService_GetInboxRequest
 
 - (id) init
 {
@@ -8860,7 +8860,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit
+- (id) initWithToken: (AromaService_UserToken) token limit: (AromaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -8919,10 +8919,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetInboxRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetInboxRequest class]]) {
     return NO;
   }
-  BananaService_GetInboxRequest *other = (BananaService_GetInboxRequest *)anObject;
+  AromaService_GetInboxRequest *other = (AromaService_GetInboxRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -9043,7 +9043,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetInboxRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetInboxRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",limit:"];
@@ -9054,7 +9054,7 @@
 
 @end
 
-@implementation BananaService_GetInboxResponse
+@implementation AromaService_GetInboxResponse
 
 - (id) init
 {
@@ -9109,10 +9109,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetInboxResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetInboxResponse class]]) {
     return NO;
   }
-  BananaService_GetInboxResponse *other = (BananaService_GetInboxResponse *)anObject;
+  AromaService_GetInboxResponse *other = (AromaService_GetInboxResponse *)anObject;
   if ((__messages_isset != other->__messages_isset) ||
       (__messages_isset && ((__messages || other->__messages) && ![__messages isEqual:other->__messages]))) {
     return NO;
@@ -9170,7 +9170,7 @@
           int _i46;
           for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            Banana_Message *_elem47 = [[Banana_Message alloc] init];
+            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
             [_elem47 read: inProtocol];
             [fieldValue addObject: _elem47];
             [_elem47 release_stub];
@@ -9217,7 +9217,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetInboxResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetInboxResponse("];
   [ms appendString: @"messages:"];
   [ms appendFormat: @"%@", __messages];
   [ms appendString: @")"];
@@ -9226,7 +9226,7 @@
 
 @end
 
-@implementation BananaService_GetApplicationMessagesRequest
+@implementation AromaService_GetApplicationMessagesRequest
 
 - (id) init
 {
@@ -9238,7 +9238,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationId: (BananaService_uuid) applicationId limit: (BananaService_int) limit
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId limit: (AromaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -9313,10 +9313,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationMessagesRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationMessagesRequest class]]) {
     return NO;
   }
-  BananaService_GetApplicationMessagesRequest *other = (BananaService_GetApplicationMessagesRequest *)anObject;
+  AromaService_GetApplicationMessagesRequest *other = (AromaService_GetApplicationMessagesRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -9478,7 +9478,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationMessagesRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationMessagesRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationId:"];
@@ -9491,7 +9491,7 @@
 
 @end
 
-@implementation BananaService_GetApplicationMessagesResponse
+@implementation AromaService_GetApplicationMessagesResponse
 
 - (id) init
 {
@@ -9505,7 +9505,7 @@
   return self;
 }
 
-- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (BananaService_int) totalMessagesMatching
+- (id) initWithMessages: (NSMutableArray *) messages totalMessagesMatching: (AromaService_int) totalMessagesMatching
 {
   self = [super init];
   __messages = [messages retain_stub];
@@ -9564,10 +9564,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationMessagesResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationMessagesResponse class]]) {
     return NO;
   }
-  BananaService_GetApplicationMessagesResponse *other = (BananaService_GetApplicationMessagesResponse *)anObject;
+  AromaService_GetApplicationMessagesResponse *other = (AromaService_GetApplicationMessagesResponse *)anObject;
   if ((__messages_isset != other->__messages_isset) ||
       (__messages_isset && ((__messages || other->__messages) && ![__messages isEqual:other->__messages]))) {
     return NO;
@@ -9646,7 +9646,7 @@
           int _i51;
           for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            Banana_Message *_elem52 = [[Banana_Message alloc] init];
+            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
             [_elem52 read: inProtocol];
             [fieldValue addObject: _elem52];
             [_elem52 release_stub];
@@ -9706,7 +9706,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationMessagesResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationMessagesResponse("];
   [ms appendString: @"messages:"];
   [ms appendFormat: @"%@", __messages];
   [ms appendString: @",totalMessagesMatching:"];
@@ -9717,7 +9717,7 @@
 
 @end
 
-@implementation BananaService_GetFullMessageRequest
+@implementation AromaService_GetFullMessageRequest
 
 - (id) init
 {
@@ -9727,7 +9727,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token messageId: (BananaService_uuid) messageId applicationId: (BananaService_uuid) applicationId
+- (id) initWithToken: (AromaService_UserToken) token messageId: (AromaService_uuid) messageId applicationId: (AromaService_uuid) applicationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -9802,10 +9802,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetFullMessageRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetFullMessageRequest class]]) {
     return NO;
   }
-  BananaService_GetFullMessageRequest *other = (BananaService_GetFullMessageRequest *)anObject;
+  AromaService_GetFullMessageRequest *other = (AromaService_GetFullMessageRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -9974,7 +9974,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetFullMessageRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetFullMessageRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",messageId:"];
@@ -9987,7 +9987,7 @@
 
 @end
 
-@implementation BananaService_GetFullMessageResponse
+@implementation AromaService_GetFullMessageResponse
 
 - (id) init
 {
@@ -9997,7 +9997,7 @@
   return self;
 }
 
-- (id) initWithFullMessage: (Banana_Message *) fullMessage
+- (id) initWithFullMessage: (Aroma_Message *) fullMessage
 {
   self = [super init];
   __fullMessage = [fullMessage retain_stub];
@@ -10040,10 +10040,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetFullMessageResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetFullMessageResponse class]]) {
     return NO;
   }
-  BananaService_GetFullMessageResponse *other = (BananaService_GetFullMessageResponse *)anObject;
+  AromaService_GetFullMessageResponse *other = (AromaService_GetFullMessageResponse *)anObject;
   if ((__fullMessage_isset != other->__fullMessage_isset) ||
       (__fullMessage_isset && ((__fullMessage || other->__fullMessage) && ![__fullMessage isEqual:other->__fullMessage]))) {
     return NO;
@@ -10057,11 +10057,11 @@
   [super dealloc_stub];
 }
 
-- (Banana_Message *) fullMessage {
+- (Aroma_Message *) fullMessage {
   return [[__fullMessage retain_stub] autorelease_stub];
 }
 
-- (void) setFullMessage: (Banana_Message *) fullMessage {
+- (void) setFullMessage: (Aroma_Message *) fullMessage {
   [fullMessage retain_stub];
   [__fullMessage release_stub];
   __fullMessage = fullMessage;
@@ -10095,7 +10095,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Message *fieldValue = [[Banana_Message alloc] init];
+          Aroma_Message *fieldValue = [[Aroma_Message alloc] init];
           [fieldValue read: inProtocol];
           [self setFullMessage: fieldValue];
           [fieldValue release_stub];
@@ -10130,7 +10130,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetFullMessageResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetFullMessageResponse("];
   [ms appendString: @"fullMessage:"];
   [ms appendFormat: @"%@", __fullMessage];
   [ms appendString: @")"];
@@ -10139,7 +10139,7 @@
 
 @end
 
-@implementation BananaService_GetMediaRequest
+@implementation AromaService_GetMediaRequest
 
 - (id) init
 {
@@ -10149,7 +10149,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token mediaId: (BananaService_uuid) mediaId
+- (id) initWithToken: (AromaService_UserToken) token mediaId: (AromaService_uuid) mediaId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -10208,10 +10208,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMediaRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMediaRequest class]]) {
     return NO;
   }
-  BananaService_GetMediaRequest *other = (BananaService_GetMediaRequest *)anObject;
+  AromaService_GetMediaRequest *other = (AromaService_GetMediaRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -10339,7 +10339,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMediaRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMediaRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",mediaId:"];
@@ -10350,7 +10350,7 @@
 
 @end
 
-@implementation BananaService_GetMediaResponse
+@implementation AromaService_GetMediaResponse
 
 - (id) init
 {
@@ -10360,7 +10360,7 @@
   return self;
 }
 
-- (id) initWithImage: (Banana_Image *) image
+- (id) initWithImage: (Aroma_Image *) image
 {
   self = [super init];
   __image = [image retain_stub];
@@ -10403,10 +10403,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMediaResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMediaResponse class]]) {
     return NO;
   }
-  BananaService_GetMediaResponse *other = (BananaService_GetMediaResponse *)anObject;
+  AromaService_GetMediaResponse *other = (AromaService_GetMediaResponse *)anObject;
   if ((__image_isset != other->__image_isset) ||
       (__image_isset && ((__image || other->__image) && ![__image isEqual:other->__image]))) {
     return NO;
@@ -10420,11 +10420,11 @@
   [super dealloc_stub];
 }
 
-- (Banana_Image *) image {
+- (Aroma_Image *) image {
   return [[__image retain_stub] autorelease_stub];
 }
 
-- (void) setImage: (Banana_Image *) image {
+- (void) setImage: (Aroma_Image *) image {
   [image retain_stub];
   [__image release_stub];
   __image = image;
@@ -10458,7 +10458,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_Image *fieldValue = [[Banana_Image alloc] init];
+          Aroma_Image *fieldValue = [[Aroma_Image alloc] init];
           [fieldValue read: inProtocol];
           [self setImage: fieldValue];
           [fieldValue release_stub];
@@ -10493,7 +10493,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMediaResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMediaResponse("];
   [ms appendString: @"image:"];
   [ms appendFormat: @"%@", __image];
   [ms appendString: @")"];
@@ -10502,7 +10502,7 @@
 
 @end
 
-@implementation BananaService_GetMyApplicationsRequest
+@implementation AromaService_GetMyApplicationsRequest
 
 - (id) init
 {
@@ -10512,7 +10512,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -10555,10 +10555,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMyApplicationsRequest class]]) {
     return NO;
   }
-  BananaService_GetMyApplicationsRequest *other = (BananaService_GetMyApplicationsRequest *)anObject;
+  AromaService_GetMyApplicationsRequest *other = (AromaService_GetMyApplicationsRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -10645,7 +10645,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplicationsRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -10654,7 +10654,7 @@
 
 @end
 
-@implementation BananaService_GetMyApplicationsResponse
+@implementation AromaService_GetMyApplicationsResponse
 
 - (id) init
 {
@@ -10707,10 +10707,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplicationsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMyApplicationsResponse class]]) {
     return NO;
   }
-  BananaService_GetMyApplicationsResponse *other = (BananaService_GetMyApplicationsResponse *)anObject;
+  AromaService_GetMyApplicationsResponse *other = (AromaService_GetMyApplicationsResponse *)anObject;
   if ((__applications_isset != other->__applications_isset) ||
       (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
     return NO;
@@ -10768,7 +10768,7 @@
           int _i56;
           for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Banana_Application *_elem57 = [[Banana_Application alloc] init];
+            Aroma_Application *_elem57 = [[Aroma_Application alloc] init];
             [_elem57 read: inProtocol];
             [fieldValue addObject: _elem57];
             [_elem57 release_stub];
@@ -10815,7 +10815,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplicationsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplicationsResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
@@ -10824,7 +10824,7 @@
 
 @end
 
-@implementation BananaService_GetMySavedChannelsRequest
+@implementation AromaService_GetMySavedChannelsRequest
 
 - (id) init
 {
@@ -10834,7 +10834,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -10877,10 +10877,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMySavedChannelsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMySavedChannelsRequest class]]) {
     return NO;
   }
-  BananaService_GetMySavedChannelsRequest *other = (BananaService_GetMySavedChannelsRequest *)anObject;
+  AromaService_GetMySavedChannelsRequest *other = (AromaService_GetMySavedChannelsRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -10967,7 +10967,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannelsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannelsRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -10976,7 +10976,7 @@
 
 @end
 
-@implementation BananaService_GetMySavedChannelsResponse
+@implementation AromaService_GetMySavedChannelsResponse
 
 - (id) init
 {
@@ -11029,10 +11029,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMySavedChannelsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMySavedChannelsResponse class]]) {
     return NO;
   }
-  BananaService_GetMySavedChannelsResponse *other = (BananaService_GetMySavedChannelsResponse *)anObject;
+  AromaService_GetMySavedChannelsResponse *other = (AromaService_GetMySavedChannelsResponse *)anObject;
   if ((__channels_isset != other->__channels_isset) ||
       (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
     return NO;
@@ -11090,7 +11090,7 @@
           int _i61;
           for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            BananaChannels_BananaChannel *_elem62 = [[BananaChannels_BananaChannel alloc] init];
+            AromaChannels_AromaChannel *_elem62 = [[AromaChannels_AromaChannel alloc] init];
             [_elem62 read: inProtocol];
             [fieldValue addObject: _elem62];
             [_elem62 release_stub];
@@ -11137,7 +11137,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannelsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannelsResponse("];
   [ms appendString: @"channels:"];
   [ms appendFormat: @"%@", __channels];
   [ms appendString: @")"];
@@ -11146,7 +11146,7 @@
 
 @end
 
-@implementation BananaService_GetActivityRequest
+@implementation AromaService_GetActivityRequest
 
 - (id) init
 {
@@ -11158,7 +11158,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token limit: (BananaService_int) limit
+- (id) initWithToken: (AromaService_UserToken) token limit: (AromaService_int) limit
 {
   self = [super init];
   __token = [token retain_stub];
@@ -11217,10 +11217,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetActivityRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetActivityRequest class]]) {
     return NO;
   }
-  BananaService_GetActivityRequest *other = (BananaService_GetActivityRequest *)anObject;
+  AromaService_GetActivityRequest *other = (AromaService_GetActivityRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -11341,7 +11341,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivityRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetActivityRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",limit:"];
@@ -11352,7 +11352,7 @@
 
 @end
 
-@implementation BananaService_GetActivityResponse
+@implementation AromaService_GetActivityResponse
 
 - (id) init
 {
@@ -11407,10 +11407,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetActivityResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetActivityResponse class]]) {
     return NO;
   }
-  BananaService_GetActivityResponse *other = (BananaService_GetActivityResponse *)anObject;
+  AromaService_GetActivityResponse *other = (AromaService_GetActivityResponse *)anObject;
   if ((__events_isset != other->__events_isset) ||
       (__events_isset && ((__events || other->__events) && ![__events isEqual:other->__events]))) {
     return NO;
@@ -11468,7 +11468,7 @@
           int _i66;
           for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            BananaEvents_Event *_elem67 = [[BananaEvents_Event alloc] init];
+            AromaEvents_Event *_elem67 = [[AromaEvents_Event alloc] init];
             [_elem67 read: inProtocol];
             [fieldValue addObject: _elem67];
             [_elem67 release_stub];
@@ -11515,7 +11515,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivityResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetActivityResponse("];
   [ms appendString: @"events:"];
   [ms appendFormat: @"%@", __events];
   [ms appendString: @")"];
@@ -11524,7 +11524,7 @@
 
 @end
 
-@implementation BananaService_GetServiceAnnouncementsRequest
+@implementation AromaService_GetServiceAnnouncementsRequest
 
 - (id) init
 {
@@ -11534,7 +11534,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token
 {
   self = [super init];
   __token = [token retain_stub];
@@ -11577,10 +11577,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetServiceAnnouncementsRequest class]]) {
     return NO;
   }
-  BananaService_GetServiceAnnouncementsRequest *other = (BananaService_GetServiceAnnouncementsRequest *)anObject;
+  AromaService_GetServiceAnnouncementsRequest *other = (AromaService_GetServiceAnnouncementsRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -11667,7 +11667,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetServiceAnnouncementsRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @")"];
@@ -11676,7 +11676,7 @@
 
 @end
 
-@implementation BananaService_GetServiceAnnouncementsResponse
+@implementation AromaService_GetServiceAnnouncementsResponse
 
 - (id) init
 {
@@ -11731,10 +11731,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetServiceAnnouncementsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetServiceAnnouncementsResponse class]]) {
     return NO;
   }
-  BananaService_GetServiceAnnouncementsResponse *other = (BananaService_GetServiceAnnouncementsResponse *)anObject;
+  AromaService_GetServiceAnnouncementsResponse *other = (AromaService_GetServiceAnnouncementsResponse *)anObject;
   if ((__serviceAnnouncements_isset != other->__serviceAnnouncements_isset) ||
       (__serviceAnnouncements_isset && ((__serviceAnnouncements || other->__serviceAnnouncements) && ![__serviceAnnouncements isEqual:other->__serviceAnnouncements]))) {
     return NO;
@@ -11792,7 +11792,7 @@
           int _i71;
           for (_i71 = 0; _i71 < _size70; ++_i71)
           {
-            Banana_ServiceAnnouncement *_elem72 = [[Banana_ServiceAnnouncement alloc] init];
+            Aroma_ServiceAnnouncement *_elem72 = [[Aroma_ServiceAnnouncement alloc] init];
             [_elem72 read: inProtocol];
             [fieldValue addObject: _elem72];
             [_elem72 release_stub];
@@ -11839,7 +11839,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetServiceAnnouncementsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetServiceAnnouncementsResponse("];
   [ms appendString: @"serviceAnnouncements:"];
   [ms appendFormat: @"%@", __serviceAnnouncements];
   [ms appendString: @")"];
@@ -11848,7 +11848,7 @@
 
 @end
 
-@implementation BananaService_GetUserInfoRequest
+@implementation AromaService_GetUserInfoRequest
 
 - (id) init
 {
@@ -11858,7 +11858,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token userId: (BananaService_uuid) userId email: (NSString *) email
+- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId email: (NSString *) email
 {
   self = [super init];
   __token = [token retain_stub];
@@ -11933,10 +11933,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetUserInfoRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetUserInfoRequest class]]) {
     return NO;
   }
-  BananaService_GetUserInfoRequest *other = (BananaService_GetUserInfoRequest *)anObject;
+  AromaService_GetUserInfoRequest *other = (AromaService_GetUserInfoRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -12105,7 +12105,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetUserInfoRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetUserInfoRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",userId:"];
@@ -12118,7 +12118,7 @@
 
 @end
 
-@implementation BananaService_GetUserInfoResponse
+@implementation AromaService_GetUserInfoResponse
 
 - (id) init
 {
@@ -12128,7 +12128,7 @@
   return self;
 }
 
-- (id) initWithUserInfo: (BananaService_User) userInfo
+- (id) initWithUserInfo: (AromaService_User) userInfo
 {
   self = [super init];
   __userInfo = [userInfo retain_stub];
@@ -12171,10 +12171,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetUserInfoResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetUserInfoResponse class]]) {
     return NO;
   }
-  BananaService_GetUserInfoResponse *other = (BananaService_GetUserInfoResponse *)anObject;
+  AromaService_GetUserInfoResponse *other = (AromaService_GetUserInfoResponse *)anObject;
   if ((__userInfo_isset != other->__userInfo_isset) ||
       (__userInfo_isset && ((__userInfo || other->__userInfo) && ![__userInfo isEqual:other->__userInfo]))) {
     return NO;
@@ -12188,11 +12188,11 @@
   [super dealloc_stub];
 }
 
-- (Banana_User *) userInfo {
+- (Aroma_User *) userInfo {
   return [[__userInfo retain_stub] autorelease_stub];
 }
 
-- (void) setUserInfo: (Banana_User *) userInfo {
+- (void) setUserInfo: (Aroma_User *) userInfo {
   [userInfo retain_stub];
   [__userInfo release_stub];
   __userInfo = userInfo;
@@ -12226,7 +12226,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          Banana_User *fieldValue = [[Banana_User alloc] init];
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
           [fieldValue read: inProtocol];
           [self setUserInfo: fieldValue];
           [fieldValue release_stub];
@@ -12261,7 +12261,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetUserInfoResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetUserInfoResponse("];
   [ms appendString: @"userInfo:"];
   [ms appendFormat: @"%@", __userInfo];
   [ms appendString: @")"];
@@ -12270,7 +12270,7 @@
 
 @end
 
-@implementation BananaService_SearchForApplicationsRequest
+@implementation AromaService_SearchForApplicationsRequest
 
 - (id) init
 {
@@ -12280,7 +12280,7 @@
   return self;
 }
 
-- (id) initWithToken: (BananaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (BananaService_uuid) organizationId
+- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName organizationId: (AromaService_uuid) organizationId
 {
   self = [super init];
   __token = [token retain_stub];
@@ -12355,10 +12355,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_SearchForApplicationsRequest class]]) {
     return NO;
   }
-  BananaService_SearchForApplicationsRequest *other = (BananaService_SearchForApplicationsRequest *)anObject;
+  AromaService_SearchForApplicationsRequest *other = (AromaService_SearchForApplicationsRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
@@ -12527,7 +12527,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SearchForApplicationsRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",applicationName:"];
@@ -12540,7 +12540,7 @@
 
 @end
 
-@implementation BananaService_SearchForApplicationsResponse
+@implementation AromaService_SearchForApplicationsResponse
 
 - (id) init
 {
@@ -12595,10 +12595,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplicationsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_SearchForApplicationsResponse class]]) {
     return NO;
   }
-  BananaService_SearchForApplicationsResponse *other = (BananaService_SearchForApplicationsResponse *)anObject;
+  AromaService_SearchForApplicationsResponse *other = (AromaService_SearchForApplicationsResponse *)anObject;
   if ((__applications_isset != other->__applications_isset) ||
       (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
     return NO;
@@ -12656,7 +12656,7 @@
           int _i76;
           for (_i76 = 0; _i76 < _size75; ++_i76)
           {
-            Banana_Application *_elem77 = [[Banana_Application alloc] init];
+            Aroma_Application *_elem77 = [[Aroma_Application alloc] init];
             [_elem77 read: inProtocol];
             [fieldValue addObject: _elem77];
             [_elem77 release_stub];
@@ -12703,7 +12703,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplicationsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SearchForApplicationsResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
@@ -12712,86 +12712,86 @@
 
 @end
 
-static double BananaService_API_VERSION = 1.7;
-static BananaService_int BananaService_SERVICE_PORT = 7010;
-static BananaEndpoint_TcpEndpoint * BananaService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * BananaService_BETA_ENDPOINT;
-static Banana_Dimension * BananaService_MAX_APPLICATION_ICON_DIMENSION;
-static Banana_Dimension * BananaService_MAX_PROFILE_IMAGE_DIMENSION;
-static BananaService_int BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
-static BananaService_int BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
-static BananaService_int BananaService_MAX_MESSAGE_LENGTH = 5000;
-static Banana_LengthOfTime * BananaService_DEFAULT_INBOX_LIFETIME;
-static BananaService_int BananaService_APPLICATION_NAME_MAX_LENGTH = 20;
-static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
+static double AromaService_API_VERSION = 1.7;
+static AromaService_int AromaService_SERVICE_PORT = 7010;
+static AromaEndpoint_TcpEndpoint * AromaService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * AromaService_BETA_ENDPOINT;
+static Aroma_Dimension * AromaService_MAX_APPLICATION_ICON_DIMENSION;
+static Aroma_Dimension * AromaService_MAX_PROFILE_IMAGE_DIMENSION;
+static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
+static AromaService_int AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
+static AromaService_int AromaService_MAX_MESSAGE_LENGTH = 5000;
+static Aroma_LengthOfTime * AromaService_DEFAULT_INBOX_LIFETIME;
+static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
+static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
-@implementation BananaService_AromaServiceConstants
+@implementation AromaService_AromaServiceConstants
 + (void) initialize {
-  BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-srv.banana.aroma.tech"];
-  [BananaService_PRODUCTION_ENDPOINT setPort:7010];
+  AromaService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [AromaService_PRODUCTION_ENDPOINT setHostname:@"aroma-srv.aroma.tech"];
+  [AromaService_PRODUCTION_ENDPOINT setPort:7010];
 
 ;
-  BananaService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [BananaService_BETA_ENDPOINT setHostname:@"banana-srv.beta.banana.aroma.tech"];
-  [BananaService_BETA_ENDPOINT setPort:7010];
+  AromaService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [AromaService_BETA_ENDPOINT setHostname:@"aroma-srv.beta.aroma.tech"];
+  [AromaService_BETA_ENDPOINT setPort:7010];
 
 ;
-  BananaService_MAX_APPLICATION_ICON_DIMENSION = [[Banana_Dimension alloc] init];
-  [BananaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
-  [BananaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
+  AromaService_MAX_APPLICATION_ICON_DIMENSION = [[Aroma_Dimension alloc] init];
+  [AromaService_MAX_APPLICATION_ICON_DIMENSION setWidth:1024];
+  [AromaService_MAX_APPLICATION_ICON_DIMENSION setHeight:1024];
 
 ;
-  BananaService_MAX_PROFILE_IMAGE_DIMENSION = [[Banana_Dimension alloc] init];
-  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
-  [BananaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
+  AromaService_MAX_PROFILE_IMAGE_DIMENSION = [[Aroma_Dimension alloc] init];
+  [AromaService_MAX_PROFILE_IMAGE_DIMENSION setWidth:1024];
+  [AromaService_MAX_PROFILE_IMAGE_DIMENSION setHeight:1024];
 
 ;
-  BananaService_DEFAULT_INBOX_LIFETIME = [[Banana_LengthOfTime alloc] init];
-  [BananaService_DEFAULT_INBOX_LIFETIME setValue:3];
-  [BananaService_DEFAULT_INBOX_LIFETIME setUnit:4];
+  AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];
+  [AromaService_DEFAULT_INBOX_LIFETIME setValue:3];
+  [AromaService_DEFAULT_INBOX_LIFETIME setUnit:4];
 
 ;
 }
 + (double) API_VERSION{
-  return BananaService_API_VERSION;
+  return AromaService_API_VERSION;
 }
-+ (BananaService_int) SERVICE_PORT{
-  return BananaService_SERVICE_PORT;
++ (AromaService_int) SERVICE_PORT{
+  return AromaService_SERVICE_PORT;
 }
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
-  return BananaService_PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
+  return AromaService_PRODUCTION_ENDPOINT;
 }
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
-  return BananaService_BETA_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
+  return AromaService_BETA_ENDPOINT;
 }
-+ (Banana_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
-  return BananaService_MAX_APPLICATION_ICON_DIMENSION;
++ (Aroma_Dimension *) MAX_APPLICATION_ICON_DIMENSION{
+  return AromaService_MAX_APPLICATION_ICON_DIMENSION;
 }
-+ (Banana_Dimension *) MAX_PROFILE_IMAGE_DIMENSION{
-  return BananaService_MAX_PROFILE_IMAGE_DIMENSION;
++ (Aroma_Dimension *) MAX_PROFILE_IMAGE_DIMENSION{
+  return AromaService_MAX_PROFILE_IMAGE_DIMENSION;
 }
-+ (BananaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES{
-  return BananaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
++ (AromaService_int) MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES{
+  return AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES;
 }
-+ (BananaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
-  return BananaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
++ (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES{
+  return AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 }
-+ (BananaService_int) MAX_MESSAGE_LENGTH{
-  return BananaService_MAX_MESSAGE_LENGTH;
++ (AromaService_int) MAX_MESSAGE_LENGTH{
+  return AromaService_MAX_MESSAGE_LENGTH;
 }
-+ (Banana_LengthOfTime *) DEFAULT_INBOX_LIFETIME{
-  return BananaService_DEFAULT_INBOX_LIFETIME;
++ (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME{
+  return AromaService_DEFAULT_INBOX_LIFETIME;
 }
-+ (BananaService_int) APPLICATION_NAME_MAX_LENGTH{
-  return BananaService_APPLICATION_NAME_MAX_LENGTH;
++ (AromaService_int) APPLICATION_NAME_MAX_LENGTH{
+  return AromaService_APPLICATION_NAME_MAX_LENGTH;
 }
-+ (BananaService_int) APPLICATION_MAX_OWNERS{
-  return BananaService_APPLICATION_MAX_OWNERS;
++ (AromaService_int) APPLICATION_MAX_OWNERS{
+  return AromaService_APPLICATION_MAX_OWNERS;
 }
 @end
 
-@interface BananaService_getApiVersion_args : NSObject <TBase, NSCoding> {
+@interface AromaService_getApiVersion_args : NSObject <TBase, NSCoding> {
 }
 
 - (id) init;
@@ -12803,7 +12803,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@implementation BananaService_getApiVersion_args
+@implementation AromaService_getApiVersion_args
 
 - (id) init
 {
@@ -12832,10 +12832,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getApiVersion_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getApiVersion_args class]]) {
     return NO;
   }
-  BananaService_getApiVersion_args *other = (BananaService_getApiVersion_args *)anObject;
+  AromaService_getApiVersion_args *other = (AromaService_getApiVersion_args *)anObject;
   return YES;
 }
 
@@ -12874,14 +12874,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApiVersion_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getApiVersion_args("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@interface BananaService_GetApiVersion_result : NSObject <TBase, NSCoding> {
+@interface AromaService_GetApiVersion_result : NSObject <TBase, NSCoding> {
   double __success;
 
   BOOL __success_isset;
@@ -12907,7 +12907,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@implementation BananaService_GetApiVersion_result
+@implementation AromaService_GetApiVersion_result
 
 - (id) init
 {
@@ -12960,10 +12960,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApiVersion_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApiVersion_result class]]) {
     return NO;
   }
-  BananaService_GetApiVersion_result *other = (BananaService_GetApiVersion_result *)anObject;
+  AromaService_GetApiVersion_result *other = (AromaService_GetApiVersion_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && (__success != other->__success))) {
     return NO;
@@ -13042,7 +13042,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApiVersion_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApiVersion_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%f", __success];
   [ms appendString: @")"];
@@ -13051,18 +13051,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_deleteMessage_args : NSObject <TBase, NSCoding> {
-  BananaService_DeleteMessageRequest * __request;
+@interface AromaService_deleteMessage_args : NSObject <TBase, NSCoding> {
+  AromaService_DeleteMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_DeleteMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_DeleteMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_DeleteMessageRequest *) request;
+- (id) initWithRequest: (AromaService_DeleteMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -13070,14 +13070,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_DeleteMessageRequest *) request;
-- (void) setRequest: (BananaService_DeleteMessageRequest *) request;
+- (AromaService_DeleteMessageRequest *) request;
+- (void) setRequest: (AromaService_DeleteMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_deleteMessage_args
+@implementation AromaService_deleteMessage_args
 
 - (id) init
 {
@@ -13087,7 +13087,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_DeleteMessageRequest *) request
+- (id) initWithRequest: (AromaService_DeleteMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -13130,10 +13130,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_deleteMessage_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_deleteMessage_args class]]) {
     return NO;
   }
-  BananaService_deleteMessage_args *other = (BananaService_deleteMessage_args *)anObject;
+  AromaService_deleteMessage_args *other = (AromaService_deleteMessage_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -13147,11 +13147,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_DeleteMessageRequest *) request {
+- (AromaService_DeleteMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_DeleteMessageRequest *) request {
+- (void) setRequest: (AromaService_DeleteMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -13185,7 +13185,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_DeleteMessageRequest *fieldValue = [[BananaService_DeleteMessageRequest alloc] init];
+          AromaService_DeleteMessageRequest *fieldValue = [[AromaService_DeleteMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -13220,7 +13220,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_deleteMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_deleteMessage_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -13229,13 +13229,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_DeleteMessage_result : NSObject <TBase, NSCoding> {
-  BananaService_DeleteMessageResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_MessageDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_DeleteMessage_result : NSObject <TBase, NSCoding> {
+  AromaService_DeleteMessageResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_MessageDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -13246,16 +13246,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_DeleteMessageResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_MessageDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_DeleteMessageResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_MessageDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_DeleteMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_MessageDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_DeleteMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_MessageDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -13263,44 +13263,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_DeleteMessageResponse *) success;
-- (void) setSuccess: (BananaService_DeleteMessageResponse *) success;
+- (AromaService_DeleteMessageResponse *) success;
+- (void) setSuccess: (AromaService_DeleteMessageResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_MessageDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_MessageDoesNotExistException) ex4;
+- (AromaService_MessageDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_MessageDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_DeleteMessage_result
+@implementation AromaService_DeleteMessage_result
 
 - (id) init
 {
@@ -13310,7 +13310,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_DeleteMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_MessageDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_DeleteMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_MessageDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -13433,10 +13433,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DeleteMessage_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_DeleteMessage_result class]]) {
     return NO;
   }
-  BananaService_DeleteMessage_result *other = (BananaService_DeleteMessage_result *)anObject;
+  AromaService_DeleteMessage_result *other = (AromaService_DeleteMessage_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -13475,11 +13475,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_DeleteMessageResponse *) success {
+- (AromaService_DeleteMessageResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_DeleteMessageResponse *) success {
+- (void) setSuccess: (AromaService_DeleteMessageResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -13496,11 +13496,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -13517,11 +13517,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -13538,11 +13538,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -13559,11 +13559,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_MessageDoesNotExistException *) ex4 {
+- (AromaException_MessageDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_MessageDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_MessageDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -13580,11 +13580,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -13618,7 +13618,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_DeleteMessageResponse *fieldValue = [[BananaService_DeleteMessageResponse alloc] init];
+          AromaService_DeleteMessageResponse *fieldValue = [[AromaService_DeleteMessageResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -13628,7 +13628,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -13638,7 +13638,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -13648,7 +13648,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -13658,7 +13658,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_MessageDoesNotExistException *fieldValue = [[BananaException_MessageDoesNotExistException alloc] init];
+          AromaException_MessageDoesNotExistException *fieldValue = [[AromaException_MessageDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -13668,7 +13668,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -13734,7 +13734,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DeleteMessage_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteMessage_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -13753,18 +13753,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_dismissMessage_args : NSObject <TBase, NSCoding> {
-  BananaService_DismissMessageRequest * __request;
+@interface AromaService_dismissMessage_args : NSObject <TBase, NSCoding> {
+  AromaService_DismissMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_DismissMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_DismissMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_DismissMessageRequest *) request;
+- (id) initWithRequest: (AromaService_DismissMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -13772,14 +13772,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_DismissMessageRequest *) request;
-- (void) setRequest: (BananaService_DismissMessageRequest *) request;
+- (AromaService_DismissMessageRequest *) request;
+- (void) setRequest: (AromaService_DismissMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_dismissMessage_args
+@implementation AromaService_dismissMessage_args
 
 - (id) init
 {
@@ -13789,7 +13789,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_DismissMessageRequest *) request
+- (id) initWithRequest: (AromaService_DismissMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -13832,10 +13832,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_dismissMessage_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_dismissMessage_args class]]) {
     return NO;
   }
-  BananaService_dismissMessage_args *other = (BananaService_dismissMessage_args *)anObject;
+  AromaService_dismissMessage_args *other = (AromaService_dismissMessage_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -13849,11 +13849,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_DismissMessageRequest *) request {
+- (AromaService_DismissMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_DismissMessageRequest *) request {
+- (void) setRequest: (AromaService_DismissMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -13887,7 +13887,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_DismissMessageRequest *fieldValue = [[BananaService_DismissMessageRequest alloc] init];
+          AromaService_DismissMessageRequest *fieldValue = [[AromaService_DismissMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -13922,7 +13922,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_dismissMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_dismissMessage_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -13931,13 +13931,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_DismissMessage_result : NSObject <TBase, NSCoding> {
-  BananaService_DismissMessageResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_MessageDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_DismissMessage_result : NSObject <TBase, NSCoding> {
+  AromaService_DismissMessageResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_MessageDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -13948,16 +13948,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_DismissMessageResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_MessageDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_DismissMessageResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_MessageDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_DismissMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_MessageDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_DismissMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_MessageDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -13965,44 +13965,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_DismissMessageResponse *) success;
-- (void) setSuccess: (BananaService_DismissMessageResponse *) success;
+- (AromaService_DismissMessageResponse *) success;
+- (void) setSuccess: (AromaService_DismissMessageResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_MessageDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_MessageDoesNotExistException) ex4;
+- (AromaService_MessageDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_MessageDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_DismissMessage_result
+@implementation AromaService_DismissMessage_result
 
 - (id) init
 {
@@ -14012,7 +14012,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_DismissMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_MessageDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_DismissMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_MessageDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -14135,10 +14135,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_DismissMessage_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_DismissMessage_result class]]) {
     return NO;
   }
-  BananaService_DismissMessage_result *other = (BananaService_DismissMessage_result *)anObject;
+  AromaService_DismissMessage_result *other = (AromaService_DismissMessage_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -14177,11 +14177,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_DismissMessageResponse *) success {
+- (AromaService_DismissMessageResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_DismissMessageResponse *) success {
+- (void) setSuccess: (AromaService_DismissMessageResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -14198,11 +14198,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -14219,11 +14219,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -14240,11 +14240,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -14261,11 +14261,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_MessageDoesNotExistException *) ex4 {
+- (AromaException_MessageDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_MessageDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_MessageDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -14282,11 +14282,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -14320,7 +14320,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_DismissMessageResponse *fieldValue = [[BananaService_DismissMessageResponse alloc] init];
+          AromaService_DismissMessageResponse *fieldValue = [[AromaService_DismissMessageResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -14330,7 +14330,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -14340,7 +14340,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -14350,7 +14350,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -14360,7 +14360,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_MessageDoesNotExistException *fieldValue = [[BananaException_MessageDoesNotExistException alloc] init];
+          AromaException_MessageDoesNotExistException *fieldValue = [[AromaException_MessageDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -14370,7 +14370,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -14436,7 +14436,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_DismissMessage_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DismissMessage_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -14455,18 +14455,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_provisionApplication_args : NSObject <TBase, NSCoding> {
-  BananaService_ProvisionApplicationRequest * __request;
+@interface AromaService_provisionApplication_args : NSObject <TBase, NSCoding> {
+  AromaService_ProvisionApplicationRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_ProvisionApplicationRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_ProvisionApplicationRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request;
+- (id) initWithRequest: (AromaService_ProvisionApplicationRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -14474,14 +14474,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ProvisionApplicationRequest *) request;
-- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request;
+- (AromaService_ProvisionApplicationRequest *) request;
+- (void) setRequest: (AromaService_ProvisionApplicationRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_provisionApplication_args
+@implementation AromaService_provisionApplication_args
 
 - (id) init
 {
@@ -14491,7 +14491,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_ProvisionApplicationRequest *) request
+- (id) initWithRequest: (AromaService_ProvisionApplicationRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -14534,10 +14534,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_provisionApplication_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_provisionApplication_args class]]) {
     return NO;
   }
-  BananaService_provisionApplication_args *other = (BananaService_provisionApplication_args *)anObject;
+  AromaService_provisionApplication_args *other = (AromaService_provisionApplication_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -14551,11 +14551,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_ProvisionApplicationRequest *) request {
+- (AromaService_ProvisionApplicationRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_ProvisionApplicationRequest *) request {
+- (void) setRequest: (AromaService_ProvisionApplicationRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -14589,7 +14589,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_ProvisionApplicationRequest *fieldValue = [[BananaService_ProvisionApplicationRequest alloc] init];
+          AromaService_ProvisionApplicationRequest *fieldValue = [[AromaService_ProvisionApplicationRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -14624,7 +14624,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_provisionApplication_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_provisionApplication_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -14633,13 +14633,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_ProvisionApplication_result : NSObject <TBase, NSCoding> {
-  BananaService_ProvisionApplicationResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_ProvisionApplication_result : NSObject <TBase, NSCoding> {
+  AromaService_ProvisionApplicationResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -14650,16 +14650,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_ProvisionApplicationResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_ProvisionApplicationResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_ProvisionApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -14667,44 +14667,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ProvisionApplicationResponse *) success;
-- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success;
+- (AromaService_ProvisionApplicationResponse *) success;
+- (void) setSuccess: (AromaService_ProvisionApplicationResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_ProvisionApplication_result
+@implementation AromaService_ProvisionApplication_result
 
 - (id) init
 {
@@ -14714,7 +14714,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_ProvisionApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_ProvisionApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -14837,10 +14837,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_ProvisionApplication_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_ProvisionApplication_result class]]) {
     return NO;
   }
-  BananaService_ProvisionApplication_result *other = (BananaService_ProvisionApplication_result *)anObject;
+  AromaService_ProvisionApplication_result *other = (AromaService_ProvisionApplication_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -14879,11 +14879,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_ProvisionApplicationResponse *) success {
+- (AromaService_ProvisionApplicationResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_ProvisionApplicationResponse *) success {
+- (void) setSuccess: (AromaService_ProvisionApplicationResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -14900,11 +14900,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -14921,11 +14921,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -14942,11 +14942,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -14963,11 +14963,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -14984,11 +14984,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -15022,7 +15022,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_ProvisionApplicationResponse *fieldValue = [[BananaService_ProvisionApplicationResponse alloc] init];
+          AromaService_ProvisionApplicationResponse *fieldValue = [[AromaService_ProvisionApplicationResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -15032,7 +15032,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -15042,7 +15042,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -15052,7 +15052,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -15062,7 +15062,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -15072,7 +15072,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -15138,7 +15138,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_ProvisionApplication_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_ProvisionApplication_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -15157,18 +15157,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_regenerateToken_args : NSObject <TBase, NSCoding> {
-  BananaService_RegenerateApplicationTokenRequest * __request;
+@interface AromaService_regenerateToken_args : NSObject <TBase, NSCoding> {
+  AromaService_RegenerateApplicationTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegenerateApplicationTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RegenerateApplicationTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
+- (id) initWithRequest: (AromaService_RegenerateApplicationTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -15176,14 +15176,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RegenerateApplicationTokenRequest *) request;
-- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request;
+- (AromaService_RegenerateApplicationTokenRequest *) request;
+- (void) setRequest: (AromaService_RegenerateApplicationTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_regenerateToken_args
+@implementation AromaService_regenerateToken_args
 
 - (id) init
 {
@@ -15193,7 +15193,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_RegenerateApplicationTokenRequest *) request
+- (id) initWithRequest: (AromaService_RegenerateApplicationTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -15236,10 +15236,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_regenerateToken_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_regenerateToken_args class]]) {
     return NO;
   }
-  BananaService_regenerateToken_args *other = (BananaService_regenerateToken_args *)anObject;
+  AromaService_regenerateToken_args *other = (AromaService_regenerateToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -15253,11 +15253,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RegenerateApplicationTokenRequest *) request {
+- (AromaService_RegenerateApplicationTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_RegenerateApplicationTokenRequest *) request {
+- (void) setRequest: (AromaService_RegenerateApplicationTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -15291,7 +15291,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_RegenerateApplicationTokenRequest *fieldValue = [[BananaService_RegenerateApplicationTokenRequest alloc] init];
+          AromaService_RegenerateApplicationTokenRequest *fieldValue = [[AromaService_RegenerateApplicationTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -15326,7 +15326,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_regenerateToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_regenerateToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -15335,13 +15335,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_RegenerateToken_result : NSObject <TBase, NSCoding> {
-  BananaService_RegenerateApplicationTokenResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_RegenerateToken_result : NSObject <TBase, NSCoding> {
+  AromaService_RegenerateApplicationTokenResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -15352,16 +15352,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegenerateApplicationTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RegenerateApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_RegenerateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -15369,44 +15369,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RegenerateApplicationTokenResponse *) success;
-- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success;
+- (AromaService_RegenerateApplicationTokenResponse *) success;
+- (void) setSuccess: (AromaService_RegenerateApplicationTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_RegenerateToken_result
+@implementation AromaService_RegenerateToken_result
 
 - (id) init
 {
@@ -15416,7 +15416,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_RegenerateApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_RegenerateApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -15539,10 +15539,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegenerateToken_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegenerateToken_result class]]) {
     return NO;
   }
-  BananaService_RegenerateToken_result *other = (BananaService_RegenerateToken_result *)anObject;
+  AromaService_RegenerateToken_result *other = (AromaService_RegenerateToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -15581,11 +15581,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RegenerateApplicationTokenResponse *) success {
+- (AromaService_RegenerateApplicationTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_RegenerateApplicationTokenResponse *) success {
+- (void) setSuccess: (AromaService_RegenerateApplicationTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -15602,11 +15602,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -15623,11 +15623,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -15644,11 +15644,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -15665,11 +15665,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -15686,11 +15686,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -15724,7 +15724,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_RegenerateApplicationTokenResponse *fieldValue = [[BananaService_RegenerateApplicationTokenResponse alloc] init];
+          AromaService_RegenerateApplicationTokenResponse *fieldValue = [[AromaService_RegenerateApplicationTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -15734,7 +15734,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -15744,7 +15744,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -15754,7 +15754,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -15764,7 +15764,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -15774,7 +15774,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -15840,7 +15840,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegenerateToken_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegenerateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -15859,18 +15859,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_registerHealthCheck_args : NSObject <TBase, NSCoding> {
-  BananaService_RegisterHealthCheckRequest * __request;
+@interface AromaService_registerHealthCheck_args : NSObject <TBase, NSCoding> {
+  AromaService_RegisterHealthCheckRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RegisterHealthCheckRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RegisterHealthCheckRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request;
+- (id) initWithRequest: (AromaService_RegisterHealthCheckRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -15878,14 +15878,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RegisterHealthCheckRequest *) request;
-- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request;
+- (AromaService_RegisterHealthCheckRequest *) request;
+- (void) setRequest: (AromaService_RegisterHealthCheckRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_registerHealthCheck_args
+@implementation AromaService_registerHealthCheck_args
 
 - (id) init
 {
@@ -15895,7 +15895,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_RegisterHealthCheckRequest *) request
+- (id) initWithRequest: (AromaService_RegisterHealthCheckRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -15938,10 +15938,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_registerHealthCheck_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_registerHealthCheck_args class]]) {
     return NO;
   }
-  BananaService_registerHealthCheck_args *other = (BananaService_registerHealthCheck_args *)anObject;
+  AromaService_registerHealthCheck_args *other = (AromaService_registerHealthCheck_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -15955,11 +15955,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RegisterHealthCheckRequest *) request {
+- (AromaService_RegisterHealthCheckRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_RegisterHealthCheckRequest *) request {
+- (void) setRequest: (AromaService_RegisterHealthCheckRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -15993,7 +15993,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_RegisterHealthCheckRequest *fieldValue = [[BananaService_RegisterHealthCheckRequest alloc] init];
+          AromaService_RegisterHealthCheckRequest *fieldValue = [[AromaService_RegisterHealthCheckRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -16028,7 +16028,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_registerHealthCheck_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_registerHealthCheck_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -16037,13 +16037,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_RegisterHealthCheck_result : NSObject <TBase, NSCoding> {
-  BananaService_RegisterHealthCheckResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_RegisterHealthCheck_result : NSObject <TBase, NSCoding> {
+  AromaService_RegisterHealthCheckResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -16054,16 +16054,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RegisterHealthCheckResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RegisterHealthCheckResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_RegisterHealthCheckResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -16071,44 +16071,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RegisterHealthCheckResponse *) success;
-- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success;
+- (AromaService_RegisterHealthCheckResponse *) success;
+- (void) setSuccess: (AromaService_RegisterHealthCheckResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_RegisterHealthCheck_result
+@implementation AromaService_RegisterHealthCheck_result
 
 - (id) init
 {
@@ -16118,7 +16118,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_RegisterHealthCheckResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_RegisterHealthCheckResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -16241,10 +16241,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RegisterHealthCheck_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_RegisterHealthCheck_result class]]) {
     return NO;
   }
-  BananaService_RegisterHealthCheck_result *other = (BananaService_RegisterHealthCheck_result *)anObject;
+  AromaService_RegisterHealthCheck_result *other = (AromaService_RegisterHealthCheck_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -16283,11 +16283,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RegisterHealthCheckResponse *) success {
+- (AromaService_RegisterHealthCheckResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_RegisterHealthCheckResponse *) success {
+- (void) setSuccess: (AromaService_RegisterHealthCheckResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -16304,11 +16304,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -16325,11 +16325,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -16346,11 +16346,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -16367,11 +16367,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -16388,11 +16388,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -16426,7 +16426,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_RegisterHealthCheckResponse *fieldValue = [[BananaService_RegisterHealthCheckResponse alloc] init];
+          AromaService_RegisterHealthCheckResponse *fieldValue = [[AromaService_RegisterHealthCheckResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -16436,7 +16436,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -16446,7 +16446,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -16456,7 +16456,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -16466,7 +16466,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -16476,7 +16476,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -16542,7 +16542,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RegisterHealthCheck_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RegisterHealthCheck_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -16561,18 +16561,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_removeSavedChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_RemoveSavedChannelRequest * __request;
+@interface AromaService_removeSavedChannel_args : NSObject <TBase, NSCoding> {
+  AromaService_RemoveSavedChannelRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RemoveSavedChannelRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RemoveSavedChannelRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request;
+- (id) initWithRequest: (AromaService_RemoveSavedChannelRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -16580,14 +16580,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RemoveSavedChannelRequest *) request;
-- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request;
+- (AromaService_RemoveSavedChannelRequest *) request;
+- (void) setRequest: (AromaService_RemoveSavedChannelRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_removeSavedChannel_args
+@implementation AromaService_removeSavedChannel_args
 
 - (id) init
 {
@@ -16597,7 +16597,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_RemoveSavedChannelRequest *) request
+- (id) initWithRequest: (AromaService_RemoveSavedChannelRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -16640,10 +16640,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_removeSavedChannel_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_removeSavedChannel_args class]]) {
     return NO;
   }
-  BananaService_removeSavedChannel_args *other = (BananaService_removeSavedChannel_args *)anObject;
+  AromaService_removeSavedChannel_args *other = (AromaService_removeSavedChannel_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -16657,11 +16657,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RemoveSavedChannelRequest *) request {
+- (AromaService_RemoveSavedChannelRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_RemoveSavedChannelRequest *) request {
+- (void) setRequest: (AromaService_RemoveSavedChannelRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -16695,7 +16695,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_RemoveSavedChannelRequest *fieldValue = [[BananaService_RemoveSavedChannelRequest alloc] init];
+          AromaService_RemoveSavedChannelRequest *fieldValue = [[AromaService_RemoveSavedChannelRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -16730,7 +16730,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_removeSavedChannel_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_removeSavedChannel_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -16739,13 +16739,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_RemoveSavedChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_RemoveSavedChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_ChannelDoesNotExistException __ex5;
+@interface AromaService_RemoveSavedChannel_result : NSObject <TBase, NSCoding> {
+  AromaService_RemoveSavedChannelResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
+  AromaService_ChannelDoesNotExistException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -16756,16 +16756,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RemoveSavedChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RemoveSavedChannelResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ChannelDoesNotExistException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
+- (id) initWithSuccess: (AromaService_RemoveSavedChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -16773,44 +16773,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RemoveSavedChannelResponse *) success;
-- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success;
+- (AromaService_RemoveSavedChannelResponse *) success;
+- (void) setSuccess: (AromaService_RemoveSavedChannelResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
+- (AromaService_ChannelDoesNotExistException) ex5;
+- (void) setEx5: (AromaService_ChannelDoesNotExistException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_RemoveSavedChannel_result
+@implementation AromaService_RemoveSavedChannel_result
 
 - (id) init
 {
@@ -16820,7 +16820,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_RemoveSavedChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
+- (id) initWithSuccess: (AromaService_RemoveSavedChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -16943,10 +16943,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RemoveSavedChannel_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_RemoveSavedChannel_result class]]) {
     return NO;
   }
-  BananaService_RemoveSavedChannel_result *other = (BananaService_RemoveSavedChannel_result *)anObject;
+  AromaService_RemoveSavedChannel_result *other = (AromaService_RemoveSavedChannel_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -16985,11 +16985,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RemoveSavedChannelResponse *) success {
+- (AromaService_RemoveSavedChannelResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_RemoveSavedChannelResponse *) success {
+- (void) setSuccess: (AromaService_RemoveSavedChannelResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -17006,11 +17006,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -17027,11 +17027,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -17048,11 +17048,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -17069,11 +17069,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -17090,11 +17090,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_ChannelDoesNotExistException *) ex5 {
+- (AromaException_ChannelDoesNotExistException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
+- (void) setEx5: (AromaException_ChannelDoesNotExistException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -17128,7 +17128,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_RemoveSavedChannelResponse *fieldValue = [[BananaService_RemoveSavedChannelResponse alloc] init];
+          AromaService_RemoveSavedChannelResponse *fieldValue = [[AromaService_RemoveSavedChannelResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -17138,7 +17138,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -17148,7 +17148,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -17158,7 +17158,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -17168,7 +17168,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -17178,7 +17178,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
+          AromaException_ChannelDoesNotExistException *fieldValue = [[AromaException_ChannelDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -17244,7 +17244,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RemoveSavedChannel_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RemoveSavedChannel_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -17263,18 +17263,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_renewApplicationToken_args : NSObject <TBase, NSCoding> {
-  BananaService_RenewApplicationTokenRequest * __request;
+@interface AromaService_renewApplicationToken_args : NSObject <TBase, NSCoding> {
+  AromaService_RenewApplicationTokenRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_RenewApplicationTokenRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_RenewApplicationTokenRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request;
+- (id) initWithRequest: (AromaService_RenewApplicationTokenRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -17282,14 +17282,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RenewApplicationTokenRequest *) request;
-- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request;
+- (AromaService_RenewApplicationTokenRequest *) request;
+- (void) setRequest: (AromaService_RenewApplicationTokenRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_renewApplicationToken_args
+@implementation AromaService_renewApplicationToken_args
 
 - (id) init
 {
@@ -17299,7 +17299,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_RenewApplicationTokenRequest *) request
+- (id) initWithRequest: (AromaService_RenewApplicationTokenRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -17342,10 +17342,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_renewApplicationToken_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_renewApplicationToken_args class]]) {
     return NO;
   }
-  BananaService_renewApplicationToken_args *other = (BananaService_renewApplicationToken_args *)anObject;
+  AromaService_renewApplicationToken_args *other = (AromaService_renewApplicationToken_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -17359,11 +17359,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RenewApplicationTokenRequest *) request {
+- (AromaService_RenewApplicationTokenRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_RenewApplicationTokenRequest *) request {
+- (void) setRequest: (AromaService_RenewApplicationTokenRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -17397,7 +17397,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_RenewApplicationTokenRequest *fieldValue = [[BananaService_RenewApplicationTokenRequest alloc] init];
+          AromaService_RenewApplicationTokenRequest *fieldValue = [[AromaService_RenewApplicationTokenRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -17432,7 +17432,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_renewApplicationToken_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_renewApplicationToken_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -17441,13 +17441,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_RenewApplicationToken_result : NSObject <TBase, NSCoding> {
-  BananaService_RenewApplicationTokenResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_RenewApplicationToken_result : NSObject <TBase, NSCoding> {
+  AromaService_RenewApplicationTokenResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -17458,16 +17458,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_RenewApplicationTokenResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_RenewApplicationTokenResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_RenewApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -17475,44 +17475,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_RenewApplicationTokenResponse *) success;
-- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success;
+- (AromaService_RenewApplicationTokenResponse *) success;
+- (void) setSuccess: (AromaService_RenewApplicationTokenResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_RenewApplicationToken_result
+@implementation AromaService_RenewApplicationToken_result
 
 - (id) init
 {
@@ -17522,7 +17522,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_RenewApplicationTokenResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_RenewApplicationTokenResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -17645,10 +17645,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_RenewApplicationToken_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_RenewApplicationToken_result class]]) {
     return NO;
   }
-  BananaService_RenewApplicationToken_result *other = (BananaService_RenewApplicationToken_result *)anObject;
+  AromaService_RenewApplicationToken_result *other = (AromaService_RenewApplicationToken_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -17687,11 +17687,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_RenewApplicationTokenResponse *) success {
+- (AromaService_RenewApplicationTokenResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_RenewApplicationTokenResponse *) success {
+- (void) setSuccess: (AromaService_RenewApplicationTokenResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -17708,11 +17708,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -17729,11 +17729,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -17750,11 +17750,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -17771,11 +17771,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -17792,11 +17792,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -17830,7 +17830,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_RenewApplicationTokenResponse *fieldValue = [[BananaService_RenewApplicationTokenResponse alloc] init];
+          AromaService_RenewApplicationTokenResponse *fieldValue = [[AromaService_RenewApplicationTokenResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -17840,7 +17840,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -17850,7 +17850,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -17860,7 +17860,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -17870,7 +17870,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -17880,7 +17880,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -17946,7 +17946,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_RenewApplicationToken_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_RenewApplicationToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -17965,18 +17965,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_saveChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_SaveChannelRequest * __request;
+@interface AromaService_saveChannel_args : NSObject <TBase, NSCoding> {
+  AromaService_SaveChannelRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SaveChannelRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SaveChannelRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SaveChannelRequest *) request;
+- (id) initWithRequest: (AromaService_SaveChannelRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -17984,14 +17984,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SaveChannelRequest *) request;
-- (void) setRequest: (BananaService_SaveChannelRequest *) request;
+- (AromaService_SaveChannelRequest *) request;
+- (void) setRequest: (AromaService_SaveChannelRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_saveChannel_args
+@implementation AromaService_saveChannel_args
 
 - (id) init
 {
@@ -18001,7 +18001,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SaveChannelRequest *) request
+- (id) initWithRequest: (AromaService_SaveChannelRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -18044,10 +18044,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_saveChannel_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_saveChannel_args class]]) {
     return NO;
   }
-  BananaService_saveChannel_args *other = (BananaService_saveChannel_args *)anObject;
+  AromaService_saveChannel_args *other = (AromaService_saveChannel_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -18061,11 +18061,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SaveChannelRequest *) request {
+- (AromaService_SaveChannelRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SaveChannelRequest *) request {
+- (void) setRequest: (AromaService_SaveChannelRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -18099,7 +18099,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SaveChannelRequest *fieldValue = [[BananaService_SaveChannelRequest alloc] init];
+          AromaService_SaveChannelRequest *fieldValue = [[AromaService_SaveChannelRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -18134,7 +18134,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_saveChannel_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_saveChannel_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -18143,12 +18143,12 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_SaveChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_SaveChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
+@interface AromaService_SaveChannel_result : NSObject <TBase, NSCoding> {
+  AromaService_SaveChannelResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -18158,15 +18158,15 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SaveChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SaveChannelResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
+- (id) initWithSuccess: (AromaService_SaveChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18174,38 +18174,38 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SaveChannelResponse *) success;
-- (void) setSuccess: (BananaService_SaveChannelResponse *) success;
+- (AromaService_SaveChannelResponse *) success;
+- (void) setSuccess: (AromaService_SaveChannelResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 @end
 
-@implementation BananaService_SaveChannel_result
+@implementation AromaService_SaveChannel_result
 
 - (id) init
 {
@@ -18215,7 +18215,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SaveChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4
+- (id) initWithSuccess: (AromaService_SaveChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4
 {
   self = [super init];
   __success = [success retain_stub];
@@ -18322,10 +18322,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SaveChannel_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_SaveChannel_result class]]) {
     return NO;
   }
-  BananaService_SaveChannel_result *other = (BananaService_SaveChannel_result *)anObject;
+  AromaService_SaveChannel_result *other = (AromaService_SaveChannel_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -18359,11 +18359,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SaveChannelResponse *) success {
+- (AromaService_SaveChannelResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SaveChannelResponse *) success {
+- (void) setSuccess: (AromaService_SaveChannelResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -18380,11 +18380,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -18401,11 +18401,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -18422,11 +18422,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -18443,11 +18443,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -18481,7 +18481,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SaveChannelResponse *fieldValue = [[BananaService_SaveChannelResponse alloc] init];
+          AromaService_SaveChannelResponse *fieldValue = [[AromaService_SaveChannelResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -18491,7 +18491,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -18501,7 +18501,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -18511,7 +18511,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -18521,7 +18521,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -18581,7 +18581,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SaveChannel_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SaveChannel_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -18598,18 +18598,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_signIn_args : NSObject <TBase, NSCoding> {
-  BananaService_SignInRequest * __request;
+@interface AromaService_signIn_args : NSObject <TBase, NSCoding> {
+  AromaService_SignInRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SignInRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SignInRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SignInRequest *) request;
+- (id) initWithRequest: (AromaService_SignInRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18617,14 +18617,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SignInRequest *) request;
-- (void) setRequest: (BananaService_SignInRequest *) request;
+- (AromaService_SignInRequest *) request;
+- (void) setRequest: (AromaService_SignInRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_signIn_args
+@implementation AromaService_signIn_args
 
 - (id) init
 {
@@ -18634,7 +18634,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SignInRequest *) request
+- (id) initWithRequest: (AromaService_SignInRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -18677,10 +18677,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_signIn_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_signIn_args class]]) {
     return NO;
   }
-  BananaService_signIn_args *other = (BananaService_signIn_args *)anObject;
+  AromaService_signIn_args *other = (AromaService_signIn_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -18694,11 +18694,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SignInRequest *) request {
+- (AromaService_SignInRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SignInRequest *) request {
+- (void) setRequest: (AromaService_SignInRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -18732,7 +18732,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SignInRequest *fieldValue = [[BananaService_SignInRequest alloc] init];
+          AromaService_SignInRequest *fieldValue = [[AromaService_SignInRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -18767,7 +18767,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_signIn_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_signIn_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -18776,12 +18776,12 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_SignIn_result : NSObject <TBase, NSCoding> {
-  BananaService_SignInResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_UserDoesNotExistException __ex4;
+@interface AromaService_SignIn_result : NSObject <TBase, NSCoding> {
+  AromaService_SignInResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidCredentialsException __ex3;
+  AromaService_UserDoesNotExistException __ex4;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -18791,15 +18791,15 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SignInResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UserDoesNotExistException ex4;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SignInResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UserDoesNotExistException ex4;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SignInResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UserDoesNotExistException) ex4;
+- (id) initWithSuccess: (AromaService_SignInResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidCredentialsException) ex3 ex4: (AromaService_UserDoesNotExistException) ex4;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -18807,38 +18807,38 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SignInResponse *) success;
-- (void) setSuccess: (BananaService_SignInResponse *) success;
+- (AromaService_SignInResponse *) success;
+- (void) setSuccess: (AromaService_SignInResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+- (AromaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (AromaService_InvalidCredentialsException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_UserDoesNotExistException) ex4;
+- (AromaService_UserDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_UserDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 @end
 
-@implementation BananaService_SignIn_result
+@implementation AromaService_SignIn_result
 
 - (id) init
 {
@@ -18848,7 +18848,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SignInResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_UserDoesNotExistException) ex4
+- (id) initWithSuccess: (AromaService_SignInResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidCredentialsException) ex3 ex4: (AromaService_UserDoesNotExistException) ex4
 {
   self = [super init];
   __success = [success retain_stub];
@@ -18955,10 +18955,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignIn_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignIn_result class]]) {
     return NO;
   }
-  BananaService_SignIn_result *other = (BananaService_SignIn_result *)anObject;
+  AromaService_SignIn_result *other = (AromaService_SignIn_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -18992,11 +18992,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SignInResponse *) success {
+- (AromaService_SignInResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SignInResponse *) success {
+- (void) setSuccess: (AromaService_SignInResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -19013,11 +19013,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -19034,11 +19034,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -19055,11 +19055,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidCredentialsException *) ex3 {
+- (AromaException_InvalidCredentialsException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+- (void) setEx3: (AromaException_InvalidCredentialsException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -19076,11 +19076,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UserDoesNotExistException *) ex4 {
+- (AromaException_UserDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UserDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_UserDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -19114,7 +19114,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SignInResponse *fieldValue = [[BananaService_SignInResponse alloc] init];
+          AromaService_SignInResponse *fieldValue = [[AromaService_SignInResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -19124,7 +19124,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -19134,7 +19134,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -19144,7 +19144,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          AromaException_InvalidCredentialsException *fieldValue = [[AromaException_InvalidCredentialsException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -19154,7 +19154,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UserDoesNotExistException *fieldValue = [[BananaException_UserDoesNotExistException alloc] init];
+          AromaException_UserDoesNotExistException *fieldValue = [[AromaException_UserDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -19214,7 +19214,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignIn_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignIn_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -19231,18 +19231,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_signUp_args : NSObject <TBase, NSCoding> {
-  BananaService_SignUpRequest * __request;
+@interface AromaService_signUp_args : NSObject <TBase, NSCoding> {
+  AromaService_SignUpRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SignUpRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SignUpRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SignUpRequest *) request;
+- (id) initWithRequest: (AromaService_SignUpRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -19250,14 +19250,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SignUpRequest *) request;
-- (void) setRequest: (BananaService_SignUpRequest *) request;
+- (AromaService_SignUpRequest *) request;
+- (void) setRequest: (AromaService_SignUpRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_signUp_args
+@implementation AromaService_signUp_args
 
 - (id) init
 {
@@ -19267,7 +19267,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SignUpRequest *) request
+- (id) initWithRequest: (AromaService_SignUpRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -19310,10 +19310,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_signUp_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_signUp_args class]]) {
     return NO;
   }
-  BananaService_signUp_args *other = (BananaService_signUp_args *)anObject;
+  AromaService_signUp_args *other = (AromaService_signUp_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -19327,11 +19327,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SignUpRequest *) request {
+- (AromaService_SignUpRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SignUpRequest *) request {
+- (void) setRequest: (AromaService_SignUpRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -19365,7 +19365,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SignUpRequest *fieldValue = [[BananaService_SignUpRequest alloc] init];
+          AromaService_SignUpRequest *fieldValue = [[AromaService_SignUpRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -19400,7 +19400,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_signUp_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_signUp_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -19409,12 +19409,12 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_SignUp_result : NSObject <TBase, NSCoding> {
-  BananaService_SignUpResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidCredentialsException __ex3;
-  BananaService_AccountAlreadyExistsException __ex4;
+@interface AromaService_SignUp_result : NSObject <TBase, NSCoding> {
+  AromaService_SignUpResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidCredentialsException __ex3;
+  AromaService_AccountAlreadyExistsException __ex4;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -19424,15 +19424,15 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SignUpResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidCredentialsException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_AccountAlreadyExistsException ex4;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SignUpResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidCredentialsException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_AccountAlreadyExistsException ex4;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SignUpResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_AccountAlreadyExistsException) ex4;
+- (id) initWithSuccess: (AromaService_SignUpResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidCredentialsException) ex3 ex4: (AromaService_AccountAlreadyExistsException) ex4;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -19440,38 +19440,38 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SignUpResponse *) success;
-- (void) setSuccess: (BananaService_SignUpResponse *) success;
+- (AromaService_SignUpResponse *) success;
+- (void) setSuccess: (AromaService_SignUpResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidCredentialsException) ex3;
-- (void) setEx3: (BananaService_InvalidCredentialsException) ex3;
+- (AromaService_InvalidCredentialsException) ex3;
+- (void) setEx3: (AromaService_InvalidCredentialsException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_AccountAlreadyExistsException) ex4;
-- (void) setEx4: (BananaService_AccountAlreadyExistsException) ex4;
+- (AromaService_AccountAlreadyExistsException) ex4;
+- (void) setEx4: (AromaService_AccountAlreadyExistsException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 @end
 
-@implementation BananaService_SignUp_result
+@implementation AromaService_SignUp_result
 
 - (id) init
 {
@@ -19481,7 +19481,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SignUpResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidCredentialsException) ex3 ex4: (BananaService_AccountAlreadyExistsException) ex4
+- (id) initWithSuccess: (AromaService_SignUpResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidCredentialsException) ex3 ex4: (AromaService_AccountAlreadyExistsException) ex4
 {
   self = [super init];
   __success = [success retain_stub];
@@ -19588,10 +19588,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SignUp_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_SignUp_result class]]) {
     return NO;
   }
-  BananaService_SignUp_result *other = (BananaService_SignUp_result *)anObject;
+  AromaService_SignUp_result *other = (AromaService_SignUp_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -19625,11 +19625,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SignUpResponse *) success {
+- (AromaService_SignUpResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SignUpResponse *) success {
+- (void) setSuccess: (AromaService_SignUpResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -19646,11 +19646,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -19667,11 +19667,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -19688,11 +19688,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidCredentialsException *) ex3 {
+- (AromaException_InvalidCredentialsException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidCredentialsException *) ex3 {
+- (void) setEx3: (AromaException_InvalidCredentialsException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -19709,11 +19709,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_AccountAlreadyExistsException *) ex4 {
+- (AromaException_AccountAlreadyExistsException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_AccountAlreadyExistsException *) ex4 {
+- (void) setEx4: (AromaException_AccountAlreadyExistsException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -19747,7 +19747,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SignUpResponse *fieldValue = [[BananaService_SignUpResponse alloc] init];
+          AromaService_SignUpResponse *fieldValue = [[AromaService_SignUpResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -19757,7 +19757,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -19767,7 +19767,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -19777,7 +19777,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidCredentialsException *fieldValue = [[BananaException_InvalidCredentialsException alloc] init];
+          AromaException_InvalidCredentialsException *fieldValue = [[AromaException_InvalidCredentialsException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -19787,7 +19787,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_AccountAlreadyExistsException *fieldValue = [[BananaException_AccountAlreadyExistsException alloc] init];
+          AromaException_AccountAlreadyExistsException *fieldValue = [[AromaException_AccountAlreadyExistsException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -19847,7 +19847,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SignUp_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SignUp_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -19864,18 +19864,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_snoozeChannel_args : NSObject <TBase, NSCoding> {
-  BananaService_SnoozeChannelRequest * __request;
+@interface AromaService_snoozeChannel_args : NSObject <TBase, NSCoding> {
+  AromaService_SnoozeChannelRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SnoozeChannelRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SnoozeChannelRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request;
+- (id) initWithRequest: (AromaService_SnoozeChannelRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -19883,14 +19883,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SnoozeChannelRequest *) request;
-- (void) setRequest: (BananaService_SnoozeChannelRequest *) request;
+- (AromaService_SnoozeChannelRequest *) request;
+- (void) setRequest: (AromaService_SnoozeChannelRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_snoozeChannel_args
+@implementation AromaService_snoozeChannel_args
 
 - (id) init
 {
@@ -19900,7 +19900,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SnoozeChannelRequest *) request
+- (id) initWithRequest: (AromaService_SnoozeChannelRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -19943,10 +19943,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_snoozeChannel_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_snoozeChannel_args class]]) {
     return NO;
   }
-  BananaService_snoozeChannel_args *other = (BananaService_snoozeChannel_args *)anObject;
+  AromaService_snoozeChannel_args *other = (AromaService_snoozeChannel_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -19960,11 +19960,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SnoozeChannelRequest *) request {
+- (AromaService_SnoozeChannelRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SnoozeChannelRequest *) request {
+- (void) setRequest: (AromaService_SnoozeChannelRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -19998,7 +19998,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SnoozeChannelRequest *fieldValue = [[BananaService_SnoozeChannelRequest alloc] init];
+          AromaService_SnoozeChannelRequest *fieldValue = [[AromaService_SnoozeChannelRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -20033,7 +20033,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_snoozeChannel_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_snoozeChannel_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -20042,13 +20042,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_SnoozeChannel_result : NSObject <TBase, NSCoding> {
-  BananaService_SnoozeChannelResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_ChannelDoesNotExistException __ex5;
+@interface AromaService_SnoozeChannel_result : NSObject <TBase, NSCoding> {
+  AromaService_SnoozeChannelResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
+  AromaService_ChannelDoesNotExistException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -20059,16 +20059,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SnoozeChannelResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ChannelDoesNotExistException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SnoozeChannelResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ChannelDoesNotExistException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5;
+- (id) initWithSuccess: (AromaService_SnoozeChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -20076,44 +20076,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SnoozeChannelResponse *) success;
-- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success;
+- (AromaService_SnoozeChannelResponse *) success;
+- (void) setSuccess: (AromaService_SnoozeChannelResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ChannelDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_ChannelDoesNotExistException) ex5;
+- (AromaService_ChannelDoesNotExistException) ex5;
+- (void) setEx5: (AromaService_ChannelDoesNotExistException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_SnoozeChannel_result
+@implementation AromaService_SnoozeChannel_result
 
 - (id) init
 {
@@ -20123,7 +20123,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SnoozeChannelResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ChannelDoesNotExistException) ex5
+- (id) initWithSuccess: (AromaService_SnoozeChannelResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ChannelDoesNotExistException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -20246,10 +20246,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SnoozeChannel_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_SnoozeChannel_result class]]) {
     return NO;
   }
-  BananaService_SnoozeChannel_result *other = (BananaService_SnoozeChannel_result *)anObject;
+  AromaService_SnoozeChannel_result *other = (AromaService_SnoozeChannel_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -20288,11 +20288,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SnoozeChannelResponse *) success {
+- (AromaService_SnoozeChannelResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SnoozeChannelResponse *) success {
+- (void) setSuccess: (AromaService_SnoozeChannelResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -20309,11 +20309,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -20330,11 +20330,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -20351,11 +20351,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -20372,11 +20372,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -20393,11 +20393,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_ChannelDoesNotExistException *) ex5 {
+- (AromaException_ChannelDoesNotExistException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_ChannelDoesNotExistException *) ex5 {
+- (void) setEx5: (AromaException_ChannelDoesNotExistException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -20431,7 +20431,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SnoozeChannelResponse *fieldValue = [[BananaService_SnoozeChannelResponse alloc] init];
+          AromaService_SnoozeChannelResponse *fieldValue = [[AromaService_SnoozeChannelResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -20441,7 +20441,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -20451,7 +20451,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -20461,7 +20461,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -20471,7 +20471,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -20481,7 +20481,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_ChannelDoesNotExistException *fieldValue = [[BananaException_ChannelDoesNotExistException alloc] init];
+          AromaException_ChannelDoesNotExistException *fieldValue = [[AromaException_ChannelDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -20547,7 +20547,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SnoozeChannel_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SnoozeChannel_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -20566,18 +20566,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_followApplication_args : NSObject <TBase, NSCoding> {
-  BananaService_FollowApplicationRequest * __request;
+@interface AromaService_followApplication_args : NSObject <TBase, NSCoding> {
+  AromaService_FollowApplicationRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_FollowApplicationRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_FollowApplicationRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_FollowApplicationRequest *) request;
+- (id) initWithRequest: (AromaService_FollowApplicationRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -20585,14 +20585,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_FollowApplicationRequest *) request;
-- (void) setRequest: (BananaService_FollowApplicationRequest *) request;
+- (AromaService_FollowApplicationRequest *) request;
+- (void) setRequest: (AromaService_FollowApplicationRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_followApplication_args
+@implementation AromaService_followApplication_args
 
 - (id) init
 {
@@ -20602,7 +20602,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_FollowApplicationRequest *) request
+- (id) initWithRequest: (AromaService_FollowApplicationRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -20645,10 +20645,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_followApplication_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_followApplication_args class]]) {
     return NO;
   }
-  BananaService_followApplication_args *other = (BananaService_followApplication_args *)anObject;
+  AromaService_followApplication_args *other = (AromaService_followApplication_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -20662,11 +20662,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_FollowApplicationRequest *) request {
+- (AromaService_FollowApplicationRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_FollowApplicationRequest *) request {
+- (void) setRequest: (AromaService_FollowApplicationRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -20700,7 +20700,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_FollowApplicationRequest *fieldValue = [[BananaService_FollowApplicationRequest alloc] init];
+          AromaService_FollowApplicationRequest *fieldValue = [[AromaService_FollowApplicationRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -20735,7 +20735,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_followApplication_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_followApplication_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -20744,14 +20744,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_FollowApplication_result : NSObject <TBase, NSCoding> {
-  BananaService_FollowApplicationResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_ApplicationAlreadyRegisteredException __ex5;
-  BananaService_CustomChannelUnreachableException __ex6;
+@interface AromaService_FollowApplication_result : NSObject <TBase, NSCoding> {
+  AromaService_FollowApplicationResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_ApplicationAlreadyRegisteredException __ex5;
+  AromaService_CustomChannelUnreachableException __ex6;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -20763,17 +20763,17 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_FollowApplicationResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ApplicationAlreadyRegisteredException ex5;
-@property (nonatomic, retain, getter=ex6, setter=setEx6:) BananaService_CustomChannelUnreachableException ex6;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_FollowApplicationResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ApplicationAlreadyRegisteredException ex5;
+@property (nonatomic, retain, getter=ex6, setter=setEx6:) AromaService_CustomChannelUnreachableException ex6;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_FollowApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6;
+- (id) initWithSuccess: (AromaService_FollowApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_ApplicationAlreadyRegisteredException) ex5 ex6: (AromaService_CustomChannelUnreachableException) ex6;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -20781,50 +20781,50 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_FollowApplicationResponse *) success;
-- (void) setSuccess: (BananaService_FollowApplicationResponse *) success;
+- (AromaService_FollowApplicationResponse *) success;
+- (void) setSuccess: (AromaService_FollowApplicationResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationAlreadyRegisteredException) ex5;
-- (void) setEx5: (BananaService_ApplicationAlreadyRegisteredException) ex5;
+- (AromaService_ApplicationAlreadyRegisteredException) ex5;
+- (void) setEx5: (AromaService_ApplicationAlreadyRegisteredException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_CustomChannelUnreachableException) ex6;
-- (void) setEx6: (BananaService_CustomChannelUnreachableException) ex6;
+- (AromaService_CustomChannelUnreachableException) ex6;
+- (void) setEx6: (AromaService_CustomChannelUnreachableException) ex6;
 #endif
 - (BOOL) ex6IsSet;
 
 @end
 
-@implementation BananaService_FollowApplication_result
+@implementation AromaService_FollowApplication_result
 
 - (id) init
 {
@@ -20834,7 +20834,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_FollowApplicationResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_ApplicationAlreadyRegisteredException) ex5 ex6: (BananaService_CustomChannelUnreachableException) ex6
+- (id) initWithSuccess: (AromaService_FollowApplicationResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_ApplicationAlreadyRegisteredException) ex5 ex6: (AromaService_CustomChannelUnreachableException) ex6
 {
   self = [super init];
   __success = [success retain_stub];
@@ -20973,10 +20973,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_FollowApplication_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_FollowApplication_result class]]) {
     return NO;
   }
-  BananaService_FollowApplication_result *other = (BananaService_FollowApplication_result *)anObject;
+  AromaService_FollowApplication_result *other = (AromaService_FollowApplication_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -21020,11 +21020,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_FollowApplicationResponse *) success {
+- (AromaService_FollowApplicationResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_FollowApplicationResponse *) success {
+- (void) setSuccess: (AromaService_FollowApplicationResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -21041,11 +21041,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -21062,11 +21062,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -21083,11 +21083,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -21104,11 +21104,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -21125,11 +21125,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_ApplicationAlreadyRegisteredException *) ex5 {
+- (AromaException_ApplicationAlreadyRegisteredException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_ApplicationAlreadyRegisteredException *) ex5 {
+- (void) setEx5: (AromaException_ApplicationAlreadyRegisteredException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -21146,11 +21146,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex5_isset = NO;
 }
 
-- (BananaException_CustomChannelUnreachableException *) ex6 {
+- (AromaException_CustomChannelUnreachableException *) ex6 {
   return [[__ex6 retain_stub] autorelease_stub];
 }
 
-- (void) setEx6: (BananaException_CustomChannelUnreachableException *) ex6 {
+- (void) setEx6: (AromaException_CustomChannelUnreachableException *) ex6 {
   [ex6 retain_stub];
   [__ex6 release_stub];
   __ex6 = ex6;
@@ -21184,7 +21184,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_FollowApplicationResponse *fieldValue = [[BananaService_FollowApplicationResponse alloc] init];
+          AromaService_FollowApplicationResponse *fieldValue = [[AromaService_FollowApplicationResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -21194,7 +21194,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -21204,7 +21204,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -21214,7 +21214,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -21224,7 +21224,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -21234,7 +21234,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationAlreadyRegisteredException *fieldValue = [[BananaException_ApplicationAlreadyRegisteredException alloc] init];
+          AromaException_ApplicationAlreadyRegisteredException *fieldValue = [[AromaException_ApplicationAlreadyRegisteredException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -21244,7 +21244,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 6:
         if (fieldType == TType_STRUCT) {
-          BananaException_CustomChannelUnreachableException *fieldValue = [[BananaException_CustomChannelUnreachableException alloc] init];
+          AromaException_CustomChannelUnreachableException *fieldValue = [[AromaException_CustomChannelUnreachableException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx6: fieldValue];
           [fieldValue release_stub];
@@ -21316,7 +21316,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_FollowApplication_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_FollowApplication_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -21337,18 +21337,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getActivity_args : NSObject <TBase, NSCoding> {
-  BananaService_GetActivityRequest * __request;
+@interface AromaService_getActivity_args : NSObject <TBase, NSCoding> {
+  AromaService_GetActivityRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetActivityRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetActivityRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetActivityRequest *) request;
+- (id) initWithRequest: (AromaService_GetActivityRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -21356,14 +21356,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetActivityRequest *) request;
-- (void) setRequest: (BananaService_GetActivityRequest *) request;
+- (AromaService_GetActivityRequest *) request;
+- (void) setRequest: (AromaService_GetActivityRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getActivity_args
+@implementation AromaService_getActivity_args
 
 - (id) init
 {
@@ -21373,7 +21373,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetActivityRequest *) request
+- (id) initWithRequest: (AromaService_GetActivityRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -21416,10 +21416,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getActivity_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getActivity_args class]]) {
     return NO;
   }
-  BananaService_getActivity_args *other = (BananaService_getActivity_args *)anObject;
+  AromaService_getActivity_args *other = (AromaService_getActivity_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -21433,11 +21433,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetActivityRequest *) request {
+- (AromaService_GetActivityRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetActivityRequest *) request {
+- (void) setRequest: (AromaService_GetActivityRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -21471,7 +21471,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetActivityRequest *fieldValue = [[BananaService_GetActivityRequest alloc] init];
+          AromaService_GetActivityRequest *fieldValue = [[AromaService_GetActivityRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -21506,7 +21506,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getActivity_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getActivity_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -21515,11 +21515,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetActivity_result : NSObject <TBase, NSCoding> {
-  BananaService_GetActivityResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetActivity_result : NSObject <TBase, NSCoding> {
+  AromaService_GetActivityResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -21528,14 +21528,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetActivityResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetActivityResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetActivityResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetActivityResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -21543,32 +21543,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetActivityResponse *) success;
-- (void) setSuccess: (BananaService_GetActivityResponse *) success;
+- (AromaService_GetActivityResponse *) success;
+- (void) setSuccess: (AromaService_GetActivityResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetActivity_result
+@implementation AromaService_GetActivity_result
 
 - (id) init
 {
@@ -21578,7 +21578,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetActivityResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetActivityResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -21669,10 +21669,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetActivity_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetActivity_result class]]) {
     return NO;
   }
-  BananaService_GetActivity_result *other = (BananaService_GetActivity_result *)anObject;
+  AromaService_GetActivity_result *other = (AromaService_GetActivity_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -21701,11 +21701,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetActivityResponse *) success {
+- (AromaService_GetActivityResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetActivityResponse *) success {
+- (void) setSuccess: (AromaService_GetActivityResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -21722,11 +21722,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -21743,11 +21743,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -21764,11 +21764,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -21802,7 +21802,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetActivityResponse *fieldValue = [[BananaService_GetActivityResponse alloc] init];
+          AromaService_GetActivityResponse *fieldValue = [[AromaService_GetActivityResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -21812,7 +21812,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -21822,7 +21822,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -21832,7 +21832,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -21886,7 +21886,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetActivity_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetActivity_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -21901,18 +21901,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getApplicationInfo_args : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationInfoRequest * __request;
+@interface AromaService_getApplicationInfo_args : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationInfoRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetApplicationInfoRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetApplicationInfoRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetApplicationInfoRequest *) request;
+- (id) initWithRequest: (AromaService_GetApplicationInfoRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -21920,14 +21920,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetApplicationInfoRequest *) request;
-- (void) setRequest: (BananaService_GetApplicationInfoRequest *) request;
+- (AromaService_GetApplicationInfoRequest *) request;
+- (void) setRequest: (AromaService_GetApplicationInfoRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getApplicationInfo_args
+@implementation AromaService_getApplicationInfo_args
 
 - (id) init
 {
@@ -21937,7 +21937,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetApplicationInfoRequest *) request
+- (id) initWithRequest: (AromaService_GetApplicationInfoRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -21980,10 +21980,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getApplicationInfo_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getApplicationInfo_args class]]) {
     return NO;
   }
-  BananaService_getApplicationInfo_args *other = (BananaService_getApplicationInfo_args *)anObject;
+  AromaService_getApplicationInfo_args *other = (AromaService_getApplicationInfo_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -21997,11 +21997,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetApplicationInfoRequest *) request {
+- (AromaService_GetApplicationInfoRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetApplicationInfoRequest *) request {
+- (void) setRequest: (AromaService_GetApplicationInfoRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -22035,7 +22035,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationInfoRequest *fieldValue = [[BananaService_GetApplicationInfoRequest alloc] init];
+          AromaService_GetApplicationInfoRequest *fieldValue = [[AromaService_GetApplicationInfoRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -22070,7 +22070,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApplicationInfo_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getApplicationInfo_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -22079,13 +22079,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetApplicationInfo_result : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationInfoResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_GetApplicationInfo_result : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationInfoResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -22096,16 +22096,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetApplicationInfoResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetApplicationInfoResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetApplicationInfoResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_GetApplicationInfoResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -22113,44 +22113,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetApplicationInfoResponse *) success;
-- (void) setSuccess: (BananaService_GetApplicationInfoResponse *) success;
+- (AromaService_GetApplicationInfoResponse *) success;
+- (void) setSuccess: (AromaService_GetApplicationInfoResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_GetApplicationInfo_result
+@implementation AromaService_GetApplicationInfo_result
 
 - (id) init
 {
@@ -22160,7 +22160,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetApplicationInfoResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_GetApplicationInfoResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -22283,10 +22283,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationInfo_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationInfo_result class]]) {
     return NO;
   }
-  BananaService_GetApplicationInfo_result *other = (BananaService_GetApplicationInfo_result *)anObject;
+  AromaService_GetApplicationInfo_result *other = (AromaService_GetApplicationInfo_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -22325,11 +22325,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetApplicationInfoResponse *) success {
+- (AromaService_GetApplicationInfoResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetApplicationInfoResponse *) success {
+- (void) setSuccess: (AromaService_GetApplicationInfoResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -22346,11 +22346,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -22367,11 +22367,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -22388,11 +22388,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -22409,11 +22409,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -22430,11 +22430,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -22468,7 +22468,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationInfoResponse *fieldValue = [[BananaService_GetApplicationInfoResponse alloc] init];
+          AromaService_GetApplicationInfoResponse *fieldValue = [[AromaService_GetApplicationInfoResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -22478,7 +22478,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -22488,7 +22488,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -22498,7 +22498,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -22508,7 +22508,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -22518,7 +22518,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -22584,7 +22584,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationInfo_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationInfo_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -22603,18 +22603,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getBuzz_args : NSObject <TBase, NSCoding> {
-  BananaService_GetBuzzRequest * __request;
+@interface AromaService_getBuzz_args : NSObject <TBase, NSCoding> {
+  AromaService_GetBuzzRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetBuzzRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetBuzzRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetBuzzRequest *) request;
+- (id) initWithRequest: (AromaService_GetBuzzRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -22622,14 +22622,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetBuzzRequest *) request;
-- (void) setRequest: (BananaService_GetBuzzRequest *) request;
+- (AromaService_GetBuzzRequest *) request;
+- (void) setRequest: (AromaService_GetBuzzRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getBuzz_args
+@implementation AromaService_getBuzz_args
 
 - (id) init
 {
@@ -22639,7 +22639,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetBuzzRequest *) request
+- (id) initWithRequest: (AromaService_GetBuzzRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -22682,10 +22682,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getBuzz_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getBuzz_args class]]) {
     return NO;
   }
-  BananaService_getBuzz_args *other = (BananaService_getBuzz_args *)anObject;
+  AromaService_getBuzz_args *other = (AromaService_getBuzz_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -22699,11 +22699,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetBuzzRequest *) request {
+- (AromaService_GetBuzzRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetBuzzRequest *) request {
+- (void) setRequest: (AromaService_GetBuzzRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -22737,7 +22737,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetBuzzRequest *fieldValue = [[BananaService_GetBuzzRequest alloc] init];
+          AromaService_GetBuzzRequest *fieldValue = [[AromaService_GetBuzzRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -22772,7 +22772,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getBuzz_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getBuzz_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -22781,13 +22781,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetBuzz_result : NSObject <TBase, NSCoding> {
-  BananaService_GetBuzzResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_ApplicationDoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_GetBuzz_result : NSObject <TBase, NSCoding> {
+  AromaService_GetBuzzResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_ApplicationDoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -22798,16 +22798,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetBuzzResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_ApplicationDoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetBuzzResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_ApplicationDoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetBuzzResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_GetBuzzResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -22815,44 +22815,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetBuzzResponse *) success;
-- (void) setSuccess: (BananaService_GetBuzzResponse *) success;
+- (AromaService_GetBuzzResponse *) success;
+- (void) setSuccess: (AromaService_GetBuzzResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex4;
-- (void) setEx4: (BananaService_ApplicationDoesNotExistException) ex4;
+- (AromaService_ApplicationDoesNotExistException) ex4;
+- (void) setEx4: (AromaService_ApplicationDoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_GetBuzz_result
+@implementation AromaService_GetBuzz_result
 
 - (id) init
 {
@@ -22862,7 +22862,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetBuzzResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_ApplicationDoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_GetBuzzResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_ApplicationDoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -22985,10 +22985,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetBuzz_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetBuzz_result class]]) {
     return NO;
   }
-  BananaService_GetBuzz_result *other = (BananaService_GetBuzz_result *)anObject;
+  AromaService_GetBuzz_result *other = (AromaService_GetBuzz_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -23027,11 +23027,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetBuzzResponse *) success {
+- (AromaService_GetBuzzResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetBuzzResponse *) success {
+- (void) setSuccess: (AromaService_GetBuzzResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -23048,11 +23048,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -23069,11 +23069,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -23090,11 +23090,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -23111,11 +23111,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (AromaException_ApplicationDoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_ApplicationDoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_ApplicationDoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -23132,11 +23132,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -23170,7 +23170,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetBuzzResponse *fieldValue = [[BananaService_GetBuzzResponse alloc] init];
+          AromaService_GetBuzzResponse *fieldValue = [[AromaService_GetBuzzResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -23180,7 +23180,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -23190,7 +23190,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -23200,7 +23200,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -23210,7 +23210,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -23220,7 +23220,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -23286,7 +23286,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetBuzz_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetBuzz_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -23305,18 +23305,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getDashboard_args : NSObject <TBase, NSCoding> {
-  BananaService_GetDashboardRequest * __request;
+@interface AromaService_getDashboard_args : NSObject <TBase, NSCoding> {
+  AromaService_GetDashboardRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetDashboardRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetDashboardRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetDashboardRequest *) request;
+- (id) initWithRequest: (AromaService_GetDashboardRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -23324,14 +23324,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetDashboardRequest *) request;
-- (void) setRequest: (BananaService_GetDashboardRequest *) request;
+- (AromaService_GetDashboardRequest *) request;
+- (void) setRequest: (AromaService_GetDashboardRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getDashboard_args
+@implementation AromaService_getDashboard_args
 
 - (id) init
 {
@@ -23341,7 +23341,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetDashboardRequest *) request
+- (id) initWithRequest: (AromaService_GetDashboardRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -23384,10 +23384,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getDashboard_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getDashboard_args class]]) {
     return NO;
   }
-  BananaService_getDashboard_args *other = (BananaService_getDashboard_args *)anObject;
+  AromaService_getDashboard_args *other = (AromaService_getDashboard_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -23401,11 +23401,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetDashboardRequest *) request {
+- (AromaService_GetDashboardRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetDashboardRequest *) request {
+- (void) setRequest: (AromaService_GetDashboardRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -23439,7 +23439,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetDashboardRequest *fieldValue = [[BananaService_GetDashboardRequest alloc] init];
+          AromaService_GetDashboardRequest *fieldValue = [[AromaService_GetDashboardRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -23474,7 +23474,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getDashboard_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getDashboard_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -23483,11 +23483,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetDashboard_result : NSObject <TBase, NSCoding> {
-  BananaService_GetDashboardResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetDashboard_result : NSObject <TBase, NSCoding> {
+  AromaService_GetDashboardResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -23496,14 +23496,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetDashboardResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetDashboardResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetDashboardResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetDashboardResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -23511,32 +23511,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetDashboardResponse *) success;
-- (void) setSuccess: (BananaService_GetDashboardResponse *) success;
+- (AromaService_GetDashboardResponse *) success;
+- (void) setSuccess: (AromaService_GetDashboardResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetDashboard_result
+@implementation AromaService_GetDashboard_result
 
 - (id) init
 {
@@ -23546,7 +23546,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetDashboardResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetDashboardResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -23637,10 +23637,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetDashboard_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetDashboard_result class]]) {
     return NO;
   }
-  BananaService_GetDashboard_result *other = (BananaService_GetDashboard_result *)anObject;
+  AromaService_GetDashboard_result *other = (AromaService_GetDashboard_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -23669,11 +23669,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetDashboardResponse *) success {
+- (AromaService_GetDashboardResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetDashboardResponse *) success {
+- (void) setSuccess: (AromaService_GetDashboardResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -23690,11 +23690,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -23711,11 +23711,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -23732,11 +23732,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -23770,7 +23770,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetDashboardResponse *fieldValue = [[BananaService_GetDashboardResponse alloc] init];
+          AromaService_GetDashboardResponse *fieldValue = [[AromaService_GetDashboardResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -23780,7 +23780,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -23790,7 +23790,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -23800,7 +23800,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -23854,7 +23854,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetDashboard_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetDashboard_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -23869,18 +23869,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getApplicationMessages_args : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationMessagesRequest * __request;
+@interface AromaService_getApplicationMessages_args : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationMessagesRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetApplicationMessagesRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetApplicationMessagesRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetApplicationMessagesRequest *) request;
+- (id) initWithRequest: (AromaService_GetApplicationMessagesRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -23888,14 +23888,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetApplicationMessagesRequest *) request;
-- (void) setRequest: (BananaService_GetApplicationMessagesRequest *) request;
+- (AromaService_GetApplicationMessagesRequest *) request;
+- (void) setRequest: (AromaService_GetApplicationMessagesRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getApplicationMessages_args
+@implementation AromaService_getApplicationMessages_args
 
 - (id) init
 {
@@ -23905,7 +23905,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetApplicationMessagesRequest *) request
+- (id) initWithRequest: (AromaService_GetApplicationMessagesRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -23948,10 +23948,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getApplicationMessages_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getApplicationMessages_args class]]) {
     return NO;
   }
-  BananaService_getApplicationMessages_args *other = (BananaService_getApplicationMessages_args *)anObject;
+  AromaService_getApplicationMessages_args *other = (AromaService_getApplicationMessages_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -23965,11 +23965,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetApplicationMessagesRequest *) request {
+- (AromaService_GetApplicationMessagesRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetApplicationMessagesRequest *) request {
+- (void) setRequest: (AromaService_GetApplicationMessagesRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -24003,7 +24003,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationMessagesRequest *fieldValue = [[BananaService_GetApplicationMessagesRequest alloc] init];
+          AromaService_GetApplicationMessagesRequest *fieldValue = [[AromaService_GetApplicationMessagesRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -24038,7 +24038,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getApplicationMessages_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getApplicationMessages_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -24047,13 +24047,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetApplicationMessages_result : NSObject <TBase, NSCoding> {
-  BananaService_GetApplicationMessagesResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_ApplicationDoesNotExistException __ex5;
+@interface AromaService_GetApplicationMessages_result : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationMessagesResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
+  AromaService_ApplicationDoesNotExistException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -24064,16 +24064,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetApplicationMessagesResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_ApplicationDoesNotExistException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetApplicationMessagesResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_ApplicationDoesNotExistException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetApplicationMessagesResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ApplicationDoesNotExistException) ex5;
+- (id) initWithSuccess: (AromaService_GetApplicationMessagesResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ApplicationDoesNotExistException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -24081,44 +24081,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetApplicationMessagesResponse *) success;
-- (void) setSuccess: (BananaService_GetApplicationMessagesResponse *) success;
+- (AromaService_GetApplicationMessagesResponse *) success;
+- (void) setSuccess: (AromaService_GetApplicationMessagesResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_ApplicationDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_ApplicationDoesNotExistException) ex5;
+- (AromaService_ApplicationDoesNotExistException) ex5;
+- (void) setEx5: (AromaService_ApplicationDoesNotExistException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_GetApplicationMessages_result
+@implementation AromaService_GetApplicationMessages_result
 
 - (id) init
 {
@@ -24128,7 +24128,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetApplicationMessagesResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_ApplicationDoesNotExistException) ex5
+- (id) initWithSuccess: (AromaService_GetApplicationMessagesResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_ApplicationDoesNotExistException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -24251,10 +24251,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetApplicationMessages_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationMessages_result class]]) {
     return NO;
   }
-  BananaService_GetApplicationMessages_result *other = (BananaService_GetApplicationMessages_result *)anObject;
+  AromaService_GetApplicationMessages_result *other = (AromaService_GetApplicationMessages_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -24293,11 +24293,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetApplicationMessagesResponse *) success {
+- (AromaService_GetApplicationMessagesResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetApplicationMessagesResponse *) success {
+- (void) setSuccess: (AromaService_GetApplicationMessagesResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -24314,11 +24314,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -24335,11 +24335,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -24356,11 +24356,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -24377,11 +24377,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -24398,11 +24398,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_ApplicationDoesNotExistException *) ex5 {
+- (AromaException_ApplicationDoesNotExistException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_ApplicationDoesNotExistException *) ex5 {
+- (void) setEx5: (AromaException_ApplicationDoesNotExistException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -24436,7 +24436,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetApplicationMessagesResponse *fieldValue = [[BananaService_GetApplicationMessagesResponse alloc] init];
+          AromaService_GetApplicationMessagesResponse *fieldValue = [[AromaService_GetApplicationMessagesResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -24446,7 +24446,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -24456,7 +24456,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -24466,7 +24466,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -24476,7 +24476,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -24486,7 +24486,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_ApplicationDoesNotExistException *fieldValue = [[BananaException_ApplicationDoesNotExistException alloc] init];
+          AromaException_ApplicationDoesNotExistException *fieldValue = [[AromaException_ApplicationDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -24552,7 +24552,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetApplicationMessages_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationMessages_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -24571,18 +24571,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getInbox_args : NSObject <TBase, NSCoding> {
-  BananaService_GetInboxRequest * __request;
+@interface AromaService_getInbox_args : NSObject <TBase, NSCoding> {
+  AromaService_GetInboxRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetInboxRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetInboxRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetInboxRequest *) request;
+- (id) initWithRequest: (AromaService_GetInboxRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -24590,14 +24590,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetInboxRequest *) request;
-- (void) setRequest: (BananaService_GetInboxRequest *) request;
+- (AromaService_GetInboxRequest *) request;
+- (void) setRequest: (AromaService_GetInboxRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getInbox_args
+@implementation AromaService_getInbox_args
 
 - (id) init
 {
@@ -24607,7 +24607,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetInboxRequest *) request
+- (id) initWithRequest: (AromaService_GetInboxRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -24650,10 +24650,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getInbox_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getInbox_args class]]) {
     return NO;
   }
-  BananaService_getInbox_args *other = (BananaService_getInbox_args *)anObject;
+  AromaService_getInbox_args *other = (AromaService_getInbox_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -24667,11 +24667,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetInboxRequest *) request {
+- (AromaService_GetInboxRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetInboxRequest *) request {
+- (void) setRequest: (AromaService_GetInboxRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -24705,7 +24705,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetInboxRequest *fieldValue = [[BananaService_GetInboxRequest alloc] init];
+          AromaService_GetInboxRequest *fieldValue = [[AromaService_GetInboxRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -24740,7 +24740,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getInbox_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getInbox_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -24749,11 +24749,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetInbox_result : NSObject <TBase, NSCoding> {
-  BananaService_GetInboxResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetInbox_result : NSObject <TBase, NSCoding> {
+  AromaService_GetInboxResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -24762,14 +24762,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetInboxResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetInboxResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetInboxResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetInboxResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -24777,32 +24777,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetInboxResponse *) success;
-- (void) setSuccess: (BananaService_GetInboxResponse *) success;
+- (AromaService_GetInboxResponse *) success;
+- (void) setSuccess: (AromaService_GetInboxResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetInbox_result
+@implementation AromaService_GetInbox_result
 
 - (id) init
 {
@@ -24812,7 +24812,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetInboxResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetInboxResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -24903,10 +24903,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetInbox_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetInbox_result class]]) {
     return NO;
   }
-  BananaService_GetInbox_result *other = (BananaService_GetInbox_result *)anObject;
+  AromaService_GetInbox_result *other = (AromaService_GetInbox_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -24935,11 +24935,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetInboxResponse *) success {
+- (AromaService_GetInboxResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetInboxResponse *) success {
+- (void) setSuccess: (AromaService_GetInboxResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -24956,11 +24956,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -24977,11 +24977,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -24998,11 +24998,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -25036,7 +25036,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetInboxResponse *fieldValue = [[BananaService_GetInboxResponse alloc] init];
+          AromaService_GetInboxResponse *fieldValue = [[AromaService_GetInboxResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -25046,7 +25046,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -25056,7 +25056,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -25066,7 +25066,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -25120,7 +25120,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetInbox_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetInbox_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -25135,18 +25135,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getFullMessage_args : NSObject <TBase, NSCoding> {
-  BananaService_GetFullMessageRequest * __request;
+@interface AromaService_getFullMessage_args : NSObject <TBase, NSCoding> {
+  AromaService_GetFullMessageRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetFullMessageRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetFullMessageRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetFullMessageRequest *) request;
+- (id) initWithRequest: (AromaService_GetFullMessageRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -25154,14 +25154,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetFullMessageRequest *) request;
-- (void) setRequest: (BananaService_GetFullMessageRequest *) request;
+- (AromaService_GetFullMessageRequest *) request;
+- (void) setRequest: (AromaService_GetFullMessageRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getFullMessage_args
+@implementation AromaService_getFullMessage_args
 
 - (id) init
 {
@@ -25171,7 +25171,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetFullMessageRequest *) request
+- (id) initWithRequest: (AromaService_GetFullMessageRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -25214,10 +25214,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getFullMessage_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getFullMessage_args class]]) {
     return NO;
   }
-  BananaService_getFullMessage_args *other = (BananaService_getFullMessage_args *)anObject;
+  AromaService_getFullMessage_args *other = (AromaService_getFullMessage_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -25231,11 +25231,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetFullMessageRequest *) request {
+- (AromaService_GetFullMessageRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetFullMessageRequest *) request {
+- (void) setRequest: (AromaService_GetFullMessageRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -25269,7 +25269,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetFullMessageRequest *fieldValue = [[BananaService_GetFullMessageRequest alloc] init];
+          AromaService_GetFullMessageRequest *fieldValue = [[AromaService_GetFullMessageRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -25304,7 +25304,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getFullMessage_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getFullMessage_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -25313,11 +25313,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetFullMessage_result : NSObject <TBase, NSCoding> {
-  BananaService_GetFullMessageResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetFullMessage_result : NSObject <TBase, NSCoding> {
+  AromaService_GetFullMessageResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -25326,14 +25326,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetFullMessageResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetFullMessageResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetFullMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetFullMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -25341,32 +25341,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetFullMessageResponse *) success;
-- (void) setSuccess: (BananaService_GetFullMessageResponse *) success;
+- (AromaService_GetFullMessageResponse *) success;
+- (void) setSuccess: (AromaService_GetFullMessageResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetFullMessage_result
+@implementation AromaService_GetFullMessage_result
 
 - (id) init
 {
@@ -25376,7 +25376,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetFullMessageResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetFullMessageResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -25467,10 +25467,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetFullMessage_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetFullMessage_result class]]) {
     return NO;
   }
-  BananaService_GetFullMessage_result *other = (BananaService_GetFullMessage_result *)anObject;
+  AromaService_GetFullMessage_result *other = (AromaService_GetFullMessage_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -25499,11 +25499,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetFullMessageResponse *) success {
+- (AromaService_GetFullMessageResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetFullMessageResponse *) success {
+- (void) setSuccess: (AromaService_GetFullMessageResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -25520,11 +25520,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -25541,11 +25541,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -25562,11 +25562,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -25600,7 +25600,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetFullMessageResponse *fieldValue = [[BananaService_GetFullMessageResponse alloc] init];
+          AromaService_GetFullMessageResponse *fieldValue = [[AromaService_GetFullMessageResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -25610,7 +25610,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -25620,7 +25620,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -25630,7 +25630,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -25684,7 +25684,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetFullMessage_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetFullMessage_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -25699,18 +25699,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getMedia_args : NSObject <TBase, NSCoding> {
-  BananaService_GetMediaRequest * __request;
+@interface AromaService_getMedia_args : NSObject <TBase, NSCoding> {
+  AromaService_GetMediaRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMediaRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetMediaRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetMediaRequest *) request;
+- (id) initWithRequest: (AromaService_GetMediaRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -25718,14 +25718,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMediaRequest *) request;
-- (void) setRequest: (BananaService_GetMediaRequest *) request;
+- (AromaService_GetMediaRequest *) request;
+- (void) setRequest: (AromaService_GetMediaRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getMedia_args
+@implementation AromaService_getMedia_args
 
 - (id) init
 {
@@ -25735,7 +25735,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetMediaRequest *) request
+- (id) initWithRequest: (AromaService_GetMediaRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -25778,10 +25778,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getMedia_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getMedia_args class]]) {
     return NO;
   }
-  BananaService_getMedia_args *other = (BananaService_getMedia_args *)anObject;
+  AromaService_getMedia_args *other = (AromaService_getMedia_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -25795,11 +25795,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMediaRequest *) request {
+- (AromaService_GetMediaRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetMediaRequest *) request {
+- (void) setRequest: (AromaService_GetMediaRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -25833,7 +25833,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMediaRequest *fieldValue = [[BananaService_GetMediaRequest alloc] init];
+          AromaService_GetMediaRequest *fieldValue = [[AromaService_GetMediaRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -25868,7 +25868,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMedia_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getMedia_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -25877,13 +25877,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetMedia_result : NSObject <TBase, NSCoding> {
-  BananaService_GetMediaResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_DoesNotExistException __ex4;
-  BananaService_UnauthorizedException __ex5;
+@interface AromaService_GetMedia_result : NSObject <TBase, NSCoding> {
+  AromaService_GetMediaResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_DoesNotExistException __ex4;
+  AromaService_UnauthorizedException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -25894,16 +25894,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMediaResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_DoesNotExistException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UnauthorizedException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetMediaResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_DoesNotExistException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UnauthorizedException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetMediaResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_DoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5;
+- (id) initWithSuccess: (AromaService_GetMediaResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_DoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -25911,44 +25911,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMediaResponse *) success;
-- (void) setSuccess: (BananaService_GetMediaResponse *) success;
+- (AromaService_GetMediaResponse *) success;
+- (void) setSuccess: (AromaService_GetMediaResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_DoesNotExistException) ex4;
-- (void) setEx4: (BananaService_DoesNotExistException) ex4;
+- (AromaService_DoesNotExistException) ex4;
+- (void) setEx4: (AromaService_DoesNotExistException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex5;
-- (void) setEx5: (BananaService_UnauthorizedException) ex5;
+- (AromaService_UnauthorizedException) ex5;
+- (void) setEx5: (AromaService_UnauthorizedException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_GetMedia_result
+@implementation AromaService_GetMedia_result
 
 - (id) init
 {
@@ -25958,7 +25958,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetMediaResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_DoesNotExistException) ex4 ex5: (BananaService_UnauthorizedException) ex5
+- (id) initWithSuccess: (AromaService_GetMediaResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_DoesNotExistException) ex4 ex5: (AromaService_UnauthorizedException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -26081,10 +26081,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMedia_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMedia_result class]]) {
     return NO;
   }
-  BananaService_GetMedia_result *other = (BananaService_GetMedia_result *)anObject;
+  AromaService_GetMedia_result *other = (AromaService_GetMedia_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -26123,11 +26123,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMediaResponse *) success {
+- (AromaService_GetMediaResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetMediaResponse *) success {
+- (void) setSuccess: (AromaService_GetMediaResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -26144,11 +26144,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -26165,11 +26165,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -26186,11 +26186,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -26207,11 +26207,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_DoesNotExistException *) ex4 {
+- (AromaException_DoesNotExistException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_DoesNotExistException *) ex4 {
+- (void) setEx4: (AromaException_DoesNotExistException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -26228,11 +26228,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex5 {
+- (AromaException_UnauthorizedException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UnauthorizedException *) ex5 {
+- (void) setEx5: (AromaException_UnauthorizedException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -26266,7 +26266,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMediaResponse *fieldValue = [[BananaService_GetMediaResponse alloc] init];
+          AromaService_GetMediaResponse *fieldValue = [[AromaService_GetMediaResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -26276,7 +26276,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -26286,7 +26286,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -26296,7 +26296,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -26306,7 +26306,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_DoesNotExistException *fieldValue = [[BananaException_DoesNotExistException alloc] init];
+          AromaException_DoesNotExistException *fieldValue = [[AromaException_DoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -26316,7 +26316,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -26382,7 +26382,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMedia_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMedia_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -26401,18 +26401,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getMyApplications_args : NSObject <TBase, NSCoding> {
-  BananaService_GetMyApplicationsRequest * __request;
+@interface AromaService_getMyApplications_args : NSObject <TBase, NSCoding> {
+  AromaService_GetMyApplicationsRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMyApplicationsRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetMyApplicationsRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request;
+- (id) initWithRequest: (AromaService_GetMyApplicationsRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -26420,14 +26420,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMyApplicationsRequest *) request;
-- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request;
+- (AromaService_GetMyApplicationsRequest *) request;
+- (void) setRequest: (AromaService_GetMyApplicationsRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getMyApplications_args
+@implementation AromaService_getMyApplications_args
 
 - (id) init
 {
@@ -26437,7 +26437,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetMyApplicationsRequest *) request
+- (id) initWithRequest: (AromaService_GetMyApplicationsRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -26480,10 +26480,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getMyApplications_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getMyApplications_args class]]) {
     return NO;
   }
-  BananaService_getMyApplications_args *other = (BananaService_getMyApplications_args *)anObject;
+  AromaService_getMyApplications_args *other = (AromaService_getMyApplications_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -26497,11 +26497,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMyApplicationsRequest *) request {
+- (AromaService_GetMyApplicationsRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetMyApplicationsRequest *) request {
+- (void) setRequest: (AromaService_GetMyApplicationsRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -26535,7 +26535,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMyApplicationsRequest *fieldValue = [[BananaService_GetMyApplicationsRequest alloc] init];
+          AromaService_GetMyApplicationsRequest *fieldValue = [[AromaService_GetMyApplicationsRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -26570,7 +26570,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMyApplications_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getMyApplications_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -26579,11 +26579,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetMyApplications_result : NSObject <TBase, NSCoding> {
-  BananaService_GetMyApplicationsResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetMyApplications_result : NSObject <TBase, NSCoding> {
+  AromaService_GetMyApplicationsResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -26592,14 +26592,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMyApplicationsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetMyApplicationsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetMyApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -26607,32 +26607,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMyApplicationsResponse *) success;
-- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success;
+- (AromaService_GetMyApplicationsResponse *) success;
+- (void) setSuccess: (AromaService_GetMyApplicationsResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetMyApplications_result
+@implementation AromaService_GetMyApplications_result
 
 - (id) init
 {
@@ -26642,7 +26642,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetMyApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetMyApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -26733,10 +26733,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMyApplications_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMyApplications_result class]]) {
     return NO;
   }
-  BananaService_GetMyApplications_result *other = (BananaService_GetMyApplications_result *)anObject;
+  AromaService_GetMyApplications_result *other = (AromaService_GetMyApplications_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -26765,11 +26765,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMyApplicationsResponse *) success {
+- (AromaService_GetMyApplicationsResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetMyApplicationsResponse *) success {
+- (void) setSuccess: (AromaService_GetMyApplicationsResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -26786,11 +26786,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -26807,11 +26807,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -26828,11 +26828,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -26866,7 +26866,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMyApplicationsResponse *fieldValue = [[BananaService_GetMyApplicationsResponse alloc] init];
+          AromaService_GetMyApplicationsResponse *fieldValue = [[AromaService_GetMyApplicationsResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -26876,7 +26876,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -26886,7 +26886,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -26896,7 +26896,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -26950,7 +26950,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMyApplications_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplications_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -26965,18 +26965,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getMySavedChannels_args : NSObject <TBase, NSCoding> {
-  BananaService_GetMySavedChannelsRequest * __request;
+@interface AromaService_getMySavedChannels_args : NSObject <TBase, NSCoding> {
+  AromaService_GetMySavedChannelsRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetMySavedChannelsRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetMySavedChannelsRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request;
+- (id) initWithRequest: (AromaService_GetMySavedChannelsRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -26984,14 +26984,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMySavedChannelsRequest *) request;
-- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request;
+- (AromaService_GetMySavedChannelsRequest *) request;
+- (void) setRequest: (AromaService_GetMySavedChannelsRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getMySavedChannels_args
+@implementation AromaService_getMySavedChannels_args
 
 - (id) init
 {
@@ -27001,7 +27001,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetMySavedChannelsRequest *) request
+- (id) initWithRequest: (AromaService_GetMySavedChannelsRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -27044,10 +27044,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getMySavedChannels_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getMySavedChannels_args class]]) {
     return NO;
   }
-  BananaService_getMySavedChannels_args *other = (BananaService_getMySavedChannels_args *)anObject;
+  AromaService_getMySavedChannels_args *other = (AromaService_getMySavedChannels_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -27061,11 +27061,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMySavedChannelsRequest *) request {
+- (AromaService_GetMySavedChannelsRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetMySavedChannelsRequest *) request {
+- (void) setRequest: (AromaService_GetMySavedChannelsRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -27099,7 +27099,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMySavedChannelsRequest *fieldValue = [[BananaService_GetMySavedChannelsRequest alloc] init];
+          AromaService_GetMySavedChannelsRequest *fieldValue = [[AromaService_GetMySavedChannelsRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -27134,7 +27134,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getMySavedChannels_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getMySavedChannels_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -27143,11 +27143,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetMySavedChannels_result : NSObject <TBase, NSCoding> {
-  BananaService_GetMySavedChannelsResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
+@interface AromaService_GetMySavedChannels_result : NSObject <TBase, NSCoding> {
+  AromaService_GetMySavedChannelsResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -27156,14 +27156,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetMySavedChannelsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetMySavedChannelsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetMySavedChannelsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -27171,32 +27171,32 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetMySavedChannelsResponse *) success;
-- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success;
+- (AromaService_GetMySavedChannelsResponse *) success;
+- (void) setSuccess: (AromaService_GetMySavedChannelsResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation BananaService_GetMySavedChannels_result
+@implementation AromaService_GetMySavedChannels_result
 
 - (id) init
 {
@@ -27206,7 +27206,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetMySavedChannelsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetMySavedChannelsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -27297,10 +27297,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetMySavedChannels_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetMySavedChannels_result class]]) {
     return NO;
   }
-  BananaService_GetMySavedChannels_result *other = (BananaService_GetMySavedChannels_result *)anObject;
+  AromaService_GetMySavedChannels_result *other = (AromaService_GetMySavedChannels_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -27329,11 +27329,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetMySavedChannelsResponse *) success {
+- (AromaService_GetMySavedChannelsResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetMySavedChannelsResponse *) success {
+- (void) setSuccess: (AromaService_GetMySavedChannelsResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -27350,11 +27350,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -27371,11 +27371,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -27392,11 +27392,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -27430,7 +27430,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetMySavedChannelsResponse *fieldValue = [[BananaService_GetMySavedChannelsResponse alloc] init];
+          AromaService_GetMySavedChannelsResponse *fieldValue = [[AromaService_GetMySavedChannelsResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -27440,7 +27440,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -27450,7 +27450,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -27460,7 +27460,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -27514,7 +27514,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetMySavedChannels_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMySavedChannels_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -27529,18 +27529,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_getUserInfo_args : NSObject <TBase, NSCoding> {
-  BananaService_GetUserInfoRequest * __request;
+@interface AromaService_getUserInfo_args : NSObject <TBase, NSCoding> {
+  AromaService_GetUserInfoRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_GetUserInfoRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetUserInfoRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_GetUserInfoRequest *) request;
+- (id) initWithRequest: (AromaService_GetUserInfoRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -27548,14 +27548,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetUserInfoRequest *) request;
-- (void) setRequest: (BananaService_GetUserInfoRequest *) request;
+- (AromaService_GetUserInfoRequest *) request;
+- (void) setRequest: (AromaService_GetUserInfoRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_getUserInfo_args
+@implementation AromaService_getUserInfo_args
 
 - (id) init
 {
@@ -27565,7 +27565,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_GetUserInfoRequest *) request
+- (id) initWithRequest: (AromaService_GetUserInfoRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -27608,10 +27608,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_getUserInfo_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getUserInfo_args class]]) {
     return NO;
   }
-  BananaService_getUserInfo_args *other = (BananaService_getUserInfo_args *)anObject;
+  AromaService_getUserInfo_args *other = (AromaService_getUserInfo_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -27625,11 +27625,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetUserInfoRequest *) request {
+- (AromaService_GetUserInfoRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_GetUserInfoRequest *) request {
+- (void) setRequest: (AromaService_GetUserInfoRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -27663,7 +27663,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetUserInfoRequest *fieldValue = [[BananaService_GetUserInfoRequest alloc] init];
+          AromaService_GetUserInfoRequest *fieldValue = [[AromaService_GetUserInfoRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -27698,7 +27698,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_getUserInfo_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getUserInfo_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -27707,13 +27707,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_GetUserInfo_result : NSObject <TBase, NSCoding> {
-  BananaService_GetUserInfoResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
-  BananaService_UserDoesNotExistException __ex5;
+@interface AromaService_GetUserInfo_result : NSObject <TBase, NSCoding> {
+  AromaService_GetUserInfoResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
+  AromaService_UserDoesNotExistException __ex5;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -27724,16 +27724,16 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_GetUserInfoResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
-@property (nonatomic, retain, getter=ex5, setter=setEx5:) BananaService_UserDoesNotExistException ex5;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetUserInfoResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=ex5, setter=setEx5:) AromaService_UserDoesNotExistException ex5;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_GetUserInfoResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_UserDoesNotExistException) ex5;
+- (id) initWithSuccess: (AromaService_GetUserInfoResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_UserDoesNotExistException) ex5;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -27741,44 +27741,44 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_GetUserInfoResponse *) success;
-- (void) setSuccess: (BananaService_GetUserInfoResponse *) success;
+- (AromaService_GetUserInfoResponse *) success;
+- (void) setSuccess: (AromaService_GetUserInfoResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UserDoesNotExistException) ex5;
-- (void) setEx5: (BananaService_UserDoesNotExistException) ex5;
+- (AromaService_UserDoesNotExistException) ex5;
+- (void) setEx5: (AromaService_UserDoesNotExistException) ex5;
 #endif
 - (BOOL) ex5IsSet;
 
 @end
 
-@implementation BananaService_GetUserInfo_result
+@implementation AromaService_GetUserInfo_result
 
 - (id) init
 {
@@ -27788,7 +27788,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_GetUserInfoResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4 ex5: (BananaService_UserDoesNotExistException) ex5
+- (id) initWithSuccess: (AromaService_GetUserInfoResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4 ex5: (AromaService_UserDoesNotExistException) ex5
 {
   self = [super init];
   __success = [success retain_stub];
@@ -27911,10 +27911,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_GetUserInfo_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetUserInfo_result class]]) {
     return NO;
   }
-  BananaService_GetUserInfo_result *other = (BananaService_GetUserInfo_result *)anObject;
+  AromaService_GetUserInfo_result *other = (AromaService_GetUserInfo_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -27953,11 +27953,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_GetUserInfoResponse *) success {
+- (AromaService_GetUserInfoResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_GetUserInfoResponse *) success {
+- (void) setSuccess: (AromaService_GetUserInfoResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -27974,11 +27974,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -27995,11 +27995,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -28016,11 +28016,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -28037,11 +28037,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -28058,11 +28058,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex4_isset = NO;
 }
 
-- (BananaException_UserDoesNotExistException *) ex5 {
+- (AromaException_UserDoesNotExistException *) ex5 {
   return [[__ex5 retain_stub] autorelease_stub];
 }
 
-- (void) setEx5: (BananaException_UserDoesNotExistException *) ex5 {
+- (void) setEx5: (AromaException_UserDoesNotExistException *) ex5 {
   [ex5 retain_stub];
   [__ex5 release_stub];
   __ex5 = ex5;
@@ -28096,7 +28096,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_GetUserInfoResponse *fieldValue = [[BananaService_GetUserInfoResponse alloc] init];
+          AromaService_GetUserInfoResponse *fieldValue = [[AromaService_GetUserInfoResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -28106,7 +28106,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -28116,7 +28116,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -28126,7 +28126,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -28136,7 +28136,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -28146,7 +28146,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 5:
         if (fieldType == TType_STRUCT) {
-          BananaException_UserDoesNotExistException *fieldValue = [[BananaException_UserDoesNotExistException alloc] init];
+          AromaException_UserDoesNotExistException *fieldValue = [[AromaException_UserDoesNotExistException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx5: fieldValue];
           [fieldValue release_stub];
@@ -28212,7 +28212,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_GetUserInfo_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetUserInfo_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -28231,18 +28231,18 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_searchForApplications_args : NSObject <TBase, NSCoding> {
-  BananaService_SearchForApplicationsRequest * __request;
+@interface AromaService_searchForApplications_args : NSObject <TBase, NSCoding> {
+  AromaService_SearchForApplicationsRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaService_SearchForApplicationsRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_SearchForApplicationsRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request;
+- (id) initWithRequest: (AromaService_SearchForApplicationsRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -28250,14 +28250,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SearchForApplicationsRequest *) request;
-- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request;
+- (AromaService_SearchForApplicationsRequest *) request;
+- (void) setRequest: (AromaService_SearchForApplicationsRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaService_searchForApplications_args
+@implementation AromaService_searchForApplications_args
 
 - (id) init
 {
@@ -28267,7 +28267,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (BananaService_SearchForApplicationsRequest *) request
+- (id) initWithRequest: (AromaService_SearchForApplicationsRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -28310,10 +28310,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_searchForApplications_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_searchForApplications_args class]]) {
     return NO;
   }
-  BananaService_searchForApplications_args *other = (BananaService_searchForApplications_args *)anObject;
+  AromaService_searchForApplications_args *other = (AromaService_searchForApplications_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -28327,11 +28327,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SearchForApplicationsRequest *) request {
+- (AromaService_SearchForApplicationsRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaService_SearchForApplicationsRequest *) request {
+- (void) setRequest: (AromaService_SearchForApplicationsRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -28365,7 +28365,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaService_SearchForApplicationsRequest *fieldValue = [[BananaService_SearchForApplicationsRequest alloc] init];
+          AromaService_SearchForApplicationsRequest *fieldValue = [[AromaService_SearchForApplicationsRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -28400,7 +28400,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_searchForApplications_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_searchForApplications_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -28409,12 +28409,12 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface BananaService_SearchForApplications_result : NSObject <TBase, NSCoding> {
-  BananaService_SearchForApplicationsResponse * __success;
-  BananaService_OperationFailedException __ex1;
-  BananaService_InvalidArgumentException __ex2;
-  BananaService_InvalidTokenException __ex3;
-  BananaService_UnauthorizedException __ex4;
+@interface AromaService_SearchForApplications_result : NSObject <TBase, NSCoding> {
+  AromaService_SearchForApplicationsResponse * __success;
+  AromaService_OperationFailedException __ex1;
+  AromaService_InvalidArgumentException __ex2;
+  AromaService_InvalidTokenException __ex3;
+  AromaService_UnauthorizedException __ex4;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -28424,15 +28424,15 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaService_SearchForApplicationsResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaService_OperationFailedException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) BananaService_InvalidArgumentException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) BananaService_InvalidTokenException ex3;
-@property (nonatomic, retain, getter=ex4, setter=setEx4:) BananaService_UnauthorizedException ex4;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_SearchForApplicationsResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=ex4, setter=setEx4:) AromaService_UnauthorizedException ex4;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4;
+- (id) initWithSuccess: (AromaService_SearchForApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -28440,38 +28440,38 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaService_SearchForApplicationsResponse *) success;
-- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success;
+- (AromaService_SearchForApplicationsResponse *) success;
+- (void) setSuccess: (AromaService_SearchForApplicationsResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_OperationFailedException) ex1;
-- (void) setEx1: (BananaService_OperationFailedException) ex1;
+- (AromaService_OperationFailedException) ex1;
+- (void) setEx1: (AromaService_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidArgumentException) ex2;
-- (void) setEx2: (BananaService_InvalidArgumentException) ex2;
+- (AromaService_InvalidArgumentException) ex2;
+- (void) setEx2: (AromaService_InvalidArgumentException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_InvalidTokenException) ex3;
-- (void) setEx3: (BananaService_InvalidTokenException) ex3;
+- (AromaService_InvalidTokenException) ex3;
+- (void) setEx3: (AromaService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaService_UnauthorizedException) ex4;
-- (void) setEx4: (BananaService_UnauthorizedException) ex4;
+- (AromaService_UnauthorizedException) ex4;
+- (void) setEx4: (AromaService_UnauthorizedException) ex4;
 #endif
 - (BOOL) ex4IsSet;
 
 @end
 
-@implementation BananaService_SearchForApplications_result
+@implementation AromaService_SearchForApplications_result
 
 - (id) init
 {
@@ -28481,7 +28481,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (BananaService_SearchForApplicationsResponse *) success ex1: (BananaService_OperationFailedException) ex1 ex2: (BananaService_InvalidArgumentException) ex2 ex3: (BananaService_InvalidTokenException) ex3 ex4: (BananaService_UnauthorizedException) ex4
+- (id) initWithSuccess: (AromaService_SearchForApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3 ex4: (AromaService_UnauthorizedException) ex4
 {
   self = [super init];
   __success = [success retain_stub];
@@ -28588,10 +28588,10 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaService_SearchForApplications_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_SearchForApplications_result class]]) {
     return NO;
   }
-  BananaService_SearchForApplications_result *other = (BananaService_SearchForApplications_result *)anObject;
+  AromaService_SearchForApplications_result *other = (AromaService_SearchForApplications_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -28625,11 +28625,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (BananaService_SearchForApplicationsResponse *) success {
+- (AromaService_SearchForApplicationsResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaService_SearchForApplicationsResponse *) success {
+- (void) setSuccess: (AromaService_SearchForApplicationsResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -28646,11 +28646,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -28667,11 +28667,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -28688,11 +28688,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -28709,11 +28709,11 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   __ex3_isset = NO;
 }
 
-- (BananaException_UnauthorizedException *) ex4 {
+- (AromaException_UnauthorizedException *) ex4 {
   return [[__ex4 retain_stub] autorelease_stub];
 }
 
-- (void) setEx4: (BananaException_UnauthorizedException *) ex4 {
+- (void) setEx4: (AromaException_UnauthorizedException *) ex4 {
   [ex4 retain_stub];
   [__ex4 release_stub];
   __ex4 = ex4;
@@ -28747,7 +28747,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaService_SearchForApplicationsResponse *fieldValue = [[BananaService_SearchForApplicationsResponse alloc] init];
+          AromaService_SearchForApplicationsResponse *fieldValue = [[AromaService_SearchForApplicationsResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -28757,7 +28757,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -28767,7 +28767,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -28777,7 +28777,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -28787,7 +28787,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
         break;
       case 4:
         if (fieldType == TType_STRUCT) {
-          BananaException_UnauthorizedException *fieldValue = [[BananaException_UnauthorizedException alloc] init];
+          AromaException_UnauthorizedException *fieldValue = [[AromaException_UnauthorizedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx4: fieldValue];
           [fieldValue release_stub];
@@ -28847,7 +28847,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaService_SearchForApplications_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_SearchForApplications_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -28864,7 +28864,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@implementation BananaService_BananaServiceClient
+@implementation AromaService_AromaServiceClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -28893,7 +28893,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetApiVersion_result * result = [[[BananaService_GetApiVersion_result alloc] init] autorelease_stub];
+  AromaService_GetApiVersion_result * result = [[[AromaService_GetApiVersion_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -28910,7 +28910,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   return [self recv_getApiVersion];
 }
 
-- (void) send_deleteMessage: (BananaService_DeleteMessageRequest *) request
+- (void) send_deleteMessage: (AromaService_DeleteMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"deleteMessage" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"deleteMessage_args"];
@@ -28924,13 +28924,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_DeleteMessageResponse *) recv_deleteMessage
+- (AromaService_DeleteMessageResponse *) recv_deleteMessage
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_DeleteMessage_result * result = [[[BananaService_DeleteMessage_result alloc] init] autorelease_stub];
+  AromaService_DeleteMessage_result * result = [[[AromaService_DeleteMessage_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -28955,14 +28955,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"deleteMessage failed: unknown result"];
 }
 
-- (BananaService_DeleteMessageResponse *) deleteMessage: (BananaService_DeleteMessageRequest *) request
+- (AromaService_DeleteMessageResponse *) deleteMessage: (AromaService_DeleteMessageRequest *) request
 {
   [self send_deleteMessage : request];
   [[outProtocol transport] flush];
   return [self recv_deleteMessage];
 }
 
-- (void) send_dismissMessage: (BananaService_DismissMessageRequest *) request
+- (void) send_dismissMessage: (AromaService_DismissMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"dismissMessage" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"dismissMessage_args"];
@@ -28976,13 +28976,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_DismissMessageResponse *) recv_dismissMessage
+- (AromaService_DismissMessageResponse *) recv_dismissMessage
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_DismissMessage_result * result = [[[BananaService_DismissMessage_result alloc] init] autorelease_stub];
+  AromaService_DismissMessage_result * result = [[[AromaService_DismissMessage_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29007,14 +29007,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"dismissMessage failed: unknown result"];
 }
 
-- (BananaService_DismissMessageResponse *) dismissMessage: (BananaService_DismissMessageRequest *) request
+- (AromaService_DismissMessageResponse *) dismissMessage: (AromaService_DismissMessageRequest *) request
 {
   [self send_dismissMessage : request];
   [[outProtocol transport] flush];
   return [self recv_dismissMessage];
 }
 
-- (void) send_provisionApplication: (BananaService_ProvisionApplicationRequest *) request
+- (void) send_provisionApplication: (AromaService_ProvisionApplicationRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"provisionApplication" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"provisionApplication_args"];
@@ -29028,13 +29028,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_ProvisionApplicationResponse *) recv_provisionApplication
+- (AromaService_ProvisionApplicationResponse *) recv_provisionApplication
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_ProvisionApplication_result * result = [[[BananaService_ProvisionApplication_result alloc] init] autorelease_stub];
+  AromaService_ProvisionApplication_result * result = [[[AromaService_ProvisionApplication_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29059,14 +29059,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"provisionApplication failed: unknown result"];
 }
 
-- (BananaService_ProvisionApplicationResponse *) provisionApplication: (BananaService_ProvisionApplicationRequest *) request
+- (AromaService_ProvisionApplicationResponse *) provisionApplication: (AromaService_ProvisionApplicationRequest *) request
 {
   [self send_provisionApplication : request];
   [[outProtocol transport] flush];
   return [self recv_provisionApplication];
 }
 
-- (void) send_regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
+- (void) send_regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"regenerateToken" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"regenerateToken_args"];
@@ -29080,13 +29080,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_RegenerateApplicationTokenResponse *) recv_regenerateToken
+- (AromaService_RegenerateApplicationTokenResponse *) recv_regenerateToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_RegenerateToken_result * result = [[[BananaService_RegenerateToken_result alloc] init] autorelease_stub];
+  AromaService_RegenerateToken_result * result = [[[AromaService_RegenerateToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29111,14 +29111,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"regenerateToken failed: unknown result"];
 }
 
-- (BananaService_RegenerateApplicationTokenResponse *) regenerateToken: (BananaService_RegenerateApplicationTokenRequest *) request
+- (AromaService_RegenerateApplicationTokenResponse *) regenerateToken: (AromaService_RegenerateApplicationTokenRequest *) request
 {
   [self send_regenerateToken : request];
   [[outProtocol transport] flush];
   return [self recv_regenerateToken];
 }
 
-- (void) send_registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
+- (void) send_registerHealthCheck: (AromaService_RegisterHealthCheckRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"registerHealthCheck" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"registerHealthCheck_args"];
@@ -29132,13 +29132,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_RegisterHealthCheckResponse *) recv_registerHealthCheck
+- (AromaService_RegisterHealthCheckResponse *) recv_registerHealthCheck
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_RegisterHealthCheck_result * result = [[[BananaService_RegisterHealthCheck_result alloc] init] autorelease_stub];
+  AromaService_RegisterHealthCheck_result * result = [[[AromaService_RegisterHealthCheck_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29163,14 +29163,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"registerHealthCheck failed: unknown result"];
 }
 
-- (BananaService_RegisterHealthCheckResponse *) registerHealthCheck: (BananaService_RegisterHealthCheckRequest *) request
+- (AromaService_RegisterHealthCheckResponse *) registerHealthCheck: (AromaService_RegisterHealthCheckRequest *) request
 {
   [self send_registerHealthCheck : request];
   [[outProtocol transport] flush];
   return [self recv_registerHealthCheck];
 }
 
-- (void) send_removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
+- (void) send_removeSavedChannel: (AromaService_RemoveSavedChannelRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"removeSavedChannel" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"removeSavedChannel_args"];
@@ -29184,13 +29184,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_RemoveSavedChannelResponse *) recv_removeSavedChannel
+- (AromaService_RemoveSavedChannelResponse *) recv_removeSavedChannel
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_RemoveSavedChannel_result * result = [[[BananaService_RemoveSavedChannel_result alloc] init] autorelease_stub];
+  AromaService_RemoveSavedChannel_result * result = [[[AromaService_RemoveSavedChannel_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29215,14 +29215,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"removeSavedChannel failed: unknown result"];
 }
 
-- (BananaService_RemoveSavedChannelResponse *) removeSavedChannel: (BananaService_RemoveSavedChannelRequest *) request
+- (AromaService_RemoveSavedChannelResponse *) removeSavedChannel: (AromaService_RemoveSavedChannelRequest *) request
 {
   [self send_removeSavedChannel : request];
   [[outProtocol transport] flush];
   return [self recv_removeSavedChannel];
 }
 
-- (void) send_renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
+- (void) send_renewApplicationToken: (AromaService_RenewApplicationTokenRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"renewApplicationToken" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"renewApplicationToken_args"];
@@ -29236,13 +29236,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_RenewApplicationTokenResponse *) recv_renewApplicationToken
+- (AromaService_RenewApplicationTokenResponse *) recv_renewApplicationToken
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_RenewApplicationToken_result * result = [[[BananaService_RenewApplicationToken_result alloc] init] autorelease_stub];
+  AromaService_RenewApplicationToken_result * result = [[[AromaService_RenewApplicationToken_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29267,14 +29267,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"renewApplicationToken failed: unknown result"];
 }
 
-- (BananaService_RenewApplicationTokenResponse *) renewApplicationToken: (BananaService_RenewApplicationTokenRequest *) request
+- (AromaService_RenewApplicationTokenResponse *) renewApplicationToken: (AromaService_RenewApplicationTokenRequest *) request
 {
   [self send_renewApplicationToken : request];
   [[outProtocol transport] flush];
   return [self recv_renewApplicationToken];
 }
 
-- (void) send_saveChannel: (BananaService_SaveChannelRequest *) request
+- (void) send_saveChannel: (AromaService_SaveChannelRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"saveChannel" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"saveChannel_args"];
@@ -29288,13 +29288,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SaveChannelResponse *) recv_saveChannel
+- (AromaService_SaveChannelResponse *) recv_saveChannel
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SaveChannel_result * result = [[[BananaService_SaveChannel_result alloc] init] autorelease_stub];
+  AromaService_SaveChannel_result * result = [[[AromaService_SaveChannel_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29316,14 +29316,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"saveChannel failed: unknown result"];
 }
 
-- (BananaService_SaveChannelResponse *) saveChannel: (BananaService_SaveChannelRequest *) request
+- (AromaService_SaveChannelResponse *) saveChannel: (AromaService_SaveChannelRequest *) request
 {
   [self send_saveChannel : request];
   [[outProtocol transport] flush];
   return [self recv_saveChannel];
 }
 
-- (void) send_signIn: (BananaService_SignInRequest *) request
+- (void) send_signIn: (AromaService_SignInRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"signIn" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"signIn_args"];
@@ -29337,13 +29337,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SignInResponse *) recv_signIn
+- (AromaService_SignInResponse *) recv_signIn
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SignIn_result * result = [[[BananaService_SignIn_result alloc] init] autorelease_stub];
+  AromaService_SignIn_result * result = [[[AromaService_SignIn_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29365,14 +29365,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"signIn failed: unknown result"];
 }
 
-- (BananaService_SignInResponse *) signIn: (BananaService_SignInRequest *) request
+- (AromaService_SignInResponse *) signIn: (AromaService_SignInRequest *) request
 {
   [self send_signIn : request];
   [[outProtocol transport] flush];
   return [self recv_signIn];
 }
 
-- (void) send_signUp: (BananaService_SignUpRequest *) request
+- (void) send_signUp: (AromaService_SignUpRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"signUp" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"signUp_args"];
@@ -29386,13 +29386,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SignUpResponse *) recv_signUp
+- (AromaService_SignUpResponse *) recv_signUp
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SignUp_result * result = [[[BananaService_SignUp_result alloc] init] autorelease_stub];
+  AromaService_SignUp_result * result = [[[AromaService_SignUp_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29414,14 +29414,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"signUp failed: unknown result"];
 }
 
-- (BananaService_SignUpResponse *) signUp: (BananaService_SignUpRequest *) request
+- (AromaService_SignUpResponse *) signUp: (AromaService_SignUpRequest *) request
 {
   [self send_signUp : request];
   [[outProtocol transport] flush];
   return [self recv_signUp];
 }
 
-- (void) send_snoozeChannel: (BananaService_SnoozeChannelRequest *) request
+- (void) send_snoozeChannel: (AromaService_SnoozeChannelRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"snoozeChannel" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"snoozeChannel_args"];
@@ -29435,13 +29435,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SnoozeChannelResponse *) recv_snoozeChannel
+- (AromaService_SnoozeChannelResponse *) recv_snoozeChannel
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SnoozeChannel_result * result = [[[BananaService_SnoozeChannel_result alloc] init] autorelease_stub];
+  AromaService_SnoozeChannel_result * result = [[[AromaService_SnoozeChannel_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29466,14 +29466,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"snoozeChannel failed: unknown result"];
 }
 
-- (BananaService_SnoozeChannelResponse *) snoozeChannel: (BananaService_SnoozeChannelRequest *) request
+- (AromaService_SnoozeChannelResponse *) snoozeChannel: (AromaService_SnoozeChannelRequest *) request
 {
   [self send_snoozeChannel : request];
   [[outProtocol transport] flush];
   return [self recv_snoozeChannel];
 }
 
-- (void) send_followApplication: (BananaService_FollowApplicationRequest *) request
+- (void) send_followApplication: (AromaService_FollowApplicationRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"followApplication" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"followApplication_args"];
@@ -29487,13 +29487,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_FollowApplicationResponse *) recv_followApplication
+- (AromaService_FollowApplicationResponse *) recv_followApplication
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_FollowApplication_result * result = [[[BananaService_FollowApplication_result alloc] init] autorelease_stub];
+  AromaService_FollowApplication_result * result = [[[AromaService_FollowApplication_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29521,14 +29521,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"followApplication failed: unknown result"];
 }
 
-- (BananaService_FollowApplicationResponse *) followApplication: (BananaService_FollowApplicationRequest *) request
+- (AromaService_FollowApplicationResponse *) followApplication: (AromaService_FollowApplicationRequest *) request
 {
   [self send_followApplication : request];
   [[outProtocol transport] flush];
   return [self recv_followApplication];
 }
 
-- (void) send_getActivity: (BananaService_GetActivityRequest *) request
+- (void) send_getActivity: (AromaService_GetActivityRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getActivity" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getActivity_args"];
@@ -29542,13 +29542,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetActivityResponse *) recv_getActivity
+- (AromaService_GetActivityResponse *) recv_getActivity
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetActivity_result * result = [[[BananaService_GetActivity_result alloc] init] autorelease_stub];
+  AromaService_GetActivity_result * result = [[[AromaService_GetActivity_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29567,14 +29567,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getActivity failed: unknown result"];
 }
 
-- (BananaService_GetActivityResponse *) getActivity: (BananaService_GetActivityRequest *) request
+- (AromaService_GetActivityResponse *) getActivity: (AromaService_GetActivityRequest *) request
 {
   [self send_getActivity : request];
   [[outProtocol transport] flush];
   return [self recv_getActivity];
 }
 
-- (void) send_getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request
+- (void) send_getApplicationInfo: (AromaService_GetApplicationInfoRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getApplicationInfo" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getApplicationInfo_args"];
@@ -29588,13 +29588,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetApplicationInfoResponse *) recv_getApplicationInfo
+- (AromaService_GetApplicationInfoResponse *) recv_getApplicationInfo
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetApplicationInfo_result * result = [[[BananaService_GetApplicationInfo_result alloc] init] autorelease_stub];
+  AromaService_GetApplicationInfo_result * result = [[[AromaService_GetApplicationInfo_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29619,14 +29619,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getApplicationInfo failed: unknown result"];
 }
 
-- (BananaService_GetApplicationInfoResponse *) getApplicationInfo: (BananaService_GetApplicationInfoRequest *) request
+- (AromaService_GetApplicationInfoResponse *) getApplicationInfo: (AromaService_GetApplicationInfoRequest *) request
 {
   [self send_getApplicationInfo : request];
   [[outProtocol transport] flush];
   return [self recv_getApplicationInfo];
 }
 
-- (void) send_getBuzz: (BananaService_GetBuzzRequest *) request
+- (void) send_getBuzz: (AromaService_GetBuzzRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getBuzz" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getBuzz_args"];
@@ -29640,13 +29640,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetBuzzResponse *) recv_getBuzz
+- (AromaService_GetBuzzResponse *) recv_getBuzz
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetBuzz_result * result = [[[BananaService_GetBuzz_result alloc] init] autorelease_stub];
+  AromaService_GetBuzz_result * result = [[[AromaService_GetBuzz_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29671,14 +29671,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getBuzz failed: unknown result"];
 }
 
-- (BananaService_GetBuzzResponse *) getBuzz: (BananaService_GetBuzzRequest *) request
+- (AromaService_GetBuzzResponse *) getBuzz: (AromaService_GetBuzzRequest *) request
 {
   [self send_getBuzz : request];
   [[outProtocol transport] flush];
   return [self recv_getBuzz];
 }
 
-- (void) send_getDashboard: (BananaService_GetDashboardRequest *) request
+- (void) send_getDashboard: (AromaService_GetDashboardRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getDashboard" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getDashboard_args"];
@@ -29692,13 +29692,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetDashboardResponse *) recv_getDashboard
+- (AromaService_GetDashboardResponse *) recv_getDashboard
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetDashboard_result * result = [[[BananaService_GetDashboard_result alloc] init] autorelease_stub];
+  AromaService_GetDashboard_result * result = [[[AromaService_GetDashboard_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29717,14 +29717,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getDashboard failed: unknown result"];
 }
 
-- (BananaService_GetDashboardResponse *) getDashboard: (BananaService_GetDashboardRequest *) request
+- (AromaService_GetDashboardResponse *) getDashboard: (AromaService_GetDashboardRequest *) request
 {
   [self send_getDashboard : request];
   [[outProtocol transport] flush];
   return [self recv_getDashboard];
 }
 
-- (void) send_getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request
+- (void) send_getApplicationMessages: (AromaService_GetApplicationMessagesRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getApplicationMessages" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getApplicationMessages_args"];
@@ -29738,13 +29738,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetApplicationMessagesResponse *) recv_getApplicationMessages
+- (AromaService_GetApplicationMessagesResponse *) recv_getApplicationMessages
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetApplicationMessages_result * result = [[[BananaService_GetApplicationMessages_result alloc] init] autorelease_stub];
+  AromaService_GetApplicationMessages_result * result = [[[AromaService_GetApplicationMessages_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29769,14 +29769,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getApplicationMessages failed: unknown result"];
 }
 
-- (BananaService_GetApplicationMessagesResponse *) getApplicationMessages: (BananaService_GetApplicationMessagesRequest *) request
+- (AromaService_GetApplicationMessagesResponse *) getApplicationMessages: (AromaService_GetApplicationMessagesRequest *) request
 {
   [self send_getApplicationMessages : request];
   [[outProtocol transport] flush];
   return [self recv_getApplicationMessages];
 }
 
-- (void) send_getInbox: (BananaService_GetInboxRequest *) request
+- (void) send_getInbox: (AromaService_GetInboxRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getInbox" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getInbox_args"];
@@ -29790,13 +29790,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetInboxResponse *) recv_getInbox
+- (AromaService_GetInboxResponse *) recv_getInbox
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetInbox_result * result = [[[BananaService_GetInbox_result alloc] init] autorelease_stub];
+  AromaService_GetInbox_result * result = [[[AromaService_GetInbox_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29815,14 +29815,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getInbox failed: unknown result"];
 }
 
-- (BananaService_GetInboxResponse *) getInbox: (BananaService_GetInboxRequest *) request
+- (AromaService_GetInboxResponse *) getInbox: (AromaService_GetInboxRequest *) request
 {
   [self send_getInbox : request];
   [[outProtocol transport] flush];
   return [self recv_getInbox];
 }
 
-- (void) send_getFullMessage: (BananaService_GetFullMessageRequest *) request
+- (void) send_getFullMessage: (AromaService_GetFullMessageRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getFullMessage" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getFullMessage_args"];
@@ -29836,13 +29836,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetFullMessageResponse *) recv_getFullMessage
+- (AromaService_GetFullMessageResponse *) recv_getFullMessage
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetFullMessage_result * result = [[[BananaService_GetFullMessage_result alloc] init] autorelease_stub];
+  AromaService_GetFullMessage_result * result = [[[AromaService_GetFullMessage_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29861,14 +29861,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getFullMessage failed: unknown result"];
 }
 
-- (BananaService_GetFullMessageResponse *) getFullMessage: (BananaService_GetFullMessageRequest *) request
+- (AromaService_GetFullMessageResponse *) getFullMessage: (AromaService_GetFullMessageRequest *) request
 {
   [self send_getFullMessage : request];
   [[outProtocol transport] flush];
   return [self recv_getFullMessage];
 }
 
-- (void) send_getMedia: (BananaService_GetMediaRequest *) request
+- (void) send_getMedia: (AromaService_GetMediaRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getMedia" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getMedia_args"];
@@ -29882,13 +29882,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetMediaResponse *) recv_getMedia
+- (AromaService_GetMediaResponse *) recv_getMedia
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetMedia_result * result = [[[BananaService_GetMedia_result alloc] init] autorelease_stub];
+  AromaService_GetMedia_result * result = [[[AromaService_GetMedia_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29913,14 +29913,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getMedia failed: unknown result"];
 }
 
-- (BananaService_GetMediaResponse *) getMedia: (BananaService_GetMediaRequest *) request
+- (AromaService_GetMediaResponse *) getMedia: (AromaService_GetMediaRequest *) request
 {
   [self send_getMedia : request];
   [[outProtocol transport] flush];
   return [self recv_getMedia];
 }
 
-- (void) send_getMyApplications: (BananaService_GetMyApplicationsRequest *) request
+- (void) send_getMyApplications: (AromaService_GetMyApplicationsRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getMyApplications" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
@@ -29934,13 +29934,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetMyApplicationsResponse *) recv_getMyApplications
+- (AromaService_GetMyApplicationsResponse *) recv_getMyApplications
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetMyApplications_result * result = [[[BananaService_GetMyApplications_result alloc] init] autorelease_stub];
+  AromaService_GetMyApplications_result * result = [[[AromaService_GetMyApplications_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -29959,14 +29959,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getMyApplications failed: unknown result"];
 }
 
-- (BananaService_GetMyApplicationsResponse *) getMyApplications: (BananaService_GetMyApplicationsRequest *) request
+- (AromaService_GetMyApplicationsResponse *) getMyApplications: (AromaService_GetMyApplicationsRequest *) request
 {
   [self send_getMyApplications : request];
   [[outProtocol transport] flush];
   return [self recv_getMyApplications];
 }
 
-- (void) send_getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
+- (void) send_getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getMySavedChannels" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getMySavedChannels_args"];
@@ -29980,13 +29980,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetMySavedChannelsResponse *) recv_getMySavedChannels
+- (AromaService_GetMySavedChannelsResponse *) recv_getMySavedChannels
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetMySavedChannels_result * result = [[[BananaService_GetMySavedChannels_result alloc] init] autorelease_stub];
+  AromaService_GetMySavedChannels_result * result = [[[AromaService_GetMySavedChannels_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -30005,14 +30005,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getMySavedChannels failed: unknown result"];
 }
 
-- (BananaService_GetMySavedChannelsResponse *) getMySavedChannels: (BananaService_GetMySavedChannelsRequest *) request
+- (AromaService_GetMySavedChannelsResponse *) getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request
 {
   [self send_getMySavedChannels : request];
   [[outProtocol transport] flush];
   return [self recv_getMySavedChannels];
 }
 
-- (void) send_getUserInfo: (BananaService_GetUserInfoRequest *) request
+- (void) send_getUserInfo: (AromaService_GetUserInfoRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"getUserInfo" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"getUserInfo_args"];
@@ -30026,13 +30026,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_GetUserInfoResponse *) recv_getUserInfo
+- (AromaService_GetUserInfoResponse *) recv_getUserInfo
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_GetUserInfo_result * result = [[[BananaService_GetUserInfo_result alloc] init] autorelease_stub];
+  AromaService_GetUserInfo_result * result = [[[AromaService_GetUserInfo_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -30057,14 +30057,14 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"getUserInfo failed: unknown result"];
 }
 
-- (BananaService_GetUserInfoResponse *) getUserInfo: (BananaService_GetUserInfoRequest *) request
+- (AromaService_GetUserInfoResponse *) getUserInfo: (AromaService_GetUserInfoRequest *) request
 {
   [self send_getUserInfo : request];
   [[outProtocol transport] flush];
   return [self recv_getUserInfo];
 }
 
-- (void) send_searchForApplications: (BananaService_SearchForApplicationsRequest *) request
+- (void) send_searchForApplications: (AromaService_SearchForApplicationsRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"searchForApplications" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"searchForApplications_args"];
@@ -30078,13 +30078,13 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (BananaService_SearchForApplicationsResponse *) recv_searchForApplications
+- (AromaService_SearchForApplicationsResponse *) recv_searchForApplications
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaService_SearchForApplications_result * result = [[[BananaService_SearchForApplications_result alloc] init] autorelease_stub];
+  AromaService_SearchForApplications_result * result = [[[AromaService_SearchForApplications_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -30106,7 +30106,7 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
                                            reason: @"searchForApplications failed: unknown result"];
 }
 
-- (BananaService_SearchForApplicationsResponse *) searchForApplications: (BananaService_SearchForApplicationsRequest *) request
+- (AromaService_SearchForApplicationsResponse *) searchForApplications: (AromaService_SearchForApplicationsRequest *) request
 {
   [self send_searchForApplications : request];
   [[outProtocol transport] flush];
@@ -30115,9 +30115,9 @@ static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@implementation BananaService_BananaServiceProcessor
+@implementation AromaService_AromaServiceProcessor
 
-- (id) initWithBananaService: (id <BananaService_BananaService>) service
+- (id) initWithAromaService: (id <AromaService_AromaService>) service
 {
 self = [super init];
 if (!self) {
@@ -30328,7 +30328,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaService_BananaService>) service
+- (id<AromaService_AromaService>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }
@@ -30368,10 +30368,10 @@ return self;
 
 - (void) process_getApiVersion_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getApiVersion_args * args = [[BananaService_getApiVersion_args alloc] init];
+AromaService_getApiVersion_args * args = [[AromaService_getApiVersion_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetApiVersion_result * result = [[BananaService_GetApiVersion_result alloc] init];
+AromaService_GetApiVersion_result * result = [[AromaService_GetApiVersion_result alloc] init];
 [result setSuccess: [mService getApiVersion]];
 [outProtocol writeMessageBeginWithName: @"getApiVersion"
                                   type: TMessageType_REPLY
@@ -30385,10 +30385,10 @@ BananaService_GetApiVersion_result * result = [[BananaService_GetApiVersion_resu
 
 - (void) process_deleteMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_deleteMessage_args * args = [[BananaService_deleteMessage_args alloc] init];
+AromaService_deleteMessage_args * args = [[AromaService_deleteMessage_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_DeleteMessage_result * result = [[BananaService_DeleteMessage_result alloc] init];
+AromaService_DeleteMessage_result * result = [[AromaService_DeleteMessage_result alloc] init];
 [result setSuccess: [mService deleteMessage: [args request]]];
 [outProtocol writeMessageBeginWithName: @"deleteMessage"
                                   type: TMessageType_REPLY
@@ -30402,10 +30402,10 @@ BananaService_DeleteMessage_result * result = [[BananaService_DeleteMessage_resu
 
 - (void) process_dismissMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_dismissMessage_args * args = [[BananaService_dismissMessage_args alloc] init];
+AromaService_dismissMessage_args * args = [[AromaService_dismissMessage_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_DismissMessage_result * result = [[BananaService_DismissMessage_result alloc] init];
+AromaService_DismissMessage_result * result = [[AromaService_DismissMessage_result alloc] init];
 [result setSuccess: [mService dismissMessage: [args request]]];
 [outProtocol writeMessageBeginWithName: @"dismissMessage"
                                   type: TMessageType_REPLY
@@ -30419,10 +30419,10 @@ BananaService_DismissMessage_result * result = [[BananaService_DismissMessage_re
 
 - (void) process_provisionApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_provisionApplication_args * args = [[BananaService_provisionApplication_args alloc] init];
+AromaService_provisionApplication_args * args = [[AromaService_provisionApplication_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_ProvisionApplication_result * result = [[BananaService_ProvisionApplication_result alloc] init];
+AromaService_ProvisionApplication_result * result = [[AromaService_ProvisionApplication_result alloc] init];
 [result setSuccess: [mService provisionApplication: [args request]]];
 [outProtocol writeMessageBeginWithName: @"provisionApplication"
                                   type: TMessageType_REPLY
@@ -30436,10 +30436,10 @@ BananaService_ProvisionApplication_result * result = [[BananaService_ProvisionAp
 
 - (void) process_regenerateToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_regenerateToken_args * args = [[BananaService_regenerateToken_args alloc] init];
+AromaService_regenerateToken_args * args = [[AromaService_regenerateToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_RegenerateToken_result * result = [[BananaService_RegenerateToken_result alloc] init];
+AromaService_RegenerateToken_result * result = [[AromaService_RegenerateToken_result alloc] init];
 [result setSuccess: [mService regenerateToken: [args request]]];
 [outProtocol writeMessageBeginWithName: @"regenerateToken"
                                   type: TMessageType_REPLY
@@ -30453,10 +30453,10 @@ BananaService_RegenerateToken_result * result = [[BananaService_RegenerateToken_
 
 - (void) process_registerHealthCheck_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_registerHealthCheck_args * args = [[BananaService_registerHealthCheck_args alloc] init];
+AromaService_registerHealthCheck_args * args = [[AromaService_registerHealthCheck_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_RegisterHealthCheck_result * result = [[BananaService_RegisterHealthCheck_result alloc] init];
+AromaService_RegisterHealthCheck_result * result = [[AromaService_RegisterHealthCheck_result alloc] init];
 [result setSuccess: [mService registerHealthCheck: [args request]]];
 [outProtocol writeMessageBeginWithName: @"registerHealthCheck"
                                   type: TMessageType_REPLY
@@ -30470,10 +30470,10 @@ BananaService_RegisterHealthCheck_result * result = [[BananaService_RegisterHeal
 
 - (void) process_removeSavedChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_removeSavedChannel_args * args = [[BananaService_removeSavedChannel_args alloc] init];
+AromaService_removeSavedChannel_args * args = [[AromaService_removeSavedChannel_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_RemoveSavedChannel_result * result = [[BananaService_RemoveSavedChannel_result alloc] init];
+AromaService_RemoveSavedChannel_result * result = [[AromaService_RemoveSavedChannel_result alloc] init];
 [result setSuccess: [mService removeSavedChannel: [args request]]];
 [outProtocol writeMessageBeginWithName: @"removeSavedChannel"
                                   type: TMessageType_REPLY
@@ -30487,10 +30487,10 @@ BananaService_RemoveSavedChannel_result * result = [[BananaService_RemoveSavedCh
 
 - (void) process_renewApplicationToken_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_renewApplicationToken_args * args = [[BananaService_renewApplicationToken_args alloc] init];
+AromaService_renewApplicationToken_args * args = [[AromaService_renewApplicationToken_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_RenewApplicationToken_result * result = [[BananaService_RenewApplicationToken_result alloc] init];
+AromaService_RenewApplicationToken_result * result = [[AromaService_RenewApplicationToken_result alloc] init];
 [result setSuccess: [mService renewApplicationToken: [args request]]];
 [outProtocol writeMessageBeginWithName: @"renewApplicationToken"
                                   type: TMessageType_REPLY
@@ -30504,10 +30504,10 @@ BananaService_RenewApplicationToken_result * result = [[BananaService_RenewAppli
 
 - (void) process_saveChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_saveChannel_args * args = [[BananaService_saveChannel_args alloc] init];
+AromaService_saveChannel_args * args = [[AromaService_saveChannel_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SaveChannel_result * result = [[BananaService_SaveChannel_result alloc] init];
+AromaService_SaveChannel_result * result = [[AromaService_SaveChannel_result alloc] init];
 [result setSuccess: [mService saveChannel: [args request]]];
 [outProtocol writeMessageBeginWithName: @"saveChannel"
                                   type: TMessageType_REPLY
@@ -30521,10 +30521,10 @@ BananaService_SaveChannel_result * result = [[BananaService_SaveChannel_result a
 
 - (void) process_signIn_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_signIn_args * args = [[BananaService_signIn_args alloc] init];
+AromaService_signIn_args * args = [[AromaService_signIn_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SignIn_result * result = [[BananaService_SignIn_result alloc] init];
+AromaService_SignIn_result * result = [[AromaService_SignIn_result alloc] init];
 [result setSuccess: [mService signIn: [args request]]];
 [outProtocol writeMessageBeginWithName: @"signIn"
                                   type: TMessageType_REPLY
@@ -30538,10 +30538,10 @@ BananaService_SignIn_result * result = [[BananaService_SignIn_result alloc] init
 
 - (void) process_signUp_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_signUp_args * args = [[BananaService_signUp_args alloc] init];
+AromaService_signUp_args * args = [[AromaService_signUp_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SignUp_result * result = [[BananaService_SignUp_result alloc] init];
+AromaService_SignUp_result * result = [[AromaService_SignUp_result alloc] init];
 [result setSuccess: [mService signUp: [args request]]];
 [outProtocol writeMessageBeginWithName: @"signUp"
                                   type: TMessageType_REPLY
@@ -30555,10 +30555,10 @@ BananaService_SignUp_result * result = [[BananaService_SignUp_result alloc] init
 
 - (void) process_snoozeChannel_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_snoozeChannel_args * args = [[BananaService_snoozeChannel_args alloc] init];
+AromaService_snoozeChannel_args * args = [[AromaService_snoozeChannel_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SnoozeChannel_result * result = [[BananaService_SnoozeChannel_result alloc] init];
+AromaService_SnoozeChannel_result * result = [[AromaService_SnoozeChannel_result alloc] init];
 [result setSuccess: [mService snoozeChannel: [args request]]];
 [outProtocol writeMessageBeginWithName: @"snoozeChannel"
                                   type: TMessageType_REPLY
@@ -30572,10 +30572,10 @@ BananaService_SnoozeChannel_result * result = [[BananaService_SnoozeChannel_resu
 
 - (void) process_followApplication_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_followApplication_args * args = [[BananaService_followApplication_args alloc] init];
+AromaService_followApplication_args * args = [[AromaService_followApplication_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_FollowApplication_result * result = [[BananaService_FollowApplication_result alloc] init];
+AromaService_FollowApplication_result * result = [[AromaService_FollowApplication_result alloc] init];
 [result setSuccess: [mService followApplication: [args request]]];
 [outProtocol writeMessageBeginWithName: @"followApplication"
                                   type: TMessageType_REPLY
@@ -30589,10 +30589,10 @@ BananaService_FollowApplication_result * result = [[BananaService_FollowApplicat
 
 - (void) process_getActivity_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getActivity_args * args = [[BananaService_getActivity_args alloc] init];
+AromaService_getActivity_args * args = [[AromaService_getActivity_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetActivity_result * result = [[BananaService_GetActivity_result alloc] init];
+AromaService_GetActivity_result * result = [[AromaService_GetActivity_result alloc] init];
 [result setSuccess: [mService getActivity: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getActivity"
                                   type: TMessageType_REPLY
@@ -30606,10 +30606,10 @@ BananaService_GetActivity_result * result = [[BananaService_GetActivity_result a
 
 - (void) process_getApplicationInfo_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getApplicationInfo_args * args = [[BananaService_getApplicationInfo_args alloc] init];
+AromaService_getApplicationInfo_args * args = [[AromaService_getApplicationInfo_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetApplicationInfo_result * result = [[BananaService_GetApplicationInfo_result alloc] init];
+AromaService_GetApplicationInfo_result * result = [[AromaService_GetApplicationInfo_result alloc] init];
 [result setSuccess: [mService getApplicationInfo: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getApplicationInfo"
                                   type: TMessageType_REPLY
@@ -30623,10 +30623,10 @@ BananaService_GetApplicationInfo_result * result = [[BananaService_GetApplicatio
 
 - (void) process_getBuzz_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getBuzz_args * args = [[BananaService_getBuzz_args alloc] init];
+AromaService_getBuzz_args * args = [[AromaService_getBuzz_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetBuzz_result * result = [[BananaService_GetBuzz_result alloc] init];
+AromaService_GetBuzz_result * result = [[AromaService_GetBuzz_result alloc] init];
 [result setSuccess: [mService getBuzz: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getBuzz"
                                   type: TMessageType_REPLY
@@ -30640,10 +30640,10 @@ BananaService_GetBuzz_result * result = [[BananaService_GetBuzz_result alloc] in
 
 - (void) process_getDashboard_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getDashboard_args * args = [[BananaService_getDashboard_args alloc] init];
+AromaService_getDashboard_args * args = [[AromaService_getDashboard_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetDashboard_result * result = [[BananaService_GetDashboard_result alloc] init];
+AromaService_GetDashboard_result * result = [[AromaService_GetDashboard_result alloc] init];
 [result setSuccess: [mService getDashboard: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getDashboard"
                                   type: TMessageType_REPLY
@@ -30657,10 +30657,10 @@ BananaService_GetDashboard_result * result = [[BananaService_GetDashboard_result
 
 - (void) process_getApplicationMessages_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getApplicationMessages_args * args = [[BananaService_getApplicationMessages_args alloc] init];
+AromaService_getApplicationMessages_args * args = [[AromaService_getApplicationMessages_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetApplicationMessages_result * result = [[BananaService_GetApplicationMessages_result alloc] init];
+AromaService_GetApplicationMessages_result * result = [[AromaService_GetApplicationMessages_result alloc] init];
 [result setSuccess: [mService getApplicationMessages: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getApplicationMessages"
                                   type: TMessageType_REPLY
@@ -30674,10 +30674,10 @@ BananaService_GetApplicationMessages_result * result = [[BananaService_GetApplic
 
 - (void) process_getInbox_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getInbox_args * args = [[BananaService_getInbox_args alloc] init];
+AromaService_getInbox_args * args = [[AromaService_getInbox_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetInbox_result * result = [[BananaService_GetInbox_result alloc] init];
+AromaService_GetInbox_result * result = [[AromaService_GetInbox_result alloc] init];
 [result setSuccess: [mService getInbox: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getInbox"
                                   type: TMessageType_REPLY
@@ -30691,10 +30691,10 @@ BananaService_GetInbox_result * result = [[BananaService_GetInbox_result alloc] 
 
 - (void) process_getFullMessage_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getFullMessage_args * args = [[BananaService_getFullMessage_args alloc] init];
+AromaService_getFullMessage_args * args = [[AromaService_getFullMessage_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetFullMessage_result * result = [[BananaService_GetFullMessage_result alloc] init];
+AromaService_GetFullMessage_result * result = [[AromaService_GetFullMessage_result alloc] init];
 [result setSuccess: [mService getFullMessage: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getFullMessage"
                                   type: TMessageType_REPLY
@@ -30708,10 +30708,10 @@ BananaService_GetFullMessage_result * result = [[BananaService_GetFullMessage_re
 
 - (void) process_getMedia_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getMedia_args * args = [[BananaService_getMedia_args alloc] init];
+AromaService_getMedia_args * args = [[AromaService_getMedia_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetMedia_result * result = [[BananaService_GetMedia_result alloc] init];
+AromaService_GetMedia_result * result = [[AromaService_GetMedia_result alloc] init];
 [result setSuccess: [mService getMedia: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getMedia"
                                   type: TMessageType_REPLY
@@ -30725,10 +30725,10 @@ BananaService_GetMedia_result * result = [[BananaService_GetMedia_result alloc] 
 
 - (void) process_getMyApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getMyApplications_args * args = [[BananaService_getMyApplications_args alloc] init];
+AromaService_getMyApplications_args * args = [[AromaService_getMyApplications_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetMyApplications_result * result = [[BananaService_GetMyApplications_result alloc] init];
+AromaService_GetMyApplications_result * result = [[AromaService_GetMyApplications_result alloc] init];
 [result setSuccess: [mService getMyApplications: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getMyApplications"
                                   type: TMessageType_REPLY
@@ -30742,10 +30742,10 @@ BananaService_GetMyApplications_result * result = [[BananaService_GetMyApplicati
 
 - (void) process_getMySavedChannels_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getMySavedChannels_args * args = [[BananaService_getMySavedChannels_args alloc] init];
+AromaService_getMySavedChannels_args * args = [[AromaService_getMySavedChannels_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetMySavedChannels_result * result = [[BananaService_GetMySavedChannels_result alloc] init];
+AromaService_GetMySavedChannels_result * result = [[AromaService_GetMySavedChannels_result alloc] init];
 [result setSuccess: [mService getMySavedChannels: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getMySavedChannels"
                                   type: TMessageType_REPLY
@@ -30759,10 +30759,10 @@ BananaService_GetMySavedChannels_result * result = [[BananaService_GetMySavedCha
 
 - (void) process_getUserInfo_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_getUserInfo_args * args = [[BananaService_getUserInfo_args alloc] init];
+AromaService_getUserInfo_args * args = [[AromaService_getUserInfo_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_GetUserInfo_result * result = [[BananaService_GetUserInfo_result alloc] init];
+AromaService_GetUserInfo_result * result = [[AromaService_GetUserInfo_result alloc] init];
 [result setSuccess: [mService getUserInfo: [args request]]];
 [outProtocol writeMessageBeginWithName: @"getUserInfo"
                                   type: TMessageType_REPLY
@@ -30776,10 +30776,10 @@ BananaService_GetUserInfo_result * result = [[BananaService_GetUserInfo_result a
 
 - (void) process_searchForApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaService_searchForApplications_args * args = [[BananaService_searchForApplications_args alloc] init];
+AromaService_searchForApplications_args * args = [[AromaService_searchForApplications_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaService_SearchForApplications_result * result = [[BananaService_SearchForApplications_result alloc] init];
+AromaService_SearchForApplications_result * result = [[AromaService_SearchForApplications_result alloc] init];
 [result setSuccess: [mService searchForApplications: [args request]]];
 [outProtocol writeMessageBeginWithName: @"searchForApplications"
                                   type: TMessageType_REPLY

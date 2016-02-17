@@ -194,13 +194,13 @@ code { line-height: 20px; }
 <h1>Thrift module: Channels</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>Channels</td><td><a href="#Svc_CustomBananaChannel">CustomBananaChannel</a><br/>
+<td>Channels</td><td><a href="#Svc_CustomAromaChannel">CustomAromaChannel</a><br/>
 <ul>
-<li><a href="#Fn_CustomBananaChannel_ping">ping</a></li>
-<li><a href="#Fn_CustomBananaChannel_receiveMessage">receiveMessage</a></li>
+<li><a href="#Fn_CustomAromaChannel_ping">ping</a></li>
+<li><a href="#Fn_CustomAromaChannel_receiveMessage">receiveMessage</a></li>
 </ul>
 </td>
-<td><a href="#Struct_BananaChannel">BananaChannel</a><br/>
+<td><a href="#Struct_AromaChannel">AromaChannel</a><br/>
 <a href="#Struct_ChannelInfo">ChannelInfo</a><br/>
 <a href="#Struct_CustomChannel">CustomChannel</a><br/>
 <a href="#Struct_Email">Email</a><br/>
@@ -242,24 +242,23 @@ username.
 <br/></div><div class="definition"><h3 id="Struct_Email">Struct: Email</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>emailAddress</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>subject</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Banana Service - New Message"</code></td></tr>
+<tr><td>2</td><td>subject</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Aroma - New Message"</code></td></tr>
 </table><br/>Email will be sent from the Aroma Tech domain, "aroma.tech".
 <br/></div><div class="definition"><h3 id="Struct_CustomChannel">Struct: CustomChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>endpoint</td><td><code><a href="Endpoint.html#Struct_Endpoint">Endpoint.Endpoint</a></code></td><td>This endpoint will be hit with a message each time.
 </td><td>default</td><td></td></tr>
 </table><br/>Allows for messages to be sent to a custom Channel
-<br/></div><div class="definition"><h3 id="Struct_BananaChannel">Union: BananaChannel</h3>
+<br/></div><div class="definition"><h3 id="Struct_AromaChannel">Union: AromaChannel</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>slackChannel</td><td><code><a href="#Struct_SlackChannel">SlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>slackUsername</td><td><code><a href="#Struct_SlackUsername">SlackUsername</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>email</td><td><code><a href="#Struct_Email">Email</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>4</td><td>customChannel</td><td><code><a href="#Struct_CustomChannel">CustomChannel</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>This Union represents the Abstract concept of a
-Banana Service "Channel".
+</table><br/>This Union represents the Abstract concept of an AromaChannel
 <br/></div><div class="definition"><h3 id="Struct_ChannelInfo">Struct: ChannelInfo</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>channel</td><td><code><a href="#Struct_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>channel</td><td><code><a href="#Struct_AromaChannel">AromaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>timeRegistered</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_ReceiveMessageRequest">Struct: ReceiveMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -267,19 +266,19 @@ Banana Service "Channel".
 </table><br/>This is the Request Body that will be sent to any
 Custom Channels registered to a service.
 <br/></div><hr/><h2 id="Services">Services</h2>
-<h3 id="Svc_CustomBananaChannel">Service: CustomBananaChannel</h3>
+<h3 id="Svc_CustomAromaChannel">Service: CustomAromaChannel</h3>
 Defines a custom endpoint to send messages to.
 Note that a channel can receive messages and events from
 more than one Application.
 
 Note that no care is taken to rate-limit. Your endpoint
 may get flooded. Use with caution.
-<br/><div class="definition"><h4 id="Fn_CustomBananaChannel_ping">Function: CustomBananaChannel.ping</h4>
+<br/><div class="definition"><h4 id="Fn_CustomAromaChannel_ping">Function: CustomAromaChannel.ping</h4>
 <pre><code><a href="#Typedef_int">int</a></code> ping()
-</pre>The Banana Service will first ping your Custom Channel
+</pre>The Aroma Service will first ping your Custom Channel
 to make sure it is reachable and operational.
-<br/></div><div class="definition"><h4 id="Fn_CustomBananaChannel_receiveMessage">Function: CustomBananaChannel.receiveMessage</h4>
+<br/></div><div class="definition"><h4 id="Fn_CustomAromaChannel_receiveMessage">Function: CustomAromaChannel.receiveMessage</h4>
 <pre><code>void</code> receiveMessage(<code><a href="#Struct_ReceiveMessageRequest">ReceiveMessageRequest</a></code> request)
-</pre>Called each time the Banana Service receives a Message from the Application
+</pre>Called each time Aroma receives a Message from the Application
 in question.
 <br/></div></div></body></html>

@@ -14,15 +14,15 @@
   * limitations under the License.
   */
 
-package tech.aroma.banana.thrift.functions;
+package tech.aroma.thrift.functions;
 
 import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.authentication.ApplicationToken;
-import tech.aroma.banana.thrift.authentication.AuthenticationToken;
-import tech.aroma.banana.thrift.authentication.TokenType;
-import tech.aroma.banana.thrift.authentication.UserToken;
+import tech.aroma.thrift.authentication.ApplicationToken;
+import tech.aroma.thrift.authentication.AuthenticationToken;
+import tech.aroma.thrift.authentication.TokenType;
+import tech.aroma.thrift.authentication.UserToken;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 
 /**

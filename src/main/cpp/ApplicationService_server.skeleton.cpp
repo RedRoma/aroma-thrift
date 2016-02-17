@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::aroma::banana::thrift::application::service;
+using namespace  ::aroma::thrift::application::service;
 
 class ApplicationServiceHandler : virtual public ApplicationServiceIf {
  public:
@@ -28,7 +28,7 @@ class ApplicationServiceHandler : virtual public ApplicationServiceIf {
   }
 
   /**
-   * Send a Message from your Application to the Banana Service.
+   * Send a Message from your Application to Aroma.
    * 
    * @param request
    */

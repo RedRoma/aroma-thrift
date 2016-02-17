@@ -6,7 +6,7 @@
  */
 #include "MessageService.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace message { namespace service {
+namespace aroma { namespace thrift { namespace message { namespace service {
 
 
 MessageService_getApiVersion_args::~MessageService_getApiVersion_args() throw() {
@@ -394,5 +394,5 @@ double MessageServiceConcurrentClient::recv_getApiVersion(const int32_t seqid)
   } // end while(true)
 }
 
-}}}}} // namespace
+}}}} // namespace
 
