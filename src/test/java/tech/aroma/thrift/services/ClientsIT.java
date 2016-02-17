@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.services;
+package tech.aroma.thrift.services;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.notification.service.NotificationService;
-import tech.aroma.banana.thrift.service.BananaService;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.notification.service.NotificationService;
+import tech.aroma.thrift.service.AromaService;
 import tech.sirwellington.alchemy.annotations.testing.IntegrationTest;
 import tech.sirwellington.alchemy.annotations.testing.NetworkSensitive;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
@@ -65,9 +65,9 @@ public class ClientsIT
     }
 
     @Test
-    public void testNewBananaServiceClient() throws Exception
+    public void testNewAromaServiceClient() throws Exception
     {
-        BananaService.Client client = Clients.newBananaServiceClient();
+        AromaService.Client client = Clients.newAromaServiceClient();
         assertThat(client, notNullValue());
         
         client.getApiVersion();

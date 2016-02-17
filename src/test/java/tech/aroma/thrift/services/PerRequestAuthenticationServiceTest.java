@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.services;
+package tech.aroma.thrift.services;
 
 import java.util.function.Supplier;
 import org.apache.thrift.protocol.TProtocol;
@@ -23,15 +23,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.authentication.service.CreateTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.CreateTokenResponse;
-import tech.aroma.banana.thrift.authentication.service.GetTokenInfoRequest;
-import tech.aroma.banana.thrift.authentication.service.GetTokenInfoResponse;
-import tech.aroma.banana.thrift.authentication.service.InvalidateTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.InvalidateTokenResponse;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.authentication.service.CreateTokenRequest;
+import tech.aroma.thrift.authentication.service.CreateTokenResponse;
+import tech.aroma.thrift.authentication.service.GetTokenInfoRequest;
+import tech.aroma.thrift.authentication.service.GetTokenInfoResponse;
+import tech.aroma.thrift.authentication.service.InvalidateTokenRequest;
+import tech.aroma.thrift.authentication.service.InvalidateTokenResponse;
+import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
+import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;

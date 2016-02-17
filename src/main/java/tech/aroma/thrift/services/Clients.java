@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.services;
+package tech.aroma.thrift.services;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -25,17 +25,17 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationServiceConstants;
-import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
-import tech.aroma.banana.thrift.notification.service.NotificationService;
-import tech.aroma.banana.thrift.notification.service.NotificationServiceConstants;
-import tech.aroma.banana.thrift.service.AromaServiceConstants;
-import tech.aroma.banana.thrift.service.BananaService;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.authentication.service.AuthenticationServiceConstants;
+import tech.aroma.thrift.endpoint.TcpEndpoint;
+import tech.aroma.thrift.notification.service.NotificationService;
+import tech.aroma.thrift.notification.service.NotificationServiceConstants;
+import tech.aroma.thrift.service.AromaService;
+import tech.aroma.thrift.service.AromaServiceConstants;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 
 /**
- * Provides clients for the Banana Services.
+ * Provides clients for the Aroma Services.
  *
  * @author SirWellington
  */
@@ -73,12 +73,12 @@ public final class Clients
         return decorator;
     }
 
-    public static BananaService.Client newBananaServiceClient() throws TTransportException
+    public static AromaService.Client newAromaServiceClient() throws TTransportException
     {
         TcpEndpoint endpoint = AromaServiceConstants.BETA_ENDPOINT;
 
-        TProtocol protocol = tryCreateProtocolAt(endpoint, "Banana Service");
-        return new BananaService.Client(protocol);
+        TProtocol protocol = tryCreateProtocolAt(endpoint, "Aroma Service");
+        return new AromaService.Client(protocol);
     }
 
     public static NotificationService.Client newNotificationServiceClient() throws TTransportException

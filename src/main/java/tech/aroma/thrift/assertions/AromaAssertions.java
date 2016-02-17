@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.assertions;
+package tech.aroma.thrift.assertions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.authentication.ApplicationToken;
-import tech.aroma.banana.thrift.authentication.AuthenticationToken;
-import tech.aroma.banana.thrift.authentication.UserToken;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
-import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
-import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
+import tech.aroma.thrift.authentication.ApplicationToken;
+import tech.aroma.thrift.authentication.AuthenticationToken;
+import tech.aroma.thrift.authentication.UserToken;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
+import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
+import tech.aroma.thrift.exceptions.InvalidArgumentException;
+import tech.aroma.thrift.exceptions.InvalidTokenException;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 import tech.sirwellington.alchemy.annotations.arguments.Required;
 import tech.sirwellington.alchemy.arguments.AlchemyAssertion;
@@ -38,17 +38,17 @@ import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull
 import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.nonEmptyString;
 
 /**
- * This class contains common Assertions made on Banana Service requests and other data structures.
+ * This class contains common Assertions made on Aroma Service requests and other data structures.
  *
  * @author SirWellington
  */
 @NonInstantiable
-public final class BananaAssertions
+public final class AromaAssertions
 {
     
-    private final static Logger LOG = LoggerFactory.getLogger(BananaAssertions.class);
+    private final static Logger LOG = LoggerFactory.getLogger(AromaAssertions.class);
     
-    BananaAssertions() throws IllegalAccessException
+    AromaAssertions() throws IllegalAccessException
     {
         throw new IllegalAccessException("cannot instantiate");
     }

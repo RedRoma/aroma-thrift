@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package tech.aroma.banana.thrift.services;
+package tech.aroma.thrift.services;
 
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
-import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
-import tech.aroma.banana.thrift.exceptions.OperationFailedException;
-import tech.aroma.banana.thrift.notification.service.NotificationService;
-import tech.aroma.banana.thrift.notification.service.SendNotificationRequest;
-import tech.aroma.banana.thrift.notification.service.SendNotificationResponse;
-import tech.aroma.banana.thrift.service.AromaServiceConstants;
+import tech.aroma.thrift.exceptions.InvalidArgumentException;
+import tech.aroma.thrift.exceptions.InvalidTokenException;
+import tech.aroma.thrift.exceptions.OperationFailedException;
+import tech.aroma.thrift.notification.service.NotificationService;
+import tech.aroma.thrift.notification.service.SendNotificationRequest;
+import tech.aroma.thrift.notification.service.SendNotificationResponse;
+import tech.aroma.thrift.service.AromaServiceConstants;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;

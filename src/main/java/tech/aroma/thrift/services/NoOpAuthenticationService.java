@@ -15,23 +15,23 @@
  */
 
  
-package tech.aroma.banana.thrift.services;
+package tech.aroma.thrift.services;
 
 
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.authentication.service.CreateTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.CreateTokenResponse;
-import tech.aroma.banana.thrift.authentication.service.GetTokenInfoRequest;
-import tech.aroma.banana.thrift.authentication.service.GetTokenInfoResponse;
-import tech.aroma.banana.thrift.authentication.service.InvalidateTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.InvalidateTokenResponse;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
-import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
-import tech.aroma.banana.thrift.exceptions.OperationFailedException;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.authentication.service.CreateTokenRequest;
+import tech.aroma.thrift.authentication.service.CreateTokenResponse;
+import tech.aroma.thrift.authentication.service.GetTokenInfoRequest;
+import tech.aroma.thrift.authentication.service.GetTokenInfoResponse;
+import tech.aroma.thrift.authentication.service.InvalidateTokenRequest;
+import tech.aroma.thrift.authentication.service.InvalidateTokenResponse;
+import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
+import tech.aroma.thrift.authentication.service.VerifyTokenResponse;
+import tech.aroma.thrift.exceptions.InvalidTokenException;
+import tech.aroma.thrift.exceptions.OperationFailedException;
 
 /** 
  * This is a No-Op implementation of the Authentication Service. It returns empty responses.

@@ -14,20 +14,20 @@
   * limitations under the License.
   */
 
-package tech.aroma.banana.thrift.assertions;
+package tech.aroma.thrift.assertions;
 
 import org.apache.thrift.TException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import tech.aroma.banana.thrift.authentication.ApplicationToken;
-import tech.aroma.banana.thrift.authentication.AuthenticationToken;
-import tech.aroma.banana.thrift.authentication.UserToken;
-import tech.aroma.banana.thrift.authentication.service.AuthenticationService;
-import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
-import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
-import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
+import tech.aroma.thrift.authentication.ApplicationToken;
+import tech.aroma.thrift.authentication.AuthenticationToken;
+import tech.aroma.thrift.authentication.UserToken;
+import tech.aroma.thrift.authentication.service.AuthenticationService;
+import tech.aroma.thrift.authentication.service.VerifyTokenRequest;
+import tech.aroma.thrift.exceptions.InvalidArgumentException;
+import tech.aroma.thrift.exceptions.InvalidTokenException;
 import tech.sirwellington.alchemy.arguments.AlchemyAssertion;
 import tech.sirwellington.alchemy.arguments.ExceptionMapper;
 import tech.sirwellington.alchemy.arguments.FailedAssertionException;
@@ -51,7 +51,7 @@ import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThr
  */
 @Repeat(50)
 @RunWith(AlchemyTestRunner.class)
-public class BananaAssertionsTest
+public class AromaAssertionsTest
 {
     
     @Mock
@@ -94,10 +94,10 @@ public class BananaAssertionsTest
     @Test
     public void testCannotInstantiate() throws Exception
     {
-        assertThrows(() -> new BananaAssertions())
+        assertThrows(() -> new AromaAssertions())
             .isInstanceOf(IllegalAccessException.class);
         
-        assertThrows(() -> BananaAssertions.class.newInstance())
+        assertThrows(() -> AromaAssertions.class.newInstance())
             .isInstanceOf(IllegalAccessException.class);
     }
     
@@ -105,20 +105,20 @@ public class BananaAssertionsTest
     public void testCheckRequestNotNull() throws Exception
     {
         
-        assertThrows(() -> BananaAssertions.checkRequestNotNull(null))
+        assertThrows(() -> AromaAssertions.checkRequestNotNull(null))
             .isInstanceOf(InvalidArgumentException.class);
         
         String string = one(strings());
-        BananaAssertions.checkRequestNotNull(string);
+        AromaAssertions.checkRequestNotNull(string);
     }
     
     @Test
     public void testCheckNotNull() throws Exception
     {
         String message = one(alphabeticString());
-        BananaAssertions.checkNotNull(tokenId, message);
+        AromaAssertions.checkNotNull(tokenId, message);
         
-        assertThrows(() -> BananaAssertions.checkNotNull(null, message))
+        assertThrows(() -> AromaAssertions.checkNotNull(null, message))
             .isInstanceOf(InvalidArgumentException.class)
             .hasMessage(message);
     }
@@ -128,7 +128,7 @@ public class BananaAssertionsTest
     {
         
         String message = one(strings());
-        ExceptionMapper<InvalidArgumentException> result = BananaAssertions.withMessage(message);
+        ExceptionMapper<InvalidArgumentException> result = AromaAssertions.withMessage(message);
         
         InvalidArgumentException ex = result.apply(null);
         assertThat(ex, notNullValue());
@@ -138,7 +138,7 @@ public class BananaAssertionsTest
     @Test
     public void testLegalToken()
     {
-        AlchemyAssertion<AuthenticationToken> instance = BananaAssertions.legalToken();
+        AlchemyAssertion<AuthenticationToken> instance = AromaAssertions.legalToken();
         assertThat(instance, notNullValue());
         
         assertThrows(() -> instance.check(null))
@@ -155,7 +155,7 @@ public class BananaAssertionsTest
     {
         
         // When Token is good
-        AlchemyAssertion<AuthenticationToken> assertion = BananaAssertions.validTokenIn(authenticationService);
+        AlchemyAssertion<AuthenticationToken> assertion = AromaAssertions.validTokenIn(authenticationService);
         assertion.check(authenticationToken);
         
         //When Token is bad
@@ -175,7 +175,7 @@ public class BananaAssertionsTest
         authenticationToken.unsetOwnerId();
         
         // When Token is good
-        AlchemyAssertion<AuthenticationToken> assertion = BananaAssertions.validTokenIn(authenticationService);
+        AlchemyAssertion<AuthenticationToken> assertion = AromaAssertions.validTokenIn(authenticationService);
         assertion.check(authenticationToken);
         
         //When Token is bad
@@ -189,7 +189,7 @@ public class BananaAssertionsTest
     @Test
     public void testValidApplicationTokenIn() throws TException
     {
-        AlchemyAssertion<ApplicationToken> assertion = BananaAssertions.validApplicationTokenIn(authenticationService);
+        AlchemyAssertion<ApplicationToken> assertion = AromaAssertions.validApplicationTokenIn(authenticationService);
         assertThat(assertion, notNullValue());
         
         //When Token is good
@@ -206,7 +206,7 @@ public class BananaAssertionsTest
     @Test
     public void testValidUserTokenIn() throws TException
     {
-        AlchemyAssertion<UserToken> assertion = BananaAssertions.validUserTokenIn(authenticationService);
+        AlchemyAssertion<UserToken> assertion = AromaAssertions.validUserTokenIn(authenticationService);
         assertThat(assertion, notNullValue());
         
         //When Token is good
