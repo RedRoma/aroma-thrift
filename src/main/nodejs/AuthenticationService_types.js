@@ -18,6 +18,9 @@ CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
   this.ownerId = null;
   this.lifetime = null;
   this.desiredTokenType = null;
+  this.ownerName = null;
+  this.organizationId = null;
+  this.organizationName = null;
   if (args) {
     if (args.ownerId !== undefined && args.ownerId !== null) {
       this.ownerId = args.ownerId;
@@ -27,6 +30,15 @@ CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
     }
     if (args.desiredTokenType !== undefined && args.desiredTokenType !== null) {
       this.desiredTokenType = args.desiredTokenType;
+    }
+    if (args.ownerName !== undefined && args.ownerName !== null) {
+      this.ownerName = args.ownerName;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
     }
   }
 };
@@ -66,6 +78,27 @@ CreateTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -90,6 +123,21 @@ CreateTokenRequest.prototype.write = function(output) {
   if (this.desiredTokenType !== null && this.desiredTokenType !== undefined) {
     output.writeFieldBegin('desiredTokenType', Thrift.Type.I32, 3);
     output.writeI32(this.desiredTokenType);
+    output.writeFieldEnd();
+  }
+  if (this.ownerName !== null && this.ownerName !== undefined) {
+    output.writeFieldBegin('ownerName', Thrift.Type.STRING, 4);
+    output.writeString(this.ownerName);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 5);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 6);
+    output.writeString(this.organizationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -273,9 +321,17 @@ GetTokenInfoResponse.prototype.write = function(output) {
 
 InvalidateTokenRequest = module.exports.InvalidateTokenRequest = function(args) {
   this.token = null;
+  this.multipleTokens = [];
+  this.belongingTo = null;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.AuthenticationToken(args.token);
+    }
+    if (args.multipleTokens !== undefined && args.multipleTokens !== null) {
+      this.multipleTokens = Thrift.copyList(args.multipleTokens, [null]);
+    }
+    if (args.belongingTo !== undefined && args.belongingTo !== null) {
+      this.belongingTo = args.belongingTo;
     }
   }
 };
@@ -301,9 +357,34 @@ InvalidateTokenRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.multipleTokens = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = new Authentication_ttypes.AuthenticationToken();
+          elem6.read(input);
+          this.multipleTokens.push(elem6);
+        }
+        input.readListEnd();
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.belongingTo = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -318,6 +399,25 @@ InvalidateTokenRequest.prototype.write = function(output) {
   if (this.token !== null && this.token !== undefined) {
     output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
     this.token.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.multipleTokens !== null && this.multipleTokens !== undefined) {
+    output.writeFieldBegin('multipleTokens', Thrift.Type.LIST, 2);
+    output.writeListBegin(Thrift.Type.STRUCT, this.multipleTokens.length);
+    for (var iter7 in this.multipleTokens)
+    {
+      if (this.multipleTokens.hasOwnProperty(iter7))
+      {
+        iter7 = this.multipleTokens[iter7];
+        iter7.write(output);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.belongingTo !== null && this.belongingTo !== undefined) {
+    output.writeFieldBegin('belongingTo', Thrift.Type.STRING, 3);
+    output.writeString(this.belongingTo);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -497,8 +597,10 @@ VerifyTokenResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.SERVICE_PORT = 6001;
+ttypes.SERVICE_PORT = 7026;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.banana.aroma.tech','port' : 7026});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 6001});
+'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 7026});
+ttypes.DEFAULT_TOKEN_LIFETIME = new Banana_ttypes.LengthOfTime({
+'value' : 60,'unit' : 4});

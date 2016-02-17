@@ -29,6 +29,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::User User;
 
 typedef class  ::aroma::banana::thrift::Application Application;
@@ -44,6 +46,10 @@ class HealthCheckFailed;
 class HealthCheckBackToNormal;
 
 class OwnerApprovedRequest;
+
+class UserFollowedApplication;
+
+class GeneralEvent;
 
 class EventType;
 
@@ -70,7 +76,7 @@ class ApplicationTokenRenewed {
   std::string message;
   User user;
   ApplicationToken applicationToken;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationTokenRenewed__isset __isset;
@@ -81,7 +87,7 @@ class ApplicationTokenRenewed {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -144,7 +150,7 @@ class ApplicationTokenRegenerated {
   std::string message;
   User user;
   ApplicationToken applicationToken;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationTokenRegenerated__isset __isset;
@@ -155,7 +161,7 @@ class ApplicationTokenRegenerated {
 
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -216,7 +222,7 @@ class ApplicationSentMessage {
   virtual ~ApplicationSentMessage() throw();
   std::string message;
    ::aroma::banana::thrift::Message messageSentByApplication;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationSentMessage__isset __isset;
@@ -225,7 +231,7 @@ class ApplicationSentMessage {
 
   void __set_messageSentByApplication(const  ::aroma::banana::thrift::Message& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -284,7 +290,7 @@ class HealthCheckFailed {
   virtual ~HealthCheckFailed() throw();
   std::string message;
   std::string hostname;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _HealthCheckFailed__isset __isset;
@@ -293,7 +299,7 @@ class HealthCheckFailed {
 
   void __set_hostname(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -350,14 +356,14 @@ class HealthCheckBackToNormal {
 
   virtual ~HealthCheckBackToNormal() throw();
   std::string message;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _HealthCheckBackToNormal__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -411,7 +417,7 @@ class OwnerApprovedRequest {
 
   virtual ~OwnerApprovedRequest() throw();
   std::string message;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
   User owner;
 
@@ -419,7 +425,7 @@ class OwnerApprovedRequest {
 
   void __set_message(const std::string& val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -459,14 +465,146 @@ inline std::ostream& operator<<(std::ostream& out, const OwnerApprovedRequest& o
   return out;
 }
 
+typedef struct _UserFollowedApplication__isset {
+  _UserFollowedApplication__isset() : message(true), applicationId(false), follower(false), owner(false) {}
+  bool message :1;
+  bool applicationId :1;
+  bool follower :1;
+  bool owner :1;
+} _UserFollowedApplication__isset;
+
+class UserFollowedApplication {
+ public:
+
+  UserFollowedApplication(const UserFollowedApplication&);
+  UserFollowedApplication& operator=(const UserFollowedApplication&);
+  UserFollowedApplication() : message("Someone followed your Application"), applicationId() {
+  }
+
+  virtual ~UserFollowedApplication() throw();
+  std::string message;
+  uuid applicationId;
+  User follower;
+  User owner;
+
+  _UserFollowedApplication__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_follower(const User& val);
+
+  void __set_owner(const User& val);
+
+  bool operator == (const UserFollowedApplication & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(follower == rhs.follower))
+      return false;
+    if (!(owner == rhs.owner))
+      return false;
+    return true;
+  }
+  bool operator != (const UserFollowedApplication &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UserFollowedApplication & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UserFollowedApplication &a, UserFollowedApplication &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UserFollowedApplication& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GeneralEvent__isset {
+  _GeneralEvent__isset() : applicationId(false), applicationName(false), message(false), timestamp(false) {}
+  bool applicationId :1;
+  bool applicationName :1;
+  bool message :1;
+  bool timestamp :1;
+} _GeneralEvent__isset;
+
+class GeneralEvent {
+ public:
+
+  GeneralEvent(const GeneralEvent&);
+  GeneralEvent& operator=(const GeneralEvent&);
+  GeneralEvent() : applicationId(), applicationName(), message(), timestamp(0) {
+  }
+
+  virtual ~GeneralEvent() throw();
+  uuid applicationId;
+  std::string applicationName;
+  std::string message;
+  timestamp timestamp;
+
+  _GeneralEvent__isset __isset;
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_applicationName(const std::string& val);
+
+  void __set_message(const std::string& val);
+
+  void __set_timestamp(const timestamp val);
+
+  bool operator == (const GeneralEvent & rhs) const
+  {
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (!(message == rhs.message))
+      return false;
+    if (!(timestamp == rhs.timestamp))
+      return false;
+    return true;
+  }
+  bool operator != (const GeneralEvent &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GeneralEvent & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GeneralEvent &a, GeneralEvent &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _EventType__isset {
-  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false) {}
+  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), generalEvent(false), userFollowedApplication(false) {}
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
   bool ownerApprovedRequest :1;
+  bool generalEvent :1;
+  bool userFollowedApplication :1;
 } _EventType__isset;
 
 class EventType {
@@ -484,6 +622,8 @@ class EventType {
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
   OwnerApprovedRequest ownerApprovedRequest;
+  GeneralEvent generalEvent;
+  UserFollowedApplication userFollowedApplication;
 
   _EventType__isset __isset;
 
@@ -499,6 +639,10 @@ class EventType {
 
   void __set_ownerApprovedRequest(const OwnerApprovedRequest& val);
 
+  void __set_generalEvent(const GeneralEvent& val);
+
+  void __set_userFollowedApplication(const UserFollowedApplication& val);
+
   bool operator == (const EventType & rhs) const
   {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
@@ -512,6 +656,10 @@ class EventType {
     if (!(applicationSentMessage == rhs.applicationSentMessage))
       return false;
     if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
+      return false;
+    if (!(generalEvent == rhs.generalEvent))
+      return false;
+    if (!(userFollowedApplication == rhs.userFollowedApplication))
       return false;
     return true;
   }
@@ -536,9 +684,10 @@ inline std::ostream& operator<<(std::ostream& out, const EventType& obj)
 }
 
 typedef struct _Event__isset {
-  _Event__isset() : eventType(false), timestamp(false) {}
+  _Event__isset() : eventType(false), timestamp(false), eventId(false) {}
   bool eventType :1;
   bool timestamp :1;
+  bool eventId :1;
 } _Event__isset;
 
 class Event {
@@ -546,12 +695,13 @@ class Event {
 
   Event(const Event&);
   Event& operator=(const Event&);
-  Event() : timestamp(0) {
+  Event() : timestamp(0), eventId() {
   }
 
   virtual ~Event() throw();
   EventType eventType;
   timestamp timestamp;
+  uuid eventId;
 
   _Event__isset __isset;
 
@@ -559,11 +709,15 @@ class Event {
 
   void __set_timestamp(const timestamp val);
 
+  void __set_eventId(const uuid& val);
+
   bool operator == (const Event & rhs) const
   {
     if (!(eventType == rhs.eventType))
       return false;
     if (!(timestamp == rhs.timestamp))
+      return false;
+    if (!(eventId == rhs.eventId))
       return false;
     return true;
   }

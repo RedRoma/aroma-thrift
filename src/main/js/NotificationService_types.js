@@ -165,8 +165,8 @@ SendNotificationResponse.prototype.write = function(output) {
   return;
 };
 
-SERVICE_PORT = 9009;
+SERVICE_PORT = 7009;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'notification-srv.banana.aroma.tech','port' : 9009});
+'hostname' : 'notification-srv.banana.aroma.tech','port' : 7009});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 9009});
+'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 7009});

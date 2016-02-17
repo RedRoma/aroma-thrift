@@ -216,6 +216,7 @@ code { line-height: 20px; }
 <a href="NotificationService.html#Typedef_int">int</a><br/>
 <a href="NotificationService.html#Typedef_long">long</a><br/>
 <a href="NotificationService.html#Typedef_timestamp">timestamp</a><br/>
+<a href="NotificationService.html#Typedef_uuid">uuid</a><br/>
 </td>
 <td><code><a href="NotificationService.html#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
 <code><a href="NotificationService.html#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
@@ -234,6 +235,7 @@ code { line-height: 20px; }
 <a href="Authentication.html#Typedef_int">int</a><br/>
 <a href="Authentication.html#Typedef_long">long</a><br/>
 <a href="Authentication.html#Typedef_timestamp">timestamp</a><br/>
+<a href="Authentication.html#Typedef_uuid">uuid</a><br/>
 </td>
 <td><code><a href="Authentication.html#Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY">OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</a></code><br/>
 </code></td>
@@ -243,17 +245,21 @@ code { line-height: 20px; }
 <a href="Banana.html#Struct_Dimension">Dimension</a><br/>
 <a href="Banana.html#Struct_Image">Image</a><br/>
 <a href="Banana.html#Enum_ImageType">ImageType</a><br/>
+<a href="Banana.html#Enum_Industry">Industry</a><br/>
 <a href="Banana.html#Struct_LengthOfTime">LengthOfTime</a><br/>
 <a href="Banana.html#Struct_Message">Message</a><br/>
+<a href="Banana.html#Struct_Organization">Organization</a><br/>
 <a href="Banana.html#Enum_ProgrammingLanguage">ProgrammingLanguage</a><br/>
 <a href="Banana.html#Enum_Role">Role</a><br/>
 <a href="Banana.html#Struct_ServiceAnnouncement">ServiceAnnouncement</a><br/>
+<a href="Banana.html#Enum_Tier">Tier</a><br/>
 <a href="Banana.html#Enum_TimeUnit">TimeUnit</a><br/>
 <a href="Banana.html#Enum_Urgency">Urgency</a><br/>
 <a href="Banana.html#Struct_User">User</a><br/>
 <a href="Banana.html#Typedef_int">int</a><br/>
 <a href="Banana.html#Typedef_long">long</a><br/>
 <a href="Banana.html#Typedef_timestamp">timestamp</a><br/>
+<a href="Banana.html#Typedef_uuid">uuid</a><br/>
 </td>
 <td></code></td>
 </tr><tr>
@@ -284,11 +290,12 @@ code { line-height: 20px; }
 <td><a href="Endpoint.html#Struct_Endpoint">Endpoint</a><br/>
 <a href="Endpoint.html#Struct_HealthPokeRequest">HealthPokeRequest</a><br/>
 <a href="Endpoint.html#Struct_HealthPokeResponse">HealthPokeResponse</a><br/>
+<a href="Endpoint.html#Struct_HttpRestEndpoint">HttpRestEndpoint</a><br/>
+<a href="Endpoint.html#Struct_HttpThriftEndpoint">HttpThriftEndpoint</a><br/>
 <a href="Endpoint.html#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="Endpoint.html#Struct_RestHttpEndpoint">RestHttpEndpoint</a><br/>
 <a href="Endpoint.html#Struct_TcpEndpoint">TcpEndpoint</a><br/>
-<a href="Endpoint.html#Struct_ThriftHttpEndpoint">ThriftHttpEndpoint</a><br/>
 <a href="Endpoint.html#Typedef_int">int</a><br/>
+<a href="Endpoint.html#Typedef_uuid">uuid</a><br/>
 </td>
 <td></code></td>
 </tr><tr>
@@ -298,11 +305,14 @@ code { line-height: 20px; }
 <a href="Exceptions.html#Struct_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
 <a href="Exceptions.html#Struct_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
 <a href="Exceptions.html#Struct_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
+<a href="Exceptions.html#Struct_DoesNotExistException">DoesNotExistException</a><br/>
 <a href="Exceptions.html#Struct_InvalidArgumentException">InvalidArgumentException</a><br/>
 <a href="Exceptions.html#Struct_InvalidCodeException">InvalidCodeException</a><br/>
 <a href="Exceptions.html#Struct_InvalidCredentialsException">InvalidCredentialsException</a><br/>
 <a href="Exceptions.html#Struct_InvalidTokenException">InvalidTokenException</a><br/>
+<a href="Exceptions.html#Struct_MessageDoesNotExistException">MessageDoesNotExistException</a><br/>
 <a href="Exceptions.html#Struct_OperationFailedException">OperationFailedException</a><br/>
+<a href="Exceptions.html#Struct_OrganizationDoesNotExistException">OrganizationDoesNotExistException</a><br/>
 <a href="Exceptions.html#Struct_ThroughoutExceededException">ThroughoutExceededException</a><br/>
 <a href="Exceptions.html#Struct_UnauthorizedException">UnauthorizedException</a><br/>
 <a href="Exceptions.html#Struct_UserDoesNotExistException">UserDoesNotExistException</a><br/>
@@ -317,13 +327,16 @@ code { line-height: 20px; }
 <a href="Events.html#Struct_ApplicationTokenRenewed">ApplicationTokenRenewed</a><br/>
 <a href="Events.html#Struct_Event">Event</a><br/>
 <a href="Events.html#Struct_EventType">EventType</a><br/>
+<a href="Events.html#Struct_GeneralEvent">GeneralEvent</a><br/>
 <a href="Events.html#Struct_HealthCheckBackToNormal">HealthCheckBackToNormal</a><br/>
 <a href="Events.html#Struct_HealthCheckFailed">HealthCheckFailed</a><br/>
 <a href="Events.html#Struct_OwnerApprovedRequest">OwnerApprovedRequest</a><br/>
 <a href="Events.html#Typedef_User">User</a><br/>
+<a href="Events.html#Struct_UserFollowedApplication">UserFollowedApplication</a><br/>
 <a href="Events.html#Typedef_int">int</a><br/>
 <a href="Events.html#Typedef_long">long</a><br/>
 <a href="Events.html#Typedef_timestamp">timestamp</a><br/>
+<a href="Events.html#Typedef_uuid">uuid</a><br/>
 </td>
 <td></code></td>
 </tr></table>

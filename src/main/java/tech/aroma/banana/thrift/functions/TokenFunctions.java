@@ -1,32 +1,29 @@
-/*
- * Copyright 2015 Aroma Tech.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+ /*
+  * Copyright 2015 Aroma Tech.
+  *
+  * Licensed under the Apache License, Version 2.0 (the "License");
+  * you may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at
+  *
+  *      http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
 
 package tech.aroma.banana.thrift.functions;
 
+import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.AuthenticationToken;
+import tech.aroma.banana.thrift.authentication.TokenType;
 import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
-import tech.sirwellington.alchemy.annotations.arguments.NonNull;
-
-import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
-import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
-import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.nonEmptyString;
 
 /**
  *
@@ -35,40 +32,92 @@ import static tech.sirwellington.alchemy.arguments.assertions.StringAssertions.n
 @NonInstantiable
 public final class TokenFunctions
 {
-
+    
     private final static Logger LOG = LoggerFactory.getLogger(TokenFunctions.class);
-
+    
     private TokenFunctions() throws IllegalAccessException
     {
         throw new IllegalAccessException("cannot instantiate");
     }
-
-    public static String extractTokenId(@NonNull AuthenticationToken token) throws IllegalArgumentException
+    
+    public static Function<AuthenticationToken, ApplicationToken> authTokenToAppTokenFunction()
     {
-        checkThat(token).is(notNull());
-
-        if (token.isSetApplicationToken())
+        return authToken ->
         {
-            ApplicationToken applicationToken = token.getApplicationToken();
-
-            String tokenId = applicationToken.tokenId;
-            checkThat(tokenId)
-                .usingMessage("Application Token missing tokenId")
-                .is(nonEmptyString());
-            return tokenId;
-        }
-
-        if (token.isSetUserToken())
-        {
-            UserToken userToken = token.getUserToken();
-            String tokenId = userToken.getTokenId();
-            checkThat(tokenId)
-                .usingMessage("User Token missing tokenId")
-                .is(nonEmptyString());
-
-            return tokenId;
-        }
-
-        throw new IllegalArgumentException("Unexpected Authentication Token Type:" + token);
+            ApplicationToken appToken = new ApplicationToken();
+            
+            if (authToken != null)
+            {
+                appToken
+                    .setTokenId(authToken.tokenId)
+                    .setApplicationId(authToken.ownerId)
+                    .setOrganization(authToken.organizationId)
+                    .setApplicationName(authToken.ownerName)
+                    .setTimeOfExpiration(authToken.timeOfExpiration);
+            }
+            
+            return appToken;
+        };
     }
+    
+    public static Function<ApplicationToken, AuthenticationToken> appTokenToAuthTokenFunction()
+    {
+        return appToken ->
+        {
+            AuthenticationToken authToken = new AuthenticationToken();
+            
+            if (appToken != null)
+            {
+                authToken
+                    .setTokenId(appToken.tokenId)
+                    .setOwnerId(appToken.applicationId)
+                    .setOwnerName(appToken.applicationName)
+                    .setTimeOfExpiration(appToken.timeOfExpiration)
+                    .setTokenType(TokenType.APPLICATION)
+                    .setOrganizationId(appToken.organization);
+            }
+            
+            return authToken;
+        };
+    }
+    
+    public static Function<AuthenticationToken, UserToken> authTokenToUserTokenFunction()
+    {
+        return token ->
+        {
+            UserToken userToken = new UserToken();
+            
+            if (token != null)
+            {
+                userToken
+                    .setTokenId(token.tokenId)
+                    .setUserId(token.ownerId)
+                    .setOrganization(token.organizationId)
+                    .setTimeOfExpiration(token.timeOfExpiration);
+            }
+            
+            return userToken;
+        };
+    }
+    
+    public static Function<UserToken, AuthenticationToken> userTokenToAuthTokenFunction()
+    {
+        return token ->
+        {
+            AuthenticationToken authToken = new AuthenticationToken();
+         
+            if (token != null)
+            {
+                authToken
+                    .setTokenId(token.tokenId)
+                    .setOwnerId(token.userId)
+                    .setOrganizationId(token.organization)
+                    .setTimeOfExpiration(token.timeOfExpiration)
+                    .setTokenType(TokenType.USER);
+            }
+            
+            return authToken;
+        };
+    }
+    
 }

@@ -12,13 +12,14 @@ include "Banana.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 struct ApplicationToken
 {
     1: string tokenId;
     2: optional string organization;
     3: timestamp timeOfExpiration;
-    4: optional string applicationId;
+    4: optional uuid applicationId;
     5: optional string applicationName;
 }
 
@@ -29,6 +30,7 @@ struct UserToken
     3: optional string organization;
     4: optional bool isOauthToken = false;
     5: optional string oauthProvider;
+    6: uuid userId;
 }
 
 struct GithubToken
@@ -48,7 +50,7 @@ struct Password
  * before sending it over the wire. Without it, passwords will
  * not be understood by the service, and will be rejected.
  */
-const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk";
+const string OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = "AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK";
 
 /**
  * An Account registered with our System.
@@ -69,7 +71,7 @@ struct AromaAccount
 union Credentials
 {
     1: GithubToken githubToken;
-    2: AromaAccount aromaAccount;
+    2: Password aromaPassword;
 }
 
 enum TokenType
@@ -79,11 +81,17 @@ enum TokenType
 }
 
 /** 
- * Represents a Generic Authentication Token
- * that is accepted by the Authentication Service.
+ * Represents an Authentication Token that is used
+ * and accepted by the Authentication Service.
  */
-union AuthenticationToken
+struct AuthenticationToken
 {
-    1: ApplicationToken applicationToken;
-    2: UserToken userToken;
+    1: string tokenId;
+    2: uuid ownerId;
+    3: timestamp timeOfCreation;
+    4: timestamp timeOfExpiration;
+    5: TokenType tokenType;
+    6: uuid organizationId;
+    7: string ownerName;
+    8: string organizationName;
 }

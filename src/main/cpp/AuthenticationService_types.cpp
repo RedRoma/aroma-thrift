@@ -18,16 +18,32 @@ CreateTokenRequest::~CreateTokenRequest() throw() {
 }
 
 
-void CreateTokenRequest::__set_ownerId(const std::string& val) {
+void CreateTokenRequest::__set_ownerId(const uuid& val) {
   this->ownerId = val;
 }
 
 void CreateTokenRequest::__set_lifetime(const LengthOfTime& val) {
   this->lifetime = val;
+__isset.lifetime = true;
 }
 
 void CreateTokenRequest::__set_desiredTokenType(const TokenType val) {
   this->desiredTokenType = val;
+}
+
+void CreateTokenRequest::__set_ownerName(const std::string& val) {
+  this->ownerName = val;
+__isset.ownerName = true;
+}
+
+void CreateTokenRequest::__set_organizationId(const uuid& val) {
+  this->organizationId = val;
+__isset.organizationId = true;
+}
+
+void CreateTokenRequest::__set_organizationName(const std::string& val) {
+  this->organizationName = val;
+__isset.organizationName = true;
 }
 
 uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -77,6 +93,30 @@ uint32_t CreateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) 
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->ownerName);
+          this->__isset.ownerName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationId);
+          this->__isset.organizationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->organizationName);
+          this->__isset.organizationName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -98,14 +138,30 @@ uint32_t CreateTokenRequest::write(::apache::thrift::protocol::TProtocol* oprot)
   xfer += oprot->writeString(this->ownerId);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->lifetime.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.lifetime) {
+    xfer += oprot->writeFieldBegin("lifetime", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->lifetime.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldBegin("desiredTokenType", ::apache::thrift::protocol::T_I32, 3);
   xfer += oprot->writeI32((int32_t)this->desiredTokenType);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.ownerName) {
+    xfer += oprot->writeFieldBegin("ownerName", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->ownerName);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.organizationId) {
+    xfer += oprot->writeFieldBegin("organizationId", ::apache::thrift::protocol::T_STRING, 5);
+    xfer += oprot->writeString(this->organizationId);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.organizationName) {
+    xfer += oprot->writeFieldBegin("organizationName", ::apache::thrift::protocol::T_STRING, 6);
+    xfer += oprot->writeString(this->organizationName);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -116,6 +172,9 @@ void swap(CreateTokenRequest &a, CreateTokenRequest &b) {
   swap(a.ownerId, b.ownerId);
   swap(a.lifetime, b.lifetime);
   swap(a.desiredTokenType, b.desiredTokenType);
+  swap(a.ownerName, b.ownerName);
+  swap(a.organizationId, b.organizationId);
+  swap(a.organizationName, b.organizationName);
   swap(a.__isset, b.__isset);
 }
 
@@ -123,12 +182,18 @@ CreateTokenRequest::CreateTokenRequest(const CreateTokenRequest& other1) {
   ownerId = other1.ownerId;
   lifetime = other1.lifetime;
   desiredTokenType = other1.desiredTokenType;
+  ownerName = other1.ownerName;
+  organizationId = other1.organizationId;
+  organizationName = other1.organizationName;
   __isset = other1.__isset;
 }
 CreateTokenRequest& CreateTokenRequest::operator=(const CreateTokenRequest& other2) {
   ownerId = other2.ownerId;
   lifetime = other2.lifetime;
   desiredTokenType = other2.desiredTokenType;
+  ownerName = other2.ownerName;
+  organizationId = other2.organizationId;
+  organizationName = other2.organizationName;
   __isset = other2.__isset;
   return *this;
 }
@@ -136,8 +201,11 @@ void CreateTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "CreateTokenRequest(";
   out << "ownerId=" << to_string(ownerId);
-  out << ", " << "lifetime=" << to_string(lifetime);
+  out << ", " << "lifetime="; (__isset.lifetime ? (out << to_string(lifetime)) : (out << "<null>"));
   out << ", " << "desiredTokenType=" << to_string(desiredTokenType);
+  out << ", " << "ownerName="; (__isset.ownerName ? (out << to_string(ownerName)) : (out << "<null>"));
+  out << ", " << "organizationId="; (__isset.organizationId ? (out << to_string(organizationId)) : (out << "<null>"));
+  out << ", " << "organizationName="; (__isset.organizationName ? (out << to_string(organizationName)) : (out << "<null>"));
   out << ")";
 }
 
@@ -430,6 +498,16 @@ void InvalidateTokenRequest::__set_token(const AuthenticationToken& val) {
   this->token = val;
 }
 
+void InvalidateTokenRequest::__set_multipleTokens(const std::vector<AuthenticationToken> & val) {
+  this->multipleTokens = val;
+__isset.multipleTokens = true;
+}
+
+void InvalidateTokenRequest::__set_belongingTo(const uuid& val) {
+  this->belongingTo = val;
+__isset.belongingTo = true;
+}
+
 uint32_t InvalidateTokenRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -459,6 +537,34 @@ uint32_t InvalidateTokenRequest::read(::apache::thrift::protocol::TProtocol* ipr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->multipleTokens.clear();
+            uint32_t _size10;
+            ::apache::thrift::protocol::TType _etype13;
+            xfer += iprot->readListBegin(_etype13, _size10);
+            this->multipleTokens.resize(_size10);
+            uint32_t _i14;
+            for (_i14 = 0; _i14 < _size10; ++_i14)
+            {
+              xfer += this->multipleTokens[_i14].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.multipleTokens = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->belongingTo);
+          this->__isset.belongingTo = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -480,6 +586,24 @@ uint32_t InvalidateTokenRequest::write(::apache::thrift::protocol::TProtocol* op
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.multipleTokens) {
+    xfer += oprot->writeFieldBegin("multipleTokens", ::apache::thrift::protocol::T_LIST, 2);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->multipleTokens.size()));
+      std::vector<AuthenticationToken> ::const_iterator _iter15;
+      for (_iter15 = this->multipleTokens.begin(); _iter15 != this->multipleTokens.end(); ++_iter15)
+      {
+        xfer += (*_iter15).write(oprot);
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.belongingTo) {
+    xfer += oprot->writeFieldBegin("belongingTo", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->belongingTo);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -488,22 +612,30 @@ uint32_t InvalidateTokenRequest::write(::apache::thrift::protocol::TProtocol* op
 void swap(InvalidateTokenRequest &a, InvalidateTokenRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
+  swap(a.multipleTokens, b.multipleTokens);
+  swap(a.belongingTo, b.belongingTo);
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other10) {
-  token = other10.token;
-  __isset = other10.__isset;
+InvalidateTokenRequest::InvalidateTokenRequest(const InvalidateTokenRequest& other16) {
+  token = other16.token;
+  multipleTokens = other16.multipleTokens;
+  belongingTo = other16.belongingTo;
+  __isset = other16.__isset;
 }
-InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other11) {
-  token = other11.token;
-  __isset = other11.__isset;
+InvalidateTokenRequest& InvalidateTokenRequest::operator=(const InvalidateTokenRequest& other17) {
+  token = other17.token;
+  multipleTokens = other17.multipleTokens;
+  belongingTo = other17.belongingTo;
+  __isset = other17.__isset;
   return *this;
 }
 void InvalidateTokenRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "InvalidateTokenRequest(";
   out << "token=" << to_string(token);
+  out << ", " << "multipleTokens="; (__isset.multipleTokens ? (out << to_string(multipleTokens)) : (out << "<null>"));
+  out << ", " << "belongingTo="; (__isset.belongingTo ? (out << to_string(belongingTo)) : (out << "<null>"));
   out << ")";
 }
 
@@ -577,13 +709,13 @@ void swap(InvalidateTokenResponse &a, InvalidateTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other12) {
-  message = other12.message;
-  __isset = other12.__isset;
+InvalidateTokenResponse::InvalidateTokenResponse(const InvalidateTokenResponse& other18) {
+  message = other18.message;
+  __isset = other18.__isset;
 }
-InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other13) {
-  message = other13.message;
-  __isset = other13.__isset;
+InvalidateTokenResponse& InvalidateTokenResponse::operator=(const InvalidateTokenResponse& other19) {
+  message = other19.message;
+  __isset = other19.__isset;
   return *this;
 }
 void InvalidateTokenResponse::printTo(std::ostream& out) const {
@@ -682,15 +814,15 @@ void swap(VerifyTokenRequest &a, VerifyTokenRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other14) {
-  tokenId = other14.tokenId;
-  ownerId = other14.ownerId;
-  __isset = other14.__isset;
+VerifyTokenRequest::VerifyTokenRequest(const VerifyTokenRequest& other20) {
+  tokenId = other20.tokenId;
+  ownerId = other20.ownerId;
+  __isset = other20.__isset;
 }
-VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other15) {
-  tokenId = other15.tokenId;
-  ownerId = other15.ownerId;
-  __isset = other15.__isset;
+VerifyTokenRequest& VerifyTokenRequest::operator=(const VerifyTokenRequest& other21) {
+  tokenId = other21.tokenId;
+  ownerId = other21.ownerId;
+  __isset = other21.__isset;
   return *this;
 }
 void VerifyTokenRequest::printTo(std::ostream& out) const {
@@ -771,13 +903,13 @@ void swap(VerifyTokenResponse &a, VerifyTokenResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other16) {
-  message = other16.message;
-  __isset = other16.__isset;
+VerifyTokenResponse::VerifyTokenResponse(const VerifyTokenResponse& other22) {
+  message = other22.message;
+  __isset = other22.__isset;
 }
-VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other17) {
-  message = other17.message;
-  __isset = other17.__isset;
+VerifyTokenResponse& VerifyTokenResponse::operator=(const VerifyTokenResponse& other23) {
+  message = other23.message;
+  __isset = other23.__isset;
   return *this;
 }
 void VerifyTokenResponse::printTo(std::ostream& out) const {

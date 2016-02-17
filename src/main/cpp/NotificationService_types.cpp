@@ -164,8 +164,9 @@ SendNotificationResponse::~SendNotificationResponse() throw() {
 }
 
 
-void SendNotificationResponse::__set_notificationId(const std::string& val) {
+void SendNotificationResponse::__set_notificationId(const uuid& val) {
   this->notificationId = val;
+__isset.notificationId = true;
 }
 
 uint32_t SendNotificationResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -214,10 +215,11 @@ uint32_t SendNotificationResponse::write(::apache::thrift::protocol::TProtocol* 
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SendNotificationResponse");
 
-  xfer += oprot->writeFieldBegin("notificationId", ::apache::thrift::protocol::T_STRING, 1);
-  xfer += oprot->writeString(this->notificationId);
-  xfer += oprot->writeFieldEnd();
-
+  if (this->__isset.notificationId) {
+    xfer += oprot->writeFieldBegin("notificationId", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->notificationId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -241,7 +243,7 @@ SendNotificationResponse& SendNotificationResponse::operator=(const SendNotifica
 void SendNotificationResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SendNotificationResponse(";
-  out << "notificationId=" << to_string(notificationId);
+  out << "notificationId="; (__isset.notificationId ? (out << to_string(notificationId)) : (out << "<null>"));
   out << ")";
 }
 

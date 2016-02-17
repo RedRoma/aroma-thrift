@@ -15,6 +15,7 @@ typedef Authentication.ApplicationToken ApplicationToken
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 typedef Banana.User User
 typedef Banana.Application Application
 
@@ -29,7 +30,7 @@ struct ApplicationTokenRenewed
     2: User user;
     /** We may or may not include the new Application Token, for security reasons. */
     3: optional ApplicationToken applicationToken;
-    4: string applicationId;
+    4: uuid applicationId;
     5: string applicationName;
 }
 
@@ -43,7 +44,7 @@ struct ApplicationTokenRegenerated
     /** The person who performed the action. */
     2: User user;
     3: optional ApplicationToken applicationToken;
-    4: string applicationId;
+    4: uuid applicationId;
     5: string applicationName;
 }
 
@@ -56,7 +57,7 @@ struct ApplicationSentMessage
     /** The Message that the Application Sent. */
     2: optional Banana.Message messageSentByApplication;
     /** The Application that sent the message. */
-    3: string applicationId;
+    3: uuid applicationId;
     4: string applicationName;
 }
 
@@ -69,7 +70,7 @@ struct HealthCheckFailed
     /** May include the name of the host that went down. */
     2: optional string hostname;
     /** The application that failed the health check. */
-    3: string applicationId;
+    3: uuid applicationId;
     /** The Human-Friendly name of the Application. */
     4: string applicationName;
 }
@@ -81,7 +82,7 @@ struct HealthCheckFailed
 struct HealthCheckBackToNormal
 {
     1: optional string message = "Application's Health is back to normal";
-    2: string applicationId;
+    2: uuid applicationId;
     3: string applicationName;
 }
 
@@ -92,10 +93,29 @@ struct HealthCheckBackToNormal
 struct OwnerApprovedRequest
 {
     1: optional string message = "Application Owner approved your request";
-    2: string applicationId;
+    2: uuid applicationId;
     3: string applicationName;
     /** The Owner who approved. */
     4: User owner;
+}
+
+struct UserFollowedApplication
+{
+    1: optional string message = "Someone followed your Application";
+    2: uuid applicationId;
+    3: User follower;
+    4: User owner;
+}
+
+/**
+ * A General Event is a less formal kind of Event.
+ */
+struct GeneralEvent
+{
+    1: uuid applicationId;
+    2: string applicationName;
+    3: string message;
+    4: timestamp timestamp;
 }
 
 /**
@@ -110,6 +130,8 @@ union EventType
     4: ApplicationTokenRegenerated applicationTokenRegenerated;
     5: ApplicationSentMessage applicationSentMessage;
     6: OwnerApprovedRequest ownerApprovedRequest;
+    7: GeneralEvent generalEvent;
+    8: UserFollowedApplication userFollowedApplication;
 }
 
 /**
@@ -119,4 +141,5 @@ struct Event
 {
     1: EventType eventType;
     2: timestamp timestamp;
+    3: uuid eventId;
 }

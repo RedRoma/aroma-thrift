@@ -27,9 +27,8 @@ import tech.aroma.banana.thrift.authentication.service.VerifyTokenRequest;
 import tech.aroma.banana.thrift.authentication.service.VerifyTokenResponse;
 import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.banana.thrift.exceptions.InvalidTokenException;
-import tech.aroma.banana.thrift.functions.TokenFunctions;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
-import tech.sirwellington.alchemy.annotations.arguments.NonNull;
+import tech.sirwellington.alchemy.annotations.arguments.Required;
 import tech.sirwellington.alchemy.arguments.AlchemyAssertion;
 import tech.sirwellington.alchemy.arguments.ExceptionMapper;
 import tech.sirwellington.alchemy.arguments.FailedAssertionException;
@@ -75,17 +74,23 @@ public final class BananaAssertions
     {
         return t ->
         {
-            checkThat(t).is(notNull());
+            checkThat(t)
+                .usingMessage("token is null")
+                .is(notNull());
             
-            if (!isSet(t))
-            {
-                throw new FailedAssertionException("Token Has not been set:  " + t);
-            }
+            checkThat(t.tokenId)
+                .usingMessage("token missing tokenId")
+                .is(nonEmptyString());
+            
+//            checkThat(t.ownerId)
+//                .usingMessage("token missing ownerId")
+//                .is(nonEmptyString())
+//                .usingMessage("token ownerId must be a UUID")
+//                .is(validUUID());
         };
     }
     
-    public static AlchemyAssertion<ApplicationToken> validApplicationTokenIn(
-        @NonNull AuthenticationService.Iface authenticationService)
+    public static AlchemyAssertion<ApplicationToken> validApplicationTokenIn(@Required AuthenticationService.Iface authenticationService)
     {
         checkThat(authenticationService)
             .usingMessage("authentication service is null")
@@ -101,8 +106,10 @@ public final class BananaAssertions
                 .usingMessage("token is missing tokenId")
                 .is(nonEmptyString());
             
-            AuthenticationToken authToken = new AuthenticationToken();
-            authToken.setApplicationToken(token);
+            AuthenticationToken authToken = new AuthenticationToken()
+            .setTokenId(token.tokenId)
+            .setOwnerId(token.applicationId)
+            .setOwnerName(token.applicationName);
             
             checkThat(authToken)
                 .is(validTokenIn(authenticationService));
@@ -110,7 +117,7 @@ public final class BananaAssertions
         
     }
     
-    public static AlchemyAssertion<UserToken> validUserTokenIn(@NonNull AuthenticationService.Iface authenticationService)
+    public static AlchemyAssertion<UserToken> validUserTokenIn(@Required AuthenticationService.Iface authenticationService)
     {
         checkThat(authenticationService)
             .usingMessage("authentication service is null")
@@ -126,15 +133,17 @@ public final class BananaAssertions
                 .usingMessage("token is missing tokenId")
                 .is(nonEmptyString());
             
-            AuthenticationToken authToken = new AuthenticationToken();
-            authToken.setUserToken(token);
-            
+            AuthenticationToken authToken = new AuthenticationToken()
+                .setTokenId(token.tokenId)
+                .setOwnerId(token.userId)
+                .setOrganizationId(token.organization);
+
             checkThat(authToken)
                 .is(validTokenIn(authenticationService));
         };
     }
     
-    public static AlchemyAssertion<AuthenticationToken> validTokenIn(@NonNull AuthenticationService.Iface authenticationService)
+    public static AlchemyAssertion<AuthenticationToken> validTokenIn(@Required AuthenticationService.Iface authenticationService)
     {
         checkThat(authenticationService)
             .usingMessage("authentication service is null")
@@ -145,7 +154,7 @@ public final class BananaAssertions
             checkThat(token)
                 .is(legalToken());
             
-            String tokenId = TokenFunctions.extractTokenId(token);
+            String tokenId = token.getTokenId();
             
             checkThat(tokenId)
                 .usingMessage("tokenId is missing")
@@ -153,6 +162,11 @@ public final class BananaAssertions
             
             VerifyTokenRequest request = new VerifyTokenRequest()
                 .setTokenId(tokenId);
+            
+            if (token.isSetOwnerId())
+            {
+                request.setOwnerId(token.ownerId);
+            }
             
             VerifyTokenResponse response;
             try
@@ -170,19 +184,5 @@ public final class BananaAssertions
         };
     }
     
-    private static boolean isSet(AuthenticationToken token)
-    {
-        if (token.isSetApplicationToken())
-        {
-            return true;
-        }
-        
-        if (token.isSetUserToken())
-        {
-            return true;
-        }
-        
-        return false;
-    }
     
 }

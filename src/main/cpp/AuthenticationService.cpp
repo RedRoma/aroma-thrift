@@ -289,8 +289,16 @@ uint32_t AuthenticationService_createToken_result::read(::apache::thrift::protoc
         break;
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->ex.read(iprot);
-          this->__isset.ex = true;
+          xfer += this->ex1.read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex2.read(iprot);
+          this->__isset.ex2 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -317,9 +325,13 @@ uint32_t AuthenticationService_createToken_result::write(::apache::thrift::proto
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
     xfer += this->success.write(oprot);
     xfer += oprot->writeFieldEnd();
-  } else if (this->__isset.ex) {
-    xfer += oprot->writeFieldBegin("ex", ::apache::thrift::protocol::T_STRUCT, 1);
-    xfer += this->ex.write(oprot);
+  } else if (this->__isset.ex1) {
+    xfer += oprot->writeFieldBegin("ex1", ::apache::thrift::protocol::T_STRUCT, 1);
+    xfer += this->ex1.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex2) {
+    xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
+    xfer += this->ex2.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -363,8 +375,16 @@ uint32_t AuthenticationService_createToken_presult::read(::apache::thrift::proto
         break;
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += (*(this->ex)).read(iprot);
-          this->__isset.ex = true;
+          xfer += (*(this->ex1)).read(iprot);
+          this->__isset.ex1 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex2)).read(iprot);
+          this->__isset.ex2 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -510,6 +530,14 @@ uint32_t AuthenticationService_getTokenInfo_result::read(::apache::thrift::proto
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -539,6 +567,10 @@ uint32_t AuthenticationService_getTokenInfo_result::write(::apache::thrift::prot
   } else if (this->__isset.ex2) {
     xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
     xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -592,6 +624,14 @@ uint32_t AuthenticationService_getTokenInfo_presult::read(::apache::thrift::prot
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex2)).read(iprot);
           this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -737,6 +777,14 @@ uint32_t AuthenticationService_invalidateToken_result::read(::apache::thrift::pr
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -766,6 +814,10 @@ uint32_t AuthenticationService_invalidateToken_result::write(::apache::thrift::p
   } else if (this->__isset.ex2) {
     xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
     xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -819,6 +871,14 @@ uint32_t AuthenticationService_invalidateToken_presult::read(::apache::thrift::p
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex2)).read(iprot);
           this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -964,6 +1024,14 @@ uint32_t AuthenticationService_verifyToken_result::read(::apache::thrift::protoc
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ex3.read(iprot);
+          this->__isset.ex3 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -993,6 +1061,10 @@ uint32_t AuthenticationService_verifyToken_result::write(::apache::thrift::proto
   } else if (this->__isset.ex2) {
     xfer += oprot->writeFieldBegin("ex2", ::apache::thrift::protocol::T_STRUCT, 2);
     xfer += this->ex2.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  } else if (this->__isset.ex3) {
+    xfer += oprot->writeFieldBegin("ex3", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->ex3.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -1046,6 +1118,14 @@ uint32_t AuthenticationService_verifyToken_presult::read(::apache::thrift::proto
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += (*(this->ex2)).read(iprot);
           this->__isset.ex2 = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->ex3)).read(iprot);
+          this->__isset.ex3 = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1174,8 +1254,11 @@ void AuthenticationServiceClient::recv_createToken(CreateTokenResponse& _return)
     // _return pointer has now been filled
     return;
   }
-  if (result.__isset.ex) {
-    throw result.ex;
+  if (result.__isset.ex1) {
+    throw result.ex1;
+  }
+  if (result.__isset.ex2) {
+    throw result.ex2;
   }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createToken failed: unknown result");
 }
@@ -1241,6 +1324,9 @@ void AuthenticationServiceClient::recv_getTokenInfo(GetTokenInfoResponse& _retur
   if (result.__isset.ex2) {
     throw result.ex2;
   }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getTokenInfo failed: unknown result");
 }
 
@@ -1305,6 +1391,9 @@ void AuthenticationServiceClient::recv_invalidateToken(InvalidateTokenResponse& 
   if (result.__isset.ex2) {
     throw result.ex2;
   }
+  if (result.__isset.ex3) {
+    throw result.ex3;
+  }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateToken failed: unknown result");
 }
 
@@ -1368,6 +1457,9 @@ void AuthenticationServiceClient::recv_verifyToken(VerifyTokenResponse& _return)
   }
   if (result.__isset.ex2) {
     throw result.ex2;
+  }
+  if (result.__isset.ex3) {
+    throw result.ex3;
   }
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "verifyToken failed: unknown result");
 }
@@ -1470,9 +1562,12 @@ void AuthenticationServiceProcessor::process_createToken(int32_t seqid, ::apache
   try {
     iface_->createToken(result.success, args.request);
     result.__isset.success = true;
-  } catch (OperationFailedException &ex) {
-    result.ex = ex;
-    result.__isset.ex = true;
+  } catch (OperationFailedException &ex1) {
+    result.ex1 = ex1;
+    result.__isset.ex1 = true;
+  } catch (InvalidArgumentException &ex2) {
+    result.ex2 = ex2;
+    result.__isset.ex2 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "AuthenticationService.createToken");
@@ -1533,6 +1628,9 @@ void AuthenticationServiceProcessor::process_getTokenInfo(int32_t seqid, ::apach
   } catch (InvalidTokenException &ex2) {
     result.ex2 = ex2;
     result.__isset.ex2 = true;
+  } catch (InvalidArgumentException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "AuthenticationService.getTokenInfo");
@@ -1593,6 +1691,9 @@ void AuthenticationServiceProcessor::process_invalidateToken(int32_t seqid, ::ap
   } catch (InvalidTokenException &ex2) {
     result.ex2 = ex2;
     result.__isset.ex2 = true;
+  } catch (InvalidArgumentException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "AuthenticationService.invalidateToken");
@@ -1653,6 +1754,9 @@ void AuthenticationServiceProcessor::process_verifyToken(int32_t seqid, ::apache
   } catch (InvalidTokenException &ex2) {
     result.ex2 = ex2;
     result.__isset.ex2 = true;
+  } catch (InvalidArgumentException &ex3) {
+    result.ex3 = ex3;
+    result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "AuthenticationService.verifyToken");
@@ -1845,9 +1949,13 @@ void AuthenticationServiceConcurrentClient::recv_createToken(CreateTokenResponse
         sentry.commit();
         return;
       }
-      if (result.__isset.ex) {
+      if (result.__isset.ex1) {
         sentry.commit();
-        throw result.ex;
+        throw result.ex1;
+      }
+      if (result.__isset.ex2) {
+        sentry.commit();
+        throw result.ex2;
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "createToken failed: unknown result");
@@ -1941,6 +2049,10 @@ void AuthenticationServiceConcurrentClient::recv_getTokenInfo(GetTokenInfoRespon
         sentry.commit();
         throw result.ex2;
       }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getTokenInfo failed: unknown result");
     }
@@ -2033,6 +2145,10 @@ void AuthenticationServiceConcurrentClient::recv_invalidateToken(InvalidateToken
         sentry.commit();
         throw result.ex2;
       }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
+      }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "invalidateToken failed: unknown result");
     }
@@ -2124,6 +2240,10 @@ void AuthenticationServiceConcurrentClient::recv_verifyToken(VerifyTokenResponse
       if (result.__isset.ex2) {
         sentry.commit();
         throw result.ex2;
+      }
+      if (result.__isset.ex3) {
+        sentry.commit();
+        throw result.ex3;
       }
       // in a bad state, don't commit
       throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "verifyToken failed: unknown result");

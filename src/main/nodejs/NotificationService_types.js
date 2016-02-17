@@ -176,8 +176,8 @@ SendNotificationResponse.prototype.write = function(output) {
   return;
 };
 
-ttypes.SERVICE_PORT = 9009;
+ttypes.SERVICE_PORT = 7009;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.banana.aroma.tech','port' : 9009});
+'hostname' : 'notification-srv.banana.aroma.tech','port' : 7009});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 9009});
+'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 7009});

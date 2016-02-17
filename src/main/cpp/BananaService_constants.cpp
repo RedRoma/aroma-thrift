@@ -11,45 +11,55 @@ namespace aroma { namespace banana { namespace thrift { namespace service {
 const BananaServiceConstants g_BananaService_constants;
 
 BananaServiceConstants::BananaServiceConstants() {
-  API_VERSION = 1.5;
+  API_VERSION = 1.6;
 
-  SERVICE_PORT = 7001;
+  SERVICE_PORT = 7010;
 
   PRODUCTION_ENDPOINT.hostname = "banana-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp172;
-  tmp172 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp209;
+  tmp209 = 7010;
 
-  PRODUCTION_ENDPOINT.port = tmp172;
+  PRODUCTION_ENDPOINT.port = tmp209;
 
   BETA_ENDPOINT.hostname = "banana-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp173;
-  tmp173 = 7001;
+   ::aroma::banana::thrift::endpoint::int tmp210;
+  tmp210 = 7010;
 
-  BETA_ENDPOINT.port = tmp173;
+  BETA_ENDPOINT.port = tmp210;
 
-   ::aroma::banana::thrift::int tmp174;
-  tmp174 = 1024;
+   ::aroma::banana::thrift::int tmp211;
+  tmp211 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp174;
-   ::aroma::banana::thrift::int tmp175;
-  tmp175 = 1024;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp211;
+   ::aroma::banana::thrift::int tmp212;
+  tmp212 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp175;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp212;
 
-   ::aroma::banana::thrift::int tmp176;
-  tmp176 = 1024;
+   ::aroma::banana::thrift::int tmp213;
+  tmp213 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp176;
-   ::aroma::banana::thrift::int tmp177;
-  tmp177 = 1024;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp213;
+   ::aroma::banana::thrift::int tmp214;
+  tmp214 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp177;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp214;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
   MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 
   MAX_MESSAGE_LENGTH = 5000;
+
+   ::aroma::banana::thrift::long tmp215;
+  tmp215 = 3LL;
+
+  DEFAULT_INBOX_LIFETIME.value = tmp215;
+  DEFAULT_INBOX_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
+
+  APPLICATION_NAME_MAX_LENGTH = 20;
+
+  APPLICATION_MAX_OWNERS = 10;
 
 }
 

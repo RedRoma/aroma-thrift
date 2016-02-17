@@ -75,7 +75,7 @@ TcpEndpoint.prototype.write = function(output) {
   return;
 };
 
-ThriftHttpEndpoint = function(args) {
+HttpThriftEndpoint = function(args) {
   this.url = null;
   if (args) {
     if (args.url !== undefined && args.url !== null) {
@@ -85,8 +85,8 @@ ThriftHttpEndpoint = function(args) {
     }
   }
 };
-ThriftHttpEndpoint.prototype = {};
-ThriftHttpEndpoint.prototype.read = function(input) {
+HttpThriftEndpoint.prototype = {};
+HttpThriftEndpoint.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -118,8 +118,8 @@ ThriftHttpEndpoint.prototype.read = function(input) {
   return;
 };
 
-ThriftHttpEndpoint.prototype.write = function(output) {
-  output.writeStructBegin('ThriftHttpEndpoint');
+HttpThriftEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('HttpThriftEndpoint');
   if (this.url !== null && this.url !== undefined) {
     output.writeFieldBegin('url', Thrift.Type.STRING, 1);
     output.writeString(this.url);
@@ -130,7 +130,7 @@ ThriftHttpEndpoint.prototype.write = function(output) {
   return;
 };
 
-RestHttpEndpoint = function(args) {
+HttpRestEndpoint = function(args) {
   this.url = null;
   if (args) {
     if (args.url !== undefined && args.url !== null) {
@@ -140,8 +140,8 @@ RestHttpEndpoint = function(args) {
     }
   }
 };
-RestHttpEndpoint.prototype = {};
-RestHttpEndpoint.prototype.read = function(input) {
+HttpRestEndpoint.prototype = {};
+HttpRestEndpoint.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -173,8 +173,8 @@ RestHttpEndpoint.prototype.read = function(input) {
   return;
 };
 
-RestHttpEndpoint.prototype.write = function(output) {
-  output.writeStructBegin('RestHttpEndpoint');
+HttpRestEndpoint.prototype.write = function(output) {
+  output.writeStructBegin('HttpRestEndpoint');
   if (this.url !== null && this.url !== undefined) {
     output.writeFieldBegin('url', Thrift.Type.STRING, 1);
     output.writeString(this.url);
@@ -187,17 +187,17 @@ RestHttpEndpoint.prototype.write = function(output) {
 
 Endpoint = function(args) {
   this.tcp = null;
-  this.thriftHttp = null;
-  this.restHttp = null;
+  this.httpThrift = null;
+  this.httpRest = null;
   if (args) {
     if (args.tcp !== undefined && args.tcp !== null) {
       this.tcp = new TcpEndpoint(args.tcp);
     }
-    if (args.thriftHttp !== undefined && args.thriftHttp !== null) {
-      this.thriftHttp = new ThriftHttpEndpoint(args.thriftHttp);
+    if (args.httpThrift !== undefined && args.httpThrift !== null) {
+      this.httpThrift = new HttpThriftEndpoint(args.httpThrift);
     }
-    if (args.restHttp !== undefined && args.restHttp !== null) {
-      this.restHttp = new RestHttpEndpoint(args.restHttp);
+    if (args.httpRest !== undefined && args.httpRest !== null) {
+      this.httpRest = new HttpRestEndpoint(args.httpRest);
     }
   }
 };
@@ -225,16 +225,16 @@ Endpoint.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.thriftHttp = new ThriftHttpEndpoint();
-        this.thriftHttp.read(input);
+        this.httpThrift = new HttpThriftEndpoint();
+        this.httpThrift.read(input);
       } else {
         input.skip(ftype);
       }
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
-        this.restHttp = new RestHttpEndpoint();
-        this.restHttp.read(input);
+        this.httpRest = new HttpRestEndpoint();
+        this.httpRest.read(input);
       } else {
         input.skip(ftype);
       }
@@ -255,14 +255,14 @@ Endpoint.prototype.write = function(output) {
     this.tcp.write(output);
     output.writeFieldEnd();
   }
-  if (this.thriftHttp !== null && this.thriftHttp !== undefined) {
-    output.writeFieldBegin('thriftHttp', Thrift.Type.STRUCT, 2);
-    this.thriftHttp.write(output);
+  if (this.httpThrift !== null && this.httpThrift !== undefined) {
+    output.writeFieldBegin('httpThrift', Thrift.Type.STRUCT, 2);
+    this.httpThrift.write(output);
     output.writeFieldEnd();
   }
-  if (this.restHttp !== null && this.restHttp !== undefined) {
-    output.writeFieldBegin('restHttp', Thrift.Type.STRUCT, 3);
-    this.restHttp.write(output);
+  if (this.httpRest !== null && this.httpRest !== undefined) {
+    output.writeFieldBegin('httpRest', Thrift.Type.STRUCT, 3);
+    this.httpRest.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -271,11 +271,11 @@ Endpoint.prototype.write = function(output) {
 };
 
 HealthPokeRequest = function(args) {
-  this.applicationName = null;
+  this.applicationId = null;
   this.serviceToken = null;
   if (args) {
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
     if (args.serviceToken !== undefined && args.serviceToken !== null) {
       this.serviceToken = new ApplicationToken(args.serviceToken);
@@ -298,7 +298,7 @@ HealthPokeRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString().value;
+        this.applicationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -322,9 +322,9 @@ HealthPokeRequest.prototype.read = function(input) {
 
 HealthPokeRequest.prototype.write = function(output) {
   output.writeStructBegin('HealthPokeRequest');
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 1);
-    output.writeString(this.applicationName);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 1);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   if (this.serviceToken !== null && this.serviceToken !== undefined) {

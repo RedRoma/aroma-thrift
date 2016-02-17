@@ -206,13 +206,14 @@ code { line-height: 20px; }
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
+<a href="#Typedef_uuid">uuid</a><br/>
 </td>
 <td><code><a href="#Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY">OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</a></code><br/>
 </code></td>
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY"><td><code>OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</code></td><td><code>string</code></td><td><code>"fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk"</code></td></tr><tr><td colspan="3"><blockquote>Use this password to encrypt the password
+<tr id="Const_OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY"><td><code>OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY</code></td><td><code>string</code></td><td><code>"AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK"</code></td></tr><tr><td colspan="3"><blockquote>Use this password to encrypt the password
 before sending it over the wire. Without it, passwords will
 not be understood by the service, and will be rejected.
 <br/></blockquote></td></tr></table><hr/><h2 id="Enumerations">Enumerations</h2>
@@ -233,13 +234,16 @@ not be understood by the service, and will be rejected.
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
 </div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_uuid">Banana.uuid</a></code></p>
+</div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_ApplicationToken">Struct: ApplicationToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>3</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>applicationId</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>5</td><td>applicationName</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_UserToken">Struct: UserToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -248,6 +252,7 @@ not be understood by the service, and will be rejected.
 <tr><td>3</td><td>organization</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>isOauthToken</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
 <tr><td>5</td><td>oauthProvider</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>6</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GithubToken">Struct: GithubToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
@@ -267,13 +272,19 @@ not be understood by the service, and will be rejected.
 <br/></div><div class="definition"><h3 id="Struct_Credentials">Union: Credentials</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>githubToken</td><td><code><a href="#Struct_GithubToken">GithubToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>aromaAccount</td><td><code><a href="#Struct_AromaAccount">AromaAccount</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>aromaPassword</td><td><code><a href="#Struct_Password">Password</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>This union represents the multiple ways a User can
 Sign In and Authenticate with the Banana Service.
-<br/></div><div class="definition"><h3 id="Struct_AuthenticationToken">Union: AuthenticationToken</h3>
+<br/></div><div class="definition"><h3 id="Struct_AuthenticationToken">Struct: AuthenticationToken</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>applicationToken</td><td><code><a href="#Struct_ApplicationToken">ApplicationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>userToken</td><td><code><a href="#Struct_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/>Represents a Generic Authentication Token
-that is accepted by the Authentication Service.
+<tr><td>1</td><td>tokenId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>ownerId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>timeOfCreation</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>timeOfExpiration</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>5</td><td>tokenType</td><td><code><a href="#Enum_TokenType">TokenType</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>6</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>7</td><td>ownerName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>8</td><td>organizationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/>Represents an Authentication Token that is used
+and accepted by the Authentication Service.
 <br/></div></div></body></html>

@@ -37,36 +37,39 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
-typedef Banana.Image Image
-typedef Banana.User User
 typedef Banana.Application Application
+typedef Banana.Image Image
 typedef Banana.Urgency Urgency
+typedef Banana.User User
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
+typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
+typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
+typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
+typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
+typedef Exceptions.DoesNotExistException DoesNotExistException
 typedef Exceptions.InvalidArgumentException InvalidArgumentException
 typedef Exceptions.InvalidCredentialsException InvalidCredentialsException
 typedef Exceptions.InvalidTokenException InvalidTokenException
+typedef Exceptions.MessageDoesNotExistException MessageDoesNotExistException
 typedef Exceptions.OperationFailedException OperationFailedException
-typedef Exceptions.ApplicationAlreadyRegisteredException ApplicationAlreadyRegisteredException
-typedef Exceptions.ApplicationDoesNotExistException ApplicationDoesNotExistException
-typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableException
-typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
 /** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.5;
+const double API_VERSION = 1.6;
 
-const int SERVICE_PORT = 7001;
+const int SERVICE_PORT = 7010;
 
 /**
  * This is the Banana Service Production Endpoint
@@ -98,10 +101,35 @@ const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
  */
 const int MAX_MESSAGE_LENGTH = 5000;
 
+/** The default amount of time to save messages in a User's Inbox. */
+const Banana.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Banana.TimeUnit.DAYS };
+
+
 //==========================================================
 // Actions
 //==========================================================
 
+struct CheckExistsRequest
+{
+    1: string emailAddress;
+}
+
+struct CheckExistsResponse
+{
+    1: bool exists;
+    2: optional string message;
+}
+
+struct DeleteApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+}
+
+struct DeleteApplicationResponse
+{
+    1: optional string message = "Success";
+}
 
 /**
  * Deletes a Message.
@@ -111,10 +139,16 @@ const int MAX_MESSAGE_LENGTH = 5000;
 struct DeleteMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
+    2: uuid messageId;
+    3: uuid applicationId;
     /** Use for Batch Deletes. */
-    4: optional list<string> messageIds = [];
+    4: optional list<uuid> messageIds = [];
+    /**
+     * Use for deleting all the Messages stored for
+     * an Application. Note that this overrides other options.
+     * Use with care.
+     */
+    5: optional bool deleteAll = false;
 }
 
 struct DeleteMessageResponse
@@ -130,10 +164,15 @@ struct DeleteMessageResponse
 struct DismissMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
-    3: string applicationId;
+    2: uuid messageId;
+    3: uuid applicationId;
     /** Use for Dismissing multiple Messages. */
-    4: optional list<string> messageIds = [];
+    4: optional list<uuid> messageIds = [];
+    /** 
+     * Use for clearing the entire Inbox.
+     * Note that this overrides other options.
+     */
+    5: optional bool dismissAll = false;
 }
 
 struct DismissMessageResponse
@@ -151,16 +190,23 @@ struct ProvisionApplicationRequest
     1: UserToken token;
     2: string applicationName;
     3: optional Banana.ProgrammingLanguage programmingLanguage;
-    4: string organization;
+    4: uuid organizationId;
     5: optional Image icon;
+    6: optional set<uuid> owners;
+    7: optional string applicationDescription = "";
+    8: optional Banana.Tier tier = Banana.Tier.FREE;
 }
+
+/** The Maximum number of characters that can be in the Application Name. */
+const int APPLICATION_NAME_MAX_LENGTH = 20;
+
+/** The Maximum number of owners that an Application can have. */
+const int APPLICATION_MAX_OWNERS = 10;
 
 struct ProvisionApplicationResponse
 {
-    1: string applicationId;
-    2: string applicationName;
-    3: ApplicationToken applicationToken;
-    4: Application applicationInfo;
+    1: ApplicationToken applicationToken;
+    2: Application applicationInfo;
 }
 
 /**
@@ -177,12 +223,12 @@ struct ProvisionApplicationResponse
 struct RegenerateApplicationTokenRequest
 {
     1: UserToken token;
-    2: string applicationId;
+    2: uuid applicationId;
 }
 
 struct RegenerateApplicationTokenResponse
 {
-    1: ApplicationToken serviceToken;
+    1: ApplicationToken applicationToken;
 }
 
 /**
@@ -228,7 +274,7 @@ struct RenewApplicationTokenRequest
     2: ApplicationToken applicationToken;
     /** Defines for how long to extend a Token. */
     3: Banana.LengthOfTime newLifetime;
-    4: string applicationId;
+    4: uuid applicationId;
 }
 
 struct RenewApplicationTokenResponse
@@ -257,7 +303,7 @@ struct SaveChannelResponse
 struct SignInRequest
 {
     1: Authentication.Credentials credentials;
-    2: string username;
+    2: string emailAddress;
 }
 
 struct SignInResponse
@@ -271,10 +317,18 @@ struct SignInResponse
 struct SignUpRequest
 {
     1: string email;
+    //TODO: Rename to fullName or completeName
     2: string name;
-    3: string username;
-    4: string organization;
-    5: Authentication.Credentials credentials;
+    3: string firstName;
+    4: string middleName;
+    5: string lastName;
+    6: string username;
+    7: uuid organizationId;
+    8: Authentication.Credentials credentials;
+    9: Banana.Role mainRole;
+    10: optional timestamp birthDate;
+    11: optional string githubProfile;
+    12: optional Image profileImage;
 }
 
 /**
@@ -284,6 +338,7 @@ struct SignUpResponse
 {
     1: UserToken userToken;
     2: Authentication.AromaAccount account;
+    3: uuid userId;
 }
 
 /**
@@ -295,7 +350,7 @@ struct SnoozeChannelRequest
     1: UserToken token;
     2: BananaChannel channel;
     /** Optionally choose to snooze a specific Application. */
-    3: optional string applicationId;
+    3: optional uuid applicationId;
     /** Defines how long to snooze the Channel for. */
     4: optional Banana.LengthOfTime lengthOfTime = { "value": 4, "unit" : Banana.TimeUnit.HOURS };
 }
@@ -306,21 +361,20 @@ struct SnoozeChannelResponse
 }
 
 /**
- * Subscribe to an Application to receive notifications for it.
+ * Follow an Application to receive notifications from it.
  */
-struct SubscribeToApplicationRequest
+struct FollowApplicationRequest
 {
     1: UserToken token;
     2: string applicationName;
-    3: string applicationId;
-    4: optional string organization;
+    3: uuid applicationId;
+    4: optional uuid organizationId;
     5: optional bool shared = false;
 }
 
-struct SubscribeToApplicationResponse
+struct FollowApplicationResponse
 {
-    1: string message;
-    2: BananaChannel channel;
+    1: optional string message = "Success";
 }
 
 
@@ -331,7 +385,7 @@ struct SubscribeToApplicationResponse
 struct GetApplicationInfoRequest
 {
     1: AuthenticationToken token;
-    2: string applicationId;
+    2: uuid applicationId;
 }
 
 struct GetApplicationInfoResponse
@@ -352,9 +406,11 @@ struct GetBuzzRequest
 
 struct GetBuzzResponse
 {
-    1: list<User> newUsers = [];
-    2: list<Application> newApplications = [];
+    1: list<User> freshUsers = [];
+    2: list<Application> freshApplications = [];
     3: list<HealthCheckFailed> failedHealthChecks = [];
+    /** General events happening lately */
+    4: list<Events.GeneralEvent> generalEvents = [];
 }
 
 struct GetDashboardRequest
@@ -373,20 +429,33 @@ struct GetDashboardResponse
     7: int numberOfHighUrgencyMessages = 0;
 }
 
+
+struct GetInboxRequest
+{
+    1: UserToken token;
+    /** Suggests that the Service limits the results of the query.*/
+    2: optional int limit = 0;
+}
+
+struct GetInboxResponse
+{
+    1: list<Banana.Message> messages = [];
+}
+
 /**
  * Query to get a User's messages, either across all Services,
  * or by a specific Application.
  */
-struct GetMessagesRequest
+struct GetApplicationMessagesRequest
 {
     1: UserToken token;
-    /** Allows you to get Messages from a particular application. */
-    2: optional string applicationId;
+    /** The Application's Messages to retrieve. */
+    2: uuid applicationId;
     /** Suggests that the Service limits the results of the query.*/
     3: optional int limit = 0;
 }
 
-struct GetMessagesResponse
+struct GetApplicationMessagesResponse
 {
     1: list<Banana.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
@@ -395,12 +464,25 @@ struct GetMessagesResponse
 struct GetFullMessageRequest
 {
     1: UserToken token;
-    2: string messageId;
+    2: uuid messageId;
+    3: uuid applicationId;
 }
 
 struct GetFullMessageResponse
 {
-    1: string fullBody;
+    1: Banana.Message fullMessage;
+}
+
+struct GetMediaRequest
+{
+    1: UserToken token;
+    2: uuid mediaId;
+}
+
+struct GetMediaResponse
+{
+    //For now only Images are supported
+    1: Banana.Image image;
 }
 
 struct GetMyApplicationsRequest
@@ -456,7 +538,9 @@ struct GetServiceAnnouncementsResponse
 struct GetUserInfoRequest
 {
     1: UserToken token;
-    2: string userId;
+    2: uuid userId;
+    /** Can Optionally query by Email as well. */
+    3: optional string email;
 }
 
 struct GetUserInfoResponse
@@ -470,8 +554,9 @@ struct GetUserInfoResponse
 struct SearchForApplicationsRequest
 {
     1: UserToken token;
+    /** Performs a search based on the Application name. */
     2: string applicationName;
-    3: optional string organization;
+    3: optional uuid organizationId;
 }
 
 struct SearchForApplicationsResponse
@@ -493,6 +578,17 @@ service BananaService
     // Action Operations
     //==========================================================
     
+    DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                 2 : InvalidArgumentException ex2,
+                                                                                 3 : InvalidTokenException ex3,
+                                                                                 4 : MessageDoesNotExistException ex4,
+                                                                                 5 : UnauthorizedException ex5);
+    
+    DismissMessageResponse dismissMessage(1 : DismissMessageRequest request) throws(1 : OperationFailedException ex1,
+                                                                                    2 : InvalidArgumentException ex2,
+                                                                                    3 : InvalidTokenException ex3,
+                                                                                    4 : MessageDoesNotExistException ex4,
+                                                                                    5 : UnauthorizedException ex5);
 
     /**
      * Provision a New Application to keep tabs on.
@@ -574,7 +670,8 @@ service BananaService
      */
     SignInResponse signIn(1 : SignInRequest request) throws(1 : OperationFailedException ex1,
                                                             2 : InvalidArgumentException ex2,
-                                                            3 : InvalidCredentialsException ex3);
+                                                            3 : InvalidCredentialsException ex3,
+                                                            4 : UserDoesNotExistException ex4);
     
 
     /**
@@ -602,12 +699,12 @@ service BananaService
      *
      * #user
      */
-    SubscribeToApplicationResponse subscribeToApplication(1 : SubscribeToApplicationRequest request) throws(1 : OperationFailedException ex1,
-                                                                                                            2 : InvalidArgumentException ex2,
-                                                                                                            3 : InvalidTokenException ex3,
-                                                                                                            4 : ApplicationDoesNotExistException ex4,
-                                                                                                            5 : ApplicationAlreadyRegisteredException ex5,
-                                                                                                            6 : CustomChannelUnreachableException ex6);
+    FollowApplicationResponse followApplication(1 : FollowApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidTokenException ex3,
+                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                             5 : ApplicationAlreadyRegisteredException ex5,
+                                                                                             6 : CustomChannelUnreachableException ex6);
     
     
    
@@ -648,13 +745,22 @@ service BananaService
     GetDashboardResponse getDashboard(1 : GetDashboardRequest request) throws(1 : OperationFailedException ex1,
                                                                               2 : InvalidArgumentException ex2,
                                                                               3 : InvalidTokenException ex3);
-    
+
     /**
      * Get an Application's Messages.
      */
-    GetMessagesResponse getMessages(1 : GetMessagesRequest request)throws(1 : OperationFailedException ex1,
-                                                                          2 : InvalidArgumentException ex2,
-                                                                          3 : InvalidTokenException ex3);
+     GetApplicationMessagesResponse getApplicationMessages(1 : GetApplicationMessagesRequest request)throws(1 : OperationFailedException ex1,
+                                                                                                            2 : InvalidArgumentException ex2,
+                                                                                                            3 : InvalidTokenException ex3,
+                                                                                                            4 : UnauthorizedException ex4,
+                                                                                                            5: ApplicationDoesNotExistException ex5);
+
+    /**
+     * Get Messages in a User's Inbox
+     */
+    GetInboxResponse getInbox(1 : GetInboxRequest request)throws(1 : OperationFailedException ex1,
+                                                                 2 : InvalidArgumentException ex2,
+                                                                 3 : InvalidTokenException ex3);
 
     /**
      * In case the Message body has been truncated, use this operation
@@ -663,8 +769,14 @@ service BananaService
     GetFullMessageResponse getFullMessage(1 : GetFullMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                     2 : InvalidArgumentException ex2,
                                                                                     3 : InvalidTokenException ex3);
-    
-    
+
+
+    /** Request to get Media stored by the Aroma Service. */
+    GetMediaResponse getMedia(1 : GetMediaRequest request) throws(1 : OperationFailedException ex1,
+                                                                  2 : InvalidArgumentException ex2,
+                                                                  3 : InvalidTokenException ex3,
+                                                                  4 : DoesNotExistException ex4,
+                                                                  5 : UnauthorizedException ex5); 
     
     GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
                                                                                              2 : InvalidArgumentException ex2,

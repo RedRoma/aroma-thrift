@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType ownerName: (NSString *) ownerName organizationId: (AuthenticationService_uuid) organizationId organizationName: (NSString *) organizationName
 {
   self = [super init];
   __ownerId = [ownerId retain_stub];
@@ -44,6 +44,12 @@
   __lifetime_isset = YES;
   __desiredTokenType = desiredTokenType;
   __desiredTokenType_isset = YES;
+  __ownerName = [ownerName retain_stub];
+  __ownerName_isset = YES;
+  __organizationId = [organizationId retain_stub];
+  __organizationId_isset = YES;
+  __organizationName = [organizationName retain_stub];
+  __organizationName_isset = YES;
   return self;
 }
 
@@ -65,6 +71,21 @@
     __desiredTokenType = [decoder decodeIntForKey: @"desiredTokenType"];
     __desiredTokenType_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ownerName"])
+  {
+    __ownerName = [[decoder decodeObjectForKey: @"ownerName"] retain_stub];
+    __ownerName_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationId"])
+  {
+    __organizationId = [[decoder decodeObjectForKey: @"organizationId"] retain_stub];
+    __organizationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"organizationName"])
+  {
+    __organizationName = [[decoder decodeObjectForKey: @"organizationName"] retain_stub];
+    __organizationName_isset = YES;
+  }
   return self;
 }
 
@@ -81,6 +102,18 @@
   if (__desiredTokenType_isset)
   {
     [encoder encodeInt: __desiredTokenType forKey: @"desiredTokenType"];
+  }
+  if (__ownerName_isset)
+  {
+    [encoder encodeObject: __ownerName forKey: @"ownerName"];
+  }
+  if (__organizationId_isset)
+  {
+    [encoder encodeObject: __organizationId forKey: @"organizationId"];
+  }
+  if (__organizationName_isset)
+  {
+    [encoder encodeObject: __organizationName forKey: @"organizationName"];
   }
 }
 
@@ -101,6 +134,21 @@
   if (__desiredTokenType_isset)
   {
     hash = (hash * 31) ^ [@(__desiredTokenType) hash];
+  }
+  hash = (hash * 31) ^ __ownerName_isset ? 2654435761 : 0;
+  if (__ownerName_isset)
+  {
+    hash = (hash * 31) ^ [__ownerName hash];
+  }
+  hash = (hash * 31) ^ __organizationId_isset ? 2654435761 : 0;
+  if (__organizationId_isset)
+  {
+    hash = (hash * 31) ^ [__organizationId hash];
+  }
+  hash = (hash * 31) ^ __organizationName_isset ? 2654435761 : 0;
+  if (__organizationName_isset)
+  {
+    hash = (hash * 31) ^ [__organizationName hash];
   }
   return hash;
 }
@@ -126,6 +174,18 @@
       (__desiredTokenType_isset && (__desiredTokenType != other->__desiredTokenType))) {
     return NO;
   }
+  if ((__ownerName_isset != other->__ownerName_isset) ||
+      (__ownerName_isset && ((__ownerName || other->__ownerName) && ![__ownerName isEqual:other->__ownerName]))) {
+    return NO;
+  }
+  if ((__organizationId_isset != other->__organizationId_isset) ||
+      (__organizationId_isset && ((__organizationId || other->__organizationId) && ![__organizationId isEqual:other->__organizationId]))) {
+    return NO;
+  }
+  if ((__organizationName_isset != other->__organizationName_isset) ||
+      (__organizationName_isset && ((__organizationName || other->__organizationName) && ![__organizationName isEqual:other->__organizationName]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -133,6 +193,9 @@
 {
   [__ownerId release_stub];
   [__lifetime release_stub];
+  [__ownerName release_stub];
+  [__organizationId release_stub];
+  [__organizationName release_stub];
   [super dealloc_stub];
 }
 
@@ -195,6 +258,69 @@
   __desiredTokenType_isset = NO;
 }
 
+- (NSString *) ownerName {
+  return [[__ownerName retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerName: (NSString *) ownerName {
+  [ownerName retain_stub];
+  [__ownerName release_stub];
+  __ownerName = ownerName;
+  __ownerName_isset = YES;
+}
+
+- (BOOL) ownerNameIsSet {
+  return __ownerName_isset;
+}
+
+- (void) unsetOwnerName {
+  [__ownerName release_stub];
+  __ownerName = nil;
+  __ownerName_isset = NO;
+}
+
+- (NSString *) organizationId {
+  return [[__organizationId retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationId: (NSString *) organizationId {
+  [organizationId retain_stub];
+  [__organizationId release_stub];
+  __organizationId = organizationId;
+  __organizationId_isset = YES;
+}
+
+- (BOOL) organizationIdIsSet {
+  return __organizationId_isset;
+}
+
+- (void) unsetOrganizationId {
+  [__organizationId release_stub];
+  __organizationId = nil;
+  __organizationId_isset = NO;
+}
+
+- (NSString *) organizationName {
+  return [[__organizationName retain_stub] autorelease_stub];
+}
+
+- (void) setOrganizationName: (NSString *) organizationName {
+  [organizationName retain_stub];
+  [__organizationName release_stub];
+  __organizationName = organizationName;
+  __organizationName_isset = YES;
+}
+
+- (BOOL) organizationNameIsSet {
+  return __organizationName_isset;
+}
+
+- (void) unsetOrganizationName {
+  [__organizationName release_stub];
+  __organizationName = nil;
+  __organizationName_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -236,6 +362,30 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOwnerName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setOrganizationName: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -266,6 +416,27 @@
     [outProtocol writeI32: __desiredTokenType];
     [outProtocol writeFieldEnd];
   }
+  if (__ownerName_isset) {
+    if (__ownerName != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerName" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __ownerName];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationId_isset) {
+    if (__organizationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationId" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __organizationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__organizationName_isset) {
+    if (__organizationName != nil) {
+      [outProtocol writeFieldBeginWithName: @"organizationName" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __organizationName];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -282,6 +453,12 @@
   [ms appendFormat: @"%@", __lifetime];
   [ms appendString: @",desiredTokenType:"];
   [ms appendFormat: @"%i", __desiredTokenType];
+  [ms appendString: @",ownerName:"];
+  [ms appendFormat: @"\"%@\"", __ownerName];
+  [ms appendString: @",organizationId:"];
+  [ms appendFormat: @"\"%@\"", __organizationId];
+  [ms appendString: @",organizationName:"];
+  [ms appendFormat: @"\"%@\"", __organizationName];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -800,15 +977,21 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.multipleTokens = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
 #endif
   return self;
 }
 
-- (id) initWithToken: (AuthenticationService_AuthenticationToken) token
+- (id) initWithToken: (AuthenticationService_AuthenticationToken) token multipleTokens: (NSMutableArray *) multipleTokens belongingTo: (AuthenticationService_uuid) belongingTo
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
+  __multipleTokens = [multipleTokens retain_stub];
+  __multipleTokens_isset = YES;
+  __belongingTo = [belongingTo retain_stub];
+  __belongingTo_isset = YES;
   return self;
 }
 
@@ -820,6 +1003,16 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
+  if ([decoder containsValueForKey: @"multipleTokens"])
+  {
+    __multipleTokens = [[decoder decodeObjectForKey: @"multipleTokens"] retain_stub];
+    __multipleTokens_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"belongingTo"])
+  {
+    __belongingTo = [[decoder decodeObjectForKey: @"belongingTo"] retain_stub];
+    __belongingTo_isset = YES;
+  }
   return self;
 }
 
@@ -828,6 +1021,14 @@
   if (__token_isset)
   {
     [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__multipleTokens_isset)
+  {
+    [encoder encodeObject: __multipleTokens forKey: @"multipleTokens"];
+  }
+  if (__belongingTo_isset)
+  {
+    [encoder encodeObject: __belongingTo forKey: @"belongingTo"];
   }
 }
 
@@ -838,6 +1039,16 @@
   if (__token_isset)
   {
     hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __multipleTokens_isset ? 2654435761 : 0;
+  if (__multipleTokens_isset)
+  {
+    hash = (hash * 31) ^ [__multipleTokens hash];
+  }
+  hash = (hash * 31) ^ __belongingTo_isset ? 2654435761 : 0;
+  if (__belongingTo_isset)
+  {
+    hash = (hash * 31) ^ [__belongingTo hash];
   }
   return hash;
 }
@@ -855,12 +1066,22 @@
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
     return NO;
   }
+  if ((__multipleTokens_isset != other->__multipleTokens_isset) ||
+      (__multipleTokens_isset && ((__multipleTokens || other->__multipleTokens) && ![__multipleTokens isEqual:other->__multipleTokens]))) {
+    return NO;
+  }
+  if ((__belongingTo_isset != other->__belongingTo_isset) ||
+      (__belongingTo_isset && ((__belongingTo || other->__belongingTo) && ![__belongingTo isEqual:other->__belongingTo]))) {
+    return NO;
+  }
   return YES;
 }
 
 - (void) dealloc
 {
   [__token release_stub];
+  [__multipleTokens release_stub];
+  [__belongingTo release_stub];
   [super dealloc_stub];
 }
 
@@ -883,6 +1104,48 @@
   [__token release_stub];
   __token = nil;
   __token_isset = NO;
+}
+
+- (NSMutableArray *) multipleTokens {
+  return [[__multipleTokens retain_stub] autorelease_stub];
+}
+
+- (void) setMultipleTokens: (NSMutableArray *) multipleTokens {
+  [multipleTokens retain_stub];
+  [__multipleTokens release_stub];
+  __multipleTokens = multipleTokens;
+  __multipleTokens_isset = YES;
+}
+
+- (BOOL) multipleTokensIsSet {
+  return __multipleTokens_isset;
+}
+
+- (void) unsetMultipleTokens {
+  [__multipleTokens release_stub];
+  __multipleTokens = nil;
+  __multipleTokens_isset = NO;
+}
+
+- (NSString *) belongingTo {
+  return [[__belongingTo retain_stub] autorelease_stub];
+}
+
+- (void) setBelongingTo: (NSString *) belongingTo {
+  [belongingTo retain_stub];
+  [__belongingTo release_stub];
+  __belongingTo = belongingTo;
+  __belongingTo_isset = YES;
+}
+
+- (BOOL) belongingToIsSet {
+  return __belongingTo_isset;
+}
+
+- (void) unsetBelongingTo {
+  [__belongingTo release_stub];
+  __belongingTo = nil;
+  __belongingTo_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -910,6 +1173,34 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            BananaAuthentication_AuthenticationToken *_elem2 = [[BananaAuthentication_AuthenticationToken alloc] init];
+            [_elem2 read: inProtocol];
+            [fieldValue addObject: _elem2];
+            [_elem2 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setMultipleTokens: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setBelongingTo: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -928,6 +1219,28 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__multipleTokens_isset) {
+    if (__multipleTokens != nil) {
+      [outProtocol writeFieldBeginWithName: @"multipleTokens" type: TType_LIST fieldID: 2];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__multipleTokens count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__multipleTokens count]; idx4++)
+        {
+          [[__multipleTokens objectAtIndex: idx4] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__belongingTo_isset) {
+    if (__belongingTo != nil) {
+      [outProtocol writeFieldBeginWithName: @"belongingTo" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __belongingTo];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -940,6 +1253,10 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_InvalidateTokenRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
+  [ms appendString: @",multipleTokens:"];
+  [ms appendFormat: @"%@", __multipleTokens];
+  [ms appendString: @",belongingTo:"];
+  [ms appendFormat: @"\"%@\"", __belongingTo];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -1457,20 +1774,26 @@
 
 @end
 
-static AuthenticationService_int AuthenticationService_SERVICE_PORT = 6001;
+static AuthenticationService_int AuthenticationService_SERVICE_PORT = 7026;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
+static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 
 @implementation AuthenticationService_AuthenticationServiceConstants
 + (void) initialize {
   AuthenticationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [AuthenticationService_PRODUCTION_ENDPOINT setHostname:@"authentication-srv.banana.aroma.tech"];
-  [AuthenticationService_PRODUCTION_ENDPOINT setPort:6001];
+  [AuthenticationService_PRODUCTION_ENDPOINT setPort:7026];
 
 ;
   AuthenticationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [AuthenticationService_BETA_ENDPOINT setHostname:@"authentication-srv.beta.banana.aroma.tech"];
-  [AuthenticationService_BETA_ENDPOINT setPort:6001];
+  [AuthenticationService_BETA_ENDPOINT setPort:7026];
+
+;
+  AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setValue:60];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:4];
 
 ;
 }
@@ -1482,6 +1805,9 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 }
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return AuthenticationService_BETA_ENDPOINT;
+}
++ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME{
+  return AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 }
 @end
 
@@ -1925,19 +2251,22 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 
 @interface AuthenticationService_CreateToken_result : NSObject <TBase, NSCoding> {
   AuthenticationService_CreateTokenResponse * __success;
-  AuthenticationService_OperationFailedException __ex;
+  AuthenticationService_OperationFailedException __ex1;
+  AuthenticationService_InvalidArgumentException __ex2;
 
   BOOL __success_isset;
-  BOOL __ex_isset;
+  BOOL __ex1_isset;
+  BOOL __ex2_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_CreateTokenResponse * success;
-@property (nonatomic, retain, getter=ex, setter=setEx:) AuthenticationService_OperationFailedException ex;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidArgumentException ex2;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex;
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidArgumentException) ex2;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1951,10 +2280,16 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (AuthenticationService_OperationFailedException) ex;
-- (void) setEx: (AuthenticationService_OperationFailedException) ex;
+- (AuthenticationService_OperationFailedException) ex1;
+- (void) setEx1: (AuthenticationService_OperationFailedException) ex1;
 #endif
-- (BOOL) exIsSet;
+- (BOOL) ex1IsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex2;
+- (void) setEx2: (AuthenticationService_InvalidArgumentException) ex2;
+#endif
+- (BOOL) ex2IsSet;
 
 @end
 
@@ -1968,13 +2303,15 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex: (AuthenticationService_OperationFailedException) ex
+- (id) initWithSuccess: (AuthenticationService_CreateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidArgumentException) ex2
 {
   self = [super init];
   __success = [success retain_stub];
   __success_isset = YES;
-  __ex = [ex retain_stub];
-  __ex_isset = YES;
+  __ex1 = [ex1 retain_stub];
+  __ex1_isset = YES;
+  __ex2 = [ex2 retain_stub];
+  __ex2_isset = YES;
   return self;
 }
 
@@ -1986,10 +2323,15 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     __success = [[decoder decodeObjectForKey: @"success"] retain_stub];
     __success_isset = YES;
   }
-  if ([decoder containsValueForKey: @"ex"])
+  if ([decoder containsValueForKey: @"ex1"])
   {
-    __ex = [[decoder decodeObjectForKey: @"ex"] retain_stub];
-    __ex_isset = YES;
+    __ex1 = [[decoder decodeObjectForKey: @"ex1"] retain_stub];
+    __ex1_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ex2"])
+  {
+    __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
+    __ex2_isset = YES;
   }
   return self;
 }
@@ -2000,9 +2342,13 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   {
     [encoder encodeObject: __success forKey: @"success"];
   }
-  if (__ex_isset)
+  if (__ex1_isset)
   {
-    [encoder encodeObject: __ex forKey: @"ex"];
+    [encoder encodeObject: __ex1 forKey: @"ex1"];
+  }
+  if (__ex2_isset)
+  {
+    [encoder encodeObject: __ex2 forKey: @"ex2"];
   }
 }
 
@@ -2014,10 +2360,15 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   {
     hash = (hash * 31) ^ [__success hash];
   }
-  hash = (hash * 31) ^ __ex_isset ? 2654435761 : 0;
-  if (__ex_isset)
+  hash = (hash * 31) ^ __ex1_isset ? 2654435761 : 0;
+  if (__ex1_isset)
   {
-    hash = (hash * 31) ^ [__ex hash];
+    hash = (hash * 31) ^ [__ex1 hash];
+  }
+  hash = (hash * 31) ^ __ex2_isset ? 2654435761 : 0;
+  if (__ex2_isset)
+  {
+    hash = (hash * 31) ^ [__ex2 hash];
   }
   return hash;
 }
@@ -2035,8 +2386,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
   }
-  if ((__ex_isset != other->__ex_isset) ||
-      (__ex_isset && ((__ex || other->__ex) && ![__ex isEqual:other->__ex]))) {
+  if ((__ex1_isset != other->__ex1_isset) ||
+      (__ex1_isset && ((__ex1 || other->__ex1) && ![__ex1 isEqual:other->__ex1]))) {
+    return NO;
+  }
+  if ((__ex2_isset != other->__ex2_isset) ||
+      (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
   return YES;
@@ -2045,7 +2400,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 - (void) dealloc
 {
   [__success release_stub];
-  [__ex release_stub];
+  [__ex1 release_stub];
+  [__ex2 release_stub];
   [super dealloc_stub];
 }
 
@@ -2070,25 +2426,46 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex {
-  return [[__ex retain_stub] autorelease_stub];
+- (BananaException_OperationFailedException *) ex1 {
+  return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx: (BananaException_OperationFailedException *) ex {
-  [ex retain_stub];
-  [__ex release_stub];
-  __ex = ex;
-  __ex_isset = YES;
+- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+  [ex1 retain_stub];
+  [__ex1 release_stub];
+  __ex1 = ex1;
+  __ex1_isset = YES;
 }
 
-- (BOOL) exIsSet {
-  return __ex_isset;
+- (BOOL) ex1IsSet {
+  return __ex1_isset;
 }
 
-- (void) unsetEx {
-  [__ex release_stub];
-  __ex = nil;
-  __ex_isset = NO;
+- (void) unsetEx1 {
+  [__ex1 release_stub];
+  __ex1 = nil;
+  __ex1_isset = NO;
+}
+
+- (BananaException_InvalidArgumentException *) ex2 {
+  return [[__ex2 retain_stub] autorelease_stub];
+}
+
+- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+  [ex2 retain_stub];
+  [__ex2 release_stub];
+  __ex2 = ex2;
+  __ex2_isset = YES;
+}
+
+- (BOOL) ex2IsSet {
+  return __ex2_isset;
+}
+
+- (void) unsetEx2 {
+  [__ex2 release_stub];
+  __ex2 = nil;
+  __ex2_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -2120,7 +2497,17 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
         if (fieldType == TType_STRUCT) {
           BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
-          [self setEx: fieldValue];
+          [self setEx1: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx2: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -2144,10 +2531,16 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       [__success write: outProtocol];
       [outProtocol writeFieldEnd];
     }
-  } else if (__ex_isset) {
-    if (__ex != nil) {
-      [outProtocol writeFieldBeginWithName: @"ex" type: TType_STRUCT fieldID: 1];
-      [__ex write: outProtocol];
+  } else if (__ex1_isset) {
+    if (__ex1 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex1" type: TType_STRUCT fieldID: 1];
+      [__ex1 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  } else if (__ex2_isset) {
+    if (__ex2 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex2" type: TType_STRUCT fieldID: 2];
+      [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -2163,8 +2556,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   NSMutableString * ms = [NSMutableString stringWithString: @"AuthenticationService_CreateToken_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
-  [ms appendString: @",ex:"];
-  [ms appendFormat: @"%@", __ex];
+  [ms appendString: @",ex1:"];
+  [ms appendFormat: @"%@", __ex1];
+  [ms appendString: @",ex2:"];
+  [ms appendFormat: @"%@", __ex2];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2353,20 +2748,23 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   AuthenticationService_GetTokenInfoResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_GetTokenInfoResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2391,6 +2789,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_GetTokenInfo_result
@@ -2403,7 +2807,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_GetTokenInfoResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -2412,6 +2816,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -2433,6 +2839,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -2449,6 +2860,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -2469,6 +2884,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -2494,6 +2914,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2502,6 +2926,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -2568,6 +2993,27 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -2613,6 +3059,16 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -2643,6 +3099,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -2660,6 +3122,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -2848,20 +3312,23 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   AuthenticationService_InvalidateTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_InvalidateTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -2886,6 +3353,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_InvalidateToken_result
@@ -2898,7 +3371,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_InvalidateTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -2907,6 +3380,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -2928,6 +3403,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -2944,6 +3424,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -2964,6 +3448,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -2989,6 +3478,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -2997,6 +3490,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -3063,6 +3557,27 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3108,6 +3623,16 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3138,6 +3663,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -3155,6 +3686,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3343,20 +3876,23 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   AuthenticationService_VerifyTokenResponse * __success;
   AuthenticationService_OperationFailedException __ex1;
   AuthenticationService_InvalidTokenException __ex2;
+  AuthenticationService_InvalidArgumentException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
   BOOL __ex2_isset;
+  BOOL __ex3_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=success, setter=setSuccess:) AuthenticationService_VerifyTokenResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AuthenticationService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AuthenticationService_InvalidTokenException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) AuthenticationService_InvalidArgumentException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2;
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -3381,6 +3917,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
 #endif
 - (BOOL) ex2IsSet;
 
+#if !__has_feature(objc_arc)
+- (AuthenticationService_InvalidArgumentException) ex3;
+- (void) setEx3: (AuthenticationService_InvalidArgumentException) ex3;
+#endif
+- (BOOL) ex3IsSet;
+
 @end
 
 @implementation AuthenticationService_VerifyToken_result
@@ -3393,7 +3935,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2
+- (id) initWithSuccess: (AuthenticationService_VerifyTokenResponse *) success ex1: (AuthenticationService_OperationFailedException) ex1 ex2: (AuthenticationService_InvalidTokenException) ex2 ex3: (AuthenticationService_InvalidArgumentException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -3402,6 +3944,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex1_isset = YES;
   __ex2 = [ex2 retain_stub];
   __ex2_isset = YES;
+  __ex3 = [ex3 retain_stub];
+  __ex3_isset = YES;
   return self;
 }
 
@@ -3423,6 +3967,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
     __ex2 = [[decoder decodeObjectForKey: @"ex2"] retain_stub];
     __ex2_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ex3"])
+  {
+    __ex3 = [[decoder decodeObjectForKey: @"ex3"] retain_stub];
+    __ex3_isset = YES;
+  }
   return self;
 }
 
@@ -3439,6 +3988,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     [encoder encodeObject: __ex2 forKey: @"ex2"];
+  }
+  if (__ex3_isset)
+  {
+    [encoder encodeObject: __ex3 forKey: @"ex3"];
   }
 }
 
@@ -3459,6 +4012,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if (__ex2_isset)
   {
     hash = (hash * 31) ^ [__ex2 hash];
+  }
+  hash = (hash * 31) ^ __ex3_isset ? 2654435761 : 0;
+  if (__ex3_isset)
+  {
+    hash = (hash * 31) ^ [__ex3 hash];
   }
   return hash;
 }
@@ -3484,6 +4042,10 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       (__ex2_isset && ((__ex2 || other->__ex2) && ![__ex2 isEqual:other->__ex2]))) {
     return NO;
   }
+  if ((__ex3_isset != other->__ex3_isset) ||
+      (__ex3_isset && ((__ex3 || other->__ex3) && ![__ex3 isEqual:other->__ex3]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -3492,6 +4054,7 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [__success release_stub];
   [__ex1 release_stub];
   [__ex2 release_stub];
+  [__ex3 release_stub];
   [super dealloc_stub];
 }
 
@@ -3558,6 +4121,27 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
+- (BananaException_InvalidArgumentException *) ex3 {
+  return [[__ex3 retain_stub] autorelease_stub];
+}
+
+- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+  [ex3 retain_stub];
+  [__ex3 release_stub];
+  __ex3 = ex3;
+  __ex3_isset = YES;
+}
+
+- (BOOL) ex3IsSet {
+  return __ex3_isset;
+}
+
+- (void) unsetEx3 {
+  [__ex3 release_stub];
+  __ex3 = nil;
+  __ex3_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3603,6 +4187,16 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEx3: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3633,6 +4227,12 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
       [__ex2 write: outProtocol];
       [outProtocol writeFieldEnd];
     }
+  } else if (__ex3_isset) {
+    if (__ex3 != nil) {
+      [outProtocol writeFieldBeginWithName: @"ex3" type: TType_STRUCT fieldID: 3];
+      [__ex3 write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -3650,6 +4250,8 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   [ms appendFormat: @"%@", __ex1];
   [ms appendString: @",ex2:"];
   [ms appendFormat: @"%@", __ex2];
+  [ms appendString: @",ex3:"];
+  [ms appendFormat: @"%@", __ex3];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -3728,8 +4330,11 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if ([result successIsSet]) {
     return [result success];
   }
-  if ([result exIsSet]) {
-    @throw [result ex];
+  if ([result ex1IsSet]) {
+    @throw [result ex1];
+  }
+  if ([result ex2IsSet]) {
+    @throw [result ex2];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"createToken failed: unknown result"];
@@ -3774,6 +4379,9 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if ([result ex2IsSet]) {
     @throw [result ex2];
   }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"getTokenInfo failed: unknown result"];
 }
@@ -3817,6 +4425,9 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   if ([result ex2IsSet]) {
     @throw [result ex2];
   }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
+  }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"invalidateToken failed: unknown result"];
 }
@@ -3859,6 +4470,9 @@ static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
   }
   if ([result ex2IsSet]) {
     @throw [result ex2];
+  }
+  if ([result ex3IsSet]) {
+    @throw [result ex3];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
                                            reason: @"verifyToken failed: unknown result"];

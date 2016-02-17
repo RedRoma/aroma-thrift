@@ -23,6 +23,7 @@ include "Exceptions.thrift"
 typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
@@ -43,7 +44,7 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-const int SERVICE_PORT = 9009;
+const int SERVICE_PORT = 7009;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
@@ -62,7 +63,7 @@ struct SendNotificationRequest
 
 struct SendNotificationResponse
 {
-    1: string notificationId;
+    1: optional uuid notificationId;
 }
 
 

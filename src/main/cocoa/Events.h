@@ -29,6 +29,8 @@ typedef Banana_long BananaEvents_long;
 
 typedef Banana_timestamp BananaEvents_timestamp;
 
+typedef Banana_uuid BananaEvents_uuid;
+
 typedef Banana_User * BananaEvents_User;
 
 typedef Banana_Application * BananaEvents_Application;
@@ -37,7 +39,7 @@ typedef Banana_Application * BananaEvents_Application;
   NSString * __message;
   BananaEvents_User __user;
   BananaEvents_ApplicationToken __applicationToken;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __message_isset;
@@ -51,12 +53,12 @@ typedef Banana_Application * BananaEvents_Application;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=user, setter=setUser:) BananaEvents_User user;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaEvents_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -82,8 +84,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -99,7 +101,7 @@ typedef Banana_Application * BananaEvents_Application;
   NSString * __message;
   BananaEvents_User __user;
   BananaEvents_ApplicationToken __applicationToken;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __message_isset;
@@ -113,12 +115,12 @@ typedef Banana_Application * BananaEvents_Application;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=user, setter=setUser:) BananaEvents_User user;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) BananaEvents_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message user: (BananaEvents_User) user applicationToken: (BananaEvents_ApplicationToken) applicationToken applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -144,8 +146,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -160,7 +162,7 @@ typedef Banana_Application * BananaEvents_Application;
 @interface BananaEvents_ApplicationSentMessage : NSObject <TBase, NSCoding> {
   NSString * __message;
   Banana_Message * __messageSentByApplication;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __message_isset;
@@ -172,12 +174,12 @@ typedef Banana_Application * BananaEvents_Application;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=messageSentByApplication, setter=setMessageSentByApplication:) Banana_Message * messageSentByApplication;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message messageSentByApplication: (Banana_Message *) messageSentByApplication applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message messageSentByApplication: (Banana_Message *) messageSentByApplication applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -197,8 +199,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) messageSentByApplicationIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -213,7 +215,7 @@ typedef Banana_Application * BananaEvents_Application;
 @interface BananaEvents_HealthCheckFailed : NSObject <TBase, NSCoding> {
   NSString * __message;
   NSString * __hostname;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __message_isset;
@@ -225,12 +227,12 @@ typedef Banana_Application * BananaEvents_Application;
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -250,8 +252,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) hostnameIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -265,7 +267,7 @@ typedef Banana_Application * BananaEvents_Application;
 
 @interface BananaEvents_HealthCheckBackToNormal : NSObject <TBase, NSCoding> {
   NSString * __message;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
 
   BOOL __message_isset;
@@ -275,12 +277,12 @@ typedef Banana_Application * BananaEvents_Application;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -294,8 +296,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -309,7 +311,7 @@ typedef Banana_Application * BananaEvents_Application;
 
 @interface BananaEvents_OwnerApprovedRequest : NSObject <TBase, NSCoding> {
   NSString * __message;
-  NSString * __applicationId;
+  BananaEvents_uuid __applicationId;
   NSString * __applicationName;
   BananaEvents_User __owner;
 
@@ -321,13 +323,13 @@ typedef Banana_Application * BananaEvents_Application;
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) NSString * applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=owner, setter=setOwner:) BananaEvents_User owner;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (NSString *) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner;
+- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName owner: (BananaEvents_User) owner;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -341,8 +343,8 @@ typedef Banana_Application * BananaEvents_Application;
 - (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationId;
-- (void) setApplicationId: (NSString *) applicationId;
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -360,6 +362,112 @@ typedef Banana_Application * BananaEvents_Application;
 
 @end
 
+@interface BananaEvents_UserFollowedApplication : NSObject <TBase, NSCoding> {
+  NSString * __message;
+  BananaEvents_uuid __applicationId;
+  BananaEvents_User __follower;
+  BananaEvents_User __owner;
+
+  BOOL __message_isset;
+  BOOL __applicationId_isset;
+  BOOL __follower_isset;
+  BOOL __owner_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
+@property (nonatomic, retain, getter=follower, setter=setFollower:) BananaEvents_User follower;
+@property (nonatomic, retain, getter=owner, setter=setOwner:) BananaEvents_User owner;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message applicationId: (BananaEvents_uuid) applicationId follower: (BananaEvents_User) follower owner: (BananaEvents_User) owner;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_User) follower;
+- (void) setFollower: (BananaEvents_User) follower;
+#endif
+- (BOOL) followerIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_User) owner;
+- (void) setOwner: (BananaEvents_User) owner;
+#endif
+- (BOOL) ownerIsSet;
+
+@end
+
+@interface BananaEvents_GeneralEvent : NSObject <TBase, NSCoding> {
+  BananaEvents_uuid __applicationId;
+  NSString * __applicationName;
+  NSString * __message;
+  BananaEvents_timestamp __timestamp;
+
+  BOOL __applicationId_isset;
+  BOOL __applicationName_isset;
+  BOOL __message_isset;
+  BOOL __timestamp_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEvents_uuid applicationId;
+@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, getter=timestamp, setter=setTimestamp:) BananaEvents_timestamp timestamp;
+#endif
+
+- (id) init;
+- (id) initWithApplicationId: (BananaEvents_uuid) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (BananaEvents_timestamp) timestamp;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_uuid) applicationId;
+- (void) setApplicationId: (BananaEvents_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) applicationName;
+- (void) setApplicationName: (NSString *) applicationName;
+#endif
+- (BOOL) applicationNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_timestamp) timestamp;
+- (void) setTimestamp: (BananaEvents_timestamp) timestamp;
+#endif
+- (BOOL) timestampIsSet;
+
+@end
+
 @interface BananaEvents_EventType : NSObject <TBase, NSCoding> {
   BananaEvents_HealthCheckFailed * __healthCheckFailed;
   BananaEvents_HealthCheckBackToNormal * __healthCheckBackToNormal;
@@ -367,6 +475,8 @@ typedef Banana_Application * BananaEvents_Application;
   BananaEvents_ApplicationTokenRegenerated * __applicationTokenRegenerated;
   BananaEvents_ApplicationSentMessage * __applicationSentMessage;
   BananaEvents_OwnerApprovedRequest * __ownerApprovedRequest;
+  BananaEvents_GeneralEvent * __generalEvent;
+  BananaEvents_UserFollowedApplication * __userFollowedApplication;
 
   BOOL __healthCheckFailed_isset;
   BOOL __healthCheckBackToNormal_isset;
@@ -374,6 +484,8 @@ typedef Banana_Application * BananaEvents_Application;
   BOOL __applicationTokenRegenerated_isset;
   BOOL __applicationSentMessage_isset;
   BOOL __ownerApprovedRequest_isset;
+  BOOL __generalEvent_isset;
+  BOOL __userFollowedApplication_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -383,10 +495,12 @@ typedef Banana_Application * BananaEvents_Application;
 @property (nonatomic, retain, getter=applicationTokenRegenerated, setter=setApplicationTokenRegenerated:) BananaEvents_ApplicationTokenRegenerated * applicationTokenRegenerated;
 @property (nonatomic, retain, getter=applicationSentMessage, setter=setApplicationSentMessage:) BananaEvents_ApplicationSentMessage * applicationSentMessage;
 @property (nonatomic, retain, getter=ownerApprovedRequest, setter=setOwnerApprovedRequest:) BananaEvents_OwnerApprovedRequest * ownerApprovedRequest;
+@property (nonatomic, retain, getter=generalEvent, setter=setGeneralEvent:) BananaEvents_GeneralEvent * generalEvent;
+@property (nonatomic, retain, getter=userFollowedApplication, setter=setUserFollowedApplication:) BananaEvents_UserFollowedApplication * userFollowedApplication;
 #endif
 
 - (id) init;
-- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest;
+- (id) initWithHealthCheckFailed: (BananaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (BananaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (BananaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (BananaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (BananaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (BananaEvents_OwnerApprovedRequest *) ownerApprovedRequest generalEvent: (BananaEvents_GeneralEvent *) generalEvent userFollowedApplication: (BananaEvents_UserFollowedApplication *) userFollowedApplication;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -429,23 +543,38 @@ typedef Banana_Application * BananaEvents_Application;
 #endif
 - (BOOL) ownerApprovedRequestIsSet;
 
+#if !__has_feature(objc_arc)
+- (BananaEvents_GeneralEvent *) generalEvent;
+- (void) setGeneralEvent: (BananaEvents_GeneralEvent *) generalEvent;
+#endif
+- (BOOL) generalEventIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_UserFollowedApplication *) userFollowedApplication;
+- (void) setUserFollowedApplication: (BananaEvents_UserFollowedApplication *) userFollowedApplication;
+#endif
+- (BOOL) userFollowedApplicationIsSet;
+
 @end
 
 @interface BananaEvents_Event : NSObject <TBase, NSCoding> {
   BananaEvents_EventType * __eventType;
   BananaEvents_timestamp __timestamp;
+  BananaEvents_uuid __eventId;
 
   BOOL __eventType_isset;
   BOOL __timestamp_isset;
+  BOOL __eventId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=eventType, setter=setEventType:) BananaEvents_EventType * eventType;
 @property (nonatomic, getter=timestamp, setter=setTimestamp:) BananaEvents_timestamp timestamp;
+@property (nonatomic, retain, getter=eventId, setter=setEventId:) BananaEvents_uuid eventId;
 #endif
 
 - (id) init;
-- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp;
+- (id) initWithEventType: (BananaEvents_EventType *) eventType timestamp: (BananaEvents_timestamp) timestamp eventId: (BananaEvents_uuid) eventId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -463,6 +592,12 @@ typedef Banana_Application * BananaEvents_Application;
 - (void) setTimestamp: (BananaEvents_timestamp) timestamp;
 #endif
 - (BOOL) timestampIsSet;
+
+#if !__has_feature(objc_arc)
+- (BananaEvents_uuid) eventId;
+- (void) setEventId: (BananaEvents_uuid) eventId;
+#endif
+- (BOOL) eventIdIsSet;
 
 @end
 

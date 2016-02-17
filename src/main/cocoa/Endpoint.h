@@ -24,6 +24,8 @@
 
 typedef Banana_int BananaEndpoint_int;
 
+typedef Banana_uuid BananaEndpoint_uuid;
+
 typedef BananaException_OperationFailedException * BananaEndpoint_OperationFailedException;
 
 @interface BananaEndpoint_TcpEndpoint : NSObject <TBase, NSCoding> {
@@ -61,7 +63,7 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@interface BananaEndpoint_ThriftHttpEndpoint : NSObject <TBase, NSCoding> {
+@interface BananaEndpoint_HttpThriftEndpoint : NSObject <TBase, NSCoding> {
   NSString * __url;
 
   BOOL __url_isset;
@@ -87,7 +89,7 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@interface BananaEndpoint_RestHttpEndpoint : NSObject <TBase, NSCoding> {
+@interface BananaEndpoint_HttpRestEndpoint : NSObject <TBase, NSCoding> {
   NSString * __url;
 
   BOOL __url_isset;
@@ -115,22 +117,22 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @interface BananaEndpoint_Endpoint : NSObject <TBase, NSCoding> {
   BananaEndpoint_TcpEndpoint * __tcp;
-  BananaEndpoint_ThriftHttpEndpoint * __thriftHttp;
-  BananaEndpoint_RestHttpEndpoint * __restHttp;
+  BananaEndpoint_HttpThriftEndpoint * __httpThrift;
+  BananaEndpoint_HttpRestEndpoint * __httpRest;
 
   BOOL __tcp_isset;
-  BOOL __thriftHttp_isset;
-  BOOL __restHttp_isset;
+  BOOL __httpThrift_isset;
+  BOOL __httpRest_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=tcp, setter=setTcp:) BananaEndpoint_TcpEndpoint * tcp;
-@property (nonatomic, retain, getter=thriftHttp, setter=setThriftHttp:) BananaEndpoint_ThriftHttpEndpoint * thriftHttp;
-@property (nonatomic, retain, getter=restHttp, setter=setRestHttp:) BananaEndpoint_RestHttpEndpoint * restHttp;
+@property (nonatomic, retain, getter=httpThrift, setter=setHttpThrift:) BananaEndpoint_HttpThriftEndpoint * httpThrift;
+@property (nonatomic, retain, getter=httpRest, setter=setHttpRest:) BananaEndpoint_HttpRestEndpoint * httpRest;
 #endif
 
 - (id) init;
-- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp thriftHttp: (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp restHttp: (BananaEndpoint_RestHttpEndpoint *) restHttp;
+- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp httpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -144,34 +146,34 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (BOOL) tcpIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp;
-- (void) setThriftHttp: (BananaEndpoint_ThriftHttpEndpoint *) thriftHttp;
+- (BananaEndpoint_HttpThriftEndpoint *) httpThrift;
+- (void) setHttpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift;
 #endif
-- (BOOL) thriftHttpIsSet;
+- (BOOL) httpThriftIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_RestHttpEndpoint *) restHttp;
-- (void) setRestHttp: (BananaEndpoint_RestHttpEndpoint *) restHttp;
+- (BananaEndpoint_HttpRestEndpoint *) httpRest;
+- (void) setHttpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest;
 #endif
-- (BOOL) restHttpIsSet;
+- (BOOL) httpRestIsSet;
 
 @end
 
 @interface BananaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
-  NSString * __applicationName;
+  BananaEndpoint_uuid __applicationId;
   BananaAuthentication_ApplicationToken * __serviceToken;
 
-  BOOL __applicationName_isset;
+  BOOL __applicationId_isset;
   BOOL __serviceToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEndpoint_uuid applicationId;
 @property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ApplicationToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithApplicationName: (NSString *) applicationName serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
+- (id) initWithApplicationId: (BananaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -179,10 +181,10 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
+- (BananaEndpoint_uuid) applicationId;
+- (void) setApplicationId: (BananaEndpoint_uuid) applicationId;
 #endif
-- (BOOL) applicationNameIsSet;
+- (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (BananaAuthentication_ApplicationToken *) serviceToken;

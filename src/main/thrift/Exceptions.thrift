@@ -18,8 +18,8 @@ exception InvalidArgumentException
 }
 
 /**
- * Thrown when an Operation could not be authenticated
- * or validated.
+ * Thrown when a User's credentials did not match up when attempting
+ * to Sign In.
  */
 exception InvalidCredentialsException
 {
@@ -57,6 +57,16 @@ exception InvalidCodeException
 exception UnauthorizedException
 {
     1: string message = "Only an Owner can do that"
+}
+
+/**
+ * Thrown when referring to something that does not exist.
+ * This is the generic version, and is to be used with things 
+ * not covered by AppDoesNotExist, UserDoesNotExist, etc.
+ */
+exception DoesNotExistException
+{
+    1: string message = "The requested resource does not exist"
 }
 
 /**
@@ -106,6 +116,22 @@ exception CustomChannelUnreachableException
 exception ChannelDoesNotExistException
 {
     1: string message = "The Channel specified does not exist in the System."
+}
+
+/**
+ * Thrown when referencing a Message that does not exist.
+ */
+exception MessageDoesNotExistException
+{
+    1: string message = "The Message specified does not exist."
+}
+
+/**
+ * Thrown when referencing an Organization that does not exist.
+ */
+exception OrganizationDoesNotExistException
+{
+    1: string message = "The Organization specified does not exist."
 }
 
 /**

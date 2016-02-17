@@ -38,12 +38,14 @@ typedef Exceptions.CustomChannelUnreachableException CustomChannelUnreachableExc
 typedef Exceptions.ChannelDoesNotExistException ChannelDoesNotExistException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-const int SERVICE_PORT = 7005;
+const int SERVICE_PORT = 7002;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+//==========================================================
+// QUERY OPERATIONS
 
 //==========================================================
 // Operations performed by Applications
@@ -54,8 +56,14 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.
 struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;
-    2: string message;
+    2: string body;
     3: Urgency urgency = Banana.Urgency.LOW;
+    /** The time that the message was generated on the Client Side. */
+    4: optional timestamp timeOfMessage;
+    5: string title;
+    6: optional string hostname;
+    7: optional string macAddress;
+    8: optional string ipv4Address;
 }
 
 struct SendMessageResponse

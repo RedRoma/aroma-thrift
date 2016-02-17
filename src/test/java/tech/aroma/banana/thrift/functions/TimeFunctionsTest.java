@@ -18,12 +18,13 @@ package tech.aroma.banana.thrift.functions;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.LengthOfTime;
 import tech.aroma.banana.thrift.TimeUnit;
-import tech.sirwellington.alchemy.generator.NumberGenerators;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.DontRepeat;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -31,8 +32,11 @@ import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static tech.aroma.banana.thrift.TimeUnit.DAYS;
+import static tech.aroma.banana.thrift.TimeUnit.MINUTES;
+import static tech.aroma.banana.thrift.TimeUnit.SECONDS;
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
-import static tech.sirwellington.alchemy.generator.EnumGenerators.enumValueOf;
+import static tech.sirwellington.alchemy.generator.NumberGenerators.integers;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 
 /**
@@ -47,15 +51,19 @@ public class TimeFunctionsTest
     private TimeUnit timeUnit;
     private long timeValue;
     private LengthOfTime lengthOfTime;
+    private long expectedInSeconds;
     
     @Before
     public void setUp()
     {
-        timeUnit = enumValueOf(TimeUnit.class).get();
-        timeValue = one(NumberGenerators.longs(0, 10_000));
-        lengthOfTime = new LengthOfTime()
-            .setUnit(timeUnit)
-            .setValue(timeValue);
+        List<TimeUnit> units = Arrays.asList(SECONDS, MINUTES, DAYS);
+        timeUnit = units.stream().findAny().get();
+        timeValue = one(integers(1, 100));
+        
+        lengthOfTime = new LengthOfTime(timeUnit, timeValue);
+        
+        Duration duration = TimeFunctions.lengthOfTimeToDuration().apply(lengthOfTime);
+        expectedInSeconds = duration.getSeconds();
     }
     
     @DontRepeat
@@ -89,6 +97,14 @@ public class TimeFunctionsTest
         Duration duration = TimeFunctions.LENGTH_OF_TIME_TO_DURATION.apply(lengthOfTime);
         Duration expectedDuration = chronoUnit.getDuration().multipliedBy(timeValue);
         assertThat(duration, is(expectedDuration));
+    }
+    
+
+    @Test
+    public void testToSeconds()
+    {
+        long seconds = TimeFunctions.toSeconds(lengthOfTime);
+        assertThat(seconds, is(expectedInSeconds));
     }
     
     private ChronoUnit toChronoUnit(TimeUnit timeUnit)

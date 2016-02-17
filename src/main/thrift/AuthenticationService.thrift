@@ -23,6 +23,7 @@ typedef Banana.int int;
 typedef Banana.long long;
 typedef Banana.timestamp timestamp;
 typedef Banana.LengthOfTime LengthOfTime;
+typedef Banana.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
@@ -38,12 +39,14 @@ typedef Exceptions.InvalidTokenException InvalidTokenException
 typedef Exceptions.OperationFailedException OperationFailedException
 typedef Exceptions.UnauthorizedException UnauthorizedException
 
-const int SERVICE_PORT = 6001;
+const int SERVICE_PORT = 7026;
 
 const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "authentication-srv.banana.aroma.tech", "port" : SERVICE_PORT };
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "authentication-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
+/** The Default lifetime of a Token created by the Authentication Service. */
+const Banana.LengthOfTime DEFAULT_TOKEN_LIFETIME = { "value" : 60, "unit" : Banana.TimeUnit.DAYS };
 
 struct CreateTokenRequest
 {
@@ -52,11 +55,17 @@ struct CreateTokenRequest
      * For Application tokens, this is the Application ID.
      * For User Tokens, this is the userId.
      */
-    1: string ownerId;
-    /** The desired length of time to keep the Token alive and valid. */
-    2: LengthOfTime lifetime;
+    1: uuid ownerId;
+    /** The desired length of time to keep the Token alive and valid. 
+     *  If not present, will be set to DEFAULT_TOKEN_LIFETIME.
+     */
+    2: optional LengthOfTime lifetime;
     /** This is required, and determines the kind of Token created. */
     3: TokenType desiredTokenType;
+    /** Optional stores the name of the entity owning the token, for instance App name or user's email. */
+    4: optional string ownerName;
+    5: optional uuid organizationId;
+    6: optional string organizationName;
 }
 
 struct CreateTokenResponse
@@ -78,6 +87,9 @@ struct GetTokenInfoResponse
 struct InvalidateTokenRequest
 {
     1: AuthenticationToken token;
+    2: optional list<AuthenticationToken> multipleTokens = [];
+    /** Deletes all Tokens belonging to this ownerId. */
+    3: optional uuid belongingTo;
 }
 
 struct InvalidateTokenResponse
@@ -112,20 +124,23 @@ service AuthenticationService
     /**
      * Create a Token, used to represent a User or an Application.
      */
-    CreateTokenResponse createToken(1: CreateTokenRequest request) throws (1: OperationFailedException ex);
+    CreateTokenResponse createToken(1: CreateTokenRequest request) throws (1: OperationFailedException ex1,
+                                                                           2: InvalidArgumentException ex2);
     
     /**
      * Get information about a Token.
      */
     GetTokenInfoResponse getTokenInfo(1 : GetTokenInfoRequest request) throws(1 : OperationFailedException ex1,
-                                                                              2 : InvalidTokenException ex2);
+                                                                              2 : InvalidTokenException ex2,
+                                                                              3 : InvalidArgumentException ex3);
  
     /**
      * Invalidates a Token and removes it from knowledge. Any subsequent references to the Token will produce
      * an InvalidTokenException. 
      */
     InvalidateTokenResponse invalidateToken(1 : InvalidateTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                                       2 : InvalidTokenException ex2);
+                                                                                       2 : InvalidTokenException ex2,
+                                                                                       3 : InvalidArgumentException ex3);
  
 
 
@@ -133,7 +148,8 @@ service AuthenticationService
      * Verify that a Token is valid, and optionally, that it belongs to the specified pwner.
      */
     VerifyTokenResponse verifyToken(1 : VerifyTokenRequest request) throws(1 : OperationFailedException ex1,
-                                                                           2 : InvalidTokenException ex2);
+                                                                           2 : InvalidTokenException ex2,
+                                                                           3 : InvalidArgumentException ex3);
 
     
    }

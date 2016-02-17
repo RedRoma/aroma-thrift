@@ -12,6 +12,8 @@ include "Banana.thrift"
 include "Exceptions.thrift"
 
 typedef Banana.int int
+typedef Banana.uuid uuid;
+
 typedef Exceptions.OperationFailedException OperationFailedException
 
 /**
@@ -28,7 +30,7 @@ struct TcpEndpoint
  * An HTTP ApplicationEndpoint to Poke,
  * defined in Thrift.
  */
-struct ThriftHttpEndpoint
+struct HttpThriftEndpoint
 {
     1: required string url;
 }
@@ -41,7 +43,7 @@ struct ThriftHttpEndpoint
  * 
  * Examples to follow...
  */
-struct RestHttpEndpoint
+struct HttpRestEndpoint
 {
     1: required string url;
 }
@@ -53,8 +55,8 @@ struct RestHttpEndpoint
 union Endpoint
 {
     1: TcpEndpoint tcp;
-    2: ThriftHttpEndpoint thriftHttp;
-    3: RestHttpEndpoint restHttp;
+    2: HttpThriftEndpoint httpThrift;
+    3: HttpRestEndpoint httpRest;
 }
 
 /**
@@ -63,8 +65,8 @@ union Endpoint
  */
 struct HealthPokeRequest
 {
-    /** This is the name of the Application we are asking about. */
-    1: string applicationName;
+    /** The ID of the Application to Check. */
+    1: uuid applicationId;
     /** 
      * We will include your ApplicationToken so that you 
      * can authenticate the call if you'd like. With

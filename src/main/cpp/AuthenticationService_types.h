@@ -31,6 +31,8 @@ typedef  ::aroma::banana::thrift::timestamp timestamp;
 
 typedef class  ::aroma::banana::thrift::LengthOfTime LengthOfTime;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
 
 typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
@@ -68,10 +70,13 @@ class VerifyTokenRequest;
 class VerifyTokenResponse;
 
 typedef struct _CreateTokenRequest__isset {
-  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false) {}
+  _CreateTokenRequest__isset() : ownerId(false), lifetime(false), desiredTokenType(false), ownerName(false), organizationId(false), organizationName(false) {}
   bool ownerId :1;
   bool lifetime :1;
   bool desiredTokenType :1;
+  bool ownerName :1;
+  bool organizationId :1;
+  bool organizationName :1;
 } _CreateTokenRequest__isset;
 
 class CreateTokenRequest {
@@ -79,29 +84,52 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0) {
+  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName(), organizationId(), organizationName() {
   }
 
   virtual ~CreateTokenRequest() throw();
-  std::string ownerId;
+  uuid ownerId;
   LengthOfTime lifetime;
   TokenType desiredTokenType;
+  std::string ownerName;
+  uuid organizationId;
+  std::string organizationName;
 
   _CreateTokenRequest__isset __isset;
 
-  void __set_ownerId(const std::string& val);
+  void __set_ownerId(const uuid& val);
 
   void __set_lifetime(const LengthOfTime& val);
 
   void __set_desiredTokenType(const TokenType val);
 
+  void __set_ownerName(const std::string& val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_organizationName(const std::string& val);
+
   bool operator == (const CreateTokenRequest & rhs) const
   {
     if (!(ownerId == rhs.ownerId))
       return false;
-    if (!(lifetime == rhs.lifetime))
+    if (__isset.lifetime != rhs.__isset.lifetime)
+      return false;
+    else if (__isset.lifetime && !(lifetime == rhs.lifetime))
       return false;
     if (!(desiredTokenType == rhs.desiredTokenType))
+      return false;
+    if (__isset.ownerName != rhs.__isset.ownerName)
+      return false;
+    else if (__isset.ownerName && !(ownerName == rhs.ownerName))
+      return false;
+    if (__isset.organizationId != rhs.__isset.organizationId)
+      return false;
+    else if (__isset.organizationId && !(organizationId == rhs.organizationId))
+      return false;
+    if (__isset.organizationName != rhs.__isset.organizationName)
+      return false;
+    else if (__isset.organizationName && !(organizationName == rhs.organizationName))
       return false;
     return true;
   }
@@ -270,8 +298,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetTokenInfoResponse& o
 }
 
 typedef struct _InvalidateTokenRequest__isset {
-  _InvalidateTokenRequest__isset() : token(false) {}
+  _InvalidateTokenRequest__isset() : token(false), multipleTokens(true), belongingTo(false) {}
   bool token :1;
+  bool multipleTokens :1;
+  bool belongingTo :1;
 } _InvalidateTokenRequest__isset;
 
 class InvalidateTokenRequest {
@@ -279,19 +309,34 @@ class InvalidateTokenRequest {
 
   InvalidateTokenRequest(const InvalidateTokenRequest&);
   InvalidateTokenRequest& operator=(const InvalidateTokenRequest&);
-  InvalidateTokenRequest() {
+  InvalidateTokenRequest() : belongingTo() {
+
   }
 
   virtual ~InvalidateTokenRequest() throw();
   AuthenticationToken token;
+  std::vector<AuthenticationToken>  multipleTokens;
+  uuid belongingTo;
 
   _InvalidateTokenRequest__isset __isset;
 
   void __set_token(const AuthenticationToken& val);
 
+  void __set_multipleTokens(const std::vector<AuthenticationToken> & val);
+
+  void __set_belongingTo(const uuid& val);
+
   bool operator == (const InvalidateTokenRequest & rhs) const
   {
     if (!(token == rhs.token))
+      return false;
+    if (__isset.multipleTokens != rhs.__isset.multipleTokens)
+      return false;
+    else if (__isset.multipleTokens && !(multipleTokens == rhs.multipleTokens))
+      return false;
+    if (__isset.belongingTo != rhs.__isset.belongingTo)
+      return false;
+    else if (__isset.belongingTo && !(belongingTo == rhs.belongingTo))
       return false;
     return true;
   }

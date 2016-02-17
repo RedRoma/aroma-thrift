@@ -135,6 +135,7 @@ UserToken = module.exports.UserToken = function(args) {
   this.organization = null;
   this.isOauthToken = false;
   this.oauthProvider = null;
+  this.userId = null;
   if (args) {
     if (args.tokenId !== undefined && args.tokenId !== null) {
       this.tokenId = args.tokenId;
@@ -150,6 +151,9 @@ UserToken = module.exports.UserToken = function(args) {
     }
     if (args.oauthProvider !== undefined && args.oauthProvider !== null) {
       this.oauthProvider = args.oauthProvider;
+    }
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
@@ -202,6 +206,13 @@ UserToken.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.userId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -236,6 +247,11 @@ UserToken.prototype.write = function(output) {
   if (this.oauthProvider !== null && this.oauthProvider !== undefined) {
     output.writeFieldBegin('oauthProvider', Thrift.Type.STRING, 5);
     output.writeString(this.oauthProvider);
+    output.writeFieldEnd();
+  }
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.STRING, 6);
+    output.writeString(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -498,13 +514,13 @@ AromaAccount.prototype.write = function(output) {
 
 Credentials = module.exports.Credentials = function(args) {
   this.githubToken = null;
-  this.aromaAccount = null;
+  this.aromaPassword = null;
   if (args) {
     if (args.githubToken !== undefined && args.githubToken !== null) {
       this.githubToken = new ttypes.GithubToken(args.githubToken);
     }
-    if (args.aromaAccount !== undefined && args.aromaAccount !== null) {
-      this.aromaAccount = new ttypes.AromaAccount(args.aromaAccount);
+    if (args.aromaPassword !== undefined && args.aromaPassword !== null) {
+      this.aromaPassword = new ttypes.Password(args.aromaPassword);
     }
   }
 };
@@ -532,8 +548,8 @@ Credentials.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.aromaAccount = new ttypes.AromaAccount();
-        this.aromaAccount.read(input);
+        this.aromaPassword = new ttypes.Password();
+        this.aromaPassword.read(input);
       } else {
         input.skip(ftype);
       }
@@ -554,9 +570,9 @@ Credentials.prototype.write = function(output) {
     this.githubToken.write(output);
     output.writeFieldEnd();
   }
-  if (this.aromaAccount !== null && this.aromaAccount !== undefined) {
-    output.writeFieldBegin('aromaAccount', Thrift.Type.STRUCT, 2);
-    this.aromaAccount.write(output);
+  if (this.aromaPassword !== null && this.aromaPassword !== undefined) {
+    output.writeFieldBegin('aromaPassword', Thrift.Type.STRUCT, 2);
+    this.aromaPassword.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -565,14 +581,38 @@ Credentials.prototype.write = function(output) {
 };
 
 AuthenticationToken = module.exports.AuthenticationToken = function(args) {
-  this.applicationToken = null;
-  this.userToken = null;
+  this.tokenId = null;
+  this.ownerId = null;
+  this.timeOfCreation = null;
+  this.timeOfExpiration = null;
+  this.tokenType = null;
+  this.organizationId = null;
+  this.ownerName = null;
+  this.organizationName = null;
   if (args) {
-    if (args.applicationToken !== undefined && args.applicationToken !== null) {
-      this.applicationToken = new ttypes.ApplicationToken(args.applicationToken);
+    if (args.tokenId !== undefined && args.tokenId !== null) {
+      this.tokenId = args.tokenId;
     }
-    if (args.userToken !== undefined && args.userToken !== null) {
-      this.userToken = new ttypes.UserToken(args.userToken);
+    if (args.ownerId !== undefined && args.ownerId !== null) {
+      this.ownerId = args.ownerId;
+    }
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
+    }
+    if (args.timeOfExpiration !== undefined && args.timeOfExpiration !== null) {
+      this.timeOfExpiration = args.timeOfExpiration;
+    }
+    if (args.tokenType !== undefined && args.tokenType !== null) {
+      this.tokenType = args.tokenType;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.ownerName !== undefined && args.ownerName !== null) {
+      this.ownerName = args.ownerName;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
     }
   }
 };
@@ -591,17 +631,57 @@ AuthenticationToken.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.applicationToken = new ttypes.ApplicationToken();
-        this.applicationToken.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.tokenId = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
       case 2:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.userToken = new ttypes.UserToken();
-        this.userToken.read(input);
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfCreation = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfExpiration = input.readI64();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I32) {
+        this.tokenType = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.ownerName = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString();
       } else {
         input.skip(ftype);
       }
@@ -617,14 +697,44 @@ AuthenticationToken.prototype.read = function(input) {
 
 AuthenticationToken.prototype.write = function(output) {
   output.writeStructBegin('AuthenticationToken');
-  if (this.applicationToken !== null && this.applicationToken !== undefined) {
-    output.writeFieldBegin('applicationToken', Thrift.Type.STRUCT, 1);
-    this.applicationToken.write(output);
+  if (this.tokenId !== null && this.tokenId !== undefined) {
+    output.writeFieldBegin('tokenId', Thrift.Type.STRING, 1);
+    output.writeString(this.tokenId);
     output.writeFieldEnd();
   }
-  if (this.userToken !== null && this.userToken !== undefined) {
-    output.writeFieldBegin('userToken', Thrift.Type.STRUCT, 2);
-    this.userToken.write(output);
+  if (this.ownerId !== null && this.ownerId !== undefined) {
+    output.writeFieldBegin('ownerId', Thrift.Type.STRING, 2);
+    output.writeString(this.ownerId);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 3);
+    output.writeI64(this.timeOfCreation);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfExpiration !== null && this.timeOfExpiration !== undefined) {
+    output.writeFieldBegin('timeOfExpiration', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfExpiration);
+    output.writeFieldEnd();
+  }
+  if (this.tokenType !== null && this.tokenType !== undefined) {
+    output.writeFieldBegin('tokenType', Thrift.Type.I32, 5);
+    output.writeI32(this.tokenType);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 6);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.ownerName !== null && this.ownerName !== undefined) {
+    output.writeFieldBegin('ownerName', Thrift.Type.STRING, 7);
+    output.writeString(this.ownerName);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 8);
+    output.writeString(this.organizationName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -632,4 +742,4 @@ AuthenticationToken.prototype.write = function(output) {
   return;
 };
 
-ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'fwlrhvskjhf3foiwjkvdslj3qovknkf jnvzsv h3lfjwlejfiofszdkjnk';
+ttypes.OVER_THE_WIRE_PASSWORD_ENCRYPTION_KEY = 'AR3W3O04OJ5I894k40s04163U408pnU47AicAO6X29593AbTwaWk60qu966M9j12O6873Z64822x4qG71vaEjOei159sr9QUT1DaK';

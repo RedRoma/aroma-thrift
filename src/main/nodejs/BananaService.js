@@ -22,5262 +22,6467 @@ BananaService_getApiVersion_args = function(args) {
 };
 BananaService_getApiVersion_args.prototype = {};
 BananaService_getApiVersion_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.skip(ftype);
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getApiVersion_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getApiVersion_args');
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getApiVersion_args');
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getApiVersion_result = function(args) {
-            this.success = null;
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = args.success;
-                        }
-            }
+              this.success = null;
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = args.success;
+                            }
+              }
 };
 BananaService_getApiVersion_result.prototype = {};
 BananaService_getApiVersion_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.DOUBLE) {
-                  this.success = input.readDouble();
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.DOUBLE) {
+                    this.success = input.readDouble();
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getApiVersion_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getApiVersion_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
-              output.writeDouble(this.success);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getApiVersion_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.DOUBLE, 0);
+                output.writeDouble(this.success);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_deleteMessage_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.DeleteMessageRequest(args.request);
+                            }
+              }
+};
+BananaService_deleteMessage_args.prototype = {};
+BananaService_deleteMessage_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.DeleteMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_deleteMessage_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_deleteMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_deleteMessage_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.DeleteMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+BananaService_deleteMessage_result.prototype = {};
+BananaService_deleteMessage_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.DeleteMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_deleteMessage_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_deleteMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_dismissMessage_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.DismissMessageRequest(args.request);
+                            }
+              }
+};
+BananaService_dismissMessage_args.prototype = {};
+BananaService_dismissMessage_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.DismissMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_dismissMessage_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_dismissMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_dismissMessage_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.MessageDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.DismissMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+BananaService_dismissMessage_result.prototype = {};
+BananaService_dismissMessage_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.DismissMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.MessageDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_dismissMessage_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_dismissMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_provisionApplication_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.ProvisionApplicationRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.ProvisionApplicationRequest(args.request);
+                            }
+              }
 };
 BananaService_provisionApplication_args.prototype = {};
 BananaService_provisionApplication_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.ProvisionApplicationRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.ProvisionApplicationRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_provisionApplication_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_provisionApplication_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_provisionApplication_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_provisionApplication_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.ProvisionApplicationResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.ProvisionApplicationResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_provisionApplication_result.prototype = {};
 BananaService_provisionApplication_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.ProvisionApplicationResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.ProvisionApplicationResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_provisionApplication_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_provisionApplication_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_provisionApplication_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_regenerateToken_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.RegenerateApplicationTokenRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.RegenerateApplicationTokenRequest(args.request);
+                            }
+              }
 };
 BananaService_regenerateToken_args.prototype = {};
 BananaService_regenerateToken_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.RegenerateApplicationTokenRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.RegenerateApplicationTokenRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_regenerateToken_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_regenerateToken_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_regenerateToken_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_regenerateToken_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.RegenerateApplicationTokenResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.RegenerateApplicationTokenResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_regenerateToken_result.prototype = {};
 BananaService_regenerateToken_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.RegenerateApplicationTokenResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.RegenerateApplicationTokenResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_regenerateToken_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_regenerateToken_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_regenerateToken_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_registerHealthCheck_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.RegisterHealthCheckRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.RegisterHealthCheckRequest(args.request);
+                            }
+              }
 };
 BananaService_registerHealthCheck_args.prototype = {};
 BananaService_registerHealthCheck_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.RegisterHealthCheckRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.RegisterHealthCheckRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_registerHealthCheck_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_registerHealthCheck_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_registerHealthCheck_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_registerHealthCheck_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.RegisterHealthCheckResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.RegisterHealthCheckResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_registerHealthCheck_result.prototype = {};
 BananaService_registerHealthCheck_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.RegisterHealthCheckResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.RegisterHealthCheckResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_registerHealthCheck_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_registerHealthCheck_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_registerHealthCheck_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_removeSavedChannel_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.RemoveSavedChannelRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.RemoveSavedChannelRequest(args.request);
+                            }
+              }
 };
 BananaService_removeSavedChannel_args.prototype = {};
 BananaService_removeSavedChannel_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.RemoveSavedChannelRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.RemoveSavedChannelRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_removeSavedChannel_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_removeSavedChannel_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_removeSavedChannel_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_removeSavedChannel_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.RemoveSavedChannelResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.RemoveSavedChannelResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_removeSavedChannel_result.prototype = {};
 BananaService_removeSavedChannel_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.RemoveSavedChannelResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.RemoveSavedChannelResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.ChannelDoesNotExistException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.ChannelDoesNotExistException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_removeSavedChannel_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_removeSavedChannel_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_removeSavedChannel_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_renewApplicationToken_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.RenewApplicationTokenRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.RenewApplicationTokenRequest(args.request);
+                            }
+              }
 };
 BananaService_renewApplicationToken_args.prototype = {};
 BananaService_renewApplicationToken_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.RenewApplicationTokenRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.RenewApplicationTokenRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_renewApplicationToken_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_renewApplicationToken_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_renewApplicationToken_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_renewApplicationToken_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.RenewApplicationTokenResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.RenewApplicationTokenResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_renewApplicationToken_result.prototype = {};
 BananaService_renewApplicationToken_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.RenewApplicationTokenResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.RenewApplicationTokenResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_renewApplicationToken_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_renewApplicationToken_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_renewApplicationToken_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_saveChannel_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SaveChannelRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SaveChannelRequest(args.request);
+                            }
+              }
 };
 BananaService_saveChannel_args.prototype = {};
 BananaService_saveChannel_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SaveChannelRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SaveChannelRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_saveChannel_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_saveChannel_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_saveChannel_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_saveChannel_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SaveChannelResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SaveChannelResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
 };
 BananaService_saveChannel_result.prototype = {};
 BananaService_saveChannel_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SaveChannelResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SaveChannelResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_saveChannel_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_saveChannel_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_saveChannel_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_signIn_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SignInRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SignInRequest(args.request);
+                            }
+              }
 };
 BananaService_signIn_args.prototype = {};
 BananaService_signIn_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SignInRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SignInRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_signIn_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_signIn_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_signIn_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_signIn_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SignInResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SignInResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
 };
 BananaService_signIn_result.prototype = {};
 BananaService_signIn_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SignInResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SignInResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UserDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_signIn_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_signIn_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_signIn_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_signUp_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SignUpRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SignUpRequest(args.request);
+                            }
+              }
 };
 BananaService_signUp_args.prototype = {};
 BananaService_signUp_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SignUpRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SignUpRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_signUp_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_signUp_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_signUp_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_signUp_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SignUpResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidCredentialsException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SignUpResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
 };
 BananaService_signUp_result.prototype = {};
 BananaService_signUp_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SignUpResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SignUpResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.AccountAlreadyExistsException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidCredentialsException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.AccountAlreadyExistsException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_signUp_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_signUp_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_signUp_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_snoozeChannel_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SnoozeChannelRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SnoozeChannelRequest(args.request);
+                            }
+              }
 };
 BananaService_snoozeChannel_args.prototype = {};
 BananaService_snoozeChannel_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SnoozeChannelRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SnoozeChannelRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_snoozeChannel_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_snoozeChannel_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_snoozeChannel_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_snoozeChannel_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SnoozeChannelResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SnoozeChannelResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_snoozeChannel_result.prototype = {};
 BananaService_snoozeChannel_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SnoozeChannelResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SnoozeChannelResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.ChannelDoesNotExistException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.ChannelDoesNotExistException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_snoozeChannel_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_snoozeChannel_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
-
-BananaService_subscribeToApplication_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SubscribeToApplicationRequest(args.request);
-                        }
-            }
-};
-BananaService_subscribeToApplication_args.prototype = {};
-BananaService_subscribeToApplication_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
+              output.writeStructBegin('BananaService_snoozeChannel_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
               }
-              switch (fid)
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_followApplication_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.FollowApplicationRequest(args.request);
+                            }
+              }
+};
+BananaService_followApplication_args.prototype = {};
+BananaService_followApplication_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SubscribeToApplicationRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.FollowApplicationRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
-BananaService_subscribeToApplication_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+BananaService_followApplication_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_followApplication_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
-BananaService_subscribeToApplication_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            this.ex6 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
-                        this.ex6 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SubscribeToApplicationResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-                        if (args.ex6 !== undefined && args.ex6 !== null) {
-                                    this.ex6 = args.ex6;
-                        }
-            }
+BananaService_followApplication_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              this.ex6 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                            this.ex6 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.FollowApplicationResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+                            if (args.ex6 !== undefined && args.ex6 !== null) {
+                                          this.ex6 = args.ex6;
+                            }
+              }
 };
-BananaService_subscribeToApplication_result.prototype = {};
-BananaService_subscribeToApplication_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+BananaService_followApplication_result.prototype = {};
+BananaService_followApplication_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SubscribeToApplicationResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.FollowApplicationResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.ApplicationAlreadyRegisteredException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 6:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex6 = new Exceptions_ttypes.CustomChannelUnreachableException();
+                    this.ex6.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.ApplicationAlreadyRegisteredException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 6:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex6 = new Exceptions_ttypes.CustomChannelUnreachableException();
-                  this.ex6.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
-BananaService_subscribeToApplication_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_subscribeToApplication_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex6 !== null && this.ex6 !== undefined) {
-              output.writeFieldBegin('ex6', Thrift.Type.STRUCT, 6);
-              this.ex6.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+BananaService_followApplication_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_followApplication_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex6 !== null && this.ex6 !== undefined) {
+                output.writeFieldBegin('ex6', Thrift.Type.STRUCT, 6);
+                this.ex6.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getActivity_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetActivityRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetActivityRequest(args.request);
+                            }
+              }
 };
 BananaService_getActivity_args.prototype = {};
 BananaService_getActivity_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetActivityRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetActivityRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getActivity_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getActivity_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getActivity_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getActivity_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetActivityResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetActivityResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
 };
 BananaService_getActivity_result.prototype = {};
 BananaService_getActivity_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetActivityResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetActivityResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getActivity_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getActivity_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getActivity_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getApplicationInfo_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetApplicationInfoRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetApplicationInfoRequest(args.request);
+                            }
+              }
 };
 BananaService_getApplicationInfo_args.prototype = {};
 BananaService_getApplicationInfo_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetApplicationInfoRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetApplicationInfoRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getApplicationInfo_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getApplicationInfo_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getApplicationInfo_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getApplicationInfo_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetApplicationInfoResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetApplicationInfoResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_getApplicationInfo_result.prototype = {};
 BananaService_getApplicationInfo_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetApplicationInfoResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetApplicationInfoResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getApplicationInfo_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getApplicationInfo_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getApplicationInfo_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getBuzz_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetBuzzRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetBuzzRequest(args.request);
+                            }
+              }
 };
 BananaService_getBuzz_args.prototype = {};
 BananaService_getBuzz_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetBuzzRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetBuzzRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getBuzz_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getBuzz_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getBuzz_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getBuzz_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetBuzzResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetBuzzResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_getBuzz_result.prototype = {};
 BananaService_getBuzz_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetBuzzResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetBuzzResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.ApplicationDoesNotExistException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getBuzz_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getBuzz_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getBuzz_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getDashboard_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetDashboardRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetDashboardRequest(args.request);
+                            }
+              }
 };
 BananaService_getDashboard_args.prototype = {};
 BananaService_getDashboard_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetDashboardRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetDashboardRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getDashboard_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getDashboard_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getDashboard_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getDashboard_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetDashboardResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetDashboardResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
 };
 BananaService_getDashboard_result.prototype = {};
 BananaService_getDashboard_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetDashboardResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetDashboardResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getDashboard_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getDashboard_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
-
-BananaService_getMessages_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetMessagesRequest(args.request);
-                        }
-            }
-};
-BananaService_getMessages_args.prototype = {};
-BananaService_getMessages_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
+              output.writeStructBegin('BananaService_getDashboard_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
               }
-              switch (fid)
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_getApplicationMessages_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetApplicationMessagesRequest(args.request);
+                            }
+              }
+};
+BananaService_getApplicationMessages_args.prototype = {};
+BananaService_getApplicationMessages_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetMessagesRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetApplicationMessagesRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
-BananaService_getMessages_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMessages_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+BananaService_getApplicationMessages_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getApplicationMessages_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
-BananaService_getMessages_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetMessagesResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+BananaService_getApplicationMessages_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetApplicationMessagesResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
-BananaService_getMessages_result.prototype = {};
-BananaService_getMessages_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+BananaService_getApplicationMessages_result.prototype = {};
+BananaService_getApplicationMessages_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetMessagesResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetApplicationMessagesResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.ApplicationDoesNotExistException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
-BananaService_getMessages_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMessages_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+BananaService_getApplicationMessages_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getApplicationMessages_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_getInbox_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetInboxRequest(args.request);
+                            }
+              }
+};
+BananaService_getInbox_args.prototype = {};
+BananaService_getInbox_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetInboxRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_getInbox_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getInbox_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_getInbox_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetInboxResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
+};
+BananaService_getInbox_result.prototype = {};
+BananaService_getInbox_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetInboxResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_getInbox_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getInbox_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getFullMessage_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetFullMessageRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetFullMessageRequest(args.request);
+                            }
+              }
 };
 BananaService_getFullMessage_args.prototype = {};
 BananaService_getFullMessage_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetFullMessageRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetFullMessageRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getFullMessage_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getFullMessage_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getFullMessage_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getFullMessage_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetFullMessageResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetFullMessageResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
 };
 BananaService_getFullMessage_result.prototype = {};
 BananaService_getFullMessage_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetFullMessageResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetFullMessageResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getFullMessage_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getFullMessage_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getFullMessage_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_getMedia_args = function(args) {
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetMediaRequest(args.request);
+                            }
+              }
+};
+BananaService_getMedia_args.prototype = {};
+BananaService_getMedia_args.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetMediaRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_getMedia_args.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getMedia_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
+
+BananaService_getMedia_result = function(args) {
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.DoesNotExistException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetMediaResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
+};
+BananaService_getMedia_result.prototype = {};
+BananaService_getMedia_result.prototype.read = function(input) {
+              input.readStructBegin();
+              while (true)
+              {
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
+                }
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetMediaResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.DoesNotExistException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
+              }
+              input.readStructEnd();
+              return;
+            };
+
+BananaService_getMedia_result.prototype.write = function(output) {
+              output.writeStructBegin('BananaService_getMedia_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getMyApplications_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetMyApplicationsRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetMyApplicationsRequest(args.request);
+                            }
+              }
 };
 BananaService_getMyApplications_args.prototype = {};
 BananaService_getMyApplications_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetMyApplicationsRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetMyApplicationsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getMyApplications_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMyApplications_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getMyApplications_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getMyApplications_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetMyApplicationsResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetMyApplicationsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
 };
 BananaService_getMyApplications_result.prototype = {};
 BananaService_getMyApplications_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetMyApplicationsResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetMyApplicationsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getMyApplications_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMyApplications_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getMyApplications_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getMySavedChannels_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetMySavedChannelsRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetMySavedChannelsRequest(args.request);
+                            }
+              }
 };
 BananaService_getMySavedChannels_args.prototype = {};
 BananaService_getMySavedChannels_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetMySavedChannelsRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetMySavedChannelsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getMySavedChannels_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMySavedChannels_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getMySavedChannels_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getMySavedChannels_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetMySavedChannelsResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetMySavedChannelsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+              }
 };
 BananaService_getMySavedChannels_result.prototype = {};
 BananaService_getMySavedChannels_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetMySavedChannelsResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetMySavedChannelsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getMySavedChannels_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getMySavedChannels_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getMySavedChannels_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getUserInfo_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.GetUserInfoRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.GetUserInfoRequest(args.request);
+                            }
+              }
 };
 BananaService_getUserInfo_args.prototype = {};
 BananaService_getUserInfo_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.GetUserInfoRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.GetUserInfoRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getUserInfo_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getUserInfo_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getUserInfo_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_getUserInfo_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            this.ex5 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                        this.ex5 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.GetUserInfoResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-                        if (args.ex5 !== undefined && args.ex5 !== null) {
-                                    this.ex5 = args.ex5;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              this.ex5 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                            this.ex5 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.GetUserInfoResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+                            if (args.ex5 !== undefined && args.ex5 !== null) {
+                                          this.ex5 = args.ex5;
+                            }
+              }
 };
 BananaService_getUserInfo_result.prototype = {};
 BananaService_getUserInfo_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.GetUserInfoResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.GetUserInfoResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 5:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex5 = new Exceptions_ttypes.UserDoesNotExistException();
+                    this.ex5.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 5:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex5 = new Exceptions_ttypes.UserDoesNotExistException();
-                  this.ex5.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_getUserInfo_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_getUserInfo_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex5 !== null && this.ex5 !== undefined) {
-              output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
-              this.ex5.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_getUserInfo_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex5 !== null && this.ex5 !== undefined) {
+                output.writeFieldBegin('ex5', Thrift.Type.STRUCT, 5);
+                this.ex5.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_searchForApplications_args = function(args) {
-            this.request = null;
-            if (args) {
-                        if (args.request !== undefined && args.request !== null) {
-                                    this.request = new ttypes.SearchForApplicationsRequest(args.request);
-                        }
-            }
+              this.request = null;
+              if (args) {
+                            if (args.request !== undefined && args.request !== null) {
+                                          this.request = new ttypes.SearchForApplicationsRequest(args.request);
+                            }
+              }
 };
 BananaService_searchForApplications_args.prototype = {};
 BananaService_searchForApplications_args.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.request = new ttypes.SearchForApplicationsRequest();
-                  this.request.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 0:
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
                   break;
-                default:
-                  input.skip(ftype);
+                }
+                switch (fid)
+                {
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.request = new ttypes.SearchForApplicationsRequest();
+                    this.request.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 0:
+                    input.skip(ftype);
+                    break;
+                  default:
+                    input.skip(ftype);
+                }
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_searchForApplications_args.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_searchForApplications_args');
-            if (this.request !== null && this.request !== undefined) {
-              output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
-              this.request.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_searchForApplications_args');
+              if (this.request !== null && this.request !== undefined) {
+                output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+                this.request.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaService_searchForApplications_result = function(args) {
-            this.success = null;
-            this.ex1 = null;
-            this.ex2 = null;
-            this.ex3 = null;
-            this.ex4 = null;
-            if (args instanceof Exceptions_ttypes.OperationFailedException) {
-                        this.ex1 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
-                        this.ex2 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.InvalidTokenException) {
-                        this.ex3 = args;
-                        return;
-            }
-            if (args instanceof Exceptions_ttypes.UnauthorizedException) {
-                        this.ex4 = args;
-                        return;
-            }
-            if (args) {
-                        if (args.success !== undefined && args.success !== null) {
-                                    this.success = new ttypes.SearchForApplicationsResponse(args.success);
-                        }
-                        if (args.ex1 !== undefined && args.ex1 !== null) {
-                                    this.ex1 = args.ex1;
-                        }
-                        if (args.ex2 !== undefined && args.ex2 !== null) {
-                                    this.ex2 = args.ex2;
-                        }
-                        if (args.ex3 !== undefined && args.ex3 !== null) {
-                                    this.ex3 = args.ex3;
-                        }
-                        if (args.ex4 !== undefined && args.ex4 !== null) {
-                                    this.ex4 = args.ex4;
-                        }
-            }
+              this.success = null;
+              this.ex1 = null;
+              this.ex2 = null;
+              this.ex3 = null;
+              this.ex4 = null;
+              if (args instanceof Exceptions_ttypes.OperationFailedException) {
+                            this.ex1 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidArgumentException) {
+                            this.ex2 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.InvalidTokenException) {
+                            this.ex3 = args;
+                            return;
+              }
+              if (args instanceof Exceptions_ttypes.UnauthorizedException) {
+                            this.ex4 = args;
+                            return;
+              }
+              if (args) {
+                            if (args.success !== undefined && args.success !== null) {
+                                          this.success = new ttypes.SearchForApplicationsResponse(args.success);
+                            }
+                            if (args.ex1 !== undefined && args.ex1 !== null) {
+                                          this.ex1 = args.ex1;
+                            }
+                            if (args.ex2 !== undefined && args.ex2 !== null) {
+                                          this.ex2 = args.ex2;
+                            }
+                            if (args.ex3 !== undefined && args.ex3 !== null) {
+                                          this.ex3 = args.ex3;
+                            }
+                            if (args.ex4 !== undefined && args.ex4 !== null) {
+                                          this.ex4 = args.ex4;
+                            }
+              }
 };
 BananaService_searchForApplications_result.prototype = {};
 BananaService_searchForApplications_result.prototype.read = function(input) {
-            input.readStructBegin();
-            while (true)
-            {
-              var ret = input.readFieldBegin();
-              var fname = ret.fname;
-              var ftype = ret.ftype;
-              var fid = ret.fid;
-              if (ftype == Thrift.Type.STOP) {
-                break;
-              }
-              switch (fid)
+              input.readStructBegin();
+              while (true)
               {
-                case 0:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.success = new ttypes.SearchForApplicationsResponse();
-                  this.success.read(input);
-                } else {
-                  input.skip(ftype);
+                var ret = input.readFieldBegin();
+                var fname = ret.fname;
+                var ftype = ret.ftype;
+                var fid = ret.fid;
+                if (ftype == Thrift.Type.STOP) {
+                  break;
                 }
-                break;
-                case 1:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex1 = new Exceptions_ttypes.OperationFailedException();
-                  this.ex1.read(input);
-                } else {
-                  input.skip(ftype);
+                switch (fid)
+                {
+                  case 0:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.success = new ttypes.SearchForApplicationsResponse();
+                    this.success.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 1:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex1 = new Exceptions_ttypes.OperationFailedException();
+                    this.ex1.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 2:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
+                    this.ex2.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 3:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex3 = new Exceptions_ttypes.InvalidTokenException();
+                    this.ex3.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  case 4:
+                  if (ftype == Thrift.Type.STRUCT) {
+                    this.ex4 = new Exceptions_ttypes.UnauthorizedException();
+                    this.ex4.read(input);
+                  } else {
+                    input.skip(ftype);
+                  }
+                  break;
+                  default:
+                    input.skip(ftype);
                 }
-                break;
-                case 2:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex2 = new Exceptions_ttypes.InvalidArgumentException();
-                  this.ex2.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 3:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex3 = new Exceptions_ttypes.InvalidTokenException();
-                  this.ex3.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                case 4:
-                if (ftype == Thrift.Type.STRUCT) {
-                  this.ex4 = new Exceptions_ttypes.UnauthorizedException();
-                  this.ex4.read(input);
-                } else {
-                  input.skip(ftype);
-                }
-                break;
-                default:
-                  input.skip(ftype);
+                input.readFieldEnd();
               }
-              input.readFieldEnd();
-            }
-            input.readStructEnd();
-            return;
-          };
+              input.readStructEnd();
+              return;
+            };
 
 BananaService_searchForApplications_result.prototype.write = function(output) {
-            output.writeStructBegin('BananaService_searchForApplications_result');
-            if (this.success !== null && this.success !== undefined) {
-              output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
-              this.success.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex1 !== null && this.ex1 !== undefined) {
-              output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
-              this.ex1.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex2 !== null && this.ex2 !== undefined) {
-              output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
-              this.ex2.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex3 !== null && this.ex3 !== undefined) {
-              output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
-              this.ex3.write(output);
-              output.writeFieldEnd();
-            }
-            if (this.ex4 !== null && this.ex4 !== undefined) {
-              output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
-              this.ex4.write(output);
-              output.writeFieldEnd();
-            }
-            output.writeFieldStop();
-            output.writeStructEnd();
-            return;
-          };
+              output.writeStructBegin('BananaService_searchForApplications_result');
+              if (this.success !== null && this.success !== undefined) {
+                output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+                this.success.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex1 !== null && this.ex1 !== undefined) {
+                output.writeFieldBegin('ex1', Thrift.Type.STRUCT, 1);
+                this.ex1.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex2 !== null && this.ex2 !== undefined) {
+                output.writeFieldBegin('ex2', Thrift.Type.STRUCT, 2);
+                this.ex2.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex3 !== null && this.ex3 !== undefined) {
+                output.writeFieldBegin('ex3', Thrift.Type.STRUCT, 3);
+                this.ex3.write(output);
+                output.writeFieldEnd();
+              }
+              if (this.ex4 !== null && this.ex4 !== undefined) {
+                output.writeFieldBegin('ex4', Thrift.Type.STRUCT, 4);
+                this.ex4.write(output);
+                output.writeFieldEnd();
+              }
+              output.writeFieldStop();
+              output.writeStructEnd();
+              return;
+            };
 
 BananaServiceClient = exports.Client = function(output, pClass) {
-              this.output = output;
-              this.pClass = pClass;
-              this._seqid = 0;
-              this._reqs = {};
-          };
-          BananaServiceClient.prototype = {};
-          BananaServiceClient.prototype.seqid = function() { return this._seqid; }
+                this.output = output;
+                this.pClass = pClass;
+                this._seqid = 0;
+                this._reqs = {};
+            };
+            BananaServiceClient.prototype = {};
+            BananaServiceClient.prototype.seqid = function() { return this._seqid; }
 BananaServiceClient.prototype.new_seqid = function() { return this._seqid += 1; }
 BananaServiceClient.prototype.getApiVersion = function(callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getApiVersion();
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getApiVersion();
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getApiVersion();
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getApiVersion();
+              }
 };
 
 BananaServiceClient.prototype.send_getApiVersion = function() {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getApiVersion_args();
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getApiVersion', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getApiVersion_args();
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getApiVersion = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getApiVersion_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getApiVersion_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getApiVersion failed: unknown result');
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getApiVersion failed: unknown result');
+};
+BananaServiceClient.prototype.deleteMessage = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_deleteMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_deleteMessage(request);
+              }
+};
+
+BananaServiceClient.prototype.send_deleteMessage = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('deleteMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_deleteMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_deleteMessage = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_deleteMessage_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('deleteMessage failed: unknown result');
+};
+BananaServiceClient.prototype.dismissMessage = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_dismissMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_dismissMessage(request);
+              }
+};
+
+BananaServiceClient.prototype.send_dismissMessage = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('dismissMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_dismissMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_dismissMessage = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_dismissMessage_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('dismissMessage failed: unknown result');
 };
 BananaServiceClient.prototype.provisionApplication = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_provisionApplication(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_provisionApplication(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_provisionApplication(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_provisionApplication(request);
+              }
 };
 
 BananaServiceClient.prototype.send_provisionApplication = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('provisionApplication', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_provisionApplication_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('provisionApplication', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_provisionApplication_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_provisionApplication = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_provisionApplication_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_provisionApplication_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('provisionApplication failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('provisionApplication failed: unknown result');
 };
 BananaServiceClient.prototype.regenerateToken = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_regenerateToken(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_regenerateToken(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_regenerateToken(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_regenerateToken(request);
+              }
 };
 
 BananaServiceClient.prototype.send_regenerateToken = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('regenerateToken', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_regenerateToken_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('regenerateToken', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_regenerateToken_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_regenerateToken = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_regenerateToken_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_regenerateToken_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('regenerateToken failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('regenerateToken failed: unknown result');
 };
 BananaServiceClient.prototype.registerHealthCheck = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_registerHealthCheck(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_registerHealthCheck(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_registerHealthCheck(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_registerHealthCheck(request);
+              }
 };
 
 BananaServiceClient.prototype.send_registerHealthCheck = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('registerHealthCheck', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_registerHealthCheck_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('registerHealthCheck', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_registerHealthCheck_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_registerHealthCheck = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_registerHealthCheck_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_registerHealthCheck_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('registerHealthCheck failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('registerHealthCheck failed: unknown result');
 };
 BananaServiceClient.prototype.removeSavedChannel = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_removeSavedChannel(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_removeSavedChannel(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_removeSavedChannel(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_removeSavedChannel(request);
+              }
 };
 
 BananaServiceClient.prototype.send_removeSavedChannel = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('removeSavedChannel', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_removeSavedChannel_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('removeSavedChannel', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_removeSavedChannel_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_removeSavedChannel = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_removeSavedChannel_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_removeSavedChannel_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('removeSavedChannel failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('removeSavedChannel failed: unknown result');
 };
 BananaServiceClient.prototype.renewApplicationToken = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_renewApplicationToken(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_renewApplicationToken(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_renewApplicationToken(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_renewApplicationToken(request);
+              }
 };
 
 BananaServiceClient.prototype.send_renewApplicationToken = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('renewApplicationToken', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_renewApplicationToken_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('renewApplicationToken', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_renewApplicationToken_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_renewApplicationToken = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_renewApplicationToken_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_renewApplicationToken_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('renewApplicationToken failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('renewApplicationToken failed: unknown result');
 };
 BananaServiceClient.prototype.saveChannel = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_saveChannel(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_saveChannel(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_saveChannel(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_saveChannel(request);
+              }
 };
 
 BananaServiceClient.prototype.send_saveChannel = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('saveChannel', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_saveChannel_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('saveChannel', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_saveChannel_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_saveChannel = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_saveChannel_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_saveChannel_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('saveChannel failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('saveChannel failed: unknown result');
 };
 BananaServiceClient.prototype.signIn = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_signIn(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_signIn(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_signIn(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_signIn(request);
+              }
 };
 
 BananaServiceClient.prototype.send_signIn = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('signIn', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_signIn_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('signIn', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_signIn_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_signIn = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_signIn_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_signIn_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('signIn failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('signIn failed: unknown result');
 };
 BananaServiceClient.prototype.signUp = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_signUp(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_signUp(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_signUp(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_signUp(request);
+              }
 };
 
 BananaServiceClient.prototype.send_signUp = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('signUp', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_signUp_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('signUp', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_signUp_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_signUp = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_signUp_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_signUp_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('signUp failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('signUp failed: unknown result');
 };
 BananaServiceClient.prototype.snoozeChannel = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_snoozeChannel(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_snoozeChannel(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_snoozeChannel(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_snoozeChannel(request);
+              }
 };
 
 BananaServiceClient.prototype.send_snoozeChannel = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('snoozeChannel', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_snoozeChannel_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('snoozeChannel', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_snoozeChannel_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_snoozeChannel = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_snoozeChannel_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_snoozeChannel_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('snoozeChannel failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('snoozeChannel failed: unknown result');
 };
-BananaServiceClient.prototype.subscribeToApplication = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_subscribeToApplication(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_subscribeToApplication(request);
-            }
+BananaServiceClient.prototype.followApplication = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_followApplication(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_followApplication(request);
+              }
 };
 
-BananaServiceClient.prototype.send_subscribeToApplication = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('subscribeToApplication', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_subscribeToApplication_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+BananaServiceClient.prototype.send_followApplication = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('followApplication', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_followApplication_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
-BananaServiceClient.prototype.recv_subscribeToApplication = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+BananaServiceClient.prototype.recv_followApplication = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_followApplication_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_subscribeToApplication_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.ex6) {
-              return callback(result.ex6);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('subscribeToApplication failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.ex6) {
+                return callback(result.ex6);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('followApplication failed: unknown result');
 };
 BananaServiceClient.prototype.getActivity = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getActivity(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getActivity(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getActivity(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getActivity(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getActivity = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getActivity', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getActivity_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getActivity', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getActivity_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getActivity = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getActivity_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getActivity_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getActivity failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getActivity failed: unknown result');
 };
 BananaServiceClient.prototype.getApplicationInfo = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getApplicationInfo(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getApplicationInfo(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getApplicationInfo(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getApplicationInfo(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getApplicationInfo = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getApplicationInfo', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getApplicationInfo_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getApplicationInfo', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getApplicationInfo_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getApplicationInfo = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getApplicationInfo_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getApplicationInfo_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getApplicationInfo failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getApplicationInfo failed: unknown result');
 };
 BananaServiceClient.prototype.getBuzz = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getBuzz(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getBuzz(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getBuzz(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getBuzz(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getBuzz = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getBuzz', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getBuzz_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getBuzz', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getBuzz_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getBuzz = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getBuzz_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getBuzz_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getBuzz failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getBuzz failed: unknown result');
 };
 BananaServiceClient.prototype.getDashboard = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getDashboard(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getDashboard(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getDashboard(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getDashboard(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getDashboard = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getDashboard', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getDashboard_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getDashboard', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getDashboard_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getDashboard = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getDashboard_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getDashboard_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getDashboard failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getDashboard failed: unknown result');
 };
-BananaServiceClient.prototype.getMessages = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getMessages(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getMessages(request);
-            }
+BananaServiceClient.prototype.getApplicationMessages = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getApplicationMessages(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getApplicationMessages(request);
+              }
 };
 
-BananaServiceClient.prototype.send_getMessages = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getMessages', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getMessages_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+BananaServiceClient.prototype.send_getApplicationMessages = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getApplicationMessages', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getApplicationMessages_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
-BananaServiceClient.prototype.recv_getMessages = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+BananaServiceClient.prototype.recv_getApplicationMessages = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getApplicationMessages_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getMessages_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getMessages failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getApplicationMessages failed: unknown result');
+};
+BananaServiceClient.prototype.getInbox = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getInbox(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getInbox(request);
+              }
+};
+
+BananaServiceClient.prototype.send_getInbox = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getInbox', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getInbox_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_getInbox = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getInbox_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getInbox failed: unknown result');
 };
 BananaServiceClient.prototype.getFullMessage = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getFullMessage(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getFullMessage(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getFullMessage(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getFullMessage(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getFullMessage = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getFullMessage', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getFullMessage_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getFullMessage', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getFullMessage_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getFullMessage = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getFullMessage_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getFullMessage_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getFullMessage failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getFullMessage failed: unknown result');
+};
+BananaServiceClient.prototype.getMedia = function(request, callback) {
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getMedia(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getMedia(request);
+              }
+};
+
+BananaServiceClient.prototype.send_getMedia = function(request) {
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getMedia', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getMedia_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
+};
+
+BananaServiceClient.prototype.recv_getMedia = function(input,mtype,rseqid) {
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getMedia_result();
+              result.read(input);
+              input.readMessageEnd();
+
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getMedia failed: unknown result');
 };
 BananaServiceClient.prototype.getMyApplications = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getMyApplications(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getMyApplications(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getMyApplications(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getMyApplications(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getMyApplications = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getMyApplications', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getMyApplications_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getMyApplications', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getMyApplications_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getMyApplications = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getMyApplications_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getMyApplications_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getMyApplications failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getMyApplications failed: unknown result');
 };
 BananaServiceClient.prototype.getMySavedChannels = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getMySavedChannels(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getMySavedChannels(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getMySavedChannels(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getMySavedChannels(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getMySavedChannels = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getMySavedChannels', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getMySavedChannels_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getMySavedChannels', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getMySavedChannels_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getMySavedChannels = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getMySavedChannels_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getMySavedChannels_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getMySavedChannels failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getMySavedChannels failed: unknown result');
 };
 BananaServiceClient.prototype.getUserInfo = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_getUserInfo(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_getUserInfo(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_getUserInfo(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_getUserInfo(request);
+              }
 };
 
 BananaServiceClient.prototype.send_getUserInfo = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('getUserInfo', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_getUserInfo_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('getUserInfo', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_getUserInfo_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_getUserInfo = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_getUserInfo_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_getUserInfo_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.ex5) {
-              return callback(result.ex5);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('getUserInfo failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.ex5) {
+                return callback(result.ex5);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('getUserInfo failed: unknown result');
 };
 BananaServiceClient.prototype.searchForApplications = function(request, callback) {
-            this._seqid = this.new_seqid();
-            if (callback === undefined) {
-              var _defer = Q.defer();
-              this._reqs[this.seqid()] = function(error, result) {
-                if (error) {
-                  _defer.reject(error);
-                } else {
-                  _defer.resolve(result);
-                }
-              };
-              this.send_searchForApplications(request);
-              return _defer.promise;
-            } else {
-              this._reqs[this.seqid()] = callback;
-              this.send_searchForApplications(request);
-            }
+              this._seqid = this.new_seqid();
+              if (callback === undefined) {
+                var _defer = Q.defer();
+                this._reqs[this.seqid()] = function(error, result) {
+                  if (error) {
+                    _defer.reject(error);
+                  } else {
+                    _defer.resolve(result);
+                  }
+                };
+                this.send_searchForApplications(request);
+                return _defer.promise;
+              } else {
+                this._reqs[this.seqid()] = callback;
+                this.send_searchForApplications(request);
+              }
 };
 
 BananaServiceClient.prototype.send_searchForApplications = function(request) {
-            var output = new this.pClass(this.output);
-            output.writeMessageBegin('searchForApplications', Thrift.MessageType.CALL, this.seqid());
-            var args = new BananaService_searchForApplications_args();
-            args.request = request;
-            args.write(output);
-            output.writeMessageEnd();
-            return this.output.flush();
+              var output = new this.pClass(this.output);
+              output.writeMessageBegin('searchForApplications', Thrift.MessageType.CALL, this.seqid());
+              var args = new BananaService_searchForApplications_args();
+              args.request = request;
+              args.write(output);
+              output.writeMessageEnd();
+              return this.output.flush();
 };
 
 BananaServiceClient.prototype.recv_searchForApplications = function(input,mtype,rseqid) {
-            var callback = this._reqs[rseqid] || function() {};
-            delete this._reqs[rseqid];
-            if (mtype == Thrift.MessageType.EXCEPTION) {
-              var x = new Thrift.TApplicationException();
-              x.read(input);
+              var callback = this._reqs[rseqid] || function() {};
+              delete this._reqs[rseqid];
+              if (mtype == Thrift.MessageType.EXCEPTION) {
+                var x = new Thrift.TApplicationException();
+                x.read(input);
+                input.readMessageEnd();
+                return callback(x);
+              }
+              var result = new BananaService_searchForApplications_result();
+              result.read(input);
               input.readMessageEnd();
-              return callback(x);
-            }
-            var result = new BananaService_searchForApplications_result();
-            result.read(input);
-            input.readMessageEnd();
 
-            if (null !== result.ex1) {
-              return callback(result.ex1);
-            }
-            if (null !== result.ex2) {
-              return callback(result.ex2);
-            }
-            if (null !== result.ex3) {
-              return callback(result.ex3);
-            }
-            if (null !== result.ex4) {
-              return callback(result.ex4);
-            }
-            if (null !== result.success) {
-              return callback(null, result.success);
-            }
-            return callback('searchForApplications failed: unknown result');
+              if (null !== result.ex1) {
+                return callback(result.ex1);
+              }
+              if (null !== result.ex2) {
+                return callback(result.ex2);
+              }
+              if (null !== result.ex3) {
+                return callback(result.ex3);
+              }
+              if (null !== result.ex4) {
+                return callback(result.ex4);
+              }
+              if (null !== result.success) {
+                return callback(null, result.success);
+              }
+              return callback('searchForApplications failed: unknown result');
 };
-BananaServiceProcessor = exports.Processor = function(handler)           {
-            this._handler = handler
-          }
-          BananaServiceProcessor.prototype.process = function(input, output)           {
-            var r = input.readMessageBegin();
-            if (this['process_' + r.fname]) {
-              return this['process_' + r.fname].call(this, r.rseqid, input, output);
-            } else {
-              input.skip(Thrift.Type.STRUCT);
-              input.readMessageEnd();
-              var x = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN_METHOD, 'Unknown function ' + r.fname);
-              output.writeMessageBegin(r.fname, Thrift.MessageType.EXCEPTION, r.rseqid);
-              x.write(output);
-              output.writeMessageEnd();
-              output.flush();
+BananaServiceProcessor = exports.Processor = function(handler)             {
+              this._handler = handler
             }
-          }
+            BananaServiceProcessor.prototype.process = function(input, output)             {
+              var r = input.readMessageBegin();
+              if (this['process_' + r.fname]) {
+                return this['process_' + r.fname].call(this, r.rseqid, input, output);
+              } else {
+                input.skip(Thrift.Type.STRUCT);
+                input.readMessageEnd();
+                var x = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN_METHOD, 'Unknown function ' + r.fname);
+                output.writeMessageBegin(r.fname, Thrift.MessageType.EXCEPTION, r.rseqid);
+                x.write(output);
+                output.writeMessageEnd();
+                output.flush();
+              }
+            }
 
-          BananaServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)           {
-            var args = new BananaService_getApiVersion_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getApiVersion.length === 0) {
-              Q.fcall(this._handler.getApiVersion)
-                .then(function(result) {
-                  var result = new BananaService_getApiVersion_result({success: result});
-                  output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
+            BananaServiceProcessor.prototype.process_getApiVersion = function(seqid, input, output)             {
+              var args = new BananaService_getApiVersion_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApiVersion.length === 0) {
+                Q.fcall(this._handler.getApiVersion)
+                  .then(function(result) {
+                    var result = new BananaService_getApiVersion_result({success: result});
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getApiVersion(function (err, result) {
+                  if (err == null) {
+                    var result = new BananaService_getApiVersion_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
+                  }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getApiVersion(function (err, result) {
-                if (err == null) {
-                  var result = new BananaService_getApiVersion_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getApiVersion", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getApiVersion", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_provisionApplication = function(seqid, input, output)           {
-            var args = new BananaService_provisionApplication_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.provisionApplication.length === 1) {
-              Q.fcall(this._handler.provisionApplication, args.request)
-                .then(function(result) {
-                  var result = new BananaService_provisionApplication_result({success: result});
-                  output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
+            BananaServiceProcessor.prototype.process_deleteMessage = function(seqid, input, output)             {
+              var args = new BananaService_deleteMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.deleteMessage.length === 1) {
+                Q.fcall(this._handler.deleteMessage, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_deleteMessage_result({success: result});
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_deleteMessage_result(err);
+                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.deleteMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_deleteMessage_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("deleteMessage", Thrift.MessageType.EXCEPTION, seqid);
+                  }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_provisionApplication_result(err);
+                });
+              }
+            }
+
+            BananaServiceProcessor.prototype.process_dismissMessage = function(seqid, input, output)             {
+              var args = new BananaService_dismissMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.dismissMessage.length === 1) {
+                Q.fcall(this._handler.dismissMessage, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_dismissMessage_result({success: result});
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_dismissMessage_result(err);
+                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.dismissMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.MessageDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_dismissMessage_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("dismissMessage", Thrift.MessageType.EXCEPTION, seqid);
+                  }
+                  result.write(output);
+                  output.writeMessageEnd();
+                  output.flush();
+                });
+              }
+            }
+
+            BananaServiceProcessor.prototype.process_provisionApplication = function(seqid, input, output)             {
+              var args = new BananaService_provisionApplication_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.provisionApplication.length === 1) {
+                Q.fcall(this._handler.provisionApplication, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_provisionApplication_result({success: result});
+                    output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_provisionApplication_result(err);
+                      output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("provisionApplication", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.provisionApplication(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_provisionApplication_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5287,37 +6492,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.provisionApplication(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_provisionApplication_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("provisionApplication", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("provisionApplication", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_regenerateToken = function(seqid, input, output)           {
-            var args = new BananaService_regenerateToken_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.regenerateToken.length === 1) {
-              Q.fcall(this._handler.regenerateToken, args.request)
-                .then(function(result) {
-                  var result = new BananaService_regenerateToken_result({success: result});
-                  output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_regenerateToken_result(err);
+            BananaServiceProcessor.prototype.process_regenerateToken = function(seqid, input, output)             {
+              var args = new BananaService_regenerateToken_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.regenerateToken.length === 1) {
+                Q.fcall(this._handler.regenerateToken, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_regenerateToken_result({success: result});
+                    output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_regenerateToken_result(err);
+                      output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("regenerateToken", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.regenerateToken(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_regenerateToken_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5327,37 +6532,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.regenerateToken(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_regenerateToken_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("regenerateToken", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("regenerateToken", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_registerHealthCheck = function(seqid, input, output)           {
-            var args = new BananaService_registerHealthCheck_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.registerHealthCheck.length === 1) {
-              Q.fcall(this._handler.registerHealthCheck, args.request)
-                .then(function(result) {
-                  var result = new BananaService_registerHealthCheck_result({success: result});
-                  output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_registerHealthCheck_result(err);
+            BananaServiceProcessor.prototype.process_registerHealthCheck = function(seqid, input, output)             {
+              var args = new BananaService_registerHealthCheck_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.registerHealthCheck.length === 1) {
+                Q.fcall(this._handler.registerHealthCheck, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_registerHealthCheck_result({success: result});
+                    output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_registerHealthCheck_result(err);
+                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.registerHealthCheck(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_registerHealthCheck_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5367,37 +6572,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.registerHealthCheck(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_registerHealthCheck_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("registerHealthCheck", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_removeSavedChannel = function(seqid, input, output)           {
-            var args = new BananaService_removeSavedChannel_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.removeSavedChannel.length === 1) {
-              Q.fcall(this._handler.removeSavedChannel, args.request)
-                .then(function(result) {
-                  var result = new BananaService_removeSavedChannel_result({success: result});
-                  output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                    var result = new BananaService_removeSavedChannel_result(err);
+            BananaServiceProcessor.prototype.process_removeSavedChannel = function(seqid, input, output)             {
+              var args = new BananaService_removeSavedChannel_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.removeSavedChannel.length === 1) {
+                Q.fcall(this._handler.removeSavedChannel, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_removeSavedChannel_result({success: result});
+                    output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                      var result = new BananaService_removeSavedChannel_result(err);
+                      output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.removeSavedChannel(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                    var result = new BananaService_removeSavedChannel_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5407,37 +6612,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.removeSavedChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                  var result = new BananaService_removeSavedChannel_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("removeSavedChannel", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_renewApplicationToken = function(seqid, input, output)           {
-            var args = new BananaService_renewApplicationToken_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.renewApplicationToken.length === 1) {
-              Q.fcall(this._handler.renewApplicationToken, args.request)
-                .then(function(result) {
-                  var result = new BananaService_renewApplicationToken_result({success: result});
-                  output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_renewApplicationToken_result(err);
+            BananaServiceProcessor.prototype.process_renewApplicationToken = function(seqid, input, output)             {
+              var args = new BananaService_renewApplicationToken_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.renewApplicationToken.length === 1) {
+                Q.fcall(this._handler.renewApplicationToken, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_renewApplicationToken_result({success: result});
+                    output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_renewApplicationToken_result(err);
+                      output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.renewApplicationToken(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_renewApplicationToken_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5447,37 +6652,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.renewApplicationToken(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_renewApplicationToken_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("renewApplicationToken", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_saveChannel = function(seqid, input, output)           {
-            var args = new BananaService_saveChannel_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.saveChannel.length === 1) {
-              Q.fcall(this._handler.saveChannel, args.request)
-                .then(function(result) {
-                  var result = new BananaService_saveChannel_result({success: result});
-                  output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_saveChannel_result(err);
+            BananaServiceProcessor.prototype.process_saveChannel = function(seqid, input, output)             {
+              var args = new BananaService_saveChannel_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.saveChannel.length === 1) {
+                Q.fcall(this._handler.saveChannel, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_saveChannel_result({success: result});
+                    output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_saveChannel_result(err);
+                      output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("saveChannel", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.saveChannel(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_saveChannel_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5487,37 +6692,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.saveChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_saveChannel_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("saveChannel", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("saveChannel", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_signIn = function(seqid, input, output)           {
-            var args = new BananaService_signIn_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.signIn.length === 1) {
-              Q.fcall(this._handler.signIn, args.request)
-                .then(function(result) {
-                  var result = new BananaService_signIn_result({success: result});
-                  output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
-                    var result = new BananaService_signIn_result(err);
+            BananaServiceProcessor.prototype.process_signIn = function(seqid, input, output)             {
+              var args = new BananaService_signIn_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.signIn.length === 1) {
+                Q.fcall(this._handler.signIn, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_signIn_result({success: result});
+                    output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                      var result = new BananaService_signIn_result(err);
+                      output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.signIn(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                    var result = new BananaService_signIn_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5527,37 +6732,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.signIn(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException) {
-                  var result = new BananaService_signIn_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("signIn", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("signIn", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_signUp = function(seqid, input, output)           {
-            var args = new BananaService_signUp_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.signUp.length === 1) {
-              Q.fcall(this._handler.signUp, args.request)
-                .then(function(result) {
-                  var result = new BananaService_signUp_result({success: result});
-                  output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
-                    var result = new BananaService_signUp_result(err);
+            BananaServiceProcessor.prototype.process_signUp = function(seqid, input, output)             {
+              var args = new BananaService_signUp_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.signUp.length === 1) {
+                Q.fcall(this._handler.signUp, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_signUp_result({success: result});
+                    output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                      var result = new BananaService_signUp_result(err);
+                      output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.signUp(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
+                    var result = new BananaService_signUp_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5567,37 +6772,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.signUp(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidCredentialsException || err instanceof Exceptions_ttypes.AccountAlreadyExistsException) {
-                  var result = new BananaService_signUp_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("signUp", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("signUp", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_snoozeChannel = function(seqid, input, output)           {
-            var args = new BananaService_snoozeChannel_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.snoozeChannel.length === 1) {
-              Q.fcall(this._handler.snoozeChannel, args.request)
-                .then(function(result) {
-                  var result = new BananaService_snoozeChannel_result({success: result});
-                  output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                    var result = new BananaService_snoozeChannel_result(err);
+            BananaServiceProcessor.prototype.process_snoozeChannel = function(seqid, input, output)             {
+              var args = new BananaService_snoozeChannel_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.snoozeChannel.length === 1) {
+                Q.fcall(this._handler.snoozeChannel, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_snoozeChannel_result({success: result});
+                    output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                      var result = new BananaService_snoozeChannel_result(err);
+                      output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("snoozeChannel", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.snoozeChannel(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
+                    var result = new BananaService_snoozeChannel_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5607,77 +6812,77 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.snoozeChannel(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ChannelDoesNotExistException) {
-                  var result = new BananaService_snoozeChannel_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("snoozeChannel", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("snoozeChannel", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_subscribeToApplication = function(seqid, input, output)           {
-            var args = new BananaService_subscribeToApplication_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.subscribeToApplication.length === 1) {
-              Q.fcall(this._handler.subscribeToApplication, args.request)
-                .then(function(result) {
-                  var result = new BananaService_subscribeToApplication_result({success: result});
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
-                    var result = new BananaService_subscribeToApplication_result(err);
-                    output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
+            BananaServiceProcessor.prototype.process_followApplication = function(seqid, input, output)             {
+              var args = new BananaService_followApplication_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.followApplication.length === 1) {
+                Q.fcall(this._handler.followApplication, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_followApplication_result({success: result});
+                    output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                      var result = new BananaService_followApplication_result(err);
+                      output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("followApplication", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.followApplication(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
+                    var result = new BananaService_followApplication_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("followApplication", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("followApplication", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.subscribeToApplication(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.ApplicationAlreadyRegisteredException || err instanceof Exceptions_ttypes.CustomChannelUnreachableException) {
-                  var result = new BananaService_subscribeToApplication_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("subscribeToApplication", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getActivity = function(seqid, input, output)           {
-            var args = new BananaService_getActivity_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getActivity.length === 1) {
-              Q.fcall(this._handler.getActivity, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getActivity_result({success: result});
-                  output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getActivity_result(err);
+            BananaServiceProcessor.prototype.process_getActivity = function(seqid, input, output)             {
+              var args = new BananaService_getActivity_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getActivity.length === 1) {
+                Q.fcall(this._handler.getActivity, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getActivity_result({success: result});
+                    output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getActivity_result(err);
+                      output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getActivity(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getActivity_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5687,37 +6892,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getActivity(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getActivity_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getActivity", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getActivity", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getApplicationInfo = function(seqid, input, output)           {
-            var args = new BananaService_getApplicationInfo_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getApplicationInfo.length === 1) {
-              Q.fcall(this._handler.getApplicationInfo, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getApplicationInfo_result({success: result});
-                  output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_getApplicationInfo_result(err);
+            BananaServiceProcessor.prototype.process_getApplicationInfo = function(seqid, input, output)             {
+              var args = new BananaService_getApplicationInfo_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApplicationInfo.length === 1) {
+                Q.fcall(this._handler.getApplicationInfo, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getApplicationInfo_result({success: result});
+                    output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_getApplicationInfo_result(err);
+                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getApplicationInfo(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_getApplicationInfo_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5727,37 +6932,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getApplicationInfo(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_getApplicationInfo_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getApplicationInfo", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getBuzz = function(seqid, input, output)           {
-            var args = new BananaService_getBuzz_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getBuzz.length === 1) {
-              Q.fcall(this._handler.getBuzz, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getBuzz_result({success: result});
-                  output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_getBuzz_result(err);
+            BananaServiceProcessor.prototype.process_getBuzz = function(seqid, input, output)             {
+              var args = new BananaService_getBuzz_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getBuzz.length === 1) {
+                Q.fcall(this._handler.getBuzz, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getBuzz_result({success: result});
+                    output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_getBuzz_result(err);
+                      output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getBuzz", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getBuzz(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_getBuzz_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5767,37 +6972,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getBuzz(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_getBuzz_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getBuzz", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getBuzz", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getDashboard = function(seqid, input, output)           {
-            var args = new BananaService_getDashboard_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getDashboard.length === 1) {
-              Q.fcall(this._handler.getDashboard, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getDashboard_result({success: result});
-                  output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getDashboard_result(err);
+            BananaServiceProcessor.prototype.process_getDashboard = function(seqid, input, output)             {
+              var args = new BananaService_getDashboard_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getDashboard.length === 1) {
+                Q.fcall(this._handler.getDashboard, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getDashboard_result({success: result});
+                    output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getDashboard_result(err);
+                      output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getDashboard(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getDashboard_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5807,77 +7012,117 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getDashboard(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getDashboard_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getDashboard", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getDashboard", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getMessages = function(seqid, input, output)           {
-            var args = new BananaService_getMessages_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getMessages.length === 1) {
-              Q.fcall(this._handler.getMessages, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getMessages_result({success: result});
-                  output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getMessages_result(err);
-                    output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
+            BananaServiceProcessor.prototype.process_getApplicationMessages = function(seqid, input, output)             {
+              var args = new BananaService_getApplicationMessages_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getApplicationMessages.length === 1) {
+                Q.fcall(this._handler.getApplicationMessages, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getApplicationMessages_result({success: result});
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                      var result = new BananaService_getApplicationMessages_result(err);
+                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getApplicationMessages(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.ApplicationDoesNotExistException) {
+                    var result = new BananaService_getApplicationMessages_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                    output.writeMessageBegin("getMessages", Thrift.MessageType.EXCEPTION, seqid);
+                    output.writeMessageBegin("getApplicationMessages", Thrift.MessageType.EXCEPTION, seqid);
                   }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getMessages(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getMessages_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getMessages", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getMessages", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getFullMessage = function(seqid, input, output)           {
-            var args = new BananaService_getFullMessage_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getFullMessage.length === 1) {
-              Q.fcall(this._handler.getFullMessage, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getFullMessage_result({success: result});
-                  output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+            BananaServiceProcessor.prototype.process_getInbox = function(seqid, input, output)             {
+              var args = new BananaService_getInbox_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getInbox.length === 1) {
+                Q.fcall(this._handler.getInbox, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getInbox_result({success: result});
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getInbox_result(err);
+                      output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getInbox(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getInbox_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getInbox", Thrift.MessageType.EXCEPTION, seqid);
+                  }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getFullMessage_result(err);
+                });
+              }
+            }
+
+            BananaServiceProcessor.prototype.process_getFullMessage = function(seqid, input, output)             {
+              var args = new BananaService_getFullMessage_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getFullMessage.length === 1) {
+                Q.fcall(this._handler.getFullMessage, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getFullMessage_result({success: result});
+                    output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getFullMessage_result(err);
+                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getFullMessage(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getFullMessage_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5887,37 +7132,77 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getFullMessage(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getFullMessage_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getFullMessage", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getFullMessage", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getMyApplications = function(seqid, input, output)           {
-            var args = new BananaService_getMyApplications_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getMyApplications.length === 1) {
-              Q.fcall(this._handler.getMyApplications, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getMyApplications_result({success: result});
-                  output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
+            BananaServiceProcessor.prototype.process_getMedia = function(seqid, input, output)             {
+              var args = new BananaService_getMedia_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getMedia.length === 1) {
+                Q.fcall(this._handler.getMedia, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getMedia_result({success: result});
+                    output.writeMessageBegin("getMedia", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.DoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_getMedia_result(err);
+                      output.writeMessageBegin("getMedia", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getMedia", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getMedia(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.DoesNotExistException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_getMedia_result((err != null ? err : {success: result}));
+                    output.writeMessageBegin("getMedia", Thrift.MessageType.REPLY, seqid);
+                  } else {
+                    var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                    output.writeMessageBegin("getMedia", Thrift.MessageType.EXCEPTION, seqid);
+                  }
                   result.write(output);
                   output.writeMessageEnd();
                   output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getMyApplications_result(err);
+                });
+              }
+            }
+
+            BananaServiceProcessor.prototype.process_getMyApplications = function(seqid, input, output)             {
+              var args = new BananaService_getMyApplications_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getMyApplications.length === 1) {
+                Q.fcall(this._handler.getMyApplications, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getMyApplications_result({success: result});
+                    output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getMyApplications_result(err);
+                      output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getMyApplications", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getMyApplications(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getMyApplications_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5927,37 +7212,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getMyApplications(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getMyApplications_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getMyApplications", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getMyApplications", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getMySavedChannels = function(seqid, input, output)           {
-            var args = new BananaService_getMySavedChannels_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getMySavedChannels.length === 1) {
-              Q.fcall(this._handler.getMySavedChannels, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getMySavedChannels_result({success: result});
-                  output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                    var result = new BananaService_getMySavedChannels_result(err);
+            BananaServiceProcessor.prototype.process_getMySavedChannels = function(seqid, input, output)             {
+              var args = new BananaService_getMySavedChannels_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getMySavedChannels.length === 1) {
+                Q.fcall(this._handler.getMySavedChannels, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getMySavedChannels_result({success: result});
+                    output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                      var result = new BananaService_getMySavedChannels_result(err);
+                      output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getMySavedChannels(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
+                    var result = new BananaService_getMySavedChannels_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -5967,37 +7252,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getMySavedChannels(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException) {
-                  var result = new BananaService_getMySavedChannels_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getMySavedChannels", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_getUserInfo = function(seqid, input, output)           {
-            var args = new BananaService_getUserInfo_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.getUserInfo.length === 1) {
-              Q.fcall(this._handler.getUserInfo, args.request)
-                .then(function(result) {
-                  var result = new BananaService_getUserInfo_result({success: result});
-                  output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                    var result = new BananaService_getUserInfo_result(err);
+            BananaServiceProcessor.prototype.process_getUserInfo = function(seqid, input, output)             {
+              var args = new BananaService_getUserInfo_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.getUserInfo.length === 1) {
+                Q.fcall(this._handler.getUserInfo, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_getUserInfo_result({success: result});
+                    output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                      var result = new BananaService_getUserInfo_result(err);
+                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.getUserInfo(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
+                    var result = new BananaService_getUserInfo_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -6007,37 +7292,37 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.getUserInfo(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException || err instanceof Exceptions_ttypes.UserDoesNotExistException) {
-                  var result = new BananaService_getUserInfo_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("getUserInfo", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("getUserInfo", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 
-          BananaServiceProcessor.prototype.process_searchForApplications = function(seqid, input, output)           {
-            var args = new BananaService_searchForApplications_args();
-            args.read(input);
-            input.readMessageEnd();
-            if (this._handler.searchForApplications.length === 1) {
-              Q.fcall(this._handler.searchForApplications, args.request)
-                .then(function(result) {
-                  var result = new BananaService_searchForApplications_result({success: result});
-                  output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
-                  result.write(output);
-                  output.writeMessageEnd();
-                  output.flush();
-                }, function (err) {
-                  if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                    var result = new BananaService_searchForApplications_result(err);
+            BananaServiceProcessor.prototype.process_searchForApplications = function(seqid, input, output)             {
+              var args = new BananaService_searchForApplications_args();
+              args.read(input);
+              input.readMessageEnd();
+              if (this._handler.searchForApplications.length === 1) {
+                Q.fcall(this._handler.searchForApplications, args.request)
+                  .then(function(result) {
+                    var result = new BananaService_searchForApplications_result({success: result});
+                    output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  }, function (err) {
+                    if (err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                      var result = new BananaService_searchForApplications_result(err);
+                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
+                    } else {
+                      var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+                      output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
+                    }
+                    result.write(output);
+                    output.writeMessageEnd();
+                    output.flush();
+                  });
+              } else {
+                this._handler.searchForApplications(args.request, function (err, result) {
+                  if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
+                    var result = new BananaService_searchForApplications_result((err != null ? err : {success: result}));
                     output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
                   } else {
                     var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -6047,19 +7332,6 @@ BananaServiceProcessor = exports.Processor = function(handler)           {
                   output.writeMessageEnd();
                   output.flush();
                 });
-            } else {
-              this._handler.searchForApplications(args.request, function (err, result) {
-                if (err == null || err instanceof Exceptions_ttypes.OperationFailedException || err instanceof Exceptions_ttypes.InvalidArgumentException || err instanceof Exceptions_ttypes.InvalidTokenException || err instanceof Exceptions_ttypes.UnauthorizedException) {
-                  var result = new BananaService_searchForApplications_result((err != null ? err : {success: result}));
-                  output.writeMessageBegin("searchForApplications", Thrift.MessageType.REPLY, seqid);
-                } else {
-                  var result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
-                  output.writeMessageBegin("searchForApplications", Thrift.MessageType.EXCEPTION, seqid);
-                }
-                result.write(output);
-                output.writeMessageEnd();
-                output.flush();
-              });
+              }
             }
-          }
 

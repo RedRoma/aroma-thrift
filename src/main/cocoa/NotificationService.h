@@ -31,6 +31,8 @@ typedef Banana_long NotificationService_long;
 
 typedef Banana_timestamp NotificationService_timestamp;
 
+typedef Banana_uuid NotificationService_uuid;
+
 typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
 typedef Banana_Application * NotificationService_Application;
@@ -106,17 +108,17 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 @end
 
 @interface NotificationService_SendNotificationResponse : NSObject <TBase, NSCoding> {
-  NSString * __notificationId;
+  NotificationService_uuid __notificationId;
 
   BOOL __notificationId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=notificationId, setter=setNotificationId:) NSString * notificationId;
+@property (nonatomic, retain, getter=notificationId, setter=setNotificationId:) NotificationService_uuid notificationId;
 #endif
 
 - (id) init;
-- (id) initWithNotificationId: (NSString *) notificationId;
+- (id) initWithNotificationId: (NotificationService_uuid) notificationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -124,8 +126,8 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) notificationId;
-- (void) setNotificationId: (NSString *) notificationId;
+- (NotificationService_uuid) notificationId;
+- (void) setNotificationId: (NotificationService_uuid) notificationId;
 #endif
 - (BOOL) notificationIdIsSet;
 

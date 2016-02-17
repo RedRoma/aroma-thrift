@@ -27,6 +27,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
     printf("getApiVersion\n");
   }
 
+  void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
+    // Your implementation goes here
+    printf("deleteMessage\n");
+  }
+
+  void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) {
+    // Your implementation goes here
+    printf("dismissMessage\n");
+  }
+
   /**
    * Provision a New Application to keep tabs on.
    * 
@@ -138,9 +148,9 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * 
    * @param request
    */
-  void subscribeToApplication(SubscribeToApplicationResponse& _return, const SubscribeToApplicationRequest& request) {
+  void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) {
     // Your implementation goes here
-    printf("subscribeToApplication\n");
+    printf("followApplication\n");
   }
 
   /**
@@ -182,9 +192,19 @@ class BananaServiceHandler : virtual public BananaServiceIf {
    * 
    * @param request
    */
-  void getMessages(GetMessagesResponse& _return, const GetMessagesRequest& request) {
+  void getApplicationMessages(GetApplicationMessagesResponse& _return, const GetApplicationMessagesRequest& request) {
     // Your implementation goes here
-    printf("getMessages\n");
+    printf("getApplicationMessages\n");
+  }
+
+  /**
+   * Get Messages in a User's Inbox
+   * 
+   * @param request
+   */
+  void getInbox(GetInboxResponse& _return, const GetInboxRequest& request) {
+    // Your implementation goes here
+    printf("getInbox\n");
   }
 
   /**
@@ -196,6 +216,16 @@ class BananaServiceHandler : virtual public BananaServiceIf {
   void getFullMessage(GetFullMessageResponse& _return, const GetFullMessageRequest& request) {
     // Your implementation goes here
     printf("getFullMessage\n");
+  }
+
+  /**
+   * Request to get Media stored by the Aroma Service.
+   * 
+   * @param request
+   */
+  void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) {
+    // Your implementation goes here
+    printf("getMedia\n");
   }
 
   void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {

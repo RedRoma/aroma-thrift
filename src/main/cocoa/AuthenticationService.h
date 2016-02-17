@@ -31,6 +31,8 @@ typedef Banana_timestamp AuthenticationService_timestamp;
 
 typedef Banana_LengthOfTime * AuthenticationService_LengthOfTime;
 
+typedef Banana_uuid AuthenticationService_uuid;
+
 typedef BananaAuthentication_ApplicationToken * AuthenticationService_ApplicationToken;
 
 typedef BananaAuthentication_AuthenticationToken * AuthenticationService_AuthenticationToken;
@@ -52,23 +54,32 @@ typedef BananaException_OperationFailedException * AuthenticationService_Operati
 typedef BananaException_UnauthorizedException * AuthenticationService_UnauthorizedException;
 
 @interface AuthenticationService_CreateTokenRequest : NSObject <TBase, NSCoding> {
-  NSString * __ownerId;
+  AuthenticationService_uuid __ownerId;
   AuthenticationService_LengthOfTime __lifetime;
   AuthenticationService_TokenType __desiredTokenType;
+  NSString * __ownerName;
+  AuthenticationService_uuid __organizationId;
+  NSString * __organizationName;
 
   BOOL __ownerId_isset;
   BOOL __lifetime_isset;
   BOOL __desiredTokenType_isset;
+  BOOL __ownerName_isset;
+  BOOL __organizationId_isset;
+  BOOL __organizationName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) NSString * ownerId;
+@property (nonatomic, retain, getter=ownerId, setter=setOwnerId:) AuthenticationService_uuid ownerId;
 @property (nonatomic, retain, getter=lifetime, setter=setLifetime:) AuthenticationService_LengthOfTime lifetime;
 @property (nonatomic, getter=desiredTokenType, setter=setDesiredTokenType:) AuthenticationService_TokenType desiredTokenType;
+@property (nonatomic, retain, getter=ownerName, setter=setOwnerName:) NSString * ownerName;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AuthenticationService_uuid organizationId;
+@property (nonatomic, retain, getter=organizationName, setter=setOrganizationName:) NSString * organizationName;
 #endif
 
 - (id) init;
-- (id) initWithOwnerId: (NSString *) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType;
+- (id) initWithOwnerId: (AuthenticationService_uuid) ownerId lifetime: (AuthenticationService_LengthOfTime) lifetime desiredTokenType: (AuthenticationService_TokenType) desiredTokenType ownerName: (NSString *) ownerName organizationId: (AuthenticationService_uuid) organizationId organizationName: (NSString *) organizationName;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -76,8 +87,8 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) ownerId;
-- (void) setOwnerId: (NSString *) ownerId;
+- (AuthenticationService_uuid) ownerId;
+- (void) setOwnerId: (AuthenticationService_uuid) ownerId;
 #endif
 - (BOOL) ownerIdIsSet;
 
@@ -92,6 +103,24 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setDesiredTokenType: (AuthenticationService_TokenType) desiredTokenType;
 #endif
 - (BOOL) desiredTokenTypeIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) ownerName;
+- (void) setOwnerName: (NSString *) ownerName;
+#endif
+- (BOOL) ownerNameIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_uuid) organizationId;
+- (void) setOrganizationId: (AuthenticationService_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) organizationName;
+- (void) setOrganizationName: (NSString *) organizationName;
+#endif
+- (BOOL) organizationNameIsSet;
 
 @end
 
@@ -184,16 +213,22 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @interface AuthenticationService_InvalidateTokenRequest : NSObject <TBase, NSCoding> {
   AuthenticationService_AuthenticationToken __token;
+  NSMutableArray * __multipleTokens;
+  AuthenticationService_uuid __belongingTo;
 
   BOOL __token_isset;
+  BOOL __multipleTokens_isset;
+  BOOL __belongingTo_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AuthenticationService_AuthenticationToken token;
+@property (nonatomic, retain, getter=multipleTokens, setter=setMultipleTokens:) NSMutableArray * multipleTokens;
+@property (nonatomic, retain, getter=belongingTo, setter=setBelongingTo:) AuthenticationService_uuid belongingTo;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AuthenticationService_AuthenticationToken) token;
+- (id) initWithToken: (AuthenticationService_AuthenticationToken) token multipleTokens: (NSMutableArray *) multipleTokens belongingTo: (AuthenticationService_uuid) belongingTo;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -205,6 +240,18 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 - (void) setToken: (AuthenticationService_AuthenticationToken) token;
 #endif
 - (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) multipleTokens;
+- (void) setMultipleTokens: (NSMutableArray *) multipleTokens;
+#endif
+- (BOOL) multipleTokensIsSet;
+
+#if !__has_feature(objc_arc)
+- (AuthenticationService_uuid) belongingTo;
+- (void) setBelongingTo: (AuthenticationService_uuid) belongingTo;
+#endif
+- (BOOL) belongingToIsSet;
 
 @end
 
@@ -297,10 +344,10 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 
 @protocol AuthenticationService_AuthenticationService <NSObject>
 - (double) getApiVersion;  // throws TException
-- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, TException
-- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
-- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, TException
+- (AuthenticationService_CreateTokenResponse *) createToken: (AuthenticationService_CreateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_GetTokenInfoResponse *) getTokenInfo: (AuthenticationService_GetTokenInfoRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_InvalidateTokenResponse *) invalidateToken: (AuthenticationService_InvalidateTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
+- (AuthenticationService_VerifyTokenResponse *) verifyToken: (AuthenticationService_VerifyTokenRequest *) request;  // throws AuthenticationService_OperationFailedException, AuthenticationService_InvalidTokenException, AuthenticationService_InvalidArgumentException, TException
 @end
 
 @interface AuthenticationService_AuthenticationServiceClient : TBaseClient <AuthenticationService_AuthenticationService> - (id) initWithProtocol: (id <TProtocol>) protocol;
@@ -320,4 +367,5 @@ typedef BananaException_UnauthorizedException * AuthenticationService_Unauthoriz
 + (AuthenticationService_int) SERVICE_PORT;
 + (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME;
 @end

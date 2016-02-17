@@ -32,6 +32,8 @@ class InvalidCodeException;
 
 class UnauthorizedException;
 
+class DoesNotExistException;
+
 class ApplicationDoesNotExistException;
 
 class ApplicationAlreadyRegisteredException;
@@ -43,6 +45,10 @@ class ThroughoutExceededException;
 class CustomChannelUnreachableException;
 
 class ChannelDoesNotExistException;
+
+class MessageDoesNotExistException;
+
+class OrganizationDoesNotExistException;
 
 class OperationFailedException;
 
@@ -334,6 +340,54 @@ inline std::ostream& operator<<(std::ostream& out, const UnauthorizedException& 
   return out;
 }
 
+typedef struct _DoesNotExistException__isset {
+  _DoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _DoesNotExistException__isset;
+
+class DoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  DoesNotExistException(const DoesNotExistException&);
+  DoesNotExistException& operator=(const DoesNotExistException&);
+  DoesNotExistException() : message("The requested resource does not exist") {
+  }
+
+  virtual ~DoesNotExistException() throw();
+  std::string message;
+
+  _DoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const DoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const DoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(DoesNotExistException &a, DoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const DoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _ApplicationDoesNotExistException__isset {
   _ApplicationDoesNotExistException__isset() : message(true) {}
   bool message :1;
@@ -617,6 +671,102 @@ class ChannelDoesNotExistException : public ::apache::thrift::TException {
 void swap(ChannelDoesNotExistException &a, ChannelDoesNotExistException &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ChannelDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _MessageDoesNotExistException__isset {
+  _MessageDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _MessageDoesNotExistException__isset;
+
+class MessageDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  MessageDoesNotExistException(const MessageDoesNotExistException&);
+  MessageDoesNotExistException& operator=(const MessageDoesNotExistException&);
+  MessageDoesNotExistException() : message("The Message specified does not exist.") {
+  }
+
+  virtual ~MessageDoesNotExistException() throw();
+  std::string message;
+
+  _MessageDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const MessageDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const MessageDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MessageDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(MessageDoesNotExistException &a, MessageDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const MessageDoesNotExistException& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _OrganizationDoesNotExistException__isset {
+  _OrganizationDoesNotExistException__isset() : message(true) {}
+  bool message :1;
+} _OrganizationDoesNotExistException__isset;
+
+class OrganizationDoesNotExistException : public ::apache::thrift::TException {
+ public:
+
+  OrganizationDoesNotExistException(const OrganizationDoesNotExistException&);
+  OrganizationDoesNotExistException& operator=(const OrganizationDoesNotExistException&);
+  OrganizationDoesNotExistException() : message("The Organization specified does not exist.") {
+  }
+
+  virtual ~OrganizationDoesNotExistException() throw();
+  std::string message;
+
+  _OrganizationDoesNotExistException__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const OrganizationDoesNotExistException & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const OrganizationDoesNotExistException &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const OrganizationDoesNotExistException & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+  mutable std::string thriftTExceptionMessageHolder_;
+  const char* what() const throw();
+};
+
+void swap(OrganizationDoesNotExistException &a, OrganizationDoesNotExistException &b);
+
+inline std::ostream& operator<<(std::ostream& out, const OrganizationDoesNotExistException& obj)
 {
   obj.printTo(out);
   return out;

@@ -11,19 +11,25 @@ namespace aroma { namespace banana { namespace thrift { namespace authentication
 const AuthenticationServiceConstants g_AuthenticationService_constants;
 
 AuthenticationServiceConstants::AuthenticationServiceConstants() {
-  SERVICE_PORT = 6001;
+  SERVICE_PORT = 7026;
 
   PRODUCTION_ENDPOINT.hostname = "authentication-srv.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp18;
-  tmp18 = 6001;
+   ::aroma::banana::thrift::endpoint::int tmp24;
+  tmp24 = 7026;
 
-  PRODUCTION_ENDPOINT.port = tmp18;
+  PRODUCTION_ENDPOINT.port = tmp24;
 
   BETA_ENDPOINT.hostname = "authentication-srv.beta.banana.aroma.tech";
-   ::aroma::banana::thrift::endpoint::int tmp19;
-  tmp19 = 6001;
+   ::aroma::banana::thrift::endpoint::int tmp25;
+  tmp25 = 7026;
 
-  BETA_ENDPOINT.port = tmp19;
+  BETA_ENDPOINT.port = tmp25;
+
+   ::aroma::banana::thrift::long tmp26;
+  tmp26 = 60LL;
+
+  DEFAULT_TOKEN_LIFETIME.value = tmp26;
+  DEFAULT_TOKEN_LIFETIME.unit = ( ::aroma::banana::thrift::TimeUnit::type)4;
 
 }
 

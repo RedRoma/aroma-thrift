@@ -5,10 +5,22 @@
 //
 
 
-Urgency = {
-  'LOW' : 1,
-  'MEDIUM' : 2,
-  'HIGH' : 3
+ImageType = {
+  'JPEG' : 1,
+  'PNG' : 2
+};
+Industry = {
+  'BANKING' : 0,
+  'ECOMMERCE' : 1,
+  'EDUCATION' : 2,
+  'GOVERMENT' : 3,
+  'MARKETING' : 4,
+  'RETAIL' : 5,
+  'TECH' : 6
+};
+Tier = {
+  'FREE' : 0,
+  'PAID' : 1
 };
 TimeUnit = {
   'MILLIS' : 0,
@@ -17,17 +29,6 @@ TimeUnit = {
   'HOURS' : 3,
   'DAYS' : 4,
   'WEEKS' : 5
-};
-ImageType = {
-  'JPEG' : 1,
-  'PNG' : 2
-};
-Role = {
-  'DEVELOPER' : 1,
-  'OPERATIONS' : 2,
-  'MANAGER' : 3,
-  'PRODUCT' : 4,
-  'QA' : 5
 };
 ProgrammingLanguage = {
   'JAVA' : 0,
@@ -45,184 +46,18 @@ ProgrammingLanguage = {
   'DART' : 12,
   'OTHER' : 13
 };
-Message = function(args) {
-  this.messageId = null;
-  this.body = null;
-  this.urgency = 1;
-  this.timeOfCreation = null;
-  this.timeMessageReceived = null;
-  this.applicationName = null;
-  this.hostname = null;
-  this.macAddress = null;
-  this.isTruncated = false;
-  if (args) {
-    if (args.messageId !== undefined && args.messageId !== null) {
-      this.messageId = args.messageId;
-    }
-    if (args.body !== undefined && args.body !== null) {
-      this.body = args.body;
-    }
-    if (args.urgency !== undefined && args.urgency !== null) {
-      this.urgency = args.urgency;
-    }
-    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
-      this.timeOfCreation = args.timeOfCreation;
-    }
-    if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
-      this.timeMessageReceived = args.timeMessageReceived;
-    }
-    if (args.applicationName !== undefined && args.applicationName !== null) {
-      this.applicationName = args.applicationName;
-    }
-    if (args.hostname !== undefined && args.hostname !== null) {
-      this.hostname = args.hostname;
-    }
-    if (args.macAddress !== undefined && args.macAddress !== null) {
-      this.macAddress = args.macAddress;
-    }
-    if (args.isTruncated !== undefined && args.isTruncated !== null) {
-      this.isTruncated = args.isTruncated;
-    }
-  }
+Role = {
+  'DEVELOPER' : 1,
+  'OPERATIONS' : 2,
+  'MANAGER' : 3,
+  'PRODUCT' : 4,
+  'QA' : 5
 };
-Message.prototype = {};
-Message.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRING) {
-        this.messageId = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.body = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.I32) {
-        this.urgency = input.readI32().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.I64) {
-        this.timeOfCreation = input.readI64().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 5:
-      if (ftype == Thrift.Type.I64) {
-        this.timeMessageReceived = input.readI64().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 6:
-      if (ftype == Thrift.Type.STRING) {
-        this.applicationName = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 7:
-      if (ftype == Thrift.Type.STRING) {
-        this.hostname = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 8:
-      if (ftype == Thrift.Type.STRING) {
-        this.macAddress = input.readString().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 9:
-      if (ftype == Thrift.Type.BOOL) {
-        this.isTruncated = input.readBool().value;
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
+Urgency = {
+  'LOW' : 1,
+  'MEDIUM' : 2,
+  'HIGH' : 3
 };
-
-Message.prototype.write = function(output) {
-  output.writeStructBegin('Message');
-  if (this.messageId !== null && this.messageId !== undefined) {
-    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
-    output.writeString(this.messageId);
-    output.writeFieldEnd();
-  }
-  if (this.body !== null && this.body !== undefined) {
-    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
-    output.writeString(this.body);
-    output.writeFieldEnd();
-  }
-  if (this.urgency !== null && this.urgency !== undefined) {
-    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
-    output.writeI32(this.urgency);
-    output.writeFieldEnd();
-  }
-  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
-    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
-    output.writeI64(this.timeOfCreation);
-    output.writeFieldEnd();
-  }
-  if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
-    output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
-    output.writeI64(this.timeMessageReceived);
-    output.writeFieldEnd();
-  }
-  if (this.applicationName !== null && this.applicationName !== undefined) {
-    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
-    output.writeString(this.applicationName);
-    output.writeFieldEnd();
-  }
-  if (this.hostname !== null && this.hostname !== undefined) {
-    output.writeFieldBegin('hostname', Thrift.Type.STRING, 7);
-    output.writeString(this.hostname);
-    output.writeFieldEnd();
-  }
-  if (this.macAddress !== null && this.macAddress !== undefined) {
-    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
-    output.writeString(this.macAddress);
-    output.writeFieldEnd();
-  }
-  if (this.isTruncated !== null && this.isTruncated !== undefined) {
-    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
-    output.writeBool(this.isTruncated);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 LengthOfTime = function(args) {
   this.unit = null;
   this.value = null;
@@ -446,6 +281,481 @@ Image.prototype.write = function(output) {
   return;
 };
 
+Message = function(args) {
+  this.messageId = null;
+  this.body = null;
+  this.urgency = 1;
+  this.timeOfCreation = null;
+  this.timeMessageReceived = null;
+  this.applicationName = null;
+  this.hostname = null;
+  this.macAddress = null;
+  this.isTruncated = false;
+  this.title = null;
+  this.applicationId = null;
+  if (args) {
+    if (args.messageId !== undefined && args.messageId !== null) {
+      this.messageId = args.messageId;
+    }
+    if (args.body !== undefined && args.body !== null) {
+      this.body = args.body;
+    }
+    if (args.urgency !== undefined && args.urgency !== null) {
+      this.urgency = args.urgency;
+    }
+    if (args.timeOfCreation !== undefined && args.timeOfCreation !== null) {
+      this.timeOfCreation = args.timeOfCreation;
+    }
+    if (args.timeMessageReceived !== undefined && args.timeMessageReceived !== null) {
+      this.timeMessageReceived = args.timeMessageReceived;
+    }
+    if (args.applicationName !== undefined && args.applicationName !== null) {
+      this.applicationName = args.applicationName;
+    }
+    if (args.hostname !== undefined && args.hostname !== null) {
+      this.hostname = args.hostname;
+    }
+    if (args.macAddress !== undefined && args.macAddress !== null) {
+      this.macAddress = args.macAddress;
+    }
+    if (args.isTruncated !== undefined && args.isTruncated !== null) {
+      this.isTruncated = args.isTruncated;
+    }
+    if (args.title !== undefined && args.title !== null) {
+      this.title = args.title;
+    }
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
+    }
+  }
+};
+Message.prototype = {};
+Message.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.body = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.I32) {
+        this.urgency = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfCreation = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I64) {
+        this.timeMessageReceived = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.hostname = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.macAddress = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isTruncated = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.title = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Message.prototype.write = function(output) {
+  output.writeStructBegin('Message');
+  if (this.messageId !== null && this.messageId !== undefined) {
+    output.writeFieldBegin('messageId', Thrift.Type.STRING, 1);
+    output.writeString(this.messageId);
+    output.writeFieldEnd();
+  }
+  if (this.body !== null && this.body !== undefined) {
+    output.writeFieldBegin('body', Thrift.Type.STRING, 2);
+    output.writeString(this.body);
+    output.writeFieldEnd();
+  }
+  if (this.urgency !== null && this.urgency !== undefined) {
+    output.writeFieldBegin('urgency', Thrift.Type.I32, 3);
+    output.writeI32(this.urgency);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfCreation !== null && this.timeOfCreation !== undefined) {
+    output.writeFieldBegin('timeOfCreation', Thrift.Type.I64, 4);
+    output.writeI64(this.timeOfCreation);
+    output.writeFieldEnd();
+  }
+  if (this.timeMessageReceived !== null && this.timeMessageReceived !== undefined) {
+    output.writeFieldBegin('timeMessageReceived', Thrift.Type.I64, 5);
+    output.writeI64(this.timeMessageReceived);
+    output.writeFieldEnd();
+  }
+  if (this.applicationName !== null && this.applicationName !== undefined) {
+    output.writeFieldBegin('applicationName', Thrift.Type.STRING, 6);
+    output.writeString(this.applicationName);
+    output.writeFieldEnd();
+  }
+  if (this.hostname !== null && this.hostname !== undefined) {
+    output.writeFieldBegin('hostname', Thrift.Type.STRING, 7);
+    output.writeString(this.hostname);
+    output.writeFieldEnd();
+  }
+  if (this.macAddress !== null && this.macAddress !== undefined) {
+    output.writeFieldBegin('macAddress', Thrift.Type.STRING, 8);
+    output.writeString(this.macAddress);
+    output.writeFieldEnd();
+  }
+  if (this.isTruncated !== null && this.isTruncated !== undefined) {
+    output.writeFieldBegin('isTruncated', Thrift.Type.BOOL, 9);
+    output.writeBool(this.isTruncated);
+    output.writeFieldEnd();
+  }
+  if (this.title !== null && this.title !== undefined) {
+    output.writeFieldBegin('title', Thrift.Type.STRING, 10);
+    output.writeString(this.title);
+    output.writeFieldEnd();
+  }
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 11);
+    output.writeString(this.applicationId);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Organization = function(args) {
+  this.organizationId = null;
+  this.organizationName = null;
+  this.website = null;
+  this.logo = null;
+  this.techStack = null;
+  this.owners = null;
+  this.organizationEmail = null;
+  this.stockMarketSymbol = null;
+  this.logoLink = null;
+  this.industry = null;
+  this.tier = 0;
+  this.organizationDescription = null;
+  this.githubProfile = null;
+  if (args) {
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.organizationName !== undefined && args.organizationName !== null) {
+      this.organizationName = args.organizationName;
+    }
+    if (args.website !== undefined && args.website !== null) {
+      this.website = args.website;
+    }
+    if (args.logo !== undefined && args.logo !== null) {
+      this.logo = new Image(args.logo);
+    }
+    if (args.techStack !== undefined && args.techStack !== null) {
+      this.techStack = args.techStack;
+    }
+    if (args.owners !== undefined && args.owners !== null) {
+      this.owners = Thrift.copyList(args.owners, [null]);
+    }
+    if (args.organizationEmail !== undefined && args.organizationEmail !== null) {
+      this.organizationEmail = args.organizationEmail;
+    }
+    if (args.stockMarketSymbol !== undefined && args.stockMarketSymbol !== null) {
+      this.stockMarketSymbol = args.stockMarketSymbol;
+    }
+    if (args.logoLink !== undefined && args.logoLink !== null) {
+      this.logoLink = args.logoLink;
+    }
+    if (args.industry !== undefined && args.industry !== null) {
+      this.industry = args.industry;
+    }
+    if (args.tier !== undefined && args.tier !== null) {
+      this.tier = args.tier;
+    }
+    if (args.organizationDescription !== undefined && args.organizationDescription !== null) {
+      this.organizationDescription = args.organizationDescription;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
+    }
+  }
+};
+Organization.prototype = {};
+Organization.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.website = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.logo = new Image();
+        this.logo.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRING) {
+        this.techStack = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.owners = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.owners.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationEmail = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.stockMarketSymbol = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.logoLink = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.I32) {
+        this.industry = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.I32) {
+        this.tier = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationDescription = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 13:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Organization.prototype.write = function(output) {
+  output.writeStructBegin('Organization');
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 1);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.organizationName !== null && this.organizationName !== undefined) {
+    output.writeFieldBegin('organizationName', Thrift.Type.STRING, 2);
+    output.writeString(this.organizationName);
+    output.writeFieldEnd();
+  }
+  if (this.website !== null && this.website !== undefined) {
+    output.writeFieldBegin('website', Thrift.Type.STRING, 3);
+    output.writeString(this.website);
+    output.writeFieldEnd();
+  }
+  if (this.logo !== null && this.logo !== undefined) {
+    output.writeFieldBegin('logo', Thrift.Type.STRUCT, 4);
+    this.logo.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.techStack !== null && this.techStack !== undefined) {
+    output.writeFieldBegin('techStack', Thrift.Type.STRING, 5);
+    output.writeString(this.techStack);
+    output.writeFieldEnd();
+  }
+  if (this.owners !== null && this.owners !== undefined) {
+    output.writeFieldBegin('owners', Thrift.Type.LIST, 6);
+    output.writeListBegin(Thrift.Type.STRING, this.owners.length);
+    for (var iter7 in this.owners)
+    {
+      if (this.owners.hasOwnProperty(iter7))
+      {
+        iter7 = this.owners[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.organizationEmail !== null && this.organizationEmail !== undefined) {
+    output.writeFieldBegin('organizationEmail', Thrift.Type.STRING, 7);
+    output.writeString(this.organizationEmail);
+    output.writeFieldEnd();
+  }
+  if (this.stockMarketSymbol !== null && this.stockMarketSymbol !== undefined) {
+    output.writeFieldBegin('stockMarketSymbol', Thrift.Type.STRING, 8);
+    output.writeString(this.stockMarketSymbol);
+    output.writeFieldEnd();
+  }
+  if (this.logoLink !== null && this.logoLink !== undefined) {
+    output.writeFieldBegin('logoLink', Thrift.Type.STRING, 9);
+    output.writeString(this.logoLink);
+    output.writeFieldEnd();
+  }
+  if (this.industry !== null && this.industry !== undefined) {
+    output.writeFieldBegin('industry', Thrift.Type.I32, 10);
+    output.writeI32(this.industry);
+    output.writeFieldEnd();
+  }
+  if (this.tier !== null && this.tier !== undefined) {
+    output.writeFieldBegin('tier', Thrift.Type.I32, 11);
+    output.writeI32(this.tier);
+    output.writeFieldEnd();
+  }
+  if (this.organizationDescription !== null && this.organizationDescription !== undefined) {
+    output.writeFieldBegin('organizationDescription', Thrift.Type.STRING, 12);
+    output.writeString(this.organizationDescription);
+    output.writeFieldEnd();
+  }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 13);
+    output.writeString(this.githubProfile);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 User = function(args) {
   this.email = null;
   this.userId = null;
@@ -453,6 +763,12 @@ User = function(args) {
   this.roles = [1];
   this.profileImage = null;
   this.profileImageLink = null;
+  this.githubProfile = null;
+  this.firstName = null;
+  this.middleName = null;
+  this.lastName = null;
+  this.birthdate = null;
+  this.timeUserJoined = null;
   if (args) {
     if (args.email !== undefined && args.email !== null) {
       this.email = args.email;
@@ -471,6 +787,24 @@ User = function(args) {
     }
     if (args.profileImageLink !== undefined && args.profileImageLink !== null) {
       this.profileImageLink = args.profileImageLink;
+    }
+    if (args.githubProfile !== undefined && args.githubProfile !== null) {
+      this.githubProfile = args.githubProfile;
+    }
+    if (args.firstName !== undefined && args.firstName !== null) {
+      this.firstName = args.firstName;
+    }
+    if (args.middleName !== undefined && args.middleName !== null) {
+      this.middleName = args.middleName;
+    }
+    if (args.lastName !== undefined && args.lastName !== null) {
+      this.lastName = args.lastName;
+    }
+    if (args.birthdate !== undefined && args.birthdate !== null) {
+      this.birthdate = args.birthdate;
+    }
+    if (args.timeUserJoined !== undefined && args.timeUserJoined !== null) {
+      this.timeUserJoined = args.timeUserJoined;
     }
   }
 };
@@ -511,18 +845,18 @@ User.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.SET) {
-        var _size0 = 0;
-        var _rtmp34;
+        var _size8 = 0;
+        var _rtmp312;
         this.roles = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readSetBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        var _etype11 = 0;
+        _rtmp312 = input.readSetBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
         {
-          var elem6 = null;
-          elem6 = input.readI32().value;
-          this.roles.push(elem6);
+          var elem14 = null;
+          elem14 = input.readI32().value;
+          this.roles.push(elem14);
         }
         input.readSetEnd();
       } else {
@@ -540,6 +874,48 @@ User.prototype.read = function(input) {
       case 6:
       if (ftype == Thrift.Type.STRING) {
         this.profileImageLink = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRING) {
+        this.githubProfile = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 8:
+      if (ftype == Thrift.Type.STRING) {
+        this.firstName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 9:
+      if (ftype == Thrift.Type.STRING) {
+        this.middleName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.lastName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.I64) {
+        this.birthdate = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.I64) {
+        this.timeUserJoined = input.readI64().value;
       } else {
         input.skip(ftype);
       }
@@ -573,12 +949,12 @@ User.prototype.write = function(output) {
   if (this.roles !== null && this.roles !== undefined) {
     output.writeFieldBegin('roles', Thrift.Type.SET, 4);
     output.writeSetBegin(Thrift.Type.I32, this.roles.length);
-    for (var iter7 in this.roles)
+    for (var iter15 in this.roles)
     {
-      if (this.roles.hasOwnProperty(iter7))
+      if (this.roles.hasOwnProperty(iter15))
       {
-        iter7 = this.roles[iter7];
-        output.writeI32(iter7);
+        iter15 = this.roles[iter15];
+        output.writeI32(iter15);
       }
     }
     output.writeSetEnd();
@@ -594,6 +970,36 @@ User.prototype.write = function(output) {
     output.writeString(this.profileImageLink);
     output.writeFieldEnd();
   }
+  if (this.githubProfile !== null && this.githubProfile !== undefined) {
+    output.writeFieldBegin('githubProfile', Thrift.Type.STRING, 7);
+    output.writeString(this.githubProfile);
+    output.writeFieldEnd();
+  }
+  if (this.firstName !== null && this.firstName !== undefined) {
+    output.writeFieldBegin('firstName', Thrift.Type.STRING, 8);
+    output.writeString(this.firstName);
+    output.writeFieldEnd();
+  }
+  if (this.middleName !== null && this.middleName !== undefined) {
+    output.writeFieldBegin('middleName', Thrift.Type.STRING, 9);
+    output.writeString(this.middleName);
+    output.writeFieldEnd();
+  }
+  if (this.lastName !== null && this.lastName !== undefined) {
+    output.writeFieldBegin('lastName', Thrift.Type.STRING, 10);
+    output.writeString(this.lastName);
+    output.writeFieldEnd();
+  }
+  if (this.birthdate !== null && this.birthdate !== undefined) {
+    output.writeFieldBegin('birthdate', Thrift.Type.I64, 11);
+    output.writeI64(this.birthdate);
+    output.writeFieldEnd();
+  }
+  if (this.timeUserJoined !== null && this.timeUserJoined !== undefined) {
+    output.writeFieldBegin('timeUserJoined', Thrift.Type.I64, 12);
+    output.writeI64(this.timeUserJoined);
+    output.writeFieldEnd();
+  }
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -603,15 +1009,19 @@ Application = function(args) {
   this.owners = null;
   this.timeOfProvisioning = null;
   this.name = null;
-  this.id = null;
+  this.applicationId = null;
   this.totalMessagesSent = null;
   this.icon = null;
   this.programmingLanguage = null;
-  this.subscribers = [];
+  this.followers = [];
   this.applicationDescription = null;
+  this.organizationId = null;
+  this.tier = 0;
+  this.timeOfTokenExpiration = null;
+  this.applicationIconMediaId = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
-      this.owners = Thrift.copyList(args.owners, [User]);
+      this.owners = Thrift.copyList(args.owners, [null]);
     }
     if (args.timeOfProvisioning !== undefined && args.timeOfProvisioning !== null) {
       this.timeOfProvisioning = args.timeOfProvisioning;
@@ -619,8 +1029,8 @@ Application = function(args) {
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
     }
-    if (args.id !== undefined && args.id !== null) {
-      this.id = args.id;
+    if (args.applicationId !== undefined && args.applicationId !== null) {
+      this.applicationId = args.applicationId;
     }
     if (args.totalMessagesSent !== undefined && args.totalMessagesSent !== null) {
       this.totalMessagesSent = args.totalMessagesSent;
@@ -631,11 +1041,23 @@ Application = function(args) {
     if (args.programmingLanguage !== undefined && args.programmingLanguage !== null) {
       this.programmingLanguage = args.programmingLanguage;
     }
-    if (args.subscribers !== undefined && args.subscribers !== null) {
-      this.subscribers = Thrift.copyList(args.subscribers, [User]);
+    if (args.followers !== undefined && args.followers !== null) {
+      this.followers = Thrift.copyList(args.followers, [null]);
     }
     if (args.applicationDescription !== undefined && args.applicationDescription !== null) {
       this.applicationDescription = args.applicationDescription;
+    }
+    if (args.organizationId !== undefined && args.organizationId !== null) {
+      this.organizationId = args.organizationId;
+    }
+    if (args.tier !== undefined && args.tier !== null) {
+      this.tier = args.tier;
+    }
+    if (args.timeOfTokenExpiration !== undefined && args.timeOfTokenExpiration !== null) {
+      this.timeOfTokenExpiration = args.timeOfTokenExpiration;
+    }
+    if (args.applicationIconMediaId !== undefined && args.applicationIconMediaId !== null) {
+      this.applicationIconMediaId = args.applicationIconMediaId;
     }
   }
 };
@@ -655,19 +1077,18 @@ Application.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.SET) {
-        var _size8 = 0;
-        var _rtmp312;
+        var _size16 = 0;
+        var _rtmp320;
         this.owners = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readSetBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        var _etype19 = 0;
+        _rtmp320 = input.readSetBegin();
+        _etype19 = _rtmp320.etype;
+        _size16 = _rtmp320.size;
+        for (var _i21 = 0; _i21 < _size16; ++_i21)
         {
-          var elem14 = null;
-          elem14 = new User();
-          elem14.read(input);
-          this.owners.push(elem14);
+          var elem22 = null;
+          elem22 = input.readString().value;
+          this.owners.push(elem22);
         }
         input.readSetEnd();
       } else {
@@ -690,7 +1111,7 @@ Application.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRING) {
-        this.id = input.readString().value;
+        this.applicationId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -719,19 +1140,18 @@ Application.prototype.read = function(input) {
       break;
       case 8:
       if (ftype == Thrift.Type.SET) {
-        var _size15 = 0;
-        var _rtmp319;
-        this.subscribers = [];
-        var _etype18 = 0;
-        _rtmp319 = input.readSetBegin();
-        _etype18 = _rtmp319.etype;
-        _size15 = _rtmp319.size;
-        for (var _i20 = 0; _i20 < _size15; ++_i20)
+        var _size23 = 0;
+        var _rtmp327;
+        this.followers = [];
+        var _etype26 = 0;
+        _rtmp327 = input.readSetBegin();
+        _etype26 = _rtmp327.etype;
+        _size23 = _rtmp327.size;
+        for (var _i28 = 0; _i28 < _size23; ++_i28)
         {
-          var elem21 = null;
-          elem21 = new User();
-          elem21.read(input);
-          this.subscribers.push(elem21);
+          var elem29 = null;
+          elem29 = input.readString().value;
+          this.followers.push(elem29);
         }
         input.readSetEnd();
       } else {
@@ -741,6 +1161,34 @@ Application.prototype.read = function(input) {
       case 9:
       if (ftype == Thrift.Type.STRING) {
         this.applicationDescription = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 10:
+      if (ftype == Thrift.Type.STRING) {
+        this.organizationId = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 11:
+      if (ftype == Thrift.Type.I32) {
+        this.tier = input.readI32().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 12:
+      if (ftype == Thrift.Type.I64) {
+        this.timeOfTokenExpiration = input.readI64().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 13:
+      if (ftype == Thrift.Type.STRING) {
+        this.applicationIconMediaId = input.readString().value;
       } else {
         input.skip(ftype);
       }
@@ -758,13 +1206,13 @@ Application.prototype.write = function(output) {
   output.writeStructBegin('Application');
   if (this.owners !== null && this.owners !== undefined) {
     output.writeFieldBegin('owners', Thrift.Type.SET, 1);
-    output.writeSetBegin(Thrift.Type.STRUCT, this.owners.length);
-    for (var iter22 in this.owners)
+    output.writeSetBegin(Thrift.Type.STRING, this.owners.length);
+    for (var iter30 in this.owners)
     {
-      if (this.owners.hasOwnProperty(iter22))
+      if (this.owners.hasOwnProperty(iter30))
       {
-        iter22 = this.owners[iter22];
-        iter22.write(output);
+        iter30 = this.owners[iter30];
+        output.writeString(iter30);
       }
     }
     output.writeSetEnd();
@@ -780,9 +1228,9 @@ Application.prototype.write = function(output) {
     output.writeString(this.name);
     output.writeFieldEnd();
   }
-  if (this.id !== null && this.id !== undefined) {
-    output.writeFieldBegin('id', Thrift.Type.STRING, 4);
-    output.writeString(this.id);
+  if (this.applicationId !== null && this.applicationId !== undefined) {
+    output.writeFieldBegin('applicationId', Thrift.Type.STRING, 4);
+    output.writeString(this.applicationId);
     output.writeFieldEnd();
   }
   if (this.totalMessagesSent !== null && this.totalMessagesSent !== undefined) {
@@ -800,15 +1248,15 @@ Application.prototype.write = function(output) {
     output.writeI32(this.programmingLanguage);
     output.writeFieldEnd();
   }
-  if (this.subscribers !== null && this.subscribers !== undefined) {
-    output.writeFieldBegin('subscribers', Thrift.Type.SET, 8);
-    output.writeSetBegin(Thrift.Type.STRUCT, this.subscribers.length);
-    for (var iter23 in this.subscribers)
+  if (this.followers !== null && this.followers !== undefined) {
+    output.writeFieldBegin('followers', Thrift.Type.SET, 8);
+    output.writeSetBegin(Thrift.Type.STRING, this.followers.length);
+    for (var iter31 in this.followers)
     {
-      if (this.subscribers.hasOwnProperty(iter23))
+      if (this.followers.hasOwnProperty(iter31))
       {
-        iter23 = this.subscribers[iter23];
-        iter23.write(output);
+        iter31 = this.followers[iter31];
+        output.writeString(iter31);
       }
     }
     output.writeSetEnd();
@@ -817,6 +1265,26 @@ Application.prototype.write = function(output) {
   if (this.applicationDescription !== null && this.applicationDescription !== undefined) {
     output.writeFieldBegin('applicationDescription', Thrift.Type.STRING, 9);
     output.writeString(this.applicationDescription);
+    output.writeFieldEnd();
+  }
+  if (this.organizationId !== null && this.organizationId !== undefined) {
+    output.writeFieldBegin('organizationId', Thrift.Type.STRING, 10);
+    output.writeString(this.organizationId);
+    output.writeFieldEnd();
+  }
+  if (this.tier !== null && this.tier !== undefined) {
+    output.writeFieldBegin('tier', Thrift.Type.I32, 11);
+    output.writeI32(this.tier);
+    output.writeFieldEnd();
+  }
+  if (this.timeOfTokenExpiration !== null && this.timeOfTokenExpiration !== undefined) {
+    output.writeFieldBegin('timeOfTokenExpiration', Thrift.Type.I64, 12);
+    output.writeI64(this.timeOfTokenExpiration);
+    output.writeFieldEnd();
+  }
+  if (this.applicationIconMediaId !== null && this.applicationIconMediaId !== undefined) {
+    output.writeFieldBegin('applicationIconMediaId', Thrift.Type.STRING, 13);
+    output.writeString(this.applicationIconMediaId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

@@ -220,6 +220,7 @@ code { line-height: 20px; }
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
+<a href="#Typedef_uuid">uuid</a><br/>
 </td>
 <td><code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
 <code><a href="#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
@@ -228,7 +229,7 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>9009</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.banana.aroma.tech", port = 9009 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.beta.banana.aroma.tech", port = 9009 }</code></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7009</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.banana.aroma.tech", port = 7009 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.beta.banana.aroma.tech", port = 7009 }</code></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
 </div>
@@ -237,6 +238,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_uuid">Banana.uuid</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_AuthenticationToken">Typedef: AuthenticationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_AuthenticationToken">Authentication.AuthenticationToken</a></code></p>
@@ -291,7 +295,7 @@ code { line-height: 20px; }
 <tr><td>3</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_BananaChannel">BananaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_SendNotificationResponse">Struct: SendNotificationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>notificationId</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>notificationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/></div><hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_NotificationService">Service: NotificationService</h3>
 The Notification  Service sends events and Notifications to the proper channels.

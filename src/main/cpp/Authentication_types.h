@@ -35,6 +35,8 @@ typedef  ::aroma::banana::thrift::long long;
 
 typedef  ::aroma::banana::thrift::timestamp timestamp;
 
+typedef  ::aroma::banana::thrift::uuid uuid;
+
 class ApplicationToken;
 
 class UserToken;
@@ -70,7 +72,7 @@ class ApplicationToken {
   std::string tokenId;
   std::string organization;
   timestamp timeOfExpiration;
-  std::string applicationId;
+  uuid applicationId;
   std::string applicationName;
 
   _ApplicationToken__isset __isset;
@@ -81,7 +83,7 @@ class ApplicationToken {
 
   void __set_timeOfExpiration(const timestamp val);
 
-  void __set_applicationId(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_applicationName(const std::string& val);
 
@@ -126,12 +128,13 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationToken& obj)
 }
 
 typedef struct _UserToken__isset {
-  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false) {}
+  _UserToken__isset() : tokenId(false), timeOfExpiration(false), organization(false), isOauthToken(true), oauthProvider(false), userId(false) {}
   bool tokenId :1;
   bool timeOfExpiration :1;
   bool organization :1;
   bool isOauthToken :1;
   bool oauthProvider :1;
+  bool userId :1;
 } _UserToken__isset;
 
 class UserToken {
@@ -139,7 +142,7 @@ class UserToken {
 
   UserToken(const UserToken&);
   UserToken& operator=(const UserToken&);
-  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider() {
+  UserToken() : tokenId(), timeOfExpiration(0), organization(), isOauthToken(false), oauthProvider(), userId() {
   }
 
   virtual ~UserToken() throw();
@@ -148,6 +151,7 @@ class UserToken {
   std::string organization;
   bool isOauthToken;
   std::string oauthProvider;
+  uuid userId;
 
   _UserToken__isset __isset;
 
@@ -160,6 +164,8 @@ class UserToken {
   void __set_isOauthToken(const bool val);
 
   void __set_oauthProvider(const std::string& val);
+
+  void __set_userId(const uuid& val);
 
   bool operator == (const UserToken & rhs) const
   {
@@ -178,6 +184,8 @@ class UserToken {
     if (__isset.oauthProvider != rhs.__isset.oauthProvider)
       return false;
     else if (__isset.oauthProvider && !(oauthProvider == rhs.oauthProvider))
+      return false;
+    if (!(userId == rhs.userId))
       return false;
     return true;
   }
@@ -377,9 +385,9 @@ inline std::ostream& operator<<(std::ostream& out, const AromaAccount& obj)
 }
 
 typedef struct _Credentials__isset {
-  _Credentials__isset() : githubToken(false), aromaAccount(false) {}
+  _Credentials__isset() : githubToken(false), aromaPassword(false) {}
   bool githubToken :1;
-  bool aromaAccount :1;
+  bool aromaPassword :1;
 } _Credentials__isset;
 
 class Credentials {
@@ -392,19 +400,19 @@ class Credentials {
 
   virtual ~Credentials() throw();
   GithubToken githubToken;
-  AromaAccount aromaAccount;
+  Password aromaPassword;
 
   _Credentials__isset __isset;
 
   void __set_githubToken(const GithubToken& val);
 
-  void __set_aromaAccount(const AromaAccount& val);
+  void __set_aromaPassword(const Password& val);
 
   bool operator == (const Credentials & rhs) const
   {
     if (!(githubToken == rhs.githubToken))
       return false;
-    if (!(aromaAccount == rhs.aromaAccount))
+    if (!(aromaPassword == rhs.aromaPassword))
       return false;
     return true;
   }
@@ -429,9 +437,15 @@ inline std::ostream& operator<<(std::ostream& out, const Credentials& obj)
 }
 
 typedef struct _AuthenticationToken__isset {
-  _AuthenticationToken__isset() : applicationToken(false), userToken(false) {}
-  bool applicationToken :1;
-  bool userToken :1;
+  _AuthenticationToken__isset() : tokenId(false), ownerId(false), timeOfCreation(false), timeOfExpiration(false), tokenType(false), organizationId(false), ownerName(false), organizationName(false) {}
+  bool tokenId :1;
+  bool ownerId :1;
+  bool timeOfCreation :1;
+  bool timeOfExpiration :1;
+  bool tokenType :1;
+  bool organizationId :1;
+  bool ownerName :1;
+  bool organizationName :1;
 } _AuthenticationToken__isset;
 
 class AuthenticationToken {
@@ -439,24 +453,54 @@ class AuthenticationToken {
 
   AuthenticationToken(const AuthenticationToken&);
   AuthenticationToken& operator=(const AuthenticationToken&);
-  AuthenticationToken() {
+  AuthenticationToken() : tokenId(), ownerId(), timeOfCreation(0), timeOfExpiration(0), tokenType((TokenType::type)0), organizationId(), ownerName(), organizationName() {
   }
 
   virtual ~AuthenticationToken() throw();
-  ApplicationToken applicationToken;
-  UserToken userToken;
+  std::string tokenId;
+  uuid ownerId;
+  timestamp timeOfCreation;
+  timestamp timeOfExpiration;
+  TokenType::type tokenType;
+  uuid organizationId;
+  std::string ownerName;
+  std::string organizationName;
 
   _AuthenticationToken__isset __isset;
 
-  void __set_applicationToken(const ApplicationToken& val);
+  void __set_tokenId(const std::string& val);
 
-  void __set_userToken(const UserToken& val);
+  void __set_ownerId(const uuid& val);
+
+  void __set_timeOfCreation(const timestamp val);
+
+  void __set_timeOfExpiration(const timestamp val);
+
+  void __set_tokenType(const TokenType::type val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_ownerName(const std::string& val);
+
+  void __set_organizationName(const std::string& val);
 
   bool operator == (const AuthenticationToken & rhs) const
   {
-    if (!(applicationToken == rhs.applicationToken))
+    if (!(tokenId == rhs.tokenId))
       return false;
-    if (!(userToken == rhs.userToken))
+    if (!(ownerId == rhs.ownerId))
+      return false;
+    if (!(timeOfCreation == rhs.timeOfCreation))
+      return false;
+    if (!(timeOfExpiration == rhs.timeOfExpiration))
+      return false;
+    if (!(tokenType == rhs.tokenType))
+      return false;
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (!(ownerName == rhs.ownerName))
+      return false;
+    if (!(organizationName == rhs.organizationName))
       return false;
     return true;
   }

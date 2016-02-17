@@ -37,15 +37,25 @@
   return self;
 }
 
-- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken message: (NSString *) message urgency: (ApplicationService_Urgency) urgency
+- (id) initWithApplicationToken: (ApplicationService_ApplicationToken) applicationToken body: (NSString *) body urgency: (ApplicationService_Urgency) urgency timeOfMessage: (ApplicationService_timestamp) timeOfMessage title: (NSString *) title hostname: (NSString *) hostname macAddress: (NSString *) macAddress ipv4Address: (NSString *) ipv4Address
 {
   self = [super init];
   __applicationToken = [applicationToken retain_stub];
   __applicationToken_isset = YES;
-  __message = [message retain_stub];
-  __message_isset = YES;
+  __body = [body retain_stub];
+  __body_isset = YES;
   __urgency = urgency;
   __urgency_isset = YES;
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+  __title = [title retain_stub];
+  __title_isset = YES;
+  __hostname = [hostname retain_stub];
+  __hostname_isset = YES;
+  __macAddress = [macAddress retain_stub];
+  __macAddress_isset = YES;
+  __ipv4Address = [ipv4Address retain_stub];
+  __ipv4Address_isset = YES;
   return self;
 }
 
@@ -57,15 +67,40 @@
     __applicationToken = [[decoder decodeObjectForKey: @"applicationToken"] retain_stub];
     __applicationToken_isset = YES;
   }
-  if ([decoder containsValueForKey: @"message"])
+  if ([decoder containsValueForKey: @"body"])
   {
-    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
-    __message_isset = YES;
+    __body = [[decoder decodeObjectForKey: @"body"] retain_stub];
+    __body_isset = YES;
   }
   if ([decoder containsValueForKey: @"urgency"])
   {
     __urgency = [decoder decodeIntForKey: @"urgency"];
     __urgency_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"timeOfMessage"])
+  {
+    __timeOfMessage = [decoder decodeInt64ForKey: @"timeOfMessage"];
+    __timeOfMessage_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"title"])
+  {
+    __title = [[decoder decodeObjectForKey: @"title"] retain_stub];
+    __title_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"hostname"])
+  {
+    __hostname = [[decoder decodeObjectForKey: @"hostname"] retain_stub];
+    __hostname_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"macAddress"])
+  {
+    __macAddress = [[decoder decodeObjectForKey: @"macAddress"] retain_stub];
+    __macAddress_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ipv4Address"])
+  {
+    __ipv4Address = [[decoder decodeObjectForKey: @"ipv4Address"] retain_stub];
+    __ipv4Address_isset = YES;
   }
   return self;
 }
@@ -76,13 +111,33 @@
   {
     [encoder encodeObject: __applicationToken forKey: @"applicationToken"];
   }
-  if (__message_isset)
+  if (__body_isset)
   {
-    [encoder encodeObject: __message forKey: @"message"];
+    [encoder encodeObject: __body forKey: @"body"];
   }
   if (__urgency_isset)
   {
     [encoder encodeInt: __urgency forKey: @"urgency"];
+  }
+  if (__timeOfMessage_isset)
+  {
+    [encoder encodeInt64: __timeOfMessage forKey: @"timeOfMessage"];
+  }
+  if (__title_isset)
+  {
+    [encoder encodeObject: __title forKey: @"title"];
+  }
+  if (__hostname_isset)
+  {
+    [encoder encodeObject: __hostname forKey: @"hostname"];
+  }
+  if (__macAddress_isset)
+  {
+    [encoder encodeObject: __macAddress forKey: @"macAddress"];
+  }
+  if (__ipv4Address_isset)
+  {
+    [encoder encodeObject: __ipv4Address forKey: @"ipv4Address"];
   }
 }
 
@@ -94,15 +149,40 @@
   {
     hash = (hash * 31) ^ [__applicationToken hash];
   }
-  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
-  if (__message_isset)
+  hash = (hash * 31) ^ __body_isset ? 2654435761 : 0;
+  if (__body_isset)
   {
-    hash = (hash * 31) ^ [__message hash];
+    hash = (hash * 31) ^ [__body hash];
   }
   hash = (hash * 31) ^ __urgency_isset ? 2654435761 : 0;
   if (__urgency_isset)
   {
     hash = (hash * 31) ^ [@(__urgency) hash];
+  }
+  hash = (hash * 31) ^ __timeOfMessage_isset ? 2654435761 : 0;
+  if (__timeOfMessage_isset)
+  {
+    hash = (hash * 31) ^ [@(__timeOfMessage) hash];
+  }
+  hash = (hash * 31) ^ __title_isset ? 2654435761 : 0;
+  if (__title_isset)
+  {
+    hash = (hash * 31) ^ [__title hash];
+  }
+  hash = (hash * 31) ^ __hostname_isset ? 2654435761 : 0;
+  if (__hostname_isset)
+  {
+    hash = (hash * 31) ^ [__hostname hash];
+  }
+  hash = (hash * 31) ^ __macAddress_isset ? 2654435761 : 0;
+  if (__macAddress_isset)
+  {
+    hash = (hash * 31) ^ [__macAddress hash];
+  }
+  hash = (hash * 31) ^ __ipv4Address_isset ? 2654435761 : 0;
+  if (__ipv4Address_isset)
+  {
+    hash = (hash * 31) ^ [__ipv4Address hash];
   }
   return hash;
 }
@@ -120,12 +200,32 @@
       (__applicationToken_isset && ((__applicationToken || other->__applicationToken) && ![__applicationToken isEqual:other->__applicationToken]))) {
     return NO;
   }
-  if ((__message_isset != other->__message_isset) ||
-      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+  if ((__body_isset != other->__body_isset) ||
+      (__body_isset && ((__body || other->__body) && ![__body isEqual:other->__body]))) {
     return NO;
   }
   if ((__urgency_isset != other->__urgency_isset) ||
       (__urgency_isset && (__urgency != other->__urgency))) {
+    return NO;
+  }
+  if ((__timeOfMessage_isset != other->__timeOfMessage_isset) ||
+      (__timeOfMessage_isset && (__timeOfMessage != other->__timeOfMessage))) {
+    return NO;
+  }
+  if ((__title_isset != other->__title_isset) ||
+      (__title_isset && ((__title || other->__title) && ![__title isEqual:other->__title]))) {
+    return NO;
+  }
+  if ((__hostname_isset != other->__hostname_isset) ||
+      (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
+    return NO;
+  }
+  if ((__macAddress_isset != other->__macAddress_isset) ||
+      (__macAddress_isset && ((__macAddress || other->__macAddress) && ![__macAddress isEqual:other->__macAddress]))) {
+    return NO;
+  }
+  if ((__ipv4Address_isset != other->__ipv4Address_isset) ||
+      (__ipv4Address_isset && ((__ipv4Address || other->__ipv4Address) && ![__ipv4Address isEqual:other->__ipv4Address]))) {
     return NO;
   }
   return YES;
@@ -134,7 +234,11 @@
 - (void) dealloc
 {
   [__applicationToken release_stub];
-  [__message release_stub];
+  [__body release_stub];
+  [__title release_stub];
+  [__hostname release_stub];
+  [__macAddress release_stub];
+  [__ipv4Address release_stub];
   [super dealloc_stub];
 }
 
@@ -159,25 +263,25 @@
   __applicationToken_isset = NO;
 }
 
-- (NSString *) message {
-  return [[__message retain_stub] autorelease_stub];
+- (NSString *) body {
+  return [[__body retain_stub] autorelease_stub];
 }
 
-- (void) setMessage: (NSString *) message {
-  [message retain_stub];
-  [__message release_stub];
-  __message = message;
-  __message_isset = YES;
+- (void) setBody: (NSString *) body {
+  [body retain_stub];
+  [__body release_stub];
+  __body = body;
+  __body_isset = YES;
 }
 
-- (BOOL) messageIsSet {
-  return __message_isset;
+- (BOOL) bodyIsSet {
+  return __body_isset;
 }
 
-- (void) unsetMessage {
-  [__message release_stub];
-  __message = nil;
-  __message_isset = NO;
+- (void) unsetBody {
+  [__body release_stub];
+  __body = nil;
+  __body_isset = NO;
 }
 
 - (int) urgency {
@@ -195,6 +299,107 @@
 
 - (void) unsetUrgency {
   __urgency_isset = NO;
+}
+
+- (int64_t) timeOfMessage {
+  return __timeOfMessage;
+}
+
+- (void) setTimeOfMessage: (int64_t) timeOfMessage {
+  __timeOfMessage = timeOfMessage;
+  __timeOfMessage_isset = YES;
+}
+
+- (BOOL) timeOfMessageIsSet {
+  return __timeOfMessage_isset;
+}
+
+- (void) unsetTimeOfMessage {
+  __timeOfMessage_isset = NO;
+}
+
+- (NSString *) title {
+  return [[__title retain_stub] autorelease_stub];
+}
+
+- (void) setTitle: (NSString *) title {
+  [title retain_stub];
+  [__title release_stub];
+  __title = title;
+  __title_isset = YES;
+}
+
+- (BOOL) titleIsSet {
+  return __title_isset;
+}
+
+- (void) unsetTitle {
+  [__title release_stub];
+  __title = nil;
+  __title_isset = NO;
+}
+
+- (NSString *) hostname {
+  return [[__hostname retain_stub] autorelease_stub];
+}
+
+- (void) setHostname: (NSString *) hostname {
+  [hostname retain_stub];
+  [__hostname release_stub];
+  __hostname = hostname;
+  __hostname_isset = YES;
+}
+
+- (BOOL) hostnameIsSet {
+  return __hostname_isset;
+}
+
+- (void) unsetHostname {
+  [__hostname release_stub];
+  __hostname = nil;
+  __hostname_isset = NO;
+}
+
+- (NSString *) macAddress {
+  return [[__macAddress retain_stub] autorelease_stub];
+}
+
+- (void) setMacAddress: (NSString *) macAddress {
+  [macAddress retain_stub];
+  [__macAddress release_stub];
+  __macAddress = macAddress;
+  __macAddress_isset = YES;
+}
+
+- (BOOL) macAddressIsSet {
+  return __macAddress_isset;
+}
+
+- (void) unsetMacAddress {
+  [__macAddress release_stub];
+  __macAddress = nil;
+  __macAddress_isset = NO;
+}
+
+- (NSString *) ipv4Address {
+  return [[__ipv4Address retain_stub] autorelease_stub];
+}
+
+- (void) setIpv4Address: (NSString *) ipv4Address {
+  [ipv4Address retain_stub];
+  [__ipv4Address release_stub];
+  __ipv4Address = ipv4Address;
+  __ipv4Address_isset = YES;
+}
+
+- (BOOL) ipv4AddressIsSet {
+  return __ipv4Address_isset;
+}
+
+- (void) unsetIpv4Address {
+  [__ipv4Address release_stub];
+  __ipv4Address = nil;
+  __ipv4Address_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -225,7 +430,7 @@
       case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setMessage: fieldValue];
+          [self setBody: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -234,6 +439,46 @@
         if (fieldType == TType_I32) {
           int fieldValue = [inProtocol readI32];
           [self setUrgency: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_I64) {
+          int64_t fieldValue = [inProtocol readI64];
+          [self setTimeOfMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setTitle: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setHostname: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMacAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 8:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setIpv4Address: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -256,10 +501,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__message_isset) {
-    if (__message != nil) {
-      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
-      [outProtocol writeString: __message];
+  if (__body_isset) {
+    if (__body != nil) {
+      [outProtocol writeFieldBeginWithName: @"body" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __body];
       [outProtocol writeFieldEnd];
     }
   }
@@ -267,6 +512,39 @@
     [outProtocol writeFieldBeginWithName: @"urgency" type: TType_I32 fieldID: 3];
     [outProtocol writeI32: __urgency];
     [outProtocol writeFieldEnd];
+  }
+  if (__timeOfMessage_isset) {
+    [outProtocol writeFieldBeginWithName: @"timeOfMessage" type: TType_I64 fieldID: 4];
+    [outProtocol writeI64: __timeOfMessage];
+    [outProtocol writeFieldEnd];
+  }
+  if (__title_isset) {
+    if (__title != nil) {
+      [outProtocol writeFieldBeginWithName: @"title" type: TType_STRING fieldID: 5];
+      [outProtocol writeString: __title];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__hostname_isset) {
+    if (__hostname != nil) {
+      [outProtocol writeFieldBeginWithName: @"hostname" type: TType_STRING fieldID: 6];
+      [outProtocol writeString: __hostname];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__macAddress_isset) {
+    if (__macAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"macAddress" type: TType_STRING fieldID: 7];
+      [outProtocol writeString: __macAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__ipv4Address_isset) {
+    if (__ipv4Address != nil) {
+      [outProtocol writeFieldBeginWithName: @"ipv4Address" type: TType_STRING fieldID: 8];
+      [outProtocol writeString: __ipv4Address];
+      [outProtocol writeFieldEnd];
+    }
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -280,10 +558,20 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"ApplicationService_SendMessageRequest("];
   [ms appendString: @"applicationToken:"];
   [ms appendFormat: @"%@", __applicationToken];
-  [ms appendString: @",message:"];
-  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",body:"];
+  [ms appendFormat: @"\"%@\"", __body];
   [ms appendString: @",urgency:"];
   [ms appendFormat: @"%i", __urgency];
+  [ms appendString: @",timeOfMessage:"];
+  [ms appendFormat: @"%qi", __timeOfMessage];
+  [ms appendString: @",title:"];
+  [ms appendFormat: @"\"%@\"", __title];
+  [ms appendString: @",hostname:"];
+  [ms appendFormat: @"\"%@\"", __hostname];
+  [ms appendString: @",macAddress:"];
+  [ms appendFormat: @"\"%@\"", __macAddress];
+  [ms appendString: @",ipv4Address:"];
+  [ms appendFormat: @"\"%@\"", __ipv4Address];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
@@ -440,7 +728,7 @@
 
 @end
 
-static ApplicationService_int ApplicationService_SERVICE_PORT = 7005;
+static ApplicationService_int ApplicationService_SERVICE_PORT = 7002;
 static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
 static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 
@@ -448,12 +736,12 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 + (void) initialize {
   ApplicationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
-  [ApplicationService_PRODUCTION_ENDPOINT setPort:7005];
+  [ApplicationService_PRODUCTION_ENDPOINT setPort:7002];
 
 ;
   ApplicationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [ApplicationService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
-  [ApplicationService_BETA_ENDPOINT setPort:7005];
+  [ApplicationService_BETA_ENDPOINT setPort:7002];
 
 ;
 }

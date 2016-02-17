@@ -19,15 +19,37 @@
 
 namespace aroma { namespace banana { namespace thrift {
 
-struct Urgency {
+struct ImageType {
   enum type {
-    LOW = 1,
-    MEDIUM = 2,
-    HIGH = 3
+    JPEG = 1,
+    PNG = 2
   };
 };
 
-extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
+extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
+
+struct Industry {
+  enum type {
+    BANKING = 0,
+    ECOMMERCE = 1,
+    EDUCATION = 2,
+    GOVERMENT = 3,
+    MARKETING = 4,
+    RETAIL = 5,
+    TECH = 6
+  };
+};
+
+extern const std::map<int, const char*> _Industry_VALUES_TO_NAMES;
+
+struct Tier {
+  enum type {
+    FREE = 0,
+    PAID = 1
+  };
+};
+
+extern const std::map<int, const char*> _Tier_VALUES_TO_NAMES;
 
 struct TimeUnit {
   enum type {
@@ -41,27 +63,6 @@ struct TimeUnit {
 };
 
 extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
-
-struct ImageType {
-  enum type {
-    JPEG = 1,
-    PNG = 2
-  };
-};
-
-extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
-
-struct Role {
-  enum type {
-    DEVELOPER = 1,
-    OPERATIONS = 2,
-    MANAGER = 3,
-    PRODUCT = 4,
-    QA = 5
-  };
-};
-
-extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
 
 struct ProgrammingLanguage {
   enum type {
@@ -84,13 +85,35 @@ struct ProgrammingLanguage {
 
 extern const std::map<int, const char*> _ProgrammingLanguage_VALUES_TO_NAMES;
 
+struct Role {
+  enum type {
+    DEVELOPER = 1,
+    OPERATIONS = 2,
+    MANAGER = 3,
+    PRODUCT = 4,
+    QA = 5
+  };
+};
+
+extern const std::map<int, const char*> _Role_VALUES_TO_NAMES;
+
+struct Urgency {
+  enum type {
+    LOW = 1,
+    MEDIUM = 2,
+    HIGH = 3
+  };
+};
+
+extern const std::map<int, const char*> _Urgency_VALUES_TO_NAMES;
+
 typedef int32_t int;
 
 typedef int64_t long;
 
 typedef int64_t timestamp;
 
-class Message;
+typedef std::string uuid;
 
 class LengthOfTime;
 
@@ -98,115 +121,15 @@ class Dimension;
 
 class Image;
 
+class Message;
+
+class Organization;
+
 class User;
 
 class Application;
 
 class ServiceAnnouncement;
-
-typedef struct _Message__isset {
-  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true) {}
-  bool messageId :1;
-  bool body :1;
-  bool urgency :1;
-  bool timeOfCreation :1;
-  bool timeMessageReceived :1;
-  bool applicationName :1;
-  bool hostname :1;
-  bool macAddress :1;
-  bool isTruncated :1;
-} _Message__isset;
-
-class Message {
- public:
-
-  Message(const Message&);
-  Message& operator=(const Message&);
-  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false) {
-    urgency = (Urgency::type)1;
-
-  }
-
-  virtual ~Message() throw();
-  std::string messageId;
-  std::string body;
-  Urgency::type urgency;
-  timestamp timeOfCreation;
-  timestamp timeMessageReceived;
-  std::string applicationName;
-  std::string hostname;
-  std::string macAddress;
-  bool isTruncated;
-
-  _Message__isset __isset;
-
-  void __set_messageId(const std::string& val);
-
-  void __set_body(const std::string& val);
-
-  void __set_urgency(const Urgency::type val);
-
-  void __set_timeOfCreation(const timestamp val);
-
-  void __set_timeMessageReceived(const timestamp val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_hostname(const std::string& val);
-
-  void __set_macAddress(const std::string& val);
-
-  void __set_isTruncated(const bool val);
-
-  bool operator == (const Message & rhs) const
-  {
-    if (!(messageId == rhs.messageId))
-      return false;
-    if (__isset.body != rhs.__isset.body)
-      return false;
-    else if (__isset.body && !(body == rhs.body))
-      return false;
-    if (!(urgency == rhs.urgency))
-      return false;
-    if (!(timeOfCreation == rhs.timeOfCreation))
-      return false;
-    if (!(timeMessageReceived == rhs.timeMessageReceived))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (__isset.hostname != rhs.__isset.hostname)
-      return false;
-    else if (__isset.hostname && !(hostname == rhs.hostname))
-      return false;
-    if (__isset.macAddress != rhs.__isset.macAddress)
-      return false;
-    else if (__isset.macAddress && !(macAddress == rhs.macAddress))
-      return false;
-    if (__isset.isTruncated != rhs.__isset.isTruncated)
-      return false;
-    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
-      return false;
-    return true;
-  }
-  bool operator != (const Message &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const Message & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(Message &a, Message &b);
-
-inline std::ostream& operator<<(std::ostream& out, const Message& obj)
-{
-  obj.printTo(out);
-  return out;
-}
 
 
 class LengthOfTime {
@@ -356,14 +279,278 @@ inline std::ostream& operator<<(std::ostream& out, const Image& obj)
   return out;
 }
 
+typedef struct _Message__isset {
+  _Message__isset() : messageId(false), body(false), urgency(true), timeOfCreation(false), timeMessageReceived(false), applicationName(false), hostname(false), macAddress(false), isTruncated(true), title(false), applicationId(false) {}
+  bool messageId :1;
+  bool body :1;
+  bool urgency :1;
+  bool timeOfCreation :1;
+  bool timeMessageReceived :1;
+  bool applicationName :1;
+  bool hostname :1;
+  bool macAddress :1;
+  bool isTruncated :1;
+  bool title :1;
+  bool applicationId :1;
+} _Message__isset;
+
+class Message {
+ public:
+
+  Message(const Message&);
+  Message& operator=(const Message&);
+  Message() : messageId(), body(), urgency((Urgency::type)1), timeOfCreation(0), timeMessageReceived(0), applicationName(), hostname(), macAddress(), isTruncated(false), title(), applicationId() {
+    urgency = (Urgency::type)1;
+
+  }
+
+  virtual ~Message() throw();
+  uuid messageId;
+  std::string body;
+  Urgency::type urgency;
+  timestamp timeOfCreation;
+  timestamp timeMessageReceived;
+  std::string applicationName;
+  std::string hostname;
+  std::string macAddress;
+  bool isTruncated;
+  std::string title;
+  uuid applicationId;
+
+  _Message__isset __isset;
+
+  void __set_messageId(const uuid& val);
+
+  void __set_body(const std::string& val);
+
+  void __set_urgency(const Urgency::type val);
+
+  void __set_timeOfCreation(const timestamp val);
+
+  void __set_timeMessageReceived(const timestamp val);
+
+  void __set_applicationName(const std::string& val);
+
+  void __set_hostname(const std::string& val);
+
+  void __set_macAddress(const std::string& val);
+
+  void __set_isTruncated(const bool val);
+
+  void __set_title(const std::string& val);
+
+  void __set_applicationId(const uuid& val);
+
+  bool operator == (const Message & rhs) const
+  {
+    if (!(messageId == rhs.messageId))
+      return false;
+    if (__isset.body != rhs.__isset.body)
+      return false;
+    else if (__isset.body && !(body == rhs.body))
+      return false;
+    if (!(urgency == rhs.urgency))
+      return false;
+    if (!(timeOfCreation == rhs.timeOfCreation))
+      return false;
+    if (!(timeMessageReceived == rhs.timeMessageReceived))
+      return false;
+    if (!(applicationName == rhs.applicationName))
+      return false;
+    if (__isset.hostname != rhs.__isset.hostname)
+      return false;
+    else if (__isset.hostname && !(hostname == rhs.hostname))
+      return false;
+    if (__isset.macAddress != rhs.__isset.macAddress)
+      return false;
+    else if (__isset.macAddress && !(macAddress == rhs.macAddress))
+      return false;
+    if (__isset.isTruncated != rhs.__isset.isTruncated)
+      return false;
+    else if (__isset.isTruncated && !(isTruncated == rhs.isTruncated))
+      return false;
+    if (!(title == rhs.title))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    return true;
+  }
+  bool operator != (const Message &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Message & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Message &a, Message &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Message& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Organization__isset {
+  _Organization__isset() : organizationId(false), organizationName(false), website(false), logo(false), techStack(false), owners(false), organizationEmail(false), stockMarketSymbol(false), logoLink(false), industry(false), tier(true), organizationDescription(false), githubProfile(false) {}
+  bool organizationId :1;
+  bool organizationName :1;
+  bool website :1;
+  bool logo :1;
+  bool techStack :1;
+  bool owners :1;
+  bool organizationEmail :1;
+  bool stockMarketSymbol :1;
+  bool logoLink :1;
+  bool industry :1;
+  bool tier :1;
+  bool organizationDescription :1;
+  bool githubProfile :1;
+} _Organization__isset;
+
+class Organization {
+ public:
+
+  Organization(const Organization&);
+  Organization& operator=(const Organization&);
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)0), organizationDescription(), githubProfile() {
+    tier = (Tier::type)0;
+
+  }
+
+  virtual ~Organization() throw();
+  uuid organizationId;
+  std::string organizationName;
+  std::string website;
+  Image logo;
+  std::string techStack;
+  std::vector<std::string>  owners;
+  std::string organizationEmail;
+  std::string stockMarketSymbol;
+  std::string logoLink;
+  Industry::type industry;
+  Tier::type tier;
+  std::string organizationDescription;
+  std::string githubProfile;
+
+  _Organization__isset __isset;
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_organizationName(const std::string& val);
+
+  void __set_website(const std::string& val);
+
+  void __set_logo(const Image& val);
+
+  void __set_techStack(const std::string& val);
+
+  void __set_owners(const std::vector<std::string> & val);
+
+  void __set_organizationEmail(const std::string& val);
+
+  void __set_stockMarketSymbol(const std::string& val);
+
+  void __set_logoLink(const std::string& val);
+
+  void __set_industry(const Industry::type val);
+
+  void __set_tier(const Tier::type val);
+
+  void __set_organizationDescription(const std::string& val);
+
+  void __set_githubProfile(const std::string& val);
+
+  bool operator == (const Organization & rhs) const
+  {
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (!(organizationName == rhs.organizationName))
+      return false;
+    if (__isset.website != rhs.__isset.website)
+      return false;
+    else if (__isset.website && !(website == rhs.website))
+      return false;
+    if (__isset.logo != rhs.__isset.logo)
+      return false;
+    else if (__isset.logo && !(logo == rhs.logo))
+      return false;
+    if (__isset.techStack != rhs.__isset.techStack)
+      return false;
+    else if (__isset.techStack && !(techStack == rhs.techStack))
+      return false;
+    if (__isset.owners != rhs.__isset.owners)
+      return false;
+    else if (__isset.owners && !(owners == rhs.owners))
+      return false;
+    if (__isset.organizationEmail != rhs.__isset.organizationEmail)
+      return false;
+    else if (__isset.organizationEmail && !(organizationEmail == rhs.organizationEmail))
+      return false;
+    if (__isset.stockMarketSymbol != rhs.__isset.stockMarketSymbol)
+      return false;
+    else if (__isset.stockMarketSymbol && !(stockMarketSymbol == rhs.stockMarketSymbol))
+      return false;
+    if (__isset.logoLink != rhs.__isset.logoLink)
+      return false;
+    else if (__isset.logoLink && !(logoLink == rhs.logoLink))
+      return false;
+    if (__isset.industry != rhs.__isset.industry)
+      return false;
+    else if (__isset.industry && !(industry == rhs.industry))
+      return false;
+    if (__isset.tier != rhs.__isset.tier)
+      return false;
+    else if (__isset.tier && !(tier == rhs.tier))
+      return false;
+    if (__isset.organizationDescription != rhs.__isset.organizationDescription)
+      return false;
+    else if (__isset.organizationDescription && !(organizationDescription == rhs.organizationDescription))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
+      return false;
+    return true;
+  }
+  bool operator != (const Organization &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Organization & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Organization &a, Organization &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Organization& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _User__isset {
-  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false) {}
+  _User__isset() : email(false), userId(false), name(false), roles(true), profileImage(false), profileImageLink(false), githubProfile(false), firstName(false), middleName(false), lastName(false), birthdate(false), timeUserJoined(false) {}
   bool email :1;
   bool userId :1;
   bool name :1;
   bool roles :1;
   bool profileImage :1;
   bool profileImageLink :1;
+  bool githubProfile :1;
+  bool firstName :1;
+  bool middleName :1;
+  bool lastName :1;
+  bool birthdate :1;
+  bool timeUserJoined :1;
 } _User__isset;
 
 class User {
@@ -371,24 +558,30 @@ class User {
 
   User(const User&);
   User& operator=(const User&);
-  User() : email(), userId(), name(), profileImageLink() {
+  User() : email(), userId(), name(), profileImageLink(), githubProfile(), firstName(), middleName(), lastName(), birthdate(0), timeUserJoined(0) {
     roles.insert((Role::type)1);
 
   }
 
   virtual ~User() throw();
   std::string email;
-  std::string userId;
+  uuid userId;
   std::string name;
   std::set<Role::type>  roles;
   Image profileImage;
-  std::string profileImageLink;
+  uuid profileImageLink;
+  std::string githubProfile;
+  std::string firstName;
+  std::string middleName;
+  std::string lastName;
+  timestamp birthdate;
+  timestamp timeUserJoined;
 
   _User__isset __isset;
 
   void __set_email(const std::string& val);
 
-  void __set_userId(const std::string& val);
+  void __set_userId(const uuid& val);
 
   void __set_name(const std::string& val);
 
@@ -396,7 +589,19 @@ class User {
 
   void __set_profileImage(const Image& val);
 
-  void __set_profileImageLink(const std::string& val);
+  void __set_profileImageLink(const uuid& val);
+
+  void __set_githubProfile(const std::string& val);
+
+  void __set_firstName(const std::string& val);
+
+  void __set_middleName(const std::string& val);
+
+  void __set_lastName(const std::string& val);
+
+  void __set_birthdate(const timestamp val);
+
+  void __set_timeUserJoined(const timestamp val);
 
   bool operator == (const User & rhs) const
   {
@@ -417,6 +622,30 @@ class User {
     if (__isset.profileImageLink != rhs.__isset.profileImageLink)
       return false;
     else if (__isset.profileImageLink && !(profileImageLink == rhs.profileImageLink))
+      return false;
+    if (__isset.githubProfile != rhs.__isset.githubProfile)
+      return false;
+    else if (__isset.githubProfile && !(githubProfile == rhs.githubProfile))
+      return false;
+    if (__isset.firstName != rhs.__isset.firstName)
+      return false;
+    else if (__isset.firstName && !(firstName == rhs.firstName))
+      return false;
+    if (__isset.middleName != rhs.__isset.middleName)
+      return false;
+    else if (__isset.middleName && !(middleName == rhs.middleName))
+      return false;
+    if (__isset.lastName != rhs.__isset.lastName)
+      return false;
+    else if (__isset.lastName && !(lastName == rhs.lastName))
+      return false;
+    if (__isset.birthdate != rhs.__isset.birthdate)
+      return false;
+    else if (__isset.birthdate && !(birthdate == rhs.birthdate))
+      return false;
+    if (__isset.timeUserJoined != rhs.__isset.timeUserJoined)
+      return false;
+    else if (__isset.timeUserJoined && !(timeUserJoined == rhs.timeUserJoined))
       return false;
     return true;
   }
@@ -441,16 +670,20 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), id(false), totalMessagesSent(false), icon(false), programmingLanguage(false), subscribers(true), applicationDescription(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false), applicationIconMediaId(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
-  bool id :1;
+  bool applicationId :1;
   bool totalMessagesSent :1;
   bool icon :1;
   bool programmingLanguage :1;
-  bool subscribers :1;
+  bool followers :1;
   bool applicationDescription :1;
+  bool organizationId :1;
+  bool tier :1;
+  bool timeOfTokenExpiration :1;
+  bool applicationIconMediaId :1;
 } _Application__isset;
 
 class Application {
@@ -458,30 +691,36 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), id(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription() {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0), timeOfTokenExpiration(0), applicationIconMediaId() {
+
+    tier = (Tier::type)0;
 
   }
 
   virtual ~Application() throw();
-  std::set<User>  owners;
+  std::set<uuid>  owners;
   timestamp timeOfProvisioning;
   std::string name;
-  std::string id;
+  uuid applicationId;
   long totalMessagesSent;
   Image icon;
   ProgrammingLanguage::type programmingLanguage;
-  std::set<User>  subscribers;
+  std::set<uuid>  followers;
   std::string applicationDescription;
+  uuid organizationId;
+  Tier::type tier;
+  timestamp timeOfTokenExpiration;
+  uuid applicationIconMediaId;
 
   _Application__isset __isset;
 
-  void __set_owners(const std::set<User> & val);
+  void __set_owners(const std::set<uuid> & val);
 
   void __set_timeOfProvisioning(const timestamp val);
 
   void __set_name(const std::string& val);
 
-  void __set_id(const std::string& val);
+  void __set_applicationId(const uuid& val);
 
   void __set_totalMessagesSent(const long val);
 
@@ -489,9 +728,17 @@ class Application {
 
   void __set_programmingLanguage(const ProgrammingLanguage::type val);
 
-  void __set_subscribers(const std::set<User> & val);
+  void __set_followers(const std::set<uuid> & val);
 
   void __set_applicationDescription(const std::string& val);
+
+  void __set_organizationId(const uuid& val);
+
+  void __set_tier(const Tier::type val);
+
+  void __set_timeOfTokenExpiration(const timestamp val);
+
+  void __set_applicationIconMediaId(const uuid& val);
 
   bool operator == (const Application & rhs) const
   {
@@ -501,7 +748,7 @@ class Application {
       return false;
     if (!(name == rhs.name))
       return false;
-    if (!(id == rhs.id))
+    if (!(applicationId == rhs.applicationId))
       return false;
     if (!(totalMessagesSent == rhs.totalMessagesSent))
       return false;
@@ -513,11 +760,23 @@ class Application {
       return false;
     else if (__isset.programmingLanguage && !(programmingLanguage == rhs.programmingLanguage))
       return false;
-    if (__isset.subscribers != rhs.__isset.subscribers)
+    if (__isset.followers != rhs.__isset.followers)
       return false;
-    else if (__isset.subscribers && !(subscribers == rhs.subscribers))
+    else if (__isset.followers && !(followers == rhs.followers))
       return false;
     if (!(applicationDescription == rhs.applicationDescription))
+      return false;
+    if (!(organizationId == rhs.organizationId))
+      return false;
+    if (__isset.tier != rhs.__isset.tier)
+      return false;
+    else if (__isset.tier && !(tier == rhs.tier))
+      return false;
+    if (!(timeOfTokenExpiration == rhs.timeOfTokenExpiration))
+      return false;
+    if (__isset.applicationIconMediaId != rhs.__isset.applicationIconMediaId)
+      return false;
+    else if (__isset.applicationIconMediaId && !(applicationIconMediaId == rhs.applicationIconMediaId))
       return false;
     return true;
   }
@@ -560,7 +819,7 @@ class ServiceAnnouncement {
   virtual ~ServiceAnnouncement() throw();
   std::string message;
   Urgency::type importance;
-  std::string id;
+  uuid id;
   timestamp timeOfExpiration;
 
   _ServiceAnnouncement__isset __isset;
@@ -569,7 +828,7 @@ class ServiceAnnouncement {
 
   void __set_importance(const Urgency::type val);
 
-  void __set_id(const std::string& val);
+  void __set_id(const uuid& val);
 
   void __set_timeOfExpiration(const timestamp val);
 
