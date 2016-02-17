@@ -1,10 +1,10 @@
 Banana Service Thrift
 ==============================================
 
-[<img src="https://raw.githubusercontent.com/AromaTech/banana/develop/Graphics/Logo.png" width="300">](https://github.com/AromaTech/banana)
+[<img src="https://raw.githubusercontent.com/RedRoma/banana/develop/Graphics/Logo.png" width="300">](https://github.com/RedRoma/banana)
 
 <!--
-[<p align="center"><img src="https://raw.githubusercontent.com/AromaTech/banana/develop/Graphics/Logo.png" width="300"></p>](https://github.com/AromaTech/banana)
+[<p align="center"><img src="https://raw.githubusercontent.com/RedRoma/banana/develop/Graphics/Logo.png" width="300"></p>](https://github.com/RedRoma/banana)
 -->
 
 [![Build Status](http://jenkins.sirwellington.tech/job/Banana%20Thrift/badge/icon)](http://jenkins.sirwellington.tech/job/Banana%20Thrift/)
@@ -20,7 +20,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma.banana</groupId>
 	<artifactId>banana-thrift</artifactId>
-	<version>1.5</version>
+	<version>1.6</version>
 </dependency>
 ```
 
@@ -38,7 +38,7 @@ To use, simply add the following maven dependency.
 <dependency>
 	<groupId>tech.aroma.banana</groupId>
 	<artifactId>banana-thrift</artifactId>
-	<version>1.6-SNAPSHOT</version>
+	<version>1.7-SNAPSHOT</version>
 </dependency>
 ```
 
