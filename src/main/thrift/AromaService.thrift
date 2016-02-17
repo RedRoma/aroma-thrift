@@ -67,7 +67,7 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef Exceptions.UserDoesNotExistException UserDoesNotExistException
 
 /** Defines the Version of the Banana Service API of this specification. */
-const double API_VERSION = 1.6;
+const double API_VERSION = 1.7;
 
 const int SERVICE_PORT = 7010;
 
