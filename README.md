@@ -1,15 +1,15 @@
-Banana Service Thrift
+Aroma Thrift
 ==============================================
 
-[<img src="https://raw.githubusercontent.com/RedRoma/banana/develop/Graphics/Logo.png" width="300">](https://github.com/RedRoma/banana)
+[<img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300">](https://github.com/RedRoma/aroma)
 
 <!--
-[<p align="center"><img src="https://raw.githubusercontent.com/RedRoma/banana/develop/Graphics/Logo.png" width="300"></p>](https://github.com/RedRoma/banana)
+[<p align="center"><img src="https://raw.githubusercontent.com/RedRoma/aroma/develop/Graphics/Logo.png" width="300"></p>](https://github.com/RedRoma/aroma)
 -->
 
-[![Build Status](http://jenkins.sirwellington.tech/job/Banana%20Thrift/badge/icon)](http://jenkins.sirwellington.tech/job/Banana%20Thrift/)
+[![Build Status](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/badge/icon)](http://jenkins.sirwellington.tech/job/Aroma%20Thrift/)
 
-The Model and Service Definitions for the Banana Service defined in Thrift
+The Model and Service Definitions for Aroma defined in Thrift
 
 # Download
 
@@ -18,8 +18,8 @@ To use, simply add the following maven dependency.
 ## Release
 ```xml
 <dependency>
-	<groupId>tech.aroma.banana</groupId>
-	<artifactId>banana-thrift</artifactId>
+	<groupId>tech.aroma</groupId>
+	<artifactId>aroma-thrift</artifactId>
 	<version>1.6</version>
 </dependency>
 ```
@@ -36,13 +36,13 @@ To use, simply add the following maven dependency.
 
 ```xml
 <dependency>
-	<groupId>tech.aroma.banana</groupId>
-	<artifactId>banana-thrift</artifactId>
+	<groupId>tech.aroma</groupId>
+	<artifactId>aroma-thrift</artifactId>
 	<version>1.7-SNAPSHOT</version>
 </dependency>
 ```
 
-# [Javadocs](http://www.javadoc.io/doc/tech.aroma.banana/banana-thrift/)
+# [Javadocs](http://www.javadoc.io/doc/tech.aroma/aroma-thrift/)
 
 # Requirements
 
