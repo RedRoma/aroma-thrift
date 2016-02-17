@@ -27,6 +27,8 @@ typedef Aroma_long AromaReactions_long;
 
 typedef Aroma_timestamp AromaReactions_timestamp;
 
+typedef Aroma_uuid AromaReactions_uuid;
+
 @interface AromaReactions_MatcherAll : NSObject <TBase, NSCoding> {
 }
 
@@ -272,6 +274,302 @@ typedef Aroma_timestamp AromaReactions_timestamp;
 - (void) setHostnameEquals: (AromaReactions_MatcherHostnameEquals *) hostnameEquals;
 #endif
 - (BOOL) hostnameEqualsIsSet;
+
+@end
+
+@interface AromaReactions_ActionPostToSlackChannel : NSObject <TBase, NSCoding> {
+  NSString * __slackChannel;
+  BOOL __includeBody;
+
+  BOOL __slackChannel_isset;
+  BOOL __includeBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=slackChannel, setter=setSlackChannel:) NSString * slackChannel;
+@property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+#endif
+
+- (id) init;
+- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) slackChannel;
+- (void) setSlackChannel: (NSString *) slackChannel;
+#endif
+- (BOOL) slackChannelIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) includeBody;
+- (void) setIncludeBody: (BOOL) includeBody;
+#endif
+- (BOOL) includeBodyIsSet;
+
+@end
+
+@interface AromaReactions_ActionPostToSlackUser : NSObject <TBase, NSCoding> {
+  NSString * __slackUsername;
+  BOOL __includeBody;
+
+  BOOL __slackUsername_isset;
+  BOOL __includeBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) NSString * slackUsername;
+@property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+#endif
+
+- (id) init;
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) slackUsername;
+- (void) setSlackUsername: (NSString *) slackUsername;
+#endif
+- (BOOL) slackUsernameIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) includeBody;
+- (void) setIncludeBody: (BOOL) includeBody;
+#endif
+- (BOOL) includeBodyIsSet;
+
+@end
+
+@interface AromaReactions_ActionSendEmail : NSObject <TBase, NSCoding> {
+  NSString * __emailAddress;
+  BOOL __includeBody;
+
+  BOOL __emailAddress_isset;
+  BOOL __includeBody_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
+@property (nonatomic, getter=includeBody, setter=setIncludeBody:) BOOL includeBody;
+#endif
+
+- (id) init;
+- (id) initWithEmailAddress: (NSString *) emailAddress includeBody: (BOOL) includeBody;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) emailAddress;
+- (void) setEmailAddress: (NSString *) emailAddress;
+#endif
+- (BOOL) emailAddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) includeBody;
+- (void) setIncludeBody: (BOOL) includeBody;
+#endif
+- (BOOL) includeBodyIsSet;
+
+@end
+
+@interface AromaReactions_ActionIgnore : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaReactions_ActionDeleteMessage : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@interface AromaReactions_ActionRespondToCode : NSObject <TBase, NSCoding> {
+  NSString * __messageToSend;
+
+  BOOL __messageToSend_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=messageToSend, setter=setMessageToSend:) NSString * messageToSend;
+#endif
+
+- (id) init;
+- (id) initWithMessageToSend: (NSString *) messageToSend;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) messageToSend;
+- (void) setMessageToSend: (NSString *) messageToSend;
+#endif
+- (BOOL) messageToSendIsSet;
+
+@end
+
+@interface AromaReactions_ActionForwardToUsers : NSObject <TBase, NSCoding> {
+  NSMutableArray * __userIds;
+
+  BOOL __userIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=userIds, setter=setUserIds:) NSMutableArray * userIds;
+#endif
+
+- (id) init;
+- (id) initWithUserIds: (NSMutableArray *) userIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) userIds;
+- (void) setUserIds: (NSMutableArray *) userIds;
+#endif
+- (BOOL) userIdsIsSet;
+
+@end
+
+@interface AromaReactions_Action : NSObject <TBase, NSCoding> {
+  AromaReactions_ActionPostToSlackChannel * __postToSlackChannel;
+  AromaReactions_ActionPostToSlackUser * __postToSlackUser;
+  AromaReactions_ActionSendEmail * __sendEmail;
+  AromaReactions_ActionIgnore * __ignore;
+  AromaReactions_ActionDeleteMessage * __deleteMessage;
+  AromaReactions_ActionRespondToCode * __respondToCode;
+  AromaReactions_ActionForwardToUsers * __forwardToUsers;
+
+  BOOL __postToSlackChannel_isset;
+  BOOL __postToSlackUser_isset;
+  BOOL __sendEmail_isset;
+  BOOL __ignore_isset;
+  BOOL __deleteMessage_isset;
+  BOOL __respondToCode_isset;
+  BOOL __forwardToUsers_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=postToSlackChannel, setter=setPostToSlackChannel:) AromaReactions_ActionPostToSlackChannel * postToSlackChannel;
+@property (nonatomic, retain, getter=postToSlackUser, setter=setPostToSlackUser:) AromaReactions_ActionPostToSlackUser * postToSlackUser;
+@property (nonatomic, retain, getter=sendEmail, setter=setSendEmail:) AromaReactions_ActionSendEmail * sendEmail;
+@property (nonatomic, retain, getter=ignore, setter=setIgnore:) AromaReactions_ActionIgnore * ignore;
+@property (nonatomic, retain, getter=deleteMessage, setter=setDeleteMessage:) AromaReactions_ActionDeleteMessage * deleteMessage;
+@property (nonatomic, retain, getter=respondToCode, setter=setRespondToCode:) AromaReactions_ActionRespondToCode * respondToCode;
+@property (nonatomic, retain, getter=forwardToUsers, setter=setForwardToUsers:) AromaReactions_ActionForwardToUsers * forwardToUsers;
+#endif
+
+- (id) init;
+- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail ignore: (AromaReactions_ActionIgnore *) ignore deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel;
+- (void) setPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel;
+#endif
+- (BOOL) postToSlackChannelIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionPostToSlackUser *) postToSlackUser;
+- (void) setPostToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser;
+#endif
+- (BOOL) postToSlackUserIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionSendEmail *) sendEmail;
+- (void) setSendEmail: (AromaReactions_ActionSendEmail *) sendEmail;
+#endif
+- (BOOL) sendEmailIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionIgnore *) ignore;
+- (void) setIgnore: (AromaReactions_ActionIgnore *) ignore;
+#endif
+- (BOOL) ignoreIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionDeleteMessage *) deleteMessage;
+- (void) setDeleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage;
+#endif
+- (BOOL) deleteMessageIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionRespondToCode *) respondToCode;
+- (void) setRespondToCode: (AromaReactions_ActionRespondToCode *) respondToCode;
+#endif
+- (BOOL) respondToCodeIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+- (void) setForwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers;
+#endif
+- (BOOL) forwardToUsersIsSet;
+
+@end
+
+@interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
+  AromaReactions_Matcher * __matcher;
+  AromaReactions_Reaction __reaction;
+
+  BOOL __matcher_isset;
+  BOOL __reaction_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_Matcher * matcher;
+@property (nonatomic, retain, getter=reaction, setter=setReaction:) AromaReactions_Reaction reaction;
+#endif
+
+- (id) init;
+- (id) initWithMatcher: (AromaReactions_Matcher *) matcher reaction: (AromaReactions_Reaction) reaction;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_Matcher *) matcher;
+- (void) setMatcher: (AromaReactions_Matcher *) matcher;
+#endif
+- (BOOL) matcherIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaReactions_Reaction) reaction;
+- (void) setReaction: (AromaReactions_Reaction) reaction;
+#endif
+- (BOOL) reactionIsSet;
 
 @end
 

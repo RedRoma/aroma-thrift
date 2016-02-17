@@ -799,4 +799,956 @@ void Matcher::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+ActionPostToSlackChannel::~ActionPostToSlackChannel() throw() {
+}
+
+
+void ActionPostToSlackChannel::__set_slackChannel(const std::string& val) {
+  this->slackChannel = val;
+}
+
+void ActionPostToSlackChannel::__set_includeBody(const bool val) {
+  this->includeBody = val;
+__isset.includeBody = true;
+}
+
+uint32_t ActionPostToSlackChannel::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->slackChannel);
+          this->__isset.slackChannel = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->includeBody);
+          this->__isset.includeBody = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionPostToSlackChannel::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionPostToSlackChannel");
+
+  xfer += oprot->writeFieldBegin("slackChannel", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->slackChannel);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.includeBody) {
+    xfer += oprot->writeFieldBegin("includeBody", ::apache::thrift::protocol::T_BOOL, 2);
+    xfer += oprot->writeBool(this->includeBody);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionPostToSlackChannel &a, ActionPostToSlackChannel &b) {
+  using ::std::swap;
+  swap(a.slackChannel, b.slackChannel);
+  swap(a.includeBody, b.includeBody);
+  swap(a.__isset, b.__isset);
+}
+
+ActionPostToSlackChannel::ActionPostToSlackChannel(const ActionPostToSlackChannel& other17) {
+  slackChannel = other17.slackChannel;
+  includeBody = other17.includeBody;
+  __isset = other17.__isset;
+}
+ActionPostToSlackChannel& ActionPostToSlackChannel::operator=(const ActionPostToSlackChannel& other18) {
+  slackChannel = other18.slackChannel;
+  includeBody = other18.includeBody;
+  __isset = other18.__isset;
+  return *this;
+}
+void ActionPostToSlackChannel::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionPostToSlackChannel(";
+  out << "slackChannel=" << to_string(slackChannel);
+  out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ")";
+}
+
+
+ActionPostToSlackUser::~ActionPostToSlackUser() throw() {
+}
+
+
+void ActionPostToSlackUser::__set_slackUsername(const std::string& val) {
+  this->slackUsername = val;
+}
+
+void ActionPostToSlackUser::__set_includeBody(const bool val) {
+  this->includeBody = val;
+__isset.includeBody = true;
+}
+
+uint32_t ActionPostToSlackUser::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->slackUsername);
+          this->__isset.slackUsername = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->includeBody);
+          this->__isset.includeBody = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionPostToSlackUser::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionPostToSlackUser");
+
+  xfer += oprot->writeFieldBegin("slackUsername", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->slackUsername);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.includeBody) {
+    xfer += oprot->writeFieldBegin("includeBody", ::apache::thrift::protocol::T_BOOL, 2);
+    xfer += oprot->writeBool(this->includeBody);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionPostToSlackUser &a, ActionPostToSlackUser &b) {
+  using ::std::swap;
+  swap(a.slackUsername, b.slackUsername);
+  swap(a.includeBody, b.includeBody);
+  swap(a.__isset, b.__isset);
+}
+
+ActionPostToSlackUser::ActionPostToSlackUser(const ActionPostToSlackUser& other19) {
+  slackUsername = other19.slackUsername;
+  includeBody = other19.includeBody;
+  __isset = other19.__isset;
+}
+ActionPostToSlackUser& ActionPostToSlackUser::operator=(const ActionPostToSlackUser& other20) {
+  slackUsername = other20.slackUsername;
+  includeBody = other20.includeBody;
+  __isset = other20.__isset;
+  return *this;
+}
+void ActionPostToSlackUser::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionPostToSlackUser(";
+  out << "slackUsername=" << to_string(slackUsername);
+  out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ")";
+}
+
+
+ActionSendEmail::~ActionSendEmail() throw() {
+}
+
+
+void ActionSendEmail::__set_emailAddress(const std::string& val) {
+  this->emailAddress = val;
+}
+
+void ActionSendEmail::__set_includeBody(const bool val) {
+  this->includeBody = val;
+__isset.includeBody = true;
+}
+
+uint32_t ActionSendEmail::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->emailAddress);
+          this->__isset.emailAddress = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->includeBody);
+          this->__isset.includeBody = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionSendEmail::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionSendEmail");
+
+  xfer += oprot->writeFieldBegin("emailAddress", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->emailAddress);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.includeBody) {
+    xfer += oprot->writeFieldBegin("includeBody", ::apache::thrift::protocol::T_BOOL, 2);
+    xfer += oprot->writeBool(this->includeBody);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionSendEmail &a, ActionSendEmail &b) {
+  using ::std::swap;
+  swap(a.emailAddress, b.emailAddress);
+  swap(a.includeBody, b.includeBody);
+  swap(a.__isset, b.__isset);
+}
+
+ActionSendEmail::ActionSendEmail(const ActionSendEmail& other21) {
+  emailAddress = other21.emailAddress;
+  includeBody = other21.includeBody;
+  __isset = other21.__isset;
+}
+ActionSendEmail& ActionSendEmail::operator=(const ActionSendEmail& other22) {
+  emailAddress = other22.emailAddress;
+  includeBody = other22.includeBody;
+  __isset = other22.__isset;
+  return *this;
+}
+void ActionSendEmail::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionSendEmail(";
+  out << "emailAddress=" << to_string(emailAddress);
+  out << ", " << "includeBody="; (__isset.includeBody ? (out << to_string(includeBody)) : (out << "<null>"));
+  out << ")";
+}
+
+
+ActionIgnore::~ActionIgnore() throw() {
+}
+
+
+uint32_t ActionIgnore::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionIgnore::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionIgnore");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionIgnore &a, ActionIgnore &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+ActionIgnore::ActionIgnore(const ActionIgnore& other23) {
+  (void) other23;
+}
+ActionIgnore& ActionIgnore::operator=(const ActionIgnore& other24) {
+  (void) other24;
+  return *this;
+}
+void ActionIgnore::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionIgnore(";
+  out << ")";
+}
+
+
+ActionDeleteMessage::~ActionDeleteMessage() throw() {
+}
+
+
+uint32_t ActionDeleteMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionDeleteMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionDeleteMessage");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionDeleteMessage &a, ActionDeleteMessage &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+ActionDeleteMessage::ActionDeleteMessage(const ActionDeleteMessage& other25) {
+  (void) other25;
+}
+ActionDeleteMessage& ActionDeleteMessage::operator=(const ActionDeleteMessage& other26) {
+  (void) other26;
+  return *this;
+}
+void ActionDeleteMessage::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionDeleteMessage(";
+  out << ")";
+}
+
+
+ActionRespondToCode::~ActionRespondToCode() throw() {
+}
+
+
+void ActionRespondToCode::__set_messageToSend(const std::string& val) {
+  this->messageToSend = val;
+}
+
+uint32_t ActionRespondToCode::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->messageToSend);
+          this->__isset.messageToSend = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionRespondToCode::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionRespondToCode");
+
+  xfer += oprot->writeFieldBegin("messageToSend", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->messageToSend);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionRespondToCode &a, ActionRespondToCode &b) {
+  using ::std::swap;
+  swap(a.messageToSend, b.messageToSend);
+  swap(a.__isset, b.__isset);
+}
+
+ActionRespondToCode::ActionRespondToCode(const ActionRespondToCode& other27) {
+  messageToSend = other27.messageToSend;
+  __isset = other27.__isset;
+}
+ActionRespondToCode& ActionRespondToCode::operator=(const ActionRespondToCode& other28) {
+  messageToSend = other28.messageToSend;
+  __isset = other28.__isset;
+  return *this;
+}
+void ActionRespondToCode::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionRespondToCode(";
+  out << "messageToSend=" << to_string(messageToSend);
+  out << ")";
+}
+
+
+ActionForwardToUsers::~ActionForwardToUsers() throw() {
+}
+
+
+void ActionForwardToUsers::__set_userIds(const std::vector<uuid> & val) {
+  this->userIds = val;
+}
+
+uint32_t ActionForwardToUsers::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->userIds.clear();
+            uint32_t _size29;
+            ::apache::thrift::protocol::TType _etype32;
+            xfer += iprot->readListBegin(_etype32, _size29);
+            this->userIds.resize(_size29);
+            uint32_t _i33;
+            for (_i33 = 0; _i33 < _size29; ++_i33)
+            {
+              xfer += iprot->readString(this->userIds[_i33]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.userIds = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ActionForwardToUsers::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ActionForwardToUsers");
+
+  xfer += oprot->writeFieldBegin("userIds", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->userIds.size()));
+    std::vector<uuid> ::const_iterator _iter34;
+    for (_iter34 = this->userIds.begin(); _iter34 != this->userIds.end(); ++_iter34)
+    {
+      xfer += oprot->writeString((*_iter34));
+    }
+    xfer += oprot->writeListEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ActionForwardToUsers &a, ActionForwardToUsers &b) {
+  using ::std::swap;
+  swap(a.userIds, b.userIds);
+  swap(a.__isset, b.__isset);
+}
+
+ActionForwardToUsers::ActionForwardToUsers(const ActionForwardToUsers& other35) {
+  userIds = other35.userIds;
+  __isset = other35.__isset;
+}
+ActionForwardToUsers& ActionForwardToUsers::operator=(const ActionForwardToUsers& other36) {
+  userIds = other36.userIds;
+  __isset = other36.__isset;
+  return *this;
+}
+void ActionForwardToUsers::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ActionForwardToUsers(";
+  out << "userIds=" << to_string(userIds);
+  out << ")";
+}
+
+
+Action::~Action() throw() {
+}
+
+
+void Action::__set_postToSlackChannel(const ActionPostToSlackChannel& val) {
+  this->postToSlackChannel = val;
+}
+
+void Action::__set_postToSlackUser(const ActionPostToSlackUser& val) {
+  this->postToSlackUser = val;
+}
+
+void Action::__set_sendEmail(const ActionSendEmail& val) {
+  this->sendEmail = val;
+}
+
+void Action::__set_ignore(const ActionIgnore& val) {
+  this->ignore = val;
+}
+
+void Action::__set_deleteMessage(const ActionDeleteMessage& val) {
+  this->deleteMessage = val;
+}
+
+void Action::__set_respondToCode(const ActionRespondToCode& val) {
+  this->respondToCode = val;
+}
+
+void Action::__set_forwardToUsers(const ActionForwardToUsers& val) {
+  this->forwardToUsers = val;
+}
+
+uint32_t Action::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->postToSlackChannel.read(iprot);
+          this->__isset.postToSlackChannel = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->postToSlackUser.read(iprot);
+          this->__isset.postToSlackUser = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->sendEmail.read(iprot);
+          this->__isset.sendEmail = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ignore.read(iprot);
+          this->__isset.ignore = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->deleteMessage.read(iprot);
+          this->__isset.deleteMessage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->respondToCode.read(iprot);
+          this->__isset.respondToCode = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 7:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->forwardToUsers.read(iprot);
+          this->__isset.forwardToUsers = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Action::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Action");
+
+  xfer += oprot->writeFieldBegin("postToSlackChannel", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->postToSlackChannel.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("postToSlackUser", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->postToSlackUser.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("sendEmail", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->sendEmail.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("ignore", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += this->ignore.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("deleteMessage", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += this->deleteMessage.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("respondToCode", ::apache::thrift::protocol::T_STRUCT, 6);
+  xfer += this->respondToCode.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("forwardToUsers", ::apache::thrift::protocol::T_STRUCT, 7);
+  xfer += this->forwardToUsers.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Action &a, Action &b) {
+  using ::std::swap;
+  swap(a.postToSlackChannel, b.postToSlackChannel);
+  swap(a.postToSlackUser, b.postToSlackUser);
+  swap(a.sendEmail, b.sendEmail);
+  swap(a.ignore, b.ignore);
+  swap(a.deleteMessage, b.deleteMessage);
+  swap(a.respondToCode, b.respondToCode);
+  swap(a.forwardToUsers, b.forwardToUsers);
+  swap(a.__isset, b.__isset);
+}
+
+Action::Action(const Action& other37) {
+  postToSlackChannel = other37.postToSlackChannel;
+  postToSlackUser = other37.postToSlackUser;
+  sendEmail = other37.sendEmail;
+  ignore = other37.ignore;
+  deleteMessage = other37.deleteMessage;
+  respondToCode = other37.respondToCode;
+  forwardToUsers = other37.forwardToUsers;
+  __isset = other37.__isset;
+}
+Action& Action::operator=(const Action& other38) {
+  postToSlackChannel = other38.postToSlackChannel;
+  postToSlackUser = other38.postToSlackUser;
+  sendEmail = other38.sendEmail;
+  ignore = other38.ignore;
+  deleteMessage = other38.deleteMessage;
+  respondToCode = other38.respondToCode;
+  forwardToUsers = other38.forwardToUsers;
+  __isset = other38.__isset;
+  return *this;
+}
+void Action::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Action(";
+  out << "postToSlackChannel=" << to_string(postToSlackChannel);
+  out << ", " << "postToSlackUser=" << to_string(postToSlackUser);
+  out << ", " << "sendEmail=" << to_string(sendEmail);
+  out << ", " << "ignore=" << to_string(ignore);
+  out << ", " << "deleteMessage=" << to_string(deleteMessage);
+  out << ", " << "respondToCode=" << to_string(respondToCode);
+  out << ", " << "forwardToUsers=" << to_string(forwardToUsers);
+  out << ")";
+}
+
+
+Reaction::~Reaction() throw() {
+}
+
+
+void Reaction::__set_matcher(const Matcher& val) {
+  this->matcher = val;
+}
+
+void Reaction::__set_reaction(const Reaction& val) {
+  this->reaction = val;
+}
+
+uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->matcher.read(iprot);
+          this->__isset.matcher = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->reaction.read(iprot);
+          this->__isset.reaction = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("Reaction");
+
+  xfer += oprot->writeFieldBegin("matcher", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->matcher.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("reaction", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->reaction.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(Reaction &a, Reaction &b) {
+  using ::std::swap;
+  swap(a.matcher, b.matcher);
+  swap(a.reaction, b.reaction);
+  swap(a.__isset, b.__isset);
+}
+
+Reaction::Reaction(const Reaction& other39) {
+  matcher = other39.matcher;
+  reaction = other39.reaction;
+  __isset = other39.__isset;
+}
+Reaction& Reaction::operator=(const Reaction& other40) {
+  matcher = other40.matcher;
+  reaction = other40.reaction;
+  __isset = other40.__isset;
+  return *this;
+}
+void Reaction::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "Reaction(";
+  out << "matcher=" << to_string(matcher);
+  out << ", " << "reaction=" << to_string(reaction);
+  out << ")";
+}
+
 }}}} // namespace

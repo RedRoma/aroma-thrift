@@ -504,3 +504,606 @@ Matcher.prototype.write = function(output) {
   return;
 };
 
+ActionPostToSlackChannel = function(args) {
+  this.slackChannel = null;
+  this.includeBody = true;
+  if (args) {
+    if (args.slackChannel !== undefined && args.slackChannel !== null) {
+      this.slackChannel = args.slackChannel;
+    }
+    if (args.includeBody !== undefined && args.includeBody !== null) {
+      this.includeBody = args.includeBody;
+    }
+  }
+};
+ActionPostToSlackChannel.prototype = {};
+ActionPostToSlackChannel.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.slackChannel = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.includeBody = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionPostToSlackChannel.prototype.write = function(output) {
+  output.writeStructBegin('ActionPostToSlackChannel');
+  if (this.slackChannel !== null && this.slackChannel !== undefined) {
+    output.writeFieldBegin('slackChannel', Thrift.Type.STRING, 1);
+    output.writeString(this.slackChannel);
+    output.writeFieldEnd();
+  }
+  if (this.includeBody !== null && this.includeBody !== undefined) {
+    output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
+    output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionPostToSlackUser = function(args) {
+  this.slackUsername = null;
+  this.includeBody = true;
+  if (args) {
+    if (args.slackUsername !== undefined && args.slackUsername !== null) {
+      this.slackUsername = args.slackUsername;
+    }
+    if (args.includeBody !== undefined && args.includeBody !== null) {
+      this.includeBody = args.includeBody;
+    }
+  }
+};
+ActionPostToSlackUser.prototype = {};
+ActionPostToSlackUser.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.slackUsername = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.includeBody = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionPostToSlackUser.prototype.write = function(output) {
+  output.writeStructBegin('ActionPostToSlackUser');
+  if (this.slackUsername !== null && this.slackUsername !== undefined) {
+    output.writeFieldBegin('slackUsername', Thrift.Type.STRING, 1);
+    output.writeString(this.slackUsername);
+    output.writeFieldEnd();
+  }
+  if (this.includeBody !== null && this.includeBody !== undefined) {
+    output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
+    output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionSendEmail = function(args) {
+  this.emailAddress = null;
+  this.includeBody = true;
+  if (args) {
+    if (args.emailAddress !== undefined && args.emailAddress !== null) {
+      this.emailAddress = args.emailAddress;
+    }
+    if (args.includeBody !== undefined && args.includeBody !== null) {
+      this.includeBody = args.includeBody;
+    }
+  }
+};
+ActionSendEmail.prototype = {};
+ActionSendEmail.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.emailAddress = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.includeBody = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionSendEmail.prototype.write = function(output) {
+  output.writeStructBegin('ActionSendEmail');
+  if (this.emailAddress !== null && this.emailAddress !== undefined) {
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 1);
+    output.writeString(this.emailAddress);
+    output.writeFieldEnd();
+  }
+  if (this.includeBody !== null && this.includeBody !== undefined) {
+    output.writeFieldBegin('includeBody', Thrift.Type.BOOL, 2);
+    output.writeBool(this.includeBody);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionIgnore = function(args) {
+};
+ActionIgnore.prototype = {};
+ActionIgnore.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionIgnore.prototype.write = function(output) {
+  output.writeStructBegin('ActionIgnore');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionDeleteMessage = function(args) {
+};
+ActionDeleteMessage.prototype = {};
+ActionDeleteMessage.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionDeleteMessage.prototype.write = function(output) {
+  output.writeStructBegin('ActionDeleteMessage');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionRespondToCode = function(args) {
+  this.messageToSend = null;
+  if (args) {
+    if (args.messageToSend !== undefined && args.messageToSend !== null) {
+      this.messageToSend = args.messageToSend;
+    }
+  }
+};
+ActionRespondToCode.prototype = {};
+ActionRespondToCode.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.messageToSend = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionRespondToCode.prototype.write = function(output) {
+  output.writeStructBegin('ActionRespondToCode');
+  if (this.messageToSend !== null && this.messageToSend !== undefined) {
+    output.writeFieldBegin('messageToSend', Thrift.Type.STRING, 1);
+    output.writeString(this.messageToSend);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+ActionForwardToUsers = function(args) {
+  this.userIds = [];
+  if (args) {
+    if (args.userIds !== undefined && args.userIds !== null) {
+      this.userIds = Thrift.copyList(args.userIds, [null]);
+    }
+  }
+};
+ActionForwardToUsers.prototype = {};
+ActionForwardToUsers.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.userIds = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.userIds.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ActionForwardToUsers.prototype.write = function(output) {
+  output.writeStructBegin('ActionForwardToUsers');
+  if (this.userIds !== null && this.userIds !== undefined) {
+    output.writeFieldBegin('userIds', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRING, this.userIds.length);
+    for (var iter7 in this.userIds)
+    {
+      if (this.userIds.hasOwnProperty(iter7))
+      {
+        iter7 = this.userIds[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Action = function(args) {
+  this.postToSlackChannel = null;
+  this.postToSlackUser = null;
+  this.sendEmail = null;
+  this.ignore = null;
+  this.deleteMessage = null;
+  this.respondToCode = null;
+  this.forwardToUsers = null;
+  if (args) {
+    if (args.postToSlackChannel !== undefined && args.postToSlackChannel !== null) {
+      this.postToSlackChannel = new ActionPostToSlackChannel(args.postToSlackChannel);
+    }
+    if (args.postToSlackUser !== undefined && args.postToSlackUser !== null) {
+      this.postToSlackUser = new ActionPostToSlackUser(args.postToSlackUser);
+    }
+    if (args.sendEmail !== undefined && args.sendEmail !== null) {
+      this.sendEmail = new ActionSendEmail(args.sendEmail);
+    }
+    if (args.ignore !== undefined && args.ignore !== null) {
+      this.ignore = new ActionIgnore(args.ignore);
+    }
+    if (args.deleteMessage !== undefined && args.deleteMessage !== null) {
+      this.deleteMessage = new ActionDeleteMessage(args.deleteMessage);
+    }
+    if (args.respondToCode !== undefined && args.respondToCode !== null) {
+      this.respondToCode = new ActionRespondToCode(args.respondToCode);
+    }
+    if (args.forwardToUsers !== undefined && args.forwardToUsers !== null) {
+      this.forwardToUsers = new ActionForwardToUsers(args.forwardToUsers);
+    }
+  }
+};
+Action.prototype = {};
+Action.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.postToSlackChannel = new ActionPostToSlackChannel();
+        this.postToSlackChannel.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.postToSlackUser = new ActionPostToSlackUser();
+        this.postToSlackUser.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.sendEmail = new ActionSendEmail();
+        this.sendEmail.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.ignore = new ActionIgnore();
+        this.ignore.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.deleteMessage = new ActionDeleteMessage();
+        this.deleteMessage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 6:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.respondToCode = new ActionRespondToCode();
+        this.respondToCode.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 7:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.forwardToUsers = new ActionForwardToUsers();
+        this.forwardToUsers.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Action.prototype.write = function(output) {
+  output.writeStructBegin('Action');
+  if (this.postToSlackChannel !== null && this.postToSlackChannel !== undefined) {
+    output.writeFieldBegin('postToSlackChannel', Thrift.Type.STRUCT, 1);
+    this.postToSlackChannel.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.postToSlackUser !== null && this.postToSlackUser !== undefined) {
+    output.writeFieldBegin('postToSlackUser', Thrift.Type.STRUCT, 2);
+    this.postToSlackUser.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.sendEmail !== null && this.sendEmail !== undefined) {
+    output.writeFieldBegin('sendEmail', Thrift.Type.STRUCT, 3);
+    this.sendEmail.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.ignore !== null && this.ignore !== undefined) {
+    output.writeFieldBegin('ignore', Thrift.Type.STRUCT, 4);
+    this.ignore.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.deleteMessage !== null && this.deleteMessage !== undefined) {
+    output.writeFieldBegin('deleteMessage', Thrift.Type.STRUCT, 5);
+    this.deleteMessage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.respondToCode !== null && this.respondToCode !== undefined) {
+    output.writeFieldBegin('respondToCode', Thrift.Type.STRUCT, 6);
+    this.respondToCode.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.forwardToUsers !== null && this.forwardToUsers !== undefined) {
+    output.writeFieldBegin('forwardToUsers', Thrift.Type.STRUCT, 7);
+    this.forwardToUsers.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+Reaction = function(args) {
+  this.matcher = null;
+  this.reaction = null;
+  if (args) {
+    if (args.matcher !== undefined && args.matcher !== null) {
+      this.matcher = new Matcher(args.matcher);
+    }
+    if (args.reaction !== undefined && args.reaction !== null) {
+      this.reaction = new Reaction(args.reaction);
+    }
+  }
+};
+Reaction.prototype = {};
+Reaction.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.matcher = new Matcher();
+        this.matcher.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.reaction = new Reaction();
+        this.reaction.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Reaction.prototype.write = function(output) {
+  output.writeStructBegin('Reaction');
+  if (this.matcher !== null && this.matcher !== undefined) {
+    output.writeFieldBegin('matcher', Thrift.Type.STRUCT, 1);
+    this.matcher.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.reaction !== null && this.reaction !== undefined) {
+    output.writeFieldBegin('reaction', Thrift.Type.STRUCT, 2);
+    this.reaction.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+

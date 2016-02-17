@@ -27,6 +27,8 @@ typedef  ::tech::aroma::thrift::long long;
 
 typedef  ::tech::aroma::thrift::timestamp timestamp;
 
+typedef  ::tech::aroma::thrift::uuid uuid;
+
 class MatcherAll;
 
 class MatcherTitleIs;
@@ -42,6 +44,24 @@ class MatcherUrgencyEquals;
 class MatcherHostnameEquals;
 
 class Matcher;
+
+class ActionPostToSlackChannel;
+
+class ActionPostToSlackUser;
+
+class ActionSendEmail;
+
+class ActionIgnore;
+
+class ActionDeleteMessage;
+
+class ActionRespondToCode;
+
+class ActionForwardToUsers;
+
+class Action;
+
+class Reaction;
 
 
 class MatcherAll {
@@ -431,6 +451,465 @@ class Matcher {
 void swap(Matcher &a, Matcher &b);
 
 inline std::ostream& operator<<(std::ostream& out, const Matcher& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionPostToSlackChannel__isset {
+  _ActionPostToSlackChannel__isset() : slackChannel(false), includeBody(true) {}
+  bool slackChannel :1;
+  bool includeBody :1;
+} _ActionPostToSlackChannel__isset;
+
+class ActionPostToSlackChannel {
+ public:
+
+  ActionPostToSlackChannel(const ActionPostToSlackChannel&);
+  ActionPostToSlackChannel& operator=(const ActionPostToSlackChannel&);
+  ActionPostToSlackChannel() : slackChannel(), includeBody(true) {
+  }
+
+  virtual ~ActionPostToSlackChannel() throw();
+  std::string slackChannel;
+  bool includeBody;
+
+  _ActionPostToSlackChannel__isset __isset;
+
+  void __set_slackChannel(const std::string& val);
+
+  void __set_includeBody(const bool val);
+
+  bool operator == (const ActionPostToSlackChannel & rhs) const
+  {
+    if (!(slackChannel == rhs.slackChannel))
+      return false;
+    if (__isset.includeBody != rhs.__isset.includeBody)
+      return false;
+    else if (__isset.includeBody && !(includeBody == rhs.includeBody))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionPostToSlackChannel &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionPostToSlackChannel & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionPostToSlackChannel &a, ActionPostToSlackChannel &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackChannel& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionPostToSlackUser__isset {
+  _ActionPostToSlackUser__isset() : slackUsername(false), includeBody(true) {}
+  bool slackUsername :1;
+  bool includeBody :1;
+} _ActionPostToSlackUser__isset;
+
+class ActionPostToSlackUser {
+ public:
+
+  ActionPostToSlackUser(const ActionPostToSlackUser&);
+  ActionPostToSlackUser& operator=(const ActionPostToSlackUser&);
+  ActionPostToSlackUser() : slackUsername(), includeBody(true) {
+  }
+
+  virtual ~ActionPostToSlackUser() throw();
+  std::string slackUsername;
+  bool includeBody;
+
+  _ActionPostToSlackUser__isset __isset;
+
+  void __set_slackUsername(const std::string& val);
+
+  void __set_includeBody(const bool val);
+
+  bool operator == (const ActionPostToSlackUser & rhs) const
+  {
+    if (!(slackUsername == rhs.slackUsername))
+      return false;
+    if (__isset.includeBody != rhs.__isset.includeBody)
+      return false;
+    else if (__isset.includeBody && !(includeBody == rhs.includeBody))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionPostToSlackUser &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionPostToSlackUser & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionPostToSlackUser &a, ActionPostToSlackUser &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionPostToSlackUser& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionSendEmail__isset {
+  _ActionSendEmail__isset() : emailAddress(false), includeBody(true) {}
+  bool emailAddress :1;
+  bool includeBody :1;
+} _ActionSendEmail__isset;
+
+class ActionSendEmail {
+ public:
+
+  ActionSendEmail(const ActionSendEmail&);
+  ActionSendEmail& operator=(const ActionSendEmail&);
+  ActionSendEmail() : emailAddress(), includeBody(true) {
+  }
+
+  virtual ~ActionSendEmail() throw();
+  std::string emailAddress;
+  bool includeBody;
+
+  _ActionSendEmail__isset __isset;
+
+  void __set_emailAddress(const std::string& val);
+
+  void __set_includeBody(const bool val);
+
+  bool operator == (const ActionSendEmail & rhs) const
+  {
+    if (!(emailAddress == rhs.emailAddress))
+      return false;
+    if (__isset.includeBody != rhs.__isset.includeBody)
+      return false;
+    else if (__isset.includeBody && !(includeBody == rhs.includeBody))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionSendEmail &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionSendEmail & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionSendEmail &a, ActionSendEmail &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionSendEmail& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class ActionIgnore {
+ public:
+
+  ActionIgnore(const ActionIgnore&);
+  ActionIgnore& operator=(const ActionIgnore&);
+  ActionIgnore() {
+  }
+
+  virtual ~ActionIgnore() throw();
+
+  bool operator == (const ActionIgnore & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const ActionIgnore &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionIgnore & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionIgnore &a, ActionIgnore &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionIgnore& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class ActionDeleteMessage {
+ public:
+
+  ActionDeleteMessage(const ActionDeleteMessage&);
+  ActionDeleteMessage& operator=(const ActionDeleteMessage&);
+  ActionDeleteMessage() {
+  }
+
+  virtual ~ActionDeleteMessage() throw();
+
+  bool operator == (const ActionDeleteMessage & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const ActionDeleteMessage &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionDeleteMessage & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionDeleteMessage &a, ActionDeleteMessage &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionDeleteMessage& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionRespondToCode__isset {
+  _ActionRespondToCode__isset() : messageToSend(false) {}
+  bool messageToSend :1;
+} _ActionRespondToCode__isset;
+
+class ActionRespondToCode {
+ public:
+
+  ActionRespondToCode(const ActionRespondToCode&);
+  ActionRespondToCode& operator=(const ActionRespondToCode&);
+  ActionRespondToCode() : messageToSend() {
+  }
+
+  virtual ~ActionRespondToCode() throw();
+  std::string messageToSend;
+
+  _ActionRespondToCode__isset __isset;
+
+  void __set_messageToSend(const std::string& val);
+
+  bool operator == (const ActionRespondToCode & rhs) const
+  {
+    if (!(messageToSend == rhs.messageToSend))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionRespondToCode &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionRespondToCode & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionRespondToCode &a, ActionRespondToCode &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionRespondToCode& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ActionForwardToUsers__isset {
+  _ActionForwardToUsers__isset() : userIds(true) {}
+  bool userIds :1;
+} _ActionForwardToUsers__isset;
+
+class ActionForwardToUsers {
+ public:
+
+  ActionForwardToUsers(const ActionForwardToUsers&);
+  ActionForwardToUsers& operator=(const ActionForwardToUsers&);
+  ActionForwardToUsers() {
+
+  }
+
+  virtual ~ActionForwardToUsers() throw();
+  std::vector<uuid>  userIds;
+
+  _ActionForwardToUsers__isset __isset;
+
+  void __set_userIds(const std::vector<uuid> & val);
+
+  bool operator == (const ActionForwardToUsers & rhs) const
+  {
+    if (!(userIds == rhs.userIds))
+      return false;
+    return true;
+  }
+  bool operator != (const ActionForwardToUsers &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ActionForwardToUsers & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ActionForwardToUsers &a, ActionForwardToUsers &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Action__isset {
+  _Action__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), ignore(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
+  bool postToSlackChannel :1;
+  bool postToSlackUser :1;
+  bool sendEmail :1;
+  bool ignore :1;
+  bool deleteMessage :1;
+  bool respondToCode :1;
+  bool forwardToUsers :1;
+} _Action__isset;
+
+class Action {
+ public:
+
+  Action(const Action&);
+  Action& operator=(const Action&);
+  Action() {
+  }
+
+  virtual ~Action() throw();
+  ActionPostToSlackChannel postToSlackChannel;
+  ActionPostToSlackUser postToSlackUser;
+  ActionSendEmail sendEmail;
+  ActionIgnore ignore;
+  ActionDeleteMessage deleteMessage;
+  ActionRespondToCode respondToCode;
+  ActionForwardToUsers forwardToUsers;
+
+  _Action__isset __isset;
+
+  void __set_postToSlackChannel(const ActionPostToSlackChannel& val);
+
+  void __set_postToSlackUser(const ActionPostToSlackUser& val);
+
+  void __set_sendEmail(const ActionSendEmail& val);
+
+  void __set_ignore(const ActionIgnore& val);
+
+  void __set_deleteMessage(const ActionDeleteMessage& val);
+
+  void __set_respondToCode(const ActionRespondToCode& val);
+
+  void __set_forwardToUsers(const ActionForwardToUsers& val);
+
+  bool operator == (const Action & rhs) const
+  {
+    if (!(postToSlackChannel == rhs.postToSlackChannel))
+      return false;
+    if (!(postToSlackUser == rhs.postToSlackUser))
+      return false;
+    if (!(sendEmail == rhs.sendEmail))
+      return false;
+    if (!(ignore == rhs.ignore))
+      return false;
+    if (!(deleteMessage == rhs.deleteMessage))
+      return false;
+    if (!(respondToCode == rhs.respondToCode))
+      return false;
+    if (!(forwardToUsers == rhs.forwardToUsers))
+      return false;
+    return true;
+  }
+  bool operator != (const Action &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Action & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Action &a, Action &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Action& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _Reaction__isset {
+  _Reaction__isset() : matcher(false), reaction(false) {}
+  bool matcher :1;
+  bool reaction :1;
+} _Reaction__isset;
+
+class Reaction {
+ public:
+
+  Reaction(const Reaction&);
+  Reaction& operator=(const Reaction&);
+  Reaction() {
+  }
+
+  virtual ~Reaction() throw();
+  Matcher matcher;
+  Reaction reaction;
+
+  _Reaction__isset __isset;
+
+  void __set_matcher(const Matcher& val);
+
+  void __set_reaction(const Reaction& val);
+
+  bool operator == (const Reaction & rhs) const
+  {
+    if (!(matcher == rhs.matcher))
+      return false;
+    if (!(reaction == rhs.reaction))
+      return false;
+    return true;
+  }
+  bool operator != (const Reaction &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Reaction & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Reaction &a, Reaction &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Reaction& obj)
 {
   obj.printTo(out);
   return out;

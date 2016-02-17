@@ -1512,6 +1512,1825 @@
 
 @end
 
+@implementation AromaReactions_ActionPostToSlackChannel
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.includeBody = YES;
+
+#endif
+  return self;
+}
+
+- (id) initWithSlackChannel: (NSString *) slackChannel includeBody: (BOOL) includeBody
+{
+  self = [super init];
+  __slackChannel = [slackChannel retain_stub];
+  __slackChannel_isset = YES;
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"slackChannel"])
+  {
+    __slackChannel = [[decoder decodeObjectForKey: @"slackChannel"] retain_stub];
+    __slackChannel_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"includeBody"])
+  {
+    __includeBody = [decoder decodeBoolForKey: @"includeBody"];
+    __includeBody_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__slackChannel_isset)
+  {
+    [encoder encodeObject: __slackChannel forKey: @"slackChannel"];
+  }
+  if (__includeBody_isset)
+  {
+    [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __slackChannel_isset ? 2654435761 : 0;
+  if (__slackChannel_isset)
+  {
+    hash = (hash * 31) ^ [__slackChannel hash];
+  }
+  hash = (hash * 31) ^ __includeBody_isset ? 2654435761 : 0;
+  if (__includeBody_isset)
+  {
+    hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionPostToSlackChannel class]]) {
+    return NO;
+  }
+  AromaReactions_ActionPostToSlackChannel *other = (AromaReactions_ActionPostToSlackChannel *)anObject;
+  if ((__slackChannel_isset != other->__slackChannel_isset) ||
+      (__slackChannel_isset && ((__slackChannel || other->__slackChannel) && ![__slackChannel isEqual:other->__slackChannel]))) {
+    return NO;
+  }
+  if ((__includeBody_isset != other->__includeBody_isset) ||
+      (__includeBody_isset && (__includeBody != other->__includeBody))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__slackChannel release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) slackChannel {
+  return [[__slackChannel retain_stub] autorelease_stub];
+}
+
+- (void) setSlackChannel: (NSString *) slackChannel {
+  [slackChannel retain_stub];
+  [__slackChannel release_stub];
+  __slackChannel = slackChannel;
+  __slackChannel_isset = YES;
+}
+
+- (BOOL) slackChannelIsSet {
+  return __slackChannel_isset;
+}
+
+- (void) unsetSlackChannel {
+  [__slackChannel release_stub];
+  __slackChannel = nil;
+  __slackChannel_isset = NO;
+}
+
+- (BOOL) includeBody {
+  return __includeBody;
+}
+
+- (void) setIncludeBody: (BOOL) includeBody {
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+}
+
+- (BOOL) includeBodyIsSet {
+  return __includeBody_isset;
+}
+
+- (void) unsetIncludeBody {
+  __includeBody_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSlackChannel: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIncludeBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionPostToSlackChannel"];
+  if (__slackChannel_isset) {
+    if (__slackChannel != nil) {
+      [outProtocol writeFieldBeginWithName: @"slackChannel" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __slackChannel];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__includeBody_isset) {
+    [outProtocol writeFieldBeginWithName: @"includeBody" type: TType_BOOL fieldID: 2];
+    [outProtocol writeBool: __includeBody];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionPostToSlackChannel("];
+  [ms appendString: @"slackChannel:"];
+  [ms appendFormat: @"\"%@\"", __slackChannel];
+  [ms appendString: @",includeBody:"];
+  [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionPostToSlackUser
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.includeBody = YES;
+
+#endif
+  return self;
+}
+
+- (id) initWithSlackUsername: (NSString *) slackUsername includeBody: (BOOL) includeBody
+{
+  self = [super init];
+  __slackUsername = [slackUsername retain_stub];
+  __slackUsername_isset = YES;
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"slackUsername"])
+  {
+    __slackUsername = [[decoder decodeObjectForKey: @"slackUsername"] retain_stub];
+    __slackUsername_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"includeBody"])
+  {
+    __includeBody = [decoder decodeBoolForKey: @"includeBody"];
+    __includeBody_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__slackUsername_isset)
+  {
+    [encoder encodeObject: __slackUsername forKey: @"slackUsername"];
+  }
+  if (__includeBody_isset)
+  {
+    [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __slackUsername_isset ? 2654435761 : 0;
+  if (__slackUsername_isset)
+  {
+    hash = (hash * 31) ^ [__slackUsername hash];
+  }
+  hash = (hash * 31) ^ __includeBody_isset ? 2654435761 : 0;
+  if (__includeBody_isset)
+  {
+    hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionPostToSlackUser class]]) {
+    return NO;
+  }
+  AromaReactions_ActionPostToSlackUser *other = (AromaReactions_ActionPostToSlackUser *)anObject;
+  if ((__slackUsername_isset != other->__slackUsername_isset) ||
+      (__slackUsername_isset && ((__slackUsername || other->__slackUsername) && ![__slackUsername isEqual:other->__slackUsername]))) {
+    return NO;
+  }
+  if ((__includeBody_isset != other->__includeBody_isset) ||
+      (__includeBody_isset && (__includeBody != other->__includeBody))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__slackUsername release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) slackUsername {
+  return [[__slackUsername retain_stub] autorelease_stub];
+}
+
+- (void) setSlackUsername: (NSString *) slackUsername {
+  [slackUsername retain_stub];
+  [__slackUsername release_stub];
+  __slackUsername = slackUsername;
+  __slackUsername_isset = YES;
+}
+
+- (BOOL) slackUsernameIsSet {
+  return __slackUsername_isset;
+}
+
+- (void) unsetSlackUsername {
+  [__slackUsername release_stub];
+  __slackUsername = nil;
+  __slackUsername_isset = NO;
+}
+
+- (BOOL) includeBody {
+  return __includeBody;
+}
+
+- (void) setIncludeBody: (BOOL) includeBody {
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+}
+
+- (BOOL) includeBodyIsSet {
+  return __includeBody_isset;
+}
+
+- (void) unsetIncludeBody {
+  __includeBody_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setSlackUsername: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIncludeBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionPostToSlackUser"];
+  if (__slackUsername_isset) {
+    if (__slackUsername != nil) {
+      [outProtocol writeFieldBeginWithName: @"slackUsername" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __slackUsername];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__includeBody_isset) {
+    [outProtocol writeFieldBeginWithName: @"includeBody" type: TType_BOOL fieldID: 2];
+    [outProtocol writeBool: __includeBody];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionPostToSlackUser("];
+  [ms appendString: @"slackUsername:"];
+  [ms appendFormat: @"\"%@\"", __slackUsername];
+  [ms appendString: @",includeBody:"];
+  [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionSendEmail
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.includeBody = YES;
+
+#endif
+  return self;
+}
+
+- (id) initWithEmailAddress: (NSString *) emailAddress includeBody: (BOOL) includeBody
+{
+  self = [super init];
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"emailAddress"])
+  {
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"includeBody"])
+  {
+    __includeBody = [decoder decodeBoolForKey: @"includeBody"];
+    __includeBody_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__emailAddress_isset)
+  {
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
+  }
+  if (__includeBody_isset)
+  {
+    [encoder encodeBool: __includeBody forKey: @"includeBody"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
+  {
+    hash = (hash * 31) ^ [__emailAddress hash];
+  }
+  hash = (hash * 31) ^ __includeBody_isset ? 2654435761 : 0;
+  if (__includeBody_isset)
+  {
+    hash = (hash * 31) ^ [@(__includeBody) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionSendEmail class]]) {
+    return NO;
+  }
+  AromaReactions_ActionSendEmail *other = (AromaReactions_ActionSendEmail *)anObject;
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
+    return NO;
+  }
+  if ((__includeBody_isset != other->__includeBody_isset) ||
+      (__includeBody_isset && (__includeBody != other->__includeBody))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__emailAddress release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
+}
+
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
+}
+
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
+}
+
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
+}
+
+- (BOOL) includeBody {
+  return __includeBody;
+}
+
+- (void) setIncludeBody: (BOOL) includeBody {
+  __includeBody = includeBody;
+  __includeBody_isset = YES;
+}
+
+- (BOOL) includeBodyIsSet {
+  return __includeBody_isset;
+}
+
+- (void) unsetIncludeBody {
+  __includeBody_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmailAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIncludeBody: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionSendEmail"];
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __emailAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__includeBody_isset) {
+    [outProtocol writeFieldBeginWithName: @"includeBody" type: TType_BOOL fieldID: 2];
+    [outProtocol writeBool: __includeBody];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionSendEmail("];
+  [ms appendString: @"emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
+  [ms appendString: @",includeBody:"];
+  [ms appendFormat: @"%i", __includeBody];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionIgnore
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionIgnore class]]) {
+    return NO;
+  }
+  AromaReactions_ActionIgnore *other = (AromaReactions_ActionIgnore *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionIgnore"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionIgnore("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionDeleteMessage
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionDeleteMessage class]]) {
+    return NO;
+  }
+  AromaReactions_ActionDeleteMessage *other = (AromaReactions_ActionDeleteMessage *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionDeleteMessage"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionDeleteMessage("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionRespondToCode
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMessageToSend: (NSString *) messageToSend
+{
+  self = [super init];
+  __messageToSend = [messageToSend retain_stub];
+  __messageToSend_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"messageToSend"])
+  {
+    __messageToSend = [[decoder decodeObjectForKey: @"messageToSend"] retain_stub];
+    __messageToSend_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__messageToSend_isset)
+  {
+    [encoder encodeObject: __messageToSend forKey: @"messageToSend"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __messageToSend_isset ? 2654435761 : 0;
+  if (__messageToSend_isset)
+  {
+    hash = (hash * 31) ^ [__messageToSend hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionRespondToCode class]]) {
+    return NO;
+  }
+  AromaReactions_ActionRespondToCode *other = (AromaReactions_ActionRespondToCode *)anObject;
+  if ((__messageToSend_isset != other->__messageToSend_isset) ||
+      (__messageToSend_isset && ((__messageToSend || other->__messageToSend) && ![__messageToSend isEqual:other->__messageToSend]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__messageToSend release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) messageToSend {
+  return [[__messageToSend retain_stub] autorelease_stub];
+}
+
+- (void) setMessageToSend: (NSString *) messageToSend {
+  [messageToSend retain_stub];
+  [__messageToSend release_stub];
+  __messageToSend = messageToSend;
+  __messageToSend_isset = YES;
+}
+
+- (BOOL) messageToSendIsSet {
+  return __messageToSend_isset;
+}
+
+- (void) unsetMessageToSend {
+  [__messageToSend release_stub];
+  __messageToSend = nil;
+  __messageToSend_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessageToSend: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionRespondToCode"];
+  if (__messageToSend_isset) {
+    if (__messageToSend != nil) {
+      [outProtocol writeFieldBeginWithName: @"messageToSend" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __messageToSend];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionRespondToCode("];
+  [ms appendString: @"messageToSend:"];
+  [ms appendFormat: @"\"%@\"", __messageToSend];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_ActionForwardToUsers
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.userIds = [[[NSMutableArray alloc] initWithCapacity:0] autorelease_stub];
+
+#endif
+  return self;
+}
+
+- (id) initWithUserIds: (NSMutableArray *) userIds
+{
+  self = [super init];
+  __userIds = [userIds retain_stub];
+  __userIds_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"userIds"])
+  {
+    __userIds = [[decoder decodeObjectForKey: @"userIds"] retain_stub];
+    __userIds_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__userIds_isset)
+  {
+    [encoder encodeObject: __userIds forKey: @"userIds"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __userIds_isset ? 2654435761 : 0;
+  if (__userIds_isset)
+  {
+    hash = (hash * 31) ^ [__userIds hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_ActionForwardToUsers class]]) {
+    return NO;
+  }
+  AromaReactions_ActionForwardToUsers *other = (AromaReactions_ActionForwardToUsers *)anObject;
+  if ((__userIds_isset != other->__userIds_isset) ||
+      (__userIds_isset && ((__userIds || other->__userIds) && ![__userIds isEqual:other->__userIds]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__userIds release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) userIds {
+  return [[__userIds retain_stub] autorelease_stub];
+}
+
+- (void) setUserIds: (NSMutableArray *) userIds {
+  [userIds retain_stub];
+  [__userIds release_stub];
+  __userIds = userIds;
+  __userIds_isset = YES;
+}
+
+- (BOOL) userIdsIsSet {
+  return __userIds_isset;
+}
+
+- (void) unsetUserIds {
+  [__userIds release_stub];
+  __userIds = nil;
+  __userIds_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            NSString * _elem2 = [inProtocol readString];
+            [fieldValue addObject: _elem2];
+          }
+          [inProtocol readListEnd];
+          [self setUserIds: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ActionForwardToUsers"];
+  if (__userIds_isset) {
+    if (__userIds != nil) {
+      [outProtocol writeFieldBeginWithName: @"userIds" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__userIds count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__userIds count]; idx4++)
+        {
+          [outProtocol writeString: [__userIds objectAtIndex: idx4]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_ActionForwardToUsers("];
+  [ms appendString: @"userIds:"];
+  [ms appendFormat: @"%@", __userIds];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_Action
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel postToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser sendEmail: (AromaReactions_ActionSendEmail *) sendEmail ignore: (AromaReactions_ActionIgnore *) ignore deleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage respondToCode: (AromaReactions_ActionRespondToCode *) respondToCode forwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers
+{
+  self = [super init];
+  __postToSlackChannel = [postToSlackChannel retain_stub];
+  __postToSlackChannel_isset = YES;
+  __postToSlackUser = [postToSlackUser retain_stub];
+  __postToSlackUser_isset = YES;
+  __sendEmail = [sendEmail retain_stub];
+  __sendEmail_isset = YES;
+  __ignore = [ignore retain_stub];
+  __ignore_isset = YES;
+  __deleteMessage = [deleteMessage retain_stub];
+  __deleteMessage_isset = YES;
+  __respondToCode = [respondToCode retain_stub];
+  __respondToCode_isset = YES;
+  __forwardToUsers = [forwardToUsers retain_stub];
+  __forwardToUsers_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"postToSlackChannel"])
+  {
+    __postToSlackChannel = [[decoder decodeObjectForKey: @"postToSlackChannel"] retain_stub];
+    __postToSlackChannel_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"postToSlackUser"])
+  {
+    __postToSlackUser = [[decoder decodeObjectForKey: @"postToSlackUser"] retain_stub];
+    __postToSlackUser_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"sendEmail"])
+  {
+    __sendEmail = [[decoder decodeObjectForKey: @"sendEmail"] retain_stub];
+    __sendEmail_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"ignore"])
+  {
+    __ignore = [[decoder decodeObjectForKey: @"ignore"] retain_stub];
+    __ignore_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"deleteMessage"])
+  {
+    __deleteMessage = [[decoder decodeObjectForKey: @"deleteMessage"] retain_stub];
+    __deleteMessage_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"respondToCode"])
+  {
+    __respondToCode = [[decoder decodeObjectForKey: @"respondToCode"] retain_stub];
+    __respondToCode_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"forwardToUsers"])
+  {
+    __forwardToUsers = [[decoder decodeObjectForKey: @"forwardToUsers"] retain_stub];
+    __forwardToUsers_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__postToSlackChannel_isset)
+  {
+    [encoder encodeObject: __postToSlackChannel forKey: @"postToSlackChannel"];
+  }
+  if (__postToSlackUser_isset)
+  {
+    [encoder encodeObject: __postToSlackUser forKey: @"postToSlackUser"];
+  }
+  if (__sendEmail_isset)
+  {
+    [encoder encodeObject: __sendEmail forKey: @"sendEmail"];
+  }
+  if (__ignore_isset)
+  {
+    [encoder encodeObject: __ignore forKey: @"ignore"];
+  }
+  if (__deleteMessage_isset)
+  {
+    [encoder encodeObject: __deleteMessage forKey: @"deleteMessage"];
+  }
+  if (__respondToCode_isset)
+  {
+    [encoder encodeObject: __respondToCode forKey: @"respondToCode"];
+  }
+  if (__forwardToUsers_isset)
+  {
+    [encoder encodeObject: __forwardToUsers forKey: @"forwardToUsers"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __postToSlackChannel_isset ? 2654435761 : 0;
+  if (__postToSlackChannel_isset)
+  {
+    hash = (hash * 31) ^ [__postToSlackChannel hash];
+  }
+  hash = (hash * 31) ^ __postToSlackUser_isset ? 2654435761 : 0;
+  if (__postToSlackUser_isset)
+  {
+    hash = (hash * 31) ^ [__postToSlackUser hash];
+  }
+  hash = (hash * 31) ^ __sendEmail_isset ? 2654435761 : 0;
+  if (__sendEmail_isset)
+  {
+    hash = (hash * 31) ^ [__sendEmail hash];
+  }
+  hash = (hash * 31) ^ __ignore_isset ? 2654435761 : 0;
+  if (__ignore_isset)
+  {
+    hash = (hash * 31) ^ [__ignore hash];
+  }
+  hash = (hash * 31) ^ __deleteMessage_isset ? 2654435761 : 0;
+  if (__deleteMessage_isset)
+  {
+    hash = (hash * 31) ^ [__deleteMessage hash];
+  }
+  hash = (hash * 31) ^ __respondToCode_isset ? 2654435761 : 0;
+  if (__respondToCode_isset)
+  {
+    hash = (hash * 31) ^ [__respondToCode hash];
+  }
+  hash = (hash * 31) ^ __forwardToUsers_isset ? 2654435761 : 0;
+  if (__forwardToUsers_isset)
+  {
+    hash = (hash * 31) ^ [__forwardToUsers hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_Action class]]) {
+    return NO;
+  }
+  AromaReactions_Action *other = (AromaReactions_Action *)anObject;
+  if ((__postToSlackChannel_isset != other->__postToSlackChannel_isset) ||
+      (__postToSlackChannel_isset && ((__postToSlackChannel || other->__postToSlackChannel) && ![__postToSlackChannel isEqual:other->__postToSlackChannel]))) {
+    return NO;
+  }
+  if ((__postToSlackUser_isset != other->__postToSlackUser_isset) ||
+      (__postToSlackUser_isset && ((__postToSlackUser || other->__postToSlackUser) && ![__postToSlackUser isEqual:other->__postToSlackUser]))) {
+    return NO;
+  }
+  if ((__sendEmail_isset != other->__sendEmail_isset) ||
+      (__sendEmail_isset && ((__sendEmail || other->__sendEmail) && ![__sendEmail isEqual:other->__sendEmail]))) {
+    return NO;
+  }
+  if ((__ignore_isset != other->__ignore_isset) ||
+      (__ignore_isset && ((__ignore || other->__ignore) && ![__ignore isEqual:other->__ignore]))) {
+    return NO;
+  }
+  if ((__deleteMessage_isset != other->__deleteMessage_isset) ||
+      (__deleteMessage_isset && ((__deleteMessage || other->__deleteMessage) && ![__deleteMessage isEqual:other->__deleteMessage]))) {
+    return NO;
+  }
+  if ((__respondToCode_isset != other->__respondToCode_isset) ||
+      (__respondToCode_isset && ((__respondToCode || other->__respondToCode) && ![__respondToCode isEqual:other->__respondToCode]))) {
+    return NO;
+  }
+  if ((__forwardToUsers_isset != other->__forwardToUsers_isset) ||
+      (__forwardToUsers_isset && ((__forwardToUsers || other->__forwardToUsers) && ![__forwardToUsers isEqual:other->__forwardToUsers]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__postToSlackChannel release_stub];
+  [__postToSlackUser release_stub];
+  [__sendEmail release_stub];
+  [__ignore release_stub];
+  [__deleteMessage release_stub];
+  [__respondToCode release_stub];
+  [__forwardToUsers release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel {
+  return [[__postToSlackChannel retain_stub] autorelease_stub];
+}
+
+- (void) setPostToSlackChannel: (AromaReactions_ActionPostToSlackChannel *) postToSlackChannel {
+  [postToSlackChannel retain_stub];
+  [__postToSlackChannel release_stub];
+  __postToSlackChannel = postToSlackChannel;
+  __postToSlackChannel_isset = YES;
+}
+
+- (BOOL) postToSlackChannelIsSet {
+  return __postToSlackChannel_isset;
+}
+
+- (void) unsetPostToSlackChannel {
+  [__postToSlackChannel release_stub];
+  __postToSlackChannel = nil;
+  __postToSlackChannel_isset = NO;
+}
+
+- (AromaReactions_ActionPostToSlackUser *) postToSlackUser {
+  return [[__postToSlackUser retain_stub] autorelease_stub];
+}
+
+- (void) setPostToSlackUser: (AromaReactions_ActionPostToSlackUser *) postToSlackUser {
+  [postToSlackUser retain_stub];
+  [__postToSlackUser release_stub];
+  __postToSlackUser = postToSlackUser;
+  __postToSlackUser_isset = YES;
+}
+
+- (BOOL) postToSlackUserIsSet {
+  return __postToSlackUser_isset;
+}
+
+- (void) unsetPostToSlackUser {
+  [__postToSlackUser release_stub];
+  __postToSlackUser = nil;
+  __postToSlackUser_isset = NO;
+}
+
+- (AromaReactions_ActionSendEmail *) sendEmail {
+  return [[__sendEmail retain_stub] autorelease_stub];
+}
+
+- (void) setSendEmail: (AromaReactions_ActionSendEmail *) sendEmail {
+  [sendEmail retain_stub];
+  [__sendEmail release_stub];
+  __sendEmail = sendEmail;
+  __sendEmail_isset = YES;
+}
+
+- (BOOL) sendEmailIsSet {
+  return __sendEmail_isset;
+}
+
+- (void) unsetSendEmail {
+  [__sendEmail release_stub];
+  __sendEmail = nil;
+  __sendEmail_isset = NO;
+}
+
+- (AromaReactions_ActionIgnore *) ignore {
+  return [[__ignore retain_stub] autorelease_stub];
+}
+
+- (void) setIgnore: (AromaReactions_ActionIgnore *) ignore {
+  [ignore retain_stub];
+  [__ignore release_stub];
+  __ignore = ignore;
+  __ignore_isset = YES;
+}
+
+- (BOOL) ignoreIsSet {
+  return __ignore_isset;
+}
+
+- (void) unsetIgnore {
+  [__ignore release_stub];
+  __ignore = nil;
+  __ignore_isset = NO;
+}
+
+- (AromaReactions_ActionDeleteMessage *) deleteMessage {
+  return [[__deleteMessage retain_stub] autorelease_stub];
+}
+
+- (void) setDeleteMessage: (AromaReactions_ActionDeleteMessage *) deleteMessage {
+  [deleteMessage retain_stub];
+  [__deleteMessage release_stub];
+  __deleteMessage = deleteMessage;
+  __deleteMessage_isset = YES;
+}
+
+- (BOOL) deleteMessageIsSet {
+  return __deleteMessage_isset;
+}
+
+- (void) unsetDeleteMessage {
+  [__deleteMessage release_stub];
+  __deleteMessage = nil;
+  __deleteMessage_isset = NO;
+}
+
+- (AromaReactions_ActionRespondToCode *) respondToCode {
+  return [[__respondToCode retain_stub] autorelease_stub];
+}
+
+- (void) setRespondToCode: (AromaReactions_ActionRespondToCode *) respondToCode {
+  [respondToCode retain_stub];
+  [__respondToCode release_stub];
+  __respondToCode = respondToCode;
+  __respondToCode_isset = YES;
+}
+
+- (BOOL) respondToCodeIsSet {
+  return __respondToCode_isset;
+}
+
+- (void) unsetRespondToCode {
+  [__respondToCode release_stub];
+  __respondToCode = nil;
+  __respondToCode_isset = NO;
+}
+
+- (AromaReactions_ActionForwardToUsers *) forwardToUsers {
+  return [[__forwardToUsers retain_stub] autorelease_stub];
+}
+
+- (void) setForwardToUsers: (AromaReactions_ActionForwardToUsers *) forwardToUsers {
+  [forwardToUsers retain_stub];
+  [__forwardToUsers release_stub];
+  __forwardToUsers = forwardToUsers;
+  __forwardToUsers_isset = YES;
+}
+
+- (BOOL) forwardToUsersIsSet {
+  return __forwardToUsers_isset;
+}
+
+- (void) unsetForwardToUsers {
+  [__forwardToUsers release_stub];
+  __forwardToUsers = nil;
+  __forwardToUsers_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionPostToSlackChannel *fieldValue = [[AromaReactions_ActionPostToSlackChannel alloc] init];
+          [fieldValue read: inProtocol];
+          [self setPostToSlackChannel: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionPostToSlackUser *fieldValue = [[AromaReactions_ActionPostToSlackUser alloc] init];
+          [fieldValue read: inProtocol];
+          [self setPostToSlackUser: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionSendEmail *fieldValue = [[AromaReactions_ActionSendEmail alloc] init];
+          [fieldValue read: inProtocol];
+          [self setSendEmail: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionIgnore *fieldValue = [[AromaReactions_ActionIgnore alloc] init];
+          [fieldValue read: inProtocol];
+          [self setIgnore: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionDeleteMessage *fieldValue = [[AromaReactions_ActionDeleteMessage alloc] init];
+          [fieldValue read: inProtocol];
+          [self setDeleteMessage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionRespondToCode *fieldValue = [[AromaReactions_ActionRespondToCode alloc] init];
+          [fieldValue read: inProtocol];
+          [self setRespondToCode: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 7:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_ActionForwardToUsers *fieldValue = [[AromaReactions_ActionForwardToUsers alloc] init];
+          [fieldValue read: inProtocol];
+          [self setForwardToUsers: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Action"];
+  if (__postToSlackChannel_isset) {
+    if (__postToSlackChannel != nil) {
+      [outProtocol writeFieldBeginWithName: @"postToSlackChannel" type: TType_STRUCT fieldID: 1];
+      [__postToSlackChannel write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__postToSlackUser_isset) {
+    if (__postToSlackUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"postToSlackUser" type: TType_STRUCT fieldID: 2];
+      [__postToSlackUser write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__sendEmail_isset) {
+    if (__sendEmail != nil) {
+      [outProtocol writeFieldBeginWithName: @"sendEmail" type: TType_STRUCT fieldID: 3];
+      [__sendEmail write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__ignore_isset) {
+    if (__ignore != nil) {
+      [outProtocol writeFieldBeginWithName: @"ignore" type: TType_STRUCT fieldID: 4];
+      [__ignore write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__deleteMessage_isset) {
+    if (__deleteMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"deleteMessage" type: TType_STRUCT fieldID: 5];
+      [__deleteMessage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__respondToCode_isset) {
+    if (__respondToCode != nil) {
+      [outProtocol writeFieldBeginWithName: @"respondToCode" type: TType_STRUCT fieldID: 6];
+      [__respondToCode write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__forwardToUsers_isset) {
+    if (__forwardToUsers != nil) {
+      [outProtocol writeFieldBeginWithName: @"forwardToUsers" type: TType_STRUCT fieldID: 7];
+      [__forwardToUsers write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Action("];
+  [ms appendString: @"postToSlackChannel:"];
+  [ms appendFormat: @"%@", __postToSlackChannel];
+  [ms appendString: @",postToSlackUser:"];
+  [ms appendFormat: @"%@", __postToSlackUser];
+  [ms appendString: @",sendEmail:"];
+  [ms appendFormat: @"%@", __sendEmail];
+  [ms appendString: @",ignore:"];
+  [ms appendFormat: @"%@", __ignore];
+  [ms appendString: @",deleteMessage:"];
+  [ms appendFormat: @"%@", __deleteMessage];
+  [ms appendString: @",respondToCode:"];
+  [ms appendFormat: @"%@", __respondToCode];
+  [ms appendString: @",forwardToUsers:"];
+  [ms appendFormat: @"%@", __forwardToUsers];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaReactions_Reaction
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithMatcher: (AromaReactions_Matcher *) matcher reaction: (AromaReactions_Reaction) reaction
+{
+  self = [super init];
+  __matcher = [matcher retain_stub];
+  __matcher_isset = YES;
+  __reaction = [reaction retain_stub];
+  __reaction_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"matcher"])
+  {
+    __matcher = [[decoder decodeObjectForKey: @"matcher"] retain_stub];
+    __matcher_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"reaction"])
+  {
+    __reaction = [[decoder decodeObjectForKey: @"reaction"] retain_stub];
+    __reaction_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__matcher_isset)
+  {
+    [encoder encodeObject: __matcher forKey: @"matcher"];
+  }
+  if (__reaction_isset)
+  {
+    [encoder encodeObject: __reaction forKey: @"reaction"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __matcher_isset ? 2654435761 : 0;
+  if (__matcher_isset)
+  {
+    hash = (hash * 31) ^ [__matcher hash];
+  }
+  hash = (hash * 31) ^ __reaction_isset ? 2654435761 : 0;
+  if (__reaction_isset)
+  {
+    hash = (hash * 31) ^ [__reaction hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaReactions_Reaction class]]) {
+    return NO;
+  }
+  AromaReactions_Reaction *other = (AromaReactions_Reaction *)anObject;
+  if ((__matcher_isset != other->__matcher_isset) ||
+      (__matcher_isset && ((__matcher || other->__matcher) && ![__matcher isEqual:other->__matcher]))) {
+    return NO;
+  }
+  if ((__reaction_isset != other->__reaction_isset) ||
+      (__reaction_isset && ((__reaction || other->__reaction) && ![__reaction isEqual:other->__reaction]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__matcher release_stub];
+  [__reaction release_stub];
+  [super dealloc_stub];
+}
+
+- (AromaReactions_Matcher *) matcher {
+  return [[__matcher retain_stub] autorelease_stub];
+}
+
+- (void) setMatcher: (AromaReactions_Matcher *) matcher {
+  [matcher retain_stub];
+  [__matcher release_stub];
+  __matcher = matcher;
+  __matcher_isset = YES;
+}
+
+- (BOOL) matcherIsSet {
+  return __matcher_isset;
+}
+
+- (void) unsetMatcher {
+  [__matcher release_stub];
+  __matcher = nil;
+  __matcher_isset = NO;
+}
+
+- (AromaReactions_Reaction *) reaction {
+  return [[__reaction retain_stub] autorelease_stub];
+}
+
+- (void) setReaction: (AromaReactions_Reaction *) reaction {
+  [reaction retain_stub];
+  [__reaction release_stub];
+  __reaction = reaction;
+  __reaction_isset = YES;
+}
+
+- (BOOL) reactionIsSet {
+  return __reaction_isset;
+}
+
+- (void) unsetReaction {
+  [__reaction release_stub];
+  __reaction = nil;
+  __reaction_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_Matcher *fieldValue = [[AromaReactions_Matcher alloc] init];
+          [fieldValue read: inProtocol];
+          [self setMatcher: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaReactions_Reaction *fieldValue = [[AromaReactions_Reaction alloc] init];
+          [fieldValue read: inProtocol];
+          [self setReaction: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"Reaction"];
+  if (__matcher_isset) {
+    if (__matcher != nil) {
+      [outProtocol writeFieldBeginWithName: @"matcher" type: TType_STRUCT fieldID: 1];
+      [__matcher write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__reaction_isset) {
+    if (__reaction != nil) {
+      [outProtocol writeFieldBeginWithName: @"reaction" type: TType_STRUCT fieldID: 2];
+      [__reaction write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Reaction("];
+  [ms appendString: @"matcher:"];
+  [ms appendFormat: @"%@", __matcher];
+  [ms appendString: @",reaction:"];
+  [ms appendFormat: @"%@", __reaction];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 
 @implementation AromaReactions_ReactionsConstants
 + (void) initialize {

@@ -195,7 +195,15 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Reactions</td><td></td>
-<td><a href="#Struct_Matcher">Matcher</a><br/>
+<td><a href="#Struct_Action">Action</a><br/>
+<a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a><br/>
+<a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a><br/>
+<a href="#Struct_ActionIgnore">ActionIgnore</a><br/>
+<a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a><br/>
+<a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a><br/>
+<a href="#Struct_ActionRespondToCode">ActionRespondToCode</a><br/>
+<a href="#Struct_ActionSendEmail">ActionSendEmail</a><br/>
+<a href="#Struct_Matcher">Matcher</a><br/>
 <a href="#Struct_MatcherAll">MatcherAll</a><br/>
 <a href="#Struct_MatcherBodyContains">MatcherBodyContains</a><br/>
 <a href="#Struct_MatcherBodyIs">MatcherBodyIs</a><br/>
@@ -203,9 +211,11 @@ code { line-height: 20px; }
 <a href="#Struct_MatcherTitleContains">MatcherTitleContains</a><br/>
 <a href="#Struct_MatcherTitleIs">MatcherTitleIs</a><br/>
 <a href="#Struct_MatcherUrgencyEquals">MatcherUrgencyEquals</a><br/>
+<a href="#Struct_Reaction">Reaction</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
+<a href="#Typedef_uuid">uuid</a><br/>
 </td>
 <td></code></td>
 </tr></table>
@@ -218,6 +228,9 @@ code { line-height: 20px; }
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
+</div>
+<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_uuid">Aroma.uuid</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
 <div class="definition"><h3 id="Struct_MatcherAll">Struct: MatcherAll</h3>
@@ -250,4 +263,39 @@ code { line-height: 20px; }
 <tr><td>5</td><td>bodyContains</td><td><code><a href="#Struct_MatcherBodyContains">MatcherBodyContains</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>6</td><td>urgencyEquals</td><td><code><a href="#Struct_MatcherUrgencyEquals">MatcherUrgencyEquals</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>7</td><td>hostnameEquals</td><td><code><a href="#Struct_MatcherHostnameEquals">MatcherHostnameEquals</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionPostToSlackChannel">Struct: ActionPostToSlackChannel</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>slackChannel</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>includeBody</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionPostToSlackUser">Struct: ActionPostToSlackUser</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>slackUsername</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>includeBody</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionSendEmail">Struct: ActionSendEmail</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>emailAddress</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>includeBody</td><td><code>bool</code></td><td></td><td>optional</td><td><code>true</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionIgnore">Struct: ActionIgnore</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionDeleteMessage">Struct: ActionDeleteMessage</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionRespondToCode">Struct: ActionRespondToCode</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>messageToSend</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_ActionForwardToUsers">Struct: ActionForwardToUsers</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>userIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Action">Union: Action</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>postToSlackChannel</td><td><code><a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>postToSlackUser</td><td><code><a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>sendEmail</td><td><code><a href="#Struct_ActionSendEmail">ActionSendEmail</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>4</td><td>ignore</td><td><code><a href="#Struct_ActionIgnore">ActionIgnore</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>5</td><td>deleteMessage</td><td><code><a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>6</td><td>respondToCode</td><td><code><a href="#Struct_ActionRespondToCode">ActionRespondToCode</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_Reaction">Struct: Reaction</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>matcher</td><td><code><a href="#Struct_Matcher">Matcher</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>reaction</td><td><code><a href="#Typedef_Reaction">Reaction</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>
