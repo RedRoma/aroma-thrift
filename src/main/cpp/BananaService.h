@@ -9,7 +9,7 @@
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
-#include "BananaService_types.h"
+#include "AromaService_types.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 

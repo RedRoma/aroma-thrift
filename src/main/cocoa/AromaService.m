@@ -19,13 +19,13 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
 
-#import "BananaService.h"
+#import "AromaService.h"
 
 @implementation BananaService_CheckExistsRequest
 
@@ -12725,7 +12725,7 @@ static Banana_LengthOfTime * BananaService_DEFAULT_INBOX_LIFETIME;
 static BananaService_int BananaService_APPLICATION_NAME_MAX_LENGTH = 20;
 static BananaService_int BananaService_APPLICATION_MAX_OWNERS = 10;
 
-@implementation BananaService_BananaServiceConstants
+@implementation BananaService_AromaServiceConstants
 + (void) initialize {
   BananaService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
   [BananaService_PRODUCTION_ENDPOINT setHostname:@"banana-srv.banana.aroma.tech"];

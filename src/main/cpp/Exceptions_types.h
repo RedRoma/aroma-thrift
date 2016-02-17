@@ -15,7 +15,6 @@
 #include <thrift/transport/TTransport.h>
 
 #include <thrift/cxxfunctional.h>
-#include "Banana_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace exceptions {

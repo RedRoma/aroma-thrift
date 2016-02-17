@@ -16,7 +16,7 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace events {

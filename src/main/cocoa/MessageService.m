@@ -19,13 +19,12 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
 #import "ApplicationService.h"
-#import "BananaService.h"
 
 #import "MessageService.h"
 

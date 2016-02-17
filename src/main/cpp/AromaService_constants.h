@@ -4,16 +4,16 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaService_CONSTANTS_H
-#define BananaService_CONSTANTS_H
+#ifndef AromaService_CONSTANTS_H
+#define AromaService_CONSTANTS_H
 
-#include "BananaService_types.h"
+#include "AromaService_types.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
-class BananaServiceConstants {
+class AromaServiceConstants {
  public:
-  BananaServiceConstants();
+  AromaServiceConstants();
 
   double API_VERSION;
   int SERVICE_PORT;
@@ -29,7 +29,7 @@ class BananaServiceConstants {
   int APPLICATION_MAX_OWNERS;
 };
 
-extern const BananaServiceConstants g_BananaService_constants;
+extern const AromaServiceConstants g_AromaService_constants;
 
 }}}} // namespace
 

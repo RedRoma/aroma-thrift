@@ -8,11 +8,11 @@ namespace cpp   aroma.banana.thrift.endpoint
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Exceptions.thrift"
 
-typedef Banana.int int
-typedef Banana.uuid uuid;
+typedef Aroma.int int
+typedef Aroma.uuid uuid;
 
 typedef Exceptions.OperationFailedException OperationFailedException
 

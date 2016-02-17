@@ -9,7 +9,7 @@ namespace cpp   aroma.banana.thrift.notification.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
@@ -20,15 +20,15 @@ include "Exceptions.thrift"
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
-typedef Banana.uuid uuid;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
+typedef Aroma.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
 typedef Channels.BananaChannel BananaChannel
 typedef Events.Event Event
 

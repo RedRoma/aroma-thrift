@@ -16,7 +16,7 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 #include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Events_types.h"

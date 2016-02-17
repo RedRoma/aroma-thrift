@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
@@ -658,7 +658,7 @@ ProvisionApplicationRequest = module.exports.ProvisionApplicationRequest = funct
       this.organizationId = args.organizationId;
     }
     if (args.icon !== undefined && args.icon !== null) {
-      this.icon = new Banana_ttypes.Image(args.icon);
+      this.icon = new Aroma_ttypes.Image(args.icon);
     }
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [null]);
@@ -716,7 +716,7 @@ ProvisionApplicationRequest.prototype.read = function(input) {
       break;
       case 5:
       if (ftype == Thrift.Type.STRUCT) {
-        this.icon = new Banana_ttypes.Image();
+        this.icon = new Aroma_ttypes.Image();
         this.icon.read(input);
       } else {
         input.skip(ftype);
@@ -829,7 +829,7 @@ ProvisionApplicationResponse = module.exports.ProvisionApplicationResponse = fun
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
     }
     if (args.applicationInfo !== undefined && args.applicationInfo !== null) {
-      this.applicationInfo = new Banana_ttypes.Application(args.applicationInfo);
+      this.applicationInfo = new Aroma_ttypes.Application(args.applicationInfo);
     }
   }
 };
@@ -857,7 +857,7 @@ ProvisionApplicationResponse.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.applicationInfo = new Banana_ttypes.Application();
+        this.applicationInfo = new Aroma_ttypes.Application();
         this.applicationInfo.read(input);
       } else {
         input.skip(ftype);
@@ -1292,7 +1292,7 @@ RenewApplicationTokenRequest = module.exports.RenewApplicationTokenRequest = fun
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
     }
     if (args.newLifetime !== undefined && args.newLifetime !== null) {
-      this.newLifetime = new Banana_ttypes.LengthOfTime(args.newLifetime);
+      this.newLifetime = new Aroma_ttypes.LengthOfTime(args.newLifetime);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -1331,7 +1331,7 @@ RenewApplicationTokenRequest.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
-        this.newLifetime = new Banana_ttypes.LengthOfTime();
+        this.newLifetime = new Aroma_ttypes.LengthOfTime();
         this.newLifetime.read(input);
       } else {
         input.skip(ftype);
@@ -1738,7 +1738,7 @@ SignUpRequest = module.exports.SignUpRequest = function(args) {
       this.githubProfile = args.githubProfile;
     }
     if (args.profileImage !== undefined && args.profileImage !== null) {
-      this.profileImage = new Banana_ttypes.Image(args.profileImage);
+      this.profileImage = new Aroma_ttypes.Image(args.profileImage);
     }
   }
 };
@@ -1836,7 +1836,7 @@ SignUpRequest.prototype.read = function(input) {
       break;
       case 12:
       if (ftype == Thrift.Type.STRUCT) {
-        this.profileImage = new Banana_ttypes.Image();
+        this.profileImage = new Aroma_ttypes.Image();
         this.profileImage.read(input);
       } else {
         input.skip(ftype);
@@ -2007,7 +2007,7 @@ SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
   this.channel = null;
   this.applicationId = null;
   this.lengthOfTime = null;
-  this.lengthOfTime = new Banana_ttypes.LengthOfTime({
+  this.lengthOfTime = new Aroma_ttypes.LengthOfTime({
 'value' : 4,'unit' : 3});
     if (args) {
         if (args.token !== undefined && args.token !== null) {
@@ -2020,7 +2020,7 @@ SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
             this.applicationId = args.applicationId;
         }
         if (args.lengthOfTime !== undefined && args.lengthOfTime !== null) {
-            this.lengthOfTime = new Banana_ttypes.LengthOfTime(args.lengthOfTime);
+            this.lengthOfTime = new Aroma_ttypes.LengthOfTime(args.lengthOfTime);
         }
     }
 };
@@ -2063,7 +2063,7 @@ SnoozeChannelRequest.prototype.read = function(input) {
         break;
         case 4:
         if (ftype == Thrift.Type.STRUCT) {
-          this.lengthOfTime = new Banana_ttypes.LengthOfTime();
+          this.lengthOfTime = new Aroma_ttypes.LengthOfTime();
           this.lengthOfTime.read(input);
         } else {
           input.skip(ftype);
@@ -2398,7 +2398,7 @@ GetApplicationInfoResponse = module.exports.GetApplicationInfoResponse = functio
     this.registeredChannels = null;
     if (args) {
         if (args.applicationInfo !== undefined && args.applicationInfo !== null) {
-            this.applicationInfo = new Banana_ttypes.Application(args.applicationInfo);
+            this.applicationInfo = new Aroma_ttypes.Application(args.applicationInfo);
         }
         if (args.registeredChannels !== undefined && args.registeredChannels !== null) {
             this.registeredChannels = Thrift.copyList(args.registeredChannels, [null]);
@@ -2421,7 +2421,7 @@ GetApplicationInfoResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.STRUCT) {
-          this.applicationInfo = new Banana_ttypes.Application();
+          this.applicationInfo = new Aroma_ttypes.Application();
           this.applicationInfo.read(input);
         } else {
           input.skip(ftype);
@@ -2583,7 +2583,7 @@ GetBuzzResponse.prototype.read = function(input) {
           for (var _i37 = 0; _i37 < _size32; ++_i37)
           {
             var elem38 = null;
-            elem38 = new Banana_ttypes.User();
+            elem38 = new Aroma_ttypes.User();
             elem38.read(input);
             this.freshUsers.push(elem38);
           }
@@ -2604,7 +2604,7 @@ GetBuzzResponse.prototype.read = function(input) {
           for (var _i44 = 0; _i44 < _size39; ++_i44)
           {
             var elem45 = null;
-            elem45 = new Banana_ttypes.Application();
+            elem45 = new Aroma_ttypes.Application();
             elem45.read(input);
             this.freshApplications.push(elem45);
           }
@@ -2800,7 +2800,7 @@ GetDashboardResponse = module.exports.GetDashboardResponse = function(args) {
             this.totalMessagesLast24hrs = args.totalMessagesLast24hrs;
         }
         if (args.recentMessages !== undefined && args.recentMessages !== null) {
-            this.recentMessages = Thrift.copyList(args.recentMessages, [Banana_ttypes.Message]);
+            this.recentMessages = Thrift.copyList(args.recentMessages, [Aroma_ttypes.Message]);
         }
         if (args.numberOfLowUrgencyMessages !== undefined && args.numberOfLowUrgencyMessages !== null) {
             this.numberOfLowUrgencyMessages = args.numberOfLowUrgencyMessages;
@@ -2860,7 +2860,7 @@ GetDashboardResponse.prototype.read = function(input) {
           for (var _i69 = 0; _i69 < _size64; ++_i69)
           {
             var elem70 = null;
-            elem70 = new Banana_ttypes.Message();
+            elem70 = new Aroma_ttypes.Message();
             elem70.read(input);
             this.recentMessages.push(elem70);
           }
@@ -3021,7 +3021,7 @@ GetInboxResponse = module.exports.GetInboxResponse = function(args) {
     this.messages = [];
     if (args) {
         if (args.messages !== undefined && args.messages !== null) {
-            this.messages = Thrift.copyList(args.messages, [Banana_ttypes.Message]);
+            this.messages = Thrift.copyList(args.messages, [Aroma_ttypes.Message]);
         }
     }
 };
@@ -3051,7 +3051,7 @@ GetInboxResponse.prototype.read = function(input) {
           for (var _i77 = 0; _i77 < _size72; ++_i77)
           {
             var elem78 = null;
-            elem78 = new Banana_ttypes.Message();
+            elem78 = new Aroma_ttypes.Message();
             elem78.read(input);
             this.messages.push(elem78);
           }
@@ -3181,7 +3181,7 @@ GetApplicationMessagesResponse = module.exports.GetApplicationMessagesResponse =
     this.totalMessagesMatching = 0;
     if (args) {
         if (args.messages !== undefined && args.messages !== null) {
-            this.messages = Thrift.copyList(args.messages, [Banana_ttypes.Message]);
+            this.messages = Thrift.copyList(args.messages, [Aroma_ttypes.Message]);
         }
         if (args.totalMessagesMatching !== undefined && args.totalMessagesMatching !== null) {
             this.totalMessagesMatching = args.totalMessagesMatching;
@@ -3214,7 +3214,7 @@ GetApplicationMessagesResponse.prototype.read = function(input) {
           for (var _i85 = 0; _i85 < _size80; ++_i85)
           {
             var elem86 = null;
-            elem86 = new Banana_ttypes.Message();
+            elem86 = new Aroma_ttypes.Message();
             elem86.read(input);
             this.messages.push(elem86);
           }
@@ -3352,7 +3352,7 @@ GetFullMessageResponse = module.exports.GetFullMessageResponse = function(args) 
     this.fullMessage = null;
     if (args) {
         if (args.fullMessage !== undefined && args.fullMessage !== null) {
-            this.fullMessage = new Banana_ttypes.Message(args.fullMessage);
+            this.fullMessage = new Aroma_ttypes.Message(args.fullMessage);
         }
     }
 };
@@ -3372,7 +3372,7 @@ GetFullMessageResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.STRUCT) {
-          this.fullMessage = new Banana_ttypes.Message();
+          this.fullMessage = new Aroma_ttypes.Message();
           this.fullMessage.read(input);
         } else {
           input.skip(ftype);
@@ -3473,7 +3473,7 @@ GetMediaResponse = module.exports.GetMediaResponse = function(args) {
     this.image = null;
     if (args) {
         if (args.image !== undefined && args.image !== null) {
-            this.image = new Banana_ttypes.Image(args.image);
+            this.image = new Aroma_ttypes.Image(args.image);
         }
     }
 };
@@ -3493,7 +3493,7 @@ GetMediaResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.STRUCT) {
-          this.image = new Banana_ttypes.Image();
+          this.image = new Aroma_ttypes.Image();
           this.image.read(input);
         } else {
           input.skip(ftype);
@@ -3611,7 +3611,7 @@ GetMyApplicationsResponse.prototype.read = function(input) {
           for (var _i93 = 0; _i93 < _size88; ++_i93)
           {
             var elem94 = null;
-            elem94 = new Banana_ttypes.Application();
+            elem94 = new Aroma_ttypes.Application();
             elem94.read(input);
             this.applications.push(elem94);
           }
@@ -3984,7 +3984,7 @@ GetServiceAnnouncementsResponse = module.exports.GetServiceAnnouncementsResponse
     this.serviceAnnouncements = [];
     if (args) {
         if (args.serviceAnnouncements !== undefined && args.serviceAnnouncements !== null) {
-            this.serviceAnnouncements = Thrift.copyList(args.serviceAnnouncements, [Banana_ttypes.ServiceAnnouncement]);
+            this.serviceAnnouncements = Thrift.copyList(args.serviceAnnouncements, [Aroma_ttypes.ServiceAnnouncement]);
         }
     }
 };
@@ -4014,7 +4014,7 @@ GetServiceAnnouncementsResponse.prototype.read = function(input) {
           for (var _i117 = 0; _i117 < _size112; ++_i117)
           {
             var elem118 = null;
-            elem118 = new Banana_ttypes.ServiceAnnouncement();
+            elem118 = new Aroma_ttypes.ServiceAnnouncement();
             elem118.read(input);
             this.serviceAnnouncements.push(elem118);
           }
@@ -4143,7 +4143,7 @@ GetUserInfoResponse = module.exports.GetUserInfoResponse = function(args) {
     this.userInfo = null;
     if (args) {
         if (args.userInfo !== undefined && args.userInfo !== null) {
-            this.userInfo = new Banana_ttypes.User(args.userInfo);
+            this.userInfo = new Aroma_ttypes.User(args.userInfo);
         }
     }
 };
@@ -4163,7 +4163,7 @@ GetUserInfoResponse.prototype.read = function(input) {
       {
         case 1:
         if (ftype == Thrift.Type.STRUCT) {
-          this.userInfo = new Banana_ttypes.User();
+          this.userInfo = new Aroma_ttypes.User();
           this.userInfo.read(input);
         } else {
           input.skip(ftype);
@@ -4310,7 +4310,7 @@ SearchForApplicationsResponse.prototype.read = function(input) {
           for (var _i125 = 0; _i125 < _size120; ++_i125)
           {
             var elem126 = null;
-            elem126 = new Banana_ttypes.Application();
+            elem126 = new Aroma_ttypes.Application();
             elem126.read(input);
             this.applications.push(elem126);
           }
@@ -4358,14 +4358,14 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-srv.banana.aroma.tech','port' : 7010});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'banana-srv.beta.banana.aroma.tech','port' : 7010});
-ttypes.MAX_APPLICATION_ICON_DIMENSION = new Banana_ttypes.Dimension({
+ttypes.MAX_APPLICATION_ICON_DIMENSION = new Aroma_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
-ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Banana_ttypes.Dimension({
+ttypes.MAX_PROFILE_IMAGE_DIMENSION = new Aroma_ttypes.Dimension({
 'width' : 1024,'height' : 1024});
 ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
-ttypes.DEFAULT_INBOX_LIFETIME = new Banana_ttypes.LengthOfTime({
+ttypes.DEFAULT_INBOX_LIFETIME = new Aroma_ttypes.LengthOfTime({
 'value' : 3,'unit' : 4});
 ttypes.APPLICATION_NAME_MAX_LENGTH = 20;
 ttypes.APPLICATION_MAX_OWNERS = 10;

@@ -763,6 +763,6 @@ typedef NSString * Banana_uuid;
 
 @end
 
-@interface Banana_BananaConstants : NSObject {
+@interface Banana_AromaConstants : NSObject {
 }
 @end

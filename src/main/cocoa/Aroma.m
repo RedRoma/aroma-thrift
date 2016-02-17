@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 
-#import "Banana.h"
+#import "Aroma.h"
 
 @implementation Banana_LengthOfTime
 
@@ -4262,7 +4262,7 @@
 @end
 
 
-@implementation Banana_BananaConstants
+@implementation Banana_AromaConstants
 + (void) initialize {
 }
 @end

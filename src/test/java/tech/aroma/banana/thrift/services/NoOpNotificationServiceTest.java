@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
 import tech.aroma.banana.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.banana.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.banana.thrift.notification.service.SendNotificationResponse;
-import tech.aroma.banana.thrift.service.BananaServiceConstants;
+import tech.aroma.banana.thrift.service.AromaServiceConstants;
 import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
@@ -55,7 +55,7 @@ public class NoOpNotificationServiceTest
     public void testGetApiVersion() throws Exception
     {
         double apiVersion = instance.getApiVersion();
-        assertThat(apiVersion, is(BananaServiceConstants.API_VERSION));
+        assertThat(apiVersion, is(AromaServiceConstants.API_VERSION));
     }
 
     @Test

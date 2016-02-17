@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
- 
 package tech.aroma.banana.thrift.services;
-
 
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
@@ -27,7 +25,7 @@ import tech.aroma.banana.thrift.exceptions.OperationFailedException;
 import tech.aroma.banana.thrift.notification.service.NotificationService;
 import tech.aroma.banana.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.banana.thrift.notification.service.SendNotificationResponse;
-import tech.aroma.banana.thrift.service.BananaServiceConstants;
+import tech.aroma.banana.thrift.service.AromaServiceConstants;
 
 import static tech.sirwellington.alchemy.arguments.Arguments.checkThat;
 import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull;
@@ -38,24 +36,25 @@ import static tech.sirwellington.alchemy.arguments.assertions.Assertions.notNull
  */
 public final class NoOpNotificationService implements NotificationService.Iface
 {
+
     private final static Logger LOG = LoggerFactory.getLogger(NoOpNotificationService.class);
 
     @Override
     public double getApiVersion() throws TException
     {
-        return BananaServiceConstants.API_VERSION;
+        return AromaServiceConstants.API_VERSION;
     }
 
     @Override
     public SendNotificationResponse sendNotification(SendNotificationRequest request) throws InvalidArgumentException,
                                                                                              OperationFailedException,
-                                                                                             InvalidTokenException, 
+                                                                                             InvalidTokenException,
                                                                                              TException
     {
         checkThat(request)
             .throwing(InvalidArgumentException.class)
             .is(notNull());
-        
+
         return new SendNotificationResponse();
     }
 

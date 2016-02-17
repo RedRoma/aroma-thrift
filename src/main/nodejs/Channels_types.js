@@ -7,7 +7,7 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
@@ -470,7 +470,7 @@ ReceiveMessageRequest = module.exports.ReceiveMessageRequest = function(args) {
   this.message = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
-      this.message = new Banana_ttypes.Message(args.message);
+      this.message = new Aroma_ttypes.Message(args.message);
     }
   }
 };
@@ -490,7 +490,7 @@ ReceiveMessageRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.message = new Banana_ttypes.Message();
+        this.message = new Aroma_ttypes.Message();
         this.message.read(input);
       } else {
         input.skip(ftype);

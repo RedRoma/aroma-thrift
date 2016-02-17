@@ -9,7 +9,7 @@ namespace cpp   aroma.banana.thrift.application.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
@@ -18,14 +18,14 @@ include "Exceptions.thrift"
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -57,7 +57,7 @@ struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;
     2: string body;
-    3: Urgency urgency = Banana.Urgency.LOW;
+    3: Urgency urgency = Aroma.Urgency.LOW;
     /** The time that the message was generated on the Client Side. */
     4: optional timestamp timeOfMessage;
     5: string title;

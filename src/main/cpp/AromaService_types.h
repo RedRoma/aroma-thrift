@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef BananaService_TYPES_H
-#define BananaService_TYPES_H
+#ifndef AromaService_TYPES_H
+#define AromaService_TYPES_H
 
 #include <iosfwd>
 
@@ -16,7 +16,7 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 #include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Events_types.h"

@@ -189,12 +189,12 @@ table { empty-cells: show; }
 code { line-height: 20px; }
 .table-bordered th, .table-bordered td { border-bottom: 1px solid #DDDDDD; }
 --></style>
-<title>Thrift module: BananaService</title></head><body>
+<title>Thrift module: AromaService</title></head><body>
 <div class="container-fluid">
-<h1>Thrift module: BananaService</h1>
+<h1>Thrift module: AromaService</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>BananaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
+<td>AromaService</td><td><a href="#Svc_BananaService">BananaService</a><br/>
 <ul>
 <li><a href="#Fn_BananaService_deleteMessage">deleteMessage</a></li>
 <li><a href="#Fn_BananaService_dismissMessage">dismissMessage</a></li>
@@ -324,28 +324,28 @@ code { line-height: 20px; }
 <tr id="Const_API_VERSION"><td><code>API_VERSION</code></td><td><code>double</code></td><td><code>1.6</code></td></tr><tr><td colspan="3"><blockquote>Defines the Version of the Banana Service API of this specification.
 <br/></blockquote></td></tr><tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7010</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.banana.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Production Endpoint
 <br/></blockquote></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "banana-srv.beta.banana.aroma.tech", port = 7010 }</code></td></tr><tr><td colspan="3"><blockquote>This is the Banana Service Beta Endpoint
-<br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
-<br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Banana.html#Struct_Dimension">Banana.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
+<br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_DIMENSION"><td><code>MAX_APPLICATION_ICON_DIMENSION</code></td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimensions for an Icon submitted with an Application.
+<br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_IMAGE_DIMENSION"><td><code>MAX_PROFILE_IMAGE_DIMENSION</code></td><td><code><a href="Aroma.html#Struct_Dimension">Aroma.Dimension</a></code></td><td><code>{ width = 1024, height = 1024 }</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Dimension for a Profile Picture submitted.
 <br/></blockquote></td></tr><tr id="Const_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES"><td><code>MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for an Icon submitted with an Application.
 <br/></blockquote></td></tr><tr id="Const_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES"><td><code>MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>100</code></td></tr><tr><td colspan="3"><blockquote>The Maximum Filesize for a Profile Picture submitted.
 <br/></blockquote></td></tr><tr id="Const_MAX_MESSAGE_LENGTH"><td><code>MAX_MESSAGE_LENGTH</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>5000</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of messages included in a Message Object.
 If truncated, the full message can be loaded using the
 getFullMessage() operation.
-<br/></blockquote></td></tr><tr id="Const_DEFAULT_INBOX_LIFETIME"><td><code>DEFAULT_INBOX_LIFETIME</code></td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td><code>{ value = 3, unit = <code><a href="#Const_Banana.TimeUnit.DAYS">Banana.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The default amount of time to save messages in a User's Inbox.
+<br/></blockquote></td></tr><tr id="Const_DEFAULT_INBOX_LIFETIME"><td><code>DEFAULT_INBOX_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 3, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The default amount of time to save messages in a User's Inbox.
 <br/></blockquote></td></tr><tr id="Const_APPLICATION_NAME_MAX_LENGTH"><td><code>APPLICATION_NAME_MAX_LENGTH</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>20</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of characters that can be in the Application Name.
 <br/></blockquote></td></tr><tr id="Const_APPLICATION_MAX_OWNERS"><td><code>APPLICATION_MAX_OWNERS</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>10</code></td></tr><tr><td colspan="3"><blockquote>The Maximum number of owners that an Application can have.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_long">Typedef: long</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_long">Banana.long</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_long">Aroma.long</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_uuid">Banana.uuid</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_uuid">Aroma.uuid</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -357,16 +357,16 @@ getFullMessage() operation.
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Application">Banana.Application</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_Application">Aroma.Application</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Image">Typedef: Image</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Image">Banana.Image</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Enum_Urgency">Aroma.Urgency</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_User">Banana.User</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_User">Aroma.User</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_BananaChannel">Typedef: BananaChannel</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_BananaChannel">Channels.BananaChannel</a></code></p>
@@ -468,12 +468,12 @@ still be visible to other subscribers.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>programmingLanguage</td><td><code><a href="Banana.html#Enum_ProgrammingLanguage">Banana.ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
+<tr><td>3</td><td>programmingLanguage</td><td><code><a href="Aroma.html#Enum_ProgrammingLanguage">Aroma.ProgrammingLanguage</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>4</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>5</td><td>icon</td><td><code><a href="#Typedef_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>6</td><td>owners</td><td><code>set&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>7</td><td>applicationDescription</td><td><code>string</code></td><td></td><td>optional</td><td><code>""</code></td></tr>
-<tr><td>8</td><td>tier</td><td><code><a href="Banana.html#Enum_Tier">Banana.Tier</a></code></td><td></td><td>optional</td><td><code><code><a href="#Const_Banana.Tier.FREE">Banana.Tier.FREE</a></code></code></td></tr>
+<tr><td>8</td><td>tier</td><td><code><a href="Aroma.html#Enum_Tier">Aroma.Tier</a></code></td><td></td><td>optional</td><td><code><code><a href="#Const_Aroma.Tier.FREE">Aroma.Tier.FREE</a></code></code></td></tr>
 </table><br/>Defines the required information to provision
 an Application with the Banana Service.
 <br/></div><div class="definition"><h3 id="Struct_ProvisionApplicationResponse">Struct: ProvisionApplicationResponse</h3>
@@ -521,7 +521,7 @@ It will no longer be remembered or suggested.
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>applicationToken</td><td><code><a href="#Typedef_ApplicationToken">ApplicationToken</a></code></td><td>The Token to renew
 </td><td>default</td><td></td></tr>
-<tr><td>3</td><td>newLifetime</td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td>Defines for how long to extend a Token.
+<tr><td>3</td><td>newLifetime</td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td>Defines for how long to extend a Token.
 </td><td>default</td><td></td></tr>
 <tr><td>4</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Renews an Application Token, effectively extending it's lifetime.
@@ -556,7 +556,7 @@ Additional Charges may apply.
 <tr><td>6</td><td>username</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
 <tr><td>7</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>8</td><td>credentials</td><td><code><a href="Authentication.html#Struct_Credentials">Authentication.Credentials</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>9</td><td>mainRole</td><td><code><a href="Banana.html#Enum_Role">Banana.Role</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>9</td><td>mainRole</td><td><code><a href="Aroma.html#Enum_Role">Aroma.Role</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>10</td><td>birthDate</td><td><code><a href="#Typedef_timestamp">timestamp</a></code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>11</td><td>githubProfile</td><td><code>string</code></td><td></td><td>optional</td><td></td></tr>
 <tr><td>12</td><td>profileImage</td><td><code><a href="#Typedef_Image">Image</a></code></td><td></td><td>optional</td><td></td></tr>
@@ -573,8 +573,8 @@ Additional Charges may apply.
 <tr><td>2</td><td>channel</td><td><code><a href="#Typedef_BananaChannel">BananaChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>Optionally choose to snooze a specific Application.
 </td><td>optional</td><td></td></tr>
-<tr><td>4</td><td>lengthOfTime</td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td>Defines how long to snooze the Channel for.
-</td><td>optional</td><td><code>{ value = 4, unit = <code><a href="#Const_Banana.TimeUnit.HOURS">Banana.TimeUnit.HOURS</a></code> }</code></td></tr>
+<tr><td>4</td><td>lengthOfTime</td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td>Defines how long to snooze the Channel for.
+</td><td>optional</td><td><code>{ value = 4, unit = <code><a href="#Const_Aroma.TimeUnit.HOURS">Aroma.TimeUnit.HOURS</a></code> }</code></td></tr>
 </table><br/>A Snoozed Channel will not receive Notifications
 for a set time period.
 <br/></div><div class="definition"><h3 id="Struct_SnoozeChannelResponse">Struct: SnoozeChannelResponse</h3>
@@ -604,7 +604,7 @@ for a set time period.
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/>Buzz is like the latest news happening around
-Banana.
+Aroma.
 <br/></div><div class="definition"><h3 id="Struct_GetBuzzResponse">Struct: GetBuzzResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>freshUsers</td><td><code>list&lt;<code><a href="#Typedef_User">User</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
@@ -620,7 +620,7 @@ Banana.
 <tr><td>1</td><td>unreadMessageCount</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>2</td><td>totalMessagesLastHour</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>3</td><td>totalMessagesLast24hrs</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
-<tr><td>4</td><td>recentMessages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>4</td><td>recentMessages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>5</td><td>numberOfLowUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>6</td><td>numberOfMediumUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
 <tr><td>7</td><td>numberOfHighUrgencyMessages</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>default</td><td><code>0</code></td></tr>
@@ -631,7 +631,7 @@ Banana.
 </td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetInboxResponse">Struct: GetInboxResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesRequest">Struct: GetApplicationMessagesRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -643,7 +643,7 @@ Banana.
 or by a specific Application.
 <br/></div><div class="definition"><h3 id="Struct_GetApplicationMessagesResponse">Struct: GetApplicationMessagesResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Banana.html#Struct_Message">Banana.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>messages</td><td><code>list&lt;<code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
 <tr><td>2</td><td>totalMessagesMatching</td><td><code><a href="#Typedef_int">int</a></code></td><td></td><td>optional</td><td><code>0</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageRequest">Struct: GetFullMessageRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
@@ -652,14 +652,14 @@ or by a specific Application.
 <tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetFullMessageResponse">Struct: GetFullMessageResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>fullMessage</td><td><code><a href="Banana.html#Struct_Message">Banana.Message</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>fullMessage</td><td><code><a href="Aroma.html#Struct_Message">Aroma.Message</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMediaRequest">Struct: GetMediaRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>mediaId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMediaResponse">Struct: GetMediaResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>image</td><td><code><a href="Banana.html#Struct_Image">Banana.Image</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>image</td><td><code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsRequest">Struct: GetMyApplicationsRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
@@ -689,7 +689,7 @@ action, and not an application or machine.
 from the Team @ Aroma Tech.
 <br/></div><div class="definition"><h3 id="Struct_GetServiceAnnouncementsResponse">Struct: GetServiceAnnouncementsResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Banana.html#Struct_ServiceAnnouncement">Banana.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
+<tr><td>1</td><td>serviceAnnouncements</td><td><code>list&lt;<code><a href="Aroma.html#Struct_ServiceAnnouncement">Aroma.ServiceAnnouncement</a></code>&gt;</code></td><td></td><td>optional</td><td><code>{  }</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetUserInfoRequest">Struct: GetUserInfoRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>

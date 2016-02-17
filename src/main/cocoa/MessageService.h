@@ -19,13 +19,12 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
 #import "ApplicationService.h"
-#import "BananaService.h"
 
 typedef Banana_int MessageService_int;
 
@@ -69,25 +68,25 @@ typedef ApplicationService_SendMessageRequest * MessageService_SendMessageReques
 
 typedef ApplicationService_SendMessageResponse * MessageService_SendMessageResponse;
 
-typedef BananaService_DeleteMessageRequest * MessageService_DeleteMessageRequest;
+typedef MessageService_BananaService.DeleteMessageRequest MessageService_DeleteMessageRequest;
 
-typedef BananaService_DeleteMessageResponse * MessageService_DeleteMessageResponse;
+typedef MessageService_BananaService.DeleteMessageResponse MessageService_DeleteMessageResponse;
 
-typedef BananaService_DismissMessageRequest * MessageService_DismissMessageRequest;
+typedef MessageService_BananaService.DismissMessageRequest MessageService_DismissMessageRequest;
 
-typedef BananaService_DismissMessageResponse * MessageService_DismissMessageResponse;
+typedef MessageService_BananaService.DismissMessageResponse MessageService_DismissMessageResponse;
 
-typedef BananaService_GetApplicationMessagesRequest * MessageService_GetApplicationMessagesRequest;
+typedef MessageService_BananaService.GetApplicationMessagesRequest MessageService_GetApplicationMessagesRequest;
 
-typedef BananaService_GetApplicationMessagesResponse * MessageService_GetApplicationMessagesResponse;
+typedef MessageService_BananaService.GetApplicationMessagesResponse MessageService_GetApplicationMessagesResponse;
 
-typedef BananaService_GetInboxRequest * MessageService_GetInboxRequest;
+typedef MessageService_BananaService.GetInboxRequest MessageService_GetInboxRequest;
 
-typedef BananaService_GetInboxResponse * MessageService_GetInboxResponse;
+typedef MessageService_BananaService.GetInboxResponse MessageService_GetInboxResponse;
 
-typedef BananaService_GetFullMessageRequest * MessageService_GetFullMessageRequest;
+typedef MessageService_BananaService.GetFullMessageRequest MessageService_GetFullMessageRequest;
 
-typedef BananaService_GetFullMessageResponse * MessageService_GetFullMessageResponse;
+typedef MessageService_BananaService.GetFullMessageResponse MessageService_GetFullMessageResponse;
 
 @protocol MessageService_MessageService <NSObject>
 - (double) getApiVersion;  // throws TException

@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 

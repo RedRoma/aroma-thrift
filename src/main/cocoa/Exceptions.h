@@ -18,7 +18,6 @@
 #import "TProtocolFactory.h"
 #import "TBaseClient.h"
 
-#import "Banana.h"
 
 @interface BananaException_InvalidArgumentException : NSException <TBase, NSCoding> {
   NSString * __message;

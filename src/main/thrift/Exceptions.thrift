@@ -7,8 +7,6 @@ namespace cpp   aroma.banana.thrift.exceptions
  * that can occur during operation.
  */
 
-include "Banana.thrift"
-
 /**
  * Thrown when the Service receives a Bad or Invalid Argument.
  */

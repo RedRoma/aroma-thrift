@@ -16,13 +16,12 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 #include "Channels_types.h"
 #include "Endpoint_types.h"
 #include "Events_types.h"
 #include "Exceptions_types.h"
 #include "ApplicationService_types.h"
-#include "BananaService_types.h"
 
 
 namespace aroma { namespace banana { namespace thrift { namespace message { namespace service {
@@ -69,25 +68,25 @@ typedef class  ::aroma::banana::thrift::application::service::SendMessageRequest
 
 typedef class  ::aroma::banana::thrift::application::service::SendMessageResponse SendMessageResponse;
 
-typedef class  ::aroma::banana::thrift::service::DeleteMessageRequest DeleteMessageRequest;
+typedef BananaService.DeleteMessageRequest DeleteMessageRequest;
 
-typedef class  ::aroma::banana::thrift::service::DeleteMessageResponse DeleteMessageResponse;
+typedef BananaService.DeleteMessageResponse DeleteMessageResponse;
 
-typedef class  ::aroma::banana::thrift::service::DismissMessageRequest DismissMessageRequest;
+typedef BananaService.DismissMessageRequest DismissMessageRequest;
 
-typedef class  ::aroma::banana::thrift::service::DismissMessageResponse DismissMessageResponse;
+typedef BananaService.DismissMessageResponse DismissMessageResponse;
 
-typedef class  ::aroma::banana::thrift::service::GetApplicationMessagesRequest GetApplicationMessagesRequest;
+typedef BananaService.GetApplicationMessagesRequest GetApplicationMessagesRequest;
 
-typedef class  ::aroma::banana::thrift::service::GetApplicationMessagesResponse GetApplicationMessagesResponse;
+typedef BananaService.GetApplicationMessagesResponse GetApplicationMessagesResponse;
 
-typedef class  ::aroma::banana::thrift::service::GetInboxRequest GetInboxRequest;
+typedef BananaService.GetInboxRequest GetInboxRequest;
 
-typedef class  ::aroma::banana::thrift::service::GetInboxResponse GetInboxResponse;
+typedef BananaService.GetInboxResponse GetInboxResponse;
 
-typedef class  ::aroma::banana::thrift::service::GetFullMessageRequest GetFullMessageRequest;
+typedef BananaService.GetFullMessageRequest GetFullMessageRequest;
 
-typedef class  ::aroma::banana::thrift::service::GetFullMessageResponse GetFullMessageResponse;
+typedef BananaService.GetFullMessageResponse GetFullMessageResponse;
 
 }}}}} // namespace
 

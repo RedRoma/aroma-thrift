@@ -12,13 +12,13 @@ namespace cpp   aroma.banana.thrift.channels
  * be reached.
  */
 
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
-typedef Banana.int int
-typedef Banana.long long
-typedef Banana.timestamp timestamp
+typedef Aroma.int int
+typedef Aroma.long long
+typedef Aroma.timestamp timestamp
 
 /**
  * It's a bit confusing, but "Channel" here refers to
@@ -85,7 +85,7 @@ struct ChannelInfo
  */
 struct ReceiveMessageRequest
 {
-    1: Banana.Message message;
+    1: Aroma.Message message;
 }
 
 /**

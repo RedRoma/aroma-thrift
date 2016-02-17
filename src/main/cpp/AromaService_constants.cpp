@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "BananaService_constants.h"
+#include "AromaService_constants.h"
 
 namespace aroma { namespace banana { namespace thrift { namespace service {
 
-const BananaServiceConstants g_BananaService_constants;
+const AromaServiceConstants g_AromaService_constants;
 
-BananaServiceConstants::BananaServiceConstants() {
+AromaServiceConstants::AromaServiceConstants() {
   API_VERSION = 1.6;
 
   SERVICE_PORT = 7010;

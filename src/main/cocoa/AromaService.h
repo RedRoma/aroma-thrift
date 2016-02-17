@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
@@ -2171,7 +2171,7 @@ typedef BananaException_UserDoesNotExistException * BananaService_UserDoesNotExi
 - (id<BananaService_BananaService>) service;
 @end
 
-@interface BananaService_BananaServiceConstants : NSObject {
+@interface BananaService_AromaServiceConstants : NSObject {
 }
 + (double) API_VERSION;
 + (BananaService_int) SERVICE_PORT;

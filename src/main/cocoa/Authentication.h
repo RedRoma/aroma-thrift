@@ -18,7 +18,7 @@
 #import "TProtocolFactory.h"
 #import "TBaseClient.h"
 
-#import "Banana.h"
+#import "Aroma.h"
 
 enum BananaAuthentication_TokenType {
   TokenType_APPLICATION = 1,

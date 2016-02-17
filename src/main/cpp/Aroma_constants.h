@@ -4,20 +4,20 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef Banana_CONSTANTS_H
-#define Banana_CONSTANTS_H
+#ifndef Aroma_CONSTANTS_H
+#define Aroma_CONSTANTS_H
 
-#include "Banana_types.h"
+#include "Aroma_types.h"
 
 namespace aroma { namespace banana { namespace thrift {
 
-class BananaConstants {
+class AromaConstants {
  public:
-  BananaConstants();
+  AromaConstants();
 
 };
 
-extern const BananaConstants g_Banana_constants;
+extern const AromaConstants g_Aroma_constants;
 
 }}} // namespace
 

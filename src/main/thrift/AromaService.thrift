@@ -18,7 +18,7 @@ namespace cpp   aroma.banana.thrift.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
@@ -34,19 +34,19 @@ include "Exceptions.thrift"
  * #owner   - Signifies an Operation that can only be performed by an "Owner".
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
-typedef Banana.uuid uuid;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
+typedef Aroma.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
-typedef Banana.Application Application
-typedef Banana.Image Image
-typedef Banana.Urgency Urgency
-typedef Banana.User User
+typedef Aroma.Application Application
+typedef Aroma.Image Image
+typedef Aroma.Urgency Urgency
+typedef Aroma.User User
 typedef Channels.BananaChannel BananaChannel
 typedef Endpoint.Endpoint Endpoint
 typedef Events.HealthCheckFailed HealthCheckFailed
@@ -82,10 +82,10 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "banana-srv.bana
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "banana-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
 /** The Maximum Dimensions for an Icon submitted with an Application. */
-const Banana.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
+const Aroma.Dimension MAX_APPLICATION_ICON_DIMENSION = { "width" : 1024, "height" : 1024 };
 
 /** The Maximum Dimension for a Profile Picture submitted. */
-const Banana.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" : 1024 };
+const Aroma.Dimension MAX_PROFILE_IMAGE_DIMENSION = { "width" : 1024, "height" : 1024 };
 
 
 /** The Maximum Filesize for an Icon submitted with an Application. */
@@ -102,7 +102,7 @@ const int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 const int MAX_MESSAGE_LENGTH = 5000;
 
 /** The default amount of time to save messages in a User's Inbox. */
-const Banana.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Banana.TimeUnit.DAYS };
+const Aroma.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Aroma.TimeUnit.DAYS };
 
 
 //==========================================================
@@ -189,12 +189,12 @@ struct ProvisionApplicationRequest
 {
     1: UserToken token;
     2: string applicationName;
-    3: optional Banana.ProgrammingLanguage programmingLanguage;
+    3: optional Aroma.ProgrammingLanguage programmingLanguage;
     4: uuid organizationId;
     5: optional Image icon;
     6: optional set<uuid> owners;
     7: optional string applicationDescription = "";
-    8: optional Banana.Tier tier = Banana.Tier.FREE;
+    8: optional Aroma.Tier tier = Aroma.Tier.FREE;
 }
 
 /** The Maximum number of characters that can be in the Application Name. */
@@ -273,7 +273,7 @@ struct RenewApplicationTokenRequest
     /** The Token to renew */
     2: ApplicationToken applicationToken;
     /** Defines for how long to extend a Token. */
-    3: Banana.LengthOfTime newLifetime;
+    3: Aroma.LengthOfTime newLifetime;
     4: uuid applicationId;
 }
 
@@ -325,7 +325,7 @@ struct SignUpRequest
     6: string username;
     7: uuid organizationId;
     8: Authentication.Credentials credentials;
-    9: Banana.Role mainRole;
+    9: Aroma.Role mainRole;
     10: optional timestamp birthDate;
     11: optional string githubProfile;
     12: optional Image profileImage;
@@ -352,7 +352,7 @@ struct SnoozeChannelRequest
     /** Optionally choose to snooze a specific Application. */
     3: optional uuid applicationId;
     /** Defines how long to snooze the Channel for. */
-    4: optional Banana.LengthOfTime lengthOfTime = { "value": 4, "unit" : Banana.TimeUnit.HOURS };
+    4: optional Aroma.LengthOfTime lengthOfTime = { "value": 4, "unit" : Aroma.TimeUnit.HOURS };
 }
 
 struct SnoozeChannelResponse
@@ -397,7 +397,7 @@ struct GetApplicationInfoResponse
 
 /**
  * Buzz is like the latest news happening around
- * Banana.
+ * Aroma.
  */
 struct GetBuzzRequest
 {
@@ -423,7 +423,7 @@ struct GetDashboardResponse
     1: int unreadMessageCount = 0;
     2: int totalMessagesLastHour = 0;
     3: int totalMessagesLast24hrs = 0;
-    4: list<Banana.Message> recentMessages = [];
+    4: list<Aroma.Message> recentMessages = [];
     5: int numberOfLowUrgencyMessages = 0;
     6: int numberOfMediumUrgencyMessages = 0;
     7: int numberOfHighUrgencyMessages = 0;
@@ -439,7 +439,7 @@ struct GetInboxRequest
 
 struct GetInboxResponse
 {
-    1: list<Banana.Message> messages = [];
+    1: list<Aroma.Message> messages = [];
 }
 
 /**
@@ -457,7 +457,7 @@ struct GetApplicationMessagesRequest
 
 struct GetApplicationMessagesResponse
 {
-    1: list<Banana.Message> messages = [];
+    1: list<Aroma.Message> messages = [];
     2: optional int totalMessagesMatching = 0;
 }
 
@@ -470,7 +470,7 @@ struct GetFullMessageRequest
 
 struct GetFullMessageResponse
 {
-    1: Banana.Message fullMessage;
+    1: Aroma.Message fullMessage;
 }
 
 struct GetMediaRequest
@@ -482,7 +482,7 @@ struct GetMediaRequest
 struct GetMediaResponse
 {
     //For now only Images are supported
-    1: Banana.Image image;
+    1: Aroma.Image image;
 }
 
 struct GetMyApplicationsRequest
@@ -532,7 +532,7 @@ struct GetServiceAnnouncementsRequest
 
 struct GetServiceAnnouncementsResponse
 {
-    1: optional list<Banana.ServiceAnnouncement> serviceAnnouncements = []
+    1: optional list<Aroma.ServiceAnnouncement> serviceAnnouncements = []
 }
 
 struct GetUserInfoRequest

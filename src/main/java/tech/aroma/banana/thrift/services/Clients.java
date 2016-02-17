@@ -30,8 +30,8 @@ import tech.aroma.banana.thrift.authentication.service.AuthenticationServiceCons
 import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
 import tech.aroma.banana.thrift.notification.service.NotificationService;
 import tech.aroma.banana.thrift.notification.service.NotificationServiceConstants;
+import tech.aroma.banana.thrift.service.AromaServiceConstants;
 import tech.aroma.banana.thrift.service.BananaService;
-import tech.aroma.banana.thrift.service.BananaServiceConstants;
 import tech.sirwellington.alchemy.annotations.access.NonInstantiable;
 
 /**
@@ -52,31 +52,31 @@ public final class Clients
         TProtocol protocol = tryCreateProtocolAt(endpoint, "Authentication Service");
         return new AuthenticationService.Client(protocol);
     }
-    
+
     public static AuthenticationService.Iface newPerRequestAuthenticationServiceClient() throws TTransportException
     {
         Supplier<AuthenticationService.Iface> clientProvider = () ->
-        {
-            try
             {
-                return newAuthenticationServiceClient();
-            }
-            catch(TTransportException ex)
-            {
-                LOG.error("Failed to created new Authentication Service client.", ex);
-                throw new RuntimeException("Could not create Authentication Service client", ex);
-            }
-        };
-        
+                try
+                {
+                    return newAuthenticationServiceClient();
+                }
+                catch (TTransportException ex)
+                {
+                    LOG.error("Failed to created new Authentication Service client.", ex);
+                    throw new RuntimeException("Could not create Authentication Service client", ex);
+                }
+            };
+
         PerRequestAuthenticationService decorator = new PerRequestAuthenticationService(clientProvider);
-        
+
         return decorator;
     }
-    
+
     public static BananaService.Client newBananaServiceClient() throws TTransportException
     {
-        TcpEndpoint endpoint = BananaServiceConstants.BETA_ENDPOINT;
-        
+        TcpEndpoint endpoint = AromaServiceConstants.BETA_ENDPOINT;
+
         TProtocol protocol = tryCreateProtocolAt(endpoint, "Banana Service");
         return new BananaService.Client(protocol);
     }
@@ -85,10 +85,10 @@ public final class Clients
     {
         TcpEndpoint endpoint = NotificationServiceConstants.BETA_ENDPOINT;
         TProtocol protocol = tryCreateProtocolAt(endpoint, "Notification Service");
-        
+
         return new NotificationService.Client(protocol);
     }
-    
+
     private static TProtocol tryCreateProtocolAt(TcpEndpoint endpoint, String serviceName) throws TTransportException
     {
         long timeout = TimeUnit.SECONDS.toMillis(45);
@@ -102,7 +102,7 @@ public final class Clients
             LOG.error("Failed to connect to {} at {}", serviceName, endpoint, ex);
             throw ex;
         }
-        
+
         TProtocol protocol = new TBinaryProtocol(transport);
         return protocol;
     }

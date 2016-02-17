@@ -10,7 +10,7 @@ namespace cpp   aroma.banana.thrift.message.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
@@ -24,16 +24,16 @@ include "BananaService.thrift"
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
 typedef Events.Event Event
 
 //Exception Typedefs
@@ -70,7 +70,7 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "message-srv.ban
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
 
 /** The Default lifetime of a Regular Message sent to the Banana Service. */
-const Banana.LengthOfTime DEFAULT_MESSAGE_LIFETIME = { "value" : 1, "unit" : Banana.TimeUnit.DAYS };
+const Aroma.LengthOfTime DEFAULT_MESSAGE_LIFETIME = { "value" : 1, "unit" : Aroma.TimeUnit.DAYS };
 
 //==========================================================
 // SERVICE DEFINITION

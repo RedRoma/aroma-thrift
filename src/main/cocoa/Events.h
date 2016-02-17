@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 
 typedef BananaAuthentication_ApplicationToken * BananaEvents_ApplicationToken;
 
