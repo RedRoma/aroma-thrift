@@ -17,7 +17,7 @@ include "Exceptions.thrift"
 typedef Aroma.int int
 typedef Aroma.long long
 typedef Aroma.timestamp timestamp
-
+typedef Aroma.uuid uuid
 
 /** Matches All Messages. */
 struct MatcherAll
@@ -63,4 +63,61 @@ union Matcher
     5: MatcherBodyContains bodyContains;
     6: MatcherUrgencyEquals urgencyEquals;
     7: MatcherHostnameEquals hostnameEquals;
+}
+
+
+struct ActionPostToSlackChannel
+{
+    1: string slackChannel;
+    2: optional bool includeBody = true;
+}
+
+struct ActionPostToSlackUser
+{
+    1: string slackUsername;
+    2: optional bool includeBody = true;
+}
+
+struct ActionSendEmail
+{
+    1: string emailAddress;
+    2: optional bool includeBody = true;
+}
+
+struct ActionIgnore
+{
+   
+}
+
+struct ActionDeleteMessage
+{
+    
+}
+
+struct ActionRespondToCode
+{
+    1: string messageToSend;
+}
+
+struct ActionForwardToUsers
+{
+    1: list<uuid> userIds = [];
+}
+
+union Action
+{
+    1: ActionPostToSlackChannel postToSlackChannel;
+    2: ActionPostToSlackUser postToSlackUser;
+    3: ActionSendEmail sendEmail;
+    4: ActionIgnore ignore;
+    5: ActionDeleteMessage deleteMessage;
+    6: ActionRespondToCode respondToCode;
+    7: ActionForwardToUsers forwardToUsers;
+}
+
+
+struct Reaction
+{
+    1: Matcher matcher;
+    2: Reaction reaction;
 }
