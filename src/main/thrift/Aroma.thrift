@@ -33,21 +33,21 @@ enum ImageType
 
 enum Industry
 {
-    BANKING,
-    ECOMMERCE
-    EDUCATION,
-    ENTERTAINMENT,
-    GOVERMENT,
-    MARKETING,
-    RETAIL,
-    TECH
+    BANKING = 1,
+    ECOMMERCE = 2,
+    EDUCATION = 3,
+    ENTERTAINMENT = 4,
+    GOVERMENT = 5,
+    MARKETING = 6,
+    RETAIL = 7,
+    TECH = 8
 }
 
 
 enum Tier
 {
-    FREE,
-    PAID
+    FREE = 1,
+    PAID = 2
 }
 
 
@@ -56,12 +56,12 @@ enum Tier
  */
 enum TimeUnit
 {
-    MILLIS,
-    SECONDS,
-    MINUTES,
-    HOURS,
-    DAYS,
-    WEEKS
+    MILLIS = 1,
+    SECONDS = 2,
+    MINUTES = 3,
+    HOURS = 4,
+    DAYS = 5,
+    WEEKS = 6
 }
 
 
@@ -70,20 +70,20 @@ enum TimeUnit
  */
 enum ProgrammingLanguage
 {
-    JAVA,
-    CPP,
-    C_SHARP,
-    C,
-    OBJECTIVE_C,
-    SWIFT,
-    DOT_NET,
-    RUBY,
-    GROOVY,
-    PYTHON,
-    PHP,
-    NODE,
-    DART,
-    OTHER
+    JAVA = 1,
+    CPP = 2,
+    C_SHARP = 3,
+    C = 4,
+    OBJECTIVE_C = 5,
+    SWIFT = 6,
+    DOT_NET = 7,
+    RUBY = 8,
+    GROOVY = 9,
+    PYTHON = 10,
+    PHP = 11,
+    NODE = 12,
+    DART = 13,
+    OTHER = 14
 }
 
 
@@ -98,7 +98,7 @@ enum Role
     MANAGER = 3,
     PRODUCT = 4,
     QA = 5,
-    FAN
+    FAN = 6
 }
 
 

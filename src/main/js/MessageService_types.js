@@ -11,4 +11,4 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'message-srv.beta.aroma.tech','port' : 7011});
 DEFAULT_MESSAGE_LIFETIME = new LengthOfTime({
-'value' : 1,'unit' : 4});
+'value' : 1,'unit' : 5});

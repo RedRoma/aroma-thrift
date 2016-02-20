@@ -14,42 +14,42 @@ ttypes.ImageType = {
   'PNG' : 2
 };
 ttypes.Industry = {
-  'BANKING' : 0,
-  'ECOMMERCE' : 1,
-  'EDUCATION' : 2,
-  'ENTERTAINMENT' : 3,
-  'GOVERMENT' : 4,
-  'MARKETING' : 5,
-  'RETAIL' : 6,
-  'TECH' : 7
+  'BANKING' : 1,
+  'ECOMMERCE' : 2,
+  'EDUCATION' : 3,
+  'ENTERTAINMENT' : 4,
+  'GOVERMENT' : 5,
+  'MARKETING' : 6,
+  'RETAIL' : 7,
+  'TECH' : 8
 };
 ttypes.Tier = {
-  'FREE' : 0,
-  'PAID' : 1
+  'FREE' : 1,
+  'PAID' : 2
 };
 ttypes.TimeUnit = {
-  'MILLIS' : 0,
-  'SECONDS' : 1,
-  'MINUTES' : 2,
-  'HOURS' : 3,
-  'DAYS' : 4,
-  'WEEKS' : 5
+  'MILLIS' : 1,
+  'SECONDS' : 2,
+  'MINUTES' : 3,
+  'HOURS' : 4,
+  'DAYS' : 5,
+  'WEEKS' : 6
 };
 ttypes.ProgrammingLanguage = {
-  'JAVA' : 0,
-  'CPP' : 1,
-  'C_SHARP' : 2,
-  'C' : 3,
-  'OBJECTIVE_C' : 4,
-  'SWIFT' : 5,
-  'DOT_NET' : 6,
-  'RUBY' : 7,
-  'GROOVY' : 8,
-  'PYTHON' : 9,
-  'PHP' : 10,
-  'NODE' : 11,
-  'DART' : 12,
-  'OTHER' : 13
+  'JAVA' : 1,
+  'CPP' : 2,
+  'C_SHARP' : 3,
+  'C' : 4,
+  'OBJECTIVE_C' : 5,
+  'SWIFT' : 6,
+  'DOT_NET' : 7,
+  'RUBY' : 8,
+  'GROOVY' : 9,
+  'PYTHON' : 10,
+  'PHP' : 11,
+  'NODE' : 12,
+  'DART' : 13,
+  'OTHER' : 14
 };
 ttypes.Role = {
   'DEVELOPER' : 1,
@@ -508,7 +508,7 @@ Organization = module.exports.Organization = function(args) {
   this.stockMarketSymbol = null;
   this.logoLink = null;
   this.industry = null;
-  this.tier = 0;
+  this.tier = 1;
   this.organizationDescription = null;
   this.githubProfile = null;
   if (args) {
@@ -1022,7 +1022,7 @@ Application = module.exports.Application = function(args) {
   this.followers = [];
   this.applicationDescription = null;
   this.organizationId = null;
-  this.tier = 0;
+  this.tier = 1;
   this.timeOfTokenExpiration = null;
   this.applicationIconMediaId = null;
   if (args) {

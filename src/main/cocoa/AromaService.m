@@ -1846,7 +1846,7 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.applicationDescription = @"";
 
-  self.tier = 0;
+  self.tier = 1;
 
 #endif
   return self;
@@ -6177,7 +6177,7 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.lengthOfTime = [[[Aroma_LengthOfTime alloc] init] autorelease_stub];
   [self.lengthOfTime setValue:4];
-  [self.lengthOfTime setUnit:3];
+  [self.lengthOfTime setUnit:4];
 
 #endif
   return self;
@@ -12749,7 +12749,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 ;
   AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [AromaService_DEFAULT_INBOX_LIFETIME setValue:3];
-  [AromaService_DEFAULT_INBOX_LIFETIME setUnit:4];
+  [AromaService_DEFAULT_INBOX_LIFETIME setUnit:5];
 
 ;
 }

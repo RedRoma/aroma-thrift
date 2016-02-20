@@ -48,7 +48,7 @@ static Aroma_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
 ;
   MessageService_DEFAULT_MESSAGE_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [MessageService_DEFAULT_MESSAGE_LIFETIME setValue:1];
-  [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:4];
+  [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:5];
 
 ;
 }

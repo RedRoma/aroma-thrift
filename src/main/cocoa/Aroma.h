@@ -25,45 +25,45 @@ enum Aroma_ImageType {
 };
 
 enum Aroma_Industry {
-  Industry_BANKING = 0,
-  Industry_ECOMMERCE = 1,
-  Industry_EDUCATION = 2,
-  Industry_ENTERTAINMENT = 3,
-  Industry_GOVERMENT = 4,
-  Industry_MARKETING = 5,
-  Industry_RETAIL = 6,
-  Industry_TECH = 7
+  Industry_BANKING = 1,
+  Industry_ECOMMERCE = 2,
+  Industry_EDUCATION = 3,
+  Industry_ENTERTAINMENT = 4,
+  Industry_GOVERMENT = 5,
+  Industry_MARKETING = 6,
+  Industry_RETAIL = 7,
+  Industry_TECH = 8
 };
 
 enum Aroma_Tier {
-  Tier_FREE = 0,
-  Tier_PAID = 1
+  Tier_FREE = 1,
+  Tier_PAID = 2
 };
 
 enum Aroma_TimeUnit {
-  TimeUnit_MILLIS = 0,
-  TimeUnit_SECONDS = 1,
-  TimeUnit_MINUTES = 2,
-  TimeUnit_HOURS = 3,
-  TimeUnit_DAYS = 4,
-  TimeUnit_WEEKS = 5
+  TimeUnit_MILLIS = 1,
+  TimeUnit_SECONDS = 2,
+  TimeUnit_MINUTES = 3,
+  TimeUnit_HOURS = 4,
+  TimeUnit_DAYS = 5,
+  TimeUnit_WEEKS = 6
 };
 
 enum Aroma_ProgrammingLanguage {
-  ProgrammingLanguage_JAVA = 0,
-  ProgrammingLanguage_CPP = 1,
-  ProgrammingLanguage_C_SHARP = 2,
-  ProgrammingLanguage_C = 3,
-  ProgrammingLanguage_OBJECTIVE_C = 4,
-  ProgrammingLanguage_SWIFT = 5,
-  ProgrammingLanguage_DOT_NET = 6,
-  ProgrammingLanguage_RUBY = 7,
-  ProgrammingLanguage_GROOVY = 8,
-  ProgrammingLanguage_PYTHON = 9,
-  ProgrammingLanguage_PHP = 10,
-  ProgrammingLanguage_NODE = 11,
-  ProgrammingLanguage_DART = 12,
-  ProgrammingLanguage_OTHER = 13
+  ProgrammingLanguage_JAVA = 1,
+  ProgrammingLanguage_CPP = 2,
+  ProgrammingLanguage_C_SHARP = 3,
+  ProgrammingLanguage_C = 4,
+  ProgrammingLanguage_OBJECTIVE_C = 5,
+  ProgrammingLanguage_SWIFT = 6,
+  ProgrammingLanguage_DOT_NET = 7,
+  ProgrammingLanguage_RUBY = 8,
+  ProgrammingLanguage_GROOVY = 9,
+  ProgrammingLanguage_PYTHON = 10,
+  ProgrammingLanguage_PHP = 11,
+  ProgrammingLanguage_NODE = 12,
+  ProgrammingLanguage_DART = 13,
+  ProgrammingLanguage_OTHER = 14
 };
 
 enum Aroma_Role {

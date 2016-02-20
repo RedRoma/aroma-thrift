@@ -1793,7 +1793,7 @@ static Aroma_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 ;
   AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [AuthenticationService_DEFAULT_TOKEN_LIFETIME setValue:60];
-  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:4];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:5];
 
 ;
 }

@@ -29,7 +29,7 @@ AuthenticationServiceConstants::AuthenticationServiceConstants() {
   tmp26 = 60LL;
 
   DEFAULT_TOKEN_LIFETIME.value = tmp26;
-  DEFAULT_TOKEN_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)4;
+  DEFAULT_TOKEN_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
 }
 

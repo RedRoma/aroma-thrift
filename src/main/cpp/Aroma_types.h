@@ -30,14 +30,14 @@ extern const std::map<int, const char*> _ImageType_VALUES_TO_NAMES;
 
 struct Industry {
   enum type {
-    BANKING = 0,
-    ECOMMERCE = 1,
-    EDUCATION = 2,
-    ENTERTAINMENT = 3,
-    GOVERMENT = 4,
-    MARKETING = 5,
-    RETAIL = 6,
-    TECH = 7
+    BANKING = 1,
+    ECOMMERCE = 2,
+    EDUCATION = 3,
+    ENTERTAINMENT = 4,
+    GOVERMENT = 5,
+    MARKETING = 6,
+    RETAIL = 7,
+    TECH = 8
   };
 };
 
@@ -45,8 +45,8 @@ extern const std::map<int, const char*> _Industry_VALUES_TO_NAMES;
 
 struct Tier {
   enum type {
-    FREE = 0,
-    PAID = 1
+    FREE = 1,
+    PAID = 2
   };
 };
 
@@ -54,12 +54,12 @@ extern const std::map<int, const char*> _Tier_VALUES_TO_NAMES;
 
 struct TimeUnit {
   enum type {
-    MILLIS = 0,
-    SECONDS = 1,
-    MINUTES = 2,
-    HOURS = 3,
-    DAYS = 4,
-    WEEKS = 5
+    MILLIS = 1,
+    SECONDS = 2,
+    MINUTES = 3,
+    HOURS = 4,
+    DAYS = 5,
+    WEEKS = 6
   };
 };
 
@@ -67,20 +67,20 @@ extern const std::map<int, const char*> _TimeUnit_VALUES_TO_NAMES;
 
 struct ProgrammingLanguage {
   enum type {
-    JAVA = 0,
-    CPP = 1,
-    C_SHARP = 2,
-    C = 3,
-    OBJECTIVE_C = 4,
-    SWIFT = 5,
-    DOT_NET = 6,
-    RUBY = 7,
-    GROOVY = 8,
-    PYTHON = 9,
-    PHP = 10,
-    NODE = 11,
-    DART = 12,
-    OTHER = 13
+    JAVA = 1,
+    CPP = 2,
+    C_SHARP = 3,
+    C = 4,
+    OBJECTIVE_C = 5,
+    SWIFT = 6,
+    DOT_NET = 7,
+    RUBY = 8,
+    GROOVY = 9,
+    PYTHON = 10,
+    PHP = 11,
+    NODE = 12,
+    DART = 13,
+    OTHER = 14
   };
 };
 
@@ -419,8 +419,8 @@ class Organization {
 
   Organization(const Organization&);
   Organization& operator=(const Organization&);
-  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)0), organizationDescription(), githubProfile() {
-    tier = (Tier::type)0;
+  Organization() : organizationId(), organizationName(), website(), techStack(), organizationEmail(), stockMarketSymbol(), logoLink(), industry((Industry::type)0), tier((Tier::type)1), organizationDescription(), githubProfile() {
+    tier = (Tier::type)1;
 
   }
 
@@ -693,9 +693,9 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)0), timeOfTokenExpiration(0), applicationIconMediaId() {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)1), timeOfTokenExpiration(0), applicationIconMediaId() {
 
-    tier = (Tier::type)0;
+    tier = (Tier::type)1;
 
   }
 

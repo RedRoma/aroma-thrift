@@ -24,4 +24,4 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'message-srv.beta.aroma.tech','port' : 7011});
 ttypes.DEFAULT_MESSAGE_LIFETIME = new Aroma_ttypes.LengthOfTime({
-'value' : 1,'unit' : 4});
+'value' : 1,'unit' : 5});

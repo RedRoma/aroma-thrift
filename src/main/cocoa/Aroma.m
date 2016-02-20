@@ -1412,7 +1412,7 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.tier = 0;
+  self.tier = 1;
 
 #endif
   return self;
@@ -3089,7 +3089,7 @@
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
   self.followers = [[[NSMutableSet alloc] initWithCapacity:0] autorelease_stub];
 
-  self.tier = 0;
+  self.tier = 1;
 
 #endif
   return self;

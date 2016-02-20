@@ -594,4 +594,4 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'authentication-srv.beta.aroma.tech','port' : 7026});
 DEFAULT_TOKEN_LIFETIME = new LengthOfTime({
-'value' : 60,'unit' : 4});
+'value' : 60,'unit' : 5});

@@ -650,8 +650,8 @@ class ProvisionApplicationRequest {
 
   ProvisionApplicationRequest(const ProvisionApplicationRequest&);
   ProvisionApplicationRequest& operator=(const ProvisionApplicationRequest&);
-  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::tech::aroma::thrift::ProgrammingLanguage::type)0), organizationId(), applicationDescription(""), tier(( ::tech::aroma::thrift::Tier::type)0) {
-    tier = ( ::tech::aroma::thrift::Tier::type)0;
+  ProvisionApplicationRequest() : applicationName(), programmingLanguage(( ::tech::aroma::thrift::ProgrammingLanguage::type)0), organizationId(), applicationDescription(""), tier(( ::tech::aroma::thrift::Tier::type)1) {
+    tier = ( ::tech::aroma::thrift::Tier::type)1;
 
   }
 
@@ -1605,7 +1605,7 @@ class SnoozeChannelRequest {
     tmp70 = 4LL;
 
     lengthOfTime.value = tmp70;
-    lengthOfTime.unit = ( ::tech::aroma::thrift::TimeUnit::type)3;
+    lengthOfTime.unit = ( ::tech::aroma::thrift::TimeUnit::type)4;
 
   }
 

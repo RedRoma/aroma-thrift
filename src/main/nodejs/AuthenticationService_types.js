@@ -603,4 +603,4 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'authentication-srv.beta.aroma.tech','port' : 7026});
 ttypes.DEFAULT_TOKEN_LIFETIME = new Aroma_ttypes.LengthOfTime({
-'value' : 60,'unit' : 4});
+'value' : 60,'unit' : 5});

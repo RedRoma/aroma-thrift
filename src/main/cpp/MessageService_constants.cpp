@@ -29,7 +29,7 @@ MessageServiceConstants::MessageServiceConstants() {
   tmp2 = 1LL;
 
   DEFAULT_MESSAGE_LIFETIME.value = tmp2;
-  DEFAULT_MESSAGE_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)4;
+  DEFAULT_MESSAGE_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
 }
 

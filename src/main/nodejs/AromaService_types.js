@@ -643,7 +643,7 @@ ProvisionApplicationRequest = module.exports.ProvisionApplicationRequest = funct
   this.icon = null;
   this.owners = null;
   this.applicationDescription = '';
-  this.tier = 0;
+  this.tier = 1;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.UserToken(args.token);
@@ -2008,7 +2008,7 @@ SnoozeChannelRequest = module.exports.SnoozeChannelRequest = function(args) {
   this.applicationId = null;
   this.lengthOfTime = null;
   this.lengthOfTime = new Aroma_ttypes.LengthOfTime({
-'value' : 4,'unit' : 3});
+'value' : 4,'unit' : 4});
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
@@ -4366,6 +4366,6 @@ ttypes.MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 ttypes.MAX_MESSAGE_LENGTH = 5000;
 ttypes.DEFAULT_INBOX_LIFETIME = new Aroma_ttypes.LengthOfTime({
-'value' : 3,'unit' : 4});
+'value' : 3,'unit' : 5});
 ttypes.APPLICATION_NAME_MAX_LENGTH = 20;
 ttypes.APPLICATION_MAX_OWNERS = 10;
