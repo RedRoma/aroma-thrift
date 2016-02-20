@@ -28,10 +28,11 @@ enum Aroma_Industry {
   Industry_BANKING = 0,
   Industry_ECOMMERCE = 1,
   Industry_EDUCATION = 2,
-  Industry_GOVERMENT = 3,
-  Industry_MARKETING = 4,
-  Industry_RETAIL = 5,
-  Industry_TECH = 6
+  Industry_ENTERTAINMENT = 3,
+  Industry_GOVERMENT = 4,
+  Industry_MARKETING = 5,
+  Industry_RETAIL = 6,
+  Industry_TECH = 7
 };
 
 enum Aroma_Tier {
@@ -70,7 +71,8 @@ enum Aroma_Role {
   Role_OPERATIONS = 2,
   Role_MANAGER = 3,
   Role_PRODUCT = 4,
-  Role_QA = 5
+  Role_QA = 5,
+  Role_FAN = 6
 };
 
 enum Aroma_Urgency {

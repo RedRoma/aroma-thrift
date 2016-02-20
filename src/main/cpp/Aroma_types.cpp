@@ -27,6 +27,7 @@ int _kIndustryValues[] = {
   Industry::BANKING,
   Industry::ECOMMERCE,
   Industry::EDUCATION,
+  Industry::ENTERTAINMENT,
   Industry::GOVERMENT,
   Industry::MARKETING,
   Industry::RETAIL,
@@ -36,12 +37,13 @@ const char* _kIndustryNames[] = {
   "BANKING",
   "ECOMMERCE",
   "EDUCATION",
+  "ENTERTAINMENT",
   "GOVERMENT",
   "MARKETING",
   "RETAIL",
   "TECH"
 };
-const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(7, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+const std::map<int, const char*> _Industry_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(8, _kIndustryValues, _kIndustryNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kTierValues[] = {
   Tier::FREE,
@@ -110,16 +112,18 @@ int _kRoleValues[] = {
   Role::OPERATIONS,
   Role::MANAGER,
   Role::PRODUCT,
-  Role::QA
+  Role::QA,
+  Role::FAN
 };
 const char* _kRoleNames[] = {
   "DEVELOPER",
   "OPERATIONS",
   "MANAGER",
   "PRODUCT",
-  "QA"
+  "QA",
+  "FAN"
 };
-const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(5, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
+const std::map<int, const char*> _Role_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(6, _kRoleValues, _kRoleNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
 int _kUrgencyValues[] = {
   Urgency::LOW,

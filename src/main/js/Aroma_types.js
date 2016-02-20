@@ -13,10 +13,11 @@ Industry = {
   'BANKING' : 0,
   'ECOMMERCE' : 1,
   'EDUCATION' : 2,
-  'GOVERMENT' : 3,
-  'MARKETING' : 4,
-  'RETAIL' : 5,
-  'TECH' : 6
+  'ENTERTAINMENT' : 3,
+  'GOVERMENT' : 4,
+  'MARKETING' : 5,
+  'RETAIL' : 6,
+  'TECH' : 7
 };
 Tier = {
   'FREE' : 0,
@@ -51,7 +52,8 @@ Role = {
   'OPERATIONS' : 2,
   'MANAGER' : 3,
   'PRODUCT' : 4,
-  'QA' : 5
+  'QA' : 5,
+  'FAN' : 6
 };
 Urgency = {
   'LOW' : 1,

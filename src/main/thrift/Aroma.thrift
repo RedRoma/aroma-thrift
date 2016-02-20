@@ -36,6 +36,7 @@ enum Industry
     BANKING,
     ECOMMERCE
     EDUCATION,
+    ENTERTAINMENT,
     GOVERMENT,
     MARKETING,
     RETAIL,
@@ -96,7 +97,8 @@ enum Role
     OPERATIONS = 2,
     MANAGER = 3,
     PRODUCT = 4,
-    QA = 5
+    QA = 5,
+    FAN
 }
 
 
