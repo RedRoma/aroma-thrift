@@ -1248,6 +1248,67 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
+@interface AromaService_UpdateApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_Application __updatedApplication;
+
+  BOOL __token_isset;
+  BOOL __updatedApplication_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=updatedApplication, setter=setUpdatedApplication:) AromaService_Application updatedApplication;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token updatedApplication: (AromaService_Application) updatedApplication;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) updatedApplication;
+- (void) setUpdatedApplication: (AromaService_Application) updatedApplication;
+#endif
+- (BOOL) updatedApplicationIsSet;
+
+@end
+
+@interface AromaService_UpdateApplicationResponse : NSObject <TBase, NSCoding> {
+  AromaService_Application __application;
+
+  BOOL __application_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=application, setter=setApplication:) AromaService_Application application;
+#endif
+
+- (id) init;
+- (id) initWithApplication: (AromaService_Application) application;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_Application) application;
+- (void) setApplication: (AromaService_Application) application;
+#endif
+- (BOOL) applicationIsSet;
+
+@end
+
 @interface AromaService_GetApplicationInfoRequest : NSObject <TBase, NSCoding> {
   AromaService_AuthenticationToken __token;
   AromaService_uuid __applicationId;

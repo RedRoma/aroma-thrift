@@ -135,6 +135,10 @@ class FollowApplicationRequest;
 
 class FollowApplicationResponse;
 
+class UpdateApplicationRequest;
+
+class UpdateApplicationResponse;
+
 class GetApplicationInfoRequest;
 
 class GetApplicationInfoResponse;
@@ -1824,6 +1828,104 @@ class FollowApplicationResponse {
 void swap(FollowApplicationResponse &a, FollowApplicationResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const FollowApplicationResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _UpdateApplicationRequest__isset {
+  _UpdateApplicationRequest__isset() : token(false), updatedApplication(false) {}
+  bool token :1;
+  bool updatedApplication :1;
+} _UpdateApplicationRequest__isset;
+
+class UpdateApplicationRequest {
+ public:
+
+  UpdateApplicationRequest(const UpdateApplicationRequest&);
+  UpdateApplicationRequest& operator=(const UpdateApplicationRequest&);
+  UpdateApplicationRequest() {
+  }
+
+  virtual ~UpdateApplicationRequest() throw();
+  UserToken token;
+  Application updatedApplication;
+
+  _UpdateApplicationRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_updatedApplication(const Application& val);
+
+  bool operator == (const UpdateApplicationRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (!(updatedApplication == rhs.updatedApplication))
+      return false;
+    return true;
+  }
+  bool operator != (const UpdateApplicationRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UpdateApplicationRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UpdateApplicationRequest &a, UpdateApplicationRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UpdateApplicationRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _UpdateApplicationResponse__isset {
+  _UpdateApplicationResponse__isset() : application(false) {}
+  bool application :1;
+} _UpdateApplicationResponse__isset;
+
+class UpdateApplicationResponse {
+ public:
+
+  UpdateApplicationResponse(const UpdateApplicationResponse&);
+  UpdateApplicationResponse& operator=(const UpdateApplicationResponse&);
+  UpdateApplicationResponse() {
+  }
+
+  virtual ~UpdateApplicationResponse() throw();
+  Application application;
+
+  _UpdateApplicationResponse__isset __isset;
+
+  void __set_application(const Application& val);
+
+  bool operator == (const UpdateApplicationResponse & rhs) const
+  {
+    if (!(application == rhs.application))
+      return false;
+    return true;
+  }
+  bool operator != (const UpdateApplicationResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const UpdateApplicationResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(UpdateApplicationResponse &a, UpdateApplicationResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const UpdateApplicationResponse& obj)
 {
   obj.printTo(out);
   return out;

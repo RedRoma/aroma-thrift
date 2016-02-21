@@ -377,6 +377,16 @@ struct FollowApplicationResponse
     1: optional string message = "Success";
 }
 
+struct UpdateApplicationRequest
+{
+    1: UserToken token;
+    2: Application updatedApplication;
+}
+
+struct UpdateApplicationResponse
+{
+    1: Application application;
+}
 
 //==========================================================
 // Query Operations
