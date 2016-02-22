@@ -3128,13 +3128,13 @@
   return self;
 }
 
-- (id) initWithMatcher: (AromaReactions_Matcher *) matcher reaction: (AromaReactions_Reaction) reaction
+- (id) initWithMatcher: (AromaReactions_Matcher *) matcher action: (AromaReactions_Action *) action
 {
   self = [super init];
   __matcher = [matcher retain_stub];
   __matcher_isset = YES;
-  __reaction = [reaction retain_stub];
-  __reaction_isset = YES;
+  __action = [action retain_stub];
+  __action_isset = YES;
   return self;
 }
 
@@ -3146,10 +3146,10 @@
     __matcher = [[decoder decodeObjectForKey: @"matcher"] retain_stub];
     __matcher_isset = YES;
   }
-  if ([decoder containsValueForKey: @"reaction"])
+  if ([decoder containsValueForKey: @"action"])
   {
-    __reaction = [[decoder decodeObjectForKey: @"reaction"] retain_stub];
-    __reaction_isset = YES;
+    __action = [[decoder decodeObjectForKey: @"action"] retain_stub];
+    __action_isset = YES;
   }
   return self;
 }
@@ -3160,9 +3160,9 @@
   {
     [encoder encodeObject: __matcher forKey: @"matcher"];
   }
-  if (__reaction_isset)
+  if (__action_isset)
   {
-    [encoder encodeObject: __reaction forKey: @"reaction"];
+    [encoder encodeObject: __action forKey: @"action"];
   }
 }
 
@@ -3174,10 +3174,10 @@
   {
     hash = (hash * 31) ^ [__matcher hash];
   }
-  hash = (hash * 31) ^ __reaction_isset ? 2654435761 : 0;
-  if (__reaction_isset)
+  hash = (hash * 31) ^ __action_isset ? 2654435761 : 0;
+  if (__action_isset)
   {
-    hash = (hash * 31) ^ [__reaction hash];
+    hash = (hash * 31) ^ [__action hash];
   }
   return hash;
 }
@@ -3195,8 +3195,8 @@
       (__matcher_isset && ((__matcher || other->__matcher) && ![__matcher isEqual:other->__matcher]))) {
     return NO;
   }
-  if ((__reaction_isset != other->__reaction_isset) ||
-      (__reaction_isset && ((__reaction || other->__reaction) && ![__reaction isEqual:other->__reaction]))) {
+  if ((__action_isset != other->__action_isset) ||
+      (__action_isset && ((__action || other->__action) && ![__action isEqual:other->__action]))) {
     return NO;
   }
   return YES;
@@ -3205,7 +3205,7 @@
 - (void) dealloc
 {
   [__matcher release_stub];
-  [__reaction release_stub];
+  [__action release_stub];
   [super dealloc_stub];
 }
 
@@ -3230,25 +3230,25 @@
   __matcher_isset = NO;
 }
 
-- (AromaReactions_Reaction *) reaction {
-  return [[__reaction retain_stub] autorelease_stub];
+- (AromaReactions_Action *) action {
+  return [[__action retain_stub] autorelease_stub];
 }
 
-- (void) setReaction: (AromaReactions_Reaction *) reaction {
-  [reaction retain_stub];
-  [__reaction release_stub];
-  __reaction = reaction;
-  __reaction_isset = YES;
+- (void) setAction: (AromaReactions_Action *) action {
+  [action retain_stub];
+  [__action release_stub];
+  __action = action;
+  __action_isset = YES;
 }
 
-- (BOOL) reactionIsSet {
-  return __reaction_isset;
+- (BOOL) actionIsSet {
+  return __action_isset;
 }
 
-- (void) unsetReaction {
-  [__reaction release_stub];
-  __reaction = nil;
-  __reaction_isset = NO;
+- (void) unsetAction {
+  [__action release_stub];
+  __action = nil;
+  __action_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -3278,9 +3278,9 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_Reaction *fieldValue = [[AromaReactions_Reaction alloc] init];
+          AromaReactions_Action *fieldValue = [[AromaReactions_Action alloc] init];
           [fieldValue read: inProtocol];
-          [self setReaction: fieldValue];
+          [self setAction: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -3304,10 +3304,10 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__reaction_isset) {
-    if (__reaction != nil) {
-      [outProtocol writeFieldBeginWithName: @"reaction" type: TType_STRUCT fieldID: 2];
-      [__reaction write: outProtocol];
+  if (__action_isset) {
+    if (__action != nil) {
+      [outProtocol writeFieldBeginWithName: @"action" type: TType_STRUCT fieldID: 2];
+      [__action write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -3323,8 +3323,8 @@
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Reaction("];
   [ms appendString: @"matcher:"];
   [ms appendFormat: @"%@", __matcher];
-  [ms appendString: @",reaction:"];
-  [ms appendFormat: @"%@", __reaction];
+  [ms appendString: @",action:"];
+  [ms appendFormat: @"%@", __action];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -119,5 +119,5 @@ union Action
 struct Reaction
 {
     1: Matcher matcher;
-    2: Reaction reaction;
+    2: Action action;
 }

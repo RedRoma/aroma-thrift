@@ -1041,13 +1041,13 @@ Action.prototype.write = function(output) {
 
 Reaction = function(args) {
   this.matcher = null;
-  this.reaction = null;
+  this.action = null;
   if (args) {
     if (args.matcher !== undefined && args.matcher !== null) {
       this.matcher = new Matcher(args.matcher);
     }
-    if (args.reaction !== undefined && args.reaction !== null) {
-      this.reaction = new Reaction(args.reaction);
+    if (args.action !== undefined && args.action !== null) {
+      this.action = new Action(args.action);
     }
   }
 };
@@ -1075,8 +1075,8 @@ Reaction.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.reaction = new Reaction();
-        this.reaction.read(input);
+        this.action = new Action();
+        this.action.read(input);
       } else {
         input.skip(ftype);
       }
@@ -1097,9 +1097,9 @@ Reaction.prototype.write = function(output) {
     this.matcher.write(output);
     output.writeFieldEnd();
   }
-  if (this.reaction !== null && this.reaction !== undefined) {
-    output.writeFieldBegin('reaction', Thrift.Type.STRUCT, 2);
-    this.reaction.write(output);
+  if (this.action !== null && this.action !== undefined) {
+    output.writeFieldBegin('action', Thrift.Type.STRUCT, 2);
+    this.action.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

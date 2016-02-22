@@ -864,9 +864,9 @@ inline std::ostream& operator<<(std::ostream& out, const Action& obj)
 }
 
 typedef struct _Reaction__isset {
-  _Reaction__isset() : matcher(false), reaction(false) {}
+  _Reaction__isset() : matcher(false), action(false) {}
   bool matcher :1;
-  bool reaction :1;
+  bool action :1;
 } _Reaction__isset;
 
 class Reaction {
@@ -879,19 +879,19 @@ class Reaction {
 
   virtual ~Reaction() throw();
   Matcher matcher;
-  Reaction reaction;
+  Action action;
 
   _Reaction__isset __isset;
 
   void __set_matcher(const Matcher& val);
 
-  void __set_reaction(const Reaction& val);
+  void __set_action(const Action& val);
 
   bool operator == (const Reaction & rhs) const
   {
     if (!(matcher == rhs.matcher))
       return false;
-    if (!(reaction == rhs.reaction))
+    if (!(action == rhs.action))
       return false;
     return true;
   }

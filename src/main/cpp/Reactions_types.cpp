@@ -1654,8 +1654,8 @@ void Reaction::__set_matcher(const Matcher& val) {
   this->matcher = val;
 }
 
-void Reaction::__set_reaction(const Reaction& val) {
-  this->reaction = val;
+void Reaction::__set_action(const Action& val) {
+  this->action = val;
 }
 
 uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -1689,8 +1689,8 @@ uint32_t Reaction::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->reaction.read(iprot);
-          this->__isset.reaction = true;
+          xfer += this->action.read(iprot);
+          this->__isset.action = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -1716,8 +1716,8 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += this->matcher.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("reaction", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->reaction.write(oprot);
+  xfer += oprot->writeFieldBegin("action", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->action.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -1728,18 +1728,18 @@ uint32_t Reaction::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(Reaction &a, Reaction &b) {
   using ::std::swap;
   swap(a.matcher, b.matcher);
-  swap(a.reaction, b.reaction);
+  swap(a.action, b.action);
   swap(a.__isset, b.__isset);
 }
 
 Reaction::Reaction(const Reaction& other39) {
   matcher = other39.matcher;
-  reaction = other39.reaction;
+  action = other39.action;
   __isset = other39.__isset;
 }
 Reaction& Reaction::operator=(const Reaction& other40) {
   matcher = other40.matcher;
-  reaction = other40.reaction;
+  action = other40.action;
   __isset = other40.__isset;
   return *this;
 }
@@ -1747,7 +1747,7 @@ void Reaction::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Reaction(";
   out << "matcher=" << to_string(matcher);
-  out << ", " << "reaction=" << to_string(reaction);
+  out << ", " << "action=" << to_string(action);
   out << ")";
 }
 

@@ -540,19 +540,19 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
   AromaReactions_Matcher * __matcher;
-  AromaReactions_Reaction __reaction;
+  AromaReactions_Action * __action;
 
   BOOL __matcher_isset;
-  BOOL __reaction_isset;
+  BOOL __action_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_Matcher * matcher;
-@property (nonatomic, retain, getter=reaction, setter=setReaction:) AromaReactions_Reaction reaction;
+@property (nonatomic, retain, getter=action, setter=setAction:) AromaReactions_Action * action;
 #endif
 
 - (id) init;
-- (id) initWithMatcher: (AromaReactions_Matcher *) matcher reaction: (AromaReactions_Reaction) reaction;
+- (id) initWithMatcher: (AromaReactions_Matcher *) matcher action: (AromaReactions_Action *) action;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -566,10 +566,10 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (BOOL) matcherIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_Reaction) reaction;
-- (void) setReaction: (AromaReactions_Reaction) reaction;
+- (AromaReactions_Action *) action;
+- (void) setAction: (AromaReactions_Action *) action;
 #endif
-- (BOOL) reactionIsSet;
+- (BOOL) actionIsSet;
 
 @end
 
