@@ -153,6 +153,21 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("followApplication\n");
   }
 
+  void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) {
+    // Your implementation goes here
+    printf("unfollowApplication\n");
+  }
+
+  /**
+   * #owner
+   * 
+   * @param request
+   */
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
+    // Your implementation goes here
+    printf("updateApplication\n");
+  }
+
   /**
    * Get all of the User-Related activities that have happened recently.
    * 

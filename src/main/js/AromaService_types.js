@@ -2149,25 +2149,17 @@ SnoozeChannelResponse.prototype.write = function(output) {
 
 FollowApplicationRequest = function(args) {
     this.token = null;
-    this.applicationName = null;
     this.applicationId = null;
     this.organizationId = null;
-    this.shared = false;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new UserToken(args.token);
-        }
-        if (args.applicationName !== undefined && args.applicationName !== null) {
-            this.applicationName = args.applicationName;
         }
         if (args.applicationId !== undefined && args.applicationId !== null) {
             this.applicationId = args.applicationId;
         }
         if (args.organizationId !== undefined && args.organizationId !== null) {
             this.organizationId = args.organizationId;
-        }
-        if (args.shared !== undefined && args.shared !== null) {
-            this.shared = args.shared;
         }
     }
 };
@@ -2195,28 +2187,14 @@ FollowApplicationRequest.prototype.read = function(input) {
         break;
         case 2:
         if (ftype == Thrift.Type.STRING) {
-          this.applicationName = input.readString().value;
+          this.applicationId = input.readString().value;
         } else {
           input.skip(ftype);
         }
         break;
         case 3:
         if (ftype == Thrift.Type.STRING) {
-          this.applicationId = input.readString().value;
-        } else {
-          input.skip(ftype);
-        }
-        break;
-        case 4:
-        if (ftype == Thrift.Type.STRING) {
           this.organizationId = input.readString().value;
-        } else {
-          input.skip(ftype);
-        }
-        break;
-        case 5:
-        if (ftype == Thrift.Type.BOOL) {
-          this.shared = input.readBool().value;
         } else {
           input.skip(ftype);
         }
@@ -2237,24 +2215,14 @@ FollowApplicationRequest.prototype.write = function(output) {
       this.token.write(output);
       output.writeFieldEnd();
     }
-    if (this.applicationName !== null && this.applicationName !== undefined) {
-      output.writeFieldBegin('applicationName', Thrift.Type.STRING, 2);
-      output.writeString(this.applicationName);
-      output.writeFieldEnd();
-    }
     if (this.applicationId !== null && this.applicationId !== undefined) {
-      output.writeFieldBegin('applicationId', Thrift.Type.STRING, 3);
+      output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
       output.writeString(this.applicationId);
       output.writeFieldEnd();
     }
     if (this.organizationId !== null && this.organizationId !== undefined) {
-      output.writeFieldBegin('organizationId', Thrift.Type.STRING, 4);
+      output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
       output.writeString(this.organizationId);
-      output.writeFieldEnd();
-    }
-    if (this.shared !== null && this.shared !== undefined) {
-      output.writeFieldBegin('shared', Thrift.Type.BOOL, 5);
-      output.writeBool(this.shared);
       output.writeFieldEnd();
     }
     output.writeFieldStop();
@@ -2305,6 +2273,142 @@ FollowApplicationResponse.prototype.read = function(input) {
 
 FollowApplicationResponse.prototype.write = function(output) {
     output.writeStructBegin('FollowApplicationResponse');
+    if (this.message !== null && this.message !== undefined) {
+      output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+      output.writeString(this.message);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
+UnfollowApplicationRequest = function(args) {
+    this.token = null;
+    this.applicationId = null;
+    this.organizationId = null;
+    if (args) {
+        if (args.token !== undefined && args.token !== null) {
+            this.token = new UserToken(args.token);
+        }
+        if (args.applicationId !== undefined && args.applicationId !== null) {
+            this.applicationId = args.applicationId;
+        }
+        if (args.organizationId !== undefined && args.organizationId !== null) {
+            this.organizationId = args.organizationId;
+        }
+    }
+};
+UnfollowApplicationRequest.prototype = {};
+UnfollowApplicationRequest.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRUCT) {
+          this.token = new UserToken();
+          this.token.read(input);
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 2:
+        if (ftype == Thrift.Type.STRING) {
+          this.applicationId = input.readString().value;
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 3:
+        if (ftype == Thrift.Type.STRING) {
+          this.organizationId = input.readString().value;
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+UnfollowApplicationRequest.prototype.write = function(output) {
+    output.writeStructBegin('UnfollowApplicationRequest');
+    if (this.token !== null && this.token !== undefined) {
+      output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+      this.token.write(output);
+      output.writeFieldEnd();
+    }
+    if (this.applicationId !== null && this.applicationId !== undefined) {
+      output.writeFieldBegin('applicationId', Thrift.Type.STRING, 2);
+      output.writeString(this.applicationId);
+      output.writeFieldEnd();
+    }
+    if (this.organizationId !== null && this.organizationId !== undefined) {
+      output.writeFieldBegin('organizationId', Thrift.Type.STRING, 3);
+      output.writeString(this.organizationId);
+      output.writeFieldEnd();
+    }
+    output.writeFieldStop();
+    output.writeStructEnd();
+    return;
+  };
+
+UnfollowApplicationResponse = function(args) {
+    this.message = 'Success';
+    if (args) {
+        if (args.message !== undefined && args.message !== null) {
+            this.message = args.message;
+        }
+    }
+};
+UnfollowApplicationResponse.prototype = {};
+UnfollowApplicationResponse.prototype.read = function(input) {
+    input.readStructBegin();
+    while (true)
+    {
+      var ret = input.readFieldBegin();
+      var fname = ret.fname;
+      var ftype = ret.ftype;
+      var fid = ret.fid;
+      if (ftype == Thrift.Type.STOP) {
+        break;
+      }
+      switch (fid)
+      {
+        case 1:
+        if (ftype == Thrift.Type.STRING) {
+          this.message = input.readString().value;
+        } else {
+          input.skip(ftype);
+        }
+        break;
+        case 0:
+          input.skip(ftype);
+          break;
+        default:
+          input.skip(ftype);
+      }
+      input.readFieldEnd();
+    }
+    input.readStructEnd();
+    return;
+  };
+
+UnfollowApplicationResponse.prototype.write = function(output) {
+    output.writeStructBegin('UnfollowApplicationResponse');
     if (this.message !== null && this.message !== undefined) {
       output.writeFieldBegin('message', Thrift.Type.STRING, 1);
       output.writeString(this.message);

@@ -110,6 +110,14 @@ class AromaServiceIf {
    * @param request
    */
   virtual void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request) = 0;
+  virtual void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) = 0;
+
+  /**
+   * #owner
+   * 
+   * @param request
+   */
+  virtual void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) = 0;
 
   /**
    * Get all of the User-Related activities that have happened recently.
@@ -238,6 +246,12 @@ class AromaServiceNull : virtual public AromaServiceIf {
     return;
   }
   void followApplication(FollowApplicationResponse& /* _return */, const FollowApplicationRequest& /* request */) {
+    return;
+  }
+  void unfollowApplication(UnfollowApplicationResponse& /* _return */, const UnfollowApplicationRequest& /* request */) {
+    return;
+  }
+  void updateApplication(UpdateApplicationResponse& /* _return */, const UpdateApplicationRequest& /* request */) {
     return;
   }
   void getActivity(GetActivityResponse& /* _return */, const GetActivityRequest& /* request */) {
@@ -1980,14 +1994,13 @@ class AromaService_followApplication_pargs {
 };
 
 typedef struct _AromaService_followApplication_result__isset {
-  _AromaService_followApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+  _AromaService_followApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-  bool ex6 :1;
 } _AromaService_followApplication_result__isset;
 
 class AromaService_followApplication_result {
@@ -2004,8 +2017,7 @@ class AromaService_followApplication_result {
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
   ApplicationDoesNotExistException ex4;
-  ApplicationAlreadyRegisteredException ex5;
-  CustomChannelUnreachableException ex6;
+  UnauthorizedException ex5;
 
   _AromaService_followApplication_result__isset __isset;
 
@@ -2019,9 +2031,7 @@ class AromaService_followApplication_result {
 
   void __set_ex4(const ApplicationDoesNotExistException& val);
 
-  void __set_ex5(const ApplicationAlreadyRegisteredException& val);
-
-  void __set_ex6(const CustomChannelUnreachableException& val);
+  void __set_ex5(const UnauthorizedException& val);
 
   bool operator == (const AromaService_followApplication_result & rhs) const
   {
@@ -2037,8 +2047,6 @@ class AromaService_followApplication_result {
       return false;
     if (!(ex5 == rhs.ex5))
       return false;
-    if (!(ex6 == rhs.ex6))
-      return false;
     return true;
   }
   bool operator != (const AromaService_followApplication_result &rhs) const {
@@ -2053,14 +2061,13 @@ class AromaService_followApplication_result {
 };
 
 typedef struct _AromaService_followApplication_presult__isset {
-  _AromaService_followApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false), ex6(false) {}
+  _AromaService_followApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
   bool ex4 :1;
   bool ex5 :1;
-  bool ex6 :1;
 } _AromaService_followApplication_presult__isset;
 
 class AromaService_followApplication_presult {
@@ -2073,10 +2080,297 @@ class AromaService_followApplication_presult {
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
   ApplicationDoesNotExistException* ex4;
-  ApplicationAlreadyRegisteredException* ex5;
-  CustomChannelUnreachableException* ex6;
+  UnauthorizedException* ex5;
 
   _AromaService_followApplication_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_unfollowApplication_args__isset {
+  _AromaService_unfollowApplication_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_unfollowApplication_args__isset;
+
+class AromaService_unfollowApplication_args {
+ public:
+
+  AromaService_unfollowApplication_args(const AromaService_unfollowApplication_args&);
+  AromaService_unfollowApplication_args& operator=(const AromaService_unfollowApplication_args&);
+  AromaService_unfollowApplication_args() {
+  }
+
+  virtual ~AromaService_unfollowApplication_args() throw();
+  UnfollowApplicationRequest request;
+
+  _AromaService_unfollowApplication_args__isset __isset;
+
+  void __set_request(const UnfollowApplicationRequest& val);
+
+  bool operator == (const AromaService_unfollowApplication_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_unfollowApplication_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_unfollowApplication_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_unfollowApplication_pargs {
+ public:
+
+
+  virtual ~AromaService_unfollowApplication_pargs() throw();
+  const UnfollowApplicationRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_unfollowApplication_result__isset {
+  _AromaService_unfollowApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_unfollowApplication_result__isset;
+
+class AromaService_unfollowApplication_result {
+ public:
+
+  AromaService_unfollowApplication_result(const AromaService_unfollowApplication_result&);
+  AromaService_unfollowApplication_result& operator=(const AromaService_unfollowApplication_result&);
+  AromaService_unfollowApplication_result() {
+  }
+
+  virtual ~AromaService_unfollowApplication_result() throw();
+  UnfollowApplicationResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_unfollowApplication_result__isset __isset;
+
+  void __set_success(const UnfollowApplicationResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_unfollowApplication_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_unfollowApplication_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_unfollowApplication_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_unfollowApplication_presult__isset {
+  _AromaService_unfollowApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_unfollowApplication_presult__isset;
+
+class AromaService_unfollowApplication_presult {
+ public:
+
+
+  virtual ~AromaService_unfollowApplication_presult() throw();
+  UnfollowApplicationResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_unfollowApplication_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_updateApplication_args__isset {
+  _AromaService_updateApplication_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_updateApplication_args__isset;
+
+class AromaService_updateApplication_args {
+ public:
+
+  AromaService_updateApplication_args(const AromaService_updateApplication_args&);
+  AromaService_updateApplication_args& operator=(const AromaService_updateApplication_args&);
+  AromaService_updateApplication_args() {
+  }
+
+  virtual ~AromaService_updateApplication_args() throw();
+  UpdateApplicationRequest request;
+
+  _AromaService_updateApplication_args__isset __isset;
+
+  void __set_request(const UpdateApplicationRequest& val);
+
+  bool operator == (const AromaService_updateApplication_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateApplication_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateApplication_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_updateApplication_pargs {
+ public:
+
+
+  virtual ~AromaService_updateApplication_pargs() throw();
+  const UpdateApplicationRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateApplication_result__isset {
+  _AromaService_updateApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateApplication_result__isset;
+
+class AromaService_updateApplication_result {
+ public:
+
+  AromaService_updateApplication_result(const AromaService_updateApplication_result&);
+  AromaService_updateApplication_result& operator=(const AromaService_updateApplication_result&);
+  AromaService_updateApplication_result() {
+  }
+
+  virtual ~AromaService_updateApplication_result() throw();
+  UpdateApplicationResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_updateApplication_result__isset __isset;
+
+  void __set_success(const UpdateApplicationResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_updateApplication_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_updateApplication_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_updateApplication_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_updateApplication_presult__isset {
+  _AromaService_updateApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_updateApplication_presult__isset;
+
+class AromaService_updateApplication_presult {
+ public:
+
+
+  virtual ~AromaService_updateApplication_presult() throw();
+  UpdateApplicationResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_updateApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -3770,6 +4064,12 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   void send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return);
+  void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
+  void send_unfollowApplication(const UnfollowApplicationRequest& request);
+  void recv_unfollowApplication(UnfollowApplicationResponse& _return);
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
+  void send_updateApplication(const UpdateApplicationRequest& request);
+  void recv_updateApplication(UpdateApplicationResponse& _return);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   void send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return);
@@ -3834,6 +4134,8 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_signUp(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_snoozeChannel(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_followApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_unfollowApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_updateApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getActivity(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getApplicationInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getBuzz(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -3862,6 +4164,8 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["signUp"] = &AromaServiceProcessor::process_signUp;
     processMap_["snoozeChannel"] = &AromaServiceProcessor::process_snoozeChannel;
     processMap_["followApplication"] = &AromaServiceProcessor::process_followApplication;
+    processMap_["unfollowApplication"] = &AromaServiceProcessor::process_unfollowApplication;
+    processMap_["updateApplication"] = &AromaServiceProcessor::process_updateApplication;
     processMap_["getActivity"] = &AromaServiceProcessor::process_getActivity;
     processMap_["getApplicationInfo"] = &AromaServiceProcessor::process_getApplicationInfo;
     processMap_["getBuzz"] = &AromaServiceProcessor::process_getBuzz;
@@ -4028,6 +4332,26 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
       ifaces_[i]->followApplication(_return, request);
     }
     ifaces_[i]->followApplication(_return, request);
+    return;
+  }
+
+  void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->unfollowApplication(_return, request);
+    }
+    ifaces_[i]->unfollowApplication(_return, request);
+    return;
+  }
+
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->updateApplication(_return, request);
+    }
+    ifaces_[i]->updateApplication(_return, request);
     return;
   }
 
@@ -4220,6 +4544,12 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void followApplication(FollowApplicationResponse& _return, const FollowApplicationRequest& request);
   int32_t send_followApplication(const FollowApplicationRequest& request);
   void recv_followApplication(FollowApplicationResponse& _return, const int32_t seqid);
+  void unfollowApplication(UnfollowApplicationResponse& _return, const UnfollowApplicationRequest& request);
+  int32_t send_unfollowApplication(const UnfollowApplicationRequest& request);
+  void recv_unfollowApplication(UnfollowApplicationResponse& _return, const int32_t seqid);
+  void updateApplication(UpdateApplicationResponse& _return, const UpdateApplicationRequest& request);
+  int32_t send_updateApplication(const UpdateApplicationRequest& request);
+  void recv_updateApplication(UpdateApplicationResponse& _return, const int32_t seqid);
   void getActivity(GetActivityResponse& _return, const GetActivityRequest& request);
   int32_t send_getActivity(const GetActivityRequest& request);
   void recv_getActivity(GetActivityResponse& _return, const int32_t seqid);

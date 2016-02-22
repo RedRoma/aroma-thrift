@@ -366,15 +366,25 @@ struct SnoozeChannelResponse
 struct FollowApplicationRequest
 {
     1: UserToken token;
-    2: string applicationName;
-    3: uuid applicationId;
-    4: optional uuid organizationId;
-    5: optional bool shared = false;
+    2: uuid applicationId;
+    3: optional uuid organizationId;
 }
 
 struct FollowApplicationResponse
 {
     1: optional string message = "Success";
+}
+
+struct UnfollowApplicationRequest
+{
+    1: UserToken token;
+    2: uuid applicationId;
+    3: optional uuid organizationId;
+}
+
+struct UnfollowApplicationResponse
+{
+    1: optional string message = "Success"
 }
 
 struct UpdateApplicationRequest
@@ -713,10 +723,23 @@ service AromaService
                                                                                              2 : InvalidArgumentException ex2,
                                                                                              3 : InvalidTokenException ex3,
                                                                                              4 : ApplicationDoesNotExistException ex4,
-                                                                                             5 : ApplicationAlreadyRegisteredException ex5,
-                                                                                             6 : CustomChannelUnreachableException ex6);
+                                                                                             5 : UnauthorizedException ex5);
+
     
+    UnfollowApplicationResponse unfollowApplication(1 : UnfollowApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                   2 : InvalidArgumentException ex2,
+                                                                                                   3 : InvalidTokenException ex3,
+                                                                                                   4 : ApplicationDoesNotExistException ex4,
+                                                                                                   5 : UnauthorizedException ex5);
     
+    /**
+     * #owner
+     */
+    UpdateApplicationResponse updateApplication(1 : UpdateApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidTokenException ex3,
+                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                             5 : UnauthorizedException ex5);
    
     
     

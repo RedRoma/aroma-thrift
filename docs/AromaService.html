@@ -221,6 +221,8 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_signIn">signIn</a></li>
 <li><a href="#Fn_AromaService_signUp">signUp</a></li>
 <li><a href="#Fn_AromaService_snoozeChannel">snoozeChannel</a></li>
+<li><a href="#Fn_AromaService_unfollowApplication">unfollowApplication</a></li>
+<li><a href="#Fn_AromaService_updateApplication">updateApplication</a></li>
 </ul>
 </td>
 <td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
@@ -296,6 +298,8 @@ code { line-height: 20px; }
 <a href="#Struct_SnoozeChannelRequest">SnoozeChannelRequest</a><br/>
 <a href="#Struct_SnoozeChannelResponse">SnoozeChannelResponse</a><br/>
 <a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
+<a href="#Struct_UnfollowApplicationRequest">UnfollowApplicationRequest</a><br/>
+<a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a><br/>
 <a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a><br/>
 <a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a><br/>
 <a href="#Typedef_Urgency">Urgency</a><br/>
@@ -585,12 +589,18 @@ for a set time period.
 </table><br/></div><div class="definition"><h3 id="Struct_FollowApplicationRequest">Struct: FollowApplicationRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>applicationName</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>4</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
-<tr><td>5</td><td>shared</td><td><code>bool</code></td><td></td><td>optional</td><td><code>false</code></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
 </table><br/>Follow an Application to receive notifications from it.
 <br/></div><div class="definition"><h3 id="Struct_FollowApplicationResponse">Struct: FollowApplicationResponse</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Success"</code></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_UnfollowApplicationRequest">Struct: UnfollowApplicationRequest</h3>
+<table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
+<tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>applicationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>3</td><td>organizationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_UnfollowApplicationResponse">Struct: UnfollowApplicationResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>message</td><td><code>string</code></td><td></td><td>optional</td><td><code>"Success"</code></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_UpdateApplicationRequest">Struct: UpdateApplicationRequest</h3>
@@ -782,10 +792,17 @@ Only an "owner" can perform this operation.
 </pre>Snoozes a Channel momentarily, so that it won't be notified of new alerts and messages.
 <br/></div><div class="definition"><h4 id="Fn_AromaService_followApplication">Function: AromaService.followApplication</h4>
 <pre><code><a href="#Struct_FollowApplicationResponse">FollowApplicationResponse</a></code> followApplication(<code><a href="#Struct_FollowApplicationRequest">FollowApplicationRequest</a></code> request)
-    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a></code>, <code><a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a></code>
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Subscribe to an existing application to get notifications.
 
 #user
+<br/></div><div class="definition"><h4 id="Fn_AromaService_unfollowApplication">Function: AromaService.unfollowApplication</h4>
+<pre><code><a href="#Struct_UnfollowApplicationResponse">UnfollowApplicationResponse</a></code> unfollowApplication(<code><a href="#Struct_UnfollowApplicationRequest">UnfollowApplicationRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_updateApplication">Function: AromaService.updateApplication</h4>
+<pre><code><a href="#Struct_UpdateApplicationResponse">UpdateApplicationResponse</a></code> updateApplication(<code><a href="#Struct_UpdateApplicationRequest">UpdateApplicationRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
+</pre>#owner
 <br/></div><div class="definition"><h4 id="Fn_AromaService_getActivity">Function: AromaService.getActivity</h4>
 <pre><code><a href="#Struct_GetActivityResponse">GetActivityResponse</a></code> getActivity(<code><a href="#Struct_GetActivityRequest">GetActivityRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>

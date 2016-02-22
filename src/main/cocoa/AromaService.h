@@ -1162,28 +1162,22 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @interface AromaService_FollowApplicationRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
-  NSString * __applicationName;
   AromaService_uuid __applicationId;
   AromaService_uuid __organizationId;
-  BOOL __shared;
 
   BOOL __token_isset;
-  BOOL __applicationName_isset;
   BOOL __applicationId_isset;
   BOOL __organizationId_isset;
-  BOOL __shared_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
 @property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
-@property (nonatomic, getter=shared, setter=setShared:) BOOL shared;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AromaService_UserToken) token applicationName: (NSString *) applicationName applicationId: (AromaService_uuid) applicationId organizationId: (AromaService_uuid) organizationId shared: (BOOL) shared;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId organizationId: (AromaService_uuid) organizationId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1197,10 +1191,74 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
+- (AromaService_uuid) applicationId;
+- (void) setApplicationId: (AromaService_uuid) applicationId;
 #endif
-- (BOOL) applicationNameIsSet;
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) organizationId;
+- (void) setOrganizationId: (AromaService_uuid) organizationId;
+#endif
+- (BOOL) organizationIdIsSet;
+
+@end
+
+@interface AromaService_FollowApplicationResponse : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
+@interface AromaService_UnfollowApplicationRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __applicationId;
+  AromaService_uuid __organizationId;
+
+  BOOL __token_isset;
+  BOOL __applicationId_isset;
+  BOOL __organizationId_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaService_uuid applicationId;
+@property (nonatomic, retain, getter=organizationId, setter=setOrganizationId:) AromaService_uuid organizationId;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token applicationId: (AromaService_uuid) applicationId organizationId: (AromaService_uuid) organizationId;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaService_uuid) applicationId;
@@ -1214,15 +1272,9 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 #endif
 - (BOOL) organizationIdIsSet;
 
-#if !__has_feature(objc_arc)
-- (BOOL) shared;
-- (void) setShared: (BOOL) shared;
-#endif
-- (BOOL) sharedIsSet;
-
 @end
 
-@interface AromaService_FollowApplicationResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_UnfollowApplicationResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
 
   BOOL __message_isset;
@@ -2205,7 +2257,9 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (AromaService_SignInResponse *) signIn: (AromaService_SignInRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidCredentialsException, AromaService_UserDoesNotExistException, TException
 - (AromaService_SignUpResponse *) signUp: (AromaService_SignUpRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidCredentialsException, AromaService_AccountAlreadyExistsException, TException
 - (AromaService_SnoozeChannelResponse *) snoozeChannel: (AromaService_SnoozeChannelRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_ChannelDoesNotExistException, TException
-- (AromaService_FollowApplicationResponse *) followApplication: (AromaService_FollowApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_ApplicationAlreadyRegisteredException, AromaService_CustomChannelUnreachableException, TException
+- (AromaService_FollowApplicationResponse *) followApplication: (AromaService_FollowApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_UnfollowApplicationResponse *) unfollowApplication: (AromaService_UnfollowApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
+- (AromaService_UpdateApplicationResponse *) updateApplication: (AromaService_UpdateApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_GetActivityResponse *) getActivity: (AromaService_GetActivityRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_GetApplicationInfoResponse *) getApplicationInfo: (AromaService_GetApplicationInfoRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_GetBuzzResponse *) getBuzz: (AromaService_GetBuzzRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
