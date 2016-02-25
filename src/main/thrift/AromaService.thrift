@@ -406,6 +406,8 @@ struct GetApplicationInfoRequest
 {
     1: AuthenticationToken token;
     2: uuid applicationId;
+    /** If set, the service will determine if the calling user follows the Application. */
+    3: optional boolean includeFollowingInfo = false;
 }
 
 struct GetApplicationInfoResponse
