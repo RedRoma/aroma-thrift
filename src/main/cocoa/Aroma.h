@@ -592,6 +592,7 @@ typedef NSString * Aroma_uuid;
   int __tier;
   Aroma_timestamp __timeOfTokenExpiration;
   Aroma_uuid __applicationIconMediaId;
+  BOOL __isFollowing;
 
   BOOL __owners_isset;
   BOOL __timeOfProvisioning_isset;
@@ -606,6 +607,7 @@ typedef NSString * Aroma_uuid;
   BOOL __tier_isset;
   BOOL __timeOfTokenExpiration_isset;
   BOOL __applicationIconMediaId_isset;
+  BOOL __isFollowing_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -622,10 +624,11 @@ typedef NSString * Aroma_uuid;
 @property (nonatomic, getter=tier, setter=setTier:) int tier;
 @property (nonatomic, getter=timeOfTokenExpiration, setter=setTimeOfTokenExpiration:) Aroma_timestamp timeOfTokenExpiration;
 @property (nonatomic, retain, getter=applicationIconMediaId, setter=setApplicationIconMediaId:) Aroma_uuid applicationIconMediaId;
+@property (nonatomic, getter=isFollowing, setter=setIsFollowing:) BOOL isFollowing;
 #endif
 
 - (id) init;
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId;
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId isFollowing: (BOOL) isFollowing;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -709,6 +712,12 @@ typedef NSString * Aroma_uuid;
 - (void) setApplicationIconMediaId: (Aroma_uuid) applicationIconMediaId;
 #endif
 - (BOOL) applicationIconMediaIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) isFollowing;
+- (void) setIsFollowing: (BOOL) isFollowing;
+#endif
+- (BOOL) isFollowingIsSet;
 
 @end
 

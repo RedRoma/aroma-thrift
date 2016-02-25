@@ -1021,6 +1021,7 @@ Application = function(args) {
   this.tier = 1;
   this.timeOfTokenExpiration = null;
   this.applicationIconMediaId = null;
+  this.isFollowing = null;
   if (args) {
     if (args.owners !== undefined && args.owners !== null) {
       this.owners = Thrift.copyList(args.owners, [null]);
@@ -1060,6 +1061,9 @@ Application = function(args) {
     }
     if (args.applicationIconMediaId !== undefined && args.applicationIconMediaId !== null) {
       this.applicationIconMediaId = args.applicationIconMediaId;
+    }
+    if (args.isFollowing !== undefined && args.isFollowing !== null) {
+      this.isFollowing = args.isFollowing;
     }
   }
 };
@@ -1195,6 +1199,13 @@ Application.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 14:
+      if (ftype == Thrift.Type.BOOL) {
+        this.isFollowing = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1287,6 +1298,11 @@ Application.prototype.write = function(output) {
   if (this.applicationIconMediaId !== null && this.applicationIconMediaId !== undefined) {
     output.writeFieldBegin('applicationIconMediaId', Thrift.Type.STRING, 13);
     output.writeString(this.applicationIconMediaId);
+    output.writeFieldEnd();
+  }
+  if (this.isFollowing !== null && this.isFollowing !== undefined) {
+    output.writeFieldBegin('isFollowing', Thrift.Type.BOOL, 14);
+    output.writeBool(this.isFollowing);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

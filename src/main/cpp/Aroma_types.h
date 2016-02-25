@@ -672,7 +672,7 @@ inline std::ostream& operator<<(std::ostream& out, const User& obj)
 }
 
 typedef struct _Application__isset {
-  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false), applicationIconMediaId(false) {}
+  _Application__isset() : owners(false), timeOfProvisioning(false), name(false), applicationId(false), totalMessagesSent(false), icon(false), programmingLanguage(false), followers(true), applicationDescription(false), organizationId(false), tier(true), timeOfTokenExpiration(false), applicationIconMediaId(false), isFollowing(false) {}
   bool owners :1;
   bool timeOfProvisioning :1;
   bool name :1;
@@ -686,6 +686,7 @@ typedef struct _Application__isset {
   bool tier :1;
   bool timeOfTokenExpiration :1;
   bool applicationIconMediaId :1;
+  bool isFollowing :1;
 } _Application__isset;
 
 class Application {
@@ -693,7 +694,7 @@ class Application {
 
   Application(const Application&);
   Application& operator=(const Application&);
-  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)1), timeOfTokenExpiration(0), applicationIconMediaId() {
+  Application() : timeOfProvisioning(0), name(), applicationId(), totalMessagesSent(0), programmingLanguage((ProgrammingLanguage::type)0), applicationDescription(), organizationId(), tier((Tier::type)1), timeOfTokenExpiration(0), applicationIconMediaId(), isFollowing(0) {
 
     tier = (Tier::type)1;
 
@@ -713,6 +714,7 @@ class Application {
   Tier::type tier;
   timestamp timeOfTokenExpiration;
   uuid applicationIconMediaId;
+  bool isFollowing;
 
   _Application__isset __isset;
 
@@ -741,6 +743,8 @@ class Application {
   void __set_timeOfTokenExpiration(const timestamp val);
 
   void __set_applicationIconMediaId(const uuid& val);
+
+  void __set_isFollowing(const bool val);
 
   bool operator == (const Application & rhs) const
   {
@@ -779,6 +783,10 @@ class Application {
     if (__isset.applicationIconMediaId != rhs.__isset.applicationIconMediaId)
       return false;
     else if (__isset.applicationIconMediaId && !(applicationIconMediaId == rhs.applicationIconMediaId))
+      return false;
+    if (__isset.isFollowing != rhs.__isset.isFollowing)
+      return false;
+    else if (__isset.isFollowing && !(isFollowing == rhs.isFollowing))
       return false;
     return true;
   }

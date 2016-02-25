@@ -246,6 +246,8 @@ struct Application
     /** The time the App's token will expire. */
     12: timestamp timeOfTokenExpiration;
     13: optional uuid applicationIconMediaId;
+    /** Set to true if the calling user follows this Application. */
+    14: optional bool isFollowing;
 }
 
 /**

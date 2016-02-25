@@ -1562,6 +1562,11 @@ void Application::__set_applicationIconMediaId(const uuid& val) {
 __isset.applicationIconMediaId = true;
 }
 
+void Application::__set_isFollowing(const bool val) {
+  this->isFollowing = val;
+__isset.isFollowing = true;
+}
+
 uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -1717,6 +1722,14 @@ uint32_t Application::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 14:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->isFollowing);
+          this->__isset.isFollowing = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1807,6 +1820,11 @@ uint32_t Application::write(::apache::thrift::protocol::TProtocol* oprot) const 
     xfer += oprot->writeString(this->applicationIconMediaId);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.isFollowing) {
+    xfer += oprot->writeFieldBegin("isFollowing", ::apache::thrift::protocol::T_BOOL, 14);
+    xfer += oprot->writeBool(this->isFollowing);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1827,6 +1845,7 @@ void swap(Application &a, Application &b) {
   swap(a.tier, b.tier);
   swap(a.timeOfTokenExpiration, b.timeOfTokenExpiration);
   swap(a.applicationIconMediaId, b.applicationIconMediaId);
+  swap(a.isFollowing, b.isFollowing);
   swap(a.__isset, b.__isset);
 }
 
@@ -1844,6 +1863,7 @@ Application::Application(const Application& other47) {
   tier = other47.tier;
   timeOfTokenExpiration = other47.timeOfTokenExpiration;
   applicationIconMediaId = other47.applicationIconMediaId;
+  isFollowing = other47.isFollowing;
   __isset = other47.__isset;
 }
 Application& Application::operator=(const Application& other48) {
@@ -1860,6 +1880,7 @@ Application& Application::operator=(const Application& other48) {
   tier = other48.tier;
   timeOfTokenExpiration = other48.timeOfTokenExpiration;
   applicationIconMediaId = other48.applicationIconMediaId;
+  isFollowing = other48.isFollowing;
   __isset = other48.__isset;
   return *this;
 }
@@ -1879,6 +1900,7 @@ void Application::printTo(std::ostream& out) const {
   out << ", " << "tier="; (__isset.tier ? (out << to_string(tier)) : (out << "<null>"));
   out << ", " << "timeOfTokenExpiration=" << to_string(timeOfTokenExpiration);
   out << ", " << "applicationIconMediaId="; (__isset.applicationIconMediaId ? (out << to_string(applicationIconMediaId)) : (out << "<null>"));
+  out << ", " << "isFollowing="; (__isset.isFollowing ? (out << to_string(isFollowing)) : (out << "<null>"));
   out << ")";
 }
 

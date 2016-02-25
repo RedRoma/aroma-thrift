@@ -3095,7 +3095,7 @@
   return self;
 }
 
-- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId
+- (id) initWithOwners: (NSMutableSet *) owners timeOfProvisioning: (Aroma_timestamp) timeOfProvisioning name: (NSString *) name applicationId: (Aroma_uuid) applicationId totalMessagesSent: (Aroma_long) totalMessagesSent icon: (Aroma_Image *) icon programmingLanguage: (int) programmingLanguage followers: (NSMutableSet *) followers applicationDescription: (NSString *) applicationDescription organizationId: (Aroma_uuid) organizationId tier: (int) tier timeOfTokenExpiration: (Aroma_timestamp) timeOfTokenExpiration applicationIconMediaId: (Aroma_uuid) applicationIconMediaId isFollowing: (BOOL) isFollowing
 {
   self = [super init];
   __owners = [owners retain_stub];
@@ -3124,6 +3124,8 @@
   __timeOfTokenExpiration_isset = YES;
   __applicationIconMediaId = [applicationIconMediaId retain_stub];
   __applicationIconMediaId_isset = YES;
+  __isFollowing = isFollowing;
+  __isFollowing_isset = YES;
   return self;
 }
 
@@ -3195,6 +3197,11 @@
     __applicationIconMediaId = [[decoder decodeObjectForKey: @"applicationIconMediaId"] retain_stub];
     __applicationIconMediaId_isset = YES;
   }
+  if ([decoder containsValueForKey: @"isFollowing"])
+  {
+    __isFollowing = [decoder decodeBoolForKey: @"isFollowing"];
+    __isFollowing_isset = YES;
+  }
   return self;
 }
 
@@ -3251,6 +3258,10 @@
   if (__applicationIconMediaId_isset)
   {
     [encoder encodeObject: __applicationIconMediaId forKey: @"applicationIconMediaId"];
+  }
+  if (__isFollowing_isset)
+  {
+    [encoder encodeBool: __isFollowing forKey: @"isFollowing"];
   }
 }
 
@@ -3322,6 +3333,11 @@
   {
     hash = (hash * 31) ^ [__applicationIconMediaId hash];
   }
+  hash = (hash * 31) ^ __isFollowing_isset ? 2654435761 : 0;
+  if (__isFollowing_isset)
+  {
+    hash = (hash * 31) ^ [@(__isFollowing) hash];
+  }
   return hash;
 }
 
@@ -3384,6 +3400,10 @@
   }
   if ((__applicationIconMediaId_isset != other->__applicationIconMediaId_isset) ||
       (__applicationIconMediaId_isset && ((__applicationIconMediaId || other->__applicationIconMediaId) && ![__applicationIconMediaId isEqual:other->__applicationIconMediaId]))) {
+    return NO;
+  }
+  if ((__isFollowing_isset != other->__isFollowing_isset) ||
+      (__isFollowing_isset && (__isFollowing != other->__isFollowing))) {
     return NO;
   }
   return YES;
@@ -3655,6 +3675,23 @@
   __applicationIconMediaId_isset = NO;
 }
 
+- (BOOL) isFollowing {
+  return __isFollowing;
+}
+
+- (void) setIsFollowing: (BOOL) isFollowing {
+  __isFollowing = isFollowing;
+  __isFollowing_isset = YES;
+}
+
+- (BOOL) isFollowingIsSet {
+  return __isFollowing_isset;
+}
+
+- (void) unsetIsFollowing {
+  __isFollowing_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -3796,6 +3833,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 14:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setIsFollowing: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -3906,6 +3951,11 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__isFollowing_isset) {
+    [outProtocol writeFieldBeginWithName: @"isFollowing" type: TType_BOOL fieldID: 14];
+    [outProtocol writeBool: __isFollowing];
+    [outProtocol writeFieldEnd];
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -3942,6 +3992,8 @@
   [ms appendFormat: @"%qi", __timeOfTokenExpiration];
   [ms appendString: @",applicationIconMediaId:"];
   [ms appendFormat: @"\"%@\"", __applicationIconMediaId];
+  [ms appendString: @",isFollowing:"];
+  [ms appendFormat: @"%i", __isFollowing];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
