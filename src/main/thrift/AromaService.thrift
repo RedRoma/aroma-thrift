@@ -831,6 +831,11 @@ service AromaService
     GetApplicationsOwnedByResponse getApplicationsOwnedBy(1 : GetApplicationsOwnedByRequest request) throws(1 : OperationFailedException ex1,
                                                                                                             2 : InvalidArgumentException ex2,
                                                                                                             3 : InvalidTokenException ex3);
+
+    
+    GetApplicationsFollowedByResponse getApplicationsFollowedBy(1 : GetApplicationsFollowedByRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                                     2 : InvalidArgumentException ex2,
+                                                                                                                     3 : InvalidTokenException ex3);
  
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,

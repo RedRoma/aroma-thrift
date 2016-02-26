@@ -248,6 +248,11 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getApplicationsOwnedBy\n");
   }
 
+  void getApplicationsFollowedBy(GetApplicationsFollowedByResponse& _return, const GetApplicationsFollowedByRequest& request) {
+    // Your implementation goes here
+    printf("getApplicationsFollowedBy\n");
+  }
+
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) {
     // Your implementation goes here
     printf("getMySavedChannels\n");

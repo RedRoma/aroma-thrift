@@ -203,6 +203,7 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_AromaService_getApplicationInfo">getApplicationInfo</a></li>
 <li><a href="#Fn_AromaService_getApplicationMessages">getApplicationMessages</a></li>
+<li><a href="#Fn_AromaService_getApplicationsFollowedBy">getApplicationsFollowedBy</a></li>
 <li><a href="#Fn_AromaService_getApplicationsOwnedBy">getApplicationsOwnedBy</a></li>
 <li><a href="#Fn_AromaService_getBuzz">getBuzz</a></li>
 <li><a href="#Fn_AromaService_getDashboard">getDashboard</a></li>
@@ -854,6 +855,9 @@ to load the full message.
 </pre>Request to get Media stored by the Aroma Service.
 <br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsOwnedBy">Function: AromaService.getApplicationsOwnedBy</h4>
 <pre><code><a href="#Struct_GetApplicationsOwnedByResponse">GetApplicationsOwnedByResponse</a></code> getApplicationsOwnedBy(<code><a href="#Struct_GetApplicationsOwnedByRequest">GetApplicationsOwnedByRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
+</pre></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsFollowedBy">Function: AromaService.getApplicationsFollowedBy</h4>
+<pre><code><a href="#Struct_GetApplicationsFollowedByResponse">GetApplicationsFollowedByResponse</a></code> getApplicationsFollowedBy(<code><a href="#Struct_GetApplicationsFollowedByRequest">GetApplicationsFollowedByRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getMySavedChannels">Function: AromaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)
