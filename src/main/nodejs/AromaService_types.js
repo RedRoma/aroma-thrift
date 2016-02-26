@@ -3765,16 +3765,20 @@ GetMediaResponse.prototype.write = function(output) {
     return;
   };
 
-GetMyApplicationsRequest = module.exports.GetMyApplicationsRequest = function(args) {
+GetApplicationsOwnedByRequest = module.exports.GetApplicationsOwnedByRequest = function(args) {
     this.token = null;
+    this.userId = null;
     if (args) {
         if (args.token !== undefined && args.token !== null) {
             this.token = new Authentication_ttypes.UserToken(args.token);
         }
+        if (args.userId !== undefined && args.userId !== null) {
+            this.userId = args.userId;
+        }
     }
 };
-GetMyApplicationsRequest.prototype = {};
-GetMyApplicationsRequest.prototype.read = function(input) {
+GetApplicationsOwnedByRequest.prototype = {};
+GetApplicationsOwnedByRequest.prototype.read = function(input) {
     input.readStructBegin();
     while (true)
     {
@@ -3795,9 +3799,13 @@ GetMyApplicationsRequest.prototype.read = function(input) {
           input.skip(ftype);
         }
         break;
-        case 0:
+        case 2:
+        if (ftype == Thrift.Type.STRING) {
+          this.userId = input.readString();
+        } else {
           input.skip(ftype);
-          break;
+        }
+        break;
         default:
           input.skip(ftype);
       }
@@ -3807,11 +3815,16 @@ GetMyApplicationsRequest.prototype.read = function(input) {
     return;
   };
 
-GetMyApplicationsRequest.prototype.write = function(output) {
-    output.writeStructBegin('GetMyApplicationsRequest');
+GetApplicationsOwnedByRequest.prototype.write = function(output) {
+    output.writeStructBegin('GetApplicationsOwnedByRequest');
     if (this.token !== null && this.token !== undefined) {
       output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
       this.token.write(output);
+      output.writeFieldEnd();
+    }
+    if (this.userId !== null && this.userId !== undefined) {
+      output.writeFieldBegin('userId', Thrift.Type.STRING, 2);
+      output.writeString(this.userId);
       output.writeFieldEnd();
     }
     output.writeFieldStop();
@@ -3819,7 +3832,7 @@ GetMyApplicationsRequest.prototype.write = function(output) {
     return;
   };
 
-GetMyApplicationsResponse = module.exports.GetMyApplicationsResponse = function(args) {
+GetApplicationsOwnedByResponse = module.exports.GetApplicationsOwnedByResponse = function(args) {
     this.applications = null;
     if (args) {
         if (args.applications !== undefined && args.applications !== null) {
@@ -3827,8 +3840,8 @@ GetMyApplicationsResponse = module.exports.GetMyApplicationsResponse = function(
         }
     }
 };
-GetMyApplicationsResponse.prototype = {};
-GetMyApplicationsResponse.prototype.read = function(input) {
+GetApplicationsOwnedByResponse.prototype = {};
+GetApplicationsOwnedByResponse.prototype.read = function(input) {
     input.readStructBegin();
     while (true)
     {
@@ -3874,8 +3887,8 @@ GetMyApplicationsResponse.prototype.read = function(input) {
     return;
   };
 
-GetMyApplicationsResponse.prototype.write = function(output) {
-    output.writeStructBegin('GetMyApplicationsResponse');
+GetApplicationsOwnedByResponse.prototype.write = function(output) {
+    output.writeStructBegin('GetApplicationsOwnedByResponse');
     if (this.applications !== null && this.applications !== undefined) {
       output.writeFieldBegin('applications', Thrift.Type.LIST, 1);
       output.writeListBegin(Thrift.Type.STRUCT, this.applications.length);

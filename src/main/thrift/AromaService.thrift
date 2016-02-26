@@ -507,12 +507,14 @@ struct GetMediaResponse
     1: Aroma.Image image;
 }
 
-struct GetMyApplicationsRequest
+struct GetApplicationsOwnedByRequest
 {
     1: UserToken token;
+    /** If not present, will assume the userID of the Caller. */
+    2: optional uuid userId;
 }
 
-struct GetMyApplicationsResponse
+struct GetApplicationsOwnedByResponse
 {
     1: list<Application> applications;
 }
@@ -811,12 +813,13 @@ service AromaService
                                                                   2 : InvalidArgumentException ex2,
                                                                   3 : InvalidTokenException ex3,
                                                                   4 : DoesNotExistException ex4,
-                                                                  5 : UnauthorizedException ex5); 
+                                                                  5 : UnauthorizedException ex5);
+
     
-    GetMyApplicationsResponse getMyApplications(1 : GetMyApplicationsRequest request) throws(1 : OperationFailedException ex1,
-                                                                                             2 : InvalidArgumentException ex2,
-                                                                                             3 : InvalidTokenException ex3);
-    
+    GetApplicationsOwnedByResponse getApplicationsOwnedBy(1 : GetApplicationsOwnedByRequest request) throws(1 : OperationFailedException ex1,
+                                                                                                            2 : InvalidArgumentException ex2,
+                                                                                                            3 : InvalidTokenException ex3);
+ 
 
     GetMySavedChannelsResponse getMySavedChannels(1 : GetMySavedChannelsRequest request) throws(1 : OperationFailedException ex1,
                                                                                                 2 : InvalidArgumentException ex2,

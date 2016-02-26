@@ -6269,11 +6269,11 @@ uint32_t AromaService_getMedia_presult::read(::apache::thrift::protocol::TProtoc
 }
 
 
-AromaService_getMyApplications_args::~AromaService_getMyApplications_args() throw() {
+AromaService_getApplicationsOwnedBy_args::~AromaService_getApplicationsOwnedBy_args() throw() {
 }
 
 
-uint32_t AromaService_getMyApplications_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6314,10 +6314,10 @@ uint32_t AromaService_getMyApplications_args::read(::apache::thrift::protocol::T
   return xfer;
 }
 
-uint32_t AromaService_getMyApplications_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getMyApplications_args");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_args");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->request.write(oprot);
@@ -6329,14 +6329,14 @@ uint32_t AromaService_getMyApplications_args::write(::apache::thrift::protocol::
 }
 
 
-AromaService_getMyApplications_pargs::~AromaService_getMyApplications_pargs() throw() {
+AromaService_getApplicationsOwnedBy_pargs::~AromaService_getApplicationsOwnedBy_pargs() throw() {
 }
 
 
-uint32_t AromaService_getMyApplications_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("AromaService_getMyApplications_pargs");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_pargs");
 
   xfer += oprot->writeFieldBegin("request", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += (*(this->request)).write(oprot);
@@ -6348,11 +6348,11 @@ uint32_t AromaService_getMyApplications_pargs::write(::apache::thrift::protocol:
 }
 
 
-AromaService_getMyApplications_result::~AromaService_getMyApplications_result() throw() {
+AromaService_getApplicationsOwnedBy_result::~AromaService_getApplicationsOwnedBy_result() throw() {
 }
 
 
-uint32_t AromaService_getMyApplications_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -6417,11 +6417,11 @@ uint32_t AromaService_getMyApplications_result::read(::apache::thrift::protocol:
   return xfer;
 }
 
-uint32_t AromaService_getMyApplications_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaService_getApplicationsOwnedBy_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("AromaService_getMyApplications_result");
+  xfer += oprot->writeStructBegin("AromaService_getApplicationsOwnedBy_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
@@ -6446,11 +6446,11 @@ uint32_t AromaService_getMyApplications_result::write(::apache::thrift::protocol
 }
 
 
-AromaService_getMyApplications_presult::~AromaService_getMyApplications_presult() throw() {
+AromaService_getApplicationsOwnedBy_presult::~AromaService_getApplicationsOwnedBy_presult() throw() {
 }
 
 
-uint32_t AromaService_getMyApplications_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaService_getApplicationsOwnedBy_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -8946,18 +8946,18 @@ void AromaServiceClient::recv_getMedia(GetMediaResponse& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMedia failed: unknown result");
 }
 
-void AromaServiceClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
+void AromaServiceClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
 {
-  send_getMyApplications(request);
-  recv_getMyApplications(_return);
+  send_getApplicationsOwnedBy(request);
+  recv_getApplicationsOwnedBy(_return);
 }
 
-void AromaServiceClient::send_getMyApplications(const GetMyApplicationsRequest& request)
+void AromaServiceClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getMyApplications_pargs args;
+  AromaService_getApplicationsOwnedBy_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -8966,7 +8966,7 @@ void AromaServiceClient::send_getMyApplications(const GetMyApplicationsRequest& 
   oprot_->getTransport()->flush();
 }
 
-void AromaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _return)
+void AromaServiceClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return)
 {
 
   int32_t rseqid = 0;
@@ -8986,12 +8986,12 @@ void AromaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _retu
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getMyApplications") != 0) {
+  if (fname.compare("getApplicationsOwnedBy") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  AromaService_getMyApplications_presult result;
+  AromaService_getApplicationsOwnedBy_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -9010,7 +9010,7 @@ void AromaServiceClient::recv_getMyApplications(GetMyApplicationsResponse& _retu
   if (result.__isset.ex3) {
     throw result.ex3;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyApplications failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
 }
 
 void AromaServiceClient::getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request)
@@ -10781,30 +10781,30 @@ void AromaServiceProcessor::process_getMedia(int32_t seqid, ::apache::thrift::pr
   }
 }
 
-void AromaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void AromaServiceProcessor::process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("AromaService.getMyApplications", callContext);
+    ctx = this->eventHandler_->getContext("AromaService.getApplicationsOwnedBy", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getMyApplications");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "AromaService.getApplicationsOwnedBy");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "AromaService.getMyApplications");
+    this->eventHandler_->preRead(ctx, "AromaService.getApplicationsOwnedBy");
   }
 
-  AromaService_getMyApplications_args args;
+  AromaService_getApplicationsOwnedBy_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "AromaService.getMyApplications", bytes);
+    this->eventHandler_->postRead(ctx, "AromaService.getApplicationsOwnedBy", bytes);
   }
 
-  AromaService_getMyApplications_result result;
+  AromaService_getApplicationsOwnedBy_result result;
   try {
-    iface_->getMyApplications(result.success, args.request);
+    iface_->getApplicationsOwnedBy(result.success, args.request);
     result.__isset.success = true;
   } catch (OperationFailedException &ex1) {
     result.ex1 = ex1;
@@ -10817,11 +10817,11 @@ void AromaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::t
     result.__isset.ex3 = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "AromaService.getMyApplications");
+      this->eventHandler_->handlerError(ctx, "AromaService.getApplicationsOwnedBy");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -10830,17 +10830,17 @@ void AromaServiceProcessor::process_getMyApplications(int32_t seqid, ::apache::t
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "AromaService.getMyApplications");
+    this->eventHandler_->preWrite(ctx, "AromaService.getApplicationsOwnedBy");
   }
 
-  oprot->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "AromaService.getMyApplications", bytes);
+    this->eventHandler_->postWrite(ctx, "AromaService.getApplicationsOwnedBy", bytes);
   }
 }
 
@@ -13376,19 +13376,19 @@ void AromaServiceConcurrentClient::recv_getMedia(GetMediaResponse& _return, cons
   } // end while(true)
 }
 
-void AromaServiceConcurrentClient::getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request)
+void AromaServiceConcurrentClient::getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request)
 {
-  int32_t seqid = send_getMyApplications(request);
-  recv_getMyApplications(_return, seqid);
+  int32_t seqid = send_getApplicationsOwnedBy(request);
+  recv_getApplicationsOwnedBy(_return, seqid);
 }
 
-int32_t AromaServiceConcurrentClient::send_getMyApplications(const GetMyApplicationsRequest& request)
+int32_t AromaServiceConcurrentClient::send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getMyApplications", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getApplicationsOwnedBy", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  AromaService_getMyApplications_pargs args;
+  AromaService_getApplicationsOwnedBy_pargs args;
   args.request = &request;
   args.write(oprot_);
 
@@ -13400,7 +13400,7 @@ int32_t AromaServiceConcurrentClient::send_getMyApplications(const GetMyApplicat
   return cseqid;
 }
 
-void AromaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid)
+void AromaServiceConcurrentClient::recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -13429,7 +13429,7 @@ void AromaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsRespo
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getMyApplications") != 0) {
+      if (fname.compare("getApplicationsOwnedBy") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -13438,7 +13438,7 @@ void AromaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsRespo
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      AromaService_getMyApplications_presult result;
+      AromaService_getApplicationsOwnedBy_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -13462,7 +13462,7 @@ void AromaServiceConcurrentClient::recv_getMyApplications(GetMyApplicationsRespo
         throw result.ex3;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getMyApplications failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getApplicationsOwnedBy failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

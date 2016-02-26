@@ -5637,15 +5637,20 @@ void GetMediaResponse::printTo(std::ostream& out) const {
 }
 
 
-GetMyApplicationsRequest::~GetMyApplicationsRequest() throw() {
+GetApplicationsOwnedByRequest::~GetApplicationsOwnedByRequest() throw() {
 }
 
 
-void GetMyApplicationsRequest::__set_token(const UserToken& val) {
+void GetApplicationsOwnedByRequest::__set_token(const UserToken& val) {
   this->token = val;
 }
 
-uint32_t GetMyApplicationsRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+void GetApplicationsOwnedByRequest::__set_userId(const uuid& val) {
+  this->userId = val;
+__isset.userId = true;
+}
+
+uint32_t GetApplicationsOwnedByRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5674,6 +5679,14 @@ uint32_t GetMyApplicationsRequest::read(::apache::thrift::protocol::TProtocol* i
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->userId);
+          this->__isset.userId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -5686,52 +5699,61 @@ uint32_t GetMyApplicationsRequest::read(::apache::thrift::protocol::TProtocol* i
   return xfer;
 }
 
-uint32_t GetMyApplicationsRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GetApplicationsOwnedByRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GetMyApplicationsRequest");
+  xfer += oprot->writeStructBegin("GetApplicationsOwnedByRequest");
 
   xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->token.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.userId) {
+    xfer += oprot->writeFieldBegin("userId", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->userId);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
 }
 
-void swap(GetMyApplicationsRequest &a, GetMyApplicationsRequest &b) {
+void swap(GetApplicationsOwnedByRequest &a, GetApplicationsOwnedByRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
+  swap(a.userId, b.userId);
   swap(a.__isset, b.__isset);
 }
 
-GetMyApplicationsRequest::GetMyApplicationsRequest(const GetMyApplicationsRequest& other163) {
+GetApplicationsOwnedByRequest::GetApplicationsOwnedByRequest(const GetApplicationsOwnedByRequest& other163) {
   token = other163.token;
+  userId = other163.userId;
   __isset = other163.__isset;
 }
-GetMyApplicationsRequest& GetMyApplicationsRequest::operator=(const GetMyApplicationsRequest& other164) {
+GetApplicationsOwnedByRequest& GetApplicationsOwnedByRequest::operator=(const GetApplicationsOwnedByRequest& other164) {
   token = other164.token;
+  userId = other164.userId;
   __isset = other164.__isset;
   return *this;
 }
-void GetMyApplicationsRequest::printTo(std::ostream& out) const {
+void GetApplicationsOwnedByRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "GetMyApplicationsRequest(";
+  out << "GetApplicationsOwnedByRequest(";
   out << "token=" << to_string(token);
+  out << ", " << "userId="; (__isset.userId ? (out << to_string(userId)) : (out << "<null>"));
   out << ")";
 }
 
 
-GetMyApplicationsResponse::~GetMyApplicationsResponse() throw() {
+GetApplicationsOwnedByResponse::~GetApplicationsOwnedByResponse() throw() {
 }
 
 
-void GetMyApplicationsResponse::__set_applications(const std::vector<Application> & val) {
+void GetApplicationsOwnedByResponse::__set_applications(const std::vector<Application> & val) {
   this->applications = val;
 }
 
-uint32_t GetMyApplicationsResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t GetApplicationsOwnedByResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -5784,10 +5806,10 @@ uint32_t GetMyApplicationsResponse::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t GetMyApplicationsResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t GetApplicationsOwnedByResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GetMyApplicationsResponse");
+  xfer += oprot->writeStructBegin("GetApplicationsOwnedByResponse");
 
   xfer += oprot->writeFieldBegin("applications", ::apache::thrift::protocol::T_LIST, 1);
   {
@@ -5806,24 +5828,24 @@ uint32_t GetMyApplicationsResponse::write(::apache::thrift::protocol::TProtocol*
   return xfer;
 }
 
-void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b) {
+void swap(GetApplicationsOwnedByResponse &a, GetApplicationsOwnedByResponse &b) {
   using ::std::swap;
   swap(a.applications, b.applications);
   swap(a.__isset, b.__isset);
 }
 
-GetMyApplicationsResponse::GetMyApplicationsResponse(const GetMyApplicationsResponse& other171) {
+GetApplicationsOwnedByResponse::GetApplicationsOwnedByResponse(const GetApplicationsOwnedByResponse& other171) {
   applications = other171.applications;
   __isset = other171.__isset;
 }
-GetMyApplicationsResponse& GetMyApplicationsResponse::operator=(const GetMyApplicationsResponse& other172) {
+GetApplicationsOwnedByResponse& GetApplicationsOwnedByResponse::operator=(const GetApplicationsOwnedByResponse& other172) {
   applications = other172.applications;
   __isset = other172.__isset;
   return *this;
 }
-void GetMyApplicationsResponse::printTo(std::ostream& out) const {
+void GetApplicationsOwnedByResponse::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "GetMyApplicationsResponse(";
+  out << "GetApplicationsOwnedByResponse(";
   out << "applications=" << to_string(applications);
   out << ")";
 }

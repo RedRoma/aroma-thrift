@@ -167,7 +167,7 @@ class AromaServiceIf {
    * @param request
    */
   virtual void getMedia(GetMediaResponse& _return, const GetMediaRequest& request) = 0;
-  virtual void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) = 0;
+  virtual void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) = 0;
   virtual void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request) = 0;
   virtual void getUserInfo(GetUserInfoResponse& _return, const GetUserInfoRequest& request) = 0;
 
@@ -278,7 +278,7 @@ class AromaServiceNull : virtual public AromaServiceIf {
   void getMedia(GetMediaResponse& /* _return */, const GetMediaRequest& /* request */) {
     return;
   }
-  void getMyApplications(GetMyApplicationsResponse& /* _return */, const GetMyApplicationsRequest& /* request */) {
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& /* _return */, const GetApplicationsOwnedByRequest& /* request */) {
     return;
   }
   void getMySavedChannels(GetMySavedChannelsResponse& /* _return */, const GetMySavedChannelsRequest& /* request */) {
@@ -3464,37 +3464,37 @@ class AromaService_getMedia_presult {
 
 };
 
-typedef struct _AromaService_getMyApplications_args__isset {
-  _AromaService_getMyApplications_args__isset() : request(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_args__isset {
+  _AromaService_getApplicationsOwnedBy_args__isset() : request(false) {}
   bool request :1;
-} _AromaService_getMyApplications_args__isset;
+} _AromaService_getApplicationsOwnedBy_args__isset;
 
-class AromaService_getMyApplications_args {
+class AromaService_getApplicationsOwnedBy_args {
  public:
 
-  AromaService_getMyApplications_args(const AromaService_getMyApplications_args&);
-  AromaService_getMyApplications_args& operator=(const AromaService_getMyApplications_args&);
-  AromaService_getMyApplications_args() {
+  AromaService_getApplicationsOwnedBy_args(const AromaService_getApplicationsOwnedBy_args&);
+  AromaService_getApplicationsOwnedBy_args& operator=(const AromaService_getApplicationsOwnedBy_args&);
+  AromaService_getApplicationsOwnedBy_args() {
   }
 
-  virtual ~AromaService_getMyApplications_args() throw();
-  GetMyApplicationsRequest request;
+  virtual ~AromaService_getApplicationsOwnedBy_args() throw();
+  GetApplicationsOwnedByRequest request;
 
-  _AromaService_getMyApplications_args__isset __isset;
+  _AromaService_getApplicationsOwnedBy_args__isset __isset;
 
-  void __set_request(const GetMyApplicationsRequest& val);
+  void __set_request(const GetApplicationsOwnedByRequest& val);
 
-  bool operator == (const AromaService_getMyApplications_args & rhs) const
+  bool operator == (const AromaService_getApplicationsOwnedBy_args & rhs) const
   {
     if (!(request == rhs.request))
       return false;
     return true;
   }
-  bool operator != (const AromaService_getMyApplications_args &rhs) const {
+  bool operator != (const AromaService_getApplicationsOwnedBy_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getMyApplications_args & ) const;
+  bool operator < (const AromaService_getApplicationsOwnedBy_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -3502,42 +3502,42 @@ class AromaService_getMyApplications_args {
 };
 
 
-class AromaService_getMyApplications_pargs {
+class AromaService_getApplicationsOwnedBy_pargs {
  public:
 
 
-  virtual ~AromaService_getMyApplications_pargs() throw();
-  const GetMyApplicationsRequest* request;
+  virtual ~AromaService_getApplicationsOwnedBy_pargs() throw();
+  const GetApplicationsOwnedByRequest* request;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getMyApplications_result__isset {
-  _AromaService_getMyApplications_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_result__isset {
+  _AromaService_getApplicationsOwnedBy_result__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _AromaService_getMyApplications_result__isset;
+} _AromaService_getApplicationsOwnedBy_result__isset;
 
-class AromaService_getMyApplications_result {
+class AromaService_getApplicationsOwnedBy_result {
  public:
 
-  AromaService_getMyApplications_result(const AromaService_getMyApplications_result&);
-  AromaService_getMyApplications_result& operator=(const AromaService_getMyApplications_result&);
-  AromaService_getMyApplications_result() {
+  AromaService_getApplicationsOwnedBy_result(const AromaService_getApplicationsOwnedBy_result&);
+  AromaService_getApplicationsOwnedBy_result& operator=(const AromaService_getApplicationsOwnedBy_result&);
+  AromaService_getApplicationsOwnedBy_result() {
   }
 
-  virtual ~AromaService_getMyApplications_result() throw();
-  GetMyApplicationsResponse success;
+  virtual ~AromaService_getApplicationsOwnedBy_result() throw();
+  GetApplicationsOwnedByResponse success;
   OperationFailedException ex1;
   InvalidArgumentException ex2;
   InvalidTokenException ex3;
 
-  _AromaService_getMyApplications_result__isset __isset;
+  _AromaService_getApplicationsOwnedBy_result__isset __isset;
 
-  void __set_success(const GetMyApplicationsResponse& val);
+  void __set_success(const GetApplicationsOwnedByResponse& val);
 
   void __set_ex1(const OperationFailedException& val);
 
@@ -3545,7 +3545,7 @@ class AromaService_getMyApplications_result {
 
   void __set_ex3(const InvalidTokenException& val);
 
-  bool operator == (const AromaService_getMyApplications_result & rhs) const
+  bool operator == (const AromaService_getApplicationsOwnedBy_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
@@ -3557,36 +3557,36 @@ class AromaService_getMyApplications_result {
       return false;
     return true;
   }
-  bool operator != (const AromaService_getMyApplications_result &rhs) const {
+  bool operator != (const AromaService_getApplicationsOwnedBy_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const AromaService_getMyApplications_result & ) const;
+  bool operator < (const AromaService_getApplicationsOwnedBy_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _AromaService_getMyApplications_presult__isset {
-  _AromaService_getMyApplications_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
+typedef struct _AromaService_getApplicationsOwnedBy_presult__isset {
+  _AromaService_getApplicationsOwnedBy_presult__isset() : success(false), ex1(false), ex2(false), ex3(false) {}
   bool success :1;
   bool ex1 :1;
   bool ex2 :1;
   bool ex3 :1;
-} _AromaService_getMyApplications_presult__isset;
+} _AromaService_getApplicationsOwnedBy_presult__isset;
 
-class AromaService_getMyApplications_presult {
+class AromaService_getApplicationsOwnedBy_presult {
  public:
 
 
-  virtual ~AromaService_getMyApplications_presult() throw();
-  GetMyApplicationsResponse* success;
+  virtual ~AromaService_getApplicationsOwnedBy_presult() throw();
+  GetApplicationsOwnedByResponse* success;
   OperationFailedException* ex1;
   InvalidArgumentException* ex2;
   InvalidTokenException* ex3;
 
-  _AromaService_getMyApplications_presult__isset __isset;
+  _AromaService_getApplicationsOwnedBy_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -4094,9 +4094,9 @@ class AromaServiceClient : virtual public AromaServiceIf {
   void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
   void send_getMedia(const GetMediaRequest& request);
   void recv_getMedia(GetMediaResponse& _return);
-  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
-  void send_getMyApplications(const GetMyApplicationsRequest& request);
-  void recv_getMyApplications(GetMyApplicationsResponse& _return);
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
+  void send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
+  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return);
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   void send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return);
@@ -4144,7 +4144,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getInbox(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getFullMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMedia(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getMyApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getApplicationsOwnedBy(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMySavedChannels(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getUserInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_searchForApplications(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4174,7 +4174,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getInbox"] = &AromaServiceProcessor::process_getInbox;
     processMap_["getFullMessage"] = &AromaServiceProcessor::process_getFullMessage;
     processMap_["getMedia"] = &AromaServiceProcessor::process_getMedia;
-    processMap_["getMyApplications"] = &AromaServiceProcessor::process_getMyApplications;
+    processMap_["getApplicationsOwnedBy"] = &AromaServiceProcessor::process_getApplicationsOwnedBy;
     processMap_["getMySavedChannels"] = &AromaServiceProcessor::process_getMySavedChannels;
     processMap_["getUserInfo"] = &AromaServiceProcessor::process_getUserInfo;
     processMap_["searchForApplications"] = &AromaServiceProcessor::process_searchForApplications;
@@ -4435,13 +4435,13 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
     return;
   }
 
-  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request) {
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getMyApplications(_return, request);
+      ifaces_[i]->getApplicationsOwnedBy(_return, request);
     }
-    ifaces_[i]->getMyApplications(_return, request);
+    ifaces_[i]->getApplicationsOwnedBy(_return, request);
     return;
   }
 
@@ -4574,9 +4574,9 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   void getMedia(GetMediaResponse& _return, const GetMediaRequest& request);
   int32_t send_getMedia(const GetMediaRequest& request);
   void recv_getMedia(GetMediaResponse& _return, const int32_t seqid);
-  void getMyApplications(GetMyApplicationsResponse& _return, const GetMyApplicationsRequest& request);
-  int32_t send_getMyApplications(const GetMyApplicationsRequest& request);
-  void recv_getMyApplications(GetMyApplicationsResponse& _return, const int32_t seqid);
+  void getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const GetApplicationsOwnedByRequest& request);
+  int32_t send_getApplicationsOwnedBy(const GetApplicationsOwnedByRequest& request);
+  void recv_getApplicationsOwnedBy(GetApplicationsOwnedByResponse& _return, const int32_t seqid);
   void getMySavedChannels(GetMySavedChannelsResponse& _return, const GetMySavedChannelsRequest& request);
   int32_t send_getMySavedChannels(const GetMySavedChannelsRequest& request);
   void recv_getMySavedChannels(GetMySavedChannelsResponse& _return, const int32_t seqid);

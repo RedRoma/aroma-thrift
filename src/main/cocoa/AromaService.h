@@ -1896,18 +1896,21 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
-@interface AromaService_GetMyApplicationsRequest : NSObject <TBase, NSCoding> {
+@interface AromaService_GetApplicationsOwnedByRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
+  AromaService_uuid __userId;
 
   BOOL __token_isset;
+  BOOL __userId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaService_uuid userId;
 #endif
 
 - (id) init;
-- (id) initWithToken: (AromaService_UserToken) token;
+- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1920,9 +1923,15 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 #endif
 - (BOOL) tokenIsSet;
 
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) userId;
+- (void) setUserId: (AromaService_uuid) userId;
+#endif
+- (BOOL) userIdIsSet;
+
 @end
 
-@interface AromaService_GetMyApplicationsResponse : NSObject <TBase, NSCoding> {
+@interface AromaService_GetApplicationsOwnedByResponse : NSObject <TBase, NSCoding> {
   NSMutableArray * __applications;
 
   BOOL __applications_isset;
@@ -2277,7 +2286,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 - (AromaService_GetInboxResponse *) getInbox: (AromaService_GetInboxRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_GetFullMessageResponse *) getFullMessage: (AromaService_GetFullMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_GetMediaResponse *) getMedia: (AromaService_GetMediaRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_DoesNotExistException, AromaService_UnauthorizedException, TException
-- (AromaService_GetMyApplicationsResponse *) getMyApplications: (AromaService_GetMyApplicationsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
+- (AromaService_GetApplicationsOwnedByResponse *) getApplicationsOwnedBy: (AromaService_GetApplicationsOwnedByRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_GetMySavedChannelsResponse *) getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, TException
 - (AromaService_GetUserInfoResponse *) getUserInfo: (AromaService_GetUserInfoRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, AromaService_UserDoesNotExistException, TException
 - (AromaService_SearchForApplicationsResponse *) searchForApplications: (AromaService_SearchForApplicationsRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_UnauthorizedException, TException

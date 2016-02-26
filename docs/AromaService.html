@@ -203,12 +203,12 @@ code { line-height: 20px; }
 <li><a href="#Fn_AromaService_getApiVersion">getApiVersion</a></li>
 <li><a href="#Fn_AromaService_getApplicationInfo">getApplicationInfo</a></li>
 <li><a href="#Fn_AromaService_getApplicationMessages">getApplicationMessages</a></li>
+<li><a href="#Fn_AromaService_getApplicationsOwnedBy">getApplicationsOwnedBy</a></li>
 <li><a href="#Fn_AromaService_getBuzz">getBuzz</a></li>
 <li><a href="#Fn_AromaService_getDashboard">getDashboard</a></li>
 <li><a href="#Fn_AromaService_getFullMessage">getFullMessage</a></li>
 <li><a href="#Fn_AromaService_getInbox">getInbox</a></li>
 <li><a href="#Fn_AromaService_getMedia">getMedia</a></li>
-<li><a href="#Fn_AromaService_getMyApplications">getMyApplications</a></li>
 <li><a href="#Fn_AromaService_getMySavedChannels">getMySavedChannels</a></li>
 <li><a href="#Fn_AromaService_getUserInfo">getUserInfo</a></li>
 <li><a href="#Fn_AromaService_provisionApplication">provisionApplication</a></li>
@@ -252,6 +252,8 @@ code { line-height: 20px; }
 <a href="#Struct_GetApplicationInfoResponse">GetApplicationInfoResponse</a><br/>
 <a href="#Struct_GetApplicationMessagesRequest">GetApplicationMessagesRequest</a><br/>
 <a href="#Struct_GetApplicationMessagesResponse">GetApplicationMessagesResponse</a><br/>
+<a href="#Struct_GetApplicationsOwnedByRequest">GetApplicationsOwnedByRequest</a><br/>
+<a href="#Struct_GetApplicationsOwnedByResponse">GetApplicationsOwnedByResponse</a><br/>
 <a href="#Struct_GetBuzzRequest">GetBuzzRequest</a><br/>
 <a href="#Struct_GetBuzzResponse">GetBuzzResponse</a><br/>
 <a href="#Struct_GetDashboardRequest">GetDashboardRequest</a><br/>
@@ -262,8 +264,6 @@ code { line-height: 20px; }
 <a href="#Struct_GetInboxResponse">GetInboxResponse</a><br/>
 <a href="#Struct_GetMediaRequest">GetMediaRequest</a><br/>
 <a href="#Struct_GetMediaResponse">GetMediaResponse</a><br/>
-<a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a><br/>
-<a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a><br/>
 <a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a><br/>
 <a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a><br/>
 <a href="#Struct_GetServiceAnnouncementsRequest">GetServiceAnnouncementsRequest</a><br/>
@@ -681,10 +681,12 @@ or by a specific Application.
 </table><br/></div><div class="definition"><h3 id="Struct_GetMediaResponse">Struct: GetMediaResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>image</td><td><code><a href="Aroma.html#Struct_Image">Aroma.Image</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsRequest">Struct: GetMyApplicationsRequest</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationsOwnedByRequest">Struct: GetApplicationsOwnedByRequest</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>token</td><td><code><a href="#Typedef_UserToken">UserToken</a></code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_GetMyApplicationsResponse">Struct: GetMyApplicationsResponse</h3>
+<tr><td>2</td><td>userId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td>If not present, will assume the userID of the Caller.
+</td><td>optional</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_GetApplicationsOwnedByResponse">Struct: GetApplicationsOwnedByResponse</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>applications</td><td><code>list&lt;<code><a href="#Typedef_Application">Application</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_GetMySavedChannelsRequest">Struct: GetMySavedChannelsRequest</h3>
@@ -840,8 +842,8 @@ to load the full message.
 <pre><code><a href="#Struct_GetMediaResponse">GetMediaResponse</a></code> getMedia(<code><a href="#Struct_GetMediaRequest">GetMediaRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_DoesNotExistException">DoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre>Request to get Media stored by the Aroma Service.
-<br/></div><div class="definition"><h4 id="Fn_AromaService_getMyApplications">Function: AromaService.getMyApplications</h4>
-<pre><code><a href="#Struct_GetMyApplicationsResponse">GetMyApplicationsResponse</a></code> getMyApplications(<code><a href="#Struct_GetMyApplicationsRequest">GetMyApplicationsRequest</a></code> request)
+<br/></div><div class="definition"><h4 id="Fn_AromaService_getApplicationsOwnedBy">Function: AromaService.getApplicationsOwnedBy</h4>
+<pre><code><a href="#Struct_GetApplicationsOwnedByResponse">GetApplicationsOwnedByResponse</a></code> getApplicationsOwnedBy(<code><a href="#Struct_GetApplicationsOwnedByRequest">GetApplicationsOwnedByRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_getMySavedChannels">Function: AromaService.getMySavedChannels</h4>
 <pre><code><a href="#Struct_GetMySavedChannelsResponse">GetMySavedChannelsResponse</a></code> getMySavedChannels(<code><a href="#Struct_GetMySavedChannelsRequest">GetMySavedChannelsRequest</a></code> request)

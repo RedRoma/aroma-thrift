@@ -171,9 +171,9 @@ class GetMediaRequest;
 
 class GetMediaResponse;
 
-class GetMyApplicationsRequest;
+class GetApplicationsOwnedByRequest;
 
-class GetMyApplicationsResponse;
+class GetApplicationsOwnedByResponse;
 
 class GetMySavedChannelsRequest;
 
@@ -2802,37 +2802,45 @@ inline std::ostream& operator<<(std::ostream& out, const GetMediaResponse& obj)
   return out;
 }
 
-typedef struct _GetMyApplicationsRequest__isset {
-  _GetMyApplicationsRequest__isset() : token(false) {}
+typedef struct _GetApplicationsOwnedByRequest__isset {
+  _GetApplicationsOwnedByRequest__isset() : token(false), userId(false) {}
   bool token :1;
-} _GetMyApplicationsRequest__isset;
+  bool userId :1;
+} _GetApplicationsOwnedByRequest__isset;
 
-class GetMyApplicationsRequest {
+class GetApplicationsOwnedByRequest {
  public:
 
-  GetMyApplicationsRequest(const GetMyApplicationsRequest&);
-  GetMyApplicationsRequest& operator=(const GetMyApplicationsRequest&);
-  GetMyApplicationsRequest() {
+  GetApplicationsOwnedByRequest(const GetApplicationsOwnedByRequest&);
+  GetApplicationsOwnedByRequest& operator=(const GetApplicationsOwnedByRequest&);
+  GetApplicationsOwnedByRequest() : userId() {
   }
 
-  virtual ~GetMyApplicationsRequest() throw();
+  virtual ~GetApplicationsOwnedByRequest() throw();
   UserToken token;
+  uuid userId;
 
-  _GetMyApplicationsRequest__isset __isset;
+  _GetApplicationsOwnedByRequest__isset __isset;
 
   void __set_token(const UserToken& val);
 
-  bool operator == (const GetMyApplicationsRequest & rhs) const
+  void __set_userId(const uuid& val);
+
+  bool operator == (const GetApplicationsOwnedByRequest & rhs) const
   {
     if (!(token == rhs.token))
       return false;
+    if (__isset.userId != rhs.__isset.userId)
+      return false;
+    else if (__isset.userId && !(userId == rhs.userId))
+      return false;
     return true;
   }
-  bool operator != (const GetMyApplicationsRequest &rhs) const {
+  bool operator != (const GetApplicationsOwnedByRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMyApplicationsRequest & ) const;
+  bool operator < (const GetApplicationsOwnedByRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2840,45 +2848,45 @@ class GetMyApplicationsRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMyApplicationsRequest &a, GetMyApplicationsRequest &b);
+void swap(GetApplicationsOwnedByRequest &a, GetApplicationsOwnedByRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationsOwnedByRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _GetMyApplicationsResponse__isset {
-  _GetMyApplicationsResponse__isset() : applications(false) {}
+typedef struct _GetApplicationsOwnedByResponse__isset {
+  _GetApplicationsOwnedByResponse__isset() : applications(false) {}
   bool applications :1;
-} _GetMyApplicationsResponse__isset;
+} _GetApplicationsOwnedByResponse__isset;
 
-class GetMyApplicationsResponse {
+class GetApplicationsOwnedByResponse {
  public:
 
-  GetMyApplicationsResponse(const GetMyApplicationsResponse&);
-  GetMyApplicationsResponse& operator=(const GetMyApplicationsResponse&);
-  GetMyApplicationsResponse() {
+  GetApplicationsOwnedByResponse(const GetApplicationsOwnedByResponse&);
+  GetApplicationsOwnedByResponse& operator=(const GetApplicationsOwnedByResponse&);
+  GetApplicationsOwnedByResponse() {
   }
 
-  virtual ~GetMyApplicationsResponse() throw();
+  virtual ~GetApplicationsOwnedByResponse() throw();
   std::vector<Application>  applications;
 
-  _GetMyApplicationsResponse__isset __isset;
+  _GetApplicationsOwnedByResponse__isset __isset;
 
   void __set_applications(const std::vector<Application> & val);
 
-  bool operator == (const GetMyApplicationsResponse & rhs) const
+  bool operator == (const GetApplicationsOwnedByResponse & rhs) const
   {
     if (!(applications == rhs.applications))
       return false;
     return true;
   }
-  bool operator != (const GetMyApplicationsResponse &rhs) const {
+  bool operator != (const GetApplicationsOwnedByResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const GetMyApplicationsResponse & ) const;
+  bool operator < (const GetApplicationsOwnedByResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -2886,9 +2894,9 @@ class GetMyApplicationsResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(GetMyApplicationsResponse &a, GetMyApplicationsResponse &b);
+void swap(GetApplicationsOwnedByResponse &a, GetApplicationsOwnedByResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const GetMyApplicationsResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationsOwnedByResponse& obj)
 {
   obj.printTo(out);
   return out;

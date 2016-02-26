@@ -11230,7 +11230,7 @@
 
 @end
 
-@implementation AromaService_GetMyApplicationsRequest
+@implementation AromaService_GetApplicationsOwnedByRequest
 
 - (id) init
 {
@@ -11240,11 +11240,13 @@
   return self;
 }
 
-- (id) initWithToken: (AromaService_UserToken) token
+- (id) initWithToken: (AromaService_UserToken) token userId: (AromaService_uuid) userId
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
+  __userId = [userId retain_stub];
+  __userId_isset = YES;
   return self;
 }
 
@@ -11256,6 +11258,11 @@
     __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
     __token_isset = YES;
   }
+  if ([decoder containsValueForKey: @"userId"])
+  {
+    __userId = [[decoder decodeObjectForKey: @"userId"] retain_stub];
+    __userId_isset = YES;
+  }
   return self;
 }
 
@@ -11264,6 +11271,10 @@
   if (__token_isset)
   {
     [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__userId_isset)
+  {
+    [encoder encodeObject: __userId forKey: @"userId"];
   }
 }
 
@@ -11275,6 +11286,11 @@
   {
     hash = (hash * 31) ^ [__token hash];
   }
+  hash = (hash * 31) ^ __userId_isset ? 2654435761 : 0;
+  if (__userId_isset)
+  {
+    hash = (hash * 31) ^ [__userId hash];
+  }
   return hash;
 }
 
@@ -11283,12 +11299,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_GetMyApplicationsRequest class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationsOwnedByRequest class]]) {
     return NO;
   }
-  AromaService_GetMyApplicationsRequest *other = (AromaService_GetMyApplicationsRequest *)anObject;
+  AromaService_GetApplicationsOwnedByRequest *other = (AromaService_GetApplicationsOwnedByRequest *)anObject;
   if ((__token_isset != other->__token_isset) ||
       (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__userId_isset != other->__userId_isset) ||
+      (__userId_isset && ((__userId || other->__userId) && ![__userId isEqual:other->__userId]))) {
     return NO;
   }
   return YES;
@@ -11297,6 +11317,7 @@
 - (void) dealloc
 {
   [__token release_stub];
+  [__userId release_stub];
   [super dealloc_stub];
 }
 
@@ -11319,6 +11340,27 @@
   [__token release_stub];
   __token = nil;
   __token_isset = NO;
+}
+
+- (NSString *) userId {
+  return [[__userId retain_stub] autorelease_stub];
+}
+
+- (void) setUserId: (NSString *) userId {
+  [userId retain_stub];
+  [__userId release_stub];
+  __userId = userId;
+  __userId_isset = YES;
+}
+
+- (BOOL) userIdIsSet {
+  return __userId_isset;
+}
+
+- (void) unsetUserId {
+  [__userId release_stub];
+  __userId = nil;
+  __userId_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -11346,6 +11388,14 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -11356,11 +11406,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplicationsRequest"];
+  [outProtocol writeStructBeginWithName: @"GetApplicationsOwnedByRequest"];
   if (__token_isset) {
     if (__token != nil) {
       [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
       [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__userId_isset) {
+    if (__userId != nil) {
+      [outProtocol writeFieldBeginWithName: @"userId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __userId];
       [outProtocol writeFieldEnd];
     }
   }
@@ -11373,16 +11430,18 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplicationsRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationsOwnedByRequest("];
   [ms appendString: @"token:"];
   [ms appendFormat: @"%@", __token];
+  [ms appendString: @",userId:"];
+  [ms appendFormat: @"\"%@\"", __userId];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@implementation AromaService_GetMyApplicationsResponse
+@implementation AromaService_GetApplicationsOwnedByResponse
 
 - (id) init
 {
@@ -11435,10 +11494,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_GetMyApplicationsResponse class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationsOwnedByResponse class]]) {
     return NO;
   }
-  AromaService_GetMyApplicationsResponse *other = (AromaService_GetMyApplicationsResponse *)anObject;
+  AromaService_GetApplicationsOwnedByResponse *other = (AromaService_GetApplicationsOwnedByResponse *)anObject;
   if ((__applications_isset != other->__applications_isset) ||
       (__applications_isset && ((__applications || other->__applications) && ![__applications isEqual:other->__applications]))) {
     return NO;
@@ -11518,7 +11577,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplicationsResponse"];
+  [outProtocol writeStructBeginWithName: @"GetApplicationsOwnedByResponse"];
   if (__applications_isset) {
     if (__applications != nil) {
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
@@ -11543,7 +11602,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplicationsResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationsOwnedByResponse("];
   [ms appendString: @"applications:"];
   [ms appendFormat: @"%@", __applications];
   [ms appendString: @")"];
@@ -28464,18 +28523,18 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface AromaService_getMyApplications_args : NSObject <TBase, NSCoding> {
-  AromaService_GetMyApplicationsRequest * __request;
+@interface AromaService_getApplicationsOwnedBy_args : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationsOwnedByRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetMyApplicationsRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaService_GetApplicationsOwnedByRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (AromaService_GetMyApplicationsRequest *) request;
+- (id) initWithRequest: (AromaService_GetApplicationsOwnedByRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -28483,14 +28542,14 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaService_GetMyApplicationsRequest *) request;
-- (void) setRequest: (AromaService_GetMyApplicationsRequest *) request;
+- (AromaService_GetApplicationsOwnedByRequest *) request;
+- (void) setRequest: (AromaService_GetApplicationsOwnedByRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation AromaService_getMyApplications_args
+@implementation AromaService_getApplicationsOwnedBy_args
 
 - (id) init
 {
@@ -28500,7 +28559,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithRequest: (AromaService_GetMyApplicationsRequest *) request
+- (id) initWithRequest: (AromaService_GetApplicationsOwnedByRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -28543,10 +28602,10 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_getMyApplications_args class]]) {
+  if (![anObject isKindOfClass:[AromaService_getApplicationsOwnedBy_args class]]) {
     return NO;
   }
-  AromaService_getMyApplications_args *other = (AromaService_getMyApplications_args *)anObject;
+  AromaService_getApplicationsOwnedBy_args *other = (AromaService_getApplicationsOwnedBy_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -28560,11 +28619,11 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (AromaService_GetMyApplicationsRequest *) request {
+- (AromaService_GetApplicationsOwnedByRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (AromaService_GetMyApplicationsRequest *) request {
+- (void) setRequest: (AromaService_GetApplicationsOwnedByRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -28598,7 +28657,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AromaService_GetMyApplicationsRequest *fieldValue = [[AromaService_GetMyApplicationsRequest alloc] init];
+          AromaService_GetApplicationsOwnedByRequest *fieldValue = [[AromaService_GetApplicationsOwnedByRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -28616,7 +28675,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
+  [outProtocol writeStructBeginWithName: @"getApplicationsOwnedBy_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -28633,7 +28692,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getMyApplications_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_getApplicationsOwnedBy_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -28642,8 +28701,8 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@interface AromaService_GetMyApplications_result : NSObject <TBase, NSCoding> {
-  AromaService_GetMyApplicationsResponse * __success;
+@interface AromaService_GetApplicationsOwnedBy_result : NSObject <TBase, NSCoding> {
+  AromaService_GetApplicationsOwnedByResponse * __success;
   AromaService_OperationFailedException __ex1;
   AromaService_InvalidArgumentException __ex2;
   AromaService_InvalidTokenException __ex3;
@@ -28655,14 +28714,14 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetMyApplicationsResponse * success;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaService_GetApplicationsOwnedByResponse * success;
 @property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaService_OperationFailedException ex1;
 @property (nonatomic, retain, getter=ex2, setter=setEx2:) AromaService_InvalidArgumentException ex2;
 @property (nonatomic, retain, getter=ex3, setter=setEx3:) AromaService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (AromaService_GetMyApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (AromaService_GetApplicationsOwnedByResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -28670,8 +28729,8 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaService_GetMyApplicationsResponse *) success;
-- (void) setSuccess: (AromaService_GetMyApplicationsResponse *) success;
+- (AromaService_GetApplicationsOwnedByResponse *) success;
+- (void) setSuccess: (AromaService_GetApplicationsOwnedByResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
@@ -28695,7 +28754,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 @end
 
-@implementation AromaService_GetMyApplications_result
+@implementation AromaService_GetApplicationsOwnedBy_result
 
 - (id) init
 {
@@ -28705,7 +28764,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return self;
 }
 
-- (id) initWithSuccess: (AromaService_GetMyApplicationsResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
+- (id) initWithSuccess: (AromaService_GetApplicationsOwnedByResponse *) success ex1: (AromaService_OperationFailedException) ex1 ex2: (AromaService_InvalidArgumentException) ex2 ex3: (AromaService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -28796,10 +28855,10 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaService_GetMyApplications_result class]]) {
+  if (![anObject isKindOfClass:[AromaService_GetApplicationsOwnedBy_result class]]) {
     return NO;
   }
-  AromaService_GetMyApplications_result *other = (AromaService_GetMyApplications_result *)anObject;
+  AromaService_GetApplicationsOwnedBy_result *other = (AromaService_GetApplicationsOwnedBy_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -28828,11 +28887,11 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [super dealloc_stub];
 }
 
-- (AromaService_GetMyApplicationsResponse *) success {
+- (AromaService_GetApplicationsOwnedByResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (AromaService_GetMyApplicationsResponse *) success {
+- (void) setSuccess: (AromaService_GetApplicationsOwnedByResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -28929,7 +28988,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          AromaService_GetMyApplicationsResponse *fieldValue = [[AromaService_GetMyApplicationsResponse alloc] init];
+          AromaService_GetApplicationsOwnedByResponse *fieldValue = [[AromaService_GetApplicationsOwnedByResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -28977,7 +29036,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"GetMyApplications_result"];
+  [outProtocol writeStructBeginWithName: @"GetApplicationsOwnedBy_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -29013,7 +29072,7 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetMyApplications_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_GetApplicationsOwnedBy_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -32084,10 +32143,10 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   return [self recv_getMedia];
 }
 
-- (void) send_getMyApplications: (AromaService_GetMyApplicationsRequest *) request
+- (void) send_getApplicationsOwnedBy: (AromaService_GetApplicationsOwnedByRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"getMyApplications" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"getMyApplications_args"];
+  [outProtocol writeMessageBeginWithName: @"getApplicationsOwnedBy" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"getApplicationsOwnedBy_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -32098,13 +32157,13 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   [outProtocol writeMessageEnd];
 }
 
-- (AromaService_GetMyApplicationsResponse *) recv_getMyApplications
+- (AromaService_GetApplicationsOwnedByResponse *) recv_getApplicationsOwnedBy
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  AromaService_GetMyApplications_result * result = [[[AromaService_GetMyApplications_result alloc] init] autorelease_stub];
+  AromaService_GetApplicationsOwnedBy_result * result = [[[AromaService_GetApplicationsOwnedBy_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -32120,14 +32179,14 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
     @throw [result ex3];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"getMyApplications failed: unknown result"];
+                                           reason: @"getApplicationsOwnedBy failed: unknown result"];
 }
 
-- (AromaService_GetMyApplicationsResponse *) getMyApplications: (AromaService_GetMyApplicationsRequest *) request
+- (AromaService_GetApplicationsOwnedByResponse *) getApplicationsOwnedBy: (AromaService_GetApplicationsOwnedByRequest *) request
 {
-  [self send_getMyApplications : request];
+  [self send_getApplicationsOwnedBy : request];
   [[outProtocol transport] flush];
-  return [self recv_getMyApplications];
+  return [self recv_getApplicationsOwnedBy];
 }
 
 - (void) send_getMySavedChannels: (AromaService_GetMySavedChannelsRequest *) request
@@ -32474,12 +32533,12 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getMedia"];
 }
 {
-  SEL s = @selector(process_getMyApplications_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_getApplicationsOwnedBy_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"getMyApplications"];
+  [mMethodMap setValue: invocation forKey: @"getApplicationsOwnedBy"];
 }
 {
   SEL s = @selector(process_getMySavedChannels_withSequenceID:inProtocol:outProtocol:);
@@ -32937,14 +32996,14 @@ AromaService_GetMedia_result * result = [[AromaService_GetMedia_result alloc] in
 [args release_stub];
 }
 
-- (void) process_getMyApplications_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_getApplicationsOwnedBy_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-AromaService_getMyApplications_args * args = [[AromaService_getMyApplications_args alloc] init];
+AromaService_getApplicationsOwnedBy_args * args = [[AromaService_getApplicationsOwnedBy_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-AromaService_GetMyApplications_result * result = [[AromaService_GetMyApplications_result alloc] init];
-[result setSuccess: [mService getMyApplications: [args request]]];
-[outProtocol writeMessageBeginWithName: @"getMyApplications"
+AromaService_GetApplicationsOwnedBy_result * result = [[AromaService_GetApplicationsOwnedBy_result alloc] init];
+[result setSuccess: [mService getApplicationsOwnedBy: [args request]]];
+[outProtocol writeMessageBeginWithName: @"getApplicationsOwnedBy"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

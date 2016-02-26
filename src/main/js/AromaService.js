@@ -4477,16 +4477,16 @@ AromaService_getMedia_result.prototype.write = function(output) {
               return;
             };
 
-AromaService_getMyApplications_args = function(args) {
+AromaService_getApplicationsOwnedBy_args = function(args) {
               this.request = null;
               if (args) {
                             if (args.request !== undefined && args.request !== null) {
-                                          this.request = new GetMyApplicationsRequest(args.request);
+                                          this.request = new GetApplicationsOwnedByRequest(args.request);
                             }
               }
 };
-AromaService_getMyApplications_args.prototype = {};
-AromaService_getMyApplications_args.prototype.read = function(input) {
+AromaService_getApplicationsOwnedBy_args.prototype = {};
+AromaService_getApplicationsOwnedBy_args.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -4501,7 +4501,7 @@ AromaService_getMyApplications_args.prototype.read = function(input) {
                 {
                   case 1:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.request = new GetMyApplicationsRequest();
+                    this.request = new GetApplicationsOwnedByRequest();
                     this.request.read(input);
                   } else {
                     input.skip(ftype);
@@ -4519,8 +4519,8 @@ AromaService_getMyApplications_args.prototype.read = function(input) {
               return;
             };
 
-AromaService_getMyApplications_args.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getMyApplications_args');
+AromaService_getApplicationsOwnedBy_args.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsOwnedBy_args');
               if (this.request !== null && this.request !== undefined) {
                 output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
                 this.request.write(output);
@@ -4531,7 +4531,7 @@ AromaService_getMyApplications_args.prototype.write = function(output) {
               return;
             };
 
-AromaService_getMyApplications_result = function(args) {
+AromaService_getApplicationsOwnedBy_result = function(args) {
               this.success = null;
               this.ex1 = null;
               this.ex2 = null;
@@ -4550,7 +4550,7 @@ AromaService_getMyApplications_result = function(args) {
               }
               if (args) {
                             if (args.success !== undefined && args.success !== null) {
-                                          this.success = new GetMyApplicationsResponse(args.success);
+                                          this.success = new GetApplicationsOwnedByResponse(args.success);
                             }
                             if (args.ex1 !== undefined && args.ex1 !== null) {
                                           this.ex1 = args.ex1;
@@ -4563,8 +4563,8 @@ AromaService_getMyApplications_result = function(args) {
                             }
               }
 };
-AromaService_getMyApplications_result.prototype = {};
-AromaService_getMyApplications_result.prototype.read = function(input) {
+AromaService_getApplicationsOwnedBy_result.prototype = {};
+AromaService_getApplicationsOwnedBy_result.prototype.read = function(input) {
               input.readStructBegin();
               while (true)
               {
@@ -4579,7 +4579,7 @@ AromaService_getMyApplications_result.prototype.read = function(input) {
                 {
                   case 0:
                   if (ftype == Thrift.Type.STRUCT) {
-                    this.success = new GetMyApplicationsResponse();
+                    this.success = new GetApplicationsOwnedByResponse();
                     this.success.read(input);
                   } else {
                     input.skip(ftype);
@@ -4618,8 +4618,8 @@ AromaService_getMyApplications_result.prototype.read = function(input) {
               return;
             };
 
-AromaService_getMyApplications_result.prototype.write = function(output) {
-              output.writeStructBegin('AromaService_getMyApplications_result');
+AromaService_getApplicationsOwnedBy_result.prototype.write = function(output) {
+              output.writeStructBegin('AromaService_getApplicationsOwnedBy_result');
               if (this.success !== null && this.success !== undefined) {
                 output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
                 this.success.write(output);
@@ -6641,16 +6641,16 @@ AromaServiceClient.prototype.recv_getMedia = function() {
               }
               throw 'getMedia failed: unknown result';
 };
-AromaServiceClient.prototype.getMyApplications = function(request, callback) {
-              this.send_getMyApplications(request, callback); 
+AromaServiceClient.prototype.getApplicationsOwnedBy = function(request, callback) {
+              this.send_getApplicationsOwnedBy(request, callback); 
               if (!callback) {
-                return this.recv_getMyApplications();
+                return this.recv_getApplicationsOwnedBy();
               }
 };
 
-AromaServiceClient.prototype.send_getMyApplications = function(request, callback) {
-              this.output.writeMessageBegin('getMyApplications', Thrift.MessageType.CALL, this.seqid);
-              var args = new AromaService_getMyApplications_args();
+AromaServiceClient.prototype.send_getApplicationsOwnedBy = function(request, callback) {
+              this.output.writeMessageBegin('getApplicationsOwnedBy', Thrift.MessageType.CALL, this.seqid);
+              var args = new AromaService_getApplicationsOwnedBy_args();
               args.request = request;
               args.write(this.output);
               this.output.writeMessageEnd();
@@ -6659,7 +6659,7 @@ AromaServiceClient.prototype.send_getMyApplications = function(request, callback
                 this.output.getTransport().flush(true, function() {
                   var result = null;
                   try {
-                    result = self.recv_getMyApplications();
+                    result = self.recv_getApplicationsOwnedBy();
                   } catch (e) {
                     result = e;
                   }
@@ -6670,7 +6670,7 @@ AromaServiceClient.prototype.send_getMyApplications = function(request, callback
               }
 };
 
-AromaServiceClient.prototype.recv_getMyApplications = function() {
+AromaServiceClient.prototype.recv_getApplicationsOwnedBy = function() {
               var ret = this.input.readMessageBegin();
               var fname = ret.fname;
               var mtype = ret.mtype;
@@ -6681,7 +6681,7 @@ AromaServiceClient.prototype.recv_getMyApplications = function() {
                 this.input.readMessageEnd();
                 throw x;
               }
-              var result = new AromaService_getMyApplications_result();
+              var result = new AromaService_getApplicationsOwnedBy_result();
               result.read(this.input);
               this.input.readMessageEnd();
 
@@ -6697,7 +6697,7 @@ AromaServiceClient.prototype.recv_getMyApplications = function() {
               if (null !== result.success) {
                 return result.success;
               }
-              throw 'getMyApplications failed: unknown result';
+              throw 'getApplicationsOwnedBy failed: unknown result';
 };
 AromaServiceClient.prototype.getMySavedChannels = function(request, callback) {
               this.send_getMySavedChannels(request, callback); 
