@@ -197,7 +197,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_Matcher : NSObject <TBase, NSCoding> {
+@interface AromaReactions_AromaMatcher : NSObject <TBase, NSCoding> {
   AromaReactions_MatcherAll * __all;
   AromaReactions_MatcherTitleIs * __titleIs;
   AromaReactions_MatcherTitleContains * __titleContains;
@@ -458,7 +458,7 @@ typedef Aroma_uuid AromaReactions_uuid;
 
 @end
 
-@interface AromaReactions_Action : NSObject <TBase, NSCoding> {
+@interface AromaReactions_AromaAction : NSObject <TBase, NSCoding> {
   AromaReactions_ActionPostToSlackChannel * __postToSlackChannel;
   AromaReactions_ActionPostToSlackUser * __postToSlackUser;
   AromaReactions_ActionSendEmail * __sendEmail;
@@ -539,20 +539,20 @@ typedef Aroma_uuid AromaReactions_uuid;
 @end
 
 @interface AromaReactions_Reaction : NSObject <TBase, NSCoding> {
-  AromaReactions_Matcher * __matcher;
-  AromaReactions_Action * __action;
+  AromaReactions_AromaMatcher * __matcher;
+  AromaReactions_AromaAction * __action;
 
   BOOL __matcher_isset;
   BOOL __action_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_Matcher * matcher;
-@property (nonatomic, retain, getter=action, setter=setAction:) AromaReactions_Action * action;
+@property (nonatomic, retain, getter=matcher, setter=setMatcher:) AromaReactions_AromaMatcher * matcher;
+@property (nonatomic, retain, getter=action, setter=setAction:) AromaReactions_AromaAction * action;
 #endif
 
 - (id) init;
-- (id) initWithMatcher: (AromaReactions_Matcher *) matcher action: (AromaReactions_Action *) action;
+- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -560,14 +560,14 @@ typedef Aroma_uuid AromaReactions_uuid;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_Matcher *) matcher;
-- (void) setMatcher: (AromaReactions_Matcher *) matcher;
+- (AromaReactions_AromaMatcher *) matcher;
+- (void) setMatcher: (AromaReactions_AromaMatcher *) matcher;
 #endif
 - (BOOL) matcherIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaReactions_Action *) action;
-- (void) setAction: (AromaReactions_Action *) action;
+- (AromaReactions_AromaAction *) action;
+- (void) setAction: (AromaReactions_AromaAction *) action;
 #endif
 - (BOOL) actionIsSet;
 

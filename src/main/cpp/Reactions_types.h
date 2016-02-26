@@ -43,7 +43,7 @@ class MatcherUrgencyEquals;
 
 class MatcherHostnameEquals;
 
-class Matcher;
+class AromaMatcher;
 
 class ActionPostToSlackChannel;
 
@@ -59,7 +59,7 @@ class ActionRespondToCode;
 
 class ActionForwardToUsers;
 
-class Action;
+class AromaAction;
 
 class Reaction;
 
@@ -374,8 +374,8 @@ inline std::ostream& operator<<(std::ostream& out, const MatcherHostnameEquals& 
   return out;
 }
 
-typedef struct _Matcher__isset {
-  _Matcher__isset() : all(false), titleIs(false), titleContains(false), bodyIs(false), bodyContains(false), urgencyEquals(false), hostnameEquals(false) {}
+typedef struct _AromaMatcher__isset {
+  _AromaMatcher__isset() : all(false), titleIs(false), titleContains(false), bodyIs(false), bodyContains(false), urgencyEquals(false), hostnameEquals(false) {}
   bool all :1;
   bool titleIs :1;
   bool titleContains :1;
@@ -383,17 +383,17 @@ typedef struct _Matcher__isset {
   bool bodyContains :1;
   bool urgencyEquals :1;
   bool hostnameEquals :1;
-} _Matcher__isset;
+} _AromaMatcher__isset;
 
-class Matcher {
+class AromaMatcher {
  public:
 
-  Matcher(const Matcher&);
-  Matcher& operator=(const Matcher&);
-  Matcher() {
+  AromaMatcher(const AromaMatcher&);
+  AromaMatcher& operator=(const AromaMatcher&);
+  AromaMatcher() {
   }
 
-  virtual ~Matcher() throw();
+  virtual ~AromaMatcher() throw();
   MatcherAll all;
   MatcherTitleIs titleIs;
   MatcherTitleContains titleContains;
@@ -402,7 +402,7 @@ class Matcher {
   MatcherUrgencyEquals urgencyEquals;
   MatcherHostnameEquals hostnameEquals;
 
-  _Matcher__isset __isset;
+  _AromaMatcher__isset __isset;
 
   void __set_all(const MatcherAll& val);
 
@@ -418,7 +418,7 @@ class Matcher {
 
   void __set_hostnameEquals(const MatcherHostnameEquals& val);
 
-  bool operator == (const Matcher & rhs) const
+  bool operator == (const AromaMatcher & rhs) const
   {
     if (!(all == rhs.all))
       return false;
@@ -436,11 +436,11 @@ class Matcher {
       return false;
     return true;
   }
-  bool operator != (const Matcher &rhs) const {
+  bool operator != (const AromaMatcher &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Matcher & ) const;
+  bool operator < (const AromaMatcher & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -448,9 +448,9 @@ class Matcher {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(Matcher &a, Matcher &b);
+void swap(AromaMatcher &a, AromaMatcher &b);
 
-inline std::ostream& operator<<(std::ostream& out, const Matcher& obj)
+inline std::ostream& operator<<(std::ostream& out, const AromaMatcher& obj)
 {
   obj.printTo(out);
   return out;
@@ -781,8 +781,8 @@ inline std::ostream& operator<<(std::ostream& out, const ActionForwardToUsers& o
   return out;
 }
 
-typedef struct _Action__isset {
-  _Action__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), ignore(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
+typedef struct _AromaAction__isset {
+  _AromaAction__isset() : postToSlackChannel(false), postToSlackUser(false), sendEmail(false), ignore(false), deleteMessage(false), respondToCode(false), forwardToUsers(false) {}
   bool postToSlackChannel :1;
   bool postToSlackUser :1;
   bool sendEmail :1;
@@ -790,17 +790,17 @@ typedef struct _Action__isset {
   bool deleteMessage :1;
   bool respondToCode :1;
   bool forwardToUsers :1;
-} _Action__isset;
+} _AromaAction__isset;
 
-class Action {
+class AromaAction {
  public:
 
-  Action(const Action&);
-  Action& operator=(const Action&);
-  Action() {
+  AromaAction(const AromaAction&);
+  AromaAction& operator=(const AromaAction&);
+  AromaAction() {
   }
 
-  virtual ~Action() throw();
+  virtual ~AromaAction() throw();
   ActionPostToSlackChannel postToSlackChannel;
   ActionPostToSlackUser postToSlackUser;
   ActionSendEmail sendEmail;
@@ -809,7 +809,7 @@ class Action {
   ActionRespondToCode respondToCode;
   ActionForwardToUsers forwardToUsers;
 
-  _Action__isset __isset;
+  _AromaAction__isset __isset;
 
   void __set_postToSlackChannel(const ActionPostToSlackChannel& val);
 
@@ -825,7 +825,7 @@ class Action {
 
   void __set_forwardToUsers(const ActionForwardToUsers& val);
 
-  bool operator == (const Action & rhs) const
+  bool operator == (const AromaAction & rhs) const
   {
     if (!(postToSlackChannel == rhs.postToSlackChannel))
       return false;
@@ -843,11 +843,11 @@ class Action {
       return false;
     return true;
   }
-  bool operator != (const Action &rhs) const {
+  bool operator != (const AromaAction &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const Action & ) const;
+  bool operator < (const AromaAction & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -855,9 +855,9 @@ class Action {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(Action &a, Action &b);
+void swap(AromaAction &a, AromaAction &b);
 
-inline std::ostream& operator<<(std::ostream& out, const Action& obj)
+inline std::ostream& operator<<(std::ostream& out, const AromaAction& obj)
 {
   obj.printTo(out);
   return out;
@@ -878,14 +878,14 @@ class Reaction {
   }
 
   virtual ~Reaction() throw();
-  Matcher matcher;
-  Action action;
+  AromaMatcher matcher;
+  AromaAction action;
 
   _Reaction__isset __isset;
 
-  void __set_matcher(const Matcher& val);
+  void __set_matcher(const AromaMatcher& val);
 
-  void __set_action(const Action& val);
+  void __set_action(const AromaAction& val);
 
   bool operator == (const Reaction & rhs) const
   {

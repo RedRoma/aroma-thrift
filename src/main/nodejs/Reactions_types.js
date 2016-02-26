@@ -358,7 +358,7 @@ MatcherHostnameEquals.prototype.write = function(output) {
   return;
 };
 
-Matcher = module.exports.Matcher = function(args) {
+AromaMatcher = module.exports.AromaMatcher = function(args) {
   this.all = null;
   this.titleIs = null;
   this.titleContains = null;
@@ -390,8 +390,8 @@ Matcher = module.exports.Matcher = function(args) {
     }
   }
 };
-Matcher.prototype = {};
-Matcher.prototype.read = function(input) {
+AromaMatcher.prototype = {};
+AromaMatcher.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -469,8 +469,8 @@ Matcher.prototype.read = function(input) {
   return;
 };
 
-Matcher.prototype.write = function(output) {
-  output.writeStructBegin('Matcher');
+AromaMatcher.prototype.write = function(output) {
+  output.writeStructBegin('AromaMatcher');
   if (this.all !== null && this.all !== undefined) {
     output.writeFieldBegin('all', Thrift.Type.STRUCT, 1);
     this.all.write(output);
@@ -893,7 +893,7 @@ ActionForwardToUsers.prototype.write = function(output) {
   return;
 };
 
-Action = module.exports.Action = function(args) {
+AromaAction = module.exports.AromaAction = function(args) {
   this.postToSlackChannel = null;
   this.postToSlackUser = null;
   this.sendEmail = null;
@@ -925,8 +925,8 @@ Action = module.exports.Action = function(args) {
     }
   }
 };
-Action.prototype = {};
-Action.prototype.read = function(input) {
+AromaAction.prototype = {};
+AromaAction.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -1004,8 +1004,8 @@ Action.prototype.read = function(input) {
   return;
 };
 
-Action.prototype.write = function(output) {
-  output.writeStructBegin('Action');
+AromaAction.prototype.write = function(output) {
+  output.writeStructBegin('AromaAction');
   if (this.postToSlackChannel !== null && this.postToSlackChannel !== undefined) {
     output.writeFieldBegin('postToSlackChannel', Thrift.Type.STRUCT, 1);
     this.postToSlackChannel.write(output);
@@ -1051,10 +1051,10 @@ Reaction = module.exports.Reaction = function(args) {
   this.action = null;
   if (args) {
     if (args.matcher !== undefined && args.matcher !== null) {
-      this.matcher = new ttypes.Matcher(args.matcher);
+      this.matcher = new ttypes.AromaMatcher(args.matcher);
     }
     if (args.action !== undefined && args.action !== null) {
-      this.action = new ttypes.Action(args.action);
+      this.action = new ttypes.AromaAction(args.action);
     }
   }
 };
@@ -1074,7 +1074,7 @@ Reaction.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.matcher = new ttypes.Matcher();
+        this.matcher = new ttypes.AromaMatcher();
         this.matcher.read(input);
       } else {
         input.skip(ftype);
@@ -1082,7 +1082,7 @@ Reaction.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.action = new ttypes.Action();
+        this.action = new ttypes.AromaAction();
         this.action.read(input);
       } else {
         input.skip(ftype);

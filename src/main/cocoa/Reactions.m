@@ -994,7 +994,7 @@
 
 @end
 
-@implementation AromaReactions_Matcher
+@implementation AromaReactions_AromaMatcher
 
 - (id) init
 {
@@ -1143,10 +1143,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_Matcher class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_AromaMatcher class]]) {
     return NO;
   }
-  AromaReactions_Matcher *other = (AromaReactions_Matcher *)anObject;
+  AromaReactions_AromaMatcher *other = (AromaReactions_AromaMatcher *)anObject;
   if ((__all_isset != other->__all_isset) ||
       (__all_isset && ((__all || other->__all) && ![__all isEqual:other->__all]))) {
     return NO;
@@ -1432,7 +1432,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Matcher"];
+  [outProtocol writeStructBeginWithName: @"AromaMatcher"];
   if (__all_isset) {
     if (__all != nil) {
       [outProtocol writeFieldBeginWithName: @"all" type: TType_STRUCT fieldID: 1];
@@ -1491,7 +1491,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Matcher("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_AromaMatcher("];
   [ms appendString: @"all:"];
   [ms appendFormat: @"%@", __all];
   [ms appendString: @",titleIs:"];
@@ -2600,7 +2600,7 @@
 
 @end
 
-@implementation AromaReactions_Action
+@implementation AromaReactions_AromaAction
 
 - (id) init
 {
@@ -2749,10 +2749,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaReactions_Action class]]) {
+  if (![anObject isKindOfClass:[AromaReactions_AromaAction class]]) {
     return NO;
   }
-  AromaReactions_Action *other = (AromaReactions_Action *)anObject;
+  AromaReactions_AromaAction *other = (AromaReactions_AromaAction *)anObject;
   if ((__postToSlackChannel_isset != other->__postToSlackChannel_isset) ||
       (__postToSlackChannel_isset && ((__postToSlackChannel || other->__postToSlackChannel) && ![__postToSlackChannel isEqual:other->__postToSlackChannel]))) {
     return NO;
@@ -3038,7 +3038,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"Action"];
+  [outProtocol writeStructBeginWithName: @"AromaAction"];
   if (__postToSlackChannel_isset) {
     if (__postToSlackChannel != nil) {
       [outProtocol writeFieldBeginWithName: @"postToSlackChannel" type: TType_STRUCT fieldID: 1];
@@ -3097,7 +3097,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_Action("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaReactions_AromaAction("];
   [ms appendString: @"postToSlackChannel:"];
   [ms appendFormat: @"%@", __postToSlackChannel];
   [ms appendString: @",postToSlackUser:"];
@@ -3128,7 +3128,7 @@
   return self;
 }
 
-- (id) initWithMatcher: (AromaReactions_Matcher *) matcher action: (AromaReactions_Action *) action
+- (id) initWithMatcher: (AromaReactions_AromaMatcher *) matcher action: (AromaReactions_AromaAction *) action
 {
   self = [super init];
   __matcher = [matcher retain_stub];
@@ -3209,11 +3209,11 @@
   [super dealloc_stub];
 }
 
-- (AromaReactions_Matcher *) matcher {
+- (AromaReactions_AromaMatcher *) matcher {
   return [[__matcher retain_stub] autorelease_stub];
 }
 
-- (void) setMatcher: (AromaReactions_Matcher *) matcher {
+- (void) setMatcher: (AromaReactions_AromaMatcher *) matcher {
   [matcher retain_stub];
   [__matcher release_stub];
   __matcher = matcher;
@@ -3230,11 +3230,11 @@
   __matcher_isset = NO;
 }
 
-- (AromaReactions_Action *) action {
+- (AromaReactions_AromaAction *) action {
   return [[__action retain_stub] autorelease_stub];
 }
 
-- (void) setAction: (AromaReactions_Action *) action {
+- (void) setAction: (AromaReactions_AromaAction *) action {
   [action retain_stub];
   [__action release_stub];
   __action = action;
@@ -3268,7 +3268,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_Matcher *fieldValue = [[AromaReactions_Matcher alloc] init];
+          AromaReactions_AromaMatcher *fieldValue = [[AromaReactions_AromaMatcher alloc] init];
           [fieldValue read: inProtocol];
           [self setMatcher: fieldValue];
           [fieldValue release_stub];
@@ -3278,7 +3278,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          AromaReactions_Action *fieldValue = [[AromaReactions_Action alloc] init];
+          AromaReactions_AromaAction *fieldValue = [[AromaReactions_AromaAction alloc] init];
           [fieldValue read: inProtocol];
           [self setAction: fieldValue];
           [fieldValue release_stub];

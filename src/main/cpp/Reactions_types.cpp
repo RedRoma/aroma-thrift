@@ -594,39 +594,39 @@ void MatcherHostnameEquals::printTo(std::ostream& out) const {
 }
 
 
-Matcher::~Matcher() throw() {
+AromaMatcher::~AromaMatcher() throw() {
 }
 
 
-void Matcher::__set_all(const MatcherAll& val) {
+void AromaMatcher::__set_all(const MatcherAll& val) {
   this->all = val;
 }
 
-void Matcher::__set_titleIs(const MatcherTitleIs& val) {
+void AromaMatcher::__set_titleIs(const MatcherTitleIs& val) {
   this->titleIs = val;
 }
 
-void Matcher::__set_titleContains(const MatcherTitleContains& val) {
+void AromaMatcher::__set_titleContains(const MatcherTitleContains& val) {
   this->titleContains = val;
 }
 
-void Matcher::__set_bodyIs(const MatcherBodyIs& val) {
+void AromaMatcher::__set_bodyIs(const MatcherBodyIs& val) {
   this->bodyIs = val;
 }
 
-void Matcher::__set_bodyContains(const MatcherBodyContains& val) {
+void AromaMatcher::__set_bodyContains(const MatcherBodyContains& val) {
   this->bodyContains = val;
 }
 
-void Matcher::__set_urgencyEquals(const MatcherUrgencyEquals& val) {
+void AromaMatcher::__set_urgencyEquals(const MatcherUrgencyEquals& val) {
   this->urgencyEquals = val;
 }
 
-void Matcher::__set_hostnameEquals(const MatcherHostnameEquals& val) {
+void AromaMatcher::__set_hostnameEquals(const MatcherHostnameEquals& val) {
   this->hostnameEquals = val;
 }
 
-uint32_t Matcher::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaMatcher::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -715,10 +715,10 @@ uint32_t Matcher::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Matcher::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaMatcher::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Matcher");
+  xfer += oprot->writeStructBegin("AromaMatcher");
 
   xfer += oprot->writeFieldBegin("all", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->all.write(oprot);
@@ -753,7 +753,7 @@ uint32_t Matcher::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(Matcher &a, Matcher &b) {
+void swap(AromaMatcher &a, AromaMatcher &b) {
   using ::std::swap;
   swap(a.all, b.all);
   swap(a.titleIs, b.titleIs);
@@ -765,7 +765,7 @@ void swap(Matcher &a, Matcher &b) {
   swap(a.__isset, b.__isset);
 }
 
-Matcher::Matcher(const Matcher& other15) {
+AromaMatcher::AromaMatcher(const AromaMatcher& other15) {
   all = other15.all;
   titleIs = other15.titleIs;
   titleContains = other15.titleContains;
@@ -775,7 +775,7 @@ Matcher::Matcher(const Matcher& other15) {
   hostnameEquals = other15.hostnameEquals;
   __isset = other15.__isset;
 }
-Matcher& Matcher::operator=(const Matcher& other16) {
+AromaMatcher& AromaMatcher::operator=(const AromaMatcher& other16) {
   all = other16.all;
   titleIs = other16.titleIs;
   titleContains = other16.titleContains;
@@ -786,9 +786,9 @@ Matcher& Matcher::operator=(const Matcher& other16) {
   __isset = other16.__isset;
   return *this;
 }
-void Matcher::printTo(std::ostream& out) const {
+void AromaMatcher::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "Matcher(";
+  out << "AromaMatcher(";
   out << "all=" << to_string(all);
   out << ", " << "titleIs=" << to_string(titleIs);
   out << ", " << "titleContains=" << to_string(titleContains);
@@ -1440,39 +1440,39 @@ void ActionForwardToUsers::printTo(std::ostream& out) const {
 }
 
 
-Action::~Action() throw() {
+AromaAction::~AromaAction() throw() {
 }
 
 
-void Action::__set_postToSlackChannel(const ActionPostToSlackChannel& val) {
+void AromaAction::__set_postToSlackChannel(const ActionPostToSlackChannel& val) {
   this->postToSlackChannel = val;
 }
 
-void Action::__set_postToSlackUser(const ActionPostToSlackUser& val) {
+void AromaAction::__set_postToSlackUser(const ActionPostToSlackUser& val) {
   this->postToSlackUser = val;
 }
 
-void Action::__set_sendEmail(const ActionSendEmail& val) {
+void AromaAction::__set_sendEmail(const ActionSendEmail& val) {
   this->sendEmail = val;
 }
 
-void Action::__set_ignore(const ActionIgnore& val) {
+void AromaAction::__set_ignore(const ActionIgnore& val) {
   this->ignore = val;
 }
 
-void Action::__set_deleteMessage(const ActionDeleteMessage& val) {
+void AromaAction::__set_deleteMessage(const ActionDeleteMessage& val) {
   this->deleteMessage = val;
 }
 
-void Action::__set_respondToCode(const ActionRespondToCode& val) {
+void AromaAction::__set_respondToCode(const ActionRespondToCode& val) {
   this->respondToCode = val;
 }
 
-void Action::__set_forwardToUsers(const ActionForwardToUsers& val) {
+void AromaAction::__set_forwardToUsers(const ActionForwardToUsers& val) {
   this->forwardToUsers = val;
 }
 
-uint32_t Action::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t AromaAction::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1561,10 +1561,10 @@ uint32_t Action::read(::apache::thrift::protocol::TProtocol* iprot) {
   return xfer;
 }
 
-uint32_t Action::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t AromaAction::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("Action");
+  xfer += oprot->writeStructBegin("AromaAction");
 
   xfer += oprot->writeFieldBegin("postToSlackChannel", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->postToSlackChannel.write(oprot);
@@ -1599,7 +1599,7 @@ uint32_t Action::write(::apache::thrift::protocol::TProtocol* oprot) const {
   return xfer;
 }
 
-void swap(Action &a, Action &b) {
+void swap(AromaAction &a, AromaAction &b) {
   using ::std::swap;
   swap(a.postToSlackChannel, b.postToSlackChannel);
   swap(a.postToSlackUser, b.postToSlackUser);
@@ -1611,7 +1611,7 @@ void swap(Action &a, Action &b) {
   swap(a.__isset, b.__isset);
 }
 
-Action::Action(const Action& other37) {
+AromaAction::AromaAction(const AromaAction& other37) {
   postToSlackChannel = other37.postToSlackChannel;
   postToSlackUser = other37.postToSlackUser;
   sendEmail = other37.sendEmail;
@@ -1621,7 +1621,7 @@ Action::Action(const Action& other37) {
   forwardToUsers = other37.forwardToUsers;
   __isset = other37.__isset;
 }
-Action& Action::operator=(const Action& other38) {
+AromaAction& AromaAction::operator=(const AromaAction& other38) {
   postToSlackChannel = other38.postToSlackChannel;
   postToSlackUser = other38.postToSlackUser;
   sendEmail = other38.sendEmail;
@@ -1632,9 +1632,9 @@ Action& Action::operator=(const Action& other38) {
   __isset = other38.__isset;
   return *this;
 }
-void Action::printTo(std::ostream& out) const {
+void AromaAction::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "Action(";
+  out << "AromaAction(";
   out << "postToSlackChannel=" << to_string(postToSlackChannel);
   out << ", " << "postToSlackUser=" << to_string(postToSlackUser);
   out << ", " << "sendEmail=" << to_string(sendEmail);
@@ -1650,11 +1650,11 @@ Reaction::~Reaction() throw() {
 }
 
 
-void Reaction::__set_matcher(const Matcher& val) {
+void Reaction::__set_matcher(const AromaMatcher& val) {
   this->matcher = val;
 }
 
-void Reaction::__set_action(const Action& val) {
+void Reaction::__set_action(const AromaAction& val) {
   this->action = val;
 }
 

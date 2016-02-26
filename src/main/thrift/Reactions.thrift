@@ -54,7 +54,7 @@ struct MatcherHostnameEquals
     1: string expectedHostname;
 }
 
-union Matcher
+union AromaMatcher
 {
     1: MatcherAll all;
     2: MatcherTitleIs titleIs;
@@ -104,7 +104,7 @@ struct ActionForwardToUsers
     1: list<uuid> userIds = [];
 }
 
-union Action
+union AromaAction
 {
     1: ActionPostToSlackChannel postToSlackChannel;
     2: ActionPostToSlackUser postToSlackUser;
@@ -118,6 +118,6 @@ union Action
 
 struct Reaction
 {
-    1: Matcher matcher;
-    2: Action action;
+    1: AromaMatcher matcher;
+    2: AromaAction action;
 }

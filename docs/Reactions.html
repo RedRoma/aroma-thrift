@@ -195,15 +195,15 @@ code { line-height: 20px; }
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
 <td>Reactions</td><td></td>
-<td><a href="#Struct_Action">Action</a><br/>
-<a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a><br/>
+<td><a href="#Struct_ActionDeleteMessage">ActionDeleteMessage</a><br/>
 <a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a><br/>
 <a href="#Struct_ActionIgnore">ActionIgnore</a><br/>
 <a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a><br/>
 <a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a><br/>
 <a href="#Struct_ActionRespondToCode">ActionRespondToCode</a><br/>
 <a href="#Struct_ActionSendEmail">ActionSendEmail</a><br/>
-<a href="#Struct_Matcher">Matcher</a><br/>
+<a href="#Struct_AromaAction">AromaAction</a><br/>
+<a href="#Struct_AromaMatcher">AromaMatcher</a><br/>
 <a href="#Struct_MatcherAll">MatcherAll</a><br/>
 <a href="#Struct_MatcherBodyContains">MatcherBodyContains</a><br/>
 <a href="#Struct_MatcherBodyIs">MatcherBodyIs</a><br/>
@@ -254,7 +254,7 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_MatcherHostnameEquals">Struct: MatcherHostnameEquals</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>expectedHostname</td><td><code>string</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Matcher">Union: Matcher</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_AromaMatcher">Union: AromaMatcher</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>all</td><td><code><a href="#Struct_MatcherAll">MatcherAll</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>titleIs</td><td><code><a href="#Struct_MatcherTitleIs">MatcherTitleIs</a></code></td><td></td><td>default</td><td></td></tr>
@@ -285,7 +285,7 @@ code { line-height: 20px; }
 </table><br/></div><div class="definition"><h3 id="Struct_ActionForwardToUsers">Struct: ActionForwardToUsers</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>userIds</td><td><code>list&lt;<code><a href="#Typedef_uuid">uuid</a></code>&gt;</code></td><td></td><td>default</td><td><code>{  }</code></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_Action">Union: Action</h3>
+</table><br/></div><div class="definition"><h3 id="Struct_AromaAction">Union: AromaAction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
 <tr><td>1</td><td>postToSlackChannel</td><td><code><a href="#Struct_ActionPostToSlackChannel">ActionPostToSlackChannel</a></code></td><td></td><td>default</td><td></td></tr>
 <tr><td>2</td><td>postToSlackUser</td><td><code><a href="#Struct_ActionPostToSlackUser">ActionPostToSlackUser</a></code></td><td></td><td>default</td><td></td></tr>
@@ -296,6 +296,6 @@ code { line-height: 20px; }
 <tr><td>7</td><td>forwardToUsers</td><td><code><a href="#Struct_ActionForwardToUsers">ActionForwardToUsers</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div><div class="definition"><h3 id="Struct_Reaction">Struct: Reaction</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>matcher</td><td><code><a href="#Struct_Matcher">Matcher</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>action</td><td><code><a href="#Struct_Action">Action</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>1</td><td>matcher</td><td><code><a href="#Struct_AromaMatcher">AromaMatcher</a></code></td><td></td><td>default</td><td></td></tr>
+<tr><td>2</td><td>action</td><td><code><a href="#Struct_AromaAction">AromaAction</a></code></td><td></td><td>default</td><td></td></tr>
 </table><br/></div></div></body></html>
