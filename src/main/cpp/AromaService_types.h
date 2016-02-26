@@ -171,6 +171,10 @@ class GetMediaRequest;
 
 class GetMediaResponse;
 
+class GetApplicationsFollowedByRequest;
+
+class GetApplicationsFollowedByResponse;
+
 class GetApplicationsOwnedByRequest;
 
 class GetApplicationsOwnedByResponse;
@@ -2802,6 +2806,107 @@ inline std::ostream& operator<<(std::ostream& out, const GetMediaResponse& obj)
   return out;
 }
 
+typedef struct _GetApplicationsFollowedByRequest__isset {
+  _GetApplicationsFollowedByRequest__isset() : token(false), userId(false) {}
+  bool token :1;
+  bool userId :1;
+} _GetApplicationsFollowedByRequest__isset;
+
+class GetApplicationsFollowedByRequest {
+ public:
+
+  GetApplicationsFollowedByRequest(const GetApplicationsFollowedByRequest&);
+  GetApplicationsFollowedByRequest& operator=(const GetApplicationsFollowedByRequest&);
+  GetApplicationsFollowedByRequest() : userId() {
+  }
+
+  virtual ~GetApplicationsFollowedByRequest() throw();
+  UserToken token;
+  uuid userId;
+
+  _GetApplicationsFollowedByRequest__isset __isset;
+
+  void __set_token(const UserToken& val);
+
+  void __set_userId(const uuid& val);
+
+  bool operator == (const GetApplicationsFollowedByRequest & rhs) const
+  {
+    if (!(token == rhs.token))
+      return false;
+    if (__isset.userId != rhs.__isset.userId)
+      return false;
+    else if (__isset.userId && !(userId == rhs.userId))
+      return false;
+    return true;
+  }
+  bool operator != (const GetApplicationsFollowedByRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetApplicationsFollowedByRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetApplicationsFollowedByRequest &a, GetApplicationsFollowedByRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationsFollowedByRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _GetApplicationsFollowedByResponse__isset {
+  _GetApplicationsFollowedByResponse__isset() : applications(true) {}
+  bool applications :1;
+} _GetApplicationsFollowedByResponse__isset;
+
+class GetApplicationsFollowedByResponse {
+ public:
+
+  GetApplicationsFollowedByResponse(const GetApplicationsFollowedByResponse&);
+  GetApplicationsFollowedByResponse& operator=(const GetApplicationsFollowedByResponse&);
+  GetApplicationsFollowedByResponse() {
+
+  }
+
+  virtual ~GetApplicationsFollowedByResponse() throw();
+  std::vector<Application>  applications;
+
+  _GetApplicationsFollowedByResponse__isset __isset;
+
+  void __set_applications(const std::vector<Application> & val);
+
+  bool operator == (const GetApplicationsFollowedByResponse & rhs) const
+  {
+    if (!(applications == rhs.applications))
+      return false;
+    return true;
+  }
+  bool operator != (const GetApplicationsFollowedByResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const GetApplicationsFollowedByResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(GetApplicationsFollowedByResponse &a, GetApplicationsFollowedByResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const GetApplicationsFollowedByResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _GetApplicationsOwnedByRequest__isset {
   _GetApplicationsOwnedByRequest__isset() : token(false), userId(false) {}
   bool token :1;
@@ -2857,7 +2962,7 @@ inline std::ostream& operator<<(std::ostream& out, const GetApplicationsOwnedByR
 }
 
 typedef struct _GetApplicationsOwnedByResponse__isset {
-  _GetApplicationsOwnedByResponse__isset() : applications(false) {}
+  _GetApplicationsOwnedByResponse__isset() : applications(true) {}
   bool applications :1;
 } _GetApplicationsOwnedByResponse__isset;
 
@@ -2867,6 +2972,7 @@ class GetApplicationsOwnedByResponse {
   GetApplicationsOwnedByResponse(const GetApplicationsOwnedByResponse&);
   GetApplicationsOwnedByResponse& operator=(const GetApplicationsOwnedByResponse&);
   GetApplicationsOwnedByResponse() {
+
   }
 
   virtual ~GetApplicationsOwnedByResponse() throw();

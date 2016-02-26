@@ -507,6 +507,18 @@ struct GetMediaResponse
     1: Aroma.Image image;
 }
 
+struct GetApplicationsFollowedByRequest
+{
+    1: UserToken token;
+    /** If not present, will assume the userId of the Caller. */
+    2: optional uuid userId;
+}
+
+struct GetApplicationsFollowedByResponse
+{
+    1: list<Application> applications = [];
+}
+
 struct GetApplicationsOwnedByRequest
 {
     1: UserToken token;
@@ -516,7 +528,7 @@ struct GetApplicationsOwnedByRequest
 
 struct GetApplicationsOwnedByResponse
 {
-    1: list<Application> applications;
+    1: list<Application> applications = [];
 }
 
 struct GetMySavedChannelsRequest

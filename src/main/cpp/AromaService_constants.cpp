@@ -16,34 +16,34 @@ AromaServiceConstants::AromaServiceConstants() {
   SERVICE_PORT = 7010;
 
   PRODUCTION_ENDPOINT.hostname = "aroma-srv.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp217;
-  tmp217 = 7010;
+   ::aroma::thrift::endpoint::int tmp227;
+  tmp227 = 7010;
 
-  PRODUCTION_ENDPOINT.port = tmp217;
+  PRODUCTION_ENDPOINT.port = tmp227;
 
   BETA_ENDPOINT.hostname = "aroma-srv.beta.aroma.tech";
-   ::aroma::thrift::endpoint::int tmp218;
-  tmp218 = 7010;
+   ::aroma::thrift::endpoint::int tmp228;
+  tmp228 = 7010;
 
-  BETA_ENDPOINT.port = tmp218;
+  BETA_ENDPOINT.port = tmp228;
 
-   ::tech::aroma::thrift::int tmp219;
-  tmp219 = 1024;
+   ::tech::aroma::thrift::int tmp229;
+  tmp229 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.width = tmp219;
-   ::tech::aroma::thrift::int tmp220;
-  tmp220 = 1024;
+  MAX_APPLICATION_ICON_DIMENSION.width = tmp229;
+   ::tech::aroma::thrift::int tmp230;
+  tmp230 = 1024;
 
-  MAX_APPLICATION_ICON_DIMENSION.height = tmp220;
+  MAX_APPLICATION_ICON_DIMENSION.height = tmp230;
 
-   ::tech::aroma::thrift::int tmp221;
-  tmp221 = 1024;
+   ::tech::aroma::thrift::int tmp231;
+  tmp231 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.width = tmp221;
-   ::tech::aroma::thrift::int tmp222;
-  tmp222 = 1024;
+  MAX_PROFILE_IMAGE_DIMENSION.width = tmp231;
+   ::tech::aroma::thrift::int tmp232;
+  tmp232 = 1024;
 
-  MAX_PROFILE_IMAGE_DIMENSION.height = tmp222;
+  MAX_PROFILE_IMAGE_DIMENSION.height = tmp232;
 
   MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 100;
 
@@ -51,10 +51,10 @@ AromaServiceConstants::AromaServiceConstants() {
 
   MAX_MESSAGE_LENGTH = 5000;
 
-   ::tech::aroma::thrift::long tmp223;
-  tmp223 = 3LL;
+   ::tech::aroma::thrift::long tmp233;
+  tmp233 = 3LL;
 
-  DEFAULT_INBOX_LIFETIME.value = tmp223;
+  DEFAULT_INBOX_LIFETIME.value = tmp233;
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
   APPLICATION_NAME_MAX_LENGTH = 20;
