@@ -15,10 +15,9 @@
 #include <thrift/transport/TTransport.h>
 
 #include <thrift/cxxfunctional.h>
-#include "Banana_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace exceptions {
+namespace aroma { namespace thrift { namespace exceptions {
 
 class InvalidArgumentException;
 
@@ -820,6 +819,6 @@ inline std::ostream& operator<<(std::ostream& out, const OperationFailedExceptio
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

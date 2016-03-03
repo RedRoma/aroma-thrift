@@ -7,8 +7,6 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
-var Banana_ttypes = require('./Banana_types')
-
 
 var ttypes = module.exports = {};
 InvalidArgumentException = module.exports.InvalidArgumentException = function(args) {

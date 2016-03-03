@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "AuthenticationService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
+namespace aroma { namespace thrift { namespace authentication { namespace service {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -896,6 +896,6 @@ class AuthenticationServiceConcurrentClient : virtual public AuthenticationServi
   #pragma warning( pop )
 #endif
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

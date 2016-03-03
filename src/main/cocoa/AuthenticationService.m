@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 
@@ -220,11 +220,11 @@
   __ownerId_isset = NO;
 }
 
-- (Banana_LengthOfTime *) lifetime {
+- (Aroma_LengthOfTime *) lifetime {
   return [[__lifetime retain_stub] autorelease_stub];
 }
 
-- (void) setLifetime: (Banana_LengthOfTime *) lifetime {
+- (void) setLifetime: (Aroma_LengthOfTime *) lifetime {
   [lifetime retain_stub];
   [__lifetime release_stub];
   __lifetime = lifetime;
@@ -346,7 +346,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          Banana_LengthOfTime *fieldValue = [[Banana_LengthOfTime alloc] init];
+          Aroma_LengthOfTime *fieldValue = [[Aroma_LengthOfTime alloc] init];
           [fieldValue read: inProtocol];
           [self setLifetime: fieldValue];
           [fieldValue release_stub];
@@ -1775,38 +1775,38 @@
 @end
 
 static AuthenticationService_int AuthenticationService_SERVICE_PORT = 7026;
-static BananaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
-static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
+static AromaEndpoint_TcpEndpoint * AuthenticationService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * AuthenticationService_BETA_ENDPOINT;
+static Aroma_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 
 @implementation AuthenticationService_AuthenticationServiceConstants
 + (void) initialize {
-  AuthenticationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [AuthenticationService_PRODUCTION_ENDPOINT setHostname:@"authentication-srv.banana.aroma.tech"];
+  AuthenticationService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [AuthenticationService_PRODUCTION_ENDPOINT setHostname:@"authentication-srv.aroma.tech"];
   [AuthenticationService_PRODUCTION_ENDPOINT setPort:7026];
 
 ;
-  AuthenticationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [AuthenticationService_BETA_ENDPOINT setHostname:@"authentication-srv.beta.banana.aroma.tech"];
+  AuthenticationService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [AuthenticationService_BETA_ENDPOINT setHostname:@"authentication-srv.beta.aroma.tech"];
   [AuthenticationService_BETA_ENDPOINT setPort:7026];
 
 ;
-  AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  AuthenticationService_DEFAULT_TOKEN_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [AuthenticationService_DEFAULT_TOKEN_LIFETIME setValue:60];
-  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:4];
+  [AuthenticationService_DEFAULT_TOKEN_LIFETIME setUnit:5];
 
 ;
 }
 + (AuthenticationService_int) SERVICE_PORT{
   return AuthenticationService_SERVICE_PORT;
 }
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return AuthenticationService_PRODUCTION_ENDPOINT;
 }
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return AuthenticationService_BETA_ENDPOINT;
 }
-+ (Banana_LengthOfTime *) DEFAULT_TOKEN_LIFETIME{
++ (Aroma_LengthOfTime *) DEFAULT_TOKEN_LIFETIME{
   return AuthenticationService_DEFAULT_TOKEN_LIFETIME;
 }
 @end
@@ -2426,11 +2426,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -2447,11 +2447,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -2495,7 +2495,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -2505,7 +2505,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -2951,11 +2951,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -2972,11 +2972,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex2 {
+- (AromaException_InvalidTokenException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
+- (void) setEx2: (AromaException_InvalidTokenException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -2993,11 +2993,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex3 {
+- (AromaException_InvalidArgumentException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+- (void) setEx3: (AromaException_InvalidArgumentException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -3041,7 +3041,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -3051,7 +3051,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -3061,7 +3061,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -3515,11 +3515,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -3536,11 +3536,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex2 {
+- (AromaException_InvalidTokenException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
+- (void) setEx2: (AromaException_InvalidTokenException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -3557,11 +3557,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex3 {
+- (AromaException_InvalidArgumentException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+- (void) setEx3: (AromaException_InvalidArgumentException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -3605,7 +3605,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -3615,7 +3615,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -3625,7 +3625,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];
@@ -4079,11 +4079,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -4100,11 +4100,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex2 {
+- (AromaException_InvalidTokenException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidTokenException *) ex2 {
+- (void) setEx2: (AromaException_InvalidTokenException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -4121,11 +4121,11 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex3 {
+- (AromaException_InvalidArgumentException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidArgumentException *) ex3 {
+- (void) setEx3: (AromaException_InvalidArgumentException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -4169,7 +4169,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -4179,7 +4179,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -4189,7 +4189,7 @@ static Banana_LengthOfTime * AuthenticationService_DEFAULT_TOKEN_LIFETIME;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];

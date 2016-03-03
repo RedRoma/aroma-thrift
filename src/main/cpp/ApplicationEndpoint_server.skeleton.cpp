@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::aroma::banana::thrift::endpoint;
+using namespace  ::aroma::thrift::endpoint;
 
 class ApplicationEndpointHandler : virtual public ApplicationEndpointIf {
  public:

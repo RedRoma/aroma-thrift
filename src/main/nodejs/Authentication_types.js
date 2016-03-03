@@ -7,7 +7,7 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 
 
 var ttypes = module.exports = {};
@@ -413,7 +413,7 @@ AromaAccount = module.exports.AromaAccount = function(args) {
       this.name = args.name;
     }
     if (args.profileImage !== undefined && args.profileImage !== null) {
-      this.profileImage = new Banana_ttypes.Image(args.profileImage);
+      this.profileImage = new Aroma_ttypes.Image(args.profileImage);
     }
     if (args.role !== undefined && args.role !== null) {
       this.role = args.role;
@@ -458,7 +458,7 @@ AromaAccount.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRUCT) {
-        this.profileImage = new Banana_ttypes.Image();
+        this.profileImage = new Aroma_ttypes.Image();
         this.profileImage.read(input);
       } else {
         input.skip(ftype);

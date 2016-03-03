@@ -19,49 +19,49 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
 
-typedef Banana_int NotificationService_int;
+typedef Aroma_int NotificationService_int;
 
-typedef Banana_long NotificationService_long;
+typedef Aroma_long NotificationService_long;
 
-typedef Banana_timestamp NotificationService_timestamp;
+typedef Aroma_timestamp NotificationService_timestamp;
 
-typedef Banana_uuid NotificationService_uuid;
+typedef Aroma_uuid NotificationService_uuid;
 
 typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
-typedef Banana_Application * NotificationService_Application;
+typedef Aroma_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
 
-typedef BananaChannels_BananaChannel * NotificationService_BananaChannel;
+typedef AromaChannels_AromaChannel * NotificationService_AromaChannel;
 
-typedef BananaEvents_Event * NotificationService_Event;
+typedef AromaEvents_Event * NotificationService_Event;
 
-typedef BananaException_AccountAlreadyExistsException * NotificationService_AccountAlreadyExistsException;
+typedef AromaException_AccountAlreadyExistsException * NotificationService_AccountAlreadyExistsException;
 
-typedef BananaException_InvalidArgumentException * NotificationService_InvalidArgumentException;
+typedef AromaException_InvalidArgumentException * NotificationService_InvalidArgumentException;
 
-typedef BananaException_InvalidCredentialsException * NotificationService_InvalidCredentialsException;
+typedef AromaException_InvalidCredentialsException * NotificationService_InvalidCredentialsException;
 
-typedef BananaException_InvalidTokenException * NotificationService_InvalidTokenException;
+typedef AromaException_InvalidTokenException * NotificationService_InvalidTokenException;
 
-typedef BananaException_OperationFailedException * NotificationService_OperationFailedException;
+typedef AromaException_OperationFailedException * NotificationService_OperationFailedException;
 
-typedef BananaException_ApplicationAlreadyRegisteredException * NotificationService_ApplicationAlreadyRegisteredException;
+typedef AromaException_ApplicationAlreadyRegisteredException * NotificationService_ApplicationAlreadyRegisteredException;
 
-typedef BananaException_ApplicationDoesNotExistException * NotificationService_ApplicationDoesNotExistException;
+typedef AromaException_ApplicationDoesNotExistException * NotificationService_ApplicationDoesNotExistException;
 
-typedef BananaException_CustomChannelUnreachableException * NotificationService_CustomChannelUnreachableException;
+typedef AromaException_CustomChannelUnreachableException * NotificationService_CustomChannelUnreachableException;
 
-typedef BananaException_ChannelDoesNotExistException * NotificationService_ChannelDoesNotExistException;
+typedef AromaException_ChannelDoesNotExistException * NotificationService_ChannelDoesNotExistException;
 
-typedef BananaException_UnauthorizedException * NotificationService_UnauthorizedException;
+typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedException;
 
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
   NotificationService_AuthenticationToken __token;
@@ -153,6 +153,6 @@ typedef BananaException_UnauthorizedException * NotificationService_Unauthorized
 @interface NotificationService_NotificationServiceConstants : NSObject {
 }
 + (NotificationService_int) SERVICE_PORT;
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
 @end

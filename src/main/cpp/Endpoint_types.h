@@ -16,17 +16,17 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace endpoint {
+namespace aroma { namespace thrift { namespace endpoint {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
-typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::thrift::exceptions::OperationFailedException OperationFailedException;
 
 class TcpEndpoint;
 
@@ -239,13 +239,13 @@ class HealthPokeRequest {
 
   virtual ~HealthPokeRequest() throw();
   uuid applicationId;
-   ::aroma::banana::thrift::authentication::ApplicationToken serviceToken;
+   ::aroma::thrift::authentication::ApplicationToken serviceToken;
 
   _HealthPokeRequest__isset __isset;
 
   void __set_applicationId(const uuid& val);
 
-  void __set_serviceToken(const  ::aroma::banana::thrift::authentication::ApplicationToken& val);
+  void __set_serviceToken(const  ::aroma::thrift::authentication::ApplicationToken& val);
 
   bool operator == (const HealthPokeRequest & rhs) const
   {
@@ -327,6 +327,6 @@ inline std::ostream& operator<<(std::ostream& out, const HealthPokeResponse& obj
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif

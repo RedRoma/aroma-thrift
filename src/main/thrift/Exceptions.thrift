@@ -1,13 +1,11 @@
-namespace java  tech.aroma.banana.thrift.exceptions
-namespace cocoa BananaException_
-namespace cpp   aroma.banana.thrift.exceptions
+namespace java  tech.aroma.thrift.exceptions
+namespace cocoa AromaException_
+namespace cpp   aroma.thrift.exceptions
 
 /*
- * Defined in this File are the Banana Service Exceptions
+ * Defined in this File are the Aroma Exceptions
  * that can occur during operation.
  */
-
-include "Banana.thrift"
 
 /**
  * Thrown when the Service receives a Bad or Invalid Argument.
@@ -102,8 +100,8 @@ exception ThroughoutExceededException
 }
 
 /**
- * Thrown when trying to register a Custom Banana Service Channel, but the Endpoint cannot
- * be reached by the Banana Service.
+ * Thrown when trying to register a Custom AromaChannel, but the Endpoint cannot
+ * be reached by Aroma.
  */
 exception CustomChannelUnreachableException
 {

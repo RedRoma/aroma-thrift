@@ -11,6 +11,6 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace message { namespace service {
+namespace aroma { namespace thrift { namespace message { namespace service {
 
-}}}}} // namespace
+}}}} // namespace

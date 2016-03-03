@@ -9,19 +9,19 @@
 
 #include "NotificationService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace notification { namespace service {
 
 class NotificationServiceConstants {
  public:
   NotificationServiceConstants();
 
   int SERVICE_PORT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
 };
 
 extern const NotificationServiceConstants g_NotificationService_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

@@ -19,7 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 
@@ -729,18 +729,18 @@
 @end
 
 static ApplicationService_int ApplicationService_SERVICE_PORT = 7002;
-static BananaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * ApplicationService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 
 @implementation ApplicationService_ApplicationServiceConstants
 + (void) initialize {
-  ApplicationService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.banana.aroma.tech"];
+  ApplicationService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [ApplicationService_PRODUCTION_ENDPOINT setHostname:@"application-srv.aroma.tech"];
   [ApplicationService_PRODUCTION_ENDPOINT setPort:7002];
 
 ;
-  ApplicationService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [ApplicationService_BETA_ENDPOINT setHostname:@"application-srv.beta.banana.aroma.tech"];
+  ApplicationService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [ApplicationService_BETA_ENDPOINT setHostname:@"application-srv.beta.aroma.tech"];
   [ApplicationService_BETA_ENDPOINT setPort:7002];
 
 ;
@@ -748,10 +748,10 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
 + (ApplicationService_int) SERVICE_PORT{
   return ApplicationService_SERVICE_PORT;
 }
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return ApplicationService_PRODUCTION_ENDPOINT;
 }
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return ApplicationService_BETA_ENDPOINT;
 }
 @end
@@ -1401,11 +1401,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -1422,11 +1422,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __ex1_isset = NO;
 }
 
-- (BananaException_InvalidArgumentException *) ex2 {
+- (AromaException_InvalidArgumentException *) ex2 {
   return [[__ex2 retain_stub] autorelease_stub];
 }
 
-- (void) setEx2: (BananaException_InvalidArgumentException *) ex2 {
+- (void) setEx2: (AromaException_InvalidArgumentException *) ex2 {
   [ex2 retain_stub];
   [__ex2 release_stub];
   __ex2 = ex2;
@@ -1443,11 +1443,11 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
   __ex2_isset = NO;
 }
 
-- (BananaException_InvalidTokenException *) ex3 {
+- (AromaException_InvalidTokenException *) ex3 {
   return [[__ex3 retain_stub] autorelease_stub];
 }
 
-- (void) setEx3: (BananaException_InvalidTokenException *) ex3 {
+- (void) setEx3: (AromaException_InvalidTokenException *) ex3 {
   [ex3 retain_stub];
   [__ex3 release_stub];
   __ex3 = ex3;
@@ -1491,7 +1491,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -1501,7 +1501,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidArgumentException *fieldValue = [[BananaException_InvalidArgumentException alloc] init];
+          AromaException_InvalidArgumentException *fieldValue = [[AromaException_InvalidArgumentException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx2: fieldValue];
           [fieldValue release_stub];
@@ -1511,7 +1511,7 @@ static BananaEndpoint_TcpEndpoint * ApplicationService_BETA_ENDPOINT;
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaException_InvalidTokenException *fieldValue = [[BananaException_InvalidTokenException alloc] init];
+          AromaException_InvalidTokenException *fieldValue = [[AromaException_InvalidTokenException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx3: fieldValue];
           [fieldValue release_stub];

@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
@@ -26,7 +26,7 @@ CreateTokenRequest = module.exports.CreateTokenRequest = function(args) {
       this.ownerId = args.ownerId;
     }
     if (args.lifetime !== undefined && args.lifetime !== null) {
-      this.lifetime = new Banana_ttypes.LengthOfTime(args.lifetime);
+      this.lifetime = new Aroma_ttypes.LengthOfTime(args.lifetime);
     }
     if (args.desiredTokenType !== undefined && args.desiredTokenType !== null) {
       this.desiredTokenType = args.desiredTokenType;
@@ -65,7 +65,7 @@ CreateTokenRequest.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.lifetime = new Banana_ttypes.LengthOfTime();
+        this.lifetime = new Aroma_ttypes.LengthOfTime();
         this.lifetime.read(input);
       } else {
         input.skip(ftype);
@@ -599,8 +599,8 @@ VerifyTokenResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7026;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.banana.aroma.tech','port' : 7026});
+'hostname' : 'authentication-srv.aroma.tech','port' : 7026});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'authentication-srv.beta.banana.aroma.tech','port' : 7026});
-ttypes.DEFAULT_TOKEN_LIFETIME = new Banana_ttypes.LengthOfTime({
-'value' : 60,'unit' : 4});
+'hostname' : 'authentication-srv.beta.aroma.tech','port' : 7026});
+ttypes.DEFAULT_TOKEN_LIFETIME = new Aroma_ttypes.LengthOfTime({
+'value' : 60,'unit' : 5});

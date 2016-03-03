@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.message.service
+namespace java  tech.aroma.thrift.message.service
 namespace cocoa MessageService_
-namespace cpp   aroma.banana.thrift.message.service
+namespace cpp   aroma.thrift.message.service
 
 /*
  * Defined in this File is the Message Service API.
@@ -10,30 +10,30 @@ namespace cpp   aroma.banana.thrift.message.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
 include "Exceptions.thrift"
 
 include "ApplicationService.thrift"
-include "BananaService.thrift"
+include "AromaService.thrift"
 
 /*
  * These Typedefs are like import statements
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Authentication.UserToken UserToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
 typedef Events.Event Event
 
 //Exception Typedefs
@@ -52,25 +52,25 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 typedef ApplicationService.SendMessageRequest SendMessageRequest
 typedef ApplicationService.SendMessageResponse SendMessageResponse
 
-typedef BananaService.DeleteMessageRequest DeleteMessageRequest
-typedef BananaService.DeleteMessageResponse DeleteMessageResponse
-typedef BananaService.DismissMessageRequest DismissMessageRequest
-typedef BananaService.DismissMessageResponse DismissMessageResponse
-typedef BananaService.GetApplicationMessagesRequest GetApplicationMessagesRequest
-typedef BananaService.GetApplicationMessagesResponse GetApplicationMessagesResponse
-typedef BananaService.GetInboxRequest GetInboxRequest
-typedef BananaService.GetInboxResponse GetInboxResponse
-typedef BananaService.GetFullMessageRequest GetFullMessageRequest
-typedef BananaService.GetFullMessageResponse GetFullMessageResponse
+typedef AromaService.DeleteMessageRequest DeleteMessageRequest
+typedef AromaService.DeleteMessageResponse DeleteMessageResponse
+typedef AromaService.DismissMessageRequest DismissMessageRequest
+typedef AromaService.DismissMessageResponse DismissMessageResponse
+typedef AromaService.GetApplicationMessagesRequest GetApplicationMessagesRequest
+typedef AromaService.GetApplicationMessagesResponse GetApplicationMessagesResponse
+typedef AromaService.GetInboxRequest GetInboxRequest
+typedef AromaService.GetInboxResponse GetInboxResponse
+typedef AromaService.GetFullMessageRequest GetFullMessageRequest
+typedef AromaService.GetFullMessageResponse GetFullMessageResponse
 
 const int SERVICE_PORT = 7011;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "message-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "message-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "message-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
-/** The Default lifetime of a Regular Message sent to the Banana Service. */
-const Banana.LengthOfTime DEFAULT_MESSAGE_LIFETIME = { "value" : 1, "unit" : Banana.TimeUnit.DAYS };
+/** The Default lifetime of a Regular Message sent to Aroma. */
+const Aroma.LengthOfTime DEFAULT_MESSAGE_LIFETIME = { "value" : 1, "unit" : Aroma.TimeUnit.DAYS };
 
 //==========================================================
 // SERVICE DEFINITION

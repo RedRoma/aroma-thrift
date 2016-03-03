@@ -19,18 +19,18 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Exceptions.h"
 
-typedef Banana_int BananaEndpoint_int;
+typedef Aroma_int AromaEndpoint_int;
 
-typedef Banana_uuid BananaEndpoint_uuid;
+typedef Aroma_uuid AromaEndpoint_uuid;
 
-typedef BananaException_OperationFailedException * BananaEndpoint_OperationFailedException;
+typedef AromaException_OperationFailedException * AromaEndpoint_OperationFailedException;
 
-@interface BananaEndpoint_TcpEndpoint : NSObject <TBase, NSCoding> {
+@interface AromaEndpoint_TcpEndpoint : NSObject <TBase, NSCoding> {
   NSString * __hostname;
-  BananaEndpoint_int __port;
+  AromaEndpoint_int __port;
 
   BOOL __hostname_isset;
   BOOL __port_isset;
@@ -38,11 +38,11 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
-@property (nonatomic, getter=port, setter=setPort:) BananaEndpoint_int port;
+@property (nonatomic, getter=port, setter=setPort:) AromaEndpoint_int port;
 #endif
 
 - (id) init;
-- (id) initWithHostname: (NSString *) hostname port: (BananaEndpoint_int) port;
+- (id) initWithHostname: (NSString *) hostname port: (AromaEndpoint_int) port;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -56,14 +56,14 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (BOOL) hostnameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_int) port;
-- (void) setPort: (BananaEndpoint_int) port;
+- (AromaEndpoint_int) port;
+- (void) setPort: (AromaEndpoint_int) port;
 #endif
 - (BOOL) portIsSet;
 
 @end
 
-@interface BananaEndpoint_HttpThriftEndpoint : NSObject <TBase, NSCoding> {
+@interface AromaEndpoint_HttpThriftEndpoint : NSObject <TBase, NSCoding> {
   NSString * __url;
 
   BOOL __url_isset;
@@ -89,7 +89,7 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@interface BananaEndpoint_HttpRestEndpoint : NSObject <TBase, NSCoding> {
+@interface AromaEndpoint_HttpRestEndpoint : NSObject <TBase, NSCoding> {
   NSString * __url;
 
   BOOL __url_isset;
@@ -115,10 +115,10 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@interface BananaEndpoint_Endpoint : NSObject <TBase, NSCoding> {
-  BananaEndpoint_TcpEndpoint * __tcp;
-  BananaEndpoint_HttpThriftEndpoint * __httpThrift;
-  BananaEndpoint_HttpRestEndpoint * __httpRest;
+@interface AromaEndpoint_Endpoint : NSObject <TBase, NSCoding> {
+  AromaEndpoint_TcpEndpoint * __tcp;
+  AromaEndpoint_HttpThriftEndpoint * __httpThrift;
+  AromaEndpoint_HttpRestEndpoint * __httpRest;
 
   BOOL __tcp_isset;
   BOOL __httpThrift_isset;
@@ -126,13 +126,13 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=tcp, setter=setTcp:) BananaEndpoint_TcpEndpoint * tcp;
-@property (nonatomic, retain, getter=httpThrift, setter=setHttpThrift:) BananaEndpoint_HttpThriftEndpoint * httpThrift;
-@property (nonatomic, retain, getter=httpRest, setter=setHttpRest:) BananaEndpoint_HttpRestEndpoint * httpRest;
+@property (nonatomic, retain, getter=tcp, setter=setTcp:) AromaEndpoint_TcpEndpoint * tcp;
+@property (nonatomic, retain, getter=httpThrift, setter=setHttpThrift:) AromaEndpoint_HttpThriftEndpoint * httpThrift;
+@property (nonatomic, retain, getter=httpRest, setter=setHttpRest:) AromaEndpoint_HttpRestEndpoint * httpRest;
 #endif
 
 - (id) init;
-- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp httpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest;
+- (id) initWithTcp: (AromaEndpoint_TcpEndpoint *) tcp httpThrift: (AromaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (AromaEndpoint_HttpRestEndpoint *) httpRest;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -140,27 +140,27 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_TcpEndpoint *) tcp;
-- (void) setTcp: (BananaEndpoint_TcpEndpoint *) tcp;
+- (AromaEndpoint_TcpEndpoint *) tcp;
+- (void) setTcp: (AromaEndpoint_TcpEndpoint *) tcp;
 #endif
 - (BOOL) tcpIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_HttpThriftEndpoint *) httpThrift;
-- (void) setHttpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift;
+- (AromaEndpoint_HttpThriftEndpoint *) httpThrift;
+- (void) setHttpThrift: (AromaEndpoint_HttpThriftEndpoint *) httpThrift;
 #endif
 - (BOOL) httpThriftIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_HttpRestEndpoint *) httpRest;
-- (void) setHttpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest;
+- (AromaEndpoint_HttpRestEndpoint *) httpRest;
+- (void) setHttpRest: (AromaEndpoint_HttpRestEndpoint *) httpRest;
 #endif
 - (BOOL) httpRestIsSet;
 
 @end
 
-@interface BananaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
-  BananaEndpoint_uuid __applicationId;
+@interface AromaEndpoint_HealthPokeRequest : NSObject <TBase, NSCoding> {
+  AromaEndpoint_uuid __applicationId;
   BananaAuthentication_ApplicationToken * __serviceToken;
 
   BOOL __applicationId_isset;
@@ -168,12 +168,12 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) BananaEndpoint_uuid applicationId;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEndpoint_uuid applicationId;
 @property (nonatomic, retain, getter=serviceToken, setter=setServiceToken:) BananaAuthentication_ApplicationToken * serviceToken;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (BananaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
+- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -181,8 +181,8 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_uuid) applicationId;
-- (void) setApplicationId: (BananaEndpoint_uuid) applicationId;
+- (AromaEndpoint_uuid) applicationId;
+- (void) setApplicationId: (AromaEndpoint_uuid) applicationId;
 #endif
 - (BOOL) applicationIdIsSet;
 
@@ -194,7 +194,7 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@interface BananaEndpoint_HealthPokeResponse : NSObject <TBase, NSCoding> {
+@interface AromaEndpoint_HealthPokeResponse : NSObject <TBase, NSCoding> {
   NSString * __message;
   BOOL __healthy;
 
@@ -229,22 +229,22 @@ typedef BananaException_OperationFailedException * BananaEndpoint_OperationFaile
 
 @end
 
-@protocol BananaEndpoint_ApplicationEndpoint <NSObject>
-- (BananaEndpoint_HealthPokeResponse *) healthPoke: (BananaEndpoint_HealthPokeRequest *) request;  // throws BananaEndpoint_OperationFailedException, TException
+@protocol AromaEndpoint_ApplicationEndpoint <NSObject>
+- (AromaEndpoint_HealthPokeResponse *) healthPoke: (AromaEndpoint_HealthPokeRequest *) request;  // throws AromaEndpoint_OperationFailedException, TException
 @end
 
-@interface BananaEndpoint_ApplicationEndpointClient : TBaseClient <BananaEndpoint_ApplicationEndpoint> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface AromaEndpoint_ApplicationEndpointClient : TBaseClient <AromaEndpoint_ApplicationEndpoint> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaEndpoint_ApplicationEndpointProcessor : NSObject <TProcessor> {
-  id <BananaEndpoint_ApplicationEndpoint> mService;
+@interface AromaEndpoint_ApplicationEndpointProcessor : NSObject <TProcessor> {
+  id <AromaEndpoint_ApplicationEndpoint> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithApplicationEndpoint: (id <BananaEndpoint_ApplicationEndpoint>) service;
-- (id<BananaEndpoint_ApplicationEndpoint>) service;
+- (id) initWithApplicationEndpoint: (id <AromaEndpoint_ApplicationEndpoint>) service;
+- (id<AromaEndpoint_ApplicationEndpoint>) service;
 @end
 
-@interface BananaEndpoint_EndpointConstants : NSObject {
+@interface AromaEndpoint_EndpointConstants : NSObject {
 }
 @end

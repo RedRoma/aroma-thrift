@@ -19,12 +19,12 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Exceptions.h"
 
 #import "Endpoint.h"
 
-@implementation BananaEndpoint_TcpEndpoint
+@implementation AromaEndpoint_TcpEndpoint
 
 - (id) init
 {
@@ -36,7 +36,7 @@
   return self;
 }
 
-- (id) initWithHostname: (NSString *) hostname port: (BananaEndpoint_int) port
+- (id) initWithHostname: (NSString *) hostname port: (AromaEndpoint_int) port
 {
   self = [super init];
   __hostname = [hostname retain_stub];
@@ -95,10 +95,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_TcpEndpoint class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_TcpEndpoint class]]) {
     return NO;
   }
-  BananaEndpoint_TcpEndpoint *other = (BananaEndpoint_TcpEndpoint *)anObject;
+  AromaEndpoint_TcpEndpoint *other = (AromaEndpoint_TcpEndpoint *)anObject;
   if ((__hostname_isset != other->__hostname_isset) ||
       (__hostname_isset && ((__hostname || other->__hostname) && ![__hostname isEqual:other->__hostname]))) {
     return NO;
@@ -225,7 +225,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_TcpEndpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_TcpEndpoint("];
   [ms appendString: @"hostname:"];
   [ms appendFormat: @"\"%@\"", __hostname];
   [ms appendString: @",port:"];
@@ -236,7 +236,7 @@
 
 @end
 
-@implementation BananaEndpoint_HttpThriftEndpoint
+@implementation AromaEndpoint_HttpThriftEndpoint
 
 - (id) init
 {
@@ -289,10 +289,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_HttpThriftEndpoint class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_HttpThriftEndpoint class]]) {
     return NO;
   }
-  BananaEndpoint_HttpThriftEndpoint *other = (BananaEndpoint_HttpThriftEndpoint *)anObject;
+  AromaEndpoint_HttpThriftEndpoint *other = (AromaEndpoint_HttpThriftEndpoint *)anObject;
   if ((__url_isset != other->__url_isset) ||
       (__url_isset && ((__url || other->__url) && ![__url isEqual:other->__url]))) {
     return NO;
@@ -381,7 +381,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HttpThriftEndpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_HttpThriftEndpoint("];
   [ms appendString: @"url:"];
   [ms appendFormat: @"\"%@\"", __url];
   [ms appendString: @")"];
@@ -390,7 +390,7 @@
 
 @end
 
-@implementation BananaEndpoint_HttpRestEndpoint
+@implementation AromaEndpoint_HttpRestEndpoint
 
 - (id) init
 {
@@ -443,10 +443,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_HttpRestEndpoint class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_HttpRestEndpoint class]]) {
     return NO;
   }
-  BananaEndpoint_HttpRestEndpoint *other = (BananaEndpoint_HttpRestEndpoint *)anObject;
+  AromaEndpoint_HttpRestEndpoint *other = (AromaEndpoint_HttpRestEndpoint *)anObject;
   if ((__url_isset != other->__url_isset) ||
       (__url_isset && ((__url || other->__url) && ![__url isEqual:other->__url]))) {
     return NO;
@@ -535,7 +535,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HttpRestEndpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_HttpRestEndpoint("];
   [ms appendString: @"url:"];
   [ms appendFormat: @"\"%@\"", __url];
   [ms appendString: @")"];
@@ -544,7 +544,7 @@
 
 @end
 
-@implementation BananaEndpoint_Endpoint
+@implementation AromaEndpoint_Endpoint
 
 - (id) init
 {
@@ -554,7 +554,7 @@
   return self;
 }
 
-- (id) initWithTcp: (BananaEndpoint_TcpEndpoint *) tcp httpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest
+- (id) initWithTcp: (AromaEndpoint_TcpEndpoint *) tcp httpThrift: (AromaEndpoint_HttpThriftEndpoint *) httpThrift httpRest: (AromaEndpoint_HttpRestEndpoint *) httpRest
 {
   self = [super init];
   __tcp = [tcp retain_stub];
@@ -629,10 +629,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_Endpoint class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_Endpoint class]]) {
     return NO;
   }
-  BananaEndpoint_Endpoint *other = (BananaEndpoint_Endpoint *)anObject;
+  AromaEndpoint_Endpoint *other = (AromaEndpoint_Endpoint *)anObject;
   if ((__tcp_isset != other->__tcp_isset) ||
       (__tcp_isset && ((__tcp || other->__tcp) && ![__tcp isEqual:other->__tcp]))) {
     return NO;
@@ -656,11 +656,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEndpoint_TcpEndpoint *) tcp {
+- (AromaEndpoint_TcpEndpoint *) tcp {
   return [[__tcp retain_stub] autorelease_stub];
 }
 
-- (void) setTcp: (BananaEndpoint_TcpEndpoint *) tcp {
+- (void) setTcp: (AromaEndpoint_TcpEndpoint *) tcp {
   [tcp retain_stub];
   [__tcp release_stub];
   __tcp = tcp;
@@ -677,11 +677,11 @@
   __tcp_isset = NO;
 }
 
-- (BananaEndpoint_HttpThriftEndpoint *) httpThrift {
+- (AromaEndpoint_HttpThriftEndpoint *) httpThrift {
   return [[__httpThrift retain_stub] autorelease_stub];
 }
 
-- (void) setHttpThrift: (BananaEndpoint_HttpThriftEndpoint *) httpThrift {
+- (void) setHttpThrift: (AromaEndpoint_HttpThriftEndpoint *) httpThrift {
   [httpThrift retain_stub];
   [__httpThrift release_stub];
   __httpThrift = httpThrift;
@@ -698,11 +698,11 @@
   __httpThrift_isset = NO;
 }
 
-- (BananaEndpoint_HttpRestEndpoint *) httpRest {
+- (AromaEndpoint_HttpRestEndpoint *) httpRest {
   return [[__httpRest retain_stub] autorelease_stub];
 }
 
-- (void) setHttpRest: (BananaEndpoint_HttpRestEndpoint *) httpRest {
+- (void) setHttpRest: (AromaEndpoint_HttpRestEndpoint *) httpRest {
   [httpRest retain_stub];
   [__httpRest release_stub];
   __httpRest = httpRest;
@@ -736,7 +736,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_TcpEndpoint *fieldValue = [[BananaEndpoint_TcpEndpoint alloc] init];
+          AromaEndpoint_TcpEndpoint *fieldValue = [[AromaEndpoint_TcpEndpoint alloc] init];
           [fieldValue read: inProtocol];
           [self setTcp: fieldValue];
           [fieldValue release_stub];
@@ -746,7 +746,7 @@
         break;
       case 2:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_HttpThriftEndpoint *fieldValue = [[BananaEndpoint_HttpThriftEndpoint alloc] init];
+          AromaEndpoint_HttpThriftEndpoint *fieldValue = [[AromaEndpoint_HttpThriftEndpoint alloc] init];
           [fieldValue read: inProtocol];
           [self setHttpThrift: fieldValue];
           [fieldValue release_stub];
@@ -756,7 +756,7 @@
         break;
       case 3:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_HttpRestEndpoint *fieldValue = [[BananaEndpoint_HttpRestEndpoint alloc] init];
+          AromaEndpoint_HttpRestEndpoint *fieldValue = [[AromaEndpoint_HttpRestEndpoint alloc] init];
           [fieldValue read: inProtocol];
           [self setHttpRest: fieldValue];
           [fieldValue release_stub];
@@ -805,7 +805,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_Endpoint("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_Endpoint("];
   [ms appendString: @"tcp:"];
   [ms appendFormat: @"%@", __tcp];
   [ms appendString: @",httpThrift:"];
@@ -818,7 +818,7 @@
 
 @end
 
-@implementation BananaEndpoint_HealthPokeRequest
+@implementation AromaEndpoint_HealthPokeRequest
 
 - (id) init
 {
@@ -828,7 +828,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (BananaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken
+- (id) initWithApplicationId: (AromaEndpoint_uuid) applicationId serviceToken: (BananaAuthentication_ApplicationToken *) serviceToken
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -887,10 +887,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_HealthPokeRequest class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_HealthPokeRequest class]]) {
     return NO;
   }
-  BananaEndpoint_HealthPokeRequest *other = (BananaEndpoint_HealthPokeRequest *)anObject;
+  AromaEndpoint_HealthPokeRequest *other = (AromaEndpoint_HealthPokeRequest *)anObject;
   if ((__applicationId_isset != other->__applicationId_isset) ||
       (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
     return NO;
@@ -1018,7 +1018,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HealthPokeRequest("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_HealthPokeRequest("];
   [ms appendString: @"applicationId:"];
   [ms appendFormat: @"\"%@\"", __applicationId];
   [ms appendString: @",serviceToken:"];
@@ -1029,7 +1029,7 @@
 
 @end
 
-@implementation BananaEndpoint_HealthPokeResponse
+@implementation AromaEndpoint_HealthPokeResponse
 
 - (id) init
 {
@@ -1098,10 +1098,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_HealthPokeResponse class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_HealthPokeResponse class]]) {
     return NO;
   }
-  BananaEndpoint_HealthPokeResponse *other = (BananaEndpoint_HealthPokeResponse *)anObject;
+  AromaEndpoint_HealthPokeResponse *other = (AromaEndpoint_HealthPokeResponse *)anObject;
   if ((__message_isset != other->__message_isset) ||
       (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
     return NO;
@@ -1220,7 +1220,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HealthPokeResponse("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_HealthPokeResponse("];
   [ms appendString: @"message:"];
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",healthy:"];
@@ -1232,23 +1232,23 @@
 @end
 
 
-@implementation BananaEndpoint_EndpointConstants
+@implementation AromaEndpoint_EndpointConstants
 + (void) initialize {
 }
 @end
 
-@interface BananaEndpoint_healthPoke_args : NSObject <TBase, NSCoding> {
-  BananaEndpoint_HealthPokeRequest * __request;
+@interface AromaEndpoint_healthPoke_args : NSObject <TBase, NSCoding> {
+  AromaEndpoint_HealthPokeRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) BananaEndpoint_HealthPokeRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) AromaEndpoint_HealthPokeRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (BananaEndpoint_HealthPokeRequest *) request;
+- (id) initWithRequest: (AromaEndpoint_HealthPokeRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1256,14 +1256,14 @@
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_HealthPokeRequest *) request;
-- (void) setRequest: (BananaEndpoint_HealthPokeRequest *) request;
+- (AromaEndpoint_HealthPokeRequest *) request;
+- (void) setRequest: (AromaEndpoint_HealthPokeRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation BananaEndpoint_healthPoke_args
+@implementation AromaEndpoint_healthPoke_args
 
 - (id) init
 {
@@ -1273,7 +1273,7 @@
   return self;
 }
 
-- (id) initWithRequest: (BananaEndpoint_HealthPokeRequest *) request
+- (id) initWithRequest: (AromaEndpoint_HealthPokeRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -1316,10 +1316,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_healthPoke_args class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_healthPoke_args class]]) {
     return NO;
   }
-  BananaEndpoint_healthPoke_args *other = (BananaEndpoint_healthPoke_args *)anObject;
+  AromaEndpoint_healthPoke_args *other = (AromaEndpoint_healthPoke_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -1333,11 +1333,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEndpoint_HealthPokeRequest *) request {
+- (AromaEndpoint_HealthPokeRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (BananaEndpoint_HealthPokeRequest *) request {
+- (void) setRequest: (AromaEndpoint_HealthPokeRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -1371,7 +1371,7 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_HealthPokeRequest *fieldValue = [[BananaEndpoint_HealthPokeRequest alloc] init];
+          AromaEndpoint_HealthPokeRequest *fieldValue = [[AromaEndpoint_HealthPokeRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -1406,7 +1406,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_healthPoke_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_healthPoke_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -1415,21 +1415,21 @@
 
 @end
 
-@interface BananaEndpoint_HealthPoke_result : NSObject <TBase, NSCoding> {
-  BananaEndpoint_HealthPokeResponse * __success;
-  BananaEndpoint_OperationFailedException __ex1;
+@interface AromaEndpoint_HealthPoke_result : NSObject <TBase, NSCoding> {
+  AromaEndpoint_HealthPokeResponse * __success;
+  AromaEndpoint_OperationFailedException __ex1;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) BananaEndpoint_HealthPokeResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) BananaEndpoint_OperationFailedException ex1;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) AromaEndpoint_HealthPokeResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) AromaEndpoint_OperationFailedException ex1;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (BananaEndpoint_HealthPokeResponse *) success ex1: (BananaEndpoint_OperationFailedException) ex1;
+- (id) initWithSuccess: (AromaEndpoint_HealthPokeResponse *) success ex1: (AromaEndpoint_OperationFailedException) ex1;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -1437,20 +1437,20 @@
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_HealthPokeResponse *) success;
-- (void) setSuccess: (BananaEndpoint_HealthPokeResponse *) success;
+- (AromaEndpoint_HealthPokeResponse *) success;
+- (void) setSuccess: (AromaEndpoint_HealthPokeResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_OperationFailedException) ex1;
-- (void) setEx1: (BananaEndpoint_OperationFailedException) ex1;
+- (AromaEndpoint_OperationFailedException) ex1;
+- (void) setEx1: (AromaEndpoint_OperationFailedException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 @end
 
-@implementation BananaEndpoint_HealthPoke_result
+@implementation AromaEndpoint_HealthPoke_result
 
 - (id) init
 {
@@ -1460,7 +1460,7 @@
   return self;
 }
 
-- (id) initWithSuccess: (BananaEndpoint_HealthPokeResponse *) success ex1: (BananaEndpoint_OperationFailedException) ex1
+- (id) initWithSuccess: (AromaEndpoint_HealthPokeResponse *) success ex1: (AromaEndpoint_OperationFailedException) ex1
 {
   self = [super init];
   __success = [success retain_stub];
@@ -1519,10 +1519,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[BananaEndpoint_HealthPoke_result class]]) {
+  if (![anObject isKindOfClass:[AromaEndpoint_HealthPoke_result class]]) {
     return NO;
   }
-  BananaEndpoint_HealthPoke_result *other = (BananaEndpoint_HealthPoke_result *)anObject;
+  AromaEndpoint_HealthPoke_result *other = (AromaEndpoint_HealthPoke_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -1541,11 +1541,11 @@
   [super dealloc_stub];
 }
 
-- (BananaEndpoint_HealthPokeResponse *) success {
+- (AromaEndpoint_HealthPokeResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (BananaEndpoint_HealthPokeResponse *) success {
+- (void) setSuccess: (AromaEndpoint_HealthPokeResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -1562,11 +1562,11 @@
   __success_isset = NO;
 }
 
-- (BananaException_OperationFailedException *) ex1 {
+- (AromaException_OperationFailedException *) ex1 {
   return [[__ex1 retain_stub] autorelease_stub];
 }
 
-- (void) setEx1: (BananaException_OperationFailedException *) ex1 {
+- (void) setEx1: (AromaException_OperationFailedException *) ex1 {
   [ex1 retain_stub];
   [__ex1 release_stub];
   __ex1 = ex1;
@@ -1600,7 +1600,7 @@
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          BananaEndpoint_HealthPokeResponse *fieldValue = [[BananaEndpoint_HealthPokeResponse alloc] init];
+          AromaEndpoint_HealthPokeResponse *fieldValue = [[AromaEndpoint_HealthPokeResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -1610,7 +1610,7 @@
         break;
       case 1:
         if (fieldType == TType_STRUCT) {
-          BananaException_OperationFailedException *fieldValue = [[BananaException_OperationFailedException alloc] init];
+          AromaException_OperationFailedException *fieldValue = [[AromaException_OperationFailedException alloc] init];
           [fieldValue read: inProtocol];
           [self setEx1: fieldValue];
           [fieldValue release_stub];
@@ -1652,7 +1652,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"BananaEndpoint_HealthPoke_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEndpoint_HealthPoke_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -1663,7 +1663,7 @@
 
 @end
 
-@implementation BananaEndpoint_ApplicationEndpointClient
+@implementation AromaEndpoint_ApplicationEndpointClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -1677,7 +1677,7 @@
   return self;
 }
 
-- (void) send_healthPoke: (BananaEndpoint_HealthPokeRequest *) request
+- (void) send_healthPoke: (AromaEndpoint_HealthPokeRequest *) request
 {
   [outProtocol writeMessageBeginWithName: @"healthPoke" type: TMessageType_CALL sequenceID: 0];
   [outProtocol writeStructBeginWithName: @"healthPoke_args"];
@@ -1691,13 +1691,13 @@
   [outProtocol writeMessageEnd];
 }
 
-- (BananaEndpoint_HealthPokeResponse *) recv_healthPoke
+- (AromaEndpoint_HealthPokeResponse *) recv_healthPoke
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  BananaEndpoint_HealthPoke_result * result = [[[BananaEndpoint_HealthPoke_result alloc] init] autorelease_stub];
+  AromaEndpoint_HealthPoke_result * result = [[[AromaEndpoint_HealthPoke_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -1710,7 +1710,7 @@
                                            reason: @"healthPoke failed: unknown result"];
 }
 
-- (BananaEndpoint_HealthPokeResponse *) healthPoke: (BananaEndpoint_HealthPokeRequest *) request
+- (AromaEndpoint_HealthPokeResponse *) healthPoke: (AromaEndpoint_HealthPokeRequest *) request
 {
   [self send_healthPoke : request];
   [[outProtocol transport] flush];
@@ -1719,9 +1719,9 @@
 
 @end
 
-@implementation BananaEndpoint_ApplicationEndpointProcessor
+@implementation AromaEndpoint_ApplicationEndpointProcessor
 
-- (id) initWithApplicationEndpoint: (id <BananaEndpoint_ApplicationEndpoint>) service
+- (id) initWithApplicationEndpoint: (id <AromaEndpoint_ApplicationEndpoint>) service
 {
 self = [super init];
 if (!self) {
@@ -1740,7 +1740,7 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
 return self;
 }
 
-- (id<BananaEndpoint_ApplicationEndpoint>) service
+- (id<AromaEndpoint_ApplicationEndpoint>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }
@@ -1780,10 +1780,10 @@ return self;
 
 - (void) process_healthPoke_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-BananaEndpoint_healthPoke_args * args = [[BananaEndpoint_healthPoke_args alloc] init];
+AromaEndpoint_healthPoke_args * args = [[AromaEndpoint_healthPoke_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-BananaEndpoint_HealthPoke_result * result = [[BananaEndpoint_HealthPoke_result alloc] init];
+AromaEndpoint_HealthPoke_result * result = [[AromaEndpoint_HealthPoke_result alloc] init];
 [result setSuccess: [mService healthPoke: [args request]]];
 [outProtocol writeMessageBeginWithName: @"healthPoke"
                                   type: TMessageType_REPLY

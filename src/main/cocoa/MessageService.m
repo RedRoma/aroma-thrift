@@ -19,49 +19,49 @@
 #import "TBaseClient.h"
 
 #import "Authentication.h"
-#import "Banana.h"
+#import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
 #import "Events.h"
 #import "Exceptions.h"
 #import "ApplicationService.h"
-#import "BananaService.h"
+#import "AromaService.h"
 
 #import "MessageService.h"
 
 static MessageService_int MessageService_SERVICE_PORT = 7011;
-static BananaEndpoint_TcpEndpoint * MessageService_PRODUCTION_ENDPOINT;
-static BananaEndpoint_TcpEndpoint * MessageService_BETA_ENDPOINT;
-static Banana_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
+static AromaEndpoint_TcpEndpoint * MessageService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * MessageService_BETA_ENDPOINT;
+static Aroma_LengthOfTime * MessageService_DEFAULT_MESSAGE_LIFETIME;
 
 @implementation MessageService_MessageServiceConstants
 + (void) initialize {
-  MessageService_PRODUCTION_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [MessageService_PRODUCTION_ENDPOINT setHostname:@"message-srv.banana.aroma.tech"];
+  MessageService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [MessageService_PRODUCTION_ENDPOINT setHostname:@"message-srv.aroma.tech"];
   [MessageService_PRODUCTION_ENDPOINT setPort:7011];
 
 ;
-  MessageService_BETA_ENDPOINT = [[BananaEndpoint_TcpEndpoint alloc] init];
-  [MessageService_BETA_ENDPOINT setHostname:@"message-srv.beta.banana.aroma.tech"];
+  MessageService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [MessageService_BETA_ENDPOINT setHostname:@"message-srv.beta.aroma.tech"];
   [MessageService_BETA_ENDPOINT setPort:7011];
 
 ;
-  MessageService_DEFAULT_MESSAGE_LIFETIME = [[Banana_LengthOfTime alloc] init];
+  MessageService_DEFAULT_MESSAGE_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [MessageService_DEFAULT_MESSAGE_LIFETIME setValue:1];
-  [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:4];
+  [MessageService_DEFAULT_MESSAGE_LIFETIME setUnit:5];
 
 ;
 }
 + (MessageService_int) SERVICE_PORT{
   return MessageService_SERVICE_PORT;
 }
-+ (BananaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
   return MessageService_PRODUCTION_ENDPOINT;
 }
-+ (BananaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return MessageService_BETA_ENDPOINT;
 }
-+ (Banana_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME{
++ (Aroma_LengthOfTime *) DEFAULT_MESSAGE_LIFETIME{
   return MessageService_DEFAULT_MESSAGE_LIFETIME;
 }
 @end

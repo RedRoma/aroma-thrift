@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 
 
 var ttypes = module.exports = {};
@@ -23,7 +23,7 @@ ApplicationTokenRenewed = module.exports.ApplicationTokenRenewed = function(args
       this.message = args.message;
     }
     if (args.user !== undefined && args.user !== null) {
-      this.user = new Banana_ttypes.User(args.user);
+      this.user = new Aroma_ttypes.User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -59,7 +59,7 @@ ApplicationTokenRenewed.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.user = new Banana_ttypes.User();
+        this.user = new Aroma_ttypes.User();
         this.user.read(input);
       } else {
         input.skip(ftype);
@@ -139,7 +139,7 @@ ApplicationTokenRegenerated = module.exports.ApplicationTokenRegenerated = funct
       this.message = args.message;
     }
     if (args.user !== undefined && args.user !== null) {
-      this.user = new Banana_ttypes.User(args.user);
+      this.user = new Aroma_ttypes.User(args.user);
     }
     if (args.applicationToken !== undefined && args.applicationToken !== null) {
       this.applicationToken = new Authentication_ttypes.ApplicationToken(args.applicationToken);
@@ -175,7 +175,7 @@ ApplicationTokenRegenerated.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.user = new Banana_ttypes.User();
+        this.user = new Aroma_ttypes.User();
         this.user.read(input);
       } else {
         input.skip(ftype);
@@ -254,7 +254,7 @@ ApplicationSentMessage = module.exports.ApplicationSentMessage = function(args) 
       this.message = args.message;
     }
     if (args.messageSentByApplication !== undefined && args.messageSentByApplication !== null) {
-      this.messageSentByApplication = new Banana_ttypes.Message(args.messageSentByApplication);
+      this.messageSentByApplication = new Aroma_ttypes.Message(args.messageSentByApplication);
     }
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -287,7 +287,7 @@ ApplicationSentMessage.prototype.read = function(input) {
       break;
       case 2:
       if (ftype == Thrift.Type.STRUCT) {
-        this.messageSentByApplication = new Banana_ttypes.Message();
+        this.messageSentByApplication = new Aroma_ttypes.Message();
         this.messageSentByApplication.read(input);
       } else {
         input.skip(ftype);
@@ -539,7 +539,7 @@ OwnerApprovedRequest = module.exports.OwnerApprovedRequest = function(args) {
       this.applicationName = args.applicationName;
     }
     if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new Banana_ttypes.User(args.owner);
+      this.owner = new Aroma_ttypes.User(args.owner);
     }
   }
 };
@@ -580,7 +580,7 @@ OwnerApprovedRequest.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new Banana_ttypes.User();
+        this.owner = new Aroma_ttypes.User();
         this.owner.read(input);
       } else {
         input.skip(ftype);
@@ -635,10 +635,10 @@ UserFollowedApplication = module.exports.UserFollowedApplication = function(args
       this.applicationId = args.applicationId;
     }
     if (args.follower !== undefined && args.follower !== null) {
-      this.follower = new Banana_ttypes.User(args.follower);
+      this.follower = new Aroma_ttypes.User(args.follower);
     }
     if (args.owner !== undefined && args.owner !== null) {
-      this.owner = new Banana_ttypes.User(args.owner);
+      this.owner = new Aroma_ttypes.User(args.owner);
     }
   }
 };
@@ -672,7 +672,7 @@ UserFollowedApplication.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.STRUCT) {
-        this.follower = new Banana_ttypes.User();
+        this.follower = new Aroma_ttypes.User();
         this.follower.read(input);
       } else {
         input.skip(ftype);
@@ -680,7 +680,7 @@ UserFollowedApplication.prototype.read = function(input) {
       break;
       case 4:
       if (ftype == Thrift.Type.STRUCT) {
-        this.owner = new Banana_ttypes.User();
+        this.owner = new Aroma_ttypes.User();
         this.owner.read(input);
       } else {
         input.skip(ftype);

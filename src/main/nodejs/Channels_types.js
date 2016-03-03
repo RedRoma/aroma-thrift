@@ -7,7 +7,7 @@ var thrift = require('thrift');
 var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
@@ -179,7 +179,7 @@ SlackUsername.prototype.write = function(output) {
 
 Email = module.exports.Email = function(args) {
   this.emailAddress = null;
-  this.subject = 'Banana Service - New Message';
+  this.subject = 'Aroma - New Message';
   if (args) {
     if (args.emailAddress !== undefined && args.emailAddress !== null) {
       this.emailAddress = args.emailAddress;
@@ -297,7 +297,7 @@ CustomChannel.prototype.write = function(output) {
   return;
 };
 
-BananaChannel = module.exports.BananaChannel = function(args) {
+AromaChannel = module.exports.AromaChannel = function(args) {
   this.slackChannel = null;
   this.slackUsername = null;
   this.email = null;
@@ -317,8 +317,8 @@ BananaChannel = module.exports.BananaChannel = function(args) {
     }
   }
 };
-BananaChannel.prototype = {};
-BananaChannel.prototype.read = function(input) {
+AromaChannel.prototype = {};
+AromaChannel.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -372,8 +372,8 @@ BananaChannel.prototype.read = function(input) {
   return;
 };
 
-BananaChannel.prototype.write = function(output) {
-  output.writeStructBegin('BananaChannel');
+AromaChannel.prototype.write = function(output) {
+  output.writeStructBegin('AromaChannel');
   if (this.slackChannel !== null && this.slackChannel !== undefined) {
     output.writeFieldBegin('slackChannel', Thrift.Type.STRUCT, 1);
     this.slackChannel.write(output);
@@ -404,7 +404,7 @@ ChannelInfo = module.exports.ChannelInfo = function(args) {
   this.timeRegistered = null;
   if (args) {
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new ttypes.BananaChannel(args.channel);
+      this.channel = new ttypes.AromaChannel(args.channel);
     }
     if (args.timeRegistered !== undefined && args.timeRegistered !== null) {
       this.timeRegistered = args.timeRegistered;
@@ -427,7 +427,7 @@ ChannelInfo.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new ttypes.BananaChannel();
+        this.channel = new ttypes.AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);
@@ -470,7 +470,7 @@ ReceiveMessageRequest = module.exports.ReceiveMessageRequest = function(args) {
   this.message = null;
   if (args) {
     if (args.message !== undefined && args.message !== null) {
-      this.message = new Banana_ttypes.Message(args.message);
+      this.message = new Aroma_ttypes.Message(args.message);
     }
   }
 };
@@ -490,7 +490,7 @@ ReceiveMessageRequest.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.message = new Banana_ttypes.Message();
+        this.message = new Aroma_ttypes.Message();
         this.message.read(input);
       } else {
         input.skip(ftype);

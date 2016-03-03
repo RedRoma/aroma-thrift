@@ -18,17 +18,17 @@
 #import "TProtocolFactory.h"
 #import "TBaseClient.h"
 
-#import "Banana.h"
+#import "Aroma.h"
 #import "Endpoint.h"
 #import "Exceptions.h"
 
-typedef Banana_int BananaChannels_int;
+typedef Aroma_int AromaChannels_int;
 
-typedef Banana_long BananaChannels_long;
+typedef Aroma_long AromaChannels_long;
 
-typedef Banana_timestamp BananaChannels_timestamp;
+typedef Aroma_timestamp AromaChannels_timestamp;
 
-@interface BananaChannels_SlackChannel : NSObject <TBase, NSCoding> {
+@interface AromaChannels_SlackChannel : NSObject <TBase, NSCoding> {
   NSString * __domainName;
   NSString * __channelName;
   NSString * __slackToken;
@@ -72,7 +72,7 @@ typedef Banana_timestamp BananaChannels_timestamp;
 
 @end
 
-@interface BananaChannels_SlackUsername : NSObject <TBase, NSCoding> {
+@interface AromaChannels_SlackUsername : NSObject <TBase, NSCoding> {
   NSString * __domainName;
   NSString * __username;
   NSString * __slackToken;
@@ -116,7 +116,7 @@ typedef Banana_timestamp BananaChannels_timestamp;
 
 @end
 
-@interface BananaChannels_Email : NSObject <TBase, NSCoding> {
+@interface AromaChannels_Email : NSObject <TBase, NSCoding> {
   NSString * __emailAddress;
   NSString * __subject;
 
@@ -151,18 +151,18 @@ typedef Banana_timestamp BananaChannels_timestamp;
 
 @end
 
-@interface BananaChannels_CustomChannel : NSObject <TBase, NSCoding> {
-  BananaEndpoint_Endpoint * __endpoint;
+@interface AromaChannels_CustomChannel : NSObject <TBase, NSCoding> {
+  AromaEndpoint_Endpoint * __endpoint;
 
   BOOL __endpoint_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) BananaEndpoint_Endpoint * endpoint;
+@property (nonatomic, retain, getter=endpoint, setter=setEndpoint:) AromaEndpoint_Endpoint * endpoint;
 #endif
 
 - (id) init;
-- (id) initWithEndpoint: (BananaEndpoint_Endpoint *) endpoint;
+- (id) initWithEndpoint: (AromaEndpoint_Endpoint *) endpoint;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -170,18 +170,18 @@ typedef Banana_timestamp BananaChannels_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaEndpoint_Endpoint *) endpoint;
-- (void) setEndpoint: (BananaEndpoint_Endpoint *) endpoint;
+- (AromaEndpoint_Endpoint *) endpoint;
+- (void) setEndpoint: (AromaEndpoint_Endpoint *) endpoint;
 #endif
 - (BOOL) endpointIsSet;
 
 @end
 
-@interface BananaChannels_BananaChannel : NSObject <TBase, NSCoding> {
-  BananaChannels_SlackChannel * __slackChannel;
-  BananaChannels_SlackUsername * __slackUsername;
-  BananaChannels_Email * __email;
-  BananaChannels_CustomChannel * __customChannel;
+@interface AromaChannels_AromaChannel : NSObject <TBase, NSCoding> {
+  AromaChannels_SlackChannel * __slackChannel;
+  AromaChannels_SlackUsername * __slackUsername;
+  AromaChannels_Email * __email;
+  AromaChannels_CustomChannel * __customChannel;
 
   BOOL __slackChannel_isset;
   BOOL __slackUsername_isset;
@@ -190,14 +190,14 @@ typedef Banana_timestamp BananaChannels_timestamp;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=slackChannel, setter=setSlackChannel:) BananaChannels_SlackChannel * slackChannel;
-@property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) BananaChannels_SlackUsername * slackUsername;
-@property (nonatomic, retain, getter=email, setter=setEmail:) BananaChannels_Email * email;
-@property (nonatomic, retain, getter=customChannel, setter=setCustomChannel:) BananaChannels_CustomChannel * customChannel;
+@property (nonatomic, retain, getter=slackChannel, setter=setSlackChannel:) AromaChannels_SlackChannel * slackChannel;
+@property (nonatomic, retain, getter=slackUsername, setter=setSlackUsername:) AromaChannels_SlackUsername * slackUsername;
+@property (nonatomic, retain, getter=email, setter=setEmail:) AromaChannels_Email * email;
+@property (nonatomic, retain, getter=customChannel, setter=setCustomChannel:) AromaChannels_CustomChannel * customChannel;
 #endif
 
 - (id) init;
-- (id) initWithSlackChannel: (BananaChannels_SlackChannel *) slackChannel slackUsername: (BananaChannels_SlackUsername *) slackUsername email: (BananaChannels_Email *) email customChannel: (BananaChannels_CustomChannel *) customChannel;
+- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -205,46 +205,46 @@ typedef Banana_timestamp BananaChannels_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_SlackChannel *) slackChannel;
-- (void) setSlackChannel: (BananaChannels_SlackChannel *) slackChannel;
+- (AromaChannels_SlackChannel *) slackChannel;
+- (void) setSlackChannel: (AromaChannels_SlackChannel *) slackChannel;
 #endif
 - (BOOL) slackChannelIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_SlackUsername *) slackUsername;
-- (void) setSlackUsername: (BananaChannels_SlackUsername *) slackUsername;
+- (AromaChannels_SlackUsername *) slackUsername;
+- (void) setSlackUsername: (AromaChannels_SlackUsername *) slackUsername;
 #endif
 - (BOOL) slackUsernameIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_Email *) email;
-- (void) setEmail: (BananaChannels_Email *) email;
+- (AromaChannels_Email *) email;
+- (void) setEmail: (AromaChannels_Email *) email;
 #endif
 - (BOOL) emailIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_CustomChannel *) customChannel;
-- (void) setCustomChannel: (BananaChannels_CustomChannel *) customChannel;
+- (AromaChannels_CustomChannel *) customChannel;
+- (void) setCustomChannel: (AromaChannels_CustomChannel *) customChannel;
 #endif
 - (BOOL) customChannelIsSet;
 
 @end
 
-@interface BananaChannels_ChannelInfo : NSObject <TBase, NSCoding> {
-  BananaChannels_BananaChannel * __channel;
-  BananaChannels_timestamp __timeRegistered;
+@interface AromaChannels_ChannelInfo : NSObject <TBase, NSCoding> {
+  AromaChannels_AromaChannel * __channel;
+  AromaChannels_timestamp __timeRegistered;
 
   BOOL __channel_isset;
   BOOL __timeRegistered_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=channel, setter=setChannel:) BananaChannels_BananaChannel * channel;
-@property (nonatomic, getter=timeRegistered, setter=setTimeRegistered:) BananaChannels_timestamp timeRegistered;
+@property (nonatomic, retain, getter=channel, setter=setChannel:) AromaChannels_AromaChannel * channel;
+@property (nonatomic, getter=timeRegistered, setter=setTimeRegistered:) AromaChannels_timestamp timeRegistered;
 #endif
 
 - (id) init;
-- (id) initWithChannel: (BananaChannels_BananaChannel *) channel timeRegistered: (BananaChannels_timestamp) timeRegistered;
+- (id) initWithChannel: (AromaChannels_AromaChannel *) channel timeRegistered: (AromaChannels_timestamp) timeRegistered;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -252,31 +252,31 @@ typedef Banana_timestamp BananaChannels_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_BananaChannel *) channel;
-- (void) setChannel: (BananaChannels_BananaChannel *) channel;
+- (AromaChannels_AromaChannel *) channel;
+- (void) setChannel: (AromaChannels_AromaChannel *) channel;
 #endif
 - (BOOL) channelIsSet;
 
 #if !__has_feature(objc_arc)
-- (BananaChannels_timestamp) timeRegistered;
-- (void) setTimeRegistered: (BananaChannels_timestamp) timeRegistered;
+- (AromaChannels_timestamp) timeRegistered;
+- (void) setTimeRegistered: (AromaChannels_timestamp) timeRegistered;
 #endif
 - (BOOL) timeRegisteredIsSet;
 
 @end
 
-@interface BananaChannels_ReceiveMessageRequest : NSObject <TBase, NSCoding> {
-  Banana_Message * __message;
+@interface AromaChannels_ReceiveMessageRequest : NSObject <TBase, NSCoding> {
+  Aroma_Message * __message;
 
   BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) Banana_Message * message;
+@property (nonatomic, retain, getter=message, setter=setMessage:) Aroma_Message * message;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (Banana_Message *) message;
+- (id) initWithMessage: (Aroma_Message *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -284,30 +284,30 @@ typedef Banana_timestamp BananaChannels_timestamp;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (Banana_Message *) message;
-- (void) setMessage: (Banana_Message *) message;
+- (Aroma_Message *) message;
+- (void) setMessage: (Aroma_Message *) message;
 #endif
 - (BOOL) messageIsSet;
 
 @end
 
-@protocol BananaChannels_CustomBananaChannel <NSObject>
-- (BananaChannels_int) ping;  // throws TException
-- (void) receiveMessage: (BananaChannels_ReceiveMessageRequest *) request;  // throws TException
+@protocol AromaChannels_CustomAromaChannel <NSObject>
+- (AromaChannels_int) ping;  // throws TException
+- (void) receiveMessage: (AromaChannels_ReceiveMessageRequest *) request;  // throws TException
 @end
 
-@interface BananaChannels_CustomBananaChannelClient : TBaseClient <BananaChannels_CustomBananaChannel> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface AromaChannels_CustomAromaChannelClient : TBaseClient <AromaChannels_CustomAromaChannel> - (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
-@interface BananaChannels_CustomBananaChannelProcessor : NSObject <TProcessor> {
-  id <BananaChannels_CustomBananaChannel> mService;
+@interface AromaChannels_CustomAromaChannelProcessor : NSObject <TProcessor> {
+  id <AromaChannels_CustomAromaChannel> mService;
   NSDictionary * mMethodMap;
 }
-- (id) initWithCustomBananaChannel: (id <BananaChannels_CustomBananaChannel>) service;
-- (id<BananaChannels_CustomBananaChannel>) service;
+- (id) initWithCustomAromaChannel: (id <AromaChannels_CustomAromaChannel>) service;
+- (id<AromaChannels_CustomAromaChannel>) service;
 @end
 
-@interface BananaChannels_ChannelsConstants : NSObject {
+@interface AromaChannels_ChannelsConstants : NSObject {
 }
 @end

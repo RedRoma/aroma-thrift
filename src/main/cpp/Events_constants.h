@@ -9,7 +9,7 @@
 
 #include "Events_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace events {
+namespace aroma { namespace thrift { namespace events {
 
 class EventsConstants {
  public:
@@ -19,6 +19,6 @@ class EventsConstants {
 
 extern const EventsConstants g_Events_constants;
 
-}}}} // namespace
+}}} // namespace
 
 #endif

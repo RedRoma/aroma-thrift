@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Channels_ttypes = require('./Channels_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Events_ttypes = require('./Events_types')
@@ -74,7 +74,7 @@ SendNotificationRequest.prototype.read = function(input) {
         for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
           var elem6 = null;
-          elem6 = new Channels_ttypes.BananaChannel();
+          elem6 = new Channels_ttypes.AromaChannel();
           elem6.read(input);
           this.channels.push(elem6);
         }
@@ -178,6 +178,6 @@ SendNotificationResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7009;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.banana.aroma.tech','port' : 7009});
+'hostname' : 'notification-srv.aroma.tech','port' : 7009});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'notification-srv.beta.banana.aroma.tech','port' : 7009});
+'hostname' : 'notification-srv.beta.aroma.tech','port' : 7009});

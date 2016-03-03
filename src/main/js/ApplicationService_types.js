@@ -223,6 +223,6 @@ SendMessageResponse.prototype.write = function(output) {
 
 SERVICE_PORT = 7002;
 PRODUCTION_ENDPOINT = new TcpEndpoint({
-'hostname' : 'application-srv.banana.aroma.tech','port' : 7002});
+'hostname' : 'application-srv.aroma.tech','port' : 7002});
 BETA_ENDPOINT = new TcpEndpoint({
-'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7002});
+'hostname' : 'application-srv.beta.aroma.tech','port' : 7002});

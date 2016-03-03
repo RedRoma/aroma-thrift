@@ -6,7 +6,7 @@
  */
 #include "NotificationService.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace notification { namespace service {
 
 
 NotificationService_getApiVersion_args::~NotificationService_getApiVersion_args() throw() {
@@ -867,5 +867,5 @@ void NotificationServiceConcurrentClient::recv_sendNotification(SendNotification
   } // end while(true)
 }
 
-}}}}} // namespace
+}}}} // namespace
 

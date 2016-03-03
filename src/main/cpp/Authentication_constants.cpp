@@ -6,7 +6,7 @@
  */
 #include "Authentication_constants.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication {
+namespace aroma { namespace thrift { namespace authentication {
 
 const AuthenticationConstants g_Authentication_constants;
 
@@ -15,5 +15,5 @@ AuthenticationConstants::AuthenticationConstants() {
 
 }
 
-}}}} // namespace
+}}} // namespace
 

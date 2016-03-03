@@ -239,16 +239,16 @@ code { line-height: 20px; }
 </tr></table>
 <hr/><h2 id="Constants">Constants</h2>
 <table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7011</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "message-srv.banana.aroma.tech", port = 7011 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "message-srv.beta.banana.aroma.tech", port = 7011 }</code></td></tr><tr id="Const_DEFAULT_MESSAGE_LIFETIME"><td><code>DEFAULT_MESSAGE_LIFETIME</code></td><td><code><a href="Banana.html#Struct_LengthOfTime">Banana.LengthOfTime</a></code></td><td><code>{ value = 1, unit = <code><a href="#Const_Banana.TimeUnit.DAYS">Banana.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The Default lifetime of a Regular Message sent to the Banana Service.
+<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7011</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "message-srv.aroma.tech", port = 7011 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "message-srv.beta.aroma.tech", port = 7011 }</code></td></tr><tr id="Const_DEFAULT_MESSAGE_LIFETIME"><td><code>DEFAULT_MESSAGE_LIFETIME</code></td><td><code><a href="Aroma.html#Struct_LengthOfTime">Aroma.LengthOfTime</a></code></td><td><code>{ value = 1, unit = <code><a href="#Const_Aroma.TimeUnit.DAYS">Aroma.TimeUnit.DAYS</a></code> }</code></td></tr><tr><td colspan="3"><blockquote>The Default lifetime of a Regular Message sent to Aroma.
 <br/></blockquote></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_int">Banana.int</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_long">Typedef: long</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_long">Banana.long</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_long">Aroma.long</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Typedef_timestamp">Banana.timestamp</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_ApplicationToken">Typedef: ApplicationToken</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_ApplicationToken">Authentication.ApplicationToken</a></code></p>
@@ -260,10 +260,10 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_UserToken">Authentication.UserToken</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Struct_Application">Banana.Application</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_Application">Aroma.Application</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Banana.html#Enum_Urgency">Banana.Urgency</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Enum_Urgency">Aroma.Urgency</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_Event">Typedef: Event</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Events.html#Struct_Event">Events.Event</a></code></p>
@@ -305,34 +305,34 @@ code { line-height: 20px; }
 <p><strong>Base type:</strong>&nbsp;<code><a href="ApplicationService.html#Struct_SendMessageResponse">ApplicationService.SendMessageResponse</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_DeleteMessageRequest">Typedef: DeleteMessageRequest</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DeleteMessageRequest">BananaService.DeleteMessageRequest</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_DeleteMessageRequest">AromaService.DeleteMessageRequest</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_DeleteMessageResponse">Typedef: DeleteMessageResponse</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DeleteMessageResponse">BananaService.DeleteMessageResponse</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_DeleteMessageResponse">AromaService.DeleteMessageResponse</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_DismissMessageRequest">Typedef: DismissMessageRequest</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DismissMessageRequest">BananaService.DismissMessageRequest</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_DismissMessageRequest">AromaService.DismissMessageRequest</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_DismissMessageResponse">Typedef: DismissMessageResponse</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_DismissMessageResponse">BananaService.DismissMessageResponse</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_DismissMessageResponse">AromaService.DismissMessageResponse</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetApplicationMessagesRequest">Typedef: GetApplicationMessagesRequest</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetApplicationMessagesRequest">BananaService.GetApplicationMessagesRequest</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetApplicationMessagesRequest">AromaService.GetApplicationMessagesRequest</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetApplicationMessagesResponse">Typedef: GetApplicationMessagesResponse</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetApplicationMessagesResponse">BananaService.GetApplicationMessagesResponse</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetApplicationMessagesResponse">AromaService.GetApplicationMessagesResponse</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetInboxRequest">Typedef: GetInboxRequest</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetInboxRequest">BananaService.GetInboxRequest</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetInboxRequest">AromaService.GetInboxRequest</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetInboxResponse">Typedef: GetInboxResponse</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetInboxResponse">BananaService.GetInboxResponse</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetInboxResponse">AromaService.GetInboxResponse</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetFullMessageRequest">Typedef: GetFullMessageRequest</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetFullMessageRequest">BananaService.GetFullMessageRequest</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetFullMessageRequest">AromaService.GetFullMessageRequest</a></code></p>
 </div>
 <div class="definition"><h3 id="Typedef_GetFullMessageResponse">Typedef: GetFullMessageResponse</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="BananaService.html#Struct_GetFullMessageResponse">BananaService.GetFullMessageResponse</a></code></p>
+<p><strong>Base type:</strong>&nbsp;<code><a href="AromaService.html#Struct_GetFullMessageResponse">AromaService.GetFullMessageResponse</a></code></p>
 </div>
 <hr/><h2 id="Services">Services</h2>
 <h3 id="Svc_MessageService">Service: MessageService</h3>

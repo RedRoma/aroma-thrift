@@ -1,23 +1,23 @@
-namespace java  tech.aroma.banana.thrift.events
-namespace cocoa BananaEvents_
-namespace cpp   aroma.banana.thrift.events
+namespace java  tech.aroma.thrift.events
+namespace cocoa AromaEvents_
+namespace cpp   aroma.thrift.events
 
 /*
- * Defined in this File are the Banana Service Events
+ * Defined in this File are the Aroma Events
  * that can be sent to a User via a Notification.
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 
 typedef Authentication.ApplicationToken ApplicationToken
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
-typedef Banana.uuid uuid;
-typedef Banana.User User
-typedef Banana.Application Application
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
+typedef Aroma.uuid uuid;
+typedef Aroma.User User
+typedef Aroma.Application Application
 
 
 /**
@@ -55,7 +55,7 @@ struct ApplicationSentMessage
 {
     1: optional string message = "Application has sent an Alert"
     /** The Message that the Application Sent. */
-    2: optional Banana.Message messageSentByApplication;
+    2: optional Aroma.Message messageSentByApplication;
     /** The Application that sent the message. */
     3: uuid applicationId;
     4: string applicationName;
@@ -120,7 +120,7 @@ struct GeneralEvent
 
 /**
  * An Event represents the different types of events that can
- * occur within the Banana Service.
+ * occur within Aroma.
  */
 union EventType
 {

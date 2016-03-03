@@ -6,7 +6,7 @@
  */
 #include "ApplicationService.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
+namespace aroma { namespace thrift { namespace application { namespace service {
 
 
 ApplicationService_getApiVersion_args::~ApplicationService_getApiVersion_args() throw() {
@@ -1024,5 +1024,5 @@ void ApplicationServiceConcurrentClient::send_sendMessageAsync(const SendMessage
   sentry.commit();
 }
 
-}}}}} // namespace
+}}}} // namespace
 

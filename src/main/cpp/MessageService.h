@@ -11,7 +11,7 @@
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include "MessageService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace message { namespace service {
+namespace aroma { namespace thrift { namespace message { namespace service {
 
 #ifdef _WIN32
   #pragma warning( push )
@@ -279,6 +279,6 @@ class MessageServiceConcurrentClient : virtual public MessageServiceIf {
   #pragma warning( pop )
 #endif
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

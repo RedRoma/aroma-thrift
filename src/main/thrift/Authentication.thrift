@@ -1,18 +1,18 @@
-namespace java  tech.aroma.banana.thrift.authentication
+namespace java  tech.aroma.thrift.authentication
 namespace cocoa BananaAuthentication_
-namespace cpp   aroma.banana.thrift.authentication
+namespace cpp   aroma.thrift.authentication
 
 /*
  * Defined in this file are the Authentication structures and relationships
- * for the Banana Service.
+ * for Aroma.
  */
 
-include "Banana.thrift"
+include "Aroma.thrift"
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
-typedef Banana.uuid uuid;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
+typedef Aroma.uuid uuid;
 
 struct ApplicationToken
 {
@@ -60,13 +60,13 @@ struct AromaAccount
     1: string email;
     2: Password password;
     3: string name;
-    4: Banana.Image profileImage;
-    5: optional Banana.Role role;
+    4: Aroma.Image profileImage;
+    5: optional Aroma.Role role;
 }
 
 /**
  * This union represents the multiple ways a User can 
- * Sign In and Authenticate with the Banana Service.
+ * Sign In and Authenticate with Aroma.
  */
 union Credentials
 {

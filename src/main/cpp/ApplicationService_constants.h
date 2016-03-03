@@ -9,19 +9,19 @@
 
 #include "ApplicationService_types.h"
 
-namespace aroma { namespace banana { namespace thrift { namespace application { namespace service {
+namespace aroma { namespace thrift { namespace application { namespace service {
 
 class ApplicationServiceConstants {
  public:
   ApplicationServiceConstants();
 
   int SERVICE_PORT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
-   ::aroma::banana::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
+   ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
 };
 
 extern const ApplicationServiceConstants g_ApplicationService_constants;
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

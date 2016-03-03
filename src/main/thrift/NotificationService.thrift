@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.notification.service
+namespace java  tech.aroma.thrift.notification.service
 namespace cocoa NotificationService_
-namespace cpp   aroma.banana.thrift.notification.service
+namespace cpp   aroma.thrift.notification.service
 
 /*
  * Defined in this File is the Notification Service API.
@@ -9,7 +9,7 @@ namespace cpp   aroma.banana.thrift.notification.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Channels.thrift"
 include "Endpoint.thrift"
 include "Events.thrift"
@@ -20,16 +20,16 @@ include "Exceptions.thrift"
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
-typedef Banana.uuid uuid;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
+typedef Aroma.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
-typedef Channels.BananaChannel BananaChannel
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
+typedef Channels.AromaChannel AromaChannel
 typedef Events.Event Event
 
 //Exception Typedefs
@@ -46,9 +46,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7009;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "notification-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 
 //==========================================================
@@ -58,7 +58,7 @@ struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
-    3: list<BananaChannel> channels;
+    3: list<AromaChannel> channels;
 }
 
 struct SendNotificationResponse

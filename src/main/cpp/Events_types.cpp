@@ -11,7 +11,7 @@
 
 #include <thrift/TToString.h>
 
-namespace aroma { namespace banana { namespace thrift { namespace events {
+namespace aroma { namespace thrift { namespace events {
 
 
 ApplicationTokenRenewed::~ApplicationTokenRenewed() throw() {
@@ -363,7 +363,7 @@ void ApplicationSentMessage::__set_message(const std::string& val) {
 __isset.message = true;
 }
 
-void ApplicationSentMessage::__set_messageSentByApplication(const  ::aroma::banana::thrift::Message& val) {
+void ApplicationSentMessage::__set_messageSentByApplication(const  ::tech::aroma::thrift::Message& val) {
   this->messageSentByApplication = val;
 __isset.messageSentByApplication = true;
 }
@@ -1575,4 +1575,4 @@ void Event::printTo(std::ostream& out) const {
   out << ")";
 }
 
-}}}} // namespace
+}}} // namespace

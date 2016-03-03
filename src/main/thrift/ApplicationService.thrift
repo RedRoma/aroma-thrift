@@ -1,6 +1,6 @@
-namespace java  tech.aroma.banana.thrift.application.service
+namespace java  tech.aroma.thrift.application.service
 namespace cocoa ApplicationService_
-namespace cpp   aroma.banana.thrift.application.service
+namespace cpp   aroma.thrift.application.service
 
 /*
  * Defined in this File is the Application Service API.
@@ -9,7 +9,7 @@ namespace cpp   aroma.banana.thrift.application.service
  */
 
 include "Authentication.thrift"
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
@@ -18,14 +18,14 @@ include "Exceptions.thrift"
  * so  we don't have to type as much.
  */
 
-typedef Banana.int int;
-typedef Banana.long long;
-typedef Banana.timestamp timestamp;
+typedef Aroma.int int;
+typedef Aroma.long long;
+typedef Aroma.timestamp timestamp;
 
 //Struct Typedefs
 typedef Authentication.ApplicationToken ApplicationToken
-typedef Banana.Application Application
-typedef Banana.Urgency Urgency
+typedef Aroma.Application Application
+typedef Aroma.Urgency Urgency
 
 //Exception Typedefs
 typedef Exceptions.AccountAlreadyExistsException AccountAlreadyExistsException
@@ -40,9 +40,9 @@ typedef Exceptions.UnauthorizedException UnauthorizedException
 
 const int SERVICE_PORT = 7002;
 
-const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "application-srv.aroma.tech", "port" : SERVICE_PORT };
 
-const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.banana.aroma.tech", "port" : SERVICE_PORT };
+const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
 //==========================================================
 // QUERY OPERATIONS
@@ -51,13 +51,13 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "application-srv.beta.
 // Operations performed by Applications
 
 /**
- * Send a Message to the Banana Service.
+ * Send a Message to Aroma.
  */
 struct SendMessageRequest
 {
     1: ApplicationToken applicationToken;
     2: string body;
-    3: Urgency urgency = Banana.Urgency.LOW;
+    3: Urgency urgency = Aroma.Urgency.LOW;
     /** The time that the message was generated on the Client Side. */
     4: optional timestamp timeOfMessage;
     5: string title;
@@ -87,7 +87,7 @@ service ApplicationService
 
 
     /**
-     * Send a Message from your Application to the Banana Service.
+     * Send a Message from your Application to Aroma.
      */
     SendMessageResponse sendMessage(1 : SendMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                            2 : InvalidArgumentException ex2,

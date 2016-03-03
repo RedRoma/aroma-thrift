@@ -8,7 +8,7 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Authentication_ttypes = require('./Authentication_types')
-var Banana_ttypes = require('./Banana_types')
+var Aroma_ttypes = require('./Aroma_types')
 var Endpoint_ttypes = require('./Endpoint_types')
 var Exceptions_ttypes = require('./Exceptions_types')
 
@@ -232,6 +232,6 @@ SendMessageResponse.prototype.write = function(output) {
 
 ttypes.SERVICE_PORT = 7002;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'application-srv.banana.aroma.tech','port' : 7002});
+'hostname' : 'application-srv.aroma.tech','port' : 7002});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
-'hostname' : 'application-srv.beta.banana.aroma.tech','port' : 7002});
+'hostname' : 'application-srv.beta.aroma.tech','port' : 7002});

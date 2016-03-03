@@ -16,42 +16,42 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 #include "Endpoint_types.h"
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace authentication { namespace service {
+namespace aroma { namespace thrift { namespace authentication { namespace service {
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef class  ::aroma::banana::thrift::LengthOfTime LengthOfTime;
+typedef class  ::tech::aroma::thrift::LengthOfTime LengthOfTime;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
-typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+typedef class  ::aroma::thrift::authentication::ApplicationToken ApplicationToken;
 
-typedef class  ::aroma::banana::thrift::authentication::AuthenticationToken AuthenticationToken;
+typedef class  ::aroma::thrift::authentication::AuthenticationToken AuthenticationToken;
 
-typedef  ::aroma::banana::thrift::authentication::TokenType::type TokenType;
+typedef  ::aroma::thrift::authentication::TokenType::type TokenType;
 
-typedef class  ::aroma::banana::thrift::authentication::UserToken UserToken;
+typedef class  ::aroma::thrift::authentication::UserToken UserToken;
 
-typedef class  ::aroma::banana::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
+typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
+typedef class  ::aroma::thrift::exceptions::InvalidArgumentException InvalidArgumentException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
+typedef class  ::aroma::thrift::exceptions::InvalidCredentialsException InvalidCredentialsException;
 
-typedef class  ::aroma::banana::thrift::exceptions::InvalidTokenException InvalidTokenException;
+typedef class  ::aroma::thrift::exceptions::InvalidTokenException InvalidTokenException;
 
-typedef class  ::aroma::banana::thrift::exceptions::OperationFailedException OperationFailedException;
+typedef class  ::aroma::thrift::exceptions::OperationFailedException OperationFailedException;
 
-typedef class  ::aroma::banana::thrift::exceptions::UnauthorizedException UnauthorizedException;
+typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
 class CreateTokenRequest;
 
@@ -84,7 +84,7 @@ class CreateTokenRequest {
 
   CreateTokenRequest(const CreateTokenRequest&);
   CreateTokenRequest& operator=(const CreateTokenRequest&);
-  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0), ownerName(), organizationId(), organizationName() {
+  CreateTokenRequest() : ownerId(), desiredTokenType(( ::aroma::thrift::authentication::TokenType::type)0), ownerName(), organizationId(), organizationName() {
   }
 
   virtual ~CreateTokenRequest() throw();
@@ -210,7 +210,7 @@ class GetTokenInfoRequest {
 
   GetTokenInfoRequest(const GetTokenInfoRequest&);
   GetTokenInfoRequest& operator=(const GetTokenInfoRequest&);
-  GetTokenInfoRequest() : tokenId(), tokenType(( ::aroma::banana::thrift::authentication::TokenType::type)0) {
+  GetTokenInfoRequest() : tokenId(), tokenType(( ::aroma::thrift::authentication::TokenType::type)0) {
   }
 
   virtual ~GetTokenInfoRequest() throw();
@@ -506,6 +506,6 @@ inline std::ostream& operator<<(std::ostream& out, const VerifyTokenResponse& ob
   return out;
 }
 
-}}}}} // namespace
+}}}} // namespace
 
 #endif

@@ -14,7 +14,7 @@ using namespace ::apache::thrift::server;
 
 using boost::shared_ptr;
 
-using namespace  ::aroma::banana::thrift::notification::service;
+using namespace  ::aroma::thrift::notification::service;
 
 class NotificationServiceHandler : virtual public NotificationServiceIf {
  public:

@@ -1,10 +1,10 @@
-namespace java  tech.aroma.banana.thrift.channels
-namespace cocoa BananaChannels_
-namespace cpp   aroma.banana.thrift.channels
+namespace java  tech.aroma.thrift.channels
+namespace cocoa AromaChannels_
+namespace cpp   aroma.thrift.channels
 
 /*
  * Defined in this File are the various Channels that
- * the Banana Service can send Messages to.
+ * Aroma can send Messages to.
  * 
  * Essentially a channel is a way to contact a person.
  * 
@@ -12,13 +12,13 @@ namespace cpp   aroma.banana.thrift.channels
  * be reached.
  */
 
-include "Banana.thrift"
+include "Aroma.thrift"
 include "Endpoint.thrift"
 include "Exceptions.thrift"
 
-typedef Banana.int int
-typedef Banana.long long
-typedef Banana.timestamp timestamp
+typedef Aroma.int int
+typedef Aroma.long long
+typedef Aroma.timestamp timestamp
 
 /**
  * It's a bit confusing, but "Channel" here refers to
@@ -49,7 +49,7 @@ struct SlackUsername
 struct Email
 {
     1: string emailAddress;
-    2: optional string subject = "Banana Service - New Message";
+    2: optional string subject = "Aroma - New Message";
 }
 
 /**
@@ -62,10 +62,9 @@ struct CustomChannel
 }
 
 /**
- * This Union represents the Abstract concept of a
- * Banana Service "Channel".
+ * This Union represents the Abstract concept of an AromaChannel
  */
-union BananaChannel
+union AromaChannel
 {
     1: SlackChannel slackChannel;
     2: SlackUsername slackUsername;
@@ -75,7 +74,7 @@ union BananaChannel
 
 struct ChannelInfo
 {
-    1: BananaChannel channel;
+    1: AromaChannel channel;
     2: timestamp timeRegistered;
 }
 
@@ -85,7 +84,7 @@ struct ChannelInfo
  */
 struct ReceiveMessageRequest
 {
-    1: Banana.Message message;
+    1: Aroma.Message message;
 }
 
 /**
@@ -96,16 +95,16 @@ struct ReceiveMessageRequest
  * Note that no care is taken to rate-limit. Your endpoint
  * may get flooded. Use with caution.
  */
-service CustomBananaChannel
+service CustomAromaChannel
 {
     /**
-     * The Banana Service will first ping your Custom Channel
+     * The Aroma Service will first ping your Custom Channel
      * to make sure it is reachable and operational.
      */
     int ping();
     
     /**
-     * Called each time the Banana Service receives a Message from the Application
+     * Called each time Aroma receives a Message from the Application
      * in question.
      */
     oneway void receiveMessage(1: ReceiveMessageRequest request)

@@ -171,7 +171,7 @@ SlackUsername.prototype.write = function(output) {
 
 Email = function(args) {
   this.emailAddress = null;
-  this.subject = 'Banana Service - New Message';
+  this.subject = 'Aroma - New Message';
   if (args) {
     if (args.emailAddress !== undefined && args.emailAddress !== null) {
       this.emailAddress = args.emailAddress;
@@ -289,7 +289,7 @@ CustomChannel.prototype.write = function(output) {
   return;
 };
 
-BananaChannel = function(args) {
+AromaChannel = function(args) {
   this.slackChannel = null;
   this.slackUsername = null;
   this.email = null;
@@ -309,8 +309,8 @@ BananaChannel = function(args) {
     }
   }
 };
-BananaChannel.prototype = {};
-BananaChannel.prototype.read = function(input) {
+AromaChannel.prototype = {};
+AromaChannel.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -364,8 +364,8 @@ BananaChannel.prototype.read = function(input) {
   return;
 };
 
-BananaChannel.prototype.write = function(output) {
-  output.writeStructBegin('BananaChannel');
+AromaChannel.prototype.write = function(output) {
+  output.writeStructBegin('AromaChannel');
   if (this.slackChannel !== null && this.slackChannel !== undefined) {
     output.writeFieldBegin('slackChannel', Thrift.Type.STRUCT, 1);
     this.slackChannel.write(output);
@@ -396,7 +396,7 @@ ChannelInfo = function(args) {
   this.timeRegistered = null;
   if (args) {
     if (args.channel !== undefined && args.channel !== null) {
-      this.channel = new BananaChannel(args.channel);
+      this.channel = new AromaChannel(args.channel);
     }
     if (args.timeRegistered !== undefined && args.timeRegistered !== null) {
       this.timeRegistered = args.timeRegistered;
@@ -419,7 +419,7 @@ ChannelInfo.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.channel = new BananaChannel();
+        this.channel = new AromaChannel();
         this.channel.read(input);
       } else {
         input.skip(ftype);

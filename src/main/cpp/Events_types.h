@@ -16,24 +16,24 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Authentication_types.h"
-#include "Banana_types.h"
+#include "Aroma_types.h"
 
 
-namespace aroma { namespace banana { namespace thrift { namespace events {
+namespace aroma { namespace thrift { namespace events {
 
-typedef class  ::aroma::banana::thrift::authentication::ApplicationToken ApplicationToken;
+typedef class  ::aroma::thrift::authentication::ApplicationToken ApplicationToken;
 
-typedef  ::aroma::banana::thrift::int int;
+typedef  ::tech::aroma::thrift::int int;
 
-typedef  ::aroma::banana::thrift::long long;
+typedef  ::tech::aroma::thrift::long long;
 
-typedef  ::aroma::banana::thrift::timestamp timestamp;
+typedef  ::tech::aroma::thrift::timestamp timestamp;
 
-typedef  ::aroma::banana::thrift::uuid uuid;
+typedef  ::tech::aroma::thrift::uuid uuid;
 
-typedef class  ::aroma::banana::thrift::User User;
+typedef class  ::tech::aroma::thrift::User User;
 
-typedef class  ::aroma::banana::thrift::Application Application;
+typedef class  ::tech::aroma::thrift::Application Application;
 
 class ApplicationTokenRenewed;
 
@@ -221,7 +221,7 @@ class ApplicationSentMessage {
 
   virtual ~ApplicationSentMessage() throw();
   std::string message;
-   ::aroma::banana::thrift::Message messageSentByApplication;
+   ::tech::aroma::thrift::Message messageSentByApplication;
   uuid applicationId;
   std::string applicationName;
 
@@ -229,7 +229,7 @@ class ApplicationSentMessage {
 
   void __set_message(const std::string& val);
 
-  void __set_messageSentByApplication(const  ::aroma::banana::thrift::Message& val);
+  void __set_messageSentByApplication(const  ::tech::aroma::thrift::Message& val);
 
   void __set_applicationId(const uuid& val);
 
@@ -741,6 +741,6 @@ inline std::ostream& operator<<(std::ostream& out, const Event& obj)
   return out;
 }
 
-}}}} // namespace
+}}} // namespace
 
 #endif
