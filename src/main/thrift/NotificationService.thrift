@@ -29,6 +29,7 @@ typedef Aroma.uuid uuid;
 typedef Authentication.AuthenticationToken AuthenticationToken
 typedef Aroma.Application Application
 typedef Aroma.Urgency Urgency
+typedef Aroma.User User
 typedef Channels.AromaChannel AromaChannel
 typedef Events.Event Event
 
@@ -64,6 +65,32 @@ struct SendNotificationRequest
 struct SendNotificationResponse
 {
     1: optional uuid notificationId;
+}
+
+
+//==========================================================
+// EMAILS
+
+struct EmailNewRegistration
+{
+    1: User infoOfNewUser;
+}
+
+union EmailMessage
+{
+    1: EmailNewRegistration newRegistration;
+}
+
+
+struct SendEmailRequest
+{
+    1: string emailAddress;
+    2: EmailMessage emailMessage;
+}
+
+struct SendEmailResponse
+{
+    
 }
 
 

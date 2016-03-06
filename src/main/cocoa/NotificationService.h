@@ -39,6 +39,8 @@ typedef Aroma_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
 
+typedef Aroma_User * NotificationService_User;
+
 typedef AromaChannels_AromaChannel * NotificationService_AromaChannel;
 
 typedef AromaEvents_Event * NotificationService_Event;
@@ -130,6 +132,105 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 - (void) setNotificationId: (NotificationService_uuid) notificationId;
 #endif
 - (BOOL) notificationIdIsSet;
+
+@end
+
+@interface NotificationService_EmailNewRegistration : NSObject <TBase, NSCoding> {
+  NotificationService_User __infoOfNewUser;
+
+  BOOL __infoOfNewUser_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=infoOfNewUser, setter=setInfoOfNewUser:) NotificationService_User infoOfNewUser;
+#endif
+
+- (id) init;
+- (id) initWithInfoOfNewUser: (NotificationService_User) infoOfNewUser;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_User) infoOfNewUser;
+- (void) setInfoOfNewUser: (NotificationService_User) infoOfNewUser;
+#endif
+- (BOOL) infoOfNewUserIsSet;
+
+@end
+
+@interface NotificationService_EmailMessage : NSObject <TBase, NSCoding> {
+  NotificationService_EmailNewRegistration * __newRegistration;
+
+  BOOL __newRegistration_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=newRegistration, setter=setNewRegistration:) NotificationService_EmailNewRegistration * newRegistration;
+#endif
+
+- (id) init;
+- (id) initWithNewRegistration: (NotificationService_EmailNewRegistration *) newRegistration;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_EmailNewRegistration *) newRegistration;
+- (void) setNewRegistration: (NotificationService_EmailNewRegistration *) newRegistration;
+#endif
+- (BOOL) newRegistrationIsSet;
+
+@end
+
+@interface NotificationService_SendEmailRequest : NSObject <TBase, NSCoding> {
+  NSString * __emailAddress;
+  NotificationService_EmailMessage * __emailMessage;
+
+  BOOL __emailAddress_isset;
+  BOOL __emailMessage_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
+@property (nonatomic, retain, getter=emailMessage, setter=setEmailMessage:) NotificationService_EmailMessage * emailMessage;
+#endif
+
+- (id) init;
+- (id) initWithEmailAddress: (NSString *) emailAddress emailMessage: (NotificationService_EmailMessage *) emailMessage;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) emailAddress;
+- (void) setEmailAddress: (NSString *) emailAddress;
+#endif
+- (BOOL) emailAddressIsSet;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_EmailMessage *) emailMessage;
+- (void) setEmailMessage: (NotificationService_EmailMessage *) emailMessage;
+#endif
+- (BOOL) emailMessageIsSet;
+
+@end
+
+@interface NotificationService_SendEmailResponse : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
 
 @end
 

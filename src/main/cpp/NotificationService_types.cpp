@@ -247,4 +247,344 @@ void SendNotificationResponse::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+EmailNewRegistration::~EmailNewRegistration() throw() {
+}
+
+
+void EmailNewRegistration::__set_infoOfNewUser(const User& val) {
+  this->infoOfNewUser = val;
+}
+
+uint32_t EmailNewRegistration::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->infoOfNewUser.read(iprot);
+          this->__isset.infoOfNewUser = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t EmailNewRegistration::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("EmailNewRegistration");
+
+  xfer += oprot->writeFieldBegin("infoOfNewUser", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->infoOfNewUser.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(EmailNewRegistration &a, EmailNewRegistration &b) {
+  using ::std::swap;
+  swap(a.infoOfNewUser, b.infoOfNewUser);
+  swap(a.__isset, b.__isset);
+}
+
+EmailNewRegistration::EmailNewRegistration(const EmailNewRegistration& other10) {
+  infoOfNewUser = other10.infoOfNewUser;
+  __isset = other10.__isset;
+}
+EmailNewRegistration& EmailNewRegistration::operator=(const EmailNewRegistration& other11) {
+  infoOfNewUser = other11.infoOfNewUser;
+  __isset = other11.__isset;
+  return *this;
+}
+void EmailNewRegistration::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "EmailNewRegistration(";
+  out << "infoOfNewUser=" << to_string(infoOfNewUser);
+  out << ")";
+}
+
+
+EmailMessage::~EmailMessage() throw() {
+}
+
+
+void EmailMessage::__set_newRegistration(const EmailNewRegistration& val) {
+  this->newRegistration = val;
+}
+
+uint32_t EmailMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->newRegistration.read(iprot);
+          this->__isset.newRegistration = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t EmailMessage::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("EmailMessage");
+
+  xfer += oprot->writeFieldBegin("newRegistration", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->newRegistration.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(EmailMessage &a, EmailMessage &b) {
+  using ::std::swap;
+  swap(a.newRegistration, b.newRegistration);
+  swap(a.__isset, b.__isset);
+}
+
+EmailMessage::EmailMessage(const EmailMessage& other12) {
+  newRegistration = other12.newRegistration;
+  __isset = other12.__isset;
+}
+EmailMessage& EmailMessage::operator=(const EmailMessage& other13) {
+  newRegistration = other13.newRegistration;
+  __isset = other13.__isset;
+  return *this;
+}
+void EmailMessage::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "EmailMessage(";
+  out << "newRegistration=" << to_string(newRegistration);
+  out << ")";
+}
+
+
+SendEmailRequest::~SendEmailRequest() throw() {
+}
+
+
+void SendEmailRequest::__set_emailAddress(const std::string& val) {
+  this->emailAddress = val;
+}
+
+void SendEmailRequest::__set_emailMessage(const EmailMessage& val) {
+  this->emailMessage = val;
+}
+
+uint32_t SendEmailRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->emailAddress);
+          this->__isset.emailAddress = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->emailMessage.read(iprot);
+          this->__isset.emailMessage = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SendEmailRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SendEmailRequest");
+
+  xfer += oprot->writeFieldBegin("emailAddress", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->emailAddress);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("emailMessage", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->emailMessage.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SendEmailRequest &a, SendEmailRequest &b) {
+  using ::std::swap;
+  swap(a.emailAddress, b.emailAddress);
+  swap(a.emailMessage, b.emailMessage);
+  swap(a.__isset, b.__isset);
+}
+
+SendEmailRequest::SendEmailRequest(const SendEmailRequest& other14) {
+  emailAddress = other14.emailAddress;
+  emailMessage = other14.emailMessage;
+  __isset = other14.__isset;
+}
+SendEmailRequest& SendEmailRequest::operator=(const SendEmailRequest& other15) {
+  emailAddress = other15.emailAddress;
+  emailMessage = other15.emailMessage;
+  __isset = other15.__isset;
+  return *this;
+}
+void SendEmailRequest::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SendEmailRequest(";
+  out << "emailAddress=" << to_string(emailAddress);
+  out << ", " << "emailMessage=" << to_string(emailMessage);
+  out << ")";
+}
+
+
+SendEmailResponse::~SendEmailResponse() throw() {
+}
+
+
+uint32_t SendEmailResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    xfer += iprot->skip(ftype);
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t SendEmailResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("SendEmailResponse");
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(SendEmailResponse &a, SendEmailResponse &b) {
+  using ::std::swap;
+  (void) a;
+  (void) b;
+}
+
+SendEmailResponse::SendEmailResponse(const SendEmailResponse& other16) {
+  (void) other16;
+}
+SendEmailResponse& SendEmailResponse::operator=(const SendEmailResponse& other17) {
+  (void) other17;
+  return *this;
+}
+void SendEmailResponse::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "SendEmailResponse(";
+  out << ")";
+}
+
 }}}} // namespace

@@ -176,6 +176,209 @@ SendNotificationResponse.prototype.write = function(output) {
   return;
 };
 
+EmailNewRegistration = module.exports.EmailNewRegistration = function(args) {
+  this.infoOfNewUser = null;
+  if (args) {
+    if (args.infoOfNewUser !== undefined && args.infoOfNewUser !== null) {
+      this.infoOfNewUser = new Aroma_ttypes.User(args.infoOfNewUser);
+    }
+  }
+};
+EmailNewRegistration.prototype = {};
+EmailNewRegistration.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.infoOfNewUser = new Aroma_ttypes.User();
+        this.infoOfNewUser.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+EmailNewRegistration.prototype.write = function(output) {
+  output.writeStructBegin('EmailNewRegistration');
+  if (this.infoOfNewUser !== null && this.infoOfNewUser !== undefined) {
+    output.writeFieldBegin('infoOfNewUser', Thrift.Type.STRUCT, 1);
+    this.infoOfNewUser.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+EmailMessage = module.exports.EmailMessage = function(args) {
+  this.newRegistration = null;
+  if (args) {
+    if (args.newRegistration !== undefined && args.newRegistration !== null) {
+      this.newRegistration = new ttypes.EmailNewRegistration(args.newRegistration);
+    }
+  }
+};
+EmailMessage.prototype = {};
+EmailMessage.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.newRegistration = new ttypes.EmailNewRegistration();
+        this.newRegistration.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+EmailMessage.prototype.write = function(output) {
+  output.writeStructBegin('EmailMessage');
+  if (this.newRegistration !== null && this.newRegistration !== undefined) {
+    output.writeFieldBegin('newRegistration', Thrift.Type.STRUCT, 1);
+    this.newRegistration.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SendEmailRequest = module.exports.SendEmailRequest = function(args) {
+  this.emailAddress = null;
+  this.emailMessage = null;
+  if (args) {
+    if (args.emailAddress !== undefined && args.emailAddress !== null) {
+      this.emailAddress = args.emailAddress;
+    }
+    if (args.emailMessage !== undefined && args.emailMessage !== null) {
+      this.emailMessage = new ttypes.EmailMessage(args.emailMessage);
+    }
+  }
+};
+SendEmailRequest.prototype = {};
+SendEmailRequest.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.emailAddress = input.readString();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.emailMessage = new ttypes.EmailMessage();
+        this.emailMessage.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SendEmailRequest.prototype.write = function(output) {
+  output.writeStructBegin('SendEmailRequest');
+  if (this.emailAddress !== null && this.emailAddress !== undefined) {
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 1);
+    output.writeString(this.emailAddress);
+    output.writeFieldEnd();
+  }
+  if (this.emailMessage !== null && this.emailMessage !== undefined) {
+    output.writeFieldBegin('emailMessage', Thrift.Type.STRUCT, 2);
+    this.emailMessage.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+SendEmailResponse = module.exports.SendEmailResponse = function(args) {
+};
+SendEmailResponse.prototype = {};
+SendEmailResponse.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+SendEmailResponse.prototype.write = function(output) {
+  output.writeStructBegin('SendEmailResponse');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 ttypes.SERVICE_PORT = 7009;
 ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'notification-srv.aroma.tech','port' : 7009});

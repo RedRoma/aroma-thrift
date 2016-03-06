@@ -469,6 +469,599 @@
 
 @end
 
+@implementation NotificationService_EmailNewRegistration
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithInfoOfNewUser: (NotificationService_User) infoOfNewUser
+{
+  self = [super init];
+  __infoOfNewUser = [infoOfNewUser retain_stub];
+  __infoOfNewUser_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"infoOfNewUser"])
+  {
+    __infoOfNewUser = [[decoder decodeObjectForKey: @"infoOfNewUser"] retain_stub];
+    __infoOfNewUser_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__infoOfNewUser_isset)
+  {
+    [encoder encodeObject: __infoOfNewUser forKey: @"infoOfNewUser"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __infoOfNewUser_isset ? 2654435761 : 0;
+  if (__infoOfNewUser_isset)
+  {
+    hash = (hash * 31) ^ [__infoOfNewUser hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_EmailNewRegistration class]]) {
+    return NO;
+  }
+  NotificationService_EmailNewRegistration *other = (NotificationService_EmailNewRegistration *)anObject;
+  if ((__infoOfNewUser_isset != other->__infoOfNewUser_isset) ||
+      (__infoOfNewUser_isset && ((__infoOfNewUser || other->__infoOfNewUser) && ![__infoOfNewUser isEqual:other->__infoOfNewUser]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__infoOfNewUser release_stub];
+  [super dealloc_stub];
+}
+
+- (Aroma_User *) infoOfNewUser {
+  return [[__infoOfNewUser retain_stub] autorelease_stub];
+}
+
+- (void) setInfoOfNewUser: (Aroma_User *) infoOfNewUser {
+  [infoOfNewUser retain_stub];
+  [__infoOfNewUser release_stub];
+  __infoOfNewUser = infoOfNewUser;
+  __infoOfNewUser_isset = YES;
+}
+
+- (BOOL) infoOfNewUserIsSet {
+  return __infoOfNewUser_isset;
+}
+
+- (void) unsetInfoOfNewUser {
+  [__infoOfNewUser release_stub];
+  __infoOfNewUser = nil;
+  __infoOfNewUser_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setInfoOfNewUser: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"EmailNewRegistration"];
+  if (__infoOfNewUser_isset) {
+    if (__infoOfNewUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"infoOfNewUser" type: TType_STRUCT fieldID: 1];
+      [__infoOfNewUser write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_EmailNewRegistration("];
+  [ms appendString: @"infoOfNewUser:"];
+  [ms appendFormat: @"%@", __infoOfNewUser];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation NotificationService_EmailMessage
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithNewRegistration: (NotificationService_EmailNewRegistration *) newRegistration
+{
+  self = [super init];
+  __newRegistration = [newRegistration retain_stub];
+  __newRegistration_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"newRegistration"])
+  {
+    __newRegistration = [[decoder decodeObjectForKey: @"newRegistration"] retain_stub];
+    __newRegistration_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__newRegistration_isset)
+  {
+    [encoder encodeObject: __newRegistration forKey: @"newRegistration"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __newRegistration_isset ? 2654435761 : 0;
+  if (__newRegistration_isset)
+  {
+    hash = (hash * 31) ^ [__newRegistration hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_EmailMessage class]]) {
+    return NO;
+  }
+  NotificationService_EmailMessage *other = (NotificationService_EmailMessage *)anObject;
+  if ((__newRegistration_isset != other->__newRegistration_isset) ||
+      (__newRegistration_isset && ((__newRegistration || other->__newRegistration) && ![__newRegistration isEqual:other->__newRegistration]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__newRegistration release_stub];
+  [super dealloc_stub];
+}
+
+- (NotificationService_EmailNewRegistration *) newRegistration {
+  return [[__newRegistration retain_stub] autorelease_stub];
+}
+
+- (void) setNewRegistration: (NotificationService_EmailNewRegistration *) newRegistration {
+  [newRegistration retain_stub];
+  [__newRegistration release_stub];
+  __newRegistration = newRegistration;
+  __newRegistration_isset = YES;
+}
+
+- (BOOL) newRegistrationIsSet {
+  return __newRegistration_isset;
+}
+
+- (void) unsetNewRegistration {
+  [__newRegistration release_stub];
+  __newRegistration = nil;
+  __newRegistration_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          NotificationService_EmailNewRegistration *fieldValue = [[NotificationService_EmailNewRegistration alloc] init];
+          [fieldValue read: inProtocol];
+          [self setNewRegistration: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"EmailMessage"];
+  if (__newRegistration_isset) {
+    if (__newRegistration != nil) {
+      [outProtocol writeFieldBeginWithName: @"newRegistration" type: TType_STRUCT fieldID: 1];
+      [__newRegistration write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_EmailMessage("];
+  [ms appendString: @"newRegistration:"];
+  [ms appendFormat: @"%@", __newRegistration];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation NotificationService_SendEmailRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEmailAddress: (NSString *) emailAddress emailMessage: (NotificationService_EmailMessage *) emailMessage
+{
+  self = [super init];
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
+  __emailMessage = [emailMessage retain_stub];
+  __emailMessage_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"emailAddress"])
+  {
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"emailMessage"])
+  {
+    __emailMessage = [[decoder decodeObjectForKey: @"emailMessage"] retain_stub];
+    __emailMessage_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__emailAddress_isset)
+  {
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
+  }
+  if (__emailMessage_isset)
+  {
+    [encoder encodeObject: __emailMessage forKey: @"emailMessage"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
+  {
+    hash = (hash * 31) ^ [__emailAddress hash];
+  }
+  hash = (hash * 31) ^ __emailMessage_isset ? 2654435761 : 0;
+  if (__emailMessage_isset)
+  {
+    hash = (hash * 31) ^ [__emailMessage hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_SendEmailRequest class]]) {
+    return NO;
+  }
+  NotificationService_SendEmailRequest *other = (NotificationService_SendEmailRequest *)anObject;
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
+    return NO;
+  }
+  if ((__emailMessage_isset != other->__emailMessage_isset) ||
+      (__emailMessage_isset && ((__emailMessage || other->__emailMessage) && ![__emailMessage isEqual:other->__emailMessage]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__emailAddress release_stub];
+  [__emailMessage release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
+}
+
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
+}
+
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
+}
+
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
+}
+
+- (NotificationService_EmailMessage *) emailMessage {
+  return [[__emailMessage retain_stub] autorelease_stub];
+}
+
+- (void) setEmailMessage: (NotificationService_EmailMessage *) emailMessage {
+  [emailMessage retain_stub];
+  [__emailMessage release_stub];
+  __emailMessage = emailMessage;
+  __emailMessage_isset = YES;
+}
+
+- (BOOL) emailMessageIsSet {
+  return __emailMessage_isset;
+}
+
+- (void) unsetEmailMessage {
+  [__emailMessage release_stub];
+  __emailMessage = nil;
+  __emailMessage_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEmailAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          NotificationService_EmailMessage *fieldValue = [[NotificationService_EmailMessage alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEmailMessage: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendEmailRequest"];
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __emailAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__emailMessage_isset) {
+    if (__emailMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailMessage" type: TType_STRUCT fieldID: 2];
+      [__emailMessage write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendEmailRequest("];
+  [ms appendString: @"emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
+  [ms appendString: @",emailMessage:"];
+  [ms appendFormat: @"%@", __emailMessage];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation NotificationService_SendEmailResponse
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_SendEmailResponse class]]) {
+    return NO;
+  }
+  NotificationService_SendEmailResponse *other = (NotificationService_SendEmailResponse *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendEmailResponse"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendEmailResponse("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 static NotificationService_int NotificationService_SERVICE_PORT = 7009;
 static AromaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;

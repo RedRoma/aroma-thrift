@@ -39,6 +39,8 @@ typedef class  ::tech::aroma::thrift::Application Application;
 
 typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
+typedef class  ::tech::aroma::thrift::User User;
+
 typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
 typedef class  ::aroma::thrift::events::Event Event;
@@ -66,6 +68,14 @@ typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedEx
 class SendNotificationRequest;
 
 class SendNotificationResponse;
+
+class EmailNewRegistration;
+
+class EmailMessage;
+
+class SendEmailRequest;
+
+class SendEmailResponse;
 
 typedef struct _SendNotificationRequest__isset {
   _SendNotificationRequest__isset() : token(false), event(false), channels(false) {}
@@ -168,6 +178,185 @@ class SendNotificationResponse {
 void swap(SendNotificationResponse &a, SendNotificationResponse &b);
 
 inline std::ostream& operator<<(std::ostream& out, const SendNotificationResponse& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _EmailNewRegistration__isset {
+  _EmailNewRegistration__isset() : infoOfNewUser(false) {}
+  bool infoOfNewUser :1;
+} _EmailNewRegistration__isset;
+
+class EmailNewRegistration {
+ public:
+
+  EmailNewRegistration(const EmailNewRegistration&);
+  EmailNewRegistration& operator=(const EmailNewRegistration&);
+  EmailNewRegistration() {
+  }
+
+  virtual ~EmailNewRegistration() throw();
+  User infoOfNewUser;
+
+  _EmailNewRegistration__isset __isset;
+
+  void __set_infoOfNewUser(const User& val);
+
+  bool operator == (const EmailNewRegistration & rhs) const
+  {
+    if (!(infoOfNewUser == rhs.infoOfNewUser))
+      return false;
+    return true;
+  }
+  bool operator != (const EmailNewRegistration &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const EmailNewRegistration & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(EmailNewRegistration &a, EmailNewRegistration &b);
+
+inline std::ostream& operator<<(std::ostream& out, const EmailNewRegistration& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _EmailMessage__isset {
+  _EmailMessage__isset() : newRegistration(false) {}
+  bool newRegistration :1;
+} _EmailMessage__isset;
+
+class EmailMessage {
+ public:
+
+  EmailMessage(const EmailMessage&);
+  EmailMessage& operator=(const EmailMessage&);
+  EmailMessage() {
+  }
+
+  virtual ~EmailMessage() throw();
+  EmailNewRegistration newRegistration;
+
+  _EmailMessage__isset __isset;
+
+  void __set_newRegistration(const EmailNewRegistration& val);
+
+  bool operator == (const EmailMessage & rhs) const
+  {
+    if (!(newRegistration == rhs.newRegistration))
+      return false;
+    return true;
+  }
+  bool operator != (const EmailMessage &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const EmailMessage & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(EmailMessage &a, EmailMessage &b);
+
+inline std::ostream& operator<<(std::ostream& out, const EmailMessage& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _SendEmailRequest__isset {
+  _SendEmailRequest__isset() : emailAddress(false), emailMessage(false) {}
+  bool emailAddress :1;
+  bool emailMessage :1;
+} _SendEmailRequest__isset;
+
+class SendEmailRequest {
+ public:
+
+  SendEmailRequest(const SendEmailRequest&);
+  SendEmailRequest& operator=(const SendEmailRequest&);
+  SendEmailRequest() : emailAddress() {
+  }
+
+  virtual ~SendEmailRequest() throw();
+  std::string emailAddress;
+  EmailMessage emailMessage;
+
+  _SendEmailRequest__isset __isset;
+
+  void __set_emailAddress(const std::string& val);
+
+  void __set_emailMessage(const EmailMessage& val);
+
+  bool operator == (const SendEmailRequest & rhs) const
+  {
+    if (!(emailAddress == rhs.emailAddress))
+      return false;
+    if (!(emailMessage == rhs.emailMessage))
+      return false;
+    return true;
+  }
+  bool operator != (const SendEmailRequest &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendEmailRequest & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendEmailRequest &a, SendEmailRequest &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendEmailRequest& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+class SendEmailResponse {
+ public:
+
+  SendEmailResponse(const SendEmailResponse&);
+  SendEmailResponse& operator=(const SendEmailResponse&);
+  SendEmailResponse() {
+  }
+
+  virtual ~SendEmailResponse() throw();
+
+  bool operator == (const SendEmailResponse & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const SendEmailResponse &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const SendEmailResponse & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(SendEmailResponse &a, SendEmailResponse &b);
+
+inline std::ostream& operator<<(std::ostream& out, const SendEmailResponse& obj)
 {
   obj.printTo(out);
   return out;
