@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef NotificationService_TYPES_H
-#define NotificationService_TYPES_H
+#ifndef EmailService_TYPES_H
+#define EmailService_TYPES_H
 
 #include <iosfwd>
 
@@ -19,11 +19,11 @@
 #include "Aroma_types.h"
 #include "Channels_types.h"
 #include "Endpoint_types.h"
-#include "Events_types.h"
+#include "Email_types.h"
 #include "Exceptions_types.h"
 
 
-namespace aroma { namespace thrift { namespace notification { namespace service {
+namespace aroma { namespace thrift { namespace email { namespace service {
 
 typedef  ::tech::aroma::thrift::int int;
 
@@ -39,9 +39,11 @@ typedef class  ::tech::aroma::thrift::Application Application;
 
 typedef  ::tech::aroma::thrift::Urgency::type Urgency;
 
+typedef class  ::tech::aroma::thrift::User User;
+
 typedef class  ::aroma::thrift::channels::AromaChannel AromaChannel;
 
-typedef class  ::aroma::thrift::events::Event Event;
+typedef class  ::aroma::thrift::email::EmailMessage EmailMessage;
 
 typedef class  ::aroma::thrift::exceptions::AccountAlreadyExistsException AccountAlreadyExistsException;
 
@@ -63,53 +65,47 @@ typedef class  ::aroma::thrift::exceptions::ChannelDoesNotExistException Channel
 
 typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-class SendNotificationRequest;
+class SendEmailRequest;
 
-class SendNotificationResponse;
+class SendEmailResponse;
 
-typedef struct _SendNotificationRequest__isset {
-  _SendNotificationRequest__isset() : token(false), event(false), channels(false) {}
-  bool token :1;
-  bool event :1;
-  bool channels :1;
-} _SendNotificationRequest__isset;
+typedef struct _SendEmailRequest__isset {
+  _SendEmailRequest__isset() : emailAddress(false), emailMessage(false) {}
+  bool emailAddress :1;
+  bool emailMessage :1;
+} _SendEmailRequest__isset;
 
-class SendNotificationRequest {
+class SendEmailRequest {
  public:
 
-  SendNotificationRequest(const SendNotificationRequest&);
-  SendNotificationRequest& operator=(const SendNotificationRequest&);
-  SendNotificationRequest() {
+  SendEmailRequest(const SendEmailRequest&);
+  SendEmailRequest& operator=(const SendEmailRequest&);
+  SendEmailRequest() : emailAddress() {
   }
 
-  virtual ~SendNotificationRequest() throw();
-  AuthenticationToken token;
-  Event event;
-  std::vector<AromaChannel>  channels;
+  virtual ~SendEmailRequest() throw();
+  std::string emailAddress;
+  EmailMessage emailMessage;
 
-  _SendNotificationRequest__isset __isset;
+  _SendEmailRequest__isset __isset;
 
-  void __set_token(const AuthenticationToken& val);
+  void __set_emailAddress(const std::string& val);
 
-  void __set_event(const Event& val);
+  void __set_emailMessage(const EmailMessage& val);
 
-  void __set_channels(const std::vector<AromaChannel> & val);
-
-  bool operator == (const SendNotificationRequest & rhs) const
+  bool operator == (const SendEmailRequest & rhs) const
   {
-    if (!(token == rhs.token))
+    if (!(emailAddress == rhs.emailAddress))
       return false;
-    if (!(event == rhs.event))
-      return false;
-    if (!(channels == rhs.channels))
+    if (!(emailMessage == rhs.emailMessage))
       return false;
     return true;
   }
-  bool operator != (const SendNotificationRequest &rhs) const {
+  bool operator != (const SendEmailRequest &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SendNotificationRequest & ) const;
+  bool operator < (const SendEmailRequest & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -117,47 +113,34 @@ class SendNotificationRequest {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SendNotificationRequest &a, SendNotificationRequest &b);
+void swap(SendEmailRequest &a, SendEmailRequest &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SendNotificationRequest& obj)
+inline std::ostream& operator<<(std::ostream& out, const SendEmailRequest& obj)
 {
   obj.printTo(out);
   return out;
 }
 
-typedef struct _SendNotificationResponse__isset {
-  _SendNotificationResponse__isset() : notificationId(false) {}
-  bool notificationId :1;
-} _SendNotificationResponse__isset;
 
-class SendNotificationResponse {
+class SendEmailResponse {
  public:
 
-  SendNotificationResponse(const SendNotificationResponse&);
-  SendNotificationResponse& operator=(const SendNotificationResponse&);
-  SendNotificationResponse() : notificationId() {
+  SendEmailResponse(const SendEmailResponse&);
+  SendEmailResponse& operator=(const SendEmailResponse&);
+  SendEmailResponse() {
   }
 
-  virtual ~SendNotificationResponse() throw();
-  uuid notificationId;
+  virtual ~SendEmailResponse() throw();
 
-  _SendNotificationResponse__isset __isset;
-
-  void __set_notificationId(const uuid& val);
-
-  bool operator == (const SendNotificationResponse & rhs) const
+  bool operator == (const SendEmailResponse & /* rhs */) const
   {
-    if (__isset.notificationId != rhs.__isset.notificationId)
-      return false;
-    else if (__isset.notificationId && !(notificationId == rhs.notificationId))
-      return false;
     return true;
   }
-  bool operator != (const SendNotificationResponse &rhs) const {
+  bool operator != (const SendEmailResponse &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const SendNotificationResponse & ) const;
+  bool operator < (const SendEmailResponse & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -165,9 +148,9 @@ class SendNotificationResponse {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(SendNotificationResponse &a, SendNotificationResponse &b);
+void swap(SendEmailResponse &a, SendEmailResponse &b);
 
-inline std::ostream& operator<<(std::ostream& out, const SendNotificationResponse& obj)
+inline std::ostream& operator<<(std::ostream& out, const SendEmailResponse& obj)
 {
   obj.printTo(out);
   return out;

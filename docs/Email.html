@@ -189,47 +189,22 @@ table { empty-cells: show; }
 code { line-height: 20px; }
 .table-bordered th, .table-bordered td { border-bottom: 1px solid #DDDDDD; }
 --></style>
-<title>Thrift module: NotificationService</title></head><body>
+<title>Thrift module: Email</title></head><body>
 <div class="container-fluid">
-<h1>Thrift module: NotificationService</h1>
+<h1>Thrift module: Email</h1>
 <table class="table-bordered table-striped table-condensed"><thead><th>Module</th><th>Services</th><th>Data types</th><th>Constants</th></thead>
 <tr>
-<td>NotificationService</td><td><a href="#Svc_NotificationService">NotificationService</a><br/>
-<ul>
-<li><a href="#Fn_NotificationService_getApiVersion">getApiVersion</a></li>
-<li><a href="#Fn_NotificationService_sendNotification">sendNotification</a></li>
-</ul>
-</td>
-<td><a href="#Typedef_AccountAlreadyExistsException">AccountAlreadyExistsException</a><br/>
-<a href="#Typedef_Application">Application</a><br/>
-<a href="#Typedef_ApplicationAlreadyRegisteredException">ApplicationAlreadyRegisteredException</a><br/>
-<a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a><br/>
-<a href="#Typedef_AromaChannel">AromaChannel</a><br/>
-<a href="#Typedef_AuthenticationToken">AuthenticationToken</a><br/>
-<a href="#Typedef_ChannelDoesNotExistException">ChannelDoesNotExistException</a><br/>
-<a href="#Typedef_CustomChannelUnreachableException">CustomChannelUnreachableException</a><br/>
-<a href="#Typedef_Event">Event</a><br/>
-<a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a><br/>
-<a href="#Typedef_InvalidCredentialsException">InvalidCredentialsException</a><br/>
-<a href="#Typedef_InvalidTokenException">InvalidTokenException</a><br/>
-<a href="#Typedef_OperationFailedException">OperationFailedException</a><br/>
-<a href="#Struct_SendNotificationRequest">SendNotificationRequest</a><br/>
-<a href="#Struct_SendNotificationResponse">SendNotificationResponse</a><br/>
-<a href="#Typedef_UnauthorizedException">UnauthorizedException</a><br/>
-<a href="#Typedef_Urgency">Urgency</a><br/>
+<td>Email</td><td></td>
+<td><a href="#Struct_EmailMessage">EmailMessage</a><br/>
+<a href="#Struct_EmailNewRegistration">EmailNewRegistration</a><br/>
+<a href="#Typedef_User">User</a><br/>
 <a href="#Typedef_int">int</a><br/>
 <a href="#Typedef_long">long</a><br/>
 <a href="#Typedef_timestamp">timestamp</a><br/>
-<a href="#Typedef_uuid">uuid</a><br/>
 </td>
-<td><code><a href="#Const_BETA_ENDPOINT">BETA_ENDPOINT</a></code><br/>
-<code><a href="#Const_PRODUCTION_ENDPOINT">PRODUCTION_ENDPOINT</a></code><br/>
-<code><a href="#Const_SERVICE_PORT">SERVICE_PORT</a></code><br/>
-</code></td>
+<td></code></td>
 </tr></table>
-<hr/><h2 id="Constants">Constants</h2>
-<table class="table-bordered table-striped table-condensed"><thead><th>Constant</th><th>Type</th><th>Value</th></thead>
-<tr id="Const_SERVICE_PORT"><td><code>SERVICE_PORT</code></td><td><code><a href="#Typedef_int">int</a></code></td><td><code>7009</code></td></tr><tr id="Const_PRODUCTION_ENDPOINT"><td><code>PRODUCTION_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.aroma.tech", port = 7009 }</code></td></tr><tr id="Const_BETA_ENDPOINT"><td><code>BETA_ENDPOINT</code></td><td><code><a href="Endpoint.html#Struct_TcpEndpoint">Endpoint.TcpEndpoint</a></code></td><td><code>{ hostname = "notification-srv.beta.aroma.tech", port = 7009 }</code></td></tr></table><hr/><h2 id="Typedefs">Type declarations</h2>
+<hr/><h2 id="Typedefs">Type declarations</h2>
 <div class="definition"><h3 id="Typedef_int">Typedef: int</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_int">Aroma.int</a></code></p>
 </div>
@@ -239,70 +214,14 @@ code { line-height: 20px; }
 <div class="definition"><h3 id="Typedef_timestamp">Typedef: timestamp</h3>
 <p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_timestamp">Aroma.timestamp</a></code></p>
 </div>
-<div class="definition"><h3 id="Typedef_uuid">Typedef: uuid</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Typedef_uuid">Aroma.uuid</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_AuthenticationToken">Typedef: AuthenticationToken</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Authentication.html#Struct_AuthenticationToken">Authentication.AuthenticationToken</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Application">Typedef: Application</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_Application">Aroma.Application</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Urgency">Typedef: Urgency</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Enum_Urgency">Aroma.Urgency</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_AromaChannel">Typedef: AromaChannel</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Channels.html#Struct_AromaChannel">Channels.AromaChannel</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_Event">Typedef: Event</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Events.html#Struct_Event">Events.Event</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_AccountAlreadyExistsException">Typedef: AccountAlreadyExistsException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_AccountAlreadyExistsException">Exceptions.AccountAlreadyExistsException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_InvalidArgumentException">Typedef: InvalidArgumentException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidArgumentException">Exceptions.InvalidArgumentException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_InvalidCredentialsException">Typedef: InvalidCredentialsException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidCredentialsException">Exceptions.InvalidCredentialsException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_InvalidTokenException">Typedef: InvalidTokenException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_InvalidTokenException">Exceptions.InvalidTokenException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_OperationFailedException">Typedef: OperationFailedException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_OperationFailedException">Exceptions.OperationFailedException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ApplicationAlreadyRegisteredException">Typedef: ApplicationAlreadyRegisteredException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationAlreadyRegisteredException">Exceptions.ApplicationAlreadyRegisteredException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ApplicationDoesNotExistException">Typedef: ApplicationDoesNotExistException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ApplicationDoesNotExistException">Exceptions.ApplicationDoesNotExistException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_CustomChannelUnreachableException">Typedef: CustomChannelUnreachableException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_CustomChannelUnreachableException">Exceptions.CustomChannelUnreachableException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_ChannelDoesNotExistException">Typedef: ChannelDoesNotExistException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_ChannelDoesNotExistException">Exceptions.ChannelDoesNotExistException</a></code></p>
-</div>
-<div class="definition"><h3 id="Typedef_UnauthorizedException">Typedef: UnauthorizedException</h3>
-<p><strong>Base type:</strong>&nbsp;<code><a href="Exceptions.html#Struct_UnauthorizedException">Exceptions.UnauthorizedException</a></code></p>
+<div class="definition"><h3 id="Typedef_User">Typedef: User</h3>
+<p><strong>Base type:</strong>&nbsp;<code><a href="Aroma.html#Struct_User">Aroma.User</a></code></p>
 </div>
 <hr/><h2 id="Structs">Data structures</h2>
-<div class="definition"><h3 id="Struct_SendNotificationRequest">Struct: SendNotificationRequest</h3>
+<div class="definition"><h3 id="Struct_EmailNewRegistration">Struct: EmailNewRegistration</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>token</td><td><code><a href="#Typedef_AuthenticationToken">AuthenticationToken</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>2</td><td>event</td><td><code><a href="#Typedef_Event">Event</a></code></td><td></td><td>default</td><td></td></tr>
-<tr><td>3</td><td>channels</td><td><code>list&lt;<code><a href="#Typedef_AromaChannel">AromaChannel</a></code>&gt;</code></td><td></td><td>default</td><td></td></tr>
-</table><br/></div><div class="definition"><h3 id="Struct_SendNotificationResponse">Struct: SendNotificationResponse</h3>
+<tr><td>1</td><td>infoOfNewUser</td><td><code><a href="#Typedef_User">User</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div><div class="definition"><h3 id="Struct_EmailMessage">Union: EmailMessage</h3>
 <table class="table-bordered table-striped table-condensed"><thead><th>Key</th><th>Field</th><th>Type</th><th>Description</th><th>Requiredness</th><th>Default value</th></thead>
-<tr><td>1</td><td>notificationId</td><td><code><a href="#Typedef_uuid">uuid</a></code></td><td></td><td>optional</td><td></td></tr>
-</table><br/></div><hr/><h2 id="Services">Services</h2>
-<h3 id="Svc_NotificationService">Service: NotificationService</h3>
-The Notification  Service sends events and Notifications to the proper channels.
-This includes Email, Slack, iOS Push Notification, etc.
-<br/><div class="definition"><h4 id="Fn_NotificationService_getApiVersion">Function: NotificationService.getApiVersion</h4>
-<pre><code>double</code> getApiVersion()
-</pre></div><div class="definition"><h4 id="Fn_NotificationService_sendNotification">Function: NotificationService.sendNotification</h4>
-<pre><code><a href="#Struct_SendNotificationResponse">SendNotificationResponse</a></code> sendNotification(<code><a href="#Struct_SendNotificationRequest">SendNotificationRequest</a></code> request)
-    throws <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>
-</pre></div></div></body></html>
+<tr><td>1</td><td>newRegistration</td><td><code><a href="#Struct_EmailNewRegistration">EmailNewRegistration</a></code></td><td></td><td>default</td><td></td></tr>
+</table><br/></div></div></body></html>

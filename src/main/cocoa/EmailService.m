@@ -22,304 +22,12 @@
 #import "Aroma.h"
 #import "Channels.h"
 #import "Endpoint.h"
-#import "Events.h"
+#import "Email.h"
 #import "Exceptions.h"
 
-#import "NotificationService.h"
+#import "EmailService.h"
 
-@implementation NotificationService_SendNotificationRequest
-
-- (id) init
-{
-  self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-  return self;
-}
-
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels
-{
-  self = [super init];
-  __token = [token retain_stub];
-  __token_isset = YES;
-  __event = [event retain_stub];
-  __event_isset = YES;
-  __channels = [channels retain_stub];
-  __channels_isset = YES;
-  return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-  self = [super init];
-  if ([decoder containsValueForKey: @"token"])
-  {
-    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
-    __token_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"event"])
-  {
-    __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
-    __event_isset = YES;
-  }
-  if ([decoder containsValueForKey: @"channels"])
-  {
-    __channels = [[decoder decodeObjectForKey: @"channels"] retain_stub];
-    __channels_isset = YES;
-  }
-  return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-  if (__token_isset)
-  {
-    [encoder encodeObject: __token forKey: @"token"];
-  }
-  if (__event_isset)
-  {
-    [encoder encodeObject: __event forKey: @"event"];
-  }
-  if (__channels_isset)
-  {
-    [encoder encodeObject: __channels forKey: @"channels"];
-  }
-}
-
-- (NSUInteger) hash
-{
-  NSUInteger hash = 17;
-  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
-  if (__token_isset)
-  {
-    hash = (hash * 31) ^ [__token hash];
-  }
-  hash = (hash * 31) ^ __event_isset ? 2654435761 : 0;
-  if (__event_isset)
-  {
-    hash = (hash * 31) ^ [__event hash];
-  }
-  hash = (hash * 31) ^ __channels_isset ? 2654435761 : 0;
-  if (__channels_isset)
-  {
-    hash = (hash * 31) ^ [__channels hash];
-  }
-  return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-  if (self == anObject) {
-    return YES;
-  }
-  if (![anObject isKindOfClass:[NotificationService_SendNotificationRequest class]]) {
-    return NO;
-  }
-  NotificationService_SendNotificationRequest *other = (NotificationService_SendNotificationRequest *)anObject;
-  if ((__token_isset != other->__token_isset) ||
-      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
-    return NO;
-  }
-  if ((__event_isset != other->__event_isset) ||
-      (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
-    return NO;
-  }
-  if ((__channels_isset != other->__channels_isset) ||
-      (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
-    return NO;
-  }
-  return YES;
-}
-
-- (void) dealloc
-{
-  [__token release_stub];
-  [__event release_stub];
-  [__channels release_stub];
-  [super dealloc_stub];
-}
-
-- (BananaAuthentication_AuthenticationToken *) token {
-  return [[__token retain_stub] autorelease_stub];
-}
-
-- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
-  [token retain_stub];
-  [__token release_stub];
-  __token = token;
-  __token_isset = YES;
-}
-
-- (BOOL) tokenIsSet {
-  return __token_isset;
-}
-
-- (void) unsetToken {
-  [__token release_stub];
-  __token = nil;
-  __token_isset = NO;
-}
-
-- (AromaEvents_Event *) event {
-  return [[__event retain_stub] autorelease_stub];
-}
-
-- (void) setEvent: (AromaEvents_Event *) event {
-  [event retain_stub];
-  [__event release_stub];
-  __event = event;
-  __event_isset = YES;
-}
-
-- (BOOL) eventIsSet {
-  return __event_isset;
-}
-
-- (void) unsetEvent {
-  [__event release_stub];
-  __event = nil;
-  __event_isset = NO;
-}
-
-- (NSMutableArray *) channels {
-  return [[__channels retain_stub] autorelease_stub];
-}
-
-- (void) setChannels: (NSMutableArray *) channels {
-  [channels retain_stub];
-  [__channels release_stub];
-  __channels = channels;
-  __channels_isset = YES;
-}
-
-- (BOOL) channelsIsSet {
-  return __channels_isset;
-}
-
-- (void) unsetChannels {
-  [__channels release_stub];
-  __channels = nil;
-  __channels_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-  NSString * fieldName;
-  int fieldType;
-  int fieldID;
-
-  [inProtocol readStructBeginReturningName: NULL];
-  while (true)
-  {
-    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-    if (fieldType == TType_STOP) { 
-      break;
-    }
-    switch (fieldID)
-    {
-      case 1:
-        if (fieldType == TType_STRUCT) {
-          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
-          [fieldValue read: inProtocol];
-          [self setToken: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 2:
-        if (fieldType == TType_STRUCT) {
-          AromaEvents_Event *fieldValue = [[AromaEvents_Event alloc] init];
-          [fieldValue read: inProtocol];
-          [self setEvent: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      case 3:
-        if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
-          {
-            AromaChannels_AromaChannel *_elem2 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem2 read: inProtocol];
-            [fieldValue addObject: _elem2];
-            [_elem2 release_stub];
-          }
-          [inProtocol readListEnd];
-          [self setChannels: fieldValue];
-          [fieldValue release_stub];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
-      default:
-        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        break;
-    }
-    [inProtocol readFieldEnd];
-  }
-  [inProtocol readStructEnd];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendNotificationRequest"];
-  if (__token_isset) {
-    if (__token != nil) {
-      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
-      [__token write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__event_isset) {
-    if (__event != nil) {
-      [outProtocol writeFieldBeginWithName: @"event" type: TType_STRUCT fieldID: 2];
-      [__event write: outProtocol];
-      [outProtocol writeFieldEnd];
-    }
-  }
-  if (__channels_isset) {
-    if (__channels != nil) {
-      [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 3];
-      {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__channels count]; idx4++)
-        {
-          [[__channels objectAtIndex: idx4] write: outProtocol];
-        }
-        [outProtocol writeListEnd];
-      }
-      [outProtocol writeFieldEnd];
-    }
-  }
-  [outProtocol writeFieldStop];
-  [outProtocol writeStructEnd];
-}
-
-- (void) validate {
-  // check for required fields
-}
-
-- (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendNotificationRequest("];
-  [ms appendString: @"token:"];
-  [ms appendFormat: @"%@", __token];
-  [ms appendString: @",event:"];
-  [ms appendFormat: @"%@", __event];
-  [ms appendString: @",channels:"];
-  [ms appendFormat: @"%@", __channels];
-  [ms appendString: @")"];
-  return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation NotificationService_SendNotificationResponse
+@implementation EmailService_SendEmailRequest
 
 - (id) init
 {
@@ -329,40 +37,56 @@
   return self;
 }
 
-- (id) initWithNotificationId: (NotificationService_uuid) notificationId
+- (id) initWithEmailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage
 {
   self = [super init];
-  __notificationId = [notificationId retain_stub];
-  __notificationId_isset = YES;
+  __emailAddress = [emailAddress retain_stub];
+  __emailAddress_isset = YES;
+  __emailMessage = [emailMessage retain_stub];
+  __emailMessage_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"notificationId"])
+  if ([decoder containsValueForKey: @"emailAddress"])
   {
-    __notificationId = [[decoder decodeObjectForKey: @"notificationId"] retain_stub];
-    __notificationId_isset = YES;
+    __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
+    __emailAddress_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"emailMessage"])
+  {
+    __emailMessage = [[decoder decodeObjectForKey: @"emailMessage"] retain_stub];
+    __emailMessage_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__notificationId_isset)
+  if (__emailAddress_isset)
   {
-    [encoder encodeObject: __notificationId forKey: @"notificationId"];
+    [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
+  }
+  if (__emailMessage_isset)
+  {
+    [encoder encodeObject: __emailMessage forKey: @"emailMessage"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __notificationId_isset ? 2654435761 : 0;
-  if (__notificationId_isset)
+  hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
+  if (__emailAddress_isset)
   {
-    hash = (hash * 31) ^ [__notificationId hash];
+    hash = (hash * 31) ^ [__emailAddress hash];
+  }
+  hash = (hash * 31) ^ __emailMessage_isset ? 2654435761 : 0;
+  if (__emailMessage_isset)
+  {
+    hash = (hash * 31) ^ [__emailMessage hash];
   }
   return hash;
 }
@@ -372,12 +96,16 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[NotificationService_SendNotificationResponse class]]) {
+  if (![anObject isKindOfClass:[EmailService_SendEmailRequest class]]) {
     return NO;
   }
-  NotificationService_SendNotificationResponse *other = (NotificationService_SendNotificationResponse *)anObject;
-  if ((__notificationId_isset != other->__notificationId_isset) ||
-      (__notificationId_isset && ((__notificationId || other->__notificationId) && ![__notificationId isEqual:other->__notificationId]))) {
+  EmailService_SendEmailRequest *other = (EmailService_SendEmailRequest *)anObject;
+  if ((__emailAddress_isset != other->__emailAddress_isset) ||
+      (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
+    return NO;
+  }
+  if ((__emailMessage_isset != other->__emailMessage_isset) ||
+      (__emailMessage_isset && ((__emailMessage || other->__emailMessage) && ![__emailMessage isEqual:other->__emailMessage]))) {
     return NO;
   }
   return YES;
@@ -385,29 +113,51 @@
 
 - (void) dealloc
 {
-  [__notificationId release_stub];
+  [__emailAddress release_stub];
+  [__emailMessage release_stub];
   [super dealloc_stub];
 }
 
-- (NSString *) notificationId {
-  return [[__notificationId retain_stub] autorelease_stub];
+- (NSString *) emailAddress {
+  return [[__emailAddress retain_stub] autorelease_stub];
 }
 
-- (void) setNotificationId: (NSString *) notificationId {
-  [notificationId retain_stub];
-  [__notificationId release_stub];
-  __notificationId = notificationId;
-  __notificationId_isset = YES;
+- (void) setEmailAddress: (NSString *) emailAddress {
+  [emailAddress retain_stub];
+  [__emailAddress release_stub];
+  __emailAddress = emailAddress;
+  __emailAddress_isset = YES;
 }
 
-- (BOOL) notificationIdIsSet {
-  return __notificationId_isset;
+- (BOOL) emailAddressIsSet {
+  return __emailAddress_isset;
 }
 
-- (void) unsetNotificationId {
-  [__notificationId release_stub];
-  __notificationId = nil;
-  __notificationId_isset = NO;
+- (void) unsetEmailAddress {
+  [__emailAddress release_stub];
+  __emailAddress = nil;
+  __emailAddress_isset = NO;
+}
+
+- (AromaEmail_EmailMessage *) emailMessage {
+  return [[__emailMessage retain_stub] autorelease_stub];
+}
+
+- (void) setEmailMessage: (AromaEmail_EmailMessage *) emailMessage {
+  [emailMessage retain_stub];
+  [__emailMessage release_stub];
+  __emailMessage = emailMessage;
+  __emailMessage_isset = YES;
+}
+
+- (BOOL) emailMessageIsSet {
+  return __emailMessage_isset;
+}
+
+- (void) unsetEmailMessage {
+  [__emailMessage release_stub];
+  __emailMessage = nil;
+  __emailMessage_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -428,7 +178,17 @@
       case 1:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
-          [self setNotificationId: fieldValue];
+          [self setEmailAddress: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          AromaEmail_EmailMessage *fieldValue = [[AromaEmail_EmailMessage alloc] init];
+          [fieldValue read: inProtocol];
+          [self setEmailMessage: fieldValue];
+          [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -443,11 +203,18 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendNotificationResponse"];
-  if (__notificationId_isset) {
-    if (__notificationId != nil) {
-      [outProtocol writeFieldBeginWithName: @"notificationId" type: TType_STRING fieldID: 1];
-      [outProtocol writeString: __notificationId];
+  [outProtocol writeStructBeginWithName: @"SendEmailRequest"];
+  if (__emailAddress_isset) {
+    if (__emailAddress != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __emailAddress];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__emailMessage_isset) {
+    if (__emailMessage != nil) {
+      [outProtocol writeFieldBeginWithName: @"emailMessage" type: TType_STRUCT fieldID: 2];
+      [__emailMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -460,56 +227,18 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendNotificationResponse("];
-  [ms appendString: @"notificationId:"];
-  [ms appendFormat: @"\"%@\"", __notificationId];
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_SendEmailRequest("];
+  [ms appendString: @"emailAddress:"];
+  [ms appendFormat: @"\"%@\"", __emailAddress];
+  [ms appendString: @",emailMessage:"];
+  [ms appendFormat: @"%@", __emailMessage];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-static NotificationService_int NotificationService_SERVICE_PORT = 7009;
-static AromaEndpoint_TcpEndpoint * NotificationService_PRODUCTION_ENDPOINT;
-static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
-
-@implementation NotificationService_NotificationServiceConstants
-+ (void) initialize {
-  NotificationService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
-  [NotificationService_PRODUCTION_ENDPOINT setHostname:@"notification-srv.aroma.tech"];
-  [NotificationService_PRODUCTION_ENDPOINT setPort:7009];
-
-;
-  NotificationService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
-  [NotificationService_BETA_ENDPOINT setHostname:@"notification-srv.beta.aroma.tech"];
-  [NotificationService_BETA_ENDPOINT setPort:7009];
-
-;
-}
-+ (NotificationService_int) SERVICE_PORT{
-  return NotificationService_SERVICE_PORT;
-}
-+ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
-  return NotificationService_PRODUCTION_ENDPOINT;
-}
-+ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
-  return NotificationService_BETA_ENDPOINT;
-}
-@end
-
-@interface NotificationService_getApiVersion_args : NSObject <TBase, NSCoding> {
-}
-
-- (id) init;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-@end
-
-@implementation NotificationService_getApiVersion_args
+@implementation EmailService_SendEmailResponse
 
 - (id) init
 {
@@ -538,10 +267,128 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[NotificationService_getApiVersion_args class]]) {
+  if (![anObject isKindOfClass:[EmailService_SendEmailResponse class]]) {
     return NO;
   }
-  NotificationService_getApiVersion_args *other = (NotificationService_getApiVersion_args *)anObject;
+  EmailService_SendEmailResponse *other = (EmailService_SendEmailResponse *)anObject;
+  return YES;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"SendEmailResponse"];
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_SendEmailResponse("];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+static EmailService_int EmailService_SERVICE_PORT = 7017;
+static AromaEndpoint_TcpEndpoint * EmailService_PRODUCTION_ENDPOINT;
+static AromaEndpoint_TcpEndpoint * EmailService_BETA_ENDPOINT;
+
+@implementation EmailService_EmailServiceConstants
++ (void) initialize {
+  EmailService_PRODUCTION_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [EmailService_PRODUCTION_ENDPOINT setHostname:@"email-srv.aroma.tech"];
+  [EmailService_PRODUCTION_ENDPOINT setPort:7017];
+
+;
+  EmailService_BETA_ENDPOINT = [[AromaEndpoint_TcpEndpoint alloc] init];
+  [EmailService_BETA_ENDPOINT setHostname:@"email-srv.beta.aroma.tech"];
+  [EmailService_BETA_ENDPOINT setPort:7017];
+
+;
+}
++ (EmailService_int) SERVICE_PORT{
+  return EmailService_SERVICE_PORT;
+}
++ (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT{
+  return EmailService_PRODUCTION_ENDPOINT;
+}
++ (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
+  return EmailService_BETA_ENDPOINT;
+}
+@end
+
+@interface EmailService_getApiVersion_args : NSObject <TBase, NSCoding> {
+}
+
+- (id) init;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+@end
+
+@implementation EmailService_getApiVersion_args
+
+- (id) init
+{
+  self = [super init];
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[EmailService_getApiVersion_args class]]) {
+    return NO;
+  }
+  EmailService_getApiVersion_args *other = (EmailService_getApiVersion_args *)anObject;
   return YES;
 }
 
@@ -580,14 +427,14 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_getApiVersion_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_getApiVersion_args("];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
 
 @end
 
-@interface NotificationService_GetApiVersion_result : NSObject <TBase, NSCoding> {
+@interface EmailService_GetApiVersion_result : NSObject <TBase, NSCoding> {
   double __success;
 
   BOOL __success_isset;
@@ -613,7 +460,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
 @end
 
-@implementation NotificationService_GetApiVersion_result
+@implementation EmailService_GetApiVersion_result
 
 - (id) init
 {
@@ -666,10 +513,10 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[NotificationService_GetApiVersion_result class]]) {
+  if (![anObject isKindOfClass:[EmailService_GetApiVersion_result class]]) {
     return NO;
   }
-  NotificationService_GetApiVersion_result *other = (NotificationService_GetApiVersion_result *)anObject;
+  EmailService_GetApiVersion_result *other = (EmailService_GetApiVersion_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && (__success != other->__success))) {
     return NO;
@@ -748,7 +595,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_GetApiVersion_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_GetApiVersion_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%f", __success];
   [ms appendString: @")"];
@@ -757,18 +604,18 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
 @end
 
-@interface NotificationService_sendNotification_args : NSObject <TBase, NSCoding> {
-  NotificationService_SendNotificationRequest * __request;
+@interface EmailService_sendEmail_args : NSObject <TBase, NSCoding> {
+  EmailService_SendEmailRequest * __request;
 
   BOOL __request_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=request, setter=setRequest:) NotificationService_SendNotificationRequest * request;
+@property (nonatomic, retain, getter=request, setter=setRequest:) EmailService_SendEmailRequest * request;
 #endif
 
 - (id) init;
-- (id) initWithRequest: (NotificationService_SendNotificationRequest *) request;
+- (id) initWithRequest: (EmailService_SendEmailRequest *) request;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -776,14 +623,14 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NotificationService_SendNotificationRequest *) request;
-- (void) setRequest: (NotificationService_SendNotificationRequest *) request;
+- (EmailService_SendEmailRequest *) request;
+- (void) setRequest: (EmailService_SendEmailRequest *) request;
 #endif
 - (BOOL) requestIsSet;
 
 @end
 
-@implementation NotificationService_sendNotification_args
+@implementation EmailService_sendEmail_args
 
 - (id) init
 {
@@ -793,7 +640,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithRequest: (NotificationService_SendNotificationRequest *) request
+- (id) initWithRequest: (EmailService_SendEmailRequest *) request
 {
   self = [super init];
   __request = [request retain_stub];
@@ -836,10 +683,10 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[NotificationService_sendNotification_args class]]) {
+  if (![anObject isKindOfClass:[EmailService_sendEmail_args class]]) {
     return NO;
   }
-  NotificationService_sendNotification_args *other = (NotificationService_sendNotification_args *)anObject;
+  EmailService_sendEmail_args *other = (EmailService_sendEmail_args *)anObject;
   if ((__request_isset != other->__request_isset) ||
       (__request_isset && ((__request || other->__request) && ![__request isEqual:other->__request]))) {
     return NO;
@@ -853,11 +700,11 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (NotificationService_SendNotificationRequest *) request {
+- (EmailService_SendEmailRequest *) request {
   return [[__request retain_stub] autorelease_stub];
 }
 
-- (void) setRequest: (NotificationService_SendNotificationRequest *) request {
+- (void) setRequest: (EmailService_SendEmailRequest *) request {
   [request retain_stub];
   [__request release_stub];
   __request = request;
@@ -891,7 +738,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          NotificationService_SendNotificationRequest *fieldValue = [[NotificationService_SendNotificationRequest alloc] init];
+          EmailService_SendEmailRequest *fieldValue = [[EmailService_SendEmailRequest alloc] init];
           [fieldValue read: inProtocol];
           [self setRequest: fieldValue];
           [fieldValue release_stub];
@@ -909,7 +756,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"sendNotification_args"];
+  [outProtocol writeStructBeginWithName: @"sendEmail_args"];
   if (__request_isset) {
     if (__request != nil) {
       [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
@@ -926,7 +773,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_sendNotification_args("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_sendEmail_args("];
   [ms appendString: @"request:"];
   [ms appendFormat: @"%@", __request];
   [ms appendString: @")"];
@@ -935,11 +782,11 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
 @end
 
-@interface NotificationService_SendNotification_result : NSObject <TBase, NSCoding> {
-  NotificationService_SendNotificationResponse * __success;
-  NotificationService_InvalidArgumentException __ex1;
-  NotificationService_OperationFailedException __ex2;
-  NotificationService_InvalidTokenException __ex3;
+@interface EmailService_SendEmail_result : NSObject <TBase, NSCoding> {
+  EmailService_SendEmailResponse * __success;
+  EmailService_InvalidArgumentException __ex1;
+  EmailService_OperationFailedException __ex2;
+  EmailService_InvalidTokenException __ex3;
 
   BOOL __success_isset;
   BOOL __ex1_isset;
@@ -948,14 +795,14 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=success, setter=setSuccess:) NotificationService_SendNotificationResponse * success;
-@property (nonatomic, retain, getter=ex1, setter=setEx1:) NotificationService_InvalidArgumentException ex1;
-@property (nonatomic, retain, getter=ex2, setter=setEx2:) NotificationService_OperationFailedException ex2;
-@property (nonatomic, retain, getter=ex3, setter=setEx3:) NotificationService_InvalidTokenException ex3;
+@property (nonatomic, retain, getter=success, setter=setSuccess:) EmailService_SendEmailResponse * success;
+@property (nonatomic, retain, getter=ex1, setter=setEx1:) EmailService_InvalidArgumentException ex1;
+@property (nonatomic, retain, getter=ex2, setter=setEx2:) EmailService_OperationFailedException ex2;
+@property (nonatomic, retain, getter=ex3, setter=setEx3:) EmailService_InvalidTokenException ex3;
 #endif
 
 - (id) init;
-- (id) initWithSuccess: (NotificationService_SendNotificationResponse *) success ex1: (NotificationService_InvalidArgumentException) ex1 ex2: (NotificationService_OperationFailedException) ex2 ex3: (NotificationService_InvalidTokenException) ex3;
+- (id) initWithSuccess: (EmailService_SendEmailResponse *) success ex1: (EmailService_InvalidArgumentException) ex1 ex2: (EmailService_OperationFailedException) ex2 ex3: (EmailService_InvalidTokenException) ex3;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -963,32 +810,32 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NotificationService_SendNotificationResponse *) success;
-- (void) setSuccess: (NotificationService_SendNotificationResponse *) success;
+- (EmailService_SendEmailResponse *) success;
+- (void) setSuccess: (EmailService_SendEmailResponse *) success;
 #endif
 - (BOOL) successIsSet;
 
 #if !__has_feature(objc_arc)
-- (NotificationService_InvalidArgumentException) ex1;
-- (void) setEx1: (NotificationService_InvalidArgumentException) ex1;
+- (EmailService_InvalidArgumentException) ex1;
+- (void) setEx1: (EmailService_InvalidArgumentException) ex1;
 #endif
 - (BOOL) ex1IsSet;
 
 #if !__has_feature(objc_arc)
-- (NotificationService_OperationFailedException) ex2;
-- (void) setEx2: (NotificationService_OperationFailedException) ex2;
+- (EmailService_OperationFailedException) ex2;
+- (void) setEx2: (EmailService_OperationFailedException) ex2;
 #endif
 - (BOOL) ex2IsSet;
 
 #if !__has_feature(objc_arc)
-- (NotificationService_InvalidTokenException) ex3;
-- (void) setEx3: (NotificationService_InvalidTokenException) ex3;
+- (EmailService_InvalidTokenException) ex3;
+- (void) setEx3: (EmailService_InvalidTokenException) ex3;
 #endif
 - (BOOL) ex3IsSet;
 
 @end
 
-@implementation NotificationService_SendNotification_result
+@implementation EmailService_SendEmail_result
 
 - (id) init
 {
@@ -998,7 +845,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   return self;
 }
 
-- (id) initWithSuccess: (NotificationService_SendNotificationResponse *) success ex1: (NotificationService_InvalidArgumentException) ex1 ex2: (NotificationService_OperationFailedException) ex2 ex3: (NotificationService_InvalidTokenException) ex3
+- (id) initWithSuccess: (EmailService_SendEmailResponse *) success ex1: (EmailService_InvalidArgumentException) ex1 ex2: (EmailService_OperationFailedException) ex2 ex3: (EmailService_InvalidTokenException) ex3
 {
   self = [super init];
   __success = [success retain_stub];
@@ -1089,10 +936,10 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[NotificationService_SendNotification_result class]]) {
+  if (![anObject isKindOfClass:[EmailService_SendEmail_result class]]) {
     return NO;
   }
-  NotificationService_SendNotification_result *other = (NotificationService_SendNotification_result *)anObject;
+  EmailService_SendEmail_result *other = (EmailService_SendEmail_result *)anObject;
   if ((__success_isset != other->__success_isset) ||
       (__success_isset && ((__success || other->__success) && ![__success isEqual:other->__success]))) {
     return NO;
@@ -1121,11 +968,11 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   [super dealloc_stub];
 }
 
-- (NotificationService_SendNotificationResponse *) success {
+- (EmailService_SendEmailResponse *) success {
   return [[__success retain_stub] autorelease_stub];
 }
 
-- (void) setSuccess: (NotificationService_SendNotificationResponse *) success {
+- (void) setSuccess: (EmailService_SendEmailResponse *) success {
   [success retain_stub];
   [__success release_stub];
   __success = success;
@@ -1222,7 +1069,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
     {
       case 0:
         if (fieldType == TType_STRUCT) {
-          NotificationService_SendNotificationResponse *fieldValue = [[NotificationService_SendNotificationResponse alloc] init];
+          EmailService_SendEmailResponse *fieldValue = [[EmailService_SendEmailResponse alloc] init];
           [fieldValue read: inProtocol];
           [self setSuccess: fieldValue];
           [fieldValue release_stub];
@@ -1270,7 +1117,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"SendNotification_result"];
+  [outProtocol writeStructBeginWithName: @"SendEmail_result"];
 
   if (__success_isset) {
     if (__success != nil) {
@@ -1306,7 +1153,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_SendNotification_result("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_SendEmail_result("];
   [ms appendString: @"success:"];
   [ms appendFormat: @"%@", __success];
   [ms appendString: @",ex1:"];
@@ -1321,7 +1168,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
 
 @end
 
-@implementation NotificationService_NotificationServiceClient
+@implementation EmailService_EmailServiceClient
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
   return [self initWithInProtocol: protocol outProtocol: protocol];
@@ -1350,7 +1197,7 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   if (x != nil)  {
     @throw x;
   }
-  NotificationService_GetApiVersion_result * result = [[[NotificationService_GetApiVersion_result alloc] init] autorelease_stub];
+  EmailService_GetApiVersion_result * result = [[[EmailService_GetApiVersion_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -1367,10 +1214,10 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   return [self recv_getApiVersion];
 }
 
-- (void) send_sendNotification: (NotificationService_SendNotificationRequest *) request
+- (void) send_sendEmail: (EmailService_SendEmailRequest *) request
 {
-  [outProtocol writeMessageBeginWithName: @"sendNotification" type: TMessageType_CALL sequenceID: 0];
-  [outProtocol writeStructBeginWithName: @"sendNotification_args"];
+  [outProtocol writeMessageBeginWithName: @"sendEmail" type: TMessageType_CALL sequenceID: 0];
+  [outProtocol writeStructBeginWithName: @"sendEmail_args"];
   if (request != nil)  {
     [outProtocol writeFieldBeginWithName: @"request" type: TType_STRUCT fieldID: 1];
     [request write: outProtocol];
@@ -1381,13 +1228,13 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
   [outProtocol writeMessageEnd];
 }
 
-- (NotificationService_SendNotificationResponse *) recv_sendNotification
+- (EmailService_SendEmailResponse *) recv_sendEmail
 {
   TApplicationException * x = [self checkIncomingMessageException];
   if (x != nil)  {
     @throw x;
   }
-  NotificationService_SendNotification_result * result = [[[NotificationService_SendNotification_result alloc] init] autorelease_stub];
+  EmailService_SendEmail_result * result = [[[EmailService_SendEmail_result alloc] init] autorelease_stub];
   [result read: inProtocol];
   [inProtocol readMessageEnd];
   if ([result successIsSet]) {
@@ -1403,21 +1250,21 @@ static AromaEndpoint_TcpEndpoint * NotificationService_BETA_ENDPOINT;
     @throw [result ex3];
   }
   @throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                           reason: @"sendNotification failed: unknown result"];
+                                           reason: @"sendEmail failed: unknown result"];
 }
 
-- (NotificationService_SendNotificationResponse *) sendNotification: (NotificationService_SendNotificationRequest *) request
+- (EmailService_SendEmailResponse *) sendEmail: (EmailService_SendEmailRequest *) request
 {
-  [self send_sendNotification : request];
+  [self send_sendEmail : request];
   [[outProtocol transport] flush];
-  return [self recv_sendNotification];
+  return [self recv_sendEmail];
 }
 
 @end
 
-@implementation NotificationService_NotificationServiceProcessor
+@implementation EmailService_EmailServiceProcessor
 
-- (id) initWithNotificationService: (id <NotificationService_NotificationService>) service
+- (id) initWithEmailService: (id <EmailService_EmailService>) service
 {
 self = [super init];
 if (!self) {
@@ -1434,17 +1281,17 @@ mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
   [mMethodMap setValue: invocation forKey: @"getApiVersion"];
 }
 {
-  SEL s = @selector(process_sendNotification_withSequenceID:inProtocol:outProtocol:);
+  SEL s = @selector(process_sendEmail_withSequenceID:inProtocol:outProtocol:);
   NSMethodSignature * sig = [self methodSignatureForSelector: s];
   NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
   [invocation setSelector: s];
   [invocation retainArguments];
-  [mMethodMap setValue: invocation forKey: @"sendNotification"];
+  [mMethodMap setValue: invocation forKey: @"sendEmail"];
 }
 return self;
 }
 
-- (id<NotificationService_NotificationService>) service
+- (id<EmailService_EmailService>) service
 {
   return [[mService retain_stub] autorelease_stub];
 }
@@ -1484,10 +1331,10 @@ return self;
 
 - (void) process_getApiVersion_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-NotificationService_getApiVersion_args * args = [[NotificationService_getApiVersion_args alloc] init];
+EmailService_getApiVersion_args * args = [[EmailService_getApiVersion_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-NotificationService_GetApiVersion_result * result = [[NotificationService_GetApiVersion_result alloc] init];
+EmailService_GetApiVersion_result * result = [[EmailService_GetApiVersion_result alloc] init];
 [result setSuccess: [mService getApiVersion]];
 [outProtocol writeMessageBeginWithName: @"getApiVersion"
                                   type: TMessageType_REPLY
@@ -1499,14 +1346,14 @@ NotificationService_GetApiVersion_result * result = [[NotificationService_GetApi
 [args release_stub];
 }
 
-- (void) process_sendNotification_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
+- (void) process_sendEmail_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-NotificationService_sendNotification_args * args = [[NotificationService_sendNotification_args alloc] init];
+EmailService_sendEmail_args * args = [[EmailService_sendEmail_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-NotificationService_SendNotification_result * result = [[NotificationService_SendNotification_result alloc] init];
-[result setSuccess: [mService sendNotification: [args request]]];
-[outProtocol writeMessageBeginWithName: @"sendNotification"
+EmailService_SendEmail_result * result = [[EmailService_SendEmail_result alloc] init];
+[result setSuccess: [mService sendEmail: [args request]]];
+[outProtocol writeMessageBeginWithName: @"sendEmail"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];
