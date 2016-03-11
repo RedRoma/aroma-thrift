@@ -22,6 +22,219 @@
 
 #import "Email.h"
 
+@implementation AromaEmail_EmailNewApplication
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app
+{
+  self = [super init];
+  __creator = [creator retain_stub];
+  __creator_isset = YES;
+  __app = [app retain_stub];
+  __app_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"creator"])
+  {
+    __creator = [[decoder decodeObjectForKey: @"creator"] retain_stub];
+    __creator_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"app"])
+  {
+    __app = [[decoder decodeObjectForKey: @"app"] retain_stub];
+    __app_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__creator_isset)
+  {
+    [encoder encodeObject: __creator forKey: @"creator"];
+  }
+  if (__app_isset)
+  {
+    [encoder encodeObject: __app forKey: @"app"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __creator_isset ? 2654435761 : 0;
+  if (__creator_isset)
+  {
+    hash = (hash * 31) ^ [__creator hash];
+  }
+  hash = (hash * 31) ^ __app_isset ? 2654435761 : 0;
+  if (__app_isset)
+  {
+    hash = (hash * 31) ^ [__app hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaEmail_EmailNewApplication class]]) {
+    return NO;
+  }
+  AromaEmail_EmailNewApplication *other = (AromaEmail_EmailNewApplication *)anObject;
+  if ((__creator_isset != other->__creator_isset) ||
+      (__creator_isset && ((__creator || other->__creator) && ![__creator isEqual:other->__creator]))) {
+    return NO;
+  }
+  if ((__app_isset != other->__app_isset) ||
+      (__app_isset && ((__app || other->__app) && ![__app isEqual:other->__app]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__creator release_stub];
+  [__app release_stub];
+  [super dealloc_stub];
+}
+
+- (Aroma_User *) creator {
+  return [[__creator retain_stub] autorelease_stub];
+}
+
+- (void) setCreator: (Aroma_User *) creator {
+  [creator retain_stub];
+  [__creator release_stub];
+  __creator = creator;
+  __creator_isset = YES;
+}
+
+- (BOOL) creatorIsSet {
+  return __creator_isset;
+}
+
+- (void) unsetCreator {
+  [__creator release_stub];
+  __creator = nil;
+  __creator_isset = NO;
+}
+
+- (Aroma_Application *) app {
+  return [[__app retain_stub] autorelease_stub];
+}
+
+- (void) setApp: (Aroma_Application *) app {
+  [app retain_stub];
+  [__app release_stub];
+  __app = app;
+  __app_isset = YES;
+}
+
+- (BOOL) appIsSet {
+  return __app_isset;
+}
+
+- (void) unsetApp {
+  [__app release_stub];
+  __app = nil;
+  __app_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setCreator: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
+          Aroma_Application *fieldValue = [[Aroma_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApp: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"EmailNewApplication"];
+  if (__creator_isset) {
+    if (__creator != nil) {
+      [outProtocol writeFieldBeginWithName: @"creator" type: TType_STRUCT fieldID: 1];
+      [__creator write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__app_isset) {
+    if (__app != nil) {
+      [outProtocol writeFieldBeginWithName: @"app" type: TType_STRUCT fieldID: 2];
+      [__app write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEmail_EmailNewApplication("];
+  [ms appendString: @"creator:"];
+  [ms appendFormat: @"%@", __creator];
+  [ms appendString: @",app:"];
+  [ms appendFormat: @"%@", __app];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaEmail_EmailNewUserRegistration
 
 - (id) init
@@ -184,9 +397,11 @@
   return self;
 }
 
-- (id) initWithNewUser: (AromaEmail_EmailNewUserRegistration *) newUser
+- (id) initWithNewApp: (AromaEmail_EmailNewApplication *) newApp newUser: (AromaEmail_EmailNewUserRegistration *) newUser
 {
   self = [super init];
+  __newApp = [newApp retain_stub];
+  __newApp_isset = YES;
   __newUser = [newUser retain_stub];
   __newUser_isset = YES;
   return self;
@@ -195,6 +410,11 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"newApp"])
+  {
+    __newApp = [[decoder decodeObjectForKey: @"newApp"] retain_stub];
+    __newApp_isset = YES;
+  }
   if ([decoder containsValueForKey: @"newUser"])
   {
     __newUser = [[decoder decodeObjectForKey: @"newUser"] retain_stub];
@@ -205,6 +425,10 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__newApp_isset)
+  {
+    [encoder encodeObject: __newApp forKey: @"newApp"];
+  }
   if (__newUser_isset)
   {
     [encoder encodeObject: __newUser forKey: @"newUser"];
@@ -214,6 +438,11 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __newApp_isset ? 2654435761 : 0;
+  if (__newApp_isset)
+  {
+    hash = (hash * 31) ^ [__newApp hash];
+  }
   hash = (hash * 31) ^ __newUser_isset ? 2654435761 : 0;
   if (__newUser_isset)
   {
@@ -231,6 +460,10 @@
     return NO;
   }
   AromaEmail_EmailMessage *other = (AromaEmail_EmailMessage *)anObject;
+  if ((__newApp_isset != other->__newApp_isset) ||
+      (__newApp_isset && ((__newApp || other->__newApp) && ![__newApp isEqual:other->__newApp]))) {
+    return NO;
+  }
   if ((__newUser_isset != other->__newUser_isset) ||
       (__newUser_isset && ((__newUser || other->__newUser) && ![__newUser isEqual:other->__newUser]))) {
     return NO;
@@ -240,8 +473,30 @@
 
 - (void) dealloc
 {
+  [__newApp release_stub];
   [__newUser release_stub];
   [super dealloc_stub];
+}
+
+- (AromaEmail_EmailNewApplication *) newApp {
+  return [[__newApp retain_stub] autorelease_stub];
+}
+
+- (void) setNewApp: (AromaEmail_EmailNewApplication *) newApp {
+  [newApp retain_stub];
+  [__newApp release_stub];
+  __newApp = newApp;
+  __newApp_isset = YES;
+}
+
+- (BOOL) newAppIsSet {
+  return __newApp_isset;
+}
+
+- (void) unsetNewApp {
+  [__newApp release_stub];
+  __newApp = nil;
+  __newApp_isset = NO;
 }
 
 - (AromaEmail_EmailNewUserRegistration *) newUser {
@@ -282,6 +537,16 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
+          AromaEmail_EmailNewApplication *fieldValue = [[AromaEmail_EmailNewApplication alloc] init];
+          [fieldValue read: inProtocol];
+          [self setNewApp: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
           AromaEmail_EmailNewUserRegistration *fieldValue = [[AromaEmail_EmailNewUserRegistration alloc] init];
           [fieldValue read: inProtocol];
           [self setNewUser: fieldValue];
@@ -301,9 +566,16 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"EmailMessage"];
+  if (__newApp_isset) {
+    if (__newApp != nil) {
+      [outProtocol writeFieldBeginWithName: @"newApp" type: TType_STRUCT fieldID: 1];
+      [__newApp write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__newUser_isset) {
     if (__newUser != nil) {
-      [outProtocol writeFieldBeginWithName: @"newUser" type: TType_STRUCT fieldID: 1];
+      [outProtocol writeFieldBeginWithName: @"newUser" type: TType_STRUCT fieldID: 2];
       [__newUser write: outProtocol];
       [outProtocol writeFieldEnd];
     }
@@ -318,7 +590,9 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaEmail_EmailMessage("];
-  [ms appendString: @"newUser:"];
+  [ms appendString: @"newApp:"];
+  [ms appendFormat: @"%@", __newApp];
+  [ms appendString: @",newUser:"];
   [ms appendFormat: @"%@", __newUser];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];

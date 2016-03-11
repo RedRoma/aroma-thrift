@@ -26,11 +26,67 @@ typedef  ::tech::aroma::thrift::long long;
 
 typedef  ::tech::aroma::thrift::timestamp timestamp;
 
+typedef class  ::tech::aroma::thrift::Application Application;
+
 typedef class  ::tech::aroma::thrift::User User;
+
+class EmailNewApplication;
 
 class EmailNewUserRegistration;
 
 class EmailMessage;
+
+typedef struct _EmailNewApplication__isset {
+  _EmailNewApplication__isset() : creator(false), app(false) {}
+  bool creator :1;
+  bool app :1;
+} _EmailNewApplication__isset;
+
+class EmailNewApplication {
+ public:
+
+  EmailNewApplication(const EmailNewApplication&);
+  EmailNewApplication& operator=(const EmailNewApplication&);
+  EmailNewApplication() {
+  }
+
+  virtual ~EmailNewApplication() throw();
+  User creator;
+  Application app;
+
+  _EmailNewApplication__isset __isset;
+
+  void __set_creator(const User& val);
+
+  void __set_app(const Application& val);
+
+  bool operator == (const EmailNewApplication & rhs) const
+  {
+    if (!(creator == rhs.creator))
+      return false;
+    if (!(app == rhs.app))
+      return false;
+    return true;
+  }
+  bool operator != (const EmailNewApplication &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const EmailNewApplication & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(EmailNewApplication &a, EmailNewApplication &b);
+
+inline std::ostream& operator<<(std::ostream& out, const EmailNewApplication& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _EmailNewUserRegistration__isset {
   _EmailNewUserRegistration__isset() : infoOfNewUser(false) {}
@@ -79,7 +135,8 @@ inline std::ostream& operator<<(std::ostream& out, const EmailNewUserRegistratio
 }
 
 typedef struct _EmailMessage__isset {
-  _EmailMessage__isset() : newUser(false) {}
+  _EmailMessage__isset() : newApp(false), newUser(false) {}
+  bool newApp :1;
   bool newUser :1;
 } _EmailMessage__isset;
 
@@ -92,14 +149,19 @@ class EmailMessage {
   }
 
   virtual ~EmailMessage() throw();
+  EmailNewApplication newApp;
   EmailNewUserRegistration newUser;
 
   _EmailMessage__isset __isset;
+
+  void __set_newApp(const EmailNewApplication& val);
 
   void __set_newUser(const EmailNewUserRegistration& val);
 
   bool operator == (const EmailMessage & rhs) const
   {
+    if (!(newApp == rhs.newApp))
+      return false;
     if (!(newUser == rhs.newUser))
       return false;
     return true;

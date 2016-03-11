@@ -18,8 +18,14 @@ typedef Aroma.int int
 typedef Aroma.long long
 typedef Aroma.timestamp timestamp
 
+typedef Aroma.Application Application
 typedef Aroma.User User
 
+struct EmailNewApplication
+{
+    1: User creator;
+    2: Application app;
+}
 
 struct EmailNewUserRegistration
 {
@@ -28,5 +34,6 @@ struct EmailNewUserRegistration
 
 union EmailMessage
 {
-    1: EmailNewUserRegistration newUser;
+    1: EmailNewApplication newApp;
+    2: EmailNewUserRegistration newUser;
 }

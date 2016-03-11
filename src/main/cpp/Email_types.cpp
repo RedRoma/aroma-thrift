@@ -14,6 +14,112 @@
 namespace aroma { namespace thrift { namespace email {
 
 
+EmailNewApplication::~EmailNewApplication() throw() {
+}
+
+
+void EmailNewApplication::__set_creator(const User& val) {
+  this->creator = val;
+}
+
+void EmailNewApplication::__set_app(const Application& val) {
+  this->app = val;
+}
+
+uint32_t EmailNewApplication::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->creator.read(iprot);
+          this->__isset.creator = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->app.read(iprot);
+          this->__isset.app = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t EmailNewApplication::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("EmailNewApplication");
+
+  xfer += oprot->writeFieldBegin("creator", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->creator.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("app", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += this->app.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(EmailNewApplication &a, EmailNewApplication &b) {
+  using ::std::swap;
+  swap(a.creator, b.creator);
+  swap(a.app, b.app);
+  swap(a.__isset, b.__isset);
+}
+
+EmailNewApplication::EmailNewApplication(const EmailNewApplication& other0) {
+  creator = other0.creator;
+  app = other0.app;
+  __isset = other0.__isset;
+}
+EmailNewApplication& EmailNewApplication::operator=(const EmailNewApplication& other1) {
+  creator = other1.creator;
+  app = other1.app;
+  __isset = other1.__isset;
+  return *this;
+}
+void EmailNewApplication::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "EmailNewApplication(";
+  out << "creator=" << to_string(creator);
+  out << ", " << "app=" << to_string(app);
+  out << ")";
+}
+
+
 EmailNewUserRegistration::~EmailNewUserRegistration() throw() {
 }
 
@@ -83,13 +189,13 @@ void swap(EmailNewUserRegistration &a, EmailNewUserRegistration &b) {
   swap(a.__isset, b.__isset);
 }
 
-EmailNewUserRegistration::EmailNewUserRegistration(const EmailNewUserRegistration& other0) {
-  infoOfNewUser = other0.infoOfNewUser;
-  __isset = other0.__isset;
+EmailNewUserRegistration::EmailNewUserRegistration(const EmailNewUserRegistration& other2) {
+  infoOfNewUser = other2.infoOfNewUser;
+  __isset = other2.__isset;
 }
-EmailNewUserRegistration& EmailNewUserRegistration::operator=(const EmailNewUserRegistration& other1) {
-  infoOfNewUser = other1.infoOfNewUser;
-  __isset = other1.__isset;
+EmailNewUserRegistration& EmailNewUserRegistration::operator=(const EmailNewUserRegistration& other3) {
+  infoOfNewUser = other3.infoOfNewUser;
+  __isset = other3.__isset;
   return *this;
 }
 void EmailNewUserRegistration::printTo(std::ostream& out) const {
@@ -103,6 +209,10 @@ void EmailNewUserRegistration::printTo(std::ostream& out) const {
 EmailMessage::~EmailMessage() throw() {
 }
 
+
+void EmailMessage::__set_newApp(const EmailNewApplication& val) {
+  this->newApp = val;
+}
 
 void EmailMessage::__set_newUser(const EmailNewUserRegistration& val) {
   this->newUser = val;
@@ -131,6 +241,14 @@ uint32_t EmailMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->newApp.read(iprot);
+          this->__isset.newApp = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->newUser.read(iprot);
           this->__isset.newUser = true;
         } else {
@@ -154,7 +272,11 @@ uint32_t EmailMessage::write(::apache::thrift::protocol::TProtocol* oprot) const
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("EmailMessage");
 
-  xfer += oprot->writeFieldBegin("newUser", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += oprot->writeFieldBegin("newApp", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->newApp.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("newUser", ::apache::thrift::protocol::T_STRUCT, 2);
   xfer += this->newUser.write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -165,23 +287,27 @@ uint32_t EmailMessage::write(::apache::thrift::protocol::TProtocol* oprot) const
 
 void swap(EmailMessage &a, EmailMessage &b) {
   using ::std::swap;
+  swap(a.newApp, b.newApp);
   swap(a.newUser, b.newUser);
   swap(a.__isset, b.__isset);
 }
 
-EmailMessage::EmailMessage(const EmailMessage& other2) {
-  newUser = other2.newUser;
-  __isset = other2.__isset;
+EmailMessage::EmailMessage(const EmailMessage& other4) {
+  newApp = other4.newApp;
+  newUser = other4.newUser;
+  __isset = other4.__isset;
 }
-EmailMessage& EmailMessage::operator=(const EmailMessage& other3) {
-  newUser = other3.newUser;
-  __isset = other3.__isset;
+EmailMessage& EmailMessage::operator=(const EmailMessage& other5) {
+  newApp = other5.newApp;
+  newUser = other5.newUser;
+  __isset = other5.__isset;
   return *this;
 }
 void EmailMessage::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "EmailMessage(";
-  out << "newUser=" << to_string(newUser);
+  out << "newApp=" << to_string(newApp);
+  out << ", " << "newUser=" << to_string(newUser);
   out << ")";
 }
 

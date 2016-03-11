@@ -26,7 +26,44 @@ typedef Aroma_long AromaEmail_long;
 
 typedef Aroma_timestamp AromaEmail_timestamp;
 
+typedef Aroma_Application * AromaEmail_Application;
+
 typedef Aroma_User * AromaEmail_User;
+
+@interface AromaEmail_EmailNewApplication : NSObject <TBase, NSCoding> {
+  AromaEmail_User __creator;
+  AromaEmail_Application __app;
+
+  BOOL __creator_isset;
+  BOOL __app_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=creator, setter=setCreator:) AromaEmail_User creator;
+@property (nonatomic, retain, getter=app, setter=setApp:) AromaEmail_Application app;
+#endif
+
+- (id) init;
+- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaEmail_User) creator;
+- (void) setCreator: (AromaEmail_User) creator;
+#endif
+- (BOOL) creatorIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEmail_Application) app;
+- (void) setApp: (AromaEmail_Application) app;
+#endif
+- (BOOL) appIsSet;
+
+@end
 
 @interface AromaEmail_EmailNewUserRegistration : NSObject <TBase, NSCoding> {
   AromaEmail_User __infoOfNewUser;
@@ -55,22 +92,31 @@ typedef Aroma_User * AromaEmail_User;
 @end
 
 @interface AromaEmail_EmailMessage : NSObject <TBase, NSCoding> {
+  AromaEmail_EmailNewApplication * __newApp;
   AromaEmail_EmailNewUserRegistration * __newUser;
 
+  BOOL __newApp_isset;
   BOOL __newUser_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=newApp, setter=setNewApp:) AromaEmail_EmailNewApplication * newApp;
 @property (nonatomic, retain, getter=newUser, setter=setNewUser:) AromaEmail_EmailNewUserRegistration * newUser;
 #endif
 
 - (id) init;
-- (id) initWithNewUser: (AromaEmail_EmailNewUserRegistration *) newUser;
+- (id) initWithNewApp: (AromaEmail_EmailNewApplication *) newApp newUser: (AromaEmail_EmailNewUserRegistration *) newUser;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaEmail_EmailNewApplication *) newApp;
+- (void) setNewApp: (AromaEmail_EmailNewApplication *) newApp;
+#endif
+- (BOOL) newAppIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEmail_EmailNewUserRegistration *) newUser;

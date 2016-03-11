@@ -5,6 +5,74 @@
 //
 
 
+EmailNewApplication = function(args) {
+  this.creator = null;
+  this.app = null;
+  if (args) {
+    if (args.creator !== undefined && args.creator !== null) {
+      this.creator = new User(args.creator);
+    }
+    if (args.app !== undefined && args.app !== null) {
+      this.app = new Application(args.app);
+    }
+  }
+};
+EmailNewApplication.prototype = {};
+EmailNewApplication.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.creator = new User();
+        this.creator.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.app = new Application();
+        this.app.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+EmailNewApplication.prototype.write = function(output) {
+  output.writeStructBegin('EmailNewApplication');
+  if (this.creator !== null && this.creator !== undefined) {
+    output.writeFieldBegin('creator', Thrift.Type.STRUCT, 1);
+    this.creator.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.app !== null && this.app !== undefined) {
+    output.writeFieldBegin('app', Thrift.Type.STRUCT, 2);
+    this.app.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 EmailNewUserRegistration = function(args) {
   this.infoOfNewUser = null;
   if (args) {
@@ -60,8 +128,12 @@ EmailNewUserRegistration.prototype.write = function(output) {
 };
 
 EmailMessage = function(args) {
+  this.newApp = null;
   this.newUser = null;
   if (args) {
+    if (args.newApp !== undefined && args.newApp !== null) {
+      this.newApp = new EmailNewApplication(args.newApp);
+    }
     if (args.newUser !== undefined && args.newUser !== null) {
       this.newUser = new EmailNewUserRegistration(args.newUser);
     }
@@ -83,15 +155,20 @@ EmailMessage.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
+        this.newApp = new EmailNewApplication();
+        this.newApp.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.STRUCT) {
         this.newUser = new EmailNewUserRegistration();
         this.newUser.read(input);
       } else {
         input.skip(ftype);
       }
       break;
-      case 0:
-        input.skip(ftype);
-        break;
       default:
         input.skip(ftype);
     }
@@ -103,8 +180,13 @@ EmailMessage.prototype.read = function(input) {
 
 EmailMessage.prototype.write = function(output) {
   output.writeStructBegin('EmailMessage');
+  if (this.newApp !== null && this.newApp !== undefined) {
+    output.writeFieldBegin('newApp', Thrift.Type.STRUCT, 1);
+    this.newApp.write(output);
+    output.writeFieldEnd();
+  }
   if (this.newUser !== null && this.newUser !== undefined) {
-    output.writeFieldBegin('newUser', Thrift.Type.STRUCT, 1);
+    output.writeFieldBegin('newUser', Thrift.Type.STRUCT, 2);
     this.newUser.write(output);
     output.writeFieldEnd();
   }
