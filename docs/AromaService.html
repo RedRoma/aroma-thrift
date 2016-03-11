@@ -196,6 +196,7 @@ code { line-height: 20px; }
 <tr>
 <td>AromaService</td><td><a href="#Svc_AromaService">AromaService</a><br/>
 <ul>
+<li><a href="#Fn_AromaService_deleteApplication">deleteApplication</a></li>
 <li><a href="#Fn_AromaService_deleteMessage">deleteMessage</a></li>
 <li><a href="#Fn_AromaService_dismissMessage">dismissMessage</a></li>
 <li><a href="#Fn_AromaService_followApplication">followApplication</a></li>
@@ -749,6 +750,9 @@ The Aroma Service is designed to be used by People, and not Applications.
 They provide query interfaces and Authentication/Authorization over Data.
 <br/><div class="definition"><h4 id="Fn_AromaService_getApiVersion">Function: AromaService.getApiVersion</h4>
 <pre><code>double</code> getApiVersion()
+</pre></div><div class="definition"><h4 id="Fn_AromaService_deleteApplication">Function: AromaService.deleteApplication</h4>
+<pre><code><a href="#Struct_DeleteApplicationResponse">DeleteApplicationResponse</a></code> deleteApplication(<code><a href="#Struct_DeleteApplicationRequest">DeleteApplicationRequest</a></code> request)
+    throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_ApplicationDoesNotExistException">ApplicationDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>
 </pre></div><div class="definition"><h4 id="Fn_AromaService_deleteMessage">Function: AromaService.deleteMessage</h4>
 <pre><code><a href="#Struct_DeleteMessageResponse">DeleteMessageResponse</a></code> deleteMessage(<code><a href="#Struct_DeleteMessageRequest">DeleteMessageRequest</a></code> request)
     throws <code><a href="#Typedef_OperationFailedException">OperationFailedException</a></code>, <code><a href="#Typedef_InvalidArgumentException">InvalidArgumentException</a></code>, <code><a href="#Typedef_InvalidTokenException">InvalidTokenException</a></code>, <code><a href="#Typedef_MessageDoesNotExistException">MessageDoesNotExistException</a></code>, <code><a href="#Typedef_UnauthorizedException">UnauthorizedException</a></code>

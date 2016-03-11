@@ -27,6 +27,11 @@ class AromaServiceHandler : virtual public AromaServiceIf {
     printf("getApiVersion\n");
   }
 
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
+    // Your implementation goes here
+    printf("deleteApplication\n");
+  }
+
   void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
     // Your implementation goes here
     printf("deleteMessage\n");

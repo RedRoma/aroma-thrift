@@ -2325,6 +2325,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @protocol AromaService_AromaService <NSObject>
 - (double) getApiVersion;  // throws TException
+- (AromaService_DeleteApplicationResponse *) deleteApplication: (AromaService_DeleteApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_DeleteMessageResponse *) deleteMessage: (AromaService_DeleteMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_DismissMessageResponse *) dismissMessage: (AromaService_DismissMessageRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_MessageDoesNotExistException, AromaService_UnauthorizedException, TException
 - (AromaService_ProvisionApplicationResponse *) provisionApplication: (AromaService_ProvisionApplicationRequest *) request;  // throws AromaService_OperationFailedException, AromaService_InvalidArgumentException, AromaService_InvalidTokenException, AromaService_ApplicationDoesNotExistException, AromaService_UnauthorizedException, TException

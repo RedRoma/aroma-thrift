@@ -22,6 +22,7 @@ class AromaServiceIf {
  public:
   virtual ~AromaServiceIf() {}
   virtual double getApiVersion() = 0;
+  virtual void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) = 0;
   virtual void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) = 0;
   virtual void dismissMessage(DismissMessageResponse& _return, const DismissMessageRequest& request) = 0;
 
@@ -213,6 +214,9 @@ class AromaServiceNull : virtual public AromaServiceIf {
     double _return = (double)0;
     return _return;
   }
+  void deleteApplication(DeleteApplicationResponse& /* _return */, const DeleteApplicationRequest& /* request */) {
+    return;
+  }
   void deleteMessage(DeleteMessageResponse& /* _return */, const DeleteMessageRequest& /* request */) {
     return;
   }
@@ -383,6 +387,150 @@ class AromaService_getApiVersion_presult {
   double* success;
 
   _AromaService_getApiVersion_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _AromaService_deleteApplication_args__isset {
+  _AromaService_deleteApplication_args__isset() : request(false) {}
+  bool request :1;
+} _AromaService_deleteApplication_args__isset;
+
+class AromaService_deleteApplication_args {
+ public:
+
+  AromaService_deleteApplication_args(const AromaService_deleteApplication_args&);
+  AromaService_deleteApplication_args& operator=(const AromaService_deleteApplication_args&);
+  AromaService_deleteApplication_args() {
+  }
+
+  virtual ~AromaService_deleteApplication_args() throw();
+  DeleteApplicationRequest request;
+
+  _AromaService_deleteApplication_args__isset __isset;
+
+  void __set_request(const DeleteApplicationRequest& val);
+
+  bool operator == (const AromaService_deleteApplication_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_deleteApplication_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_deleteApplication_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class AromaService_deleteApplication_pargs {
+ public:
+
+
+  virtual ~AromaService_deleteApplication_pargs() throw();
+  const DeleteApplicationRequest* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_deleteApplication_result__isset {
+  _AromaService_deleteApplication_result__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_deleteApplication_result__isset;
+
+class AromaService_deleteApplication_result {
+ public:
+
+  AromaService_deleteApplication_result(const AromaService_deleteApplication_result&);
+  AromaService_deleteApplication_result& operator=(const AromaService_deleteApplication_result&);
+  AromaService_deleteApplication_result() {
+  }
+
+  virtual ~AromaService_deleteApplication_result() throw();
+  DeleteApplicationResponse success;
+  OperationFailedException ex1;
+  InvalidArgumentException ex2;
+  InvalidTokenException ex3;
+  ApplicationDoesNotExistException ex4;
+  UnauthorizedException ex5;
+
+  _AromaService_deleteApplication_result__isset __isset;
+
+  void __set_success(const DeleteApplicationResponse& val);
+
+  void __set_ex1(const OperationFailedException& val);
+
+  void __set_ex2(const InvalidArgumentException& val);
+
+  void __set_ex3(const InvalidTokenException& val);
+
+  void __set_ex4(const ApplicationDoesNotExistException& val);
+
+  void __set_ex5(const UnauthorizedException& val);
+
+  bool operator == (const AromaService_deleteApplication_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    if (!(ex1 == rhs.ex1))
+      return false;
+    if (!(ex2 == rhs.ex2))
+      return false;
+    if (!(ex3 == rhs.ex3))
+      return false;
+    if (!(ex4 == rhs.ex4))
+      return false;
+    if (!(ex5 == rhs.ex5))
+      return false;
+    return true;
+  }
+  bool operator != (const AromaService_deleteApplication_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const AromaService_deleteApplication_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _AromaService_deleteApplication_presult__isset {
+  _AromaService_deleteApplication_presult__isset() : success(false), ex1(false), ex2(false), ex3(false), ex4(false), ex5(false) {}
+  bool success :1;
+  bool ex1 :1;
+  bool ex2 :1;
+  bool ex3 :1;
+  bool ex4 :1;
+  bool ex5 :1;
+} _AromaService_deleteApplication_presult__isset;
+
+class AromaService_deleteApplication_presult {
+ public:
+
+
+  virtual ~AromaService_deleteApplication_presult() throw();
+  DeleteApplicationResponse* success;
+  OperationFailedException* ex1;
+  InvalidArgumentException* ex2;
+  InvalidTokenException* ex3;
+  ApplicationDoesNotExistException* ex4;
+  UnauthorizedException* ex5;
+
+  _AromaService_deleteApplication_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -4160,6 +4308,9 @@ class AromaServiceClient : virtual public AromaServiceIf {
   double getApiVersion();
   void send_getApiVersion();
   double recv_getApiVersion();
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
+  void send_deleteApplication(const DeleteApplicationRequest& request);
+  void recv_deleteApplication(DeleteApplicationResponse& _return);
   void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
   void send_deleteMessage(const DeleteMessageRequest& request);
   void recv_deleteMessage(DeleteMessageResponse& _return);
@@ -4257,6 +4408,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getApiVersion(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_deleteApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_deleteMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_dismissMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_provisionApplication(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4288,6 +4440,7 @@ class AromaServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   AromaServiceProcessor(boost::shared_ptr<AromaServiceIf> iface) :
     iface_(iface) {
     processMap_["getApiVersion"] = &AromaServiceProcessor::process_getApiVersion;
+    processMap_["deleteApplication"] = &AromaServiceProcessor::process_deleteApplication;
     processMap_["deleteMessage"] = &AromaServiceProcessor::process_deleteMessage;
     processMap_["dismissMessage"] = &AromaServiceProcessor::process_dismissMessage;
     processMap_["provisionApplication"] = &AromaServiceProcessor::process_provisionApplication;
@@ -4350,6 +4503,16 @@ class AromaServiceMultiface : virtual public AromaServiceIf {
       ifaces_[i]->getApiVersion();
     }
     return ifaces_[i]->getApiVersion();
+  }
+
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->deleteApplication(_return, request);
+    }
+    ifaces_[i]->deleteApplication(_return, request);
+    return;
   }
 
   void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request) {
@@ -4655,6 +4818,9 @@ class AromaServiceConcurrentClient : virtual public AromaServiceIf {
   double getApiVersion();
   int32_t send_getApiVersion();
   double recv_getApiVersion(const int32_t seqid);
+  void deleteApplication(DeleteApplicationResponse& _return, const DeleteApplicationRequest& request);
+  int32_t send_deleteApplication(const DeleteApplicationRequest& request);
+  void recv_deleteApplication(DeleteApplicationResponse& _return, const int32_t seqid);
   void deleteMessage(DeleteMessageResponse& _return, const DeleteMessageRequest& request);
   int32_t send_deleteMessage(const DeleteMessageRequest& request);
   void recv_deleteMessage(DeleteMessageResponse& _return, const int32_t seqid);

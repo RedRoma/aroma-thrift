@@ -613,6 +613,12 @@ service AromaService
     //==========================================================
     // Action Operations
     //==========================================================
+
+    DeleteApplicationResponse deleteApplication(1 : DeleteApplicationRequest request) throws(1 : OperationFailedException ex1,
+                                                                                             2 : InvalidArgumentException ex2,
+                                                                                             3 : InvalidTokenException ex3,
+                                                                                             4 : ApplicationDoesNotExistException ex4,
+                                                                                             5 : UnauthorizedException ex5);
     
     DeleteMessageResponse deleteMessage(1 : DeleteMessageRequest request) throws(1 : OperationFailedException ex1,
                                                                                  2 : InvalidArgumentException ex2,
