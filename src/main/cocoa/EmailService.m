@@ -37,9 +37,11 @@
   return self;
 }
 
-- (id) initWithEmailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage
+- (id) initWithToken: (EmailService_AuthenticationToken) token emailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage
 {
   self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
   __emailAddress = [emailAddress retain_stub];
   __emailAddress_isset = YES;
   __emailMessage = [emailMessage retain_stub];
@@ -50,6 +52,11 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
   if ([decoder containsValueForKey: @"emailAddress"])
   {
     __emailAddress = [[decoder decodeObjectForKey: @"emailAddress"] retain_stub];
@@ -65,6 +72,10 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
   if (__emailAddress_isset)
   {
     [encoder encodeObject: __emailAddress forKey: @"emailAddress"];
@@ -78,6 +89,11 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
   hash = (hash * 31) ^ __emailAddress_isset ? 2654435761 : 0;
   if (__emailAddress_isset)
   {
@@ -100,6 +116,10 @@
     return NO;
   }
   EmailService_SendEmailRequest *other = (EmailService_SendEmailRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
   if ((__emailAddress_isset != other->__emailAddress_isset) ||
       (__emailAddress_isset && ((__emailAddress || other->__emailAddress) && ![__emailAddress isEqual:other->__emailAddress]))) {
     return NO;
@@ -113,9 +133,31 @@
 
 - (void) dealloc
 {
+  [__token release_stub];
   [__emailAddress release_stub];
   [__emailMessage release_stub];
   [super dealloc_stub];
+}
+
+- (BananaAuthentication_AuthenticationToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_AuthenticationToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
 }
 
 - (NSString *) emailAddress {
@@ -176,6 +218,16 @@
     switch (fieldID)
     {
       case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_AuthenticationToken *fieldValue = [[BananaAuthentication_AuthenticationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
         if (fieldType == TType_STRING) {
           NSString * fieldValue = [inProtocol readString];
           [self setEmailAddress: fieldValue];
@@ -183,7 +235,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 2:
+      case 3:
         if (fieldType == TType_STRUCT) {
           AromaEmail_EmailMessage *fieldValue = [[AromaEmail_EmailMessage alloc] init];
           [fieldValue read: inProtocol];
@@ -204,16 +256,23 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"SendEmailRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__emailAddress_isset) {
     if (__emailAddress != nil) {
-      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 1];
+      [outProtocol writeFieldBeginWithName: @"emailAddress" type: TType_STRING fieldID: 2];
       [outProtocol writeString: __emailAddress];
       [outProtocol writeFieldEnd];
     }
   }
   if (__emailMessage_isset) {
     if (__emailMessage != nil) {
-      [outProtocol writeFieldBeginWithName: @"emailMessage" type: TType_STRUCT fieldID: 2];
+      [outProtocol writeFieldBeginWithName: @"emailMessage" type: TType_STRUCT fieldID: 3];
       [__emailMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
@@ -228,7 +287,9 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"EmailService_SendEmailRequest("];
-  [ms appendString: @"emailAddress:"];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",emailAddress:"];
   [ms appendFormat: @"\"%@\"", __emailAddress];
   [ms appendString: @",emailMessage:"];
   [ms appendFormat: @"%@", __emailMessage];

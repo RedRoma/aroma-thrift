@@ -18,6 +18,10 @@ SendEmailRequest::~SendEmailRequest() throw() {
 }
 
 
+void SendEmailRequest::__set_token(const AuthenticationToken& val) {
+  this->token = val;
+}
+
 void SendEmailRequest::__set_emailAddress(const std::string& val) {
   this->emailAddress = val;
 }
@@ -48,6 +52,14 @@ uint32_t SendEmailRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
     switch (fid)
     {
       case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->token.read(iprot);
+          this->__isset.token = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->emailAddress);
           this->__isset.emailAddress = true;
@@ -55,7 +67,7 @@ uint32_t SendEmailRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 2:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->emailMessage.read(iprot);
           this->__isset.emailMessage = true;
@@ -80,11 +92,15 @@ uint32_t SendEmailRequest::write(::apache::thrift::protocol::TProtocol* oprot) c
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("SendEmailRequest");
 
-  xfer += oprot->writeFieldBegin("emailAddress", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->token.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("emailAddress", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->emailAddress);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("emailMessage", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += oprot->writeFieldBegin("emailMessage", ::apache::thrift::protocol::T_STRUCT, 3);
   xfer += this->emailMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -95,17 +111,20 @@ uint32_t SendEmailRequest::write(::apache::thrift::protocol::TProtocol* oprot) c
 
 void swap(SendEmailRequest &a, SendEmailRequest &b) {
   using ::std::swap;
+  swap(a.token, b.token);
   swap(a.emailAddress, b.emailAddress);
   swap(a.emailMessage, b.emailMessage);
   swap(a.__isset, b.__isset);
 }
 
 SendEmailRequest::SendEmailRequest(const SendEmailRequest& other0) {
+  token = other0.token;
   emailAddress = other0.emailAddress;
   emailMessage = other0.emailMessage;
   __isset = other0.__isset;
 }
 SendEmailRequest& SendEmailRequest::operator=(const SendEmailRequest& other1) {
+  token = other1.token;
   emailAddress = other1.emailAddress;
   emailMessage = other1.emailMessage;
   __isset = other1.__isset;
@@ -114,7 +133,8 @@ SendEmailRequest& SendEmailRequest::operator=(const SendEmailRequest& other1) {
 void SendEmailRequest::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "SendEmailRequest(";
-  out << "emailAddress=" << to_string(emailAddress);
+  out << "token=" << to_string(token);
+  out << ", " << "emailAddress=" << to_string(emailAddress);
   out << ", " << "emailMessage=" << to_string(emailMessage);
   out << ")";
 }

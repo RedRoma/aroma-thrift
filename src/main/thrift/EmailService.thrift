@@ -57,8 +57,9 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "email-srv.beta.aroma.
 
 struct SendEmailRequest
 {
-    1: string emailAddress;
-    2: EmailMessage emailMessage;
+    1: AuthenticationToken token;
+    2: string emailAddress;
+    3: EmailMessage emailMessage;
 }
 
 struct SendEmailResponse

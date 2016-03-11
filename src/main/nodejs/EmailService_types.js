@@ -17,9 +17,13 @@ var Exceptions_ttypes = require('./Exceptions_types')
 
 var ttypes = module.exports = {};
 SendEmailRequest = module.exports.SendEmailRequest = function(args) {
+  this.token = null;
   this.emailAddress = null;
   this.emailMessage = null;
   if (args) {
+    if (args.token !== undefined && args.token !== null) {
+      this.token = new Authentication_ttypes.AuthenticationToken(args.token);
+    }
     if (args.emailAddress !== undefined && args.emailAddress !== null) {
       this.emailAddress = args.emailAddress;
     }
@@ -43,13 +47,21 @@ SendEmailRequest.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.token = new Authentication_ttypes.AuthenticationToken();
+        this.token.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
       if (ftype == Thrift.Type.STRING) {
         this.emailAddress = input.readString();
       } else {
         input.skip(ftype);
       }
       break;
-      case 2:
+      case 3:
       if (ftype == Thrift.Type.STRUCT) {
         this.emailMessage = new Email_ttypes.EmailMessage();
         this.emailMessage.read(input);
@@ -68,13 +80,18 @@ SendEmailRequest.prototype.read = function(input) {
 
 SendEmailRequest.prototype.write = function(output) {
   output.writeStructBegin('SendEmailRequest');
+  if (this.token !== null && this.token !== undefined) {
+    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
+    this.token.write(output);
+    output.writeFieldEnd();
+  }
   if (this.emailAddress !== null && this.emailAddress !== undefined) {
-    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 1);
+    output.writeFieldBegin('emailAddress', Thrift.Type.STRING, 2);
     output.writeString(this.emailAddress);
     output.writeFieldEnd();
   }
   if (this.emailMessage !== null && this.emailMessage !== undefined) {
-    output.writeFieldBegin('emailMessage', Thrift.Type.STRUCT, 2);
+    output.writeFieldBegin('emailMessage', Thrift.Type.STRUCT, 3);
     this.emailMessage.write(output);
     output.writeFieldEnd();
   }
