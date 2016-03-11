@@ -22,7 +22,7 @@
 
 #import "Email.h"
 
-@implementation AromaEmail_EmailNewRegistration
+@implementation AromaEmail_EmailNewUserRegistration
 
 - (id) init
 {
@@ -75,10 +75,10 @@
   if (self == anObject) {
     return YES;
   }
-  if (![anObject isKindOfClass:[AromaEmail_EmailNewRegistration class]]) {
+  if (![anObject isKindOfClass:[AromaEmail_EmailNewUserRegistration class]]) {
     return NO;
   }
-  AromaEmail_EmailNewRegistration *other = (AromaEmail_EmailNewRegistration *)anObject;
+  AromaEmail_EmailNewUserRegistration *other = (AromaEmail_EmailNewUserRegistration *)anObject;
   if ((__infoOfNewUser_isset != other->__infoOfNewUser_isset) ||
       (__infoOfNewUser_isset && ((__infoOfNewUser || other->__infoOfNewUser) && ![__infoOfNewUser isEqual:other->__infoOfNewUser]))) {
     return NO;
@@ -148,7 +148,7 @@
 }
 
 - (void) write: (id <TProtocol>) outProtocol {
-  [outProtocol writeStructBeginWithName: @"EmailNewRegistration"];
+  [outProtocol writeStructBeginWithName: @"EmailNewUserRegistration"];
   if (__infoOfNewUser_isset) {
     if (__infoOfNewUser != nil) {
       [outProtocol writeFieldBeginWithName: @"infoOfNewUser" type: TType_STRUCT fieldID: 1];
@@ -165,7 +165,7 @@
 }
 
 - (NSString *) description {
-  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEmail_EmailNewRegistration("];
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEmail_EmailNewUserRegistration("];
   [ms appendString: @"infoOfNewUser:"];
   [ms appendFormat: @"%@", __infoOfNewUser];
   [ms appendString: @")"];
@@ -184,40 +184,40 @@
   return self;
 }
 
-- (id) initWithNewRegistration: (AromaEmail_EmailNewRegistration *) newRegistration
+- (id) initWithNewUser: (AromaEmail_EmailNewUserRegistration *) newUser
 {
   self = [super init];
-  __newRegistration = [newRegistration retain_stub];
-  __newRegistration_isset = YES;
+  __newUser = [newUser retain_stub];
+  __newUser_isset = YES;
   return self;
 }
 
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
-  if ([decoder containsValueForKey: @"newRegistration"])
+  if ([decoder containsValueForKey: @"newUser"])
   {
-    __newRegistration = [[decoder decodeObjectForKey: @"newRegistration"] retain_stub];
-    __newRegistration_isset = YES;
+    __newUser = [[decoder decodeObjectForKey: @"newUser"] retain_stub];
+    __newUser_isset = YES;
   }
   return self;
 }
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
-  if (__newRegistration_isset)
+  if (__newUser_isset)
   {
-    [encoder encodeObject: __newRegistration forKey: @"newRegistration"];
+    [encoder encodeObject: __newUser forKey: @"newUser"];
   }
 }
 
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
-  hash = (hash * 31) ^ __newRegistration_isset ? 2654435761 : 0;
-  if (__newRegistration_isset)
+  hash = (hash * 31) ^ __newUser_isset ? 2654435761 : 0;
+  if (__newUser_isset)
   {
-    hash = (hash * 31) ^ [__newRegistration hash];
+    hash = (hash * 31) ^ [__newUser hash];
   }
   return hash;
 }
@@ -231,8 +231,8 @@
     return NO;
   }
   AromaEmail_EmailMessage *other = (AromaEmail_EmailMessage *)anObject;
-  if ((__newRegistration_isset != other->__newRegistration_isset) ||
-      (__newRegistration_isset && ((__newRegistration || other->__newRegistration) && ![__newRegistration isEqual:other->__newRegistration]))) {
+  if ((__newUser_isset != other->__newUser_isset) ||
+      (__newUser_isset && ((__newUser || other->__newUser) && ![__newUser isEqual:other->__newUser]))) {
     return NO;
   }
   return YES;
@@ -240,29 +240,29 @@
 
 - (void) dealloc
 {
-  [__newRegistration release_stub];
+  [__newUser release_stub];
   [super dealloc_stub];
 }
 
-- (AromaEmail_EmailNewRegistration *) newRegistration {
-  return [[__newRegistration retain_stub] autorelease_stub];
+- (AromaEmail_EmailNewUserRegistration *) newUser {
+  return [[__newUser retain_stub] autorelease_stub];
 }
 
-- (void) setNewRegistration: (AromaEmail_EmailNewRegistration *) newRegistration {
-  [newRegistration retain_stub];
-  [__newRegistration release_stub];
-  __newRegistration = newRegistration;
-  __newRegistration_isset = YES;
+- (void) setNewUser: (AromaEmail_EmailNewUserRegistration *) newUser {
+  [newUser retain_stub];
+  [__newUser release_stub];
+  __newUser = newUser;
+  __newUser_isset = YES;
 }
 
-- (BOOL) newRegistrationIsSet {
-  return __newRegistration_isset;
+- (BOOL) newUserIsSet {
+  return __newUser_isset;
 }
 
-- (void) unsetNewRegistration {
-  [__newRegistration release_stub];
-  __newRegistration = nil;
-  __newRegistration_isset = NO;
+- (void) unsetNewUser {
+  [__newUser release_stub];
+  __newUser = nil;
+  __newUser_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -282,9 +282,9 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
-          AromaEmail_EmailNewRegistration *fieldValue = [[AromaEmail_EmailNewRegistration alloc] init];
+          AromaEmail_EmailNewUserRegistration *fieldValue = [[AromaEmail_EmailNewUserRegistration alloc] init];
           [fieldValue read: inProtocol];
-          [self setNewRegistration: fieldValue];
+          [self setNewUser: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -301,10 +301,10 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"EmailMessage"];
-  if (__newRegistration_isset) {
-    if (__newRegistration != nil) {
-      [outProtocol writeFieldBeginWithName: @"newRegistration" type: TType_STRUCT fieldID: 1];
-      [__newRegistration write: outProtocol];
+  if (__newUser_isset) {
+    if (__newUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"newUser" type: TType_STRUCT fieldID: 1];
+      [__newUser write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
@@ -318,8 +318,8 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaEmail_EmailMessage("];
-  [ms appendString: @"newRegistration:"];
-  [ms appendFormat: @"%@", __newRegistration];
+  [ms appendString: @"newUser:"];
+  [ms appendFormat: @"%@", __newUser];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

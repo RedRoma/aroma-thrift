@@ -28,41 +28,41 @@ typedef  ::tech::aroma::thrift::timestamp timestamp;
 
 typedef class  ::tech::aroma::thrift::User User;
 
-class EmailNewRegistration;
+class EmailNewUserRegistration;
 
 class EmailMessage;
 
-typedef struct _EmailNewRegistration__isset {
-  _EmailNewRegistration__isset() : infoOfNewUser(false) {}
+typedef struct _EmailNewUserRegistration__isset {
+  _EmailNewUserRegistration__isset() : infoOfNewUser(false) {}
   bool infoOfNewUser :1;
-} _EmailNewRegistration__isset;
+} _EmailNewUserRegistration__isset;
 
-class EmailNewRegistration {
+class EmailNewUserRegistration {
  public:
 
-  EmailNewRegistration(const EmailNewRegistration&);
-  EmailNewRegistration& operator=(const EmailNewRegistration&);
-  EmailNewRegistration() {
+  EmailNewUserRegistration(const EmailNewUserRegistration&);
+  EmailNewUserRegistration& operator=(const EmailNewUserRegistration&);
+  EmailNewUserRegistration() {
   }
 
-  virtual ~EmailNewRegistration() throw();
+  virtual ~EmailNewUserRegistration() throw();
   User infoOfNewUser;
 
-  _EmailNewRegistration__isset __isset;
+  _EmailNewUserRegistration__isset __isset;
 
   void __set_infoOfNewUser(const User& val);
 
-  bool operator == (const EmailNewRegistration & rhs) const
+  bool operator == (const EmailNewUserRegistration & rhs) const
   {
     if (!(infoOfNewUser == rhs.infoOfNewUser))
       return false;
     return true;
   }
-  bool operator != (const EmailNewRegistration &rhs) const {
+  bool operator != (const EmailNewUserRegistration &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const EmailNewRegistration & ) const;
+  bool operator < (const EmailNewUserRegistration & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -70,17 +70,17 @@ class EmailNewRegistration {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(EmailNewRegistration &a, EmailNewRegistration &b);
+void swap(EmailNewUserRegistration &a, EmailNewUserRegistration &b);
 
-inline std::ostream& operator<<(std::ostream& out, const EmailNewRegistration& obj)
+inline std::ostream& operator<<(std::ostream& out, const EmailNewUserRegistration& obj)
 {
   obj.printTo(out);
   return out;
 }
 
 typedef struct _EmailMessage__isset {
-  _EmailMessage__isset() : newRegistration(false) {}
-  bool newRegistration :1;
+  _EmailMessage__isset() : newUser(false) {}
+  bool newUser :1;
 } _EmailMessage__isset;
 
 class EmailMessage {
@@ -92,15 +92,15 @@ class EmailMessage {
   }
 
   virtual ~EmailMessage() throw();
-  EmailNewRegistration newRegistration;
+  EmailNewUserRegistration newUser;
 
   _EmailMessage__isset __isset;
 
-  void __set_newRegistration(const EmailNewRegistration& val);
+  void __set_newUser(const EmailNewUserRegistration& val);
 
   bool operator == (const EmailMessage & rhs) const
   {
-    if (!(newRegistration == rhs.newRegistration))
+    if (!(newUser == rhs.newUser))
       return false;
     return true;
   }

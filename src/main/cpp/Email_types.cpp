@@ -14,15 +14,15 @@
 namespace aroma { namespace thrift { namespace email {
 
 
-EmailNewRegistration::~EmailNewRegistration() throw() {
+EmailNewUserRegistration::~EmailNewUserRegistration() throw() {
 }
 
 
-void EmailNewRegistration::__set_infoOfNewUser(const User& val) {
+void EmailNewUserRegistration::__set_infoOfNewUser(const User& val) {
   this->infoOfNewUser = val;
 }
 
-uint32_t EmailNewRegistration::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t EmailNewUserRegistration::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -63,10 +63,10 @@ uint32_t EmailNewRegistration::read(::apache::thrift::protocol::TProtocol* iprot
   return xfer;
 }
 
-uint32_t EmailNewRegistration::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t EmailNewUserRegistration::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("EmailNewRegistration");
+  xfer += oprot->writeStructBegin("EmailNewUserRegistration");
 
   xfer += oprot->writeFieldBegin("infoOfNewUser", ::apache::thrift::protocol::T_STRUCT, 1);
   xfer += this->infoOfNewUser.write(oprot);
@@ -77,24 +77,24 @@ uint32_t EmailNewRegistration::write(::apache::thrift::protocol::TProtocol* opro
   return xfer;
 }
 
-void swap(EmailNewRegistration &a, EmailNewRegistration &b) {
+void swap(EmailNewUserRegistration &a, EmailNewUserRegistration &b) {
   using ::std::swap;
   swap(a.infoOfNewUser, b.infoOfNewUser);
   swap(a.__isset, b.__isset);
 }
 
-EmailNewRegistration::EmailNewRegistration(const EmailNewRegistration& other0) {
+EmailNewUserRegistration::EmailNewUserRegistration(const EmailNewUserRegistration& other0) {
   infoOfNewUser = other0.infoOfNewUser;
   __isset = other0.__isset;
 }
-EmailNewRegistration& EmailNewRegistration::operator=(const EmailNewRegistration& other1) {
+EmailNewUserRegistration& EmailNewUserRegistration::operator=(const EmailNewUserRegistration& other1) {
   infoOfNewUser = other1.infoOfNewUser;
   __isset = other1.__isset;
   return *this;
 }
-void EmailNewRegistration::printTo(std::ostream& out) const {
+void EmailNewUserRegistration::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
-  out << "EmailNewRegistration(";
+  out << "EmailNewUserRegistration(";
   out << "infoOfNewUser=" << to_string(infoOfNewUser);
   out << ")";
 }
@@ -104,8 +104,8 @@ EmailMessage::~EmailMessage() throw() {
 }
 
 
-void EmailMessage::__set_newRegistration(const EmailNewRegistration& val) {
-  this->newRegistration = val;
+void EmailMessage::__set_newUser(const EmailNewUserRegistration& val) {
+  this->newUser = val;
 }
 
 uint32_t EmailMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -131,8 +131,8 @@ uint32_t EmailMessage::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->newRegistration.read(iprot);
-          this->__isset.newRegistration = true;
+          xfer += this->newUser.read(iprot);
+          this->__isset.newUser = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -154,8 +154,8 @@ uint32_t EmailMessage::write(::apache::thrift::protocol::TProtocol* oprot) const
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("EmailMessage");
 
-  xfer += oprot->writeFieldBegin("newRegistration", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->newRegistration.write(oprot);
+  xfer += oprot->writeFieldBegin("newUser", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->newUser.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -165,23 +165,23 @@ uint32_t EmailMessage::write(::apache::thrift::protocol::TProtocol* oprot) const
 
 void swap(EmailMessage &a, EmailMessage &b) {
   using ::std::swap;
-  swap(a.newRegistration, b.newRegistration);
+  swap(a.newUser, b.newUser);
   swap(a.__isset, b.__isset);
 }
 
 EmailMessage::EmailMessage(const EmailMessage& other2) {
-  newRegistration = other2.newRegistration;
+  newUser = other2.newUser;
   __isset = other2.__isset;
 }
 EmailMessage& EmailMessage::operator=(const EmailMessage& other3) {
-  newRegistration = other3.newRegistration;
+  newUser = other3.newUser;
   __isset = other3.__isset;
   return *this;
 }
 void EmailMessage::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "EmailMessage(";
-  out << "newRegistration=" << to_string(newRegistration);
+  out << "newUser=" << to_string(newUser);
   out << ")";
 }
 

@@ -21,12 +21,12 @@ typedef Aroma.timestamp timestamp
 typedef Aroma.User User
 
 
-struct EmailNewRegistration
+struct EmailNewUserRegistration
 {
     1: User infoOfNewUser;
 }
 
 union EmailMessage
 {
-    1: EmailNewRegistration newRegistration;
+    1: EmailNewUserRegistration newUser;
 }

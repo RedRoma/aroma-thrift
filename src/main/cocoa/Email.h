@@ -28,7 +28,7 @@ typedef Aroma_timestamp AromaEmail_timestamp;
 
 typedef Aroma_User * AromaEmail_User;
 
-@interface AromaEmail_EmailNewRegistration : NSObject <TBase, NSCoding> {
+@interface AromaEmail_EmailNewUserRegistration : NSObject <TBase, NSCoding> {
   AromaEmail_User __infoOfNewUser;
 
   BOOL __infoOfNewUser_isset;
@@ -55,17 +55,17 @@ typedef Aroma_User * AromaEmail_User;
 @end
 
 @interface AromaEmail_EmailMessage : NSObject <TBase, NSCoding> {
-  AromaEmail_EmailNewRegistration * __newRegistration;
+  AromaEmail_EmailNewUserRegistration * __newUser;
 
-  BOOL __newRegistration_isset;
+  BOOL __newUser_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=newRegistration, setter=setNewRegistration:) AromaEmail_EmailNewRegistration * newRegistration;
+@property (nonatomic, retain, getter=newUser, setter=setNewUser:) AromaEmail_EmailNewUserRegistration * newUser;
 #endif
 
 - (id) init;
-- (id) initWithNewRegistration: (AromaEmail_EmailNewRegistration *) newRegistration;
+- (id) initWithNewUser: (AromaEmail_EmailNewUserRegistration *) newUser;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -73,10 +73,10 @@ typedef Aroma_User * AromaEmail_User;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaEmail_EmailNewRegistration *) newRegistration;
-- (void) setNewRegistration: (AromaEmail_EmailNewRegistration *) newRegistration;
+- (AromaEmail_EmailNewUserRegistration *) newUser;
+- (void) setNewUser: (AromaEmail_EmailNewUserRegistration *) newUser;
 #endif
-- (BOOL) newRegistrationIsSet;
+- (BOOL) newUserIsSet;
 
 @end
 

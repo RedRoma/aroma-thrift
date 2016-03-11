@@ -11,7 +11,7 @@ var Aroma_ttypes = require('./Aroma_types')
 
 
 var ttypes = module.exports = {};
-EmailNewRegistration = module.exports.EmailNewRegistration = function(args) {
+EmailNewUserRegistration = module.exports.EmailNewUserRegistration = function(args) {
   this.infoOfNewUser = null;
   if (args) {
     if (args.infoOfNewUser !== undefined && args.infoOfNewUser !== null) {
@@ -19,8 +19,8 @@ EmailNewRegistration = module.exports.EmailNewRegistration = function(args) {
     }
   }
 };
-EmailNewRegistration.prototype = {};
-EmailNewRegistration.prototype.read = function(input) {
+EmailNewUserRegistration.prototype = {};
+EmailNewUserRegistration.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -53,8 +53,8 @@ EmailNewRegistration.prototype.read = function(input) {
   return;
 };
 
-EmailNewRegistration.prototype.write = function(output) {
-  output.writeStructBegin('EmailNewRegistration');
+EmailNewUserRegistration.prototype.write = function(output) {
+  output.writeStructBegin('EmailNewUserRegistration');
   if (this.infoOfNewUser !== null && this.infoOfNewUser !== undefined) {
     output.writeFieldBegin('infoOfNewUser', Thrift.Type.STRUCT, 1);
     this.infoOfNewUser.write(output);
@@ -66,10 +66,10 @@ EmailNewRegistration.prototype.write = function(output) {
 };
 
 EmailMessage = module.exports.EmailMessage = function(args) {
-  this.newRegistration = null;
+  this.newUser = null;
   if (args) {
-    if (args.newRegistration !== undefined && args.newRegistration !== null) {
-      this.newRegistration = new ttypes.EmailNewRegistration(args.newRegistration);
+    if (args.newUser !== undefined && args.newUser !== null) {
+      this.newUser = new ttypes.EmailNewUserRegistration(args.newUser);
     }
   }
 };
@@ -89,8 +89,8 @@ EmailMessage.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.newRegistration = new ttypes.EmailNewRegistration();
-        this.newRegistration.read(input);
+        this.newUser = new ttypes.EmailNewUserRegistration();
+        this.newUser.read(input);
       } else {
         input.skip(ftype);
       }
@@ -109,9 +109,9 @@ EmailMessage.prototype.read = function(input) {
 
 EmailMessage.prototype.write = function(output) {
   output.writeStructBegin('EmailMessage');
-  if (this.newRegistration !== null && this.newRegistration !== undefined) {
-    output.writeFieldBegin('newRegistration', Thrift.Type.STRUCT, 1);
-    this.newRegistration.write(output);
+  if (this.newUser !== null && this.newUser !== undefined) {
+    output.writeFieldBegin('newUser', Thrift.Type.STRUCT, 1);
+    this.newUser.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
