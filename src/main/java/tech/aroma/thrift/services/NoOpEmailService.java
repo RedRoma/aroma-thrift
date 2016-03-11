@@ -36,6 +36,11 @@ public final class NoOpEmailService implements EmailService.Iface
 
     private final static Logger LOG = LoggerFactory.getLogger(NoOpEmailService.class);
     
+    public static EmailService.Iface newInstance()
+    {
+        return new NoOpEmailService();
+    }
+    
     @Override
     public double getApiVersion() throws TException
     {

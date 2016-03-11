@@ -19,6 +19,7 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tech.aroma.thrift.email.service.EmailService;
 import tech.aroma.thrift.email.service.SendEmailRequest;
 import tech.aroma.thrift.email.service.SendEmailResponse;
 import tech.aroma.thrift.service.AromaServiceConstants;
@@ -26,8 +27,8 @@ import tech.sirwellington.alchemy.test.junit.runners.AlchemyTestRunner;
 import tech.sirwellington.alchemy.test.junit.runners.GeneratePojo;
 import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -67,6 +68,13 @@ public class NoOpEmailServiceTest
     {
         SendEmailResponse response = instance.sendEmail(request);
         assertThat(response, notNullValue());
+    }
+
+    @Test
+    public void testNewInstance()
+    {
+        EmailService.Iface result = NoOpEmailService.newInstance();
+        assertThat(result, notNullValue());
     }
 
 }
