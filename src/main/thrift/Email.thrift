@@ -13,6 +13,7 @@ namespace cpp   aroma.thrift.email
  */
 
 include "Aroma.thrift"
+include "Authentication.thrift"
 
 typedef Aroma.int int
 typedef Aroma.long long
@@ -21,10 +22,13 @@ typedef Aroma.timestamp timestamp
 typedef Aroma.Application Application
 typedef Aroma.User User
 
+typedef Authentication.ApplicationToken ApplicationToken
+
 struct EmailNewApplication
 {
     1: User creator;
     2: Application app;
+    3: ApplicationToken appToken;
 }
 
 struct EmailNewUserRegistration

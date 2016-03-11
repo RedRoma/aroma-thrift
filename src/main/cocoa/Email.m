@@ -19,6 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Aroma.h"
+#import "Authentication.h"
 
 #import "Email.h"
 
@@ -32,13 +33,15 @@
   return self;
 }
 
-- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app
+- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app appToken: (AromaEmail_ApplicationToken) appToken
 {
   self = [super init];
   __creator = [creator retain_stub];
   __creator_isset = YES;
   __app = [app retain_stub];
   __app_isset = YES;
+  __appToken = [appToken retain_stub];
+  __appToken_isset = YES;
   return self;
 }
 
@@ -55,6 +58,11 @@
     __app = [[decoder decodeObjectForKey: @"app"] retain_stub];
     __app_isset = YES;
   }
+  if ([decoder containsValueForKey: @"appToken"])
+  {
+    __appToken = [[decoder decodeObjectForKey: @"appToken"] retain_stub];
+    __appToken_isset = YES;
+  }
   return self;
 }
 
@@ -67,6 +75,10 @@
   if (__app_isset)
   {
     [encoder encodeObject: __app forKey: @"app"];
+  }
+  if (__appToken_isset)
+  {
+    [encoder encodeObject: __appToken forKey: @"appToken"];
   }
 }
 
@@ -82,6 +94,11 @@
   if (__app_isset)
   {
     hash = (hash * 31) ^ [__app hash];
+  }
+  hash = (hash * 31) ^ __appToken_isset ? 2654435761 : 0;
+  if (__appToken_isset)
+  {
+    hash = (hash * 31) ^ [__appToken hash];
   }
   return hash;
 }
@@ -103,6 +120,10 @@
       (__app_isset && ((__app || other->__app) && ![__app isEqual:other->__app]))) {
     return NO;
   }
+  if ((__appToken_isset != other->__appToken_isset) ||
+      (__appToken_isset && ((__appToken || other->__appToken) && ![__appToken isEqual:other->__appToken]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -110,6 +131,7 @@
 {
   [__creator release_stub];
   [__app release_stub];
+  [__appToken release_stub];
   [super dealloc_stub];
 }
 
@@ -155,6 +177,27 @@
   __app_isset = NO;
 }
 
+- (BananaAuthentication_ApplicationToken *) appToken {
+  return [[__appToken retain_stub] autorelease_stub];
+}
+
+- (void) setAppToken: (BananaAuthentication_ApplicationToken *) appToken {
+  [appToken retain_stub];
+  [__appToken release_stub];
+  __appToken = appToken;
+  __appToken_isset = YES;
+}
+
+- (BOOL) appTokenIsSet {
+  return __appToken_isset;
+}
+
+- (void) unsetAppToken {
+  [__appToken release_stub];
+  __appToken = nil;
+  __appToken_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -190,6 +233,16 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_ApplicationToken *fieldValue = [[BananaAuthentication_ApplicationToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setAppToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -215,6 +268,13 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__appToken_isset) {
+    if (__appToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"appToken" type: TType_STRUCT fieldID: 3];
+      [__appToken write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -229,6 +289,8 @@
   [ms appendFormat: @"%@", __creator];
   [ms appendString: @",app:"];
   [ms appendFormat: @"%@", __app];
+  [ms appendString: @",appToken:"];
+  [ms appendFormat: @"%@", __appToken];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

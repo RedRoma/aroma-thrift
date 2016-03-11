@@ -26,6 +26,10 @@ void EmailNewApplication::__set_app(const Application& val) {
   this->app = val;
 }
 
+void EmailNewApplication::__set_appToken(const ApplicationToken& val) {
+  this->appToken = val;
+}
+
 uint32_t EmailNewApplication::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -63,6 +67,14 @@ uint32_t EmailNewApplication::read(::apache::thrift::protocol::TProtocol* iprot)
           xfer += iprot->skip(ftype);
         }
         break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->appToken.read(iprot);
+          this->__isset.appToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -88,6 +100,10 @@ uint32_t EmailNewApplication::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += this->app.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("appToken", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += this->appToken.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -97,17 +113,20 @@ void swap(EmailNewApplication &a, EmailNewApplication &b) {
   using ::std::swap;
   swap(a.creator, b.creator);
   swap(a.app, b.app);
+  swap(a.appToken, b.appToken);
   swap(a.__isset, b.__isset);
 }
 
 EmailNewApplication::EmailNewApplication(const EmailNewApplication& other0) {
   creator = other0.creator;
   app = other0.app;
+  appToken = other0.appToken;
   __isset = other0.__isset;
 }
 EmailNewApplication& EmailNewApplication::operator=(const EmailNewApplication& other1) {
   creator = other1.creator;
   app = other1.app;
+  appToken = other1.appToken;
   __isset = other1.__isset;
   return *this;
 }
@@ -116,6 +135,7 @@ void EmailNewApplication::printTo(std::ostream& out) const {
   out << "EmailNewApplication(";
   out << "creator=" << to_string(creator);
   out << ", " << "app=" << to_string(app);
+  out << ", " << "appToken=" << to_string(appToken);
   out << ")";
 }
 

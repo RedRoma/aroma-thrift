@@ -8,18 +8,23 @@ var Thrift = thrift.Thrift;
 var Q = thrift.Q;
 
 var Aroma_ttypes = require('./Aroma_types')
+var Authentication_ttypes = require('./Authentication_types')
 
 
 var ttypes = module.exports = {};
 EmailNewApplication = module.exports.EmailNewApplication = function(args) {
   this.creator = null;
   this.app = null;
+  this.appToken = null;
   if (args) {
     if (args.creator !== undefined && args.creator !== null) {
       this.creator = new Aroma_ttypes.User(args.creator);
     }
     if (args.app !== undefined && args.app !== null) {
       this.app = new Aroma_ttypes.Application(args.app);
+    }
+    if (args.appToken !== undefined && args.appToken !== null) {
+      this.appToken = new Authentication_ttypes.ApplicationToken(args.appToken);
     }
   }
 };
@@ -53,6 +58,14 @@ EmailNewApplication.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 3:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.appToken = new Authentication_ttypes.ApplicationToken();
+        this.appToken.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -72,6 +85,11 @@ EmailNewApplication.prototype.write = function(output) {
   if (this.app !== null && this.app !== undefined) {
     output.writeFieldBegin('app', Thrift.Type.STRUCT, 2);
     this.app.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.appToken !== null && this.appToken !== undefined) {
+    output.writeFieldBegin('appToken', Thrift.Type.STRUCT, 3);
+    this.appToken.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

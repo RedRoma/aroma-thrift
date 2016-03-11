@@ -16,6 +16,7 @@
 
 #include <thrift/cxxfunctional.h>
 #include "Aroma_types.h"
+#include "Authentication_types.h"
 
 
 namespace aroma { namespace thrift { namespace email {
@@ -30,6 +31,8 @@ typedef class  ::tech::aroma::thrift::Application Application;
 
 typedef class  ::tech::aroma::thrift::User User;
 
+typedef class  ::aroma::thrift::authentication::ApplicationToken ApplicationToken;
+
 class EmailNewApplication;
 
 class EmailNewUserRegistration;
@@ -37,9 +40,10 @@ class EmailNewUserRegistration;
 class EmailMessage;
 
 typedef struct _EmailNewApplication__isset {
-  _EmailNewApplication__isset() : creator(false), app(false) {}
+  _EmailNewApplication__isset() : creator(false), app(false), appToken(false) {}
   bool creator :1;
   bool app :1;
+  bool appToken :1;
 } _EmailNewApplication__isset;
 
 class EmailNewApplication {
@@ -53,6 +57,7 @@ class EmailNewApplication {
   virtual ~EmailNewApplication() throw();
   User creator;
   Application app;
+  ApplicationToken appToken;
 
   _EmailNewApplication__isset __isset;
 
@@ -60,11 +65,15 @@ class EmailNewApplication {
 
   void __set_app(const Application& val);
 
+  void __set_appToken(const ApplicationToken& val);
+
   bool operator == (const EmailNewApplication & rhs) const
   {
     if (!(creator == rhs.creator))
       return false;
     if (!(app == rhs.app))
+      return false;
+    if (!(appToken == rhs.appToken))
       return false;
     return true;
   }

@@ -19,6 +19,7 @@
 #import "TBaseClient.h"
 
 #import "Aroma.h"
+#import "Authentication.h"
 
 typedef Aroma_int AromaEmail_int;
 
@@ -30,21 +31,26 @@ typedef Aroma_Application * AromaEmail_Application;
 
 typedef Aroma_User * AromaEmail_User;
 
+typedef BananaAuthentication_ApplicationToken * AromaEmail_ApplicationToken;
+
 @interface AromaEmail_EmailNewApplication : NSObject <TBase, NSCoding> {
   AromaEmail_User __creator;
   AromaEmail_Application __app;
+  AromaEmail_ApplicationToken __appToken;
 
   BOOL __creator_isset;
   BOOL __app_isset;
+  BOOL __appToken_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=creator, setter=setCreator:) AromaEmail_User creator;
 @property (nonatomic, retain, getter=app, setter=setApp:) AromaEmail_Application app;
+@property (nonatomic, retain, getter=appToken, setter=setAppToken:) AromaEmail_ApplicationToken appToken;
 #endif
 
 - (id) init;
-- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app;
+- (id) initWithCreator: (AromaEmail_User) creator app: (AromaEmail_Application) app appToken: (AromaEmail_ApplicationToken) appToken;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -62,6 +68,12 @@ typedef Aroma_User * AromaEmail_User;
 - (void) setApp: (AromaEmail_Application) app;
 #endif
 - (BOOL) appIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEmail_ApplicationToken) appToken;
+- (void) setAppToken: (AromaEmail_ApplicationToken) appToken;
+#endif
+- (BOOL) appTokenIsSet;
 
 @end
 
