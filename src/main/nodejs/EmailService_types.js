@@ -133,3 +133,4 @@ ttypes.PRODUCTION_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'email-srv.aroma.tech','port' : 7017});
 ttypes.BETA_ENDPOINT = new Endpoint_ttypes.TcpEndpoint({
 'hostname' : 'email-srv.beta.aroma.tech','port' : 7017});
+ttypes.AROMA_EMAIL_ADDRESS = 'Aroma@RedRoma.tech';

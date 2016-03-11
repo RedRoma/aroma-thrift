@@ -50,6 +50,9 @@ const Endpoint.TcpEndpoint PRODUCTION_ENDPOINT = { "hostname" : "email-srv.aroma
 
 const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "email-srv.beta.aroma.tech", "port" : SERVICE_PORT };
 
+/** The Email used to send Emails from Aroma. */
+const string AROMA_EMAIL_ADDRESS = "Aroma@RedRoma.tech";
+
 //==========================================================
 // EMAILS
 

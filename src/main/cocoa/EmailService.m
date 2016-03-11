@@ -380,6 +380,7 @@
 static EmailService_int EmailService_SERVICE_PORT = 7017;
 static AromaEndpoint_TcpEndpoint * EmailService_PRODUCTION_ENDPOINT;
 static AromaEndpoint_TcpEndpoint * EmailService_BETA_ENDPOINT;
+static NSString * EmailService_AROMA_EMAIL_ADDRESS = @"Aroma@RedRoma.tech";
 
 @implementation EmailService_EmailServiceConstants
 + (void) initialize {
@@ -402,6 +403,9 @@ static AromaEndpoint_TcpEndpoint * EmailService_BETA_ENDPOINT;
 }
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT{
   return EmailService_BETA_ENDPOINT;
+}
++ (NSString *) AROMA_EMAIL_ADDRESS{
+  return EmailService_AROMA_EMAIL_ADDRESS;
 }
 @end
 

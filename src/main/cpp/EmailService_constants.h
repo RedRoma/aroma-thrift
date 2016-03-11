@@ -18,6 +18,7 @@ class EmailServiceConstants {
   int SERVICE_PORT;
    ::aroma::thrift::endpoint::TcpEndpoint PRODUCTION_ENDPOINT;
    ::aroma::thrift::endpoint::TcpEndpoint BETA_ENDPOINT;
+  std::string AROMA_EMAIL_ADDRESS;
 };
 
 extern const EmailServiceConstants g_EmailService_constants;

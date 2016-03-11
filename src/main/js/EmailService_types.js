@@ -122,3 +122,4 @@ PRODUCTION_ENDPOINT = new TcpEndpoint({
 'hostname' : 'email-srv.aroma.tech','port' : 7017});
 BETA_ENDPOINT = new TcpEndpoint({
 'hostname' : 'email-srv.beta.aroma.tech','port' : 7017});
+AROMA_EMAIL_ADDRESS = 'Aroma@RedRoma.tech';

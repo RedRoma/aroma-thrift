@@ -143,4 +143,5 @@ typedef AromaException_UnauthorizedException * EmailService_UnauthorizedExceptio
 + (EmailService_int) SERVICE_PORT;
 + (AromaEndpoint_TcpEndpoint *) PRODUCTION_ENDPOINT;
 + (AromaEndpoint_TcpEndpoint *) BETA_ENDPOINT;
++ (NSString *) AROMA_EMAIL_ADDRESS;
 @end

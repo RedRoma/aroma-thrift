@@ -25,6 +25,8 @@ EmailServiceConstants::EmailServiceConstants() {
 
   BETA_ENDPOINT.port = tmp5;
 
+  AROMA_EMAIL_ADDRESS = "Aroma@RedRoma.tech";
+
 }
 
 }}}} // namespace
