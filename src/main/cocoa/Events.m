@@ -23,6 +23,278 @@
 
 #import "Events.h"
 
+@implementation AromaEvents_ApplicationMessagesDeleted
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.message = @"Application's messages have been deleted";
+
+#endif
+  return self;
+}
+
+- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app
+{
+  self = [super init];
+  __applicationId = [applicationId retain_stub];
+  __applicationId_isset = YES;
+  __message = [message retain_stub];
+  __message_isset = YES;
+  __app = [app retain_stub];
+  __app_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"applicationId"])
+  {
+    __applicationId = [[decoder decodeObjectForKey: @"applicationId"] retain_stub];
+    __applicationId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"message"])
+  {
+    __message = [[decoder decodeObjectForKey: @"message"] retain_stub];
+    __message_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"app"])
+  {
+    __app = [[decoder decodeObjectForKey: @"app"] retain_stub];
+    __app_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__applicationId_isset)
+  {
+    [encoder encodeObject: __applicationId forKey: @"applicationId"];
+  }
+  if (__message_isset)
+  {
+    [encoder encodeObject: __message forKey: @"message"];
+  }
+  if (__app_isset)
+  {
+    [encoder encodeObject: __app forKey: @"app"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationId_isset ? 2654435761 : 0;
+  if (__applicationId_isset)
+  {
+    hash = (hash * 31) ^ [__applicationId hash];
+  }
+  hash = (hash * 31) ^ __message_isset ? 2654435761 : 0;
+  if (__message_isset)
+  {
+    hash = (hash * 31) ^ [__message hash];
+  }
+  hash = (hash * 31) ^ __app_isset ? 2654435761 : 0;
+  if (__app_isset)
+  {
+    hash = (hash * 31) ^ [__app hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaEvents_ApplicationMessagesDeleted class]]) {
+    return NO;
+  }
+  AromaEvents_ApplicationMessagesDeleted *other = (AromaEvents_ApplicationMessagesDeleted *)anObject;
+  if ((__applicationId_isset != other->__applicationId_isset) ||
+      (__applicationId_isset && ((__applicationId || other->__applicationId) && ![__applicationId isEqual:other->__applicationId]))) {
+    return NO;
+  }
+  if ((__message_isset != other->__message_isset) ||
+      (__message_isset && ((__message || other->__message) && ![__message isEqual:other->__message]))) {
+    return NO;
+  }
+  if ((__app_isset != other->__app_isset) ||
+      (__app_isset && ((__app || other->__app) && ![__app isEqual:other->__app]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__applicationId release_stub];
+  [__message release_stub];
+  [__app release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) applicationId {
+  return [[__applicationId retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationId: (NSString *) applicationId {
+  [applicationId retain_stub];
+  [__applicationId release_stub];
+  __applicationId = applicationId;
+  __applicationId_isset = YES;
+}
+
+- (BOOL) applicationIdIsSet {
+  return __applicationId_isset;
+}
+
+- (void) unsetApplicationId {
+  [__applicationId release_stub];
+  __applicationId = nil;
+  __applicationId_isset = NO;
+}
+
+- (NSString *) message {
+  return [[__message retain_stub] autorelease_stub];
+}
+
+- (void) setMessage: (NSString *) message {
+  [message retain_stub];
+  [__message release_stub];
+  __message = message;
+  __message_isset = YES;
+}
+
+- (BOOL) messageIsSet {
+  return __message_isset;
+}
+
+- (void) unsetMessage {
+  [__message release_stub];
+  __message = nil;
+  __message_isset = NO;
+}
+
+- (Aroma_Application *) app {
+  return [[__app retain_stub] autorelease_stub];
+}
+
+- (void) setApp: (Aroma_Application *) app {
+  [app retain_stub];
+  [__app release_stub];
+  __app = app;
+  __app_isset = YES;
+}
+
+- (BOOL) appIsSet {
+  return __app_isset;
+}
+
+- (void) unsetApp {
+  [__app release_stub];
+  __app = nil;
+  __app_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setApplicationId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setMessage: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Aroma_Application *fieldValue = [[Aroma_Application alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApp: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"ApplicationMessagesDeleted"];
+  if (__applicationId_isset) {
+    if (__applicationId != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __applicationId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__message_isset) {
+    if (__message != nil) {
+      [outProtocol writeFieldBeginWithName: @"message" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __message];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__app_isset) {
+    if (__app != nil) {
+      [outProtocol writeFieldBeginWithName: @"app" type: TType_STRUCT fieldID: 3];
+      [__app write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_ApplicationMessagesDeleted("];
+  [ms appendString: @"applicationId:"];
+  [ms appendFormat: @"\"%@\"", __applicationId];
+  [ms appendString: @",message:"];
+  [ms appendFormat: @"\"%@\"", __message];
+  [ms appendString: @",app:"];
+  [ms appendFormat: @"%@", __app];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaEvents_ApplicationTokenRenewed
 
 - (id) init
@@ -1737,6 +2009,337 @@
 
 @end
 
+@implementation AromaEvents_OwnerAdded
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithExistingOwnerId: (AromaEvents_uuid) existingOwnerId newOwnerId: (AromaEvents_uuid) newOwnerId existingOwner: (AromaEvents_User) existingOwner newOwner: (AromaEvents_User) newOwner
+{
+  self = [super init];
+  __existingOwnerId = [existingOwnerId retain_stub];
+  __existingOwnerId_isset = YES;
+  __newOwnerId = [newOwnerId retain_stub];
+  __newOwnerId_isset = YES;
+  __existingOwner = [existingOwner retain_stub];
+  __existingOwner_isset = YES;
+  __newOwner = [newOwner retain_stub];
+  __newOwner_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"existingOwnerId"])
+  {
+    __existingOwnerId = [[decoder decodeObjectForKey: @"existingOwnerId"] retain_stub];
+    __existingOwnerId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"newOwnerId"])
+  {
+    __newOwnerId = [[decoder decodeObjectForKey: @"newOwnerId"] retain_stub];
+    __newOwnerId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"existingOwner"])
+  {
+    __existingOwner = [[decoder decodeObjectForKey: @"existingOwner"] retain_stub];
+    __existingOwner_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"newOwner"])
+  {
+    __newOwner = [[decoder decodeObjectForKey: @"newOwner"] retain_stub];
+    __newOwner_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__existingOwnerId_isset)
+  {
+    [encoder encodeObject: __existingOwnerId forKey: @"existingOwnerId"];
+  }
+  if (__newOwnerId_isset)
+  {
+    [encoder encodeObject: __newOwnerId forKey: @"newOwnerId"];
+  }
+  if (__existingOwner_isset)
+  {
+    [encoder encodeObject: __existingOwner forKey: @"existingOwner"];
+  }
+  if (__newOwner_isset)
+  {
+    [encoder encodeObject: __newOwner forKey: @"newOwner"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __existingOwnerId_isset ? 2654435761 : 0;
+  if (__existingOwnerId_isset)
+  {
+    hash = (hash * 31) ^ [__existingOwnerId hash];
+  }
+  hash = (hash * 31) ^ __newOwnerId_isset ? 2654435761 : 0;
+  if (__newOwnerId_isset)
+  {
+    hash = (hash * 31) ^ [__newOwnerId hash];
+  }
+  hash = (hash * 31) ^ __existingOwner_isset ? 2654435761 : 0;
+  if (__existingOwner_isset)
+  {
+    hash = (hash * 31) ^ [__existingOwner hash];
+  }
+  hash = (hash * 31) ^ __newOwner_isset ? 2654435761 : 0;
+  if (__newOwner_isset)
+  {
+    hash = (hash * 31) ^ [__newOwner hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaEvents_OwnerAdded class]]) {
+    return NO;
+  }
+  AromaEvents_OwnerAdded *other = (AromaEvents_OwnerAdded *)anObject;
+  if ((__existingOwnerId_isset != other->__existingOwnerId_isset) ||
+      (__existingOwnerId_isset && ((__existingOwnerId || other->__existingOwnerId) && ![__existingOwnerId isEqual:other->__existingOwnerId]))) {
+    return NO;
+  }
+  if ((__newOwnerId_isset != other->__newOwnerId_isset) ||
+      (__newOwnerId_isset && ((__newOwnerId || other->__newOwnerId) && ![__newOwnerId isEqual:other->__newOwnerId]))) {
+    return NO;
+  }
+  if ((__existingOwner_isset != other->__existingOwner_isset) ||
+      (__existingOwner_isset && ((__existingOwner || other->__existingOwner) && ![__existingOwner isEqual:other->__existingOwner]))) {
+    return NO;
+  }
+  if ((__newOwner_isset != other->__newOwner_isset) ||
+      (__newOwner_isset && ((__newOwner || other->__newOwner) && ![__newOwner isEqual:other->__newOwner]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__existingOwnerId release_stub];
+  [__newOwnerId release_stub];
+  [__existingOwner release_stub];
+  [__newOwner release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) existingOwnerId {
+  return [[__existingOwnerId retain_stub] autorelease_stub];
+}
+
+- (void) setExistingOwnerId: (NSString *) existingOwnerId {
+  [existingOwnerId retain_stub];
+  [__existingOwnerId release_stub];
+  __existingOwnerId = existingOwnerId;
+  __existingOwnerId_isset = YES;
+}
+
+- (BOOL) existingOwnerIdIsSet {
+  return __existingOwnerId_isset;
+}
+
+- (void) unsetExistingOwnerId {
+  [__existingOwnerId release_stub];
+  __existingOwnerId = nil;
+  __existingOwnerId_isset = NO;
+}
+
+- (NSString *) newOwnerId {
+  return [[__newOwnerId retain_stub] autorelease_stub];
+}
+
+- (void) setNewOwnerId: (NSString *) newOwnerId {
+  [newOwnerId retain_stub];
+  [__newOwnerId release_stub];
+  __newOwnerId = newOwnerId;
+  __newOwnerId_isset = YES;
+}
+
+- (BOOL) newOwnerIdIsSet {
+  return __newOwnerId_isset;
+}
+
+- (void) unsetNewOwnerId {
+  [__newOwnerId release_stub];
+  __newOwnerId = nil;
+  __newOwnerId_isset = NO;
+}
+
+- (Aroma_User *) existingOwner {
+  return [[__existingOwner retain_stub] autorelease_stub];
+}
+
+- (void) setExistingOwner: (Aroma_User *) existingOwner {
+  [existingOwner retain_stub];
+  [__existingOwner release_stub];
+  __existingOwner = existingOwner;
+  __existingOwner_isset = YES;
+}
+
+- (BOOL) existingOwnerIsSet {
+  return __existingOwner_isset;
+}
+
+- (void) unsetExistingOwner {
+  [__existingOwner release_stub];
+  __existingOwner = nil;
+  __existingOwner_isset = NO;
+}
+
+- (Aroma_User *) newOwner {
+  return [[__newOwner retain_stub] autorelease_stub];
+}
+
+- (void) setNewOwner: (Aroma_User *) newOwner {
+  [newOwner retain_stub];
+  [__newOwner release_stub];
+  __newOwner = newOwner;
+  __newOwner_isset = YES;
+}
+
+- (BOOL) newOwnerIsSet {
+  return __newOwner_isset;
+}
+
+- (void) unsetNewOwner {
+  [__newOwner release_stub];
+  __newOwner = nil;
+  __newOwner_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setExistingOwnerId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setNewOwnerId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRUCT) {
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setExistingOwner: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_STRUCT) {
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setNewOwner: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"OwnerAdded"];
+  if (__existingOwnerId_isset) {
+    if (__existingOwnerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"existingOwnerId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __existingOwnerId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__newOwnerId_isset) {
+    if (__newOwnerId != nil) {
+      [outProtocol writeFieldBeginWithName: @"newOwnerId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __newOwnerId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__existingOwner_isset) {
+    if (__existingOwner != nil) {
+      [outProtocol writeFieldBeginWithName: @"existingOwner" type: TType_STRUCT fieldID: 3];
+      [__existingOwner write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__newOwner_isset) {
+    if (__newOwner != nil) {
+      [outProtocol writeFieldBeginWithName: @"newOwner" type: TType_STRUCT fieldID: 4];
+      [__newOwner write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_OwnerAdded("];
+  [ms appendString: @"existingOwnerId:"];
+  [ms appendFormat: @"\"%@\"", __existingOwnerId];
+  [ms appendString: @",newOwnerId:"];
+  [ms appendFormat: @"\"%@\"", __newOwnerId];
+  [ms appendString: @",existingOwner:"];
+  [ms appendFormat: @"%@", __existingOwner];
+  [ms appendString: @",newOwner:"];
+  [ms appendFormat: @"%@", __newOwner];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaEvents_OwnerApprovedRequest
 
 - (id) init
@@ -2731,9 +3334,11 @@
   return self;
 }
 
-- (id) initWithHealthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest generalEvent: (AromaEvents_GeneralEvent *) generalEvent userFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication
+- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent userFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication
 {
   self = [super init];
+  __applicationMessageDeleted = [applicationMessageDeleted retain_stub];
+  __applicationMessageDeleted_isset = YES;
   __healthCheckFailed = [healthCheckFailed retain_stub];
   __healthCheckFailed_isset = YES;
   __healthCheckBackToNormal = [healthCheckBackToNormal retain_stub];
@@ -2746,6 +3351,8 @@
   __applicationSentMessage_isset = YES;
   __ownerApprovedRequest = [ownerApprovedRequest retain_stub];
   __ownerApprovedRequest_isset = YES;
+  __ownerAdded = [ownerAdded retain_stub];
+  __ownerAdded_isset = YES;
   __generalEvent = [generalEvent retain_stub];
   __generalEvent_isset = YES;
   __userFollowedApplication = [userFollowedApplication retain_stub];
@@ -2756,6 +3363,11 @@
 - (id) initWithCoder: (NSCoder *) decoder
 {
   self = [super init];
+  if ([decoder containsValueForKey: @"applicationMessageDeleted"])
+  {
+    __applicationMessageDeleted = [[decoder decodeObjectForKey: @"applicationMessageDeleted"] retain_stub];
+    __applicationMessageDeleted_isset = YES;
+  }
   if ([decoder containsValueForKey: @"healthCheckFailed"])
   {
     __healthCheckFailed = [[decoder decodeObjectForKey: @"healthCheckFailed"] retain_stub];
@@ -2786,6 +3398,11 @@
     __ownerApprovedRequest = [[decoder decodeObjectForKey: @"ownerApprovedRequest"] retain_stub];
     __ownerApprovedRequest_isset = YES;
   }
+  if ([decoder containsValueForKey: @"ownerAdded"])
+  {
+    __ownerAdded = [[decoder decodeObjectForKey: @"ownerAdded"] retain_stub];
+    __ownerAdded_isset = YES;
+  }
   if ([decoder containsValueForKey: @"generalEvent"])
   {
     __generalEvent = [[decoder decodeObjectForKey: @"generalEvent"] retain_stub];
@@ -2801,6 +3418,10 @@
 
 - (void) encodeWithCoder: (NSCoder *) encoder
 {
+  if (__applicationMessageDeleted_isset)
+  {
+    [encoder encodeObject: __applicationMessageDeleted forKey: @"applicationMessageDeleted"];
+  }
   if (__healthCheckFailed_isset)
   {
     [encoder encodeObject: __healthCheckFailed forKey: @"healthCheckFailed"];
@@ -2825,6 +3446,10 @@
   {
     [encoder encodeObject: __ownerApprovedRequest forKey: @"ownerApprovedRequest"];
   }
+  if (__ownerAdded_isset)
+  {
+    [encoder encodeObject: __ownerAdded forKey: @"ownerAdded"];
+  }
   if (__generalEvent_isset)
   {
     [encoder encodeObject: __generalEvent forKey: @"generalEvent"];
@@ -2838,6 +3463,11 @@
 - (NSUInteger) hash
 {
   NSUInteger hash = 17;
+  hash = (hash * 31) ^ __applicationMessageDeleted_isset ? 2654435761 : 0;
+  if (__applicationMessageDeleted_isset)
+  {
+    hash = (hash * 31) ^ [__applicationMessageDeleted hash];
+  }
   hash = (hash * 31) ^ __healthCheckFailed_isset ? 2654435761 : 0;
   if (__healthCheckFailed_isset)
   {
@@ -2868,6 +3498,11 @@
   {
     hash = (hash * 31) ^ [__ownerApprovedRequest hash];
   }
+  hash = (hash * 31) ^ __ownerAdded_isset ? 2654435761 : 0;
+  if (__ownerAdded_isset)
+  {
+    hash = (hash * 31) ^ [__ownerAdded hash];
+  }
   hash = (hash * 31) ^ __generalEvent_isset ? 2654435761 : 0;
   if (__generalEvent_isset)
   {
@@ -2890,6 +3525,10 @@
     return NO;
   }
   AromaEvents_EventType *other = (AromaEvents_EventType *)anObject;
+  if ((__applicationMessageDeleted_isset != other->__applicationMessageDeleted_isset) ||
+      (__applicationMessageDeleted_isset && ((__applicationMessageDeleted || other->__applicationMessageDeleted) && ![__applicationMessageDeleted isEqual:other->__applicationMessageDeleted]))) {
+    return NO;
+  }
   if ((__healthCheckFailed_isset != other->__healthCheckFailed_isset) ||
       (__healthCheckFailed_isset && ((__healthCheckFailed || other->__healthCheckFailed) && ![__healthCheckFailed isEqual:other->__healthCheckFailed]))) {
     return NO;
@@ -2914,6 +3553,10 @@
       (__ownerApprovedRequest_isset && ((__ownerApprovedRequest || other->__ownerApprovedRequest) && ![__ownerApprovedRequest isEqual:other->__ownerApprovedRequest]))) {
     return NO;
   }
+  if ((__ownerAdded_isset != other->__ownerAdded_isset) ||
+      (__ownerAdded_isset && ((__ownerAdded || other->__ownerAdded) && ![__ownerAdded isEqual:other->__ownerAdded]))) {
+    return NO;
+  }
   if ((__generalEvent_isset != other->__generalEvent_isset) ||
       (__generalEvent_isset && ((__generalEvent || other->__generalEvent) && ![__generalEvent isEqual:other->__generalEvent]))) {
     return NO;
@@ -2927,15 +3570,38 @@
 
 - (void) dealloc
 {
+  [__applicationMessageDeleted release_stub];
   [__healthCheckFailed release_stub];
   [__healthCheckBackToNormal release_stub];
   [__applicationTokenRenewed release_stub];
   [__applicationTokenRegenerated release_stub];
   [__applicationSentMessage release_stub];
   [__ownerApprovedRequest release_stub];
+  [__ownerAdded release_stub];
   [__generalEvent release_stub];
   [__userFollowedApplication release_stub];
   [super dealloc_stub];
+}
+
+- (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted {
+  return [[__applicationMessageDeleted retain_stub] autorelease_stub];
+}
+
+- (void) setApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted {
+  [applicationMessageDeleted retain_stub];
+  [__applicationMessageDeleted release_stub];
+  __applicationMessageDeleted = applicationMessageDeleted;
+  __applicationMessageDeleted_isset = YES;
+}
+
+- (BOOL) applicationMessageDeletedIsSet {
+  return __applicationMessageDeleted_isset;
+}
+
+- (void) unsetApplicationMessageDeleted {
+  [__applicationMessageDeleted release_stub];
+  __applicationMessageDeleted = nil;
+  __applicationMessageDeleted_isset = NO;
 }
 
 - (AromaEvents_HealthCheckFailed *) healthCheckFailed {
@@ -3064,6 +3730,27 @@
   __ownerApprovedRequest_isset = NO;
 }
 
+- (AromaEvents_OwnerAdded *) ownerAdded {
+  return [[__ownerAdded retain_stub] autorelease_stub];
+}
+
+- (void) setOwnerAdded: (AromaEvents_OwnerAdded *) ownerAdded {
+  [ownerAdded retain_stub];
+  [__ownerAdded release_stub];
+  __ownerAdded = ownerAdded;
+  __ownerAdded_isset = YES;
+}
+
+- (BOOL) ownerAddedIsSet {
+  return __ownerAdded_isset;
+}
+
+- (void) unsetOwnerAdded {
+  [__ownerAdded release_stub];
+  __ownerAdded = nil;
+  __ownerAdded_isset = NO;
+}
+
 - (AromaEvents_GeneralEvent *) generalEvent {
   return [[__generalEvent retain_stub] autorelease_stub];
 }
@@ -3123,6 +3810,16 @@
     {
       case 1:
         if (fieldType == TType_STRUCT) {
+          AromaEvents_ApplicationMessagesDeleted *fieldValue = [[AromaEvents_ApplicationMessagesDeleted alloc] init];
+          [fieldValue read: inProtocol];
+          [self setApplicationMessageDeleted: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRUCT) {
           AromaEvents_HealthCheckFailed *fieldValue = [[AromaEvents_HealthCheckFailed alloc] init];
           [fieldValue read: inProtocol];
           [self setHealthCheckFailed: fieldValue];
@@ -3131,7 +3828,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 2:
+      case 3:
         if (fieldType == TType_STRUCT) {
           AromaEvents_HealthCheckBackToNormal *fieldValue = [[AromaEvents_HealthCheckBackToNormal alloc] init];
           [fieldValue read: inProtocol];
@@ -3141,7 +3838,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 3:
+      case 4:
         if (fieldType == TType_STRUCT) {
           AromaEvents_ApplicationTokenRenewed *fieldValue = [[AromaEvents_ApplicationTokenRenewed alloc] init];
           [fieldValue read: inProtocol];
@@ -3151,7 +3848,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
+      case 5:
         if (fieldType == TType_STRUCT) {
           AromaEvents_ApplicationTokenRegenerated *fieldValue = [[AromaEvents_ApplicationTokenRegenerated alloc] init];
           [fieldValue read: inProtocol];
@@ -3161,7 +3858,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 5:
+      case 6:
         if (fieldType == TType_STRUCT) {
           AromaEvents_ApplicationSentMessage *fieldValue = [[AromaEvents_ApplicationSentMessage alloc] init];
           [fieldValue read: inProtocol];
@@ -3171,7 +3868,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 6:
+      case 7:
         if (fieldType == TType_STRUCT) {
           AromaEvents_OwnerApprovedRequest *fieldValue = [[AromaEvents_OwnerApprovedRequest alloc] init];
           [fieldValue read: inProtocol];
@@ -3181,7 +3878,17 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 7:
+      case 8:
+        if (fieldType == TType_STRUCT) {
+          AromaEvents_OwnerAdded *fieldValue = [[AromaEvents_OwnerAdded alloc] init];
+          [fieldValue read: inProtocol];
+          [self setOwnerAdded: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 9:
         if (fieldType == TType_STRUCT) {
           AromaEvents_GeneralEvent *fieldValue = [[AromaEvents_GeneralEvent alloc] init];
           [fieldValue read: inProtocol];
@@ -3191,7 +3898,7 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 8:
+      case 10:
         if (fieldType == TType_STRUCT) {
           AromaEvents_UserFollowedApplication *fieldValue = [[AromaEvents_UserFollowedApplication alloc] init];
           [fieldValue read: inProtocol];
@@ -3212,58 +3919,72 @@
 
 - (void) write: (id <TProtocol>) outProtocol {
   [outProtocol writeStructBeginWithName: @"EventType"];
+  if (__applicationMessageDeleted_isset) {
+    if (__applicationMessageDeleted != nil) {
+      [outProtocol writeFieldBeginWithName: @"applicationMessageDeleted" type: TType_STRUCT fieldID: 1];
+      [__applicationMessageDeleted write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   if (__healthCheckFailed_isset) {
     if (__healthCheckFailed != nil) {
-      [outProtocol writeFieldBeginWithName: @"healthCheckFailed" type: TType_STRUCT fieldID: 1];
+      [outProtocol writeFieldBeginWithName: @"healthCheckFailed" type: TType_STRUCT fieldID: 2];
       [__healthCheckFailed write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__healthCheckBackToNormal_isset) {
     if (__healthCheckBackToNormal != nil) {
-      [outProtocol writeFieldBeginWithName: @"healthCheckBackToNormal" type: TType_STRUCT fieldID: 2];
+      [outProtocol writeFieldBeginWithName: @"healthCheckBackToNormal" type: TType_STRUCT fieldID: 3];
       [__healthCheckBackToNormal write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__applicationTokenRenewed_isset) {
     if (__applicationTokenRenewed != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationTokenRenewed" type: TType_STRUCT fieldID: 3];
+      [outProtocol writeFieldBeginWithName: @"applicationTokenRenewed" type: TType_STRUCT fieldID: 4];
       [__applicationTokenRenewed write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__applicationTokenRegenerated_isset) {
     if (__applicationTokenRegenerated != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationTokenRegenerated" type: TType_STRUCT fieldID: 4];
+      [outProtocol writeFieldBeginWithName: @"applicationTokenRegenerated" type: TType_STRUCT fieldID: 5];
       [__applicationTokenRegenerated write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__applicationSentMessage_isset) {
     if (__applicationSentMessage != nil) {
-      [outProtocol writeFieldBeginWithName: @"applicationSentMessage" type: TType_STRUCT fieldID: 5];
+      [outProtocol writeFieldBeginWithName: @"applicationSentMessage" type: TType_STRUCT fieldID: 6];
       [__applicationSentMessage write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__ownerApprovedRequest_isset) {
     if (__ownerApprovedRequest != nil) {
-      [outProtocol writeFieldBeginWithName: @"ownerApprovedRequest" type: TType_STRUCT fieldID: 6];
+      [outProtocol writeFieldBeginWithName: @"ownerApprovedRequest" type: TType_STRUCT fieldID: 7];
       [__ownerApprovedRequest write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__ownerAdded_isset) {
+    if (__ownerAdded != nil) {
+      [outProtocol writeFieldBeginWithName: @"ownerAdded" type: TType_STRUCT fieldID: 8];
+      [__ownerAdded write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__generalEvent_isset) {
     if (__generalEvent != nil) {
-      [outProtocol writeFieldBeginWithName: @"generalEvent" type: TType_STRUCT fieldID: 7];
+      [outProtocol writeFieldBeginWithName: @"generalEvent" type: TType_STRUCT fieldID: 9];
       [__generalEvent write: outProtocol];
       [outProtocol writeFieldEnd];
     }
   }
   if (__userFollowedApplication_isset) {
     if (__userFollowedApplication != nil) {
-      [outProtocol writeFieldBeginWithName: @"userFollowedApplication" type: TType_STRUCT fieldID: 8];
+      [outProtocol writeFieldBeginWithName: @"userFollowedApplication" type: TType_STRUCT fieldID: 10];
       [__userFollowedApplication write: outProtocol];
       [outProtocol writeFieldEnd];
     }
@@ -3278,7 +3999,9 @@
 
 - (NSString *) description {
   NSMutableString * ms = [NSMutableString stringWithString: @"AromaEvents_EventType("];
-  [ms appendString: @"healthCheckFailed:"];
+  [ms appendString: @"applicationMessageDeleted:"];
+  [ms appendFormat: @"%@", __applicationMessageDeleted];
+  [ms appendString: @",healthCheckFailed:"];
   [ms appendFormat: @"%@", __healthCheckFailed];
   [ms appendString: @",healthCheckBackToNormal:"];
   [ms appendFormat: @"%@", __healthCheckBackToNormal];
@@ -3290,6 +4013,8 @@
   [ms appendFormat: @"%@", __applicationSentMessage];
   [ms appendString: @",ownerApprovedRequest:"];
   [ms appendFormat: @"%@", __ownerApprovedRequest];
+  [ms appendString: @",ownerAdded:"];
+  [ms appendFormat: @"%@", __ownerAdded];
   [ms appendString: @",generalEvent:"];
   [ms appendFormat: @"%@", __generalEvent];
   [ms appendString: @",userFollowedApplication:"];

@@ -16,9 +16,16 @@ typedef Aroma.int int;
 typedef Aroma.long long;
 typedef Aroma.timestamp timestamp;
 typedef Aroma.uuid uuid;
+
 typedef Aroma.User User
 typedef Aroma.Application Application
 
+struct ApplicationMessagesDeleted
+{
+    1:  uuid applicationId;
+    2: optional string message = "Application's messages have been deleted"
+    3: optional Application app;
+}
 
 /**
  * An Application's Token has been renewed.
@@ -86,6 +93,14 @@ struct HealthCheckBackToNormal
     3: string applicationName;
 }
 
+struct OwnerAdded
+{
+    1: uuid existingOwnerId;
+    2: uuid newOwnerId;
+    3: optional User existingOwner;
+    4: optional User newOwner;
+}
+
 /**
  * An Application Owner has approved a request to Follow or perform
  * some other action on an Application by a non-owner.
@@ -124,14 +139,16 @@ struct GeneralEvent
  */
 union EventType
 {
-    1: HealthCheckFailed healthCheckFailed;
-    2: HealthCheckBackToNormal healthCheckBackToNormal;
-    3: ApplicationTokenRenewed applicationTokenRenewed;
-    4: ApplicationTokenRegenerated applicationTokenRegenerated;
-    5: ApplicationSentMessage applicationSentMessage;
-    6: OwnerApprovedRequest ownerApprovedRequest;
-    7: GeneralEvent generalEvent;
-    8: UserFollowedApplication userFollowedApplication;
+    1: ApplicationMessagesDeleted applicationMessageDeleted;
+    2: HealthCheckFailed healthCheckFailed;
+    3: HealthCheckBackToNormal healthCheckBackToNormal;
+    4: ApplicationTokenRenewed applicationTokenRenewed;
+    5: ApplicationTokenRegenerated applicationTokenRegenerated;
+    6: ApplicationSentMessage applicationSentMessage;
+    7: OwnerApprovedRequest ownerApprovedRequest;
+    8: OwnerAdded ownerAdded;
+    9: GeneralEvent generalEvent;
+    10: UserFollowedApplication userFollowedApplication;
 }
 
 /**

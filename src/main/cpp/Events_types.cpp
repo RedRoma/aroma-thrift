@@ -14,6 +14,136 @@
 namespace aroma { namespace thrift { namespace events {
 
 
+ApplicationMessagesDeleted::~ApplicationMessagesDeleted() throw() {
+}
+
+
+void ApplicationMessagesDeleted::__set_applicationId(const uuid& val) {
+  this->applicationId = val;
+}
+
+void ApplicationMessagesDeleted::__set_message(const std::string& val) {
+  this->message = val;
+__isset.message = true;
+}
+
+void ApplicationMessagesDeleted::__set_app(const Application& val) {
+  this->app = val;
+__isset.app = true;
+}
+
+uint32_t ApplicationMessagesDeleted::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->applicationId);
+          this->__isset.applicationId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->message);
+          this->__isset.message = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->app.read(iprot);
+          this->__isset.app = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t ApplicationMessagesDeleted::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("ApplicationMessagesDeleted");
+
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->applicationId);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.message) {
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->message);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.app) {
+    xfer += oprot->writeFieldBegin("app", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->app.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(ApplicationMessagesDeleted &a, ApplicationMessagesDeleted &b) {
+  using ::std::swap;
+  swap(a.applicationId, b.applicationId);
+  swap(a.message, b.message);
+  swap(a.app, b.app);
+  swap(a.__isset, b.__isset);
+}
+
+ApplicationMessagesDeleted::ApplicationMessagesDeleted(const ApplicationMessagesDeleted& other0) {
+  applicationId = other0.applicationId;
+  message = other0.message;
+  app = other0.app;
+  __isset = other0.__isset;
+}
+ApplicationMessagesDeleted& ApplicationMessagesDeleted::operator=(const ApplicationMessagesDeleted& other1) {
+  applicationId = other1.applicationId;
+  message = other1.message;
+  app = other1.app;
+  __isset = other1.__isset;
+  return *this;
+}
+void ApplicationMessagesDeleted::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "ApplicationMessagesDeleted(";
+  out << "applicationId=" << to_string(applicationId);
+  out << ", " << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
+  out << ", " << "app="; (__isset.app ? (out << to_string(app)) : (out << "<null>"));
+  out << ")";
+}
+
+
 ApplicationTokenRenewed::~ApplicationTokenRenewed() throw() {
 }
 
@@ -155,21 +285,21 @@ void swap(ApplicationTokenRenewed &a, ApplicationTokenRenewed &b) {
   swap(a.__isset, b.__isset);
 }
 
-ApplicationTokenRenewed::ApplicationTokenRenewed(const ApplicationTokenRenewed& other0) {
-  message = other0.message;
-  user = other0.user;
-  applicationToken = other0.applicationToken;
-  applicationId = other0.applicationId;
-  applicationName = other0.applicationName;
-  __isset = other0.__isset;
+ApplicationTokenRenewed::ApplicationTokenRenewed(const ApplicationTokenRenewed& other2) {
+  message = other2.message;
+  user = other2.user;
+  applicationToken = other2.applicationToken;
+  applicationId = other2.applicationId;
+  applicationName = other2.applicationName;
+  __isset = other2.__isset;
 }
-ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTokenRenewed& other1) {
-  message = other1.message;
-  user = other1.user;
-  applicationToken = other1.applicationToken;
-  applicationId = other1.applicationId;
-  applicationName = other1.applicationName;
-  __isset = other1.__isset;
+ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTokenRenewed& other3) {
+  message = other3.message;
+  user = other3.user;
+  applicationToken = other3.applicationToken;
+  applicationId = other3.applicationId;
+  applicationName = other3.applicationName;
+  __isset = other3.__isset;
   return *this;
 }
 void ApplicationTokenRenewed::printTo(std::ostream& out) const {
@@ -325,21 +455,21 @@ void swap(ApplicationTokenRegenerated &a, ApplicationTokenRegenerated &b) {
   swap(a.__isset, b.__isset);
 }
 
-ApplicationTokenRegenerated::ApplicationTokenRegenerated(const ApplicationTokenRegenerated& other2) {
-  message = other2.message;
-  user = other2.user;
-  applicationToken = other2.applicationToken;
-  applicationId = other2.applicationId;
-  applicationName = other2.applicationName;
-  __isset = other2.__isset;
+ApplicationTokenRegenerated::ApplicationTokenRegenerated(const ApplicationTokenRegenerated& other4) {
+  message = other4.message;
+  user = other4.user;
+  applicationToken = other4.applicationToken;
+  applicationId = other4.applicationId;
+  applicationName = other4.applicationName;
+  __isset = other4.__isset;
 }
-ApplicationTokenRegenerated& ApplicationTokenRegenerated::operator=(const ApplicationTokenRegenerated& other3) {
-  message = other3.message;
-  user = other3.user;
-  applicationToken = other3.applicationToken;
-  applicationId = other3.applicationId;
-  applicationName = other3.applicationName;
-  __isset = other3.__isset;
+ApplicationTokenRegenerated& ApplicationTokenRegenerated::operator=(const ApplicationTokenRegenerated& other5) {
+  message = other5.message;
+  user = other5.user;
+  applicationToken = other5.applicationToken;
+  applicationId = other5.applicationId;
+  applicationName = other5.applicationName;
+  __isset = other5.__isset;
   return *this;
 }
 void ApplicationTokenRegenerated::printTo(std::ostream& out) const {
@@ -478,19 +608,19 @@ void swap(ApplicationSentMessage &a, ApplicationSentMessage &b) {
   swap(a.__isset, b.__isset);
 }
 
-ApplicationSentMessage::ApplicationSentMessage(const ApplicationSentMessage& other4) {
-  message = other4.message;
-  messageSentByApplication = other4.messageSentByApplication;
-  applicationId = other4.applicationId;
-  applicationName = other4.applicationName;
-  __isset = other4.__isset;
+ApplicationSentMessage::ApplicationSentMessage(const ApplicationSentMessage& other6) {
+  message = other6.message;
+  messageSentByApplication = other6.messageSentByApplication;
+  applicationId = other6.applicationId;
+  applicationName = other6.applicationName;
+  __isset = other6.__isset;
 }
-ApplicationSentMessage& ApplicationSentMessage::operator=(const ApplicationSentMessage& other5) {
-  message = other5.message;
-  messageSentByApplication = other5.messageSentByApplication;
-  applicationId = other5.applicationId;
-  applicationName = other5.applicationName;
-  __isset = other5.__isset;
+ApplicationSentMessage& ApplicationSentMessage::operator=(const ApplicationSentMessage& other7) {
+  message = other7.message;
+  messageSentByApplication = other7.messageSentByApplication;
+  applicationId = other7.applicationId;
+  applicationName = other7.applicationName;
+  __isset = other7.__isset;
   return *this;
 }
 void ApplicationSentMessage::printTo(std::ostream& out) const {
@@ -628,19 +758,19 @@ void swap(HealthCheckFailed &a, HealthCheckFailed &b) {
   swap(a.__isset, b.__isset);
 }
 
-HealthCheckFailed::HealthCheckFailed(const HealthCheckFailed& other6) {
-  message = other6.message;
-  hostname = other6.hostname;
-  applicationId = other6.applicationId;
-  applicationName = other6.applicationName;
-  __isset = other6.__isset;
+HealthCheckFailed::HealthCheckFailed(const HealthCheckFailed& other8) {
+  message = other8.message;
+  hostname = other8.hostname;
+  applicationId = other8.applicationId;
+  applicationName = other8.applicationName;
+  __isset = other8.__isset;
 }
-HealthCheckFailed& HealthCheckFailed::operator=(const HealthCheckFailed& other7) {
-  message = other7.message;
-  hostname = other7.hostname;
-  applicationId = other7.applicationId;
-  applicationName = other7.applicationName;
-  __isset = other7.__isset;
+HealthCheckFailed& HealthCheckFailed::operator=(const HealthCheckFailed& other9) {
+  message = other9.message;
+  hostname = other9.hostname;
+  applicationId = other9.applicationId;
+  applicationName = other9.applicationName;
+  __isset = other9.__isset;
   return *this;
 }
 void HealthCheckFailed::printTo(std::ostream& out) const {
@@ -759,17 +889,17 @@ void swap(HealthCheckBackToNormal &a, HealthCheckBackToNormal &b) {
   swap(a.__isset, b.__isset);
 }
 
-HealthCheckBackToNormal::HealthCheckBackToNormal(const HealthCheckBackToNormal& other8) {
-  message = other8.message;
-  applicationId = other8.applicationId;
-  applicationName = other8.applicationName;
-  __isset = other8.__isset;
+HealthCheckBackToNormal::HealthCheckBackToNormal(const HealthCheckBackToNormal& other10) {
+  message = other10.message;
+  applicationId = other10.applicationId;
+  applicationName = other10.applicationName;
+  __isset = other10.__isset;
 }
-HealthCheckBackToNormal& HealthCheckBackToNormal::operator=(const HealthCheckBackToNormal& other9) {
-  message = other9.message;
-  applicationId = other9.applicationId;
-  applicationName = other9.applicationName;
-  __isset = other9.__isset;
+HealthCheckBackToNormal& HealthCheckBackToNormal::operator=(const HealthCheckBackToNormal& other11) {
+  message = other11.message;
+  applicationId = other11.applicationId;
+  applicationName = other11.applicationName;
+  __isset = other11.__isset;
   return *this;
 }
 void HealthCheckBackToNormal::printTo(std::ostream& out) const {
@@ -778,6 +908,156 @@ void HealthCheckBackToNormal::printTo(std::ostream& out) const {
   out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ", " << "applicationId=" << to_string(applicationId);
   out << ", " << "applicationName=" << to_string(applicationName);
+  out << ")";
+}
+
+
+OwnerAdded::~OwnerAdded() throw() {
+}
+
+
+void OwnerAdded::__set_existingOwnerId(const uuid& val) {
+  this->existingOwnerId = val;
+}
+
+void OwnerAdded::__set_newOwnerId(const uuid& val) {
+  this->newOwnerId = val;
+}
+
+void OwnerAdded::__set_existingOwner(const User& val) {
+  this->existingOwner = val;
+__isset.existingOwner = true;
+}
+
+void OwnerAdded::__set_newOwner(const User& val) {
+  this->newOwner = val;
+__isset.newOwner = true;
+}
+
+uint32_t OwnerAdded::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->existingOwnerId);
+          this->__isset.existingOwnerId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->newOwnerId);
+          this->__isset.newOwnerId = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->existingOwner.read(iprot);
+          this->__isset.existingOwner = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->newOwner.read(iprot);
+          this->__isset.newOwner = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t OwnerAdded::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("OwnerAdded");
+
+  xfer += oprot->writeFieldBegin("existingOwnerId", ::apache::thrift::protocol::T_STRING, 1);
+  xfer += oprot->writeString(this->existingOwnerId);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("newOwnerId", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->newOwnerId);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.existingOwner) {
+    xfer += oprot->writeFieldBegin("existingOwner", ::apache::thrift::protocol::T_STRUCT, 3);
+    xfer += this->existingOwner.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.newOwner) {
+    xfer += oprot->writeFieldBegin("newOwner", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->newOwner.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(OwnerAdded &a, OwnerAdded &b) {
+  using ::std::swap;
+  swap(a.existingOwnerId, b.existingOwnerId);
+  swap(a.newOwnerId, b.newOwnerId);
+  swap(a.existingOwner, b.existingOwner);
+  swap(a.newOwner, b.newOwner);
+  swap(a.__isset, b.__isset);
+}
+
+OwnerAdded::OwnerAdded(const OwnerAdded& other12) {
+  existingOwnerId = other12.existingOwnerId;
+  newOwnerId = other12.newOwnerId;
+  existingOwner = other12.existingOwner;
+  newOwner = other12.newOwner;
+  __isset = other12.__isset;
+}
+OwnerAdded& OwnerAdded::operator=(const OwnerAdded& other13) {
+  existingOwnerId = other13.existingOwnerId;
+  newOwnerId = other13.newOwnerId;
+  existingOwner = other13.existingOwner;
+  newOwner = other13.newOwner;
+  __isset = other13.__isset;
+  return *this;
+}
+void OwnerAdded::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "OwnerAdded(";
+  out << "existingOwnerId=" << to_string(existingOwnerId);
+  out << ", " << "newOwnerId=" << to_string(newOwnerId);
+  out << ", " << "existingOwner="; (__isset.existingOwner ? (out << to_string(existingOwner)) : (out << "<null>"));
+  out << ", " << "newOwner="; (__isset.newOwner ? (out << to_string(newOwner)) : (out << "<null>"));
   out << ")";
 }
 
@@ -904,19 +1184,19 @@ void swap(OwnerApprovedRequest &a, OwnerApprovedRequest &b) {
   swap(a.__isset, b.__isset);
 }
 
-OwnerApprovedRequest::OwnerApprovedRequest(const OwnerApprovedRequest& other10) {
-  message = other10.message;
-  applicationId = other10.applicationId;
-  applicationName = other10.applicationName;
-  owner = other10.owner;
-  __isset = other10.__isset;
+OwnerApprovedRequest::OwnerApprovedRequest(const OwnerApprovedRequest& other14) {
+  message = other14.message;
+  applicationId = other14.applicationId;
+  applicationName = other14.applicationName;
+  owner = other14.owner;
+  __isset = other14.__isset;
 }
-OwnerApprovedRequest& OwnerApprovedRequest::operator=(const OwnerApprovedRequest& other11) {
-  message = other11.message;
-  applicationId = other11.applicationId;
-  applicationName = other11.applicationName;
-  owner = other11.owner;
-  __isset = other11.__isset;
+OwnerApprovedRequest& OwnerApprovedRequest::operator=(const OwnerApprovedRequest& other15) {
+  message = other15.message;
+  applicationId = other15.applicationId;
+  applicationName = other15.applicationName;
+  owner = other15.owner;
+  __isset = other15.__isset;
   return *this;
 }
 void OwnerApprovedRequest::printTo(std::ostream& out) const {
@@ -1052,19 +1332,19 @@ void swap(UserFollowedApplication &a, UserFollowedApplication &b) {
   swap(a.__isset, b.__isset);
 }
 
-UserFollowedApplication::UserFollowedApplication(const UserFollowedApplication& other12) {
-  message = other12.message;
-  applicationId = other12.applicationId;
-  follower = other12.follower;
-  owner = other12.owner;
-  __isset = other12.__isset;
+UserFollowedApplication::UserFollowedApplication(const UserFollowedApplication& other16) {
+  message = other16.message;
+  applicationId = other16.applicationId;
+  follower = other16.follower;
+  owner = other16.owner;
+  __isset = other16.__isset;
 }
-UserFollowedApplication& UserFollowedApplication::operator=(const UserFollowedApplication& other13) {
-  message = other13.message;
-  applicationId = other13.applicationId;
-  follower = other13.follower;
-  owner = other13.owner;
-  __isset = other13.__isset;
+UserFollowedApplication& UserFollowedApplication::operator=(const UserFollowedApplication& other17) {
+  message = other17.message;
+  applicationId = other17.applicationId;
+  follower = other17.follower;
+  owner = other17.owner;
+  __isset = other17.__isset;
   return *this;
 }
 void UserFollowedApplication::printTo(std::ostream& out) const {
@@ -1198,19 +1478,19 @@ void swap(GeneralEvent &a, GeneralEvent &b) {
   swap(a.__isset, b.__isset);
 }
 
-GeneralEvent::GeneralEvent(const GeneralEvent& other14) {
-  applicationId = other14.applicationId;
-  applicationName = other14.applicationName;
-  message = other14.message;
-  timestamp = other14.timestamp;
-  __isset = other14.__isset;
+GeneralEvent::GeneralEvent(const GeneralEvent& other18) {
+  applicationId = other18.applicationId;
+  applicationName = other18.applicationName;
+  message = other18.message;
+  timestamp = other18.timestamp;
+  __isset = other18.__isset;
 }
-GeneralEvent& GeneralEvent::operator=(const GeneralEvent& other15) {
-  applicationId = other15.applicationId;
-  applicationName = other15.applicationName;
-  message = other15.message;
-  timestamp = other15.timestamp;
-  __isset = other15.__isset;
+GeneralEvent& GeneralEvent::operator=(const GeneralEvent& other19) {
+  applicationId = other19.applicationId;
+  applicationName = other19.applicationName;
+  message = other19.message;
+  timestamp = other19.timestamp;
+  __isset = other19.__isset;
   return *this;
 }
 void GeneralEvent::printTo(std::ostream& out) const {
@@ -1227,6 +1507,10 @@ void GeneralEvent::printTo(std::ostream& out) const {
 EventType::~EventType() throw() {
 }
 
+
+void EventType::__set_applicationMessageDeleted(const ApplicationMessagesDeleted& val) {
+  this->applicationMessageDeleted = val;
+}
 
 void EventType::__set_healthCheckFailed(const HealthCheckFailed& val) {
   this->healthCheckFailed = val;
@@ -1250,6 +1534,10 @@ void EventType::__set_applicationSentMessage(const ApplicationSentMessage& val) 
 
 void EventType::__set_ownerApprovedRequest(const OwnerApprovedRequest& val) {
   this->ownerApprovedRequest = val;
+}
+
+void EventType::__set_ownerAdded(const OwnerAdded& val) {
+  this->ownerAdded = val;
 }
 
 void EventType::__set_generalEvent(const GeneralEvent& val) {
@@ -1283,13 +1571,21 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
     {
       case 1:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationMessageDeleted.read(iprot);
+          this->__isset.applicationMessageDeleted = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->healthCheckFailed.read(iprot);
           this->__isset.healthCheckFailed = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 2:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->healthCheckBackToNormal.read(iprot);
           this->__isset.healthCheckBackToNormal = true;
@@ -1297,7 +1593,7 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 3:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->applicationTokenRenewed.read(iprot);
           this->__isset.applicationTokenRenewed = true;
@@ -1305,7 +1601,7 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 5:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->applicationTokenRegenerated.read(iprot);
           this->__isset.applicationTokenRegenerated = true;
@@ -1313,7 +1609,7 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 6:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->applicationSentMessage.read(iprot);
           this->__isset.applicationSentMessage = true;
@@ -1321,7 +1617,7 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 6:
+      case 7:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->ownerApprovedRequest.read(iprot);
           this->__isset.ownerApprovedRequest = true;
@@ -1329,7 +1625,15 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 7:
+      case 8:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->ownerAdded.read(iprot);
+          this->__isset.ownerAdded = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 9:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->generalEvent.read(iprot);
           this->__isset.generalEvent = true;
@@ -1337,7 +1641,7 @@ uint32_t EventType::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 8:
+      case 10:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->userFollowedApplication.read(iprot);
           this->__isset.userFollowedApplication = true;
@@ -1362,35 +1666,43 @@ uint32_t EventType::write(::apache::thrift::protocol::TProtocol* oprot) const {
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("EventType");
 
-  xfer += oprot->writeFieldBegin("healthCheckFailed", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += oprot->writeFieldBegin("applicationMessageDeleted", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->applicationMessageDeleted.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("healthCheckFailed", ::apache::thrift::protocol::T_STRUCT, 2);
   xfer += this->healthCheckFailed.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("healthCheckBackToNormal", ::apache::thrift::protocol::T_STRUCT, 2);
+  xfer += oprot->writeFieldBegin("healthCheckBackToNormal", ::apache::thrift::protocol::T_STRUCT, 3);
   xfer += this->healthCheckBackToNormal.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("applicationTokenRenewed", ::apache::thrift::protocol::T_STRUCT, 3);
+  xfer += oprot->writeFieldBegin("applicationTokenRenewed", ::apache::thrift::protocol::T_STRUCT, 4);
   xfer += this->applicationTokenRenewed.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("applicationTokenRegenerated", ::apache::thrift::protocol::T_STRUCT, 4);
+  xfer += oprot->writeFieldBegin("applicationTokenRegenerated", ::apache::thrift::protocol::T_STRUCT, 5);
   xfer += this->applicationTokenRegenerated.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("applicationSentMessage", ::apache::thrift::protocol::T_STRUCT, 5);
+  xfer += oprot->writeFieldBegin("applicationSentMessage", ::apache::thrift::protocol::T_STRUCT, 6);
   xfer += this->applicationSentMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("ownerApprovedRequest", ::apache::thrift::protocol::T_STRUCT, 6);
+  xfer += oprot->writeFieldBegin("ownerApprovedRequest", ::apache::thrift::protocol::T_STRUCT, 7);
   xfer += this->ownerApprovedRequest.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("generalEvent", ::apache::thrift::protocol::T_STRUCT, 7);
+  xfer += oprot->writeFieldBegin("ownerAdded", ::apache::thrift::protocol::T_STRUCT, 8);
+  xfer += this->ownerAdded.write(oprot);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("generalEvent", ::apache::thrift::protocol::T_STRUCT, 9);
   xfer += this->generalEvent.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("userFollowedApplication", ::apache::thrift::protocol::T_STRUCT, 8);
+  xfer += oprot->writeFieldBegin("userFollowedApplication", ::apache::thrift::protocol::T_STRUCT, 10);
   xfer += this->userFollowedApplication.write(oprot);
   xfer += oprot->writeFieldEnd();
 
@@ -1401,49 +1713,57 @@ uint32_t EventType::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
 void swap(EventType &a, EventType &b) {
   using ::std::swap;
+  swap(a.applicationMessageDeleted, b.applicationMessageDeleted);
   swap(a.healthCheckFailed, b.healthCheckFailed);
   swap(a.healthCheckBackToNormal, b.healthCheckBackToNormal);
   swap(a.applicationTokenRenewed, b.applicationTokenRenewed);
   swap(a.applicationTokenRegenerated, b.applicationTokenRegenerated);
   swap(a.applicationSentMessage, b.applicationSentMessage);
   swap(a.ownerApprovedRequest, b.ownerApprovedRequest);
+  swap(a.ownerAdded, b.ownerAdded);
   swap(a.generalEvent, b.generalEvent);
   swap(a.userFollowedApplication, b.userFollowedApplication);
   swap(a.__isset, b.__isset);
 }
 
-EventType::EventType(const EventType& other16) {
-  healthCheckFailed = other16.healthCheckFailed;
-  healthCheckBackToNormal = other16.healthCheckBackToNormal;
-  applicationTokenRenewed = other16.applicationTokenRenewed;
-  applicationTokenRegenerated = other16.applicationTokenRegenerated;
-  applicationSentMessage = other16.applicationSentMessage;
-  ownerApprovedRequest = other16.ownerApprovedRequest;
-  generalEvent = other16.generalEvent;
-  userFollowedApplication = other16.userFollowedApplication;
-  __isset = other16.__isset;
+EventType::EventType(const EventType& other20) {
+  applicationMessageDeleted = other20.applicationMessageDeleted;
+  healthCheckFailed = other20.healthCheckFailed;
+  healthCheckBackToNormal = other20.healthCheckBackToNormal;
+  applicationTokenRenewed = other20.applicationTokenRenewed;
+  applicationTokenRegenerated = other20.applicationTokenRegenerated;
+  applicationSentMessage = other20.applicationSentMessage;
+  ownerApprovedRequest = other20.ownerApprovedRequest;
+  ownerAdded = other20.ownerAdded;
+  generalEvent = other20.generalEvent;
+  userFollowedApplication = other20.userFollowedApplication;
+  __isset = other20.__isset;
 }
-EventType& EventType::operator=(const EventType& other17) {
-  healthCheckFailed = other17.healthCheckFailed;
-  healthCheckBackToNormal = other17.healthCheckBackToNormal;
-  applicationTokenRenewed = other17.applicationTokenRenewed;
-  applicationTokenRegenerated = other17.applicationTokenRegenerated;
-  applicationSentMessage = other17.applicationSentMessage;
-  ownerApprovedRequest = other17.ownerApprovedRequest;
-  generalEvent = other17.generalEvent;
-  userFollowedApplication = other17.userFollowedApplication;
-  __isset = other17.__isset;
+EventType& EventType::operator=(const EventType& other21) {
+  applicationMessageDeleted = other21.applicationMessageDeleted;
+  healthCheckFailed = other21.healthCheckFailed;
+  healthCheckBackToNormal = other21.healthCheckBackToNormal;
+  applicationTokenRenewed = other21.applicationTokenRenewed;
+  applicationTokenRegenerated = other21.applicationTokenRegenerated;
+  applicationSentMessage = other21.applicationSentMessage;
+  ownerApprovedRequest = other21.ownerApprovedRequest;
+  ownerAdded = other21.ownerAdded;
+  generalEvent = other21.generalEvent;
+  userFollowedApplication = other21.userFollowedApplication;
+  __isset = other21.__isset;
   return *this;
 }
 void EventType::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "EventType(";
-  out << "healthCheckFailed=" << to_string(healthCheckFailed);
+  out << "applicationMessageDeleted=" << to_string(applicationMessageDeleted);
+  out << ", " << "healthCheckFailed=" << to_string(healthCheckFailed);
   out << ", " << "healthCheckBackToNormal=" << to_string(healthCheckBackToNormal);
   out << ", " << "applicationTokenRenewed=" << to_string(applicationTokenRenewed);
   out << ", " << "applicationTokenRegenerated=" << to_string(applicationTokenRegenerated);
   out << ", " << "applicationSentMessage=" << to_string(applicationSentMessage);
   out << ", " << "ownerApprovedRequest=" << to_string(ownerApprovedRequest);
+  out << ", " << "ownerAdded=" << to_string(ownerAdded);
   out << ", " << "generalEvent=" << to_string(generalEvent);
   out << ", " << "userFollowedApplication=" << to_string(userFollowedApplication);
   out << ")";
@@ -1553,17 +1873,17 @@ void swap(Event &a, Event &b) {
   swap(a.__isset, b.__isset);
 }
 
-Event::Event(const Event& other18) {
-  eventType = other18.eventType;
-  timestamp = other18.timestamp;
-  eventId = other18.eventId;
-  __isset = other18.__isset;
+Event::Event(const Event& other22) {
+  eventType = other22.eventType;
+  timestamp = other22.timestamp;
+  eventId = other22.eventId;
+  __isset = other22.__isset;
 }
-Event& Event::operator=(const Event& other19) {
-  eventType = other19.eventType;
-  timestamp = other19.timestamp;
-  eventId = other19.eventId;
-  __isset = other19.__isset;
+Event& Event::operator=(const Event& other23) {
+  eventType = other23.eventType;
+  timestamp = other23.timestamp;
+  eventId = other23.eventId;
+  __isset = other23.__isset;
   return *this;
 }
 void Event::printTo(std::ostream& out) const {

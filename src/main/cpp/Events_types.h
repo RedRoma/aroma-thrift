@@ -35,6 +35,8 @@ typedef class  ::tech::aroma::thrift::User User;
 
 typedef class  ::tech::aroma::thrift::Application Application;
 
+class ApplicationMessagesDeleted;
+
 class ApplicationTokenRenewed;
 
 class ApplicationTokenRegenerated;
@@ -45,6 +47,8 @@ class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
 
+class OwnerAdded;
+
 class OwnerApprovedRequest;
 
 class UserFollowedApplication;
@@ -54,6 +58,68 @@ class GeneralEvent;
 class EventType;
 
 class Event;
+
+typedef struct _ApplicationMessagesDeleted__isset {
+  _ApplicationMessagesDeleted__isset() : applicationId(false), message(true), app(false) {}
+  bool applicationId :1;
+  bool message :1;
+  bool app :1;
+} _ApplicationMessagesDeleted__isset;
+
+class ApplicationMessagesDeleted {
+ public:
+
+  ApplicationMessagesDeleted(const ApplicationMessagesDeleted&);
+  ApplicationMessagesDeleted& operator=(const ApplicationMessagesDeleted&);
+  ApplicationMessagesDeleted() : applicationId(), message("Application's messages have been deleted") {
+  }
+
+  virtual ~ApplicationMessagesDeleted() throw();
+  uuid applicationId;
+  std::string message;
+  Application app;
+
+  _ApplicationMessagesDeleted__isset __isset;
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_message(const std::string& val);
+
+  void __set_app(const Application& val);
+
+  bool operator == (const ApplicationMessagesDeleted & rhs) const
+  {
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    if (__isset.app != rhs.__isset.app)
+      return false;
+    else if (__isset.app && !(app == rhs.app))
+      return false;
+    return true;
+  }
+  bool operator != (const ApplicationMessagesDeleted &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ApplicationMessagesDeleted & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ApplicationMessagesDeleted &a, ApplicationMessagesDeleted &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ApplicationMessagesDeleted& obj)
+{
+  obj.printTo(out);
+  return out;
+}
 
 typedef struct _ApplicationTokenRenewed__isset {
   _ApplicationTokenRenewed__isset() : message(true), user(false), applicationToken(false), applicationId(false), applicationName(false) {}
@@ -399,6 +465,74 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
   return out;
 }
 
+typedef struct _OwnerAdded__isset {
+  _OwnerAdded__isset() : existingOwnerId(false), newOwnerId(false), existingOwner(false), newOwner(false) {}
+  bool existingOwnerId :1;
+  bool newOwnerId :1;
+  bool existingOwner :1;
+  bool newOwner :1;
+} _OwnerAdded__isset;
+
+class OwnerAdded {
+ public:
+
+  OwnerAdded(const OwnerAdded&);
+  OwnerAdded& operator=(const OwnerAdded&);
+  OwnerAdded() : existingOwnerId(), newOwnerId() {
+  }
+
+  virtual ~OwnerAdded() throw();
+  uuid existingOwnerId;
+  uuid newOwnerId;
+  User existingOwner;
+  User newOwner;
+
+  _OwnerAdded__isset __isset;
+
+  void __set_existingOwnerId(const uuid& val);
+
+  void __set_newOwnerId(const uuid& val);
+
+  void __set_existingOwner(const User& val);
+
+  void __set_newOwner(const User& val);
+
+  bool operator == (const OwnerAdded & rhs) const
+  {
+    if (!(existingOwnerId == rhs.existingOwnerId))
+      return false;
+    if (!(newOwnerId == rhs.newOwnerId))
+      return false;
+    if (__isset.existingOwner != rhs.__isset.existingOwner)
+      return false;
+    else if (__isset.existingOwner && !(existingOwner == rhs.existingOwner))
+      return false;
+    if (__isset.newOwner != rhs.__isset.newOwner)
+      return false;
+    else if (__isset.newOwner && !(newOwner == rhs.newOwner))
+      return false;
+    return true;
+  }
+  bool operator != (const OwnerAdded &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const OwnerAdded & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(OwnerAdded &a, OwnerAdded &b);
+
+inline std::ostream& operator<<(std::ostream& out, const OwnerAdded& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _OwnerApprovedRequest__isset {
   _OwnerApprovedRequest__isset() : message(true), applicationId(false), applicationName(false), owner(false) {}
   bool message :1;
@@ -596,13 +730,15 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), generalEvent(false), userFollowedApplication(false) {}
+  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false), userFollowedApplication(false) {}
+  bool applicationMessageDeleted :1;
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
   bool ownerApprovedRequest :1;
+  bool ownerAdded :1;
   bool generalEvent :1;
   bool userFollowedApplication :1;
 } _EventType__isset;
@@ -616,16 +752,20 @@ class EventType {
   }
 
   virtual ~EventType() throw();
+  ApplicationMessagesDeleted applicationMessageDeleted;
   HealthCheckFailed healthCheckFailed;
   HealthCheckBackToNormal healthCheckBackToNormal;
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
   OwnerApprovedRequest ownerApprovedRequest;
+  OwnerAdded ownerAdded;
   GeneralEvent generalEvent;
   UserFollowedApplication userFollowedApplication;
 
   _EventType__isset __isset;
+
+  void __set_applicationMessageDeleted(const ApplicationMessagesDeleted& val);
 
   void __set_healthCheckFailed(const HealthCheckFailed& val);
 
@@ -639,12 +779,16 @@ class EventType {
 
   void __set_ownerApprovedRequest(const OwnerApprovedRequest& val);
 
+  void __set_ownerAdded(const OwnerAdded& val);
+
   void __set_generalEvent(const GeneralEvent& val);
 
   void __set_userFollowedApplication(const UserFollowedApplication& val);
 
   bool operator == (const EventType & rhs) const
   {
+    if (!(applicationMessageDeleted == rhs.applicationMessageDeleted))
+      return false;
     if (!(healthCheckFailed == rhs.healthCheckFailed))
       return false;
     if (!(healthCheckBackToNormal == rhs.healthCheckBackToNormal))
@@ -656,6 +800,8 @@ class EventType {
     if (!(applicationSentMessage == rhs.applicationSentMessage))
       return false;
     if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
+      return false;
+    if (!(ownerAdded == rhs.ownerAdded))
       return false;
     if (!(generalEvent == rhs.generalEvent))
       return false;
