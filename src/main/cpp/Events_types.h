@@ -43,6 +43,10 @@ class ApplicationTokenRegenerated;
 
 class ApplicationSentMessage;
 
+class ApplicationDeleted;
+
+class ApplicationFollowed;
+
 class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
@@ -332,6 +336,158 @@ class ApplicationSentMessage {
 void swap(ApplicationSentMessage &a, ApplicationSentMessage &b);
 
 inline std::ostream& operator<<(std::ostream& out, const ApplicationSentMessage& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ApplicationDeleted__isset {
+  _ApplicationDeleted__isset() : userId(false), user(false), applicationId(false), application(false), message(true) {}
+  bool userId :1;
+  bool user :1;
+  bool applicationId :1;
+  bool application :1;
+  bool message :1;
+} _ApplicationDeleted__isset;
+
+class ApplicationDeleted {
+ public:
+
+  ApplicationDeleted(const ApplicationDeleted&);
+  ApplicationDeleted& operator=(const ApplicationDeleted&);
+  ApplicationDeleted() : userId(), applicationId(), message("Application has been deleted") {
+  }
+
+  virtual ~ApplicationDeleted() throw();
+  uuid userId;
+  User user;
+  uuid applicationId;
+  Application application;
+  std::string message;
+
+  _ApplicationDeleted__isset __isset;
+
+  void __set_userId(const uuid& val);
+
+  void __set_user(const User& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_application(const Application& val);
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ApplicationDeleted & rhs) const
+  {
+    if (!(userId == rhs.userId))
+      return false;
+    if (__isset.user != rhs.__isset.user)
+      return false;
+    else if (__isset.user && !(user == rhs.user))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.application != rhs.__isset.application)
+      return false;
+    else if (__isset.application && !(application == rhs.application))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ApplicationDeleted &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ApplicationDeleted & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ApplicationDeleted &a, ApplicationDeleted &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ApplicationDeleted& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+typedef struct _ApplicationFollowed__isset {
+  _ApplicationFollowed__isset() : userId(false), applicationId(false), user(false), application(false), message(true) {}
+  bool userId :1;
+  bool applicationId :1;
+  bool user :1;
+  bool application :1;
+  bool message :1;
+} _ApplicationFollowed__isset;
+
+class ApplicationFollowed {
+ public:
+
+  ApplicationFollowed(const ApplicationFollowed&);
+  ApplicationFollowed& operator=(const ApplicationFollowed&);
+  ApplicationFollowed() : userId(), applicationId(), message("Application Followed") {
+  }
+
+  virtual ~ApplicationFollowed() throw();
+  uuid userId;
+  uuid applicationId;
+  User user;
+  Application application;
+  std::string message;
+
+  _ApplicationFollowed__isset __isset;
+
+  void __set_userId(const uuid& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_user(const User& val);
+
+  void __set_application(const Application& val);
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ApplicationFollowed & rhs) const
+  {
+    if (!(userId == rhs.userId))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.user != rhs.__isset.user)
+      return false;
+    else if (__isset.user && !(user == rhs.user))
+      return false;
+    if (__isset.application != rhs.__isset.application)
+      return false;
+    else if (__isset.application && !(application == rhs.application))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ApplicationFollowed &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ApplicationFollowed & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ApplicationFollowed &a, ApplicationFollowed &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ApplicationFollowed& obj)
 {
   obj.printTo(out);
   return out;
@@ -730,10 +886,12 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false), userFollowedApplication(false) {}
+  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false), userFollowedApplication(false) {}
   bool applicationMessageDeleted :1;
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
+  bool applicationFollowed :1;
+  bool applicationDeleted :1;
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
@@ -755,6 +913,8 @@ class EventType {
   ApplicationMessagesDeleted applicationMessageDeleted;
   HealthCheckFailed healthCheckFailed;
   HealthCheckBackToNormal healthCheckBackToNormal;
+  ApplicationFollowed applicationFollowed;
+  ApplicationDeleted applicationDeleted;
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
@@ -770,6 +930,10 @@ class EventType {
   void __set_healthCheckFailed(const HealthCheckFailed& val);
 
   void __set_healthCheckBackToNormal(const HealthCheckBackToNormal& val);
+
+  void __set_applicationFollowed(const ApplicationFollowed& val);
+
+  void __set_applicationDeleted(const ApplicationDeleted& val);
 
   void __set_applicationTokenRenewed(const ApplicationTokenRenewed& val);
 
@@ -792,6 +956,10 @@ class EventType {
     if (!(healthCheckFailed == rhs.healthCheckFailed))
       return false;
     if (!(healthCheckBackToNormal == rhs.healthCheckBackToNormal))
+      return false;
+    if (!(applicationFollowed == rhs.applicationFollowed))
+      return false;
+    if (!(applicationDeleted == rhs.applicationDeleted))
       return false;
     if (!(applicationTokenRenewed == rhs.applicationTokenRenewed))
       return false;

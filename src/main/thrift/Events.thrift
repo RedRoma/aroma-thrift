@@ -68,6 +68,24 @@ struct ApplicationSentMessage
     4: string applicationName;
 }
 
+struct ApplicationDeleted
+{
+    1: uuid userId;
+    2: optional User user;
+    3: uuid applicationId;
+    4: optional Application application;
+    5: optional string message = "Application has been deleted"
+}
+
+struct ApplicationFollowed
+{
+    1: uuid userId;
+    2: uuid applicationId;
+    3: optional User user;
+    4: optional Application application;
+    5: optional string message = "Application Followed"
+}
+
 /**
  * A Health Poke returned a failure.
  */
@@ -139,16 +157,18 @@ struct GeneralEvent
  */
 union EventType
 {
-    1: ApplicationMessagesDeleted applicationMessageDeleted;
-    2: HealthCheckFailed healthCheckFailed;
-    3: HealthCheckBackToNormal healthCheckBackToNormal;
-    4: ApplicationTokenRenewed applicationTokenRenewed;
-    5: ApplicationTokenRegenerated applicationTokenRegenerated;
-    6: ApplicationSentMessage applicationSentMessage;
-    7: OwnerApprovedRequest ownerApprovedRequest;
-    8: OwnerAdded ownerAdded;
-    9: GeneralEvent generalEvent;
-    10: UserFollowedApplication userFollowedApplication;
+    1 : ApplicationMessagesDeleted applicationMessageDeleted;
+    2 : HealthCheckFailed healthCheckFailed;
+    3 : HealthCheckBackToNormal healthCheckBackToNormal;
+    4 : ApplicationFollowed applicationFollowed;
+    5 : ApplicationDeleted applicationDeleted;
+    6 : ApplicationTokenRenewed applicationTokenRenewed;
+    7 : ApplicationTokenRegenerated applicationTokenRegenerated;
+    8 : ApplicationSentMessage applicationSentMessage;
+    9 : OwnerApprovedRequest ownerApprovedRequest;
+    10: OwnerAdded ownerAdded;
+    11: GeneralEvent generalEvent;
+    12: UserFollowedApplication userFollowedApplication;
 }
 
 /**
