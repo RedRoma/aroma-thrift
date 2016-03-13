@@ -140,24 +140,24 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
   NotificationService_AuthenticationToken __token;
   NotificationService_Event __event;
-  NSMutableDictionary * __channelsByUser;
+  NSMutableDictionary * __channels;
   BOOL __storeEvent;
 
   BOOL __token_isset;
   BOOL __event_isset;
-  BOOL __channelsByUser_isset;
+  BOOL __channels_isset;
   BOOL __storeEvent_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_AuthenticationToken token;
 @property (nonatomic, retain, getter=event, setter=setEvent:) NotificationService_Event event;
-@property (nonatomic, retain, getter=channelsByUser, setter=setChannelsByUser:) NSMutableDictionary * channelsByUser;
+@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableDictionary * channels;
 @property (nonatomic, getter=storeEvent, setter=setStoreEvent:) BOOL storeEvent;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channelsByUser: (NSMutableDictionary *) channelsByUser storeEvent: (BOOL) storeEvent;
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableDictionary *) channels storeEvent: (BOOL) storeEvent;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -177,10 +177,10 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 - (BOOL) eventIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableDictionary *) channelsByUser;
-- (void) setChannelsByUser: (NSMutableDictionary *) channelsByUser;
+- (NSMutableDictionary *) channels;
+- (void) setChannels: (NSMutableDictionary *) channels;
 #endif
-- (BOOL) channelsByUserIsSet;
+- (BOOL) channelsIsSet;
 
 #if !__has_feature(objc_arc)
 - (BOOL) storeEvent;

@@ -74,7 +74,7 @@ struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
-    3: map<User, list<AromaChannel>> channelsByUser;
+    3: map<AromaChannel, User> channels;
     4: optional bool storeEvent = false;
 }
 

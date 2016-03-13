@@ -479,15 +479,15 @@
   return self;
 }
 
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channelsByUser: (NSMutableDictionary *) channelsByUser storeEvent: (BOOL) storeEvent
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableDictionary *) channels storeEvent: (BOOL) storeEvent
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __event = [event retain_stub];
   __event_isset = YES;
-  __channelsByUser = [channelsByUser retain_stub];
-  __channelsByUser_isset = YES;
+  __channels = [channels retain_stub];
+  __channels_isset = YES;
   __storeEvent = storeEvent;
   __storeEvent_isset = YES;
   return self;
@@ -506,10 +506,10 @@
     __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
     __event_isset = YES;
   }
-  if ([decoder containsValueForKey: @"channelsByUser"])
+  if ([decoder containsValueForKey: @"channels"])
   {
-    __channelsByUser = [[decoder decodeObjectForKey: @"channelsByUser"] retain_stub];
-    __channelsByUser_isset = YES;
+    __channels = [[decoder decodeObjectForKey: @"channels"] retain_stub];
+    __channels_isset = YES;
   }
   if ([decoder containsValueForKey: @"storeEvent"])
   {
@@ -529,9 +529,9 @@
   {
     [encoder encodeObject: __event forKey: @"event"];
   }
-  if (__channelsByUser_isset)
+  if (__channels_isset)
   {
-    [encoder encodeObject: __channelsByUser forKey: @"channelsByUser"];
+    [encoder encodeObject: __channels forKey: @"channels"];
   }
   if (__storeEvent_isset)
   {
@@ -552,10 +552,10 @@
   {
     hash = (hash * 31) ^ [__event hash];
   }
-  hash = (hash * 31) ^ __channelsByUser_isset ? 2654435761 : 0;
-  if (__channelsByUser_isset)
+  hash = (hash * 31) ^ __channels_isset ? 2654435761 : 0;
+  if (__channels_isset)
   {
-    hash = (hash * 31) ^ [__channelsByUser hash];
+    hash = (hash * 31) ^ [__channels hash];
   }
   hash = (hash * 31) ^ __storeEvent_isset ? 2654435761 : 0;
   if (__storeEvent_isset)
@@ -582,8 +582,8 @@
       (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
     return NO;
   }
-  if ((__channelsByUser_isset != other->__channelsByUser_isset) ||
-      (__channelsByUser_isset && ((__channelsByUser || other->__channelsByUser) && ![__channelsByUser isEqual:other->__channelsByUser]))) {
+  if ((__channels_isset != other->__channels_isset) ||
+      (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
     return NO;
   }
   if ((__storeEvent_isset != other->__storeEvent_isset) ||
@@ -597,7 +597,7 @@
 {
   [__token release_stub];
   [__event release_stub];
-  [__channelsByUser release_stub];
+  [__channels release_stub];
   [super dealloc_stub];
 }
 
@@ -643,25 +643,25 @@
   __event_isset = NO;
 }
 
-- (NSMutableDictionary *) channelsByUser {
-  return [[__channelsByUser retain_stub] autorelease_stub];
+- (NSMutableDictionary *) channels {
+  return [[__channels retain_stub] autorelease_stub];
 }
 
-- (void) setChannelsByUser: (NSMutableDictionary *) channelsByUser {
-  [channelsByUser retain_stub];
-  [__channelsByUser release_stub];
-  __channelsByUser = channelsByUser;
-  __channelsByUser_isset = YES;
+- (void) setChannels: (NSMutableDictionary *) channels {
+  [channels retain_stub];
+  [__channels release_stub];
+  __channels = channels;
+  __channels_isset = YES;
 }
 
-- (BOOL) channelsByUserIsSet {
-  return __channelsByUser_isset;
+- (BOOL) channelsIsSet {
+  return __channels_isset;
 }
 
-- (void) unsetChannelsByUser {
-  [__channelsByUser release_stub];
-  __channelsByUser = nil;
-  __channelsByUser_isset = NO;
+- (void) unsetChannels {
+  [__channels release_stub];
+  __channels = nil;
+  __channels_isset = NO;
 }
 
 - (BOOL) storeEvent {
@@ -724,26 +724,16 @@
           int _i6;
           for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            Aroma_User *_key7 = [[Aroma_User alloc] init];
+            AromaChannels_AromaChannel *_key7 = [[AromaChannels_AromaChannel alloc] init];
             [_key7 read: inProtocol];
-            int _size9;
-            [inProtocol readListBeginReturningElementType: NULL size: &_size9];
-            NSMutableArray * _val8 = [[NSMutableArray alloc] initWithCapacity: _size9];
-            int _i10;
-            for (_i10 = 0; _i10 < _size9; ++_i10)
-            {
-              AromaChannels_AromaChannel *_elem11 = [[AromaChannels_AromaChannel alloc] init];
-              [_elem11 read: inProtocol];
-              [_val8 addObject: _elem11];
-              [_elem11 release_stub];
-            }
-            [inProtocol readListEnd];
+            Aroma_User *_val8 = [[Aroma_User alloc] init];
+            [_val8 read: inProtocol];
             [fieldValue setObject: _val8 forKey: _key7];
             [_key7 release_stub];
             [_val8 release_stub];
           }
           [inProtocol readMapEnd];
-          [self setChannelsByUser: fieldValue];
+          [self setChannels: fieldValue];
           [fieldValue release_stub];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
@@ -782,25 +772,17 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__channelsByUser_isset) {
-    if (__channelsByUser != nil) {
-      [outProtocol writeFieldBeginWithName: @"channelsByUser" type: TType_MAP fieldID: 3];
+  if (__channels_isset) {
+    if (__channels != nil) {
+      [outProtocol writeFieldBeginWithName: @"channels" type: TType_MAP fieldID: 3];
       {
-        [outProtocol writeMapBeginWithKeyType: TType_STRUCT valueType: TType_LIST size: [__channelsByUser count]];
-        NSEnumerator * _iter12 = [__channelsByUser keyEnumerator];
-        id key13;
-        while ((key13 = [_iter12 nextObject]))
+        [outProtocol writeMapBeginWithKeyType: TType_STRUCT valueType: TType_STRUCT size: [__channels count]];
+        NSEnumerator * _iter9 = [__channels keyEnumerator];
+        id key10;
+        while ((key10 = [_iter9 nextObject]))
         {
-          [key13 write: outProtocol];
-          {
-            [outProtocol writeListBeginWithElementType: TType_STRUCT size: [[__channelsByUser objectForKey: key13] count]];
-            int idx15;
-            for (idx15 = 0; idx15 < [[__channelsByUser objectForKey: key13] count]; idx15++)
-            {
-              [[[__channelsByUser objectForKey: key13] objectAtIndex: idx15] write: outProtocol];
-            }
-            [outProtocol writeListEnd];
-          }
+          [key10 write: outProtocol];
+          [[__channels objectForKey: key10] write: outProtocol];
         }
         [outProtocol writeMapEnd];
       }
@@ -826,8 +808,8 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",event:"];
   [ms appendFormat: @"%@", __event];
-  [ms appendString: @",channelsByUser:"];
-  [ms appendFormat: @"%@", __channelsByUser];
+  [ms appendString: @",channels:"];
+  [ms appendFormat: @"%@", __channels];
   [ms appendString: @",storeEvent:"];
   [ms appendFormat: @"%i", __storeEvent];
   [ms appendString: @")"];

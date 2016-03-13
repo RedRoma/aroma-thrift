@@ -182,10 +182,10 @@ inline std::ostream& operator<<(std::ostream& out, const GetEventsResponse& obj)
 }
 
 typedef struct _SendNotificationRequest__isset {
-  _SendNotificationRequest__isset() : token(false), event(false), channelsByUser(false), storeEvent(true) {}
+  _SendNotificationRequest__isset() : token(false), event(false), channels(false), storeEvent(true) {}
   bool token :1;
   bool event :1;
-  bool channelsByUser :1;
+  bool channels :1;
   bool storeEvent :1;
 } _SendNotificationRequest__isset;
 
@@ -200,7 +200,7 @@ class SendNotificationRequest {
   virtual ~SendNotificationRequest() throw();
   AuthenticationToken token;
   Event event;
-  std::map<User, std::vector<AromaChannel> >  channelsByUser;
+  std::map<AromaChannel, User>  channels;
   bool storeEvent;
 
   _SendNotificationRequest__isset __isset;
@@ -209,7 +209,7 @@ class SendNotificationRequest {
 
   void __set_event(const Event& val);
 
-  void __set_channelsByUser(const std::map<User, std::vector<AromaChannel> > & val);
+  void __set_channels(const std::map<AromaChannel, User> & val);
 
   void __set_storeEvent(const bool val);
 
@@ -219,7 +219,7 @@ class SendNotificationRequest {
       return false;
     if (!(event == rhs.event))
       return false;
-    if (!(channelsByUser == rhs.channelsByUser))
+    if (!(channels == rhs.channels))
       return false;
     if (__isset.storeEvent != rhs.__isset.storeEvent)
       return false;

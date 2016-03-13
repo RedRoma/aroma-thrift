@@ -260,8 +260,8 @@ void SendNotificationRequest::__set_event(const Event& val) {
   this->event = val;
 }
 
-void SendNotificationRequest::__set_channelsByUser(const std::map<User, std::vector<AromaChannel> > & val) {
-  this->channelsByUser = val;
+void SendNotificationRequest::__set_channels(const std::map<AromaChannel, User> & val) {
+  this->channels = val;
 }
 
 void SendNotificationRequest::__set_storeEvent(const bool val) {
@@ -309,7 +309,7 @@ uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* ip
       case 3:
         if (ftype == ::apache::thrift::protocol::T_MAP) {
           {
-            this->channelsByUser.clear();
+            this->channels.clear();
             uint32_t _size10;
             ::apache::thrift::protocol::TType _ktype11;
             ::apache::thrift::protocol::TType _vtype12;
@@ -317,26 +317,14 @@ uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* ip
             uint32_t _i14;
             for (_i14 = 0; _i14 < _size10; ++_i14)
             {
-              User _key15;
+              AromaChannel _key15;
               xfer += _key15.read(iprot);
-              std::vector<AromaChannel> & _val16 = this->channelsByUser[_key15];
-              {
-                _val16.clear();
-                uint32_t _size17;
-                ::apache::thrift::protocol::TType _etype20;
-                xfer += iprot->readListBegin(_etype20, _size17);
-                _val16.resize(_size17);
-                uint32_t _i21;
-                for (_i21 = 0; _i21 < _size17; ++_i21)
-                {
-                  xfer += _val16[_i21].read(iprot);
-                }
-                xfer += iprot->readListEnd();
-              }
+              User& _val16 = this->channels[_key15];
+              xfer += _val16.read(iprot);
             }
             xfer += iprot->readMapEnd();
           }
-          this->__isset.channelsByUser = true;
+          this->__isset.channels = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -374,22 +362,14 @@ uint32_t SendNotificationRequest::write(::apache::thrift::protocol::TProtocol* o
   xfer += this->event.write(oprot);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("channelsByUser", ::apache::thrift::protocol::T_MAP, 3);
+  xfer += oprot->writeFieldBegin("channels", ::apache::thrift::protocol::T_MAP, 3);
   {
-    xfer += oprot->writeMapBegin(::apache::thrift::protocol::T_STRUCT, ::apache::thrift::protocol::T_LIST, static_cast<uint32_t>(this->channelsByUser.size()));
-    std::map<User, std::vector<AromaChannel> > ::const_iterator _iter22;
-    for (_iter22 = this->channelsByUser.begin(); _iter22 != this->channelsByUser.end(); ++_iter22)
+    xfer += oprot->writeMapBegin(::apache::thrift::protocol::T_STRUCT, ::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->channels.size()));
+    std::map<AromaChannel, User> ::const_iterator _iter17;
+    for (_iter17 = this->channels.begin(); _iter17 != this->channels.end(); ++_iter17)
     {
-      xfer += _iter22->first.write(oprot);
-      {
-        xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(_iter22->second.size()));
-        std::vector<AromaChannel> ::const_iterator _iter23;
-        for (_iter23 = _iter22->second.begin(); _iter23 != _iter22->second.end(); ++_iter23)
-        {
-          xfer += (*_iter23).write(oprot);
-        }
-        xfer += oprot->writeListEnd();
-      }
+      xfer += _iter17->first.write(oprot);
+      xfer += _iter17->second.write(oprot);
     }
     xfer += oprot->writeMapEnd();
   }
@@ -409,24 +389,24 @@ void swap(SendNotificationRequest &a, SendNotificationRequest &b) {
   using ::std::swap;
   swap(a.token, b.token);
   swap(a.event, b.event);
-  swap(a.channelsByUser, b.channelsByUser);
+  swap(a.channels, b.channels);
   swap(a.storeEvent, b.storeEvent);
   swap(a.__isset, b.__isset);
 }
 
-SendNotificationRequest::SendNotificationRequest(const SendNotificationRequest& other24) {
-  token = other24.token;
-  event = other24.event;
-  channelsByUser = other24.channelsByUser;
-  storeEvent = other24.storeEvent;
-  __isset = other24.__isset;
+SendNotificationRequest::SendNotificationRequest(const SendNotificationRequest& other18) {
+  token = other18.token;
+  event = other18.event;
+  channels = other18.channels;
+  storeEvent = other18.storeEvent;
+  __isset = other18.__isset;
 }
-SendNotificationRequest& SendNotificationRequest::operator=(const SendNotificationRequest& other25) {
-  token = other25.token;
-  event = other25.event;
-  channelsByUser = other25.channelsByUser;
-  storeEvent = other25.storeEvent;
-  __isset = other25.__isset;
+SendNotificationRequest& SendNotificationRequest::operator=(const SendNotificationRequest& other19) {
+  token = other19.token;
+  event = other19.event;
+  channels = other19.channels;
+  storeEvent = other19.storeEvent;
+  __isset = other19.__isset;
   return *this;
 }
 void SendNotificationRequest::printTo(std::ostream& out) const {
@@ -434,7 +414,7 @@ void SendNotificationRequest::printTo(std::ostream& out) const {
   out << "SendNotificationRequest(";
   out << "token=" << to_string(token);
   out << ", " << "event=" << to_string(event);
-  out << ", " << "channelsByUser=" << to_string(channelsByUser);
+  out << ", " << "channels=" << to_string(channels);
   out << ", " << "storeEvent="; (__isset.storeEvent ? (out << to_string(storeEvent)) : (out << "<null>"));
   out << ")";
 }
@@ -511,13 +491,13 @@ void swap(SendNotificationResponse &a, SendNotificationResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SendNotificationResponse::SendNotificationResponse(const SendNotificationResponse& other26) {
-  notificationId = other26.notificationId;
-  __isset = other26.__isset;
+SendNotificationResponse::SendNotificationResponse(const SendNotificationResponse& other20) {
+  notificationId = other20.notificationId;
+  __isset = other20.__isset;
 }
-SendNotificationResponse& SendNotificationResponse::operator=(const SendNotificationResponse& other27) {
-  notificationId = other27.notificationId;
-  __isset = other27.__isset;
+SendNotificationResponse& SendNotificationResponse::operator=(const SendNotificationResponse& other21) {
+  notificationId = other21.notificationId;
+  __isset = other21.__isset;
   return *this;
 }
 void SendNotificationResponse::printTo(std::ostream& out) const {

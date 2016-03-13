@@ -178,7 +178,7 @@ GetEventsResponse.prototype.write = function(output) {
 SendNotificationRequest = module.exports.SendNotificationRequest = function(args) {
   this.token = null;
   this.event = null;
-  this.channelsByUser = null;
+  this.channels = null;
   this.storeEvent = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
@@ -187,8 +187,8 @@ SendNotificationRequest = module.exports.SendNotificationRequest = function(args
     if (args.event !== undefined && args.event !== null) {
       this.event = new Events_ttypes.Event(args.event);
     }
-    if (args.channelsByUser !== undefined && args.channelsByUser !== null) {
-      this.channelsByUser = Thrift.copyMap(args.channelsByUser, [Thrift.copyList, null]);
+    if (args.channels !== undefined && args.channels !== null) {
+      this.channels = Thrift.copyMap(args.channels, [null]);
     }
     if (args.storeEvent !== undefined && args.storeEvent !== null) {
       this.storeEvent = args.storeEvent;
@@ -229,7 +229,7 @@ SendNotificationRequest.prototype.read = function(input) {
       if (ftype == Thrift.Type.MAP) {
         var _size8 = 0;
         var _rtmp312;
-        this.channelsByUser = {};
+        this.channels = {};
         var _ktype9 = 0;
         var _vtype10 = 0;
         _rtmp312 = input.readMapBegin();
@@ -240,24 +240,11 @@ SendNotificationRequest.prototype.read = function(input) {
         {
           var key14 = null;
           var val15 = null;
-          key14 = new Aroma_ttypes.User();
+          key14 = new Channels_ttypes.AromaChannel();
           key14.read(input);
-          var _size16 = 0;
-          var _rtmp320;
-          val15 = [];
-          var _etype19 = 0;
-          _rtmp320 = input.readListBegin();
-          _etype19 = _rtmp320.etype;
-          _size16 = _rtmp320.size;
-          for (var _i21 = 0; _i21 < _size16; ++_i21)
-          {
-            var elem22 = null;
-            elem22 = new Channels_ttypes.AromaChannel();
-            elem22.read(input);
-            val15.push(elem22);
-          }
-          input.readListEnd();
-          this.channelsByUser[key14] = val15;
+          val15 = new Aroma_ttypes.User();
+          val15.read(input);
+          this.channels[key14] = val15;
         }
         input.readMapEnd();
       } else {
@@ -292,25 +279,16 @@ SendNotificationRequest.prototype.write = function(output) {
     this.event.write(output);
     output.writeFieldEnd();
   }
-  if (this.channelsByUser !== null && this.channelsByUser !== undefined) {
-    output.writeFieldBegin('channelsByUser', Thrift.Type.MAP, 3);
-    output.writeMapBegin(Thrift.Type.STRUCT, Thrift.Type.LIST, Thrift.objectLength(this.channelsByUser));
-    for (var kiter23 in this.channelsByUser)
+  if (this.channels !== null && this.channels !== undefined) {
+    output.writeFieldBegin('channels', Thrift.Type.MAP, 3);
+    output.writeMapBegin(Thrift.Type.STRUCT, Thrift.Type.STRUCT, Thrift.objectLength(this.channels));
+    for (var kiter16 in this.channels)
     {
-      if (this.channelsByUser.hasOwnProperty(kiter23))
+      if (this.channels.hasOwnProperty(kiter16))
       {
-        var viter24 = this.channelsByUser[kiter23];
-        kiter23.write(output);
-        output.writeListBegin(Thrift.Type.STRUCT, viter24.length);
-        for (var iter25 in viter24)
-        {
-          if (viter24.hasOwnProperty(iter25))
-          {
-            iter25 = viter24[iter25];
-            iter25.write(output);
-          }
-        }
-        output.writeListEnd();
+        var viter17 = this.channels[kiter16];
+        kiter16.write(output);
+        viter17.write(output);
       }
     }
     output.writeMapEnd();

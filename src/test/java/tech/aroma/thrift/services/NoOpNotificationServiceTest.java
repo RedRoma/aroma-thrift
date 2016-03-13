@@ -19,6 +19,8 @@ package tech.aroma.thrift.services;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import tech.aroma.thrift.authentication.AuthenticationToken;
+import tech.aroma.thrift.events.Event;
 import tech.aroma.thrift.exceptions.InvalidArgumentException;
 import tech.aroma.thrift.notification.service.SendNotificationRequest;
 import tech.aroma.thrift.notification.service.SendNotificationResponse;
@@ -29,6 +31,8 @@ import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
+import static tech.sirwellington.alchemy.generator.BooleanGenerators.booleans;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 
 /**
@@ -41,6 +45,11 @@ public class NoOpNotificationServiceTest
 {
     
     @GeneratePojo
+    private AuthenticationToken token;
+    
+    @GeneratePojo
+    private Event event;
+    
     private SendNotificationRequest request;
     
     private NoOpNotificationService instance;
@@ -49,8 +58,18 @@ public class NoOpNotificationServiceTest
     public void setUp()
     {
         instance = new NoOpNotificationService();
+        
+        setupData();
     }
 
+    private void setupData()
+    {
+        request = new SendNotificationRequest()
+            .setToken(token)
+            .setEvent(event)
+            .setStoreEvent(one(booleans()));
+    }
+    
     @Test
     public void testGetApiVersion() throws Exception
     {
