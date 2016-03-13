@@ -35,9 +35,13 @@ typedef Aroma_uuid NotificationService_uuid;
 
 typedef BananaAuthentication_AuthenticationToken * NotificationService_AuthenticationToken;
 
+typedef BananaAuthentication_UserToken * NotificationService_UserToken;
+
 typedef Aroma_Application * NotificationService_Application;
 
 typedef int NotificationService_Urgency;
+
+typedef Aroma_User * NotificationService_User;
 
 typedef AromaChannels_AromaChannel * NotificationService_AromaChannel;
 
@@ -63,24 +67,97 @@ typedef AromaException_ChannelDoesNotExistException * NotificationService_Channe
 
 typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedException;
 
+@interface NotificationService_GetEventsRequest : NSObject <TBase, NSCoding> {
+  NotificationService_UserToken __token;
+  NotificationService_uuid __forUser;
+  NotificationService_uuid __byApplication;
+
+  BOOL __token_isset;
+  BOOL __forUser_isset;
+  BOOL __byApplication_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_UserToken token;
+@property (nonatomic, retain, getter=forUser, setter=setForUser:) NotificationService_uuid forUser;
+@property (nonatomic, retain, getter=byApplication, setter=setByApplication:) NotificationService_uuid byApplication;
+#endif
+
+- (id) init;
+- (id) initWithToken: (NotificationService_UserToken) token forUser: (NotificationService_uuid) forUser byApplication: (NotificationService_uuid) byApplication;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_UserToken) token;
+- (void) setToken: (NotificationService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_uuid) forUser;
+- (void) setForUser: (NotificationService_uuid) forUser;
+#endif
+- (BOOL) forUserIsSet;
+
+#if !__has_feature(objc_arc)
+- (NotificationService_uuid) byApplication;
+- (void) setByApplication: (NotificationService_uuid) byApplication;
+#endif
+- (BOOL) byApplicationIsSet;
+
+@end
+
+@interface NotificationService_GetEventsResponse : NSObject <TBase, NSCoding> {
+  NSMutableArray * __events;
+
+  BOOL __events_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=events, setter=setEvents:) NSMutableArray * events;
+#endif
+
+- (id) init;
+- (id) initWithEvents: (NSMutableArray *) events;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) events;
+- (void) setEvents: (NSMutableArray *) events;
+#endif
+- (BOOL) eventsIsSet;
+
+@end
+
 @interface NotificationService_SendNotificationRequest : NSObject <TBase, NSCoding> {
   NotificationService_AuthenticationToken __token;
   NotificationService_Event __event;
-  NSMutableArray * __channels;
+  NSMutableDictionary * __channelsByUser;
+  BOOL __storeEvent;
 
   BOOL __token_isset;
   BOOL __event_isset;
-  BOOL __channels_isset;
+  BOOL __channelsByUser_isset;
+  BOOL __storeEvent_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) NotificationService_AuthenticationToken token;
 @property (nonatomic, retain, getter=event, setter=setEvent:) NotificationService_Event event;
-@property (nonatomic, retain, getter=channels, setter=setChannels:) NSMutableArray * channels;
+@property (nonatomic, retain, getter=channelsByUser, setter=setChannelsByUser:) NSMutableDictionary * channelsByUser;
+@property (nonatomic, getter=storeEvent, setter=setStoreEvent:) BOOL storeEvent;
 #endif
 
 - (id) init;
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels;
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channelsByUser: (NSMutableDictionary *) channelsByUser storeEvent: (BOOL) storeEvent;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -100,10 +177,16 @@ typedef AromaException_UnauthorizedException * NotificationService_UnauthorizedE
 - (BOOL) eventIsSet;
 
 #if !__has_feature(objc_arc)
-- (NSMutableArray *) channels;
-- (void) setChannels: (NSMutableArray *) channels;
+- (NSMutableDictionary *) channelsByUser;
+- (void) setChannelsByUser: (NSMutableDictionary *) channelsByUser;
 #endif
-- (BOOL) channelsIsSet;
+- (BOOL) channelsByUserIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) storeEvent;
+- (void) setStoreEvent: (BOOL) storeEvent;
+#endif
+- (BOOL) storeEventIsSet;
 
 @end
 

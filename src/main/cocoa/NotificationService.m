@@ -27,7 +27,7 @@
 
 #import "NotificationService.h"
 
-@implementation NotificationService_SendNotificationRequest
+@implementation NotificationService_GetEventsRequest
 
 - (id) init
 {
@@ -37,15 +37,459 @@
   return self;
 }
 
-- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channels: (NSMutableArray *) channels
+- (id) initWithToken: (NotificationService_UserToken) token forUser: (NotificationService_uuid) forUser byApplication: (NotificationService_uuid) byApplication
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __forUser = [forUser retain_stub];
+  __forUser_isset = YES;
+  __byApplication = [byApplication retain_stub];
+  __byApplication_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"forUser"])
+  {
+    __forUser = [[decoder decodeObjectForKey: @"forUser"] retain_stub];
+    __forUser_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"byApplication"])
+  {
+    __byApplication = [[decoder decodeObjectForKey: @"byApplication"] retain_stub];
+    __byApplication_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__forUser_isset)
+  {
+    [encoder encodeObject: __forUser forKey: @"forUser"];
+  }
+  if (__byApplication_isset)
+  {
+    [encoder encodeObject: __byApplication forKey: @"byApplication"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __forUser_isset ? 2654435761 : 0;
+  if (__forUser_isset)
+  {
+    hash = (hash * 31) ^ [__forUser hash];
+  }
+  hash = (hash * 31) ^ __byApplication_isset ? 2654435761 : 0;
+  if (__byApplication_isset)
+  {
+    hash = (hash * 31) ^ [__byApplication hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_GetEventsRequest class]]) {
+    return NO;
+  }
+  NotificationService_GetEventsRequest *other = (NotificationService_GetEventsRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__forUser_isset != other->__forUser_isset) ||
+      (__forUser_isset && ((__forUser || other->__forUser) && ![__forUser isEqual:other->__forUser]))) {
+    return NO;
+  }
+  if ((__byApplication_isset != other->__byApplication_isset) ||
+      (__byApplication_isset && ((__byApplication || other->__byApplication) && ![__byApplication isEqual:other->__byApplication]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__forUser release_stub];
+  [__byApplication release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) forUser {
+  return [[__forUser retain_stub] autorelease_stub];
+}
+
+- (void) setForUser: (NSString *) forUser {
+  [forUser retain_stub];
+  [__forUser release_stub];
+  __forUser = forUser;
+  __forUser_isset = YES;
+}
+
+- (BOOL) forUserIsSet {
+  return __forUser_isset;
+}
+
+- (void) unsetForUser {
+  [__forUser release_stub];
+  __forUser = nil;
+  __forUser_isset = NO;
+}
+
+- (NSString *) byApplication {
+  return [[__byApplication retain_stub] autorelease_stub];
+}
+
+- (void) setByApplication: (NSString *) byApplication {
+  [byApplication retain_stub];
+  [__byApplication release_stub];
+  __byApplication = byApplication;
+  __byApplication_isset = YES;
+}
+
+- (BOOL) byApplicationIsSet {
+  return __byApplication_isset;
+}
+
+- (void) unsetByApplication {
+  [__byApplication release_stub];
+  __byApplication = nil;
+  __byApplication_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setForUser: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setByApplication: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetEventsRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__forUser_isset) {
+    if (__forUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"forUser" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __forUser];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__byApplication_isset) {
+    if (__byApplication != nil) {
+      [outProtocol writeFieldBeginWithName: @"byApplication" type: TType_STRING fieldID: 3];
+      [outProtocol writeString: __byApplication];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_GetEventsRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",forUser:"];
+  [ms appendFormat: @"\"%@\"", __forUser];
+  [ms appendString: @",byApplication:"];
+  [ms appendFormat: @"\"%@\"", __byApplication];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation NotificationService_GetEventsResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithEvents: (NSMutableArray *) events
+{
+  self = [super init];
+  __events = [events retain_stub];
+  __events_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"events"])
+  {
+    __events = [[decoder decodeObjectForKey: @"events"] retain_stub];
+    __events_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__events_isset)
+  {
+    [encoder encodeObject: __events forKey: @"events"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __events_isset ? 2654435761 : 0;
+  if (__events_isset)
+  {
+    hash = (hash * 31) ^ [__events hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[NotificationService_GetEventsResponse class]]) {
+    return NO;
+  }
+  NotificationService_GetEventsResponse *other = (NotificationService_GetEventsResponse *)anObject;
+  if ((__events_isset != other->__events_isset) ||
+      (__events_isset && ((__events || other->__events) && ![__events isEqual:other->__events]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__events release_stub];
+  [super dealloc_stub];
+}
+
+- (NSMutableArray *) events {
+  return [[__events retain_stub] autorelease_stub];
+}
+
+- (void) setEvents: (NSMutableArray *) events {
+  [events retain_stub];
+  [__events release_stub];
+  __events = events;
+  __events_isset = YES;
+}
+
+- (BOOL) eventsIsSet {
+  return __events_isset;
+}
+
+- (void) unsetEvents {
+  [__events release_stub];
+  __events = nil;
+  __events_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            AromaEvents_Event *_elem2 = [[AromaEvents_Event alloc] init];
+            [_elem2 read: inProtocol];
+            [fieldValue addObject: _elem2];
+            [_elem2 release_stub];
+          }
+          [inProtocol readListEnd];
+          [self setEvents: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"GetEventsResponse"];
+  if (__events_isset) {
+    if (__events != nil) {
+      [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__events count]; idx4++)
+        {
+          [[__events objectAtIndex: idx4] write: outProtocol];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"NotificationService_GetEventsResponse("];
+  [ms appendString: @"events:"];
+  [ms appendFormat: @"%@", __events];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation NotificationService_SendNotificationRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.storeEvent = NO;
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (NotificationService_AuthenticationToken) token event: (NotificationService_Event) event channelsByUser: (NSMutableDictionary *) channelsByUser storeEvent: (BOOL) storeEvent
 {
   self = [super init];
   __token = [token retain_stub];
   __token_isset = YES;
   __event = [event retain_stub];
   __event_isset = YES;
-  __channels = [channels retain_stub];
-  __channels_isset = YES;
+  __channelsByUser = [channelsByUser retain_stub];
+  __channelsByUser_isset = YES;
+  __storeEvent = storeEvent;
+  __storeEvent_isset = YES;
   return self;
 }
 
@@ -62,10 +506,15 @@
     __event = [[decoder decodeObjectForKey: @"event"] retain_stub];
     __event_isset = YES;
   }
-  if ([decoder containsValueForKey: @"channels"])
+  if ([decoder containsValueForKey: @"channelsByUser"])
   {
-    __channels = [[decoder decodeObjectForKey: @"channels"] retain_stub];
-    __channels_isset = YES;
+    __channelsByUser = [[decoder decodeObjectForKey: @"channelsByUser"] retain_stub];
+    __channelsByUser_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"storeEvent"])
+  {
+    __storeEvent = [decoder decodeBoolForKey: @"storeEvent"];
+    __storeEvent_isset = YES;
   }
   return self;
 }
@@ -80,9 +529,13 @@
   {
     [encoder encodeObject: __event forKey: @"event"];
   }
-  if (__channels_isset)
+  if (__channelsByUser_isset)
   {
-    [encoder encodeObject: __channels forKey: @"channels"];
+    [encoder encodeObject: __channelsByUser forKey: @"channelsByUser"];
+  }
+  if (__storeEvent_isset)
+  {
+    [encoder encodeBool: __storeEvent forKey: @"storeEvent"];
   }
 }
 
@@ -99,10 +552,15 @@
   {
     hash = (hash * 31) ^ [__event hash];
   }
-  hash = (hash * 31) ^ __channels_isset ? 2654435761 : 0;
-  if (__channels_isset)
+  hash = (hash * 31) ^ __channelsByUser_isset ? 2654435761 : 0;
+  if (__channelsByUser_isset)
   {
-    hash = (hash * 31) ^ [__channels hash];
+    hash = (hash * 31) ^ [__channelsByUser hash];
+  }
+  hash = (hash * 31) ^ __storeEvent_isset ? 2654435761 : 0;
+  if (__storeEvent_isset)
+  {
+    hash = (hash * 31) ^ [@(__storeEvent) hash];
   }
   return hash;
 }
@@ -124,8 +582,12 @@
       (__event_isset && ((__event || other->__event) && ![__event isEqual:other->__event]))) {
     return NO;
   }
-  if ((__channels_isset != other->__channels_isset) ||
-      (__channels_isset && ((__channels || other->__channels) && ![__channels isEqual:other->__channels]))) {
+  if ((__channelsByUser_isset != other->__channelsByUser_isset) ||
+      (__channelsByUser_isset && ((__channelsByUser || other->__channelsByUser) && ![__channelsByUser isEqual:other->__channelsByUser]))) {
+    return NO;
+  }
+  if ((__storeEvent_isset != other->__storeEvent_isset) ||
+      (__storeEvent_isset && (__storeEvent != other->__storeEvent))) {
     return NO;
   }
   return YES;
@@ -135,7 +597,7 @@
 {
   [__token release_stub];
   [__event release_stub];
-  [__channels release_stub];
+  [__channelsByUser release_stub];
   [super dealloc_stub];
 }
 
@@ -181,25 +643,42 @@
   __event_isset = NO;
 }
 
-- (NSMutableArray *) channels {
-  return [[__channels retain_stub] autorelease_stub];
+- (NSMutableDictionary *) channelsByUser {
+  return [[__channelsByUser retain_stub] autorelease_stub];
 }
 
-- (void) setChannels: (NSMutableArray *) channels {
-  [channels retain_stub];
-  [__channels release_stub];
-  __channels = channels;
-  __channels_isset = YES;
+- (void) setChannelsByUser: (NSMutableDictionary *) channelsByUser {
+  [channelsByUser retain_stub];
+  [__channelsByUser release_stub];
+  __channelsByUser = channelsByUser;
+  __channelsByUser_isset = YES;
 }
 
-- (BOOL) channelsIsSet {
-  return __channels_isset;
+- (BOOL) channelsByUserIsSet {
+  return __channelsByUser_isset;
 }
 
-- (void) unsetChannels {
-  [__channels release_stub];
-  __channels = nil;
-  __channels_isset = NO;
+- (void) unsetChannelsByUser {
+  [__channelsByUser release_stub];
+  __channelsByUser = nil;
+  __channelsByUser_isset = NO;
+}
+
+- (BOOL) storeEvent {
+  return __storeEvent;
+}
+
+- (void) setStoreEvent: (BOOL) storeEvent {
+  __storeEvent = storeEvent;
+  __storeEvent_isset = YES;
+}
+
+- (BOOL) storeEventIsSet {
+  return __storeEvent_isset;
+}
+
+- (void) unsetStoreEvent {
+  __storeEvent_isset = NO;
 }
 
 - (void) read: (id <TProtocol>) inProtocol
@@ -238,21 +717,42 @@
         }
         break;
       case 3:
-        if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+        if (fieldType == TType_MAP) {
+          int _size5;
+          [inProtocol readMapBeginReturningKeyType: NULL valueType: NULL size: &_size5];
+          NSMutableDictionary * fieldValue = [[NSMutableDictionary alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            AromaChannels_AromaChannel *_elem2 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem2 read: inProtocol];
-            [fieldValue addObject: _elem2];
-            [_elem2 release_stub];
+            Aroma_User *_key7 = [[Aroma_User alloc] init];
+            [_key7 read: inProtocol];
+            int _size9;
+            [inProtocol readListBeginReturningElementType: NULL size: &_size9];
+            NSMutableArray * _val8 = [[NSMutableArray alloc] initWithCapacity: _size9];
+            int _i10;
+            for (_i10 = 0; _i10 < _size9; ++_i10)
+            {
+              AromaChannels_AromaChannel *_elem11 = [[AromaChannels_AromaChannel alloc] init];
+              [_elem11 read: inProtocol];
+              [_val8 addObject: _elem11];
+              [_elem11 release_stub];
+            }
+            [inProtocol readListEnd];
+            [fieldValue setObject: _val8 forKey: _key7];
+            [_key7 release_stub];
+            [_val8 release_stub];
           }
-          [inProtocol readListEnd];
-          [self setChannels: fieldValue];
+          [inProtocol readMapEnd];
+          [self setChannelsByUser: fieldValue];
           [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setStoreEvent: fieldValue];
         } else { 
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
@@ -282,20 +782,35 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__channels_isset) {
-    if (__channels != nil) {
-      [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 3];
+  if (__channelsByUser_isset) {
+    if (__channelsByUser != nil) {
+      [outProtocol writeFieldBeginWithName: @"channelsByUser" type: TType_MAP fieldID: 3];
       {
-        [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__channels count]; idx4++)
+        [outProtocol writeMapBeginWithKeyType: TType_STRUCT valueType: TType_LIST size: [__channelsByUser count]];
+        NSEnumerator * _iter12 = [__channelsByUser keyEnumerator];
+        id key13;
+        while ((key13 = [_iter12 nextObject]))
         {
-          [[__channels objectAtIndex: idx4] write: outProtocol];
+          [key13 write: outProtocol];
+          {
+            [outProtocol writeListBeginWithElementType: TType_STRUCT size: [[__channelsByUser objectForKey: key13] count]];
+            int idx15;
+            for (idx15 = 0; idx15 < [[__channelsByUser objectForKey: key13] count]; idx15++)
+            {
+              [[[__channelsByUser objectForKey: key13] objectAtIndex: idx15] write: outProtocol];
+            }
+            [outProtocol writeListEnd];
+          }
         }
-        [outProtocol writeListEnd];
+        [outProtocol writeMapEnd];
       }
       [outProtocol writeFieldEnd];
     }
+  }
+  if (__storeEvent_isset) {
+    [outProtocol writeFieldBeginWithName: @"storeEvent" type: TType_BOOL fieldID: 4];
+    [outProtocol writeBool: __storeEvent];
+    [outProtocol writeFieldEnd];
   }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
@@ -311,8 +826,10 @@
   [ms appendFormat: @"%@", __token];
   [ms appendString: @",event:"];
   [ms appendFormat: @"%@", __event];
-  [ms appendString: @",channels:"];
-  [ms appendFormat: @"%@", __channels];
+  [ms appendString: @",channelsByUser:"];
+  [ms appendFormat: @"%@", __channelsByUser];
+  [ms appendString: @",storeEvent:"];
+  [ms appendFormat: @"%i", __storeEvent];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
