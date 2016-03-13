@@ -923,6 +923,306 @@
 
 @end
 
+@implementation AromaChannels_IOSDevice
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithDeviceToken: (NSString *) deviceToken
+{
+  self = [super init];
+  __deviceToken = [deviceToken retain_stub];
+  __deviceToken_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"deviceToken"])
+  {
+    __deviceToken = [[decoder decodeObjectForKey: @"deviceToken"] retain_stub];
+    __deviceToken_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__deviceToken_isset)
+  {
+    [encoder encodeObject: __deviceToken forKey: @"deviceToken"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __deviceToken_isset ? 2654435761 : 0;
+  if (__deviceToken_isset)
+  {
+    hash = (hash * 31) ^ [__deviceToken hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaChannels_IOSDevice class]]) {
+    return NO;
+  }
+  AromaChannels_IOSDevice *other = (AromaChannels_IOSDevice *)anObject;
+  if ((__deviceToken_isset != other->__deviceToken_isset) ||
+      (__deviceToken_isset && ((__deviceToken || other->__deviceToken) && ![__deviceToken isEqual:other->__deviceToken]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__deviceToken release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) deviceToken {
+  return [[__deviceToken retain_stub] autorelease_stub];
+}
+
+- (void) setDeviceToken: (NSString *) deviceToken {
+  [deviceToken retain_stub];
+  [__deviceToken release_stub];
+  __deviceToken = deviceToken;
+  __deviceToken_isset = YES;
+}
+
+- (BOOL) deviceTokenIsSet {
+  return __deviceToken_isset;
+}
+
+- (void) unsetDeviceToken {
+  [__deviceToken release_stub];
+  __deviceToken = nil;
+  __deviceToken_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDeviceToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"IOSDevice"];
+  if (__deviceToken_isset) {
+    if (__deviceToken != nil) {
+      [outProtocol writeFieldBeginWithName: @"deviceToken" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __deviceToken];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_IOSDevice("];
+  [ms appendString: @"deviceToken:"];
+  [ms appendFormat: @"\"%@\"", __deviceToken];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaChannels_AndroidDevice
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithDeviceId: (NSString *) deviceId
+{
+  self = [super init];
+  __deviceId = [deviceId retain_stub];
+  __deviceId_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"deviceId"])
+  {
+    __deviceId = [[decoder decodeObjectForKey: @"deviceId"] retain_stub];
+    __deviceId_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__deviceId_isset)
+  {
+    [encoder encodeObject: __deviceId forKey: @"deviceId"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __deviceId_isset ? 2654435761 : 0;
+  if (__deviceId_isset)
+  {
+    hash = (hash * 31) ^ [__deviceId hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaChannels_AndroidDevice class]]) {
+    return NO;
+  }
+  AromaChannels_AndroidDevice *other = (AromaChannels_AndroidDevice *)anObject;
+  if ((__deviceId_isset != other->__deviceId_isset) ||
+      (__deviceId_isset && ((__deviceId || other->__deviceId) && ![__deviceId isEqual:other->__deviceId]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__deviceId release_stub];
+  [super dealloc_stub];
+}
+
+- (NSString *) deviceId {
+  return [[__deviceId retain_stub] autorelease_stub];
+}
+
+- (void) setDeviceId: (NSString *) deviceId {
+  [deviceId retain_stub];
+  [__deviceId release_stub];
+  __deviceId = deviceId;
+  __deviceId_isset = YES;
+}
+
+- (BOOL) deviceIdIsSet {
+  return __deviceId_isset;
+}
+
+- (void) unsetDeviceId {
+  [__deviceId release_stub];
+  __deviceId = nil;
+  __deviceId_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setDeviceId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"AndroidDevice"];
+  if (__deviceId_isset) {
+    if (__deviceId != nil) {
+      [outProtocol writeFieldBeginWithName: @"deviceId" type: TType_STRING fieldID: 1];
+      [outProtocol writeString: __deviceId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaChannels_AndroidDevice("];
+  [ms appendString: @"deviceId:"];
+  [ms appendFormat: @"\"%@\"", __deviceId];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaChannels_AromaChannel
 
 - (id) init
@@ -933,7 +1233,7 @@
   return self;
 }
 
-- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel
+- (id) initWithSlackChannel: (AromaChannels_SlackChannel *) slackChannel slackUsername: (AromaChannels_SlackUsername *) slackUsername email: (AromaChannels_Email *) email customChannel: (AromaChannels_CustomChannel *) customChannel iosDevice: (AromaChannels_IOSDevice *) iosDevice androidDevice: (AromaChannels_AndroidDevice *) androidDevice
 {
   self = [super init];
   __slackChannel = [slackChannel retain_stub];
@@ -944,6 +1244,10 @@
   __email_isset = YES;
   __customChannel = [customChannel retain_stub];
   __customChannel_isset = YES;
+  __iosDevice = [iosDevice retain_stub];
+  __iosDevice_isset = YES;
+  __androidDevice = [androidDevice retain_stub];
+  __androidDevice_isset = YES;
   return self;
 }
 
@@ -970,6 +1274,16 @@
     __customChannel = [[decoder decodeObjectForKey: @"customChannel"] retain_stub];
     __customChannel_isset = YES;
   }
+  if ([decoder containsValueForKey: @"iosDevice"])
+  {
+    __iosDevice = [[decoder decodeObjectForKey: @"iosDevice"] retain_stub];
+    __iosDevice_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"androidDevice"])
+  {
+    __androidDevice = [[decoder decodeObjectForKey: @"androidDevice"] retain_stub];
+    __androidDevice_isset = YES;
+  }
   return self;
 }
 
@@ -990,6 +1304,14 @@
   if (__customChannel_isset)
   {
     [encoder encodeObject: __customChannel forKey: @"customChannel"];
+  }
+  if (__iosDevice_isset)
+  {
+    [encoder encodeObject: __iosDevice forKey: @"iosDevice"];
+  }
+  if (__androidDevice_isset)
+  {
+    [encoder encodeObject: __androidDevice forKey: @"androidDevice"];
   }
 }
 
@@ -1015,6 +1337,16 @@
   if (__customChannel_isset)
   {
     hash = (hash * 31) ^ [__customChannel hash];
+  }
+  hash = (hash * 31) ^ __iosDevice_isset ? 2654435761 : 0;
+  if (__iosDevice_isset)
+  {
+    hash = (hash * 31) ^ [__iosDevice hash];
+  }
+  hash = (hash * 31) ^ __androidDevice_isset ? 2654435761 : 0;
+  if (__androidDevice_isset)
+  {
+    hash = (hash * 31) ^ [__androidDevice hash];
   }
   return hash;
 }
@@ -1044,6 +1376,14 @@
       (__customChannel_isset && ((__customChannel || other->__customChannel) && ![__customChannel isEqual:other->__customChannel]))) {
     return NO;
   }
+  if ((__iosDevice_isset != other->__iosDevice_isset) ||
+      (__iosDevice_isset && ((__iosDevice || other->__iosDevice) && ![__iosDevice isEqual:other->__iosDevice]))) {
+    return NO;
+  }
+  if ((__androidDevice_isset != other->__androidDevice_isset) ||
+      (__androidDevice_isset && ((__androidDevice || other->__androidDevice) && ![__androidDevice isEqual:other->__androidDevice]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -1053,6 +1393,8 @@
   [__slackUsername release_stub];
   [__email release_stub];
   [__customChannel release_stub];
+  [__iosDevice release_stub];
+  [__androidDevice release_stub];
   [super dealloc_stub];
 }
 
@@ -1140,6 +1482,48 @@
   __customChannel_isset = NO;
 }
 
+- (AromaChannels_IOSDevice *) iosDevice {
+  return [[__iosDevice retain_stub] autorelease_stub];
+}
+
+- (void) setIosDevice: (AromaChannels_IOSDevice *) iosDevice {
+  [iosDevice retain_stub];
+  [__iosDevice release_stub];
+  __iosDevice = iosDevice;
+  __iosDevice_isset = YES;
+}
+
+- (BOOL) iosDeviceIsSet {
+  return __iosDevice_isset;
+}
+
+- (void) unsetIosDevice {
+  [__iosDevice release_stub];
+  __iosDevice = nil;
+  __iosDevice_isset = NO;
+}
+
+- (AromaChannels_AndroidDevice *) androidDevice {
+  return [[__androidDevice retain_stub] autorelease_stub];
+}
+
+- (void) setAndroidDevice: (AromaChannels_AndroidDevice *) androidDevice {
+  [androidDevice retain_stub];
+  [__androidDevice release_stub];
+  __androidDevice = androidDevice;
+  __androidDevice_isset = YES;
+}
+
+- (BOOL) androidDeviceIsSet {
+  return __androidDevice_isset;
+}
+
+- (void) unsetAndroidDevice {
+  [__androidDevice release_stub];
+  __androidDevice = nil;
+  __androidDevice_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -1195,6 +1579,26 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          AromaChannels_IOSDevice *fieldValue = [[AromaChannels_IOSDevice alloc] init];
+          [fieldValue read: inProtocol];
+          [self setIosDevice: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 6:
+        if (fieldType == TType_STRUCT) {
+          AromaChannels_AndroidDevice *fieldValue = [[AromaChannels_AndroidDevice alloc] init];
+          [fieldValue read: inProtocol];
+          [self setAndroidDevice: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -1234,6 +1638,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__iosDevice_isset) {
+    if (__iosDevice != nil) {
+      [outProtocol writeFieldBeginWithName: @"iosDevice" type: TType_STRUCT fieldID: 5];
+      [__iosDevice write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__androidDevice_isset) {
+    if (__androidDevice != nil) {
+      [outProtocol writeFieldBeginWithName: @"androidDevice" type: TType_STRUCT fieldID: 6];
+      [__androidDevice write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -1252,6 +1670,10 @@
   [ms appendFormat: @"%@", __email];
   [ms appendString: @",customChannel:"];
   [ms appendFormat: @"%@", __customChannel];
+  [ms appendString: @",iosDevice:"];
+  [ms appendFormat: @"%@", __iosDevice];
+  [ms appendString: @",androidDevice:"];
+  [ms appendFormat: @"%@", __androidDevice];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }
