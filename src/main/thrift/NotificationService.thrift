@@ -27,7 +27,6 @@ typedef Aroma.uuid uuid;
 
 //Struct Typedefs
 typedef Authentication.AuthenticationToken AuthenticationToken
-typedef Authentication.UserToken UserToken
 
 typedef Aroma.Application Application
 typedef Aroma.Urgency Urgency
@@ -58,24 +57,11 @@ const Endpoint.TcpEndpoint BETA_ENDPOINT = { "hostname" : "notification-srv.beta
 //==========================================================
 // SERVICE REQUESTS
 
-struct GetEventsRequest
-{
-    1: UserToken token;
-    2: uuid forUser;
-    3: optional uuid byApplication;
-}
-
-struct GetEventsResponse
-{
-    1: list<Event> events;
-}
-
 struct SendNotificationRequest
 {
     1: AuthenticationToken token;
     2: Event event;
     3: map<AromaChannel, User> channels;
-    4: optional bool storeEvent = false;
 }
 
 struct SendNotificationResponse

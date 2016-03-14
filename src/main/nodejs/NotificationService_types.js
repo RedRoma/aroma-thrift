@@ -16,170 +16,10 @@ var Exceptions_ttypes = require('./Exceptions_types')
 
 
 var ttypes = module.exports = {};
-GetEventsRequest = module.exports.GetEventsRequest = function(args) {
-  this.token = null;
-  this.forUser = null;
-  this.byApplication = null;
-  if (args) {
-    if (args.token !== undefined && args.token !== null) {
-      this.token = new Authentication_ttypes.UserToken(args.token);
-    }
-    if (args.forUser !== undefined && args.forUser !== null) {
-      this.forUser = args.forUser;
-    }
-    if (args.byApplication !== undefined && args.byApplication !== null) {
-      this.byApplication = args.byApplication;
-    }
-  }
-};
-GetEventsRequest.prototype = {};
-GetEventsRequest.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.STRUCT) {
-        this.token = new Authentication_ttypes.UserToken();
-        this.token.read(input);
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 2:
-      if (ftype == Thrift.Type.STRING) {
-        this.forUser = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 3:
-      if (ftype == Thrift.Type.STRING) {
-        this.byApplication = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetEventsRequest.prototype.write = function(output) {
-  output.writeStructBegin('GetEventsRequest');
-  if (this.token !== null && this.token !== undefined) {
-    output.writeFieldBegin('token', Thrift.Type.STRUCT, 1);
-    this.token.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.forUser !== null && this.forUser !== undefined) {
-    output.writeFieldBegin('forUser', Thrift.Type.STRING, 2);
-    output.writeString(this.forUser);
-    output.writeFieldEnd();
-  }
-  if (this.byApplication !== null && this.byApplication !== undefined) {
-    output.writeFieldBegin('byApplication', Thrift.Type.STRING, 3);
-    output.writeString(this.byApplication);
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
-GetEventsResponse = module.exports.GetEventsResponse = function(args) {
-  this.events = null;
-  if (args) {
-    if (args.events !== undefined && args.events !== null) {
-      this.events = Thrift.copyList(args.events, [null]);
-    }
-  }
-};
-GetEventsResponse.prototype = {};
-GetEventsResponse.prototype.read = function(input) {
-  input.readStructBegin();
-  while (true)
-  {
-    var ret = input.readFieldBegin();
-    var fname = ret.fname;
-    var ftype = ret.ftype;
-    var fid = ret.fid;
-    if (ftype == Thrift.Type.STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
-        this.events = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
-        {
-          var elem6 = null;
-          elem6 = new Events_ttypes.Event();
-          elem6.read(input);
-          this.events.push(elem6);
-        }
-        input.readListEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 0:
-        input.skip(ftype);
-        break;
-      default:
-        input.skip(ftype);
-    }
-    input.readFieldEnd();
-  }
-  input.readStructEnd();
-  return;
-};
-
-GetEventsResponse.prototype.write = function(output) {
-  output.writeStructBegin('GetEventsResponse');
-  if (this.events !== null && this.events !== undefined) {
-    output.writeFieldBegin('events', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRUCT, this.events.length);
-    for (var iter7 in this.events)
-    {
-      if (this.events.hasOwnProperty(iter7))
-      {
-        iter7 = this.events[iter7];
-        iter7.write(output);
-      }
-    }
-    output.writeListEnd();
-    output.writeFieldEnd();
-  }
-  output.writeFieldStop();
-  output.writeStructEnd();
-  return;
-};
-
 SendNotificationRequest = module.exports.SendNotificationRequest = function(args) {
   this.token = null;
   this.event = null;
   this.channels = null;
-  this.storeEvent = false;
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.AuthenticationToken(args.token);
@@ -189,9 +29,6 @@ SendNotificationRequest = module.exports.SendNotificationRequest = function(args
     }
     if (args.channels !== undefined && args.channels !== null) {
       this.channels = Thrift.copyMap(args.channels, [null]);
-    }
-    if (args.storeEvent !== undefined && args.storeEvent !== null) {
-      this.storeEvent = args.storeEvent;
     }
   }
 };
@@ -227,33 +64,26 @@ SendNotificationRequest.prototype.read = function(input) {
       break;
       case 3:
       if (ftype == Thrift.Type.MAP) {
-        var _size8 = 0;
-        var _rtmp312;
+        var _size0 = 0;
+        var _rtmp34;
         this.channels = {};
-        var _ktype9 = 0;
-        var _vtype10 = 0;
-        _rtmp312 = input.readMapBegin();
-        _ktype9 = _rtmp312.ktype;
-        _vtype10 = _rtmp312.vtype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        var _ktype1 = 0;
+        var _vtype2 = 0;
+        _rtmp34 = input.readMapBegin();
+        _ktype1 = _rtmp34.ktype;
+        _vtype2 = _rtmp34.vtype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
-          var key14 = null;
-          var val15 = null;
-          key14 = new Channels_ttypes.AromaChannel();
-          key14.read(input);
-          val15 = new Aroma_ttypes.User();
-          val15.read(input);
-          this.channels[key14] = val15;
+          var key6 = null;
+          var val7 = null;
+          key6 = new Channels_ttypes.AromaChannel();
+          key6.read(input);
+          val7 = new Aroma_ttypes.User();
+          val7.read(input);
+          this.channels[key6] = val7;
         }
         input.readMapEnd();
-      } else {
-        input.skip(ftype);
-      }
-      break;
-      case 4:
-      if (ftype == Thrift.Type.BOOL) {
-        this.storeEvent = input.readBool();
       } else {
         input.skip(ftype);
       }
@@ -282,21 +112,16 @@ SendNotificationRequest.prototype.write = function(output) {
   if (this.channels !== null && this.channels !== undefined) {
     output.writeFieldBegin('channels', Thrift.Type.MAP, 3);
     output.writeMapBegin(Thrift.Type.STRUCT, Thrift.Type.STRUCT, Thrift.objectLength(this.channels));
-    for (var kiter16 in this.channels)
+    for (var kiter8 in this.channels)
     {
-      if (this.channels.hasOwnProperty(kiter16))
+      if (this.channels.hasOwnProperty(kiter8))
       {
-        var viter17 = this.channels[kiter16];
-        kiter16.write(output);
-        viter17.write(output);
+        var viter9 = this.channels[kiter8];
+        kiter8.write(output);
+        viter9.write(output);
       }
     }
     output.writeMapEnd();
-    output.writeFieldEnd();
-  }
-  if (this.storeEvent !== null && this.storeEvent !== undefined) {
-    output.writeFieldBegin('storeEvent', Thrift.Type.BOOL, 4);
-    output.writeBool(this.storeEvent);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

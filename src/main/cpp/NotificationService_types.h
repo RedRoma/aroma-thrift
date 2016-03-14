@@ -35,8 +35,6 @@ typedef  ::tech::aroma::thrift::uuid uuid;
 
 typedef class  ::aroma::thrift::authentication::AuthenticationToken AuthenticationToken;
 
-typedef class  ::aroma::thrift::authentication::UserToken UserToken;
-
 typedef class  ::tech::aroma::thrift::Application Application;
 
 typedef  ::tech::aroma::thrift::Urgency::type Urgency;
@@ -67,126 +65,15 @@ typedef class  ::aroma::thrift::exceptions::ChannelDoesNotExistException Channel
 
 typedef class  ::aroma::thrift::exceptions::UnauthorizedException UnauthorizedException;
 
-class GetEventsRequest;
-
-class GetEventsResponse;
-
 class SendNotificationRequest;
 
 class SendNotificationResponse;
 
-typedef struct _GetEventsRequest__isset {
-  _GetEventsRequest__isset() : token(false), forUser(false), byApplication(false) {}
-  bool token :1;
-  bool forUser :1;
-  bool byApplication :1;
-} _GetEventsRequest__isset;
-
-class GetEventsRequest {
- public:
-
-  GetEventsRequest(const GetEventsRequest&);
-  GetEventsRequest& operator=(const GetEventsRequest&);
-  GetEventsRequest() : forUser(), byApplication() {
-  }
-
-  virtual ~GetEventsRequest() throw();
-  UserToken token;
-  uuid forUser;
-  uuid byApplication;
-
-  _GetEventsRequest__isset __isset;
-
-  void __set_token(const UserToken& val);
-
-  void __set_forUser(const uuid& val);
-
-  void __set_byApplication(const uuid& val);
-
-  bool operator == (const GetEventsRequest & rhs) const
-  {
-    if (!(token == rhs.token))
-      return false;
-    if (!(forUser == rhs.forUser))
-      return false;
-    if (__isset.byApplication != rhs.__isset.byApplication)
-      return false;
-    else if (__isset.byApplication && !(byApplication == rhs.byApplication))
-      return false;
-    return true;
-  }
-  bool operator != (const GetEventsRequest &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const GetEventsRequest & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(GetEventsRequest &a, GetEventsRequest &b);
-
-inline std::ostream& operator<<(std::ostream& out, const GetEventsRequest& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
-typedef struct _GetEventsResponse__isset {
-  _GetEventsResponse__isset() : events(false) {}
-  bool events :1;
-} _GetEventsResponse__isset;
-
-class GetEventsResponse {
- public:
-
-  GetEventsResponse(const GetEventsResponse&);
-  GetEventsResponse& operator=(const GetEventsResponse&);
-  GetEventsResponse() {
-  }
-
-  virtual ~GetEventsResponse() throw();
-  std::vector<Event>  events;
-
-  _GetEventsResponse__isset __isset;
-
-  void __set_events(const std::vector<Event> & val);
-
-  bool operator == (const GetEventsResponse & rhs) const
-  {
-    if (!(events == rhs.events))
-      return false;
-    return true;
-  }
-  bool operator != (const GetEventsResponse &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const GetEventsResponse & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(GetEventsResponse &a, GetEventsResponse &b);
-
-inline std::ostream& operator<<(std::ostream& out, const GetEventsResponse& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
 typedef struct _SendNotificationRequest__isset {
-  _SendNotificationRequest__isset() : token(false), event(false), channels(false), storeEvent(true) {}
+  _SendNotificationRequest__isset() : token(false), event(false), channels(false) {}
   bool token :1;
   bool event :1;
   bool channels :1;
-  bool storeEvent :1;
 } _SendNotificationRequest__isset;
 
 class SendNotificationRequest {
@@ -194,14 +81,13 @@ class SendNotificationRequest {
 
   SendNotificationRequest(const SendNotificationRequest&);
   SendNotificationRequest& operator=(const SendNotificationRequest&);
-  SendNotificationRequest() : storeEvent(false) {
+  SendNotificationRequest() {
   }
 
   virtual ~SendNotificationRequest() throw();
   AuthenticationToken token;
   Event event;
   std::map<AromaChannel, User>  channels;
-  bool storeEvent;
 
   _SendNotificationRequest__isset __isset;
 
@@ -211,8 +97,6 @@ class SendNotificationRequest {
 
   void __set_channels(const std::map<AromaChannel, User> & val);
 
-  void __set_storeEvent(const bool val);
-
   bool operator == (const SendNotificationRequest & rhs) const
   {
     if (!(token == rhs.token))
@@ -220,10 +104,6 @@ class SendNotificationRequest {
     if (!(event == rhs.event))
       return false;
     if (!(channels == rhs.channels))
-      return false;
-    if (__isset.storeEvent != rhs.__isset.storeEvent)
-      return false;
-    else if (__isset.storeEvent && !(storeEvent == rhs.storeEvent))
       return false;
     return true;
   }

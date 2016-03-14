@@ -14,240 +14,6 @@
 namespace aroma { namespace thrift { namespace notification { namespace service {
 
 
-GetEventsRequest::~GetEventsRequest() throw() {
-}
-
-
-void GetEventsRequest::__set_token(const UserToken& val) {
-  this->token = val;
-}
-
-void GetEventsRequest::__set_forUser(const uuid& val) {
-  this->forUser = val;
-}
-
-void GetEventsRequest::__set_byApplication(const uuid& val) {
-  this->byApplication = val;
-__isset.byApplication = true;
-}
-
-uint32_t GetEventsRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->token.read(iprot);
-          this->__isset.token = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->forUser);
-          this->__isset.forUser = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->byApplication);
-          this->__isset.byApplication = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t GetEventsRequest::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GetEventsRequest");
-
-  xfer += oprot->writeFieldBegin("token", ::apache::thrift::protocol::T_STRUCT, 1);
-  xfer += this->token.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("forUser", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->forUser);
-  xfer += oprot->writeFieldEnd();
-
-  if (this->__isset.byApplication) {
-    xfer += oprot->writeFieldBegin("byApplication", ::apache::thrift::protocol::T_STRING, 3);
-    xfer += oprot->writeString(this->byApplication);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(GetEventsRequest &a, GetEventsRequest &b) {
-  using ::std::swap;
-  swap(a.token, b.token);
-  swap(a.forUser, b.forUser);
-  swap(a.byApplication, b.byApplication);
-  swap(a.__isset, b.__isset);
-}
-
-GetEventsRequest::GetEventsRequest(const GetEventsRequest& other0) {
-  token = other0.token;
-  forUser = other0.forUser;
-  byApplication = other0.byApplication;
-  __isset = other0.__isset;
-}
-GetEventsRequest& GetEventsRequest::operator=(const GetEventsRequest& other1) {
-  token = other1.token;
-  forUser = other1.forUser;
-  byApplication = other1.byApplication;
-  __isset = other1.__isset;
-  return *this;
-}
-void GetEventsRequest::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "GetEventsRequest(";
-  out << "token=" << to_string(token);
-  out << ", " << "forUser=" << to_string(forUser);
-  out << ", " << "byApplication="; (__isset.byApplication ? (out << to_string(byApplication)) : (out << "<null>"));
-  out << ")";
-}
-
-
-GetEventsResponse::~GetEventsResponse() throw() {
-}
-
-
-void GetEventsResponse::__set_events(const std::vector<Event> & val) {
-  this->events = val;
-}
-
-uint32_t GetEventsResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
-
-  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
-  uint32_t xfer = 0;
-  std::string fname;
-  ::apache::thrift::protocol::TType ftype;
-  int16_t fid;
-
-  xfer += iprot->readStructBegin(fname);
-
-  using ::apache::thrift::protocol::TProtocolException;
-
-
-  while (true)
-  {
-    xfer += iprot->readFieldBegin(fname, ftype, fid);
-    if (ftype == ::apache::thrift::protocol::T_STOP) {
-      break;
-    }
-    switch (fid)
-    {
-      case 1:
-        if (ftype == ::apache::thrift::protocol::T_LIST) {
-          {
-            this->events.clear();
-            uint32_t _size2;
-            ::apache::thrift::protocol::TType _etype5;
-            xfer += iprot->readListBegin(_etype5, _size2);
-            this->events.resize(_size2);
-            uint32_t _i6;
-            for (_i6 = 0; _i6 < _size2; ++_i6)
-            {
-              xfer += this->events[_i6].read(iprot);
-            }
-            xfer += iprot->readListEnd();
-          }
-          this->__isset.events = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
-    xfer += iprot->readFieldEnd();
-  }
-
-  xfer += iprot->readStructEnd();
-
-  return xfer;
-}
-
-uint32_t GetEventsResponse::write(::apache::thrift::protocol::TProtocol* oprot) const {
-  uint32_t xfer = 0;
-  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("GetEventsResponse");
-
-  xfer += oprot->writeFieldBegin("events", ::apache::thrift::protocol::T_LIST, 1);
-  {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->events.size()));
-    std::vector<Event> ::const_iterator _iter7;
-    for (_iter7 = this->events.begin(); _iter7 != this->events.end(); ++_iter7)
-    {
-      xfer += (*_iter7).write(oprot);
-    }
-    xfer += oprot->writeListEnd();
-  }
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldStop();
-  xfer += oprot->writeStructEnd();
-  return xfer;
-}
-
-void swap(GetEventsResponse &a, GetEventsResponse &b) {
-  using ::std::swap;
-  swap(a.events, b.events);
-  swap(a.__isset, b.__isset);
-}
-
-GetEventsResponse::GetEventsResponse(const GetEventsResponse& other8) {
-  events = other8.events;
-  __isset = other8.__isset;
-}
-GetEventsResponse& GetEventsResponse::operator=(const GetEventsResponse& other9) {
-  events = other9.events;
-  __isset = other9.__isset;
-  return *this;
-}
-void GetEventsResponse::printTo(std::ostream& out) const {
-  using ::apache::thrift::to_string;
-  out << "GetEventsResponse(";
-  out << "events=" << to_string(events);
-  out << ")";
-}
-
-
 SendNotificationRequest::~SendNotificationRequest() throw() {
 }
 
@@ -262,11 +28,6 @@ void SendNotificationRequest::__set_event(const Event& val) {
 
 void SendNotificationRequest::__set_channels(const std::map<AromaChannel, User> & val) {
   this->channels = val;
-}
-
-void SendNotificationRequest::__set_storeEvent(const bool val) {
-  this->storeEvent = val;
-__isset.storeEvent = true;
 }
 
 uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -310,29 +71,21 @@ uint32_t SendNotificationRequest::read(::apache::thrift::protocol::TProtocol* ip
         if (ftype == ::apache::thrift::protocol::T_MAP) {
           {
             this->channels.clear();
-            uint32_t _size10;
-            ::apache::thrift::protocol::TType _ktype11;
-            ::apache::thrift::protocol::TType _vtype12;
-            xfer += iprot->readMapBegin(_ktype11, _vtype12, _size10);
-            uint32_t _i14;
-            for (_i14 = 0; _i14 < _size10; ++_i14)
+            uint32_t _size0;
+            ::apache::thrift::protocol::TType _ktype1;
+            ::apache::thrift::protocol::TType _vtype2;
+            xfer += iprot->readMapBegin(_ktype1, _vtype2, _size0);
+            uint32_t _i4;
+            for (_i4 = 0; _i4 < _size0; ++_i4)
             {
-              AromaChannel _key15;
-              xfer += _key15.read(iprot);
-              User& _val16 = this->channels[_key15];
-              xfer += _val16.read(iprot);
+              AromaChannel _key5;
+              xfer += _key5.read(iprot);
+              User& _val6 = this->channels[_key5];
+              xfer += _val6.read(iprot);
             }
             xfer += iprot->readMapEnd();
           }
           this->__isset.channels = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
-        if (ftype == ::apache::thrift::protocol::T_BOOL) {
-          xfer += iprot->readBool(this->storeEvent);
-          this->__isset.storeEvent = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -365,21 +118,16 @@ uint32_t SendNotificationRequest::write(::apache::thrift::protocol::TProtocol* o
   xfer += oprot->writeFieldBegin("channels", ::apache::thrift::protocol::T_MAP, 3);
   {
     xfer += oprot->writeMapBegin(::apache::thrift::protocol::T_STRUCT, ::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->channels.size()));
-    std::map<AromaChannel, User> ::const_iterator _iter17;
-    for (_iter17 = this->channels.begin(); _iter17 != this->channels.end(); ++_iter17)
+    std::map<AromaChannel, User> ::const_iterator _iter7;
+    for (_iter7 = this->channels.begin(); _iter7 != this->channels.end(); ++_iter7)
     {
-      xfer += _iter17->first.write(oprot);
-      xfer += _iter17->second.write(oprot);
+      xfer += _iter7->first.write(oprot);
+      xfer += _iter7->second.write(oprot);
     }
     xfer += oprot->writeMapEnd();
   }
   xfer += oprot->writeFieldEnd();
 
-  if (this->__isset.storeEvent) {
-    xfer += oprot->writeFieldBegin("storeEvent", ::apache::thrift::protocol::T_BOOL, 4);
-    xfer += oprot->writeBool(this->storeEvent);
-    xfer += oprot->writeFieldEnd();
-  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -390,23 +138,20 @@ void swap(SendNotificationRequest &a, SendNotificationRequest &b) {
   swap(a.token, b.token);
   swap(a.event, b.event);
   swap(a.channels, b.channels);
-  swap(a.storeEvent, b.storeEvent);
   swap(a.__isset, b.__isset);
 }
 
-SendNotificationRequest::SendNotificationRequest(const SendNotificationRequest& other18) {
-  token = other18.token;
-  event = other18.event;
-  channels = other18.channels;
-  storeEvent = other18.storeEvent;
-  __isset = other18.__isset;
+SendNotificationRequest::SendNotificationRequest(const SendNotificationRequest& other8) {
+  token = other8.token;
+  event = other8.event;
+  channels = other8.channels;
+  __isset = other8.__isset;
 }
-SendNotificationRequest& SendNotificationRequest::operator=(const SendNotificationRequest& other19) {
-  token = other19.token;
-  event = other19.event;
-  channels = other19.channels;
-  storeEvent = other19.storeEvent;
-  __isset = other19.__isset;
+SendNotificationRequest& SendNotificationRequest::operator=(const SendNotificationRequest& other9) {
+  token = other9.token;
+  event = other9.event;
+  channels = other9.channels;
+  __isset = other9.__isset;
   return *this;
 }
 void SendNotificationRequest::printTo(std::ostream& out) const {
@@ -415,7 +160,6 @@ void SendNotificationRequest::printTo(std::ostream& out) const {
   out << "token=" << to_string(token);
   out << ", " << "event=" << to_string(event);
   out << ", " << "channels=" << to_string(channels);
-  out << ", " << "storeEvent="; (__isset.storeEvent ? (out << to_string(storeEvent)) : (out << "<null>"));
   out << ")";
 }
 
@@ -491,13 +235,13 @@ void swap(SendNotificationResponse &a, SendNotificationResponse &b) {
   swap(a.__isset, b.__isset);
 }
 
-SendNotificationResponse::SendNotificationResponse(const SendNotificationResponse& other20) {
-  notificationId = other20.notificationId;
-  __isset = other20.__isset;
+SendNotificationResponse::SendNotificationResponse(const SendNotificationResponse& other10) {
+  notificationId = other10.notificationId;
+  __isset = other10.__isset;
 }
-SendNotificationResponse& SendNotificationResponse::operator=(const SendNotificationResponse& other21) {
-  notificationId = other21.notificationId;
-  __isset = other21.__isset;
+SendNotificationResponse& SendNotificationResponse::operator=(const SendNotificationResponse& other11) {
+  notificationId = other11.notificationId;
+  __isset = other11.__isset;
   return *this;
 }
 void SendNotificationResponse::printTo(std::ostream& out) const {

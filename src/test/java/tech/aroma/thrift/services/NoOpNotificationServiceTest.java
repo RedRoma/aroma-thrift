@@ -31,8 +31,6 @@ import tech.sirwellington.alchemy.test.junit.runners.Repeat;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
-import static tech.sirwellington.alchemy.generator.BooleanGenerators.booleans;
 import static tech.sirwellington.alchemy.test.junit.ThrowableAssertion.assertThrows;
 
 /**
@@ -66,8 +64,7 @@ public class NoOpNotificationServiceTest
     {
         request = new SendNotificationRequest()
             .setToken(token)
-            .setEvent(event)
-            .setStoreEvent(one(booleans()));
+            .setEvent(event);
     }
     
     @Test
