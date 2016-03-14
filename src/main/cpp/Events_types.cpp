@@ -195,8 +195,12 @@ void ApplicationTokenRenewed::__set_message(const std::string& val) {
 __isset.message = true;
 }
 
-void ApplicationTokenRenewed::__set_user(const User& val) {
-  this->user = val;
+void ApplicationTokenRenewed::__set_applicationId(const uuid& val) {
+  this->applicationId = val;
+}
+
+void ApplicationTokenRenewed::__set_userIdOfActor(const uuid& val) {
+  this->userIdOfActor = val;
 }
 
 void ApplicationTokenRenewed::__set_applicationToken(const ApplicationToken& val) {
@@ -204,12 +208,14 @@ void ApplicationTokenRenewed::__set_applicationToken(const ApplicationToken& val
 __isset.applicationToken = true;
 }
 
-void ApplicationTokenRenewed::__set_applicationId(const uuid& val) {
-  this->applicationId = val;
+void ApplicationTokenRenewed::__set_application(const Application& val) {
+  this->application = val;
+__isset.application = true;
 }
 
-void ApplicationTokenRenewed::__set_applicationName(const std::string& val) {
-  this->applicationName = val;
+void ApplicationTokenRenewed::__set_actor(const User& val) {
+  this->actor = val;
+__isset.actor = true;
 }
 
 uint32_t ApplicationTokenRenewed::read(::apache::thrift::protocol::TProtocol* iprot) {
@@ -242,22 +248,6 @@ uint32_t ApplicationTokenRenewed::read(::apache::thrift::protocol::TProtocol* ip
         }
         break;
       case 2:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->user.read(iprot);
-          this->__isset.user = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
-          xfer += this->applicationToken.read(iprot);
-          this->__isset.applicationToken = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->applicationId);
           this->__isset.applicationId = true;
@@ -265,10 +255,34 @@ uint32_t ApplicationTokenRenewed::read(::apache::thrift::protocol::TProtocol* ip
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->applicationName);
-          this->__isset.applicationName = true;
+          xfer += iprot->readString(this->userIdOfActor);
+          this->__isset.userIdOfActor = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->applicationToken.read(iprot);
+          this->__isset.applicationToken = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->application.read(iprot);
+          this->__isset.application = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->actor.read(iprot);
+          this->__isset.actor = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -295,23 +309,29 @@ uint32_t ApplicationTokenRenewed::write(::apache::thrift::protocol::TProtocol* o
     xfer += oprot->writeString(this->message);
     xfer += oprot->writeFieldEnd();
   }
-  xfer += oprot->writeFieldBegin("user", ::apache::thrift::protocol::T_STRUCT, 2);
-  xfer += this->user.write(oprot);
-  xfer += oprot->writeFieldEnd();
-
-  if (this->__isset.applicationToken) {
-    xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 3);
-    xfer += this->applicationToken.write(oprot);
-    xfer += oprot->writeFieldEnd();
-  }
-  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeFieldBegin("applicationId", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->applicationId);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("applicationName", ::apache::thrift::protocol::T_STRING, 5);
-  xfer += oprot->writeString(this->applicationName);
+  xfer += oprot->writeFieldBegin("userIdOfActor", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->userIdOfActor);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.applicationToken) {
+    xfer += oprot->writeFieldBegin("applicationToken", ::apache::thrift::protocol::T_STRUCT, 4);
+    xfer += this->applicationToken.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.application) {
+    xfer += oprot->writeFieldBegin("application", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->application.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.actor) {
+    xfer += oprot->writeFieldBegin("actor", ::apache::thrift::protocol::T_STRUCT, 6);
+    xfer += this->actor.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -320,27 +340,30 @@ uint32_t ApplicationTokenRenewed::write(::apache::thrift::protocol::TProtocol* o
 void swap(ApplicationTokenRenewed &a, ApplicationTokenRenewed &b) {
   using ::std::swap;
   swap(a.message, b.message);
-  swap(a.user, b.user);
-  swap(a.applicationToken, b.applicationToken);
   swap(a.applicationId, b.applicationId);
-  swap(a.applicationName, b.applicationName);
+  swap(a.userIdOfActor, b.userIdOfActor);
+  swap(a.applicationToken, b.applicationToken);
+  swap(a.application, b.application);
+  swap(a.actor, b.actor);
   swap(a.__isset, b.__isset);
 }
 
 ApplicationTokenRenewed::ApplicationTokenRenewed(const ApplicationTokenRenewed& other2) {
   message = other2.message;
-  user = other2.user;
-  applicationToken = other2.applicationToken;
   applicationId = other2.applicationId;
-  applicationName = other2.applicationName;
+  userIdOfActor = other2.userIdOfActor;
+  applicationToken = other2.applicationToken;
+  application = other2.application;
+  actor = other2.actor;
   __isset = other2.__isset;
 }
 ApplicationTokenRenewed& ApplicationTokenRenewed::operator=(const ApplicationTokenRenewed& other3) {
   message = other3.message;
-  user = other3.user;
-  applicationToken = other3.applicationToken;
   applicationId = other3.applicationId;
-  applicationName = other3.applicationName;
+  userIdOfActor = other3.userIdOfActor;
+  applicationToken = other3.applicationToken;
+  application = other3.application;
+  actor = other3.actor;
   __isset = other3.__isset;
   return *this;
 }
@@ -348,10 +371,11 @@ void ApplicationTokenRenewed::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "ApplicationTokenRenewed(";
   out << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
-  out << ", " << "user=" << to_string(user);
-  out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
   out << ", " << "applicationId=" << to_string(applicationId);
-  out << ", " << "applicationName=" << to_string(applicationName);
+  out << ", " << "userIdOfActor=" << to_string(userIdOfActor);
+  out << ", " << "applicationToken="; (__isset.applicationToken ? (out << to_string(applicationToken)) : (out << "<null>"));
+  out << ", " << "application="; (__isset.application ? (out << to_string(application)) : (out << "<null>"));
+  out << ", " << "actor="; (__isset.actor ? (out << to_string(actor)) : (out << "<null>"));
   out << ")";
 }
 

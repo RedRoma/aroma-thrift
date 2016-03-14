@@ -36,11 +36,12 @@ struct ApplicationTokenRenewed
 {
     1: optional string message = "Application Token has been renewed";
     /** The user who performed the action. */
-    2: User user;
+    2: uuid applicationId;
+    3: uuid userIdOfActor;
     /** We may or may not include the new Application Token, for security reasons. */
-    3: optional ApplicationToken applicationToken;
-    4: uuid applicationId;
-    5: string applicationName;
+    4: optional ApplicationToken applicationToken;
+    5: optional Application application;
+    6: optional User actor;
 }
 
 /**
