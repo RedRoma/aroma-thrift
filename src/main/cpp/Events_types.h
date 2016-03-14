@@ -55,8 +55,6 @@ class OwnerAdded;
 
 class OwnerApprovedRequest;
 
-class UserFollowedApplication;
-
 class GeneralEvent;
 
 class EventType;
@@ -64,12 +62,9 @@ class EventType;
 class Event;
 
 typedef struct _ApplicationMessagesDeleted__isset {
-  _ApplicationMessagesDeleted__isset() : applicationId(false), message(true), app(false), userIdOfActor(false), actor(false) {}
-  bool applicationId :1;
+  _ApplicationMessagesDeleted__isset() : totalMessagesDeleted(false), message(true) {}
+  bool totalMessagesDeleted :1;
   bool message :1;
-  bool app :1;
-  bool userIdOfActor :1;
-  bool actor :1;
 } _ApplicationMessagesDeleted__isset;
 
 class ApplicationMessagesDeleted {
@@ -77,45 +72,28 @@ class ApplicationMessagesDeleted {
 
   ApplicationMessagesDeleted(const ApplicationMessagesDeleted&);
   ApplicationMessagesDeleted& operator=(const ApplicationMessagesDeleted&);
-  ApplicationMessagesDeleted() : applicationId(), message("Application's messages have been deleted"), userIdOfActor() {
+  ApplicationMessagesDeleted() : totalMessagesDeleted(0), message("Application's messages have been deleted") {
   }
 
   virtual ~ApplicationMessagesDeleted() throw();
-  uuid applicationId;
+  int totalMessagesDeleted;
   std::string message;
-  Application app;
-  uuid userIdOfActor;
-  User actor;
 
   _ApplicationMessagesDeleted__isset __isset;
 
-  void __set_applicationId(const uuid& val);
+  void __set_totalMessagesDeleted(const int val);
 
   void __set_message(const std::string& val);
 
-  void __set_app(const Application& val);
-
-  void __set_userIdOfActor(const uuid& val);
-
-  void __set_actor(const User& val);
-
   bool operator == (const ApplicationMessagesDeleted & rhs) const
   {
-    if (!(applicationId == rhs.applicationId))
+    if (__isset.totalMessagesDeleted != rhs.__isset.totalMessagesDeleted)
+      return false;
+    else if (__isset.totalMessagesDeleted && !(totalMessagesDeleted == rhs.totalMessagesDeleted))
       return false;
     if (__isset.message != rhs.__isset.message)
       return false;
     else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (__isset.app != rhs.__isset.app)
-      return false;
-    else if (__isset.app && !(app == rhs.app))
-      return false;
-    if (!(userIdOfActor == rhs.userIdOfActor))
-      return false;
-    if (__isset.actor != rhs.__isset.actor)
-      return false;
-    else if (__isset.actor && !(actor == rhs.actor))
       return false;
     return true;
   }
@@ -140,13 +118,9 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationMessagesDele
 }
 
 typedef struct _ApplicationTokenRenewed__isset {
-  _ApplicationTokenRenewed__isset() : message(true), applicationId(false), userIdOfActor(false), applicationToken(false), application(false), actor(false) {}
-  bool message :1;
-  bool applicationId :1;
-  bool userIdOfActor :1;
+  _ApplicationTokenRenewed__isset() : applicationToken(false), message(true) {}
   bool applicationToken :1;
-  bool application :1;
-  bool actor :1;
+  bool message :1;
 } _ApplicationTokenRenewed__isset;
 
 class ApplicationTokenRenewed {
@@ -154,52 +128,28 @@ class ApplicationTokenRenewed {
 
   ApplicationTokenRenewed(const ApplicationTokenRenewed&);
   ApplicationTokenRenewed& operator=(const ApplicationTokenRenewed&);
-  ApplicationTokenRenewed() : message("Application Token has been renewed"), applicationId(), userIdOfActor() {
+  ApplicationTokenRenewed() : message("Application Token has been renewed") {
   }
 
   virtual ~ApplicationTokenRenewed() throw();
-  std::string message;
-  uuid applicationId;
-  uuid userIdOfActor;
   ApplicationToken applicationToken;
-  Application application;
-  User actor;
+  std::string message;
 
   _ApplicationTokenRenewed__isset __isset;
 
-  void __set_message(const std::string& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_userIdOfActor(const uuid& val);
-
   void __set_applicationToken(const ApplicationToken& val);
 
-  void __set_application(const Application& val);
-
-  void __set_actor(const User& val);
+  void __set_message(const std::string& val);
 
   bool operator == (const ApplicationTokenRenewed & rhs) const
   {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(userIdOfActor == rhs.userIdOfActor))
-      return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
     else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
       return false;
-    if (__isset.application != rhs.__isset.application)
+    if (__isset.message != rhs.__isset.message)
       return false;
-    else if (__isset.application && !(application == rhs.application))
-      return false;
-    if (__isset.actor != rhs.__isset.actor)
-      return false;
-    else if (__isset.actor && !(actor == rhs.actor))
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -224,13 +174,10 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRenewed
 }
 
 typedef struct _ApplicationTokenRegenerated__isset {
-  _ApplicationTokenRegenerated__isset() : message(true), userIdOfActor(false), applicationId(false), applicationToken(false), application(false), actor(false) {}
-  bool message :1;
-  bool userIdOfActor :1;
-  bool applicationId :1;
+  _ApplicationTokenRegenerated__isset() : applicationToken(false), actor(false), message(true) {}
   bool applicationToken :1;
-  bool application :1;
   bool actor :1;
+  bool message :1;
 } _ApplicationTokenRegenerated__isset;
 
 class ApplicationTokenRegenerated {
@@ -238,52 +185,35 @@ class ApplicationTokenRegenerated {
 
   ApplicationTokenRegenerated(const ApplicationTokenRegenerated&);
   ApplicationTokenRegenerated& operator=(const ApplicationTokenRegenerated&);
-  ApplicationTokenRegenerated() : message("Application Token has been re-created"), userIdOfActor(), applicationId() {
+  ApplicationTokenRegenerated() : message("Application Token has been re-created") {
   }
 
   virtual ~ApplicationTokenRegenerated() throw();
-  std::string message;
-  uuid userIdOfActor;
-  uuid applicationId;
   ApplicationToken applicationToken;
-  Application application;
   User actor;
+  std::string message;
 
   _ApplicationTokenRegenerated__isset __isset;
 
-  void __set_message(const std::string& val);
-
-  void __set_userIdOfActor(const uuid& val);
-
-  void __set_applicationId(const uuid& val);
-
   void __set_applicationToken(const ApplicationToken& val);
-
-  void __set_application(const Application& val);
 
   void __set_actor(const User& val);
 
+  void __set_message(const std::string& val);
+
   bool operator == (const ApplicationTokenRegenerated & rhs) const
   {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(userIdOfActor == rhs.userIdOfActor))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
     else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
       return false;
-    if (__isset.application != rhs.__isset.application)
-      return false;
-    else if (__isset.application && !(application == rhs.application))
-      return false;
     if (__isset.actor != rhs.__isset.actor)
       return false;
     else if (__isset.actor && !(actor == rhs.actor))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -308,11 +238,10 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRegener
 }
 
 typedef struct _ApplicationSentMessage__isset {
-  _ApplicationSentMessage__isset() : message(true), messageSentByApplication(false), applicationId(false), application(false) {}
-  bool message :1;
+  _ApplicationSentMessage__isset() : messageId(false), messageSentByApplication(false), message(true) {}
+  bool messageId :1;
   bool messageSentByApplication :1;
-  bool applicationId :1;
-  bool application :1;
+  bool message :1;
 } _ApplicationSentMessage__isset;
 
 class ApplicationSentMessage {
@@ -320,40 +249,33 @@ class ApplicationSentMessage {
 
   ApplicationSentMessage(const ApplicationSentMessage&);
   ApplicationSentMessage& operator=(const ApplicationSentMessage&);
-  ApplicationSentMessage() : message("Application has sent an Alert"), applicationId() {
+  ApplicationSentMessage() : messageId(), message("Application has sent an Alert") {
   }
 
   virtual ~ApplicationSentMessage() throw();
-  std::string message;
+  uuid messageId;
    ::tech::aroma::thrift::Message messageSentByApplication;
-  uuid applicationId;
-  Application application;
+  std::string message;
 
   _ApplicationSentMessage__isset __isset;
 
-  void __set_message(const std::string& val);
+  void __set_messageId(const uuid& val);
 
   void __set_messageSentByApplication(const  ::tech::aroma::thrift::Message& val);
 
-  void __set_applicationId(const uuid& val);
-
-  void __set_application(const Application& val);
+  void __set_message(const std::string& val);
 
   bool operator == (const ApplicationSentMessage & rhs) const
   {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
+    if (!(messageId == rhs.messageId))
       return false;
     if (__isset.messageSentByApplication != rhs.__isset.messageSentByApplication)
       return false;
     else if (__isset.messageSentByApplication && !(messageSentByApplication == rhs.messageSentByApplication))
       return false;
-    if (!(applicationId == rhs.applicationId))
+    if (__isset.message != rhs.__isset.message)
       return false;
-    if (__isset.application != rhs.__isset.application)
-      return false;
-    else if (__isset.application && !(application == rhs.application))
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -378,11 +300,7 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationSentMessage&
 }
 
 typedef struct _ApplicationDeleted__isset {
-  _ApplicationDeleted__isset() : userId(false), user(false), applicationId(false), application(false), message(true) {}
-  bool userId :1;
-  bool user :1;
-  bool applicationId :1;
-  bool application :1;
+  _ApplicationDeleted__isset() : message(true) {}
   bool message :1;
 } _ApplicationDeleted__isset;
 
@@ -391,42 +309,18 @@ class ApplicationDeleted {
 
   ApplicationDeleted(const ApplicationDeleted&);
   ApplicationDeleted& operator=(const ApplicationDeleted&);
-  ApplicationDeleted() : userId(), applicationId(), message("Application has been deleted") {
+  ApplicationDeleted() : message("Application has been deleted") {
   }
 
   virtual ~ApplicationDeleted() throw();
-  uuid userId;
-  User user;
-  uuid applicationId;
-  Application application;
   std::string message;
 
   _ApplicationDeleted__isset __isset;
-
-  void __set_userId(const uuid& val);
-
-  void __set_user(const User& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_application(const Application& val);
 
   void __set_message(const std::string& val);
 
   bool operator == (const ApplicationDeleted & rhs) const
   {
-    if (!(userId == rhs.userId))
-      return false;
-    if (__isset.user != rhs.__isset.user)
-      return false;
-    else if (__isset.user && !(user == rhs.user))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (__isset.application != rhs.__isset.application)
-      return false;
-    else if (__isset.application && !(application == rhs.application))
-      return false;
     if (__isset.message != rhs.__isset.message)
       return false;
     else if (__isset.message && !(message == rhs.message))
@@ -454,11 +348,7 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationDeleted& obj
 }
 
 typedef struct _ApplicationFollowed__isset {
-  _ApplicationFollowed__isset() : userId(false), applicationId(false), user(false), application(false), message(true) {}
-  bool userId :1;
-  bool applicationId :1;
-  bool user :1;
-  bool application :1;
+  _ApplicationFollowed__isset() : message(true) {}
   bool message :1;
 } _ApplicationFollowed__isset;
 
@@ -467,42 +357,18 @@ class ApplicationFollowed {
 
   ApplicationFollowed(const ApplicationFollowed&);
   ApplicationFollowed& operator=(const ApplicationFollowed&);
-  ApplicationFollowed() : userId(), applicationId(), message("Application Followed") {
+  ApplicationFollowed() : message("Application Followed") {
   }
 
   virtual ~ApplicationFollowed() throw();
-  uuid userId;
-  uuid applicationId;
-  User user;
-  Application application;
   std::string message;
 
   _ApplicationFollowed__isset __isset;
-
-  void __set_userId(const uuid& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_user(const User& val);
-
-  void __set_application(const Application& val);
 
   void __set_message(const std::string& val);
 
   bool operator == (const ApplicationFollowed & rhs) const
   {
-    if (!(userId == rhs.userId))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (__isset.user != rhs.__isset.user)
-      return false;
-    else if (__isset.user && !(user == rhs.user))
-      return false;
-    if (__isset.application != rhs.__isset.application)
-      return false;
-    else if (__isset.application && !(application == rhs.application))
-      return false;
     if (__isset.message != rhs.__isset.message)
       return false;
     else if (__isset.message && !(message == rhs.message))
@@ -530,11 +396,9 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationFollowed& ob
 }
 
 typedef struct _HealthCheckFailed__isset {
-  _HealthCheckFailed__isset() : message(true), hostname(false), applicationId(false), applicationName(false) {}
-  bool message :1;
+  _HealthCheckFailed__isset() : hostname(false), message(true) {}
   bool hostname :1;
-  bool applicationId :1;
-  bool applicationName :1;
+  bool message :1;
 } _HealthCheckFailed__isset;
 
 class HealthCheckFailed {
@@ -542,38 +406,28 @@ class HealthCheckFailed {
 
   HealthCheckFailed(const HealthCheckFailed&);
   HealthCheckFailed& operator=(const HealthCheckFailed&);
-  HealthCheckFailed() : message("Application failed a Health Check"), hostname(), applicationId(), applicationName() {
+  HealthCheckFailed() : hostname(), message("Application failed a Health Check") {
   }
 
   virtual ~HealthCheckFailed() throw();
-  std::string message;
   std::string hostname;
-  uuid applicationId;
-  std::string applicationName;
+  std::string message;
 
   _HealthCheckFailed__isset __isset;
 
-  void __set_message(const std::string& val);
-
   void __set_hostname(const std::string& val);
 
-  void __set_applicationId(const uuid& val);
-
-  void __set_applicationName(const std::string& val);
+  void __set_message(const std::string& val);
 
   bool operator == (const HealthCheckFailed & rhs) const
   {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
     if (__isset.hostname != rhs.__isset.hostname)
       return false;
     else if (__isset.hostname && !(hostname == rhs.hostname))
       return false;
-    if (!(applicationId == rhs.applicationId))
+    if (__isset.message != rhs.__isset.message)
       return false;
-    if (!(applicationName == rhs.applicationName))
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -598,10 +452,8 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckFailed& obj)
 }
 
 typedef struct _HealthCheckBackToNormal__isset {
-  _HealthCheckBackToNormal__isset() : message(true), applicationId(false), applicationName(false) {}
+  _HealthCheckBackToNormal__isset() : message(true) {}
   bool message :1;
-  bool applicationId :1;
-  bool applicationName :1;
 } _HealthCheckBackToNormal__isset;
 
 class HealthCheckBackToNormal {
@@ -609,31 +461,21 @@ class HealthCheckBackToNormal {
 
   HealthCheckBackToNormal(const HealthCheckBackToNormal&);
   HealthCheckBackToNormal& operator=(const HealthCheckBackToNormal&);
-  HealthCheckBackToNormal() : message("Application's Health is back to normal"), applicationId(), applicationName() {
+  HealthCheckBackToNormal() : message("Application's Health is back to normal") {
   }
 
   virtual ~HealthCheckBackToNormal() throw();
   std::string message;
-  uuid applicationId;
-  std::string applicationName;
 
   _HealthCheckBackToNormal__isset __isset;
 
   void __set_message(const std::string& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_applicationName(const std::string& val);
 
   bool operator == (const HealthCheckBackToNormal & rhs) const
   {
     if (__isset.message != rhs.__isset.message)
       return false;
     else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
       return false;
     return true;
   }
@@ -658,11 +500,10 @@ inline std::ostream& operator<<(std::ostream& out, const HealthCheckBackToNormal
 }
 
 typedef struct _OwnerAdded__isset {
-  _OwnerAdded__isset() : existingOwnerId(false), newOwnerId(false), existingOwner(false), newOwner(false) {}
-  bool existingOwnerId :1;
-  bool newOwnerId :1;
-  bool existingOwner :1;
+  _OwnerAdded__isset() : userIdOfNewOwner(false), newOwner(false), message(true) {}
+  bool userIdOfNewOwner :1;
   bool newOwner :1;
+  bool message :1;
 } _OwnerAdded__isset;
 
 class OwnerAdded {
@@ -670,38 +511,33 @@ class OwnerAdded {
 
   OwnerAdded(const OwnerAdded&);
   OwnerAdded& operator=(const OwnerAdded&);
-  OwnerAdded() : existingOwnerId(), newOwnerId() {
+  OwnerAdded() : userIdOfNewOwner(), message("New Owner Added") {
   }
 
   virtual ~OwnerAdded() throw();
-  uuid existingOwnerId;
-  uuid newOwnerId;
-  User existingOwner;
+  uuid userIdOfNewOwner;
   User newOwner;
+  std::string message;
 
   _OwnerAdded__isset __isset;
 
-  void __set_existingOwnerId(const uuid& val);
-
-  void __set_newOwnerId(const uuid& val);
-
-  void __set_existingOwner(const User& val);
+  void __set_userIdOfNewOwner(const uuid& val);
 
   void __set_newOwner(const User& val);
 
+  void __set_message(const std::string& val);
+
   bool operator == (const OwnerAdded & rhs) const
   {
-    if (!(existingOwnerId == rhs.existingOwnerId))
-      return false;
-    if (!(newOwnerId == rhs.newOwnerId))
-      return false;
-    if (__isset.existingOwner != rhs.__isset.existingOwner)
-      return false;
-    else if (__isset.existingOwner && !(existingOwner == rhs.existingOwner))
+    if (!(userIdOfNewOwner == rhs.userIdOfNewOwner))
       return false;
     if (__isset.newOwner != rhs.__isset.newOwner)
       return false;
     else if (__isset.newOwner && !(newOwner == rhs.newOwner))
+      return false;
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -726,11 +562,8 @@ inline std::ostream& operator<<(std::ostream& out, const OwnerAdded& obj)
 }
 
 typedef struct _OwnerApprovedRequest__isset {
-  _OwnerApprovedRequest__isset() : message(true), applicationId(false), applicationName(false), owner(false) {}
+  _OwnerApprovedRequest__isset() : message(true) {}
   bool message :1;
-  bool applicationId :1;
-  bool applicationName :1;
-  bool owner :1;
 } _OwnerApprovedRequest__isset;
 
 class OwnerApprovedRequest {
@@ -738,36 +571,21 @@ class OwnerApprovedRequest {
 
   OwnerApprovedRequest(const OwnerApprovedRequest&);
   OwnerApprovedRequest& operator=(const OwnerApprovedRequest&);
-  OwnerApprovedRequest() : message("Application Owner approved your request"), applicationId(), applicationName() {
+  OwnerApprovedRequest() : message("Application Owner approved your request") {
   }
 
   virtual ~OwnerApprovedRequest() throw();
   std::string message;
-  uuid applicationId;
-  std::string applicationName;
-  User owner;
 
   _OwnerApprovedRequest__isset __isset;
 
   void __set_message(const std::string& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_applicationName(const std::string& val);
-
-  void __set_owner(const User& val);
 
   bool operator == (const OwnerApprovedRequest & rhs) const
   {
     if (__isset.message != rhs.__isset.message)
       return false;
     else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (!(owner == rhs.owner))
       return false;
     return true;
   }
@@ -791,78 +609,9 @@ inline std::ostream& operator<<(std::ostream& out, const OwnerApprovedRequest& o
   return out;
 }
 
-typedef struct _UserFollowedApplication__isset {
-  _UserFollowedApplication__isset() : message(true), applicationId(false), follower(false), owner(false) {}
-  bool message :1;
-  bool applicationId :1;
-  bool follower :1;
-  bool owner :1;
-} _UserFollowedApplication__isset;
-
-class UserFollowedApplication {
- public:
-
-  UserFollowedApplication(const UserFollowedApplication&);
-  UserFollowedApplication& operator=(const UserFollowedApplication&);
-  UserFollowedApplication() : message("Someone followed your Application"), applicationId() {
-  }
-
-  virtual ~UserFollowedApplication() throw();
-  std::string message;
-  uuid applicationId;
-  User follower;
-  User owner;
-
-  _UserFollowedApplication__isset __isset;
-
-  void __set_message(const std::string& val);
-
-  void __set_applicationId(const uuid& val);
-
-  void __set_follower(const User& val);
-
-  void __set_owner(const User& val);
-
-  bool operator == (const UserFollowedApplication & rhs) const
-  {
-    if (__isset.message != rhs.__isset.message)
-      return false;
-    else if (__isset.message && !(message == rhs.message))
-      return false;
-    if (!(applicationId == rhs.applicationId))
-      return false;
-    if (!(follower == rhs.follower))
-      return false;
-    if (!(owner == rhs.owner))
-      return false;
-    return true;
-  }
-  bool operator != (const UserFollowedApplication &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const UserFollowedApplication & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-  virtual void printTo(std::ostream& out) const;
-};
-
-void swap(UserFollowedApplication &a, UserFollowedApplication &b);
-
-inline std::ostream& operator<<(std::ostream& out, const UserFollowedApplication& obj)
-{
-  obj.printTo(out);
-  return out;
-}
-
 typedef struct _GeneralEvent__isset {
-  _GeneralEvent__isset() : applicationId(false), applicationName(false), message(false), timestamp(false) {}
-  bool applicationId :1;
-  bool applicationName :1;
+  _GeneralEvent__isset() : message(false) {}
   bool message :1;
-  bool timestamp :1;
 } _GeneralEvent__isset;
 
 class GeneralEvent {
@@ -870,34 +619,21 @@ class GeneralEvent {
 
   GeneralEvent(const GeneralEvent&);
   GeneralEvent& operator=(const GeneralEvent&);
-  GeneralEvent() : applicationId(), applicationName(), message(), timestamp(0) {
+  GeneralEvent() : message() {
   }
 
   virtual ~GeneralEvent() throw();
-  uuid applicationId;
-  std::string applicationName;
   std::string message;
-  timestamp timestamp;
 
   _GeneralEvent__isset __isset;
 
-  void __set_applicationId(const uuid& val);
-
-  void __set_applicationName(const std::string& val);
-
   void __set_message(const std::string& val);
-
-  void __set_timestamp(const timestamp val);
 
   bool operator == (const GeneralEvent & rhs) const
   {
-    if (!(applicationId == rhs.applicationId))
+    if (__isset.message != rhs.__isset.message)
       return false;
-    if (!(applicationName == rhs.applicationName))
-      return false;
-    if (!(message == rhs.message))
-      return false;
-    if (!(timestamp == rhs.timestamp))
+    else if (__isset.message && !(message == rhs.message))
       return false;
     return true;
   }
@@ -922,7 +658,7 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false), userFollowedApplication(false) {}
+  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false) {}
   bool applicationMessageDeleted :1;
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
@@ -934,7 +670,6 @@ typedef struct _EventType__isset {
   bool ownerApprovedRequest :1;
   bool ownerAdded :1;
   bool generalEvent :1;
-  bool userFollowedApplication :1;
 } _EventType__isset;
 
 class EventType {
@@ -957,7 +692,6 @@ class EventType {
   OwnerApprovedRequest ownerApprovedRequest;
   OwnerAdded ownerAdded;
   GeneralEvent generalEvent;
-  UserFollowedApplication userFollowedApplication;
 
   _EventType__isset __isset;
 
@@ -983,8 +717,6 @@ class EventType {
 
   void __set_generalEvent(const GeneralEvent& val);
 
-  void __set_userFollowedApplication(const UserFollowedApplication& val);
-
   bool operator == (const EventType & rhs) const
   {
     if (!(applicationMessageDeleted == rhs.applicationMessageDeleted))
@@ -1009,8 +741,6 @@ class EventType {
       return false;
     if (!(generalEvent == rhs.generalEvent))
       return false;
-    if (!(userFollowedApplication == rhs.userFollowedApplication))
-      return false;
     return true;
   }
   bool operator != (const EventType &rhs) const {
@@ -1034,10 +764,14 @@ inline std::ostream& operator<<(std::ostream& out, const EventType& obj)
 }
 
 typedef struct _Event__isset {
-  _Event__isset() : eventType(false), timestamp(false), eventId(false) {}
+  _Event__isset() : eventId(false), userIdOfActor(false), actor(false), applicationId(false), application(false), eventType(false), timestamp(false) {}
+  bool eventId :1;
+  bool userIdOfActor :1;
+  bool actor :1;
+  bool applicationId :1;
+  bool application :1;
   bool eventType :1;
   bool timestamp :1;
-  bool eventId :1;
 } _Event__isset;
 
 class Event {
@@ -1045,29 +779,53 @@ class Event {
 
   Event(const Event&);
   Event& operator=(const Event&);
-  Event() : timestamp(0), eventId() {
+  Event() : eventId(), userIdOfActor(), applicationId(), timestamp(0) {
   }
 
   virtual ~Event() throw();
+  uuid eventId;
+  uuid userIdOfActor;
+  User actor;
+  uuid applicationId;
+  Application application;
   EventType eventType;
   timestamp timestamp;
-  uuid eventId;
 
   _Event__isset __isset;
+
+  void __set_eventId(const uuid& val);
+
+  void __set_userIdOfActor(const uuid& val);
+
+  void __set_actor(const User& val);
+
+  void __set_applicationId(const uuid& val);
+
+  void __set_application(const Application& val);
 
   void __set_eventType(const EventType& val);
 
   void __set_timestamp(const timestamp val);
 
-  void __set_eventId(const uuid& val);
-
   bool operator == (const Event & rhs) const
   {
+    if (!(eventId == rhs.eventId))
+      return false;
+    if (!(userIdOfActor == rhs.userIdOfActor))
+      return false;
+    if (__isset.actor != rhs.__isset.actor)
+      return false;
+    else if (__isset.actor && !(actor == rhs.actor))
+      return false;
+    if (!(applicationId == rhs.applicationId))
+      return false;
+    if (__isset.application != rhs.__isset.application)
+      return false;
+    else if (__isset.application && !(application == rhs.application))
+      return false;
     if (!(eventType == rhs.eventType))
       return false;
     if (!(timestamp == rhs.timestamp))
-      return false;
-    if (!(eventId == rhs.eventId))
       return false;
     return true;
   }

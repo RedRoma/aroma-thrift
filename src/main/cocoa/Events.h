@@ -36,29 +36,20 @@ typedef Aroma_User * AromaEvents_User;
 typedef Aroma_Application * AromaEvents_Application;
 
 @interface AromaEvents_ApplicationMessagesDeleted : NSObject <TBase, NSCoding> {
-  AromaEvents_uuid __applicationId;
+  AromaEvents_int __totalMessagesDeleted;
   NSString * __message;
-  AromaEvents_Application __app;
-  AromaEvents_uuid __userIdOfActor;
-  AromaEvents_User __actor;
 
-  BOOL __applicationId_isset;
+  BOOL __totalMessagesDeleted_isset;
   BOOL __message_isset;
-  BOOL __app_isset;
-  BOOL __userIdOfActor_isset;
-  BOOL __actor_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
+@property (nonatomic, getter=totalMessagesDeleted, setter=setTotalMessagesDeleted:) AromaEvents_int totalMessagesDeleted;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=app, setter=setApp:) AromaEvents_Application app;
-@property (nonatomic, retain, getter=userIdOfActor, setter=setUserIdOfActor:) AromaEvents_uuid userIdOfActor;
-@property (nonatomic, retain, getter=actor, setter=setActor:) AromaEvents_User actor;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app userIdOfActor: (AromaEvents_uuid) userIdOfActor actor: (AromaEvents_User) actor;
+- (id) initWithTotalMessagesDeleted: (AromaEvents_int) totalMessagesDeleted message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -66,87 +57,39 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
+- (AromaEvents_int) totalMessagesDeleted;
+- (void) setTotalMessagesDeleted: (AromaEvents_int) totalMessagesDeleted;
 #endif
-- (BOOL) applicationIdIsSet;
+- (BOOL) totalMessagesDeletedIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) message;
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_Application) app;
-- (void) setApp: (AromaEvents_Application) app;
-#endif
-- (BOOL) appIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) userIdOfActor;
-- (void) setUserIdOfActor: (AromaEvents_uuid) userIdOfActor;
-#endif
-- (BOOL) userIdOfActorIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) actor;
-- (void) setActor: (AromaEvents_User) actor;
-#endif
-- (BOOL) actorIsSet;
 
 @end
 
 @interface AromaEvents_ApplicationTokenRenewed : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  AromaEvents_uuid __applicationId;
-  AromaEvents_uuid __userIdOfActor;
   AromaEvents_ApplicationToken __applicationToken;
-  AromaEvents_Application __application;
-  AromaEvents_User __actor;
+  NSString * __message;
 
-  BOOL __message_isset;
-  BOOL __applicationId_isset;
-  BOOL __userIdOfActor_isset;
   BOOL __applicationToken_isset;
-  BOOL __application_isset;
-  BOOL __actor_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=userIdOfActor, setter=setUserIdOfActor:) AromaEvents_uuid userIdOfActor;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaEvents_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
-@property (nonatomic, retain, getter=actor, setter=setActor:) AromaEvents_User actor;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId userIdOfActor: (AromaEvents_uuid) userIdOfActor applicationToken: (AromaEvents_ApplicationToken) applicationToken application: (AromaEvents_Application) application actor: (AromaEvents_User) actor;
+- (id) initWithApplicationToken: (AromaEvents_ApplicationToken) applicationToken message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) userIdOfActor;
-- (void) setUserIdOfActor: (AromaEvents_uuid) userIdOfActor;
-#endif
-- (BOOL) userIdOfActorIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEvents_ApplicationToken) applicationToken;
@@ -155,69 +98,36 @@ typedef Aroma_Application * AromaEvents_Application;
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_Application) application;
-- (void) setApplication: (AromaEvents_Application) application;
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
 #endif
-- (BOOL) applicationIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) actor;
-- (void) setActor: (AromaEvents_User) actor;
-#endif
-- (BOOL) actorIsSet;
+- (BOOL) messageIsSet;
 
 @end
 
 @interface AromaEvents_ApplicationTokenRegenerated : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  AromaEvents_uuid __userIdOfActor;
-  AromaEvents_uuid __applicationId;
   AromaEvents_ApplicationToken __applicationToken;
-  AromaEvents_Application __application;
   AromaEvents_User __actor;
+  NSString * __message;
 
-  BOOL __message_isset;
-  BOOL __userIdOfActor_isset;
-  BOOL __applicationId_isset;
   BOOL __applicationToken_isset;
-  BOOL __application_isset;
   BOOL __actor_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=userIdOfActor, setter=setUserIdOfActor:) AromaEvents_uuid userIdOfActor;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=applicationToken, setter=setApplicationToken:) AromaEvents_ApplicationToken applicationToken;
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
 @property (nonatomic, retain, getter=actor, setter=setActor:) AromaEvents_User actor;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message userIdOfActor: (AromaEvents_uuid) userIdOfActor applicationId: (AromaEvents_uuid) applicationId applicationToken: (AromaEvents_ApplicationToken) applicationToken application: (AromaEvents_Application) application actor: (AromaEvents_User) actor;
+- (id) initWithApplicationToken: (AromaEvents_ApplicationToken) applicationToken actor: (AromaEvents_User) actor message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) userIdOfActor;
-- (void) setUserIdOfActor: (AromaEvents_uuid) userIdOfActor;
-#endif
-- (BOOL) userIdOfActorIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEvents_ApplicationToken) applicationToken;
@@ -226,40 +136,37 @@ typedef Aroma_Application * AromaEvents_Application;
 - (BOOL) applicationTokenIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_Application) application;
-- (void) setApplication: (AromaEvents_Application) application;
-#endif
-- (BOOL) applicationIsSet;
-
-#if !__has_feature(objc_arc)
 - (AromaEvents_User) actor;
 - (void) setActor: (AromaEvents_User) actor;
 #endif
 - (BOOL) actorIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
 @end
 
 @interface AromaEvents_ApplicationSentMessage : NSObject <TBase, NSCoding> {
-  NSString * __message;
+  AromaEvents_uuid __messageId;
   Aroma_Message * __messageSentByApplication;
-  AromaEvents_uuid __applicationId;
-  AromaEvents_Application __application;
+  NSString * __message;
 
-  BOOL __message_isset;
+  BOOL __messageId_isset;
   BOOL __messageSentByApplication_isset;
-  BOOL __applicationId_isset;
-  BOOL __application_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+@property (nonatomic, retain, getter=messageId, setter=setMessageId:) AromaEvents_uuid messageId;
 @property (nonatomic, retain, getter=messageSentByApplication, setter=setMessageSentByApplication:) Aroma_Message * messageSentByApplication;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message messageSentByApplication: (Aroma_Message *) messageSentByApplication applicationId: (AromaEvents_uuid) applicationId application: (AromaEvents_Application) application;
+- (id) initWithMessageId: (AromaEvents_uuid) messageId messageSentByApplication: (Aroma_Message *) messageSentByApplication message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -267,10 +174,10 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
+- (AromaEvents_uuid) messageId;
+- (void) setMessageId: (AromaEvents_uuid) messageId;
 #endif
-- (BOOL) messageIsSet;
+- (BOOL) messageIdIsSet;
 
 #if !__has_feature(objc_arc)
 - (Aroma_Message *) messageSentByApplication;
@@ -279,72 +186,30 @@ typedef Aroma_Application * AromaEvents_Application;
 - (BOOL) messageSentByApplicationIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
 #endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_Application) application;
-- (void) setApplication: (AromaEvents_Application) application;
-#endif
-- (BOOL) applicationIsSet;
+- (BOOL) messageIsSet;
 
 @end
 
 @interface AromaEvents_ApplicationDeleted : NSObject <TBase, NSCoding> {
-  AromaEvents_uuid __userId;
-  AromaEvents_User __user;
-  AromaEvents_uuid __applicationId;
-  AromaEvents_Application __application;
   NSString * __message;
 
-  BOOL __userId_isset;
-  BOOL __user_isset;
-  BOOL __applicationId_isset;
-  BOOL __application_isset;
   BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaEvents_uuid userId;
-@property (nonatomic, retain, getter=user, setter=setUser:) AromaEvents_User user;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithUserId: (AromaEvents_uuid) userId user: (AromaEvents_User) user applicationId: (AromaEvents_uuid) applicationId application: (AromaEvents_Application) application message: (NSString *) message;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) userId;
-- (void) setUserId: (AromaEvents_uuid) userId;
-#endif
-- (BOOL) userIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) user;
-- (void) setUser: (AromaEvents_User) user;
-#endif
-- (BOOL) userIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_Application) application;
-- (void) setApplication: (AromaEvents_Application) application;
-#endif
-- (BOOL) applicationIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) message;
@@ -355,58 +220,22 @@ typedef Aroma_Application * AromaEvents_Application;
 @end
 
 @interface AromaEvents_ApplicationFollowed : NSObject <TBase, NSCoding> {
-  AromaEvents_uuid __userId;
-  AromaEvents_uuid __applicationId;
-  AromaEvents_User __user;
-  AromaEvents_Application __application;
   NSString * __message;
 
-  BOOL __userId_isset;
-  BOOL __applicationId_isset;
-  BOOL __user_isset;
-  BOOL __application_isset;
   BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=userId, setter=setUserId:) AromaEvents_uuid userId;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=user, setter=setUser:) AromaEvents_User user;
-@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithUserId: (AromaEvents_uuid) userId applicationId: (AromaEvents_uuid) applicationId user: (AromaEvents_User) user application: (AromaEvents_Application) application message: (NSString *) message;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) userId;
-- (void) setUserId: (AromaEvents_uuid) userId;
-#endif
-- (BOOL) userIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) user;
-- (void) setUser: (AromaEvents_User) user;
-#endif
-- (BOOL) userIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_Application) application;
-- (void) setApplication: (AromaEvents_Application) application;
-#endif
-- (BOOL) applicationIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) message;
@@ -417,37 +246,25 @@ typedef Aroma_Application * AromaEvents_Application;
 @end
 
 @interface AromaEvents_HealthCheckFailed : NSObject <TBase, NSCoding> {
-  NSString * __message;
   NSString * __hostname;
-  AromaEvents_uuid __applicationId;
-  NSString * __applicationName;
+  NSString * __message;
 
-  BOOL __message_isset;
   BOOL __hostname_isset;
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=hostname, setter=setHostname:) NSString * hostname;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message hostname: (NSString *) hostname applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithHostname: (NSString *) hostname message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
 
 #if !__has_feature(objc_arc)
 - (NSString *) hostname;
@@ -456,37 +273,25 @@ typedef Aroma_Application * AromaEvents_Application;
 - (BOOL) hostnameIsSet;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
 #endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
+- (BOOL) messageIsSet;
 
 @end
 
 @interface AromaEvents_HealthCheckBackToNormal : NSObject <TBase, NSCoding> {
   NSString * __message;
-  AromaEvents_uuid __applicationId;
-  NSString * __applicationName;
 
   BOOL __message_isset;
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -499,41 +304,26 @@ typedef Aroma_Application * AromaEvents_Application;
 #endif
 - (BOOL) messageIsSet;
 
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
 @end
 
 @interface AromaEvents_OwnerAdded : NSObject <TBase, NSCoding> {
-  AromaEvents_uuid __existingOwnerId;
-  AromaEvents_uuid __newOwnerId;
-  AromaEvents_User __existingOwner;
+  AromaEvents_uuid __userIdOfNewOwner;
   AromaEvents_User __newOwner;
+  NSString * __message;
 
-  BOOL __existingOwnerId_isset;
-  BOOL __newOwnerId_isset;
-  BOOL __existingOwner_isset;
+  BOOL __userIdOfNewOwner_isset;
   BOOL __newOwner_isset;
+  BOOL __message_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=existingOwnerId, setter=setExistingOwnerId:) AromaEvents_uuid existingOwnerId;
-@property (nonatomic, retain, getter=newOwnerId, setter=setNewOwnerId:) AromaEvents_uuid newOwnerId;
-@property (nonatomic, retain, getter=existingOwner, setter=setExistingOwner:) AromaEvents_User existingOwner;
+@property (nonatomic, retain, getter=userIdOfNewOwner, setter=setUserIdOfNewOwner:) AromaEvents_uuid userIdOfNewOwner;
 @property (nonatomic, retain, getter=newOwner, setter=setNewOwner:) AromaEvents_User newOwner;
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 #endif
 
 - (id) init;
-- (id) initWithExistingOwnerId: (AromaEvents_uuid) existingOwnerId newOwnerId: (AromaEvents_uuid) newOwnerId existingOwner: (AromaEvents_User) existingOwner newOwner: (AromaEvents_User) newOwner;
+- (id) initWithUserIdOfNewOwner: (AromaEvents_uuid) userIdOfNewOwner newOwner: (AromaEvents_User) newOwner message: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -541,22 +331,10 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_uuid) existingOwnerId;
-- (void) setExistingOwnerId: (AromaEvents_uuid) existingOwnerId;
+- (AromaEvents_uuid) userIdOfNewOwner;
+- (void) setUserIdOfNewOwner: (AromaEvents_uuid) userIdOfNewOwner;
 #endif
-- (BOOL) existingOwnerIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) newOwnerId;
-- (void) setNewOwnerId: (AromaEvents_uuid) newOwnerId;
-#endif
-- (BOOL) newOwnerIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) existingOwner;
-- (void) setExistingOwner: (AromaEvents_User) existingOwner;
-#endif
-- (BOOL) existingOwnerIsSet;
+- (BOOL) userIdOfNewOwnerIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEvents_User) newOwner;
@@ -564,29 +342,26 @@ typedef Aroma_Application * AromaEvents_Application;
 #endif
 - (BOOL) newOwnerIsSet;
 
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
 @end
 
 @interface AromaEvents_OwnerApprovedRequest : NSObject <TBase, NSCoding> {
   NSString * __message;
-  AromaEvents_uuid __applicationId;
-  NSString * __applicationName;
-  AromaEvents_User __owner;
 
   BOOL __message_isset;
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
-  BOOL __owner_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
-@property (nonatomic, retain, getter=owner, setter=setOwner:) AromaEvents_User owner;
 #endif
 
 - (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName owner: (AromaEvents_User) owner;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -598,101 +373,21 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) owner;
-- (void) setOwner: (AromaEvents_User) owner;
-#endif
-- (BOOL) ownerIsSet;
-
-@end
-
-@interface AromaEvents_UserFollowedApplication : NSObject <TBase, NSCoding> {
-  NSString * __message;
-  AromaEvents_uuid __applicationId;
-  AromaEvents_User __follower;
-  AromaEvents_User __owner;
-
-  BOOL __message_isset;
-  BOOL __applicationId_isset;
-  BOOL __follower_isset;
-  BOOL __owner_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=follower, setter=setFollower:) AromaEvents_User follower;
-@property (nonatomic, retain, getter=owner, setter=setOwner:) AromaEvents_User owner;
-#endif
-
-- (id) init;
-- (id) initWithMessage: (NSString *) message applicationId: (AromaEvents_uuid) applicationId follower: (AromaEvents_User) follower owner: (AromaEvents_User) owner;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (NSString *) message;
-- (void) setMessage: (NSString *) message;
-#endif
-- (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) follower;
-- (void) setFollower: (AromaEvents_User) follower;
-#endif
-- (BOOL) followerIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_User) owner;
-- (void) setOwner: (AromaEvents_User) owner;
-#endif
-- (BOOL) ownerIsSet;
 
 @end
 
 @interface AromaEvents_GeneralEvent : NSObject <TBase, NSCoding> {
-  AromaEvents_uuid __applicationId;
-  NSString * __applicationName;
   NSString * __message;
-  AromaEvents_timestamp __timestamp;
 
-  BOOL __applicationId_isset;
-  BOOL __applicationName_isset;
   BOOL __message_isset;
-  BOOL __timestamp_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
-@property (nonatomic, retain, getter=applicationName, setter=setApplicationName:) NSString * applicationName;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
-@property (nonatomic, getter=timestamp, setter=setTimestamp:) AromaEvents_timestamp timestamp;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (AromaEvents_uuid) applicationId applicationName: (NSString *) applicationName message: (NSString *) message timestamp: (AromaEvents_timestamp) timestamp;
+- (id) initWithMessage: (NSString *) message;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -700,28 +395,10 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) validate;
 
 #if !__has_feature(objc_arc)
-- (AromaEvents_uuid) applicationId;
-- (void) setApplicationId: (AromaEvents_uuid) applicationId;
-#endif
-- (BOOL) applicationIdIsSet;
-
-#if !__has_feature(objc_arc)
-- (NSString *) applicationName;
-- (void) setApplicationName: (NSString *) applicationName;
-#endif
-- (BOOL) applicationNameIsSet;
-
-#if !__has_feature(objc_arc)
 - (NSString *) message;
 - (void) setMessage: (NSString *) message;
 #endif
 - (BOOL) messageIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_timestamp) timestamp;
-- (void) setTimestamp: (AromaEvents_timestamp) timestamp;
-#endif
-- (BOOL) timestampIsSet;
 
 @end
 
@@ -737,7 +414,6 @@ typedef Aroma_Application * AromaEvents_Application;
   AromaEvents_OwnerApprovedRequest * __ownerApprovedRequest;
   AromaEvents_OwnerAdded * __ownerAdded;
   AromaEvents_GeneralEvent * __generalEvent;
-  AromaEvents_UserFollowedApplication * __userFollowedApplication;
 
   BOOL __applicationMessageDeleted_isset;
   BOOL __healthCheckFailed_isset;
@@ -750,7 +426,6 @@ typedef Aroma_Application * AromaEvents_Application;
   BOOL __ownerApprovedRequest_isset;
   BOOL __ownerAdded_isset;
   BOOL __generalEvent_isset;
-  BOOL __userFollowedApplication_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
@@ -765,11 +440,10 @@ typedef Aroma_Application * AromaEvents_Application;
 @property (nonatomic, retain, getter=ownerApprovedRequest, setter=setOwnerApprovedRequest:) AromaEvents_OwnerApprovedRequest * ownerApprovedRequest;
 @property (nonatomic, retain, getter=ownerAdded, setter=setOwnerAdded:) AromaEvents_OwnerAdded * ownerAdded;
 @property (nonatomic, retain, getter=generalEvent, setter=setGeneralEvent:) AromaEvents_GeneralEvent * generalEvent;
-@property (nonatomic, retain, getter=userFollowedApplication, setter=setUserFollowedApplication:) AromaEvents_UserFollowedApplication * userFollowedApplication;
 #endif
 
 - (id) init;
-- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent userFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication;
+- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -842,37 +516,73 @@ typedef Aroma_Application * AromaEvents_Application;
 #endif
 - (BOOL) generalEventIsSet;
 
-#if !__has_feature(objc_arc)
-- (AromaEvents_UserFollowedApplication *) userFollowedApplication;
-- (void) setUserFollowedApplication: (AromaEvents_UserFollowedApplication *) userFollowedApplication;
-#endif
-- (BOOL) userFollowedApplicationIsSet;
-
 @end
 
 @interface AromaEvents_Event : NSObject <TBase, NSCoding> {
+  AromaEvents_uuid __eventId;
+  AromaEvents_uuid __userIdOfActor;
+  AromaEvents_User __actor;
+  AromaEvents_uuid __applicationId;
+  AromaEvents_Application __application;
   AromaEvents_EventType * __eventType;
   AromaEvents_timestamp __timestamp;
-  AromaEvents_uuid __eventId;
 
+  BOOL __eventId_isset;
+  BOOL __userIdOfActor_isset;
+  BOOL __actor_isset;
+  BOOL __applicationId_isset;
+  BOOL __application_isset;
   BOOL __eventType_isset;
   BOOL __timestamp_isset;
-  BOOL __eventId_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=eventId, setter=setEventId:) AromaEvents_uuid eventId;
+@property (nonatomic, retain, getter=userIdOfActor, setter=setUserIdOfActor:) AromaEvents_uuid userIdOfActor;
+@property (nonatomic, retain, getter=actor, setter=setActor:) AromaEvents_User actor;
+@property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
+@property (nonatomic, retain, getter=application, setter=setApplication:) AromaEvents_Application application;
 @property (nonatomic, retain, getter=eventType, setter=setEventType:) AromaEvents_EventType * eventType;
 @property (nonatomic, getter=timestamp, setter=setTimestamp:) AromaEvents_timestamp timestamp;
-@property (nonatomic, retain, getter=eventId, setter=setEventId:) AromaEvents_uuid eventId;
 #endif
 
 - (id) init;
-- (id) initWithEventType: (AromaEvents_EventType *) eventType timestamp: (AromaEvents_timestamp) timestamp eventId: (AromaEvents_uuid) eventId;
+- (id) initWithEventId: (AromaEvents_uuid) eventId userIdOfActor: (AromaEvents_uuid) userIdOfActor actor: (AromaEvents_User) actor applicationId: (AromaEvents_uuid) applicationId application: (AromaEvents_Application) application eventType: (AromaEvents_EventType *) eventType timestamp: (AromaEvents_timestamp) timestamp;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
 
 - (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_uuid) eventId;
+- (void) setEventId: (AromaEvents_uuid) eventId;
+#endif
+- (BOOL) eventIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_uuid) userIdOfActor;
+- (void) setUserIdOfActor: (AromaEvents_uuid) userIdOfActor;
+#endif
+- (BOOL) userIdOfActorIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_User) actor;
+- (void) setActor: (AromaEvents_User) actor;
+#endif
+- (BOOL) actorIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_uuid) applicationId;
+- (void) setApplicationId: (AromaEvents_uuid) applicationId;
+#endif
+- (BOOL) applicationIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_Application) application;
+- (void) setApplication: (AromaEvents_Application) application;
+#endif
+- (BOOL) applicationIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEvents_EventType *) eventType;
@@ -885,12 +595,6 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) setTimestamp: (AromaEvents_timestamp) timestamp;
 #endif
 - (BOOL) timestampIsSet;
-
-#if !__has_feature(objc_arc)
-- (AromaEvents_uuid) eventId;
-- (void) setEventId: (AromaEvents_uuid) eventId;
-#endif
-- (BOOL) eventIdIsSet;
 
 @end
 
