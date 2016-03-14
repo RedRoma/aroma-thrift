@@ -4241,7 +4241,7 @@ void GetBuzzResponse::__set_failedHealthChecks(const std::vector<HealthCheckFail
   this->failedHealthChecks = val;
 }
 
-void GetBuzzResponse::__set_generalEvents(const std::vector< ::aroma::thrift::events::GeneralEvent> & val) {
+void GetBuzzResponse::__set_generalEvents(const std::vector< ::aroma::thrift::events::Event> & val) {
   this->generalEvents = val;
 }
 
@@ -4402,7 +4402,7 @@ uint32_t GetBuzzResponse::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeFieldBegin("generalEvents", ::apache::thrift::protocol::T_LIST, 4);
   {
     xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->generalEvents.size()));
-    std::vector< ::aroma::thrift::events::GeneralEvent> ::const_iterator _iter122;
+    std::vector< ::aroma::thrift::events::Event> ::const_iterator _iter122;
     for (_iter122 = this->generalEvents.begin(); _iter122 != this->generalEvents.end(); ++_iter122)
     {
       xfer += (*_iter122).write(oprot);

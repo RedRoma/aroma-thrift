@@ -2795,7 +2795,7 @@ GetBuzzResponse = module.exports.GetBuzzResponse = function(args) {
             this.failedHealthChecks = Thrift.copyList(args.failedHealthChecks, [null]);
         }
         if (args.generalEvents !== undefined && args.generalEvents !== null) {
-            this.generalEvents = Thrift.copyList(args.generalEvents, [Events_ttypes.GeneralEvent]);
+            this.generalEvents = Thrift.copyList(args.generalEvents, [Events_ttypes.Event]);
         }
     }
 };
@@ -2888,7 +2888,7 @@ GetBuzzResponse.prototype.read = function(input) {
           for (var _i58 = 0; _i58 < _size53; ++_i58)
           {
             var elem59 = null;
-            elem59 = new Events_ttypes.GeneralEvent();
+            elem59 = new Events_ttypes.Event();
             elem59.read(input);
             this.generalEvents.push(elem59);
           }

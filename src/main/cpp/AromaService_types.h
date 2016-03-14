@@ -2215,7 +2215,7 @@ class GetBuzzResponse {
   std::vector<User>  freshUsers;
   std::vector<Application>  freshApplications;
   std::vector<HealthCheckFailed>  failedHealthChecks;
-  std::vector< ::aroma::thrift::events::GeneralEvent>  generalEvents;
+  std::vector< ::aroma::thrift::events::Event>  generalEvents;
 
   _GetBuzzResponse__isset __isset;
 
@@ -2225,7 +2225,7 @@ class GetBuzzResponse {
 
   void __set_failedHealthChecks(const std::vector<HealthCheckFailed> & val);
 
-  void __set_generalEvents(const std::vector< ::aroma::thrift::events::GeneralEvent> & val);
+  void __set_generalEvents(const std::vector< ::aroma::thrift::events::Event> & val);
 
   bool operator == (const GetBuzzResponse & rhs) const
   {

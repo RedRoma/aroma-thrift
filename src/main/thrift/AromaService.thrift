@@ -432,7 +432,7 @@ struct GetBuzzResponse
     2: list<Application> freshApplications = [];
     3: list<HealthCheckFailed> failedHealthChecks = [];
     /** General events happening lately */
-    4: list<Events.GeneralEvent> generalEvents = [];
+    4: list<Events.Event> generalEvents = [];
 }
 
 struct GetDashboardRequest

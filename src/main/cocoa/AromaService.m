@@ -8821,7 +8821,7 @@
           int _i30;
           for (_i30 = 0; _i30 < _size29; ++_i30)
           {
-            AromaEvents_GeneralEvent *_elem31 = [[AromaEvents_GeneralEvent alloc] init];
+            AromaEvents_Event *_elem31 = [[AromaEvents_Event alloc] init];
             [_elem31 read: inProtocol];
             [fieldValue addObject: _elem31];
             [_elem31 release_stub];
