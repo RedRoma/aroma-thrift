@@ -64,10 +64,12 @@ class EventType;
 class Event;
 
 typedef struct _ApplicationMessagesDeleted__isset {
-  _ApplicationMessagesDeleted__isset() : applicationId(false), message(true), app(false) {}
+  _ApplicationMessagesDeleted__isset() : applicationId(false), message(true), app(false), userIdOfActor(false), actor(false) {}
   bool applicationId :1;
   bool message :1;
   bool app :1;
+  bool userIdOfActor :1;
+  bool actor :1;
 } _ApplicationMessagesDeleted__isset;
 
 class ApplicationMessagesDeleted {
@@ -75,13 +77,15 @@ class ApplicationMessagesDeleted {
 
   ApplicationMessagesDeleted(const ApplicationMessagesDeleted&);
   ApplicationMessagesDeleted& operator=(const ApplicationMessagesDeleted&);
-  ApplicationMessagesDeleted() : applicationId(), message("Application's messages have been deleted") {
+  ApplicationMessagesDeleted() : applicationId(), message("Application's messages have been deleted"), userIdOfActor() {
   }
 
   virtual ~ApplicationMessagesDeleted() throw();
   uuid applicationId;
   std::string message;
   Application app;
+  uuid userIdOfActor;
+  User actor;
 
   _ApplicationMessagesDeleted__isset __isset;
 
@@ -90,6 +94,10 @@ class ApplicationMessagesDeleted {
   void __set_message(const std::string& val);
 
   void __set_app(const Application& val);
+
+  void __set_userIdOfActor(const uuid& val);
+
+  void __set_actor(const User& val);
 
   bool operator == (const ApplicationMessagesDeleted & rhs) const
   {
@@ -102,6 +110,12 @@ class ApplicationMessagesDeleted {
     if (__isset.app != rhs.__isset.app)
       return false;
     else if (__isset.app && !(app == rhs.app))
+      return false;
+    if (!(userIdOfActor == rhs.userIdOfActor))
+      return false;
+    if (__isset.actor != rhs.__isset.actor)
+      return false;
+    else if (__isset.actor && !(actor == rhs.actor))
       return false;
     return true;
   }

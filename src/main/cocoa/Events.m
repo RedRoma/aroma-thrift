@@ -35,7 +35,7 @@
   return self;
 }
 
-- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app
+- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app userIdOfActor: (AromaEvents_uuid) userIdOfActor actor: (AromaEvents_User) actor
 {
   self = [super init];
   __applicationId = [applicationId retain_stub];
@@ -44,6 +44,10 @@
   __message_isset = YES;
   __app = [app retain_stub];
   __app_isset = YES;
+  __userIdOfActor = [userIdOfActor retain_stub];
+  __userIdOfActor_isset = YES;
+  __actor = [actor retain_stub];
+  __actor_isset = YES;
   return self;
 }
 
@@ -65,6 +69,16 @@
     __app = [[decoder decodeObjectForKey: @"app"] retain_stub];
     __app_isset = YES;
   }
+  if ([decoder containsValueForKey: @"userIdOfActor"])
+  {
+    __userIdOfActor = [[decoder decodeObjectForKey: @"userIdOfActor"] retain_stub];
+    __userIdOfActor_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"actor"])
+  {
+    __actor = [[decoder decodeObjectForKey: @"actor"] retain_stub];
+    __actor_isset = YES;
+  }
   return self;
 }
 
@@ -81,6 +95,14 @@
   if (__app_isset)
   {
     [encoder encodeObject: __app forKey: @"app"];
+  }
+  if (__userIdOfActor_isset)
+  {
+    [encoder encodeObject: __userIdOfActor forKey: @"userIdOfActor"];
+  }
+  if (__actor_isset)
+  {
+    [encoder encodeObject: __actor forKey: @"actor"];
   }
 }
 
@@ -101,6 +123,16 @@
   if (__app_isset)
   {
     hash = (hash * 31) ^ [__app hash];
+  }
+  hash = (hash * 31) ^ __userIdOfActor_isset ? 2654435761 : 0;
+  if (__userIdOfActor_isset)
+  {
+    hash = (hash * 31) ^ [__userIdOfActor hash];
+  }
+  hash = (hash * 31) ^ __actor_isset ? 2654435761 : 0;
+  if (__actor_isset)
+  {
+    hash = (hash * 31) ^ [__actor hash];
   }
   return hash;
 }
@@ -126,6 +158,14 @@
       (__app_isset && ((__app || other->__app) && ![__app isEqual:other->__app]))) {
     return NO;
   }
+  if ((__userIdOfActor_isset != other->__userIdOfActor_isset) ||
+      (__userIdOfActor_isset && ((__userIdOfActor || other->__userIdOfActor) && ![__userIdOfActor isEqual:other->__userIdOfActor]))) {
+    return NO;
+  }
+  if ((__actor_isset != other->__actor_isset) ||
+      (__actor_isset && ((__actor || other->__actor) && ![__actor isEqual:other->__actor]))) {
+    return NO;
+  }
   return YES;
 }
 
@@ -134,6 +174,8 @@
   [__applicationId release_stub];
   [__message release_stub];
   [__app release_stub];
+  [__userIdOfActor release_stub];
+  [__actor release_stub];
   [super dealloc_stub];
 }
 
@@ -200,6 +242,48 @@
   __app_isset = NO;
 }
 
+- (NSString *) userIdOfActor {
+  return [[__userIdOfActor retain_stub] autorelease_stub];
+}
+
+- (void) setUserIdOfActor: (NSString *) userIdOfActor {
+  [userIdOfActor retain_stub];
+  [__userIdOfActor release_stub];
+  __userIdOfActor = userIdOfActor;
+  __userIdOfActor_isset = YES;
+}
+
+- (BOOL) userIdOfActorIsSet {
+  return __userIdOfActor_isset;
+}
+
+- (void) unsetUserIdOfActor {
+  [__userIdOfActor release_stub];
+  __userIdOfActor = nil;
+  __userIdOfActor_isset = NO;
+}
+
+- (Aroma_User *) actor {
+  return [[__actor retain_stub] autorelease_stub];
+}
+
+- (void) setActor: (Aroma_User *) actor {
+  [actor retain_stub];
+  [__actor release_stub];
+  __actor = actor;
+  __actor_isset = YES;
+}
+
+- (BOOL) actorIsSet {
+  return __actor_isset;
+}
+
+- (void) unsetActor {
+  [__actor release_stub];
+  __actor = nil;
+  __actor_isset = NO;
+}
+
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -241,6 +325,24 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
+      case 4:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setUserIdOfActor: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 5:
+        if (fieldType == TType_STRUCT) {
+          Aroma_User *fieldValue = [[Aroma_User alloc] init];
+          [fieldValue read: inProtocol];
+          [self setActor: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -273,6 +375,20 @@
       [outProtocol writeFieldEnd];
     }
   }
+  if (__userIdOfActor_isset) {
+    if (__userIdOfActor != nil) {
+      [outProtocol writeFieldBeginWithName: @"userIdOfActor" type: TType_STRING fieldID: 4];
+      [outProtocol writeString: __userIdOfActor];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__actor_isset) {
+    if (__actor != nil) {
+      [outProtocol writeFieldBeginWithName: @"actor" type: TType_STRUCT fieldID: 5];
+      [__actor write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -289,6 +405,10 @@
   [ms appendFormat: @"\"%@\"", __message];
   [ms appendString: @",app:"];
   [ms appendFormat: @"%@", __app];
+  [ms appendString: @",userIdOfActor:"];
+  [ms appendFormat: @"\"%@\"", __userIdOfActor];
+  [ms appendString: @",actor:"];
+  [ms appendFormat: @"%@", __actor];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

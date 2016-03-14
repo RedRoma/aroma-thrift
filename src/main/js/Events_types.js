@@ -9,6 +9,8 @@ ApplicationMessagesDeleted = function(args) {
   this.applicationId = null;
   this.message = 'Application\'s messages have been deleted';
   this.app = null;
+  this.userIdOfActor = null;
+  this.actor = null;
   if (args) {
     if (args.applicationId !== undefined && args.applicationId !== null) {
       this.applicationId = args.applicationId;
@@ -18,6 +20,12 @@ ApplicationMessagesDeleted = function(args) {
     }
     if (args.app !== undefined && args.app !== null) {
       this.app = new Application(args.app);
+    }
+    if (args.userIdOfActor !== undefined && args.userIdOfActor !== null) {
+      this.userIdOfActor = args.userIdOfActor;
+    }
+    if (args.actor !== undefined && args.actor !== null) {
+      this.actor = new User(args.actor);
     }
   }
 };
@@ -57,6 +65,21 @@ ApplicationMessagesDeleted.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.STRING) {
+        this.userIdOfActor = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.actor = new User();
+        this.actor.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -81,6 +104,16 @@ ApplicationMessagesDeleted.prototype.write = function(output) {
   if (this.app !== null && this.app !== undefined) {
     output.writeFieldBegin('app', Thrift.Type.STRUCT, 3);
     this.app.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.userIdOfActor !== null && this.userIdOfActor !== undefined) {
+    output.writeFieldBegin('userIdOfActor', Thrift.Type.STRING, 4);
+    output.writeString(this.userIdOfActor);
+    output.writeFieldEnd();
+  }
+  if (this.actor !== null && this.actor !== undefined) {
+    output.writeFieldBegin('actor', Thrift.Type.STRUCT, 5);
+    this.actor.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

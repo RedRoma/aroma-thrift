@@ -32,6 +32,15 @@ void ApplicationMessagesDeleted::__set_app(const Application& val) {
 __isset.app = true;
 }
 
+void ApplicationMessagesDeleted::__set_userIdOfActor(const uuid& val) {
+  this->userIdOfActor = val;
+}
+
+void ApplicationMessagesDeleted::__set_actor(const User& val) {
+  this->actor = val;
+__isset.actor = true;
+}
+
 uint32_t ApplicationMessagesDeleted::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -77,6 +86,22 @@ uint32_t ApplicationMessagesDeleted::read(::apache::thrift::protocol::TProtocol*
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->userIdOfActor);
+          this->__isset.userIdOfActor = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->actor.read(iprot);
+          this->__isset.actor = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -108,6 +133,15 @@ uint32_t ApplicationMessagesDeleted::write(::apache::thrift::protocol::TProtocol
     xfer += this->app.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
+  xfer += oprot->writeFieldBegin("userIdOfActor", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeString(this->userIdOfActor);
+  xfer += oprot->writeFieldEnd();
+
+  if (this->__isset.actor) {
+    xfer += oprot->writeFieldBegin("actor", ::apache::thrift::protocol::T_STRUCT, 5);
+    xfer += this->actor.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -118,6 +152,8 @@ void swap(ApplicationMessagesDeleted &a, ApplicationMessagesDeleted &b) {
   swap(a.applicationId, b.applicationId);
   swap(a.message, b.message);
   swap(a.app, b.app);
+  swap(a.userIdOfActor, b.userIdOfActor);
+  swap(a.actor, b.actor);
   swap(a.__isset, b.__isset);
 }
 
@@ -125,12 +161,16 @@ ApplicationMessagesDeleted::ApplicationMessagesDeleted(const ApplicationMessages
   applicationId = other0.applicationId;
   message = other0.message;
   app = other0.app;
+  userIdOfActor = other0.userIdOfActor;
+  actor = other0.actor;
   __isset = other0.__isset;
 }
 ApplicationMessagesDeleted& ApplicationMessagesDeleted::operator=(const ApplicationMessagesDeleted& other1) {
   applicationId = other1.applicationId;
   message = other1.message;
   app = other1.app;
+  userIdOfActor = other1.userIdOfActor;
+  actor = other1.actor;
   __isset = other1.__isset;
   return *this;
 }
@@ -140,6 +180,8 @@ void ApplicationMessagesDeleted::printTo(std::ostream& out) const {
   out << "applicationId=" << to_string(applicationId);
   out << ", " << "message="; (__isset.message ? (out << to_string(message)) : (out << "<null>"));
   out << ", " << "app="; (__isset.app ? (out << to_string(app)) : (out << "<null>"));
+  out << ", " << "userIdOfActor=" << to_string(userIdOfActor);
+  out << ", " << "actor="; (__isset.actor ? (out << to_string(actor)) : (out << "<null>"));
   out << ")";
 }
 

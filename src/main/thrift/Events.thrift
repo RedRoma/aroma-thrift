@@ -25,6 +25,8 @@ struct ApplicationMessagesDeleted
     1:  uuid applicationId;
     2: optional string message = "Application's messages have been deleted"
     3: optional Application app;
+    4: uuid userIdOfActor;
+    5: optional User actor;
 }
 
 /**

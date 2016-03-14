@@ -39,20 +39,26 @@ typedef Aroma_Application * AromaEvents_Application;
   AromaEvents_uuid __applicationId;
   NSString * __message;
   AromaEvents_Application __app;
+  AromaEvents_uuid __userIdOfActor;
+  AromaEvents_User __actor;
 
   BOOL __applicationId_isset;
   BOOL __message_isset;
   BOOL __app_isset;
+  BOOL __userIdOfActor_isset;
+  BOOL __actor_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=applicationId, setter=setApplicationId:) AromaEvents_uuid applicationId;
 @property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
 @property (nonatomic, retain, getter=app, setter=setApp:) AromaEvents_Application app;
+@property (nonatomic, retain, getter=userIdOfActor, setter=setUserIdOfActor:) AromaEvents_uuid userIdOfActor;
+@property (nonatomic, retain, getter=actor, setter=setActor:) AromaEvents_User actor;
 #endif
 
 - (id) init;
-- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app;
+- (id) initWithApplicationId: (AromaEvents_uuid) applicationId message: (NSString *) message app: (AromaEvents_Application) app userIdOfActor: (AromaEvents_uuid) userIdOfActor actor: (AromaEvents_User) actor;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -76,6 +82,18 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) setApp: (AromaEvents_Application) app;
 #endif
 - (BOOL) appIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_uuid) userIdOfActor;
+- (void) setUserIdOfActor: (AromaEvents_uuid) userIdOfActor;
+#endif
+- (BOOL) userIdOfActorIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_User) actor;
+- (void) setActor: (AromaEvents_User) actor;
+#endif
+- (BOOL) actorIsSet;
 
 @end
 
