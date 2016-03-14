@@ -52,10 +52,11 @@ struct ApplicationTokenRegenerated
 {
     1: optional string message = "Application Token has been re-created"
     /** The person who performed the action. */
-    2: User user;
-    3: optional ApplicationToken applicationToken;
-    4: uuid applicationId;
-    5: string applicationName;
+    2: uuid userIdOfActor;
+    3: uuid applicationId;
+    4: optional ApplicationToken applicationToken;
+    5: optional Application application;
+    6: optional User actor;
 }
 
 /**
@@ -68,7 +69,7 @@ struct ApplicationSentMessage
     2: optional Aroma.Message messageSentByApplication;
     /** The Application that sent the message. */
     3: uuid applicationId;
-    4: string applicationName;
+    4: optional Application application;
 }
 
 struct ApplicationDeleted

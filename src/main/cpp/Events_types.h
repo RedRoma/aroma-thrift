@@ -224,12 +224,13 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRenewed
 }
 
 typedef struct _ApplicationTokenRegenerated__isset {
-  _ApplicationTokenRegenerated__isset() : message(true), user(false), applicationToken(false), applicationId(false), applicationName(false) {}
+  _ApplicationTokenRegenerated__isset() : message(true), userIdOfActor(false), applicationId(false), applicationToken(false), application(false), actor(false) {}
   bool message :1;
-  bool user :1;
-  bool applicationToken :1;
+  bool userIdOfActor :1;
   bool applicationId :1;
-  bool applicationName :1;
+  bool applicationToken :1;
+  bool application :1;
+  bool actor :1;
 } _ApplicationTokenRegenerated__isset;
 
 class ApplicationTokenRegenerated {
@@ -237,27 +238,30 @@ class ApplicationTokenRegenerated {
 
   ApplicationTokenRegenerated(const ApplicationTokenRegenerated&);
   ApplicationTokenRegenerated& operator=(const ApplicationTokenRegenerated&);
-  ApplicationTokenRegenerated() : message("Application Token has been re-created"), applicationId(), applicationName() {
+  ApplicationTokenRegenerated() : message("Application Token has been re-created"), userIdOfActor(), applicationId() {
   }
 
   virtual ~ApplicationTokenRegenerated() throw();
   std::string message;
-  User user;
-  ApplicationToken applicationToken;
+  uuid userIdOfActor;
   uuid applicationId;
-  std::string applicationName;
+  ApplicationToken applicationToken;
+  Application application;
+  User actor;
 
   _ApplicationTokenRegenerated__isset __isset;
 
   void __set_message(const std::string& val);
 
-  void __set_user(const User& val);
-
-  void __set_applicationToken(const ApplicationToken& val);
+  void __set_userIdOfActor(const uuid& val);
 
   void __set_applicationId(const uuid& val);
 
-  void __set_applicationName(const std::string& val);
+  void __set_applicationToken(const ApplicationToken& val);
+
+  void __set_application(const Application& val);
+
+  void __set_actor(const User& val);
 
   bool operator == (const ApplicationTokenRegenerated & rhs) const
   {
@@ -265,15 +269,21 @@ class ApplicationTokenRegenerated {
       return false;
     else if (__isset.message && !(message == rhs.message))
       return false;
-    if (!(user == rhs.user))
+    if (!(userIdOfActor == rhs.userIdOfActor))
+      return false;
+    if (!(applicationId == rhs.applicationId))
       return false;
     if (__isset.applicationToken != rhs.__isset.applicationToken)
       return false;
     else if (__isset.applicationToken && !(applicationToken == rhs.applicationToken))
       return false;
-    if (!(applicationId == rhs.applicationId))
+    if (__isset.application != rhs.__isset.application)
       return false;
-    if (!(applicationName == rhs.applicationName))
+    else if (__isset.application && !(application == rhs.application))
+      return false;
+    if (__isset.actor != rhs.__isset.actor)
+      return false;
+    else if (__isset.actor && !(actor == rhs.actor))
       return false;
     return true;
   }
@@ -298,11 +308,11 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationTokenRegener
 }
 
 typedef struct _ApplicationSentMessage__isset {
-  _ApplicationSentMessage__isset() : message(true), messageSentByApplication(false), applicationId(false), applicationName(false) {}
+  _ApplicationSentMessage__isset() : message(true), messageSentByApplication(false), applicationId(false), application(false) {}
   bool message :1;
   bool messageSentByApplication :1;
   bool applicationId :1;
-  bool applicationName :1;
+  bool application :1;
 } _ApplicationSentMessage__isset;
 
 class ApplicationSentMessage {
@@ -310,14 +320,14 @@ class ApplicationSentMessage {
 
   ApplicationSentMessage(const ApplicationSentMessage&);
   ApplicationSentMessage& operator=(const ApplicationSentMessage&);
-  ApplicationSentMessage() : message("Application has sent an Alert"), applicationId(), applicationName() {
+  ApplicationSentMessage() : message("Application has sent an Alert"), applicationId() {
   }
 
   virtual ~ApplicationSentMessage() throw();
   std::string message;
    ::tech::aroma::thrift::Message messageSentByApplication;
   uuid applicationId;
-  std::string applicationName;
+  Application application;
 
   _ApplicationSentMessage__isset __isset;
 
@@ -327,7 +337,7 @@ class ApplicationSentMessage {
 
   void __set_applicationId(const uuid& val);
 
-  void __set_applicationName(const std::string& val);
+  void __set_application(const Application& val);
 
   bool operator == (const ApplicationSentMessage & rhs) const
   {
@@ -341,7 +351,9 @@ class ApplicationSentMessage {
       return false;
     if (!(applicationId == rhs.applicationId))
       return false;
-    if (!(applicationName == rhs.applicationName))
+    if (__isset.application != rhs.__isset.application)
+      return false;
+    else if (__isset.application && !(application == rhs.application))
       return false;
     return true;
   }
