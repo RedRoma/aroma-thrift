@@ -47,6 +47,8 @@ class ApplicationDeleted;
 
 class ApplicationFollowed;
 
+class ApplicationUnfollowed;
+
 class HealthCheckFailed;
 
 class HealthCheckBackToNormal;
@@ -395,6 +397,54 @@ inline std::ostream& operator<<(std::ostream& out, const ApplicationFollowed& ob
   return out;
 }
 
+typedef struct _ApplicationUnfollowed__isset {
+  _ApplicationUnfollowed__isset() : message(true) {}
+  bool message :1;
+} _ApplicationUnfollowed__isset;
+
+class ApplicationUnfollowed {
+ public:
+
+  ApplicationUnfollowed(const ApplicationUnfollowed&);
+  ApplicationUnfollowed& operator=(const ApplicationUnfollowed&);
+  ApplicationUnfollowed() : message("Application Unfollowed") {
+  }
+
+  virtual ~ApplicationUnfollowed() throw();
+  std::string message;
+
+  _ApplicationUnfollowed__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const ApplicationUnfollowed & rhs) const
+  {
+    if (__isset.message != rhs.__isset.message)
+      return false;
+    else if (__isset.message && !(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const ApplicationUnfollowed &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const ApplicationUnfollowed & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(ApplicationUnfollowed &a, ApplicationUnfollowed &b);
+
+inline std::ostream& operator<<(std::ostream& out, const ApplicationUnfollowed& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 typedef struct _HealthCheckFailed__isset {
   _HealthCheckFailed__isset() : hostname(false), message(true) {}
   bool hostname :1;
@@ -658,7 +708,7 @@ inline std::ostream& operator<<(std::ostream& out, const GeneralEvent& obj)
 }
 
 typedef struct _EventType__isset {
-  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false) {}
+  _EventType__isset() : applicationMessageDeleted(false), healthCheckFailed(false), healthCheckBackToNormal(false), applicationFollowed(false), applicationDeleted(false), applicationTokenRenewed(false), applicationTokenRegenerated(false), applicationSentMessage(false), applicationUnfollowed(false), ownerApprovedRequest(false), ownerAdded(false), generalEvent(false) {}
   bool applicationMessageDeleted :1;
   bool healthCheckFailed :1;
   bool healthCheckBackToNormal :1;
@@ -667,6 +717,7 @@ typedef struct _EventType__isset {
   bool applicationTokenRenewed :1;
   bool applicationTokenRegenerated :1;
   bool applicationSentMessage :1;
+  bool applicationUnfollowed :1;
   bool ownerApprovedRequest :1;
   bool ownerAdded :1;
   bool generalEvent :1;
@@ -689,6 +740,7 @@ class EventType {
   ApplicationTokenRenewed applicationTokenRenewed;
   ApplicationTokenRegenerated applicationTokenRegenerated;
   ApplicationSentMessage applicationSentMessage;
+  ApplicationUnfollowed applicationUnfollowed;
   OwnerApprovedRequest ownerApprovedRequest;
   OwnerAdded ownerAdded;
   GeneralEvent generalEvent;
@@ -710,6 +762,8 @@ class EventType {
   void __set_applicationTokenRegenerated(const ApplicationTokenRegenerated& val);
 
   void __set_applicationSentMessage(const ApplicationSentMessage& val);
+
+  void __set_applicationUnfollowed(const ApplicationUnfollowed& val);
 
   void __set_ownerApprovedRequest(const OwnerApprovedRequest& val);
 
@@ -734,6 +788,8 @@ class EventType {
     if (!(applicationTokenRegenerated == rhs.applicationTokenRegenerated))
       return false;
     if (!(applicationSentMessage == rhs.applicationSentMessage))
+      return false;
+    if (!(applicationUnfollowed == rhs.applicationUnfollowed))
       return false;
     if (!(ownerApprovedRequest == rhs.ownerApprovedRequest))
       return false;

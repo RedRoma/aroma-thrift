@@ -2379,6 +2379,7 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 + (AromaService_int) MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
 + (AromaService_int) MAX_MESSAGE_LENGTH;
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME;
++ (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME;
 + (AromaService_int) APPLICATION_NAME_MAX_LENGTH;
 + (AromaService_int) APPLICATION_MAX_OWNERS;
 @end

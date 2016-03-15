@@ -67,6 +67,11 @@ struct ApplicationFollowed
     1: optional string message = "Application Followed"
 }
 
+struct ApplicationUnfollowed
+{
+    1: optional string message = "Application Unfollowed"
+}
+
 /**
  * A Health Poke returned a failure.
  */
@@ -125,6 +130,7 @@ union EventType
     6 : ApplicationTokenRenewed applicationTokenRenewed;
     7 : ApplicationTokenRegenerated applicationTokenRegenerated;
     8 : ApplicationSentMessage applicationSentMessage;
+    12: ApplicationUnfollowed applicationUnfollowed;
     9 : OwnerApprovedRequest ownerApprovedRequest;
     10: OwnerAdded ownerAdded;
     11: GeneralEvent generalEvent;

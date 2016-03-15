@@ -57,6 +57,12 @@ AromaServiceConstants::AromaServiceConstants() {
   DEFAULT_INBOX_LIFETIME.value = tmp233;
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
+   ::tech::aroma::thrift::long tmp234;
+  tmp234 = 2LL;
+
+  DEFAULT_ACTIVITY_LIFETIME.value = tmp234;
+  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)6;
+
   APPLICATION_NAME_MAX_LENGTH = 20;
 
   APPLICATION_MAX_OWNERS = 10;

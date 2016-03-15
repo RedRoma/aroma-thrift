@@ -245,6 +245,32 @@ typedef Aroma_Application * AromaEvents_Application;
 
 @end
 
+@interface AromaEvents_ApplicationUnfollowed : NSObject <TBase, NSCoding> {
+  NSString * __message;
+
+  BOOL __message_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=message, setter=setMessage:) NSString * message;
+#endif
+
+- (id) init;
+- (id) initWithMessage: (NSString *) message;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (NSString *) message;
+- (void) setMessage: (NSString *) message;
+#endif
+- (BOOL) messageIsSet;
+
+@end
+
 @interface AromaEvents_HealthCheckFailed : NSObject <TBase, NSCoding> {
   NSString * __hostname;
   NSString * __message;
@@ -411,6 +437,7 @@ typedef Aroma_Application * AromaEvents_Application;
   AromaEvents_ApplicationTokenRenewed * __applicationTokenRenewed;
   AromaEvents_ApplicationTokenRegenerated * __applicationTokenRegenerated;
   AromaEvents_ApplicationSentMessage * __applicationSentMessage;
+  AromaEvents_ApplicationUnfollowed * __applicationUnfollowed;
   AromaEvents_OwnerApprovedRequest * __ownerApprovedRequest;
   AromaEvents_OwnerAdded * __ownerAdded;
   AromaEvents_GeneralEvent * __generalEvent;
@@ -423,6 +450,7 @@ typedef Aroma_Application * AromaEvents_Application;
   BOOL __applicationTokenRenewed_isset;
   BOOL __applicationTokenRegenerated_isset;
   BOOL __applicationSentMessage_isset;
+  BOOL __applicationUnfollowed_isset;
   BOOL __ownerApprovedRequest_isset;
   BOOL __ownerAdded_isset;
   BOOL __generalEvent_isset;
@@ -437,13 +465,14 @@ typedef Aroma_Application * AromaEvents_Application;
 @property (nonatomic, retain, getter=applicationTokenRenewed, setter=setApplicationTokenRenewed:) AromaEvents_ApplicationTokenRenewed * applicationTokenRenewed;
 @property (nonatomic, retain, getter=applicationTokenRegenerated, setter=setApplicationTokenRegenerated:) AromaEvents_ApplicationTokenRegenerated * applicationTokenRegenerated;
 @property (nonatomic, retain, getter=applicationSentMessage, setter=setApplicationSentMessage:) AromaEvents_ApplicationSentMessage * applicationSentMessage;
+@property (nonatomic, retain, getter=applicationUnfollowed, setter=setApplicationUnfollowed:) AromaEvents_ApplicationUnfollowed * applicationUnfollowed;
 @property (nonatomic, retain, getter=ownerApprovedRequest, setter=setOwnerApprovedRequest:) AromaEvents_OwnerApprovedRequest * ownerApprovedRequest;
 @property (nonatomic, retain, getter=ownerAdded, setter=setOwnerAdded:) AromaEvents_OwnerAdded * ownerAdded;
 @property (nonatomic, retain, getter=generalEvent, setter=setGeneralEvent:) AromaEvents_GeneralEvent * generalEvent;
 #endif
 
 - (id) init;
-- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent;
+- (id) initWithApplicationMessageDeleted: (AromaEvents_ApplicationMessagesDeleted *) applicationMessageDeleted healthCheckFailed: (AromaEvents_HealthCheckFailed *) healthCheckFailed healthCheckBackToNormal: (AromaEvents_HealthCheckBackToNormal *) healthCheckBackToNormal applicationFollowed: (AromaEvents_ApplicationFollowed *) applicationFollowed applicationDeleted: (AromaEvents_ApplicationDeleted *) applicationDeleted applicationTokenRenewed: (AromaEvents_ApplicationTokenRenewed *) applicationTokenRenewed applicationTokenRegenerated: (AromaEvents_ApplicationTokenRegenerated *) applicationTokenRegenerated applicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage applicationUnfollowed: (AromaEvents_ApplicationUnfollowed *) applicationUnfollowed ownerApprovedRequest: (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest ownerAdded: (AromaEvents_OwnerAdded *) ownerAdded generalEvent: (AromaEvents_GeneralEvent *) generalEvent;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -497,6 +526,12 @@ typedef Aroma_Application * AromaEvents_Application;
 - (void) setApplicationSentMessage: (AromaEvents_ApplicationSentMessage *) applicationSentMessage;
 #endif
 - (BOOL) applicationSentMessageIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaEvents_ApplicationUnfollowed *) applicationUnfollowed;
+- (void) setApplicationUnfollowed: (AromaEvents_ApplicationUnfollowed *) applicationUnfollowed;
+#endif
+- (BOOL) applicationUnfollowedIsSet;
 
 #if !__has_feature(objc_arc)
 - (AromaEvents_OwnerApprovedRequest *) ownerApprovedRequest;

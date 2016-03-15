@@ -13894,6 +13894,7 @@ static AromaService_int AromaService_MAX_APPLICATION_ICON_SIZE_IN_KILOBYTES = 10
 static AromaService_int AromaService_MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES = 100;
 static AromaService_int AromaService_MAX_MESSAGE_LENGTH = 5000;
 static Aroma_LengthOfTime * AromaService_DEFAULT_INBOX_LIFETIME;
+static Aroma_LengthOfTime * AromaService_DEFAULT_ACTIVITY_LIFETIME;
 static AromaService_int AromaService_APPLICATION_NAME_MAX_LENGTH = 20;
 static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
@@ -13922,6 +13923,11 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
   AromaService_DEFAULT_INBOX_LIFETIME = [[Aroma_LengthOfTime alloc] init];
   [AromaService_DEFAULT_INBOX_LIFETIME setValue:3];
   [AromaService_DEFAULT_INBOX_LIFETIME setUnit:5];
+
+;
+  AromaService_DEFAULT_ACTIVITY_LIFETIME = [[Aroma_LengthOfTime alloc] init];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setValue:2];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setUnit:6];
 
 ;
 }
@@ -13954,6 +13960,9 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 }
 + (Aroma_LengthOfTime *) DEFAULT_INBOX_LIFETIME{
   return AromaService_DEFAULT_INBOX_LIFETIME;
+}
++ (Aroma_LengthOfTime *) DEFAULT_ACTIVITY_LIFETIME{
+  return AromaService_DEFAULT_ACTIVITY_LIFETIME;
 }
 + (AromaService_int) APPLICATION_NAME_MAX_LENGTH{
   return AromaService_APPLICATION_NAME_MAX_LENGTH;

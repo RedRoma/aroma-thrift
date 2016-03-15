@@ -411,6 +411,59 @@ ApplicationFollowed.prototype.write = function(output) {
   return;
 };
 
+ApplicationUnfollowed = function(args) {
+  this.message = 'Application Unfollowed';
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+ApplicationUnfollowed.prototype = {};
+ApplicationUnfollowed.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+ApplicationUnfollowed.prototype.write = function(output) {
+  output.writeStructBegin('ApplicationUnfollowed');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 HealthCheckFailed = function(args) {
   this.hostname = null;
   this.message = 'Application failed a Health Check';
@@ -728,6 +781,7 @@ EventType = function(args) {
   this.applicationTokenRenewed = null;
   this.applicationTokenRegenerated = null;
   this.applicationSentMessage = null;
+  this.applicationUnfollowed = null;
   this.ownerApprovedRequest = null;
   this.ownerAdded = null;
   this.generalEvent = null;
@@ -755,6 +809,9 @@ EventType = function(args) {
     }
     if (args.applicationSentMessage !== undefined && args.applicationSentMessage !== null) {
       this.applicationSentMessage = new ApplicationSentMessage(args.applicationSentMessage);
+    }
+    if (args.applicationUnfollowed !== undefined && args.applicationUnfollowed !== null) {
+      this.applicationUnfollowed = new ApplicationUnfollowed(args.applicationUnfollowed);
     }
     if (args.ownerApprovedRequest !== undefined && args.ownerApprovedRequest !== null) {
       this.ownerApprovedRequest = new OwnerApprovedRequest(args.ownerApprovedRequest);
@@ -845,6 +902,14 @@ EventType.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 12:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.applicationUnfollowed = new ApplicationUnfollowed();
+        this.applicationUnfollowed.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
       case 9:
       if (ftype == Thrift.Type.STRUCT) {
         this.ownerApprovedRequest = new OwnerApprovedRequest();
@@ -918,6 +983,11 @@ EventType.prototype.write = function(output) {
   if (this.applicationSentMessage !== null && this.applicationSentMessage !== undefined) {
     output.writeFieldBegin('applicationSentMessage', Thrift.Type.STRUCT, 8);
     this.applicationSentMessage.write(output);
+    output.writeFieldEnd();
+  }
+  if (this.applicationUnfollowed !== null && this.applicationUnfollowed !== undefined) {
+    output.writeFieldBegin('applicationUnfollowed', Thrift.Type.STRUCT, 12);
+    this.applicationUnfollowed.write(output);
     output.writeFieldEnd();
   }
   if (this.ownerApprovedRequest !== null && this.ownerApprovedRequest !== undefined) {

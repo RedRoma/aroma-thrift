@@ -25,6 +25,7 @@ class AromaServiceConstants {
   int MAX_PROFILE_PICTURE_SIZE_IN_KILOBYTES;
   int MAX_MESSAGE_LENGTH;
    ::tech::aroma::thrift::LengthOfTime DEFAULT_INBOX_LIFETIME;
+   ::tech::aroma::thrift::LengthOfTime DEFAULT_ACTIVITY_LIFETIME;
   int APPLICATION_NAME_MAX_LENGTH;
   int APPLICATION_MAX_OWNERS;
 };
