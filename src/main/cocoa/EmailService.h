@@ -69,20 +69,23 @@ typedef AromaException_UnauthorizedException * EmailService_UnauthorizedExceptio
   EmailService_AuthenticationToken __token;
   NSString * __emailAddress;
   EmailService_EmailMessage __emailMessage;
+  NSString * __subject;
 
   BOOL __token_isset;
   BOOL __emailAddress_isset;
   BOOL __emailMessage_isset;
+  BOOL __subject_isset;
 }
 
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 @property (nonatomic, retain, getter=token, setter=setToken:) EmailService_AuthenticationToken token;
 @property (nonatomic, retain, getter=emailAddress, setter=setEmailAddress:) NSString * emailAddress;
 @property (nonatomic, retain, getter=emailMessage, setter=setEmailMessage:) EmailService_EmailMessage emailMessage;
+@property (nonatomic, retain, getter=subject, setter=setSubject:) NSString * subject;
 #endif
 
 - (id) init;
-- (id) initWithToken: (EmailService_AuthenticationToken) token emailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage;
+- (id) initWithToken: (EmailService_AuthenticationToken) token emailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage subject: (NSString *) subject;
 
 - (void) read: (id <TProtocol>) inProtocol;
 - (void) write: (id <TProtocol>) outProtocol;
@@ -106,6 +109,12 @@ typedef AromaException_UnauthorizedException * EmailService_UnauthorizedExceptio
 - (void) setEmailMessage: (EmailService_EmailMessage) emailMessage;
 #endif
 - (BOOL) emailMessageIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSString *) subject;
+- (void) setSubject: (NSString *) subject;
+#endif
+- (BOOL) subjectIsSet;
 
 @end
 

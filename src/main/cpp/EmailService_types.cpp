@@ -30,6 +30,11 @@ void SendEmailRequest::__set_emailMessage(const EmailMessage& val) {
   this->emailMessage = val;
 }
 
+void SendEmailRequest::__set_subject(const std::string& val) {
+  this->subject = val;
+__isset.subject = true;
+}
+
 uint32_t SendEmailRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -75,6 +80,14 @@ uint32_t SendEmailRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->subject);
+          this->__isset.subject = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -104,6 +117,11 @@ uint32_t SendEmailRequest::write(::apache::thrift::protocol::TProtocol* oprot) c
   xfer += this->emailMessage.write(oprot);
   xfer += oprot->writeFieldEnd();
 
+  if (this->__isset.subject) {
+    xfer += oprot->writeFieldBegin("subject", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->subject);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -114,6 +132,7 @@ void swap(SendEmailRequest &a, SendEmailRequest &b) {
   swap(a.token, b.token);
   swap(a.emailAddress, b.emailAddress);
   swap(a.emailMessage, b.emailMessage);
+  swap(a.subject, b.subject);
   swap(a.__isset, b.__isset);
 }
 
@@ -121,12 +140,14 @@ SendEmailRequest::SendEmailRequest(const SendEmailRequest& other0) {
   token = other0.token;
   emailAddress = other0.emailAddress;
   emailMessage = other0.emailMessage;
+  subject = other0.subject;
   __isset = other0.__isset;
 }
 SendEmailRequest& SendEmailRequest::operator=(const SendEmailRequest& other1) {
   token = other1.token;
   emailAddress = other1.emailAddress;
   emailMessage = other1.emailMessage;
+  subject = other1.subject;
   __isset = other1.__isset;
   return *this;
 }
@@ -136,6 +157,7 @@ void SendEmailRequest::printTo(std::ostream& out) const {
   out << "token=" << to_string(token);
   out << ", " << "emailAddress=" << to_string(emailAddress);
   out << ", " << "emailMessage=" << to_string(emailMessage);
+  out << ", " << "subject="; (__isset.subject ? (out << to_string(subject)) : (out << "<null>"));
   out << ")";
 }
 

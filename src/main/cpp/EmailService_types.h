@@ -70,10 +70,11 @@ class SendEmailRequest;
 class SendEmailResponse;
 
 typedef struct _SendEmailRequest__isset {
-  _SendEmailRequest__isset() : token(false), emailAddress(false), emailMessage(false) {}
+  _SendEmailRequest__isset() : token(false), emailAddress(false), emailMessage(false), subject(true) {}
   bool token :1;
   bool emailAddress :1;
   bool emailMessage :1;
+  bool subject :1;
 } _SendEmailRequest__isset;
 
 class SendEmailRequest {
@@ -81,13 +82,14 @@ class SendEmailRequest {
 
   SendEmailRequest(const SendEmailRequest&);
   SendEmailRequest& operator=(const SendEmailRequest&);
-  SendEmailRequest() : emailAddress() {
+  SendEmailRequest() : emailAddress(), subject("New Message - Aroma") {
   }
 
   virtual ~SendEmailRequest() throw();
   AuthenticationToken token;
   std::string emailAddress;
   EmailMessage emailMessage;
+  std::string subject;
 
   _SendEmailRequest__isset __isset;
 
@@ -97,6 +99,8 @@ class SendEmailRequest {
 
   void __set_emailMessage(const EmailMessage& val);
 
+  void __set_subject(const std::string& val);
+
   bool operator == (const SendEmailRequest & rhs) const
   {
     if (!(token == rhs.token))
@@ -104,6 +108,10 @@ class SendEmailRequest {
     if (!(emailAddress == rhs.emailAddress))
       return false;
     if (!(emailMessage == rhs.emailMessage))
+      return false;
+    if (__isset.subject != rhs.__isset.subject)
+      return false;
+    else if (__isset.subject && !(subject == rhs.subject))
       return false;
     return true;
   }

@@ -63,6 +63,7 @@ struct SendEmailRequest
     1: AuthenticationToken token;
     2: string emailAddress;
     3: EmailMessage emailMessage;
+    4: optional string subject = "New Message - Aroma"
 }
 
 struct SendEmailResponse
