@@ -123,6 +123,19 @@ struct CheckExistsResponse
     2: optional string message;
 }
 
+struct DeleteActivityRequest
+{
+    1: UserToken token;
+    2: uuid eventId;
+    3: optional bool deleteAll = false;
+    4: optional list<uuid> multipleEventIds;
+}
+
+struct DeleteActivityResponse
+{
+    1: optional int totalEventsDeleted = 0;
+}
+
 struct DeleteApplicationRequest
 {
     1: UserToken token;

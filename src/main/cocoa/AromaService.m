@@ -379,6 +379,493 @@
 
 @end
 
+@implementation AromaService_DeleteActivityRequest
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.deleteAll = NO;
+
+#endif
+  return self;
+}
+
+- (id) initWithToken: (AromaService_UserToken) token eventId: (AromaService_uuid) eventId deleteAll: (BOOL) deleteAll multipleEventIds: (NSMutableArray *) multipleEventIds
+{
+  self = [super init];
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __eventId = [eventId retain_stub];
+  __eventId_isset = YES;
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
+  __multipleEventIds = [multipleEventIds retain_stub];
+  __multipleEventIds_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"eventId"])
+  {
+    __eventId = [[decoder decodeObjectForKey: @"eventId"] retain_stub];
+    __eventId_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"deleteAll"])
+  {
+    __deleteAll = [decoder decodeBoolForKey: @"deleteAll"];
+    __deleteAll_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"multipleEventIds"])
+  {
+    __multipleEventIds = [[decoder decodeObjectForKey: @"multipleEventIds"] retain_stub];
+    __multipleEventIds_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__eventId_isset)
+  {
+    [encoder encodeObject: __eventId forKey: @"eventId"];
+  }
+  if (__deleteAll_isset)
+  {
+    [encoder encodeBool: __deleteAll forKey: @"deleteAll"];
+  }
+  if (__multipleEventIds_isset)
+  {
+    [encoder encodeObject: __multipleEventIds forKey: @"multipleEventIds"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __eventId_isset ? 2654435761 : 0;
+  if (__eventId_isset)
+  {
+    hash = (hash * 31) ^ [__eventId hash];
+  }
+  hash = (hash * 31) ^ __deleteAll_isset ? 2654435761 : 0;
+  if (__deleteAll_isset)
+  {
+    hash = (hash * 31) ^ [@(__deleteAll) hash];
+  }
+  hash = (hash * 31) ^ __multipleEventIds_isset ? 2654435761 : 0;
+  if (__multipleEventIds_isset)
+  {
+    hash = (hash * 31) ^ [__multipleEventIds hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_DeleteActivityRequest class]]) {
+    return NO;
+  }
+  AromaService_DeleteActivityRequest *other = (AromaService_DeleteActivityRequest *)anObject;
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__eventId_isset != other->__eventId_isset) ||
+      (__eventId_isset && ((__eventId || other->__eventId) && ![__eventId isEqual:other->__eventId]))) {
+    return NO;
+  }
+  if ((__deleteAll_isset != other->__deleteAll_isset) ||
+      (__deleteAll_isset && (__deleteAll != other->__deleteAll))) {
+    return NO;
+  }
+  if ((__multipleEventIds_isset != other->__multipleEventIds_isset) ||
+      (__multipleEventIds_isset && ((__multipleEventIds || other->__multipleEventIds) && ![__multipleEventIds isEqual:other->__multipleEventIds]))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__token release_stub];
+  [__eventId release_stub];
+  [__multipleEventIds release_stub];
+  [super dealloc_stub];
+}
+
+- (BananaAuthentication_UserToken *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (BananaAuthentication_UserToken *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (NSString *) eventId {
+  return [[__eventId retain_stub] autorelease_stub];
+}
+
+- (void) setEventId: (NSString *) eventId {
+  [eventId retain_stub];
+  [__eventId release_stub];
+  __eventId = eventId;
+  __eventId_isset = YES;
+}
+
+- (BOOL) eventIdIsSet {
+  return __eventId_isset;
+}
+
+- (void) unsetEventId {
+  [__eventId release_stub];
+  __eventId = nil;
+  __eventId_isset = NO;
+}
+
+- (BOOL) deleteAll {
+  return __deleteAll;
+}
+
+- (void) setDeleteAll: (BOOL) deleteAll {
+  __deleteAll = deleteAll;
+  __deleteAll_isset = YES;
+}
+
+- (BOOL) deleteAllIsSet {
+  return __deleteAll_isset;
+}
+
+- (void) unsetDeleteAll {
+  __deleteAll_isset = NO;
+}
+
+- (NSMutableArray *) multipleEventIds {
+  return [[__multipleEventIds retain_stub] autorelease_stub];
+}
+
+- (void) setMultipleEventIds: (NSMutableArray *) multipleEventIds {
+  [multipleEventIds retain_stub];
+  [__multipleEventIds release_stub];
+  __multipleEventIds = multipleEventIds;
+  __multipleEventIds_isset = YES;
+}
+
+- (BOOL) multipleEventIdsIsSet {
+  return __multipleEventIds_isset;
+}
+
+- (void) unsetMultipleEventIds {
+  [__multipleEventIds release_stub];
+  __multipleEventIds = nil;
+  __multipleEventIds_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          BananaAuthentication_UserToken *fieldValue = [[BananaAuthentication_UserToken alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setEventId: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_BOOL) {
+          BOOL fieldValue = [inProtocol readBool];
+          [self setDeleteAll: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 4:
+        if (fieldType == TType_LIST) {
+          int _size0;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
+          int _i1;
+          for (_i1 = 0; _i1 < _size0; ++_i1)
+          {
+            NSString * _elem2 = [inProtocol readString];
+            [fieldValue addObject: _elem2];
+          }
+          [inProtocol readListEnd];
+          [self setMultipleEventIds: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteActivityRequest"];
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRUCT fieldID: 1];
+      [__token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__eventId_isset) {
+    if (__eventId != nil) {
+      [outProtocol writeFieldBeginWithName: @"eventId" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __eventId];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__deleteAll_isset) {
+    [outProtocol writeFieldBeginWithName: @"deleteAll" type: TType_BOOL fieldID: 3];
+    [outProtocol writeBool: __deleteAll];
+    [outProtocol writeFieldEnd];
+  }
+  if (__multipleEventIds_isset) {
+    if (__multipleEventIds != nil) {
+      [outProtocol writeFieldBeginWithName: @"multipleEventIds" type: TType_LIST fieldID: 4];
+      {
+        [outProtocol writeListBeginWithElementType: TType_STRING size: [__multipleEventIds count]];
+        int idx4;
+        for (idx4 = 0; idx4 < [__multipleEventIds count]; idx4++)
+        {
+          [outProtocol writeString: [__multipleEventIds objectAtIndex: idx4]];
+        }
+        [outProtocol writeListEnd];
+      }
+      [outProtocol writeFieldEnd];
+    }
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteActivityRequest("];
+  [ms appendString: @"token:"];
+  [ms appendFormat: @"%@", __token];
+  [ms appendString: @",eventId:"];
+  [ms appendFormat: @"\"%@\"", __eventId];
+  [ms appendString: @",deleteAll:"];
+  [ms appendFormat: @"%i", __deleteAll];
+  [ms appendString: @",multipleEventIds:"];
+  [ms appendFormat: @"%@", __multipleEventIds];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
+@implementation AromaService_DeleteActivityResponse
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+  self.totalEventsDeleted = 0;
+
+#endif
+  return self;
+}
+
+- (id) initWithTotalEventsDeleted: (AromaService_int) totalEventsDeleted
+{
+  self = [super init];
+  __totalEventsDeleted = totalEventsDeleted;
+  __totalEventsDeleted_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"totalEventsDeleted"])
+  {
+    __totalEventsDeleted = [decoder decodeInt32ForKey: @"totalEventsDeleted"];
+    __totalEventsDeleted_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__totalEventsDeleted_isset)
+  {
+    [encoder encodeInt32: __totalEventsDeleted forKey: @"totalEventsDeleted"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __totalEventsDeleted_isset ? 2654435761 : 0;
+  if (__totalEventsDeleted_isset)
+  {
+    hash = (hash * 31) ^ [@(__totalEventsDeleted) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[AromaService_DeleteActivityResponse class]]) {
+    return NO;
+  }
+  AromaService_DeleteActivityResponse *other = (AromaService_DeleteActivityResponse *)anObject;
+  if ((__totalEventsDeleted_isset != other->__totalEventsDeleted_isset) ||
+      (__totalEventsDeleted_isset && (__totalEventsDeleted != other->__totalEventsDeleted))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [super dealloc_stub];
+}
+
+- (int32_t) totalEventsDeleted {
+  return __totalEventsDeleted;
+}
+
+- (void) setTotalEventsDeleted: (int32_t) totalEventsDeleted {
+  __totalEventsDeleted = totalEventsDeleted;
+  __totalEventsDeleted_isset = YES;
+}
+
+- (BOOL) totalEventsDeletedIsSet {
+  return __totalEventsDeleted_isset;
+}
+
+- (void) unsetTotalEventsDeleted {
+  __totalEventsDeleted_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setTotalEventsDeleted: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"DeleteActivityResponse"];
+  if (__totalEventsDeleted_isset) {
+    [outProtocol writeFieldBeginWithName: @"totalEventsDeleted" type: TType_I32 fieldID: 1];
+    [outProtocol writeI32: __totalEventsDeleted];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"AromaService_DeleteActivityResponse("];
+  [ms appendString: @"totalEventsDeleted:"];
+  [ms appendFormat: @"%i", __totalEventsDeleted];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation AromaService_DeleteApplicationRequest
 
 - (id) init
@@ -1043,14 +1530,14 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size0;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size0];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size0];
-          int _i1;
-          for (_i1 = 0; _i1 < _size0; ++_i1)
+          int _size5;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
+          int _i6;
+          for (_i6 = 0; _i6 < _size5; ++_i6)
           {
-            NSString * _elem2 = [inProtocol readString];
-            [fieldValue addObject: _elem2];
+            NSString * _elem7 = [inProtocol readString];
+            [fieldValue addObject: _elem7];
           }
           [inProtocol readListEnd];
           [self setMessageIds: fieldValue];
@@ -1104,10 +1591,10 @@
       [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx4;
-        for (idx4 = 0; idx4 < [__messageIds count]; idx4++)
+        int idx9;
+        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
         {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx4]];
+          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
         }
         [outProtocol writeListEnd];
       }
@@ -1591,14 +2078,14 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size5;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size5];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size5];
-          int _i6;
-          for (_i6 = 0; _i6 < _size5; ++_i6)
+          int _size10;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size10];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size10];
+          int _i11;
+          for (_i11 = 0; _i11 < _size10; ++_i11)
           {
-            NSString * _elem7 = [inProtocol readString];
-            [fieldValue addObject: _elem7];
+            NSString * _elem12 = [inProtocol readString];
+            [fieldValue addObject: _elem12];
           }
           [inProtocol readListEnd];
           [self setMessageIds: fieldValue];
@@ -1652,10 +2139,10 @@
       [outProtocol writeFieldBeginWithName: @"messageIds" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRING size: [__messageIds count]];
-        int idx9;
-        for (idx9 = 0; idx9 < [__messageIds count]; idx9++)
+        int idx14;
+        for (idx14 = 0; idx14 < [__messageIds count]; idx14++)
         {
-          [outProtocol writeString: [__messageIds objectAtIndex: idx9]];
+          [outProtocol writeString: [__messageIds objectAtIndex: idx14]];
         }
         [outProtocol writeListEnd];
       }
@@ -2278,14 +2765,14 @@
         break;
       case 6:
         if (fieldType == TType_SET) {
-          int _size10;
-          [inProtocol readSetBeginReturningElementType: NULL size: &_size10];
-          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size10];
-          int _i11;
-          for (_i11 = 0; _i11 < _size10; ++_i11)
+          int _size15;
+          [inProtocol readSetBeginReturningElementType: NULL size: &_size15];
+          NSMutableSet * fieldValue = [[NSMutableSet alloc] initWithCapacity: _size15];
+          int _i16;
+          for (_i16 = 0; _i16 < _size15; ++_i16)
           {
-            NSString * _elem12 = [inProtocol readString];
-            [fieldValue addObject: _elem12];
+            NSString * _elem17 = [inProtocol readString];
+            [fieldValue addObject: _elem17];
           }
           [inProtocol readSetEnd];
           [self setOwners: fieldValue];
@@ -2359,11 +2846,11 @@
       [outProtocol writeFieldBeginWithName: @"owners" type: TType_SET fieldID: 6];
       {
         [outProtocol writeSetBeginWithElementType: TType_STRING size: [__owners count]];
-        NSEnumerator * _iter13 = [__owners objectEnumerator];
-        id obj14;
-        while ((obj14 = [_iter13 nextObject]))
+        NSEnumerator * _iter18 = [__owners objectEnumerator];
+        id obj19;
+        while ((obj19 = [_iter18 nextObject]))
         {
-          [outProtocol writeString: obj14];
+          [outProtocol writeString: obj19];
         }
         [outProtocol writeSetEnd];
       }
@@ -8290,16 +8777,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size15;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size15];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size15];
-          int _i16;
-          for (_i16 = 0; _i16 < _size15; ++_i16)
+          int _size20;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
+          int _i21;
+          for (_i21 = 0; _i21 < _size20; ++_i21)
           {
-            AromaChannels_AromaChannel *_elem17 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem17 read: inProtocol];
-            [fieldValue addObject: _elem17];
-            [_elem17 release_stub];
+            AromaChannels_AromaChannel *_elem22 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem22 read: inProtocol];
+            [fieldValue addObject: _elem22];
+            [_elem22 release_stub];
           }
           [inProtocol readListEnd];
           [self setRegisteredChannels: fieldValue];
@@ -8331,10 +8818,10 @@
       [outProtocol writeFieldBeginWithName: @"registeredChannels" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__registeredChannels count]];
-        int idx19;
-        for (idx19 = 0; idx19 < [__registeredChannels count]; idx19++)
+        int idx24;
+        for (idx24 = 0; idx24 < [__registeredChannels count]; idx24++)
         {
-          [[__registeredChannels objectAtIndex: idx19] write: outProtocol];
+          [[__registeredChannels objectAtIndex: idx24] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8755,16 +9242,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size20;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size20];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size20];
-          int _i21;
-          for (_i21 = 0; _i21 < _size20; ++_i21)
+          int _size25;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size25];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size25];
+          int _i26;
+          for (_i26 = 0; _i26 < _size25; ++_i26)
           {
-            Aroma_User *_elem22 = [[Aroma_User alloc] init];
-            [_elem22 read: inProtocol];
-            [fieldValue addObject: _elem22];
-            [_elem22 release_stub];
+            Aroma_User *_elem27 = [[Aroma_User alloc] init];
+            [_elem27 read: inProtocol];
+            [fieldValue addObject: _elem27];
+            [_elem27 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshUsers: fieldValue];
@@ -8775,16 +9262,16 @@
         break;
       case 2:
         if (fieldType == TType_LIST) {
-          int _size23;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size23];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size23];
-          int _i24;
-          for (_i24 = 0; _i24 < _size23; ++_i24)
+          int _size28;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size28];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size28];
+          int _i29;
+          for (_i29 = 0; _i29 < _size28; ++_i29)
           {
-            Aroma_Application *_elem25 = [[Aroma_Application alloc] init];
-            [_elem25 read: inProtocol];
-            [fieldValue addObject: _elem25];
-            [_elem25 release_stub];
+            Aroma_Application *_elem30 = [[Aroma_Application alloc] init];
+            [_elem30 read: inProtocol];
+            [fieldValue addObject: _elem30];
+            [_elem30 release_stub];
           }
           [inProtocol readListEnd];
           [self setFreshApplications: fieldValue];
@@ -8795,16 +9282,16 @@
         break;
       case 3:
         if (fieldType == TType_LIST) {
-          int _size26;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size26];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size26];
-          int _i27;
-          for (_i27 = 0; _i27 < _size26; ++_i27)
+          int _size31;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size31];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size31];
+          int _i32;
+          for (_i32 = 0; _i32 < _size31; ++_i32)
           {
-            AromaEvents_HealthCheckFailed *_elem28 = [[AromaEvents_HealthCheckFailed alloc] init];
-            [_elem28 read: inProtocol];
-            [fieldValue addObject: _elem28];
-            [_elem28 release_stub];
+            AromaEvents_HealthCheckFailed *_elem33 = [[AromaEvents_HealthCheckFailed alloc] init];
+            [_elem33 read: inProtocol];
+            [fieldValue addObject: _elem33];
+            [_elem33 release_stub];
           }
           [inProtocol readListEnd];
           [self setFailedHealthChecks: fieldValue];
@@ -8815,16 +9302,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size29;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size29];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size29];
-          int _i30;
-          for (_i30 = 0; _i30 < _size29; ++_i30)
+          int _size34;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size34];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size34];
+          int _i35;
+          for (_i35 = 0; _i35 < _size34; ++_i35)
           {
-            AromaEvents_Event *_elem31 = [[AromaEvents_Event alloc] init];
-            [_elem31 read: inProtocol];
-            [fieldValue addObject: _elem31];
-            [_elem31 release_stub];
+            AromaEvents_Event *_elem36 = [[AromaEvents_Event alloc] init];
+            [_elem36 read: inProtocol];
+            [fieldValue addObject: _elem36];
+            [_elem36 release_stub];
           }
           [inProtocol readListEnd];
           [self setGeneralEvents: fieldValue];
@@ -8849,10 +9336,10 @@
       [outProtocol writeFieldBeginWithName: @"freshUsers" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshUsers count]];
-        int idx33;
-        for (idx33 = 0; idx33 < [__freshUsers count]; idx33++)
+        int idx38;
+        for (idx38 = 0; idx38 < [__freshUsers count]; idx38++)
         {
-          [[__freshUsers objectAtIndex: idx33] write: outProtocol];
+          [[__freshUsers objectAtIndex: idx38] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8864,10 +9351,10 @@
       [outProtocol writeFieldBeginWithName: @"freshApplications" type: TType_LIST fieldID: 2];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__freshApplications count]];
-        int idx35;
-        for (idx35 = 0; idx35 < [__freshApplications count]; idx35++)
+        int idx40;
+        for (idx40 = 0; idx40 < [__freshApplications count]; idx40++)
         {
-          [[__freshApplications objectAtIndex: idx35] write: outProtocol];
+          [[__freshApplications objectAtIndex: idx40] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8879,10 +9366,10 @@
       [outProtocol writeFieldBeginWithName: @"failedHealthChecks" type: TType_LIST fieldID: 3];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__failedHealthChecks count]];
-        int idx37;
-        for (idx37 = 0; idx37 < [__failedHealthChecks count]; idx37++)
+        int idx42;
+        for (idx42 = 0; idx42 < [__failedHealthChecks count]; idx42++)
         {
-          [[__failedHealthChecks objectAtIndex: idx37] write: outProtocol];
+          [[__failedHealthChecks objectAtIndex: idx42] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -8894,10 +9381,10 @@
       [outProtocol writeFieldBeginWithName: @"generalEvents" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__generalEvents count]];
-        int idx39;
-        for (idx39 = 0; idx39 < [__generalEvents count]; idx39++)
+        int idx44;
+        for (idx44 = 0; idx44 < [__generalEvents count]; idx44++)
         {
-          [[__generalEvents objectAtIndex: idx39] write: outProtocol];
+          [[__generalEvents objectAtIndex: idx44] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9448,16 +9935,16 @@
         break;
       case 4:
         if (fieldType == TType_LIST) {
-          int _size40;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size40];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size40];
-          int _i41;
-          for (_i41 = 0; _i41 < _size40; ++_i41)
+          int _size45;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
+          int _i46;
+          for (_i46 = 0; _i46 < _size45; ++_i46)
           {
-            Aroma_Message *_elem42 = [[Aroma_Message alloc] init];
-            [_elem42 read: inProtocol];
-            [fieldValue addObject: _elem42];
-            [_elem42 release_stub];
+            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
+            [_elem47 read: inProtocol];
+            [fieldValue addObject: _elem47];
+            [_elem47 release_stub];
           }
           [inProtocol readListEnd];
           [self setRecentMessages: fieldValue];
@@ -9521,10 +10008,10 @@
       [outProtocol writeFieldBeginWithName: @"recentMessages" type: TType_LIST fieldID: 4];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__recentMessages count]];
-        int idx44;
-        for (idx44 = 0; idx44 < [__recentMessages count]; idx44++)
+        int idx49;
+        for (idx49 = 0; idx49 < [__recentMessages count]; idx49++)
         {
-          [[__recentMessages objectAtIndex: idx44] write: outProtocol];
+          [[__recentMessages objectAtIndex: idx49] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -9892,16 +10379,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size45;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size45];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size45];
-          int _i46;
-          for (_i46 = 0; _i46 < _size45; ++_i46)
+          int _size50;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
+          int _i51;
+          for (_i51 = 0; _i51 < _size50; ++_i51)
           {
-            Aroma_Message *_elem47 = [[Aroma_Message alloc] init];
-            [_elem47 read: inProtocol];
-            [fieldValue addObject: _elem47];
-            [_elem47 release_stub];
+            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
+            [_elem52 read: inProtocol];
+            [fieldValue addObject: _elem52];
+            [_elem52 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -9926,10 +10413,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx49;
-        for (idx49 = 0; idx49 < [__messages count]; idx49++)
+        int idx54;
+        for (idx54 = 0; idx54 < [__messages count]; idx54++)
         {
-          [[__messages objectAtIndex: idx49] write: outProtocol];
+          [[__messages objectAtIndex: idx54] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -10368,16 +10855,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size50;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size50];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size50];
-          int _i51;
-          for (_i51 = 0; _i51 < _size50; ++_i51)
+          int _size55;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
+          int _i56;
+          for (_i56 = 0; _i56 < _size55; ++_i56)
           {
-            Aroma_Message *_elem52 = [[Aroma_Message alloc] init];
-            [_elem52 read: inProtocol];
-            [fieldValue addObject: _elem52];
-            [_elem52 release_stub];
+            Aroma_Message *_elem57 = [[Aroma_Message alloc] init];
+            [_elem57 read: inProtocol];
+            [fieldValue addObject: _elem57];
+            [_elem57 release_stub];
           }
           [inProtocol readListEnd];
           [self setMessages: fieldValue];
@@ -10410,10 +10897,10 @@
       [outProtocol writeFieldBeginWithName: @"messages" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__messages count]];
-        int idx54;
-        for (idx54 = 0; idx54 < [__messages count]; idx54++)
+        int idx59;
+        for (idx59 = 0; idx59 < [__messages count]; idx59++)
         {
-          [[__messages objectAtIndex: idx54] write: outProtocol];
+          [[__messages objectAtIndex: idx59] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -11551,16 +12038,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size55;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size55];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size55];
-          int _i56;
-          for (_i56 = 0; _i56 < _size55; ++_i56)
+          int _size60;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
+          int _i61;
+          for (_i61 = 0; _i61 < _size60; ++_i61)
           {
-            Aroma_Application *_elem57 = [[Aroma_Application alloc] init];
-            [_elem57 read: inProtocol];
-            [fieldValue addObject: _elem57];
-            [_elem57 release_stub];
+            Aroma_Application *_elem62 = [[Aroma_Application alloc] init];
+            [_elem62 read: inProtocol];
+            [fieldValue addObject: _elem62];
+            [_elem62 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -11585,10 +12072,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx59;
-        for (idx59 = 0; idx59 < [__applications count]; idx59++)
+        int idx64;
+        for (idx64 = 0; idx64 < [__applications count]; idx64++)
         {
-          [[__applications objectAtIndex: idx59] write: outProtocol];
+          [[__applications objectAtIndex: idx64] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -11934,16 +12421,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size60;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size60];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size60];
-          int _i61;
-          for (_i61 = 0; _i61 < _size60; ++_i61)
+          int _size65;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
+          int _i66;
+          for (_i66 = 0; _i66 < _size65; ++_i66)
           {
-            Aroma_Application *_elem62 = [[Aroma_Application alloc] init];
-            [_elem62 read: inProtocol];
-            [fieldValue addObject: _elem62];
-            [_elem62 release_stub];
+            Aroma_Application *_elem67 = [[Aroma_Application alloc] init];
+            [_elem67 read: inProtocol];
+            [fieldValue addObject: _elem67];
+            [_elem67 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -11968,10 +12455,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx64;
-        for (idx64 = 0; idx64 < [__applications count]; idx64++)
+        int idx69;
+        for (idx69 = 0; idx69 < [__applications count]; idx69++)
         {
-          [[__applications objectAtIndex: idx64] write: outProtocol];
+          [[__applications objectAtIndex: idx69] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12256,16 +12743,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size65;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size65];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size65];
-          int _i66;
-          for (_i66 = 0; _i66 < _size65; ++_i66)
+          int _size70;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
+          int _i71;
+          for (_i71 = 0; _i71 < _size70; ++_i71)
           {
-            AromaChannels_AromaChannel *_elem67 = [[AromaChannels_AromaChannel alloc] init];
-            [_elem67 read: inProtocol];
-            [fieldValue addObject: _elem67];
-            [_elem67 release_stub];
+            AromaChannels_AromaChannel *_elem72 = [[AromaChannels_AromaChannel alloc] init];
+            [_elem72 read: inProtocol];
+            [fieldValue addObject: _elem72];
+            [_elem72 release_stub];
           }
           [inProtocol readListEnd];
           [self setChannels: fieldValue];
@@ -12290,10 +12777,10 @@
       [outProtocol writeFieldBeginWithName: @"channels" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__channels count]];
-        int idx69;
-        for (idx69 = 0; idx69 < [__channels count]; idx69++)
+        int idx74;
+        for (idx74 = 0; idx74 < [__channels count]; idx74++)
         {
-          [[__channels objectAtIndex: idx69] write: outProtocol];
+          [[__channels objectAtIndex: idx74] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12634,16 +13121,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size70;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size70];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size70];
-          int _i71;
-          for (_i71 = 0; _i71 < _size70; ++_i71)
+          int _size75;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
+          int _i76;
+          for (_i76 = 0; _i76 < _size75; ++_i76)
           {
-            AromaEvents_Event *_elem72 = [[AromaEvents_Event alloc] init];
-            [_elem72 read: inProtocol];
-            [fieldValue addObject: _elem72];
-            [_elem72 release_stub];
+            AromaEvents_Event *_elem77 = [[AromaEvents_Event alloc] init];
+            [_elem77 read: inProtocol];
+            [fieldValue addObject: _elem77];
+            [_elem77 release_stub];
           }
           [inProtocol readListEnd];
           [self setEvents: fieldValue];
@@ -12668,10 +13155,10 @@
       [outProtocol writeFieldBeginWithName: @"events" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__events count]];
-        int idx74;
-        for (idx74 = 0; idx74 < [__events count]; idx74++)
+        int idx79;
+        for (idx79 = 0; idx79 < [__events count]; idx79++)
         {
-          [[__events objectAtIndex: idx74] write: outProtocol];
+          [[__events objectAtIndex: idx79] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -12958,16 +13445,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size75;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size75];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size75];
-          int _i76;
-          for (_i76 = 0; _i76 < _size75; ++_i76)
+          int _size80;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
+          int _i81;
+          for (_i81 = 0; _i81 < _size80; ++_i81)
           {
-            Aroma_ServiceAnnouncement *_elem77 = [[Aroma_ServiceAnnouncement alloc] init];
-            [_elem77 read: inProtocol];
-            [fieldValue addObject: _elem77];
-            [_elem77 release_stub];
+            Aroma_ServiceAnnouncement *_elem82 = [[Aroma_ServiceAnnouncement alloc] init];
+            [_elem82 read: inProtocol];
+            [fieldValue addObject: _elem82];
+            [_elem82 release_stub];
           }
           [inProtocol readListEnd];
           [self setServiceAnnouncements: fieldValue];
@@ -12992,10 +13479,10 @@
       [outProtocol writeFieldBeginWithName: @"serviceAnnouncements" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__serviceAnnouncements count]];
-        int idx79;
-        for (idx79 = 0; idx79 < [__serviceAnnouncements count]; idx79++)
+        int idx84;
+        for (idx84 = 0; idx84 < [__serviceAnnouncements count]; idx84++)
         {
-          [[__serviceAnnouncements objectAtIndex: idx79] write: outProtocol];
+          [[__serviceAnnouncements objectAtIndex: idx84] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }
@@ -13822,16 +14309,16 @@
     {
       case 1:
         if (fieldType == TType_LIST) {
-          int _size80;
-          [inProtocol readListBeginReturningElementType: NULL size: &_size80];
-          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size80];
-          int _i81;
-          for (_i81 = 0; _i81 < _size80; ++_i81)
+          int _size85;
+          [inProtocol readListBeginReturningElementType: NULL size: &_size85];
+          NSMutableArray * fieldValue = [[NSMutableArray alloc] initWithCapacity: _size85];
+          int _i86;
+          for (_i86 = 0; _i86 < _size85; ++_i86)
           {
-            Aroma_Application *_elem82 = [[Aroma_Application alloc] init];
-            [_elem82 read: inProtocol];
-            [fieldValue addObject: _elem82];
-            [_elem82 release_stub];
+            Aroma_Application *_elem87 = [[Aroma_Application alloc] init];
+            [_elem87 read: inProtocol];
+            [fieldValue addObject: _elem87];
+            [_elem87 release_stub];
           }
           [inProtocol readListEnd];
           [self setApplications: fieldValue];
@@ -13856,10 +14343,10 @@
       [outProtocol writeFieldBeginWithName: @"applications" type: TType_LIST fieldID: 1];
       {
         [outProtocol writeListBeginWithElementType: TType_STRUCT size: [__applications count]];
-        int idx84;
-        for (idx84 = 0; idx84 < [__applications count]; idx84++)
+        int idx89;
+        for (idx89 = 0; idx89 < [__applications count]; idx89++)
         {
-          [[__applications objectAtIndex: idx84] write: outProtocol];
+          [[__applications objectAtIndex: idx89] write: outProtocol];
         }
         [outProtocol writeListEnd];
       }

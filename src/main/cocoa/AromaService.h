@@ -140,6 +140,85 @@ typedef AromaException_UserDoesNotExistException * AromaService_UserDoesNotExist
 
 @end
 
+@interface AromaService_DeleteActivityRequest : NSObject <TBase, NSCoding> {
+  AromaService_UserToken __token;
+  AromaService_uuid __eventId;
+  BOOL __deleteAll;
+  NSMutableArray * __multipleEventIds;
+
+  BOOL __token_isset;
+  BOOL __eventId_isset;
+  BOOL __deleteAll_isset;
+  BOOL __multipleEventIds_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=token, setter=setToken:) AromaService_UserToken token;
+@property (nonatomic, retain, getter=eventId, setter=setEventId:) AromaService_uuid eventId;
+@property (nonatomic, getter=deleteAll, setter=setDeleteAll:) BOOL deleteAll;
+@property (nonatomic, retain, getter=multipleEventIds, setter=setMultipleEventIds:) NSMutableArray * multipleEventIds;
+#endif
+
+- (id) init;
+- (id) initWithToken: (AromaService_UserToken) token eventId: (AromaService_uuid) eventId deleteAll: (BOOL) deleteAll multipleEventIds: (NSMutableArray *) multipleEventIds;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_UserToken) token;
+- (void) setToken: (AromaService_UserToken) token;
+#endif
+- (BOOL) tokenIsSet;
+
+#if !__has_feature(objc_arc)
+- (AromaService_uuid) eventId;
+- (void) setEventId: (AromaService_uuid) eventId;
+#endif
+- (BOOL) eventIdIsSet;
+
+#if !__has_feature(objc_arc)
+- (BOOL) deleteAll;
+- (void) setDeleteAll: (BOOL) deleteAll;
+#endif
+- (BOOL) deleteAllIsSet;
+
+#if !__has_feature(objc_arc)
+- (NSMutableArray *) multipleEventIds;
+- (void) setMultipleEventIds: (NSMutableArray *) multipleEventIds;
+#endif
+- (BOOL) multipleEventIdsIsSet;
+
+@end
+
+@interface AromaService_DeleteActivityResponse : NSObject <TBase, NSCoding> {
+  AromaService_int __totalEventsDeleted;
+
+  BOOL __totalEventsDeleted_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=totalEventsDeleted, setter=setTotalEventsDeleted:) AromaService_int totalEventsDeleted;
+#endif
+
+- (id) init;
+- (id) initWithTotalEventsDeleted: (AromaService_int) totalEventsDeleted;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (AromaService_int) totalEventsDeleted;
+- (void) setTotalEventsDeleted: (AromaService_int) totalEventsDeleted;
+#endif
+- (BOOL) totalEventsDeletedIsSet;
+
+@end
+
 @interface AromaService_DeleteApplicationRequest : NSObject <TBase, NSCoding> {
   AromaService_UserToken __token;
   AromaService_uuid __applicationId;
