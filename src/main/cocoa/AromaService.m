@@ -14413,8 +14413,8 @@ static AromaService_int AromaService_APPLICATION_MAX_OWNERS = 10;
 
 ;
   AromaService_DEFAULT_ACTIVITY_LIFETIME = [[Aroma_LengthOfTime alloc] init];
-  [AromaService_DEFAULT_ACTIVITY_LIFETIME setValue:2];
-  [AromaService_DEFAULT_ACTIVITY_LIFETIME setUnit:6];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setValue:4];
+  [AromaService_DEFAULT_ACTIVITY_LIFETIME setUnit:5];
 
 ;
 }

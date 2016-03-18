@@ -58,10 +58,10 @@ AromaServiceConstants::AromaServiceConstants() {
   DEFAULT_INBOX_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
    ::tech::aroma::thrift::long tmp244;
-  tmp244 = 2LL;
+  tmp244 = 4LL;
 
   DEFAULT_ACTIVITY_LIFETIME.value = tmp244;
-  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)6;
+  DEFAULT_ACTIVITY_LIFETIME.unit = ( ::tech::aroma::thrift::TimeUnit::type)5;
 
   APPLICATION_NAME_MAX_LENGTH = 20;
 

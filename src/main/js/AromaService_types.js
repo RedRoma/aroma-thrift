@@ -4929,6 +4929,6 @@ MAX_MESSAGE_LENGTH = 5000;
 DEFAULT_INBOX_LIFETIME = new LengthOfTime({
 'value' : 3,'unit' : 5});
 DEFAULT_ACTIVITY_LIFETIME = new LengthOfTime({
-'value' : 2,'unit' : 6});
+'value' : 4,'unit' : 5});
 APPLICATION_NAME_MAX_LENGTH = 20;
 APPLICATION_MAX_OWNERS = 10;

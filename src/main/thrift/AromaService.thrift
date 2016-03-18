@@ -105,7 +105,7 @@ const int MAX_MESSAGE_LENGTH = 5000;
 const Aroma.LengthOfTime DEFAULT_INBOX_LIFETIME = { "value" : 3, "unit" : Aroma.TimeUnit.DAYS };
 
 /** The default amount of time to save events in a User's Activity Feed. */
-const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 2, "unit" : Aroma.TimeUnit.WEEKS };
+const Aroma.LengthOfTime DEFAULT_ACTIVITY_LIFETIME = { "value" : 4, "unit" : Aroma.TimeUnit.DAYS };
 
 
 //==========================================================
