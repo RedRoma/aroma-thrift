@@ -33,13 +33,11 @@
 {
   self = [super init];
 #if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-  self.subject = @"New Message - Aroma";
-
 #endif
   return self;
 }
 
-- (id) initWithToken: (EmailService_AuthenticationToken) token emailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage subject: (NSString *) subject
+- (id) initWithToken: (EmailService_AuthenticationToken) token emailAddress: (NSString *) emailAddress emailMessage: (EmailService_EmailMessage) emailMessage
 {
   self = [super init];
   __token = [token retain_stub];
@@ -48,8 +46,6 @@
   __emailAddress_isset = YES;
   __emailMessage = [emailMessage retain_stub];
   __emailMessage_isset = YES;
-  __subject = [subject retain_stub];
-  __subject_isset = YES;
   return self;
 }
 
@@ -71,11 +67,6 @@
     __emailMessage = [[decoder decodeObjectForKey: @"emailMessage"] retain_stub];
     __emailMessage_isset = YES;
   }
-  if ([decoder containsValueForKey: @"subject"])
-  {
-    __subject = [[decoder decodeObjectForKey: @"subject"] retain_stub];
-    __subject_isset = YES;
-  }
   return self;
 }
 
@@ -92,10 +83,6 @@
   if (__emailMessage_isset)
   {
     [encoder encodeObject: __emailMessage forKey: @"emailMessage"];
-  }
-  if (__subject_isset)
-  {
-    [encoder encodeObject: __subject forKey: @"subject"];
   }
 }
 
@@ -116,11 +103,6 @@
   if (__emailMessage_isset)
   {
     hash = (hash * 31) ^ [__emailMessage hash];
-  }
-  hash = (hash * 31) ^ __subject_isset ? 2654435761 : 0;
-  if (__subject_isset)
-  {
-    hash = (hash * 31) ^ [__subject hash];
   }
   return hash;
 }
@@ -146,10 +128,6 @@
       (__emailMessage_isset && ((__emailMessage || other->__emailMessage) && ![__emailMessage isEqual:other->__emailMessage]))) {
     return NO;
   }
-  if ((__subject_isset != other->__subject_isset) ||
-      (__subject_isset && ((__subject || other->__subject) && ![__subject isEqual:other->__subject]))) {
-    return NO;
-  }
   return YES;
 }
 
@@ -158,7 +136,6 @@
   [__token release_stub];
   [__emailAddress release_stub];
   [__emailMessage release_stub];
-  [__subject release_stub];
   [super dealloc_stub];
 }
 
@@ -225,27 +202,6 @@
   __emailMessage_isset = NO;
 }
 
-- (NSString *) subject {
-  return [[__subject retain_stub] autorelease_stub];
-}
-
-- (void) setSubject: (NSString *) subject {
-  [subject retain_stub];
-  [__subject release_stub];
-  __subject = subject;
-  __subject_isset = YES;
-}
-
-- (BOOL) subjectIsSet {
-  return __subject_isset;
-}
-
-- (void) unsetSubject {
-  [__subject release_stub];
-  __subject = nil;
-  __subject_isset = NO;
-}
-
 - (void) read: (id <TProtocol>) inProtocol
 {
   NSString * fieldName;
@@ -289,14 +245,6 @@
           [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         }
         break;
-      case 4:
-        if (fieldType == TType_STRING) {
-          NSString * fieldValue = [inProtocol readString];
-          [self setSubject: fieldValue];
-        } else { 
-          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-        }
-        break;
       default:
         [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
         break;
@@ -329,13 +277,6 @@
       [outProtocol writeFieldEnd];
     }
   }
-  if (__subject_isset) {
-    if (__subject != nil) {
-      [outProtocol writeFieldBeginWithName: @"subject" type: TType_STRING fieldID: 4];
-      [outProtocol writeString: __subject];
-      [outProtocol writeFieldEnd];
-    }
-  }
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
 }
@@ -352,8 +293,6 @@
   [ms appendFormat: @"\"%@\"", __emailAddress];
   [ms appendString: @",emailMessage:"];
   [ms appendFormat: @"%@", __emailMessage];
-  [ms appendString: @",subject:"];
-  [ms appendFormat: @"\"%@\"", __subject];
   [ms appendString: @")"];
   return [NSString stringWithString: ms];
 }

@@ -20,7 +20,6 @@ SendEmailRequest = module.exports.SendEmailRequest = function(args) {
   this.token = null;
   this.emailAddress = null;
   this.emailMessage = null;
-  this.subject = 'New Message - Aroma';
   if (args) {
     if (args.token !== undefined && args.token !== null) {
       this.token = new Authentication_ttypes.AuthenticationToken(args.token);
@@ -30,9 +29,6 @@ SendEmailRequest = module.exports.SendEmailRequest = function(args) {
     }
     if (args.emailMessage !== undefined && args.emailMessage !== null) {
       this.emailMessage = new Email_ttypes.EmailMessage(args.emailMessage);
-    }
-    if (args.subject !== undefined && args.subject !== null) {
-      this.subject = args.subject;
     }
   }
 };
@@ -73,13 +69,6 @@ SendEmailRequest.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 4:
-      if (ftype == Thrift.Type.STRING) {
-        this.subject = input.readString();
-      } else {
-        input.skip(ftype);
-      }
-      break;
       default:
         input.skip(ftype);
     }
@@ -104,11 +93,6 @@ SendEmailRequest.prototype.write = function(output) {
   if (this.emailMessage !== null && this.emailMessage !== undefined) {
     output.writeFieldBegin('emailMessage', Thrift.Type.STRUCT, 3);
     this.emailMessage.write(output);
-    output.writeFieldEnd();
-  }
-  if (this.subject !== null && this.subject !== undefined) {
-    output.writeFieldBegin('subject', Thrift.Type.STRING, 4);
-    output.writeString(this.subject);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
